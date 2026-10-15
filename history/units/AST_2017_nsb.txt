@@ -1,0 +1,312 @@
+division_template = {
+	name = "Amphibious Task Group"
+	regiments = {
+		L_Marine_Bat = { x = 0 y = 0 }
+	}
+}
+
+division_template = {
+	name = "Mechanized Brigade"
+	regiments = {
+		armor_Bat = { x = 0 y = 0 }
+		Mech_Inf_Bat = { x = 1 y = 0 }
+		Mech_Inf_Bat = { x = 1 y = 1 }
+		Arty_Bat = { x = 1 y = 2 }
+		Mech_Inf_Bat = { x = 1 y = 3 }
+	}
+	support = {
+	   SP_AA_Battery = { x = 0 y = 0 }
+		Arm_Recce_Comp = { x = 0 y = 1 }
+	}
+}
+
+division_template = {
+	name = "Infantry Brigade"
+	regiments = {
+		Mot_Inf_Bat = { x = 0 y = 0 }
+		Mot_Inf_Bat = { x = 0 y = 1 }
+		Mot_Inf_Bat = { x = 0 y = 2 }
+		Arty_Bat = { x = 1 y = 0 }
+		Mot_Inf_Bat = { x = 1 y = 1 }
+		L_Inf_Bat = { x = 1 y = 2 }
+	}
+}
+
+division_template = {
+	name = "Aviation Brigade"
+	regiments = {
+		L_Air_assault_Bat = { x = 0 y = 0 }
+		L_Air_assault_Bat = { x = 0 y = 1 }
+	}
+}
+
+division_template = {
+	name = "Commando Regiment"
+	regiments = {
+		Special_Forces = { x = 0 y = 0 }
+	}
+
+	priority = 2
+}
+
+units = {
+	division = {
+		name = "1 Brigade"
+		location = 7669 	#Darwin
+		division_template = "Mechanized Brigade"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "3 Brigade"
+		location = 7566 	#Towsville
+		division_template = "Mechanized Brigade"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "7 Brigade"
+		location = 7564 	#Enoggera
+		division_template = "Mechanized Brigade"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "2nd Battalion, Royal Australian Regiment"
+		location = 7566 	#Townsville
+		division_template = "Amphibious Task Group"
+		start_experience_factor = 0.80
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "16 Aviation Brigade"
+		location = 7564 	#Enoggera
+		division_template = "Aviation Brigade"
+		start_experience_factor = 0.80
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "4 Brigade"
+		location = 7798 	#Melbourne
+		division_template = "Infantry Brigade"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "5 Brigade"
+		location = 12406 	#Sydney
+		division_template = "Infantry Brigade"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "8 Brigade"
+		location = 12406 	#Sydney
+		division_template = "Infantry Brigade"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "9 Brigade"
+		location = 12910 	#Keswick
+		division_template = "Infantry Brigade"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "11 Brigade"
+		location = 7566 	#Townsville
+		division_template = "Infantry Brigade"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "13 Brigade"
+		location = 1652 	#Perth
+		division_template = "Infantry Brigade"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "Australian SAS Regiment"
+		location = 1652 	#Perth
+		division_template = "Commando Regiment"
+		start_experience_factor = 0.90
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "1 Commando Regiment"
+		location = 12406 	#Randwick
+		division_template = "Commando Regiment"
+		start_experience_factor = 0.90
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "1 Commando Regiment"
+		location = 4864 	#Holsworthy
+		division_template = "Commando Regiment"
+		start_experience_factor = 0.90
+		start_equipment_factor = 0.01
+	}
+}
+
+instant_effect = {
+
+	add_equipment_to_stockpile = {
+		variant_name = "Austeyr"
+		type = infantry_weapons_3 		#Austeyr
+		amount = 9000
+		producer = AST
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "L1A1 SLR"
+		type = infantry_weapons_2 		#L1A1 SLR（封存）
+		amount = 60000
+		producer = AST
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "M4 Carbine"
+		type = infantry_weapons_5		#M4 Carbine
+		amount = 200
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		type = cnc_equipment_4
+		amount = 1470
+		producer = AST
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "ASLAV"
+		type = medium_tank_flame_chassis_1		#ASLAV
+		amount = 257
+		producer = AST
+	}
+
+	add_equipment_to_stockpile = {
+		type = medium_tank_chassis_2
+		producer = AST
+		amount = 59
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Leopard AS1"
+		type = medium_tank_chassis_0			#Leopard AS1（封存）
+		producer = GER
+		amount = 150
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "M113AS4"
+		type = medium_tank_amphibious_chassis_1		#M113AS4
+		producer = USA
+		amount = 431
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Bushmaster"
+		type = util_vehicle_4		#Bushmaster
+		amount = 1052
+		producer = AST
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Hawkei"
+		type = util_vehicle_6		#Hawkei
+		amount = 1100
+		producer = AST
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Land Rover Perentie"
+		type = util_vehicle_4		#Land Rover Perentie
+		amount = 1500
+		producer = ENG
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "G-Class"
+		type = util_vehicle_3		#G-Class
+		amount = 2268
+		producer = AST
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "M777"
+		type = artillery_2		#M777
+		amount = 57
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "RBS-70"
+		type = Anti_Air_1			#RBS 70
+		amount = 350
+		producer = SWE
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "NASAMS"
+		type = medium_tank_aa_chassis_2			#NASAMS
+		amount = 100
+		producer = AST
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Javelin"
+		type = Heavy_Anti_tank_2			#Javelin
+		amount = 200
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Javelin"
+		type = Anti_tank_2			#Javelin
+		amount = 300
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Tiger ARH"
+		type = heavy_tank_chassis_2			#Tiger ARH
+		producer = AST
+		amount = 22
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Black Hawk"
+		type = transport_helicopter_2			#Black Hawk
+		amount = 20
+		producer = AST
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "CH-47F Chinook"
+		type = transport_helicopter_2			#CH-47F Chinook
+		producer = USA
+		amount = 10
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "MRH-90 Taipan"
+		type = transport_helicopter_2			#MRH-90 Taipan
+		producer = AST
+		amount = 47
+	}
+}

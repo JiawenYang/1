@@ -1,0 +1,278 @@
+add_namespace = politicsgeneral
+add_namespace = politicssasia
+add_namespace = politicseeurope
+add_namespace = politicsusa
+add_namespace = politicsrussia
+add_namespace = politicseasia
+add_namespace = politicsisrael
+add_namespace = politicschina
+
+news_event = {
+	id = politicsgeneral.3
+	hidden = yes
+
+	trigger = {
+		has_idea = laws_welfare_post_soviet
+		NOT = { has_idea = oligarchs }
+	}
+
+	immediate = {
+		swap_ideas = {
+			remove_idea = laws_welfare_post_soviet
+			add_idea = social_03
+		}
+	}
+}
+
+news_event = {
+	id = politicssasia.3
+	hidden = yes
+
+	trigger = {
+		date > 2009.05.31
+	}
+
+	immediate = {
+		RAJ = {
+			swap_ideas = {
+				remove_idea = RAJ_politics_fix
+				add_idea = RAJ_politics_2010s_fix
+			}
+		}
+	}
+}
+
+news_event = {
+	id = politicssasia.4
+	hidden = yes
+
+	trigger = {
+		date > 2001.10.31
+	}
+
+	immediate = {
+		BAN = {
+			swap_ideas = {
+				remove_idea = BAN_politics_fix
+				add_idea = BAN_politics_2005s_fix
+			}
+		}
+	}
+}
+
+news_event = {
+	id = politicssasia.7
+	hidden = yes
+
+	trigger = {
+		date > 2010.06.30
+	}
+
+	immediate = {
+		PHI = {
+			swap_ideas = {
+				remove_idea = PHI_politics_fix
+				add_idea = PHI_politics_2010s_fix
+			}
+		}
+	}
+}
+
+news_event = {
+	id = politicssasia.8
+	hidden = yes
+
+	trigger = {
+		date > 2016.06.30
+	}
+
+	immediate = {
+		PHI = {
+			swap_ideas = {
+				remove_idea = PHI_politics_2010s_fix
+				add_idea = PHI_politics_2020s_fix
+			}
+		}
+	}
+}
+
+news_event = {
+	id = politicsisrael.1
+	hidden = yes
+
+	fire_only_once = yes
+
+	trigger = {
+		CHI = { has_completed_focus = CHI_End_US_Hegemony }
+	}
+
+	immediate = {
+		ISR = {
+			swap_ideas = {
+				remove_idea = idea_ISR_american_funding
+				add_idea = ISR_french_funding_idea
+			}
+		}
+	}
+}
+
+news_event = {
+	id = politicsusa.2
+	hidden = yes
+
+	trigger = {
+		AND = {
+			date > 2019.12.31
+			USA = {
+				has_idea = USA_low_immigration_idea
+				OR = {
+					is_in_array = { ruling_party = 2 }
+					is_in_array = { ruling_party = 3 }
+					is_in_array = { ruling_party = 18 }
+				}
+			}
+		}
+	}
+
+	immediate = {
+		USA = {
+			swap_ideas = {
+				remove_idea = USA_low_immigration_idea
+				add_idea = USA_high_immigration_idea
+			}
+		}
+	}
+}
+
+news_event = {
+	id = politicsusa.3
+	hidden = yes
+
+	trigger = {
+		AND = {
+			date > 2019.12.31
+			USA = {
+				has_idea = USA_high_immigration_idea
+				OR = {
+					is_in_array = { ruling_party = 1 }
+					is_in_array = { ruling_party = 14 }
+					is_in_array = { ruling_party = 20 }
+				}
+			}
+		}
+	}
+
+	immediate = {
+		USA = {
+			swap_ideas = {
+				remove_idea = USA_high_immigration_idea
+				add_idea = USA_low_immigration_idea
+			}
+		}
+	}
+}
+
+news_event = {
+	id = politicschina.1
+	hidden = yes
+
+	fire_only_once = yes
+
+	trigger = {
+		598 = {
+			is_fully_controlled_by = CHI
+		}
+		599 = {
+			is_fully_controlled_by = CHI
+		}
+		600 = {
+			is_fully_controlled_by = CHI
+		}
+		1155 = {
+			is_fully_controlled_by = CHI
+		}
+		1156 = {
+			is_fully_controlled_by = CHI
+		}
+		1157 = {
+			is_fully_controlled_by = CHI
+		}
+		1158 = {
+			is_fully_controlled_by = CHI
+		}
+		OR = {
+			CHI = { has_completed_focus = CHI_Resume_the_Civil_War }
+			CHI = { has_completed_focus = PRC_finish_what_mao_started }
+		}
+	}
+
+	immediate = {
+		CHI = {
+			country_event = {
+				id = prc.23
+			}
+		}
+		if = {
+			limit = {
+				JAP = { 
+					has_country_flag = pdto_member
+					has_country_flag = JAP_ongoing_taiwan_war
+				}
+			}
+			JAP = {
+				country_event = {
+					id = jap.10
+					days = 3
+				}
+			}
+		}
+		every_country = {
+			limit = {
+				has_war_with = CHI
+			}
+			white_peace = CHI
+		}
+		TAI = {
+			clr_country_flag = CHI_protecting_the_island_flag
+		}
+	}
+}
+
+news_event = {
+	id = politicseeurope.1
+	hidden = yes
+
+	trigger = {
+		MLV = {
+			has_government = communism
+			NOT = { has_idea = MOL_pro_european_opposition }
+		}
+	}
+
+	immediate = {
+		MLV = {
+			add_ideas = MOL_pro_european_opposition
+		}
+	}
+}
+
+news_event = {
+	id = politicseeurope.2
+	hidden = yes
+
+	trigger = {
+		MLV = {
+			OR = {
+				has_government = democratic
+				has_government = neutrality
+			}
+			NOT = { has_idea = MOL_pro_russian_opposition }
+		}
+	}
+
+	immediate = {
+		MLV = {
+			add_ideas = MOL_pro_russian_opposition
+		}
+	}
+}

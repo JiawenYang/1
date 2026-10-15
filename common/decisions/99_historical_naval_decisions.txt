@@ -1,0 +1,820 @@
+historical_naval_category = {
+	# Type 075 Class
+	CHI_Type_075_decision = {
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_navy_experience > 19
+		}
+		custom_cost_text = navy_xp_20
+
+		visible = {
+			original_tag = CHI
+		}
+
+		available = {
+		has_tech = helicopter_operator_hull_3
+		has_tech = aircraft_carrier_engineering
+		has_tech = aircraft_heli_engineering_3
+		has_tech = tech_naval_systems_engineering
+		has_tech = tech_power_systems_2
+		has_tech = tech_fire_control_2
+		has_tech = tech_turret_missiles_aa_4
+		has_tech = tech_combat_radar_3
+		has_tech = tech_diesel_power_systems_2
+		has_tech = tech_point_defense_system_3
+		has_tech = tech_vls_aa_3
+		has_tech = tech_vls_surface_1
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_Type_075_decision"
+			navy_experience = -20
+			create_equipment_variant = {
+				name = "Type 075 Class"
+				type = helicopter_operator_hull_3
+				name_group = CHI_CV_HISTORICAL
+				parent_version = 0
+				modules = {
+					fixed_ship_engine_slot = module_surface_diesel_power_2
+					fixed_ship_fire_control_system_slot = module_digital_integrated_fire_control
+					fixed_ship_radar_slot = module_radar_4
+					fixed_ship_auxillary_slot_3 = module_naval_missile_mount_single
+					fixed_ship_auxillary_slot_2 = module_ram_4
+					fixed_ship_auxillary_slot = module_ciws_3
+					fixed_ship_battery_slot = module_light_flight_deck_3
+					front_1_custom_slot = module_helipads_3
+					mid_1_custom_slot = module_fuel_tank
+					rear_1_custom_slot = module_helipads_3
+					fixed_ship_missile_ammo_slot = module_naval_ammo_air_defense_2
+				}
+				design_team = mio:CHI_cssc_manufacturer
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+
+	# Type 054B Class
+	CHI_Type_054B_decision = {
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_navy_experience > 14
+		}
+		custom_cost_text = navy_xp_15
+
+		visible = {
+			original_tag = CHI
+		}
+
+		available = {
+		has_tech = frigate_hull_4
+		has_tech = tech_naval_systems_engineering
+		has_tech = tech_power_systems_2
+		has_tech = tech_fire_control_3
+		has_tech = tech_turret_missiles_aa_4
+		has_tech = tech_light_guns_2
+		has_tech = tech_point_defense_system_3
+		has_tech = aircraft_heli_engineering_3
+		has_tech = tech_torpedoes_3
+		has_tech = tech_vls_aa_3
+		has_tech = tech_turret_missiles_surface_2
+		has_tech = tech_combat_radar_3
+		has_tech = tech_diesel_power_systems_1
+		has_tech = tech_vls_surface_3
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_Type_054B_decision"
+			navy_experience = -15
+			create_equipment_variant = {
+				name = "Type 054B Class"
+				type = frigate_hull_4
+				name_group = CHI_DD_HISTORICAL
+				parent_version = 0
+				modules = {
+					fixed_ship_engine_slot = module_light_surface_diesel_power_1
+					fixed_ship_fire_control_system_slot = module_advanced_integrated_missile_radar_control
+					fixed_ship_radar_slot = module_radar_4
+					fixed_ship_auxillary_slot_2 = module_ram_4
+					fixed_ship_auxillary_slot_1 = module_naval_missile_mount_twin
+					fixed_ship_auxillary_slot = module_naval_vls_cells_16
+					fixed_ship_battery_slot = module_76mm_gun_2
+					front_1_custom_slot = module_torpedoes_3
+					rear_1_custom_slot = module_light_helipad_2
+					fixed_ship_missile_ammo_slot = module_naval_ammo_balanced_3
+				}
+				design_team = mio:CHI_cssc_manufacturer
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+
+	# Choe Hyon Class
+	NKO_Choe_Hyon_decision = {
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_navy_experience > 19
+		}
+		custom_cost_text = navy_xp_20
+
+		visible = {
+			original_tag = NKO
+		}
+
+		available = {
+		has_tech = destroyer_hull_3
+		has_tech = tech_naval_systems_engineering
+		has_tech = tech_power_systems_2
+		has_tech = tech_fire_control_3
+		has_tech = tech_torpedoes_3
+		has_tech = tech_turret_missiles_aa_4
+		has_tech = tech_light_guns_2
+		has_tech = tech_point_defense_system_3
+		has_tech = aircraft_heli_engineering_1
+		has_tech = tech_turret_missiles_surface_4
+		has_tech = tech_combat_radar_3
+		has_tech = tech_diesel_power_systems_2
+		has_tech = tech_vls_aa_4
+		has_tech = tech_vls_surface_3
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision NKO_Choe_Hyon_decision"
+			navy_experience = -20
+			create_equipment_variant = {
+				name = "Choe Hyon Class"
+				type = destroyer_hull_3
+				name_group = NKO_DD_HISTORICAL
+				parent_version = 0
+				modules = {
+					fixed_ship_engine_slot = module_surface_diesel_power_2
+					fixed_ship_fire_control_system_slot = module_capital_advanced_integrated_missile_radar_control
+					fixed_ship_radar_slot = module_radar_4
+					fixed_ship_auxillary_slot_3 = module_naval_vls_cells_16
+					fixed_ship_auxillary_slot_2 = module_naval_missile_mount_quad
+					fixed_ship_auxillary_slot = module_ciws_3
+					fixed_ship_battery_slot = module_76mm_gun_2
+					front_1_custom_slot = module_naval_vls_cells_16
+					mid_1_custom_slot = module_naval_vls_cells_32
+					mid_2_custom_slot = module_ciws_3
+					rear_1_custom_slot = module_light_helipad_1
+					fixed_ship_missile_ammo_slot = module_naval_ammo_balanced_3
+				}
+				design_team = mio:NKO_6_bureau_naval_manufacturer
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+
+	# P17A Nilgiri Class
+	RAJ_P17A_Nilgiri_decision = {
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_navy_experience > 14
+		}
+		custom_cost_text = navy_xp_15
+
+		visible = {
+			original_tag = RAJ
+		}
+
+		available = {
+		has_tech = frigate_hull_4
+		has_tech = tech_naval_systems_engineering
+		has_tech = tech_power_systems_2
+		has_tech = tech_fire_control_3
+		has_tech = tech_turret_missiles_aa_4
+		has_tech = tech_light_guns_2
+		has_tech = tech_point_defense_system_3
+		has_tech = aircraft_heli_engineering_3
+		has_tech = tech_torpedoes_3
+		has_tech = tech_vls_aa_3
+		has_tech = tech_turret_missiles_surface_4
+		has_tech = tech_combat_radar_3
+		has_tech = tech_vls_surface_3
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision RAJ_P17A_Nilgiri_decision"
+			navy_experience = -15
+			create_equipment_variant = {
+				name = "P17A Nilgiri Class"
+				type = frigate_hull_4
+				name_group = RAJ_DD_HISTORICAL
+				parent_version = 0
+				modules = {
+					fixed_ship_engine_slot = module_light_surface_jet_turbine_power2
+					fixed_ship_fire_control_system_slot = module_advanced_integrated_missile_radar_control
+					fixed_ship_radar_slot = module_radar_4
+					fixed_ship_auxillary_slot_2 = module_ciws_3
+					fixed_ship_auxillary_slot_1 = module_naval_missile_mount_quad
+					fixed_ship_auxillary_slot = module_naval_vls_cells_16
+					fixed_ship_battery_slot = module_76mm_gun_2
+					front_1_custom_slot = module_torpedoes_3
+					rear_1_custom_slot = module_light_helipad_2
+					fixed_ship_missile_ammo_slot = module_naval_ammo_balanced_3
+				}
+				design_team = mio:RAJ_Garden_reach_naval_manufacturer
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+
+	# Amiral Ronarc'h Class
+	FRA_FDI_Ronarch_decision = {
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_navy_experience > 14
+		}
+		custom_cost_text = navy_xp_15
+
+		visible = {
+			original_tag = FRA
+		}
+
+		available = {
+		has_tech = frigate_hull_4
+		has_tech = tech_naval_systems_engineering
+		has_tech = tech_power_systems_2
+		has_tech = tech_fire_control_3
+		has_tech = tech_turret_missiles_aa_4
+		has_tech = tech_light_guns_2
+		has_tech = tech_point_defense_chain_gun
+		has_tech = aircraft_heli_engineering_3
+		has_tech = tech_torpedoes_3
+		has_tech = tech_vls_aa_3
+		has_tech = tech_turret_missiles_surface_4
+		has_tech = tech_combat_radar_3
+		has_tech = tech_diesel_power_systems_1
+		has_tech = tech_vls_surface_3
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision FRA_FDI_Ronarch_decision"
+			navy_experience = -15
+			create_equipment_variant = {
+				name = "Amiral Ronarc'h Class"
+				type = frigate_hull_4
+				name_group = FRA_DD_HISTORICAL
+				parent_version = 0
+				modules = {
+					fixed_ship_engine_slot = module_light_surface_diesel_power_1
+					fixed_ship_fire_control_system_slot = module_advanced_integrated_missile_radar_control
+					fixed_ship_radar_slot = module_radar_4
+					fixed_ship_auxillary_slot_2 = module_chain_gun
+					fixed_ship_auxillary_slot_1 = module_naval_missile_mount_quad
+					fixed_ship_auxillary_slot = module_naval_vls_cells_16
+					fixed_ship_battery_slot = module_76mm_gun_2
+					front_1_custom_slot = module_torpedoes_3
+					rear_1_custom_slot = module_light_helipad_2
+					fixed_ship_missile_ammo_slot = module_naval_ammo_balanced_3
+				}
+				design_team = mio:FRA_naval_group_naval_manufacturer
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+
+	# Kimon Class
+	GRE_FDI_Kimon_decision = {
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_navy_experience > 14
+		}
+		custom_cost_text = navy_xp_15
+
+		visible = {
+			original_tag = GRE
+		}
+
+		available = {
+		has_tech = frigate_hull_4
+		has_tech = tech_naval_systems_engineering
+		has_tech = tech_power_systems_2
+		has_tech = tech_fire_control_3
+		has_tech = tech_turret_missiles_aa_4
+		has_tech = tech_light_guns_2
+		has_tech = tech_point_defense_chain_gun
+		has_tech = aircraft_heli_engineering_3
+		has_tech = tech_torpedoes_3
+		has_tech = tech_vls_aa_3
+		has_tech = tech_turret_missiles_surface_4
+		has_tech = tech_combat_radar_3
+		has_tech = tech_diesel_power_systems_1
+		has_tech = tech_vls_surface_3
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision GRE_FDI_Kimon_decision"
+			navy_experience = -15
+			create_equipment_variant = {
+				name = "Kimon Class"
+				type = frigate_hull_4
+				name_group = GRE_FRIGATE_HISTORICAL
+				parent_version = 0
+				modules = {
+					fixed_ship_engine_slot = module_light_surface_diesel_power_1
+					fixed_ship_fire_control_system_slot = module_advanced_integrated_missile_radar_control
+					fixed_ship_radar_slot = module_radar_4
+					fixed_ship_auxillary_slot_2 = module_chain_gun
+					fixed_ship_auxillary_slot_1 = module_naval_missile_mount_quad
+					fixed_ship_auxillary_slot = module_naval_vls_cells_16
+					fixed_ship_battery_slot = module_76mm_gun_2
+					front_1_custom_slot = module_torpedoes_3
+					rear_1_custom_slot = module_light_helipad_2
+					fixed_ship_missile_ammo_slot = module_naval_ammo_balanced_3
+				}
+				design_team = mio:GRE_skaramangas_manufacturer
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+
+	# Thaon di Revel Class
+	ITA_PPA_Thaon_di_Revel_decision = {
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_navy_experience > 14
+		}
+		custom_cost_text = navy_xp_15
+
+		visible = {
+			original_tag = ITA
+		}
+
+		available = {
+		has_tech = frigate_hull_4
+		has_tech = tech_naval_systems_engineering
+		has_tech = tech_power_systems_2
+		has_tech = tech_fire_control_3
+		has_tech = tech_turret_missiles_aa_4
+		has_tech = tech_light_guns_2
+		has_tech = tech_point_defense_system_3
+		has_tech = aircraft_heli_engineering_3
+		has_tech = tech_torpedoes_3
+		has_tech = tech_vls_aa_3
+		has_tech = tech_turret_missiles_surface_4
+		has_tech = tech_combat_radar_3
+		has_tech = tech_vls_surface_3
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision ITA_PPA_Thaon_di_Revel_decision"
+			navy_experience = -15
+			create_equipment_variant = {
+				name = "Thaon di Revel Class"
+				type = frigate_hull_4
+				name_group = ITA_DD_HISTORICAL
+				parent_version = 0
+				modules = {
+					fixed_ship_engine_slot = module_light_surface_jet_turbine_power2
+					fixed_ship_fire_control_system_slot = module_advanced_integrated_missile_radar_control
+					fixed_ship_radar_slot = module_radar_4
+					fixed_ship_auxillary_slot_2 = module_ciws_3
+					fixed_ship_auxillary_slot_1 = module_naval_missile_mount_quad
+					fixed_ship_auxillary_slot = module_naval_vls_cells_16
+					fixed_ship_battery_slot = module_76mm_gun_2
+					front_1_custom_slot = module_torpedoes_3
+					rear_1_custom_slot = module_light_helipad_2
+					fixed_ship_missile_ammo_slot = module_naval_ammo_balanced_3
+				}
+				design_team = mio:ITA_aermacchi_manufacturer
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+
+	# Anadolu Class
+	TUR_Anadolu_decision = {
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_navy_experience > 19
+		}
+		custom_cost_text = navy_xp_20
+
+		visible = {
+			original_tag = TUR
+		}
+
+		available = {
+		has_tech = helicopter_operator_hull_3
+		has_tech = aircraft_carrier_engineering
+		has_tech = aircraft_heli_engineering_3
+		has_tech = tech_naval_systems_engineering
+		has_tech = tech_power_systems_1
+		has_tech = tech_fire_control_2
+		has_tech = tech_turret_missiles_aa_4
+		has_tech = tech_point_defense_system_3
+		has_tech = tech_point_defense_chain_gun
+		has_tech = tech_combat_radar_3
+		has_tech = tech_combat_radar_2
+		has_tech = tech_diesel_power_systems_1
+		has_tech = tech_vls_aa_2
+		has_tech = tech_vls_surface_1
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision TUR_Anadolu_decision"
+			navy_experience = -20
+			create_equipment_variant = {
+				name = "Anadolu Class"
+				type = helicopter_operator_hull_3
+				name_group = TUR_LHA_HISTORICAL
+				parent_version = 0
+				modules = {
+					fixed_ship_engine_slot = module_surface_diesel_power_1
+					fixed_ship_fire_control_system_slot = module_digital_integrated_fire_control
+					fixed_ship_radar_slot = module_radar_4
+					fixed_ship_auxillary_slot_3 = module_naval_missile_mount_single
+					fixed_ship_auxillary_slot_2 = module_ram_4
+					fixed_ship_auxillary_slot = module_ciws_3
+					fixed_ship_battery_slot = module_light_flight_deck_3
+					front_1_custom_slot = module_helipads_2
+					mid_1_custom_slot = module_fuel_tank
+					rear_1_custom_slot = module_chain_gun
+					fixed_ship_missile_ammo_slot = module_naval_ammo_air_defense_2
+				}
+				design_team = mio:TUR_golcuk_naval_shipyard_naval_manufacturer
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+
+	# Piri Reis Class
+	TUR_Piri_Reis_decision = {
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_navy_experience > 19
+		}
+		custom_cost_text = navy_xp_20
+
+		visible = {
+			original_tag = TUR
+		}
+
+		available = {
+		has_tech = attack_submarine_hull_4
+		has_tech = tech_submarine_engineering_1
+		has_tech = tech_submarine_engineering_2
+		has_tech = tech_naval_systems_engineering
+		has_tech = tech_combat_radar_2
+		has_tech = tech_turret_missiles_surface_2
+		has_tech = tech_combat_sonar_3
+		has_tech = tech_torpedoes_3
+		has_tech = tech_vls_surface_3
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision TUR_Piri_Reis_decision"
+			navy_experience = -20
+			create_equipment_variant = {
+				name = "Piri Reis Class"
+				type = attack_submarine_hull_4
+				name_group = TUR_MODERN_SUBMARINES_NAMES
+				parent_version = 0
+				modules = {
+					fixed_ship_engine_slot = module_sub_diesel_electric_power2
+					fixed_ship_radar_slot = module_sonar_4
+					fixed_ship_auxillary_slot_3 = module_naval_sub_vls_cells_32
+					fixed_ship_auxillary_slot_2 = module_sub_esm_1
+					fixed_ship_auxillary_slot_1 = module_torpedoes_3
+					fixed_ship_auxillary_slot = module_torpedoes_3
+					fixed_ship_battery_slot = module_anti_ship_torpedoes_3
+					fixed_ship_missile_ammo_slot = module_naval_sub_ammo_anti_ship_3
+				}
+				design_team = mio:TUR_golcuk_naval_shipyard_naval_manufacturer
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+
+	# Arkhangelsk Class
+	SOV_Arkhangelsk_decision = {
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_navy_experience > 19
+		}
+		custom_cost_text = navy_xp_20
+
+		visible = {
+			original_tag = SOV
+		}
+
+		available = {
+		has_tech = attack_submarine_hull_4
+		has_tech = tech_submarine_engineering_1
+		has_tech = tech_naval_systems_engineering
+		has_tech = tech_combat_sonar_3
+		has_tech = tech_torpedoes_3
+		has_tech = tech_combat_radar_2
+		has_tech = tech_nuclear_power_systems_3
+		has_tech = tech_vls_surface_4
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision SOV_Arkhangelsk_decision"
+			navy_experience = -20
+			create_equipment_variant = {
+				name = "Arkhangelsk Class"
+				type = attack_submarine_hull_4
+				name_group = SOV_NUCLEAR_SS_HISTORICAL
+				parent_version = 0
+				modules = {
+					fixed_ship_engine_slot = module_sub_mod_reactor_power
+					fixed_ship_radar_slot = module_sonar_4
+					fixed_ship_auxillary_slot_2 = module_sub_esm_1
+					fixed_ship_auxillary_slot_1 = module_naval_sub_vls_cells_8
+					fixed_ship_auxillary_slot = module_torpedoes_3
+					fixed_ship_battery_slot = module_anti_ship_torpedoes_3
+					fixed_ship_missile_ammo_slot = module_naval_sub_ammo_anti_ship_4
+					fixed_ship_auxillary_slot_3 = module_torpedoes_3
+				}
+				design_team = mio:SOV_united_shipbuilding_corporation_naval_manufacturer
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+
+	# Knyaz Pozharsky Class
+	SOV_Knyaz_Pozharsky_decision = {
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_navy_experience > 19
+		}
+		custom_cost_text = navy_xp_20
+
+		visible = {
+			original_tag = SOV
+		}
+
+		available = {
+		has_tech = missile_submarine_hull_4
+		has_tech = tech_submarine_engineering_1
+		has_tech = tech_naval_systems_engineering
+		has_tech = tech_nuclear_power_systems_2
+		has_tech = tech_combat_radar_2
+		has_tech = tech_combat_sonar_3
+		has_tech = tech_turret_missiles_surface_3
+		has_tech = tech_torpedoes_3
+		has_tech = tech_vls_surface_4
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision SOV_Knyaz_Pozharsky_decision"
+			navy_experience = -20
+			create_equipment_variant = {
+				name = "Knyaz Pozharsky Class"
+				type = missile_submarine_hull_4
+				name_group = SOV_MISSILE_SUBMARINE_HISTORICAL
+				parent_version = 0
+				modules = {
+					fixed_ship_engine_slot = module_sub_adv_reactor_power
+					fixed_ship_radar_slot = module_sonar_4
+					fixed_ship_auxillary_slot_2 = module_sub_esm_1
+					fixed_ship_auxillary_slot_1 = module_naval_sub_vls_cells_16
+					fixed_ship_auxillary_slot = module_naval_sub_vls_cells_16
+					front_1_custom_slot = module_naval_sub_vls_cells_16
+					fixed_ship_battery_slot = module_anti_ship_torpedoes_2
+					fixed_ship_missile_ammo_slot = module_naval_sub_ammo_land_attack_3
+					fixed_ship_auxillary_slot_3 = module_torpedoes_2
+				}
+				design_team = mio:SOV_united_shipbuilding_corporation_naval_manufacturer
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+
+	# Agamemnon Class
+	ENG_Agamemnon_decision = {
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_navy_experience > 19
+		}
+		custom_cost_text = navy_xp_20
+
+		visible = {
+			original_tag = ENG
+		}
+
+		available = {
+		has_tech = attack_submarine_hull_4
+		has_tech = tech_submarine_engineering_1
+		has_tech = tech_naval_systems_engineering
+		has_tech = tech_combat_sonar_3
+		has_tech = tech_torpedoes_3
+		has_tech = tech_combat_radar_2
+		has_tech = tech_combat_radar_4
+		has_tech = tech_nuclear_power_systems_3
+		has_tech = tech_vls_surface_4
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision ENG_Agamemnon_decision"
+			navy_experience = -20
+			create_equipment_variant = {
+				name = "Agamemnon Class"
+				type = attack_submarine_hull_4
+				name_group = ENG_SS_HISTORICAL
+				parent_version = 0
+				modules = {
+					fixed_ship_engine_slot = module_sub_mod_reactor_power
+					fixed_ship_radar_slot = module_sonar_4
+					fixed_ship_auxillary_slot_2 = module_sub_esm_2
+					fixed_ship_auxillary_slot_1 = module_naval_sub_vls_cells_8
+					fixed_ship_auxillary_slot = module_torpedoes_3
+					fixed_ship_battery_slot = module_anti_ship_torpedoes_3
+					fixed_ship_missile_ammo_slot = module_naval_sub_ammo_anti_ship_4
+					fixed_ship_auxillary_slot_3 = module_torpedoes_3
+				}
+				design_team = mio:ENG_bae_systems_manufacturer
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+
+	# Arafura Class
+	AST_Arafura_decision = {
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_navy_experience > 14
+		}
+		custom_cost_text = navy_xp_15
+
+		visible = {
+			original_tag = AST
+		}
+
+		available = {
+		has_tech = corvette_hull_3
+		has_tech = tech_naval_systems_engineering
+		has_tech = tech_power_systems_1
+		has_tech = tech_fire_control_2
+		has_tech = tech_combat_radar_2
+		has_tech = tech_diesel_power_systems_1
+		has_tech = tech_point_defense_chain_gun
+		has_tech = tech_light_guns_2
+		has_tech = aircraft_heli_engineering_1
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision AST_Arafura_decision"
+			navy_experience = -15
+			create_equipment_variant = {
+				name = "Arafura Class"
+				type = corvette_hull_3
+				name_group = AST_CORVETTE_HISTORICAL
+				parent_version = 0
+				modules = {
+					fixed_ship_engine_slot = module_light_surface_diesel_power_1
+					fixed_ship_fire_control_system_slot = module_digital_integrated_fire_control
+					fixed_ship_radar_slot = module_radar_3
+					fixed_ship_auxillary_slot = module_chain_gun
+					fixed_ship_battery_slot = module_76mm_gun_2
+					front_1_custom_slot = module_chain_gun
+					rear_1_custom_slot = module_light_helipad_1
+				}
+				design_team = mio:AST_austal_naval_manufacturer
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+
+	# Tamandare Class
+	BRA_Tamandare_decision = {
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_navy_experience > 14
+		}
+		custom_cost_text = navy_xp_15
+
+		visible = {
+			original_tag = BRA
+		}
+
+		available = {
+		has_tech = frigate_hull_4
+		has_tech = tech_naval_systems_engineering
+		has_tech = tech_power_systems_1
+		has_tech = tech_fire_control_2
+		has_tech = tech_turret_missiles_surface_3
+		has_tech = tech_vls_aa_2
+		has_tech = tech_point_defense_system_3
+		has_tech = tech_light_guns_2
+		has_tech = aircraft_heli_engineering_1
+		has_tech = tech_torpedoes_3
+		has_tech = tech_turret_missiles_aa_2
+		has_tech = tech_combat_radar_3
+		has_tech = tech_diesel_power_systems_1
+		has_tech = tech_vls_surface_3
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision BRA_Tamandare_decision"
+			navy_experience = -15
+			create_equipment_variant = {
+				name = "Tamandare Class"
+				type = frigate_hull_4
+				name_group = BRA_FRIGATE_HISTORICAL
+				parent_version = 0
+				modules = {
+					fixed_ship_engine_slot = module_light_surface_diesel_power_1
+					fixed_ship_fire_control_system_slot = module_digital_integrated_fire_control
+					fixed_ship_radar_slot = module_radar_4
+					fixed_ship_auxillary_slot_2 = module_naval_vls_cells_16
+					fixed_ship_auxillary_slot_1 = module_naval_missile_mount_quad
+					fixed_ship_auxillary_slot = module_ciws_3
+					fixed_ship_battery_slot = module_76mm_gun_2
+					front_1_custom_slot = module_torpedoes_3
+					rear_1_custom_slot = module_light_helipad_1
+					fixed_ship_missile_ammo_slot = module_naval_ammo_balanced_3
+				}
+				design_team = mio:BRA_itaguai_naval_manufacturer
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+
+	# Chungnam Class
+	KOR_Chungnam_decision = {
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_navy_experience > 14
+		}
+		custom_cost_text = navy_xp_15
+
+		visible = {
+			original_tag = KOR
+		}
+
+		available = {
+		has_tech = frigate_hull_4
+		has_tech = tech_naval_systems_engineering
+		has_tech = tech_power_systems_2
+		has_tech = tech_fire_control_3
+		has_tech = tech_turret_missiles_aa_4
+		has_tech = tech_vls_aa_3
+		has_tech = tech_point_defense_system_3
+		has_tech = tech_early_naval_weapon_systems
+		has_tech = aircraft_heli_engineering_3
+		has_tech = tech_torpedoes_3
+		has_tech = tech_turret_missiles_surface_4
+		has_tech = tech_combat_radar_3
+		has_tech = tech_diesel_power_systems_1
+		has_tech = tech_vls_surface_4
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision KOR_Chungnam_decision"
+			navy_experience = -15
+			create_equipment_variant = {
+				name = "Chungnam Class"
+				type = frigate_hull_4
+				name_group = KOR_DD_HISTORICAL
+				parent_version = 0
+				modules = {
+					fixed_ship_engine_slot = module_light_surface_diesel_power_1
+					fixed_ship_fire_control_system_slot = module_advanced_integrated_missile_radar_control
+					fixed_ship_radar_slot = module_radar_4
+					fixed_ship_auxillary_slot_2 = module_ciws_3
+					fixed_ship_auxillary_slot_1 = module_torpedoes_3
+					fixed_ship_auxillary_slot = module_naval_vls_cells_16
+					fixed_ship_battery_slot = module_127mm_battery
+					front_1_custom_slot = module_naval_missile_mount_quad
+					rear_1_custom_slot = module_light_helipad_2
+					fixed_ship_missile_ammo_slot = module_naval_ammo_balanced_4
+				}
+				design_team = mio:KOR_hyundai_heavy_industries_naval_manufacturer
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+}

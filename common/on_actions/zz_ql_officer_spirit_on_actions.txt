@@ -1,0 +1,82 @@
+# QL 军官团精神：将领升级时的属性成长（原版 on_unit_leader_level_up 钩子）
+# ROOT = 升级的队长(character)，FROM = 其所属国家
+on_actions = {
+	on_unit_leader_level_up = {
+		effect = {
+			# 职业军队建设（陆军）：升级时 add_planning add_logistics
+			if = {
+				limit = {
+					FROM = { has_idea = ql_prc_army_spirit_01 }
+				}
+				character = {
+					if = {
+						limit = { is_army_leader = yes }
+						add_planning = 1
+						add_logistics = 1
+					}
+				}
+			}
+			# 听党话跟党走（陆军）：升级时 add_attack
+			if = {
+				limit = {
+					FROM = { has_idea = ql_prc_army_spirit_02 }
+				}
+				character = {
+					if = {
+						limit = { is_army_leader = yes }
+						add_attack = 1
+					}
+				}
+			}
+			# 国家武装力量（陆军）：升级时 add_defense
+			if = {
+				limit = {
+					FROM = { has_idea = ql_prc_army_spirit_03 }
+				}
+				character = {
+					if = {
+						limit = { is_army_leader = yes }
+						add_defense = 1
+					}
+				}
+			}
+			# 重视航空威慑（海军）：升级时 add_defense
+			if = {
+				limit = {
+					FROM = { has_idea = ql_prc_navy_spirit_07 }
+				}
+				character = {
+					if = {
+						limit = { is_navy_leader = yes }
+						add_defense = 1
+					}
+				}
+			}
+			# 强调信息决胜（海军）：升级时 add_attack
+			if = {
+				limit = {
+					FROM = { has_idea = ql_prc_navy_spirit_08 }
+				}
+				character = {
+					if = {
+						limit = { is_navy_leader = yes }
+						add_attack = 1
+					}
+				}
+			}
+			# 少壮海员培训（海军）：升级时 add_maneuver add_coordination
+			if = {
+				limit = {
+					FROM = { has_idea = ql_prc_navy_spirit_09 }
+				}
+				character = {
+					if = {
+						limit = { is_navy_leader = yes }
+						add_maneuver = 1
+						add_coordination = 1
+					}
+				}
+			}
+		}
+	}
+}

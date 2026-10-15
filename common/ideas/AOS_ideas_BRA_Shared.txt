@@ -1,0 +1,172 @@
+ideas = {
+	## NATIONAL SPIRITS ##
+	country = {	
+		# Dummy idea for tooltips, use the dynamic modifier instead
+		BRA_amazonian_jungle_dummy_idea = {
+			name = BRA_amazonian_jungle_dynamic
+
+			modifier = {
+			}
+		}
+
+		BRA_amazonian_jungle_raise_drift_dummy_idea = {
+			name = BRA_amazonian_jungle_dynamic
+
+			modifier = {
+				amazonian_preservation_monthly = 0.1
+			}
+		}
+
+		BRA_amazonian_jungle_lower_drift_dummy_idea = {
+			name = BRA_amazonian_jungle_dynamic
+
+			modifier = {
+				amazonian_preservation_monthly = -0.1
+			}
+		}		
+
+		BRA_coronavirus_pandemic_idea = {
+			picture = generic_covid
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				consumer_goods_factor = 0.5
+				production_factory_max_efficiency_factor = -0.5
+				industrial_capacity_dockyard = -0.5
+				monthly_population = -0.3
+				stability_factor = -0.5
+			}
+		}
+	
+		BRA_coronavirus_pandemic_idea1 = {
+			picture = generic_covid
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				consumer_goods_factor = 0.4
+				production_factory_max_efficiency_factor = -0.4
+				industrial_capacity_dockyard = -0.4
+				monthly_population = -0.24
+				stability_factor = -0.4			
+			}
+		}
+	
+		BRA_coronavirus_pandemic_idea2 = {
+			picture = generic_covid
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				consumer_goods_factor = 0.3
+				production_factory_max_efficiency_factor = -0.3
+				industrial_capacity_dockyard = -0.3
+				monthly_population = -0.18
+				stability_factor = -0.3
+			}
+		}
+	
+		BRA_coronavirus_pandemic_idea3 = {
+			picture = generic_covid
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				consumer_goods_factor = 0.2
+				production_factory_max_efficiency_factor = -0.2
+				industrial_capacity_dockyard = -0.2
+				monthly_population = -0.12
+				stability_factor = -0.2				
+			}
+		}
+	
+		BRA_coronavirus_pandemic_idea4 = {
+			picture = generic_covid
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				consumer_goods_factor = 0.1
+				production_factory_max_efficiency_factor = -0.1
+				industrial_capacity_dockyard = -0.1
+				monthly_population = -0.06
+				stability_factor = -0.1				
+			}
+		}
+
+		#### Post-BCW Reconstruction Common Ideas ####
+
+		# Aftermath of the BCW on the Brazilian people's psyche
+		BRA_rampant_mongrel_complex_idea = {
+			picture = BRA_rampant_mongrel_complex
+		
+			allowed = { 
+				original_tag = BRA
+			}
+			
+			modifier = {
+				political_power_factor = -0.15
+				war_support_factor = -1
+				monthly_population = -0.3
+				drift_defence_factor = -0.15
+				surrender_limit = -0.2
+				send_volunteer_size = -10
+			}
+		}
+
+		# Aftermath of the BCW on Brazilian society
+		BRA_uncontrolled_society_idea = {
+			picture = BRA_uncontrolled_society
+		
+			allowed = { 
+				original_tag = BRA
+			}
+			
+			modifier = {
+				stability_factor = -0.3
+				production_speed_buildings_factor = -0.2
+				industrial_capacity_factory = -0.15
+				industrial_capacity_dockyard = -0.15
+				business_value_factor = -0.3
+				personal_value_factor = -0.5
+			}
+		}
+
+		BRA_depleted_military_idea = {
+			picture = BRA_depleted_military
+		
+			allowed = { 
+				original_tag = BRA
+			}
+			
+			modifier = {
+				command_power_gain_mult = -0.5
+				offence = -0.15
+				defence = -0.15
+				army_org_factor = -0.25
+				army_morale_factor = -0.35
+			}
+		}		
+	}	
+}	

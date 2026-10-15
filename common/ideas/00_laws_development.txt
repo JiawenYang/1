@@ -1,0 +1,688 @@
+ideas = {
+	academic_development = {
+		law = yes
+		use_list_view = yes
+		lower_academic = {
+			removal_cost = -1
+			level = 5
+			picture = laws_academic_development
+			modifier = {
+				research_speed_factor = -0.2
+				production_factory_efficiency_gain_factor = -0.15
+				line_change_production_efficiency_factor = -0.20
+				business_value_factor = -0.05
+				personal_value_factor = -0.05
+				consumer_goods_factor = -0.05
+				poverty_development_monthly = -0.03
+				custom_modifier_tooltip = academic_development_modifier_tooltip
+			}
+			allowed_to_remove = { always = no }
+		}
+		low_academic = {
+			removal_cost = -1
+			level = 4
+			picture = laws_academic_development1
+			modifier = {
+				research_speed_factor = -0.15
+				production_factory_efficiency_gain_factor = -0.075
+				line_change_production_efficiency_factor = -0.10
+				business_value_factor = -0.035
+				personal_value_factor = -0.035
+				consumer_goods_factor = -0.025
+				poverty_development_monthly = -0.01
+				academic_development_monthly = -0.005
+				custom_modifier_tooltip = academic_development_modifier_tooltip
+			}
+			allowed_to_remove = { always = no }
+		}
+		medium_academic = {
+			removal_cost = -1
+			level = 3
+			picture = laws_academic_development2
+			default = yes
+			modifier = {
+				research_speed_factor = -0.1
+				business_value_factor = -0.02
+				personal_value_factor = -0.02
+				consumer_goods_factor = -0.01
+				academic_development_monthly = -0.01
+				custom_modifier_tooltip = academic_development_modifier_tooltip
+			}
+			allowed_to_remove = { always = no }
+		}
+		high_academic = {
+			removal_cost = -1
+			level = 2
+			picture = laws_academic_development3
+			modifier = {
+				research_speed_factor = -0.05
+				production_factory_efficiency_gain_factor = 0.025
+				line_change_production_efficiency_factor = 0.025
+				consumer_goods_factor = 0.01
+				academic_development_monthly = -0.015
+				custom_modifier_tooltip = academic_development_modifier_tooltip
+			}
+			allowed_to_remove = { always = no }
+		}
+		higher_academic = {
+			removal_cost = -1
+			level = 1
+			picture = laws_academic_development4
+			modifier = {
+				industrial_capacity_dockyard = 0.05
+				production_factory_efficiency_gain_factor = 0.05
+				line_change_production_efficiency_factor = 0.05
+				business_value_factor = 0.025
+				personal_value_factor = 0.025
+				consumer_goods_factor = 0.025
+				academic_development_monthly = -0.02
+				custom_modifier_tooltip = academic_development_modifier_tooltip
+			}
+			allowed_to_remove = { always = no }
+		}
+		highest_academic = {
+			removal_cost = -1
+			level = 1
+			picture = laws_academic_development5
+			modifier = {
+				research_speed_factor = 0.05
+				industrial_capacity_dockyard = 0.05
+				production_factory_efficiency_gain_factor = 0.10
+				line_change_production_efficiency_factor = 0.10
+				business_value_factor = 0.05
+				personal_value_factor = 0.05
+				consumer_goods_factor = 0.05
+				academic_development_monthly = -0.025
+				custom_modifier_tooltip = academic_development_modifier_tooltip
+			}
+			allowed_to_remove = { always = no }
+		}
+	}
+	farming_development = {
+		law = yes
+		use_list_view = yes
+		lower_farming = {
+			removal_cost = -1
+			level = 5
+			picture = laws_farming_development
+			modifier = {
+				conscription = -0.004
+				local_resources_factor = -0.4
+				industrial_capacity_factory = -0.10
+				industrial_capacity_dockyard = -0.10
+				consumer_goods_factor = 0.20
+				training_time_army_factor = 0.5
+				army_org_regain = -0.05
+				supply_consumption_factor = 0.05
+				army_fuel_consumption_factor = -0.10
+				air_fuel_consumption_factor = -0.10
+				navy_fuel_consumption_factor = -0.10
+				custom_modifier_tooltip = farming_development_modifier_tooltip
+			}
+			allowed_to_remove = { always = no }
+		}
+		low_farming = {
+			removal_cost = -1
+			level = 4
+			picture = laws_farming_development1
+			modifier = {
+				conscription = -0.003
+				local_resources_factor = -0.3
+				industrial_capacity_factory = -0.05
+				industrial_capacity_dockyard = -0.05
+				consumer_goods_factor = 0.15
+				training_time_army_factor = 0.25
+				army_org_regain = -0.025
+				army_fuel_consumption_factor = -0.05
+				air_fuel_consumption_factor = -0.05
+				navy_fuel_consumption_factor = -0.05
+				farming_development_monthly = -0.005
+				custom_modifier_tooltip = farming_development_modifier_tooltip
+			}
+			allowed_to_remove = { always = no }
+		}
+		medium_farming = {
+			removal_cost = -1
+			level = 3
+			picture = laws_farming_development2
+			default = yes
+			modifier = {
+				conscription = -0.002
+				local_resources_factor = -0.2
+				consumer_goods_factor = 0.10
+				training_time_army_factor = 0.1
+				farming_development_monthly = -0.01
+				custom_modifier_tooltip = farming_development_modifier_tooltip
+			}
+			allowed_to_remove = { always = no }
+		}
+		high_farming = {
+			removal_cost = -1
+			level = 2
+			picture = laws_farming_development3
+			modifier = {
+				conscription = -0.001
+				local_resources_factor = -0.1
+				consumer_goods_factor = 0.05
+				army_org_regain = 0.025
+				farming_development_monthly = -0.015
+				custom_modifier_tooltip = farming_development_modifier_tooltip
+			}
+			allowed_to_remove = { always = no }
+		}
+		higher_farming = {
+			removal_cost = -1
+			level = 1
+			picture = laws_farming_development4
+			modifier = {
+				farming_development_monthly = -0.02
+				custom_modifier_tooltip = farming_development_modifier_tooltip
+			}
+			allowed_to_remove = { always = no }
+		}
+		highest_farming = {
+			removal_cost = -1
+			level = 1
+			picture = laws_farming_development5
+			modifier = {
+				local_resources_factor = 0.1
+				army_org_regain = 0.05
+				farming_development_monthly = -0.025
+				custom_modifier_tooltip = farming_development_modifier_tooltip
+			}
+			allowed_to_remove = { always = no }
+		}
+	}
+	poverty_development = {
+		law = yes
+		use_list_view = yes
+		lower_poverty = {
+			removal_cost = -1
+			level = 5
+			picture = laws_poverty_development
+			modifier = {
+				stability_factor = -0.2
+				war_support_factor = -0.2
+				personal_value = 0.2
+				farming_development_monthly = -0.01
+				academic_development_monthly = -0.01
+				industrial_development_monthly = -0.01
+				custom_modifier_tooltip = poverty_development_modifier_tooltip
+			}
+			allowed_to_remove = { always = no }
+		}
+		low_poverty = {
+			removal_cost = -1
+			level = 4
+			picture = laws_poverty_development1
+			modifier = {
+				stability_factor = -0.15
+				war_support_factor = -0.15
+				personal_value = 0.4
+				farming_development_monthly = -0.005
+				academic_development_monthly = -0.005
+				industrial_development_monthly = -0.005
+				poverty_development_monthly = -0.005
+				custom_modifier_tooltip = poverty_development_modifier_tooltip
+			}
+			allowed_to_remove = { always = no }
+		}
+		medium_poverty = {
+			removal_cost = -1
+			level = 3
+			picture = laws_poverty_development2
+			default = yes
+			modifier = {
+				stability_factor = -0.1
+				war_support_factor = -0.1
+				personal_value = 0.6
+				poverty_development_monthly = -0.01
+				custom_modifier_tooltip = poverty_development_modifier_tooltip
+			}
+			allowed_to_remove = { always = no }
+		}
+		high_poverty = {
+			removal_cost = -1
+			level = 2
+			picture = laws_poverty_development3
+			modifier = {
+				stability_factor = -0.05
+				war_support_factor = -0.05
+				personal_value = 0.8
+				farming_development_monthly = 0.002
+				academic_development_monthly = 0.002
+				industrial_development_monthly = 0.002
+				poverty_development_monthly = -0.015
+				custom_modifier_tooltip = poverty_development_modifier_tooltip
+			}
+			allowed_to_remove = { always = no }
+		}
+		higher_poverty = {
+			removal_cost = -1
+			level = 1
+			picture = laws_poverty_development4
+			modifier = {
+				personal_value = 0.1
+				farming_development_monthly = 0.005
+				academic_development_monthly = 0.005
+				industrial_development_monthly = 0.005
+				poverty_development_monthly = -0.02
+				custom_modifier_tooltip = poverty_development_modifier_tooltip
+			}
+			allowed_to_remove = { always = no }
+		}
+		highest_poverty = {
+			removal_cost = -1
+			level = 1
+			picture = laws_poverty_development5
+			modifier = {
+				personal_value = 1.2
+				farming_development_monthly = 0.01
+				academic_development_monthly = 0.01
+				industrial_development_monthly = 0.01
+				poverty_development_monthly = -0.025
+				custom_modifier_tooltip = poverty_development_modifier_tooltip
+			}
+			allowed_to_remove = { always = no }
+		}
+	}
+	industry_development = {
+		law = yes
+		use_list_view = yes
+		lower_industry = {
+			removal_cost = -1
+			level = 5
+			picture = laws_industrial_development
+			modifier = {
+				production_speed_buildings_factor = -0.2
+				industrial_capacity_factory = -0.2
+				industrial_capacity_dockyard = -0.2
+				business_value_factor = -0.2
+				mil_facs_worker_requirement_modifier = -0.2
+				custom_modifier_tooltip = industrial_development_modifier_tooltip
+			}
+			allowed_to_remove = { always = no }
+		}
+		low_industry = {
+			removal_cost = -1
+			level = 4
+			picture = laws_industrial_development1
+			modifier = {
+				production_speed_buildings_factor = -0.15
+				industrial_capacity_factory = -0.15
+				industrial_capacity_dockyard = -0.15
+				business_value_factor = -0.15
+				mil_facs_worker_requirement_modifier = -0.15
+				industrial_development_monthly = -0.005
+				custom_modifier_tooltip = industrial_development_modifier_tooltip
+			}
+			allowed_to_remove = { always = no }
+		}
+		medium_industry = {
+			removal_cost = -1
+			level = 3
+			picture = laws_industrial_development2
+			default = yes
+			modifier = {
+				production_speed_buildings_factor = -0.1
+				industrial_capacity_factory = -0.1
+				industrial_capacity_dockyard = -0.1
+				business_value_factor = -0.1
+				mil_facs_worker_requirement_modifier = -0.1
+				industrial_development_monthly = -0.01
+				custom_modifier_tooltip = industrial_development_modifier_tooltip
+			}
+			allowed_to_remove = { always = no }
+		}
+		high_industry = {
+			removal_cost = -1
+			level = 2
+			picture = laws_industrial_development3
+			modifier = {
+				production_speed_buildings_factor = -0.05
+				industrial_capacity_factory = -0.05
+				industrial_capacity_dockyard = -0.05
+				business_value_factor = -0.05
+				mil_facs_worker_requirement_modifier = -0.05
+				industrial_development_monthly = -0.015
+				custom_modifier_tooltip = industrial_development_modifier_tooltip
+			}
+			allowed_to_remove = { always = no }
+		}
+		higher_industry = {
+			removal_cost = -1
+			level = 1
+			picture = laws_industrial_development4
+			modifier = {
+				industrial_development_monthly = -0.02
+				custom_modifier_tooltip = industrial_development_modifier_tooltip
+			}
+			allowed_to_remove = { always = no }
+		}
+		highest_industry = {
+			removal_cost = -1
+			level = 1
+			picture = laws_industrial_development5
+			modifier = {
+				production_speed_buildings_factor = 0.05
+				industrial_capacity_factory = 0.05
+				industrial_capacity_dockyard = 0.05
+				business_value_factor = 0.05
+				mil_facs_worker_requirement_modifier = 0.05
+				industrial_development_monthly = -0.025
+				custom_modifier_tooltip = industrial_development_modifier_tooltip
+			}
+			allowed_to_remove = { always = no }
+		}
+	}
+	military_development = {
+		law = yes
+		use_list_view = yes
+		lower_military = {
+			removal_cost = -1
+			level = 5
+			picture = laws_military_development
+			modifier = {
+				conscription_factor = 0.2
+				training_time_army_factor = -0.2
+				army_org_factor = -0.2
+				army_defence_factor = -0.2
+				army_attack_factor = -0.2
+				personnel_cost_multiplier_modifier = -0.2
+				land_doctrine_cost_factor = 0.2
+				air_doctrine_cost_factor = 0.2
+				naval_doctrine_cost_factor = 0.2
+				custom_modifier_tooltip = military_development_modifier_tooltip
+			}
+			allowed_to_remove = { always = no }
+		}
+		low_military = {
+			removal_cost = -1
+			level = 4
+			picture = laws_military_development1
+			modifier = {
+				conscription_factor = 0.15
+				training_time_army_factor = -0.15
+				army_org_factor = -0.15
+				army_defence_factor = -0.15
+				army_attack_factor = -0.15
+				personnel_cost_multiplier_modifier = -0.15
+				land_doctrine_cost_factor = 0.15
+				air_doctrine_cost_factor = 0.15
+				naval_doctrine_cost_factor = 0.15
+				military_development_monthly = -0.005
+				custom_modifier_tooltip = military_development_modifier_tooltip
+			}
+			allowed_to_remove = { always = no }
+		}
+		medium_military = {
+			removal_cost = -1
+			level = 3
+			picture = laws_military_development2
+			default = yes
+			modifier = {
+				conscription_factor = 0.1
+				training_time_army_factor = -0.1
+				army_org_factor = -0.1
+				army_defence_factor = -0.1
+				army_attack_factor = -0.1
+				personnel_cost_multiplier_modifier = -0.1
+				land_doctrine_cost_factor = 0.1
+				air_doctrine_cost_factor = 0.1
+				naval_doctrine_cost_factor = 0.1
+				military_development_monthly = -0.01
+				custom_modifier_tooltip = military_development_modifier_tooltip
+			}
+			allowed_to_remove = { always = no }
+		}
+		high_military = {
+			removal_cost = -1
+			level = 2
+			picture = laws_military_development3
+			modifier = {
+				conscription_factor = 0.05
+				training_time_army_factor = -0.05
+				army_org_factor = -0.05
+				army_defence_factor = -0.05
+				army_attack_factor = -0.05
+				personnel_cost_multiplier_modifier = -0.05
+				special_forces_cap = 0.05
+				land_doctrine_cost_factor = 0.05
+				air_doctrine_cost_factor = 0.05
+				naval_doctrine_cost_factor = 0.05
+				military_development_monthly = -0.015
+				custom_modifier_tooltip = military_development_modifier_tooltip
+			}
+			allowed_to_remove = { always = no }
+		}
+		higher_military = {
+			removal_cost = -1
+			level = 1
+			picture = laws_military_development4
+			allowed_to_remove = { always = no }
+			modifier = {
+				special_forces_cap = 0.1
+				military_development_monthly = -0.02
+				custom_modifier_tooltip = military_development_modifier_tooltip
+			}
+		}
+		highest_military = {
+			removal_cost = -1
+			level = 1
+			picture = laws_military_development5
+			allowed_to_remove = { always = no }
+			modifier = {
+				special_forces_cap = 0.15
+				army_org_factor = 0.05
+				army_defence_factor = 0.05
+				army_attack_factor = 0.05
+				personnel_cost_multiplier_modifier = 0.05
+				military_development_monthly = -0.025
+				custom_modifier_tooltip = military_development_modifier_tooltip
+			}
+		}
+	}
+	society_development = {
+		law = yes
+		use_list_view = yes
+		lower_society = {
+			removal_cost = -1
+			level = 5
+			picture = laws_society_development
+			modifier = {
+				custom_modifier_tooltip = lower_society_tt
+				hidden_modifier = {
+					corruption_cost_factor = 0.2
+					economic_cycles_cost_factor = 0.2
+					internal_factions_cost_factor = 0.2
+					bureaucracy_cost_factor = 0.2
+					Military_Spending_cost_factor = 0.2
+					crime_fighting_cost_factor = 0.2
+					education_budget_cost_factor = 0.2
+					health_budget_cost_factor = 0.2
+					social_budget_cost_factor = 0.2
+					trade_laws_cost_factor = 0.2
+					Nuclear_Status_cost_factor = 0.2
+					Nuclear_Stance_cost_factor = 0.2
+					Conscription_Law_cost_factor = 0.2
+					Military_Status_Women_cost_factor = 0.2
+					Foreign_Intervention_Law_cost_factor = 0.2
+					Officer_Training_Law_cost_factor = 0.2
+					materiel_manufacturer_cost_factor = 0.2
+					tank_manufacturer_cost_factor = 0.2
+					aircraft_manufacturer_cost_factor = 0.2
+					naval_manufacturer_cost_factor = 0.2
+					tax_rate_change_multiplier_modifier = 0.2
+					migration_laws_cost_factor = 0.2
+				}
+				industrial_capacity_factory = -0.50
+				industrial_capacity_dockyard = -0.50
+				political_power_factor = -0.3
+				foreign_subversive_activites = 0.5
+				migration_rate_value_factor = -0.50
+				country_productivity_growth_modifier = -0.25
+				minimum_radicalization_modifier = 30
+				minimum_terror_threat_modifier = 30
+				interest_rate_multiplier_modifier = 4
+				custom_modifier_tooltip = society_development_modifier_tooltip
+			}
+			allowed_to_remove = { always = no }
+		}
+		low_society = {
+			removal_cost = -1
+			level = 4
+			picture = laws_society_development1
+			modifier = {
+				custom_modifier_tooltip = low_society_tt
+				hidden_modifier = {
+					corruption_cost_factor = 0.15
+					economic_cycles_cost_factor = 0.15
+					internal_factions_cost_factor = 0.15
+					bureaucracy_cost_factor = 0.15
+					Military_Spending_cost_factor = 0.15
+					crime_fighting_cost_factor = 0.15
+					education_budget_cost_factor = 0.15
+					health_budget_cost_factor = 0.15
+					social_budget_cost_factor = 0.15
+					trade_laws_cost_factor = 0.15
+					Nuclear_Status_cost_factor = 0.15
+					Nuclear_Stance_cost_factor = 0.15
+					Conscription_Law_cost_factor = 0.15
+					Military_Status_Women_cost_factor = 0.15
+					Foreign_Intervention_Law_cost_factor = 0.15
+					Officer_Training_Law_cost_factor = 0.15
+					materiel_manufacturer_cost_factor = 0.15
+					tank_manufacturer_cost_factor = 0.15
+					aircraft_manufacturer_cost_factor = 0.15
+					naval_manufacturer_cost_factor = 0.15
+					tax_rate_change_multiplier_modifier = 0.15
+					migration_laws_cost_factor = 0.15
+				}
+				industrial_capacity_factory = -0.25
+				industrial_capacity_dockyard = -0.25
+				political_power_factor = -0.15
+				foreign_subversive_activites = 0.25
+				migration_rate_value_factor = -0.25
+				country_productivity_growth_modifier = -0.125
+				minimum_radicalization_modifier = 15
+				minimum_terror_threat_modifier = 15
+				interest_rate_multiplier_modifier = 3
+				society_development_monthly = -0.005
+				custom_modifier_tooltip = society_development_modifier_tooltip
+			}
+			allowed_to_remove = { always = no }
+		}
+		medium_society = {
+			removal_cost = -1
+			level = 3
+			picture = laws_society_development2
+			modifier = {
+				custom_modifier_tooltip = medium_society_tt
+				hidden_modifier = {
+					corruption_cost_factor = 0.1
+					economic_cycles_cost_factor = 0.1
+					internal_factions_cost_factor = 0.1
+					bureaucracy_cost_factor = 0.1
+					Military_Spending_cost_factor = 0.1
+					crime_fighting_cost_factor = 0.1
+					education_budget_cost_factor = 0.1
+					health_budget_cost_factor = 0.1
+					social_budget_cost_factor = 0.1
+					trade_laws_cost_factor = 0.1
+					Nuclear_Status_cost_factor = 0.1
+					Nuclear_Stance_cost_factor = 0.1
+					Conscription_Law_cost_factor = 0.1
+					Military_Status_Women_cost_factor = 0.1
+					Foreign_Intervention_Law_cost_factor = 0.1
+					Officer_Training_Law_cost_factor = 0.1
+					materiel_manufacturer_cost_factor = 0.1
+					tank_manufacturer_cost_factor = 0.1
+					aircraft_manufacturer_cost_factor = 0.1
+					naval_manufacturer_cost_factor = 0.1
+					tax_rate_change_multiplier_modifier = 0.1
+					migration_laws_cost_factor = 0.1
+				}
+				interest_rate_multiplier_modifier = 2
+				society_development_monthly = -0.01
+				custom_modifier_tooltip = society_development_modifier_tooltip
+			}
+			allowed_to_remove = { always = no }
+		}
+		law_high_society = {
+			removal_cost = -1
+			level = 2
+			picture = laws_society_development3
+			default = yes
+			modifier = {
+				custom_modifier_tooltip = law_high_society_tt
+				hidden_modifier = {
+					corruption_cost_factor = 0.05
+					economic_cycles_cost_factor = 0.05
+					internal_factions_cost_factor = 0.05
+					bureaucracy_cost_factor = 0.05
+					Military_Spending_cost_factor = 0.05
+					crime_fighting_cost_factor = 0.05
+					education_budget_cost_factor = 0.05
+					health_budget_cost_factor = 0.05
+					social_budget_cost_factor = 0.05
+					trade_laws_cost_factor = 0.05
+					Nuclear_Status_cost_factor = 0.05
+					Nuclear_Stance_cost_factor = 0.05
+					Conscription_Law_cost_factor = 0.05
+					Military_Status_Women_cost_factor = 0.05
+					Foreign_Intervention_Law_cost_factor = 0.05
+					Officer_Training_Law_cost_factor = 0.05
+					materiel_manufacturer_cost_factor = 0.05
+					tank_manufacturer_cost_factor = 0.05
+					aircraft_manufacturer_cost_factor = 0.05
+					naval_manufacturer_cost_factor = 0.05
+					tax_rate_change_multiplier_modifier = 0.05
+					migration_laws_cost_factor = 0.05
+				}
+				industrial_capacity_factory = 0.083
+				industrial_capacity_dockyard = 0.083
+				consumer_goods_factor = -0.013
+				political_power_factor = 0.117
+				foreign_subversive_activites = -0.133
+				migration_rate_value_factor = 0.133
+				interest_rate_multiplier_modifier = 1
+				society_development_monthly = -0.015
+				custom_modifier_tooltip = society_development_modifier_tooltip
+			}
+			allowed_to_remove = { always = no }
+		}
+		higher_society = {
+			removal_cost = -1
+			level = 1
+			picture = laws_society_development4
+			modifier = {
+				industrial_capacity_factory = 0.167
+				industrial_capacity_dockyard = 0.167
+				consumer_goods_factor = -0.027
+				political_power_factor = 0.234
+				foreign_subversive_activites = -0.267
+				migration_rate_value_factor = 0.267
+				society_development_monthly = -0.02
+				custom_modifier_tooltip = society_development_modifier_tooltip
+			}
+			allowed_to_remove = { always = no }
+		}
+		highest_society = {
+			removal_cost = -1
+			level = 1
+			picture = laws_society_development5
+			modifier = {
+				industrial_capacity_factory = 0.25
+				industrial_capacity_dockyard = 0.25
+				consumer_goods_factor = -0.05
+				political_power_factor = 0.35
+				foreign_subversive_activites = -0.5
+				migration_rate_value_factor = 0.50
+				interest_rate_multiplier_modifier = -1
+				society_development_monthly = -0.025
+				custom_modifier_tooltip = society_development_modifier_tooltip
+			}
+			allowed_to_remove = { always = no }
+		}
+	}
+}

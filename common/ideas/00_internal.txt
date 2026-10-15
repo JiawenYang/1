@@ -1,0 +1,670 @@
+ideas = {
+	###State System
+	law_state_system = {
+		law = yes
+		use_list_view = yes
+
+		law_russian_political_system = {
+			allowed = { always = no }
+			on_add = {
+				set_state_doctrine = yes
+				set_party_line = yes
+			}
+			modifier = {
+				political_power_factor = 0.05
+				stability_factor = 0.045
+				research_speed_factor = -0.025
+				production_factory_start_efficiency_factor = -0.015
+				foreign_influence_defense_modifier = 0.1
+			}
+		}
+
+		law_american_presidential_republic = {
+			allowed = { always = no }
+			on_add = {
+				set_state_doctrine = yes
+				set_party_line = yes
+			}
+			modifier = {
+				political_power_factor = 0.035
+				stability_factor = -0.035
+				society_development_monthly = 0.003
+			}
+		}	
+
+		law_taiwanese_semi_presidential_system = {
+			allowed = { always = no }
+			on_add = {
+				set_state_doctrine = yes
+				set_party_line = yes
+			}
+			modifier = {
+				political_power_factor = 0.035
+				stability_factor = -0.02
+				army_org_regain = 0.01
+				initiative_factor = 0.015
+			}
+		}
+
+		law_presidential_system = {
+			default = yes
+			allowed = { always = no }
+			on_add = {
+				set_state_doctrine = yes
+				set_party_line = yes
+			}
+			modifier = {
+				political_power_factor = 0.05
+				army_morale_factor = 0.025
+				research_speed_factor = -0.035
+			}
+			cancel_if_invalid = no
+		}
+			
+		law_parliamentary_system = {
+			allowed = { always = no }
+			on_add = {
+				set_state_doctrine = yes
+				set_party_line = yes
+			}
+			modifier = {
+				political_power_factor = -0.05
+				initiative_factor = 0.05
+				society_development_monthly = 0.002
+				drift_defence_factor = -0.1
+			}
+			cancel_if_invalid = no
+		}
+
+		law_constitutional_monarchy = {
+			allowed = { always = no }
+			on_add = {
+				set_state_doctrine = yes
+				set_party_line = yes
+			}
+			modifier = {
+				political_power_factor = -0.05
+				stability_factor = -0.05
+				initiative_factor = 0.05
+				foreign_influence_defense_modifier = 0.05
+			}
+			cancel_if_invalid = no
+		}
+
+		law_absolute_monarchy = {
+			allowed = { always = no }
+			on_add = {
+				set_state_doctrine = yes
+				set_party_line = yes
+			}
+			modifier = {
+				political_power_factor = 0.1
+				stability_factor = 0.1
+				production_factory_start_efficiency_factor = -0.05
+				foreign_influence_defense_modifier = 0.1
+			}
+			cancel_if_invalid = no
+		}
+		
+		law_peoples_democracy = {
+			allowed = { always = no }
+			on_add = {
+				set_state_doctrine = yes
+				set_party_line = yes
+			}
+			modifier = {
+				political_power_factor = 0.07
+				army_attack_factor = 0.05
+				drift_defence_factor = 0.25
+				planning_speed = -0.1
+				foreign_influence_defense_modifier = 0.2
+				nationalist_drift = -0.1
+				fascism_drift = -0.1
+			}
+			cancel_if_invalid = no
+		}
+		
+		law_socialist_state = {
+			allowed = { always = no }
+			on_add = {
+				set_state_doctrine = yes
+				set_party_line = yes
+			}
+			modifier = {
+				political_power_factor = 0.08
+				industrial_capacity_factory = 0.05
+				drift_defence_factor = 0.1
+				planning_speed = -0.065
+				foreign_influence_defense_modifier = 0.2
+				nationalist_drift = -0.1
+				fascism_drift = -0.1
+			}
+			cancel_if_invalid = no
+		}
+
+		law_military_dictatorship = {
+			allowed = { always = no }
+			on_add = {
+				set_state_doctrine = yes
+				set_party_line = yes
+			}
+			modifier = {
+				political_power_factor = 0.1
+				stability_factor = -0.05
+				army_org_regain = 0.05
+				mobilization_speed = 0.05
+				foreign_influence_defense_modifier = 0.2
+			}
+			cancel_if_invalid = no
+		}
+
+		law_authoritarianism = {
+			allowed = { always = no }
+			on_add = {
+				set_state_doctrine = yes
+				set_party_line = yes
+			}
+			modifier = {
+				political_power_factor = 0.08
+				stability_factor = 0.05
+				initiative_factor = -0.025
+				society_development_monthly = -0.002
+				foreign_influence_defense_modifier = 0.1
+			}
+			cancel_if_invalid = no
+		}
+
+		law_fascist_dictatorship = {
+			allowed = { always = no }
+			on_add = {
+				set_state_doctrine = yes
+				set_party_line = yes
+			}
+			modifier = {
+				political_power_factor = 0.1
+				stability_factor = -0.05
+				academic_development_monthly = -0.005
+				army_morale_factor = 0.03
+				mobilization_speed = 0.03
+				nationalist_drift = 0.02
+				foreign_influence_defense_modifier = 0.2
+			}
+		}
+
+		law_nazi_dictatorship = {
+			allowed = { always = no }
+			on_add = {
+				set_state_doctrine = yes
+				set_party_line = yes
+			}
+			modifier = {
+				political_power_factor = 0.1
+				stability_factor = -0.1
+				poverty_development_monthly = -0.01
+				army_morale_factor = 0.05
+				army_attack_speed_factor = 0.05
+				foreign_influence_defense_modifier = 0.2
+			}
+		}
+
+		law_ultranationalist_dictatorship = {
+			allowed = { always = no }
+			on_add = {
+				set_state_doctrine = yes
+				set_party_line = yes
+			}
+			modifier = {
+				political_power_factor = 0.075
+				war_support_factor = 0.05
+				academic_development_monthly = -0.01
+				stability_factor = -0.05
+				breakthrough_factor = 0.035
+				foreign_influence_defense_modifier = 0.2
+			}
+		}
+
+		law_islamic_republic = {
+			allowed = { always = no }
+			on_add = {
+				set_state_doctrine = yes
+				set_party_line = yes
+			}
+			modifier = {
+				political_power_factor = -0.05
+				stability_factor = 0.1
+				foreign_influence_defense_modifier = 0.1
+			}
+		}
+
+		law_theocracy = {
+			allowed = { always = no }
+			on_add = {
+				set_state_doctrine = yes
+				set_party_line = yes
+			}
+			modifier = {
+				political_power_factor = -0.035
+				stability_factor = 0.05
+				war_support_factor = 0.03
+				academic_development_monthly = -0.01
+				foreign_influence_defense_modifier = 0.1
+			}
+		}
+
+		law_neo_soviet_republic = {
+			allowed = { always = no }
+			on_add = {
+				set_state_doctrine = yes
+				set_party_line = yes
+			}
+			modifier = {
+				political_power_factor = -0.05
+				production_factory_efficiency_gain_factor = 0.035
+				drift_defence_factor = -0.05
+				academic_development_monthly = 0.005
+				foreign_influence_defense_modifier = 0.2
+				nationalist_drift = -0.1
+				fascism_drift = -0.1
+			}
+		}
+
+		law_socialist_republic = {
+			allowed = { always = no }
+			on_add = {
+				set_state_doctrine = yes
+				set_party_line = yes
+			}
+			modifier = {
+				political_power_factor = 0.025
+				production_factory_max_efficiency_factor = -0.06
+				drift_defence_factor = 0.05
+				army_morale_factor = 0.035
+				foreign_influence_defense_modifier = 0.1
+			}
+		}	
+
+		law_american_peoples_dictatorship = {
+			allowed = { always = no }
+			on_add = {
+				set_state_doctrine = yes
+				set_party_line = yes
+			}
+			modifier = {
+				political_power_factor = 0.05
+				industrial_capacity_factory = 0.035
+				army_morale_factor = 0.035
+				planning_speed = -0.025
+				production_factory_max_efficiency_factor = -0.025
+				nationalist_drift = -0.1
+				fascism_drift = -0.1
+			}
+		}
+	}
+
+	###Civil Liberties
+	civil_liberties = {
+		law = yes
+		use_list_view = yes
+
+		freedom_of_speech = {
+			default = yes
+			allowed_civil_war = { always = yes }
+			available = { always = no }
+			on_add = {
+				log = "[GetDateText]: [Root.GetName]: add idea freedom_of_speech"
+				hidden_effect = {
+					clear_previous_civil_liberties_drift = yes
+					set_party_line = yes
+					set_state_doctrine = yes
+				}
+			}
+			modifier = {
+			    corruption_cost_factor = -0.1
+				political_power_factor = -0.125
+				drift_defence_factor = -0.05
+				encryption_factor = -0.05
+				stability_factor = -0.0625
+				research_speed_factor = 0.1
+			}
+			cancel_if_invalid = no
+		}
+
+		small_control = {
+			allowed_civil_war = { always = yes }
+			available = { always = no }
+			on_add = {
+				log = "[GetDateText]: [Root.GetName]: add idea small_control"
+				civil_liberties_drift_popularity = yes
+				set_party_line = yes
+				set_state_doctrine = yes
+			}
+			modifier = {
+			}
+			cancel_if_invalid = no
+		}
+
+		limited_rights = {
+			allowed_civil_war = { always = yes }
+			available = { always = no }
+			on_add = {
+				log = "[GetDateText]: [Root.GetName]: add idea limited_rights"
+				civil_liberties_drift_popularity = yes
+				set_party_line = yes
+				set_state_doctrine = yes
+			}
+			modifier = {
+			    corruption_cost_factor = 0.1
+				political_power_factor = 0.125
+				drift_defence_factor = 0.05
+				encryption_factor = 0.05
+				stability_factor = 0.0625
+				research_speed_factor = -0.1
+			}
+			cancel_if_invalid = no
+		}
+
+		total_control = {
+			allowed_civil_war = { always = yes }
+			available = { always = no }
+			on_add = {
+				log = "[GetDateText]: [Root.GetName]: add idea total_control"
+				civil_liberties_drift_popularity = yes
+				set_party_line = yes
+				set_state_doctrine = yes
+			}
+			modifier = {
+			    corruption_cost_factor = 0.2
+				political_power_factor = 0.25
+				drift_defence_factor = 0.1
+				encryption_factor = 0.1
+				stability_factor = 0.125
+				research_speed_factor = -0.2
+			}
+			cancel_if_invalid = no
+		}
+	}
+
+	race_laws = {
+		law = yes
+		use_list_view = yes
+		lower_race = {
+			removal_cost = -1
+			cost = 100
+			level = 5
+			picture = laws_racial
+			modifier = {
+				political_power_gain = 0.2
+				non_core_manpower = -0.04
+				society_development_monthly = -0.005
+			}
+		}
+		low_race = {
+			removal_cost = -1
+			cost = 100
+			level = 4
+			picture = laws_racial1
+			modifier = {
+				political_power_gain = 0.1
+				non_core_manpower = -0.02
+				society_development_monthly = -0.002
+			}
+		}
+		medium_race = {
+			removal_cost = -1
+			cost = 100
+			level = 3
+			picture = laws_racial2
+			default = yes
+			modifier = {
+				non_core_manpower = 0.02
+			}
+		}
+		high_race = {
+			removal_cost = -1
+			cost = 100
+			level = 2
+			picture = laws_racial3
+			modifier = {
+				political_power_gain = -0.1
+				stability_factor = -0.025
+				non_core_manpower = 0.05
+				society_development_monthly = 0.002
+				#enemy_partisan_effect = -0.1
+			}
+		}
+		higher_race = {
+			removal_cost = -1
+			cost = 100
+			level = 1
+			picture = laws_racial4
+			modifier = {
+				political_power_gain = -0.15
+				stability_factor = -0.05
+				non_core_manpower = 0.1
+				society_development_monthly = 0.005
+				#enemy_partisan_effect = -0.2
+			}
+		}
+	}
+	female_laws = {
+		law = yes
+		use_list_view = yes
+		lower_female = {
+			removal_cost = -1
+			cost = 100
+			level = 5
+			picture = laws_gender_equality
+			available = {
+			}
+			allowed_to_remove = {
+			}
+			modifier = {
+				consumer_goods_factor = 0.05
+				MONTHLY_POPULATION = 0.15
+				stability_factor = 0.025
+				industrial_capacity_factory = -0.05
+				industrial_capacity_dockyard = -0.05
+				society_development_monthly = -0.008
+				business_value_factor = -0.02
+				personal_value_factor = 0.04
+			}
+		}
+		low_female = {
+			removal_cost = -1
+			cost = 100
+			level = 4
+			picture = laws_gender_equality1
+			available = {
+			}
+			allowed_to_remove = {
+			}
+			modifier = {
+				MONTHLY_POPULATION = 0.05
+				society_development_monthly = -0.003
+				business_value_factor = -0.01
+				personal_value_factor = 0.02
+			}
+			ai_will_do = {
+				factor = 0
+				modifier = {
+					add = 40
+					has_idea = lower_female
+					OR = {
+						has_socialist_government_or_in_coalition = yes
+						has_liberal_government_or_in_coalition = yes
+					}
+				}
+			}
+		}
+		medium_female = {
+			removal_cost = -1
+			cost = 100
+			level = 3
+			picture = laws_gender_equality2
+			default = yes
+			allowed_to_remove = {
+			}
+			modifier = {
+				consumer_goods_factor = -0.05
+				MONTHLY_POPULATION = -0.05
+				stability_factor = -0.025
+				industrial_capacity_factory = 0.05
+				industrial_capacity_dockyard = 0.05
+			}
+			ai_will_do = {
+				factor = 0
+				modifier = {
+					add = 30
+					has_idea = low_female
+					OR = {
+						has_socialist_government_or_in_coalition = yes
+						has_liberal_government_or_in_coalition = yes
+					}
+				}
+			}
+		}
+		high_female = {
+			removal_cost = -1
+			cost = 100
+			level = 2
+			picture = laws_gender_equality3
+			available = {
+			}
+			modifier = {
+				consumer_goods_factor = -0.10
+				MONTHLY_POPULATION = -0.15
+				stability_factor = -0.05
+				industrial_capacity_factory = 0.1
+				industrial_capacity_dockyard = 0.1
+				society_development_monthly = -0.007
+				business_value_factor = 0.01
+				personal_value_factor = -0.02
+			}
+			ai_will_do = {
+				factor = 0
+				modifier = {
+					add = 20
+					has_idea = medium_female
+					OR = {
+						has_socialist_government_or_in_coalition = yes
+						has_liberal_government_or_in_coalition = yes
+					}
+				}
+			}
+		}
+		higher_female = {
+			removal_cost = -1
+			cost = 100
+			level = 1
+			picture = laws_gender_equality4
+			available = {
+			}
+			allowed_to_remove = {
+			}
+			modifier = {
+				consumer_goods_factor = -0.15
+				MONTHLY_POPULATION = -0.25
+				stability_factor = -0.075
+				industrial_capacity_factory = 0.15
+				industrial_capacity_dockyard = 0.15
+				society_development_monthly = -0.01
+				business_value_factor = 0.02
+				personal_value_factor = -0.04
+			}
+			ai_will_do = {
+				factor = 0
+				modifier = {
+					add = 10
+					has_idea = high_female
+					OR = {
+						AND = {
+							emerging_communist_state_in_power_or_coalition = yes
+							is_american_nation = yes
+						}
+						AND = {
+							has_socialist_government_or_in_coalition = yes
+							NOT = { has_government = communism }
+						}
+					}
+				}
+			}
+		}
+	}
+	prison_laws = {
+		law = yes
+		use_list_view = yes
+		lower_prison = {
+			removal_cost = -1
+			cost = 100
+			level = 5
+			picture = laws_prison
+			allowed_to_remove = {
+			}
+			available = {
+			}
+			modifier = {
+				industry_free_repair_factor = 1
+				production_speed_buildings_factor = 0.1
+				stability_factor = -0.05
+				research_speed_factor = -0.05
+			}
+		}
+		low_prison = {
+			removal_cost = -1
+			cost = 100
+			level = 4
+			picture = laws_prison1
+			allowed_to_remove = {
+			}
+			available = {
+			}
+			modifier = {
+				industry_free_repair_factor = 0.5
+				production_speed_buildings_factor = 0.05
+				stability_factor = -0.025
+				research_speed_factor = -0.025
+			}
+		}
+		medium_prison = {
+			removal_cost = -1
+			cost = 100
+			level = 3
+			picture = laws_prison2
+			default = yes
+			allowed_to_remove = {
+			}
+			available = {
+			}
+			modifier = {
+				industry_free_repair_factor = 0.25
+			}
+		}
+		high_prison = {
+			removal_cost = -1
+			cost = 100
+			level = 2
+			picture = laws_prison3
+			allowed_to_remove = {
+			}
+			available = {
+			}
+			modifier = {
+				industry_free_repair_factor = 0.1
+				society_development_monthly = 0.005
+				stability_factor = 0.025
+			}
+		}
+		higher_prison = {
+			removal_cost = -1
+			cost = 100
+			level = 1
+			picture = laws_prison4
+			allowed_to_remove = {
+			}
+			modifier = {
+				stability_factor = 0.05
+				society_development_monthly = 0.01
+			}
+		}
+	}
+}

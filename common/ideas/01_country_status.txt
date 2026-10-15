@@ -1,0 +1,181 @@
+ideas = {
+	socioeconomic_development = { 
+		law = yes
+		use_list_view = yes
+
+		agrarian_economy = {
+
+			available = {
+				hidden_trigger = {
+					always = no
+				}
+			}
+
+			picture = agrarian_economy_idea
+			on_add = {
+				log = "[GetDateText]: [Root.GetName]: add idea agrarian_economy"
+				set_temp_variable = { temp_opinion = 10 }
+				change_farmers_opinion = yes
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			rule = {
+				can_access_market = no
+				can_not_declare_war = no
+			}
+			on_add = {
+				country_lock_all_division_template = yes
+			}
+			on_remove = {
+				country_lock_all_division_template = no
+			}
+
+			modifier = {
+				production_factory_max_efficiency_factor = -0.15
+				army_morale_factor = -0.07
+				research_speed_factor = -0.02
+				resistance_target = -0.075
+				custom_modifier_tooltip = agri_farmer_opinion_TT
+				democratic_drift = -0.07
+				personal_expense_factor = -0.67
+				personnel_cost_multiplier_modifier = -0.67
+				business_value_factor = 0.6
+				personal_value_factor = 0.6
+				production_speed_industrial_complex_factor = -0.5
+				production_speed_arms_factory_factor = -10
+				production_speed_dockyard_factor = -10
+				conversion_cost_civ_to_mil_factor = 1
+				conversion_cost_mil_to_civ_factor = 1
+				industrial_capacity_factory = -10
+				productivity_growth_modifier = -0.5
+				offices_productivity = -0.15
+				energy_use_modifier_civs = 0.1
+				stability_factor = -0.08
+				population_tax_income_multiplier_modifier = 0.15
+				office_park_income_tax_modifier = -0.2
+				economic_cycles_cost_factor = 0.1
+				econ_cycle_upg_cost_multiplier_modifier = 0.1
+				interest_rate_multiplier_modifier = 0.25
+				consumer_goods_factor = 0.05
+				trade_opinion_factor = 0.1
+				min_export = 0.05
+				receiving_investment_duration_modifier = -0.25
+				receiving_investment_cost_modifier = -0.25
+			}
+			research_bonus = {
+				CAT_internet_tech = -0.05
+				CAT_computing_tech = -0.05
+			}
+			cancel_if_invalid = no
+		}
+
+		industrializing = {
+					
+			default = yes
+			available = {
+				hidden_trigger = {
+					always = no
+				}
+			}
+			on_add = {
+				log = "[GetDateText]: [Root.GetName]: add idea industrializing"
+			}
+			allowed_civil_war = { always = yes }
+			modifier = {
+				production_factory_max_efficiency_factor = -0.1
+				production_speed_buildings_factor = 0.05
+				army_morale_factor = -0.02
+				research_speed_factor = -0.01
+				democratic_drift = -0.03
+				personal_expense_factor = -0.58
+				personnel_cost_multiplier_modifier = -0.58
+				productivity_growth_modifier = -0.5
+				offices_productivity = -0.15
+				energy_use_modifier_civs = 0.1
+				stability_factor = -0.08
+				population_tax_income_multiplier_modifier = 0.15
+				office_park_income_tax_modifier = -0.2
+				economic_cycles_cost_factor = 0.1
+				econ_cycle_upg_cost_multiplier_modifier = 0.1
+				interest_rate_multiplier_modifier = 0.25
+				trade_opinion_factor = 0.1
+				min_export = 0.05
+				receiving_investment_duration_modifier = -0.25
+				receiving_investment_cost_modifier = -0.25
+			}
+			research_bonus = {
+				CAT_internet_tech = -0.05
+				CAT_computing_tech = -0.05
+			}
+			
+			cancel_if_invalid = no
+		}
+		
+		industrialized = {
+					
+			available = {
+				hidden_trigger = {
+					always = no
+				}
+			}
+			on_add = {
+				log = "[GetDateText]: [Root.GetName]: add idea industrialized"
+			}
+			allowed_civil_war = { always = yes }
+			modifier = {
+				democratic_drift = -0.01
+				personal_expense_factor = -0.41
+				personnel_cost_multiplier_modifier = -0.41
+				business_value_factor = -0.37
+				personal_value_factor = -0.37
+			}
+
+			cancel_if_invalid = no
+		}
+
+		developed = {
+			
+			available = {
+				hidden_trigger = {
+					always = no
+				}
+			}
+			on_add = {
+				log = "[GetDateText]: [Root.GetName]: add idea developed"
+				custom_effect_tooltip = developed_tooltip
+			}
+			allowed_civil_war = { always = yes }
+			picture = developed
+			modifier = {
+				production_factory_max_efficiency_factor = 0.05
+				production_speed_buildings_factor = -0.1
+				army_morale_factor = 0.03
+				consumer_goods_factor = 0.05
+				research_speed_factor = 0.16
+				democratic_drift = 0.04
+				personal_expense_factor = -0.09
+				personnel_cost_multiplier_modifier = -0.09
+				business_value_factor = -0.48
+				personal_value_factor = -0.48
+				productivity_growth_modifier = 0.3
+				offices_productivity = 0.2
+				civ_facs_worker_requirement_modifier = -0.5
+				energy_use_multiplier = -0.1
+				stability_factor = 0.1
+				war_support_factor = -0.1
+				office_park_income_tax_modifier = 0.25
+				economic_cycles_cost_factor = -0.15
+				econ_cycle_upg_cost_multiplier_modifier = -0.15
+				trade_opinion_factor = 0.2
+				return_on_investment_modifier = 0.02
+				investment_cost_modifier = -0.05
+				investment_duration_modifier = -0.05
+				cic_to_overlord_factor = 0.3
+			}
+			
+			cancel_if_invalid = no
+		}
+	}
+}

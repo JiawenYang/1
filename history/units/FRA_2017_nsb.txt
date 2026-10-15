@@ -1,0 +1,452 @@
+﻿division_template = {
+	name = "Armoured Brigade"
+
+	regiments = {
+		armor_Bat = { x = 0 y = 0 }
+		armor_Bat = { x = 0 y = 1 }
+		REP_Bat_FRA = { x = 0 y = 2 }
+		REP_Bat_FRA = { x = 0 y = 3 }
+		SP_Arty_Bat = { x = 0 y = 4 }
+		L_Inf_Bat = { x = 1 y = 0 }
+	}
+}
+
+division_template = {
+	name = "Light Armoured Marine Brigade"
+
+	regiments = {
+		L_arm_Bat = { x = 0 y = 0 }
+		L_arm_Bat = { x = 0 y = 1 }
+		Marine_Bat_FRA = { x = 0 y = 2 }
+		Marine_Bat_FRA = { x = 0 y = 3 }
+		Marine_Bat_FRA = { x = 0 y = 4 }
+		SP_Arty_Bat = { x = 1 y = 0 }
+		L_Inf_Bat = { x = 2 y = 0 }
+	}
+}
+
+division_template = {
+	name = "Mountain Infantry Brigade"
+
+	regiments = {
+		L_arm_Bat = { x = 0 y = 0 }
+		Mech_Inf_Bat = { x = 0 y = 1 }
+		Mech_Inf_Bat = { x = 0 y = 2 }
+		Mech_Inf_Bat = { x = 0 y = 3 }
+		Marine_Bat_FRA = { x = 0 y = 4 }
+		SP_Arty_Bat = { x = 1 y = 0 }
+		L_Inf_Bat = { x = 2 y = 0 }
+	}
+}
+
+division_template = {
+	name = "Franco-German Brigade"
+
+	regiments = {
+		L_arm_Bat = { x = 0 y = 0 }
+		Mech_Inf_Bat = { x = 0 y = 1 }
+	}
+}
+
+division_template = {
+	name = "Light Armoured Brigade"
+
+	regiments = {
+		L_arm_Bat = { x = 0 y = 0 }
+		L_arm_Bat = { x = 0 y = 1 }
+		Mech_Inf_Bat = { x = 0 y = 2 }
+		Mech_Inf_Bat = { x = 0 y = 3 }
+		Marine_Bat_FRA = { x = 0 y = 4 }
+		SP_Arty_Bat = { x = 1 y = 0 }
+		L_Inf_Bat = { x = 2 y = 0 }
+	}
+}
+
+division_template = {
+	name = "Parachute Brigade"
+
+	regiments = {
+		L_arm_Bat = { x = 0 y = 0 }
+		REP_Bat_FRA = { x = 0 y = 1 }
+		REP_Bat_FRA = { x = 0 y = 2 }
+		REP_Bat_FRA = { x = 0 y = 3 }
+		REP_Bat_FRA = { x = 0 y = 4 }
+		Arty_Bat = { x = 1 y = 0 }
+		L_Inf_Bat = { x = 1 y = 1 }
+	}
+}
+
+division_template = {
+	name = "Special Forces"
+
+	regiments = {
+		Special_Forces = { x = 0 y = 0 }
+	}
+
+	priority = 2
+}
+
+division_template = {
+	name = "Arm Recon Regiment"
+
+	regiments = {
+		L_arm_Bat = { x = 0 y = 0 }
+	}
+}
+
+division_template = {
+	name = "Demi-Brigade"
+
+	regiments = {
+		Arm_Inf_Bat = { x = 0 y = 0 }
+
+	}
+	support = {
+		armor_Recce_Comp = { x = 0 y = 0 }
+		H_Engi_Comp = { x = 0 y = 1 }
+	}
+}
+
+division_template = {
+	name = "Infantry Regiment"
+
+	regiments = {
+		L_Inf_Bat = { x = 0 y = 0 }
+
+	}
+}
+
+division_template = {
+	name = "Parachute Regiment"
+
+	regiments = {
+		REP_Bat_FRA = { x = 0 y = 0 }
+
+	}
+}
+
+units = {
+	#French Army Structure
+	#https://en.wikipedia.org/wiki/Structure_of_the_French_Army
+
+	#1re division – 1st Division
+	division = {
+		name = "7e brigade blindée"
+		location = 3646
+		division_template = "Armoured Brigade"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "9e Brigade d'Infanterie de Marine"
+		location = 629
+		division_template = "Light Armoured Marine Brigade"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "27e brigade d’infanterie de montagne"
+		location = 762
+		division_template = "Mountain Infantry Brigade"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "27e brigade d’infanterie de montagne"
+		location = 762
+		division_template = "Mountain Infantry Brigade"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "Brigade franco-allemande"
+		location = 678
+		division_template = "Franco-German Brigade"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.01
+	}
+
+	#3e division
+	division = {
+		name = "2e brigade blindée"
+		location = 648
+		division_template = "Armoured Brigade"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "6e brigade légère blindée"
+		location = 3552
+		division_template = "Light Armoured Brigade"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "11e brigade parachutiste"
+		location = 6766
+		division_template = "Parachute Brigade"
+		start_experience_factor = 0.8
+		start_equipment_factor = 0.01
+	}
+
+	#Special Forces
+	division = {
+		name = "1er Régiment de Parachutistes"
+		location = 743
+		division_template = "Special Forces"
+		start_experience_factor = 0.8
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "13e Régiment de Dragons Parachutistes"
+		location = 6762
+		division_template = "Special Forces"
+		start_experience_factor = 0.9
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "13e Demi-Brigade de Légion Étrangère"
+		location = 11834
+		division_template = "Demi-Brigade"
+		start_experience_factor = 0.8
+		start_equipment_factor = 0.01
+	}
+
+	###Ship Index###
+	#Ask Dumaresq for more Infos
+
+
+	#missile_submarine_5 = Triomphant class with M51 missiles
+		#missile_submarine_3 = Triomphant class with M45 missiles (Téméraire)
+	#attack_submarine_4 = Rubis class redone in Amethyste-Class
+	#Nuclear_carrier_2 = Charles de Gaulle
+	#LHA_2 = Mistral class
+	#missile_destroyer_4 = Aquitaine-class
+	#missile_destroyer_3 = Horizon class
+	#missile_destroyer_1 = Cassard class
+	#missile_frigate_2 = La Fayette class
+	#missile_frigate_1 = Georges Leygues class
+	#missile_corvette_2 = Floréal class
+
+	#Foreign Navies
+}
+
+instant_effect = {
+
+	add_equipment_to_stockpile = {
+		variant_name = "HK-416"
+		type = infantry_weapons_6 #HK-416
+		producer = FRA
+		amount = 1700
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Famas"
+		type = infantry_weapons_4 #Famas
+		producer = FRA
+		amount = 5340
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "C4ISTAR"
+		type = cnc_equipment_5 #C4ISTAR
+		producer = FRA
+		amount = 1200
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "AT-4"
+		type = Anti_tank_1 #AT-4
+		producer = FRA
+		amount = 270
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "ERYX"
+		type = Heavy_Anti_tank_1 #ERYX
+		producer = FRA
+		amount = 66
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Mistral"
+		type = Anti_Air_1 #Mistral
+		producer = FRA
+		amount = 585
+	}
+
+	#Vehicles
+	add_equipment_to_stockpile = {
+		type = medium_tank_chassis_2
+		amount = 200
+		producer = FRA
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "AMX-10 RC"
+		type = medium_tank_destroyer_chassis_2 #AMX-10 RC
+		producer = FRA
+		amount = 248
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "ERC-90F4 Sagaie"
+		type = medium_tank_destroyer_chassis_0 #ERC-90F4 Sagaie
+		producer = FRA
+		amount = 100
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Aravis"
+		type = util_vehicle_5 #Aravis
+		producer = FRA
+		amount = 14
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "& buffalo"
+		type = util_vehicle_5 # & buffalo
+		amount = 4
+		producer = FRA
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "VBL M-ll"
+		type = util_vehicle_4 #VBL M-ll
+		producer = FRA
+		amount = 1480
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "VBCI"
+		type = medium_tank_amphibious_chassis_2 #VBCI - original 630
+		producer = FRA
+		amount = 230
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "VBCI"
+		type = medium_tank_amphibious_chassis_2 #VBCI
+		producer = FRA
+		amount = 200
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "VBCI"
+		type = medium_tank_amphibious_chassis_2 #VBCI - had to remove from original to meet unit requirments
+		producer = FRA
+		amount = 100
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BvS 10"
+		type = medium_tank_amphibious_chassis_3 #BvS 10
+		producer = FRA
+		amount = 53
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "VAB"
+		type = medium_tank_amphibious_chassis_1 #VAB
+		producer = FRA
+		amount = 2586
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "GCT 155mm"
+		type = medium_tank_artillery_chassis_1 #GCT 155mm
+		producer = FRA
+		amount = 37
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "CAESAR"
+		type = medium_tank_artillery_chassis_2 #CEASER
+		producer = FRA
+		amount = 77
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "TRF1"
+		type = artillery_1 #TRF1
+		producer = FRA
+		amount = 43
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "M270"
+		type = medium_tank_rocket_chassis_0 #M270
+		amount = 13
+		producer = USA
+	}
+	#Aircraft
+	add_equipment_to_stockpile = {
+		variant_name = "Eurocopter Tigre"
+		type = heavy_tank_chassis_2 #Eurocopter Tigre HAP
+		producer = FRA
+		amount = 51
+	}
+
+	### Sealed Storage（封存）###
+
+	#封存装甲车/步战车
+	add_equipment_to_stockpile = {
+		variant_name = "AMX-10P"
+		type = medium_tank_flame_chassis_0 #AMX-10P步战车（封存）
+		amount = 300
+		producer = FRA
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "VAB"
+		type = medium_tank_amphibious_chassis_1 #VAB老型装甲车（封存）
+		amount = 500
+		producer = FRA
+	}
+
+	#封存牵引火炮
+	add_equipment_to_stockpile = {
+		variant_name = "TRF1"
+		type = artillery_1 #TRF1 155牵引炮（封存）
+		amount = 60
+		producer = FRA
+	}
+	add_equipment_to_stockpile = {
+		type = artillery_1 #105HM 105榴弹炮（封存）
+		amount = 100
+		producer = FRA
+	}
+
+	#封存自行火炮
+	add_equipment_to_stockpile = {
+		variant_name = "AMX-30"
+		type = medium_tank_artillery_chassis_0 #AMX-30 AuF1老型自行炮（封存）
+		amount = 150
+		producer = FRA
+	}
+
+	#封存火箭炮
+	add_equipment_to_stockpile = {
+		type = medium_tank_rocket_chassis_0 #LRF火箭炮（封存）
+		amount = 30
+		producer = FRA
+	}
+
+	#封存防空
+	add_equipment_to_stockpile = {
+		variant_name = "AMX-13"
+		type = medium_tank_aa_chassis_0 #AMX-13 DCA/Roland底盘防空车（封存）
+		amount = 60
+		producer = FRA
+	}
+
+	#封存反坦克导弹
+	add_equipment_to_stockpile = {
+		variant_name = "MILAN"
+		type = Anti_tank_1 #Milan老型反坦克导弹（封存）
+		amount = 200
+		producer = FRA
+	}
+
+	#封存运输车辆
+	add_equipment_to_stockpile = {
+		type = util_vehicle_2 #老式卡车（封存）
+		amount = 1000
+		producer = FRA
+	}
+
+	#Reserve Stockpiles (Sealed)
+	add_equipment_to_stockpile = {
+		type = infantry_weapons_2 #MAS-49/FAMAS F1过渡（封存）
+		producer = FRA
+		amount = 100000
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "AMX-30B2"
+		type = medium_tank_chassis_0 #AMX-30B2（封存）
+		producer = FRA
+		amount = 450
+	}
+}

@@ -1,0 +1,171 @@
+on_actions = {
+
+	on_startup = {
+		effect = {
+			every_country = {
+				change_economy_type_capitalism = yes
+			}
+			every_country = {
+				limit = {
+					original_tag = USA
+ 				}
+				change_economy_type_american_capitalism = yes
+			}
+			every_country = {
+				limit = {
+					original_tag = JAP
+					}
+				change_economy_type_collective_capitalism = yes
+			}
+			every_country = {
+				limit = {
+					OR = {
+						has_idea = law_presidential_system
+						has_idea = law_parliamentary_system
+						has_idea = law_absolute_monarchy
+						has_idea = law_authoritarianism
+						has_idea = law_constitutional_monarchy
+						has_idea = law_socialist_republic
+						has_idea = law_russian_political_system
+						has_idea = law_american_presidential_republic
+						has_idea = law_taiwanese_semi_presidential_system
+					}
+					OR = {
+						is_in_array = { ruling_party = 3 }
+						is_in_array = { ruling_party = 4 }
+						is_in_array = { ruling_party = 5 }
+						is_in_array = { ruling_party = 17 }
+						is_in_array = { ruling_party = 18 }
+						is_in_array = { ruling_party = 19 }
+					}
+					NOT = { has_idea = oligarchs }
+					NOT = { is_in_array = { ruling_party = 15 }	} #oligarchs
+ 				}
+				change_economy_type_welfare_capitalism = yes
+			}
+			every_country = {
+				limit = {
+					OR = {
+						has_idea = law_presidential_system
+						has_idea = law_parliamentary_system
+						has_idea = law_absolute_monarchy
+						has_idea = law_authoritarianism
+						has_idea = law_constitutional_monarchy
+						has_idea = law_socialist_republic
+						has_idea = law_russian_political_system
+						has_idea = law_american_presidential_republic
+						has_idea = law_taiwanese_semi_presidential_system
+					}
+					OR = {
+						has_idea = oligarchs
+						is_in_array = { ruling_party = 15 }	#oligarchs
+					}
+ 				}
+				change_economy_type_oligopolistic_capitalism = yes
+			}
+			every_country = {
+				limit = {
+					has_idea = law_military_dictatorship
+ 				}
+				change_economy_type_military_controlled = yes
+			}
+			every_country = {
+				limit = { 
+					OR = {
+						has_idea = law_presidential_system
+						has_idea = law_parliamentary_system
+						has_idea = law_absolute_monarchy
+						has_idea = law_authoritarianism
+						has_idea = law_constitutional_monarchy
+					}
+					is_in_array = { ruling_party = 21 }
+ 				}
+				change_economy_type_managed_economy = yes
+			}
+			every_country = {
+				limit = { 
+					OR = {
+						has_idea = law_american_peoples_dictatorship
+						has_idea = law_neo_soviet_republic
+						has_idea = law_peoples_democracy
+						has_idea = law_socialist_state
+					}
+					OR = {
+						has_idea = wall_street
+						has_idea = international_bankers
+						has_idea = industrial_conglomerates
+						has_idea = western_country
+					}
+ 				}
+				change_economy_type_socialist_market = yes
+			}
+			every_country = {
+				limit = { 
+					OR = {
+						is_in_array = { ruling_party = 6 }
+						is_in_array = { ruling_party = 7 }
+						is_in_array = { ruling_party = 8 }
+						is_in_array = { ruling_party = 9 }
+					}
+					NOT = { has_idea = oligarchs }
+					NOT = { is_in_array = { ruling_party = 15 }	} #oligarchs
+					NOT = { has_idea = wall_street }
+					NOT = { original_tag = JAP }
+					OR = {
+						has_idea = law_presidential_system
+						has_idea = law_parliamentary_system
+						has_idea = law_absolute_monarchy
+						has_idea = law_authoritarianism
+						has_idea = law_constitutional_monarchy
+						has_idea = law_socialist_republic
+						has_idea = law_russian_political_system
+						has_idea = law_american_presidential_republic
+						has_idea = law_taiwanese_semi_presidential_system
+						has_idea = law_islamic_republic
+					}
+ 				}
+				change_economy_type_mixed_economy = yes
+			}
+			every_country = {
+				limit = { 
+					OR = {
+						has_idea = law_american_peoples_dictatorship
+						has_idea = law_neo_soviet_republic
+						has_idea = law_peoples_democracy
+						has_idea = law_socialist_state
+					}
+					NOT = { has_idea = wall_street }
+					NOT = { has_idea = international_bankers }
+					NOT = { has_idea = industrial_conglomerates }
+					NOT = { has_idea = western_country }
+					NOT = { original_tag = SOV }
+ 				}
+				change_economy_type_planned_economy = yes
+			}
+			every_country = {
+				limit = { 
+					OR = {
+						has_idea = law_american_peoples_dictatorship
+						has_idea = law_neo_soviet_republic
+						has_idea = law_peoples_democracy
+						has_idea = law_socialist_state
+					}
+					NOT = { has_idea = wall_street }
+					NOT = { has_idea = international_bankers }
+					NOT = { has_idea = industrial_conglomerates }
+					NOT = { has_idea = oligarchs }
+					NOT = { is_in_array = { ruling_party = 15 }	} #oligarchs
+					NOT = { has_idea = western_country }
+					original_tag = SOV
+ 				}
+				change_economy_type_developed_socialism = yes
+			}
+			every_country = {
+				limit = {
+					has_idea = euro
+ 				}
+				change_economy_type_inclusive_capitalism = yes
+			}
+		}
+	}
+}

@@ -1,0 +1,3084 @@
+add_namespace = jap
+country_event = {
+	# First Covid Case
+	id = jap.1
+	title = jap.1.t
+	desc = jap.1.d
+	picture = GFX_Generic_COVID1
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			set_country_flag = JAP_coronavirus_strikes
+			activate_mission = JAP_the_pandemic_worsens_mission
+			JAP_increase_coronavirus = yes
+		}
+	}
+	option = {
+		name = jap.1.a
+		effect_tooltip = {
+			activate_mission = JAP_the_pandemic_worsens_mission
+			add_ideas = JAP_covid_idea_1
+		}
+	}
+}
+
+country_event = {
+	# Olympics Delayed
+	id = jap.2
+	title = jap.2.t
+	desc = jap.2.d
+	picture = GFX_2020_Olympics_2
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = jap.2.a
+	}
+}
+
+country_event = {
+	# Olympics Begin
+	id = jap.3
+	title = jap.3.t
+	desc = jap.3.d
+	picture = GFX_2020_Olympics
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = jap.3.a
+	}
+}
+
+country_event = {
+	# The Question of the Olympics
+	id = jap.4
+	title = jap.4.t
+	desc = jap.4.d
+	picture = GFX_2020_Olympics
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = jap.4.a
+		complete_national_focus = JAP_hold_the_olympics
+		set_temp_variable = {
+			var = JAP_ldp_centrists_var_temp
+			value = 0.05
+		}
+		JAP_add_influence_ldp_centrists = yes
+	}
+	option = {
+		name = jap.4.b
+		complete_national_focus = JAP_delay_the_olympics
+		set_temp_variable = {
+			var = JAP_ldp_liberals_var_temp
+			value = 0.05
+		}
+		JAP_add_influence_ldp_liberals = yes
+	}
+}
+
+country_event = {
+	# Formation of the PDTO
+	id = jap.5
+	title = jap.5.t
+	desc = jap.5.d
+	picture = GFX_JAP_pdto_form
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			mark_focus_tree_layout_dirty = yes
+			create_faction_from_template = faction_template_pdto
+			remove_faction_goal = faction_goal_the_atomic_race
+			add_faction_goal = faction_goal_placeholder_long_term
+			remove_faction_goal = faction_goal_a_military_base
+			add_faction_goal = faction_goal_placeholder_medium_term
+			add_faction_goal = faction_goal_placeholder_short_term
+			set_faction_leader = yes
+			set_country_flag = pdto_member
+			JAP = {
+				complete_national_focus = JAP_form_pdto2
+				add_to_faction = AST
+				add_to_faction = TAI
+			}
+			AST = {
+				set_country_flag = pdto_member
+			}
+			TAI = {
+				set_country_flag = pdto_member
+			}
+			CHI = {
+				country_event = {
+					id = prc.329
+					days = 15
+				}
+			}
+		}
+	}
+	option = {
+		name = jap.5.a
+		effect_tooltip = {
+			create_faction = PDTO
+			JAP = {
+				add_to_faction = AST
+				add_to_faction = TAI
+			}
+		}
+	}
+}
+
+country_event = {
+	# The ACW has started
+	id = jap.6
+	title = jap.6.t
+	desc = jap.6.d
+	picture = GFX_JAP_alive
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+	}
+	option = {
+		name = jap.6.a
+	}
+}
+
+country_event = {
+	# starting event
+	id = jap.7
+	title = jap.7.t
+	desc = jap.7.d
+	picture = GFX_rising_sun
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = jap.7.a
+	}
+}
+
+country_event = {
+	# PRC-ROC war
+	id = jap.8
+	title = jap.8.t
+	desc = jap.8.d
+	picture = GFX_jap_jsdf
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			add_ideas = PDO_taiwan_intervention_idea
+			activate_mission = JAP_taiwan_war_mission
+			if = {
+				limit = {
+					tag = JAP
+				}
+				set_country_flag = JAP_ongoing_taiwan_war
+				mark_focus_tree_layout_dirty = yes
+				hidden_effect = {
+					complete_national_focus = JAP_defend_taiwan
+				}
+			}
+		}
+	}
+	option = {
+		name = jap.8.a
+		effect_tooltip = {
+			add_ideas = PDO_taiwan_intervention_idea
+			activate_mission = JAP_taiwan_war_mission
+			if = {
+				limit = {
+					tag = JAP
+				}
+				set_country_flag = JAP_ongoing_taiwan_war
+				mark_focus_tree_layout_dirty = yes
+				hidden_effect = {
+					complete_national_focus = JAP_defend_taiwan
+				}
+			}
+		}
+		hidden_effect = {
+			if = {
+				limit = {
+					tag = AST
+				}
+				country_event = {
+					id = Australia.0
+					days = 40
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	# Japan victory
+	id = jap.9
+	title = jap.9.t
+	desc = jap.9.d
+	picture = GFX_jap_jsdf
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			TAI = {
+				add_ideas = CHI_destroyed_country_1
+			}
+		}
+	}
+	option = {
+		name = jap.9.a
+		set_global_flag = JAP_japan_victory
+		add_dynamic_modifier = {
+			modifier = JAP_new_era_japan_dynamic
+		}
+		focus_unlock = yes
+		hidden_effect = {
+			load_focus_tree = TFR_tree_JAP_ldp
+			complete_national_focus = JAP_triumph_of_japanese_people
+			remove_ideas = JAP_helicopter_bonus
+			remove_ideas = JAP_helicopter_destroyers
+			remove_ideas = JAP_kawasaki_bonus
+			remove_ideas = PDO_taiwan_intervention_idea
+			remove_ideas = PDO_taiwan_intervention_2_idea
+			remove_ideas = JAP_society_balance
+			country_event = {
+				id = jap.112
+				days = 1 
+				random_days = 2
+			}
+		}
+	}
+}
+
+country_event = {
+	# Japan loss | |/ || |_ #FUCK YOU -  John Titor
+	id = jap.10
+	title = jap.10.t
+	desc = jap.10.d
+	picture = GFX_JAP_its_over
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = jap.10.a
+		set_global_flag = JAP_japan_lost
+		hidden_effect = {
+			scoped_play_song = "haiyorokonde"
+			JAP_increase_keiretsu_control = yes
+			JAP_increase_economic_stagnation = yes
+			clr_country_flag = JAP_ongoing_taiwan_war
+			mark_focus_tree_layout_dirty = yes
+			remove_ideas = JAP_society_balance
+			country_event = {
+				id = jap.111
+				days = 1 
+				random_days = 2
+			}
+			country_event = {
+				id = jap.162
+				days = 12
+				random_days = 15
+			}
+		}
+		add_ideas = JAP_shame_defeat
+		add_ideas = intervention_regional_interventionism
+		custom_effect_tooltip = JAP_reset_debuffs
+	}
+}
+
+country_event = {
+	# Ukraine recognizes Kuril islands FLAVOUR
+	id = jap.11
+	title = jap.11.t
+	desc = jap.11.d
+	picture = GFX_Kurils
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = jap.11.a
+	}
+}
+
+country_event = {
+	# Taiwan War FLAVOUR
+	id = jap.12
+	title = jap.12.t
+	desc = jap.12.d
+	picture = GFX_Save_Taiwan
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = jap.12.a
+	}
+}
+
+country_event = {
+	# Abe retiring
+	id = jap.13
+	title = jap.13.t
+	desc = jap.13.d
+	picture = GFX_Abe_resign
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			country_event = {
+				id = jap.14
+				days = 20
+			}
+			remove_ideas = JAP_abe
+			add_ideas = vacant_hog
+			set_country_flag = JAP_abe_resigned
+			news_event = {
+				id = news.277
+			}
+		}
+	}
+	option = {
+		name = jap.13.a
+		effect_tooltip = {
+			custom_effect_tooltip = remove_head_minister_tooltip
+			show_ideas_tooltip = JAP_abe
+		}
+	}
+}
+
+country_event = {
+	# Kinmen Freed
+	id = jap.20
+	title = jap.20.t
+	desc = jap.20.d
+	picture = GFX_Japanese_army
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+	}
+	option = {
+		name = jap.20.a
+		add_war_support = 0.05
+		hidden_effect = {
+			TAI = {
+				transfer_state = 648
+			}
+		}
+	}
+}
+
+country_event = {
+	# YOU FUCKED UP...
+	id = jap.21
+	title = jap.21.t
+	desc = jap.21.d
+	picture = GFX_japanese_army_sad
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+	}
+	option = {
+		name = jap.21.a
+		add_war_support = -0.05
+	}
+}
+
+country_event = {
+	#Vietnam Alliance
+	id = jap.22
+	title = jap.22.t
+	desc = jap.22.d
+	picture = GFX_JAP_japan_vietnam
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+	}
+	option = {
+		name = jap.22.a
+		ai_chance = {
+			base = 30
+		}
+		JAP = {
+			add_to_faction = VIE
+			add_political_power = -150
+		}
+		VIE = {
+			add_offsite_building = {
+				type = industrial_complex
+				level = 2
+			}
+		}
+		news_event = {
+			id = china.90
+		}
+	}
+	option = {
+		name = jap.22.b
+		ai_chance = {
+			base = 70
+		}
+	}
+}
+
+country_event = {
+	#nonaggression pact with jap(event for prc)
+	id = jap.46
+	title = jap.46.t
+	desc = jap.46.d
+	picture = GFX_japanese_and_chinese_flags
+	immediate = {
+	}
+	is_triggered_only = yes
+	option = {
+		name = jap.46.a
+		add_stability = 0.025
+	}
+}
+
+country_event = {
+	#legacy of anpo protests
+	id = jap.47
+	title = jap.47.t
+	desc = jap.47.d
+	immediate = {
+	}
+	is_triggered_only = yes
+	option = {
+		name = jap.47.a
+	}
+}
+
+country_event = {
+	#jap information war (event for prc)
+	id = jap.56
+	title = jap.56.t
+	desc = jap.56.d
+	picture = GFX_PRC_minus_soc_credit
+	immediate = {
+	}
+	is_triggered_only = yes
+	option = {
+		name = jap.56.a
+		effect_tooltip = {
+			add_timed_idea = {
+				idea = JAP_PRC_japan_propaganda
+				days = 120
+			}
+		}
+	}
+}
+
+country_event = {
+	#jap initiates military exercises
+	id = jap.57
+	title = jap.57.t
+	desc = jap.57.d
+	immediate = {
+	}
+	is_triggered_only = yes
+	option = {
+		name = jap.57.a
+		add_timed_idea = {
+			idea = JAP_pdto_exercises1
+			days = 20
+		}
+	}
+}
+
+country_event = {
+	#Sakhalin invasion
+	id = jap.58
+	title = jap.58.t
+	desc = jap.58.d
+	immediate = {
+		JAP = {
+			transfer_state = 555
+			transfer_state = 537
+		}
+	}
+	is_triggered_only = yes
+	option = {
+		name = jap.58.a
+		trigger = {
+			NOT = {
+				tag = SOV
+			}
+		}
+		transfer_state = 555
+		transfer_state = 537
+	}
+	option = {
+		#and risk war? no way!
+		name = jap.58.b
+		trigger = {
+			NOT = {
+				tag = SOV
+			}
+		}
+		add_political_power = 30
+		add_stability = 0.05
+		add_war_support = -0.05
+	}
+	option = {
+		name = jap.64.c
+		trigger = {
+			tag = SOV
+		}
+	}
+	option = {
+		name = jap.64.e
+		trigger = {
+			tag = SOV
+		}
+	}
+}
+
+#Korea willing to join wider conflict
+country_event = {
+	id = jap.59
+	title = jap.59.t
+	desc = jap.59.d
+	immediate = {
+	}
+	is_triggered_only = yes
+	option = {
+		name = jap.59.a
+		JAP = {
+			add_to_faction = KOR
+		}
+		news_event = sino_jap_coldwar.11
+	}
+}
+
+#Pride of the Fleet Sunk
+country_event = {
+	id = jap.60
+	title = jap.60.t
+	desc = jap.60.d
+	picture = GFX_Pride_of_the_Fleet_Sunk
+	immediate = {
+	}
+	is_triggered_only = yes
+	option = {
+		name = jap.60.a
+		add_war_support = -0.05
+	}
+}
+
+#Imperial Family Killed Чё за хуйня? 
+country_event = {
+	id = jap.61
+	title = jap.61.t
+	desc = jap.61.d
+	picture = GFX_Generic_Collapse
+	immediate = {
+	}
+	is_triggered_only = yes
+	option = {
+		name = jap.61.a
+		kill_country_leader = yes
+		add_war_support = 0.15
+		add_stability = -0.2
+		news_event = {
+			id = news.355
+		}
+		custom_effect_tooltip = novo_event_tt
+		hidden_effect = {
+			set_variable = {
+				var = JAP_army_org_factor_dynamic_var
+				value = 5
+			}
+			set_variable = {
+				var = JAP_army_defence_factor_dynamic_var
+				value = 0.15
+			}
+			set_variable = {
+				var = JAP_army_attack_factor_dynamic_var
+				value = 0.15
+			}
+			set_variable = {
+				var = JAP_land_reinforce_rate_dynamic_var
+				value = 0
+			}
+			set_variable = {
+				var = JAP_dig_in_speed_factor_dynamic_var
+				value = 0.1
+			}
+			set_variable = {
+				var = JAP_max_dig_in_factor_dynamic_var
+				value = 0.1
+			}
+			set_variable = {
+				var = JAP_political_power_gain_dynamic_var
+				value = 0
+			}
+			set_variable = {
+				var = JAP_stability_factor_dynamic_var
+				value = -0.25
+			}
+			set_variable = {
+				var = JAP_stability_weekly_dynamic_var
+				value = 0
+			}
+			set_variable = {
+				var = JAP_war_support_factor_dynamic_var
+				value = 0
+			}
+			set_variable = {
+				var = JAP_war_support_weekly_dynamic_var
+				value = 0
+			}
+			set_variable = {
+				var = JAP_resistance_growth_dynamic_var
+				value = 0.1
+			}
+			set_variable = {
+				var = JAP_industrial_development_monthly_dynamic_var
+				value = 0
+			}
+			set_variable = {
+				var = JAP_production_lack_of_resource_penalty_factor_dynamic_var
+				value = -0.1
+			}
+			set_variable = {
+				var = JAP_battalion_upkeep_factor_dynamic_var
+				value = -0.1
+			}
+			set_variable = {
+				var = JAP_mobilization_speed_dynamic_var
+				value = 0
+			}
+			set_variable = {
+				var = JAP_pocket_penalty_dynamic_var
+				value = 0
+			}
+			set_variable = {
+				var = JAP_army_strength_factor_dynamic_var
+				value = 0
+			}
+			add_dynamic_modifier = {
+				modifier = JAP_national_suicide_dynamic
+			}
+		}
+	}
+}
+
+#Pro-Peace protests
+country_event = {
+	id = jap.62
+	title = jap.62.t
+	desc = jap.62.d
+	picture = GFX_JAP_peace_protests
+	immediate = {
+	}
+	is_triggered_only = yes
+	option = {
+		name = jap.62.a
+		add_war_support = -0.05
+		hidden_effect = {
+			country_event = {
+				id = jap.64
+				days = 30
+				random_days = 30
+			}
+		}
+	}
+}
+
+#Anti-China protests
+country_event = {
+	id = jap.63
+	title = jap.63.t
+	desc = jap.63.d
+	picture = GFX_JAP_anti_china_protests
+	immediate = {
+	}
+	is_triggered_only = yes
+	option = {
+		name = jap.63.a
+		add_war_support = -0.05
+		hidden_effect = {
+			country_event = {
+				id = jap.65
+				days = 30
+				random_days = 30
+			}
+		}
+	}
+}
+
+#Invitation to PEC
+country_event = {
+	id = jap.66
+	title = jap.66.t
+	desc = jap.66.d
+	picture = GFX_Japan_general_election
+	immediate = {
+	}
+	is_triggered_only = yes
+	option = {
+		name = jap.66.a
+		JAP_join_PEC = yes
+	}
+}
+
+#Kuril Island question
+country_event = {
+	id = jap.81
+	title = jap.81.t
+	desc = jap.81.d
+	picture = GFX_jap_kuril_islands
+	immediate = {
+	}
+	is_triggered_only = yes
+	option = {
+		#getting rid of the territorial issue and signing a peace treaty
+		name = jap.81.a
+		add_ideas = JAP_oil_rus_help_bet
+		custom_effect_tooltip = JAP_better_cooperation_russia_tt
+		set_country_flag = JAP_sov_better_coop
+		add_stability = -0.075
+		add_political_power = -50
+		remove_state_claim = 1168
+		hidden_effect = {
+			SOV = {
+				country_event = {
+					id = jap.82
+				}
+			}
+			country_event = {
+				id = jap.187
+				days = 60
+				random_days = 35
+			}
+		}
+		ai_chance = {
+			base = 30
+		}
+	}
+	option = {
+		#put the territorial issue on the back shelf
+		name = jap.81.b
+		add_ideas = JAP_oil_rus_help
+		custom_effect_tooltip = JAP_worse_cooperation_russia_tt
+		hidden_effect = {
+			SOV = {
+				country_event = {
+					id = jap.83
+				}
+			}
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+}
+
+#Russo-japanese peace treaty
+country_event = {
+	id = jap.82
+	title = jap.82.t
+	desc = jap.82.d
+	picture = GFX_JAP_russian_peace_treaty
+	immediate = {
+		hidden_effect = {
+			set_country_flag = JAP_sov_coop
+		}
+	}
+	is_triggered_only = yes
+	option = {
+		#ahuet!!!
+		name = jap.82.a
+	}
+}
+
+#Japanese cooperation
+country_event = {
+	id = jap.83
+	title = jap.83.t
+	desc = jap.83.d
+	picture = GFX_JAP_russian_peace_treaty
+	immediate = {
+		hidden_effect = {
+			set_country_flag = JAP_sov_coop
+		}
+	}
+	is_triggered_only = yes
+	option = {
+		#Kruto.
+		name = jap.83.a
+	}
+}
+
+#Russian Investments
+country_event = {
+	id = jap.84
+	title = jap.84.t
+	desc = jap.84.d
+	picture = GFX_JAP_russia_sakura
+	immediate = {
+	}
+	is_triggered_only = yes
+	option = {
+		#Kruto.
+		name = jap.84.a
+		effect_tooltip = {
+			give_resource_rights = {
+				receiver = JAP
+				state = 567
+			}
+		}
+		custom_effect_tooltip = SOV_after_this_tooltip
+		effect_tooltip = {
+			add_resource = {
+				type = aluminium
+				amount = 35
+				state = 532
+			}
+			add_resource = {
+				type = tungsten
+				amount = 30
+				state = 531
+			}
+		}
+	}
+}
+
+#Russian Investments
+country_event = {
+	id = jap.85
+	title = jap.85.t
+	desc = jap.85.d
+	picture = GFX_JAP_russia_sakura
+	immediate = {
+	}
+	is_triggered_only = yes
+	option = {
+		#Kruto.
+		name = jap.84.a
+		effect_tooltip = {
+			add_ideas = SOV_russia_open_doors_idea
+		}
+	}
+}
+
+#Russian Investments
+country_event = {
+	id = jap.86
+	title = russia.752.t
+	desc = jap.86.d
+	picture = GFX_JAP_russia_sakura
+	immediate = {
+	}
+	is_triggered_only = yes
+	option = {
+		#Kruto.
+		name = jap.84.a
+		effect_tooltip = {
+			if = {
+				limit = {
+					JAP = {
+						has_country_flag = JAP_sov_better_coop
+					}
+				}
+				if = {
+					limit = {
+						JAP = {
+							has_idea = SOV_economic_assistance_idea
+						}
+					}
+					SOV = {
+						swap_ideas = {
+							remove_idea = SOV_economic_assistance_idea
+							add_idea = SOV_economic_assistance_japan_better_idea
+						}
+						modify_timed_idea = {
+							idea = SOV_economic_assistance_japan_better_idea
+							days = 180
+						}
+					}
+					swap_ideas = {
+						remove_idea = SOV_economic_assistance_idea
+						add_idea = SOV_economic_assistance_japan_better_idea
+					}
+					modify_timed_idea = {
+						idea = SOV_economic_assistance_japan_better_idea
+						days = 180
+					}
+				}
+				else = {
+					SOV = {
+						add_timed_idea = {
+							idea = SOV_economic_assistance_japan_better_idea
+							days = 180
+						}
+					}
+					add_timed_idea = {
+						idea = SOV_economic_assistance_japan_better_idea
+						days = 180
+					}
+				}
+			}
+			else = {
+				if = {
+					limit = {
+						JAP = {
+							has_idea = SOV_economic_assistance_idea
+						}
+					}
+					SOV = {
+						modify_timed_idea = {
+							idea = SOV_economic_assistance_idea
+							days = 180
+						}
+					}
+					modify_timed_idea = {
+						idea = SOV_economic_assistance_idea
+						days = 180
+					}
+				}
+				else = {
+					SOV = {
+						add_timed_idea = {
+							idea = SOV_economic_assistance_idea
+							days = 180
+						}
+					}
+					add_timed_idea = {
+						idea = SOV_economic_assistance_idea
+						days = 180
+					}
+				}
+			}
+		}
+	}
+}
+
+#Anti-ldp Protests
+country_event = {
+	id = jap.87
+	title = jap.87.t
+	desc = jap.87.d
+	picture = GFX_JAP_antildp_protest
+	immediate = {
+	}
+	is_triggered_only = yes
+	option = {
+		name = jap.87.a
+		add_ideas = JAP_inflaming_radicalism
+	}
+}
+
+#New Political Landscape Event
+country_event = {
+	id = jap.88
+	title = jap.88.t
+	desc = jap.88.d
+	picture = GFX_JAP_vote_lose
+	immediate = {
+	}
+	is_triggered_only = yes
+	option = {
+		name = jap.88.a
+		focus_unlock = yes
+		mark_focus_tree_layout_dirty = yes
+	}
+}
+
+#Natural Party of Power event
+country_event = {
+	id = jap.89
+	title = jap.89.t
+	desc = jap.89.d
+	picture = GFX_JAP_rainy_days
+	immediate = {
+	}
+	is_triggered_only = yes
+	option = {
+		name = jap.89.a
+		focus_unlock = yes
+		mark_focus_tree_layout_dirty = yes
+	}
+}
+
+#Strengthening National Security Event
+country_event = {
+	id = jap.90
+	title = jap.90.t
+	desc = jap.90.d
+	picture = GFX_JAP_old_dude
+	immediate = {
+	}
+	is_triggered_only = yes
+	option = {
+		name = jap.90.a
+		focus_unlock = yes
+		mark_focus_tree_layout_dirty = yes
+	}
+}
+
+#Shinzo Abe Death event
+country_event = {
+	id = jap.91
+	title = jap.91.t
+	desc = jap.91.d
+	picture = GFX_JAP_abe_death
+	immediate = {
+		hidden_effect = {
+			news_event = {
+				id = news.536
+				hours = 1
+			}
+		}
+	}
+	is_triggered_only = yes
+	option = {
+		name = jap.91.a
+		add_stability = -0.05
+		set_country_flag = JAP_abe_death
+		hidden_effect = {
+			if = {
+				limit = {
+					has_global_flag = JAP_ldp_won
+				}
+				country_event = {
+					id = jap.92
+					days = 6
+				}
+			}
+		}
+	}
+}
+
+#Unification Church event
+country_event = {
+	id = jap.92
+	title = jap.92.t
+	desc = jap.92.d
+	picture = GFX_JAP_unification_church
+	immediate = {
+	}
+	is_triggered_only = yes
+	option = {
+		name = jap.92.a
+		add_political_power = -50
+		remove_ideas = JAP_nobuo_kishi_defence
+		add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = -0.025
+		}
+		set_country_flag = JAP_church_remove
+	}
+	option = {
+		name = jap.92.b
+		add_stability = -0.1
+		add_political_power = -25
+	}
+}
+
+#Taiwanese Brotherhood Forevaaaa
+country_event = {
+	id = jap.93
+	title = jap.93.t
+	desc = jap.93.d
+	picture = GFX_JAP_taiwan_japan_coop
+	immediate = {
+	}
+	is_triggered_only = yes
+	option = {
+		name = jap.93.a
+		effect_tooltip = {
+			puppet = TAI
+		}
+	}
+}
+
+#CRISISS ARRGHGHGH
+country_event = {
+	id = jap.94
+	title = jap.94.t
+	desc = jap.94.d
+	picture = GFX_JAP_economic_crisis
+	immediate = {
+		hidden_effect = {
+			JAP_increase_economic_stagnation = yes
+		}
+	}
+	is_triggered_only = yes
+	option = {
+		name = jap.94.a
+		effect_tooltip = {
+			JAP_increase_economic_stagnation = yes
+		}
+		unlock_decision_tooltip = JAP_stabilize_yen_crisis
+		unlock_decision_tooltip = JAP_increase_taxes_crisis
+		unlock_decision_tooltip = JAP_reduce_social_security_crisis
+	}
+}
+
+#current goals of army modernization
+country_event = {
+	id = jap.100
+	title = jap.100.t
+	desc = jap.100.d
+	picture = GFX_JAP_goals_jsdf
+	immediate = {
+	}
+	is_triggered_only = yes
+	option = {
+		name = jap.100.a
+		add_political_power = 25
+	}
+}
+
+#state of the Japan Ground Self-Defense Force
+country_event = {
+	id = jap.101
+	title = jap.101.t
+	desc = jap.101.d
+	picture = GFX_JAP_self_defence_forces
+	immediate = {
+	}
+	is_triggered_only = yes
+	option = {
+		name = jap.101.a
+	}
+}
+
+#state of the Japan Air Self-Defense Force
+country_event = {
+	id = jap.102
+	title = jap.102.t
+	desc = jap.102.d
+	picture = GFX_JAP_japan_air_self_defense_force
+	immediate = {
+	}
+	is_triggered_only = yes
+	option = {
+		name = jap.102.a
+	}
+}
+
+#state of the Japan Maritime Self-Defense Force
+country_event = {
+	id = jap.103
+	title = jap.103.t
+	desc = jap.103.d
+	picture = GFX_JAP_jmslf
+	immediate = {
+	}
+	is_triggered_only = yes
+	option = {
+		name = jap.103.a
+	}
+}
+
+#grand military parade in tokyo
+country_event = {
+	id = jap.104
+	title = jap.104.t
+	desc = jap.104.d
+	picture = GFX_JAP_parade
+	immediate = {
+	}
+	is_triggered_only = yes
+	option = {
+		name = jap.104.a
+		add_war_support = 0.05
+	}
+}
+
+#Ignite Japanese Patriotism
+country_event = {
+	id = jap.105
+	title = jap.105.t
+	desc = jap.105.d
+	picture = GFX_JAP_the_end
+	immediate = {
+	}
+	is_triggered_only = yes
+	option = {
+		name = jap.105.a
+	}
+}
+
+#taiwan war conclusion flavour
+country_event = {
+	id = jap.106
+	title = jap.106.t
+	desc = jap.106.d
+	picture = GFX_JAP_nhk_taiwan
+	immediate = {
+	}
+	is_triggered_only = yes
+	option = {
+		name = jap.106.a
+	}
+}
+
+#migrant event
+country_event = {
+	id = jap.107
+	title = jap.107.t
+	desc = jap.107.d
+	picture = GFX_JAP_dockyard
+	immediate = {
+	}
+	is_triggered_only = yes
+	option = {
+		name = jap.107.a
+	}
+}
+
+#chatter
+country_event = {
+	id = jap.108
+	title = jap.108.t
+	desc = jap.108.d
+	picture = GFX_JAP_chatter
+	immediate = {
+	}
+	is_triggered_only = yes
+	option = {
+		name = jap.108.a
+	}
+}
+
+#Taiwan not-war
+country_event = {
+	id = jap.109
+	title = jap.109.t
+	desc = jap.109.d
+	picture = GFX_JAP_taiwan_not_war
+	immediate = {
+	}
+	is_triggered_only = yes
+	option = {
+		name = jap.109.a
+	}
+}
+
+#Yamato Taiwan War Event
+country_event = {
+	id = jap.110
+	title = jap.110.t
+	desc = jap.110.d
+	picture = GFX_JAP_yamato
+	immediate = {
+	}
+	is_triggered_only = yes
+	option = {
+		name = jap.110.a
+	}
+}
+
+#Yamato Death Event
+country_event = {
+	id = jap.111
+	title = jap.111.t
+	desc = jap.111.d
+	picture = GFX_JAP_alishan
+	immediate = {
+	}
+	is_triggered_only = yes
+	option = {
+		name = jap.111.a
+	}
+}
+
+#Yamato Victory Event
+country_event = {
+	id = jap.112
+	title = jap.112.t
+	desc = jap.112.d
+	picture = GFX_JAP_lovelive
+	immediate = {
+	}
+	is_triggered_only = yes
+	option = {
+		name = jap.112.a
+	}
+}
+
+#Civil Coalition Election Event
+country_event = {
+	id = jap.113
+	title = jap.113.t
+	desc = jap.113.d
+	picture = GFX_JAP_civiccoalition
+	immediate = {
+	}
+	is_triggered_only = yes
+	option = {
+		name = jap.113.a
+	}
+}
+
+#LDP Election Event
+country_event = {
+	id = jap.114
+	title = jap.114.t
+	desc = jap.114.d
+	picture = GFX_JAP_ldp_elections1
+	immediate = {
+	}
+	is_triggered_only = yes
+	option = {
+		name = jap.114.a
+	}
+}
+
+#Vtuber Elections event
+country_event = {
+	id = jap.115
+	title = jap.115.t
+	desc = jap.115.d
+	picture = GFX_JAP_vtuber
+	immediate = {
+	}
+	is_triggered_only = yes
+	option = {
+		name = jap.115.a
+		custom_effect_tooltip = JAP_vtuber_BAD
+	}
+}
+
+#Cool Japan
+country_event = {
+	id = jap.116
+	title = jap.116.t
+	desc = jap.116.d
+	picture = GFX_JAP_akihabara
+	immediate = {
+	}
+	is_triggered_only = yes
+	option = {
+		name = jap.116.a
+	}
+}
+
+#Cool Japan
+country_event = {
+	id = jap.117
+	title = jap.117.t
+	desc = jap.117.d
+	picture = GFX_JAP_hikki
+	immediate = {
+	}
+	is_triggered_only = yes
+	option = {
+		name = jap.117.a
+	}
+}
+
+#super change
+country_event = {
+	id = jap.118
+	title = jap.118.t
+	desc = jap.118.d
+	picture = GFX_JAP_daycare
+	immediate = {
+	}
+	is_triggered_only = yes
+	option = {
+		name = jap.118.a
+	}
+}
+
+#imperial palace
+country_event = {
+	id = jap.119
+	title = jap.119.t
+	desc = jap.119.d
+	picture = GFX_JAP_imperial_palace
+	immediate = {
+	}
+	is_triggered_only = yes
+	option = {
+		name = jap.119.a
+	}
+}
+
+#Like a Dragon CIVIL
+country_event = {
+	id = jap.120
+	title = jap.120.t
+	desc = jap.120.d
+	picture = GFX_JAP_yakuza
+	immediate = {
+	}
+	is_triggered_only = yes
+	option = {
+		name = jap.120.a
+	}
+}
+
+#The Older Generation LDP
+country_event = {
+	id = jap.121
+	title = jap.121.t
+	desc = jap.121.d
+	picture = GFX_JAP_maachando
+	immediate = {
+	}
+	is_triggered_only = yes
+	option = {
+		name = jap.121.a
+	}
+}
+
+#The Evening Program Defending Taiwan
+country_event = {
+	id = jap.122
+	title = jap.122.t
+	desc = jap.122.d
+	picture = GFX_JAP_tomohisa
+	immediate = {
+	}
+	is_triggered_only = yes
+	option = {
+		name = jap.122.a
+	}
+}
+
+#Military Exercises
+country_event = {
+	id = jap.123
+	title = jap.123.t
+	desc = jap.123.d
+	picture = GFX_JAP_yama_sakura
+	immediate = {
+	}
+	is_triggered_only = yes
+	option = {
+		name = jap.123.a
+	}
+}
+
+#The Future of the Past Support Small Business
+country_event = {
+	id = jap.124
+	title = jap.124.t
+	desc = jap.124.d
+	picture = GFX_JAP_teahouse
+	immediate = {
+	}
+	is_triggered_only = yes
+	option = {
+		name = jap.124.a
+	}
+}
+
+#Same sex marriage
+country_event = {
+	id = jap.125
+	title = jap.125.t
+	desc = jap.125.d
+	picture = GFX_JAP_samesexmar
+	immediate = {
+	}
+	is_triggered_only = yes
+	option = {
+		name = jap.125.a
+	}
+}
+
+#May Fortune Bless You in Battle
+country_event = {
+	id = jap.126
+	title = jap.126.t
+	desc = jap.126.d
+	picture = GFX_JAP_shrine
+	immediate = {
+	}
+	is_triggered_only = yes
+	trigger = {
+		tag = JAP
+		has_war = yes
+	}
+	option = {
+		name = jap.126.a
+	}
+}
+
+#Operation Code: Lost Kingdom
+country_event = {
+	id = jap.127
+	title = jap.127.t
+	desc = jap.127.d
+	picture = GFX_JAP_f35
+	immediate = {
+	}
+	is_triggered_only = yes
+	trigger = {
+		tag = JAP
+		has_war = yes
+	}
+	option = {
+		name = jap.127.a
+	}
+}
+
+#Exchange of Interests
+country_event = {
+	id = jap.128
+	title = jap.128.t
+	desc = jap.128.d
+	picture = GFX_JAP_taisei
+	immediate = {
+	}
+	is_triggered_only = yes
+
+	option = {
+		name = jap.128.a
+	}
+}
+
+#Joint Operations Command Center
+country_event = {
+	id = jap.129
+	title = jap.129.t
+	desc = jap.129.d
+	picture = GFX_JAP_command_center
+	immediate = {
+	}
+	is_triggered_only = yes
+
+	option = {
+		name = jap.129.a
+	}
+}
+
+#Everyday Negotiations in Europe
+country_event = {
+	id = jap.130
+	title = jap.130.t
+	desc = jap.130.d
+	picture = GFX_JAP_napoli
+	immediate = {
+	}
+	is_triggered_only = yes
+
+	option = {
+		name = jap.130.a
+	}
+}
+
+#A Curious Negotiation in Russia
+country_event = {
+	id = jap.131
+	title = jap.131.t
+	desc = jap.131.d
+	picture = GFX_JAP_stbasil
+	immediate = {
+	}
+	is_triggered_only = yes
+
+	option = {
+		name = jap.131.a
+	}
+}
+
+#The Final Curtain
+country_event = {
+	id = jap.132
+	title = jap.132.t
+	desc = jap.132.d
+	picture = GFX_JAP_ministry
+	immediate = {
+	}
+	is_triggered_only = yes
+
+	option = {
+		name = jap.132.a
+	}
+}
+
+#Reform Interview
+country_event = {
+	id = jap.133
+	title = jap.133.t
+	desc = jap.133.d
+	picture = GFX_JAP_doshusei
+	immediate = {
+	}
+	is_triggered_only = yes
+
+	option = {
+		name = jap.133.a
+	}
+}
+
+#The Evil of a Name
+country_event = {
+	id = jap.134
+	title = jap.134.t
+	desc = jap.134.d
+	picture = GFX_JAP_koban
+	immediate = {
+	}
+	is_triggered_only = yes
+
+	option = {
+		name = jap.134.a
+	}
+}
+
+#Parade
+country_event = {
+	id = jap.137
+	title = jap.137.t
+	desc = jap.137.d
+	picture = GFX_JAP_soldiers
+	immediate = {
+	}
+	is_triggered_only = yes
+
+	option = {
+		name = jap.137.a
+	}
+}
+
+#The Democratic Expeditionary Force
+country_event = {
+	id = jap.138
+	title = jap.138.t
+	desc = jap.138.d
+	picture = GFX_JAP_adelaide
+	immediate = {
+	}
+	is_triggered_only = yes
+
+	option = {
+		name = jap.138.a
+	}
+}
+
+#New East Asia
+country_event = {
+	id = jap.139
+	title = jap.139.t
+	desc = jap.139.d
+	picture = GFX_JAP_yalu
+	immediate = {
+	}
+	is_triggered_only = yes
+
+	option = {
+		name = jap.139.a
+	}
+}
+
+#Shanghai Fortress
+country_event = {
+	id = jap.140
+	title = jap.140.t
+	desc = jap.140.d
+	picture = GFX_JAP_shanghai
+	immediate = {
+	}
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = jap.140.a
+	}
+}
+
+#Romeo Point
+country_event = {
+	id = jap.141
+	title = jap.141.t
+	desc = jap.141.d
+	picture = GFX_JAP_guangzhou
+	immediate = {
+	}
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = jap.141.a
+	}
+}
+
+#Beijing
+country_event = {
+	id = jap.142
+	title = jap.142.t
+	desc = jap.142.d
+	picture = GFX_JAP_beijing
+	immediate = {
+	}
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = jap.142.a
+	}
+}
+
+#Humanity
+country_event = {
+	id = jap.143
+	title = jap.143.t
+	desc = jap.143.d
+	picture = GFX_JAP_police
+	immediate = {
+	}
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = jap.143.a
+	}
+}
+
+#Corporate Negotiations
+country_event = {
+	id = jap.144
+	title = jap.144.t
+	desc = jap.144.d
+	picture = GFX_JAP_business
+	immediate = {
+	}
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = jap.144.a
+	}
+}
+
+#Family Trip
+country_event = {
+	id = jap.145
+	title = jap.145.t
+	desc = jap.145.d
+	picture = GFX_JAP_family
+	immediate = {
+	}
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = jap.145.a
+	}
+}
+
+#Female Leader
+country_event = {
+	id = jap.146
+	title = jap.146.t
+	desc = jap.146.d
+	picture = GFX_JAP_businesswoman
+	immediate = {
+	}
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = jap.146.a
+	}
+}
+
+#A Debate on the Dinner Table
+country_event = {
+	id = jap.147
+	title = jap.147.t
+	desc = jap.147.d
+	picture = GFX_JAP_dinner
+	immediate = {
+	}
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = jap.147.a
+	}
+}
+
+#The Countryside
+country_event = {
+	id = jap.148
+	title = jap.148.t
+	desc = jap.148.d
+	picture = GFX_JAP_countryside
+	immediate = {
+	}
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = jap.148.a
+	}
+}
+
+#Ashes to Ashes, Dust to Dust
+country_event = {
+	id = jap.149
+	title = jap.149.t
+	desc = jap.149.d
+	picture = GFX_JAP_mao
+	immediate = {
+	}
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = jap.149.a
+	}
+}
+
+#Imposition of Justice
+country_event = {
+	id = jap.150
+	title = jap.150.t
+	desc = jap.150.d
+	picture = GFX_JAP_ace_attorney
+	immediate = {
+	}
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = jap.150.a
+	}
+}
+
+#Declaration of Freedom and Democracy in Asia
+country_event = {
+	id = jap.151
+	title = jap.151.t
+	desc = jap.151.d
+	picture = GFX_JAP_eastasia
+	immediate = {
+	}
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = jap.150.a
+	}
+}
+
+#Military Aid
+country_event = {
+	id = jap.152
+	title = jap.152.t
+	desc = jap.152.d
+	picture = GFX_JAP_roc_army
+	immediate = {
+	}
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = jap.152.a
+	}
+}
+
+#Splintered
+country_event = {
+	id = jap.153
+	title = jap.153.t
+	desc = jap.153.d
+	picture = GFX_JAP_USA
+	immediate = {
+	}
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = jap.153.a
+	}
+}
+
+#A Minor Interlude
+country_event = {
+	id = jap.154
+	title = jap.154.t
+	desc = jap.154.d
+	picture = GFX_JAP_professor
+	immediate = {
+	}
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = jap.154.a
+	}
+}
+
+#Friendly Advice
+country_event = {
+	id = jap.155
+	title = jap.155.t
+	desc = jap.155.d
+	picture = GFX_JAP_newspaper
+	immediate = {
+	}
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = jap.155.a
+	}
+}
+
+#The Mobile Corps
+country_event = {
+	id = jap.156
+	title = jap.156.t
+	desc = jap.156.d
+	picture = GFX_JAP_tokyo_tanks
+	immediate = {
+	}
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = jap.156.a
+	}
+}
+
+#Traitor
+country_event = {
+	id = jap.157
+	title = jap.157.t
+	desc = jap.157.d
+	picture = GFX_JAP_poebalu
+	immediate = {
+	}
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = jap.157.a
+	}
+}
+
+#Peaceful Protest
+country_event = {
+	id = jap.158
+	title = jap.158.t
+	desc = jap.158.d
+	picture = GFX_JAP_zengakuren
+	immediate = {
+	}
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = jap.158.a
+	}
+}
+
+#Prime Minister's Address
+country_event = {
+	id = jap.159
+	title = jap.159.t
+	desc = jap.159.d
+	picture = GFX_JAP_shigeru
+	immediate = {
+	}
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = jap.159.a
+	}
+}
+
+#Questioning Accountability
+country_event = {
+	id = jap.160
+	title = jap.160.t
+	desc = jap.160.d
+	picture = GFX_JAP_shigeru
+	immediate = {
+	}
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = jap.160.a
+	}
+}
+
+#The Halls of Power
+country_event = {
+	id = jap.161
+	title = jap.161.t
+	desc = jap.161.d
+	picture = GFX_JAP_diet
+	immediate = {
+	}
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = jap.161.a
+	}
+}
+
+#The Land of the Setting Sun
+country_event = {
+	id = jap.162
+	title = jap.162.t
+	desc = jap.162.d
+	picture = GFX_JAP_susanoo
+	immediate = {
+	}
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = jap.162.a
+	}
+}
+
+#The Final Battle
+country_event = {
+	id = jap.163
+	title = jap.163.t
+	desc = jap.163.d
+	picture = GFX_JAP_muzhik
+	immediate = {
+	}
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = jap.163.a
+	}
+}
+
+#The March
+country_event = {
+	id = jap.164
+	title = jap.164.t
+	desc = jap.164.d
+	picture = GFX_JAP_selfdefenceflag
+	immediate = {
+	}
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = jap.164.a
+	}
+}
+
+#Nanjing, Nanjing!
+country_event = {
+	id = jap.165
+	title = jap.165.t
+	desc = jap.165.d
+	picture = GFX_JAP_nanjing
+	immediate = {
+	}
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = jap.165.a
+	}
+}
+
+#The Eye of Tianjin
+country_event = {
+	id = jap.166
+	title = jap.166.t
+	desc = jap.166.d
+	picture = GFX_JAP_tianjin
+	immediate = {
+	}
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = jap.166.a
+	}
+}
+
+#Salute to the Fallen
+country_event = {
+	id = jap.167
+	title = jap.167.t
+	desc = jap.167.d
+	picture = GFX_JAP_rangers
+	immediate = {
+	}
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = jap.167.a
+	}
+}
+
+#India Splits from the PDTO
+country_event = {
+	id = jap.168
+	title = jap.168.t
+	desc = jap.168.d
+	picture = GFX_JAP_pdto_form
+	trigger = {
+		NOT = {
+			has_global_flag = RAJ_india_dead
+		}
+	}
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = jap.168.a
+		news_event = {
+			id = jap.169
+			days = 1
+		}
+		dismantle_faction = yes
+		create_faction = PDTO
+		hidden_effect = {
+			remove_faction_goal = faction_goal_the_atomic_race
+			add_faction_goal = faction_goal_placeholder_long_term
+			remove_faction_goal = faction_goal_a_military_base
+			add_faction_goal = faction_goal_placeholder_medium_term
+			add_faction_goal = faction_goal_placeholder_short_term
+		}
+		JAP = {
+			add_to_faction = VIE
+			add_to_faction = LAO
+			add_to_faction = CBD
+			add_to_faction = PHI
+			add_to_faction = TAI
+			add_to_faction = KOR
+			add_to_faction = AST
+			add_to_faction = NZL
+			add_to_faction = PD1
+		}
+		RAJ = {
+			create_faction = RAJ_south_sian_defense_league_faction
+			hidden_effect = {
+				remove_faction_goal = faction_goal_the_atomic_race
+				add_faction_goal = faction_goal_placeholder_long_term
+				remove_faction_goal = faction_goal_a_military_base
+				add_faction_goal = faction_goal_placeholder_medium_term
+				add_faction_goal = faction_goal_placeholder_short_term
+			}
+		}
+		RAJ = {
+			add_to_faction = PAK
+			add_to_faction = NEP
+			add_to_faction = TIB
+			add_to_faction = BHU
+			add_to_faction = BAN
+			add_to_faction = BRM
+		}
+	}
+}
+
+#India Splits from the PDTO
+news_event = {
+	id = jap.169
+	title = jap.169.t
+	desc = jap.169.d
+	picture = GFX_RAJ_delhi_government_win_news
+	fire_only_once = yes
+	is_triggered_only = yes
+	major = yes
+	trigger = {
+	}
+	option = {
+		name = jap.169.a
+		
+	}
+}
+
+#China Launches Military Exercises in the East China Sea
+country_event = {
+	id = jap.170
+	title = jap.170.t
+	desc = jap.170.d
+	picture = GFX_PRC_sea_blocade
+	immediate = {
+	}
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = jap.170.a
+		custom_effect_tooltip = PRC_this_will_lead_to_the_gaw
+		add_political_power = 75
+		add_war_support = 0.05
+		upgrade_economy_law = yes
+	}
+}
+
+#North Korea Moves Forces to the Border with South Korea
+country_event = {
+	id = jap.171
+	title = jap.171.t
+	desc = jap.171.d
+	picture = GFX_PRK_soliders
+	immediate = {
+	}
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = jap.171.a
+	}
+}
+
+#Chinese Ships Entered Okinawa Waters
+country_event = {
+	id = jap.172
+	title = jap.172.t
+	desc = jap.172.d
+	picture = GFX_PRC_sea_blocade
+	immediate = {
+	}
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = jap.172.a
+	}
+}
+
+#China Begins Preparations for Operation Wu Qi
+country_event = {
+	id = jap.173
+	title = jap.173.t
+	desc = jap.173.d
+	picture = GFX_PRC_navy_ship
+	immediate = {
+	}
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = jap.173.a
+		custom_effect_tooltip = PRC_this_will_lead_to_the_gaw
+		add_political_power = 75
+		add_war_support = 0.05
+		upgrade_economy_law = yes
+	}
+}
+
+#Preventive Cyberattack
+country_event = {
+	id = jap.174
+	title = jap.174.t
+	desc = jap.174.d
+	picture = GFX_PRC_cyberattack
+	immediate = {
+	}
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = jap.174.a
+		effect_tooltip = {
+			PRC = {
+				add_timed_idea = {
+					idea = KOR_recent_cyberattack
+					days = 35
+				}
+			}
+		}
+	}
+}
+
+#Preemptive Strike against China
+country_event = {
+	id = jap.175
+	title = jap.175.t
+	desc = jap.175.d
+	picture = GFX_JAP_ship
+	immediate = {
+	}
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = jap.175.a
+	}
+}
+
+#Peace Envoys
+country_event = {
+	id = jap.176
+	title = jap.176.t
+	desc = jap.176.d
+	picture = GFX_JAP_singapore
+	immediate = {
+	}
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = jap.176.a
+	}
+}
+
+#Tropical Flight
+country_event = {
+	id = jap.177
+	title = jap.177.t
+	desc = jap.177.d
+	picture = GFX_JAP_vietnamforest
+	immediate = {
+	}
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = jap.177.a
+	}
+}
+
+#Lone Wolf
+country_event = {
+	id = jap.178
+	title = jap.178.t
+	desc = jap.178.d
+	picture = GFX_JAP_type102
+	immediate = {
+	}
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = jap.178.a
+	}
+}
+
+#Northern Offensive
+country_event = {
+	id = jap.179
+	title = jap.179.t
+	desc = jap.179.d
+	picture = GFX_JAP_hochimin
+	immediate = {
+	}
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = jap.179.a
+	}
+}
+
+#The Temple
+country_event = {
+	id = jap.180
+	title = jap.180.t
+	desc = jap.180.d
+	picture = GFX_JAP_temple
+	immediate = {
+	}
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = jap.180.a
+	}
+}
+
+#Valkyrie of the Skies
+country_event = {
+	id = jap.181
+	title = jap.181.t
+	desc = jap.181.d
+	picture = GFX_JAP_airforce
+	immediate = {
+	}
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = jap.181.a
+	}
+}
+
+#OIL CRISISS ARRGHGHGH
+country_event = {
+	id = jap.182
+	title = jap.182.t
+	desc = jap.182.d
+	picture = GFX_JAP_oil_crisis_shock
+	immediate = {
+		hidden_effect = {
+			add_ideas = JAP_oil_crash1
+			activate_mission = JAP_waning_oil_crisis_mission
+		}
+	}
+	is_triggered_only = yes
+	option = {
+		name = jap.182.a
+		effect_tooltip = {
+			add_ideas = JAP_oil_crash1
+			activate_mission = JAP_waning_oil_crisis_mission
+		}
+	}
+}
+
+#Russia Japan oil crisis
+country_event = {
+	id = jap.183
+	title = jap.183.t
+	desc = jap.183.d
+	picture = GFX_JAP_russia_sakura
+	immediate = {
+	}
+	is_triggered_only = yes
+	option = {
+		name = jap.183.a
+		add_timed_idea = {
+			idea = SOV_economic_assistance_idea_japan
+			days = 100
+		}
+		add_tech_bonus = {
+			bonus = 0.25
+			uses = 2
+			category = electronics
+		}
+		add_tech_bonus = {
+			bonus = 0.25
+			uses = 2
+			category = industry
+		}
+		hidden_effect = {
+			JAP = {
+				country_event = { id = jap.184 }
+			}
+		}
+	}
+	option = {
+		name = jap.183.b
+		set_temp_variable = {
+			var = income_var_temp
+			value = 45
+		}
+		add_income = yes
+		add_timed_idea = {
+			idea = SOV_economic_assistance_better_2_idea_japan
+			days = 100
+		}
+		hidden_effect = {
+			JAP = {
+				country_event = { id = jap.185 }
+			}
+		}
+	}
+}
+
+#Russia Loves Japan!
+country_event = {
+	id = jap.184
+	title = jap.184.t
+	desc = jap.184.d
+	picture = GFX_JAP_russia_sakura
+	immediate = {
+	}
+	is_triggered_only = yes
+	option = {
+		name = jap.184.a
+		add_days_mission_timeout = {
+			mission = JAP_waning_oil_crisis_mission
+			days = -100
+		}
+		unlock_decision_tooltip = JAP_resell_russian_oil
+		set_country_flag = JAP_rus_love_wins
+	}
+}
+
+#Russia Hates Japan!
+country_event = {
+	id = jap.185
+	title = jap.185.t
+	desc = jap.185.d
+	picture = GFX_JAP_russia_sakura
+	immediate = {
+	}
+	is_triggered_only = yes
+	option = {
+		name = jap.185.a
+		add_days_mission_timeout = {
+			mission = JAP_waning_oil_crisis_mission
+			days = -50
+		}
+	}
+}
+
+#Old shitty tanks.mp3
+country_event = {
+	id = jap.186
+	title = jap.186.t
+	desc = jap.186.d
+	picture = GFX_JAP_type74
+	immediate = {
+	}
+	is_triggered_only = yes
+	option = {
+		name = jap.186.a
+		unlock_decision_tooltip = JAP_recommission_old_equipment
+		set_country_flag = JAP_taiwan_equipment_bonus
+	}
+}
+
+#Moscow, my love
+country_event = {
+	id = jap.187
+	title = jap.187.t
+	desc = jap.187.d
+	picture = GFX_JAP_fireworks
+	immediate = {
+	}
+	is_triggered_only = yes
+	option = {
+		name = jap.187.a
+	}
+}
+
+#Old Japan New Course
+country_event = {
+	id = jap.188
+	title = jap.188.t
+	desc = jap.188.d
+	picture = GFX_JAP_businessnight
+	immediate = {
+	}
+	is_triggered_only = yes
+	option = {
+		name = jap.188.a
+		unlock_decision_tooltip = JAP_reorganize_spatial_strategy
+		unlock_decision_tooltip = JAP_new_economic_drive
+		unlock_decision_tooltip = JAP_accelerated_digitalization
+		unlock_decision_tooltip = JAP_cement_japanese_capitalism
+		unlock_decision_tooltip = JAP_implement_strict_corporate_culture 
+		unlock_decision_tooltip = JAP_ishiba_social_welfare_dec 
+	}
+}
+#Digitalization
+country_event = {
+	id = jap.189
+	title = jap.189.t
+	desc = jap.189.d
+	picture = GFX_JAP_cancel_debt
+	immediate = {
+	}
+	is_triggered_only = yes
+	option = {
+		name = jap.189.a
+		add_political_power = -25
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = JAP_ishiba_event_tt
+		custom_effect_tooltip = tooltip_white_line
+		effect_tooltip = {
+			add_timed_idea = {
+				idea = JAP_digitalization_ishibadef
+				days = 350
+			}
+			set_temp_variable = {
+				var = poverty_development_var_temp
+				value = 0.05
+			}
+			add_poverty_development = yes
+			set_temp_variable = {
+				var = society_development_var_temp
+				value = 0.05
+			}
+			add_society_development = yes
+		}
+		set_country_flag = JAP_digitalization_ishibadef_flag
+	}
+	option = {
+		name = jap.189.b
+		add_stability = -0.1
+		add_political_power = -50
+		add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = -0.075
+		}
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = JAP_ishiba_event_tt
+		custom_effect_tooltip = tooltip_white_line
+		effect_tooltip = {
+			add_timed_idea = {
+				idea = JAP_digitalization_ishibadef2
+				days = 350
+			}
+			set_temp_variable = {
+				var = poverty_development_var_temp
+				value = 0.15
+			}
+			add_poverty_development = yes
+			set_temp_variable = {
+				var = society_development_var_temp
+				value = 0.05
+			}
+			add_society_development = yes
+		}
+		set_country_flag = JAP_digitalization_ishibadef2_flag
+	}
+}
+#Old Japan New Course
+country_event = {
+	id = jap.190
+	title = jap.190.t
+	desc = jap.190.d
+	picture = GFX_JAP_nighttokyo
+	immediate = {
+	}
+	is_triggered_only = yes
+	option = {
+		name = jap.190.a
+	}
+}
+
+#GAW Rationing
+country_event = {
+	id = jap.191
+	title = jap.191.t
+	desc = jap.191.d
+	picture = GFX_JAP_energy
+	immediate = {
+	}
+	is_triggered_only = yes
+	option = {
+		name = jap.191.a
+		unlock_decision_tooltip = JAP_energy_rationing
+		add_fuel = 6000
+	}
+}
+
+###APRIL FOOLS STUFF
+
+#PRESIDENT OF JAPAN COUP
+country_event = {
+	id = jap.555
+	title = jap.555.t
+	desc = jap.555.d
+	picture = GFX_JAP_honda
+	immediate = {
+		hidden_effect = {
+			set_country_flag = JAP_coup_president
+			add_ideas = JAP_kazuhiro_miller
+			add_ideas = JAP_PRESIDENT_OF_JAPAN 
+			add_ideas = JAP_hatsune_miku 
+			add_ideas = JAP_fujimoto_san  
+			add_ideas = JAP_phoenix_wright   
+			add_ideas = JAP_dante 
+			set_global_flag = JAP_japan_lost
+			remove_ideas = JAP_helicopter_bonus
+			remove_ideas = JAP_helicopter_destroyers
+			remove_ideas = JAP_kawasaki_bonus
+			remove_ideas = PDO_taiwan_intervention_idea
+			remove_ideas = PDO_taiwan_intervention_2_idea
+			remove_ideas = JAP_digitalization_fumio
+			remove_ideas = JAP_digitalization_taro
+			remove_ideas = JAP_fragmented_goverment_idea
+			remove_ideas = JAP_society_balance
+			set_province_name = {
+				id = 10444
+				name = STATE_1334_nartan
+			}
+			1334 = {
+				set_state_name = "STATE_1334_nartan"
+			}
+		}
+	}
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = jap.555.a
+		set_cosmetic_tag = JAP_empire_fools
+		custom_effect_tooltip = JAP_mitsubishi
+		hidden_effect = { 
+			add_popularity = {
+				ideology = authoritarian_democrat
+				popularity = 0.45
+			}
+			set_party_name = {
+				ideology = authoritarian_democrat
+				long_name = JAP_jpj_long
+				name = JAP_jpj
+			}
+			set_politics = {
+				ruling_party = authoritarian_democrat
+				elections_allowed = no 
+			}
+			country_event = { id = jap.556 hours = 12 }
+			remove_ideas = JAP_political_monopoly_idea
+			remove_ideas = JAP_political_monopoly_1_idea
+			remove_ideas = JAP_political_monopoly_2_idea
+			set_temp_variable = {
+				coalition_partner_var_temp = token:conservative
+			}
+			remove_from_coalition = yes
+			set_temp_variable = {
+				coalition_partner_var_temp = token:social_liberal
+			}
+			remove_from_coalition = yes
+			set_temp_variable = {
+				coalition_partner_var_temp = token:market_liberal
+			}
+			remove_from_coalition = yes
+			set_temp_variable = {
+				coalition_partner_var_temp = token:social_democrat
+			}
+			remove_from_coalition = yes
+			set_temp_variable = {
+				coalition_partner_var_temp = token:libertarian_socialist
+			}
+			remove_from_coalition = yes
+		}
+	}
+}
+#KARATE EVENT
+country_event = {
+	id = jap.557
+	title = jap.557.t
+	desc = jap.557.d
+	picture = GFX_JAP_death_karate
+	immediate = {
+	}
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = jap.557.a
+		add_political_power = 100
+	}
+}
+
+#honda tunnels
+country_event = {
+	id = jap.559
+	title = jap.559.t
+	desc = jap.559.d
+	picture = GFX_JAP_honda_uhod
+	immediate = {
+	}
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = jap.559.a
+		add_stability = 0.2
+	}
+}
+#WE ARE UNDER ATTACK MR PRESIDENT
+country_event = {
+	id = jap.560
+	title = jap.560.t
+	desc = jap.560.d
+	picture = GFX_JAP_WE_ARE_UNDER_ATTACK
+	immediate = {
+	}
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = jap.560.a
+	}
+}
+#YOSHIRO ADDRESS TO TAINESE
+country_event = {
+	id = jap.561
+	title = jap.561.t
+	desc = jap.561.d
+	picture = GFX_JAP_yoshiro
+	immediate = {
+	}
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = jap.561.a
+		load_oob = "JAP_yoshiro"
+	}
+}
+#TOKYO 3
+country_event = {
+	id = jap.562
+	title = jap.562.t
+	desc = jap.562.d
+	picture = GFX_JAP_tokyo3
+	immediate = {
+	}
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = jap.562.a
+	}
+}
+#KAMENSHIK REBIRTH
+country_event = {
+	id = jap.563
+	title = jap.563.t
+	desc = jap.563.d
+	picture = GFX_JAP_kameshik
+	immediate = {
+	}
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = jap.563.a
+	}
+}
+#Toyota Death Event
+country_event = {
+	id = jap.564
+	title = jap.564.t
+	desc = jap.564.d
+	picture = GFX_JAP_toyota_death
+	immediate = {
+	}
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = jap.564.a
+		1332 = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = office_park
+				level = 1
+				instant_build = yes
+			}
+		}
+	}
+}
+#Australia Death
+country_event = {
+	id = jap.565
+	title = jap.565.t
+	desc = jap.565.d
+	picture = GFX_JAP_australia_death
+	immediate = {
+	}
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = jap.565.a
+		annex_country = {
+			target = AST
+			transfer_troops = yes
+		}
+	}
+}
+#PRESIDENT OF JAPAN tunnel
+country_event = {
+	id = jap.566
+	title = jap.566.t
+	desc = jap.566.d
+	picture = GFX_JAP_honda_uhod
+	immediate = {
+	}
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = jap.566.a
+		load_oob = "JAP_president"
+	}
+}
+#PRESIDENT OF JAPAN tunnel
+country_event = {
+	id = jap.567
+	title = jap.567.t
+	desc = jap.567.d
+	picture = GFX_JAP_honda_uhod
+	immediate = {
+	}
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = jap.566.a
+	}
+}
+
+###gaw huynya
+#Fighting on the Korean Border!
+country_event = {
+	id = jap.1000
+	title = jap.1000.t
+	desc = jap.1000.d
+	picture = GFX_PRK_soliders
+	immediate = {
+		hidden_effect = {
+			activate_mission = JAP_korean_war_joining
+			unlock_decision_tooltip = JAP_authorize_north_korean_intervention
+			unlock_decision_tooltip = PRC_arm_the_rok_armed_forces
+			CHI = {
+				country_event = {
+					id = prc.1007
+					days = 25
+				}
+			}
+		}
+	}
+	is_triggered_only = yes
+	option = {
+		name = jap.1000.a
+		effect_tooltip = {
+			activate_mission = JAP_korean_war_joining
+			unlock_decision_tooltip = JAP_authorize_north_korean_intervention
+			unlock_decision_tooltip = PRC_arm_the_rok_armed_forces
+		}
+	}
+}
+
+#jap intervention in the korean war
+news_event = {
+	id = jap.1001
+	title = jap.1001.t
+	desc = jap.1001.d
+	picture = GFX_JAP_soliders_news
+	immediate = {
+	}
+	is_triggered_only = yes
+	option = {
+		name = jap.1001.a
+		
+	}
+}
+
+#the great asian war
+country_event = {
+	id = jap.1002
+	title = jap.1002.t
+	desc = jap.1002.d
+	picture = GFX_PRC_gaw_start
+	immediate = {
+		hidden_effect = {
+			set_country_flag = pan_asian_war_ongoing
+			mark_focus_tree_layout_dirty = yes
+			country_event = {
+				id = jap.1004
+				days = 1
+			}
+		}
+	}
+	is_triggered_only = yes
+	option = {
+		name = jap.1002.a
+		focus_unlock = yes
+		complete_national_focus = JAP_second_war_in_greater_east_asia
+	}
+}
+
+#Japan Ending
+country_event = {
+	id = jap.1003
+	title = {
+		text = jap.1003.t1
+		trigger = {
+			has_global_flag = JAP_japan_lost
+		}
+	}
+	title = {
+		text = jap.1003.t2
+		trigger = {
+			has_global_flag = JAP_japan_victory
+		}
+	}
+	desc = {
+		text = jap.1003.d1
+		trigger = {
+			has_global_flag = JAP_japan_lost
+		}
+	}
+	desc = {
+		text = jap.1003.d2
+		trigger = {
+			has_global_flag = JAP_japan_victory
+		}
+	}
+	picture = GFX_ganbaro_nippon
+	is_triggered_only = yes
+	trigger = {
+	}
+	immediate = {
+		if = {
+			limit = {
+				has_global_flag = JAP_japan_lost
+			}
+			hidden_effect = {
+				scoped_play_song = dregs
+			}
+		}
+		else = {
+			hidden_effect = {
+				scoped_play_song = korogaru
+			}
+		}
+	}
+	option = {
+		name = jap.1003.a
+		trigger = {
+			has_global_flag = JAP_japan_lost
+		}
+		custom_effect_tooltip = SOV_tfr_japan_ending_tt
+		hidden_effect = {
+			remove_ideas = JAP_economic_stagnation_idea
+			remove_ideas = JAP_economic_stagnation_2_idea
+			remove_ideas = JAP_economic_stagnation_3_idea
+			remove_ideas = JAP_economic_stagnation_4_idea
+			remove_ideas = JAP_economic_stagnation_5_idea
+		}
+	}
+	option = {
+		name = jap.1003.b
+		trigger = {
+			has_global_flag = JAP_japan_victory
+		}
+		custom_effect_tooltip = SOV_tfr_japan_ending_tt
+		hidden_effect = {
+			remove_ideas = JAP_economic_stagnation_idea
+			remove_ideas = JAP_economic_stagnation_2_idea
+			remove_ideas = JAP_economic_stagnation_3_idea
+			remove_ideas = JAP_economic_stagnation_4_idea
+			remove_ideas = JAP_economic_stagnation_5_idea
+		}
+	}
+}
+
+#Fighting on the Korean Border!
+country_event = {
+	id = jap.1004
+	title = jap.1004.t
+	desc = jap.1004.d
+	picture = GFX_JAP_jmslf
+	immediate = {
+		hidden_effect = {
+			if = {
+				limit = {
+					NOT = {
+						has_country_flag = JAP_has_j35b
+					}
+				}
+				create_equipment_variant = {
+					name = "F-35B"
+					type = cv_small_plane_naval_bomber_airframe_2
+					modules = {
+						fixed_main_weapon_slot = torpedo_mounting
+						fixed_auxiliary_weapon_slot_1 = heavy_mg_4x
+						fixed_auxiliary_weapon_slot_2 = empty
+						engine_type_slot = engine_2_1x
+						special_type_slot_1 = hmg_defense_turret
+						special_type_slot_2 = empty
+					}
+					icon = "GFX_USA_fighter5_medium"
+				}
+			}
+		}
+	}
+	is_triggered_only = yes
+	option = {
+		name = jap.1004.a
+	}
+}

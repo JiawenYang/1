@@ -1,0 +1,515 @@
+debug_decisions = {
+	PRC_chinas_victory_in_the_gaw_debug_decision = {
+		icon = generic_industry
+		fire_only_once = no
+		cost = 0
+		available = {
+			is_ai = no
+		}
+		allowed = {
+			OR = {
+				tag = CHI
+				tag = JAP
+			}
+		}
+		complete_effect = {
+			PRC_chinas_victory_in_the_gaw = yes
+		}
+		ai_will_do = {
+			base = 0
+		}
+	}
+	PRC_japans_victory_in_the_gaw_debug_decision = {
+		icon = generic_industry
+		fire_only_once = no
+		cost = 0
+		available = {
+			is_ai = no
+		}
+		allowed = {
+			OR = {
+				tag = CHI
+				tag = JAP
+			}
+		}
+		complete_effect = {
+			PRC_japans_victory_in_the_gaw = yes
+		}
+		ai_will_do = {
+			base = 0
+		}
+	}
+	PRC_load_jiang_zemin_debug_decision = {
+		icon = generic_industry
+		fire_only_once = no
+		cost = 0
+		available = {
+			is_ai = no
+		}
+		allowed = {
+			tag = CHI
+		}
+		complete_effect = {
+			complete_national_focus = CHI_Chairman_Jiang_Reign
+			create_country_leader = {
+				name = "Jiang Zemin"
+				desc = JIANG_ZEMIN_LEADER_DESC
+				picture = "Jiang_Zemin.dds"
+				expire = "2030.1.1"
+				ideology = communist_state
+				traits = {
+					emerging_communist_state
+					emerging_Socialism_with_Chinese_characteristics
+					CHI_engineer
+					polished
+					narcissist
+					CHI_likeable
+					sly
+					CHI_sense_of_humor
+					The_Pioneer_of_the_Century
+					CHI_elder
+				}
+			}
+			mark_focus_tree_layout_dirty = yes
+		}
+		ai_will_do = {
+			base = 0
+		}
+	}
+	PRC_load_hu_jintao_debug_decision = {
+		icon = generic_industry
+		fire_only_once = no
+		cost = 0
+		available = {
+			is_ai = no
+		}
+		allowed = {
+			tag = CHI
+		}
+		complete_effect = {
+			complete_national_focus = CHI_Hu_Jintao_Agenda
+			create_country_leader = {
+				name = "Hu Jintao"
+				desc = HU_JINTAO_LEADER_DESC
+				picture = "Hu_jintao.dds"
+				expire = "2070.1.1"
+				ideology = communist_state
+				traits = {
+					emerging_communist_state
+					emerging_Socialism_with_Chinese_characteristics
+					CHI_engineer
+					scientist_engineer
+					CHI_likeable
+					humble
+					rational
+					cautious
+					CHI_Elegance
+					CHI_exemplary_conduct_and_nobility_of_character
+					CHI_Silent_doer
+					Dance_of_Shackles
+					tiger_of_lhasa
+				}
+			}
+			mark_focus_tree_layout_dirty = yes
+		}
+		ai_will_do = {
+			base = 0
+		}
+	}
+	PRC_load_xi_jinping_debug_decision = {
+		icon = generic_industry
+		fire_only_once = no
+		cost = 0
+		available = {
+			is_ai = no
+		}
+		allowed = {
+			tag = CHI
+		}
+		complete_effect = {
+			complete_national_focus = CHI_Xi_Jinping_Agenda
+			create_country_leader = {
+				name = "Xi Jinping"
+				desc = XI_JINPING_LEADER_DESC
+				picture = "Xi_Jinping.dds"
+				expire = "2030.1.1"
+				ideology = communist_state
+				traits = {
+					emerging_communist_state
+					emerging_Socialism_with_Chinese_characteristics
+					CHI_paternalism_controlled_democracy
+					career_burocrat
+					iron_hand
+					Reformer
+					CHI_jurisprudence
+					rational
+					polished
+					CHI_dignified
+					CHI_lofty_aspirations
+					CHI_Traditional_culture_enthusiasts
+				}
+			}
+			mark_focus_tree_layout_dirty = yes
+		}
+		ai_will_do = {
+			base = 0
+		}
+	}
+	PRC_load_full_taiwan_tree_debug_decision = {
+		icon = generic_industry
+		fire_only_once = no
+		cost = 0
+		available = {
+			is_ai = no
+		}
+		allowed = {
+			tag = CHI
+		}
+		complete_effect = {
+			complete_national_focus = CHI_Road_to_War
+			set_country_flag = PRC_analyze_first_days_unlocked_flag
+			set_global_flag = PRC_ongoing_taiwan_war
+			mark_focus_tree_layout_dirty = yes
+		}
+		ai_will_do = {
+			base = 0
+		}
+	}
+	PRC_go_out_with_honor_NOW = {
+		allowed = {
+			tag = CHI
+		}
+		available = {
+		}
+		visible = {
+			is_debug = yes
+			is_ai = no
+		}
+		fire_only_once = yes
+		complete_effect = {
+			create_faction_from_template = faction_template_eadi
+			hidden_effect = {
+				remove_faction_goal = faction_goal_the_atomic_race
+				add_faction_goal = faction_goal_placeholder_long_term
+				remove_faction_goal = faction_goal_a_military_base
+				add_faction_goal = faction_goal_placeholder_medium_term
+				add_faction_goal = faction_goal_placeholder_short_term
+			}
+			every_country = {
+				remove_ideas = ASEAN_member
+			}
+			CHI = {
+				set_country_flag = eadi_member
+				add_ideas = CHI_sco_member
+				add_to_faction = CBD
+				add_to_faction = IND
+				add_to_faction = LAO
+				add_to_faction = WAA
+				add_to_faction = VIE
+				add_to_faction = NEP
+				add_to_faction = SRI
+				add_to_faction = NKO
+				add_to_faction = PAK
+				add_to_faction = BAN
+				add_to_faction = BRM
+			}
+			PAK = {
+				set_country_flag = eadi_member
+				add_ideas = CHI_sco_member
+			}
+			CBD = {
+				set_country_flag = eadi_member
+				add_ideas = CHI_sco_member
+			}
+			IND = {
+				set_country_flag = eadi_member
+				add_ideas = CHI_sco_member
+			}
+			LAO = {
+				set_country_flag = eadi_member
+				add_ideas = CHI_sco_member
+			}
+			WAA = {
+				set_country_flag = eadi_member
+				add_ideas = CHI_sco_member
+			}
+			VIE = {
+				set_country_flag = eadi_member
+				add_ideas = CHI_sco_member
+			}
+			NEP = {
+				set_country_flag = eadi_member
+				add_ideas = CHI_sco_member
+			}
+			SRI = {
+				set_country_flag = eadi_member
+				add_ideas = CHI_sco_member
+			}
+			NKO = {
+				set_country_flag = eadi_member
+				add_ideas = CHI_sco_member
+			}
+			NKO = {
+				set_country_flag = eadi_member
+				add_ideas = CHI_sco_member
+			}
+			BAN = {
+				set_country_flag = eadi_member
+				add_ideas = CHI_sco_member
+			}
+			BRM = {
+				set_country_flag = eadi_member
+				add_ideas = CHI_sco_member
+				annex_country = {
+					target = KAC
+					transfer_troops = no
+				}
+				annex_country = {
+					target = KAR
+					transfer_troops = no
+				}
+				annex_country = {
+					target = SHN
+					transfer_troops = no
+				}
+				annex_country = {
+					target = NHN
+					transfer_troops = no
+				}
+				annex_country = {
+					target = WAA
+					transfer_troops = no
+				}
+				annex_country = {
+					target = ARK
+					transfer_troops = no
+				}
+				annex_country = {
+					target = CHS
+					transfer_troops = no
+				}
+				every_state = {
+					limit = {
+						is_core_of = BRM
+					}
+					remove_dynamic_modifier = { modifier = BRM_peoples_war }
+					remove_dynamic_modifier = { modifier = tribes_state }
+				}
+				remove_ideas = {
+					Rohingya_Crisis
+					Democracy_Movement
+					Ethnic_Insurgencies
+					A_Political_Military
+					Nationwide_Ceasefire_Agreement
+					BRM_unstable_junta
+					BRM_civil_war_idea
+					tribes_state_idea
+					Western_Sanctions
+					child_soldiers
+				}
+				add_ideas = {
+					BRM_first_xiist_revolution
+				}
+				set_politics = {
+					ruling_party = communism
+					last_election = "1997.1.1"
+					election_frequency = 48
+					elections_allowed = no
+				}
+				set_popularities = {
+					democratic = 0.0
+					communism = 60.3
+					fascism = 0.0
+					neutrality = 37.3
+					nationalist = 2.4
+				}
+
+				start_politics_input = yes
+
+				set_variable = { party_pop_array^0 = 0 } #Western_Autocracy
+				set_variable = { party_pop_array^1 = 0 } #conservatism
+				set_variable = { party_pop_array^2 = 0 } #liberalism
+				set_variable = { party_pop_array^3 = 0 } #socialism
+				set_variable = { party_pop_array^4 = 0 } #communist_state
+				set_variable = { party_pop_array^5 = 0 } #anarchist_communism
+				set_variable = { party_pop_array^6 = 0 } #Conservative
+				set_variable = { party_pop_array^7 = 0.603 } #Autocracy
+				set_variable = { party_pop_array^8 = 0 } #Mod_Vilayat_e_Faqih
+				set_variable = { party_pop_array^9 = 0 } #Vilayat_e_Faqih
+				set_variable = { party_pop_array^10 = 0 } #Kingdom
+				set_variable = { party_pop_array^11 = 0 } #Caliphate
+				set_variable = { party_pop_array^12 = 0 } #Neutral_Muslim_Brotherhood
+				set_variable = { party_pop_array^13 = 0 } #Neutral_Autocracy
+				set_variable = { party_pop_array^14 = 0.013 } #Neutral_conservatism
+				set_variable = { party_pop_array^15 = 0 } #oligarchism
+				set_variable = { party_pop_array^16 = 0.34 } #Neutral_Libertarian
+				set_variable = { party_pop_array^17 = 0 } #Neutral_green
+				set_variable = { party_pop_array^18 = 0 } #neutral_Social
+				set_variable = { party_pop_array^19 = 0.02 } #Neutral_Communism
+				set_variable = { party_pop_array^20 = 0.024 } #Nat_Populism
+				set_variable = { party_pop_array^21 = 0 } #Nat_Fascism
+				set_variable = { party_pop_array^22 = 0 } #Nat_Autocracy
+				set_variable = { party_pop_array^23 = 0 } #Monarchist
+				add_to_array = { ruling_party = 7 }
+				add_to_array = { gov_coalition_array = 14 } #Neutral_conservatism
+				add_to_array = { gov_coalition_array = 16 } #Neutral_Libertarian
+				add_to_array = { gov_coalition_array = 19 } #Neutral_Communism
+				startup_politics = yes
+				create_country_leader = {
+					name = "Peng Deren"
+					picture = "Peng_Deren.dds"
+					ideology = Autocracy
+					traits = {
+						emerging_Autocracy
+						legendary_guerrilla_leader
+						pro_china
+					}
+				}
+				swap_ideas = {
+					remove_idea = the_priesthood
+					add_idea = farmers
+				}
+				swap_ideas = {
+					remove_idea = fossil_fuel_industry
+					add_idea = landowners
+				}
+				change_state_system_peoples_democracy = yes
+			}
+		}
+	}
+	JAP_go_out_with_honor_NOW = {
+		available = {
+		}
+		visible = {
+			is_debug = yes
+			is_ai = no
+		}
+		allowed = {
+			tag = JAP
+		}
+		fire_only_once = yes
+		complete_effect = {
+			create_faction_from_template = faction_template_pdto
+			remove_faction_goal = faction_goal_the_atomic_race
+			add_faction_goal = faction_goal_placeholder_long_term
+			remove_faction_goal = faction_goal_a_military_base
+			add_faction_goal = faction_goal_placeholder_medium_term
+			add_faction_goal = faction_goal_placeholder_short_term
+			set_faction_leader = yes
+			set_country_flag = pdto_member
+			every_country = {
+				remove_ideas = ASEAN_member
+			}
+			JAP = {
+				complete_national_focus = JAP_form_pdto2
+				set_country_flag = JAP_PEC_member_flag
+				add_dynamic_modifier = {
+					modifier = JAP_PEC_dynamic
+				}
+				set_variable = { JAP_PEC_number_of_members = 2 }
+				set_variable = { JAP_PEC_consumer_goods_factor = -0.004 }
+				set_variable = { JAP_PEC_lend_lease_tension = -0.02 }
+				set_variable = { JAP_PEC_poverty_development_monthly = 0.002 }
+				set_variable = { JAP_PEC_industrial_development_monthly = 0.002 }
+				set_variable = { JAP_PEC_global_building_slots_factor = 0.01 }
+				set_variable = { JAP_PEC_production_speed_buildings_factor = 0.01 }
+				AST = {
+					set_country_flag = JAP_PEC_member_flag
+				}
+				add_to_array = {
+					JAP.JAP_PEC_members = AST
+				}
+				set_country_flag = JAP_PEC_invite_asia_flag
+				add_to_faction = KOR
+				add_to_faction = BHU
+				add_to_faction = MAY
+				add_to_faction = PHI
+				add_to_faction = SIN
+				add_to_faction = SIA
+				add_to_faction = NZL
+				add_to_faction = AST
+				add_to_faction = RAJ
+				add_to_faction = TAI
+			}
+			AST = {
+				set_country_flag = pdto_member
+				annex_country = {
+					target = PAP
+					transfer_troops = yes
+				}
+			}
+			TAI = {
+				set_country_flag = pdto_member
+				JAP_join_PEC = yes
+			}
+			KOR = {
+				set_country_flag = pdto_member
+				JAP_join_PEC = yes
+			}
+			BHU = {
+				set_country_flag = pdto_member
+				JAP_join_PEC = yes
+			}
+			MAY = {
+				set_country_flag = pdto_member
+				JAP_join_PEC = yes
+			}
+			PHI = {
+				set_country_flag = pdto_member
+				JAP_join_PEC = yes
+			}
+			SIN = {
+				set_country_flag = pdto_member
+				JAP_join_PEC = yes
+			}
+			SIA = {
+				set_country_flag = pdto_member
+				JAP_join_PEC = yes
+			}
+			NZL = {
+				set_country_flag = pdto_member
+				JAP_join_PEC = yes
+			}
+			RAJ = {
+				set_country_flag = pdto_member
+				JAP_join_PEC = yes
+			}
+		}
+	}
+	JAP_load_ldp_defeat_debug = {
+		icon = generic_industry
+		fire_only_once = no
+		cost = 0
+		allowed = {
+			tag = JAP
+		}
+		visible = {
+		}
+		ai_will_do = {
+			base = 0
+		}
+		complete_effect = {
+			hidden_effect = {
+				JAP_increase_keiretsu_control = yes
+				JAP_increase_economic_stagnation = yes
+				clr_country_flag = JAP_ongoing_taiwan_war
+				mark_focus_tree_layout_dirty = yes
+				remove_ideas = JAP_society_balance
+				country_event = {
+					id = jap.111
+					days = 1 
+					random_days = 2
+				}
+				country_event = {
+					id = jap.162
+					days = 12
+					random_days = 15
+				}
+			}
+			complete_national_focus = JAP_defeat_enduring
+			add_ideas = JAP_shame_defeat
+			add_ideas = intervention_regional_interventionism
+			custom_effect_tooltip = JAP_reset_debuffs
+		}
+	}
+}

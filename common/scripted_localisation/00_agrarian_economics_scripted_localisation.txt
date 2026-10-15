@@ -1,0 +1,24 @@
+defined_text = {
+	name = PRC_USA_relations_show_desc
+
+	text = {
+		trigger = { 
+			OR = {
+				original_tag = USA
+				original_tag = CHI
+			}
+		}
+		localization_key = "CHI_category_PRC_USA_relations_show_change"
+	}
+	text = {
+		trigger = { 
+			NOT = {
+				OR = {
+					original_tag = USA
+					original_tag = CHI
+				}
+			}
+		}
+		localization_key = "CHI_category_PRC_USA_relations_show_change_other"
+	}
+}

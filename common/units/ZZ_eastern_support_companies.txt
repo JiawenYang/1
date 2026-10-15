@@ -1,0 +1,354 @@
+# ============================================================================
+# 东方阵营支援连/排（第十轮）
+# ============================================================================
+# 说明：
+# 1. 支援槽位只放连/排级单位（营级支援群已废止）；本文件为东方阵营（俄式编制）
+#    的连/排版本，与工坊原版 MD_regimental_support.txt 的西方连/排成对，
+#    schema 完全对齐（group = support、divisional = no、combat_width = 0）。
+# 2. active = no + 无 folder 科技门控，仅由 ZZ6 - startup.txt 按国发放；
+# 3. 授予国：SOV CHI NKO UKR BLR KAZ UZB ARM AZE GEO SYR IRQ PER VIE BRM CUB；
+# 4. 编制与装备按东方（俄式）实编设定，与西方连/排形成东西两套。
+# ============================================================================
+
+sub_units = {
+
+	E_Arty_Comp = { # 东方炮兵连（拖曳榴弹炮6门）
+		sprite = MD_infantry_2
+		map_icon_category = infantry
+		ai_priority = 0
+		priority = 1
+		active = no
+		affects_speed = yes
+
+		type = {
+			artillery
+			support
+		}
+
+		group = support
+		divisional = no
+		allowed_battalion_groups = { militia infantry airborne_infantry marine_infantry }
+
+		categories = {
+			category_support_battalions
+			category_army
+			category_artillery
+		}
+
+		combat_width = 0
+
+		need = {
+			infantry_weapons_type = 45
+			artillery_equipment = 6
+			cnc_equipment_type = 6
+		}
+
+		manpower = 45
+		training_time = 120
+		max_organisation = 20
+		default_morale = 0.05
+		max_strength = 3
+		weight = 0.1
+
+		# Support nerfs to combat abilities
+		defense = -0.5
+		breakthrough = -0.5
+		soft_attack = -0.4
+		hard_attack = -0.4
+		ap_attack = -0.3
+		suppression = 1
+
+		transport = artillery_equipment
+
+		can_be_parachuted = yes
+	}
+	E_AT_Comp = { # 东方反坦克连（9M133 短号重型反坦克导弹）
+		sprite = MD_infantry_2
+		map_icon_category = infantry
+		ai_priority = 0
+		priority = 1
+		active = no
+		affects_speed = yes
+		divisional = no
+		allowed_battalion_groups = { militia infantry airborne_infantry marine_infantry special_forces }
+
+		type = {
+			infantry
+			support
+		}
+
+		group = support
+
+		categories = {
+			category_support_battalions
+			category_all_infantry
+			category_army
+		}
+		combat_width = 0
+
+		need = {
+			infantry_weapons_type = 90
+			H_AT_Equipment = 18
+			cnc_equipment_type = 9
+			util_vehicle_type = 6
+		}
+
+		essential = {
+			infantry_weapons_type
+		}
+
+		manpower = 90
+		max_organisation = 30
+		default_morale = 0.05
+		max_strength = 5
+		training_time = 120
+		weight = 0.3
+		entrenchment = -0.3
+
+		# Support nerfs to combat abilities
+		defense = -0.2
+		breakthrough = -0.7
+		soft_attack = -0.5
+		hard_attack = 1.5
+		ap_attack = 2
+		suppression = 0.0
+
+		transport = util_vehicle_type
+		can_be_parachuted = yes
+	}
+	E_AA_Comp = { # 东方防空连（弹炮合一近程防空）
+		sprite = MD_infantry_2
+		map_icon_category = infantry
+		ai_priority = 0
+		priority = 1
+		active = no
+		affects_speed = yes
+		divisional = no
+		allowed_battalion_groups = { militia infantry airborne_infantry marine_infantry special_forces }
+
+		type = {
+			infantry
+			support
+		}
+
+		group = support
+
+		categories = {
+			category_support_battalions
+			category_all_infantry
+			category_army
+		}
+		combat_width = 0
+
+		need = {
+			infantry_weapons_type = 90
+			AA_Equipment = 18
+			cnc_equipment_type = 90
+		}
+
+		essential = {
+			infantry_weapons_type
+		}
+
+		manpower = 90
+		max_organisation = 30
+		default_morale = 0.05
+		max_strength = 5
+		training_time = 120
+		weight = 0.3
+		entrenchment = -0.3
+
+		# Support nerfs to combat abilities
+		defense = -0.5
+		breakthrough = -0.5
+		soft_attack = -0.5
+		hard_attack = -0.0
+		ap_attack = -0.5
+		suppression = 0.0
+		air_attack = 3
+
+		transport = cnc_equipment_type
+		can_be_parachuted = yes
+	}
+	E_Recce_Comp = { # 东方侦察连（BRM-3K 履带侦察车）
+		sprite = MD_light_armor
+		map_icon_category = armored
+		ai_priority = 0
+		priority = 1
+		active = no
+		affects_speed = yes
+		divisional = no
+
+		type = {
+			armor
+			mechanized
+			support
+		}
+
+		group = support
+		allowed_battalion_groups = { mobile armor combat_support infantry airborne_infantry marine_infantry }
+
+		categories = {
+			category_all_recon
+			category_support_battalions
+			category_army
+		}
+
+		combat_width = 0
+
+		essential = {
+			medium_tank_amphibious_chassis
+		}
+
+		need = {
+			infantry_weapons_type = 100
+			medium_tank_amphibious_chassis = 6
+			cnc_equipment_type = 12
+		}
+
+		manpower = 100
+		max_organisation = 24
+		default_morale = 0.1
+		max_strength = 5
+		training_time = 150
+		weight = 0.5
+		recon = 1
+		initiative = 0.05
+
+		# Support nerfs to combat abilities
+		defense = -0.5
+		breakthrough = -0.5
+		soft_attack = -0.4
+		hard_attack = -0.4
+		armor_value = -0.3
+		ap_attack = -0.3
+		suppression = 1
+
+		forest = { attack = 0.02 defence = 0.01 }
+		mountain = { defence = 0.01 }
+		jungle = { attack = 0.02 defence = 0.01 }
+		hills = { defence = 0.01 }
+		urban = { attack = 0.02 defence = 0.01 }
+		supercity = { attack = 0.02 defence = 0.01 }
+
+		transport = medium_tank_amphibious_chassis
+
+		same_support_type = recon
+		can_be_parachuted = yes
+	}
+	E_Engi_Comp = { # 东方战斗工兵连
+		sprite = MD_infantry_2
+		map_icon_category = infantry
+		ai_priority = 0
+		priority = 1
+		active = no
+		affects_speed = yes
+		divisional = no
+		allowed_battalion_groups = { militia infantry mobile armor combat_support airborne_infantry marine_infantry special_forces }
+
+		type = {
+			infantry
+			support
+		}
+
+		group = support
+
+		categories = {
+			category_support_battalions
+			category_all_infantry
+			category_army
+		}
+		combat_width = 0
+
+		need = {
+			infantry_weapons_type = 100
+			cnc_equipment_type = 10
+			util_vehicle_type = 10
+		}
+
+		essential = {
+			infantry_weapons_type
+		}
+
+		manpower = 110
+		max_organisation = 30
+		default_morale = 0.10
+		max_strength = 5
+		training_time = 150
+		weight = 0.5
+
+		# Support nerfs to combat abilities
+		defense = 0
+		breakthrough = 0
+		soft_attack = -0.4
+		hard_attack = -0.4
+		ap_attack = -0.3
+		suppression = 0.0
+
+		forest = { attack = 0.02 defence = 0.02 }
+		jungle = { attack = 0.02 defence = 0.02 }
+		mountain = { attack = 0.02 defence = 0.02 }
+		marsh = { attack = 0.02 defence = 0.02 }
+		urban = { attack = 0.02 defence = 0.02 }
+		supercity = { attack = 0.02 defence = 0.02 }
+
+		transport = util_vehicle_type
+		can_be_parachuted = yes
+	}
+	E_Helo_Comp = { # 东方陆航连（Mi-24/Ka-52 武装直升机4架）
+		sprite = MD_light_armor
+		map_icon_category = armored
+		special_forces = no
+		ai_priority = 5
+		priority = 5
+		active = no
+		affects_speed = yes
+
+		type = {
+			armor
+			support
+		}
+
+		group = support
+		divisional = no
+		allowed_battalion_groups = { infantry mobile airmobile armor marine_infantry }
+
+		categories = {
+			category_army
+			category_non_militia
+			category_all_airborne
+			category_atk_helo
+			category_air_aslt
+			category_all_recon
+		}
+
+		combat_width = 0
+
+		#Size Definitions
+		max_strength = 3
+		max_organisation = 15
+		default_morale = 0.12
+		manpower = 20
+
+		#Misc Abilities
+		training_time = 200
+		weight = 0.5
+
+		defense = -0.5
+		breakthrough = -0.5
+		soft_attack = -0.4
+		hard_attack = -0.4
+		armor_value = -0.3
+		ap_attack = -0.3
+		suppression = 1
+
+		# this is what moves us and sets speed
+		transport = heavy_tank_chassis
+
+		need = {
+			heavy_tank_chassis = 4
+			cnc_equipment_type = 4
+		}
+	}
+
+}

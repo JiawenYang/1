@@ -1,0 +1,92 @@
+	ideas = {
+		country = {
+			PER_limited_nuclear_program = {
+				picture = "PER_cost_of_the_nuclear_program"
+
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				
+				modifier = {
+				consumer_goods_factor = 0.1
+				state_production_speed_industrial_complex_factor = -0.075
+				state_production_speed_arms_factory_factor = 0.025
+				}
+				
+				research_bonus = {
+					nuclear = 0.08
+				}
+			}
+			
+			PER_anti_government_sentiment = {
+				picture = "PER_anti_government_sentiment"
+
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				
+				modifier = {
+				stability_factor = -0.1
+				democratic_drift = 0.02
+				consumer_goods_factor = 0.05
+				political_power_gain = -0.25
+				}
+			}
+			
+			PER_islamic_republic_stronghold_idea = {
+				picture = PER_islamic_republic_stronghold_idea
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				
+				modifier = {
+					political_power_factor = 0.07
+					war_support_factor = 0.15
+				}
+				targeted_modifier = {
+					tag = PER
+					extra_trade_to_target_factor = 0.5
+					mic_to_target_factor = 0.05
+					cic_to_target_factor = 0.1
+				}
+			}
+
+			PER_iraq_war = {
+				picture = GFX_idea_IRQ_iraqi_civil_war
+
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+
+				modifier = {
+					land_reinforce_rate = 0.05
+					army_morale_factor = 0.15
+					surrender_limit = -0.999
+				}
+			}
+		}
+	}

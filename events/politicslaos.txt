@@ -1,0 +1,30 @@
+add_namespace = laos
+
+country_event = { #通伦·西苏里
+	id = laos.3
+	title = laos.3.t
+	desc = laos.3.d
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = LAO
+		date > 2021.01.15
+	}	
+
+	option = {
+		name = laos.3.a
+		create_country_leader = {
+			name = "Thongloun Sisoulith"
+			picture = "Thongloun_Sisoulith.dds"
+			expire = "2030.1.1"
+			ideology = communist_state
+			traits = {
+				emerging_communist_state
+				pro_china
+				writer
+			}
+		}
+		log = "[GetDateText]: [This.GetName]: laos.3.a executed"
+	}
+}

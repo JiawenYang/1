@@ -1,0 +1,242 @@
+ql_prc_land_integrated_mobility = {
+	folder = land
+	name = QL_GRAND_QL_PRC_LAND_INTEGRATED_MOBILITY
+	description = QL_GRAND_QL_PRC_LAND_INTEGRATED_MOBILITY_DESC
+	icon = GFX_ql_grand_land_1
+	available = {
+		OR = {
+			original_tag = CHI
+		}
+	}
+	visible = {
+		OR = {
+			original_tag = CHI
+		}
+	}
+
+	xp_cost = 100
+	xp_type = army
+	ai_will_do = { base = 1 }
+	tracks = { ql_prc_land_joint_grouping ql_prc_land_firepower ql_prc_land_sustainment ql_prc_land_ground_systems training leadership technology }
+
+	# 顶栏：每日CP点数增长 +0.5，CP上限 +100，陆军师速度 +10%
+	command_power_gain = 0.5
+	max_command_power = 100
+	army_speed_factor = 0.1
+	enable_tactic = tactic_recon_ambush
+	enable_tactic = tactic_tactical_withdrawal
+	# 进阶战术：纵深迟滞与要点防御（迟滞消耗、城市环形/交叉火网防御、钳形侦察、合成突破）
+	enable_tactic = tactic_delay
+	enable_tactic = tactic_city_all_round_defense
+	enable_tactic = tactic_city_crossfire_defense
+	enable_tactic = tactic_pincer_recon
+	enable_tactic = tactic_breakthrough
+
+	milestones = {
+		# 1. 联合编组
+		{
+			land_reinforce_rate = 0.05
+			initiative_factor = 0.2
+			org_loss_at_low_org_factor = -0.3
+		}
+		# 2. 火力配系
+		{
+			category_artillery = {
+				soft_attack = 0.1
+				max_organisation = 10
+				max_strength = 0.1
+			}
+		}
+		# 3. 综合保障
+		{
+			supply_consumption_factor = -0.05
+			no_supply_grace = 120
+		}
+		# 4. 地面体系
+		{
+			max_planning = 0.2
+			army_speed_factor = 0.2
+		}
+		# 5. 训练体系
+		{
+			training_time_army_factor = -0.05
+			max_training = 0.25
+		}
+		# 6. 领导层建设
+		{
+			army_org_regain = 0.05
+			army_morale_factor = 0.02
+		}
+		# 7. 军事技术
+		{
+			experience_gain_army_unit_factor = 0.1
+			land_doctrine_cost_factor = -0.05
+		}
+	}
+}
+
+ql_prc_land_multi_domain_expedition = {
+	folder = land
+	name = QL_GRAND_QL_PRC_LAND_MULTI_DOMAIN_EXPEDITION
+	description = QL_GRAND_QL_PRC_LAND_MULTI_DOMAIN_EXPEDITION_DESC
+	icon = GFX_ql_grand_land_2
+	available = {
+		OR = {
+			original_tag = ENG
+			original_tag = GER
+			original_tag = ITA
+			original_tag = FRA
+			original_tag = POL
+			original_tag = JAP
+			original_tag = RAJ
+			original_tag = AST
+			original_tag = KOR
+			original_tag = USA
+		}
+	}
+	visible = {
+		OR = {
+			original_tag = ENG
+			original_tag = GER
+			original_tag = ITA
+			original_tag = FRA
+			original_tag = POL
+			original_tag = JAP
+			original_tag = RAJ
+			original_tag = AST
+			original_tag = KOR
+			original_tag = USA
+		}
+	}
+
+	xp_cost = 100
+	xp_type = army
+	ai_will_do = { base = 1 }
+	tracks = { ql_prc_land_joint_grouping ql_prc_land_firepower ql_prc_land_sustainment ql_prc_land_ground_systems training leadership technology }
+	max_planning = 0.1
+	enable_tactic = tactic_deep_battle_breakthrough
+	enable_tactic = tactic_flexible_lines
+	# 进阶战术：城市战与反叛乱（反恐战争经验：环形/交叉火网防御、渗透/节点进攻；搜索扫荡、火力基地、据点突袭；机动侦察与常规突破）
+	enable_tactic = tactic_city_all_round_defense
+	enable_tactic = tactic_city_crossfire_defense
+	enable_tactic = tactic_city_infiltration_attack
+	enable_tactic = tactic_city_node_attack
+	enable_tactic = tactic_counter_cordon_search
+	enable_tactic = tactic_counter_fireforce
+	enable_tactic = tactic_counter_stronghold_raid
+	enable_tactic = tactic_mobile_recon
+	enable_tactic = tactic_breakthrough
+
+	milestones = {
+		# 1. 联合编组
+		{
+			army_defence_factor = 0.1
+			max_dig_in_factor = 0.1
+		}
+		# 2. 火力配系
+		{
+			category_artillery = {
+				max_organisation = 15
+				max_strength = 0.1
+			}
+			category_all_airborne = {
+				max_organisation = 15
+				max_strength = 0.1
+			}
+		}
+		# 3. 综合保障
+		{
+			training_time_factor = -0.1
+			no_supply_grace = 120
+		}
+		# 4. 地面体系
+		{
+			coordination_bonus = 0.1
+			dig_in_speed_factor = 0.15
+		}
+		# 5. 训练体系
+		{
+			training_time_army_factor = -0.05
+			max_training = 0.25
+		}
+		# 6. 领导层建设
+		{
+			army_org_regain = 0.05
+			army_morale_factor = 0.02
+		}
+		# 7. 军事技术
+		{
+			experience_gain_army_unit_factor = 0.1
+			land_doctrine_cost_factor = -0.05
+		}
+	}
+}
+
+ql_prc_land_hybrid_modal_warfare = {
+	folder = land
+	name = QL_GRAND_QL_PRC_LAND_HYBRID_MODAL_WARFARE
+	description = QL_GRAND_QL_PRC_LAND_HYBRID_MODAL_WARFARE_DESC
+	icon = GFX_ql_grand_land_3
+	available = {
+		OR = {
+			original_tag = SOV
+		}
+	}
+	visible = {
+		OR = {
+			original_tag = SOV
+		}
+	}
+
+	xp_cost = 100
+	xp_type = army
+	ai_will_do = { base = 1 }
+	tracks = { ql_prc_land_joint_grouping ql_prc_land_firepower ql_prc_land_sustainment ql_prc_land_ground_systems training leadership technology }
+	out_of_supply_factor = -0.1
+	minimum_training_level = -0.1
+	enable_tactic = tactic_shock
+	enable_tactic = tactic_dedicated_emplacements
+	# 进阶战术：大纵深突破与混合战争（快速装甲突破、深远强袭/突进、常规突破；封锁扫荡反暴乱）
+	enable_tactic = tactic_thunder_run_breakthrough
+	enable_tactic = tactic_deep_battle_assault
+	enable_tactic = tactic_deep_battle_rush
+	enable_tactic = tactic_breakthrough
+	enable_tactic = tactic_counter_cordon_search
+
+	milestones = {
+		# 1. 联合编组
+		{
+			war_support_weekly = 0.002
+		}
+		# 2. 火力配系
+		{
+			category_artillery = {
+				maximum_speed = 0.1
+			}
+		}
+		# 3. 综合保障
+		{
+			max_dig_in_factor = 0.1
+		}
+		# 4. 地面体系
+		{
+			dig_in_speed_factor = 0.1
+			no_supply_grace = 120
+		}
+		# 5. 训练体系
+		{
+			training_time_army_factor = -0.05
+			max_training = 0.25
+		}
+		# 6. 领导层建设
+		{
+			army_org_regain = 0.05
+			army_morale_factor = 0.02
+		}
+		# 7. 军事技术
+		{
+			experience_gain_army_unit_factor = 0.1
+			land_doctrine_cost_factor = -0.05
+		}
+	}
+}

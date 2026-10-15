@@ -1,0 +1,225 @@
+﻿
+division_template = {
+	name = "Brigada Kopnene Vojske"
+
+	regiments = {
+		armor_Bat = { x = 0 y = 0 }
+		Mech_Inf_Bat = { x = 0 y = 1 }
+		SP_Arty_Bat = { x = 0 y = 2 }
+		Mech_Inf_Bat = { x = 1 y = 0 }
+		SP_Arty_Bat = { x = 1 y = 1 }
+		Mech_Inf_Bat = { x = 1 y = 2 }
+		SP_AA_Bat = { x = 1 y = 3 }
+		L_Inf_Bat = { x = 2 y = 0 }
+		L_Inf_Bat = { x = 2 y = 1 }
+	}
+}
+
+division_template = {
+	name = "Specijalna Brigada"
+
+	regiments = {
+		Special_Forces = { x = 0 y = 0 }
+	}
+	priority = 2
+}
+
+units = {
+	division = {
+		name = "1. Brigada Kopnene Vojske"
+		location = 3617
+		division_template = "Brigada Kopnene Vojske"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "2. Brigada Kopnene Vojske"
+		location = 3984
+		division_template = "Brigada Kopnene Vojske"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "3. Brigada Kopnene Vojske"
+		location = 11887
+		division_template = "Brigada Kopnene Vojske"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "4. Brigada Kopnene Vojske"
+		location = 388
+		division_template = "Brigada Kopnene Vojske"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "Specijalna Brigada"
+		location = 3614
+		division_template = "Specijalna Brigada"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.01
+	}
+}
+
+instant_effect = {
+
+	add_equipment_to_stockpile = {
+		variant_name = "Zastava M70"
+		type = infantry_weapons_2			#Zastava M70
+		producer = SER
+		amount = 9100
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Zastava M21"
+		type = infantry_weapons_4			#Zastava M21
+		producer = SER
+		amount = 1500
+	}
+	add_equipment_to_stockpile = {
+		type = cnc_equipment_1
+		amount = 400
+		producer = SER
+	}
+	add_equipment_to_stockpile = {
+		type = Anti_tank_1
+		amount = 150
+		producer = SER
+	}
+	add_equipment_to_stockpile = {
+		type = Heavy_Anti_tank_1
+		amount = 60
+		producer = SER
+	}
+	add_equipment_to_stockpile = {
+		type = Anti_Air_1
+		amount = 150
+		producer = SER
+	}
+
+	add_equipment_to_stockpile = {
+		type = medium_tank_chassis_1
+		amount = 199
+		producer = SER
+	}
+
+	add_equipment_to_stockpile = {
+		type = medium_tank_chassis_1
+		amount = 13
+		producer = SOV
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "BRDM-2"
+		type = medium_tank_destroyer_chassis_0 #BRDM-2
+		amount = 46
+		producer = SOV
+	}
+	add_equipment_to_stockpile = {
+		type = medium_tank_flame_chassis_0
+		producer = SER
+		amount = 323
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "BOV-1"
+		type = medium_tank_amphibious_chassis_1 #BOV-1
+		producer = SER
+		amount = 39
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "2S1 Gvozdika"
+		type = medium_tank_artillery_chassis_0 #2S1 Gvozdika
+		amount = 67
+		producer = SOV
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "D-30"
+		type = artillery_1 #D-30
+		amount = 78
+		producer = SOV
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "M-84 Nora"
+		type = artillery_1 #M-84 Nora
+		producer = SER
+		amount = 36
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "M-63 Plamen"
+		type = medium_tank_rocket_chassis_0
+		producer = SER
+		amount = 18
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "M-77 Oganj"
+		type = medium_tank_rocket_chassis_1
+		producer = SER
+		amount = 60
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "SA-6 Gainful"
+		type = medium_tank_aa_chassis_0 #SA-6 Gainful
+		amount = 77
+		producer = SOV
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "SA-9"
+		type = medium_tank_aa_chassis_0 #SA-9
+		amount = 9
+		producer = SOV
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Mi-24 Hind"
+		type = heavy_tank_chassis_0 #Mi-24 Hind
+		amount = 2
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "SA-6 Gainful"
+		type = medium_tank_aa_chassis_0 #SA-6 Gainful
+		amount = 9
+		producer = SOV
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Mi-17"
+		type = transport_helicopter_1 #Mil Mi-17
+		amount = 1
+		producer = SOV
+		#version_name = "Mil Mi-17"
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Mi-17"
+		type = transport_helicopter_1 #Mil Mi-17
+		amount = 8
+		producer = SOV
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "SA-342 Gazelle"
+		type = heavy_tank_chassis_1 #Aérospatiale SA-342 Gazelle
+		amount = 2
+		producer = FRA
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "SA-342 Gazelle"
+		type = heavy_tank_chassis_1 #Aérospatiale SA-342 Gazelle
+		amount = 49
+		producer = FRA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Zastava M70"
+		type = infantry_weapons_2			#Zastava M70（封存）
+		producer = SER
+		amount = 80000
+	}
+	add_equipment_to_stockpile = {
+		type = medium_tank_chassis_0
+		amount = 200			#T-55（封存）
+		producer = SOV
+	}
+	add_equipment_to_stockpile = {
+		type = medium_tank_chassis_1
+		amount = 100			#M-84（封存）
+		producer = SER
+	}
+}

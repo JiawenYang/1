@@ -1,0 +1,559 @@
+﻿division_template = {
+	name = "Reconstructed Infantry Division" #Reconstructed/New Units
+	regiments = {
+		Mot_Inf_Bat = { x = 0 y = 0 }
+		Mot_Inf_Bat = { x = 0 y = 1 }
+		Mot_Inf_Bat = { x = 1 y = 0 }
+		Mot_Inf_Bat = { x = 1 y = 1 }
+		Arty_Bat = { x = 2 y = 0 }
+		Mot_Inf_Bat = { x = 3 y = 0 }
+	}
+	priority = 1
+}
+
+division_template = {
+	name = "Armored Division"
+	regiments = {
+		armor_Bat = { x = 0 y = 0 }
+		armor_Bat = { x = 0 y = 1 }
+		armor_Bat = { x = 0 y = 2 }
+		Arm_Inf_Bat = { x = 1 y = 0 }
+		Mech_Inf_Bat = { x = 1 y = 1 }
+		SP_Arty_Bat = { x = 2 y = 0 }
+		SP_Arty_Bat = { x = 2 y = 1 }
+		L_arm_Bat = { x = 2 y = 2 }
+		Mech_Inf_Bat = { x = 2 y = 3 }
+	}
+	support = {
+		SP_AA_Battery = { x = 0 y = 0 }
+	}
+}
+division_template = {
+	name = "Infantry Division" #Std Iraqi Division
+	regiments = {
+		Mot_Inf_Bat = { x = 0 y = 0 }
+		Mot_Inf_Bat = { x = 0 y = 1 }
+		Mot_Inf_Bat = { x = 1 y = 0 }
+		Mot_Inf_Bat = { x = 1 y = 1 }
+		Arty_Bat = { x = 2 y = 0 }
+		Mech_Inf_Bat = { x = 3 y = 0 }
+		Mech_Inf_Bat = { x = 3 y = 1 }
+		Mech_Inf_Bat = { x = 3 y = 1 }
+	}
+	support = {
+		SP_AA_Battery = { x = 0 y = 0 }
+	}
+}
+
+division_template = {
+	name = "Special Forces"
+	regiments = {
+		Special_Forces = { x = 0 y = 0 }
+		Special_Forces = { x = 0 y = 1 }
+	}
+	priority = 2
+}
+
+division_template = {
+	name = "Popular Mobilization Unit"
+	regiments = {
+	  Mot_Militia_Bat = { x = 0 y = 0 }
+		Mot_Militia_Bat = { x = 0 y = 1 }
+		Mot_Militia_Bat = { x = 0 y = 2 }
+		Mot_Militia_Bat = { x = 0 y = 3 }
+		Mech_Inf_Bat = { x = 1 y = 0 }
+		Mech_Inf_Bat = { x = 1 y = 1 }
+		L_Inf_Bat = { x = 2 y = 0 }
+	}
+	support = {
+		armor_Comp = { x = 0 y = 0 }
+		Arty_Battery = { x = 0 y = 1 }
+	}
+}
+
+division_template = {
+	name = "Liwa Saraya al-Salam"
+	regiments = {
+	  Mot_Inf_Bat = { x = 0 y = 0 }
+		Mot_Inf_Bat = { x = 0 y = 1 }
+		Mot_Inf_Bat = { x = 0 y = 2 }
+	}
+	support = {
+		armor_Comp = { x = 0 y = 0 }
+		Arm_Recce_Comp = { x = 0 y = 1 }
+		Arty_Battery = { x = 0 y = 2 }
+	}
+	priority = 2
+}
+
+units = {
+	### PMU Sistani faction #WIP
+	division = {
+		name = "Saraya al-Ataba al-Abbasiya"
+		location = 1600
+		division_template = "Popular Mobilization Unit"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "Saraya al-Ataba al-Hussainiya"
+		location = 11199
+		division_template = "Popular Mobilization Unit"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "Saraya al-Ataba al-Alawiya"
+		location = 11275
+		division_template = "Popular Mobilization Unit"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "Liwa ‘Ali al-Akbar"
+		location = 11275
+		division_template = "Popular Mobilization Unit"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "Islamic Supreme Council of Iraq"
+		location = 3272
+		division_template = "Popular Mobilization Unit"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "Saraya el-Jihad"
+		location = 3219
+		division_template = "Popular Mobilization Unit"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "Saraya el-Aqida"
+		location = 8123
+		division_template = "Popular Mobilization Unit"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "Saraya Ashura"
+		location = 11289
+		division_template = "Popular Mobilization Unit"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.01
+	}
+	### PMU Muqtada al-Sadr faction #WIP
+	division = {
+		name = "1. Liwa Saraya al-Salam"
+		location = 2097
+		division_template = "Liwa Saraya al-Salam"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "2. Liwa Saraya al-Salam"
+		location = 2097
+		division_template = "Liwa Saraya al-Salam"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "3. Liwa Saraya al-Salam"
+		location = 2097
+		division_template = "Liwa Saraya al-Salam"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "4. Liwa Saraya al-Salam"
+		location = 11289
+		division_template = "Liwa Saraya al-Salam"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.01
+	}
+	### Iraqi Army
+	division = {
+		name = "16th Infantry Division"
+		location = 11369
+		division_template = "Reconstructed Infantry Division"
+		start_experience_factor = 0.0
+		start_equipment_factor = 0.01
+	}
+		division = {
+		name = "15th Infantry Division"
+		location = 3219
+		division_template = "Reconstructed Infantry Division"
+		start_experience_factor = 0.0
+		start_equipment_factor = 0.01
+	}
+		division = {
+		name = "10th Infantry Division"
+		location = 12046
+		division_template = "Reconstructed Infantry Division"
+		start_experience_factor = 0.0
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "14th Infantry Division"
+		location = 11199
+		division_template = "Reconstructed Infantry Division"
+		start_experience_factor = 0.0
+		start_equipment_factor = 0.01
+	}
+		division = {
+		name = "1st Motorized Division"
+		location = 1600
+		division_template = "Infantry Division"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "5th Motorized Division"
+		location = 11275
+		division_template = "Infantry Division"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "6th Motorized Division"
+		location = 11369
+		division_template = "Infantry Division"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "7th Motorized Division"
+		location = 8123
+		division_template = "Infantry Division"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "8th Motorized Division"
+		location = 1631
+		division_template = "Infantry Division"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "17th Motorized Division"
+		location = 11198
+		division_template = "Infantry Division"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "9th Armored Division"
+		location = 12046
+		division_template = "Armored Division"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "1st Special Operations Brigade"
+		location = 1600
+		division_template = "Special Forces"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "2nd Special Operations Brigade"
+		location = 3272
+		division_template = "Special Forces"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "3rd Special Operations Brigade"
+		location = 2097
+		division_template = "Special Forces"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.01
+	}
+}
+
+instant_effect = {
+
+	#All equipment numbers are estimates.
+	#Aircraft 
+
+	add_equipment_to_stockpile = {
+		variant_name = "Mi-24"
+		type = heavy_tank_chassis_1	#Mi-24
+		amount = 24
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Gazelle"
+		type = heavy_tank_chassis_1	#Gazelle
+		amount = 10
+		producer = SOV
+	}
+
+	#Ground Forces
+	#Vehicles
+
+	add_equipment_to_stockpile = {
+		type = medium_tank_chassis_1
+		amount = 100
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		type = medium_tank_chassis_1
+		amount = 120
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		type = medium_tank_chassis_0
+		amount = 100
+		producer = SOV
+	}
+
+	### Recce ###
+
+	add_equipment_to_stockpile = {
+		variant_name = "Cascavel"
+		type = Rec_tank_0	  #Cascavel
+		amount = 35
+		producer = IRQ
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "BRDM-2"
+		type = Rec_tank_0	  #BRDM 2
+		amount = 18
+		producer = SOV
+	}
+
+	### IFV
+	add_equipment_to_stockpile = {
+		variant_name = "BMP-1"
+		type = medium_tank_flame_chassis_0			#BMP-1
+		amount = 80
+		producer = SOV
+	}
+
+	### APC
+	add_equipment_to_stockpile = {
+		variant_name = "M113A2"
+		type = medium_tank_amphibious_chassis_1		#M113A2
+		amount = 500
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "MT-LB"
+		type = medium_tank_amphibious_chassis_1			#MT-LB
+		amount = 400
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Fuchs"
+		type = medium_tank_amphibious_chassis_1			#Fuchs
+		amount = 20
+		producer = GER
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BTR-80"
+		type = medium_tank_amphibious_chassis_2			#BTR-80
+		amount = 100
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BTR-4"
+		type = medium_tank_amphibious_chassis_2			#BTR-4
+		amount = 60
+		producer = SOV
+	}
+
+	### Utility ###
+	add_equipment_to_stockpile = {
+		variant_name = "Cobra"
+		type = util_vehicle_3	#Cobra
+		amount = 10
+		producer = IRQ
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Akrep"
+		type = util_vehicle_2	  #Akrep
+		amount = 400
+		producer = TUR
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Dzik-3"
+		type = util_vehicle_4	#Dzik-3
+		amount = 450
+		producer = POL
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Humvee"
+		type = util_vehicle_2 #Humvee
+		amount = 3900
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Mamba"
+		type = util_vehicle_3	#Mamba
+		amount = 400
+		producer = SAF
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "MaxxPro"
+		type = util_vehicle_5	#Maxxpro
+		amount = 30
+		producer = USA
+	}
+
+	#Misc. Equipment
+
+	add_equipment_to_stockpile = {
+		variant_name = "M16A4"
+		type = infantry_weapons_4 #M16A4
+		amount = 4500
+		producer = USA
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "AKM"
+		type = infantry_weapons_2 #AKM
+		amount = 20000
+		producer = SOV
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Z70"
+		type = infantry_weapons_2 #Z70
+		amount = 5000
+		producer = IRQ
+	}
+
+	add_equipment_to_stockpile = {
+		type = cnc_equipment_1
+		amount = 1600
+		producer = IRQ
+	}
+
+	add_equipment_to_stockpile = {
+		type = cnc_equipment_2
+		amount = 250
+		producer = IRQ
+	}
+
+	#Artillery:
+
+	add_equipment_to_stockpile = {
+		type = artillery_1
+		amount = 60
+		 producer = IRQ
+	}
+
+	add_equipment_to_stockpile = {
+		type = artillery_1
+		amount = 60
+		 producer = IRQ
+	}
+
+	add_equipment_to_stockpile = {
+		type = artillery_1
+		amount = 60
+		 producer = IRQ
+	}
+
+	add_equipment_to_stockpile = {
+		type = SP_arty_0
+		amount = 30
+		producer = IRQ
+	}
+
+	add_equipment_to_stockpile = {
+		type = SP_arty_0
+		amount = 18
+		producer = IRQ
+	}
+
+	add_equipment_to_stockpile = {
+		type = SP_R_arty_0
+		amount = 15
+		producer = IRQ
+	}
+
+	### AA
+
+	add_equipment_to_stockpile = {
+		type = SP_Anti_Air_2
+		amount = 20
+		producer = IRQ
+	}
+
+	add_equipment_to_stockpile = {
+		type = SP_Anti_Air_1
+		amount = 10
+		producer = IRQ
+	}
+
+	add_equipment_to_stockpile = {
+		type = Anti_Air_1
+		amount = 300
+		producer = IRQ
+	}
+
+	add_equipment_to_stockpile = {
+		type = Anti_Air_2
+		amount = 50
+		producer = IRQ
+	}
+
+	##ATGM
+	add_equipment_to_stockpile = {
+		variant_name = "Kornet"
+		type = Heavy_Anti_tank_2	#Kornet
+		amount = 200
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "MILAN"
+		type = Anti_tank_1			#MILANs
+		amount = 450
+		producer = FRA
+	}
+
+	#### Sealed Storage（封存）####
+	add_equipment_to_stockpile = {
+		variant_name = "AK-47"
+		type = infantry_weapons_2 #AK-47（封存）
+		amount = 250000
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "T-55"
+		type = medium_tank_chassis_0 #T-55（封存）
+		amount = 500
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Type-59"
+		type = medium_tank_chassis_0 #Type 59（封存）
+		amount = 400
+		producer = CHI
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "M113"
+		type = medium_tank_amphibious_chassis_1 #M113（封存）
+		amount = 300
+		producer = USA
+	}
+}

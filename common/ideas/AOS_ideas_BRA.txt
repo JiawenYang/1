@@ -1,0 +1,2914 @@
+ideas = {
+## NATIONAL SPIRITS ##
+country = {
+	BRA_not_world_power_idea = {
+		picture = BRA_future_world_power
+	
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			stability_factor = -0.1
+			war_support_factor = -0.1
+			party_popularity_stability_factor = -0.25
+			society_development_monthly = -0.01
+		}
+	}
+
+	BRA_aftershock_of_2015_recession_idea = {
+		picture = BRA_aftershock_of_2015_recession
+	
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			business_value_factor = -0.1
+			personal_value_factor = -0.15
+			production_speed_buildings_factor = -0.1
+			misc_expense = 0.5
+			poverty_development_monthly = -0.01
+			academic_development_monthly = -0.01
+			industrial_development_monthly = -0.01
+		}
+	}
+
+	BRA_disjointed_geography_idea = {
+		picture = BRA_disjointed_geography
+	
+		allowed = { 
+			is_brazilian_civil_war_tag = yes
+		}
+		
+		modifier = {
+			local_resources_factor = -0.05
+			production_speed_buildings_factor = -0.1
+			production_speed_infrastructure_factor = -0.15
+			production_speed_rail_way_factor = -0.25
+			production_speed_supply_node_factor = -0.25		
+			army_speed_factor = -0.25
+			business_value_factor = -0.05
+			base_fuel_gain_factor = -0.5
+			supply_factor = -0.1
+		}
+	}
+
+	BRA_hold_of_the_centrao_idea = {
+		picture = BRA_systemic_corruption
+	
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			political_power_factor = -0.15
+			misc_expense = 0.2
+			society_development_monthly = -0.005
+			disabled_ideas = 1
+		}
+	}
+
+	BRA_indefinite_state_of_siege_idea = {
+		picture = BRA_indefinite_state_of_siege
+	
+		allowed = {
+			OR = {
+				original_tag = BRA
+				original_tag = ESP
+			}
+		}
+		
+		modifier = {
+			stability_weekly = -0.001
+			misc_expense = 0.1
+			political_power_factor = -0.05
+			society_development_monthly = -0.005
+			military_development_monthly = 0.005
+		}
+	}
+
+    BRA_covid_martial_law_idea = {
+        picture = BRA_covid_martial_law
+
+        allowed = {
+            original_tag = BRA
+        }
+
+        modifier = {
+            stability_weekly = -0.002
+            political_power_gain = -0.35
+            stability_factor = -0.05
+        }
+
+    }
+
+	BRA_brazilian_society_idea = {
+		picture = BRA_generalized_violence
+
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			command_power_gain_mult = -0.1
+			monthly_population = -0.15
+			stability_factor = -0.1
+			stability_weekly = -0.001
+		}
+	}	
+
+	BRA_self_indulgent_military_idea = {
+		picture = BRA_partido_fardado
+	
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			resistance_activity = 0.1
+			battalion_upkeep_factor = 0.1
+			aircraft_upkeep_factor = 0.1
+			ship_upkeep_factor = 0.1
+			land_doctrine_cost_factor = 1
+			naval_doctrine_cost_factor = 1
+			air_doctrine_cost_factor = 1
+			training_time_factor = -0.1
+			command_power_gain = 0.05
+			nationalist_drift = 0.01
+		}
+	}
+
+	BRA_expanded_petrobras_share = {
+		picture = BRA_expanded_petrobras_share
+		allowed = {
+			OR = {
+				original_tag = RFB
+				original_tag = BRA
+			}
+		}
+		
+		modifier = {
+			consumer_goods_factor = 0.05
+			business_value_factor = 0.03
+			personal_value_factor = 0.09
+			expense_growth_factor = 0.05
+			stability_factor = 0.05
+			base_fuel_gain_factor = 0.2
+		}
+	}
+
+	BRA_brazil_above_all_dummy_idea = {
+		name = BRA_brazil_above_all_dynamic
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+		}
+	}
+
+	# HALFWAY THERE
+	BRA_brazil_above_all_dummy_A = {
+		name = BRA_brazil_above_all_dynamic
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			war_support_factor = 0.05
+			political_power_factor = 0.1
+			conservative_drift = 0.01
+			authoritarian_democrat_drift = 0.01
+		}
+	}
+
+	# FLEXIBILIZE GUN OWNERSHIP
+	BRA_brazil_above_all_dummy_B = {
+		name = BRA_brazil_above_all_dynamic
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			war_support_factor = 0.05
+			resistance_growth_on_our_occupied_states = 0.1
+			resistance_damage_to_garrison_on_our_occupied_states = 0.15
+			modifier_army_sub_unit_militia_attack_factor = 0.1	
+		}
+	}
+
+	# PROTECT OUR MOTHERS
+	BRA_brazil_above_all_dummy_C = {
+		name = BRA_brazil_above_all_dynamic
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			society_development_monthly = 0.005
+			poverty_development_monthly = 0.005
+			monthly_population = 0.1
+			personal_expense_factor = 0.1
+		}
+	}
+
+	# GIVE OUT LAND DEEDS
+	BRA_brazil_above_all_dummy_D = {
+		name = BRA_brazil_above_all_dynamic
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			farming_development_monthly = 0.01
+			local_resources_factor = 0.075
+			business_value_factor = 0.1
+			tax_business_rate_factor = 0.05
+		}
+	}
+
+	# REVIVE BRAZILIAN TOURISM
+	BRA_brazil_above_all_dummy_E = {
+		name = BRA_brazil_above_all_dynamic
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			society_development_monthly = 0.005
+			tax_gain_multiplier_modifier = 0.1
+		}
+	}
+
+	# ESCOLA SEM PARTIDO
+	BRA_brazil_above_all_dummy_F = {
+		name = BRA_brazil_above_all_dynamic
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			academic_development_monthly = 0.01
+			drift_defence_factor = 0.1
+			political_power_factor = 0.1
+		}
+	}
+
+	# CIVILIAN MILITARY SCHOOLS
+	BRA_brazil_above_all_dummy_G = {
+		name = BRA_brazil_above_all_dynamic
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			military_development_monthly = 0.01
+			war_stability_factor = 0.15
+			political_power_factor = 0.1
+		}
+	}
+
+	# TECHNOLOGIES OF THE BRAZILIAN STATE
+	BRA_brazil_above_all_dummy_H = {
+		name = BRA_brazil_above_all_dynamic
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			academic_development_monthly = 0.015
+			research_speed_factor = 0.1
+		}
+	}
+
+	# LOWER AGE OF CRIMINAL RESPONSIBILITY
+	BRA_brazil_above_all_dummy_I = {
+		name = BRA_brazil_above_all_dynamic
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			society_development_monthly = 0.005
+			stability_factor = 0.1
+			command_power_gain_mult = 0.1
+			political_power_factor = 0.1
+		}
+	}
+
+	# UNLEASH THE POLICE FORCE
+	BRA_brazil_above_all_dummy_J = {
+		name = BRA_brazil_above_all_dynamic
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			resistance_activity = -0.1
+			resistance_damage_to_garrison = -0.15
+		}
+	}
+
+	# THE ADMINISTRATIVE REFORM
+	BRA_brazil_above_all_dummy_K = {
+		name = BRA_brazil_above_all_dynamic
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			political_power_gain = 0.3
+			expense_growth_factor = -0.25
+			stability_factor = 0.1
+			war_support_factor = 0.1
+		}
+	}
+
+	BRA_brazilian_agro_idea = {
+		picture = BRA_agricultural_society
+	
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			business_value_factor = 0.15
+			tax_personal_rate_factor = 0.05
+			industrial_capacity_factory = 0.1
+			consumer_goods_factor = 0.15
+			local_resources_factor = 0.075
+			amazonian_preservation_monthly = -0.1
+			farming_development_monthly = 0.01
+			misc_expense = 0.3
+		}
+	}
+
+	# CPR VERDE: +5% bus val; +5% tax per rate; +2.5% resource; +5% month amazon; +15% fuel; +0.5% farming monthly; +0.2 misc expense
+	BRA_brazilian_agro_idea_A = {
+		name = BRA_brazilian_agro_idea
+		picture = BRA_agricultural_society
+	
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			business_value_factor = 0.2
+			tax_personal_rate_factor = 0.1
+			industrial_capacity_factory = 0.1
+			consumer_goods_factor = 0.15
+			local_resources_factor = 0.1
+			amazonian_preservation_monthly = -0.05
+			fuel_gain_factor_from_states = 0.15
+			farming_development_monthly = 0.015
+			misc_expense = 0.5
+		}
+	}
+
+	# EXPAND THE MARKET: +10% bus val; +5% tax per rate; +5% tax bus rate; +2.5% resource; +0.5% farming monthly; +0.2 misc expense
+	BRA_brazilian_agro_idea_B = {
+		name = BRA_brazilian_agro_idea
+		picture = BRA_agricultural_society
+	
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			business_value_factor = 0.25
+			tax_personal_rate_factor = 0.1
+			tax_business_rate_factor = 0.05
+			industrial_capacity_factory = 0.1
+			consumer_goods_factor = 0.15
+			local_resources_factor = 0.1
+			amazonian_preservation_monthly = -0.1
+			farming_development_monthly = 0.015
+			misc_expense = 0.5
+		}
+	}
+
+	# CPR VERDE + EXPAND THE MARKET: +15% bus val; +10% tax per rate; +5% tax bus rate; +5% resource; +5% month amazon; +15% fuel; +1% farming monthly; +0.4 misc expense
+	BRA_brazilian_agro_idea_AB = {
+		name = BRA_brazilian_agro_idea
+		picture = BRA_agricultural_society
+	
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			business_value_factor = 0.3
+			tax_personal_rate_factor = 0.15
+			tax_business_rate_factor = 0.05
+			industrial_capacity_factory = 0.1
+			consumer_goods_factor = 0.15
+			local_resources_factor = 0.125
+			amazonian_preservation_monthly = -0.05
+			fuel_gain_factor_from_states = 0.15
+			farming_development_monthly = 0.02
+			misc_expense = 0.7
+		}
+	}
+
+	# REDUCE AGRO INPUT IMPORTS (FROM CPR VERDE + EXPAND THE MARKET): +5% bus val; +10% tax bus rate; +5% output; +5% consumer goods; +2.5% resource; +1% farming monthly; +0.3 misc expense
+	BRA_brazilian_agro_idea_C = {
+		name = BRA_brazilian_agro_idea
+		picture = BRA_agricultural_society
+	
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			business_value_factor = 0.35
+			tax_personal_rate_factor = 0.15
+			tax_business_rate_factor = 0.15
+			industrial_capacity_factory = 0.15
+			consumer_goods_factor = 0.2
+			local_resources_factor = 0.15
+			amazonian_preservation_monthly = -0.05
+			fuel_gain_factor_from_states = 0.15
+			farming_development_monthly = 0.03
+			misc_expense = 1
+		}
+	}
+
+	BRA_free_the_infrastructure_idea = {
+		picture = BRA_free_the_infrastructure
+
+		allowed = { 
+			original_tag = BRA
+		}
+
+		modifier = {
+			production_speed_buildings_factor = 0.1
+			production_speed_infrastructure_factor = 0.3
+			production_speed_rail_way_factor = 0.35
+			consumer_goods_factor = -0.1
+			misc_expense = 0.01
+		}
+	}
+
+	BRA_ease_of_business_policy_idea = {
+		picture = BRA_ease_of_business_policy
+
+		allowed = { 
+			original_tag = BRA
+		}
+
+		modifier = {
+			political_power_gain = 0.01
+			business_value_factor = 0.05
+			consumer_goods_factor = -0.075
+		}
+	}
+
+	# INDEPENDENT CENTRAL BANK
+	BRA_ease_of_business_policy_idea_A = {
+		name = BRA_ease_of_business_policy_idea
+		picture = BRA_ease_of_business_policy
+
+		allowed = { 
+			original_tag = BRA
+		}
+
+		modifier = {
+			political_power_gain = 0.02
+			business_value_factor = 0.05
+			consumer_goods_factor = -0.075
+			inflation_monthly = -0.001
+			interest_rate_factor = 0.25
+		}
+	}
+
+	# SLASH PETROBRAS
+	BRA_ease_of_business_policy_idea_B = {
+		name = BRA_ease_of_business_policy_idea
+		picture = BRA_ease_of_business_policy
+		
+		allowed = { 
+			original_tag = BRA
+		}
+
+		modifier = {
+			political_power_gain = 0.02
+			business_value_factor = 0.05
+			consumer_goods_factor = -0.075
+			inflation_monthly = -0.001
+			interest_rate_factor = 0.25
+			base_fuel_gain_factor = -0.15
+			production_speed_synthetic_refinery_factor = 0.1
+			production_speed_fuel_silo_factor = 0.1
+			misc_income = 1.15
+		}
+	}
+
+	# PRIVATIZE ELETROBRAS
+	BRA_ease_of_business_policy_idea_C1 = {
+		name = BRA_ease_of_business_policy_idea
+		picture = BRA_ease_of_business_policy
+		
+		allowed = { 
+			original_tag = BRA
+		}
+
+		modifier = {
+			political_power_gain = 0.02
+			business_value_factor = 0.05
+			consumer_goods_factor = -0.1
+			inflation_monthly = -0.001
+			interest_rate_factor = 0.25
+			base_fuel_gain_factor = -0.15
+			production_speed_power_plant_factor = 0.1
+			production_speed_energy_farm_factor = 0.1
+			production_speed_synthetic_refinery_factor = 0.1
+			production_speed_fuel_silo_factor = 0.1
+			misc_income = 1.15
+		}
+	}
+
+	# PRIVATIZE MAIL SERVICE
+	BRA_ease_of_business_policy_idea_C2 = {
+		name = BRA_ease_of_business_policy_idea
+		picture = BRA_ease_of_business_policy
+		
+		allowed = { 
+			original_tag = BRA
+		}
+
+		modifier = {
+			political_power_gain = 0.02
+			business_value_factor = 0.05
+			consumer_goods_factor = -0.1
+			inflation_monthly = -0.001
+			interest_rate_factor = 0.25
+			base_fuel_gain_factor = -0.15
+			production_speed_synthetic_refinery_factor = 0.1
+			production_speed_fuel_silo_factor = 0.1
+			personal_expense_factor = -0.15
+			misc_income = 1.15
+		}
+	}
+
+	# PRIVATIZE ELETROBRAS + PRIVATIZE MAIL SERVICE
+	BRA_ease_of_business_policy_idea_C = {
+		name = BRA_ease_of_business_policy_idea
+		picture = BRA_ease_of_business_policy
+
+		allowed = { 
+			original_tag = BRA
+		}
+
+		modifier = {
+			political_power_gain = 0.02
+			business_value_factor = 0.05
+			consumer_goods_factor = -0.125
+			inflation_monthly = -0.001
+			interest_rate_factor = 0.25
+			base_fuel_gain_factor = -0.15
+			production_speed_power_plant_factor = 0.1
+			production_speed_energy_farm_factor = 0.1
+			production_speed_synthetic_refinery_factor = 0.1
+			production_speed_fuel_silo_factor = 0.1
+			personal_expense_factor = -0.15
+			misc_income = 1.15
+		}
+	}
+
+	# GREEN YELLOW BOOK
+	BRA_ease_of_business_policy_idea_D = {
+		name = BRA_ease_of_business_policy_idea
+		picture = BRA_ease_of_business_policy
+		
+		allowed = { 
+			original_tag = BRA
+		}
+
+		modifier = {
+			political_power_gain = 0.02
+			business_value_factor = 0.075
+			consumer_goods_factor = -0.125
+			inflation_monthly = -0.001
+			interest_rate_factor = 0.25
+			tax_personal_rate_factor = 0.075
+			base_fuel_gain_factor = -0.15
+			production_speed_power_plant_factor = 0.1
+			production_speed_energy_farm_factor = 0.1
+			production_speed_synthetic_refinery_factor = 0.1
+			production_speed_fuel_silo_factor = 0.1
+			personal_expense_factor = -0.15
+			misc_income = 1.15
+		}
+	}
+
+	# ALIQUOTA UNICA (SLASH PETROBRAS BRANCH)
+	BRA_ease_of_business_policy_idea_aliquota_full = {
+		name = BRA_ease_of_business_policy_idea
+		picture = BRA_ease_of_business_policy
+		
+		allowed = { 
+			original_tag = BRA
+		}
+
+		modifier = {
+			political_power_gain = 0.02
+			business_value_factor = 0.425
+			consumer_goods_factor = -0.125
+			inflation_monthly = -0.001
+			interest_rate_factor = 0.25
+			tax_personal_rate_factor = 0.275
+			base_fuel_gain_factor = -0.15
+			production_speed_power_plant_factor = 0.1
+			production_speed_energy_farm_factor = 0.1
+			production_speed_synthetic_refinery_factor = 0.1
+			production_speed_fuel_silo_factor = 0.1
+			personal_expense_factor = -0.15
+			misc_income = 1.15
+		}
+	}
+
+	# ALIQUOTA UNICA (AGRO 4.0 BRANCH)
+	BRA_ease_of_business_policy_idea_aliquota = {
+		name = BRA_ease_of_business_policy_idea
+		picture = BRA_ease_of_business_policy
+		
+		allowed = { 
+			original_tag = BRA
+		}
+
+		modifier = {
+			political_power_gain = 0.02
+			tax_personal_rate_factor = 0.2
+			business_value_factor = 0.35
+			consumer_goods_factor = -0.075
+			inflation_monthly = -0.001
+			interest_rate_factor = 0.25
+		}
+	}
+
+	BRA_oil_crisis_idea = {
+		picture = BRA_oil_crisis
+		allowed = {
+			always = no
+		}
+		modifier = {
+			consumer_goods_factor = 0.3
+			production_factory_max_efficiency_factor = -0.15
+			industrial_capacity_dockyard = -0.3
+			local_resources_factor = -0.3
+		}
+	}
+
+	BRA_oil_crisis_idea1 = {
+		picture = BRA_oil_crisis
+		name = BRA_oil_crisis_idea
+
+		allowed = {
+			always = no
+		}
+		modifier = {
+			consumer_goods_factor = 0.2
+			production_factory_max_efficiency_factor = -0.1
+			industrial_capacity_dockyard = -0.2
+			local_resources_factor = -0.2
+		}
+	}
+
+	BRA_oil_crisis_idea2 = {
+		picture = BRA_oil_crisis
+		name = BRA_oil_crisis_idea
+
+		allowed = {
+			always = no
+		}
+		modifier = {
+			consumer_goods_factor = 0.1
+			production_factory_max_efficiency_factor = -0.05
+			industrial_capacity_dockyard = -0.1
+			local_resources_factor = -0.1
+		}
+	}
+
+	BRA_regional_cooperation_paraguay_idea = {
+		picture = PAR_energy_trade_with_brazil
+
+		allowed = {
+			always = no
+		}
+		modifier = {
+			political_power_gain = 0.05
+			consumer_goods_factor = -0.25
+			production_speed_infrastructure_factor = 0.5
+			production_speed_synthetic_refinery_factor = 0.5
+		}
+		targeted_modifier = {
+		    tag = PAR
+		    trade_cost_for_target_factor = -0.5
+		}
+	}
+
+	BRA_fuel_deals_paraguay_idea = {
+		picture = PAR_energy_trade_with_brazil
+
+		allowed = {
+			always = no
+		}
+		modifier = {
+			consumer_goods_factor = 0.05
+			misc_income = 0.5
+			business_value_factor = 0.1
+		}
+	}
+
+	BRA_agro_death_idea = {
+		picture = BRA_agro_death
+		
+		allowed = {
+			always = no
+		}
+
+		modifier = {
+			business_value_factor = -0.35
+			industrial_capacity_factory = -0.25
+			consumer_goods_factor = 0.15
+			local_resources_factor = -0.15
+			amazonian_preservation_monthly = -0.1
+			farming_development_monthly = -0.05
+			misc_expense = 3
+		}
+	}
+
+	BRA_agro_death_idea1 = {
+		picture = BRA_agro_death
+		name = BRA_agro_death_idea
+		
+		allowed = {
+			always = no
+		}
+
+		modifier = {
+			business_value_factor = -0.2
+			industrial_capacity_factory = -0.15
+			consumer_goods_factor = 0.15
+			local_resources_factor = -0.1
+			amazonian_preservation_monthly = -0.1
+			farming_development_monthly = -0.025
+			misc_expense = 2.5
+		}
+	}
+
+	BRA_agro_death_idea2 = {
+		picture = BRA_agro_death
+		name = BRA_agro_death_idea
+		
+		allowed = {
+			always = no
+		}
+
+		modifier = {
+			business_value_factor = -0.05
+			industrial_capacity_factory = -0.05
+			consumer_goods_factor = 0.15
+			local_resources_factor = -0.05
+			amazonian_preservation_monthly = -0.1
+			misc_expense = 2
+		}
+	}
+
+	BRA_restored_agro_idea = {
+		picture = BRA_brazilian_agro_idea
+		name = BRA_brazilian_agro_idea
+		
+		allowed = {
+			always = no
+		}
+
+		modifier = {
+			consumer_goods_factor = 0.15
+			amazonian_preservation_monthly = -0.1
+			misc_expense = 1.5
+		}
+	}
+
+	BRA_reformed_agro_idea = {
+		picture = BRA_reformed_agro
+		
+		allowed = {
+			always = no
+		}
+
+		modifier = {
+			business_value_factor = 0.05
+			industrial_capacity_factory = 0.15
+			consumer_goods_factor = 0.05
+			amazonian_preservation_monthly = -0.025
+			farming_development_monthly = 0.005
+		}
+	}
+
+	BRA_subsidized_agro_idea = {
+		picture = BRA_subsidized_agro
+		
+		allowed = {
+			always = no
+		}
+
+		modifier = {
+			business_value_factor = 0.05
+			industrial_capacity_factory = 0.1
+			consumer_goods_factor = 0.2
+			local_resources_factor = 0.075
+			amazonian_preservation_monthly = -0.1
+			farming_development_monthly = 0.005
+			misc_expense = 0.1
+		}
+	}
+
+	# CPR VERDE: +5% bus val; +5% tax per rate; +2.5% resource; +5% month amazon; +15% fuel; +0.5% farming monthly; +0.2 misc expense
+	BRA_subsidized_agro_idea_A = {
+		name = BRA_subsidized_agro_idea
+		picture = BRA_subsidized_agro
+		
+		allowed = {
+			always = no
+		}
+
+		modifier = {
+			business_value_factor = 0.1
+			tax_personal_rate_factor = 0.05
+			industrial_capacity_factory = 0.1
+			consumer_goods_factor = 0.2
+			local_resources_factor = 0.1
+			amazonian_preservation_monthly = -0.05
+			fuel_gain_factor_from_states = 0.15
+			farming_development_monthly = 0.01
+			misc_expense = 0.3
+		}
+	}
+
+	# EXPAND THE MARKET: +10% bus val; +5% tax per rate; +5% tax bus rate; +2.5% resource; +0.5% farming monthly; +0.2 misc expense
+	BRA_subsidized_agro_idea_B = {
+		name = BRA_subsidized_agro_idea
+		picture = BRA_subsidized_agro
+		
+		allowed = {
+			always = no
+		}
+
+		modifier = {
+			business_value_factor = 0.15
+			tax_personal_rate_factor = 0.05
+			tax_business_rate_factor = 0.05
+			industrial_capacity_factory = 0.1
+			consumer_goods_factor = 0.2
+			local_resources_factor = 0.1
+			amazonian_preservation_monthly = -0.1
+			farming_development_monthly = 0.01
+			misc_expense = 0.3
+		}
+	}
+
+	# CPR VERDE + EXPAND THE MARKET: +15% bus val; +10% tax per rate; +5% tax bus rate; +5% resource; +5% month amazon; +15% fuel; +1% farming monthly; +0.4 misc expense
+	BRA_subsidized_agro_idea_AB = {
+		name = BRA_subsidized_agro_idea
+		picture = BRA_subsidized_agro
+		
+		allowed = {
+			always = no
+		}
+
+		modifier = {
+			business_value_factor = 0.2
+			tax_personal_rate_factor = 0.1
+			tax_business_rate_factor = 0.05
+			industrial_capacity_factory = 0.1
+			consumer_goods_factor = 0.2
+			local_resources_factor = 0.125
+			amazonian_preservation_monthly = -0.05
+			fuel_gain_factor_from_states = 0.15
+			farming_development_monthly = 0.015
+			misc_expense = 0.5
+		}
+	}
+
+	# REDUCE AGRO INPUT IMPORTS (FROM CPR VERDE + EXPAND THE MARKET): +5% bus val; +10% (changed to 5% to not override per) tax bus rate; +5% output; +5% consumer goods; +2.5% resource; +1% (adjusted for similar reason) farming monthly; +0.3 misc expense
+	BRA_subsidized_agro_idea_C = {
+		name = BRA_subsidized_agro_idea
+		picture = BRA_subsidized_agro
+		
+		allowed = {
+			always = no
+		}
+
+		modifier = {
+			business_value_factor = 0.25
+			tax_personal_rate_factor = 0.1
+			tax_business_rate_factor = 0.1
+			industrial_capacity_factory = 0.15
+			consumer_goods_factor = 0.25
+			local_resources_factor = 0.15
+			amazonian_preservation_monthly = -0.05
+			fuel_gain_factor_from_states = 0.15
+			farming_development_monthly = 0.02
+			misc_expense = 0.8
+		}
+	}
+
+	BRA_2022_election_protests_idea = {
+		picture = BRA_2022_election_protests
+		allowed = {
+			always = no
+		}
+		modifier = {
+			consumer_goods_factor = 0.5
+			political_power_factor = -0.5
+			stability_factor = -0.15
+			stability_weekly = -0.005
+			surrender_limit = -0.25
+			drift_defence_factor = -0.3
+			authoritarian_democrat_drift = 0.02
+			nationalist_drift = 0.02
+		}
+	}
+
+	BRA_2022_election_protests_stoked_idea = {
+		picture = BRA_2022_election_protests
+		name = BRA_2022_election_protests_idea
+		allowed = {
+			always = no
+		}
+		modifier = {
+			consumer_goods_factor = 0.5
+			political_power_factor = -0.5
+			stability_factor = -0.15
+			stability_weekly = -0.005
+			war_support_weekly = 0.005
+			surrender_limit = -0.25
+			drift_defence_factor = -0.3
+			authoritarian_democrat_drift = 0.05
+			nationalist_drift = 0.05
+		}
+	}
+
+	BRA_2022_election_protests_calmed_idea = {
+		picture = BRA_2022_election_protests
+		name = BRA_2022_election_protests_idea
+		allowed = {
+			always = no
+		}
+		modifier = {
+			consumer_goods_factor = 0.3
+			political_power_factor = -0.3
+			stability_factor = -0.05
+			stability_weekly = -0.005
+			surrender_limit = -0.25
+			drift_defence_factor = -0.3
+			authoritarian_democrat_drift = 0.02
+			nationalist_drift = 0.02
+		}
+	}
+	
+	#### BCW ####
+	BRA_crisis_management_cabinet = {
+		picture = BRA_crisis_management_cabinet
+		allowed = {
+			always = no
+		}
+		cancel = {
+			has_global_flag = BRA_civil_war_ended_flag
+		}
+		modifier = {
+			political_power_cost = 0.1
+			command_power_gain = -0.05
+		}
+		
+	}
+
+	BRA_crisis_management_cabinet_buffs = {
+		name = BRA_crisis_management_cabinet
+		picture = BRA_crisis_management_cabinet
+		allowed = {
+			always = no
+		}
+		cancel = {
+			has_global_flag = BRA_civil_war_ended_flag
+		}
+		modifier = {
+			political_power_gain = 0.1
+			command_power_gain = 0.05
+		}
+	}	
+
+	BRA_religious_governance_idea = {
+		picture = BRA_religious_governance
+		allowed = {
+			always = no
+		}
+		modifier = {
+			political_power_gain = 0.05
+			low_stability_weekly = 0.002
+			society_development_monthly = 0.005
+		}
+	}
+
+	BRA_divine_fervor_idea = {
+		picture = BRA_evangelical_fervor
+		allowed = {
+			always = no
+		}
+		modifier = {
+			stability_factor = -0.15
+			resistance_target = -0.05
+			war_support_weekly = 0.001
+			weekly_casualties_war_support = 0.008
+			weekly_bombing_war_support = 0.008
+		}
+	}
+
+	BRA_empowered_junta_idea = {
+		picture = BRA_empowered_junta
+		allowed = {
+			always = no
+		}
+		modifier = {
+			resistance_target = -0.1
+			max_command_power = 30
+			command_abilities_cost_factor = -0.1
+			stability_factor = -0.1
+		}
+	}
+
+	BRA_empowered_president_idea = {
+		picture = BRA_empowered_president
+		allowed = {
+			always = no
+		}
+		modifier = {
+			political_power_factor = 0.075 
+			stability_factor = 0.5
+			war_support_factor = 0.5
+			command_power_gain_mult = 0.1
+		}
+	}
+
+	BRA_legacy_of_bolsonarism_idea = {
+		picture = BRA_legacy_of_bolsonarism
+		allowed = {
+			always = no
+		}
+		modifier = {
+			political_power_gain = 0.1
+			party_popularity_stability_factor = 0.25
+			war_support_factor = 0.15
+			foreign_minister_cost_factor = 0.15
+    		economic_minister_cost_factor = 0.15
+    		interior_minister_cost_factor = 0.15
+    		intelligence_minister_cost_factor = 0.15
+    		theorist_minister_cost_factor = 0.15
+		}
+	}
+
+	BRA_harmony_of_powers_idea = {
+		picture = BRA_harmony_of_powers
+		allowed = {
+			always = no
+		}
+		modifier = {
+			political_power_cost = 0.1
+			stability_factor = 0.15
+			foreign_minister_cost_factor = -0.25
+    		economic_minister_cost_factor = -0.25
+    		interior_minister_cost_factor = -0.25
+    		intelligence_minister_cost_factor = -0.25
+    		theorist_minister_cost_factor = -0.25
+			society_development_monthly = 0.005
+		}
+	}
+
+	BRA_granary_of_the_world_idea = {
+		picture = BRA_granary_of_the_world
+		allowed = {
+			always = no
+		}
+		modifier = {
+			consumer_goods_factor = 0.025
+			business_value_factor = 0.075
+			farming_development_monthly = 0.01
+		}
+	}
+
+	BRA_granary_of_the_world_upgraded_idea = {
+		name = BRA_granary_of_the_world_idea
+		picture = BRA_granary_of_the_world
+		allowed = {
+			always = no
+		}
+		modifier = {
+			political_power_cost = 0.25
+			consumer_goods_factor = 0.05
+			business_value_factor = 0.075
+			local_resources_factor = 0.1
+			trade_opinion_factor = 0.1
+			farming_development_monthly = 0.025
+		}
+	}
+
+	BRA_rising_industrial_class_idea = {
+		picture = BRA_rising_industrial_class
+		allowed = {
+			always = no
+		}
+		modifier = {
+			political_power_cost = 0.25
+			industrial_capacity_factory = 0.05
+			industrial_capacity_dockyard = 0.05
+			production_speed_buildings_factor = 0.075
+			industrial_development_monthly = 0.01
+		}
+	}
+
+	BRA_brazilian_ambition_idea = {
+		picture = BRA_brazilian_ambition
+		allowed = {
+			always = no
+		}
+		modifier = {
+			personal_value_factor = 0.1
+			business_value_factor = 0.05
+			stability_factor = -0.05
+			poverty_development_monthly = -0.005
+		}
+	}
+
+	BRA_brazilian_ambition_upgraded_idea = {
+		name = BRA_brazilian_ambition_idea
+		picture = BRA_brazilian_ambition
+		allowed = {
+			always = no
+		}
+		modifier = {
+			political_power_cost = 0.25
+			personal_value_factor = 0.1
+			business_value_factor = 0.15
+			stability_factor = -0.1
+			research_speed_factor = 0.075
+			tax_gain_multiplier_modifier = 0.05
+			poverty_development_monthly = -0.005
+		}
+	}
+
+	# ARMY OF PATRIOTS DYNAMIC SPIRIT
+	BRA_army_of_patriots_dummy_idea = {
+		name = BRA_army_of_patriots_dynamic
+	
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+
+		}
+	}
+	# THE PATRIOTIC DUTY
+	BRA_army_of_patriots_dummy_A = {
+		name = BRA_army_of_patriots_dynamic
+	
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			conscription_factor = 0.05
+			weekly_casualties_war_support = 0.005
+			battalion_upkeep_factor = 0.1
+			aircraft_upkeep_factor = 0.1
+			ship_upkeep_factor = 0.1
+			land_doctrine_cost_factor = 1
+			naval_doctrine_cost_factor = 1
+			air_doctrine_cost_factor = 1
+			training_time_factor = -0.1
+			command_power_gain = 0.05
+			nationalist_drift = 0.01
+		}
+	}
+	# EMPOWER THE HIGH COMMAND
+	BRA_army_of_patriots_dummy_1B = {
+		name = BRA_army_of_patriots_dynamic
+	
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			command_power_gain_mult = 0.05
+			land_doctrine_cost_factor = -0.5
+			naval_doctrine_cost_factor = -0.5
+			air_doctrine_cost_factor = -0.5
+		}
+	}
+	# INTENSIFY MILITARY TRAINING
+	BRA_army_of_patriots_dummy_1C = {
+		name = BRA_army_of_patriots_dynamic
+	
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			training_time_factor = 0.15
+			military_development_monthly = 0.025
+		}
+	}
+	# FOLLOW STRICT DOCTRINES
+	BRA_army_of_patriots_dummy_1D = {
+		name = BRA_army_of_patriots_dynamic
+	
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			land_doctrine_cost_factor = -0.5
+			naval_doctrine_cost_factor = -0.5
+			air_doctrine_cost_factor = -0.5
+			planning_speed = 0.05
+		}
+	}
+	# FOCUS ON PLANNING
+	BRA_army_of_patriots_dummy_1E = {
+		name = BRA_army_of_patriots_dynamic
+	
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			max_planning_factor = 0.25
+			planning_speed = 0.1
+			recon_factor_while_entrenched = 0.25
+		}
+	}
+	# EXPAND MARSHAL POWER
+	BRA_army_of_patriots_dummy_1F = {
+		name = BRA_army_of_patriots_dynamic
+	
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			command_power_gain_mult = 0.1
+			command_abilities_cost_factor = -0.25
+			army_chief_cost_factor = -0.5
+			navy_chief_cost_factor = -0.5
+			air_chief_cost_factor = -0.5
+			high_command_cost_factor = -0.5
+			experience_gain_army_factor = 0.15
+			experience_gain_navy_factor = 0.15
+			experience_gain_air_factor = 0.15
+		}
+	}
+	# CENTRALIZE THE CHAIN OF COMMAND
+	BRA_army_of_patriots_dummy_1G = {
+		name = BRA_army_of_patriots_dynamic
+	
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			command_power_gain_mult = 0.1
+			coordination_bonus = 0.2
+			recon_factor = 0.1
+			experience_gain_army_factor = 0.1
+			experience_gain_navy_factor = 0.1
+			experience_gain_air_factor = 0.1
+		}
+	}
+	# INTEGRATE MILITIAS INTO RANKS
+	BRA_army_of_patriots_dummy_1H = {
+		name = BRA_army_of_patriots_dynamic
+	
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			breakthrough_factor = 0.1
+			army_morale_factor = 0.1
+		}
+	}
+	# HONROSO EXERCITO DE CAXIAS
+	BRA_army_of_patriots_dummy_1I = {
+		name = BRA_army_of_patriots_dynamic
+	
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			war_support_factor = 0.15
+			army_org_factor = 0.1
+			army_attack_factor = 0.1
+			army_defence_factor = 0.1
+			military_development_monthly = 0.05
+		}
+	}
+	# BRIEF THE CAPTAINS
+	BRA_army_of_patriots_dummy_2B = {
+		name = BRA_army_of_patriots_dynamic
+	
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			battalion_upkeep_factor = -0.1
+			aircraft_upkeep_factor = -0.1
+			ship_upkeep_factor = -0.1
+		}
+	}
+	# RELAX THE RULES OF ENGAGEMENT
+	BRA_army_of_patriots_dummy_2C = {
+		name = BRA_army_of_patriots_dynamic
+	
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			army_attack_factor = 0.1
+			breakthrough_factor = 0.1
+			military_development_monthly = -0.01
+		}
+	}
+	# RALLY THE MILITARY POLICE
+	BRA_army_of_patriots_dummy_2D = {
+		name = BRA_army_of_patriots_dynamic
+	
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			required_garrison_factor = -0.15
+			resistance_activity = -0.15
+		}
+	}
+	# SHOCK AND AWE
+	BRA_army_of_patriots_dummy_2E = {
+		name = BRA_army_of_patriots_dynamic
+	
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			army_attack_factor = 0.1
+			breakthrough_factor = 0.1
+			army_speed_factor = 0.1
+		}
+	}
+	# GREATER BATALLION AUTONOMY
+	BRA_army_of_patriots_dummy_2F = {
+		name = BRA_army_of_patriots_dynamic
+	
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			modifier_army_sub_unit_militia_attack_factor = 0.1
+			modifier_army_sub_unit_militia_defence_factor = 0.1
+			initiative_factor = 0.1
+		}
+	}
+	# PROMOTE POLICE OFFICERS TO THE HIGH COMMAND
+	BRA_army_of_patriots_dummy_2G = {
+		name = BRA_army_of_patriots_dynamic
+	
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			army_leader_cost_factor = -0.5
+			grant_medal_cost_factor = -0.5
+		}
+	}
+	# ALLOW INDEPENDENT MILITIAS
+	BRA_army_of_patriots_dummy_2H = {
+		name = BRA_army_of_patriots_dynamic
+	
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			modifier_army_sub_unit_militia_attack_factor = 0.15
+			modifier_army_sub_unit_militia_defence_factor = 0.15
+			military_development_monthly = -0.015
+		}
+	}
+	# OUR OWN NATIONAL GUARD
+	BRA_army_of_patriots_dummy_2I = {
+		name = BRA_army_of_patriots_dynamic
+	
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			war_support_weekly = 0.01
+			military_development_monthly = 0.025
+		}
+	}
+	# CALLING ALL PATRIOTS
+	BRA_army_of_patriots_dummy_J = {
+		name = BRA_army_of_patriots_dynamic
+	
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			conscription_factor = 0.1
+			mobilization_speed = 0.15
+			non_core_manpower = 0.25
+			authoritarian_democrat_drift = 0.01
+		}
+	}
+	# START AIR OPERATIONS
+	BRA_army_of_patriots_dummy_K = {
+		name = BRA_army_of_patriots_dynamic
+	
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			air_mission_xp_gain_factor = 0.1
+			air_training_xp_gain_factor = 0.15
+		}
+	}
+	# PRECISION ATTACKS
+	BRA_army_of_patriots_dummy_1L = {
+		name = BRA_army_of_patriots_dynamic
+	
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			air_cas_present_factor = 0.15
+			ground_attack_factor = 0.1
+		}
+	}
+	# DENY THEIR ROADS
+	BRA_army_of_patriots_dummy_1M = {
+		name = BRA_army_of_patriots_dynamic
+	
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			air_bombing_targetting = 0.15
+		}
+	}
+	# STRIKE FEAR ON THEM
+	BRA_army_of_patriots_dummy_2L = {
+		name = BRA_army_of_patriots_dynamic
+	
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			army_bonus_air_superiority_factor = 0.1
+			air_power_projection_factor = 0.15
+		}
+	}
+	# RETHINK SUPPLY LINES
+	BRA_army_of_patriots_dummy_N = {
+		name = BRA_army_of_patriots_dynamic
+	
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			supply_factor = 0.1
+		}
+	}
+	# RAILS TO THE FRONT
+	BRA_army_of_patriots_dummy_O = {
+		name = BRA_army_of_patriots_dynamic
+	
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			production_speed_rail_way_factor = 0.25
+		}
+	}
+	# MOTORIZED SUPPLY
+	BRA_army_of_patriots_dummy_P = {
+		name = BRA_army_of_patriots_dynamic
+	
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			truck_attrition_factor = -0.25
+		}
+	}
+	# AIR SUPPLY
+	BRA_army_of_patriots_dummy_Q = {
+		name = BRA_army_of_patriots_dynamic
+	
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			air_range_factor = 0.15
+		}
+	}
+	# RACE TO THE SEA
+	BRA_army_of_patriots_dummy_R = {
+		name = BRA_army_of_patriots_dynamic
+	
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			industrial_capacity_dockyard = 0.1
+			production_speed_dockyard_factor = 0.15
+		}
+	}
+
+	## SISBIN PARALELO DYNAMIC SPIRIT
+	BRA_SISBIN_paralelo_dummy_idea = {
+		name = BRA_SISBIN_paralelo_dynamic
+	
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+
+		}
+	}
+	# RESTRUCTURE THE SISBIN
+	BRA_SISBIN_paralelo_dummy_A = {
+		name = BRA_SISBIN_paralelo_dynamic
+	
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			civilian_intel_factor = 0.05
+			army_intel_factor = 0.05
+			navy_intel_factor = 0.05
+			airforce_intel_factor = 0.05
+			intelligence_agency_defense = 0.1
+		}
+	}
+	# HUNT THE TRAITORS WITHIN
+	BRA_SISBIN_paralelo_dummy_1B = {
+		name = BRA_SISBIN_paralelo_dynamic
+	
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			resistance_decay = 0.1
+			resistance_target = -0.05
+		}
+	}
+	# EXPAND ABIN
+	BRA_SISBIN_paralelo_dummy_2B = {
+		name = BRA_SISBIN_paralelo_dynamic
+	
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			agency_upgrade_time = -0.2
+		}
+	}
+	# MEDDLE IN THE FEDERAL POLICE
+	BRA_SISBIN_paralelo_dummy_1C = {
+		name = BRA_SISBIN_paralelo_dynamic
+	
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			political_power_factor = 0.05
+			resistance_target = -0.1
+			required_garrison_factor = -0.15
+		}
+	}
+	# SEEK AND DESTROY
+	BRA_SISBIN_paralelo_dummy_C = {
+		name = BRA_SISBIN_paralelo_dynamic
+	
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			resistance_activity = -0.15
+			resistance_damage_to_garrison = -0.15
+		}
+	}
+	# TRACK DISSIDENT ACTIVITIES
+	BRA_SISBIN_paralelo_dummy_2C = {
+		name = BRA_SISBIN_paralelo_dynamic
+	
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			civilian_intel_factor = 0.1
+			army_intel_factor = 0.1
+			navy_intel_factor = 0.1
+			airforce_intel_factor = 0.1
+			intel_network_gain_factor = 0.25
+		}
+	}
+	# CRUSH GUERRILAS
+	BRA_SISBIN_paralelo_dummy_1D = {
+		name = BRA_SISBIN_paralelo_dynamic
+	
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			resistance_decay = 0.15
+			resistance_activity = -0.1
+		}
+	}
+	# CURB PARTISAN PROPAGANDA
+	BRA_SISBIN_paralelo_dummy_2D = {
+		name = BRA_SISBIN_paralelo_dynamic
+	
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			root_out_resistance_effectiveness_factor = 0.3
+			resistance_damage_to_garrison = -0.1
+		}
+	}
+	# SEMPRE VIGILANTE
+	BRA_SISBIN_paralelo_dummy_E = {
+		name = BRA_SISBIN_paralelo_dynamic
+	
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			compliance_growth = 0.5
+		}
+	}
+
+	## NATIONALIST ECONOMY DYNAMIC SPIRIT
+	BRA_nationalist_economy_dummy_idea = {
+		name = BRA_nationalist_economy_dynamic
+	
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+
+		}
+	}
+	# MEET WITH THE LANDOWNERS
+	BRA_nationalist_economy_dummy_A = {
+		name = BRA_nationalist_economy_dynamic
+	
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			business_value_factor = -0.05
+			personal_value_factor = -0.1
+			production_speed_buildings_factor = -0.05
+			misc_expense = 0.05
+			poverty_development_monthly = -0.01
+			academic_development_monthly = -0.01
+			industrial_development_monthly = -0.01
+		}
+	}
+	# PROTECT DOMESTIC PRODUCTION
+	BRA_nationalist_economy_dummy_1B = {
+		name = BRA_nationalist_economy_dynamic
+	
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			poverty_development_monthly = 0.025
+			farming_development_monthly = 0.015
+			personal_value_factor = 0.05
+		}
+	}
+	# AGRO RECONSTRUCTION SUBSIDIES
+	BRA_nationalist_economy_dummy_1C = {
+		name = BRA_nationalist_economy_dynamic
+	
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			stability_weekly = 0.0025
+			war_support_weekly = 0.003
+			repair_speed_infrastructure_factor = 0.15
+		}
+	}
+	# REQUEST SPECIALIZED ASSISTANCE
+	BRA_nationalist_economy_dummy_1D = {
+		name = BRA_nationalist_economy_dynamic
+	
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			production_speed_infrastructure_factor = 0.15
+			production_speed_synthetic_refinery_factor = 0.15
+			local_resources_factor = 0.075
+		}
+	}
+	# TRUST IN RURAL WISDOM
+	BRA_nationalist_economy_dummy_1E = {
+		name = BRA_nationalist_economy_dynamic
+	
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			production_lack_of_resource_penalty_factor = -0.15
+			fuel_gain_factor_from_states = 0.1
+			farming_development_monthly = 0.015
+		}
+	}
+	# DO YOUR PART FOR THE WAR EFFORT
+	BRA_nationalist_economy_dummy_1F = {
+		name = BRA_nationalist_economy_dynamic
+	
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			production_speed_infrastructure_factor = 0.15
+			monthly_population = 0.2
+			tax_business_rate_factor = 0.1
+			tax_personal_rate_factor = 0.1
+		}
+	}
+	# DO POVO PARA O POVO
+	BRA_nationalist_economy_dummy_1G = {
+		name = BRA_nationalist_economy_dynamic
+	
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			stability_factor = 0.1
+			poverty_development_monthly = 0.015
+			personal_value_factor = 0.05
+		}
+	}
+	# UNTIE THE PRODUCTIVE SECTOR
+	BRA_nationalist_economy_dummy_2B = {
+		name = BRA_nationalist_economy_dynamic
+	
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			business_value_factor = 0.05
+			industrial_development_monthly = 0.01
+			production_speed_buildings_factor = 0.05
+		}
+	}
+	# EASE BURDENS ON PRODUCERS
+	BRA_nationalist_economy_dummy_2C = {
+		name = BRA_nationalist_economy_dynamic
+	
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			industrial_development_monthly = 0.015
+			business_value_factor = 0.05
+			line_change_production_efficiency_factor = 0.15
+		}
+	}
+	# CALL ON INDUSTRIAL PLANNERS
+	BRA_nationalist_economy_dummy_2D = {
+		name = BRA_nationalist_economy_dynamic
+	
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			production_speed_buildings_factor = 0.05
+			business_value_factor = 0.05
+			production_factory_max_efficiency_factor = 0.15
+		}
+	}
+	# BOOST AUTOMATION
+	BRA_nationalist_economy_dummy_2E = {
+		name = BRA_nationalist_economy_dynamic
+	
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			industrial_development_monthly = 0.025
+			business_value_factor = 0.05
+			industrial_capacity_factory = 0.05
+			production_factory_efficiency_gain_factor = 0.1
+		}
+	}
+	# GENERAL LEADERSHIP CHANGE
+	BRA_nationalist_economy_dummy_2F = {
+		name = BRA_nationalist_economy_dynamic
+	
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			business_value_factor = 0.05
+			tax_business_rate_factor = 0.1
+			military_industrial_organization_funds_gain = 0.25
+		}
+	}
+	# NAS MÃOS DE QUEM ENTENDE
+	BRA_nationalist_economy_dummy_2G = {
+		name = BRA_nationalist_economy_dynamic
+	
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			stability_factor = 0.05
+			war_support_factor = 0.05
+			business_value_factor = 0.1
+			industrial_capacity_factory = 0.1
+			misc_expense = -0.05
+		}
+	}
+	# GUARANTEE THE BASIC FOOD BASKET
+	BRA_nationalist_economy_dummy_1H = {
+		name = BRA_nationalist_economy_dynamic
+	
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			low_stability_weekly = 0.0025
+			poverty_development_monthly = 0.01
+			personal_expense_factor = 0.1
+		}
+	}
+	# SUSPEND PRODUCTION OF NONESSENTIAL GOODS
+	BRA_nationalist_economy_dummy_2H = {
+		name = BRA_nationalist_economy_dynamic
+	
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			war_support_factor = 0.05
+			consumer_goods_factor = -0.25
+		}
+	}
+	# WHAT OUR SOIL HAS TO OFFER
+	BRA_nationalist_economy_dummy_1I = {
+		name = BRA_nationalist_economy_dynamic
+	
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			farming_development_monthly = 0.01
+			local_resources_factor = 0.075
+		}
+	}
+	# EMPLOY EMINENT DOMAIN
+	BRA_nationalist_economy_dummy_2I = {
+		name = BRA_nationalist_economy_dynamic
+	
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			industrial_development_monthly = 0.01
+			conversion_cost_civ_to_mil_factor = -0.3
+			conversion_cost_mil_to_civ_factor = -0.3
+			global_building_slots_factor = 0.1
+		}
+	}
+	# THE TOIL AHEAD OF US
+	BRA_nationalist_economy_dummy_J = {
+		name = BRA_nationalist_economy_dynamic
+	
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			personal_value_factor = 0.1
+			business_value_factor = 0.05
+			academic_development_monthly = 0.025
+			industry_free_repair_factor = 0.1
+		}
+	}
+
+	# GOD
+	BRA_brazil_above_all_bcw_dummy_A1 = {
+		name = BRA_brazil_above_all_dynamic
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			stability_factor = 0.05
+			authoritarian_democrat_drift = 0.01
+		}
+	}
+	# PROTECT CHRISTIAN VALUES
+	BRA_brazil_above_all_bcw_dummy_B1 = {
+		name = BRA_brazil_above_all_dynamic
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			poverty_development_monthly = 0.005
+			low_stability_weekly = 0.005
+		}
+	}
+	# WITH THE LORD AS OUR GUIDE
+	BRA_brazil_above_all_bcw_dummy_C1 = {
+		name = BRA_brazil_above_all_dynamic
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			bra_olavist_drift_weekly = 0.0025
+			monthly_population = 0.1
+			personal_value_factor = 0.05
+		}
+	}
+	# HOMELAND
+	BRA_brazil_above_all_bcw_dummy_A2 = {
+		name = BRA_brazil_above_all_dynamic
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			war_support_factor = 0.05
+			nationalist_drift = 0.01
+		}
+	}
+	# INSTILL PATRIOTIC VALUES
+	BRA_brazil_above_all_bcw_dummy_B2 = {
+		name = BRA_brazil_above_all_dynamic
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			weekly_casualties_war_support = 0.005
+			military_development_monthly = 0.005
+		}
+	}
+	# OUR GLORIOUS HEROES
+	BRA_brazil_above_all_bcw_dummy_C2 = {
+		name = BRA_brazil_above_all_dynamic
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			bra_military_drift_weekly = 0.0025
+			conscription_factor = 0.05
+			command_power_gain_mult = 0.15
+		}
+	}
+	# FAMILY
+	BRA_brazil_above_all_bcw_dummy_A3 = {
+		name = BRA_brazil_above_all_dynamic
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			political_power_factor = 0.15
+			conservative_drift = 0.01
+		}
+	}
+	# SAFEGUARD TRADITIONAL VALUES
+	BRA_brazil_above_all_bcw_dummy_B3 = {
+		name = BRA_brazil_above_all_dynamic
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			society_development_monthly = 0.01
+			drift_defence_factor = 0.15
+		}
+	}
+	# DEFENDERS OF FAMILIES
+	BRA_brazil_above_all_bcw_dummy_C3 = {
+		name = BRA_brazil_above_all_dynamic
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			bra_bolsonarist_drift_weekly = 0.0025
+			compliance_gain = 0.05
+			political_power_gain = 0.1
+		}
+	}
+	# LIBERTY
+	BRA_brazil_above_all_bcw_dummy_A4 = {
+		name = BRA_brazil_above_all_dynamic
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			business_value_factor = 0.05
+			market_liberal_drift = 0.01
+		}
+	}
+	# KEEP THE ENTREPRENEURS COMING
+	BRA_brazil_above_all_bcw_dummy_B4 = {
+		name = BRA_brazil_above_all_dynamic
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			production_speed_buildings_factor = 0.05
+			tax_gain_multiplier_modifier = 0.1
+		}
+	}
+	# PROTECT CIVIL LIBERTIES
+	BRA_brazil_above_all_bcw_dummy_C4 = {
+		name = BRA_brazil_above_all_dynamic
+		allowed = { 
+			original_tag = BRA
+		}
+		
+		modifier = {
+			bra_libertarian_drift_weekly = 0.0025
+			interest_rate_factor = -0.15
+			society_development_monthly = 0.005
+			market_liberal_drift = 0.01
+		}
+	}
+}
+	
+## MINISTERS ##
+head_minister = {
+	BRA_hamilton_mourao_prewar_hog = {
+		picture = BRA_hamilton_mourao
+		allowed = {
+			original_tag = BRA
+		}
+		visible = {
+			NOT = { has_global_flag = BCW_started_flag }
+		}
+		allowed_to_remove = {
+			head_minister_trigger = yes
+		}
+		traits = {
+			hog_military_government_cabinet
+		}
+	}
+	BRA_silas_malafaia_hog = {
+		picture = BRA_silas_malafaia
+		allowed = {
+			original_tag = BRA
+		}
+		visible = {
+			has_country_flag = BRA_unlock_bcw_advisors
+		}
+		allowed_to_remove = {
+			head_minister_trigger = yes
+		}
+		traits = {
+			BRA_advisor_olavist_faction
+			BRA_hos_staunch_televangelist
+		}
+	}
+	BRA_augusto_heleno_hog = {
+		picture = BRA_augusto_heleno
+		allowed = {
+			original_tag = BRA
+		}
+		visible = {
+			has_country_flag = BRA_unlock_bcw_advisors
+		}
+		allowed_to_remove = {
+			head_minister_trigger = yes
+		}
+		traits = {
+			BRA_advisor_military_faction
+			BRA_hos_armed_forces_hardliner
+		}
+	}
+	BRA_flavio_bolsonaro_hog = {
+		picture = BRA_flavio_bolsonaro
+		allowed = {
+			original_tag = BRA
+		}
+		visible = {
+			has_country_flag = BRA_unlock_bcw_advisors
+		}
+		allowed_to_remove = {
+			head_minister_trigger = yes
+		}
+		traits = {
+			BRA_advisor_bolsonarist_faction
+			BRA_hos_bolsonaros_heir
+		}
+	}
+	BRA_felipe_davila_hog = {
+		picture = BRA_felipe_davila
+		allowed = {
+			original_tag = BRA
+		}
+		visible = {
+			has_country_flag = BRA_unlock_bcw_advisors
+		}
+		allowed_to_remove = {
+			head_minister_trigger = yes
+		}
+		traits = {
+			BRA_advisor_libertarian_faction
+			BRA_hos_novo_legacy
+		}
+	}
+}
+
+foreign_minister = {
+	BRA_ernesto_araujo_prewar_for = {
+		picture = BRA_ernesto_araujo
+		allowed = {
+			original_tag = BRA
+		}
+		visible = {
+			NOT = { has_global_flag = BCW_started_flag }
+		}
+		allowed_to_remove = {
+			AOS_locked_ministers = yes
+		}
+		traits = {
+			for_ideological_crusader
+		}
+	}
+	BRA_carlos_franca_prewar_for = {
+		picture = BRA_carlos_franca
+		allowed = {
+			original_tag = BRA
+		}
+		visible = {
+			NOT = { has_global_flag = BCW_started_flag }
+		}
+		allowed_to_remove = {
+			AOS_locked_ministers = yes
+		}
+		traits = {
+			for_free_trader
+		}
+	}
+
+	BRA_ernesto_araujo_for = {
+		picture = BRA_ernesto_araujo
+		allowed = {
+			original_tag = BRA
+		}
+		visible = {
+			has_country_flag = BRA_unlock_bcw_advisors
+		}
+		available = {
+			has_country_flag = BRA_unlock_olavist_advisors
+		}
+		traits = {
+			BRA_advisor_olavist_faction
+			for_ideological_crusader
+		}
+	}
+	BRA_magno_malta_for = {
+		picture = BRA_magno_malta
+		allowed = {
+			original_tag = BRA
+		}
+		visible = {
+			has_country_flag = BRA_unlock_bcw_advisors
+		}
+		available = {
+			has_country_flag = BRA_unlock_olavist_advisors
+		}
+		traits = {
+			BRA_advisor_olavist_faction
+			BRA_barrierless
+		}
+	}
+	BRA_augusto_heleno_for = {
+		picture = BRA_augusto_heleno
+		allowed = {
+			original_tag = BRA
+		}
+		visible = {
+			has_country_flag = BRA_unlock_bcw_advisors
+		}
+		available = {
+			has_country_flag = BRA_unlock_military_advisors
+		}
+		traits = {
+			BRA_advisor_military_faction
+			for_general_staffer
+		}
+	}
+	BRA_eduardo_bolsonaro_for = {
+		picture = BRA_eduardo_bolsonaro
+		allowed = {
+			original_tag = BRA
+		}
+		visible = {
+			has_country_flag = BRA_unlock_bcw_advisors
+		}
+		available = {
+			has_country_flag = BRA_unlock_bolsonarist_advisors
+		}
+		traits = {
+			BRA_advisor_bolsonarist_faction
+			for_great_compromiser
+		}
+	}
+	BRA_luiz_philippe_for = {
+		picture = BRA_luiz_philippe
+		allowed = {
+			original_tag = BRA
+		}
+		visible = {
+			has_country_flag = BRA_unlock_bcw_advisors
+		}
+		available = {
+			has_country_flag = BRA_unlock_libertarian_advisors
+		}
+		traits = {
+			BRA_advisor_libertarian_faction
+			BRA_many_faced_royal
+		}
+	}
+	BRA_nestor_forster_for = {
+		picture = BRA_nestor_forster
+		allowed = {
+			original_tag = BRA
+		}
+		visible = {
+			has_country_flag = BRA_unlock_bcw_advisors
+		}
+		available = {
+			has_country_flag = BRA_unlock_libertarian_advisors
+		}
+		traits = {
+			BRA_advisor_libertarian_faction
+			BRA_westward_look
+		}
+	}
+}
+
+economic_minister = {
+	BRA_paulo_guedes_prewar_eco = {
+		picture = BRA_paulo_guedes
+		allowed = {
+			original_tag = BRA
+		}
+		visible = {
+			NOT = { has_global_flag = BCW_started_flag }
+		}
+		allowed_to_remove = {
+			AOS_locked_ministers = yes
+		}
+		traits = {
+			eco_laissez_faire_capitalist
+		}
+	}
+	BRA_gilson_neto_eco = {
+		picture = BRA_gilson_neto
+		allowed = {
+			original_tag = BRA
+		}
+		visible = {
+			has_country_flag = BRA_unlock_bcw_advisors
+		}
+		available = {
+			has_country_flag = BRA_unlock_olavist_advisors
+		}
+		traits = {
+			BRA_advisor_olavist_faction
+			BRA_secretary_of_tourism
+		}
+	}
+	BRA_abilio_santana_eco = {
+		picture = BRA_abilio_santana
+		allowed = {
+			original_tag = BRA
+		}
+		visible = {
+			has_country_flag = BRA_unlock_bcw_advisors
+		}
+		available = {
+			has_country_flag = BRA_unlock_olavist_advisors
+		}
+		traits = {
+			BRA_advisor_olavist_faction
+			eco_economic_populist
+		}
+	}
+	BRA_bento_albuquerque_eco = {
+		picture = BRA_bento_albuquerque
+		allowed = {
+			original_tag = BRA
+		}
+		visible = {
+			has_country_flag = BRA_unlock_bcw_advisors
+		}
+		available = {
+			has_country_flag = BRA_unlock_military_advisors
+		}
+		traits = {
+			BRA_advisor_military_faction
+			BRA_resource_developmentalist
+		}
+	}
+	BRA_joaquim_luna_eco = {
+		picture = BRA_joaquim_luna
+		allowed = {
+			original_tag = BRA
+		}
+		visible = {
+			has_country_flag = BRA_unlock_bcw_advisors
+		}
+		available = {
+			has_country_flag = BRA_unlock_military_advisors
+		}
+		traits = {
+			BRA_advisor_military_faction
+			BRA_petrobras_president
+		}
+	}
+	BRA_ciro_nogueira_eco = {
+		picture = BRA_ciro_nogueira
+		allowed = {
+			original_tag = BRA
+		}
+		visible = {
+			has_country_flag = BRA_unlock_bcw_advisors
+		}
+		available = {
+			has_country_flag = BRA_unlock_bolsonarist_advisors
+		}
+		traits = {
+			BRA_advisor_bolsonarist_faction
+			BRA_labour_flexibility
+		}
+	}
+	BRA_luciano_bivar_eco = {
+		picture = BRA_luciano_bivar
+		allowed = {
+			original_tag = BRA
+		}
+		visible = {
+			has_country_flag = BRA_unlock_bcw_advisors
+		}
+		available = {
+			has_country_flag = BRA_unlock_bolsonarist_advisors
+		}
+		traits = {
+			BRA_advisor_bolsonarist_faction
+			eco_economic_organizer
+			RFB_old_relic
+		}
+	}
+	BRA_paulo_guedes_eco = {
+		picture = BRA_paulo_guedes_2
+		allowed = {
+			original_tag = BRA
+		}
+		visible = {
+			has_country_flag = BRA_unlock_bcw_advisors
+		}
+		available = {
+			has_country_flag = BRA_unlock_libertarian_advisors
+		}
+		traits = {
+			BRA_advisor_libertarian_faction
+			BRA_market_surfer
+		}
+	}
+	BRA_roberto_neto_eco = {
+		picture = BRA_roberto_neto
+		allowed = {
+			original_tag = BRA
+		}
+		visible = {
+			has_country_flag = BRA_unlock_bcw_advisors
+		}
+		available = {
+			has_country_flag = BRA_unlock_libertarian_advisors
+		}
+		traits = {
+			BRA_advisor_libertarian_faction
+			BRA_central_bank_president
+		}
+	}
+}
+
+interior_minister = {
+	BRA_tereza_cristina_prewar_sec = {
+		picture = BRA_tereza_cristina
+		allowed = {
+			original_tag = BRA
+		}
+		visible = {
+			NOT = { has_global_flag = BCW_started_flag }
+		}
+		allowed_to_remove = {
+			AOS_locked_ministers = yes
+		}
+		traits = {
+			sec_reformer
+		}
+	}
+	BRA_damares_alves_sec = {
+		picture = BRA_damares_alves
+		allowed = {
+			original_tag = BRA
+		}
+		visible = {
+			has_country_flag = BRA_unlock_bcw_advisors
+		}
+		available = {
+			has_country_flag = BRA_unlock_olavist_advisors
+		}
+		traits = {
+			BRA_advisor_olavist_faction
+			BRA_passadora_de_pano
+		}
+	}
+	BRA_marco_feliciano_sec = {
+		picture = BRA_marco_feliciano
+		allowed = {
+			original_tag = BRA
+		}
+		visible = {
+			has_country_flag = BRA_unlock_bcw_advisors
+		}
+		available = {
+			has_country_flag = BRA_unlock_olavist_advisors
+		}
+		traits = {
+			BRA_advisor_olavist_faction
+			sec_prince_of_terror
+		}
+	}
+	BRA_bento_lima_sec = {
+		picture = BRA_bento_lima
+		allowed = {
+			original_tag = BRA
+		}
+		visible = {
+			has_country_flag = BRA_unlock_bcw_advisors
+		}
+		available = {
+			has_country_flag = BRA_unlock_military_advisors
+		}
+		traits = {
+			BRA_advisor_military_faction
+		}
+	}
+	BRA_eduardo_pazuello_sec = {
+		picture = BRA_eduardo_pazuello
+		allowed = {
+			original_tag = BRA
+		}
+		visible = {
+			has_country_flag = BRA_unlock_bcw_advisors
+		}
+		available = {
+			has_country_flag = BRA_unlock_military_advisors
+		}
+		traits = {
+			BRA_advisor_military_faction
+			BRA_protocol_breaker
+		}
+	}
+	BRA_onyx_lorenzoni_sec = {
+		picture = BRA_onyx_lorenzoni
+		allowed = {
+			original_tag = BRA
+		}
+		visible = {
+			has_country_flag = BRA_unlock_bcw_advisors
+		}
+		available = {
+			has_country_flag = BRA_unlock_bolsonarist_advisors
+		}
+		traits = {
+			BRA_advisor_bolsonarist_faction
+			sec_compassionate_gentleman
+			sec_internal_compromiser
+		}
+	}
+	BRA_arthur_lira_sec = {
+		picture = BRA_arthur_lira
+		allowed = {
+			original_tag = BRA
+		}
+		visible = {
+			has_country_flag = BRA_unlock_bcw_advisors
+		}
+		available = {
+			has_country_flag = BRA_unlock_bolsonarist_advisors
+		}
+		traits = {
+			BRA_advisor_bolsonarist_faction
+			sec_efficent_organizer
+		}
+	}
+	BRA_ricardo_salles_sec = {
+		picture = BRA_ricardo_salles
+		allowed = {
+			original_tag = BRA
+		}
+		visible = {
+			has_country_flag = BRA_unlock_bcw_advisors
+		}
+		available = {
+			has_country_flag = BRA_unlock_libertarian_advisors
+		}
+		traits = {
+			BRA_advisor_libertarian_faction
+			BRA_exterminator_from_the_future
+		}
+	}
+	BRA_rogerio_marinho_sec = {
+		picture = BRA_rogerio_marinho
+		allowed = {
+			original_tag = BRA
+		}
+		visible = {
+			has_country_flag = BRA_unlock_bcw_advisors
+		}
+		available = {
+			has_country_flag = BRA_unlock_libertarian_advisors
+		}
+		traits = {
+			BRA_advisor_libertarian_faction
+			BRA_development_manager
+		}
+	}
+	BRA_tarcisio_freitas_sec = {
+		picture = BRA_tarcisio_freitas
+		allowed = {
+			original_tag = BRA
+		}
+		visible = {
+			has_country_flag = BRA_unlock_bcw_advisors	
+		}
+		available = {
+			has_country_flag = BRA_unlock_ESP_advisors
+		}
+		traits = {
+			BRA_mini_bolsonaro
+		}
+	}
+	BRA_sandra_regina_sec = {
+		picture = BRA_sandra_regina
+		allowed = {
+			original_tag = BRA
+		}
+		visible = {
+			has_country_flag = BRA_unlock_bcw_advisors
+			OR = {
+				country_exists = AME
+				has_country_flag = BRA_unlock_AME_advisors
+			}
+		}
+		available = {
+			has_country_flag = BRA_unlock_AME_advisors
+		}
+		traits = {
+			sec_soldier_of_the_people
+		}
+	}
+}
+
+intelligence_minister = {
+	BRA_sergio_moro_prewar_int = {
+		picture = BRA_sergio_moro
+		allowed = {
+			original_tag = BRA
+		}
+		visible = {
+			NOT = { has_global_flag = BCW_started_flag }
+		}
+		available = {
+			NOT = { has_country_flag = BRA_moro_quits_flag }			
+		}
+		allowed_to_remove = {
+			AOS_locked_ministers = yes
+		}
+		traits = {
+			BRA_former_car_wash_judge
+		}
+	}
+	BRA_andre_mendonca_prewar_int = {
+		picture = BRA_andre_mendonca
+		allowed = {
+			original_tag = BRA
+		}
+		visible = {
+			NOT = { has_global_flag = BCW_started_flag }
+		}
+		allowed_to_remove = {
+			AOS_locked_ministers = yes
+		}
+		traits = {
+			int_psychological_mastermind
+		}
+	}
+	BRA_anderson_torres_prewar_int = {
+		picture = BRA_anderson_torres
+		allowed = {
+			original_tag = BRA
+		}
+		visible = {
+			NOT = { has_global_flag = BCW_started_flag }
+		}
+		allowed_to_remove = {
+			AOS_locked_ministers = yes
+		}
+		traits = {
+			BRA_right_hand_justice
+		}
+	}
+	BRA_roberto_alvim_int = {
+		picture = BRA_roberto_alvim
+		allowed = {
+			original_tag = BRA
+		}
+		visible = {
+			has_country_flag = BRA_unlock_bcw_advisors
+		}
+		available = {
+			has_country_flag = BRA_unlock_olavist_advisors
+		}
+		traits = {
+			BRA_advisor_olavist_faction
+		}
+	}
+	BRA_edir_macedo_int = {
+		picture = BRA_edir_macedo
+		allowed = {
+			original_tag = BRA
+		}
+		visible = {
+			has_country_flag = BRA_unlock_bcw_advisors
+		}
+		available = {
+			has_country_flag = BRA_unlock_olavist_advisors
+		}
+		traits = {
+			BRA_advisor_olavist_faction
+		}
+	}
+	BRA_alexandre_ramagen_int = {
+		picture = BRA_alexandre_ramagen
+		allowed = {
+			original_tag = BRA
+		}
+		visible = {
+			has_country_flag = BRA_unlock_bcw_advisors
+		}
+		available = {
+			has_country_flag = BRA_unlock_bolsonarist_advisors
+		}
+		traits = {
+			BRA_advisor_bolsonarist_faction
+		}
+	}
+	BRA_carlos_bolsonaro_int = {
+		picture = BRA_carlos_bolsonaro
+		allowed = {
+			original_tag = BRA
+		}
+		visible = {
+			has_country_flag = BRA_unlock_bcw_advisors
+		}
+		available = {
+			has_country_flag = BRA_unlock_bolsonarist_advisors
+		}
+		traits = {
+			BRA_advisor_bolsonarist_faction
+		}
+	}
+}
+
+theorist_minister = {
+	BRA_fernando_azevedo_prewar_theorist = {
+		picture = BRA_fernando_azevedo
+		allowed = {
+			original_tag = BRA
+		}
+		visible = {
+			NOT = { has_global_flag = BCW_started_flag }
+		}
+		allowed_to_remove = {
+			AOS_locked_ministers = yes
+		}
+		traits = {
+			army_chief_drill_1
+		}
+	}
+	BRA_braga_netto_prewar_theorist = {
+		picture = BRA_braga_netto
+		allowed = {
+			original_tag = BRA
+		}
+		visible = {
+			NOT = { has_global_flag = BCW_started_flag }
+		}
+		allowed_to_remove = {
+			AOS_locked_ministers = yes
+		}
+		traits = {
+			army_chief_unity_of_party_and_military
+		}
+	}
+	BRA_sergio_nogueira_prewar_theorist = {
+		picture = BRA_sergio_nogueira
+		allowed = {
+			original_tag = BRA
+		}
+		visible = {
+			NOT = { has_global_flag = BCW_started_flag }
+		}
+		allowed_to_remove = {
+			AOS_locked_ministers = yes
+		}
+		traits = {
+			army_chief_political_protege
+		}
+	}
+	BRA_sergio_nogueira_theorist = {
+		picture = BRA_sergio_nogueira_2
+		allowed = {
+			original_tag = BRA
+		}
+		visible = {
+			has_country_flag = BRA_unlock_bcw_advisors
+		}
+		available = {
+			has_country_flag = BRA_unlock_military_advisors
+		}
+		traits = {
+			BRA_advisor_military_faction
+		}
+	}
+	BRA_braga_netto_theorist = {
+		picture = BRA_braga_netto_3
+		allowed = {
+			original_tag = BRA
+		}
+		visible = {
+			has_country_flag = BRA_unlock_bcw_advisors
+		}
+		available = {
+			has_country_flag = BRA_unlock_military_advisors
+		}
+		traits = {
+			BRA_advisor_military_faction
+		}
+	}
+	BRA_hamilton_mourao_theorist = {
+		picture = BRA_hamilton_mourao_2
+		allowed = {
+			original_tag = BRA
+		}
+		visible = {
+			has_country_flag = BRA_unlock_bcw_advisors
+			OR = {
+				country_exists = REA
+				has_country_flag = BRA_unlock_MOURAO_advisors
+			}
+		}
+		available = {
+			has_country_flag = BRA_unlock_MOURAO_advisors
+		}
+	}
+	BRA_uira_ferreira_theorist = {
+		picture = BRA_uira_ferreira
+		allowed = {
+			original_tag = BRA
+		}
+		visible = {
+			has_country_flag = BRA_unlock_bcw_advisors
+			OR = {
+				country_exists = BOP
+				has_country_flag = BRA_unlock_BOPE_advisors
+			}
+		}
+		available = {
+			has_country_flag = BRA_unlock_BOPE_advisors
+		}
+	}
+	BRA_cristiano_quintas_theorist = {
+		picture = BRA_cristiano_quintas
+		allowed = {
+			original_tag = BRA
+		}
+		visible = {
+			has_country_flag = BRA_unlock_bcw_advisors
+			OR = {
+				country_exists = TGR
+				has_country_flag = BRA_unlock_TIGRE_advisors
+			}
+		}
+		available = {
+			has_country_flag = BRA_unlock_TIGRE_advisors
+		}
+	}
+	BRA_silvinei_vasques_theorist = {
+		picture = BRA_silvinei_vasques
+		allowed = {
+			original_tag = BRA
+		}
+		visible = {
+			has_country_flag = BRA_unlock_bcw_advisors
+			OR = {
+				country_exists = TGR
+				has_country_flag = BRA_unlock_PRF_advisors
+			}
+		}
+		available = {
+			has_country_flag = BRA_unlock_PRF_advisors
+		}
+	}
+}
+
+# Dummy Ideas
+hidden_idea = {
+	BRA_bcw_olavist_idea = { }
+	BRA_bcw_military_idea = { }
+	BRA_bcw_bolsonarist_idea = { }
+	BRA_bcw_libertarian_idea = { }
+}
+}

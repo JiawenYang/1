@@ -1,0 +1,508 @@
+	#diplomacy tree
+	shared_focus = {
+		id = JAP_defeat_challenge_chinese_dominance
+		icon = GFX_focus_JAP_defeat_challenge_chinese_dominance
+		cost = 5
+		x = 50
+		y = 0
+		ai_will_do = {
+			factor = 1000
+		}
+		completion_reward = {
+			add_political_power = 150
+			unlock_decision_category_tooltip = JAP_foreign_policy_cat
+		}
+	}
+	
+	shared_focus = {
+		id = JAP_defeat_unite_free_asia
+		icon = GFX_focus_JAP_defeat_unite_free_asia
+		cost = 5
+		relative_position_id = JAP_defeat_challenge_chinese_dominance
+		ai_will_do = {
+			factor = 1000
+		}
+		prerequisite = {
+			focus = JAP_defeat_challenge_chinese_dominance
+		}
+		x = -4
+		y = 1
+		completion_reward = {
+			unlock_decision_tooltip = JAP_invite_new_zealand_pdto
+			unlock_decision_tooltip = JAP_invite_india_pdto
+			KOR = {
+				add_political_power = 50
+				add_war_support = 0.15
+				diplomatic_relation = {
+					country = JAP
+					relation = military_access
+					active = yes
+				}
+				diplomatic_relation = {
+					country = JAP
+					relation = docking_rights
+					active = yes
+				}
+			}
+			diplomatic_relation = {
+				country = KOR
+				relation = military_access
+				active = yes
+			}
+			diplomatic_relation = {
+				country = KOR
+				relation = docking_rights
+				active = yes
+			}
+			hidden_effect = {
+				country_event = {
+					id = jap.151
+					days = 10
+					random_days = 20
+				}
+			}
+		}
+	}
+	shared_focus = {
+		id = JAP_defeat_united_armed_forces
+		icon = GFX_focus_JAP_defeat_united_armed_forces
+		cost = 5
+		relative_position_id = JAP_defeat_unite_free_asia
+		
+		prerequisite = {
+			focus = JAP_defeat_unite_free_asia
+		}
+		x = 0
+		y = 2
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			every_country = {
+				limit = {
+					NOT = {
+						original_tag = JAP
+					}
+					has_country_flag = pdto_member
+				}
+				add_ideas = JAP_PDTO_member_1
+			}
+		}
+
+	}
+	shared_focus = {
+		id = JAP_defeat_long_japanese_hand
+		icon = GFX_focus_JAP_defeat_long_japanese_hand
+		cost = 5
+		relative_position_id = JAP_defeat_challenge_chinese_dominance
+		
+		prerequisite = {
+			focus = JAP_defeat_challenge_chinese_dominance
+		}
+		x = -1
+		y = 1
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			unlock_decision_tooltip = JAP_start_international_mission
+			add_command_power = 50
+		}
+	}
+	shared_focus = {
+		id = JAP_defeat_fund_taiwanese_resistance
+		icon = GFX_focus_JAP_defeat_fund_taiwanese_resistance
+		cost = 5
+		relative_position_id = JAP_defeat_unite_free_asia
+		
+		prerequisite = {
+			focus = JAP_defeat_unite_free_asia
+		}
+		prerequisite = {
+			focus = JAP_defeat_long_japanese_hand
+		}
+		x = 2
+		y = 1
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			every_state = {
+				limit = {
+					is_core_of = TAI
+				}
+				add_dynamic_modifier = {
+					modifier = JAP_taiwan_independence_movement
+					days = 500
+				}
+				damage_building = {
+					type = infrastructure
+					damage = 1
+				}
+			}
+			hidden_effect = {
+				country_event = {
+					id = jap.152
+					days = 10
+					random_days = 30
+				}
+			}
+		}
+
+	}
+	shared_focus = {
+		id = JAP_defeat_collective_sovereignity
+		icon = GFX_focus_JAP_defeat_collective_sovereignity
+		cost = 5
+		relative_position_id = JAP_defeat_united_armed_forces
+		
+		prerequisite = {
+			focus = JAP_defeat_united_armed_forces
+		}
+		prerequisite = {
+			focus = JAP_defeat_fund_taiwanese_resistance
+		}
+		x = 1
+		y = 1
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			every_country = {
+				limit = {
+					NOT = {
+						original_tag = JAP
+					}
+					has_country_flag = pdto_member
+				}
+				swap_ideas = {
+					remove_idea = JAP_PDTO_member_1
+					add_idea = JAP_PDTO_member_2
+				}
+			}
+			add_offsite_building = { type = arms_factory level = 3 }
+			USA = {
+				send_equipment = {
+					equipment = infantry_weapons
+					amount = 7500
+					target = JAP
+				}
+				send_equipment = {
+					equipment = command_control_equipment
+					amount = 750
+					target = JAP
+				}
+				send_equipment = {
+					equipment = infantry_weapons
+					amount = 7500
+					target = AST
+				}
+				send_equipment = {
+					equipment = command_control_equipment
+					amount = 750
+					target = AST
+				}
+				send_equipment = {
+					equipment = infantry_weapons
+					amount = 7500
+					target = NZL
+				}
+				send_equipment = {
+					equipment = command_control_equipment
+					amount = 750
+					target = NZL
+				}
+				send_equipment = {
+					equipment = infantry_weapons
+					amount = 7500
+					target = RAJ
+				}
+				send_equipment = {
+					equipment = command_control_equipment
+					amount = 750
+					target = RAJ
+				}
+				send_equipment = {
+					equipment = infantry_weapons
+					amount = 7500
+					target = KOR
+				}
+				send_equipment = {
+					equipment = command_control_equipment
+					amount = 750
+					target = KOR
+				}
+			}
+			AST = {
+				random_owned_controlled_state = {
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = arms_factory
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			RAJ = {
+				random_owned_controlled_state = {
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = arms_factory
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			KOR = {
+				random_owned_controlled_state = {
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = arms_factory
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+		}
+	}
+	shared_focus = {
+		id = JAP_defeat_own_economic_sphere
+		icon = GFX_focus_JAP_defeat_own_economic_sphere
+		cost = 5
+		relative_position_id = JAP_defeat_challenge_chinese_dominance
+		
+		prerequisite = {
+			focus = JAP_defeat_challenge_chinese_dominance
+		}
+		x = 1
+		y = 1
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			unlock_decision_category_tooltip = JAP_PEC_category
+			effect_tooltip = {
+				add_ideas = JAP_PEC_fake_idea
+			}
+			every_country = {
+				limit = {
+					OR = {
+						tag = AST
+					}
+				}
+				add_ideas = JAP_PEC_member
+				set_country_flag = JAP_PEC_member_flag
+			}
+			hidden_effect = {
+				set_country_flag = JAP_PEC_member_flag
+				add_dynamic_modifier = {
+					modifier = JAP_PEC_dynamic
+				}
+				set_variable = { JAP_PEC_number_of_members = 2 }
+				set_variable = { JAP_PEC_consumer_goods_factor = -0.004 }
+				set_variable = { JAP_PEC_lend_lease_tension = -0.02 }
+				set_variable = { JAP_PEC_poverty_development_monthly = 0.002 }
+				set_variable = { JAP_PEC_industrial_development_monthly = 0.002 }
+				set_variable = { JAP_PEC_global_building_slots_factor = 0.01 }
+				set_variable = { JAP_PEC_production_speed_buildings_factor = 0.01 }
+				AST = {
+					set_country_flag = JAP_PEC_member_flag
+				}
+				add_to_array = {
+					JAP.JAP_PEC_members = AST
+				}
+				set_country_flag = JAP_PEC_invite_asia_flag
+			}
+		}
+
+	}
+	shared_focus = {
+		id = JAP_defeat_forced_cooperation
+		icon = GFX_focus_JAP_defeat_forced_cooperation
+		cost = 5
+		relative_position_id = JAP_defeat_own_economic_sphere
+		
+		prerequisite = {
+			focus = JAP_defeat_own_economic_sphere
+		}
+		x = -1
+		y = 1
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			custom_effect_tooltip = JAP_economic_pan_asianism_tt
+			set_country_flag = JAP_PEC_invite_south_asia_flag
+			add_political_power = 25
+		}
+	} 
+	shared_focus = {
+		id = JAP_defeat_east_economic_autarky
+		icon = GFX_focus_JAP_defeat_east_economic_autarky
+		cost = 5
+		relative_position_id = JAP_defeat_forced_cooperation
+		
+		prerequisite = {
+			focus = JAP_defeat_forced_cooperation
+		}
+		prerequisite = {
+			focus = JAP_defeat_long_japanese_hand
+		}
+		x = 0
+		y = 2
+		completion_reward = {
+			if = {
+				limit = {
+					NOT = {
+						has_country_flag = JAP_PEC_member_flag
+					}
+				}
+				effect_tooltip = {
+					AST = {
+						swap_ideas = {
+							remove_idea = JAP_PEC_member
+							add_idea = JAP_PEC_member_2
+						}
+					}
+				}
+			}
+			every_country = {
+				limit = { 
+					has_country_flag = JAP_PEC_member_flag
+					NOT = {
+						tag = JAP
+					} 
+				}
+				swap_ideas = {
+					remove_idea = JAP_PEC_member
+					add_idea = JAP_PEC_member_2
+				}
+			}
+			custom_effect_tooltip = JAP_east_economic_autarky_tt
+			unlock_decision_tooltip = JAP_PEC_seize_asia_markets_industrial
+			unlock_decision_tooltip = JAP_PEC_seize_asia_markets_arms
+		}
+	}
+	shared_focus = {
+		id = JAP_defeat_unifying_our_economies
+		icon = GFX_focus_JAP_defeat_unifying_our_economies
+		cost = 5
+		relative_position_id = JAP_defeat_forced_cooperation
+		
+		prerequisite = {
+			focus = JAP_defeat_forced_cooperation
+		}
+		x = 1
+		y = 1
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			set_country_flag = JAP_PEC_help_asia_flag
+			custom_effect_tooltip = JAP_made_in_japan_tt
+			add_stability = 0.015
+		}
+	}
+	shared_focus = {
+		id = JAP_defeat_russian_reconciliation
+		icon = {
+			trigger = {
+				OR = {
+					emerging_communist_state_are_in_power = yes
+					neutrality_neutral_communism_are_in_power = yes
+				}
+			}
+			value = GFX_focus_JAP_defeat_russian_reconciliation_1
+		}
+		icon = {
+			trigger = {
+				NOT = {
+					OR = {
+						emerging_communist_state_are_in_power = yes
+						neutrality_neutral_communism_are_in_power = yes
+						nationalist_monarchists_are_in_power = yes
+						nationalist_right_wing_populists_are_in_power = yes
+					}
+				}
+			}
+			value = GFX_focus_JAP_defeat_russian_reconciliation_2
+		}
+		icon = {
+			trigger = {
+				OR = {
+					nationalist_monarchists_are_in_power = yes
+					nationalist_right_wing_populists_are_in_power = yes
+				}
+			}
+			value = GFX_focus_JAP_defeat_russian_reconciliation_3
+		}
+		cost = 5
+		relative_position_id = JAP_defeat_challenge_chinese_dominance
+		
+		prerequisite = {
+			focus = JAP_defeat_challenge_chinese_dominance
+		}
+		x = 3
+		y = 1
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			SOV = {
+				set_country_flag = JAP_reconciliation
+			}
+			add_timed_idea = {
+				idea = SOV_economic_assistance_idea_japan
+				days = 100
+			}
+			SOV = {
+				add_timed_idea = {
+					idea = SOV_economic_assistance_idea_japan
+					days = 100
+				}
+			}
+			custom_effect_tooltip = JAP_our_north_neighbour_tt
+			country_event = {
+				id = jap.81
+			}
+			effect_tooltip = {
+				add_ideas = JAP_oil_rus_help
+			}
+		}
+	}
+	shared_focus = {
+		id = JAP_defeat_international_community_assistance
+		icon = GFX_focus_JAP_defeat_international_community_assistance
+		cost = 5
+		relative_position_id = JAP_defeat_challenge_chinese_dominance
+		
+		prerequisite = {
+			focus = JAP_defeat_challenge_chinese_dominance
+		}
+		x = 3
+		y = 2
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = JAP_european_assistance_idea
+				days = 150
+			}
+			every_country = {
+				limit = {
+					OR = {
+						tag = GER
+						tag = ENG
+						tag = FRA
+						tag = ITA
+						tag = BEL
+					}
+				}
+				add_timed_idea = {
+					idea = JAP_european_assistance_idea
+					days = 115
+				}
+			}
+		}
+	}

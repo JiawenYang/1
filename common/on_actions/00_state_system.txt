@@ -1,0 +1,168 @@
+on_actions = {
+
+	on_startup = {
+	effect = {
+	###State System
+		every_country = {
+			limit = {
+				has_elections = yes
+			}
+ 			change_state_system_presidential_system = yes
+		}
+		every_country = {
+			limit = {
+				has_elections = no
+			}
+ 			change_state_system_authoritarianism = yes
+		}
+		every_country = {
+			limit = {
+				OR = {
+					is_european_nation = yes
+					original_tag = ISR
+				}
+				NOT = {
+					original_tag = SOV
+					original_tag = FRA
+					original_tag = LPR
+					original_tag = LRP
+					original_tag = BLR
+					original_tag = DPR
+					original_tag = UKR
+					original_tag = NOV
+					original_tag = MLV
+					original_tag = PMR
+					original_tag = GEO
+					original_tag = ABK
+					original_tag = SOO
+					original_tag = AZE
+					original_tag = ARM
+					original_tag = NKR
+  				} 
+			}
+ 			change_state_system_parliamentary_system = yes
+		}
+		every_country = {
+			limit = {
+				original_tag = TAI
+			}
+ 			change_state_system_taiwanese_semi_presidential_system = yes
+		}
+		every_country = {
+			limit = {
+				is_in_array = { ruling_party = 5 }	#anarchist_communism
+				has_elections = yes
+				NOT = { has_dynamic_modifier = { modifier = Commonwealth_member_modifier } }
+				is_european_nation = no
+			}
+			change_state_system_socialist_republic = yes
+		}
+		every_country = {
+			limit = {
+				OR = {
+					is_in_array = { ruling_party = 8 }	#Mod vilayat e faqih
+					is_in_array = { ruling_party = 9 }	#Vilayat_e_Faqih
+					is_in_array = { ruling_party = 11 }	#Caliphate
+				}
+				has_elections = yes
+			}
+			change_state_system_islamic_republic = yes
+		}
+		every_country = {
+			limit = {
+				OR = {
+					is_in_array = { ruling_party = 8 }	#Mod vilayat e faqih
+					is_in_array = { ruling_party = 9 }	#Vilayat_e_Faqih
+					is_in_array = { ruling_party = 11 }	#Caliphate
+				}
+				has_elections = no
+			}
+			change_state_system_theocracy = yes
+		}
+		every_country = {
+			limit = {
+				original_tag = SOV
+			}
+			change_state_system_russian_political_system = yes
+		}
+		every_country = {
+			limit = {
+				original_tag = USA
+			}
+			change_state_system_american_presidential_republic = yes
+		}
+		every_country = {
+			limit = {
+				NOT = { has_idea = law_constitutional_monarchy }
+				OR = {
+					has_dynamic_modifier = { modifier = Commonwealth_member_modifier }
+					original_tag = JAP
+				}
+			}
+ 			change_state_system_constitutional_monarchy = yes
+		}
+		every_country = {
+			limit = { 
+				OR = {
+					original_tag = CUB
+					original_tag = LAO
+					original_tag = NKO
+					original_tag = VIE
+				} 
+			}
+ 			change_state_system_socialist_state = yes
+		}
+		every_country = {
+			limit = {
+				OR = {
+					original_tag = CHI
+					original_tag = NPM
+					}
+				}
+ 			change_state_system_peoples_democracy = yes
+		}
+		every_country = {
+			limit = {
+				has_elections = no
+				OR = {
+					AND = {
+						has_idea = the_military
+						OR = {
+							has_government = nationalist
+							has_government = neutrality
+						}
+					}
+					is_in_array = { ruling_party = 22 }	#military junta
+				}
+			}
+ 			change_state_system_military_dictatorship = yes
+		}
+		every_country = {
+			limit = {
+				NOT = { has_idea = law_absolute_monarchy }
+				has_elections = no
+				OR = {
+					has_idea = saudi_royal_family
+					is_in_array = { ruling_party = 10 }	#Kingdom
+					is_in_array = { ruling_party = 23 }	#Monarchist
+				}
+			}
+ 			change_state_system_absolute_monarchy = yes
+		}
+		every_country = {
+			limit = {
+				has_elections = no
+				is_in_array = { ruling_party = 21 }	#fascists
+				}
+			}
+ 			change_state_system_fascist_dictatorship = yes
+		}
+		every_country = {
+			limit = {
+				has_elections = no
+				is_in_array = { ruling_party = 20 }	#national populist
+			}
+ 			change_state_system_ultranationalist_dictatorship = yes
+		}
+	}
+}

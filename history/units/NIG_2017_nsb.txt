@@ -1,0 +1,680 @@
+﻿division_template = {
+	name = "Mechanized Brigade"
+
+	regiments = {
+		Mech_Inf_Bat = { x = 0 y = 0 }
+		Mech_Inf_Bat = { x = 0 y = 1 }
+		L_arm_Bat = { x = 0 y = 2 }
+	}
+	support = {
+		L_Engi_Comp = { x = 0 y = 0 }
+		SP_Arty_Battery = { x = 0 y = 1 }
+	}
+}
+
+division_template = {
+	name = "Mechanized Division"
+
+	regiments = {
+		Arm_Inf_Bat = { x = 0 y = 0 }
+		Arm_Inf_Bat = { x = 0 y = 1 }
+		Mech_Inf_Bat = { x = 0 y = 2 }
+
+		armor_Bat = { x = 1 y = 0 }
+		L_arm_Bat = { x = 1 y = 1 }
+		L_arm_Bat = { x = 1 y = 2 }
+
+		Mot_Inf_Bat = { x = 2 y = 0 }
+		Mot_Inf_Bat = { x = 2 y = 1 }
+		Mot_Inf_Bat = { x = 2 y = 2 }
+	}
+	support = {
+		L_Engi_Comp = { x = 0 y = 0 }
+		SP_Arty_Battery = { x = 0 y = 1 }
+	}
+}
+
+division_template = {
+	name = "Motorised Division"
+
+	regiments = {
+		Mot_Inf_Bat = { x = 0 y = 0 }
+		Mot_Inf_Bat = { x = 0 y = 1 }
+		Mot_Inf_Bat = { x = 0 y = 2 }
+
+		Mot_Inf_Bat = { x = 1 y = 0 }
+		Mot_Inf_Bat = { x = 1 y = 1 }
+		Mot_Inf_Bat = { x = 1 y = 2 }
+
+		Mot_Inf_Bat = { x = 2 y = 0 }
+		Mot_Inf_Bat = { x = 2 y = 1 }
+		Mot_Inf_Bat = { x = 2 y = 2 }
+		Mot_Inf_Bat = { x = 2 y = 2 }
+
+		Arty_Bat = { x = 3 y = 0 }
+		L_Inf_Bat = { x = 3 y = 1 }
+		Mot_Inf_Bat = { x = 3 y = 2 }
+	}
+}
+
+division_template = {
+	name = "Armoured Division"
+
+	regiments = {
+		armor_Bat = { x = 0 y = 0 }
+		armor_Bat = { x = 0 y = 1 }
+		armor_Bat = { x = 0 y = 2 }
+		armor_Bat = { x = 0 y = 3 }
+
+		Arm_Inf_Bat = { x = 1 y = 0 }
+		Arm_Inf_Bat = { x = 1 y = 1 }
+		L_arm_Bat = { x = 1 y = 2 }
+		SP_Arty_Bat = { x = 1 y = 2 }
+
+		L_Inf_Bat = { x = 2 y = 0 }
+	}
+	support = {
+		SP_AA_Battery = { x = 0 y = 0 }
+	}
+}
+
+division_template = {
+	name = "Armoured Brigade"
+
+	regiments = {
+		armor_Bat = { x = 0 y = 0 }
+		armor_Bat = { x = 0 y = 1 }
+		Arm_Inf_Bat = { x = 0 y = 2 }
+	}
+	support = {
+		armor_Recce_Comp = { x = 0 y = 0 }
+		L_Engi_Comp = { x = 0 y = 1 }
+		SP_Arty_Battery = { x = 0 y = 2 }
+		SP_AA_Battery = { x = 0 y = 3 }
+	}
+}
+
+division_template = {
+	name = "Motorised Brigade"
+
+	regiments = {
+		Mot_Inf_Bat = { x = 0 y = 0 }
+		Mot_Inf_Bat = { x = 0 y = 1 }
+		Mot_Inf_Bat = { x = 0 y = 2 }
+	}
+	support = {
+		Mot_Recce_Comp = { x = 0 y = 0 }
+		L_Engi_Comp = { x = 0 y = 1 }
+		Arty_Battery = { x = 0 y = 2 }
+	}
+}
+
+division_template = {
+	name = "Infantry Brigade"
+
+	regiments = {
+		L_Inf_Bat = { x = 0 y = 0 }
+		L_Inf_Bat = { x = 0 y = 1 }
+		L_Inf_Bat = { x = 0 y = 2 }
+	}
+	support = {
+		L_Recce_Comp = { x = 0 y = 0 }
+		L_Engi_Comp = { x = 0 y = 1 }
+		Arty_Battery = { x = 0 y = 2 }
+	}
+}
+
+division_template = {
+	name = "Amphibious Brigade"
+
+	regiments = {
+		Mot_Marine_Bat = { x = 0 y = 0 }
+		Mot_Marine_Bat = { x = 0 y = 1 }
+		Mot_Marine_Bat = { x = 0 y = 2 }
+	}
+
+	priority = 2
+}
+
+division_template = {
+	name = "Christian Militas"
+	is_locked = yes
+
+	regiments = {
+		Militia_Bat = { x = 0 y = 0 }
+		Militia_Bat = { x = 0 y = 0 }
+	}
+	priority = 0
+}
+
+division_template = {
+	name = "Islamic Militas"
+	is_locked = yes
+
+	regiments = {
+		Militia_Bat = { x = 0 y = 0 }
+		Militia_Bat = { x = 0 y = 0 }
+	}
+	priority = 0
+}
+
+units = {
+	division = {
+		name = "1st Division"
+		location = 5028		#Nguru
+		division_template = "Mechanized Division"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "2nd Division"
+		location = 12731
+		division_template = "Armoured Division"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "3rd Armoured Division"
+		location = 8109		#Maiduguri
+		division_template = "Armoured Division"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.01
+	}
+
+	#81st Division
+	division = {
+		name = "2nd Mechanized Brigade"		#Fake name
+		location = 2050		#?
+		division_template = "Mechanized Brigade"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "82nd Division"
+		location = 11065
+		division_template = "Motorised Division"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "79th Amphibious Brigade"			#Fake name
+		location = 8034		#?
+		division_template = "Amphibious Brigade"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "7th Division"
+		location = 1992		#Makurdi
+		division_template = "Motorised Division"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "6th Division"
+		location = 8034
+		division_template = "Motorised Division"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "8th Division"
+		location = 1891
+		division_template = "Motorised Division"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "Kaduna Militas"
+		location = 1969 #Kaduna
+		division_template = "Islamic Militas"
+		start_equipment_factor = 0.45
+		start_experience_factor = 0.05
+	}
+
+	division = {
+		name = "Maiduguri Militas"
+		location = 8109 #Kaduna
+		division_template = "Islamic Militas"
+		start_equipment_factor = 0.45
+		start_experience_factor = 0.05
+	}
+
+	division = {
+		name = "Abuja Militas"
+		location = 2025 #Abuja
+		division_template = "Christian Militas"
+		start_equipment_factor = 0.45
+		start_experience_factor = 0.05
+	}
+}
+
+instant_effect = {
+
+	add_equipment_to_stockpile = {
+		variant_name = "IWI Tavor"
+		type = infantry_weapons_5			#IWI Tavor
+		amount = 1000
+		producer = NIG
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "FB Beryl"
+		type = infantry_weapons_4			#FB Beryl
+		amount = 720
+		producer = NIG
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "M16"
+		type = infantry_weapons_2			#M16
+		amount = 3000
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "FN FNC"
+		type = infantry_weapons_3			#FN FNC
+		amount = 1000
+		producer = BEL
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Beretta AR70/90"
+		type = infantry_weapons_3			#Beretta AR70/90
+		amount = 1250
+		producer = NIG
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Daewoo K2"
+		type = infantry_weapons_3			#Daewoo K2
+		amount = 1000
+		producer = NIG
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "AKM"
+		type = infantry_weapons_2			#AKM
+		amount = 3000
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "SIG SG 540"
+		type = infantry_weapons_2			#SIG SG 540
+		amount = 1000
+		producer = NIG
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "NR1"
+		type = infantry_weapons_2			#NR1
+		amount = 3000
+		producer = NIG
+	}
+
+	add_equipment_to_stockpile = {
+		type = cnc_equipment_1
+		amount = 2000
+		producer = NIG
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Swingfire"
+		type = Heavy_Anti_tank_1			#Swingfire
+		amount = 500
+		producer = ENG
+	}
+
+	add_equipment_to_stockpile = {
+		type = Anti_tank_1			#
+		amount = 500
+		producer = NIG
+	}
+
+	add_equipment_to_stockpile = {
+		type = medium_tank_chassis_1
+		amount = 50
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		type = medium_tank_chassis_0
+		amount = 24
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		type = medium_tank_chassis_0
+		amount = 108
+		producer = ENG
+	}
+
+	add_equipment_to_stockpile = {
+		type = medium_tank_chassis_0
+		amount = 16
+		producer = FRA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "FV101 Scorpion"
+		type = medium_tank_destroyer_chassis_1			#FV101 Scorpion
+		amount = 157
+		producer = ENG
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "FV107 Scimitar"
+		type = medium_tank_destroyer_chassis_1			#FV107 Scimitar
+		amount = 5
+		producer = ENG
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Ferret"
+		type = medium_tank_destroyer_chassis_0			#Ferret
+		amount = 25
+		producer = ENG
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Alvis Saladin"
+		type = medium_tank_destroyer_chassis_0			#Alvis Saladin
+		#version_name = "Alvis Saladin"
+		amount = 16
+		producer = ENG
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "ERC 90 F1 Lynx"
+		type = medium_tank_destroyer_chassis_0			#ERC 90 F1 Lynx
+		#version_name = "ERC 90 F1 Lynx"
+		amount = 40
+		producer = NIG
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Panhard AML"
+		type = medium_tank_destroyer_chassis_0			#Panhard AML
+		#version_name = "Panhard AML"
+		amount = 130
+		producer = NIG
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "ERC 90 F4 Sagaie"
+		type = medium_tank_destroyer_chassis_0			#ERC 90 F4 Sagaie
+		#version_name = "ERC 90 F4 Sagaie"
+		amount = 40
+		producer = NIG
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "EE-9 Cascavel"
+		type = medium_tank_destroyer_chassis_0			#EE-9 Cascavel
+		amount = 70
+		producer = NIG
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "VBL"
+		type = util_vehicle_4			#VBL
+		amount = 72
+		producer = FRA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Igrigi"
+		type = util_vehicle_5			#Igrigi
+		amount = 50
+		producer = NIG
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Otokar Cobra"
+		type = util_vehicle_4			#Otokar Cobra
+		amount = 204
+		producer = NIG
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "MaxxPro"
+		type = util_vehicle_6			#MaxxPro
+		amount = 20
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "CS/VP4"
+		type = util_vehicle_5			#CS/VP4
+		amount = 120
+		producer = NIG
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Casspir"
+		type = util_vehicle_3			#Casspir
+		amount = 5
+		producer = NIG
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Plasan Sand Cat"
+		type = util_vehicle_5			#Plasan Sand Cat
+		amount = 20
+		producer = NIG
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Spartan"
+		type = util_vehicle_5			#Spartan APC
+		amount = 20
+		producer = NIG
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Pinzgauer"
+		type = util_vehicle_1		#Pinzgauer
+		amount = 1000
+		producer = ENG
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Land Rover Defender"
+		type = util_vehicle_3		#Land Rover Defender
+		amount = 1000
+		producer = ENG
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Tarpan Honker"
+		type = util_vehicle_3		#Tarpan Honker
+		amount = 25
+		producer = NIG
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BMP-1"
+		type = medium_tank_flame_chassis_0			#BMP-1
+		amount = 5
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Saurer 4K 4FA"
+		type = medium_tank_flame_chassis_0			#Saurer 4K 4FA
+		amount = 250
+		producer = NIG
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "MT-LB"
+		type = medium_tank_amphibious_chassis_1			#MT-LB
+		amount = 67
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BTR-70"
+		type = medium_tank_amphibious_chassis_1			#BTR-70
+		amount = 18
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BTR-60"
+		type = medium_tank_amphibious_chassis_0			#BTR-60
+		amount = 6
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Mowag Piranha"
+		type = medium_tank_amphibious_chassis_1			#Mowag Piranha
+		amount = 110
+		producer = NIG
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BTR-4"
+		type = medium_tank_amphibious_chassis_3			#BTR-4
+		amount = 20
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BTR-3"
+		type = medium_tank_amphibious_chassis_2			#BTR-3
+		amount = 47
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Saxon"
+		type = medium_tank_amphibious_chassis_1			#Saxon
+		#version_name = "Saxon"
+		amount = 75
+		producer = ENG
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Panhard M3"
+		type = medium_tank_amphibious_chassis_0			#Panhard M3
+		amount = 18
+		producer = NIG
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Palmaria"
+		type = medium_tank_artillery_chassis_1			#Palmaria
+		amount = 25
+		producer = NIG
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "APR-40"
+		type = medium_tank_artillery_chassis_0			#APR-40
+		amount = 30
+		producer = NIG
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "RM-70"
+		type = medium_tank_artillery_chassis_1			#RM-70
+		amount = 6
+		producer = NIG
+	} 
+	add_equipment_to_stockpile = {
+		variant_name = "D-30"
+		type = artillery_1			#D-30
+		amount = 90
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		type = artillery_1			#OTO Melara mod 56
+		amount = 124
+		producer = NIG
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "FH77"
+		type = artillery_1			#FH77
+		amount = 24
+		producer = SWE
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "ZSU-23-4 Shilka"
+		type = medium_tank_aa_chassis_0			#Shilka
+		#version_name = "ZSU-23-4 Shilka"
+		amount = 30
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Blowpipe"
+		type = Anti_Air_0				#Blowpipe
+		amount = 48
+		producer = NIG
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Strela-2"
+		type = Anti_Air_0				#Strela
+		amount = 600
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Mi-17"
+		type = transport_helicopter_1				#Mi-17
+		amount = 5
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "AS332"
+		type = transport_helicopter_1				#AS332
+		amount = 5
+		producer = FRA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Mi-24"
+		type = heavy_tank_chassis_0				#Mi-24
+		amount = 9
+		producer = SOV
+	}
+
+	#Stored Reserve (封存库存)
+	add_equipment_to_stockpile = {
+		variant_name = "AK-47"
+		type = infantry_weapons_2			#AK-47（封存）
+		amount = 80000
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "T-55"
+		type = medium_tank_chassis_0		#T-55（封存）
+		amount = 75
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Vickers MBT"
+		type = medium_tank_chassis_0		#Vickers MBT（封存）
+		amount = 50
+		producer = NIG
+	}
+}

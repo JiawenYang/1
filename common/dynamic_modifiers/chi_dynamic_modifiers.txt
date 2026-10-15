@@ -1,0 +1,261 @@
+first_island_chain = {
+	icon = GFX_idea_PRC_the_rebellious_province_of_taiwan
+
+	experience_gain_army = fic_experience_gain_army_dynamic_var
+	stability_factor = fic_stability_factor_dynamic_var
+	army_defence_factor = fic_army_defence_factor_dynamic_var
+	democratic_drift = fic_democratic_drift_dynamic_var
+	communism_drift = fic_communism_drift_dynamic_var
+	neutrality_drift = fic_neutrality_drift_dynamic_var
+	nationalist_drift = fic_nationalist_drift_dynamic_var
+}
+
+five_eyes = {
+	icon = GFX_idea_fvey
+
+	decryption_factor = fvey_decryption_factor_var
+	encryption_factor = fvey_encryption_factor_var
+	civilian_intel_factor = fvey_civilian_intel_factor_var
+	army_intel_factor = fvey_army_intel_factor_var
+	navy_intel_factor = fvey_navy_intel_factor_var
+	airforce_intel_factor = fvey_airforce_intel_factor_var
+	subversive_activites_upkeep = fvey_foreign_subversive_activies_upkeep_var
+	foreign_subversive_activites = fvey_foreign_subversive_activies_var
+	foreign_influence_modifier = fvey_foreign_influence_modifier
+	democratic_drift = fvey_democratic_drift_dynamic_var
+	communism_drift = fvey_communism_drift_dynamic_var
+	neutrality_drift = fvey_neutrality_drift_dynamic_var
+	nationalist_drift = fvey_nationalist_drift_dynamic_var
+}
+
+chinese_overseas_dynamic_modifier = {
+	icon = GFX_idea_CHI_chinese_overseas
+
+	production_speed_industrial_complex_factor = COP_production_speed_industrial_complex_factor
+	stability_factor = COP_stability_factor
+	consumer_goods_factor = COP_consumer_goods_factor_var
+	civilian_industry_tax_modifier = COP_civilian_industry_tax_modifier_var
+	production_speed_internet_station_factor = COP_production_speed_internet_station_factor_var
+	civilian_factories_productivity = COP_civilian_factories_productivity_var
+	production_speed_infrastructure_factor = COW_psifra_factor_var
+	local_resources_factor = COW_local_resources_factor_var
+	civilian_industry_tax_modifier = COW_civilian_industry_tax_modifier_var
+	communism_acceptance = COW_communism_acceptance_factor_var
+	communism_drift = COW_communism_drift
+}
+
+CHI_wind_farms = { #风力发电厂
+	icon = GFX_idea_CHI_renewable_energy #GFX_idea_sustainable_development
+	enable = { always = yes }
+
+	state_renewable_energy_generation_modifier = 1 #3.5
+	local_building_slots_factor = -0.05
+	state_production_speed_synthetic_refinery_factor = 5
+	
+}
+CHI_offshore_wind_farms = { #海上风电场
+	icon = GFX_idea_CHI_renewable_energy #GFX_idea_sustainable_development
+	enable = { always = yes }
+
+	state_renewable_energy_generation_modifier = 2.5 #8.0
+	state_production_speed_synthetic_refinery_factor = 5
+}
+CHI_solar_farms = { #太阳能发电厂
+	icon = GFX_idea_CHI_renewable_energy #GFX_idea_sustainable_development
+	enable = { always = yes }
+
+	state_renewable_energy_generation_modifier = 1.5 #6
+	local_building_slots_factor = -0.05
+	state_production_speed_synthetic_refinery_factor = 5
+}
+CHI_solar_panels = { #太阳能电池板
+	icon = GFX_idea_CHI_renewable_energy #GFX_idea_sustainable_development
+	enable = { always = yes }
+
+	state_renewable_energy_generation_modifier = 1 #3.5
+	state_production_speed_synthetic_refinery_factor = 5
+}
+CHI_renewable_energy_state = { #通用可再生热点
+	icon = GFX_idea_CHI_renewable_energy #GFX_idea_sustainable_development
+	enable = { always = yes }
+	
+	state_renewable_energy_generation_modifier = 1 #3.5
+	state_production_speed_synthetic_refinery_factor = 5
+}
+
+
+CHI_idea_high_speed_railway_modifier = { #中国高速铁路
+	icon = "GFX_modifiers_high_speed_railway"
+	enable = { always = yes }
+	army_speed_factor = 0.5
+	state_production_speed_buildings_factor = 0.15
+	state_productivity_growth_modifier = 0.10
+	local_resources_factor = 0.10
+	root_out_resistance_effectiveness_factor = 0.05
+}
+
+
+CHI_OGAS_nation = { #OGAS国家精神
+	enable = { always = yes }
+	icon = GFX_idea_OGAS
+	stability_factor = CHI_OGAS_nation_stability_factor #稳定度
+	political_power_factor = CHI_OGAS_nation_political_power #政治点数
+	research_speed_factor = CHI_OGAS_nation_research_speed_factor #研究速度
+	global_building_slots_factor = CHI_OGAS_nation_global_building_slots_factor
+	production_speed_buildings_factor = CHI_OGAS_nation_construction_speed #建造速度
+	production_speed_industrial_complex_factor = CHI_OGAS_nation_civ_construction_speed #民工速度
+	production_speed_arms_factory_factor = CHI_OGAS_nation_mil_construction_speed #军事工业建造速度
+	production_speed_offices_factor = CHI_OGAS_nation_production_speed_offices_factor #办公园区建造速度
+	production_speed_infrastructure_factor = CHI_OGAS_nation_production_speed_infrastructure_factor #基础设施建造速度
+	production_speed_internet_station_factor = CHI_OGAS_nation_production_speed_internet_station_factor #通信基础设施建造速度
+	industrial_capacity_factory = CHI_OGAS_nation_factory_output #工厂产出
+	productivity_growth_modifier = CHI_OGAS_nation_productivity #生产率增长
+	production_speed_agriculture_district_factor = CHI_OGAS_nation_agri_construction_speed #商业化农业区建造速度
+	civilian_factories_productivity = CHI_OGAS_nation_civilian_factories_productivity #民用工厂生产率
+	military_factories_productivity = CHI_OGAS_nation_military_factories_productivity #军事工厂生产率
+	dockyard_productivity = CHI_OGAS_nation_dockyard_productivity #海军船坞生产率
+	offices_productivity = CHI_OGAS_nation_offices_productivity #办公园区生产率
+	local_resources_factor = CHI_OGAS_nation_resource_extraction #战略资源
+	energy_use_multiplier = CHI_OGAS_nation_energy_consumption #能源使用
+	encryption_factor = CHI_OGAS_nation_encryption_factor #加密
+	decryption_factor = CHI_OGAS_nation_decryption_factor #解密
+	crypto_strength = CHI_OGAS_nation_crypto_strength #网络安全等级
+	intel_network_gain_factor = CHI_OGAS_nation_intel_network_gain_factor #情报网强度增长率
+	decryption_power_factor = CHI_OGAS_nation_decryption_power_factor #骇入能力修正
+	foreign_influence_defense_modifier = CHI_OGAS_nation_foreign_influence_defense_modifier #抵御外国影响乘数
+}
+CHI_OGAS_state = { #OGAS地区
+	enable = { always = yes }
+	icon = GFX_idea_OGAS
+	state_production_speed_buildings_factor = CHI_OGAS_state_production_speed_buildings
+	state_productivity_growth_modifier = CHI_OGAS_state_productivity_growth
+	local_building_slots_factor = CHI_OGAS_state_global_building_slots
+	state_production_speed_agriculture_district_factor = CHI_OGAS_state_agri_speed
+	enemy_intel_network_gain_factor_over_occupied_tag =  CHI_OGAS_state_enemy_intel_network_gain #修改敌方情报网络强度增益
+	local_intel_to_enemies = CHI_OGAS_state_local_intel_to_enemies #修改敌人的情报量
+}
+CHI_nanshuibeidiao_project = { #南水北调工程
+	enable = { always = yes }
+	icon = GFX_idea_nanshuibeidiao
+	state_production_speed_buildings_factor = CHI_nanshuibeidiao_project_state_production_speed_buildings_factor
+	local_building_slots_factor = CHI_nanshuibeidiao_project_local_building_slots_factor
+}
+CHI_Shortage_of_water_resources = { #水资源短缺
+	enable = { always = yes }
+	icon = GFX_idea_MDGR_water_conservation
+	state_production_speed_buildings_factor = CHI_Shortage_of_water_resources_state_production_speed_buildings
+	state_productivity_growth_modifier = CHI_Shortage_of_water_resources_state_productivity_growth
+	local_building_slots_factor = CHI_Shortage_of_water_resources_global_building_slots
+	state_production_speed_agriculture_district_factor = CHI_Shortage_of_water_resources_agri_speed
+	monthly_population = CHI_Shortage_of_water_resources_monthly_population
+}
+
+CHI_fiscal = { #中国社会经济政策
+	icon = GFX_idea_PRC_world_factory_law
+	enable = { always = yes }
+	stability_factor =  CHI_fiscal_stability_factor #稳定度
+	political_power_factor = CHI_fiscal_political_power #政治点数
+	political_power_gain = CHI_fiscal_political_power_gain #每日政治点数获取
+	communism_drift = CHI_fiscal_communism_drift #每日新兴主义新增支持度
+	democratic_drift = CHI_fiscal_democratic_drift #每日西方主义新增支持度
+	nationalist_drift = CHI_fiscal_nationalist_drift #每日民族主义新增支持度
+	neutrality_drift = CHI_fiscal_neutrality_drift #每日中立主义新增支持度
+	drift_defence_factor = CHI_fiscal_drift_defence_factor #意识形态抵御
+	foreign_influence_defense_modifier = CHI_fiscal_foreign_influence_defense_modifier #外国影响乘数
+	foreign_influence_monthly_domestic_independence_gain_factor = CHI_fiscal_foreign_influence_monthly_domestic_independence_gain_factor #每月国家独立性增长
+	consumer_goods_factor = CHI_fiscal_consumer_goods #税收成本
+	research_speed_factor = CHI_fiscal_research_speed_factor #研究速度
+	industrial_capacity_factory = CHI_fiscal_factory_output #工厂产出
+	industrial_capacity_dockyard = CHI_fiscal_dockyard_output #海军船坞产出
+	agricolture_productivity_modifier = CHI_fiscal_agricolture_productivity_modifier #农业生产率
+	production_factory_max_efficiency_factor = CHI_fiscal_production_efficiency_cap #生产效率上限
+	production_factory_start_efficiency_factor = CHI_fiscal_starting_factory_efficiency #基础生产效率
+	production_speed_buildings_factor = CHI_fiscal_construction_speed #建造速度
+	production_speed_industrial_complex_factor = CHI_fiscal_civ_construction_speed #民工速度
+	production_speed_offices_factor = CHI_fiscal_office_construction_speed #办公园区建造速度
+	production_speed_arms_factory_factor = CHI_fiscal_mil_construction_speed #军事工业建造速度
+	production_speed_dockyard_factor = CHI_fiscal_dockyard_construction_speed #海军船坞建造速度
+	production_speed_agriculture_district_factor = CHI_fiscal_agri_construction_speed #商业化农业区建造速度
+	production_speed_internet_station_factor = CHI_fiscal_production_speed_internet_station_factor #通信基础设施建造速度
+	production_speed_infrastructure_factor = CHI_fiscal_production_speed_infrastructure_factor #基础设施建造速度
+	production_speed_rail_way_factor = CHI_fiscal_production_speed_rail_way_factor #铁路建造速度
+	repair_speed_infrastructure_factor = CHI_fiscal_repair_speed_infrastructure_factor #基础设施修复速度
+	industry_repair_factor = CHI_fiscal_industry_repair_factor #免费维修
+	civilian_factories_productivity = CHI_fiscal_civilian_factories_productivity #民用工厂生产率
+	military_factories_productivity = CHI_fiscal_military_factories_productivity #军事工厂生产率
+	dockyard_productivity = CHI_fiscal_dockyard_productivity #海军船坞生产率
+	offices_productivity = CHI_fiscal_offices_productivity #办公园区生产率
+	production_speed_nuclear_reactor_factor = CHI_fiscal_nuclear_reactor_construction_speed #原子研究速度
+	energy_use_multiplier = CHI_fiscal_energy_consumption #能源使用
+	pop_energy_use_multiplier = CHI_fiscal_population_energy_consumption #人口用电
+	renewable_energy_gain_multiplier = CHI_fiscal_renewable_energy_production #可再生能源获取
+	energy_gain_multiplier = CHI_fiscal_energy_production #能源获取
+	fossil_pp_energy_generation_modifier = CHI_fiscal_fossil_fuel_energy_production #火电获取
+	fossil_pp_fuel_consumption_modifier = CHI_fiscal_fossil_pp_fuel_consumption_modifier #火电消耗
+	nuclear_energy_generation_modifier = CHI_fiscal_nuclear_energy_production #核能
+	local_resources_factor = CHI_fiscal_resource_extraction #战略资源
+	total_workforce_modifier = CHI_fiscal_workforce #劳动力
+	civ_facs_worker_requirement_modifier = CHI_fiscal_civ_factory_workforce #民工需人
+	mil_facs_worker_requirement_modifier = CHI_fiscal_mil_factory_workforce #军工需人
+	offices_worker_requirement_modifier = CHI_fiscal_office_workforce #办公室需人
+	resource_sector_workers_modifier = CHI_fiscal_resource_extraction_workforce #资源采集需人
+	agriculture_workers_modifier = CHI_fiscal_agriculture_workers_modifier #农业需人
+	buildings_worker_requirement_modifier = CHI_fiscal_buildings_worker_requirement_modifier #所有需人
+	productivity_growth_modifier = CHI_fiscal_productivity #每月生产率增长
+	interest_rate_multiplier_modifier = CHI_fiscal_interest_rate #利率
+	tax_gain_multiplier_modifier = CHI_fiscal_tax_collection_efficiency #税收乘数
+	population_tax_income_multiplier_modifier = CHI_fiscal_population_tax_collection_efficiency #人口税收
+	corporate_tax_income_multiplier_modifier = CHI_fiscal_corporate_tax_collection_efficiency #企业税收
+	office_park_income_tax_modifier = CHI_fiscal_office_park_tax_collection_efficiency #办公室收入
+	dockyard_income_tax_modifier = CHI_fiscal_dockyard_tax_collection_efficiency #船坞收入
+	military_industry_tax_modifier = CHI_fiscal_military_tax_collection_efficiency #军工收入
+	civilian_industry_tax_modifier = CHI_fiscal_civilian_tax_collection_efficiency #民工收入
+	bureaucracy_cost_multiplier_modifier = CHI_fiscal_bureaucracy_cost #官僚支出
+	personnel_cost_multiplier_modifier = CHI_fiscal_personnel_cost #军事支出
+	police_cost_multiplier_modifier = CHI_fiscal_police_cost #安全支出
+	education_cost_multiplier_modifier = CHI_fiscal_education_cost #教育支出
+	health_cost_multiplier_modifier = CHI_fiscal_healthcare_cost #医疗支出
+	social_cost_multiplier_modifier = CHI_fiscal_welfare_cost #社会支出
+	min_export = CHI_fiscal_market_resources #可出口资源
+	return_on_investment_modifier = CHI_fiscal_investment_return #投资回报
+	resource_export_multiplier_modifier = CHI_fiscal_export_money_return #可出口资源收入
+	trade_opinion_factor = CHI_fiscal_trade_opinion_factor #贸易
+	receiving_investment_duration_modifier = CHI_fiscal_receiving_investment_duration_modifier #接受投资成本
+	receiving_investment_cost_mdifier = CHI_fiscal_receiving_investment_cost_modifier #接受投资时间
+	power_balance_weekly = CHI_fiscal_power_balance_weekly #权力平衡
+	fossil_pp_fuel_consumption_modifier = CHI_fiscal_fossil_pp_fuel_consumption_modifier #化石燃料花费
+	economic_cycles_cost_factor = CHI_fiscal_economic_cycles_cost_factor #经济周期变更花费
+	econ_cycle_upg_cost_multiplier_modifier = CHI_fiscal_econ_cycle_upg_cost_multiplier_modifier #经济周期变更开支乘数
+	monthly_population = CHI_fiscal_monthly_population #月度人力
+	global_building_slots_factor = CHI_fiscal_global_building_slots_factor #地区最大工厂
+	renewable_energy_gain = CHI_fiscal_renewable_energy_gain
+	foreign_subversive_activites = CHI_fiscal_foreign_subversive_activies_var
+
+	hegemony_victory_monthly_add = CHI_fiscal_hegemony_victory_monthly_add #每月全局分固定值加成
+	hegemony_victory_monthly_mult = CHI_fiscal_hegemony_victory_monthly_mult #每月全局分固定值加成
+}
+
+CHI_Rural_Development_Plan = { #农村发展计划
+	icon = GFX_idea_SWE_hungershield
+	enable = { always = yes }
+	bureaucracy_cost_multiplier_modifier = bureaucracy_cost_multiplier_CHI_Rural_Development_Plan_modifier_var
+	stability_factor = stability_factor_CHI_Rural_Development_Plan_modifier_var
+	political_power_factor = political_power_factor_CHI_Rural_Development_Plan_modifier_var
+	production_speed_infrastructure_factor = production_speed_infrastructure_factor_CHI_Rural_Development_Plan_modifier_var
+	agricolture_productivity_modifier = agricolture_productivity_CHI_Rural_Development_Plan_modifier_var
+	education_budget_cost_factor = education_budget_cost_factor_CHI_Rural_Development_Plan_modifier_var
+	research_speed_factor = research_speed_factor_CHI_Rural_Development_Plan_modifier_var
+	health_cost_multiplier_modifier = health_cost_multiplier_CHI_Rural_Development_Plan_modifier_var
+	social_budget_cost_factor = social_budget_cost_factor_CHI_Rural_Development_Plan_modifier_var
+	consumer_goods_factor = consumer_goods_factor_CHI_Rural_Development_Plan_modifier_var
+	power_balance_weekly = power_balance_weekly_CHI_Rural_Development_Plan_modifier_var
+	buildings_worker_requirement_modifier = buildings_worker_requirement_CHI_Rural_Development_Plan_modifier_var
+	agriculture_workers_modifier = agriculture_workers_CHI_Rural_Development_Plan_modifier_var
+}
+CHI_frontier = { #边疆
+	enable = { always = yes }
+	icon = GFX_encroaching_sahara
+	state_production_speed_buildings_factor = CHI_frontier_state_production_speed_buildings
+	state_productivity_growth_modifier = CHI_frontier_state_productivity_growth
+	local_building_slots_factor = CHI_frontier_global_building_slots
+}

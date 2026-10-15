@@ -1,0 +1,3947 @@
+#Rework Author(s): TheGeneral
+
+CHI_SAR_decisions_category = {
+	CHI_pressure_derecognize_TAI = {
+		icon = eng_trade_unions_demand
+		target_array = global.countries
+		target_root_trigger = { has_completed_focus = CHI_TAI_one_china_enforcement }
+
+		target_trigger = {
+			FROM = {
+				is_in_array = { recognised_countries = TAI }
+				NOT = { original_tag = CHI }
+				NOT = { original_tag = TAI }
+				NOT = { has_war_with = ROOT }
+				exists = yes
+			}
+		}
+
+		visible = {
+			has_completed_focus = CHI_TAI_one_china_enforcement
+			country_exists = TAI
+		}
+
+		available = { has_completed_focus = CHI_TAI_one_china_enforcement }
+		cost = 50
+		days_remove = 90
+		fire_only_once = no
+		days_re_enable = 365
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_pressure_derecognize_TAI targeting [From.GetName]"
+			FROM = {
+				add_opinion_modifier = { target = ROOT modifier = chi_tai_recognition_blockade }
+			}
+			custom_effect_tooltip = CHI_pressure_derecognize_TAI_tt
+		}
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_pressure_derecognize_TAI remove targeting [From.GetName]"
+			if = {
+				limit = { FROM = { is_in_array = { recognised_countries = TAI } } has_dlc = "By Blood Alone" }
+				send_embargo = FROM
+			}
+		}
+
+		ai_will_do = {
+			base = 3
+			modifier = {
+				factor = 0
+				check_variable = { FROM.interest_rate > 8 }
+			}
+		}
+	}
+
+	CHI_establish_education_centres = {
+		icon = generic_nationalism
+
+		visible = {
+			has_completed_focus = CHI_ETK_education_centres
+			592 = { is_owned_by = CHI }
+		}
+
+		available = {
+			592 = { resistance < 60 }
+			num_of_civilian_factories_available_for_projects > 10
+		}
+
+		cost = 50
+		days_remove = 120
+		fire_only_once = no
+		fixed_random_seed = no
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_establish_education_centres"
+			custom_effect_tooltip = {
+				localization_key = modifies_dynamic_modifier_tt
+				MODIFIER = CHI_SAR_network_modifier
+			}
+			add_to_variable = { CHI_sinicization_modifier = 0.015 tooltip = CHI_sinicization_modifier_tt }
+			newline = yes
+			592 = {
+				add_resistance = 5
+				random = {
+					chance = 30
+					add_compliance = 5
+				}
+			}
+		}
+
+		modifier = { civilian_factory_use = 10 }
+		ai_will_do = { base = 1 }
+	}
+
+	CHI_calm_hong_kong_protests = {
+		icon = generic_nationalism
+		visible = { has_idea = CHI_Hong_Kong_Protests_01 }
+
+		available = {
+			has_idea = CHI_Hong_Kong_Protests_01
+			divisions_in_state = { size > 0 state = 595 }
+			OR = {
+				NOT = { controls_state = 595 }
+				595 = { resistance < 40 }
+			}
+		}
+
+		cost = 100
+		days_remove = 100
+		fire_only_once = no
+		modifier = { political_power_factor = -0.15 }
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_calm_hong_kong_protests remove"
+			remove_ideas = CHI_Hong_Kong_Protests_01
+			add_stability = 0.01
+			if = {
+				limit = { controls_state = 595 }
+				595 = { add_compliance = 5 }
+			}
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	CHI_HKG_patriotic_education_drive = {
+		icon = generic_brainwash
+
+		visible = {
+			has_completed_focus = CHI_HKG_moral_national_education
+			595 = {
+				owns_or_subject_of = yes
+				NOT = { is_core_of = CHI }
+			}
+		}
+
+		available = { CHI_HKG_sinicization_slot_free = yes }
+		cost = 50
+		custom_cost_trigger = { check_variable = { treasury > 2 } }
+		custom_cost_text = cost_2_0
+		days_remove = 180
+		fire_only_once = no
+
+		modifier = {
+			education_cost_multiplier_modifier = 0.05
+			political_power_factor = -0.03
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_HKG_patriotic_education_drive"
+			custom_effect_tooltip = {
+				localization_key = modifies_dynamic_modifier_tt
+				MODIFIER = CHI_HKG_sinicization_modifier
+			}
+			set_temp_variable = { sinicization_base_change = 2 }
+			CHI_apply_sinicization_HKG = yes
+			newline = yes
+			set_temp_variable = { treasury_change = -2 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = { base = 4 }
+	}
+
+	CHI_HKG_liaison_office_expansion = {
+		icon = generic_police_action
+		fixed_random_seed = no
+
+		visible = {
+			has_completed_focus = CHI_HKG_national_security_law
+			595 = {
+				owns_or_subject_of = yes
+				NOT = { is_core_of = CHI }
+			}
+		}
+
+		available = { CHI_HKG_sinicization_slot_free = yes }
+		cost = 100
+		custom_cost_trigger = { check_variable = { treasury > 6 } }
+		custom_cost_text = cost_6_0
+		days_remove = 365
+		fire_only_once = no
+
+		modifier = {
+			bureaucracy_cost_multiplier_modifier = 0.10
+			political_power_factor = -0.05
+			stability_factor = -0.03
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_HKG_liaison_office_expansion"
+			custom_effect_tooltip = {
+				localization_key = modifies_dynamic_modifier_tt
+				MODIFIER = CHI_HKG_sinicization_modifier
+			}
+			set_temp_variable = { sinicization_base_change = 5 }
+			CHI_apply_sinicization_HKG = yes
+			newline = yes
+			random = {
+				chance = 15
+				add_ideas = CHI_Hong_Kong_Protests_01
+			}
+			newline = yes
+			set_temp_variable = { treasury_change = -6 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = {
+			base = 2
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	CHI_MAC_cross_border_administration = {
+		icon = generic_political_discourse
+
+		visible = {
+			has_completed_focus = CHI_MAC_financial_services
+			1106 = {
+				owns_or_subject_of = yes
+				NOT = { is_core_of = CHI }
+			}
+		}
+
+		available = { CHI_MAC_sinicization_slot_free = yes }
+		cost = 50
+		custom_cost_trigger = { check_variable = { treasury > 2 } }
+		custom_cost_text = cost_2_0
+		days_remove = 180
+		fire_only_once = no
+
+		modifier = {
+			bureaucracy_cost_multiplier_modifier = 0.05
+			political_power_factor = -0.03
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_MAC_cross_border_administration"
+			custom_effect_tooltip = {
+				localization_key = modifies_dynamic_modifier_tt
+				MODIFIER = CHI_MAC_sinicization_modifier
+			}
+			set_temp_variable = { sinicization_base_change = 2 }
+			CHI_apply_sinicization_MAC = yes
+			newline = yes
+			set_temp_variable = { treasury_change = -2 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = { base = 4 }
+	}
+
+	CHI_MAC_hengqin_integration_zone = {
+		icon = generic_construction
+
+		visible = {
+			has_completed_focus = CHI_MAC_guangdong_integration
+			1106 = {
+				owns_or_subject_of = yes
+				NOT = { is_core_of = CHI }
+			}
+		}
+
+		available = { CHI_MAC_sinicization_slot_free = yes }
+		cost = 100
+		custom_cost_trigger = { check_variable = { treasury > 6 } }
+		custom_cost_text = cost_6_0
+		days_remove = 365
+		fire_only_once = no
+
+		modifier = {
+			infrastructure_cost_multiplier_modifier = 0.10
+			bureaucracy_cost_multiplier_modifier = 0.10
+			consumer_goods_factor = 0.02
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_MAC_hengqin_integration_zone"
+			custom_effect_tooltip = {
+				localization_key = modifies_dynamic_modifier_tt
+				MODIFIER = CHI_MAC_sinicization_modifier
+			}
+			set_temp_variable = { sinicization_base_change = 5 }
+			CHI_apply_sinicization_MAC = yes
+			newline = yes
+			add_stability = -0.01
+			newline = yes
+			set_temp_variable = { treasury_change = -6 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = {
+			base = 2
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	CHI_TIB_monastic_patriotic_education = {
+		icon = generic_speech
+
+		visible = {
+			has_completed_focus = CHI_TIB_sinification
+			589 = {
+				is_owned_by = CHI
+				NOT = { is_core_of = CHI }
+			}
+		}
+
+		available = { CHI_TIB_sinicization_slot_free = yes }
+		cost = 50
+		custom_cost_trigger = { check_variable = { treasury > 2 } }
+		custom_cost_text = cost_2_0
+		days_remove = 180
+		fire_only_once = no
+
+		modifier = {
+			education_cost_multiplier_modifier = 0.05
+			compliance_growth = 0.10
+			resistance_growth = -0.05
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_TIB_monastic_patriotic_education"
+			custom_effect_tooltip = {
+				localization_key = modifies_dynamic_modifier_tt
+				MODIFIER = CHI_TIB_sinicization_modifier
+			}
+			set_temp_variable = { sinicization_base_change = 2 }
+			CHI_apply_sinicization_TIB = yes
+			newline = yes
+			589 = { add_compliance = 2 }
+			newline = yes
+			set_temp_variable = { treasury_change = -2 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = { base = 4 }
+	}
+
+	CHI_TIB_village_cadre_teams = {
+		icon = generic_civil_support
+
+		visible = {
+			has_completed_focus = CHI_TIB_cultural_integration
+			589 = {
+				is_owned_by = CHI
+				NOT = { is_core_of = CHI }
+			}
+		}
+
+		available = {
+			CHI_TIB_sinicization_slot_free = yes
+			589 = { resistance < 60 }
+		}
+
+		cost = 100
+		custom_cost_trigger = { check_variable = { treasury > 6 } }
+		custom_cost_text = cost_6_0
+		days_remove = 365
+		fire_only_once = no
+
+		modifier = {
+			police_cost_multiplier_modifier = 0.10
+			political_power_factor = -0.05
+			resistance_growth = 0.05
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_TIB_village_cadre_teams"
+			custom_effect_tooltip = {
+				localization_key = modifies_dynamic_modifier_tt
+				MODIFIER = CHI_TIB_sinicization_modifier
+			}
+			set_temp_variable = { sinicization_base_change = 5 }
+			CHI_apply_sinicization_TIB = yes
+			newline = yes
+			589 = { add_resistance = 5 }
+			newline = yes
+			set_temp_variable = { treasury_change = -6 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = {
+			base = 2
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	CHI_ETK_bilingual_boarding_schools = {
+		icon = generic_research
+
+		visible = {
+			has_completed_focus = CHI_ETK_education_centres
+			592 = {
+				is_owned_by = CHI
+				NOT = { is_core_of = CHI }
+			}
+		}
+
+		available = { CHI_ETK_sinicization_slot_free = yes }
+		cost = 50
+		custom_cost_trigger = { check_variable = { treasury > 2 } }
+		custom_cost_text = cost_2_0
+		days_remove = 180
+		fire_only_once = no
+
+		modifier = {
+			education_cost_multiplier_modifier = 0.05
+			compliance_growth = 0.10
+			resistance_growth = -0.05
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_ETK_bilingual_boarding_schools"
+			custom_effect_tooltip = {
+				localization_key = modifies_dynamic_modifier_tt
+				MODIFIER = CHI_ETK_sinicization_modifier
+			}
+			set_temp_variable = { sinicization_base_change = 2 }
+			CHI_apply_sinicization_ETK = yes
+			newline = yes
+			592 = { add_compliance = 2 }
+			newline = yes
+			set_temp_variable = { treasury_change = -2 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = { base = 4 }
+	}
+
+	CHI_ETK_labour_transfer_scheme = {
+		icon = generic_factory
+
+		visible = {
+			has_completed_focus = CHI_ETK_total_survaillance_infrastructure
+			592 = {
+				is_owned_by = CHI
+				NOT = { is_core_of = CHI }
+			}
+		}
+
+		available = {
+			CHI_ETK_sinicization_slot_free = yes
+			592 = { resistance < 60 }
+		}
+
+		cost = 100
+		custom_cost_trigger = { check_variable = { treasury > 6 } }
+		custom_cost_text = cost_6_0
+		days_remove = 365
+		fire_only_once = no
+
+		modifier = {
+			personnel_cost_multiplier_modifier = 0.10
+			stability_factor = -0.03
+			resistance_growth = 0.05
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_ETK_labour_transfer_scheme"
+			custom_effect_tooltip = {
+				localization_key = modifies_dynamic_modifier_tt
+				MODIFIER = CHI_ETK_sinicization_modifier
+			}
+			set_temp_variable = { sinicization_base_change = 5 }
+			CHI_apply_sinicization_ETK = yes
+			newline = yes
+			592 = { add_resistance = 5 }
+			set_temp_variable = { modify_uighur_threat = 3 }
+			CHI_modify_uighur_threat = yes
+			newline = yes
+			set_temp_variable = { treasury_change = -6 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = {
+			base = 2
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	CHI_han_settlement_small = {
+		fixed_random_seed = no
+		icon = generic_nationalism
+
+		visible = {
+			has_completed_focus = CHI_OMG_han_settlement_program
+			556 = {
+				is_owned_by = CHI
+				NOT = { is_core_of = CHI }
+			}
+		}
+
+		available = { CHI_OMG_sinicization_slot_free = yes }
+		fire_only_once = no
+		days_remove = 180
+		modifier = { social_cost_multiplier_modifier = 0.03 }
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_han_settlement_small"
+			random_list = {
+				25 = { 564 = { add_manpower = -25000 } }
+				25 = { 549 = { add_manpower = -25000 } }
+				25 = { 534 = { add_manpower = -25000 } }
+				25 = { 574 = { add_manpower = -25000 } }
+			}
+			556 = {
+				add_manpower = 25000
+				newline = yes
+				custom_effect_tooltip = {
+					localization_key = modifies_dynamic_modifier_tt
+					MODIFIER = CHI_OMG_sinicization_modifier
+				}
+				set_temp_variable = { sinicization_base_change = 3 }
+				CHI_apply_sinicization_OMG = yes
+				newline = yes
+				random = {
+					chance = 30
+					add_compliance = 5
+				}
+				newline = yes
+				random_list = {
+					33 = { add_resistance = 5 }
+					33 = { add_resistance = 10 }
+					33 = { add_resistance = 15 }
+				}
+			}
+		}
+
+		ai_will_do = { base = 3 }
+	}
+
+	CHI_han_settlement_medium = {
+		fixed_random_seed = no
+		icon = generic_nationalism
+
+		visible = {
+			has_completed_focus = CHI_OMG_han_settlement_program
+			556 = {
+				is_owned_by = CHI
+				NOT = { is_core_of = CHI }
+			}
+		}
+
+		available = { CHI_OMG_sinicization_slot_free = yes }
+		fire_only_once = no
+		days_remove = 270
+
+		modifier = {
+			social_cost_multiplier_modifier = 0.05
+			infrastructure_cost_multiplier_modifier = 0.05
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_han_settlement_medium"
+			random_list = {
+				25 = { 564 = { add_manpower = -75000 } }
+				25 = { 549 = { add_manpower = -75000 } }
+				25 = { 534 = { add_manpower = -75000 } }
+				25 = { 574 = { add_manpower = -75000 } }
+			}
+			556 = {
+				add_manpower = 75000
+				newline = yes
+				custom_effect_tooltip = {
+					localization_key = modifies_dynamic_modifier_tt
+					MODIFIER = CHI_OMG_sinicization_modifier
+				}
+				set_temp_variable = { sinicization_base_change = 5 }
+				CHI_apply_sinicization_OMG = yes
+				newline = yes
+				random = {
+					chance = 30
+					add_compliance = 10
+				}
+				newline = yes
+				random_list = {
+					33 = { add_resistance = 5 }
+					33 = { add_resistance = 10 }
+					33 = { add_resistance = 15 }
+				}
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	CHI_han_settlement_large = {
+		icon = generic_nationalism
+		fixed_random_seed = no
+
+		visible = {
+			has_completed_focus = CHI_OMG_han_settlement_program
+			556 = {
+				is_owned_by = CHI
+				NOT = { is_core_of = CHI }
+			}
+		}
+
+		available = {
+			CHI_OMG_sinicization_slot_free = yes
+			556 = { resistance < 60 }
+		}
+
+		fire_only_once = no
+		days_remove = 365
+
+		modifier = {
+			social_cost_multiplier_modifier = 0.08
+			infrastructure_cost_multiplier_modifier = 0.08
+			stability_factor = -0.03
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_han_settlement_large"
+			random_list = {
+				25 = { 564 = { add_manpower = -150000 } }
+				25 = { 549 = { add_manpower = -150000 } }
+				25 = { 534 = { add_manpower = -150000 } }
+				25 = { 574 = { add_manpower = -150000 } }
+			}
+			556 = {
+				add_manpower = 150000
+				newline = yes
+				custom_effect_tooltip = {
+					localization_key = modifies_dynamic_modifier_tt
+					MODIFIER = CHI_OMG_sinicization_modifier
+				}
+				set_temp_variable = { sinicization_base_change = 8 }
+				CHI_apply_sinicization_OMG = yes
+				newline = yes
+				random = {
+					chance = 30
+					add_compliance = 20
+				}
+				newline = yes
+				random_list = {
+					33 = { add_resistance = 5 }
+					33 = { add_resistance = 10 }
+					33 = { add_resistance = 15 }
+				}
+			}
+		}
+
+		ai_will_do = { base = 1 }
+	}
+
+	CHI_OMG_mandarin_curriculum_rollout = {
+		icon = generic_welfare
+
+		visible = {
+			has_completed_focus = CHI_OMG_mandarin_education
+			556 = {
+				is_owned_by = CHI
+				NOT = { is_core_of = CHI }
+			}
+		}
+
+		available = { CHI_OMG_sinicization_slot_free = yes }
+		cost = 50
+		custom_cost_trigger = { check_variable = { treasury > 2 } }
+		custom_cost_text = cost_2_0
+		days_remove = 180
+		fire_only_once = no
+
+		modifier = {
+			education_cost_multiplier_modifier = 0.05
+			compliance_growth = 0.10
+			resistance_growth = -0.05
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_OMG_mandarin_curriculum_rollout"
+			custom_effect_tooltip = {
+				localization_key = modifies_dynamic_modifier_tt
+				MODIFIER = CHI_OMG_sinicization_modifier
+			}
+			set_temp_variable = { sinicization_base_change = 2 }
+			CHI_apply_sinicization_OMG = yes
+			newline = yes
+			556 = { add_compliance = 2 }
+			newline = yes
+			set_temp_variable = { treasury_change = -2 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = { base = 4 }
+	}
+
+	CHI_OMG_pastoral_sedentarisation = {
+		icon = generic_construction
+
+		visible = {
+			has_completed_focus = CHI_OMG_han_settlement_program
+			556 = {
+				is_owned_by = CHI
+				NOT = { is_core_of = CHI }
+			}
+		}
+
+		available = {
+			CHI_OMG_sinicization_slot_free = yes
+			556 = { resistance < 60 }
+		}
+
+		cost = 100
+		custom_cost_trigger = { check_variable = { treasury > 6 } }
+		custom_cost_text = cost_6_0
+		days_remove = 365
+		fire_only_once = no
+
+		modifier = {
+			social_cost_multiplier_modifier = 0.10
+			infrastructure_cost_multiplier_modifier = 0.05
+			resistance_growth = 0.05
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_OMG_pastoral_sedentarisation"
+			custom_effect_tooltip = {
+				localization_key = modifies_dynamic_modifier_tt
+				MODIFIER = CHI_OMG_sinicization_modifier
+			}
+			set_temp_variable = { sinicization_base_change = 5 }
+			CHI_apply_sinicization_OMG = yes
+			newline = yes
+			556 = { add_resistance = 5 }
+			newline = yes
+			set_temp_variable = { treasury_change = -6 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = {
+			base = 2
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	CHI_national_common_language_campaign = {
+		icon = eng_propaganda_campaigns
+
+		visible = {
+			has_completed_focus = CHI_SAR_one_system_declaration
+			CHI_any_SAR_awaiting_integration = yes
+		}
+
+		available = { CHI_national_sinicization_slot_free = yes }
+		cost = 150
+		custom_cost_trigger = { check_variable = { treasury > 15 } }
+		custom_cost_text = cost_15_0
+		days_remove = 730
+		fire_only_once = no
+
+		modifier = {
+			education_cost_multiplier_modifier = 0.10
+			bureaucracy_cost_multiplier_modifier = 0.10
+			compliance_growth = 0.10
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_national_common_language_campaign"
+			custom_effect_tooltip = CHI_sinicization_all_SARs_tt
+			set_temp_variable = { sinicization_base_change = 2.5 }
+			CHI_apply_sinicization_all_SARs = yes
+			newline = yes
+			set_temp_variable = { treasury_change = -15 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = {
+			base = 3
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	CHI_second_generation_ethnic_policy = {
+		icon = generic_nationalism
+
+		visible = {
+			has_completed_focus = CHI_SAR_han_superiority
+			CHI_any_SAR_awaiting_integration = yes
+		}
+
+		available = { CHI_national_sinicization_slot_free = yes }
+		cost = 250
+		custom_cost_trigger = { check_variable = { treasury > 30 } }
+		custom_cost_text = cost_30_0
+		days_remove = 1095
+		fire_only_once = no
+
+		modifier = {
+			police_cost_multiplier_modifier = 0.15
+			bureaucracy_cost_multiplier_modifier = 0.15
+			stability_factor = -0.05
+			resistance_growth = 0.05
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_second_generation_ethnic_policy"
+			custom_effect_tooltip = CHI_sinicization_all_SARs_tt
+			set_temp_variable = { sinicization_base_change = 5 }
+			CHI_apply_sinicization_all_SARs = yes
+			newline = yes
+			set_temp_variable = { treasury_change = -30 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = {
+			base = 2
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	CHI_MON_reunification_retry = {
+		icon = generic_form_nation
+
+		visible = {
+			has_country_flag = CHI_MON_reunification_rejected
+			country_exists = MON
+		}
+
+		available = { country_exists = MON }
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_MON_reunification_retry"
+			clr_country_flag = CHI_MON_reunification_rejected
+			MON = { country_event = { id = china_sar.036 days = 1 } }
+			custom_effect_tooltip = TT_IF_THEY_REJECT
+			custom_effect_tooltip = CHI_MON_reunification_rejected_tt
+			custom_effect_tooltip = TT_IF_THEY_ACCEPT
+			effect_tooltip = {
+				OMG = {
+					add_state_core = 596
+					add_state_core = 597
+				}
+			}
+		}
+
+		ai_will_do = { base = 5 }
+	}
+
+	CHI_TAI_media_infiltration = {
+		fixed_random_seed = no
+		icon = generic_brainwash
+
+		visible = {
+			has_completed_focus = CHI_SAR_one_china_framework
+			country_exists = TAI
+		}
+
+		available = {
+			country_exists = TAI
+			NOT = { has_war_with = TAI }
+			custom_trigger_tooltip = {
+				tooltip = CHI_TAI_trust_gt_4_tt
+				check_variable = { CHI_TAI_trust > 4 }
+			}
+			TAI = { NOT = { has_country_flag = TAI_foreign_interference } }
+		}
+
+		fire_only_once = no
+		cost = 50
+		days_re_enable = 120
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_TAI_media_infiltration"
+			TAI = {
+				add_to_variable = { party_pop_array^1 = 0.02 }
+				add_to_variable = { party_pop_array^2 = -0.01 }
+				recalculate_party = yes
+			}
+			random = {
+				chance = 25
+				TAI = { country_event = { id = china_sar.005 days = 14 } }
+				add_to_variable = { CHI_TAI_trust = -15 }
+				if = {
+					limit = { check_variable = { CHI_TAI_trust < 0 } }
+					set_variable = { CHI_TAI_trust = 0 }
+				}
+			}
+		}
+
+		ai_will_do = { base = 5 }
+	}
+
+	CHI_TAI_resend_economic_track = {
+		icon = generic_political_discourse
+
+		visible = {
+			has_country_flag = CHI_TAI_rejected_economic_track
+			country_exists = TAI
+		}
+
+		available = { NOT = { has_war_with = TAI } }
+		fire_only_once = no
+		cost = 40
+		days_re_enable = 45
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_TAI_resend_economic_track"
+			TAI = { country_event = { id = china_sar.038 days = 3 } }
+		}
+
+		ai_will_do = { base = 5 }
+	}
+
+	CHI_TAI_resend_expand_trade = {
+		icon = generic_political_discourse
+
+		visible = {
+			has_country_flag = CHI_TAI_rejected_expand_trade
+			country_exists = TAI
+		}
+
+		available = { NOT = { has_war_with = TAI } }
+		fire_only_once = no
+		cost = 40
+		days_re_enable = 45
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_TAI_resend_expand_trade"
+			TAI = { country_event = { id = china_sar.039 days = 3 } }
+		}
+
+		ai_will_do = { base = 5 }
+	}
+
+	CHI_TAI_resend_peaceful_reunification = {
+		icon = generic_political_discourse
+
+		visible = {
+			has_country_flag = CHI_TAI_rejected_peaceful_reunification
+			country_exists = TAI
+		}
+
+		available = { NOT = { has_war_with = TAI } }
+		fire_only_once = no
+		cost = 40
+		days_re_enable = 45
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_TAI_resend_peaceful_reunification"
+			TAI = { country_event = { id = china_sar.047 days = 3 } }
+		}
+
+		ai_will_do = { base = 5 }
+	}
+
+	CHI_TAI_resend_mainland_access = {
+		icon = generic_political_discourse
+
+		visible = {
+			has_country_flag = CHI_TAI_rejected_mainland_access
+			country_exists = TAI
+		}
+
+		available = { NOT = { has_war_with = TAI } }
+		fire_only_once = no
+		cost = 40
+		days_re_enable = 45
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_TAI_resend_mainland_access"
+			TAI = { country_event = { id = china_sar.040 days = 3 } }
+		}
+
+		ai_will_do = { base = 5 }
+	}
+
+	CHI_TAI_resend_semiconductor = {
+		icon = generic_political_discourse
+
+		visible = {
+			has_country_flag = CHI_TAI_rejected_semiconductor
+			country_exists = TAI
+		}
+
+		available = { NOT = { has_war_with = TAI } }
+		fire_only_once = no
+		cost = 40
+		days_re_enable = 45
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_TAI_resend_semiconductor"
+			TAI = { country_event = { id = china_sar.041 days = 3 } }
+		}
+
+		ai_will_do = { base = 5 }
+	}
+
+	CHI_TAI_resend_business_deleg = {
+		icon = generic_political_discourse
+
+		visible = {
+			has_country_flag = CHI_TAI_rejected_business_deleg
+			country_exists = TAI
+		}
+
+		available = { NOT = { has_war_with = TAI } }
+		fire_only_once = no
+		cost = 40
+		days_re_enable = 45
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_TAI_resend_business_deleg"
+			TAI = { country_event = { id = china_sar.042 days = 3 } }
+		}
+
+		ai_will_do = { base = 5 }
+	}
+
+	CHI_TAI_resend_transport = {
+		icon = generic_political_discourse
+
+		visible = {
+			has_country_flag = CHI_TAI_rejected_transport
+			country_exists = TAI
+		}
+
+		available = { NOT = { has_war_with = TAI } }
+		fire_only_once = no
+		cost = 40
+		days_re_enable = 45
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_TAI_resend_transport"
+			TAI = { country_event = { id = china_sar.043 days = 3 } }
+		}
+
+		ai_will_do = { base = 5 }
+	}
+
+	CHI_TAI_resend_safeguards = {
+		icon = generic_political_discourse
+
+		visible = {
+			has_country_flag = CHI_TAI_rejected_safeguards
+			country_exists = TAI
+		}
+
+		available = { NOT = { has_war_with = TAI } }
+		fire_only_once = no
+		cost = 40
+		days_re_enable = 45
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_TAI_resend_safeguards"
+			TAI = { country_event = { id = china_sar.044 days = 3 } }
+		}
+
+		ai_will_do = { base = 5 }
+	}
+
+	CHI_TAI_resend_joint_planning = {
+		icon = generic_political_discourse
+
+		visible = {
+			has_country_flag = CHI_TAI_rejected_joint_planning
+			country_exists = TAI
+		}
+
+		available = { NOT = { has_war_with = TAI } }
+		fire_only_once = no
+		cost = 40
+		days_re_enable = 45
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_TAI_resend_joint_planning"
+			TAI = { country_event = { id = china_sar.045 days = 3 } }
+		}
+
+		ai_will_do = { base = 5 }
+	}
+
+	CHI_TAI_resend_deep_integration = {
+		icon = generic_political_discourse
+
+		visible = {
+			has_country_flag = CHI_TAI_rejected_deep_integration
+			country_exists = TAI
+		}
+
+		available = { NOT = { has_war_with = TAI } }
+		fire_only_once = no
+		cost = 40
+		days_re_enable = 45
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_TAI_resend_deep_integration"
+			TAI = { country_event = { id = china_sar.046 days = 3 } }
+		}
+
+		ai_will_do = { base = 5 }
+	}
+
+	CHI_TAI_goodwill_gesture = {
+		icon = generic_political_discourse
+
+		visible = {
+			has_completed_focus = CHI_SAR_one_china_framework
+			country_exists = TAI
+		}
+
+		available = {
+			country_exists = TAI
+			NOT = { has_war_with = TAI }
+		}
+
+		fire_only_once = no
+		cost = 50
+		days_re_enable = 90
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_TAI_goodwill_gesture"
+			add_to_variable = { CHI_TAI_trust = 6 tooltip = CHI_TAI_trust_tt }
+			clamp_variable = { var = CHI_TAI_trust min = 0 max = 100 }
+			add_opinion_modifier = { target = TAI modifier = political_outreach }
+		}
+
+		ai_will_do = { base = 5 }
+	}
+
+	CHI_TAI_coercive_signaling = {
+		icon = generic_intelligence_operation
+
+		visible = {
+			has_completed_focus = CHI_SAR_one_china_framework
+			country_exists = TAI
+		}
+
+		available = {
+			country_exists = TAI
+			NOT = { has_war_with = TAI }
+		}
+
+		fire_only_once = no
+		cost = 40
+		days_re_enable = 60
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_TAI_coercive_signaling"
+			add_to_variable = { CHI_TAI_trust = -6 tooltip = CHI_TAI_trust_tt }
+			clamp_variable = { var = CHI_TAI_trust min = 0 max = 100 }
+			add_opinion_modifier = { target = TAI modifier = recent_actions_negative }
+			TAI = { add_opinion_modifier = { target = CHI modifier = recent_actions_negative } }
+		}
+
+		ai_will_do = { base = 5 }
+	}
+
+	CHI_TAI_business_council_funding = {
+		fixed_random_seed = no
+		icon = generic_welfare
+
+		visible = {
+			has_completed_focus = CHI_SAR_one_china_framework
+			country_exists = TAI
+		}
+
+		available = {
+			country_exists = TAI
+			NOT = { has_war_with = TAI }
+			custom_trigger_tooltip = {
+				tooltip = CHI_TAI_trust_gt_9_tt
+				check_variable = { CHI_TAI_trust > 9 }
+			}
+		}
+
+		fire_only_once = no
+		cost = 80
+		days_re_enable = 90
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_TAI_business_council_funding"
+			TAI = { add_to_variable = { pan_blue_coalition_support = 0.02 } }
+			add_to_variable = { CHI_TAI_trust = 3 }
+			random = {
+				chance = 20
+				TAI = { country_event = { id = china_sar.005 days = 14 } }
+				add_to_variable = { CHI_TAI_trust = -15 }
+				if = {
+					limit = { check_variable = { CHI_TAI_trust < 0 } }
+					set_variable = { CHI_TAI_trust = 0 }
+				}
+			}
+		}
+
+		ai_will_do = { base = 5 }
+	}
+
+	CHI_TAI_cultural_exchange_program = {
+		fixed_random_seed = no
+		icon = eng_trade_unions_support
+
+		visible = {
+			has_completed_focus = CHI_SAR_one_china_framework
+			country_exists = TAI
+		}
+
+		available = {
+			country_exists = TAI
+			NOT = { has_war_with = TAI }
+		}
+
+		fire_only_once = no
+		cost = 30
+		days_re_enable = 60
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_TAI_cultural_exchange_program"
+			add_to_variable = { CHI_TAI_trust = 3 }
+			TAI = {
+				add_to_variable = { party_pop_array^14 = 0.01 }
+				recalculate_party = yes
+			}
+			random = {
+				chance = 10
+				TAI = { country_event = { id = china_sar.005 days = 14 } }
+				add_to_variable = { CHI_TAI_trust = -15 }
+				if = {
+					limit = { check_variable = { CHI_TAI_trust < 0 } }
+					set_variable = { CHI_TAI_trust = 0 }
+				}
+			}
+		}
+
+		ai_will_do = { base = 5 }
+	}
+
+	CHI_TAI_cross_strait_infrastructure_investment = {
+		fixed_random_seed = no
+		icon = generic_construction
+
+		visible = {
+			has_completed_focus = CHI_SAR_one_china_framework
+			country_exists = TAI
+			TAI = { has_country_flag = TAI_CSSTA_signed }
+		}
+
+		available = {
+			country_exists = TAI
+			NOT = { has_war_with = TAI }
+			TAI = { has_country_flag = TAI_CSSTA_signed }
+			custom_trigger_tooltip = {
+				tooltip = CHI_TAI_trust_gt_24_tt
+				check_variable = { CHI_TAI_trust > 24 }
+			}
+		}
+
+		fire_only_once = no
+		cost = 100
+		days_re_enable = 180
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_TAI_cross_strait_infrastructure_investment"
+			add_to_variable = { CHI_TAI_trust = 6 }
+			TAI = {
+				random_owned_state = {
+					limit = {
+						free_building_slots = {
+							building = industrial_complex
+							size > 1
+							include_locked = yes
+						}
+					}
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				if = {
+					limit = { NOT = { has_dynamic_modifier = { modifier = CHI_TAI_shared_modifier } } }
+					add_dynamic_modifier = { modifier = CHI_TAI_shared_modifier }
+				}
+				custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_TAI_shared_modifier }
+				add_to_variable = { CHI_TAI_civilian_factories_productivity = 0.02 tooltip = civilian_factories_productivity_tt }
+				add_to_variable = { CHI_TAI_production_speed_buildings_factor = 0.03 tooltip = production_speed_buildings_factor_tt }
+			}
+			random = {
+				chance = 15
+				TAI = { country_event = { id = china_sar.005 days = 14 } }
+				add_to_variable = { CHI_TAI_trust = -15 }
+				if = {
+					limit = { check_variable = { CHI_TAI_trust < 0 } }
+					set_variable = { CHI_TAI_trust = 0 }
+				}
+			}
+		}
+
+		ai_will_do = { base = 3 }
+	}
+
+	CHI_TAI_pro_china_party_networks_mission = {
+		icon = eng_propaganda_campaigns
+		is_good = yes
+		days_mission_timeout = 30
+
+		activation = {
+			has_country_flag = CHI_TAI_pro_china_networks_active
+			country_exists = TAI
+			NOT = { has_war_with = TAI }
+		}
+
+		available = { hidden_trigger = { always = no } }
+
+		timeout_effect = {
+			log = "[GetDateText]: [Root.GetName]: CHI_TAI_pro_china_party_networks_mission timeout"
+			if = {
+				limit = {
+					check_variable = { CHI_TAI_trust > 50 }
+					country_exists = TAI
+					NOT = { has_war_with = TAI }
+				}
+				TAI = {
+					add_to_variable = { party_pop_array^1 = 0.02 }
+					add_to_variable = { party_pop_array^14 = 0.01 }
+					add_to_variable = { party_pop_array^2 = -0.02 }
+					recalculate_party = yes
+				}
+			}
+			if = {
+				limit = {
+					has_country_flag = CHI_TAI_pro_china_networks_active
+					country_exists = TAI
+					NOT = { has_war_with = TAI }
+				}
+				activate_mission = CHI_TAI_pro_china_party_networks_mission
+			}
+		}
+
+		ai_will_do = { base = 1 }
+	}
+
+	CHI_TAI_amphibious_exercise = {
+		icon = INS_take_java
+
+		visible = {
+			has_completed_focus = CHI_TAI_fleet_modernization
+			country_exists = TAI
+			NOT = { has_war_with = TAI }
+		}
+
+		available = { has_completed_focus = CHI_TAI_fleet_modernization }
+		cost = 75
+		days_re_enable = 180
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_TAI_amphibious_exercise"
+			add_to_variable = { CHI_taiwan_strait_tension = 8 tooltip = CHI_taiwan_strait_tension_tt }
+			clamp_variable = { var = CHI_taiwan_strait_tension min = 0 max = 100 }
+			add_to_variable = { CHI_taiwan_us_support = -3 tooltip = CHI_taiwan_us_support_tt }
+			clamp_variable = { var = CHI_taiwan_us_support min = 0 max = 100 }
+			set_country_flag = { flag = CHI_amphibious_exercise_active days = 180 value = 1 }
+		}
+
+		ai_will_do = {
+			base = 3
+			modifier = {
+				factor = 0
+				check_variable = { CHI_taiwan_strait_tension > 80 }
+			}
+		}
+	}
+
+	CHI_TAI_adiz_incursion = {
+		fixed_random_seed = no
+		icon = recruit_operative
+
+		visible = {
+			has_completed_focus = CHI_TAI_air_superiority
+			country_exists = TAI
+			NOT = { has_war_with = TAI }
+		}
+
+		available = { has_completed_focus = CHI_TAI_air_superiority }
+		cost = 25
+		days_re_enable = 60
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_TAI_adiz_incursion"
+			add_to_variable = { CHI_taiwan_strait_tension = 3 tooltip = CHI_taiwan_strait_tension_tt }
+			clamp_variable = { var = CHI_taiwan_strait_tension min = 0 max = 100 }
+			add_to_variable = { CHI_taiwan_us_support = -1 tooltip = CHI_taiwan_us_support_tt }
+			clamp_variable = { var = CHI_taiwan_us_support min = 0 max = 100 }
+			set_country_flag = { flag = CHI_adiz_incursion_active days = 60 value = 1 }
+			if = {
+				limit = { check_variable = { CHI_taiwan_strait_tension > 60 } }
+				random = {
+					chance = 25
+					country_event = { id = china_sar.007 days = 3 }
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 5
+			modifier = {
+				factor = 0
+				check_variable = { CHI_taiwan_strait_tension > 90 }
+			}
+		}
+	}
+
+	CHI_TAI_rocket_test = {
+		icon = generic_operation
+
+		visible = {
+			has_completed_focus = CHI_TAI_dongfeng_program
+			country_exists = TAI
+			NOT = { has_war_with = TAI }
+		}
+
+		available = { has_completed_focus = CHI_TAI_dongfeng_program }
+		cost = 100
+		days_re_enable = 120
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_TAI_rocket_test"
+			add_to_variable = { CHI_taiwan_strait_tension = 5 tooltip = CHI_taiwan_strait_tension_tt }
+			clamp_variable = { var = CHI_taiwan_strait_tension min = 0 max = 100 }
+			if = {
+				limit = { check_variable = { CHI_taiwan_us_support > 70 } }
+				country_event = { id = china_sar.010 days = 7 }
+			}
+			else = {
+				country_event = { id = china_sar.009 days = 7 }
+			}
+		}
+
+		ai_will_do = {
+			base = 2
+			modifier = {
+				add = 5
+				check_variable = { CHI_taiwan_us_support < 50 }
+			}
+			modifier = {
+				factor = 0
+				check_variable = { CHI_taiwan_us_support > 70 }
+			}
+		}
+	}
+
+	CHI_TAI_grey_zone_ops = {
+		fixed_random_seed = no
+		icon = generic_intelligence_operation
+
+		visible = {
+			has_completed_focus = CHI_TAI_air_superiority
+			country_exists = TAI
+			NOT = { has_war_with = TAI }
+		}
+
+		available = { has_completed_focus = CHI_TAI_air_superiority }
+		cost = 15
+		days_re_enable = 30
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_TAI_grey_zone_ops"
+			add_to_variable = { CHI_taiwan_strait_tension = 2 tooltip = CHI_taiwan_strait_tension_tt }
+			clamp_variable = { var = CHI_taiwan_strait_tension min = 0 max = 100 }
+			add_to_variable = { CHI_taiwan_us_support = -1 tooltip = CHI_taiwan_us_support_tt }
+			clamp_variable = { var = CHI_taiwan_us_support min = 0 max = 100 }
+			random = {
+				chance = 15
+				add_to_variable = { CHI_taiwan_us_support = 3 tooltip = CHI_taiwan_us_support_tt }
+				clamp_variable = { var = CHI_taiwan_us_support min = 0 max = 100 }
+			}
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				check_variable = { CHI_taiwan_strait_tension > 85 }
+			}
+		}
+	}
+
+	CHI_TAI_blockade_simulation = {
+		icon = generic_naval
+
+		visible = {
+			has_completed_focus = CHI_TAI_dongfeng_program
+			country_exists = TAI
+			NOT = { has_war_with = TAI }
+		}
+
+		available = { has_completed_focus = CHI_TAI_dongfeng_program }
+		cost = 75
+		days_re_enable = 120
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_TAI_blockade_simulation"
+			add_to_variable = { CHI_taiwan_strait_tension = 10 tooltip = CHI_taiwan_strait_tension_tt }
+			clamp_variable = { var = CHI_taiwan_strait_tension min = 0 max = 100 }
+			add_to_variable = { CHI_taiwan_us_support = -4 tooltip = CHI_taiwan_us_support_tt }
+			clamp_variable = { var = CHI_taiwan_us_support min = 0 max = 100 }
+			set_country_flag = { flag = CHI_blockade_sim_active days = 120 value = 1 }
+			TAI = { country_event = { id = china_sar.015 days = 3 } }
+		}
+
+		ai_will_do = {
+			base = 2
+			modifier = {
+				factor = 0
+				check_variable = { CHI_taiwan_strait_tension > 70 }
+			}
+		}
+	}
+
+	CHI_TAI_cyberattack = {
+		icon = hol_radio_oranje
+
+		visible = {
+			has_completed_focus = CHI_TAI_cyber_warfare
+			country_exists = TAI
+			NOT = { has_war_with = TAI }
+		}
+
+		available = { has_completed_focus = CHI_TAI_cyber_warfare }
+		cost = 50
+		days_re_enable = 90
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_TAI_cyberattack"
+			TAI = {
+				add_timed_idea = {
+					idea = TAI_cyber_sabotage
+					days = 180
+				}
+			}
+		}
+
+		ai_will_do = { base = 3 }
+	}
+
+	CHI_TAI_shadow_carrier = {
+		fixed_random_seed = no
+		icon = HOL_air_carrier
+
+		visible = {
+			has_completed_focus = CHI_TAI_cross_strait_policy
+			USA = { has_country_flag = USA_TAI_carrier_sent }
+		}
+
+		available = { USA = { has_country_flag = USA_TAI_carrier_sent } }
+		cost = 25
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_TAI_shadow_carrier"
+			add_to_variable = { CHI_taiwan_strait_tension = 5 tooltip = CHI_taiwan_strait_tension_tt }
+			clamp_variable = { var = CHI_taiwan_strait_tension min = 0 max = 100 }
+			random_list = {
+				80 = {
+					add_to_variable = { CHI_taiwan_us_support = -2 tooltip = CHI_taiwan_us_support_tt }
+					clamp_variable = { var = CHI_taiwan_us_support min = 0 max = 100 }
+				}
+				20 = { country_event = { id = china_sar.008 days = 3 } }
+			}
+		}
+
+		ai_will_do = { base = 5 }
+	}
+
+	CHI_TAI_intercept_aircraft = {
+		fixed_random_seed = no
+		icon = GFX_decision_generic_air
+
+		visible = {
+			has_completed_focus = CHI_TAI_cross_strait_policy
+			USA = { has_country_flag = USA_TAI_recon_active }
+		}
+
+		available = { USA = { has_country_flag = USA_TAI_recon_active } }
+		cost = 25
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_TAI_intercept_aircraft"
+			random_list = {
+				70 = {
+					add_to_variable = { CHI_taiwan_us_support = -1 tooltip = CHI_taiwan_us_support_tt }
+					clamp_variable = { var = CHI_taiwan_us_support min = 0 max = 100 }
+				}
+				30 = { country_event = { id = china_sar.007 days = 1 } }
+			}
+		}
+
+		ai_will_do = { base = 5 }
+	}
+
+	CHI_TAI_un_protest = {
+		icon = generic_civil_support
+
+		visible = {
+			has_completed_focus = CHI_TAI_cross_strait_policy
+			USA = { has_country_flag = USA_TAI_arms_sale_active }
+		}
+
+		available = { USA = { has_country_flag = USA_TAI_arms_sale_active } }
+		cost = 50
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_TAI_un_protest"
+			add_to_variable = { CHI_taiwan_us_support = -2 tooltip = CHI_taiwan_us_support_tt }
+			clamp_variable = { var = CHI_taiwan_us_support min = 0 max = 100 }
+			USA = { add_opinion_modifier = { target = CHI modifier = chi_usa_pressure_campaign } }
+		}
+
+		ai_will_do = { base = 5 }
+	}
+
+	CHI_TAI_maritime_zone = {
+		icon = generic_naval
+
+		visible = {
+			has_completed_focus = CHI_TAI_blockade_capability
+			country_exists = TAI
+			NOT = { has_war_with = TAI }
+			NOT = { has_country_flag = CHI_TAI_maritime_zone_active }
+		}
+
+		available = { has_completed_focus = CHI_TAI_blockade_capability }
+		fire_only_once = yes
+		cost = 150
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_TAI_maritime_zone"
+			set_country_flag = CHI_TAI_maritime_zone_active
+			add_to_variable = { CHI_taiwan_strait_tension = 8 tooltip = CHI_taiwan_strait_tension_tt }
+			clamp_variable = { var = CHI_taiwan_strait_tension min = 0 max = 100 }
+			add_to_variable = { CHI_taiwan_us_support = -3 tooltip = CHI_taiwan_us_support_tt }
+			clamp_variable = { var = CHI_taiwan_us_support min = 0 max = 100 }
+			TAI = {
+				add_timed_idea = {
+					idea = TAI_blockade_partial
+					days = 365
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 1
+			modifier = {
+				add = 5
+				check_variable = { CHI_taiwan_us_support < 40 }
+			}
+		}
+	}
+
+	CHI_TAI_partial_blockade = {
+		icon = generic_naval
+
+		visible = {
+			has_country_flag = CHI_TAI_maritime_zone_active
+			country_exists = TAI
+			NOT = { has_war_with = TAI }
+			NOT = { has_country_flag = CHI_TAI_partial_blockade_active }
+		}
+
+		available = {
+			has_country_flag = CHI_TAI_maritime_zone_active
+			custom_trigger_tooltip = {
+				tooltip = CHI_taiwan_strait_tension_less_70_tt
+				check_variable = { CHI_taiwan_strait_tension < 70 }
+			}
+		}
+
+		fire_only_once = yes
+		cost = 175
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_TAI_partial_blockade"
+			set_country_flag = CHI_TAI_partial_blockade_active
+			add_to_variable = { CHI_taiwan_strait_tension = 15 tooltip = CHI_taiwan_strait_tension_tt }
+			clamp_variable = { var = CHI_taiwan_strait_tension min = 0 max = 100 }
+			add_to_variable = { CHI_taiwan_us_support = -6 tooltip = CHI_taiwan_us_support_tt }
+			clamp_variable = { var = CHI_taiwan_us_support min = 0 max = 100 }
+			TAI = {
+				remove_ideas = TAI_blockade_partial
+				add_ideas = TAI_blockade_economic_crisis
+			}
+			add_to_variable = { CHI_taiwan_us_support = 5 tooltip = CHI_taiwan_us_support_tt }
+			clamp_variable = { var = CHI_taiwan_us_support min = 0 max = 100 }
+			TAI = { country_event = { id = china_sar.016 days = 60 } }
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 5
+				has_global_flag = CHI_HEGEMON_FOCUS_PATH
+				check_variable = { CHI_taiwan_us_support < 30 }
+				naval_strength_ratio = { tag = TAI ratio > 1.5 }
+			}
+		}
+	}
+
+	CHI_TAI_full_blockade = {
+		icon = generic_naval
+
+		visible = {
+			has_country_flag = CHI_TAI_partial_blockade_active
+			country_exists = TAI
+			NOT = { has_war_with = TAI }
+			NOT = { has_country_flag = CHI_TAI_full_blockade_active }
+		}
+
+		available = {
+			has_country_flag = { flag = CHI_TAI_partial_blockade_active days > 60 }
+			custom_trigger_tooltip = {
+				tooltip = CHI_taiwan_strait_tension_less_75_tt
+				check_variable = { CHI_taiwan_strait_tension < 75 }
+			}
+		}
+
+		fire_only_once = yes
+		cost = 200
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_TAI_full_blockade"
+			set_country_flag = CHI_TAI_full_blockade_active
+			add_to_variable = { CHI_taiwan_strait_tension = 20 tooltip = CHI_taiwan_strait_tension_tt }
+			clamp_variable = { var = CHI_taiwan_strait_tension min = 0 max = 100 }
+			if = {
+				limit = { check_variable = { CHI_taiwan_us_support < 30 } }
+				TAI = { country_event = { id = china_sar.017 days = 30 } }
+			}
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 10
+				has_global_flag = CHI_HEGEMON_FOCUS_PATH
+				check_variable = { CHI_taiwan_us_support < 20 }
+				naval_strength_ratio = { tag = TAI ratio > 2 }
+			}
+		}
+	}
+
+	CHI_TAI_lift_full_blockade = {
+		icon = generic_naval
+		visible = { has_country_flag = CHI_TAI_full_blockade_active }
+
+		available = {
+			has_country_flag = { flag = CHI_TAI_full_blockade_active days > 60 }
+			NOT = { has_war_with = TAI }
+		}
+
+		cost = 100
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_TAI_lift_full_blockade"
+			clr_country_flag = CHI_TAI_full_blockade_active
+			set_country_flag = CHI_TAI_partial_blockade_active
+			add_to_variable = { CHI_taiwan_strait_tension = -15 tooltip = CHI_taiwan_strait_tension_tt }
+			clamp_variable = { var = CHI_taiwan_strait_tension min = 0 max = 100 }
+			add_to_variable = { CHI_taiwan_us_support = 5 tooltip = CHI_taiwan_us_support_tt }
+			clamp_variable = { var = CHI_taiwan_us_support min = 0 max = 100 }
+			TAI = {
+				remove_ideas = TAI_blockade_economic_crisis
+				add_ideas = TAI_blockade_partial
+			}
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 100
+				NOT = { has_global_flag = CHI_HEGEMON_FOCUS_PATH }
+			}
+			modifier = {
+				add = 100
+				naval_strength_ratio = { tag = TAI ratio < 2 }
+			}
+		}
+	}
+
+	CHI_TAI_strait_naval_exercise = {
+		icon = generic_naval
+
+		visible = {
+			has_completed_focus = CHI_TAI_amphibious_doctrine
+			country_exists = TAI
+			NOT = { has_war_with = TAI }
+		}
+
+		available = { has_completed_focus = CHI_TAI_amphibious_doctrine }
+		cost = 50
+		days_remove = 120
+		days_re_enable = 120
+
+		modifier = {
+			trait_naval_invader_xp_gain_factor = 0.25
+			rapid_amphibious_assault_mastery_gain_factor = 0.075
+			massed_landing_forces_mastery_gain_factor = 0.075
+			naval_invasion_prep_speed = 0.15
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_TAI_strait_naval_exercise"
+			set_country_flag = { flag = CHI_amphibious_exercise_active days = 120 value = 1 }
+		}
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_TAI_strait_naval_exercise"
+			add_to_variable = { CHI_taiwan_strait_tension = 5 tooltip = CHI_taiwan_strait_tension_tt }
+			clamp_variable = { var = CHI_taiwan_strait_tension min = 0 max = 100 }
+			add_to_variable = { CHI_taiwan_us_support = -2 tooltip = CHI_taiwan_us_support_tt }
+			clamp_variable = { var = CHI_taiwan_us_support min = 0 max = 100 }
+			navy_experience = 15
+			set_country_flag = CHI_recent_provocation
+		}
+
+		ai_will_do = {
+			base = 5
+			modifier = {
+				factor = 0
+				check_variable = { CHI_taiwan_strait_tension > 80 }
+			}
+		}
+	}
+
+	CHI_TAI_influence_us_election = {
+		fixed_random_seed = no
+		icon = generic_brainwash
+
+		visible = {
+			has_completed_focus = CHI_TAI_lobby_network
+			country_exists = USA
+			country_exists = TAI
+			NOT = { has_war_with = TAI }
+		}
+
+		available = { has_completed_focus = CHI_TAI_lobby_network }
+		cost = 150
+		days_re_enable = 365
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_TAI_influence_us_election"
+			USA = {
+				set_party_index_to_ruling_party = yes
+				set_temp_variable = { party_popularity_increase = 0.02 }
+				change_relative_party_popularity = yes
+			}
+			random = {
+				chance = 30
+				country_event = { id = china_sar.014 days = 14 }
+			}
+		}
+
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 0
+				check_variable = { CHI_taiwan_us_support < 30 }
+			}
+		}
+	}
+
+	CHI_TAI_support_houthis = {
+		icon = infiltrate_state
+
+		visible = {
+			has_completed_focus = CHI_TAI_proxy_strategy
+			country_exists = TAI
+			NOT = { has_war_with = TAI }
+		}
+
+		available = { has_completed_focus = CHI_TAI_proxy_strategy }
+		cost = 75
+		days_re_enable = 365
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_TAI_support_houthis"
+			if = {
+				limit = {
+					USA = {
+						OR = {
+							has_war = yes
+							any_neighbor_country = { has_war_with = USA }
+						}
+					}
+				}
+				add_to_variable = { CHI_taiwan_us_support = -4 tooltip = CHI_taiwan_us_support_tt }
+				clamp_variable = { var = CHI_taiwan_us_support min = 0 max = 100 }
+			}
+			else = {
+				add_to_variable = { CHI_taiwan_us_support = -2 tooltip = CHI_taiwan_us_support_tt }
+				clamp_variable = { var = CHI_taiwan_us_support min = 0 max = 100 }
+			}
+		}
+
+		ai_will_do = { base = 2 }
+	}
+
+	CHI_TAI_scs_provocations = {
+		icon = infiltrate_state
+
+		visible = {
+			has_completed_focus = CHI_TAI_proxy_strategy
+			country_exists = TAI
+			NOT = { has_war_with = TAI }
+		}
+
+		available = { has_completed_focus = CHI_TAI_proxy_strategy }
+		cost = 75
+		days_re_enable = 180
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_TAI_scs_provocations"
+			add_to_variable = { CHI_taiwan_us_support = -3 tooltip = CHI_taiwan_us_support_tt }
+			clamp_variable = { var = CHI_taiwan_us_support min = 0 max = 100 }
+			add_to_variable = { CHI_taiwan_strait_tension = 2 tooltip = CHI_taiwan_strait_tension_tt }
+			clamp_variable = { var = CHI_taiwan_strait_tension min = 0 max = 100 }
+			if = {
+				limit = { country_exists = PHI }
+				PHI = { add_opinion_modifier = { target = CHI modifier = nine_dash_line } }
+			}
+			if = {
+				limit = { country_exists = VIE }
+				VIE = { add_opinion_modifier = { target = CHI modifier = nine_dash_line } }
+			}
+		}
+
+		ai_will_do = { base = 3 }
+	}
+
+	CHI_TAI_middleeast_diversion = {
+		icon = infiltrate_state
+
+		visible = {
+			has_completed_focus = CHI_TAI_proxy_strategy
+			country_exists = TAI
+			NOT = { has_war_with = TAI }
+		}
+
+		available = { has_completed_focus = CHI_TAI_proxy_strategy }
+		cost = 100
+		days_re_enable = 365
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_TAI_middleeast_diversion"
+			if = {
+				limit = {
+					OR = {
+						PER = { has_war = yes }
+						IRQ = { has_war = yes }
+						SYR = { has_war = yes }
+						SAU = { has_war = yes }
+						YEM = { has_war = yes }
+					}
+				}
+				add_to_variable = { CHI_taiwan_us_support = -5 tooltip = CHI_taiwan_us_support_tt }
+				clamp_variable = { var = CHI_taiwan_us_support min = 0 max = 100 }
+			}
+			else = {
+				add_to_variable = { CHI_taiwan_us_support = -2 tooltip = CHI_taiwan_us_support_tt }
+				clamp_variable = { var = CHI_taiwan_us_support min = 0 max = 100 }
+			}
+		}
+
+		ai_will_do = {
+			base = 2
+			modifier = {
+				add = 5
+				OR = {
+					PER = { has_war = yes }
+					IRQ = { has_war = yes }
+					SYR = { has_war = yes }
+					SAU = { has_war = yes }
+					YEM = { has_war = yes }
+				}
+			}
+		}
+	}
+
+	CHI_TAI_arm_iran = {
+		fixed_random_seed = no
+		icon = ger_military_buildup
+
+		visible = {
+			has_completed_focus = CHI_TAI_proxy_strategy
+			country_exists = PER
+			country_exists = TAI
+			NOT = { has_war_with = PER }
+			NOT = { has_war_with = TAI }
+		}
+
+		available = { has_completed_focus = CHI_TAI_proxy_strategy }
+		cost = 100
+		days_re_enable = 365
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_TAI_arm_iran"
+			if = {
+				limit = { USA = { has_war_with = PER } }
+				add_to_variable = { CHI_taiwan_us_support = -5 tooltip = CHI_taiwan_us_support_tt }
+				clamp_variable = { var = CHI_taiwan_us_support min = 0 max = 100 }
+			}
+			else = {
+				add_to_variable = { CHI_taiwan_us_support = -2 tooltip = CHI_taiwan_us_support_tt }
+				clamp_variable = { var = CHI_taiwan_us_support min = 0 max = 100 }
+			}
+			random = {
+				chance = 40
+				add_to_variable = { CHI_taiwan_us_support = 10 tooltip = CHI_taiwan_us_support_tt }
+				clamp_variable = { var = CHI_taiwan_us_support min = 0 max = 100 }
+				USA = { add_opinion_modifier = { target = CHI modifier = chi_usa_sanctions_response } }
+			}
+		}
+
+		ai_will_do = {
+			base = 1
+			modifier = {
+				add = 5
+				USA = { has_war_with = PER }
+			}
+		}
+	}
+
+	CHI_TAI_nk_provocations = {
+		icon = eng_blackshirt_march
+
+		visible = {
+			has_completed_focus = CHI_TAI_proxy_strategy
+			country_exists = NKO
+			country_exists = TAI
+			NOT = { has_war_with = TAI }
+		}
+
+		available = {
+			has_completed_focus = CHI_TAI_proxy_strategy
+			country_exists = NKO
+		}
+
+		cost = 50
+		days_re_enable = 180
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_TAI_nk_provocations"
+			add_to_variable = { CHI_taiwan_us_support = -3 tooltip = CHI_taiwan_us_support_tt }
+			clamp_variable = { var = CHI_taiwan_us_support min = 0 max = 100 }
+		}
+
+		ai_will_do = { base = 3 }
+	}
+
+	CHI_TAI_support_russia = {
+		icon = recogn_russia_button
+
+		visible = {
+			has_completed_focus = CHI_TAI_proxy_strategy
+			country_exists = TAI
+			NOT = { has_war_with = TAI }
+			SOV = {
+				exists = yes
+				has_war = yes
+			}
+		}
+
+		available = {
+			has_completed_focus = CHI_TAI_proxy_strategy
+			SOV = { has_war = yes }
+		}
+
+		cost = 100
+		days_re_enable = 365
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_TAI_support_russia"
+			add_to_variable = { CHI_taiwan_us_support = -5 tooltip = CHI_taiwan_us_support_tt }
+			clamp_variable = { var = CHI_taiwan_us_support min = 0 max = 100 }
+			SOV = { add_opinion_modifier = { target = CHI modifier = shared_future_community } }
+		}
+
+		ai_will_do = { base = 3 }
+	}
+
+	CHI_TAI_fund_us_opposition = {
+		fixed_random_seed = no
+		icon = generic_welfare
+
+		visible = {
+			has_completed_focus = CHI_TAI_distract_america
+			country_exists = TAI
+			country_exists = USA
+			NOT = { has_war_with = TAI }
+		}
+
+		available = { has_completed_focus = CHI_TAI_distract_america }
+		cost = 75
+		days_re_enable = 365
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_TAI_fund_us_opposition"
+			add_to_variable = { CHI_taiwan_us_support = -3 tooltip = CHI_taiwan_us_support_tt }
+			clamp_variable = { var = CHI_taiwan_us_support min = 0 max = 100 }
+			USA = { add_stability = -0.02 }
+			random = {
+				chance = 40
+				add_to_variable = { CHI_taiwan_us_support = 8 tooltip = CHI_taiwan_us_support_tt }
+				clamp_variable = { var = CHI_taiwan_us_support min = 0 max = 100 }
+				USA = { add_opinion_modifier = { target = CHI modifier = chi_usa_sanctions_response } }
+			}
+		}
+
+		ai_will_do = {
+			base = 2
+			modifier = {
+				add = 5
+				USA = { has_war = yes }
+			}
+		}
+	}
+
+	CHI_TAI_exploit_us_commitments = {
+		icon = generic_civil_support
+
+		visible = {
+			has_completed_focus = CHI_TAI_distract_america
+			country_exists = TAI
+			country_exists = USA
+			NOT = { has_war_with = TAI }
+			USA = { has_war = yes }
+		}
+
+		available = {
+			has_completed_focus = CHI_TAI_distract_america
+			USA = { has_war = yes }
+		}
+
+		cost = 50
+		days_re_enable = 180
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_TAI_exploit_us_commitments"
+			add_to_variable = { CHI_taiwan_us_support = -6 tooltip = CHI_taiwan_us_support_tt }
+			clamp_variable = { var = CHI_taiwan_us_support min = 0 max = 100 }
+			add_to_variable = { CHI_taiwan_strait_tension = 3 tooltip = CHI_taiwan_strait_tension_tt }
+			clamp_variable = { var = CHI_taiwan_strait_tension min = 0 max = 100 }
+		}
+
+		ai_will_do = { base = 8 }
+	}
+}
+
+CHI_japan_strategy = {
+	CHI_activate_rare_earth_embargo = {
+		icon = SWI_isolate_switzerland
+		allowed = { original_tag = CHI }
+
+		visible = {
+			has_completed_focus = CHI_the_rare_earth_lever
+			NOT = { has_country_flag = CHI_rare_earth_embargo_active }
+		}
+
+		available = {
+			country_exists = JAP
+			NOT = { has_war_with = JAP }
+			NOT = { JAP = { has_country_flag = CHI_jap_rare_earth_resilient } }
+		}
+
+		cost = 100
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_activate_rare_earth_embargo executed"
+			set_country_flag = CHI_rare_earth_embargo_active
+			JAP = {
+				capital_scope = { add_dynamic_modifier = { modifier = CHI_rare_earth_embargoed } }
+				add_opinion_modifier = { target = CHI modifier = threatened_measures }
+			}
+			add_to_variable = { CHI_chinese_aggression = 1 tooltip = CHI_chinese_aggression_tt }
+			clamp_variable = { var = CHI_chinese_aggression min = -50 max = 50 }
+		}
+
+		ai_will_do = {
+			base = 2
+			modifier = {
+				factor = 0
+				has_war_with = JAP
+			}
+			modifier = {
+				factor = 0
+				JAP = { has_country_flag = CHI_jap_rare_earth_resilient }
+			}
+		}
+	}
+
+	CHI_lift_rare_earth_embargo = {
+		icon = SWI_support_humanitarian_efforts
+		allowed = { original_tag = CHI }
+		visible = { has_country_flag = CHI_rare_earth_embargo_active }
+		available = { always = yes }
+		cost = 0
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_lift_rare_earth_embargo executed"
+			clr_country_flag = CHI_rare_earth_embargo_active
+			JAP = {
+				capital_scope = {
+					if = { limit = { has_dynamic_modifier = { modifier = CHI_rare_earth_embargoed } } remove_dynamic_modifier = { modifier = CHI_rare_earth_embargoed } }
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 5
+				has_war_with = JAP
+			}
+			modifier = {
+				add = 3
+				JAP = { has_country_flag = CHI_jap_rare_earth_resilient }
+			}
+			modifier = {
+				add = 3
+				JAP = { has_country_flag = JAP_rare_earth_capitulated }
+			}
+		}
+	}
+
+	CHI_patrol_diaoyu_fishing_grounds = {
+		icon = generic_naval
+		allowed = { original_tag = CHI }
+		visible = { has_completed_focus = CHI_the_diaoyu_sovereignty_declaration }
+
+		available = {
+			country_exists = JAP
+			NOT = { has_war_with = JAP }
+		}
+
+		cost = 50
+		days_re_enable = 90
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_patrol_diaoyu_fishing_grounds executed"
+			add_to_variable = { var = CHI_senkaku_pressure value = 3 tooltip = CHI_senkaku_pressure_tt }
+			clamp_variable = { var = CHI_senkaku_pressure min = 0 max = 100 }
+			add_to_variable = { CHI_chinese_aggression = 1 tooltip = CHI_chinese_aggression_tt }
+			clamp_variable = { var = CHI_chinese_aggression min = -50 max = 50 }
+			if = {
+				limit = { NOT = { has_country_flag = CHI_diaoyu_fishing_demand_sent } }
+				set_country_flag = CHI_diaoyu_fishing_demand_sent
+				JAP = { country_event = { id = Japan.8 days = 3 } }
+			}
+		}
+
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 0
+				has_war_with = JAP
+			}
+		}
+	}
+
+	CHI_deploy_paf_maritime_militia = {
+		icon = SWE_set_navy_budget
+		allowed = { original_tag = CHI }
+
+		visible = {
+			has_completed_focus = CHI_the_maritime_militia_initiative
+			NOT = { has_country_flag = CHI_paf_militia_toggle_active }
+		}
+
+		available = {
+			country_exists = JAP
+			NOT = { has_war_with = JAP }
+		}
+
+		cost = 75
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_deploy_paf_maritime_militia executed"
+			set_country_flag = CHI_paf_militia_toggle_active
+			939 = { add_dynamic_modifier = { modifier = CHI_coast_guard_standoff } }
+			add_to_variable = { CHI_senkaku_pressure = 5 tooltip = CHI_senkaku_pressure_tt }
+			clamp_variable = { var = CHI_senkaku_pressure min = 0 max = 100 }
+		}
+
+		ai_will_do = {
+			base = 2
+			modifier = {
+				factor = 0
+				has_war_with = JAP
+			}
+		}
+	}
+
+	CHI_recall_paf_maritime_militia = {
+		icon = SWE_set_navy_budget
+		allowed = { original_tag = CHI }
+		visible = { has_country_flag = CHI_paf_militia_toggle_active }
+		available = { always = yes }
+		cost = 0
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_recall_paf_maritime_militia executed"
+			clr_country_flag = CHI_paf_militia_toggle_active
+			939 = {
+				if = { limit = { has_dynamic_modifier = { modifier = CHI_coast_guard_standoff } } remove_dynamic_modifier = { modifier = CHI_coast_guard_standoff } }
+			}
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 5
+				has_war_with = JAP
+			}
+			modifier = {
+				add = 3
+				check_variable = { CHI_senkaku_pressure > 95 }
+			}
+		}
+	}
+
+	CHI_jap_capitulate_to_demands = {
+		icon = generic_political_discourse
+		allowed = { original_tag = JAP }
+
+		visible = {
+			CHI = { has_country_flag = CHI_rare_earth_embargo_active }
+			NOT = { has_country_flag = CHI_jap_rare_earth_resilient }
+		}
+
+		available = { NOT = { has_war_with = CHI } }
+		cost = 200
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_jap_capitulate_to_demands executed"
+			set_country_flag = JAP_rare_earth_capitulated
+			capital_scope = {
+				if = { limit = { has_dynamic_modifier = { modifier = CHI_rare_earth_embargoed } } remove_dynamic_modifier = { modifier = CHI_rare_earth_embargoed } }
+			}
+			CHI = {
+				clr_country_flag = CHI_rare_earth_embargo_active
+				add_political_power = 100
+				add_opinion_modifier = { target = JAP modifier = threatened_measures }
+			}
+			add_stability = -0.05
+		}
+
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 0
+				has_country_flag = CHI_jap_rare_earth_resilient
+			}
+			modifier = {
+				factor = 2
+				has_war_with = CHI
+			}
+		}
+	}
+
+	CHI_jap_diversify_rare_earth = {
+		icon = generic_construction
+		allowed = { original_tag = JAP }
+
+		visible = {
+			CHI = { has_country_flag = CHI_rare_earth_embargo_active }
+			NOT = { has_country_flag = CHI_jap_rare_earth_resilient }
+		}
+
+		available = { NOT = { has_war_with = CHI } }
+		cost = 100
+		days_remove = 365
+		fire_only_once = yes
+		modifier = { civilian_factory_use = 2 }
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_jap_diversify_rare_earth started"
+			add_timed_idea = { idea = JAP_rare_earth_diversification days = 365 }
+		}
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_jap_diversify_rare_earth completed"
+			set_country_flag = CHI_jap_rare_earth_resilient
+			capital_scope = {
+				if = { limit = { has_dynamic_modifier = { modifier = CHI_rare_earth_embargoed } } remove_dynamic_modifier = { modifier = CHI_rare_earth_embargoed } }
+			}
+			CHI = { clr_country_flag = CHI_rare_earth_embargo_active }
+		}
+
+		ai_will_do = {
+			base = 5
+			modifier = {
+				factor = 0
+				has_political_power < 100
+			}
+		}
+	}
+
+	CHI_jap_reinforce_coast_guard = {
+		icon = generic_naval
+		allowed = { original_tag = JAP }
+		visible = { CHI = { has_country_flag = CHI_paf_militia_toggle_active } }
+		available = { NOT = { has_war_with = CHI } }
+		cost = 50
+		days_re_enable = 90
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_jap_reinforce_coast_guard executed"
+			navy_experience = 5
+			CHI = {
+				add_to_variable = { CHI_senkaku_pressure = 1 tooltip = CHI_senkaku_pressure_tt }
+				clamp_variable = { var = CHI_senkaku_pressure min = 0 max = 100 }
+			}
+		}
+
+		ai_will_do = {
+			base = 2
+			modifier = {
+				factor = 0
+				has_war_with = CHI
+			}
+		}
+	}
+
+	CHI_jap_open_back_channel = {
+		icon = GFX_decision_generic_decision
+		allowed = { original_tag = JAP }
+		visible = { CHI = { has_country_flag = CHI_senkaku_back_channel_open } }
+		available = { NOT = { has_war_with = CHI } }
+		cost = 75
+		days_re_enable = 180
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_jap_open_back_channel executed"
+			CHI = {
+				add_to_variable = { CHI_senkaku_pressure = -15 tooltip = CHI_senkaku_pressure_tt }
+				clamp_variable = { var = CHI_senkaku_pressure min = 0 max = 100 }
+				add_opinion_modifier = { target = JAP modifier = senkaku_back_channel }
+			}
+			add_opinion_modifier = { target = CHI modifier = senkaku_back_channel }
+		}
+
+		ai_will_do = {
+			base = 3
+			modifier = {
+				factor = 0
+				has_war_with = CHI
+			}
+			modifier = {
+				add = 3
+				CHI = { check_variable = { CHI_senkaku_pressure > 60 } }
+			}
+		}
+	}
+
+	CHI_push_rcep_signing = {
+		icon = GFX_decision_generic_decision
+		allowed = { original_tag = CHI }
+
+		available = {
+			has_completed_focus = CHI_the_rcep_acceleration
+			custom_trigger_tooltip = {
+				tooltip = CHI_aggression_below_0_tt
+				check_variable = { CHI_chinese_aggression < 0 }
+			}
+			NOT = { has_war_with = JAP }
+		}
+
+		cost = 75
+		days_remove = 180
+		complete_effect = { log = "[GetDateText]: [Root.GetName]: Decision CHI_push_rcep_signing started" }
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_push_rcep_signing completed"
+			add_ideas = CHI_rcep_member
+			add_to_variable = { CHI_chinese_aggression = -1 tooltip = CHI_chinese_aggression_tt }
+			clamp_variable = { var = CHI_chinese_aggression min = -50 max = 50 }
+		}
+
+		ai_will_do = { base = 5 }
+	}
+
+	CHI_cancel_east_china_sea_exercise = {
+		icon = generic_break_treaty
+		allowed = { original_tag = CHI }
+
+		available = {
+			has_completed_focus = CHI_assuage_japanese_concerns
+			NOT = { has_war_with = JAP }
+		}
+
+		cost = 30
+		days_re_enable = 60
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_cancel_east_china_sea_exercise executed"
+			army_experience = -5
+			add_to_variable = { CHI_chinese_aggression = -2 tooltip = CHI_chinese_aggression_tt }
+			clamp_variable = { var = CHI_chinese_aggression min = -50 max = 50 }
+			JAP = { add_opinion_modifier = { target = CHI modifier = peaceful_rise } }
+		}
+
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 0
+				has_war_with = JAP
+			}
+			modifier = {
+				add = 2
+				check_variable = { CHI_chinese_aggression > -10 }
+			}
+		}
+	}
+
+	CHI_convene_bilateral_channel = {
+		icon = hol_exchange_intelligence_data
+		allowed = { original_tag = CHI }
+
+		available = {
+			has_completed_focus = CHI_the_quad_wedge_strategy
+			NOT = { has_war_with = JAP }
+			NOT = { has_war_with = USA }
+		}
+
+		cost = 50
+		days_re_enable = 365
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_convene_bilateral_channel executed"
+			JAP = {
+				add_opinion_modifier = { target = USA modifier = CHI_quad_wedge_doubt }
+				add_opinion_modifier = { target = CHI modifier = peaceful_rise }
+			}
+		}
+
+		ai_will_do = {
+			base = 2
+			modifier = {
+				factor = 0
+				has_war_with = JAP
+			}
+		}
+	}
+
+	CHI_invite_JAP_mitsubishi_aerospace = {
+		icon = JAP_zaibatsu_faction
+		allowed = { original_tag = CHI }
+		fire_only_once = yes
+
+		visible = {
+			country_exists = JAP
+			custom_trigger_tooltip = {
+				tooltip = CHI_JAP_invitations_remaining_tt
+				check_variable = { CHI_JAP_invitations_used < 8 }
+			}
+		}
+
+		available = {
+			has_war = no
+			NOT = { has_war_with = JAP }
+			JAP = {
+				has_opinion = { target = ROOT value > 0 }
+				NOT = { has_government = nationalist }
+			}
+		}
+
+		cost = 75
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_invite_JAP_mitsubishi_aerospace executed"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_jap_industrial_partnerships }
+			add_to_variable = { CHI_jap_air_attack_factor = 0.02 tooltip = air_attack_factor_tt }
+			add_to_variable = { CHI_jap_industry_air_research_factor = 0.03 tooltip = industry_air_research_factor_tt }
+			random_owned_controlled_state = {
+				limit = { is_capital = yes }
+				add_building_construction = { type = arms_factory level = 1 instant_build = yes }
+			}
+			add_to_variable = { CHI_JAP_invitations_used = 1 }
+			clamp_variable = { var = CHI_JAP_invitations_used min = 0 max = 8 }
+			JAP = { country_event = { id = CHI_foreign.231 days = 7 } }
+		}
+
+		ai_will_do = { base = 3 }
+	}
+
+	CHI_invite_JAP_kawasaki_aerospace = {
+		icon = JAP_zaibatsu_faction
+		allowed = { original_tag = CHI }
+		fire_only_once = yes
+
+		visible = {
+			country_exists = JAP
+			custom_trigger_tooltip = {
+				tooltip = CHI_JAP_invitations_remaining_tt
+				check_variable = { CHI_JAP_invitations_used < 8 }
+			}
+		}
+
+		available = {
+			has_war = no
+			NOT = { has_war_with = JAP }
+			JAP = {
+				has_opinion = { target = ROOT value > 0 }
+				NOT = { has_government = nationalist }
+			}
+		}
+
+		cost = 75
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_invite_JAP_kawasaki_aerospace executed"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_jap_industrial_partnerships }
+			add_to_variable = { CHI_jap_air_range_factor = 0.03 tooltip = air_range_factor_tt }
+			random_owned_controlled_state = {
+				limit = { is_capital = yes }
+				add_building_construction = { type = arms_factory level = 1 instant_build = yes }
+			}
+			add_to_variable = { CHI_JAP_invitations_used = 1 }
+			clamp_variable = { var = CHI_JAP_invitations_used min = 0 max = 8 }
+			JAP = { country_event = { id = CHI_foreign.232 days = 7 } }
+		}
+
+		ai_will_do = { base = 3 }
+	}
+
+	CHI_invite_JAP_jsw = {
+		icon = JAP_zaibatsu_faction
+		allowed = { original_tag = CHI }
+		fire_only_once = yes
+
+		visible = {
+			country_exists = JAP
+			custom_trigger_tooltip = {
+				tooltip = CHI_JAP_invitations_remaining_tt
+				check_variable = { CHI_JAP_invitations_used < 8 }
+			}
+		}
+
+		available = {
+			has_war = no
+			NOT = { has_war_with = JAP }
+			JAP = {
+				has_opinion = { target = ROOT value > 0 }
+				NOT = { has_government = nationalist }
+			}
+		}
+
+		cost = 75
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_invite_JAP_jsw executed"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_jap_industrial_partnerships }
+			add_to_variable = { CHI_jap_army_armor_attack_factor = 0.02 tooltip = army_armor_attack_factor_tt }
+			add_to_variable = { CHI_jap_armor_research_factor = 0.02 tooltip = armor_research_factor_tt }
+			if = {
+				limit = { has_dlc = "Arms Against Tyranny" }
+				set_country_flag = CHI_JAP_jsw_partnered
+			}
+			else = {
+				random_owned_controlled_state = {
+					limit = { is_capital = yes }
+					add_building_construction = { type = arms_factory level = 1 instant_build = yes }
+				}
+			}
+			add_to_variable = { CHI_JAP_invitations_used = 1 }
+			clamp_variable = { var = CHI_JAP_invitations_used min = 0 max = 8 }
+			JAP = { country_event = { id = CHI_foreign.233 days = 7 } }
+		}
+
+		ai_will_do = { base = 3 }
+	}
+
+	CHI_invite_JAP_mhi_tank = {
+		icon = JAP_zaibatsu_faction
+		allowed = { original_tag = CHI }
+		fire_only_once = yes
+
+		visible = {
+			country_exists = JAP
+			custom_trigger_tooltip = {
+				tooltip = CHI_JAP_invitations_remaining_tt
+				check_variable = { CHI_JAP_invitations_used < 8 }
+			}
+		}
+
+		available = {
+			has_war = no
+			NOT = { has_war_with = JAP }
+			JAP = {
+				has_opinion = { target = ROOT value > 0 }
+				NOT = { has_government = nationalist }
+			}
+		}
+
+		cost = 75
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_invite_JAP_mhi_tank executed"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_jap_industrial_partnerships }
+			add_to_variable = { CHI_jap_army_armor_attack_factor = 0.03 tooltip = army_armor_attack_factor_tt }
+			if = {
+				limit = { has_dlc = "Arms Against Tyranny" }
+				set_country_flag = CHI_JAP_mhi_tank_partnered
+			}
+			else = {
+				random_owned_controlled_state = {
+					limit = { is_capital = yes }
+					add_building_construction = { type = arms_factory level = 1 instant_build = yes }
+				}
+			}
+			add_to_variable = { CHI_JAP_invitations_used = 1 }
+			clamp_variable = { var = CHI_JAP_invitations_used min = 0 max = 8 }
+			JAP = { country_event = { id = CHI_foreign.234 days = 7 } }
+		}
+
+		ai_will_do = { base = 3 }
+	}
+
+	CHI_invite_JAP_komatsu = {
+		icon = JAP_zaibatsu_faction
+		allowed = { original_tag = CHI }
+		fire_only_once = yes
+
+		visible = {
+			country_exists = JAP
+			custom_trigger_tooltip = {
+				tooltip = CHI_JAP_invitations_remaining_tt
+				check_variable = { CHI_JAP_invitations_used < 8 }
+			}
+		}
+
+		available = {
+			has_war = no
+			NOT = { has_war_with = JAP }
+			JAP = {
+				has_opinion = { target = ROOT value > 0 }
+				NOT = { has_government = nationalist }
+			}
+		}
+
+		cost = 75
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_invite_JAP_komatsu executed"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_jap_industrial_partnerships }
+			add_to_variable = { CHI_jap_army_armor_defence_factor = 0.02 tooltip = army_armor_defence_factor_tt }
+			if = {
+				limit = { has_dlc = "Arms Against Tyranny" }
+				set_country_flag = CHI_JAP_komatsu_partnered
+			}
+			else = {
+				random_owned_controlled_state = {
+					limit = { is_capital = yes }
+					add_building_construction = { type = arms_factory level = 1 instant_build = yes }
+				}
+			}
+			add_to_variable = { CHI_JAP_invitations_used = 1 }
+			clamp_variable = { var = CHI_JAP_invitations_used min = 0 max = 8 }
+			JAP = { country_event = { id = CHI_foreign.235 days = 7 } }
+		}
+
+		ai_will_do = { base = 3 }
+	}
+
+	CHI_invite_JAP_subaru = {
+		icon = JAP_zaibatsu_faction
+		allowed = { original_tag = CHI }
+		fire_only_once = yes
+
+		visible = {
+			country_exists = JAP
+			custom_trigger_tooltip = {
+				tooltip = CHI_JAP_invitations_remaining_tt
+				check_variable = { CHI_JAP_invitations_used < 8 }
+			}
+		}
+
+		available = {
+			has_war = no
+			NOT = { has_war_with = JAP }
+			JAP = {
+				has_opinion = { target = ROOT value > 0 }
+				NOT = { has_government = nationalist }
+			}
+		}
+
+		cost = 75
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_invite_JAP_subaru executed"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_jap_industrial_partnerships }
+			add_to_variable = { CHI_jap_army_armor_defence_factor = 0.02 tooltip = army_armor_defence_factor_tt }
+			if = {
+				limit = { has_dlc = "Arms Against Tyranny" }
+				set_country_flag = CHI_JAP_subaru_partnered
+			}
+			else = {
+				random_owned_controlled_state = {
+					limit = { is_capital = yes }
+					add_building_construction = { type = arms_factory level = 1 instant_build = yes }
+				}
+			}
+			add_to_variable = { CHI_JAP_invitations_used = 1 }
+			clamp_variable = { var = CHI_JAP_invitations_used min = 0 max = 8 }
+			JAP = { country_event = { id = CHI_foreign.236 days = 7 } }
+		}
+
+		ai_will_do = { base = 3 }
+	}
+
+	CHI_invite_JAP_howa = {
+		icon = JAP_zaibatsu_faction
+		allowed = { original_tag = CHI }
+		fire_only_once = yes
+
+		visible = {
+			country_exists = JAP
+			custom_trigger_tooltip = {
+				tooltip = CHI_JAP_invitations_remaining_tt
+				check_variable = { CHI_JAP_invitations_used < 8 }
+			}
+		}
+
+		available = {
+			has_war = no
+			NOT = { has_war_with = JAP }
+			JAP = {
+				has_opinion = { target = ROOT value > 0 }
+				NOT = { has_government = nationalist }
+			}
+		}
+
+		cost = 75
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_invite_JAP_howa executed"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_jap_industrial_partnerships }
+			add_to_variable = { CHI_jap_army_artillery_attack_factor = 0.03 tooltip = army_artillery_attack_factor_tt }
+			if = {
+				limit = { has_dlc = "Arms Against Tyranny" }
+				set_country_flag = CHI_JAP_howa_partnered
+			}
+			else = {
+				random_owned_controlled_state = {
+					limit = { is_capital = yes }
+					add_building_construction = { type = arms_factory level = 1 instant_build = yes }
+				}
+			}
+			add_to_variable = { CHI_JAP_invitations_used = 1 }
+			clamp_variable = { var = CHI_JAP_invitations_used min = 0 max = 8 }
+			JAP = { country_event = { id = CHI_foreign.237 days = 7 } }
+		}
+
+		ai_will_do = { base = 3 }
+	}
+
+	CHI_invite_JAP_nec = {
+		icon = JAP_zaibatsu_faction
+		allowed = { original_tag = CHI }
+		fire_only_once = yes
+
+		visible = {
+			country_exists = JAP
+			custom_trigger_tooltip = {
+				tooltip = CHI_JAP_invitations_remaining_tt
+				check_variable = { CHI_JAP_invitations_used < 8 }
+			}
+		}
+
+		available = {
+			has_war = no
+			NOT = { has_war_with = JAP }
+			JAP = {
+				has_opinion = { target = ROOT value > 0 }
+				NOT = { has_government = nationalist }
+			}
+		}
+
+		cost = 75
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_invite_JAP_nec executed"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_jap_industrial_partnerships }
+			add_to_variable = { CHI_jap_electronics_research_factor = 0.02 tooltip = electronics_research_factor_tt }
+			if = {
+				limit = { has_dlc = "Arms Against Tyranny" }
+				set_country_flag = CHI_JAP_nec_partnered
+			}
+			else = {
+				random_owned_controlled_state = {
+					limit = { is_capital = yes }
+					add_building_construction = { type = arms_factory level = 1 instant_build = yes }
+				}
+			}
+			add_to_variable = { CHI_JAP_invitations_used = 1 }
+			clamp_variable = { var = CHI_JAP_invitations_used min = 0 max = 8 }
+			JAP = { country_event = { id = CHI_foreign.238 days = 7 } }
+		}
+
+		ai_will_do = { base = 3 }
+	}
+
+	CHI_invite_JAP_toshiba = {
+		icon = JAP_zaibatsu_faction
+		allowed = { original_tag = CHI }
+		fire_only_once = yes
+
+		visible = {
+			country_exists = JAP
+			custom_trigger_tooltip = {
+				tooltip = CHI_JAP_invitations_remaining_tt
+				check_variable = { CHI_JAP_invitations_used < 8 }
+			}
+		}
+
+		available = {
+			has_war = no
+			NOT = { has_war_with = JAP }
+			JAP = {
+				has_opinion = { target = ROOT value > 0 }
+				NOT = { has_government = nationalist }
+			}
+		}
+
+		cost = 75
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_invite_JAP_toshiba executed"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_jap_industrial_partnerships }
+			add_to_variable = { CHI_jap_electronics_research_factor = 0.02 tooltip = electronics_research_factor_tt }
+			if = {
+				limit = { has_dlc = "Arms Against Tyranny" }
+				set_country_flag = CHI_JAP_toshiba_partnered
+			}
+			else = {
+				random_owned_controlled_state = {
+					limit = { is_capital = yes }
+					add_building_construction = { type = arms_factory level = 1 instant_build = yes }
+				}
+			}
+			add_to_variable = { CHI_JAP_invitations_used = 1 }
+			clamp_variable = { var = CHI_JAP_invitations_used min = 0 max = 8 }
+			JAP = { country_event = { id = CHI_foreign.239 days = 7 } }
+		}
+
+		ai_will_do = { base = 3 }
+	}
+
+	CHI_invite_JAP_mitsubishi_shipbuilding = {
+		icon = JAP_zaibatsu_faction
+		allowed = { original_tag = CHI }
+		fire_only_once = yes
+
+		visible = {
+			country_exists = JAP
+			custom_trigger_tooltip = {
+				tooltip = CHI_JAP_invitations_remaining_tt
+				check_variable = { CHI_JAP_invitations_used < 8 }
+			}
+		}
+
+		available = {
+			has_war = no
+			NOT = { has_war_with = JAP }
+			JAP = {
+				has_opinion = { target = ROOT value > 0 }
+				NOT = { has_government = nationalist }
+			}
+		}
+
+		cost = 75
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_invite_JAP_mitsubishi_shipbuilding executed"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_jap_industrial_partnerships }
+			add_to_variable = { CHI_jap_naval_speed_factor = 0.03 tooltip = naval_speed_factor_tt }
+			add_to_variable = { CHI_jap_naval_research_factor = 0.02 tooltip = naval_research_factor_tt }
+			random_owned_controlled_state = {
+				limit = { is_capital = yes }
+				add_building_construction = { type = arms_factory level = 1 instant_build = yes }
+			}
+			add_to_variable = { CHI_JAP_invitations_used = 1 }
+			clamp_variable = { var = CHI_JAP_invitations_used min = 0 max = 8 }
+			JAP = { country_event = { id = CHI_foreign.240 days = 7 } }
+		}
+
+		ai_will_do = { base = 3 }
+	}
+
+	CHI_invite_JAP_kawasaki_shipbuilding = {
+		icon = JAP_zaibatsu_faction
+		allowed = { original_tag = CHI }
+		fire_only_once = yes
+
+		visible = {
+			country_exists = JAP
+			custom_trigger_tooltip = {
+				tooltip = CHI_JAP_invitations_remaining_tt
+				check_variable = { CHI_JAP_invitations_used < 8 }
+			}
+		}
+
+		available = {
+			has_war = no
+			NOT = { has_war_with = JAP }
+			JAP = {
+				has_opinion = { target = ROOT value > 0 }
+				NOT = { has_government = nationalist }
+			}
+		}
+
+		cost = 75
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_invite_JAP_kawasaki_shipbuilding executed"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_jap_industrial_partnerships }
+			add_to_variable = { CHI_jap_naval_torpedo_screen_penetration_factor = 0.02 tooltip = naval_torpedo_screen_penetration_factor_tt }
+			random_owned_controlled_state = {
+				limit = { is_capital = yes }
+				add_building_construction = { type = arms_factory level = 1 instant_build = yes }
+			}
+			add_to_variable = { CHI_JAP_invitations_used = 1 }
+			clamp_variable = { var = CHI_JAP_invitations_used min = 0 max = 8 }
+			JAP = { country_event = { id = CHI_foreign.241 days = 7 } }
+		}
+
+		ai_will_do = { base = 3 }
+	}
+
+	CHI_invite_JAP_ihi = {
+		icon = JAP_zaibatsu_faction
+		allowed = { original_tag = CHI }
+		fire_only_once = yes
+
+		visible = {
+			country_exists = JAP
+			custom_trigger_tooltip = {
+				tooltip = CHI_JAP_invitations_remaining_tt
+				check_variable = { CHI_JAP_invitations_used < 8 }
+			}
+		}
+
+		available = {
+			has_war = no
+			NOT = { has_war_with = JAP }
+			JAP = {
+				has_opinion = { target = ROOT value > 0 }
+				NOT = { has_government = nationalist }
+			}
+		}
+
+		cost = 75
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_invite_JAP_ihi executed"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_jap_industrial_partnerships }
+			add_to_variable = { CHI_jap_naval_speed_factor = 0.02 tooltip = naval_speed_factor_tt }
+			random_owned_controlled_state = {
+				limit = { is_capital = yes }
+				add_building_construction = { type = arms_factory level = 1 instant_build = yes }
+			}
+			add_to_variable = { CHI_JAP_invitations_used = 1 }
+			clamp_variable = { var = CHI_JAP_invitations_used min = 0 max = 8 }
+			JAP = { country_event = { id = CHI_foreign.242 days = 7 } }
+		}
+
+		ai_will_do = { base = 3 }
+	}
+
+	CHI_invite_JAP_jmu = {
+		icon = JAP_zaibatsu_faction
+		allowed = { original_tag = CHI }
+		fire_only_once = yes
+
+		visible = {
+			country_exists = JAP
+			custom_trigger_tooltip = {
+				tooltip = CHI_JAP_invitations_remaining_tt
+				check_variable = { CHI_JAP_invitations_used < 8 }
+			}
+		}
+
+		available = {
+			has_war = no
+			NOT = { has_war_with = JAP }
+			JAP = {
+				has_opinion = { target = ROOT value > 0 }
+				NOT = { has_government = nationalist }
+			}
+		}
+
+		cost = 75
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_invite_JAP_jmu executed"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_jap_industrial_partnerships }
+			add_to_variable = { CHI_jap_naval_research_factor = 0.02 tooltip = naval_research_factor_tt }
+			random_owned_controlled_state = {
+				limit = { is_capital = yes }
+				add_building_construction = { type = arms_factory level = 1 instant_build = yes }
+			}
+			add_to_variable = { CHI_JAP_invitations_used = 1 }
+			clamp_variable = { var = CHI_JAP_invitations_used min = 0 max = 8 }
+			JAP = { country_event = { id = CHI_foreign.243 days = 7 } }
+		}
+
+		ai_will_do = { base = 3 }
+	}
+
+	CHI_invite_JAP_toyota = {
+		icon = JAP_zaibatsu_faction
+		allowed = { original_tag = CHI }
+		fire_only_once = yes
+
+		visible = {
+			country_exists = JAP
+			custom_trigger_tooltip = {
+				tooltip = CHI_JAP_invitations_remaining_tt
+				check_variable = { CHI_JAP_invitations_used < 8 }
+			}
+		}
+
+		available = {
+			has_war = no
+			NOT = { has_war_with = JAP }
+			JAP = {
+				has_opinion = { target = ROOT value > 0 }
+				NOT = { has_government = nationalist }
+			}
+		}
+
+		cost = 75
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_invite_JAP_toyota executed"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_jap_industrial_partnerships }
+			add_to_variable = { CHI_jap_production_speed_arms_factory_factor = 0.05 tooltip = production_speed_arms_factory_factor_tt }
+			add_to_variable = { CHI_jap_monthly_population = 0.05 tooltip = monthly_population_tt }
+			random_owned_controlled_state = {
+				limit = { is_capital = yes }
+				add_building_construction = { type = arms_factory level = 1 instant_build = yes }
+			}
+			add_to_variable = { CHI_JAP_invitations_used = 1 }
+			clamp_variable = { var = CHI_JAP_invitations_used min = 0 max = 8 }
+			JAP = { country_event = { id = CHI_foreign.244 days = 7 } }
+		}
+
+		ai_will_do = { base = 3 }
+	}
+
+	CHI_invite_JAP_honda = {
+		icon = JAP_zaibatsu_faction
+		allowed = { original_tag = CHI }
+		fire_only_once = yes
+
+		visible = {
+			country_exists = JAP
+			custom_trigger_tooltip = {
+				tooltip = CHI_JAP_invitations_remaining_tt
+				check_variable = { CHI_JAP_invitations_used < 8 }
+			}
+		}
+
+		available = {
+			has_war = no
+			NOT = { has_war_with = JAP }
+			JAP = {
+				has_opinion = { target = ROOT value > 0 }
+				NOT = { has_government = nationalist }
+			}
+		}
+
+		cost = 75
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_invite_JAP_honda executed"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_jap_industrial_partnerships }
+			add_to_variable = { CHI_jap_production_speed_arms_factory_factor = 0.04 tooltip = production_speed_arms_factory_factor_tt }
+			add_to_variable = { CHI_jap_research_speed_factor = 0.02 tooltip = research_speed_factor_tt }
+			random_owned_controlled_state = {
+				limit = { is_capital = yes }
+				add_building_construction = { type = arms_factory level = 1 instant_build = yes }
+			}
+			add_to_variable = { CHI_JAP_invitations_used = 1 }
+			clamp_variable = { var = CHI_JAP_invitations_used min = 0 max = 8 }
+			JAP = { country_event = { id = CHI_foreign.245 days = 7 } }
+		}
+
+		ai_will_do = { base = 3 }
+	}
+
+	CHI_invite_JAP_nippon_steel = {
+		icon = JAP_zaibatsu_faction
+		allowed = { original_tag = CHI }
+		fire_only_once = yes
+
+		visible = {
+			country_exists = JAP
+			custom_trigger_tooltip = {
+				tooltip = CHI_JAP_invitations_remaining_tt
+				check_variable = { CHI_JAP_invitations_used < 8 }
+			}
+		}
+
+		available = {
+			has_war = no
+			NOT = { has_war_with = JAP }
+			JAP = {
+				has_opinion = { target = ROOT value > 0 }
+				NOT = { has_government = nationalist }
+			}
+		}
+
+		cost = 75
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_invite_JAP_nippon_steel executed"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_jap_industrial_partnerships }
+			add_to_variable = { CHI_jap_production_factory_efficiency_gain_factor = 0.05 tooltip = production_factory_efficiency_gain_factor_tt }
+			add_to_variable = { CHI_jap_production_speed_industrial_complex_factor = 0.03 tooltip = production_speed_industrial_complex_factor_tt }
+			random_owned_controlled_state = {
+				limit = { is_capital = yes }
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+			add_to_variable = { CHI_JAP_invitations_used = 1 }
+			clamp_variable = { var = CHI_JAP_invitations_used min = 0 max = 8 }
+			JAP = { country_event = { id = CHI_foreign.246 days = 7 } }
+		}
+
+		ai_will_do = { base = 3 }
+	}
+
+	CHI_invite_JAP_hitachi = {
+		icon = JAP_zaibatsu_faction
+		allowed = { original_tag = CHI }
+		fire_only_once = yes
+
+		visible = {
+			country_exists = JAP
+			custom_trigger_tooltip = {
+				tooltip = CHI_JAP_invitations_remaining_tt
+				check_variable = { CHI_JAP_invitations_used < 8 }
+			}
+		}
+
+		available = {
+			has_war = no
+			NOT = { has_war_with = JAP }
+			JAP = {
+				has_opinion = { target = ROOT value > 0 }
+				NOT = { has_government = nationalist }
+			}
+		}
+
+		cost = 75
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_invite_JAP_hitachi executed"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_jap_industrial_partnerships }
+			add_to_variable = { CHI_jap_civilian_factories_productivity = 0.04 tooltip = civilian_factories_productivity_tt }
+			add_to_variable = { CHI_jap_research_speed_factor = 0.03 tooltip = research_speed_factor_tt }
+			random_owned_controlled_state = {
+				limit = { is_capital = yes }
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+			add_to_variable = { CHI_JAP_invitations_used = 1 }
+			clamp_variable = { var = CHI_JAP_invitations_used min = 0 max = 8 }
+			JAP = { country_event = { id = CHI_foreign.247 days = 7 } }
+		}
+
+		ai_will_do = { base = 3 }
+	}
+
+	CHI_invite_JAP_panasonic = {
+		icon = JAP_zaibatsu_faction
+		allowed = { original_tag = CHI }
+		fire_only_once = yes
+
+		visible = {
+			country_exists = JAP
+			custom_trigger_tooltip = {
+				tooltip = CHI_JAP_invitations_remaining_tt
+				check_variable = { CHI_JAP_invitations_used < 8 }
+			}
+		}
+
+		available = {
+			has_war = no
+			NOT = { has_war_with = JAP }
+			JAP = {
+				has_opinion = { target = ROOT value > 0 }
+				NOT = { has_government = nationalist }
+			}
+		}
+
+		cost = 75
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_invite_JAP_panasonic executed"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_jap_industrial_partnerships }
+			add_to_variable = { CHI_jap_electronics_research_factor = 0.04 tooltip = electronics_research_factor_tt }
+			add_to_variable = { CHI_jap_consumer_goods_factor = -0.05 tooltip = consumer_goods_factor_tt }
+			random_owned_controlled_state = {
+				limit = { is_capital = yes }
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+			add_to_variable = { CHI_JAP_invitations_used = 1 }
+			clamp_variable = { var = CHI_JAP_invitations_used min = 0 max = 8 }
+			JAP = { country_event = { id = CHI_foreign.248 days = 7 } }
+		}
+
+		ai_will_do = { base = 3 }
+	}
+
+	CHI_invite_JAP_jr_east = {
+		icon = JAP_zaibatsu_faction
+		allowed = { original_tag = CHI }
+		fire_only_once = yes
+
+		visible = {
+			country_exists = JAP
+			custom_trigger_tooltip = {
+				tooltip = CHI_JAP_invitations_remaining_tt
+				check_variable = { CHI_JAP_invitations_used < 8 }
+			}
+		}
+
+		available = {
+			has_war = no
+			NOT = { has_war_with = JAP }
+			JAP = {
+				has_opinion = { target = ROOT value > 0 }
+				NOT = { has_government = nationalist }
+			}
+		}
+
+		cost = 75
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_invite_JAP_jr_east executed"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_jap_industrial_partnerships }
+			add_to_variable = { CHI_jap_production_speed_infrastructure_factor = 0.05 tooltip = production_speed_infrastructure_factor_tt }
+			add_to_variable = { CHI_jap_monthly_population = 0.05 tooltip = monthly_population_tt }
+			random_owned_controlled_state = {
+				limit = { is_capital = yes }
+				add_building_construction = { type = infrastructure level = 1 instant_build = yes }
+			}
+			add_to_variable = { CHI_JAP_invitations_used = 1 }
+			clamp_variable = { var = CHI_JAP_invitations_used min = 0 max = 8 }
+			JAP = { country_event = { id = CHI_foreign.249 days = 7 } }
+		}
+
+		ai_will_do = { base = 3 }
+	}
+}
+
+CHI_VEN_petrocaribe_program = {
+	CHI_VEN_oil_processing_aid = {
+		icon = oil
+		visible = { country_exists = VEN VEN = { has_opinion_modifier = CHI_loans_for_oil_partner } }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = CHI_bri_treasury_gt_49_tt
+				check_variable = { CHI_bri_treasury > 49 }
+			}
+		}
+
+		cost = 75
+		days_remove = 90
+		fire_only_once = no
+		days_re_enable = 365
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_VEN_oil_processing_aid"
+			add_to_variable = { CHI_bri_treasury = -50 tooltip = CHI_bri_treasury_tt }
+			VEN = {
+				random_owned_controlled_state = {
+					limit = { oil > 0 }
+					add_resource = { type = oil amount = 4 }
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 5
+			modifier = { factor = 0 has_war = yes }
+		}
+	}
+
+	CHI_VEN_emergency_food_aid = {
+		icon = SWI_support_humanitarian_efforts
+		visible = { country_exists = VEN }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = CHI_bri_treasury_gt_29_tt
+				check_variable = { CHI_bri_treasury > 29 }
+			}
+		}
+
+		cost = 50
+		days_remove = 60
+		fire_only_once = no
+		days_re_enable = 180
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_VEN_emergency_food_aid"
+			add_to_variable = { CHI_bri_treasury = -30 tooltip = CHI_bri_treasury_tt }
+			VEN = { add_stability = 0.05 }
+			set_temp_variable = { percent_change = 2 }
+			set_temp_variable = { tag_index = CHI }
+			set_temp_variable = { influence_target = VEN }
+			change_influence_percentage = yes
+		}
+
+		ai_will_do = {
+			base = 3
+			modifier = { factor = 0 has_war = yes }
+		}
+	}
+
+	CHI_VEN_currency_swap_line = {
+		icon = sovfed_money_button
+
+		visible = {
+			country_exists = VEN
+			date > 2017.1.1
+		}
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = CHI_bri_treasury_gt_49_tt
+				check_variable = { CHI_bri_treasury > 49 }
+			}
+		}
+
+		cost = 75
+		days_remove = 120
+		fire_only_once = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_VEN_currency_swap_line"
+			add_to_variable = { CHI_bri_treasury = -50 tooltip = CHI_bri_treasury_tt }
+			VEN = { add_opinion_modifier = { target = ROOT modifier = CHI_loans_for_oil_partner } }
+		}
+
+		ai_will_do = {
+			base = 4
+			modifier = { factor = 0 has_war = yes }
+		}
+	}
+}
+
+CHI_LATAM_security_options = {
+	CHI_LATAM_emergency_aid = {
+		icon = SWI_support_humanitarian_efforts
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = CHI_bri_treasury_gt_19_tt
+				check_variable = { CHI_bri_treasury > 19 }
+			}
+		}
+
+		cost = 50
+		days_remove = 30
+		fire_only_once = no
+		days_re_enable = 180
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_LATAM_emergency_aid"
+			add_to_variable = { CHI_bri_treasury = -20 tooltip = CHI_bri_treasury_tt }
+			random_other_country = {
+				limit = { is_South_America = yes has_opinion_modifier = CHI_security_umbrella }
+				add_stability = 0.03
+				set_temp_variable = { percent_change = 2 }
+				set_temp_variable = { tag_index = CHI }
+				set_temp_variable = { influence_target = THIS }
+				change_influence_percentage = yes
+			}
+		}
+
+		ai_will_do = {
+			base = 4
+			modifier = { factor = 0 has_war = yes }
+		}
+	}
+
+	CHI_LATAM_military_advisors = {
+		icon = generic_army_support
+		available = { has_army_experience > 49 }
+		cost = 75
+		days_remove = 60
+		fire_only_once = no
+		days_re_enable = 365
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_LATAM_military_advisors"
+			army_experience = -50
+			random_other_country = {
+				limit = { is_South_America = yes has_opinion_modifier = CHI_security_umbrella }
+				army_experience = 25
+				add_opinion_modifier = { target = ROOT modifier = CHI_security_umbrella }
+			}
+		}
+
+		ai_will_do = {
+			base = 3
+			modifier = { factor = 0 has_war = yes }
+		}
+	}
+
+	CHI_LATAM_intel_sharing_pact = {
+		icon = recruit_operative
+		cost = 50
+		days_remove = 90
+		fire_only_once = no
+		days_re_enable = 730
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_LATAM_intel_sharing_pact"
+			random_other_country = {
+				limit = { is_South_America = yes has_opinion_modifier = CHI_security_umbrella }
+				give_military_access = ROOT
+				add_opinion_modifier = { target = ROOT modifier = CHI_security_umbrella }
+			}
+		}
+
+		ai_will_do = {
+			base = 3
+			modifier = { factor = 0 has_war = yes }
+		}
+	}
+}
+
+CHI_pacific_pla_training = {
+	CHI_pla_train_SOL = {
+		icon = generic_naval
+		visible = { country_exists = SOL }
+		available = { has_army_experience > 24 }
+		cost = 50
+		days_remove = 60
+		fire_only_once = no
+		days_re_enable = 365
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_pla_train_SOL"
+			army_experience = -25
+			SOL = {
+				army_experience = 15
+				add_opinion_modifier = { target = ROOT modifier = CHI_pla_basing_partner }
+			}
+		}
+
+		ai_will_do = {
+			base = 4
+			modifier = { factor = 0 has_war = yes }
+		}
+	}
+
+	CHI_pla_joint_maritime_exercise = {
+		icon = generic_naval
+
+		available = {
+			has_navy_experience > 24
+			custom_trigger_tooltip = {
+				tooltip = CHI_pacific_pivot_partner_exists_tt
+				any_of_scopes = {
+					array = global.oceania_nations
+					exists = yes
+					has_opinion_modifier = CHI_pacific_pivot_partner
+				}
+			}
+		}
+
+		cost = 50
+		days_remove = 90
+		fire_only_once = no
+		days_re_enable = 365
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_pla_joint_maritime_exercise"
+			navy_experience = -25
+			for_each_scope_loop = {
+				array = global.oceania_nations
+				if = {
+					limit = {
+						exists = yes
+						has_opinion_modifier = CHI_pacific_pivot_partner
+					}
+					navy_experience = 10
+					set_temp_variable = { percent_change = 2 }
+					set_temp_variable = { tag_index = CHI }
+					set_temp_variable = { influence_target = THIS }
+					change_influence_percentage = yes
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 3
+			modifier = { factor = 0 has_war = yes }
+		}
+	}
+}
+CHI_military_decisions_category = {
+	CHI_eastern_theatre_command = {
+		icon = generic_army_support
+		visible = { has_completed_focus = CHI_joint_operations_command }
+		cost = 75
+		fire_only_once = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_eastern_theatre_command executed"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_landforce_modifier }
+			add_to_variable = { CHI_land_army_attack_factor = 0.05 tooltip = army_attack_factor_tt }
+			add_to_variable = { CHI_land_breakthrough_factor = 0.05 tooltip = breakthrough_factor_tt }
+		}
+
+		ai_will_do = { base = 5 }
+	}
+
+	CHI_southern_theatre_command = {
+		icon = generic_army_support
+		visible = { has_completed_focus = CHI_joint_operations_command }
+		cost = 75
+		fire_only_once = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_southern_theatre_command executed"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_landforce_modifier }
+			add_to_variable = { CHI_land_coordination_bonus = 0.05 tooltip = coordination_bonus_tt }
+			add_to_variable = { CHI_land_recon_factor = 0.05 tooltip = recon_factor_tt }
+		}
+
+		ai_will_do = { base = 5 }
+	}
+
+	CHI_western_theatre_command = {
+		icon = generic_army_support
+		visible = { has_completed_focus = CHI_joint_operations_command }
+		cost = 75
+		fire_only_once = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_western_theatre_command executed"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_landforce_modifier }
+			add_to_variable = { CHI_land_army_defence_factor = 0.05 tooltip = army_defence_factor_tt }
+			add_to_variable = { CHI_land_dig_in_speed_factor = 0.10 tooltip = dig_in_speed_factor_tt }
+		}
+
+		ai_will_do = { base = 5 }
+	}
+
+	CHI_northern_theatre_command = {
+		icon = generic_army_support
+		visible = { has_completed_focus = CHI_joint_operations_command }
+		cost = 75
+		fire_only_once = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_northern_theatre_command executed"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_landforce_modifier }
+			add_to_variable = { CHI_land_max_planning = 0.05 tooltip = max_planning_tt }
+			add_to_variable = { CHI_land_army_org_factor = 0.05 tooltip = army_org_factor_tt }
+		}
+
+		ai_will_do = { base = 5 }
+	}
+
+	CHI_central_theatre_command = {
+		icon = generic_army_support
+		visible = { has_completed_focus = CHI_joint_operations_command }
+		cost = 75
+		fire_only_once = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_central_theatre_command executed"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_landforce_modifier }
+			add_to_variable = { CHI_land_max_command_power_mult = 0.10 tooltip = max_command_power_mult_tt }
+			add_to_variable = { CHI_land_army_morale_factor = 0.05 tooltip = army_morale_factor_tt }
+		}
+
+		ai_will_do = { base = 5 }
+	}
+
+	CHI_norinco_innovation = {
+		icon = generic_research
+		visible = { has_completed_focus = CHI_original_innovation_problem }
+		cost = 50
+		days_remove = 365
+		fire_only_once = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_norinco_innovation executed"
+			add_timed_idea = { idea = CHI_norinco_innovation_idea days = 365 }
+		}
+
+		ai_will_do = { base = 1 }
+	}
+
+	CHI_caic_innovation = {
+		icon = generic_research
+		visible = { has_completed_focus = CHI_original_innovation_problem }
+		cost = 50
+		days_remove = 365
+		fire_only_once = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_caic_innovation executed"
+			add_timed_idea = { idea = CHI_caic_innovation_idea days = 365 }
+		}
+
+		ai_will_do = { base = 1 }
+	}
+
+	CHI_inner_mongolia_innovation = {
+		icon = generic_research
+		visible = { has_completed_focus = CHI_original_innovation_problem }
+		cost = 50
+		days_remove = 365
+		fire_only_once = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_inner_mongolia_innovation executed"
+			add_timed_idea = { idea = CHI_inner_mongolia_innovation_idea days = 365 }
+		}
+
+		ai_will_do = { base = 1 }
+	}
+
+	CHI_avic_innovation = {
+		icon = generic_research
+		visible = { has_completed_focus = CHI_original_innovation_problem }
+		cost = 50
+		fire_only_once = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_avic_innovation executed"
+			add_timed_idea = { idea = CHI_avic_innovation_idea days = 365 }
+		}
+
+		ai_will_do = { base = 1 }
+	}
+
+	CHI_cetc_innovation = {
+		icon = generic_research
+		visible = { has_completed_focus = CHI_original_innovation_problem }
+		cost = 50
+		fire_only_once = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_cetc_innovation executed"
+			add_timed_idea = { idea = CHI_cetc_innovation_idea days = 365 }
+		}
+
+		ai_will_do = { base = 1 }
+	}
+
+	CHI_casic_innovation = {
+		icon = generic_research
+		visible = { has_completed_focus = CHI_original_innovation_problem }
+		cost = 50
+		fire_only_once = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_casic_innovation executed"
+			add_timed_idea = { idea = CHI_casic_innovation_idea days = 365 }
+		}
+
+		ai_will_do = { base = 1 }
+	}
+
+	CHI_casc_innovation = {
+		icon = generic_research
+		visible = { has_completed_focus = CHI_original_innovation_problem }
+		cost = 50
+		fire_only_once = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_casc_innovation executed"
+			add_timed_idea = { idea = CHI_casc_innovation_idea days = 365 }
+		}
+
+		ai_will_do = { base = 1 }
+	}
+
+	CHI_haig_innovation = {
+		icon = generic_research
+		visible = { has_completed_focus = CHI_original_innovation_problem }
+		cost = 50
+		fire_only_once = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_haig_innovation executed"
+			add_timed_idea = { idea = CHI_haig_innovation_idea days = 365 }
+		}
+
+		ai_will_do = { base = 1 }
+	}
+
+	CHI_sac_innovation = {
+		icon = generic_research
+		visible = { has_completed_focus = CHI_original_innovation_problem }
+		cost = 50
+		fire_only_once = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_sac_innovation executed"
+			add_timed_idea = { idea = CHI_sac_innovation_idea days = 365 }
+		}
+
+		ai_will_do = { base = 1 }
+	}
+
+	CHI_cssc_innovation = {
+		icon = generic_research
+		visible = { has_completed_focus = CHI_original_innovation_problem }
+		cost = 50
+		fire_only_once = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_cssc_innovation executed"
+			add_timed_idea = { idea = CHI_cssc_innovation_idea days = 365 }
+		}
+
+		ai_will_do = { base = 1 }
+	}
+
+	CHI_csic_innovation = {
+		icon = generic_research
+		visible = { has_completed_focus = CHI_original_innovation_problem }
+		cost = 50
+		fire_only_once = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_csic_innovation executed"
+			add_timed_idea = { idea = CHI_csic_innovation_idea days = 365 }
+		}
+
+		ai_will_do = { base = 1 }
+	}
+
+	CHI_csgc_innovation = {
+		icon = generic_research
+		visible = { has_completed_focus = CHI_original_innovation_problem }
+		cost = 50
+		fire_only_once = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_csgc_innovation executed"
+			add_timed_idea = { idea = CHI_csgc_innovation_idea days = 365 }
+		}
+
+		ai_will_do = { base = 1 }
+	}
+
+	CHI_poly_innovation = {
+		icon = generic_research
+		visible = { has_completed_focus = CHI_original_innovation_problem }
+		cost = 50
+		fire_only_once = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_poly_innovation executed"
+			add_timed_idea = { idea = CHI_poly_innovation_idea days = 365 }
+		}
+
+		ai_will_do = { base = 1 }
+	}
+
+	CHI_crrc_innovation = {
+		icon = generic_research
+		visible = { has_completed_focus = CHI_original_innovation_problem }
+		cost = 50
+		fire_only_once = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_crrc_innovation executed"
+			add_timed_idea = { idea = CHI_crrc_innovation_idea days = 365 }
+		}
+
+		ai_will_do = { base = 1 }
+	}
+
+	CHI_rare_earth_embargo_decision = {
+		icon = SWI_isolate_switzerland
+		target_root_trigger = { has_completed_focus = CHI_rare_earth_leverage }
+		target_array = global.majors
+
+		target_trigger = {
+			country_exists = FROM
+			FROM = { NOT = { original_tag = CHI } }
+			NOT = { is_in_faction_with = FROM }
+		}
+
+		available = { FROM = { NOT = { has_idea = CHI_rare_earth_embargoed_idea } } }
+		cost = 100
+		days_re_enable = 365
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_rare_earth_embargo_decision on [From.GetName]"
+			FROM = { add_timed_idea = { idea = CHI_rare_earth_embargoed_idea days = 180 } }
+		}
+
+		ai_will_do = { base = 1 }
+	}
+
+	CHI_rein_in_cliques = {
+		icon = generic_intelligence_operation
+		visible = { has_completed_focus = CHI_the_northeast_tiger }
+		cost = 50
+		days_re_enable = 180
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_rein_in_cliques executed"
+			set_temp_variable = { temp_opinion = -5 }
+			change_the_military_opinion = yes
+			newline = yes
+			set_temp_variable = { treasury_change = 75 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = { base = 1 }
+	}
+}

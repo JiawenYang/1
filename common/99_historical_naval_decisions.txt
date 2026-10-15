@@ -1,0 +1,322 @@
+﻿historical_naval_category = {
+	# Type 26 City Class
+	eng_type26_fe_decision = {
+		icon = GFX_decision_generic_navy
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_navy_experience > 19
+		}
+		custom_cost_text = navy_xp_20
+
+		visible = {
+			original_tag = ENG
+			date > 2028.1.1
+		}
+
+		available = {
+			has_tech = frigate_hull_4
+			has_tech = tech_naval_systems_engineering
+			has_tech = tech_power_systems_2
+			has_tech = tech_fire_control_3
+			has_tech = tech_turret_missiles_aa_4
+			has_tech = tech_light_guns_2
+			has_tech = tech_point_defense_system_3
+			has_tech = aircraft_heli_engineering_3
+			has_tech = tech_torpedoes_3
+			has_tech = tech_vls_aa_3
+			has_tech = tech_turret_missiles_surface_2
+			has_tech = tech_combat_radar_3
+			has_tech = tech_diesel_power_systems_1
+			has_tech = tech_vls_surface_3
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision eng_type26_fe_decision"
+			navy_experience = -20
+			create_equipment_variant = {
+				name = "Type 26 City Class"
+				type = frigate_hull_4
+				name_group = ENG_HISTORICAL
+				parent_version = 0
+				modules = {
+					fixed_ship_engine_slot = module_surface_jet_turbine_power2
+					fixed_ship_fire_control_system_slot = module_advanced_integrated_missile_radar_control
+					fixed_ship_radar_slot = module_radar_4
+					fixed_ship_auxillary_slot_3 = module_torpedoes_3
+					fixed_ship_auxillary_slot_2 = module_naval_missile_mount_quad
+					fixed_ship_auxillary_slot = module_esm_3
+					fixed_ship_battery_slot = module_127mm_guns_3
+					fixed_ship_auxillary_slot_1 = module_naval_vls_cells_32
+					front_1_custom_slot = module_ciws_3
+					mid_1_custom_slot = module_fuel_tank
+					rear_1_custom_slot = module_light_helipad_2
+					fixed_ship_missile_ammo_slot = module_naval_ammo_balanced_4
+				}
+				design_team = mio:ENG_bae_systems_manufacturer
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+
+	# Type 31 Inspiration Class
+	eng_type31_fe_decision = {
+		icon = GFX_decision_generic_navy
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_navy_experience > 19
+		}
+		custom_cost_text = navy_xp_20
+
+		visible = {
+			original_tag = ENG
+			date > 2027.1.1
+		}
+
+		available = {
+			has_tech = frigate_hull_5
+			NOT = { has_completed_focus = ENG_type_31_frigate_inspiration_class }
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision eng_type31_fe_decision"
+			navy_experience = -20
+			create_equipment_variant = {
+				name = "Type 31 Inspiration Class"
+				type = frigate_hull_5
+				name_group = ENG_HISTORICAL
+				parent_version = 0
+				modules = {
+					fixed_ship_engine_slot = module_light_surface_diesel_power_5
+					fixed_ship_fire_control_system_slot = module_digital_integrated_fire_control
+					fixed_ship_radar_slot = module_radar_5
+					fixed_ship_auxillary_slot_2 = module_naval_vls_cells_16
+					fixed_ship_auxillary_slot_1 = module_esm_3
+					fixed_ship_auxillary_slot = module_naval_missile_mount_quad
+					fixed_ship_battery_slot = module_76mm_gun_5
+					front_1_custom_slot = module_ciws_4
+					rear_1_custom_slot = module_light_helipad_2
+					fixed_ship_missile_ammo_slot = module_naval_ammo_balanced_4
+				}
+				design_team = mio:ENG_babcock_manufacturer
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+
+	# Type 83 Destroyer
+	eng_type83_fe_decision = {
+		icon = GFX_decision_generic_navy
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_navy_experience > 19
+		}
+		custom_cost_text = navy_xp_20
+
+		visible = {
+			original_tag = ENG
+			date > 2035.1.1
+		}
+
+		available = {
+			has_tech = destroyer_hull_4
+			has_tech = tech_naval_systems_engineering
+			has_tech = tech_power_systems_3
+			has_tech = tech_fire_control_3
+			has_tech = tech_turret_missiles_aa_4
+			has_tech = tech_light_guns_2
+			has_tech = tech_point_defense_system_3
+			has_tech = aircraft_heli_engineering_3
+			has_tech = tech_torpedoes_3
+			has_tech = tech_vls_aa_3
+			has_tech = tech_combat_radar_3
+			has_tech = tech_diesel_power_systems_2
+			has_tech = tech_vls_surface_4
+			NOT = { has_completed_focus = ENG_type_83_destroyer }
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision eng_type83_fe_decision"
+			navy_experience = -20
+			create_equipment_variant = {
+				name = "Type 83"
+				type = destroyer_hull_4
+				name_group = ENG_HISTORICAL
+				parent_version = 0
+				modules = {
+					fixed_ship_engine_slot = module_surface_jet_turbine_power3
+					fixed_ship_fire_control_system_slot = module_screen_digital_integrated_fire_control
+					fixed_ship_radar_slot = module_radar_5
+					fixed_ship_auxillary_slot_3 = module_torpedoes_4
+					fixed_ship_auxillary_slot_2 = module_naval_missile_mount_quad
+					fixed_ship_auxillary_slot = module_naval_vls_cells_64
+					fixed_ship_battery_slot = module_76mm_gun_4
+					front_1_custom_slot = module_ciws_5
+					mid_1_custom_slot = module_fuel_tank
+					mid_2_custom_slot = module_ciws_5
+					rear_1_custom_slot = module_light_helipad_2
+					fixed_ship_missile_ammo_slot = module_naval_ammo_balanced_4
+				}
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+
+	# Dreadnought Class
+	eng_dreadnought_fe_decision = {
+		icon = GFX_decision_generic_navy
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_navy_experience > 19
+		}
+		custom_cost_text = navy_xp_20
+
+		visible = {
+			original_tag = ENG
+			date > 2030.10.1
+		}
+
+		available = {
+			has_tech = missile_submarine_hull_4
+			has_tech = tech_nuclear_power_systems_3
+			has_tech = tech_combat_sonar_3
+			has_tech = tech_torpedoes_3
+			has_tech = tech_naval_systems_engineering
+			has_tech = tech_vls_surface_4
+			NOT = { has_completed_focus = ENG_dreadnought_class }
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision eng_dreadnought_fe_decision"
+			navy_experience = -20
+			create_equipment_variant = {
+				name = "Dreadnought Class"
+				type = missile_submarine_hull_4
+				name_group = ENG_HISTORICAL
+				parent_version = 0
+				modules = {
+					fixed_ship_engine_slot = module_sub_mod_reactor_power
+					fixed_ship_radar_slot = module_sonar_5
+					fixed_ship_auxillary_slot_3 = module_naval_sub_vls_cells_32
+					fixed_ship_auxillary_slot_2 = module_sub_esm_3
+					fixed_ship_auxillary_slot_1 = module_naval_sub_vls_cells_32
+					fixed_ship_auxillary_slot = module_torpedoes_3
+					front_1_custom_slot = module_naval_sub_vls_cells_32
+					fixed_ship_battery_slot = module_anti_ship_torpedoes_3
+					fixed_ship_missile_ammo_slot = module_naval_sub_ammo_land_attack_3
+				}
+				design_team = mio:ENG_bae_systems_manufacturer
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+
+	# F126 Köln Class
+	ger_f126_fe_decision = {
+		icon = GFX_decision_generic_navy
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_navy_experience > 19
+		}
+		custom_cost_text = navy_xp_20
+
+		visible = {
+			original_tag = GER
+			date > 2028.1.1
+		}
+
+		available = {
+			has_tech = corvette_hull_4
+			has_tech = tech_naval_systems_engineering
+			has_tech = tech_diesel_power_systems_1
+			has_tech = tech_fire_control_2
+			has_tech = tech_combat_radar_3
+			has_tech = tech_light_guns_2
+			has_tech = tech_point_defense_system_3
+			has_tech = aircraft_heli_engineering_3
+			has_tech = tech_vls_surface_4
+			NOT = { has_completed_focus = GER_New_Corvettes }
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision ger_f126_fe_decision"
+			navy_experience = -20
+			create_equipment_variant = {
+				name = "Köln Class"
+				type = corvette_hull_4
+				name_group = GER_MODERN_CORVETTES_NAMES
+				parent_version = 0
+				modules = {
+					fixed_ship_engine_slot = module_light_surface_jet_turbine_power2
+					fixed_ship_fire_control_system_slot = module_advanced_integrated_missile_radar_control
+					fixed_ship_radar_slot = module_radar_5
+					fixed_ship_auxillary_slot = module_naval_missile_mount_quad
+					fixed_ship_battery_slot = module_76mm_gun_3
+					front_1_custom_slot = module_ram_3
+					rear_1_custom_slot = module_light_helipad_1
+					fixed_ship_missile_ammo_slot = module_naval_ammo_anti_ship_2
+				}
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+
+	# Type 212CD
+	ger_212cd_fe_decision = {
+		icon = GFX_decision_generic_navy
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_navy_experience > 19
+		}
+		custom_cost_text = navy_xp_20
+
+		visible = {
+			original_tag = GER
+			date > 2032.1.1
+		}
+
+		available = {
+			has_tech = attack_submarine_hull_4
+			has_tech = tech_submarine_engineering_2
+			has_tech = tech_combat_sonar_3
+			has_tech = tech_torpedoes_3
+			has_tech = tech_naval_systems_engineering
+			has_tech = tech_diesel_power_systems_2
+			has_tech = tech_vls_surface_4
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision ger_212cd_fe_decision"
+			navy_experience = -20
+			create_equipment_variant = {
+				name = "Type 212CD Class"
+				type = attack_submarine_hull_4
+				name_group = GER_MODERN_SUBMARINES_NAMES
+				parent_version = 0
+				modules = {
+					fixed_ship_engine_slot = module_sub_diesel_electric_power3
+					fixed_ship_radar_slot = module_sonar_5
+					fixed_ship_auxillary_slot_3 = module_torpedoes_2
+					fixed_ship_auxillary_slot_2 = module_sub_esm_2
+					fixed_ship_auxillary_slot_1 = module_torpedoes_2
+					fixed_ship_auxillary_slot = module_naval_sub_vls_cells_8
+					fixed_ship_battery_slot = module_anti_ship_torpedoes_2
+					fixed_ship_missile_ammo_slot = module_naval_sub_ammo_anti_ship_3
+				}
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	
+}
+}

@@ -1,0 +1,98 @@
+scripted_map_modes = {
+	influence_cml_map_mode = {
+  		bottom = {
+  			type = country
+			
+			color = {
+				set_temp_variable = { alpha = 0.2 }
+				set_temp_variable = { thickness = 1.0 }
+			}
+			
+			thickness = yes
+ 	 	}
+		top = {
+			type = country
+			color = {
+				FROM = {
+					set_temp_variable = { alpha = 50.0 }
+					set_temp_variable = { thickness = 8.0 }
+					if = {
+						limit = { 
+							OR = {
+								has_idea = prousa
+								has_idea = subjectusa
+								original_tag = USA
+						   	}
+						}
+						set_temp_variable = { red = 0 }
+						set_temp_variable = { green = 0 }
+						set_temp_variable = { blue = 255 }
+					}
+					else_if = {
+						limit = { 
+							OR = {
+								has_idea = prosov
+								has_idea = subjectsov
+								original_tag = SOV
+						   	}
+						}
+						set_temp_variable = { red = 255 }
+						set_temp_variable = { green = 50 }
+						set_temp_variable = { blue = 50 }
+					}
+					else_if = {
+						limit = { 
+							OR = {
+								has_idea = proprc
+								original_tag = CHI
+						   	}
+						}
+						set_temp_variable = { red = 255 }
+						set_temp_variable = { green = 189 }
+						set_temp_variable = { blue = 0 }
+					}
+					else_if = {
+						limit = { 
+							OR = {
+								has_idea = profra
+								original_tag = FRA
+						   	}
+						}
+						set_temp_variable = { red = 35 }
+						set_temp_variable = { green = 206 }
+						set_temp_variable = { blue = 255 }
+					}
+					else_if = {
+						limit = { 
+							OR = {
+								has_idea = prouk
+								AND = {
+									original_tag = ENG
+									CHI = { has_completed_focus = CHI_End_US_Hegemony }
+								}
+						   	}
+						}
+						set_temp_variable = { red = 255 }
+						set_temp_variable = { green = 105 }
+						set_temp_variable = { blue = 180 }
+					}
+					else = {
+						set_temp_variable = { red = 124 }
+						set_temp_variable = { green = 124 }
+						set_temp_variable = { blue = 124 }
+					}
+
+					divide_temp_variable = { red = 255 }
+					divide_temp_variable = { green = 255 }
+					divide_temp_variable = { blue = 255 }
+					set_temp_variable = { alpha = 1 }
+				}
+			}
+		}
+
+		far_text = country
+		near_text = none
+
+		update_daily = yes
+	}
+}

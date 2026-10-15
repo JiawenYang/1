@@ -1,0 +1,92 @@
+	ideas = {
+		hidden_ideas = {
+			BRM_civil_war_idea = {
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				
+				modifier = {
+					surrender_limit = 1
+					ai_focus_defense_factor = 0.25
+					army_defence_factor = 0.15
+				}
+			}
+		}
+		country = {
+			BRM_national_ceasefire = {
+				picture = BRM_national_ceasefire
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				available = {
+					NOT = {
+						OR = {
+							has_war_with = CHI
+							has_war_together_with = CHI
+						}
+					}
+				}
+
+				removal_cost = -1
+				
+				modifier = {
+					army_attack_factor = -1
+					ai_focus_aggressive_factor = -1
+				}
+			}
+			BRM_first_xiist_revolution = {
+				picture = BRM_first_xiist_revolution
+
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				
+				modifier = {
+					war_support_factor = 0.15
+					stability_factor = -0.05
+					communism_drift = 0.01
+				}
+			}
+			BRM_unstable_junta = {
+				picture = BRM_junta
+
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				
+				modifier = {
+					army_org_factor = -0.05
+					stability_factor = -0.2
+					political_power_gain = -0.15
+					resistance_target = 0.25
+					army_org_regain = -0.5
+					attrition = 1
+					army_defence_factor = -0.9
+					army_attack_factor = -0.9
+				}
+			}
+		}
+	}

@@ -1,0 +1,1295 @@
+ideas = {
+	country = {
+		VEN_economy_under_sanctions_idea = {
+			picture = VEN_economy_under_sanctions_idea
+			allowed = { 
+				original_tag = VEN 
+			}
+			modifier = {
+				trade_cost_for_target_factor = 1
+				trade_opinion_factor = -0.80
+			}
+		}
+		VEN_operation_girardot_idea = {
+			picture = VEN_colombian_intervention
+			allowed = { 
+				original_tag = VEN 
+			}
+			targeted_modifier = {
+				tag = COL
+				attack_bonus_against = 0.25
+			}
+			modifier = {
+				mountain_terrain_attack_factor = 0.25
+				plains_terrain_attack_factor = 0.25
+			}
+			targeted_modifier = {
+				tag = COL
+				attack_bonus_against = 0.15
+				defense_bonus_against = 0.15
+			}
+		}
+		VEN_operation_padilla_idea = {
+			picture = VEN_colombian_intervention
+			allowed = { 
+				original_tag = VEN 
+			}
+			targeted_modifier = {
+				tag = CLS
+				attack_bonus_against = 0.25
+			}
+			modifier = {
+				mountain_terrain_attack_factor = 0.25
+				jungle_terrain_attack_factor = 0.25
+			}
+		}
+		VEN_operation_piar_idea = {
+			picture = VEN_colombian_intervention
+			allowed = { 
+				original_tag = VEN 
+					}
+			targeted_modifier = {
+				tag = FRC
+				attack_bonus_against = 0.25
+			}
+			modifier = {
+				jungle_terrain_attack_factor = 0.3
+			}
+		}
+
+		VEN_cia_backed_opposition = {
+			picture = VEN_cia_backed_opposition
+			allowed = { 
+				original_tag = VEN 
+			}
+			modifier = {
+				political_power_gain = -0.1
+				resistance_damage_to_garrison = 0.1
+				resistance_decay = -0.05
+				resistance_garrison_penetration_chance = 0.05
+				resistance_growth = 0.05
+				resistance_target = 0.05
+			}
+		}	
+
+		VEN_PSUV_idea = {
+			picture = VEN_PSUV_icon
+			allowed = { 
+				original_tag = VEN 
+			}
+			modifier = {
+				party_popularity_stability_factor = -0.25
+				political_power_gain = 0.2
+				society_development_monthly = -0.01
+			}
+		}
+
+		VEN_mass_exodus_idea = {
+			picture = VEN_mass_exodus
+			allowed = { 
+				original_tag = VEN 
+			}
+			modifier = {
+				monthly_population = -0.2
+				stability_factor = 0.05
+			}
+		}
+
+		VEN_consequences_of_the_2019_crisis_idea = {
+			picture = VEN_consequences_2019_crisis
+			allowed = { 
+				original_tag = VEN 
+			}
+			modifier = {
+				personal_expense = 0.1
+				business_value_factor = -0.20
+				personal_value_factor = -0.15
+				inflation_monthly = 0.005
+				academic_development_monthly = -0.02
+				industrial_development_monthly = -0.02
+				poverty_development_monthly = -0.02
+			}
+		}
+
+		VEN_welfare_military_idea = {
+			picture = VEN_welfare_military
+			allowed = { 
+				original_tag = VEN 
+			}
+			modifier = {
+				battalion_upkeep_factor = 0.2
+				misc_expense = 20
+				conscription_factor = 0.15
+			}
+		}
+
+		VEN_energy_crisis = {
+			picture = VEN_energy_crisis
+			allowed = { 
+				original_tag = VEN 
+			}
+			modifier = {
+				production_speed_buildings_factor = -0.2
+				production_factory_max_efficiency_factor = -0.1
+				production_factory_efficiency_gain_factor = -0.2
+				industrial_capacity_factory = -0.1
+				industrial_capacity_dockyard = -0.1
+				poverty_development_monthly = -0.01
+				industrial_development_monthly = -0.02
+			}
+		}
+		
+		VEN_energy_crisis_rationing = {
+			picture = VEN_energy_crisis
+			allowed = { 
+				original_tag = VEN 
+			}
+			modifier = {
+				production_speed_buildings_factor = -0.18
+				production_factory_max_efficiency_factor = -0.08
+				production_factory_efficiency_gain_factor = -0.18
+				industrial_capacity_factory = -0.08
+				industrial_capacity_dockyard = -0.08
+				stability_factor = -0.2
+				poverty_development_monthly = -0.02
+			}
+		}
+		
+		VEN_dead_oil_industry = {
+			picture = VEN_dead_oil_industry
+			allowed = { 
+				original_tag = VEN 
+			}
+			modifier = {
+				fuel_gain_from_states = -30
+				max_fuel_factor = -0.05
+				base_fuel_gain_factor = -0.5
+				tax_gain_multiplier_modifier = -0.3
+			}
+		}
+		
+		VEN_emergency_oil_extraction_idea = {
+			picture = VEN_dead_oil_industry
+			allowed = { 
+				original_tag = VEN 
+			}
+			modifier = {
+				fuel_gain_from_states = -25
+				max_fuel_factor = -0.03
+				base_fuel_gain_factor = -0.25
+				tax_gain_multiplier_modifier = -0.25
+			}
+		}
+		
+		VEN_covid_curing = {
+			picture = generic_covid
+			allowed = {
+				always = no
+			}
+			modifier = {
+				stability_factor = -0.075
+				expense_growth_factor = 0.03
+				consumer_goods_factor = 0.1
+				production_factory_max_efficiency_factor = -0.05
+				industrial_capacity_dockyard = -0.05
+			}
+		}
+	
+		VEN_lockdown = {		
+			picture = VEN_lockdown_idea
+			allowed = {
+				tag = VEN
+			}
+			modifier = {
+				stability_factor = 0.1
+				consumer_goods_factor = 0.2
+				industrial_capacity_factory = -0.3
+				industrial_capacity_dockyard = -0.3
+			}
+		}
+		
+		VEN_lockdown_bonds = {
+			picture = VEN_lockdown_bonds
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			modifier = {
+			    political_power_gain = -0.15
+				personal_expense_factor = 0.05
+				personal_value_factor = 0.1
+				poverty_development_monthly = 0.01
+			}
+		}
+
+		VEN_covid_idea_1 = {
+			picture = generic_covid
+			allowed = {
+				always = no
+			}
+			modifier = {
+				stability_factor = -0.05
+				expense_growth_factor = 0.02
+				consumer_goods_factor = 0.075
+				production_factory_max_efficiency_factor = -0.1
+				industrial_capacity_dockyard = -0.1
+			}
+		}
+
+		VEN_covid_idea_2 = {
+			picture = generic_covid
+			allowed = {
+				always = no
+			}
+			modifier = {
+				stability_factor = -0.1
+				expense_growth_factor = 0.05
+				consumer_goods_factor = 0.15
+				production_factory_max_efficiency_factor = -0.15
+				industrial_capacity_dockyard = -0.15
+			}
+		}
+
+		VEN_covid_idea_3 = {
+			picture = generic_covid
+			allowed = {
+				always = no
+			}
+			modifier = {
+				stability_factor = -0.15
+				society_development_monthly = -0.02
+				expense_growth_factor = 0.1
+				consumer_goods_factor = 0.225
+				production_factory_max_efficiency_factor = -0.2
+				industrial_capacity_dockyard = -0.2
+			}
+		}
+
+		VEN_covid_idea_4 = {
+			picture = generic_covid
+			allowed = {
+				always = no
+			}	
+			modifier = {
+				stability_factor = -0.2
+				society_development_monthly = -0.05
+				expense_growth_factor = 0.12
+				consumer_goods_factor = 0.3
+				production_factory_max_efficiency_factor = -0.25
+				industrial_capacity_dockyard = -0.25
+			}
+		}
+
+		VEN_covid_idea_5 = {
+			picture = generic_covid
+			allowed = {
+				always = no
+			}
+			modifier = {
+				stability_factor = -0.20
+				society_development_monthly = -0.08
+				expense_growth_factor = 0.15
+				consumer_goods_factor = 0.375
+				production_factory_max_efficiency_factor = -0.3
+				industrial_capacity_dockyard = -0.3
+			}
+		}
+
+        VEN_nationwide_riots = {
+			picture = VEN_nationwide_riots
+			allowed = {
+				always = no
+			}
+			modifier = {
+				consumer_goods_factor = 0.5
+				political_power_factor = -0.5
+				stability_factor = -0.15
+				stability_weekly = -0.005
+				surrender_limit = -0.25
+				drift_defence_factor = -0.3
+			}
+		}	
+
+		VEN_bolivarian_fury_idea = {
+			picture = VEN_bolivarian_fury_idea
+			allowed = {
+				always = no
+			}
+			modifier = {
+				monthly_population = -0.1
+				consumer_goods_factor = 0.5
+				political_power_factor = 0.5
+				stability_factor = -0.2
+				stability_weekly = -0.01
+			}
+		}
+
+		#### NEW CHAVISM ####
+		VEN_new_chavism_dummy_idea = {
+			name = VEN_new_chavism_dynamic
+			allowed = {
+				always = no
+			}
+			modifier = {
+			}
+		}
+		# Chavism for the New Ones
+		VEN_new_chavism_dummy_idea_A = {
+			name = VEN_new_chavism_dynamic
+			allowed = {
+				always = no
+			}
+			modifier = {
+				political_power_gain = 0.15
+				stability_factor = 0.1
+				communist_drift = 0.01
+				libertarian_socialist_drift = 0.01
+			}
+		}
+		# Mass Propaganda
+		VEN_new_chavism_dummy_idea_B = {
+			name = VEN_new_chavism_dynamic
+			allowed = {
+				always = no
+			}
+			modifier = {
+				personal_expense_factor = 0.05
+				communist_drift = 0.02
+			}
+		}
+		# Reform the Patria System
+		VEN_new_chavism_dummy_idea_C = {
+			name = VEN_new_chavism_dynamic
+			allowed = {
+				always = no
+			}
+			modifier = {
+				low_stability_weekly = 0.001
+				personal_expense_factor = 0.1
+				poverty_development_monthly = 0.035
+				drift_defence_factor = 0.1
+			}
+		}
+		# Form the Minds of Tomorrow
+		VEN_new_chavism_dummy_idea_D = {
+			name = VEN_new_chavism_dynamic
+			allowed = {
+				always = no
+			}
+			modifier = {
+				personal_expense_factor = 0.15
+				academic_development_monthly = 0.025
+				research_speed_factor = 0.1
+				communist_drift = 0.01
+				libertarian_socialist_drift = 0.01
+			}
+		}
+		# The Poor Man's Government
+		VEN_new_chavism_dummy_idea_E = {
+			name = VEN_new_chavism_dynamic
+			allowed = {
+				always = no
+			}
+			modifier = {
+				political_power_factor = 0.1
+				stability_factor = 0.05
+				war_support_factor = 0.05
+				poverty_development_monthly = 0.015
+				society_development_monthly = 0.025
+			}
+		}
+		# The New Venezuelan
+		VEN_new_chavism_dummy_idea_F = {
+			name = VEN_new_chavism_dynamic
+			allowed = {
+				always = no
+			}
+			modifier = {
+				war_support_factor = 0.1
+				society_development_monthly = 0.01
+				conscription_factor = 0.05
+				civilian_intel_to_others = -10
+				army_intel_to_others = -10
+				navy_intel_to_others = -10
+				airforce_intel_to_others = -10
+				resistance_activity = -0.15
+			}
+		}
+		# Cruzade Against the Wild Internet
+		VEN_new_chavism_dummy_idea_G = {
+			name = VEN_new_chavism_dynamic
+			allowed = {
+				always = no
+			}
+			modifier = {
+				political_power_cost = 0.05
+				drift_defence_factor = 0.15
+				civilian_intel_to_others = -10
+			}
+		}
+		# Our Voice in Foreign Eyes and Ears
+		VEN_new_chavism_dummy_idea_H = {
+			name = VEN_new_chavism_dynamic
+			allowed = {
+				always = no
+			}
+			modifier = {
+				political_power_factor = 0.15
+				party_popularity_stability_factor = 0.25
+				communist_drift = 0.01
+			}
+		}
+		# Post-Imperial Paradise
+		VEN_new_chavism_dummy_idea_I = {
+			name = VEN_new_chavism_dynamic
+			allowed = {
+				always = no
+			}
+			modifier = {
+				political_power_gain = 0.1
+				stability_factor = 0.15
+				academic_development_monthly = 0.015
+				farming_development_monthly = 0.015
+				industrial_development_monthly = 0.015
+				poverty_development_monthly = 0.015
+				society_development_monthly = 0.015
+				personal_value_factor = 0.15
+			}
+		}
+
+		VEN_red_revolucionaria_idea = {
+			picture = VEN_red_revolucionaria
+			allowed = { 
+				original_tag = VEN 
+			}
+			modifier = {
+				stability_factor = 0.25
+				political_power_factor = 0.1
+				research_speed_factor = 0.15
+				academic_development_monthly = 0.025
+				farming_development_monthly = 0.015
+				industrial_development_monthly = 0.015
+				society_development_monthly = 0.015
+			}
+		}
+
+		VEN_new_pink_wave_idea = {
+			picture = VEN_new_pink_wave
+			allowed = { 
+				always = yes
+			}
+			modifier = {
+				communist_drift = 0.01
+				libertarian_socialist_drift = 0.01
+				social_democrat_drift = 0.01
+			}
+		}
+
+		#### BOLIVARIAN ORDER ####
+		VEN_bolivarian_order_dummy_idea = {
+			name = VEN_bolivarian_order_dynamic
+			allowed = {
+				always = no
+			}
+			modifier = {
+			}
+		}
+
+		# Unpredictable, Inevitable, Unstoppable
+		VEN_bolivarian_order_dummy_idea_A = {
+			name = VEN_bolivarian_order_dynamic
+			allowed = {
+				always = no
+			}
+			modifier = {
+				political_power_factor = 0.25
+				stability_factor = -0.05
+				war_support_factor = 0.1
+				communist_drift = 0.01
+				totalitarian_socialist_drift = 0.01
+			}
+		}
+
+		# Arms of the Republic
+		VEN_bolivarian_order_dummy_idea_B = {
+			name = VEN_bolivarian_order_dynamic
+			allowed = {
+				always = no
+			}
+			modifier = {
+				conscription_factor = 0.1
+				training_time_factor = -0.1
+				modifier_army_sub_unit_militia_attack_factor = 0.1
+				modifier_army_sub_unit_militia_defence_factor = 0.1
+			}
+		}
+
+		# Collectivization of Everything
+		VEN_bolivarian_order_dummy_idea_C = {
+			name = VEN_bolivarian_order_dynamic
+			allowed = {
+				always = no
+			}
+			modifier = {
+				political_power_factor = -0.1
+				production_speed_buildings_factor = 0.1
+				poverty_development_monthly = 0.01
+				military_development_monthly = 0.01
+				resistance_activity = -0.15
+			}
+		}
+
+		# Eyes Everywhere
+		VEN_bolivarian_order_dummy_idea_D = {
+			name = VEN_bolivarian_order_dynamic
+			allowed = {
+				always = no
+			}
+			modifier = {
+				civilian_intel_to_others = -0.1
+				army_intel_to_others = -0.1
+				navy_intel_to_others = -0.1
+				airforce_intel_to_others = -0.1
+				intelligence_agency_defense = 0.15
+				agency_upgrade_time = -0.1
+			}
+		}
+
+		# Well-Aware
+		VEN_bolivarian_order_dummy_idea_E = {
+			name = VEN_bolivarian_order_dynamic
+			allowed = {
+				always = no
+			}
+			modifier = {
+				civilian_intel_to_others = -0.15
+				army_intel_to_others = -0.15
+				navy_intel_to_others = -0.15
+				airforce_intel_to_others = -0.15
+				root_out_resistance_effectiveness_factor = 0.25
+				resistance_decay = 0.15
+			}
+		}
+
+		# The Omnipresent State
+		VEN_bolivarian_order_dummy_idea_F = {
+			name = VEN_bolivarian_order_dynamic
+			allowed = {
+				always = no
+			}
+			modifier = {
+				political_power_gain = 0.05
+				stability_factor = -0.1
+				party_popularity_stability_factor = 0.3
+				communist_drift = 0.02
+				totalitarian_socialist_drift = 0.01
+			}
+		}
+
+		# Rule of the Brave
+		VEN_bolivarian_order_dummy_idea_G = {
+			name = VEN_bolivarian_order_dynamic
+			allowed = {
+				always = no
+			}
+			modifier = {
+				political_power_factor = 0.1
+				business_value_factor = 0.15
+				consumer_goods_factor = -0.2
+			}
+		}
+
+		# Destroy the Fascist Menace
+		VEN_bolivarian_order_dummy_idea_H = {
+			name = VEN_bolivarian_order_dynamic
+			allowed = {
+				always = no
+			}
+			modifier = {
+				resistance_target = -0.1
+				resistance_decay = 0.1
+				resistance_activity = -0.1
+				authoritarian_democrat_drift = -0.01
+				fascist_drift = -0.01
+				national_socialist_drift = -0.01
+			}
+		}
+
+		# Dehumanize the Traitors
+		VEN_bolivarian_order_dummy_idea_I = {
+			name = VEN_bolivarian_order_dynamic
+			allowed = {
+				always = no
+			}
+			modifier = {
+				drift_defence_factor = 0.25
+				compliance_growth = 0.1
+				social_liberal_drift = -0.01
+				market_liberal_drift = -0.01
+				conservative_drift = -0.01
+			}
+		}
+
+		# Make History
+		VEN_bolivarian_order_dummy_idea_J = {
+			name = VEN_bolivarian_order_dynamic
+			allowed = {
+				always = no
+			}
+			modifier = {
+				political_power_factor = 0.1
+				war_support_factor = 0.1
+				party_popularity_stability_factor = 0.2
+				communist_drift = 0.01
+			}
+		}
+
+		# The Red Horse Rider
+		VEN_bolivarian_order_dummy_idea_K = {
+			name = VEN_bolivarian_order_dynamic
+			allowed = {
+				always = no
+			}
+			modifier = {
+				political_power_gain = 0.05
+				war_support_factor = 0.15
+				farming_development_monthly = 0.015
+				industrial_development_monthly = 0.015
+				poverty_development_monthly = 0.015
+				military_development_monthly = 0.015
+				society_development_monthly = 0.015
+			}
+		}
+
+		# Carve Out Our Empire
+
+		VEN_cartel_of_suns1 = {
+			allowed = {
+				always = no
+			}
+			modifier = {
+				political_power_gain = 0.05
+				military_development_monthly = 0.01
+				tax_gain_multiplier_modifier = -0.05
+			}
+			targeted_modifier = {
+				VEN = {
+					overlord_trade_cost_factor = -0.25 #should give 10
+				}
+			}
+		}
+
+		VEN_cartel_of_suns2 = {
+			allowed = {
+				always = no
+			}
+			modifier = {
+				military_development_monthly = 0.005
+				tax_gain_multiplier_modifier = -0.03
+			}
+			targeted_modifier = {
+				VEN = {
+					trade_opinion_factor = 0.1
+				}
+			}
+		}
+
+		#### ECONOMIC RECOVERY ####
+		VEN_economic_recovery_dummy_idea = {
+			name = VEN_economic_recovery_dynamic
+			allowed = {
+				always = no
+			}
+			modifier = {
+
+			}
+		}
+
+		# Save Our Economy
+		VEN_economic_recovery_dummy_idea_A = {
+			name = VEN_economic_recovery_dynamic
+			allowed = {
+				always = no
+			}
+			modifier = {
+				# Modified from "Consequences of the 2019 Crisis"
+				personal_expense = 0.1
+				business_value_factor = -0.1
+				personal_value_factor = -0.1
+				inflation_monthly = 0.003
+				academic_development_monthly = -0.02
+				industrial_development_monthly = -0.02
+				poverty_development_monthly = -0.02
+			}
+		}
+
+		# Strengthen Our Industry
+		VEN_economic_recovery_dummy_idea_B = {
+			name = VEN_economic_recovery_dynamic
+			allowed = {
+				always = no
+			}
+			modifier = {
+				business_value_factor = 0.1
+				industrial_development_monthly = 0.05
+				industrial_capacity_factory = 0.1
+				industrial_capacity_dockyard = 0.1
+			}
+		}
+
+		# End the Energy Crisis
+		VEN_economic_recovery_dummy_idea_C = {
+			name = VEN_economic_recovery_dynamic
+			allowed = {
+				always = no
+			}
+			modifier = {
+				production_speed_power_plant_factor = 0.25
+				production_speed_energy_farm_factor = 0.25
+				production_speed_nuclear_reactor_factor = 0.25
+			}
+		}
+
+		# Heal Our Countryside
+		VEN_economic_recovery_dummy_idea_D = {
+			name = VEN_economic_recovery_dynamic
+			allowed = {
+				always = no
+			}
+			modifier = {
+				business_value_factor = 0.1
+				personal_value_factor = 0.05
+				local_resources_factor = 0.15
+				farming_development_monthly = 0.03
+			}
+		}
+
+		# Feed the Military Industrial Complex
+		VEN_economic_recovery_dummy_idea_E = {
+			name = VEN_economic_recovery_dynamic
+			allowed = {
+				always = no
+			}
+			modifier = {
+				production_speed_arms_factory_factor = 0.25
+				production_speed_dockyard_factor = 0.25
+				production_factory_max_efficiency_factor = 0.1
+				military_industrial_organization_funds_gain = 0.15
+			}
+		}
+
+		# Industrialize the Civilian Sector
+		VEN_economic_recovery_dummy_idea_F = {
+			name = VEN_economic_recovery_dynamic
+			allowed = {
+				always = no
+			}
+			modifier = {
+				production_speed_industrial_complex_factor = 0.25
+				production_speed_office_park_factor = 0.25
+				production_factory_start_efficiency_factor = 0.1
+				consumer_goods_factor = -0.15
+			}
+		}
+
+		# Food Security
+		VEN_economic_recovery_dummy_idea_G = {
+			name = VEN_economic_recovery_dynamic
+			allowed = {
+				always = no
+			}
+			modifier = {
+				personal_value_factor = 0.05
+				poverty_development_monthly = 0.02
+				monthly_population = 0.1
+			}
+		}
+
+		# Export-Focused Economy
+		VEN_economic_recovery_dummy_idea_H = {
+			name = VEN_economic_recovery_dynamic
+			allowed = {
+				always = no
+			}
+			modifier = {
+				business_value_factor = 0.1
+				personal_value_factor = 0.1
+				tax_gain_multiplier_modifier = 0.15
+				academic_development_monthly = 0.02
+				inflation_monthly = -0.002
+			}
+		}
+
+		# Infrastructure Restoration Efforts
+		VEN_economic_recovery_dummy_idea_I = {
+			name = VEN_economic_recovery_dynamic
+			allowed = {
+				always = no
+			}
+			modifier = {
+				production_speed_infrastructure_factor = 0.25
+				production_speed_rail_way_factor = 0.25
+				production_speed_supply_node_factor = 0.25
+				production_speed_naval_base_factor = 0.25
+				business_value_factor = 0.05
+			}
+		}
+
+		# Expand Welfare Policies
+		VEN_economic_recovery_dummy_idea_J = {
+			name = VEN_economic_recovery_dynamic
+			allowed = {
+				always = no
+			}
+			modifier = {
+				personal_expense_factor = 0.15
+				personal_value_factor = 0.15
+				poverty_development_monthly = 0.03
+				academic_development_monthly = 0.03
+			}
+		}
+
+		# Promises Fulfilled (dummy tooltip idea)
+		VEN_economic_miracle_dummy_idea = {
+			name = VEN_economic_miracle_idea
+			allowed = {
+				always = no
+			}
+			modifier = {
+				farming_development_monthly = 0.02
+				industrial_development_monthly = 0.02
+				poverty_development_monthly = 0.02
+				academic_development_monthly = 0.02
+				inflation_monthly = -0.002
+			}
+		}
+
+		# Promises Fulfilled (actual idea, consolidates all the dynamic modifier effects)
+		VEN_economic_miracle_idea = {
+			allowed = {
+				original_tag = VEN
+			}
+			modifier = {
+				# TODO: Pair this to the dynamic modifier effects
+
+				# Economy
+				personal_expense = 0.1
+				personal_expense_factor = 0.15
+				business_value_factor = 0.25
+				personal_value_factor = 0.25
+				inflation_monthly = -0.001
+				tax_gain_multiplier_modifier = 0.15
+
+				# Production
+				industrial_capacity_factory = 0.1
+				industrial_capacity_dockyard = 0.1
+				production_factory_max_efficiency_factor = 0.1	
+				production_factory_start_efficiency_factor = 0.1
+				consumer_goods_factor = -0.15	
+
+				# Construction
+				production_speed_buildings_factor = 0.3
+
+				# Other
+				local_resources_factor = 0.15
+				military_industrial_organization_funds_gain = 0.15
+				monthly_population = 0.1
+
+				# Development
+				academic_development_monthly = 0.05
+				farming_development_monthly = 0.05
+				poverty_development_monthly = 0.05
+				industrial_development_monthly = 0.05
+			}
+		}
+
+		#### BOLIVARIAN ARMY ####
+		VEN_bolivarian_army_dummy_idea = {
+			name = VEN_bolivarian_army_dynamic
+			allowed = {
+				always = no
+			}
+			modifier = {
+
+			}
+		}
+
+		# The Bolivarian Army Marches Again
+		VEN_bolivarian_army_dummy_idea_A = {
+			name = VEN_bolivarian_army_dynamic
+			allowed = {
+				always = no
+			}
+			modifier = {
+				# Modified from "Welfare Military"
+				war_support_factor = 0.1
+				military_development_monthly = 0.015
+				battalion_upkeep_factor = 0.2
+				misc_expense = 20
+				conscription_factor = 0.15
+			}
+		}
+
+		# Lancers in the Skies
+		VEN_bolivarian_army_dummy_idea_B = {
+			name = VEN_bolivarian_army_dynamic
+			allowed = {
+				always = no
+			}
+			modifier = {
+				air_training_xp_gain_factor = 0.15
+				air_mission_xp_gain_factor = 0.15
+				air_power_projection_factor = 0.1
+			}
+		}
+
+		# Military Exercises
+		VEN_bolivarian_army_dummy_idea_C = {
+			name = VEN_bolivarian_army_dynamic
+			allowed = {
+				always = no
+			}
+			modifier = {
+				experience_gain_army_unit_factor = 0.1
+				military_development_monthly = 0.015
+			}
+		}
+
+		# An Army of Millions
+		VEN_bolivarian_army_dummy_idea_D1 = {
+			name = VEN_bolivarian_army_dynamic
+			allowed = {
+				always = no
+			}
+			modifier = {
+				conscription_factor = 0.05
+				land_reinforce_rate = 0.15
+				experience_loss_factor = 0.1
+			}
+		}
+
+		# The Homeland Needs You
+		VEN_bolivarian_army_dummy_idea_E1 = {
+			name = VEN_bolivarian_army_dynamic
+			allowed = {
+				always = no
+			}
+			modifier = {
+				weekly_casualties_war_support = 0.01
+				war_stability_factor = 0.3
+			}
+		}
+
+		# Militarize the Collectives
+		VEN_bolivarian_army_dummy_idea_F1 = {
+			name = VEN_bolivarian_army_dynamic
+			allowed = {
+				always = no
+			}
+			modifier = {
+				modifier_army_sub_unit_militia_attack_factor = 0.15
+				modifier_army_sub_unit_militia_defence_factor = 0.15
+			}
+		}
+
+		# Relax Training Procedures
+		VEN_bolivarian_army_dummy_idea_G1 = {
+			name = VEN_bolivarian_army_dynamic
+			allowed = {
+				always = no
+			}
+			modifier = {
+				training_time_factor = -0.2
+				minimum_training_level = -0.1
+				military_development_monthly = -0.01
+			}
+		}
+
+		# Prove Your Worth Foreginer
+		VEN_bolivarian_army_dummy_idea_H1 = {
+			name = VEN_bolivarian_army_dynamic
+			allowed = {
+				always = no
+			}
+			modifier = {
+				local_non_core_manpower = 0.25
+				society_development_monthly = 0.005
+			}
+		}
+
+		# Unite the Military and Civilian Worlds
+		VEN_bolivarian_army_dummy_idea_I1 = {
+			name = VEN_bolivarian_army_dynamic
+			allowed = {
+				always = no
+			}
+			modifier = {
+				supply_combat_penalties_on_core_factor = -0.3
+				army_core_attack_factor = 0.1
+				army_core_defence_factor = 0.1
+			}
+		}
+
+		# Increase Military Benefits
+		VEN_bolivarian_army_dummy_idea_J1 = {
+			name = VEN_bolivarian_army_dynamic
+			allowed = {
+				always = no
+			}
+			modifier = {
+				battalion_upkeep_factor = 0.1
+				conscription_factor = 0.1
+				poverty_development_monthly = 0.005
+			}
+		}
+
+		# Another Chance at Life
+		VEN_bolivarian_army_dummy_idea_K1 = {
+			name = VEN_bolivarian_army_dynamic
+			allowed = {
+				always = no
+			}
+			modifier = {
+				conscription_factor = 0.1
+				society_development_monthly = 0.005
+			}
+		}
+
+		# For Every Military Family
+		VEN_bolivarian_army_dummy_idea_L1 = {
+			name = VEN_bolivarian_army_dynamic
+			allowed = {
+				always = no
+			}
+			modifier = {
+				army_morale_factor = 0.1
+				poverty_development_monthly = 0.005
+			}
+		}
+
+		# Introduce Conscription
+		VEN_bolivarian_army_dummy_idea_M1 = {
+			name = VEN_bolivarian_army_dynamic
+			allowed = {
+				always = no
+			}
+			modifier = {
+				army_attack_factor = 0.1
+				army_defence_factor = 0.1
+			}
+		}
+
+		# Master the Arts of War
+		VEN_bolivarian_army_dummy_idea_D2 = {
+			name = VEN_bolivarian_army_dynamic
+			allowed = {
+				always = no
+			}
+			modifier = {
+				experience_gain_army_factor = 0.15
+				military_development_monthly = 0.01
+			}
+		}
+
+		# Professionalize the Army
+		VEN_bolivarian_army_dummy_idea_E2 = {
+			name = VEN_bolivarian_army_dynamic
+			allowed = {
+				always = no
+			}
+			modifier = {
+				coordination_bonus = 0.1
+				recon_factor = 0.1
+				military_development_monthly = 0.01
+			}
+		}
+
+		# Fund the Military Academy
+		VEN_bolivarian_army_dummy_idea_F2 = {
+			name = VEN_bolivarian_army_dynamic
+			allowed = {
+				always = no
+			}
+			modifier = {
+				command_power_gain_mult = 0.2
+				army_leader_start_level = 1
+				military_development_monthly = 0.01
+			}
+		}
+
+		# Motorized Warfare
+		VEN_bolivarian_army_dummy_idea_G2 = {
+			name = VEN_bolivarian_army_dynamic
+			allowed = {
+				always = no
+			}
+			modifier = {
+				truck_attrition_factor = -0.15
+				supply_node_range = 0.05
+			}
+		}
+
+		# The Most Respectable Profession
+		VEN_bolivarian_army_dummy_idea_H2 = {
+			name = VEN_bolivarian_army_dynamic
+			allowed = {
+				always = no
+			}
+			modifier = {
+				mobilization_speed = 0.1
+				military_development_monthly = 0.01
+			}
+		}
+
+		# Lords of the Mountains and Jungles
+		VEN_bolivarian_army_dummy_idea_I2 = {
+			name = VEN_bolivarian_army_dynamic
+			allowed = {
+				always = no
+			}
+			modifier = {
+				acclimatization_cold_climate_gain_factor = 0.15
+				acclimatization_hot_climate_gain_factor = 0.15
+			}
+		}
+
+		# The Fastest You Can Be
+		VEN_bolivarian_army_dummy_idea_J2 = {
+			name = VEN_bolivarian_army_dynamic
+			allowed = {
+				always = no
+			}
+			modifier = {
+				army_speed_factor = 0.1
+				org_loss_when_moving = -0.1
+			}
+		}
+
+		# Glorify the Army
+		VEN_bolivarian_army_dummy_idea_K2 = {
+			name = VEN_bolivarian_army_dynamic
+			allowed = {
+				always = no
+			}
+			modifier = {
+				land_reinforce_rate = 0.1
+				military_development_monthly = 0.01
+			}
+		}
+
+		# From the Andes to the Amazon
+		VEN_bolivarian_army_dummy_idea_L2 = {
+			name = VEN_bolivarian_army_dynamic
+			allowed = {
+				always = no
+			}
+			modifier = {
+				terrain_penalty_reduction = 0.2
+				attrition = -0.1
+			}
+		}
+
+		# We Are Ready
+		VEN_bolivarian_army_dummy_idea_M2 = {
+			name = VEN_bolivarian_army_dynamic
+			allowed = {
+				always = no
+			}
+			modifier = {
+				breakthrough_factor = 0.15
+				initiative_factor = 0.1
+				army_morale_factor = 0.1
+			}
+		}
+	}
+
+	## MINISTERS ##
+    head_minister = {
+		VEN_delcy_rodriguez_hog = {
+			picture = VEN_delcy_rodriguez_advisor
+			allowed = {
+				original_tag = VEN
+			}
+			allowed_to_remove = {
+				head_minister_trigger = yes
+			}
+			traits = {
+				hog_pragmatic_statesman
+			}
+		}
+	}
+
+    foreign_minister = {
+		VEN_jorge_arreaza_for = {
+			picture = VEN_jorge_arreaza
+			allowed = {
+				original_tag = VEN
+			}
+			available = {
+			}
+			traits = {
+				for_apologetic_clerk
+			}
+		}
+	}
+
+	economic_minister = {
+		VEN_simon_zerpa_eco = {
+			picture = VEN_simon_zerpa
+			allowed = {
+				original_tag = VEN
+			}
+			available = {
+			}
+			traits = {
+				eco_corrupt_kleptocrat
+			}
+		}
+	}
+
+	interior_minister = {
+		VEN_nestor_reverol_sec = {
+			picture = VEN_nestor_reverol
+			allowed = {
+				original_tag = VEN
+			}
+			available = {
+			}
+			traits = {
+				sec_crooked_kleptocrat
+			}
+		}
+	}
+
+    intelligence_minister = {
+		VEN_gustavo_gonzalez_int = {
+			picture = VEN_gustavo_gonzalez
+			allowed = {
+				original_tag = VEN
+			}
+			available = {			
+			}
+			traits = {
+				int_resistance_crusher
+			}
+		}
+	}
+
+    theorist_minister = {
+		VEN_vladimir_padrino_lopez_theorist = {
+			picture = VEN_vladimir_padrino_advisor
+			allowed = {
+				original_tag = VEN
+			}
+			available = {
+			}
+			traits = {
+				army_chief_drill_2
+				army_chief_old_guard
+			}
+		}
+	}
+	hidden_idea = {
+		VEN_underground_activities_idea = {  }
+	}
+}

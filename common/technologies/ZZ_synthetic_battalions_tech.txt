@@ -1,0 +1,44 @@
+# ============================================================================
+# 通用合成营解锁科技（第十二轮）
+# ============================================================================
+# 无 folder 字段，不显示在科技树中，仅作为 enable_subunits 挂载点；
+# 开局由 ZZ6 - startup.txt 按国 set_technology 统一授予
+# （USA/SOV/CHI/ISR/GER/FRA/ENG/JAP/KOR/RAJ/NKO 共 11 国），
+# set_technology 可绕过 allow 检查；ai_will_do = 0 防止 AI 浪费科研点。
+# 空降营（运输机）与空中突击营（直升机）分属两套科技门控，互不绑定。
+# ============================================================================
+
+technologies = {
+
+	zz_synthetic_battalion_tech = {
+		research_cost = 1
+		start_year = 2014
+		allow = {
+			always = yes
+		}
+		enable_subunits = {
+			syn_heavy_bat
+			syn_medium_bat
+			syn_light_bat
+			syn_amphibious_bat
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	zz_air_assault_battalion_tech = {
+		research_cost = 1
+		start_year = 2014
+		allow = {
+			always = yes
+		}
+		enable_subunits = {
+			syn_air_assault_bat
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+}

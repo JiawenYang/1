@@ -1,0 +1,497 @@
+economy_types_category = {
+	econ_capitalist_economy = {
+
+		available = {
+			always = no
+		}
+
+		visible = {
+			always = no
+		}
+
+		activation = {
+			NOT = { has_idea = econ_capitalist_economy }
+			OR = {
+				has_idea = law_presidential_system
+				has_idea = law_parliamentary_system
+				has_idea = law_absolute_monarchy
+				has_idea = law_authoritarianism
+				has_idea = law_constitutional_monarchy
+				has_idea = law_russian_political_system
+				has_idea = law_american_presidential_republic
+				has_idea = law_socialist_republic
+			}
+			NOT = { has_idea = wall_street }
+			NOT = { has_idea = euro }
+			NOT = { original_tag = JAP }
+			NOT = { has_idea = oligarchs }
+			NOT = { is_in_array = { ruling_party = 15 }	} #oligarchs
+			NOT = {
+				is_in_array = { ruling_party = 3 }
+				is_in_array = { ruling_party = 4 }
+				is_in_array = { ruling_party = 5 }
+				is_in_array = { ruling_party = 6 }
+				is_in_array = { ruling_party = 7 }
+				is_in_array = { ruling_party = 17 }
+				is_in_array = { ruling_party = 18 }
+				is_in_array = { ruling_party = 19 }
+				is_in_array = { ruling_party = 21 }
+			}
+		}
+
+		days_mission_timeout = 0
+		selectable_mission = yes
+		complete_effect = {
+		}
+		timeout_effect = {
+			change_economy_type_capitalism = yes
+		}
+	}
+
+	econ_american_capitalism = {
+
+		available = {
+			always = no
+		}
+
+		visible = {
+			always = no
+		}
+
+		activation = {
+			NOT = { has_idea = econ_american_capitalism }
+			NOT = { has_idea = euro }
+			has_idea = wall_street
+			OR = {
+				NOT = { has_idea = IP_stable_society }
+				date < 2015.1.1
+			}
+		}
+
+		days_mission_timeout = 0
+		selectable_mission = yes
+		complete_effect = {
+		}
+		timeout_effect = {
+			change_economy_type_american_capitalism = yes
+		}
+	}
+
+	econ_maga_capitalism = {
+
+		available = {
+			always = no
+		}
+
+		visible = {
+			always = no
+		}
+
+		activation = {
+			NOT = { has_idea = econ_maga_capitalism }
+			NOT = { has_idea = euro }
+			has_idea = wall_street
+			has_idea = IP_stable_society
+			date > 2015.1.1
+		}
+
+		days_mission_timeout = 0
+		selectable_mission = yes
+		complete_effect = {
+		}
+		timeout_effect = {
+			change_economy_type_maga_capitalism = yes
+		}
+	}
+
+	econ_inclusive_capitalism = {
+
+		available = {
+			always = no
+		}
+
+		visible = {
+			always = no
+		}
+
+		activation = {
+			NOT = { has_idea = econ_inclusive_capitalism }
+			has_idea = euro
+		}
+
+		days_mission_timeout = 0
+		selectable_mission = yes
+		complete_effect = {
+		}
+		timeout_effect = {
+			change_economy_type_inclusive_capitalism = yes
+		}
+	}
+
+	econ_collective_capitalism = {
+
+		available = {
+			always = no
+		}
+
+		visible = {
+			always = no
+		}
+
+		activation = {
+			NOT = { has_idea = econ_collective_capitalism }
+			NOT = { has_idea = euro }
+			OR = {
+				has_idea = law_presidential_system
+				has_idea = law_parliamentary_system
+				has_idea = law_absolute_monarchy
+				has_idea = law_authoritarianism
+				has_idea = law_constitutional_monarchy
+				has_idea = law_socialist_republic
+			}
+			original_tag = JAP
+		}
+
+		days_mission_timeout = 0
+		selectable_mission = yes
+		complete_effect = {
+		}
+		timeout_effect = {
+			econ_collective_capitalism = yes
+		}
+	}
+
+	econ_oligopolistic_capitalism = {
+
+		available = {
+			always = no
+		}
+
+		visible = {
+			always = no
+		}
+
+		activation = {
+			NOT = { has_idea = econ_oligopolistic_capitalism }
+			NOT = { has_idea = euro }
+			OR = {
+				has_idea = law_presidential_system
+				has_idea = law_parliamentary_system
+				has_idea = law_absolute_monarchy
+				has_idea = law_authoritarianism
+				has_idea = law_constitutional_monarchy
+				has_idea = law_russian_political_system
+				has_idea = law_american_presidential_republic
+				has_idea = law_socialist_republic
+				has_idea = law_islamic_republic
+			}
+			NOT = { has_idea = wall_street }
+			NOT = { original_tag = JAP }
+			OR = {
+				has_idea = oligarchs
+				is_in_array = { ruling_party = 15 }	#oligarchs
+			}
+			NOT = { is_in_array = { ruling_party = 21 } }
+		}
+
+		days_mission_timeout = 0
+		selectable_mission = yes
+		complete_effect = {
+		}
+		timeout_effect = {
+			change_economy_type_oligopolistic_capitalism = yes
+		}
+	}
+
+	econ_welfare_capitalism = {
+
+		available = {
+			always = no
+		}
+
+		visible = {
+			always = no
+		}
+
+		activation = {
+			NOT = { has_idea = econ_welfare_capitalism }
+			NOT = { has_idea = euro }
+			OR = {
+				has_idea = law_presidential_system
+				has_idea = law_parliamentary_system
+				has_idea = law_absolute_monarchy
+				has_idea = law_authoritarianism
+				has_idea = law_constitutional_monarchy
+				has_idea = law_russian_political_system
+				has_idea = law_american_presidential_republic
+				has_idea = law_socialist_republic
+			}
+			OR = {
+				is_in_array = { ruling_party = 3 }
+				is_in_array = { ruling_party = 4 }
+				is_in_array = { ruling_party = 5 }
+				is_in_array = { ruling_party = 17 }
+				is_in_array = { ruling_party = 18 }
+				is_in_array = { ruling_party = 19 }
+			}
+			NOT = { has_idea = oligarchs }
+			NOT = { is_in_array = { ruling_party = 15 }	} #oligarchs
+			NOT = { has_idea = wall_street }
+			NOT = { original_tag = JAP }
+		}
+
+		days_mission_timeout = 0
+		selectable_mission = yes
+		complete_effect = {
+		}
+		timeout_effect = {
+			change_economy_type_welfare_capitalism = yes
+		}
+	}
+
+	econ_military_controlled_economy = {
+
+		available = {
+			always = no
+		}
+
+		visible = {
+			always = no
+		}
+
+		activation = {
+			NOT = { has_idea = econ_military_controlled_economy }
+			NOT = { has_idea = euro }
+			has_idea = law_military_dictatorship
+		}
+
+		days_mission_timeout = 0
+		selectable_mission = yes
+		complete_effect = {
+		}
+		timeout_effect = {
+			change_economy_type_military_controlled = yes
+		}
+	}
+
+	econ_managed_economy = {
+
+		available = {
+			always = no
+		}
+
+		visible = {
+			always = no
+		}
+
+		activation = {
+			NOT = { has_idea = econ_managed_economy }
+			NOT = { has_idea = euro }
+			OR = {
+				has_idea = law_presidential_system
+				has_idea = law_parliamentary_system
+				has_idea = law_absolute_monarchy
+				has_idea = law_authoritarianism
+				has_idea = law_constitutional_monarchy
+				has_idea = law_russian_political_system
+				has_idea = law_american_presidential_republic
+				has_idea = law_socialist_republic
+			}
+			is_in_array = { ruling_party = 21 }
+		}
+
+		days_mission_timeout = 0
+		selectable_mission = yes
+		complete_effect = {
+		}
+		timeout_effect = {
+			change_economy_type_managed_economy = yes
+		}
+	}
+
+	econ_socialist_market = {
+
+		available = {
+			always = no
+		}
+
+		visible = {
+			always = no
+		}
+
+		activation = {
+			NOT = { has_idea = econ_socialist_market }
+			NOT = { has_idea = euro }
+			OR = {
+				has_idea = law_american_peoples_dictatorship
+				has_idea = law_peoples_democracy
+				has_idea = law_neo_soviet_republic
+				has_idea = law_socialist_state
+			}
+			OR = {
+				has_idea = wall_street
+				has_idea = international_bankers
+				has_idea = industrial_conglomerates
+			}
+		}
+
+		days_mission_timeout = 0
+		selectable_mission = yes
+		complete_effect = {
+		}
+		timeout_effect = {
+			change_economy_type_socialist_market = yes
+		}
+	}
+
+	econ_mixed_economy = {
+
+		available = {
+			always = no
+		}
+
+		visible = {
+			always = no
+		}
+
+		activation = {
+			NOT = { has_idea = econ_mixed_economy }
+			NOT = { has_idea = euro }
+			OR = {
+				is_in_array = { ruling_party = 6 }
+				is_in_array = { ruling_party = 7 }
+				is_in_array = { ruling_party = 8 }
+				is_in_array = { ruling_party = 9 }
+			}
+			NOT = { has_idea = oligarchs }
+			NOT = { is_in_array = { ruling_party = 15 }	} #oligarchs
+			NOT = { has_idea = wall_street }
+			NOT = { original_tag = JAP }
+			OR = {
+				has_idea = law_presidential_system
+				has_idea = law_parliamentary_system
+				has_idea = law_absolute_monarchy
+				has_idea = law_authoritarianism
+				has_idea = law_constitutional_monarchy
+				has_idea = law_russian_political_system
+				has_idea = law_american_presidential_republic
+				has_idea = law_socialist_republic
+				has_idea = law_islamic_republic
+			}
+		}
+
+		days_mission_timeout = 0
+		selectable_mission = yes
+		complete_effect = {
+		}
+		timeout_effect = {
+			change_economy_type_mixed_economy = yes
+		}
+	}
+
+	econ_planned_economy = {
+
+		available = {
+			always = no
+		}
+
+		visible = {
+			always = no
+		}
+
+		activation = {
+			NOT = { has_idea = econ_planned_economy }
+			NOT = { has_idea = euro }
+			NOT = { has_idea = wall_street }
+			NOT = { has_idea = international_bankers }
+			NOT = { has_idea = industrial_conglomerates }
+			OR = {
+				has_idea = law_american_peoples_dictatorship
+				has_idea = law_peoples_democracy
+				has_idea = law_socialist_state
+			}
+			OR = {
+				has_idea = limited_rights
+				has_idea = total_control
+			}
+		}
+
+		days_mission_timeout = 0
+		selectable_mission = yes
+		complete_effect = {
+		}
+		timeout_effect = {
+			change_economy_type_planned_economy = yes
+		}
+	}
+
+	econ_developed_socialism = {
+
+		available = {
+			always = no
+		}
+
+		visible = {
+			always = no
+		}
+
+		activation = {
+			NOT = { has_idea = econ_developed_socialism }
+			NOT = { has_idea = euro }
+			NOT = { has_idea = wall_street }
+			NOT = { has_idea = international_bankers }
+			NOT = { has_idea = industrial_conglomerates }
+			has_idea = law_neo_soviet_republic
+			original_tag = SOV
+			OR = {
+				has_idea = limited_rights
+				has_idea = total_control
+			}
+		}
+
+		days_mission_timeout = 0
+		selectable_mission = yes
+		complete_effect = {
+		}
+		timeout_effect = {
+			change_economy_type_developed_socialism = yes
+		}
+	}
+
+	econ_worker_controlled_economy = {
+
+		available = {
+			always = no
+		}
+
+		visible = {
+			always = no
+		}
+
+		activation = {
+			NOT = { has_idea = econ_worker_controlled_economy }
+			NOT = { has_idea = euro }
+			NOT = { has_idea = wall_street }
+			NOT = { has_idea = international_bankers }
+			NOT = { has_idea = industrial_conglomerates }
+			OR = {
+				has_idea = freedom_of_speech
+				has_idea = small_control
+			}
+			OR = {
+				has_idea = law_american_peoples_dictatorship
+				has_idea = law_peoples_democracy
+				has_idea = law_neo_soviet_republic
+				has_idea = law_socialist_state
+			}
+		}
+
+		days_mission_timeout = 0
+		selectable_mission = yes
+		complete_effect = {
+		}
+		timeout_effect = {
+			change_economy_type_developed_socialism = yes
+		}
+	}
+}

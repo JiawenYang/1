@@ -1,0 +1,388 @@
+﻿historical_tanks_category = {
+	# General Dynamics Ajax
+	eng_ajax_fe_decision = {
+		icon = GFX_decision_generic_army
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_army_experience > 34
+		}
+		custom_cost_text = army_xp_15
+
+		visible = {
+			original_tag = ENG
+			date > 2025.1.1
+		}
+
+		available = {
+			has_tech = mbt_tech_3
+			has_tech = armor_tech_3
+			has_tech = small_autocannon_tech_3
+			has_tech = diesel_engine_tech_3
+			has_tech = tank_components_tech_3
+			has_tech = tank_ammo_2
+			NOT = { has_completed_focus = ENG_general_dynamics_ajax }
+			NOT = { has_completed_focus = ENG_bae_cv90_MkIV }
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision eng_ajax_fe_decision"
+			army_experience = -15
+			create_equipment_variant = {
+				name = "General Dynamics Ajax"
+				type = medium_tank_flame_chassis_3
+				parent_version = 0
+				modules = {
+					main_armament_slot = small_autocannon_3
+					secondary_armament_slot = afv_coax_machine_gun_3
+					ammunition_load_slot = mixed_autocannon_ammo_3
+					turret_type_slot = tank_base_tank_turret
+					suspension_type_slot = tank_torsion_bar_suspension_medium
+					armor_type_slot = afv_composite_armor_gen3
+					engine_type_slot = afv_gasoline_engine_gen3
+					reload_type_slot = manual_loading
+					special_type_slot_1 = smoke_launchers_3
+					special_type_slot_3 = afv_mine_protection
+					special_type_slot_4 = tank_battlestation_3
+					special_type_slot_5 = afv_troop_capacity
+				}
+				icon = "gfx/interface/technologies/ENG/LAND/Ajax_A2.dds"
+				design_team = mio:ENG_general_dynamics_manufacturer
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+
+	# Challenger 3
+	eng_challenger3_fe_decision = {
+		icon = GFX_decision_generic_army
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_army_experience > 34
+		}
+		custom_cost_text = army_xp_15
+
+		visible = {
+			original_tag = ENG
+			date > 2027.1.1
+		}
+
+		available = {
+			has_tech = mbt_tech_3
+			has_tech = medium_gun_tech_3
+			has_tech = armor_tech_3
+			has_tech = diesel_engine_tech_6
+			has_tech = tank_components_tech_3
+			has_tech = tank_components_tech_4
+			has_tech = tank_ammo_3
+			has_tech = defensive_systems_4
+			has_tech = era_tech_3
+			NOT = { has_completed_focus = ENG_challenger_3 }
+			NOT = { has_completed_focus = ENG_mgcs_program }
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision eng_challenger3_fe_decision"
+			army_experience = -15
+			create_equipment_variant = {
+				name = "Challenger 3"
+				type = medium_tank_chassis_3
+				parent_version = 0
+				modules = {
+					main_armament_slot = tank_medium_cannon_3
+					secondary_armament_slot = crows_mg
+					ammunition_load_slot = anti_armor_main_ammo_3
+					turret_type_slot = tank_base_tank_turret
+					suspension_type_slot = tank_torsion_bar_suspension_heavy
+					armor_type_slot = tank_composite_armor_gen3
+					engine_type_slot = tank_diesel_engine_gen6
+					reload_type_slot = manual_loading
+					special_type_slot_1 = wet_ammo_storage
+					special_type_slot_2 = hardkill_system_gen1
+					special_type_slot_4 = tank_battlestation_3
+					special_type_slot_6 = spaced_armor_gen3
+				}
+				upgrades = {
+					tank_nsb_armor_upgrade = 2
+				}
+				icon = "gfx/interface/technologies/ENG/LAND/Challenger_3D.dds"
+				design_team = mio:ENG_rheinmetall_manufacturer
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+
+	# Boxer Mechanised Infantry Vehicle
+	eng_boxer_miv_fe_decision = {
+		icon = GFX_decision_generic_army
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_army_experience > 34
+		}
+		custom_cost_text = army_xp_15
+
+		visible = {
+			original_tag = ENG
+			date > 2022.1.1
+		}
+
+		available = {
+			has_tech = mbt_tech_2
+			has_tech = armor_tech_3
+			has_tech = diesel_engine_tech_4
+			has_tech = tank_components_tech_3
+			has_tech = era_tech_2
+			has_tech = infantry_weapons_1
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision eng_boxer_miv_fe_decision"
+			army_experience = -15
+			create_equipment_variant = {
+				name = "Boxer MIV"
+				type = medium_tank_amphibious_chassis_2
+				parent_version = 0
+				modules = {
+					main_armament_slot = crows_mg
+					secondary_armament_slot = empty
+					ammunition_load_slot = machine_gun_ammo_2
+					turret_type_slot = tank_no_turret
+					suspension_type_slot = tank_wheeled_suspension_medium
+					engine_type_slot = tank_diesel_engine_gen4
+					armor_type_slot = afv_composite_armor_gen3
+					reload_type_slot = manual_loading
+					special_type_slot_1 = smoke_launchers_2
+					special_type_slot_2 = afv_mine_protection
+					special_type_slot_4 = tank_battlestation_3
+					special_type_slot_5 = afv_troop_capacity
+					special_type_slot_6 = spaced_armor_gen2
+				}
+				upgrades = {
+					tank_nsb_armor_upgrade = 3
+				}
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+
+	# Sky Sabre Land Ceptor
+	eng_sky_sabre_fe_decision = {
+		icon = GFX_decision_generic_army
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_army_experience > 34
+		}
+		custom_cost_text = army_xp_15
+
+		visible = {
+			original_tag = ENG
+			date > 2022.1.1
+		}
+
+		available = {
+			has_tech = mbt_tech
+			has_tech = nsb_Anti_Air_2
+			has_tech = nsb_Anti_Air_3
+			has_tech = nsb_SHORAD_missile_0
+			has_tech = nsb_SHORAD_missile_1
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision eng_sky_sabre_fe_decision"
+			army_experience = -15
+			create_equipment_variant = {
+				name = "Sky Sabre"
+				type = medium_tank_aa_chassis_2
+				parent_version = 0
+				modules = {
+					main_armament_slot = missile_launcher_system
+					secondary_armament_slot = empty
+					reload_type_slot = four_missile_pack
+					ammunition_load_slot = spaa_long_range_missiles_2
+					turret_type_slot = tank_base_tank_turret
+					suspension_type_slot = tank_wheeled_suspension_medium
+					armor_type_slot = tank_steel_armor_gen1
+					engine_type_slot = tank_diesel_engine_gen3
+					special_type_slot_1 = empty
+					special_type_slot_2 = empty
+					special_type_slot_3 = empty
+					special_type_slot_4 = spaa_off_vehicle_radar_gen3
+				}
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+
+	# KF51 Panther
+	ger_kf51_panther_fe_decision = {
+		icon = GFX_decision_generic_army
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_army_experience > 34
+		}
+		custom_cost_text = army_xp_15
+
+		visible = {
+			original_tag = GER
+			date > 2026.1.1
+		}
+
+		available = {
+			has_tech = mbt_tech_3
+			has_tech = large_gun_tech_2
+			has_tech = armor_tech_3
+			has_tech = diesel_engine_tech_4
+			has_tech = tank_components_tech_4
+			has_tech = tank_ammo_3
+			has_tech = defensive_systems_4
+			has_tech = era_tech_3
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision ger_kf51_panther_fe_decision"
+			army_experience = -15
+			create_equipment_variant = {
+				name = "KF51 Panther"
+				type = medium_tank_chassis_3
+				parent_version = 0
+				modules = {
+					main_armament_slot = tank_large_cannon_2
+					ammunition_load_slot = mixed_main_ammo_3
+					turret_type_slot = tank_base_tank_turret
+					suspension_type_slot = tank_torsion_bar_suspension_medium
+					armor_type_slot = tank_composite_armor_gen3
+					engine_type_slot = tank_diesel_engine_gen4
+					reload_type_slot = automatic_loading
+					special_type_slot_1 = afv_mine_protection
+					special_type_slot_2 = wet_ammo_storage
+					special_type_slot_3 = hardkill_system_gen1
+					special_type_slot_4 = tank_battlestation_4
+					special_type_slot_6 = spaced_armor_gen3
+				}
+				upgrades = {
+					tank_nsb_armor_upgrade = 4
+				}
+				icon = "GFX_GER_MBT_4"
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+
+	# Leopard 3 MGCS
+	ger_leopard3_mgcs_fe_decision = {
+		icon = GFX_decision_generic_army
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_army_experience > 34
+		}
+		custom_cost_text = army_xp_15
+
+		visible = {
+			original_tag = GER
+			date > 2035.1.1
+		}
+
+		available = {
+			has_tech = mbt_tech_4
+			has_tech = large_gun_tech_3
+			has_tech = armor_tech_3
+			has_tech = diesel_engine_tech_6
+			has_tech = tank_components_tech_4
+			has_tech = tank_ammo_3
+			has_tech = defensive_systems_4
+			has_tech = era_tech_3
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision ger_leopard3_mgcs_fe_decision"
+			army_experience = -15
+			create_equipment_variant = {
+				name = "Leopard 3"
+				type = medium_tank_chassis_4
+				parent_version = 0
+				modules = {
+					main_armament_slot = tank_large_cannon_3
+					ammunition_load_slot = mixed_main_ammo_3
+					turret_type_slot = tank_unmanned_turret
+					suspension_type_slot = tank_torsion_bar_suspension_medium
+					armor_type_slot = tank_composite_armor_gen3
+					engine_type_slot = tank_diesel_engine_gen6
+					reload_type_slot = automatic_loading
+					special_type_slot_1 = afv_mine_protection
+					special_type_slot_2 = wet_ammo_storage
+					special_type_slot_3 = hardkill_system_gen1
+					special_type_slot_4 = tank_battlestation_4
+					special_type_slot_6 = spaced_armor_gen3
+				}
+				upgrades = {
+					tank_nsb_armor_upgrade = 4
+				}
+				icon = "GFX_GER_MBT_4"
+				design_team = mio:GER_krauss_maffei_tank_manufacturer
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+
+	# Tiger MkIII
+	ger_tiger_mkiii_fe_decision = {
+		icon = GFX_decision_generic_army
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_army_experience > 34
+		}
+		custom_cost_text = army_xp_15
+
+		visible = {
+			original_tag = GER
+			date > 2029.1.1
+		}
+
+		available = {
+			has_tech = nsb_attack_helicopter_tech_3
+			has_tech = nsb_engine_tech_3
+			has_tech = nsb_multiple_atgm_tech_3
+			has_tech = nsb_rocket_pods_tech_3
+			has_tech = nsb_defense_tech_2
+			has_tech = tech_combat_radar_3
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision ger_tiger_mkiii_fe_decision"
+			army_experience = -15
+			create_equipment_variant = {
+				name = "Tiger MkIII"
+				type = heavy_tank_chassis_2
+				parent_version = 0
+				modules = {
+					chassis_type_slot = helicopter_medium_chassis
+					helicopter_body_layout = gunship_layout
+					helicopter_body_mount_1 = helicopter_multiple_atgm_gen3
+					helicopter_body_mount_2 = helicopter_rocket_pod_gen3
+					engine_type_slot = helicopter_turbine_engine_gen3
+					defence_type_slot = flare_launchers
+					sensor_and_avionics_slot = sensors_and_avionics_gen_3
+					armor_type_slot = helicopter_armor_gen3
+				}
+				upgrades = {
+					helicopter_nsb_upgrade = 3
+				}
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	
+}
+}

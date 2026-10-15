@@ -1,0 +1,43 @@
+	ideas = {
+		country = {
+			MOR_ALG_north_african_cold_war_idea = {
+				picture = ALG_african_cold_war
+
+				allowed = {
+					always = no
+				}
+				cancel = {
+					OR = {
+						NOT = {
+							country_exists = MOR
+							country_exists = ALG
+						}
+						NOT = {
+							country_exists = HOR
+							country_exists = ALG
+						}
+						NOT = {
+							country_exists = MOR
+							country_exists = HOR
+						}
+					}
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				
+				modifier = {
+					production_speed_dockyard_factor = 0.125
+					industrial_capacity_dockyard = 0.15
+					drift_defence_factor = 0.1
+					defensive_war_stability_factor = 0.2
+					research_speed_factor = 0.1
+					production_lack_of_resource_penalty_factor = -0.3
+					ai_focus_aggressive_factor = 0.3
+				}
+			}
+		}
+	}

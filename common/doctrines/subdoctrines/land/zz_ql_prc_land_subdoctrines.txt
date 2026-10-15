@@ -1,0 +1,529 @@
+# ============================================================
+# 路线1：全域立体机动（PLA）
+# ============================================================
+
+ql_prc_land_joint_grouping_path_1 = {
+	track = ql_prc_land_joint_grouping
+	name = QL_SUB_QL_PRC_LAND_JOINT_GROUPING_PATH_1
+	description = QL_SUB_QL_PRC_LAND_JOINT_GROUPING_PATH_1_DESC
+	icon = GFX_ql_sub_land_1_1
+	xp_cost = 75
+	xp_type = army
+	available = {
+		has_doctrine = ql_prc_land_integrated_mobility
+	}
+	ai_will_do = { base = 1 }
+
+	# 联合编组：师编制扩展（+1列=10营上限，覆盖合成旅/师级多营编制）
+	additional_brigage_column_size = 1
+	command_power_gain_mult = 0.5
+
+	rewards = {
+		stage_1 = {
+			category_all_armor = {
+				max_organisation = 10      # 装甲单位：组织度 +10
+				max_strength = 0.1         # 装甲单位：兵力 +10%
+			}
+			category_mech_inf = {
+				max_organisation = 10      # 机械化：组织度 +10
+				max_strength = 0.1         # 机械化：兵力 +10%
+			}
+		}
+		stage_2 = {
+			category_all_armor = {
+				maximum_speed = 0.1        # 装甲单位：最大速度 +10%
+				default_morale = 0.2       # 装甲单位：默认士气 +20%
+			}
+			category_mech_inf = {
+				maximum_speed = 0.1        # 机械化：最大速度 +10%
+				default_morale = 0.2       # 机械化：默认士气 +20%
+			}
+		}
+		stage_3 = {
+			category_special_forces = {
+				max_organisation = 20      # 特种部队：组织度 +20
+				max_strength = 0.1         # 特种部队：兵力 +10%
+				soft_attack = 0.1          # 特种部队：软攻 +10%
+				hard_attack = 0.1          # 特种部队：硬攻 +10%
+				breakthrough = 0.1         # 特种部队：突破 +10%
+			}
+		}
+		stage_4 = {
+			category_all_armor = {
+				defense = 0.1              # 装甲单位：防御 +10%
+				breakthrough = 0.1         # 装甲单位：突破 +10%
+				air_attack = 0.1           # 装甲单位：对空攻击 +10%
+				soft_attack = 0.05         # 装甲单位：软攻 +5%
+				hard_attack = 0.05         # 装甲单位：硬攻 +5%
+			}
+		}
+		stage_5 = {
+			category_mech_inf = {
+				max_organisation = 20      # 机步单位：组织度 +20
+				breakthrough = 0.10        # 机步单位：突破 +10%
+				defense = 0.10             # 机步单位：防御 +10%
+				max_strength = 0.10        # 机步单位：HP +10%
+				recon = 0.20
+			}
+			L_Recce_Comp = {
+				recon = 0.20               # 侦察分队：侦察 +20%
+			}
+		}
+	}
+}
+
+ql_prc_land_firepower_path_1 = {
+	track = ql_prc_land_firepower
+	name = QL_SUB_QL_PRC_LAND_FIREPOWER_PATH_1
+	description = QL_SUB_QL_PRC_LAND_FIREPOWER_PATH_1_DESC
+	icon = GFX_ql_sub_land_2_1
+	xp_cost = 75
+	xp_type = army
+	available = {
+		has_doctrine = ql_prc_land_integrated_mobility
+	}
+	ai_will_do = { base = 1 }
+
+	# 顶部全局
+	army_artillery_attack_factor = 0.05
+	category_SP_AA = {
+		air_attack = 0.1              # 防空：对空攻击 +10%
+	}
+	enable_tactic = tactic_assault      # 解锁战术：火力突击
+
+	rewards = {
+		stage_1 = {
+			L_Recce_Comp = {
+				battalion_mult = {
+					category = category_artillery
+					soft_attack = 0.1      # 侦察营给炮兵：软攻 +10%
+					hard_attack = 0.1      # 侦察营给炮兵：硬攻 +10%
+					add = yes
+				}
+			}
+		}
+		stage_2 = {
+			category_artillery = {
+				soft_attack = 0.05         # 炮兵：软攻 +5%
+				hard_attack = 0.05         # 炮兵：硬攻 +5%
+				breakthrough = 0.05        # 炮兵：突破 +5%
+			}
+		}
+		stage_3 = {
+			category_artillery = {
+				soft_attack = 0.05         # 炮兵：软攻 +5%
+				hard_attack = 0.05         # 炮兵：硬攻 +5%
+				defense = 0.05             # 炮兵：防御 +5%
+				breakthrough = 0.05        # 炮兵：突破 +5%
+			}
+		}
+		stage_4 = {
+			category_artillery = {
+				soft_attack = 0.05         # 炮兵：软攻 +5%
+				hard_attack = 0.05         # 炮兵：硬攻 +5%
+				max_strength = 0.05        # 炮兵：兵力 +5%
+				maximum_speed = 0.05       # 炮兵：最大速度 +5%
+				max_organisation = 15      # 炮兵：组织度 +15
+				default_morale = 0.05      # 炮兵：默认士气 +5%
+			}
+		}
+		stage_5 = {
+			category_artillery = {
+				hard_attack = 0.1          # 炮兵：硬攻 +10%
+				breakthrough = 0.1         # 炮兵：突破 +10%
+				ap_attack = 0.1            # 炮兵：穿甲攻击 +10%
+			}
+		}
+	}
+}
+
+ql_prc_land_sustainment_path_1 = {
+	track = ql_prc_land_sustainment
+	name = QL_SUB_QL_PRC_LAND_SUSTAINMENT_PATH_1
+	description = QL_SUB_QL_PRC_LAND_SUSTAINMENT_PATH_1_DESC
+	icon = GFX_ql_sub_land_3_1
+	xp_cost = 75
+	xp_type = army
+	available = {
+		has_doctrine = ql_prc_land_integrated_mobility
+	}
+	ai_will_do = { base = 1 }
+
+	# 顶部全局
+	attrition = -0.2                  # 损耗 -20%
+	terrain_penalty_reduction = 0.2   # 地形惩罚减免 +20%
+
+	rewards = {
+		stage_1 = {
+			category_all_armor = {
+				maximum_speed = 0.1        # 装甲单位：最大速度 +10%
+			}
+			category_mech_inf = {
+				maximum_speed = 0.1        # 机械化：最大速度 +10%
+			}
+		}
+		stage_2 = {
+			experience_loss_factor = -0.15 # 经验损失 -15%
+			category_support_battalions = {
+				reliability = 0.2          # 支援营：可靠性 +20%
+				max_organisation = 15      # 支援营：组织度 +15
+			}
+		}
+		stage_3 = {
+			category_support_battalions = {
+				casualty_trickleback = 0.1 # 支援营：伤亡回流 +10%
+				soft_attack = 0.05         # 支援营：软攻 +5%（等同全地形）
+				hard_attack = 0.05         # 支援营：硬攻 +5%（等同全地形）
+				defense = 0.05             # 支援营：防御 +5%（等同全地形）
+			}
+		}
+		stage_4 = {
+			Combat_engineer_company = {
+				battalion_mult = {
+					category = category_all_armor
+					max_strength = 0.1     # 工兵连给装甲单位：兵力 +10%
+					max_organisation = 10  # 工兵连给装甲单位：组织度 +10
+					default_morale = 0.1   # 工兵连给装甲单位：默认士气 +10%
+					add = yes
+				}
+			}
+		}
+		stage_5 = {
+			max_planning = 0.1         # 最大计划值 +10%
+			out_of_supply_factor = -0.5 # 补给不足惩罚 -50%
+			no_supply_grace = 120      # 无补给宽限 +120
+			army_speed_factor = 0.1    # 陆军速度 +10%
+		}
+	}
+}
+
+ql_prc_land_ground_systems_path_1 = {
+	track = ql_prc_land_ground_systems
+	name = QL_SUB_QL_PRC_LAND_GROUND_SYSTEMS_PATH_1
+	description = QL_SUB_QL_PRC_LAND_GROUND_SYSTEMS_PATH_1_DESC
+	icon = GFX_ql_sub_land_4_1
+	xp_cost = 75
+	xp_type = army
+	available = {
+		has_doctrine = ql_prc_land_integrated_mobility
+	}
+	ai_will_do = { base = 1 }
+
+	# 顶部全局
+	army_speed_factor = 0.05          # 陆军速度 +5%
+	army_attack_factor = 0.05         # 陆军攻击 +5%
+
+	rewards = {
+		stage_1 = {
+			coordination_bonus = 0.1   # 协同作战加成 +10%
+			army_org_factor = 0.1      # 陆军组织度 +10%
+		}
+		stage_2 = {
+			initiative_factor = 0.1    # 主动性 +10%
+			category_all_infantry = { initiative = 0.1 }
+			category_mech_inf = { initiative = 0.1 }
+			category_light_infantry = { initiative = 0.1 }
+		}
+		stage_3 = {
+			max_planning = 0.1         # 最大计划值 +10%
+			org_loss_when_moving = -0.2 # 移动时组织度损失 -20%
+		}
+		stage_4 = {
+			cas_damage_reduction = 0.2 # 免敌cas
+			enemy_army_bonus_air_superiority_factor = -0.2 # 敌方陆军制空权加成修正
+			air_superiority_bonus_in_combat = 0.2 # 制空权加成
+			recon_factor = 0.1 # 侦察
+			coordination_bonus = 0.1 # 协同
+			breakthrough_factor = 0.1 # 突破
+			army_defence_factor = 0.1 # 防御
+		}
+		stage_5 = {
+			category_mech_inf = { breakthrough = 0.1 }
+			category_all_armor = { breakthrough = 0.1 }
+		}
+	}
+}
+
+# ============================================================
+# 路线2：多域协同远征（USA）
+# ============================================================
+
+ql_prc_land_joint_grouping_path_2 = {
+	track = ql_prc_land_joint_grouping
+	name = QL_SUB_QL_PRC_LAND_JOINT_GROUPING_PATH_2
+	description = QL_SUB_QL_PRC_LAND_JOINT_GROUPING_PATH_2_DESC
+	icon = GFX_ql_sub_land_1_2
+	xp_cost = 75
+	xp_type = army
+	available = {
+		has_doctrine = ql_prc_land_multi_domain_expedition
+	}
+	ai_will_do = { base = 1 }
+
+	# 联合编组：师编制扩展（+1列=10营上限，覆盖SBCT/ABCT/远征师多营编制）
+	additional_brigage_column_size = 1
+	land_night_attack = 0.1 # 夜战
+
+	rewards = {
+		stage_1 = { category_all_armor = { breakthrough = 0.1 } }
+		stage_2 = {
+			special_forces_training_time_factor = -0.1
+			category_all_infantry = { defense = 0.1 }
+		}
+		stage_3 = {
+			category_all_armor = { soft_attack = 0.1 reliability = 0.1 }
+		}
+		stage_4 = { category_mech_inf = { defense = 0.1 maximum_speed = 0.1 } }
+		stage_5 = { category_mech_inf = { soft_attack = 0.1 max_organisation = 20 } }
+	}
+}
+
+ql_prc_land_firepower_path_2 = {
+	track = ql_prc_land_firepower
+	name = QL_SUB_QL_PRC_LAND_FIREPOWER_PATH_2
+	description = QL_SUB_QL_PRC_LAND_FIREPOWER_PATH_2_DESC
+	icon = GFX_ql_sub_land_2_2
+	xp_cost = 75
+	xp_type = army
+	available = {
+		has_doctrine = ql_prc_land_multi_domain_expedition
+	}
+	ai_will_do = { base = 1 }
+
+	# 顶部全局
+	attack_helo_comp = {
+		soft_attack = 0.1
+	}
+
+	rewards = {
+		stage_1 = {
+			air_cas_efficiency = 0.1
+			attack_helo_comp = { soft_attack = 0.05 breakthrough = 0.05 }
+		}
+		stage_2 = {
+			combat_service_support_company = { battalion_mult = { category = category_artillery breakthrough = 0.1 add = yes } }
+		}
+		stage_3 = {
+			combat_service_support_company = { battalion_mult = { category = category_artillery maximum_speed = 0.1 add = yes } }
+		}
+		stage_4 = {
+			attack_helo_comp = { hard_attack = 0.1 breakthrough = 0.1 }
+		}
+		stage_5 = {
+			L_Recce_Comp = { battalion_mult = { category = category_artillery defense = 0.1 max_strength = 0.1 } }
+			attack_helo_comp = { battalion_mult = { category = category_artillery defense = 0.1 max_strength = 0.1 } }
+			L_arm_Bat = { battalion_mult = { category = category_artillery defense = 0.1 max_strength = 0.1 } }
+		}
+	}
+}
+
+ql_prc_land_sustainment_path_2 = {
+	track = ql_prc_land_sustainment
+	name = QL_SUB_QL_PRC_LAND_SUSTAINMENT_PATH_2
+	description = QL_SUB_QL_PRC_LAND_SUSTAINMENT_PATH_2_DESC
+	icon = GFX_ql_sub_land_3_2
+	xp_cost = 75
+	xp_type = army
+	available = {
+		has_doctrine = ql_prc_land_multi_domain_expedition
+	}
+	ai_will_do = { base = 1 }
+
+	# 顶部全局
+	army_speed_factor = 0.1              # 陆军速度 +10%
+	supply_node_range = 0.1              # 补给中心范围 +10%
+
+	rewards = {
+		stage_1 = { naval_invasion_penalty = -0.15 }                 # 两栖入侵惩罚 -15%
+		stage_2 = {
+			no_supply_grace = 48                                    # 无补给宽限 +48
+			Special_Forces = { amphibious = { attack = 0.1 defence = 0.1 movement = 0.1 } }  # 特种部队：两栖 攻/防/移 +10%
+			L_Recce_Comp = { amphibious = { attack = 0.1 defence = 0.1 movement = 0.1 } }    # 侦察：两栖 攻/防/移 +10%
+			L_Marine_Bat = { amphibious = { attack = 0.1 defence = 0.1 movement = 0.1 } }    # 海军陆战队：两栖 攻/防/移 +10%
+			L_Air_Inf_Bat = { amphibious = { attack = 0.1 defence = 0.1 movement = 0.1 } }   # 伞兵：两栖 攻/防/移 +10%
+		}
+		stage_3 = { army_fuel_consumption_factor = -0.1 }            # 陆军燃料消耗 -10%
+		stage_4 = { armor_Comp = { soft_attack = 0.15 defense = 0.15 } }  # 坦克连：软攻 +15%，防御 +15%
+		stage_5 = { land_reinforce_rate = 0.05 pocket_penalty = -0.15 }   # 陆军增援率 +5%，包围惩罚 -15%
+	}
+}
+
+ql_prc_land_ground_systems_path_2 = {
+	track = ql_prc_land_ground_systems
+	name = QL_SUB_QL_PRC_LAND_GROUND_SYSTEMS_PATH_2
+	description = QL_SUB_QL_PRC_LAND_GROUND_SYSTEMS_PATH_2_DESC
+	icon = GFX_ql_sub_land_4_2
+	xp_cost = 75
+	xp_type = army
+	available = {
+		has_doctrine = ql_prc_land_multi_domain_expedition
+	}
+	ai_will_do = { base = 1 }
+
+	# 顶部全局
+	army_defence_factor = 0.15           # 陆军防御 +15%
+
+	rewards = {
+		stage_1 = { army_speed_factor = 0.1 }
+		stage_2 = {
+			category_all_infantry = { maximum_speed = 0.1 }
+		}
+		stage_3 = {
+			org_loss_when_moving = -0.15
+		}
+		stage_4 = {
+			acclimatization_cold_climate_gain_factor = 0.15
+			acclimatization_hot_climate_gain_factor = 0.15
+		}
+		stage_5 = { naval_invasion_prep_speed = 0.2 }
+	}
+}
+
+# ============================================================
+# 路线3：混合模态战争（RGF）
+# ============================================================
+
+ql_prc_land_joint_grouping_path_3 = {
+	track = ql_prc_land_joint_grouping
+	name = QL_SUB_QL_PRC_LAND_JOINT_GROUPING_PATH_3
+	description = QL_SUB_QL_PRC_LAND_JOINT_GROUPING_PATH_3_DESC
+	icon = GFX_ql_sub_land_1_3
+	xp_cost = 75
+	xp_type = army
+	available = {
+		has_doctrine = ql_prc_land_hybrid_modal_warfare
+	}
+	ai_will_do = { base = 1 }
+
+	# 联合编组：师编制扩展（+1列=10营上限，覆盖摩步师/坦克师9营编制）
+	additional_brigage_column_size = 1
+	# 顶部全局
+	production_speed_bunker_factor = 0.2
+
+	rewards = {
+		# 机步防御
+		stage_1 = { category_mech_inf = { defense = 0.1 } }
+		# 机步组织
+		stage_2 = {
+			experience_loss_factor = -0.15
+			category_mech_inf = { max_organisation = 10 }
+		}
+		# 全步兵 组织 堑壕
+		stage_3 = { category_all_infantry = { max_organisation = 20 entrenchment = 0.2 } }
+		# 装甲
+		stage_4 = {
+			category_all_armor = { soft_attack = 0.1 armor_value = 0.05 }
+		}
+		# 步兵防御 HP 装甲率
+		stage_5 = {
+			category_all_infantry = { defense = 0.1 max_strength = 0.1 armor_value = 0.05 }
+		}
+	}
+}
+
+ql_prc_land_firepower_path_3 = {
+	track = ql_prc_land_firepower
+	name = QL_SUB_QL_PRC_LAND_FIREPOWER_PATH_3
+	description = QL_SUB_QL_PRC_LAND_FIREPOWER_PATH_3_DESC
+	icon = GFX_ql_sub_land_2_3
+	xp_cost = 75
+	xp_type = army
+	available = {
+		has_doctrine = ql_prc_land_hybrid_modal_warfare
+	}
+	ai_will_do = { base = 1 }
+
+	# 顶部全局
+	category_artillery = {
+		default_morale = 0.1          # 炮兵：默认士气 +10%
+	}
+
+	rewards = {
+		stage_1 = { category_artillery = { soft_attack = 0.1 hard_attack = 0.1 } }
+		stage_2 = { category_artillery = { fuel_capacity = 0.1 defense = 0.1 } }
+		stage_3 = { L_Recce_Comp = { recon = 0.20 } max_dig_in_factor = 0.1 }
+		stage_4 = { category_artillery = { max_organisation = 10 } }
+		stage_5 = {
+			category_artillery = { hard_attack = 0.05 max_organisation = 10 }
+		}
+	}
+}
+
+ql_prc_land_sustainment_path_3 = {
+	track = ql_prc_land_sustainment
+	name = QL_SUB_QL_PRC_LAND_SUSTAINMENT_PATH_3
+	description = QL_SUB_QL_PRC_LAND_SUSTAINMENT_PATH_3_DESC
+	icon = GFX_ql_sub_land_3_3
+	xp_cost = 75
+	xp_type = army
+	available = {
+		has_doctrine = ql_prc_land_hybrid_modal_warfare
+	}
+	ai_will_do = { base = 1 }
+
+	# 顶部全局
+	planning_speed = 0.15             # 计划速度 +15%
+
+	rewards = {
+		stage_1 = {
+			# 后勤对炮兵修正
+			Combat_engineer_company = { battalion_mult = { category = category_artillery entrenchment = 0.1 add = yes } }
+		}
+		stage_2 = {
+			# 后勤对装甲可靠性修正
+			combat_service_support_company = { battalion_mult = { category = category_all_armor reliability = 0.1 add = yes } }
+		}
+		stage_3 = {
+			# 后勤对步兵修正
+			combat_service_support_company = { battalion_mult = { category = category_all_infantry max_organisation = 5 default_morale = 0.1 add = yes } }
+		}
+		stage_4 = {
+			# 工兵队地形修正
+			Combat_engineer_company = { urban = { attack = 0.1 defence = 0.1 movement = 0.1 } }
+		}
+		stage_5 = {
+			# 后勤对装甲修正
+			combat_service_support_company = { battalion_mult = { category = category_all_armor breakthrough = 0.1 add = yes } }
+		}
+	}
+}
+
+ql_prc_land_ground_systems_path_3 = {
+	track = ql_prc_land_ground_systems
+	name = QL_SUB_QL_PRC_LAND_GROUND_SYSTEMS_PATH_3
+	description = QL_SUB_QL_PRC_LAND_GROUND_SYSTEMS_PATH_3_DESC
+	icon = GFX_ql_sub_land_4_3
+	xp_cost = 75
+	xp_type = army
+	available = {
+		has_doctrine = ql_prc_land_hybrid_modal_warfare
+	}
+	ai_will_do = { base = 1 }
+
+	# 顶部全局
+	max_planning = 0.1                # 最大计划值 +10%
+
+	rewards = {
+		stage_1 = {
+			category_SP_AA = { defense = 0.1 air_attack = 0.05 }
+			AA_company = { defense = 0.1 air_attack = 0.05 }
+		}
+		# 履带单位地形修正
+		stage_2 = {
+			armor_Bat = { plains = { attack = 0.05 defence = 0.05 movement = 0.05 } marsh = { attack = 0.05 defence = 0.05 movement = 0.05 } }
+			Arm_Inf_Bat = { plains = { attack = 0.05 defence = 0.05 movement = 0.05 } marsh = { attack = 0.05 defence = 0.05 movement = 0.05 } }
+			Mech_Inf_Bat = { plains = { attack = 0.05 defence = 0.05 movement = 0.05 } marsh = { attack = 0.05 defence = 0.05 movement = 0.05 } }
+			L_arm_Bat = { plains = { attack = 0.05 defence = 0.05 movement = 0.05 } marsh = { attack = 0.05 defence = 0.05 movement = 0.05 } }
+			SP_Arty_Bat = { plains = { attack = 0.05 defence = 0.05 movement = 0.05 } marsh = { attack = 0.05 defence = 0.05 movement = 0.05 } }
+			SP_AA_Bat = { plains = { attack = 0.05 defence = 0.05 movement = 0.05 } marsh = { attack = 0.05 defence = 0.05 movement = 0.05 } }
+			SP_R_arty_Bat = { plains = { attack = 0.05 defence = 0.05 movement = 0.05 } marsh = { attack = 0.05 defence = 0.05 movement = 0.05 } }
+		}
+		# 防御 速度
+		stage_3 = {
+			army_speed_factor = 0.05
+			army_defence_factor = 0.1
+		}
+		stage_4 = { grant_medal_cost_factor = -0.3 }
+		stage_5 = { land_reinforce_rate = 0.05 coordination_bonus = 0.05 }
+	}
+}

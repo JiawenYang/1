@@ -1,0 +1,89 @@
+	ideas = {
+		country = {
+
+			CRO_slavoniadalmatia_divide = {
+				picture = CRO_slavonia_dalmatia_divide
+
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				modifier = {
+					stability_factor = -0.05
+					consumer_goods_factor = 0.10
+					industrial_development_monthly = -0.02
+					industrial_capacity_factory = 0.025
+					industrial_capacity_dockyard = 0.075
+					tax_gain_multiplier_modifier = 0.05
+				}
+			}
+				
+			CRO_european_reliance = {
+				picture = CRO_eu_reliance
+
+				allowed = {
+					always = no
+				}
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				modifier = {
+					political_power_gain = -0.10
+					consumer_goods_factor = 0.05
+					business_value_factor = 0.075
+					neutrality_drift = 0.01
+				}
+			}
+				
+			CRO_fading_grudges = {
+				picture = CRO_fading_grudges
+
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				removal_cost = -1
+				modifier = {
+					stability_factor = 0.025
+					war_support_factor = -0.10
+					political_power_gain = 0.025
+					mobilization_speed = -0.01
+				}
+			}
+
+			CRO_fascist_resurgence = {
+				picture = CRO_fascist_resurgence
+
+				allowed = {
+					always = no
+				}
+
+				allowed_civil_war = {
+					always = yes
+				}
+
+				cancel = {
+					NOT = { has_government = nationalist }
+				}
+				removal_cost = -1
+				modifier = {
+					war_support_factor = 0.15
+					political_power_gain = 0.025
+					army_core_defence_factor = 0.075
+					mobilization_speed = 0.02
+					nationalist_drift = 0.1
+				}
+			}
+		}
+	}

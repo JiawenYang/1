@@ -1,0 +1,285 @@
+###########################
+# Myanmar Events
+###########################
+
+add_namespace = bur
+
+#2021 Coup de'tat
+country_event = {
+	id = bur.1
+	hidden = yes
+
+	trigger = {
+		date > 2021.01.31
+		has_country_flag = BRM_federation
+	}
+	
+	fire_only_once = yes
+
+	immediate = {
+		BRM = {
+			set_popularities = {
+				democratic = 0.0
+				communism = 0.0
+				fascism = 0.0
+				neutrality = 8.3
+				nationalist = 91.7
+			}
+
+			start_politics_input = yes
+
+			set_variable = { party_pop_array^0 = 0 } #Western_Autocracy
+			set_variable = { party_pop_array^1 = 0 } #conservatism
+			set_variable = { party_pop_array^2 = 0 } #liberalism
+			set_variable = { party_pop_array^3 = 0 } #socialism
+			set_variable = { party_pop_array^4 = 0 } #communist_state
+			set_variable = { party_pop_array^5 = 0 } #anarchist_communism
+			set_variable = { party_pop_array^6 = 0 } #Conservative
+			set_variable = { party_pop_array^7 = 0 } #Autocracy
+			set_variable = { party_pop_array^8 = 0 } #Mod_Vilayat_e_Faqih
+			set_variable = { party_pop_array^9 = 0 } #Vilayat_e_Faqih
+			set_variable = { party_pop_array^10 = 0 } #Kingdom
+			set_variable = { party_pop_array^11 = 0 } #Caliphate
+			set_variable = { party_pop_array^12 = 0 } #Neutral_Muslim_Brotherhood
+			set_variable = { party_pop_array^13 = 0 } #Neutral_Autocracy
+			set_variable = { party_pop_array^14 = 0.033 } #Neutral_conservatism
+			set_variable = { party_pop_array^15 = 0 } #oligarchism
+			set_variable = { party_pop_array^16 = 0 } #Neutral_Libertarian
+			set_variable = { party_pop_array^17 = 0 } #Neutral_green
+			set_variable = { party_pop_array^18 = 0 } #neutral_Social
+			set_variable = { party_pop_array^19 = 0.05 } #Neutral_Communism
+			set_variable = { party_pop_array^20 = 0.856 } #Nat_Populism
+			set_variable = { party_pop_array^21 = 0.061 } #Nat_Fascism
+			set_variable = { party_pop_array^22 = 0 } #Nat_Autocracy
+			set_variable = { party_pop_array^23 = 0 } #Monarchist
+			add_to_array = { ruling_party = 20 }
+			startup_politics = yes
+			create_country_leader = {
+				name = "Min Aung Hlaing"
+				picture = "Min_Aung_Hlaing.dds"
+				ideology = Nat_Autocracy
+				traits = {
+					nationalist_Nat_Autocracy
+				}
+			}
+			add_ideas = BRM_unstable_junta
+			remove_ideas = Democracy_Movement
+			remove_ideas = Nationwide_Ceasefire_Agreement
+			country_event = {
+				id = bur.2
+				days = 35
+				random_days = 25
+			}
+			diplomatic_relation = {
+				country = KAC
+				relation = military_access
+				active = no
+			}
+			diplomatic_relation = {
+				country = KAR
+				relation = military_access
+				active = no
+			}
+			diplomatic_relation = {
+				country = SHN
+				relation = military_access
+				active = no
+			}
+			diplomatic_relation = {
+				country = NHN
+				relation = military_access
+				active = no
+			}
+			diplomatic_relation = {
+				country = WAA
+				relation = military_access
+				active = no
+			}
+			diplomatic_relation = {
+				country = CHS
+				relation = military_access
+				active = no
+			}
+		}
+		news_event = { id = news.172 }
+		every_country = {
+			limit = {
+				OR = {
+					tag = KAC
+					tag = KAR
+					tag = SHN
+					tag = NHN
+					tag = WAA
+					tag = CHS
+				}
+			}
+			remove_ideas = Nationwide_Ceasefire_Agreement
+		}
+	}
+}
+
+#RAMBO 4 STABBING BABIES WITH BAYONETS BAABBBEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+country_event = {
+	id = bur.2
+	hidden = yes
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = BRM
+	}
+
+	immediate = {
+		news_event = { id = news.350 }
+		set_country_flag = BRM_civil_war_flag
+		add_ideas = BRM_civil_war_idea
+		505 = {
+			add_manpower = -62752
+		}
+		ARK = {
+			transfer_state = 500
+			transfer_state = 502
+			set_popularities = {
+				democratic = 0.0
+				communism = 0.0
+				fascism = 0.0
+				neutrality = 63.6
+				nationalist = 36.4
+			}
+			set_politics = {
+				ruling_party = neutrality
+				last_election = "2020.11.8"
+				election_frequency = 60
+				elections_allowed = yes
+			}
+
+			start_politics_input = yes
+
+			set_variable = { party_pop_array^0 = 0 } #Western_Autocracy
+			set_variable = { party_pop_array^1 = 0 } #conservatism
+			set_variable = { party_pop_array^2 = 0 } #liberalism
+			set_variable = { party_pop_array^3 = 0 } #socialism
+			set_variable = { party_pop_array^4 = 0 } #communist_state
+			set_variable = { party_pop_array^5 = 0 } #anarchist_communism
+			set_variable = { party_pop_array^6 = 0 } #Conservative
+			set_variable = { party_pop_array^7 = 0 } #Autocracy
+			set_variable = { party_pop_array^8 = 0 } #Mod_Vilayat_e_Faqih
+			set_variable = { party_pop_array^9 = 0 } #Vilayat_e_Faqih
+			set_variable = { party_pop_array^10 = 0 } #Kingdom
+			set_variable = { party_pop_array^11 = 0 } #Caliphate
+			set_variable = { party_pop_array^12 = 0 } #Neutral_Muslim_Brotherhood
+			set_variable = { party_pop_array^13 = 0 } #Neutral_Autocracy
+			set_variable = { party_pop_array^14 = 0.013 } #Neutral_conservatism
+			set_variable = { party_pop_array^15 = 0 } #oligarchism
+			set_variable = { party_pop_array^16 = 0.603 } #Neutral_Libertarian
+			set_variable = { party_pop_array^17 = 0 } #Neutral_green
+			set_variable = { party_pop_array^18 = 0 } #neutral_Social
+			set_variable = { party_pop_array^19 = 0.02 } #Neutral_Communism
+			set_variable = { party_pop_array^20 = 0.34 } #Nat_Populism
+			set_variable = { party_pop_array^21 = 0.024 } #Nat_Fascism
+			set_variable = { party_pop_array^22 = 0 } #Nat_Autocracy
+			set_variable = { party_pop_array^23 = 0 } #Monarchist
+			add_to_array = { ruling_party = 16 }
+			startup_politics = yes
+			add_ideas = Democracy_Movement
+			create_faction_from_template = {
+				template = cc_faction_template_BUR
+				name = Myanmar_National_Unity_Government
+			}
+			add_to_faction = KAC
+			add_to_faction = KAR
+			add_to_faction = SHN
+			every_state = {
+				limit = {
+					is_core_of = BRM
+				}
+				add_core_of = ARK
+				add_dynamic_modifier = {
+					modifier = BRM_peoples_war
+				}
+			}
+			set_cosmetic_tag = PDF
+			clr_country_flag = dynamic_flag
+			declare_war_on = { 
+				target = BRM 
+				type = civil_war 
+			}
+			load_oob = "PDF_2020"
+			add_ideas = BRM_civil_war_idea
+		}
+		transfer_units_fraction= {
+			target = ARK
+			size = 0
+			stockpile_ratio = 0.1
+		}
+		every_country = {
+			limit = {
+				OR = {
+					tag = KAC
+					tag = KAR
+					tag = ARK
+					tag = SHN
+				}
+			}
+			add_ideas = BRM_civil_war_idea
+			declare_war_on = {
+				target = BRM 
+				type = civil_war 
+			}
+		}
+		CHI = {
+			country_event = {
+				id = bur.3
+				days = 10
+			}
+		}
+	}
+}
+
+#China Negotiations
+country_event = {
+	id = bur.3
+	title = bur.3.t
+	desc = bur.3.d
+	picture = GFX_PRC_situation_in_myanmar
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = CHI
+	}
+
+	option = {
+		name = bur.3.a
+		unlock_decision_tooltip = PRC_myanmar_negotiations
+		set_country_flag = PRC_myanmar_negotiations_flag
+	}
+}
+
+#New Myanmar
+country_event = {
+	id = bur.4
+	title = bur.4.t
+	desc = bur.4.d
+	picture = GFX_Generic_Fight_Jet
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = WAA
+	}
+
+	option = {
+	name = bur.4.a
+		every_state = {
+			limit = {
+				is_core_of = BRM
+			}
+			add_core_of = WAA
+		}
+	}
+}
+

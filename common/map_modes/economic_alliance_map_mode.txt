@@ -1,0 +1,95 @@
+scripted_map_modes = {
+	economy_alliance_map_mode = {
+  		bottom = {
+  			type = country
+			
+			color = {
+				set_temp_variable = { alpha = 0.2 }
+				set_temp_variable = { thickness = 1.0 }
+			}
+			
+			thickness = yes
+ 	 	}
+		top = {
+			type = country
+			color = {
+				FROM = {
+					set_temp_variable = { alpha = 50.0 }
+					set_temp_variable = { thickness = 8.0 }
+					if = {
+						limit = { 
+							has_idea = EU_member
+						}
+						set_temp_variable = { red = 0 }
+						set_temp_variable = { green = 0 }
+						set_temp_variable = { blue = 255 }
+					}
+					else_if = {
+						limit = { 
+							is_sco = yes
+						}
+						set_temp_variable = { red = 220 }
+						set_temp_variable = { green = 32 }
+						set_temp_variable = { blue = 0 }
+					}
+					else_if = {
+						limit = { 
+							has_idea = ASEAN_Member
+						}
+						set_temp_variable = { red = 77 }
+						set_temp_variable = { green = 143 }
+						set_temp_variable = { blue = 219 }
+					}
+					else_if = {
+						limit = { 
+							has_country_flag = JAP_PEC_member_flag
+						}
+						set_temp_variable = { red = 255 }
+						set_temp_variable = { green = 128 }
+						set_temp_variable = { blue = 128 }
+					}
+					else_if = {
+						limit = { 
+							has_idea = idea_gcc_member_state
+						}
+						set_temp_variable = { red = 139 }
+						set_temp_variable = { green = 127 }
+						set_temp_variable = { blue = 255 }
+					}
+					else_if = {
+						limit = { 
+							has_idea = ecowas_member_state
+						}
+						set_temp_variable = { red = 225 }
+						set_temp_variable = { green = 85 }
+						set_temp_variable = { blue = 5 }
+					}
+					else_if = {
+						limit = { 
+							has_dynamic_modifier = { modifier = mercosur_member_state_modifier }
+						}
+						set_temp_variable = { red = 0 }
+						set_temp_variable = { green = 155 }
+						set_temp_variable = { blue = 58 }
+					}
+					else = {
+						set_temp_variable = { red = 124 }
+						set_temp_variable = { green = 124 }
+						set_temp_variable = { blue = 124 }
+					}
+				}
+				divide_temp_variable = { red = 255 }
+				divide_temp_variable = { green = 255 }
+				divide_temp_variable = { blue = 255 }
+				set_temp_variable = { alpha = 1.0 }
+				set_temp_variable = { thickness = 10.0 }
+			}
+			thickness = no
+		}
+
+		far_text = country
+		near_text = none
+
+		update_daily = yes
+	}
+}

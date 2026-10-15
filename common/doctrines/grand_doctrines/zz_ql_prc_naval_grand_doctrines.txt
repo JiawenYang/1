@@ -1,0 +1,247 @@
+# ============================================================
+# 海军 Grand Doctrine 合并文件
+# 路线1：远洋转型战略（PLAN）
+# 路线2：马赛克杀伤链（USN）
+# 路线3：区域威慑舰队（RN）
+# 规则：文档里有的键 = 全局；文档里没有的 = 舰种单位级
+# ============================================================
+
+
+# ============================================================
+# 路线1：远洋转型战略（PLAN）
+# ============================================================
+
+ql_prc_naval_ocean_transition = {
+	folder = naval
+	name = QL_GRAND_QL_PRC_NAVAL_OCEAN_TRANSITION
+	description = QL_GRAND_QL_PRC_NAVAL_OCEAN_TRANSITION_DESC
+	icon = GFX_ql_grand_naval_1
+	available = {
+			OR = {
+				original_tag = CHI
+			}
+	}
+	visible = {
+			OR = {
+				original_tag = CHI
+			}
+	}
+	xp_cost = 100
+	xp_type = navy
+	ai_will_do = { base = 1 }
+	tracks = { ql_prc_naval_surface_fleet ql_prc_naval_submarine_fleet ql_prc_naval_aviation ql_prc_naval_systems operations escort_ships }
+
+	# 顶栏：海军探测 +10%、海军航程 +10%
+	naval_detection = 0.1                     # 海军探测 +10%（全局）
+	navy_max_range_factor = 0.1               # 海军最大航程 +10%（全局）
+
+	milestones = {
+		# 1. 水面舰队：主力舰、屏卫舰 海军探测 +20%、导弹攻击、突防 +10%
+		{
+		battleship = {
+			surface_detection = 0.2           # 战列舰：对海探测 +20%（单位级/船）
+			hg_attack = 0.1                   # 战列舰：导弹攻击 +10%（单位级/船）
+			hg_armor_piercing = 0.1           # 战列舰：突防 +10%（单位级/船）
+		}
+		battle_cruiser = {
+			surface_detection = 0.2
+			hg_attack = 0.1
+			hg_armor_piercing = 0.1
+		}
+		cruiser = {
+			surface_detection = 0.2
+			hg_attack = 0.1
+			hg_armor_piercing = 0.1
+		}
+		destroyer = {
+			surface_detection = 0.2
+			hg_attack = 0.1
+			hg_armor_piercing = 0.1
+		}
+		frigate = {
+			surface_detection = 0.2
+			hg_attack = 0.1
+			hg_armor_piercing = 0.1
+		}
+		}
+		# 2. 水下舰队：潜艇 对潜、对海探测 +20%
+		{
+		attack_submarine = {
+			surface_detection = 0.2           # 潜艇：对海探测 +20%（单位级/船）
+			sub_detection = 0.2               # 潜艇：对潜探测 +20%（单位级/船）
+		}
+		}
+		# 3. 海军航空：航空母舰 出击效率 +20%
+		{
+		sortie_efficiency = 0.2               # 舰载机出击效率 +20%（全局）
+		}
+		# 4. 海上体系：舰队协同性 +20%
+		{
+		naval_coordination = 0.2              # 舰队协同性 +20%（全局）
+		}
+		# 5. 舰队作战理论
+		{
+		navy_org_factor = 0.1                 # 海军组织度 +10%（全局）
+		spotting_chance = 0.05                # 索敌速度 +5%（全局）
+		}
+		# 6. 护航力量经验
+		{
+		experience_gain_navy_unit_factor = 0.1   # 海军经验获取 +10%（全局）
+		}
+	}
+}
+
+# ============================================================
+# 路线2：马赛克杀伤链（USN）
+# ============================================================
+
+ql_prc_naval_mosaic_kill_chain = {
+	folder = naval
+	name = QL_GRAND_QL_PRC_NAVAL_MOSAIC_KILL_CHAIN
+	description = QL_GRAND_QL_PRC_NAVAL_MOSAIC_KILL_CHAIN_DESC
+	icon = GFX_ql_grand_naval_2
+	available = {
+			OR = {
+				original_tag = ENG
+				original_tag = GER
+				original_tag = ITA
+				original_tag = FRA
+				original_tag = POL
+				original_tag = JAP
+				original_tag = RAJ
+				original_tag = AST
+				original_tag = KOR
+				original_tag = USA
+			}
+	}
+	visible = {
+			OR = {
+				original_tag = ENG
+				original_tag = GER
+				original_tag = ITA
+				original_tag = FRA
+				original_tag = POL
+				original_tag = JAP
+				original_tag = RAJ
+				original_tag = AST
+				original_tag = KOR
+				original_tag = USA
+			}
+	}
+	xp_cost = 100
+	xp_type = navy
+	ai_will_do = { base = 1 }
+	tracks = { ql_prc_naval_surface_fleet ql_prc_naval_submarine_fleet ql_prc_naval_aviation ql_prc_naval_systems operations escort_ships }
+
+	# 顶栏：恶劣天气惩罚 -10%
+	navy_weather_penalty = -0.1               # 海军天气惩罚 -10%（全局）
+
+	milestones = {
+		# 1. 水面舰队：海军探测 +20%
+		{
+		naval_detection = 0.2                 # 海军探测 +20%（全局）
+		}
+		# 2. 水下舰队：潜艇 补给使用 -15%、鱼雷攻击 +10%
+		{
+		navy_fuel_consumption_factor = -0.15   # 海军燃料消耗 -15%（全局）
+		attack_submarine = {
+			torpedo_attack = 0.1              # 潜艇：鱼雷攻击 +10%（单位级/船）
+		}
+		}
+		# 3. 海军航空：舰队协同性 +15%、航母舰载机机动 +10%
+		{
+		naval_coordination = 0.15             # 舰队协同性 +15%（全局）
+		navy_carrier_air_agility_factor = 0.1 # 舰载机机动性 +10%（全局）
+		}
+		# 4. 海上体系：袭击运输船任务效率 +15%
+		{
+		convoy_raiding_efficiency_factor = 0.15   # 破交效率 +15%（全局）
+		}
+		# 5. 舰队作战理论
+		{
+		navy_org_factor = 0.1                 # 海军组织度 +10%（全局）
+		spotting_chance = 0.05                # 索敌速度 +5%（全局）
+		}
+		# 6. 护航力量经验
+		{
+		experience_gain_navy_unit_factor = 0.1   # 海军经验获取 +10%（全局）
+		}
+	}
+}
+
+
+# ============================================================
+# 路线3：区域威慑舰队（RN）
+# ============================================================
+
+ql_prc_naval_regional_deterrence = {
+	folder = naval
+	name = QL_GRAND_QL_PRC_NAVAL_REGIONAL_DETERRENCE
+	description = QL_GRAND_QL_PRC_NAVAL_REGIONAL_DETERRENCE_DESC
+	icon = GFX_ql_grand_naval_3
+	available = {
+			OR = {
+				original_tag = SOV
+			}
+	}
+	visible = {
+			OR = {
+				original_tag = SOV
+			}
+	}
+	xp_cost = 100
+	xp_type = navy
+	ai_will_do = { base = 1 }
+	tracks = { ql_prc_naval_surface_fleet ql_prc_naval_submarine_fleet ql_prc_naval_aviation ql_prc_naval_systems operations escort_ships }
+
+	# 顶栏：海军燃料消耗、屏卫舰防御
+	navy_fuel_consumption_factor = -0.1       # 海军燃料消耗 -10%（全局）
+	navy_screen_defence_factor = 0.1          # 屏卫舰防御力 +10%（全局）
+
+	milestones = {
+		# 1. 水面舰队：屏卫舰 导弹攻击 +10%、索敌速度 +10%
+		{
+		destroyer = {
+			hg_attack = 0.1                   # 驱逐舰：导弹攻击 +10%（单位级/船）
+		}
+		frigate = {
+			hg_attack = 0.1                   # 轻巡：导弹攻击 +10%（单位级/船）
+		}
+		spotting_chance = 0.1                 # 索敌速度 +10%（全局）
+		}
+		# 2. 水下舰队：潜艇 鱼雷/反潜攻击 +10%、海军探测 +10%
+		{
+		attack_submarine = {
+			torpedo_attack = 0.1              # 潜艇：鱼雷攻击 +10%（单位级/船）
+			sub_attack = 0.1                  # 潜艇：反潜攻击 +10%（单位级/船）
+		}
+		naval_detection = 0.1                 # 海军探测 +10%（全局）
+		}
+		# 3. 海军航空：舰队协同性 +15%、航母舰载机机动 +15%
+		{
+		naval_coordination = 0.15             # 舰队协同性 +15%（全局）
+		navy_carrier_air_agility_factor = 0.15   # 舰载机机动性 +15%（全局）
+		}
+		# 4. 海上体系：主力舰 组织度 +15
+		{
+		battleship = {
+			max_organisation = 15             # 战列舰：组织度 +15（单位级/船）
+		}
+		battle_cruiser = {
+			max_organisation = 15             # 战巡：组织度 +15（单位级/船）
+		}
+		cruiser = {
+			max_organisation = 15             # 重巡：组织度 +15（单位级/船）
+		}
+		}
+		# 5. 舰队作战理论
+		{
+		navy_org_factor = 0.1                 # 海军组织度 +10%（全局）
+		spotting_chance = 0.05                # 索敌速度 +5%（全局）
+		}
+		# 6. 护航力量经验
+		{
+		experience_gain_navy_unit_factor = 0.1   # 海军经验获取 +10%（全局）
+		}
+	}
+}

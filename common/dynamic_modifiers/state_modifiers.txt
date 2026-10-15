@@ -1,0 +1,1521 @@
+cartel_penalties = {
+	icon = "GFX_idea_cartels"
+	enable = {
+		is_cartel_nation = yes
+		NOT = { has_country_flag = CARTEL_defeated_the_cartels }
+	}
+
+	political_power_factor = CAR_political_power_factor # -0.25
+	corruption_cost_factor = CAR_corruption_cost_factor # -1.00
+	industry_free_repair_factor = CAR_industry_free_repair_factor # = -0.5
+	stability_factor = CAR_stability_factor # -0.20
+	conscription_factor = CAR_monthly_population # -0.20
+	MONTHLY_POPULATION = CAR_monthly_population # -0.20
+	army_morale_factor = CAR_army_morale_factor # -0.10
+	army_org_factor = CAR_army_org_factor # -0.10
+	tax_gain_multiplier_modifier = CAR_tax_gain_multiplier_modifier # -0.50
+	neutrality_drift = CAR_neutrality_drift
+}
+###China
+
+PRC_ningxia_hui_autonomous_region = {
+	icon = GFX_modifiers_PRC_ningxia_hui_autonomous_region
+	
+	enable = { 
+		CHI = {
+			controls_state = 1072
+		}
+	}
+	remove_trigger = {
+		CHI = {
+			THIS = {
+				is_controlled_by_ROOT_or_ally = no
+			}
+		}
+	}
+	state_production_speed_buildings_factor = 0.1
+	recruitable_population_factor = 0.02
+	local_building_slots = 1
+	local_supplies = 0.05
+	mobilization_speed = 0.1
+}
+PRC_tibet_autonomous_region = {
+	icon = GFX_modifiers_PRC_tibet_autonomous_region
+	
+	enable = { 
+		CHI = {
+			controls_state = 589
+		}
+	}
+	remove_trigger = {
+		CHI = {
+			THIS = {
+				is_controlled_by_ROOT_or_ally = no
+			}
+		}
+	}
+	state_resources_factor = 0.1
+	local_building_slots = -2
+	state_production_speed_buildings_factor = -0.05
+	local_supplies = 0.1
+}
+PRC_xinjiang_uygur_autonomous_region = {
+	icon = GFX_modifiers_PRC_xinjiang_uygur_autonomous_region
+	
+	enable = { 
+		CHI = {
+			controls_state = 592
+		}
+		NOT = {
+			CHI = {
+				has_country_flag = PRC_Xinjiang_Autonomy_exploded_flag
+			}
+		}
+	}
+	remove_trigger = {
+		CHI = {
+			THIS = {
+				is_controlled_by_ROOT_or_ally = no
+			}
+		}
+	}
+	state_resources_factor = 0.15
+	local_building_slots = 2
+	local_supplies = 0.05
+	mobilization_speed = 0.03
+}
+PRC_inner_mongolia_autonomous_region = {
+	icon = GFX_modifiers_PRC_inner_mongolia_autonomous_region
+	
+	enable = { 
+		CHI = {
+			controls_state = 556
+			controls_state = 1097
+		}
+	}
+	remove_trigger = {
+		CHI = {
+			THIS = {
+				is_controlled_by_ROOT_or_ally = no
+			}
+		}
+	}
+	state_production_speed_buildings_factor = 0.1
+	recruitable_population_factor = 0.02
+	local_building_slots = 1
+	local_supplies = 0.05
+	mobilization_speed = 0.1
+}
+PRC_guangxi_zhuang_autonomous_region = {
+	icon = GFX_modifiers_PRC_guangxi_zhuang_autonomous_region
+	
+	enable = { 
+		CHI = {
+			controls_state = 574
+		}
+	}
+	remove_trigger = {
+		CHI = {
+			THIS = {
+				is_controlled_by_ROOT_or_ally = no
+			}
+		}
+	}
+	state_production_speed_buildings_factor = 0.1
+	recruitable_population_factor = 0.02
+	local_building_slots = 1
+	local_supplies = 0.05
+	mobilization_speed = 0.1
+}
+PRC_beijing_city = {
+	icon = GFX_modifiers_PRC_beijing
+	enable = { 
+		CHI = {
+			controls_state = 547
+		}
+	}
+	remove_trigger = {
+		CHI = {
+			THIS = {
+				is_controlled_by_ROOT_or_ally = no
+			}
+		}
+	}
+	state_production_speed_buildings_factor = 0.15
+	local_building_slots = 5
+	local_supplies = 0.1
+	mobilization_speed = 0.1
+}
+PRC_tianjin_city = {
+	icon = GFX_modifiers_PRC_tianjin
+	enable = { 
+		CHI = {
+			controls_state = 548
+		}
+	}
+	remove_trigger = {
+		CHI = {
+			THIS = {
+				is_controlled_by_ROOT_or_ally = no
+			}
+		}
+	}
+	state_production_speed_buildings_factor = 0.15
+	local_building_slots = 5
+	local_supplies = 0.1
+	mobilization_speed = 0.1
+}
+PRC_chongqing_city = {
+	icon = GFX_modifiers_PRC_chongqing
+	enable = { 
+		CHI = {
+			controls_state = 583
+		}
+	}
+	remove_trigger = {
+		CHI = {
+			THIS = {
+				is_controlled_by_ROOT_or_ally = no
+			}
+		}
+	}
+	state_production_speed_buildings_factor = 0.15
+	local_building_slots = 5
+	local_supplies = 0.1
+	mobilization_speed = 0.1
+}
+PRC_shanghai_city = {
+	icon = GFX_modifiers_PRC_shanghai
+	enable = { 
+		CHI = {
+			controls_state = 540
+		}
+	}
+	remove_trigger = {
+		CHI = {
+			THIS = {
+				is_controlled_by_ROOT_or_ally = no
+			}
+		}
+	}
+	state_production_speed_buildings_factor = 0.15
+	local_building_slots = 5
+	local_supplies = 0.1
+	mobilization_speed = 0.1
+}
+PRC_xiongan_city = {
+	icon = GFX_modifiers_PRC_xiongan
+	enable = { 
+		CHI = {
+			controls_state = 549
+		}
+	}
+	remove_trigger = {
+		CHI = {
+			THIS = {
+				is_controlled_by_ROOT_or_ally = no
+			}
+		}
+	}
+	state_production_speed_buildings_factor = 0.15
+	local_building_slots = 5
+	local_supplies = 0.1
+	mobilization_speed = 0.1
+}
+PRC_hong_kong = {
+	icon = GFX_modifiers_PRC_hong_kong
+	
+	enable = { 
+		CHI = {
+			controls_state = 1106
+		}
+	}
+	remove_trigger = {
+		CHI = {
+			THIS = {
+				is_controlled_by_ROOT_or_ally = no
+			}
+		}
+	}
+	can_master_build_for_us = 0
+	state_production_speed_buildings_factor = 0.25
+	recruitable_population_factor = -10
+	state_resources_factor = -1
+	local_factories = -1
+}
+PRC_macau = {
+	icon = GFX_modifiers_PRC_macau
+	
+	enable = { 
+		CHI = {
+			controls_state = 595
+		}
+	}
+	remove_trigger = {
+		CHI = {
+			THIS = {
+				is_controlled_by_ROOT_or_ally = no
+			}
+		}
+	}
+	can_master_build_for_us = 0
+	state_production_speed_buildings_factor = 0.25
+	recruitable_population_factor = -10
+	state_resources_factor = -1
+	local_factories = -1
+}
+PRC_taiwan = {
+	icon = GFX_modifiers_PRC_taiwan
+	
+	enable = { 
+		CHI = {
+			controls_state = 598
+		}
+	}
+	remove_trigger = {
+		CHI = {
+			THIS = {
+				is_controlled_by_ROOT_or_ally = no
+			}
+		}
+	}
+	can_master_build_for_us = 0
+	state_production_speed_buildings_factor = 0.25
+	recruitable_population_factor = -10
+	state_resources_factor = -1
+	local_factories = -1
+}
+CHI_beijing = {
+	icon = GFX_chi_beijing
+	
+	enable = { 
+		CHI = {
+			controls_state = 547
+		}
+	}
+	remove_trigger = {
+		CHI = {
+			THIS = {
+				is_controlled_by_ROOT_or_ally = no
+			}
+		}
+	}
+	state_production_speed_buildings_factor = CHI_capital_production_speed_buildings
+	state_productivity_growth_modifier = CHI_capital_productivity_growth
+	local_building_slots_factor = CHI_capital_global_building_slots
+	enemy_intel_network_gain_factor_over_occupied_tag = CHI_capital_enemy_intel_network_gain #修改敌方情报网络强度增益
+	local_intel_to_enemies = CHI_capital_local_intel_to_enemies #修改敌人的情报量
+}
+CHI_shanghai = { #浦东新区
+	icon = GFX_chi_shanghai
+	
+	enable = { 
+		CHI = {
+			controls_state = 540
+		}
+	}
+	remove_trigger = {
+		CHI = {
+			THIS = {
+				is_controlled_by_ROOT_or_ally = no
+			}
+		}
+	}
+	state_production_speed_buildings_factor = CHI_Pudong_New_Area_production_speed_buildings
+	state_productivity_growth_modifier = CHI_Pudong_New_Area_productivity_growth
+	state_production_speed_infrastructure_factor = CHI_Pudong_New_Area_building_slots
+}
+CHI_hebei = {
+	icon = GFX_chi_hebei
+	
+	enable = { 
+		CHI = {
+			AND = {
+				controls_state = 434
+				controls_state = 597
+			}
+		}
+	}
+	remove_trigger = {
+		CHI = {
+			THIS = {
+				is_controlled_by_ROOT_or_ally = no
+			}
+		}
+	}
+	state_production_speed_infrastructure_factor = 0.30
+	state_production_speed_buildings_factor = 0.40
+	state_productivity_growth_modifier = 0.05
+}
+CHI_guangdong = {
+	icon = GFX_chi_guangdong
+	
+	enable = { 
+		CHI = {
+			AND = {
+				controls_state = 532
+				controls_state = 534
+			}
+		}
+	}
+	remove_trigger = {
+		CHI = {
+			THIS = {
+				is_controlled_by_ROOT_or_ally = no
+			}
+		}
+	}
+	state_production_speed_infrastructure_factor = 0.30
+	state_production_speed_buildings_factor = 1.05
+	state_productivity_growth_modifier = 0.25
+}
+CHI_shanxi = {
+	icon = GFX_chi_shanxi
+	
+	enable = { 
+		CHI = {
+			controls_state = 558
+		}
+	}
+	remove_trigger = {
+		CHI = {
+			THIS = {
+				is_controlled_by_ROOT_or_ally = no
+			}
+		}
+	}
+	state_production_speed_infrastructure_factor = 0.30
+	state_production_speed_buildings_factor = 0.50
+	state_productivity_growth_modifier = 0.10
+}
+CHI_henan = {
+	icon = GFX_chi_henan
+	
+	enable = { 
+		CHI = {
+			controls_state = 567
+		}
+	}
+	remove_trigger = {
+		CHI = {
+			THIS = {
+				is_controlled_by_ROOT_or_ally = no
+			}
+		}
+	}
+	state_production_speed_infrastructure_factor = 0.30
+	state_production_speed_buildings_factor = 0.60
+	state_productivity_growth_modifier = 0.20
+}
+CHI_shandong = {
+	icon = GFX_chi_shandong
+	
+	enable = { 
+		CHI = {
+			AND = {
+				controls_state = 435
+				controls_state = 544
+			}
+		}
+	}
+	remove_trigger = {
+		CHI = {
+			THIS = {
+				is_controlled_by_ROOT_or_ally = no
+			}
+		}
+	}
+	state_resources_factor = 0.10
+	state_production_speed_infrastructure_factor = 0.30
+	state_production_speed_buildings_factor = 0.45
+	state_productivity_growth_modifier = 0.15
+}
+CHI_liaoning = {
+	icon = GFX_chi_liaoning
+	
+	enable = { 
+		CHI = {
+			AND = {
+				controls_state = 552
+				controls_state = 1095
+			}
+		}
+	}
+	remove_trigger = {
+		CHI = {
+			THIS = {
+				is_controlled_by_ROOT_or_ally = no
+			}
+		}
+	}
+	state_production_speed_infrastructure_factor = 0.30
+	state_production_speed_buildings_factor = 0.45
+	state_productivity_growth_modifier = 0.15
+}
+CHI_jilin = {
+	icon = GFX_chi_jilin
+	
+	enable = { 
+		CHI = {
+			controls_state = 555
+		}
+	}
+	remove_trigger = {
+		CHI = {
+			THIS = {
+				is_controlled_by_ROOT_or_ally = no
+			}
+		}
+	}
+	state_production_speed_industrial_complex_factor = 0.10
+	state_productivity_growth_modifier = 0.10
+	local_factories = 0.20
+	state_resources_factor = 0.05
+}
+CHI_heilongjiang = {
+	icon = GFX_chi_heilongjiang
+	
+	enable = { 
+		CHI = {
+			AND = {
+				controls_state = 554
+				controls_state = 1096
+			}
+		}
+	}
+	remove_trigger = {
+		CHI = {
+			THIS = {
+				is_controlled_by_ROOT_or_ally = no
+			}
+		}
+	}
+	state_production_speed_industrial_complex_factor = 0.15
+	state_productivity_growth_modifier = 0.10
+	state_resources_factor = 0.10
+}
+CHI_jiangxi = {
+	icon = GFX_chi_jiangxi
+	
+	enable = { 
+		CHI = {
+			controls_state = 562
+		}
+	}
+	remove_trigger = {
+		CHI = {
+			THIS = {
+				is_controlled_by_ROOT_or_ally = no
+			}
+		}
+	}
+	state_production_speed_infrastructure_factor = 0.30
+	state_production_speed_buildings_factor = 0.50
+	state_productivity_growth_modifier = 0.10
+}
+CHI_hubei = {
+	icon = GFX_chi_hubei
+	
+	enable = { 
+		CHI = {
+			controls_state = 570
+		}
+	}
+	remove_trigger = {
+		CHI = {
+			THIS = {
+				is_controlled_by_ROOT_or_ally = no
+			}
+		}
+	}
+	state_production_speed_infrastructure_factor = 0.30
+	state_production_speed_buildings_factor = 0.50
+	state_productivity_growth_modifier = 0.30
+}
+CHI_hunan = {
+	icon = GFX_chi_hunan
+	
+	enable = { 
+		CHI = {
+			controls_state = 572
+		}
+	}
+	remove_trigger = {
+		CHI = {
+			THIS = {
+				is_controlled_by_ROOT_or_ally = no
+			}
+		}
+	}
+	state_resources_factor = 0.20
+	state_production_speed_infrastructure_factor = 0.30
+	state_production_speed_buildings_factor = 0.50
+	state_productivity_growth_modifier = 0.10
+}
+CHI_jiangsu = {
+	icon = GFX_chi_jiangsu
+	
+	enable = { 
+		CHI = {
+			controls_state = 541
+		}
+	}
+	remove_trigger = {
+		CHI = {
+			THIS = {
+				is_controlled_by_ROOT_or_ally = no
+			}
+		}
+	}
+	state_production_speed_infrastructure_factor = 0.30
+	state_production_speed_buildings_factor = 0.40
+	state_productivity_growth_modifier = 0.25
+}
+CHI_anhui = {
+	icon = GFX_chi_anhui
+	
+	enable = { 
+		CHI = {
+			controls_state = 564
+		}
+	}
+	remove_trigger = {
+		CHI = {
+			THIS = {
+				is_controlled_by_ROOT_or_ally = no
+			}
+		}
+	}
+	state_production_speed_infrastructure_factor = 0.30
+	state_production_speed_buildings_factor = 0.60
+	state_productivity_growth_modifier = 0.10
+}
+CHI_zhejiang = {
+	icon = GFX_chi_zhejiang
+	
+	enable = { 
+		CHI = {
+			controls_state = 538
+		}
+	}
+	remove_trigger = {
+		CHI = {
+			THIS = {
+				is_controlled_by_ROOT_or_ally = no
+			}
+		}
+	}
+	state_production_speed_infrastructure_factor = 0.30
+	state_production_speed_buildings_factor = 0.50
+	state_productivity_growth_modifier = 0.40
+}
+CHI_fujian = {
+	icon = GFX_chi_fujian
+	
+	enable = { 
+		CHI = {
+			controls_state = 537
+		}
+	}
+	remove_trigger = {
+		CHI = {
+			THIS = {
+				is_controlled_by_ROOT_or_ally = no
+			}
+		}
+	}
+	state_resources_factor = 0.20
+	state_production_speed_infrastructure_factor = 0.30
+	state_production_speed_buildings_factor = 0.40
+	state_productivity_growth_modifier = 0.20
+}
+CHI_gaoxiong = {
+	icon = GFX_modifiers_CHI_gaoxiong
+	enable = {
+		TAI = {
+			controls_state = 599
+		}
+	}
+	remove_trigger = {
+		TAI = {
+			THIS = {
+				is_controlled_by_ROOT_or_ally = no
+			}
+		}
+	}
+	state_production_speed_buildings_factor = 0.04
+	local_building_slots = 4
+	local_supplies = 0.05
+	local_manpower = 0.03
+	mobilization_speed = 0.05
+}
+CHI_taibei = {
+	icon = GFX_modifiers_CHI_taibei
+	enable = {
+		TAI = {
+			controls_state = 598
+		}
+	}
+	remove_trigger = {
+		TAI = {
+			THIS = {
+				is_controlled_by_ROOT_or_ally = no
+			}
+		}
+	}
+	state_production_speed_buildings_factor = 0.04
+	local_building_slots = 4
+	local_supplies = 0.05
+	local_manpower = 0.03
+	mobilization_speed = 0.05
+}
+CHI_taizhong = {
+	icon = GFX_modifiers_CHI_taizhong
+	enable = { 
+		TAI = {
+			controls_state = 1156
+		}
+	}
+	remove_trigger = {
+		TAI = {
+			THIS = {
+				is_controlled_by_ROOT_or_ally = no
+			}
+		}
+	}
+	state_production_speed_buildings_factor = 0.04
+	local_building_slots = 4
+	local_supplies = 0.05
+	local_manpower = 0.03
+	mobilization_speed = 0.05
+}
+
+###Minors
+micro_andorra = {
+	icon = GFX_modifiers_micro_andorra
+	
+	enable = { 
+		SPR = {
+			controls_state = 945
+		}
+	}
+	remove_trigger = {
+		SPR = {
+			THIS = {
+				is_controlled_by_ROOT_or_ally = no
+			}
+		}
+	}
+	recruitable_population_factor = -10
+	state_resources_factor = -1
+	local_factories = -1
+	state_production_speed_buildings_factor = 0.05
+	local_supplies = 0.05
+	disable_strategic_redeployment = 1
+}
+micro_san_marino = {
+	icon = GFX_modifiers_micro_san_marino
+	
+	enable = { 
+		ITA = {
+			controls_state = 948
+		}
+	}
+	remove_trigger = {
+		ITA = {
+			THIS = {
+				is_controlled_by_ROOT_or_ally = no
+			}
+		}
+	}
+	recruitable_population_factor = -10
+	state_resources_factor = -1
+	local_factories = -1
+	state_production_speed_buildings_factor = 0.05
+	local_supplies = 0.75
+	disable_strategic_redeployment = 1
+}
+micro_vatican_city = {
+	icon = GFX_modifiers_micro_vatican
+	
+	enable = { 
+		ITA = {
+			controls_state = 929
+		}
+	}
+	remove_trigger = {
+		ITA = {
+			THIS = {
+				is_controlled_by_ROOT_or_ally = no
+			}
+		}
+	}
+	recruitable_population_factor = -10
+	state_resources_factor = -1
+	local_factories = -1
+	disable_strategic_redeployment = 1
+	local_intel_to_enemies = -0.3
+	local_building_slots = -5
+}
+micro_liechtenstein = {
+	icon = GFX_modifiers_micro_liechtenstein
+	
+	enable = { 
+		SWI = {
+			controls_state = 947
+		}
+	}
+	remove_trigger = {
+		OR = {
+			SWI = {
+				THIS = {
+					is_controlled_by_ROOT_or_ally = no
+				}
+			}
+			GER = {
+				controls_state = 285
+			}
+		}
+	}
+	local_supplies = 0.1
+	mobilization_speed = 0.03
+	recruitable_population_factor = -10
+	state_resources_factor = -1
+	local_factories = -1
+	disable_strategic_redeployment = 1
+}
+micro_malta = {
+	icon = GFX_modifiers_micro_malta
+	
+	enable = { 
+		OR = {
+			FRA = {
+				controls_state = 85
+			}
+			ITA = {
+				controls_state = 85
+			}
+		}
+	}
+	remove_trigger = {
+		OR = {
+			ITA = {
+				THIS = {
+					is_controlled_by_ROOT_or_ally = no
+				}
+			}
+			FPR = {
+				THIS = {
+					is_controlled_by_ROOT_or_ally = yes
+				}
+			}
+		}
+	}
+	recruitable_population_factor = -10
+	state_resources_factor = -1
+	local_factories = -1
+	local_supplies = 0.1
+    state_production_speed_bunker_factor = 0.05
+	state_production_speed_coastal_bunker_factor = 0.05
+    enemy_attrition = 0.10
+	disable_strategic_redeployment = 1
+}
+
+###Spain
+SPR_andaluces_state = {
+	icon = GFX_SPR_Andalucía
+	enable = { always = yes }
+
+	local_building_slots_factor = SPR.SPR_andaluces_local^0
+	state_production_speed_buildings_factor = SPR.SPR_andaluces_local^1
+	state_resources_factor = SPR.SPR_andaluces_local^2
+	state_productivity_growth_modifier = SPR.SPR_andaluces_local^3
+}
+
+SPR_euskara_state = {
+	icon = GFX_SPR_Basque
+	enable = { always = yes }
+
+	local_building_slots_factor = SPR.SPR_euskara_local^0
+	state_production_speed_buildings_factor = SPR.SPR_euskara_local^1
+	state_resources_factor = SPR.SPR_euskara_local^2
+	state_productivity_growth_modifier = SPR.SPR_euskara_local^3
+}
+
+SPR_canaries_state = {
+	icon = GFX_SPR_Canary
+	enable = { always = yes }
+
+	local_building_slots_factor = SPR.SPR_canaries_local^0
+	state_production_speed_buildings_factor = SPR.SPR_canaries_local^1
+	state_resources_factor = SPR.SPR_canaries_local^2
+	state_productivity_growth_modifier = SPR.SPR_canaries_local^3
+}
+
+SPR_catalans_state = {
+	icon = GFX_SPR_Catalonia
+	enable = { always = yes }
+
+	local_building_slots_factor = SPR.SPR_catalans_local^0
+	state_production_speed_buildings_factor = SPR.SPR_catalans_local^1
+	state_resources_factor = SPR.SPR_catalans_local^2
+	state_productivity_growth_modifier = SPR.SPR_catalans_local^3
+}
+
+SPR_galegos_state = {
+	icon = GFX_SPR_Galicia
+	enable = { always = yes }
+
+	local_building_slots_factor = SPR.SPR_galegos_local^0
+	state_production_speed_buildings_factor = SPR.SPR_galegos_local^1
+	state_resources_factor = SPR.SPR_galegos_local^2
+	state_productivity_growth_modifier = SPR.SPR_galegos_local^3
+}
+
+###United Kingdom
+ENG_city_of_london = {
+	icon = GFX_modifiers_ENG_london
+	
+	enable = { 
+		ENG = {
+			controls_state = 13
+		}
+	}
+	remove_trigger = {
+		ENG = {
+			THIS = {
+				is_controlled_by_ROOT_or_ally = no
+			}
+		}
+	}
+	state_production_speed_buildings_factor = 0.1
+	local_building_slots = 3
+	local_factories = 0.25
+	local_supplies = 0.1
+}
+ENG_wales = {
+	icon = GFX_modifiers_ENG_wales
+	
+	enable = { 
+		ENG = {
+			controls_state = 16
+		}
+	}
+	remove_trigger = {
+		ENG = {
+			THIS = {
+				is_controlled_by_ROOT_or_ally = no
+			}
+		}
+	}
+	state_resources_factor = 0.1
+	local_building_slots = 1
+	state_production_speed_buildings_factor = -0.05
+	local_supplies = 0.1
+}
+ENG_scotland = {
+	icon = GFX_modifiers_ENG_scotland
+	
+	enable = { 
+		ENG = {
+			controls_state = 9
+		}
+	}
+	remove_trigger = {
+		ENG = {
+			THIS = {
+				is_controlled_by_ROOT_or_ally = no
+			}
+		}
+	}
+	state_resources_factor = 0.15
+	local_building_slots = 2
+	local_supplies = 0.05
+	mobilization_speed = 0.03
+}
+ENG_northern_ireland = {
+	icon = GFX_modifiers_ENG_northern_ireland
+	
+	enable = { 
+		ENG = {
+			controls_state = 17
+		}
+	}
+	remove_trigger = {
+		ENG = {
+			THIS = {
+				is_controlled_by_ROOT_or_ally = no
+			}
+		}
+	}
+	state_resources_factor = 0.05
+	state_production_speed_buildings_factor = -0.1
+	recruitable_population_factor = -0.01
+	local_building_slots = -2
+	local_supplies = 0.05
+}
+
+###United States
+USA_progop = {
+	icon = GFX_republican_party
+	remove_trigger = {
+		USA = { NOT = { has_idea = political_establishment } }
+	}
+
+	state_resources_factor = 0.10
+	state_production_speed_industrial_complex_factor = 0.15
+	state_production_speed_fossil_powerplant_factor = 0.10
+	local_factories = 0.3
+	army_defence_factor = 0.15
+	local_supplies = 0.10
+	state_resources_oil_factor = 0.05
+	state_production_speed_arms_factory_factor = 0.10
+	local_manpower = 0.05
+	army_attack_factor = 0.10
+	army_org = 5
+}
+
+USA_prodem = {
+	icon = GFX_democratic_party
+	remove_trigger = {
+		USA = { NOT = { has_idea = political_establishment } }
+	}
+
+	state_productivity_growth_modifier = 0.25
+	state_production_speed_buildings_factor = 0.10
+	state_production_speed_agriculture_district_factor = 0.10
+	local_factories = 0.2
+	state_resources_factor = 0.05
+	monthly_population = 0.02
+	local_supplies = 0.10
+	local_building_slots = 5
+	local_manpower = -0.15
+	local_intel_to_enemies = 0.20
+}
+
+USA_Alabama = {
+	icon = GFX_USA_Alabama
+	enable = { always = yes }
+
+	state_productivity_growth_modifier = 0.20
+	state_production_speed_air_base_factor = 0.10
+	state_production_speed_arms_factory_factor = 0.10
+	local_factories = 0.3
+	army_defence_factor = 0.15
+}
+
+USA_Alaska = {
+	icon = GFX_USA_Alaska
+	enable = { always = yes }
+
+	state_resources_factor = 0.15
+	state_resources_oil_factor = 0.05
+	state_production_speed_fossil_powerplant_factor = 0.10
+	local_factories = 0.2
+	army_defence_factor = 0.2
+}
+
+USA_Arizona = {
+	icon = GFX_USA_Arizona
+	enable = { always = yes }
+
+	state_resources_oil_factor = 0.05
+	state_resources_factor = 0.10
+	state_production_speed_fossil_powerplant_factor = 0.10
+}
+
+USA_Arkansas = {
+	icon = GFX_USA_Arkansas
+	enable = { always = yes }
+
+	state_resources_factor = 0.05
+	state_production_speed_agriculture_district_factor = 0.10
+	monthly_population = 0.02
+}
+
+USA_California = {
+	icon = GFX_USA_California
+	enable = { always = yes }
+
+	state_productivity_growth_modifier = 0.25
+	state_production_speed_buildings_factor = 0.10
+	local_factories = 0.3
+	local_manpower = -0.25
+	monthly_population = 0.02
+	local_intel_to_enemies = 0.25
+}
+
+USA_Colorado = {
+	icon = GFX_USA_Colorado
+	enable = { always = yes }
+
+	state_resources_factor = 0.05
+	state_productivity_growth_modifier = 0.15
+	monthly_population = 0.02
+	local_supplies = 0.10
+}
+
+USA_Connecticut = {
+	icon = GFX_USA_Connecticut
+	enable = { always = yes }
+
+	state_production_speed_industrial_complex_factor = 0.10
+	state_productivity_growth_modifier = 0.20
+	local_factories = 0.3
+	army_org = 10
+}
+
+USA_Delaware = {
+	icon = GFX_USA_Delaware
+	enable = { always = yes }
+
+	state_productivity_growth_modifier = 0.20
+	state_production_speed_industrial_complex_factor = 0.10
+	local_factories = 0.2
+	army_org = 10
+}
+
+USA_Florida = {
+	icon = GFX_USA_Florida
+	enable = { always = yes }
+
+	monthly_population = 0.02
+	local_building_slots_factor = -0.05
+	local_supplies = 0.10
+	resistance_growth = 0.15
+	local_factories = 0.3
+}
+
+USA_Georgia = {
+	icon = GFX_USA_Georgia
+	enable = { always = yes }
+
+	state_resources_rubber_factor = 0.05
+	monthly_population = 0.02
+	resistance_growth = 0.15
+	state_production_speed_agriculture_district_factor = 0.10
+}
+
+USA_Hawaii = {
+	icon = GFX_USA_Hawaii
+	enable = { always = yes }
+
+	army_speed_factor_for_controller = -0.5
+	army_defence_factor = 0.2
+	resistance_growth = 0.15
+	required_garrison_factor = 1
+	resistance_decay = -0.15
+}
+
+USA_Idaho = {
+	icon = GFX_USA_Idaho
+	enable = { always = yes }
+
+	state_production_speed_agriculture_district_factor = 0.10
+	state_resources_factor = 0.05
+	state_resources_steel_factor = 0.05
+	local_supplies = 0.10
+}
+
+USA_Illinois = {
+	icon = GFX_USA_Illinois
+	enable = { always = yes }
+
+	state_production_speed_buildings_factor = 0.10
+	state_production_speed_industrial_complex_factor = 0.10
+	state_productivity_growth_modifier = 0.25
+	local_factories = 0.3
+	local_factory_sabotage = 0.15
+}
+
+USA_Iowa = {
+	icon = GFX_USA_Iowa
+	enable = { always = yes }
+
+	state_production_speed_agriculture_district_factor = 0.15
+	local_supplies = 0.10
+	state_resources_factor = 0.10
+	monthly_population = 0.02
+}
+
+USA_Indiana = {
+	icon = GFX_USA_Indiana
+	enable = { always = yes }
+
+	state_production_speed_arms_factory_factor = 0.10
+	state_production_speed_industrial_complex_factor = 0.15
+	local_factories = 0.3
+	state_productivity_growth_modifier = 0.20
+}
+
+USA_Kansas = {
+	icon = GFX_USA_Kansas
+	enable = { always = yes }
+
+	state_production_speed_agriculture_district_factor = 0.20
+	state_productivity_growth_modifier = 0.10
+	local_factories = 0.3
+	monthly_population = 0.02
+}
+
+USA_Kentucky = {
+	icon = GFX_USA_Kentucky
+	enable = { always = yes }
+
+	state_resources_factor = 0.05
+	state_production_speed_industrial_complex_factor = 0.15
+	army_defence_factor = 0.2
+}
+
+USA_Louisiana = {
+	icon = GFX_USA_Louisiana
+	enable = { always = yes }
+
+	state_resources_oil_factor = 0.05
+	state_resources_factor = 0.10
+	state_production_speed_agriculture_district_factor = 0.10
+	local_factories = 0.2
+	army_defence_factor = 0.15
+}
+
+USA_Maine = {
+	icon = GFX_USA_Maine
+	enable = { always = yes }
+
+	state_resources_factor = 0.05
+	state_resource_cost_steel = -0.05
+	state_production_speed_agriculture_district_factor = 0.10
+	local_factories = 0.2
+}
+
+USA_Maryland = {
+	icon = GFX_USA_Maryland
+	enable = { always = yes }
+
+	state_productivity_growth_modifier = 0.20
+	local_building_slots = 4
+	state_production_speed_air_base_factor = 0.10
+	state_production_speed_nuclear_reactor_factor = 0.10
+	army_defence_factor = 0.15
+}
+
+USA_Massachusetts = {
+	icon = GFX_USA_Massachusetts
+	enable = { always = yes }
+
+	state_productivity_growth_modifier = 0.20
+	state_production_speed_buildings_factor = 0.10
+	local_factories = 0.3
+	monthly_population = 0.02
+	local_intel_to_enemies = 0.25
+}
+
+USA_Michigan = {
+	icon = GFX_USA_Michigan
+	enable = { always = yes }
+
+	state_production_speed_arms_factory_factor = 0.10
+	state_production_speed_industrial_complex_factor = 0.10
+	local_factories = 0.3
+	state_production_speed_rail_way_factor = 0.10
+	local_manpower = -0.25
+}
+
+USA_Minnesota = {
+	icon = GFX_USA_Minnesota
+	enable = { always = yes }
+
+	state_resources_factor = 0.05
+	state_production_speed_agriculture_district_factor = 0.10
+	state_resources_steel_factor = 0.05
+	local_factories = 0.2
+	army_attack_factor = 0.10
+}
+
+USA_Mississippi = {
+	icon = GFX_USA_Mississippi
+	enable = { always = yes }
+
+	state_production_speed_agriculture_district_factor = 0.15
+	state_resources_factor = 0.10
+	state_productivity_growth_modifier = 0.10
+	army_defence_factor = 0.10
+}
+
+USA_Missouri = {
+	icon = GFX_USA_Missouri
+	enable = { always = yes }
+
+	state_production_speed_industrial_complex_factor = 0.10
+	state_production_speed_rail_way_factor = 0.10
+	local_factories = 0.3
+	state_productivity_growth_modifier = 0.15
+	local_manpower = -0.25
+}
+
+USA_Montana = {
+	icon = GFX_USA_Montana
+	enable = { always = yes }
+
+	state_resources_factor = 0.10
+	state_resources_oil_factor = 0.10
+	state_resources_steel_factor = 0.10
+	state_production_speed_fossil_powerplant_factor = 0.10
+}
+
+USA_Nebraska = {
+	icon = GFX_USA_Nebraska
+	enable = { always = yes }
+
+	state_production_speed_agriculture_district_factor = 0.20
+	state_resources_factor = 0.10
+	monthly_population = 0.02
+	local_factories = 0.2
+}
+
+
+USA_Nevada = {
+	icon = GFX_USA_Nevada
+	enable = { always = yes }
+
+	state_resources_factor = 0.05
+	state_productivity_growth_modifier = 0.10
+	state_production_speed_fossil_powerplant_factor = 0.10
+	monthly_population = 0.02
+}
+
+USA_New_Hampshire = {
+	icon = GFX_USA_New_Hampshire
+	enable = { always = yes }
+
+	state_productivity_growth_modifier = 0.15
+	state_production_speed_industrial_complex_factor = 0.05
+	local_factories = 0.2
+	army_speed_factor_for_controller = -0.15
+}
+
+USA_New_Jersey = {
+	icon = GFX_USA_New_Jersey
+	enable = { always = yes }
+
+	state_productivity_growth_modifier = 0.20
+	state_production_speed_industrial_complex_factor = 0.15
+	local_factories = 0.3
+	local_building_slots = 4
+	army_attack_factor = 0.1
+}
+
+USA_New_Mexico = {
+	icon = GFX_USA_New_Mexico
+	enable = { always = yes }
+
+	state_resources_factor = 0.05
+	state_resources_oil_factor = 0.05
+	state_production_speed_nuclear_reactor_factor = 0.10
+	local_factories = 0.3
+	army_attack_factor = 0.10
+}
+
+USA_New_York = {
+	icon = GFX_USA_New_York
+	enable = { always = yes }
+
+	state_productivity_growth_modifier = 0.25
+	local_building_slots = 5
+	army_org = 10
+	local_intel_to_enemies = 0.25
+	state_production_speed_infrastructure_factor = 0.20
+}
+
+USA_North_Carolina = {
+	icon = GFX_USA_North_Carolina
+	enable = { always = yes }
+
+	state_production_speed_agriculture_district_factor = 0.05
+	state_productivity_growth_modifier = 0.15
+	local_factories = 0.2
+	local_supplies = 0.10
+}
+
+USA_North_Dakota = {
+	icon = GFX_USA_North_Dakota
+	enable = { always = yes }
+
+	state_production_speed_agriculture_district_factor = 0.15
+	state_resources_factor = 0.10
+	state_resources_oil_factor = 0.05
+	local_supplies = 0.10
+	monthly_population = 0.02
+}
+
+USA_Ohio = {
+	icon = GFX_USA_Ohio
+	enable = { always = yes }
+
+	state_production_speed_industrial_complex_factor = 0.15
+	state_production_speed_arms_factory_factor = 0.10
+	state_productivity_growth_modifier = 0.20
+	local_factories = 0.3
+}
+
+USA_Oklahoma = {
+	icon = GFX_USA_Oklahoma
+	enable = { always = yes }
+
+	state_resources_factor = 0.05
+	state_resources_oil_factor = 0.05
+	state_production_speed_agriculture_district_factor = 0.15
+	local_factories = 0.3
+	army_attack_factor = 0.10
+}
+
+USA_Oregon = {
+	icon = GFX_USA_Oregon
+	enable = { always = yes }
+
+	state_productivity_growth_modifier = 0.20
+	state_production_speed_fossil_powerplant_factor = 0.10
+	state_resources_factor = 0.05
+	local_supplies = 0.10
+}
+
+USA_Pennsylvania = {
+	icon = GFX_USA_Pennsylvania
+	enable = { always = yes }
+
+	state_resources_steel_factor = 0.40
+	state_production_speed_synthetic_refinery_factor = 0.10
+	local_supplies = 0.10
+	state_production_speed_industrial_complex_factor = 0.15
+}
+
+USA_Rhode_Island = {
+	icon = GFX_USA_Rhode_Island
+	enable = { always = yes }
+
+	state_productivity_growth_modifier = 0.10
+	state_production_speed_buildings_factor = 0.05
+	local_factories = 0.2
+	local_manpower = -0.15
+}
+
+USA_South_Carolina = {
+	icon = GFX_USA_South_Carolina
+	enable = { always = yes }
+
+	state_production_speed_agriculture_district_factor = 0.10
+	state_productivity_growth_modifier = 0.15
+	local_factories = 0.2
+	local_manpower = -0.10
+}
+
+USA_South_Dakota = {
+	icon = GFX_USA_South_Dakota
+	enable = { always = yes }
+
+	state_production_speed_agriculture_district_factor = 0.15
+	state_productivity_growth_modifier = 0.10
+	local_factories = 0.2
+	army_defence_factor = 0.15
+}
+
+USA_Tennessee = {
+	icon = GFX_USA_Tennessee
+	enable = { always = yes }
+
+	state_productivity_growth_modifier = 0.15
+	state_production_speed_arms_factory_factor = 0.10
+	local_factories = 0.3
+	local_building_slots = 4
+	army_speed_factor_for_controller = -0.15
+}
+
+USA_Texas = {
+	icon = GFX_USA_Texas
+	enable = { always = yes }
+
+	state_resources_oil_factor = 0.10
+	state_production_speed_fossil_powerplant_factor = 0.10
+	state_production_speed_industrial_complex_factor = 0.15
+}
+
+USA_Utah = {
+	icon = GFX_USA_Utah
+	enable = { always = yes }
+
+	state_productivity_growth_modifier = 0.15
+	state_production_speed_industrial_complex_factor = 0.10
+	local_factories = 0.3
+	state_resources_factor = 0.10
+}
+
+USA_Vermont = {
+	icon = GFX_USA_Vermont
+	enable = { always = yes }
+
+	state_production_speed_agriculture_district_factor = 0.15
+	state_productivity_growth_modifier = 0.10
+	local_factories = 0.2
+	monthly_population = 0.02
+}
+
+USA_Virginia = {
+	icon = GFX_USA_Virginia
+	enable = { always = yes }
+
+	state_production_speed_air_base_factor = 0.10
+	state_production_speed_nuclear_reactor_factor = 0.10
+	local_factories = 0.3
+	army_defence_factor = 0.15
+	state_production_speed_industrial_complex_factor = 0.15
+}
+
+USA_Washington = {
+	icon = GFX_USA_Washington
+	enable = { always = yes }
+
+	state_production_speed_nuclear_reactor_factor = 0.10
+	state_production_speed_air_base_factor = 0.10
+	state_productivity_growth_modifier = 0.25
+	army_defence_factor = 0.2
+	local_factories = 0.3
+}
+
+USA_Wisconsin = {
+	icon = GFX_USA_Wisconsin
+	enable = { always = yes }
+
+	state_productivity_growth_modifier = 0.20
+	state_production_speed_industrial_complex_factor = 0.10
+	local_factories = 0.3
+	state_production_speed_agriculture_district_factor = 0.10
+}
+
+USA_West_Virginia = {
+	icon = GFX_USA_West_Virginia
+	enable = { always = yes }
+
+	state_resources_factor = 0.10
+	state_resources_steel_factor = 0.05
+	state_production_speed_industrial_complex_factor = 0.15
+	local_supplies = 0.10
+	army_attack_factor = 0.10
+}
+
+USA_Wyoming = {
+	icon = GFX_USA_Wyoming
+	enable = { always = yes }
+
+	state_resources_factor = 0.10
+	state_resources_oil_factor = 0.10
+	state_production_speed_fossil_powerplant_factor = 0.10
+}
+
+encroaching_sahara = {
+	icon = GFX_encroaching_sahara
+	enable = { always = yes }
+
+	army_speed_factor = -0.10
+	monthly_population = -0.45
+	army_attack_factor = -0.10
+}

@@ -1,0 +1,571 @@
+﻿division_template = {
+	name = "Air Assault Brigade"
+
+	regiments = {
+		Para_Bat_ENG = { x = 0 y = 0 }
+		Para_Bat_ENG = { x = 0 y = 1 }
+		Para_Bat_ENG = { x = 0 y = 2 }
+		Para_Bat_ENG = { x = 0 y = 3 }
+		L_Inf_Bat = { x = 0 y = 4 }
+		Arty_Bat = { x = 1 y = 0 }
+	}
+}
+
+division_template = {
+	name = "Armoured Inf Brigade"
+
+	regiments = {
+		L_arm_Bat = { x = 0 y = 0 }
+		armor_Bat = { x = 0 y = 1 }
+		Arm_Inf_Bat = { x = 0 y = 2 }
+		Arm_Inf_Bat = { x = 0 y = 3 }
+		Mot_Inf_Bat = { x = 0 y = 4 }
+		SP_Arty_Bat = { x = 1 y = 0 } #added in 1st, 2nd & 26th Royal Artillery
+		Mech_Inf_Bat = { x = 2 y = 0 }
+		L_Inf_Bat = { x = 3 y = 0 }
+	}
+}
+
+division_template = {
+	name = "Inf Brigade"
+
+	regiments = {
+		L_Inf_Bat = { x = 0 y = 0 }
+		L_Inf_Bat = { x = 0 y = 1 }
+		L_Inf_Bat = { x = 0 y = 2 }
+		L_Inf_Bat = { x = 0 y = 3 }
+		L_Inf_Bat = { x = 0 y = 4 }
+		Arty_Bat = { x = 1 y = 0 } #added in 3rd, 4th, 103rd & 105th Royal artillery
+	}
+}
+
+division_template = {
+	name = "Small Inf Brigade with Recon"
+
+	regiments = {
+		L_Inf_Bat = { x = 0 y = 0 }
+		L_Inf_Bat = { x = 0 y = 1 }
+		L_Inf_Bat = { x = 0 y = 2 }
+		Mot_Inf_Bat = { x = 0 y = 2 }
+		Mot_Inf_Bat = { x = 0 y = 3 }
+	}
+}
+
+division_template = {
+	name = "Inf Brigade with Recon"
+
+	regiments = {
+		L_Inf_Bat = { x = 0 y = 0 }
+		L_Inf_Bat = { x = 0 y = 1 }
+		Mot_Inf_Bat = { x = 0 y = 2 }
+		Mot_Inf_Bat = { x = 0 y = 3 }
+		Mot_Inf_Bat = { x = 0 y = 4 }
+		Mot_Inf_Bat = { x = 1 y = 0 }
+		Mot_Inf_Bat = { x = 1 y = 1 }
+		Mot_Inf_Bat = { x = 1 y = 2 }
+		L_Inf_Bat = { x = 2 y = 0 }
+
+	}
+}
+
+division_template = {
+	name = "Guards"
+
+	regiments = {
+		L_Inf_Bat = { x = 0 y = 0 }
+	}
+
+}
+division_template = {
+	name = "Special Forces"
+
+	regiments = {
+		Special_Forces = { x = 0 y = 0 }
+	}
+
+	priority = 2
+}
+
+division_template = {
+	name = "Marine Brigade"
+
+	regiments = {
+		RM_Cdo_Bat_ENG = { x = 0 y = 0 }
+		RM_Cdo_Bat_ENG = { x = 0 y = 1 }
+		RM_Cdo_Bat_ENG = { x = 0 y = 2 }
+		L_Inf_Bat = { x = 0 y = 3 }
+		L_Inf_Bat = { x = 1 y = 0 }
+		Arty_Bat = { x = 1 y = 1 }
+	}
+}
+
+units = {
+
+	#ENG OOB -
+	#https://upload.wikimedia.org/wikipedia/commons/b/ba/UK_Army_2020.png
+	#https://en.wikipedia.org/wiki/Administrative_structure_of_the_field_forces_of_the_British_Army#1st_.28United_Kingdom.29_Division
+
+	#1st Armoured Div
+	division = {
+		name = "16th Air Assault Brigade"
+		location = 271
+		division_template = "Air Assault Brigade"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.01
+	}
+
+	#3 Uk Division
+	division = {
+		name = "1st Armoured Inf. Brigade"
+		location = 11471
+		division_template = "Armoured Inf Brigade"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "12th Armoured Inf. Brigade"
+		location = 6103
+		division_template = "Armoured Inf Brigade"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "20th Armoured Inf. Brigade"
+		location = 3355 #Paderborn
+		division_template = "Armoured Inf Brigade"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.01
+	}
+
+	#1 UK Division
+	division = {
+		name = "4th Inf Brigade"
+		location = 9332
+		division_template = "Small Inf Brigade with Recon"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "7th Inf Brigade"
+		location = 6237
+		division_template = "Inf Brigade with Recon"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "11th Inf Brigade"
+		location = 507
+		division_template = "Inf Brigade"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "38th Irish Brigade"
+		location = 3379
+		division_template = "Inf Brigade"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "42nd Inf Brigade"
+		location = 6335
+		division_template = "Inf Brigade"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "51st Inf Brigade"
+		location = 9392
+		division_template = "Inf Brigade with Recon"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "160th Inf Brigade"
+		location = 253
+		division_template = "Inf Brigade"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.01
+	}
+	#Guards
+	division = {
+		name = "1 Coldstream Guards"
+		location = 9239
+		division_template = "Guards"
+		start_experience_factor = 0.9
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "1 Irish Guards"
+		location = 11333
+		division_template = "Guards"
+		start_experience_factor = 0.9
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "Nijimegon Coy. Grenadier"
+		location = 11333
+		division_template = "Guards"
+		start_experience_factor = 0.9
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "NO 7 Coy. Coldsteam G."
+		location = 11333
+		division_template = "Guards"
+		start_experience_factor = 0.9
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "F Coy. Scotts Guards"
+		location = 11333
+		division_template = "Guards"
+		start_experience_factor = 0.9
+		start_equipment_factor = 0.01
+	}
+
+	#Special Forces
+	division = {
+		name = "21st SAS Regiment"
+		location = 3241
+		division_template = "Special Forces"
+		start_experience_factor = 0.9
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "22nd SAS Regiment"
+		location = 3241
+		division_template = "Special Forces"
+		start_experience_factor = 0.9
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "23rd SAS Regiment"
+		location = 11333
+		division_template = "Special Forces"
+		start_experience_factor = 0.9
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "Special Recon Regiment"
+		location = 9297
+		division_template = "Special Forces"
+		start_experience_factor = 0.9
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "3 Commando Bde"
+		location = 540
+		division_template = "Marine Brigade"
+		start_experience_factor = 0.9
+		start_equipment_factor = 0.01
+	}
+}
+
+instant_effect = {
+
+	add_equipment_to_stockpile = {
+		variant_name = "SA-80"
+		type = infantry_weapons_4 #SA-80
+		producer = SOV
+		amount = 4332
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "C4ISTAR"
+		type = cnc_equipment_5 #C4ISTAR
+		producer = ENG
+		amount = 1558
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "M72 LAW"
+		type = Anti_tank_2 #LAW
+		producer = USA
+		amount = 699
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Javelin"
+		type = Heavy_Anti_tank_2 #Javelin
+		producer = USA
+		amount = 102
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Starstreak"
+		type = Anti_Air_1 #Starstreak
+		producer = ENG
+		amount = 595
+	}
+
+	#Vehicles
+	add_equipment_to_stockpile = {
+		type = medium_tank_chassis_2
+		producer = ENG
+		amount = 227
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Jackal 2"
+		type = util_vehicle_6 #Jackal 2 & Jackal 2A
+		producer = ENG
+		amount = 330
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Foxhound"
+		type = util_vehicle_6 #Foxhound
+		producer = ENG
+		amount = 400
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Jackal"
+		type = util_vehicle_5 #Jackal
+		producer = ENG
+		amount = 200
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Mastiff"
+		type = util_vehicle_5 #mastiff
+		producer = ENG
+		amount = 420
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Ridgback - variant of mastiff"
+		type = util_vehicle_5 #Ridgback - variant of mastiff
+		producer = ENG
+		amount = 170
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "FV107 Scimitar"
+		type = medium_tank_destroyer_chassis_1 #FV107 Scimitar
+		producer = ENG
+		amount = 200
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "TPz Fuchs"
+		type = medium_tank_destroyer_chassis_1 #TPz Fuchs
+		amount = 8
+		producer = GER
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "FV510 Warrior"
+		type = medium_tank_flame_chassis_1 #FV510 Warrior
+		producer = ENG
+		amount = 400
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "FV430 Bulldog MK III"
+		type = medium_tank_amphibious_chassis_3 #FV430 Bulldog MK III
+		producer = ENG
+		amount = 880
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Warthog"
+		type = medium_tank_amphibious_chassis_3 #Warthog
+		amount = 105
+		producer = ENG
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "FV103 Spartan"
+		type = medium_tank_amphibious_chassis_1 #FV103 Spartan
+		producer = ENG
+		amount = 275
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "AS-90"
+		type = medium_tank_artillery_chassis_2 #AS-90
+		producer = ENG
+		amount = 89
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "L118 Light Gun"
+		type = artillery_1 #L118 Light Gun
+		producer = ENG
+		amount = 108 #+18 from air force. I dunno why they have 18 arty pieces...
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "M270B1 MLRS"
+		type = medium_tank_rocket_chassis_2 #M270B1 MLRS
+		producer = USA
+		amount = 35
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "FV4333 Stormer"
+		type = medium_tank_aa_chassis_0 #FV4333 Stormer
+		producer = ENG
+		amount = 60
+	}
+
+	#Aircraft
+	add_equipment_to_stockpile = {
+		variant_name = "AH-64D"
+		type = heavy_tank_chassis_2 #AH-64D
+		amount = 67
+		producer = USA
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "CH-47D Chinook"
+		type = transport_helicopter_2 #CH-47D Chinook
+		amount = 72
+		producer = USA
+		#version_name = "CH-47D Chinook"
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "AgustaWestland AW101"
+		type = transport_helicopter_2 #AgustaWestland AW101
+		producer = ITA
+		amount = 34
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "SA-330 Puma"
+		type = transport_helicopter_1 #Aerospatiale SA-330 Puma
+		producer = FRA
+		amount = 24
+		#version_name = "Aerospatiale SA-330 Puma"
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "UH-1 Iroquois"
+		type = transport_helicopter_1 #Bell UH-1 Iroquois
+		producer = USA
+		amount = 8
+		#version_name = "Bell UH-1 Iroquois"
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "AS350B Ecureuil"
+		type = transport_helicopter_1 #AS350B Ecureuil
+		amount = 8
+		#version_name = "AS350B Ecureuil"
+		producer = FRA
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "AS350B Ecureuil"
+		type = transport_helicopter_1 #AS350B Ecureuil
+		amount = 13
+		#version_name = "AS350B Ecureuil"
+		producer = FRA
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Sea King HU5"
+		type = transport_helicopter_1 #Sea King HU5
+		amount = 12
+		#version_name = "Sea King HU5"
+		producer = ENG
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "AW159 Wildcat"
+		type = heavy_tank_chassis_1 #AW159 Wildcat
+		producer = ENG
+		amount = 31
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Eurocopter AS565 Panther"
+		type = heavy_tank_chassis_1 #Eurocopter AS565 Panther
+		amount = 5
+		producer = FRA
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Lynx AH9A"
+		type = heavy_tank_chassis_1 #Lynx AH9A
+		producer = ENG
+		amount = 21
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "SA-342 Gazelle"
+		type = heavy_tank_chassis_0 #Aérospatiale SA-342 Gazelle
+		amount = 34
+		producer = FRA
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "AS350B Ecureuil"
+		type = transport_helicopter_1 #AS350B Ecureuil
+		amount = 25
+		producer = FRA
+		#version_name = "AS350B Ecureuil"
+	}
+
+	### Sealed Storage（封存）###
+
+	#封存装甲车/侦察车
+	add_equipment_to_stockpile = {
+		type = medium_tank_destroyer_chassis_0 #CVR(T)蝎式/弯刀（封存）
+		amount = 120
+		producer = ENG
+	}
+
+	#封存牵引火炮
+	add_equipment_to_stockpile = {
+		type = artillery_1 #L118 105轻炮（封存）
+		amount = 50
+		producer = ENG
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "FH-70"
+		type = artillery_1 #FH-70 155牵引炮（封存）
+		producer = ENG
+		amount = 40
+	}
+
+	#封存自行火炮
+	add_equipment_to_stockpile = {
+		variant_name = "Abbot"
+		type = medium_tank_artillery_chassis_0 #Abbot 105自行炮（封存）
+		amount = 60
+		producer = ENG
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "M109"
+		type = medium_tank_artillery_chassis_0 #M109老型自行炮（封存）
+		producer = USA
+		amount = 40
+	}
+
+	#封存防空
+	add_equipment_to_stockpile = {
+		variant_name = "Tracked Rapier"
+		type = medium_tank_aa_chassis_0 #Tracked Rapier防空车（封存）
+		amount = 40
+		producer = ENG
+	}
+
+	#封存反坦克导弹
+	add_equipment_to_stockpile = {
+		type = Anti_tank_1 #Swingfire老型反坦克导弹（封存）
+		amount = 60
+		producer = ENG
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "MILAN"
+		type = Anti_tank_1 #Milan老型反坦克导弹（封存）
+		producer = FRA
+		amount = 80
+	}
+
+	#封存运输车辆
+	add_equipment_to_stockpile = {
+		type = util_vehicle_2 #老式卡车（封存）
+		amount = 400
+		producer = ENG
+	}
+
+	#Reserve Stockpiles (Sealed)
+	add_equipment_to_stockpile = {
+		variant_name = "L1A1 SLR"
+		type = infantry_weapons_2 #L1A1 SLR（封存）
+		producer = ENG
+		amount = 150000
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Challenger 1"
+		type = medium_tank_chassis_1 #Challenger 1（封存）
+		producer = ENG
+		amount = 300
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "FV432"
+		type = medium_tank_amphibious_chassis_1 #FV432（封存）
+		producer = ENG
+		amount = 600
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Saxon"
+		type = medium_tank_amphibious_chassis_1 #Saxon（封存）
+		producer = ENG
+		amount = 250
+	}
+}

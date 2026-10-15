@@ -1,0 +1,7744 @@
+JAP_national_diet_category = {
+	JAP_stabilize_yen_crisis = {
+		icon = GFX_JAP_yen_crisis
+		priority = -1
+		available = {
+			has_idea = generic_world_wide_financial_crisis_1
+		}
+		visible = {
+			tag = JAP
+			has_idea = generic_world_wide_financial_crisis_1
+		}
+		ai_will_do = {
+			base = 100
+		}
+		fire_only_once = yes
+		cancel_if_not_visible = no
+		cost = 50
+		days_remove = 8
+		complete_effect = {
+		}
+		remove_effect = {
+			custom_effect_tooltip = SOV_stabilize_ruble_crisis_tt
+			hidden_effect = {
+				modify_timed_idea = {
+					idea = generic_world_wide_financial_crisis_1
+					days = -50
+				}
+			}
+		}
+	}
+	JAP_reduce_social_security_crisis = {
+		icon = GFX_JAP_yen_crisis
+		priority = -1
+		available = {
+			has_idea = generic_world_wide_financial_crisis_1
+		}
+		visible = {
+			tag = JAP
+			has_idea = generic_world_wide_financial_crisis_1
+		}
+		ai_will_do = {
+			base = 50
+		}
+		fire_only_once = yes
+		cancel_if_not_visible = no
+		custom_cost_text = 5_stability_25_pp_cost
+		custom_cost_trigger = {
+			has_political_power > 25
+		}
+		days_remove = 8
+		complete_effect = {
+			hidden_effect = {
+				add_stability = -0.05
+				add_political_power = -25
+			}
+			custom_effect_tooltip = SOV_stabilize_ruble_crisis_tt
+			hidden_effect = {
+				modify_timed_idea = {
+					idea = generic_world_wide_financial_crisis_1
+					days = -50
+				}
+			}
+		}
+		remove_effect = {
+			decrease_welfare = yes
+			if = {
+				limit = {
+					has_government = conservative
+				}
+				set_temp_variable = {
+					var = JAP_election_approval_rating_ldp_var_temp
+					value = -0.03
+				}
+				JAP_add_election_approval_rating_ldp = yes
+			}
+			else_if = {
+				limit = {
+					has_government = social_liberal
+				}
+				set_temp_variable = {
+					var = JAP_election_approval_rating_kdp_var_temp
+					value = -0.03
+				}
+				JAP_add_election_approval_rating_kdp = yes
+			}
+			else_if = {
+				limit = {
+					has_government = social_democrat
+				}
+				set_temp_variable = {
+					var = JAP_election_approval_rating_kdp_var_temp
+					value = -0.03
+				}
+				JAP_add_election_approval_rating_kdp = yes
+			}
+			else_if = {
+				limit = {
+					has_government = market_liberal
+				}
+				set_temp_variable = {
+					var = JAP_election_approval_rating_ino_var_temp
+					value = -0.03
+				}
+				JAP_add_election_approval_rating_ino = yes
+			}
+		}
+	}
+	JAP_inflation_reduction_campaign = {
+		available = {
+			JAP = {
+				has_completed_focus = JAP_provide_heavy_inflation_relief_packages
+			}
+			NOT = {
+				has_country_flag = jap_inflation_campaign
+			}
+		}
+		visible = {
+			always = yes
+			has_completed_focus = JAP_provide_heavy_inflation_relief_packages
+		}
+		fire_only_once = no
+		cost = 75
+		days_remove = 140
+		modifier = {
+			consumer_goods_factor = 0.025
+			expense_growth_factor = 0.15
+			inflation_monthly = -0.003
+			business_value_factor = 0.025
+			personal_value_factor = 0.025
+		}
+		remove_effect = {
+			clr_country_flag = jap_inflation_campaign
+			set_temp_variable = {
+				inflation_var_temp = -0.02
+			}
+			add_inflation = yes
+		}
+		complete_effect = {
+			set_temp_variable = {
+				var = income_var_temp
+				value = -45
+			}
+			add_income = yes
+			set_country_flag = jap_inflation_campaign
+		}
+	}
+	JAP_inflation_increase_campaign = {
+		available = {
+			JAP = {
+				has_completed_focus = JAP_provide_heavy_inflation_relief_packages
+			}
+			NOT = {
+				has_country_flag = jap_inflation_campaign
+			}
+		}
+		visible = {
+			always = yes
+			has_completed_focus = JAP_provide_heavy_inflation_relief_packages
+		}
+		fire_only_once = no
+		cost = 75
+		days_remove = 140
+		modifier = {
+			consumer_goods_factor = -0.025
+			expense_growth_factor = -0.15
+			inflation_monthly = 0.003
+			business_value_factor = -0.025
+			personal_value_factor = -0.025
+		}
+		remove_effect = {
+			clr_country_flag = jap_inflation_campaign
+			set_temp_variable = {
+				inflation_var_temp = 0.02
+			}
+			add_inflation = yes
+		}
+		complete_effect = {
+			set_temp_variable = {
+				var = income_var_temp
+				value = 45
+			}
+			add_income = yes
+			set_country_flag = jap_inflation_campaign
+		}
+	}
+	JAP_reduce_pressure_on_business = {
+		icon = GFX_JAP_yen_crisis
+		available = {
+		}
+		visible = {
+			has_completed_focus = JAP_ease_economic_burdens
+		}
+		fire_only_once = yes
+		cost = 100
+		days_remove = 75
+		modifier = {
+			consumer_goods_factor = 0.025
+			poverty_development_monthly = 0.005
+			business_value_factor = 0.075
+			income_growth_factor = 0.1
+		}
+		remove_effect = {
+		}
+		complete_effect = {
+			add_stability = -0.05
+		}
+		custom_cost_trigger = {
+			has_stability > 0.05
+		}
+		custom_cost_text = 5_stability_cost
+	}
+	JAP_new_contracts_keiretsu = {
+		icon = GFX_JAP_yen_crisis
+		available = {
+		}
+		visible = {
+		}
+		fire_only_once = no
+		days_re_enable = 50
+		days_remove = 75
+		modifier = {
+			consumer_goods_factor = 0.025
+			production_speed_buildings_factor = 0.05
+		}
+		remove_effect = {
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		complete_effect = {
+			add_political_power = -25
+			set_temp_variable = {
+				var = income_var_temp
+				value = -1
+			}
+			add_income = yes
+		}
+		custom_cost_trigger = {
+			check_variable = {
+				var = income_var
+				value = 1
+				compare = greater_than_or_equals
+			}
+			has_political_power > 25
+		}
+		custom_cost_text = dx_more_than_1B_and_25pp
+	}
+	JAP_turn_blind_eye = {
+		icon = GFX_JAP_yen_crisis
+		available = {
+		}
+		visible = {
+			NOT = {
+				OR = {
+					has_global_flag = JAP_japan_lost
+					has_global_flag = JAP_japan_victory
+				}
+			}
+		}
+		fire_only_once = no
+		cost = 25
+		days_re_enable = 50
+		days_remove = 50
+		modifier = {
+			income_growth_factor = 0.1
+			political_power_gain = -0.15
+		}
+		remove_effect = {
+			set_temp_variable = {
+				var = income_var_temp
+				value = 25
+			}
+			add_income = yes
+			set_temp_variable = {
+				var = poverty_development_var_temp
+				value = -0.05
+			}
+			add_poverty_development = yes
+			if = {
+				limit = {
+					has_government = conservative
+				}
+				set_temp_variable = {
+					var = JAP_election_approval_rating_ldp_var_temp
+					value = -0.03
+				}
+				JAP_add_election_approval_rating_ldp = yes
+			}
+			else_if = {
+				limit = {
+					has_government = social_liberal
+				}
+				set_temp_variable = {
+					var = JAP_election_approval_rating_kdp_var_temp
+					value = -0.03
+				}
+				JAP_add_election_approval_rating_kdp = yes
+			}
+			else_if = {
+				limit = {
+					has_government = social_democrat
+				}
+				set_temp_variable = {
+					var = JAP_election_approval_rating_kdp_var_temp
+					value = -0.03
+				}
+				JAP_add_election_approval_rating_kdp = yes
+			}
+			else_if = {
+				limit = {
+					has_government = market_liberal
+				}
+				set_temp_variable = {
+					var = JAP_election_approval_rating_ino_var_temp
+					value = -0.03
+				}
+				JAP_add_election_approval_rating_ino = yes
+			}
+		}
+		complete_effect = {
+		}
+	}
+	JAP_spatial_strategy = {
+		icon = GFX_JAP_yen_crisis
+		available = {
+		}
+		visible = {
+		}
+		fire_only_once = no
+		cost = 50
+		days_re_enable = 50
+		days_remove = 75
+		modifier = {
+			consumer_goods_factor = 0.05
+		}
+		remove_effect = {
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					NOT = {
+						OR = {
+							state = 645
+							state = 876
+						}
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					NOT = {
+						OR = {
+							state = 645
+							state = 876
+						}
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+			if = {
+				limit = {
+					has_country_flag = JAP_spatial_strategy_cool
+				}
+				random_owned_controlled_state = {
+					limit = {
+						is_core_of = ROOT
+						NOT = {
+							OR = {
+								state = 645
+								state = 876
+							}
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+				}
+			}
+			set_temp_variable = {
+				var = poverty_development_var_temp
+				value = 0.1
+			}
+			add_poverty_development = yes
+		}
+		complete_effect = {
+		}
+	}
+	JAP_invest_overcoming_demographic_decline = {
+		icon = GFX_JAP_yen_crisis
+		available = {
+		}
+		visible = {
+		}
+		fire_only_once = no
+		cost = 50
+		days_re_enable = 50
+		days_remove = 100
+		modifier = {
+			expense_growth_factor = 0.1
+			monthly_population = 0.1
+			poverty_development_monthly = 0.01
+			personal_value_factor = 0.05
+		}
+		remove_effect = {
+		}
+		complete_effect = {
+		}
+		custom_cost_trigger = {
+		}
+	}
+	JAP_trade_deals_taiwan = {
+		allowed = {
+			tag = JAP
+		}
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = JAP_japan_on_the_world_stage
+			}
+		}
+		icon = GFX_JAP_yen_crisis
+		available = {
+			tag = JAP
+			NOT = {
+				has_country_flag = JAP_economic_partnership_ongoing
+			}
+		}
+		targets = {
+			CHI
+		}
+		highlight_states = {
+			highlight_states_trigger = {
+				is_owned_by = FROM
+				is_capital = yes
+			}
+		}
+		modifier = {
+			consumer_goods_factor = -0.05
+			production_factory_efficiency_gain_factor = 0.05
+			income_growth_factor = 0.1
+			business_value_factor = 0.1
+		}
+		ai_will_do = {
+			base = 10
+		}
+		fire_only_once = yes
+		days_remove = 75
+		cost = 100
+		complete_effect = {
+			set_country_flag = JAP_economic_partnership_ongoing
+		}
+		remove_effect = {
+			CHI = {
+				random_owned_controlled_state = {
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+					add_extra_state_shared_building_slots = 1
+				}
+				random_owned_controlled_state = {
+					add_building_construction = {
+						type = arms_factory
+						level = 1
+						instant_build = yes
+					}
+					add_extra_state_shared_building_slots = 1
+				}
+				set_temp_variable = {
+					var = poverty_development_var_temp
+					value = 0.1
+				}
+				add_poverty_development = yes
+			}
+			clr_country_flag = JAP_economic_partnership_ongoing
+		}
+	}
+	JAP_trade_deals_australia = {
+		allowed = {
+			tag = JAP
+		}
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = JAP_japan_on_the_world_stage
+			}
+		}
+		icon = GFX_JAP_yen_crisis
+		available = {
+			tag = JAP
+			NOT = {
+				has_country_flag = JAP_economic_partnership_ongoing
+			}
+		}
+		targets = {
+			AST
+		}
+		highlight_states = {
+			highlight_states_trigger = {
+				is_owned_by = FROM
+				is_capital = yes
+			}
+		}
+		modifier = {
+			consumer_goods_factor = -0.05
+			production_factory_efficiency_gain_factor = 0.05
+			income_growth_factor = 0.1
+			business_value_factor = 0.1
+		}
+		ai_will_do = {
+			base = 10
+		}
+		fire_only_once = yes
+		days_remove = 75
+		cost = 100
+		complete_effect = {
+			set_country_flag = JAP_economic_partnership_ongoing
+		}
+		remove_effect = {
+			AST = {
+				random_owned_controlled_state = {
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+					add_extra_state_shared_building_slots = 1
+				}
+				random_owned_controlled_state = {
+					add_building_construction = {
+						type = arms_factory
+						level = 1
+						instant_build = yes
+					}
+					add_extra_state_shared_building_slots = 1
+				}
+				set_temp_variable = {
+					var = poverty_development_var_temp
+					value = 0.1
+				}
+				add_poverty_development = yes
+			}
+			clr_country_flag = JAP_economic_partnership_ongoing
+		}
+	}
+	JAP_trade_deals_korea = {
+		allowed = {
+			tag = JAP
+		}
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = JAP_japan_on_the_world_stage
+			}
+		}
+		icon = GFX_JAP_yen_crisis
+		available = {
+			tag = JAP
+			NOT = {
+				has_country_flag = JAP_economic_partnership_ongoing
+			}
+		}
+		targets = {
+			KOR
+		}
+		highlight_states = {
+			highlight_states_trigger = {
+				is_owned_by = FROM
+				is_capital = yes
+			}
+		}
+		modifier = {
+			consumer_goods_factor = -0.05
+			production_factory_efficiency_gain_factor = 0.05
+			income_growth_factor = 0.1
+			business_value_factor = 0.1
+		}
+		ai_will_do = {
+			base = 10
+		}
+		fire_only_once = yes
+		days_remove = 75
+		cost = 100
+		complete_effect = {
+			set_country_flag = JAP_economic_partnership_ongoing
+			KOR = {
+				add_timed_idea = {
+					idea = JAP_japan_cooperation_idea
+					days = 75
+				}
+			}
+		}
+		remove_effect = {
+			clr_country_flag = JAP_economic_partnership_ongoing
+		}
+	}
+	JAP_labor_reforms = {
+		available = {
+			set_temp_variable = {
+				var = JAP_ldp_liberals_influence_var_temp
+				value = 0.25
+			}
+			JAP_liberals_influence_greater_than_or_equals = yes
+		}
+		visible = {
+			has_completed_focus = JAP_new_era_for_japan
+		}
+		fire_only_once = yes
+		cost = 100
+		days_remove = 50
+		modifier = {
+		}
+		remove_effect = {
+			add_timed_idea = {
+				idea = JAP_labor_reform_ldp
+				days = 150
+			}
+			set_temp_variable = {
+				var = debt_var_temp
+				value = 10
+			}
+			add_debt = yes
+		}
+		complete_effect = {
+			set_temp_variable = {
+				var = JAP_ldp_liberals_var_temp
+				value = -0.05
+			}
+			JAP_add_influence_ldp_liberals = yes
+		}
+	}
+	JAP_post_covid_business_relief = {
+		available = {
+			set_temp_variable = {
+				var = JAP_ldp_centrists_influence_var_temp
+				value = 0.35
+			}
+			JAP_centrists_influence_greater_than_or_equals = yes
+		}
+		visible = {
+			has_completed_focus = JAP_new_era_for_japan
+		}
+		fire_only_once = yes
+		cost = 100
+		days_remove = 50
+		remove_effect = {
+			add_timed_idea = {
+				idea = JAP_post_covid_business_relief_ldp
+				days = 150
+			}
+			set_temp_variable = {
+				var = income_var_temp
+				value = 25
+			}
+			add_income = yes
+		}
+		complete_effect = {
+			set_temp_variable = {
+				var = JAP_ldp_centrists_var_temp
+				value = -0.05
+			}
+			JAP_add_influence_ldp_centrists = yes
+		}
+	}
+	JAP_tight_control_over_market = {
+		icon = GFX_JAP_tight_control_over_market
+		available = {
+			set_temp_variable = {
+				var = JAP_ldp_nationalists_influence_var_temp
+				value = 0.25
+			}
+			JAP_nationalists_influence_greater_than_or_equals = yes
+		}
+		visible = {
+			has_completed_focus = JAP_defeat_economic_inventory
+			has_country_flag = JAP_nationalists_ldp_enabled
+		}
+		fire_only_once = yes
+		cost = 100
+		days_remove = 75
+		modifier = {
+			business_value_factor = -0.15
+			misc_expense = 0.1
+		}
+		remove_effect = {
+			JAP_decrease_keiretsu_control = yes
+			set_temp_variable = {
+				var = income_var_temp
+				value = 25
+			}
+			add_income = yes
+		}
+		complete_effect = {
+			set_temp_variable = {
+				var = JAP_ldp_nationalists_var_temp
+				value = 0.05
+			}
+			JAP_add_influence_ldp_nationalists = yes
+		}
+	}
+	JAP_declare_economic_mobilization = {
+		icon = GFX_JAP_declare_economic_mobilisation
+		available = {
+			set_temp_variable = {
+				var = JAP_ldp_nationalists_influence_var_temp
+				value = 0.35
+			}
+			JAP_nationalists_influence_greater_than_or_equals = yes
+		}
+		visible = {
+			has_completed_focus = JAP_defeat_declare_martial_law
+			has_country_flag = JAP_nationalists_ldp_enabled
+		}
+		fire_only_once = yes
+		cost = 100
+		days_remove = 50
+		remove_effect = {
+			upgrade_economy_law = yes
+			set_temp_variable = {
+				var = income_var_temp
+				value = 45
+			}
+			add_income = yes
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		complete_effect = {
+			set_temp_variable = {
+				var = JAP_ldp_nationalists_var_temp
+				value = -0.05
+			}
+			JAP_add_influence_ldp_nationalists = yes
+		}
+	}
+	JAP_tax_credits_for_keiretsu = {
+		icon = GFX_JAP_tax_benefits_for_keiretsu
+		available = {
+			set_temp_variable = {
+				var = JAP_ldp_centrists_influence_var_temp
+				value = 0.25
+			}
+			JAP_centrists_influence_greater_than_or_equals = yes
+		}
+		visible = {
+			has_completed_focus = JAP_defeat_calm_down_keiretsu
+		}
+		fire_only_once = yes
+		cost = 100
+		days_remove = 50
+		modifier = {
+			business_value_factor = 0.15
+			consumer_goods_factor = -0.05
+			industrial_capacity_factory = 0.05
+			industrial_development_monthly = 0.005
+			misc_expense = 0.1
+		}
+		remove_effect = {
+		}
+		complete_effect = {
+			set_temp_variable = {
+				var = JAP_ldp_centrists_var_temp
+				value = 0.05
+			}
+			JAP_add_influence_ldp_centrists = yes
+		}
+	}
+	JAP_bureaucratic_national_projects = {
+		icon = GFX_JAP_bureaucratic_mobilisation_for_national_projects
+		available = {
+			NOT = {
+				has_country_flag = JAP_bureacratic_choice
+			}
+		}
+		visible = {
+			has_completed_focus = JAP_defeat_mobilization_of_bureaucracy
+			NOT = {
+				has_country_flag = JAP_bureacratic_choice
+			}
+		}
+		fire_only_once = yes
+		cost = 150
+		remove_effect = {
+		}
+		complete_effect = {
+			add_ideas = JAP_national_projects_idea
+			set_country_flag = JAP_bureacratic_choice
+			set_temp_variable = {
+				var = JAP_ldp_centrists_var_temp
+				value = 0.05
+			}
+			JAP_add_influence_ldp_centrists = yes
+		}
+	}
+	JAP_national_projects_enhancement = {
+		icon = GFX_JAP_enhance_national_projects
+		available = {
+			has_idea = JAP_national_projects_idea
+		}
+		visible = {
+			has_completed_focus = JAP_defeat_tightening_election_laws
+			NOT = {
+				has_country_flag = JAP_bureau_removal
+			}
+		}
+		fire_only_once = yes
+		cost = 100
+		remove_effect = {
+		}
+		complete_effect = {
+			swap_ideas = {
+				remove_idea = JAP_national_projects_idea
+				add_idea = JAP_national_projects_2_idea
+			}
+			set_temp_variable = {
+				var = JAP_ldp_centrists_var_temp
+				value = 0.05
+			}
+			JAP_add_influence_ldp_centrists = yes
+			set_country_flag = JAP_bureau_removal
+		}
+	}
+	JAP_cut_down_bureaucracy = {
+		icon = GFX_JAP_purge_the_bureaucracy
+		available = {
+			NOT = {
+				has_country_flag = JAP_bureacratic_choice
+			}
+		}
+		visible = {
+			has_completed_focus = JAP_defeat_mobilization_of_bureaucracy
+			NOT = {
+				has_country_flag = JAP_bureacratic_choice
+			}
+		}
+		fire_only_once = yes
+		cost = 150
+		remove_effect = {
+		}
+		complete_effect = {
+			add_ideas = JAP_bureaucratic_cut_down_idea
+			set_temp_variable = {
+				var = JAP_ldp_conservatives_var_temp
+				value = 0.05
+			}
+			JAP_add_influence_ldp_conservatives = yes
+			set_country_flag = JAP_bureacratic_choice
+		}
+	}
+	JAP_promote_young_bureaucrats = {
+		icon = GFX_JAP_promote_effective_bureaucrats
+		available = {
+			has_idea = JAP_bureaucratic_cut_down_idea
+		}
+		visible = {
+			has_completed_focus = JAP_defeat_tightening_election_laws
+			NOT = {
+				has_country_flag = JAP_bureau_removal
+			}
+		}
+		fire_only_once = yes
+		cost = 100
+		remove_effect = {
+		}
+		complete_effect = {
+			swap_ideas = {
+				remove_idea = JAP_bureaucratic_cut_down_idea
+				add_idea = JAP_new_japanese_bureaucrats_idea
+			}
+			set_temp_variable = {
+				var = JAP_ldp_conservatives_var_temp
+				value = 0.05
+			}
+			JAP_add_influence_ldp_conservatives = yes
+			set_country_flag = JAP_bureau_removal
+		}
+	}
+	JAP_special_rights_keiretsu = {
+		icon = GFX_JAP_special_rights_for_keiretsu
+		available = {
+			set_temp_variable = {
+				var = JAP_ldp_conservatives_influence_var_temp
+				value = 0.35
+			}
+			JAP_conservatives_influence_greater_than_or_equals = yes
+		}
+		visible = {
+			has_completed_focus = JAP_defeat_calm_down_keiretsu
+		}
+		fire_only_once = yes
+		cost = 75
+		days_remove = 75
+		remove_effect = {
+			JAP_decrease_keiretsu_control = yes
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+				}
+				add_extra_state_shared_building_slots = 3
+			}
+			set_temp_variable = {
+				var = industrial_development_var_temp
+				value = 0.1
+			}
+			add_industrial_development = yes
+		}
+		complete_effect = {
+			JAP_increase_keiretsu_control = yes
+			set_temp_variable = {
+				var = JAP_ldp_conservatives_var_temp
+				value = -0.05
+			}
+			JAP_add_influence_ldp_conservatives = yes
+		}
+	}
+	JAP_implementation_flexible_anti_corruption_practices = {
+		icon = GFX_JAP_implementation_of_flexible_anti_corruption_practices
+		available = {
+			set_temp_variable = {
+				var = JAP_ldp_liberals_influence_var_temp
+				value = 0.25
+			}
+			JAP_liberals_influence_greater_than_or_equals = yes
+		}
+		visible = {
+			has_completed_focus = JAP_defeat_strike_down_corruption
+		}
+		fire_only_once = yes
+		cost = 100
+		days_remove = 150
+		modifier = {
+			stability_factor = 0.1
+			consumer_goods_factor = -0.025
+			industrial_development_monthly = 0.005
+			society_development_monthly = 0.005
+			personal_value_factor = 0.05
+		}
+		remove_effect = {
+			set_temp_variable = {
+				var = poverty_development_var_temp
+				value = 0.1
+			}
+			add_poverty_development = yes
+			set_temp_variable = {
+				var = industrial_development_var_temp
+				value = 0.1
+			}
+			add_industrial_development = yes
+		}
+		complete_effect = {
+			set_temp_variable = {
+				var = JAP_ldp_liberals_var_temp
+				value = 0.05
+			}
+			JAP_add_influence_ldp_liberals = yes
+		}
+	}
+	JAP_conduct_interparty_conciliation_negotiations = {
+		icon = GFX_JAP_conduct_inter_party_conciliation_negotiations
+		available = {
+			set_temp_variable = {
+				var = JAP_ldp_liberals_influence_var_temp
+				value = 0.35
+			}
+			JAP_liberals_influence_greater_than_or_equals = yes
+		}
+		visible = {
+			has_completed_focus = JAP_defeat_government_of_national_unity
+		}
+		fire_only_once = yes
+		cost = 50
+		days_remove = 100
+		modifier = {
+			political_power_gain = 0.25
+			personal_value_factor = 0.1
+			business_value_factor = 0.1
+			production_speed_buildings_factor = 0.025
+			society_development_monthly = 0.01
+		}
+		remove_effect = {
+		}
+		complete_effect = {
+			set_temp_variable = {
+				var = JAP_ldp_liberals_var_temp
+				value = -0.05
+			}
+			JAP_add_influence_ldp_liberals = yes
+		}
+	}
+	JAP_promote_small_business = {
+		icon = GFX_JAP_small_business_promotion
+		available = {
+		}
+		visible = {
+			has_completed_focus = JAP_economy_new_era
+		}
+		fire_only_once = yes
+		cost = 100
+		days_remove = 150
+		remove_effect = {
+			JAP_decrease_economic_stagnation = yes
+			if = {
+				limit = {
+					NOT = {
+						has_completed_focus = JAP_party_discipline
+					}
+				}
+				set_temp_variable = {
+					var = JAP_ldp_liberals_var_temp
+					value = 0.05
+				}
+				JAP_add_influence_ldp_liberals = yes
+			}
+			set_temp_variable = {
+				inflation_var_temp = 0.02
+			}
+			add_inflation = yes
+			set_temp_variable = {
+				var = poverty_development_var_temp
+				value = 0.1
+			}
+			add_poverty_development = yes
+		}
+		modifier = {
+			business_value_factor = 0.075
+			consumer_goods_factor = -0.025
+			expense_growth_factor = 0.05
+			poverty_development_monthly = 0.005
+		}
+		complete_effect = {
+		}
+	}
+	JAP_gender_equality = {
+		icon = GFX_JAP_marriage_reform_dec
+		allowed = {
+			original_tag = JAP
+		}
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = JAP_stimulate_gender_equality
+			}
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 15
+		}
+		cost = 50
+		days_remove = 75
+		fire_only_once = yes
+		cancel_if_not_visible = yes
+		modifier = {
+			monthly_population = 0.075
+			personal_expense_factor = 0.025
+			personal_value_factor = 0.05
+			society_development_monthly = 0.01
+			production_speed_buildings_factor = 0.1
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = JAP_new_era_japan_dummy
+					add_idea = JAP_marriage_reform
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = JAP_new_era_japan_monthly_population_factor_dynamic
+					value = 0.05
+				}
+			}
+			set_temp_variable = {
+				var = society_development_var_temp
+				value = 0.1
+			}
+			add_society_development = yes
+			if = {
+				limit = {
+					NOT = {
+						has_completed_focus = JAP_party_discipline
+					}
+				}
+				set_temp_variable = {
+					var = JAP_ldp_liberals_var_temp
+					value = 0.05
+				}
+				JAP_add_influence_ldp_liberals = yes
+			}
+		}
+	}
+	JAP_cadres_rejuvination_dec = {
+		icon = GFX_JAP_internal_party_rejuvenation
+		available = {
+			NOT = {
+				has_idea = JAP_cadres_rejuvination_idea
+			}
+		}
+		visible = {
+			has_completed_focus = JAP_party_rejuvination
+		}
+		fire_only_once = yes
+		cost = 75
+		days_remove = 100
+		modifier = {
+			political_power_gain = -0.1
+			stability_weekly = -0.0025
+			personal_value_factor = 0.1
+			business_value_factor = 0.1
+			production_speed_buildings_factor = 0.025
+			society_development_monthly = 0.01
+			poverty_development_monthly = 0.01
+		}
+		remove_effect = {
+			set_temp_variable = {
+				var = JAP_ldp_liberals_var_temp
+				value = 0.10
+			}
+			JAP_add_influence_ldp_liberals = yes
+		}
+		complete_effect = {
+		}
+	}
+	JAP_support_veterans = {
+		icon = GFX_JAP_glorification_of_veterans
+		available = {
+		}
+		visible = {
+			has_completed_focus = JAP_support_for_veterans
+		}
+		fire_only_once = no
+		cost = 125
+		days_remove = 150
+		remove_effect = {
+			if = {
+				limit = {
+					NOT = {
+						has_completed_focus = JAP_party_discipline
+					}
+				}
+				set_temp_variable = {
+					var = JAP_ldp_conservatives_var_temp
+					value = 0.05
+				}
+				JAP_add_influence_ldp_conservatives = yes
+			}
+			set_temp_variable = {
+				var = military_development_var_temp
+				value = 0.1
+			}
+			add_military_development = yes
+		}
+		complete_effect = {
+		}
+		modifier = {
+			war_support_factor = 0.1
+			personal_value_factor = 0.05
+			military_development_monthly = 0.01
+			expense_growth_factor = 0.05
+		}
+	}
+	JAP_new_working_culture_conserv = {
+		icon = GFX_JAP_encouraging_a_new_working_culture
+		allowed = {
+			original_tag = JAP
+		}
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = JAP_harmony_labor_life
+			}
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 15
+		}
+		cost = 50
+		days_remove = 75
+		days_re_enable = 100
+		fire_only_once = yes
+		cancel_if_not_visible = yes
+		modifier = {
+			production_factory_efficiency_gain_factor = 0.05
+			production_factory_max_efficiency_factor = 0.05
+			production_factory_start_efficiency_factor = 0.05
+			poverty_development_monthly = 0.01
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = JAP_new_era_japan_dummy
+					add_idea = JAP_harmony_decision
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = JAP_new_era_japan_production_factory_max_efficiency_factor_dynamic_var
+					value = 0.025
+				}
+			}
+			set_temp_variable = {
+				var = society_development_var_temp
+				value = 0.1
+			}
+			add_society_development = yes
+			if = {
+				limit = {
+					NOT = {
+						has_completed_focus = JAP_party_discipline
+					}
+				}
+				set_temp_variable = {
+					var = JAP_ldp_conservatives_var_temp
+					value = 0.05
+				}
+				JAP_add_influence_ldp_conservatives = yes
+			}
+		}
+	}
+	JAP_promote_keiretsu_innovative_researches = {
+		icon = GFX_JAP_promote_innovative_keiretsu_research
+		available = {
+		}
+		visible = {
+			has_completed_focus = JAP_economy_new_era
+		}
+		fire_only_once = yes
+		cost = 125
+		days_remove = 150
+		remove_effect = {
+			JAP_decrease_keiretsu_control = yes
+			if = {
+				limit = {
+					NOT = {
+						has_completed_focus = JAP_party_discipline
+					}
+				}
+				set_temp_variable = {
+					var = JAP_ldp_centrists_var_temp
+					value = 0.05
+				}
+				JAP_add_influence_ldp_centrists = yes
+			}
+			set_temp_variable = {
+				inflation_var_temp = 0.02
+			}
+			add_inflation = yes
+		}
+		complete_effect = {
+		}
+		modifier = {
+			business_value_factor = 0.075
+			production_factory_efficiency_gain_factor = 0.025
+			production_factory_max_efficiency_factor = 0.05
+			research_speed_factor = 0.05
+			industrial_development_monthly = 0.005
+		}
+	}
+	JAP_stimulate_demographic_growth = {
+		icon = GFX_JAP_stimulate_demographic_growth
+		available = {
+		}
+		visible = {
+			has_completed_focus = JAP_defeat_glorify_traditional_values
+			check_variable = {
+				JAP_demographic < 3
+			}
+		}
+		fire_only_once = no
+		days_re_enable = 75
+		days_remove = 150
+		cost = 75
+		modifier = {
+			misc_expense = 0.25
+			poverty_development_monthly = 0.005
+			consumer_goods_factor = 0.075
+		}
+		remove_effect = {
+			JAP_decrease_aging_population = yes
+			set_temp_variable = {
+				var = poverty_development_var_temp
+				value = 0.05
+			}
+			add_poverty_development = yes
+			custom_effect_tooltip = SOV_decision_3_times_tt
+			hidden_effect = {
+				add_to_variable = {
+					var = JAP_demographic
+					value = 1
+				}
+			}
+		}
+		complete_effect = {
+		}
+	}
+	JAP_support_state_media = {
+		icon = GFX_JAP_support_state_media
+		available = {
+		}
+		visible = {
+			has_completed_focus = JAP_defeat_keep_an_eye_on_the_media
+			check_variable = {
+				JAP_media_support < 3
+			}
+		}
+		fire_only_once = no
+		days_remove = 30
+		days_re_enable = 25
+		cost = 75
+		remove_effect = {
+			add_popularity = {
+				ideology = authoritarian_democrat
+				popularity = 0.03
+			}
+			set_temp_variable = {
+				var = JAP_election_approval_rating_ldp_var_temp
+				value = 0.03
+			}
+			JAP_add_election_approval_rating_ldp = yes
+			add_war_support = 0.05
+			add_stability = 0.05
+			custom_effect_tooltip = SOV_decision_3_times_tt
+			hidden_effect = {
+				add_to_variable = {
+					var = JAP_media_support
+					value = 1
+				}
+			}
+		}
+		complete_effect = {
+		}
+	}
+	JAP_increase_financing_education = {
+		icon = GFX_JAP_increase_the_financing_of_education
+		allowed = {
+			original_tag = JAP
+		}
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = JAP_accessible_education
+			}
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 15
+		}
+		cost = 50
+		days_remove = 100
+		days_re_enable = 50
+		fire_only_once = no
+		cancel_if_not_visible = yes
+		modifier = {
+			misc_expense = 0.25
+			personal_value_factor = 0.075
+			society_development_monthly = 0.01
+			academic_development_monthly = 0.01
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			set_temp_variable = {
+				var = society_development_var_temp
+				value = 0.1
+			}
+			add_society_development = yes
+			set_temp_variable = {
+				var = academic_development_var_temp
+				value = 0.1
+			}
+			add_academic_development = yes
+		}
+	}
+	JAP_reestablish_yakuza_relationship = {
+		icon = GFX_JAP_restore_the_alliance_with_the_yakuza
+		available = {
+		}
+		visible = {
+			has_completed_focus = JAP_defeat_destroy_the_radicals
+		}
+		fire_only_once = yes
+		days_remove = 100
+		cost = 150
+		modifier = {
+		}
+		remove_effect = {
+			add_ideas = JAP_yakuza_alliance
+			set_temp_variable = {
+				var = JAP_ldp_centrists_var_temp
+				value = -0.05
+			}
+			JAP_add_influence_ldp_centrists = yes
+			set_temp_variable = {
+				var = JAP_ldp_liberals_var_temp
+				value = -0.05
+			}
+			JAP_add_influence_ldp_liberals = yes
+		}
+		complete_effect = {
+		}
+	}
+	JAP_increase_party_influence = {
+		icon = GFX_JAP_increase_the_influence_of_the_party_in_society	
+		available = {
+		}
+		visible = {
+			has_completed_focus = JAP_defeat_blame_the_opposition
+		}
+		fire_only_once = no
+		days_remove = 75
+		days_re_enable = 50
+		cost = 75
+		modifier = {
+			misc_expense = 0.15
+			consumer_goods_factor = -0.025
+			society_development_monthly = 0.005
+			poverty_development_monthly = 0.005
+			business_value_factor = 0.05
+			personal_value_factor = 0.05
+		}
+		remove_effect = {
+			add_popularity = {
+				ideology = authoritarian_democrat
+				popularity = 0.025
+			}
+			set_temp_variable = {
+				var = JAP_election_approval_rating_ldp_var_temp
+				value = 0.025
+			}
+			JAP_add_election_approval_rating_ldp = yes
+		}
+		complete_effect = {
+		}
+	}
+	JAP_promote_small_government = {
+		icon = GFX_JAP_promote_small_government
+		available = {
+		}
+		visible = {
+			has_completed_focus = JAP_small_government
+		}
+		fire_only_once = no
+		days_remove = 100
+		days_re_enable = 50
+		cost = 75
+		modifier = {
+			misc_expense = -0.15
+			political_power_factor = -0.15
+			industrial_capacity_factory = 0.025
+			society_development_monthly = 0.005
+			poverty_development_monthly = 0.005
+			business_value_factor = 0.1
+			personal_value_factor = 0.1
+		}
+		remove_effect = {
+		}
+		complete_effect = {
+		}
+	}
+	JAP_put_our_mayors = {
+		icon = GFX_JAP_promote_our_mayor_in_the_regions
+		available = {
+		}
+		visible = {
+			has_completed_focus = JAP_legacy_of_ldp
+		}
+		fire_only_once = yes
+		days_remove = 40
+		cost = 25
+		modifier = {
+			misc_expense = 0.15
+			society_development_monthly = 0.01
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					has_government = social_liberal
+				}
+				add_popularity = {
+					ideology = social_liberal
+					popularity = 0.05
+				}
+			}
+			else_if = {
+				limit = {
+					has_government = social_democrat
+				}
+				add_popularity = {
+					ideology = social_democrat
+					popularity = 0.05
+				}
+			}
+			else_if = {
+				limit = {
+					has_government = market_liberal
+				}
+				add_popularity = {
+					ideology = market_liberal
+					popularity = 0.05
+				}
+			}
+			set_temp_variable = {
+				var = society_development_var_temp
+				value = 0.1
+			}
+			add_society_development = yes
+		}
+		complete_effect = {
+		}
+	}
+	JAP_break_keiretsu_control = {
+		icon = GFX_JAP_destroy_keiretsus_control
+		available = {
+		}
+		visible = {
+			has_completed_focus = JAP_new_tax_system
+		}
+		fire_only_once = yes
+		cost = 100
+		days_remove = 75
+		remove_effect = {
+			JAP_decrease_keiretsu_control = yes
+			JAP_decrease_economic_stagnation = yes
+			set_temp_variable = {
+				var = industrial_development_var_temp
+				value = 0.1
+			}
+			add_industrial_development = yes
+			set_temp_variable = {
+				var = poverty_development_var_temp
+				value = 0.1
+			}
+			add_poverty_development = yes
+		}
+		complete_effect = {
+		}
+	}
+	JAP_cement_japanese_capitalism = {
+		icon = GFX_JAP_cement_japanese_face
+		available = {
+			has_country_flag = JAP_new_economic_drive_flag
+			has_country_flag = JAP_reorganize_spatial_strategy_flag
+			has_country_flag = JAP_accelerated_digitalization_flag
+			has_country_flag = JAP_strict_corp_culture_flag
+		}
+		visible = {
+			has_completed_focus = JAP_defeat_capitalism_with_a_japanese_face
+		}
+		fire_only_once = yes
+		cost = 150
+		days_remove = 100
+		modifier = {
+		}
+		remove_effect = {
+			JAP_decrease_economic_stagnation = yes
+			hidden_effect = {
+				remove_economy_types = yes
+				add_ideas = ZZZ_collective_capitalism_defeat
+			}
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = upgrade_economy_type_tt
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ZZZ_collective_capitalism
+					add_idea = ZZZ_collective_capitalism_defeat
+				}
+			}
+			hidden_effect = {
+				country_event = {
+					id = jap.190
+					days = 15
+				}
+			}
+			if = {
+				limit = {
+					has_country_flag = JAP_digitalization_ishibadef_flag
+				}
+				add_timed_idea = {
+					idea = JAP_digitalization_ishibadef
+					days = 350
+				}
+				set_temp_variable = {
+					var = poverty_development_var_temp
+					value = 0.05
+				}
+				add_poverty_development = yes
+				set_temp_variable = {
+					var = society_development_var_temp
+					value = 0.05
+				}
+				add_society_development = yes
+			}
+			if = {
+				limit = {
+					has_country_flag = JAP_digitalization_ishibadef2_flag
+				}
+				add_timed_idea = {
+					idea = JAP_digitalization_ishibadef2
+					days = 350
+				}
+				set_temp_variable = {
+					var = poverty_development_var_temp
+					value = 0.15
+				}
+				add_poverty_development = yes
+				set_temp_variable = {
+					var = society_development_var_temp
+					value = 0.05
+				}
+				add_society_development = yes
+			}
+		}
+		complete_effect = {
+		}
+	}
+	JAP_accelerated_digitalization = {
+		icon = GFX_JAP_accelerated_digitalization
+		available = {
+			has_completed_focus = JAP_defeat_economic_inventory
+		}
+		visible = {
+			has_completed_focus = JAP_defeat_capitalism_with_a_japanese_face
+		}
+		fire_only_once = yes
+		cost = 50
+		days_remove = 120
+		modifier = {
+			research_speed_factor = 0.1
+			business_value_factor = 0.2
+			personal_value_factor = 0.2
+			expense_growth_factor = 0.15
+			industrial_capacity_factory = 0.025
+		}
+		remove_effect = {
+			set_country_flag = JAP_accelerated_digitalization_flag
+		}
+		complete_effect = {
+			country_event = {
+				id = jap.189
+			}
+			custom_effect_tooltip = tooltip_event_choice_option_1
+			event_option_tooltip = jap.189.a
+			custom_effect_tooltip = tooltip_event_choice_option_2
+			event_option_tooltip = jap.189.b
+		}
+	}
+	JAP_implement_strict_corporate_culture = {
+		icon = GFX_JAP_implement_strict_corporate_culture
+		available = {
+			has_completed_focus = JAP_defeat_forced_nationalization
+		}
+		visible = {
+			has_completed_focus = JAP_defeat_capitalism_with_a_japanese_face
+		}
+		fire_only_once = yes
+		cost = 100
+		days_remove = 50
+		modifier = {
+		}
+		remove_effect = {
+			set_country_flag = JAP_strict_corp_culture_flag
+			if = {
+				limit = {
+					has_idea = medium_safety
+				}
+				add_timed_idea = {
+					idea = JAP_strict_corporate_culture_mediumsafety
+					days = 720
+				}
+				random_owned_controlled_state = {
+					limit = {
+						is_core_of = ROOT
+						NOT = {
+							OR = {
+								has_state_category = metropolis 
+								has_state_category = conurbation 
+								has_state_category = megalopolis 
+							}
+						}
+					}
+					add_building_construction = {
+						type = office_park
+						level = 2
+						instant_build = yes
+					}
+					add_extra_state_shared_building_slots = 3
+				}
+				random_owned_controlled_state = {
+					limit = {
+						is_core_of = ROOT
+						NOT = {
+							OR = {
+								has_state_category = metropolis 
+								has_state_category = conurbation 
+								has_state_category = megalopolis 
+							}
+						}
+					}
+					add_building_construction = {
+						type = office_park
+						level = 2
+						instant_build = yes
+					}
+					add_extra_state_shared_building_slots = 3
+				}
+			}
+			if = {
+				limit = {
+					has_idea = high_safety
+				}
+				add_timed_idea = {
+					idea = JAP_strict_corporate_culture_highsafety
+					days = 720
+				}
+				random_owned_controlled_state = {
+					limit = {
+						is_core_of = ROOT
+						NOT = {
+							OR = {
+								has_state_category = metropolis 
+								has_state_category = conurbation 
+								has_state_category = megalopolis 
+							}
+						}
+					}
+					add_building_construction = {
+						type = office_park
+						level = 1
+						instant_build = yes
+					}
+					add_extra_state_shared_building_slots = 2
+				}
+			}
+			if = {
+				limit = {
+					has_idea = higher_safety
+				}
+				add_timed_idea = {
+					idea = JAP_strict_corporate_culture_highersafety
+					days = 720
+				}
+			}
+			custom_effect_tooltip = JAP_less_worker_rights
+		}
+		complete_effect = {
+		}
+	}
+	JAP_new_economic_drive = {
+		icon = GFX_JAP_new_economic_drive
+		available = {
+		}
+		visible = {
+			has_completed_focus = JAP_defeat_capitalism_with_a_japanese_face
+		}
+		fire_only_once = yes
+		cost = 100
+		days_remove = 75
+		modifier = {
+		}
+		remove_effect = {
+			JAP_decrease_economic_stagnation = yes
+			custom_effect_tooltip = tooltip_white_line
+			add_timed_idea = {
+				idea = JAP_new_economic_drive_idea
+				days = 120
+			}
+			custom_effect_tooltip = SOV_after_this_idea_tooltip
+			effect_tooltip = {
+				add_ideas = JAP_new_economic_drive_2_idea
+			}
+			custom_effect_tooltip = tooltip_white_line
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					NOT = {
+						OR = {
+							has_state_category = metropolis 
+							has_state_category = conurbation 
+							has_state_category = megalopolis 
+						}
+					}
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+				increase_state_category = yes
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					NOT = {
+						OR = {
+							has_state_category = metropolis 
+							has_state_category = conurbation 
+							has_state_category = megalopolis 
+						}
+					}
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+				increase_state_category = yes
+			}
+			set_country_flag = JAP_new_economic_drive_flag
+		}
+		complete_effect = {
+		}
+	}
+	JAP_reorganize_spatial_strategy = {
+		icon = GFX_JAP_spatial_strategy_reorganisation
+		available = {
+		}
+		visible = {
+			has_completed_focus = JAP_defeat_capitalism_with_a_japanese_face
+		}
+		fire_only_once = yes
+		cost = 75
+		days_remove = 50
+		modifier = {
+			consumer_goods_factor = 0.05
+		}
+		remove_effect = {
+			custom_effect_tooltip = JAP_spatial_reorganization_tt
+			custom_effect_tooltip = tooltip_white_line
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					NOT = {
+						OR = {
+							state = 645
+							state = 876
+						}
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					NOT = {
+						OR = {
+							state = 645
+							state = 876
+						}
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					NOT = {
+						OR = {
+							state = 645
+							state = 876
+						}
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					NOT = {
+						OR = {
+							has_state_category = metropolis 
+							has_state_category = conurbation 
+							has_state_category = megalopolis 
+						}
+					}
+				}
+				increase_state_category = yes
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					NOT = {
+						OR = {
+							has_state_category = metropolis 
+							has_state_category = conurbation 
+							has_state_category = megalopolis 
+						}
+					}
+				}
+				increase_state_category = yes
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					NOT = {
+						OR = {
+							has_state_category = metropolis 
+							has_state_category = conurbation 
+							has_state_category = megalopolis 
+						}
+					}
+				}
+				increase_state_category = yes
+			}
+			set_country_flag = JAP_spatial_strategy_cool
+			set_country_flag = JAP_reorganize_spatial_strategy_flag
+		}
+		complete_effect = {
+		}
+	}
+	JAP_ishiba_social_welfare_dec = {
+		icon = GFX_JAP_ishiba_social_welfare
+		available = {
+			has_completed_focus = JAP_defeat_strike_down_corruption
+		}
+		visible = {
+			has_completed_focus = JAP_defeat_capitalism_with_a_japanese_face
+		}
+		fire_only_once = yes
+		cost = 75
+		days_remove = 100
+		modifier = {
+			stability_weekly = 0.002
+			personal_expense_factor = 0.05
+			society_development_monthly = 0.01
+			poverty_development_monthly = 0.01
+		}
+		remove_effect = {
+			JAP_decrease_aging_population = yes
+			increase_welfare = yes
+			set_temp_variable = {
+				var = debt_var_temp
+				value = 25
+			}
+			add_debt_with_inflation = yes
+		}
+		complete_effect = {
+		}
+	}
+	JAP_nationalize_railway_industry_dec = {
+		icon = GFX_JAP_railway_nationalisation
+		available = {
+		}
+		visible = {
+			has_completed_focus = JAP_nationalizing_strategic_sectors
+		}
+		fire_only_once = yes
+		cost = 120
+		days_remove = 100
+		modifier = {
+			personal_value_factor = 0.1
+			income_growth_factor = -0.05
+			business_value_factor = -0.1
+			production_speed_infrastructure_factor = 0.1
+			poverty_development_monthly = 0.01
+		}
+		remove_effect = {
+			JAP_decrease_economic_stagnation = yes
+			set_temp_variable = {
+				var = debt_var_temp
+				value = 10
+			}
+			add_debt_with_inflation = yes
+		}
+		complete_effect = {
+		}
+	}
+	JAP_use_yakuza_against_left_dec = {
+		icon = GFX_JAP_use_yakuza_against_leftists
+		available = {
+		}
+		visible = {
+			has_completed_focus = JAP_potential_threat
+		}
+		fire_only_once = yes
+		cost = 50
+		days_remove = 100
+		days_re_enable = 50
+		modifier = {
+			society_development_monthly = -0.005
+			business_value_factor = 0.05
+			industrial_capacity_factory = 0.05
+			industrial_capacity_dockyard = 0.05
+			personal_value_factor = -0.025
+			social_democrat_drift = -0.02
+			social_liberal_drift = -0.02
+			libertarian_socialist_drift = -0.02
+		}
+		remove_effect = {
+		}
+		complete_effect = {
+		}
+	}
+	JAP_strengthen_democratic_centre_dec = {
+		icon = GFX_JAP_strengthen_democratic_centre
+		available = {
+		}
+		visible = {
+			has_completed_focus = JAP_follow_democratic_principles
+		}
+		fire_only_once = no
+		cost = 50
+		days_remove = 100
+		days_re_enable = 50
+		modifier = {
+			society_development_monthly = 0.01
+			personal_value_factor = 0.05
+			social_democrat_drift = 0.02
+			social_liberal_drift = 0.02
+			market_liberal_drift = 0.02
+			conservative_drift = 0.02
+		}
+		remove_effect = {
+			set_temp_variable = {
+				var = society_development_var_temp
+				value = 0.1
+			}
+			add_society_development = yes
+		}
+		complete_effect = {
+		}
+	}
+	JAP_crackdown_rightists_dec = {
+		icon = GFX_JAP_crackdown_on_rightists
+		available = {
+		}
+		visible = {
+			has_completed_focus = JAP_fight_uyoku_dantai
+		}
+		fire_only_once = no
+		cost = 50
+		days_remove = 100
+		days_re_enable = 50
+		modifier = {
+			society_development_monthly = -0.005
+			production_factory_efficiency_gain_factor = 0.05
+			production_factory_max_efficiency_factor = 0.05
+			personal_value_factor = 0.05
+			fascist_drift = -0.02
+			national_socialist_drift = -0.02
+			authoritarian_democrat_drift = -0.02
+		}
+		remove_effect = {
+		}
+		complete_effect = {
+		}
+	}
+	#JAP_taiwan_air = {
+	#    available = {
+	#	    PRC = {
+	#	        has_war_with = CHI
+	#		}
+	#	} 
+	#    visible = {
+	#	    PRC = {
+	#		    has_war_with = CHI
+	#		}
+	#	}
+	#    fire_only_once = yes
+	#    cost = 100
+	#	days_remove = 30
+	#    complete_effect = {
+	#		add_timed_idea = {
+	#		    idea = JAP_taiwan_air_help
+	#		    days = 100
+	#		}
+	#    }
+	#}
+}
+
+JAP_ldp_party_category = {
+	JAP_boost_conservatives_campaign = {
+		icon = GFX_JAP_LDP_dec
+		available = {
+			JAP = {
+				OR = {
+					has_completed_focus = JAP_the_status_quo_remains
+					has_completed_focus = JAP_defeat_enduring
+					has_completed_focus = JAP_triumph_of_japanese_people
+				}
+			}
+			hidden_trigger = {
+				NOT = {
+					has_country_flag = JAP_political_boost_campaign
+				}
+			}
+		}
+		visible = {
+			OR = {
+				has_completed_focus = JAP_the_status_quo_remains
+				has_completed_focus = JAP_defeat_enduring
+				has_completed_focus = JAP_triumph_of_japanese_people
+			}
+			NOT = {
+				has_completed_focus = JAP_party_discipline
+			}
+		}
+		fire_only_once = no
+		ai_hint_pp_cost = 75
+		cost = JAP_political_campaign_decision_cost_var
+		days_remove = 125
+		modifier = {
+			political_power_cost = 0.2
+		}
+		remove_effect = {
+			clr_country_flag = JAP_political_boost_campaign
+		}
+		complete_effect = {
+			set_country_flag = JAP_political_boost_campaign
+			if = {
+				limit = {
+					has_country_flag = JAP_ldp_rebuild_party
+				}
+				set_temp_variable = {
+					var = JAP_ldp_conservatives_var_temp
+					value = 0.075
+				}
+				JAP_add_influence_ldp_conservatives = yes
+			}
+			else_if = {
+				limit = {
+					has_country_flag = JAP_ldp_keep_it_stable
+				}
+				set_temp_variable = {
+					var = JAP_ldp_conservatives_var_temp
+					value = 0.1
+				}
+				JAP_add_influence_ldp_conservatives = yes
+			}
+			else = {
+				set_temp_variable = {
+					var = JAP_ldp_conservatives_var_temp
+					value = 0.05
+				}
+				JAP_add_influence_ldp_conservatives = yes
+			}
+		}
+	}
+	JAP_boost_centrists_campaign = {
+		icon = GFX_JAP_LDP_dec
+		available = {
+			JAP = {
+				OR = {
+					has_completed_focus = JAP_the_status_quo_remains
+					has_completed_focus = JAP_defeat_enduring
+					has_completed_focus = JAP_triumph_of_japanese_people
+				}
+			}
+			hidden_trigger = {
+				NOT = {
+					has_country_flag = JAP_political_boost_campaign
+				}
+			}
+		}
+		visible = {
+			OR = {
+				has_completed_focus = JAP_the_status_quo_remains
+				has_completed_focus = JAP_defeat_enduring
+				has_completed_focus = JAP_triumph_of_japanese_people
+			}
+			NOT = {
+				has_completed_focus = JAP_party_discipline
+			}
+		}
+		fire_only_once = no
+		ai_hint_pp_cost = 75
+		cost = JAP_political_campaign_decision_cost_var
+		days_remove = 125
+		modifier = {
+			political_power_cost = 0.2
+		}
+		remove_effect = {
+			clr_country_flag = JAP_political_boost_campaign
+		}
+		complete_effect = {
+			set_country_flag = JAP_political_boost_campaign
+			if = {
+				limit = {
+					has_country_flag = JAP_ldp_rebuild_party
+				}
+				set_temp_variable = {
+					var = JAP_ldp_centrists_var_temp
+					value = 0.075
+				}
+				JAP_add_influence_ldp_centrists = yes
+			}
+			else_if = {
+				limit = {
+					has_country_flag = JAP_ldp_keep_it_stable
+				}
+				set_temp_variable = {
+					var = JAP_ldp_centrists_var_temp
+					value = 0.1
+				}
+				JAP_add_influence_ldp_centrists = yes
+			}
+			else = {
+				set_temp_variable = {
+					var = JAP_ldp_centrists_var_temp
+					value = 0.05
+				}
+				JAP_add_influence_ldp_centrists = yes
+			}
+		}
+	}
+	JAP_boost_liberals_campaign = {
+		icon = GFX_JAP_LDP_dec
+		available = {
+			JAP = {
+				OR = {
+					has_completed_focus = JAP_the_status_quo_remains
+					has_completed_focus = JAP_defeat_enduring
+					has_completed_focus = JAP_triumph_of_japanese_people
+				}
+			}
+			hidden_trigger = {
+				NOT = {
+					has_country_flag = JAP_political_boost_campaign
+				}
+			}
+		}
+		visible = {
+			OR = {
+				has_completed_focus = JAP_the_status_quo_remains
+				has_completed_focus = JAP_defeat_enduring
+				has_completed_focus = JAP_triumph_of_japanese_people
+			}
+			NOT = {
+				has_completed_focus = JAP_party_discipline
+			}
+		}
+		fire_only_once = no
+		ai_hint_pp_cost = 75
+		cost = JAP_political_campaign_decision_cost_var
+		days_remove = 125
+		modifier = {
+			political_power_cost = 0.2
+		}
+		remove_effect = {
+			clr_country_flag = JAP_political_boost_campaign
+		}
+		complete_effect = {
+			set_country_flag = JAP_political_boost_campaign
+			if = {
+				limit = {
+					has_country_flag = JAP_ldp_rebuild_party
+				}
+				set_temp_variable = {
+					var = JAP_ldp_liberals_var_temp
+					value = 0.075
+				}
+				JAP_add_influence_ldp_liberals = yes
+			}
+			else_if = {
+				limit = {
+					has_country_flag = JAP_ldp_keep_it_stable
+				}
+				set_temp_variable = {
+					var = JAP_ldp_liberals_var_temp
+					value = 0.1
+				}
+				JAP_add_influence_ldp_liberals = yes
+			}
+			else = {
+				set_temp_variable = {
+					var = JAP_ldp_liberals_var_temp
+					value = 0.05
+				}
+				JAP_add_influence_ldp_liberals = yes
+			}
+		}
+	}
+	JAP_boost_nationalists_campaign = {
+		icon = GFX_JAP_LDP_dec
+		available = {
+			JAP = {
+				has_completed_focus = JAP_defeat_rebuild_the_party
+			}
+			hidden_trigger = {
+				NOT = {
+					has_country_flag = JAP_political_boost_campaign
+				}
+			}
+		}
+		visible = {
+			has_completed_focus = JAP_defeat_rebuild_the_party
+		}
+		fire_only_once = no
+		ai_hint_pp_cost = 75
+		cost = JAP_political_campaign_decision_cost_var
+		days_remove = 125
+		modifier = {
+			political_power_cost = 0.2
+		}
+		remove_effect = {
+			clr_country_flag = JAP_political_boost_campaign
+		}
+		complete_effect = {
+			set_country_flag = JAP_political_boost_campaign
+			if = {
+				limit = {
+					has_country_flag = JAP_ldp_rebuild_party
+				}
+				set_temp_variable = {
+					var = JAP_ldp_nationalists_var_temp
+					value = 0.075
+				}
+				JAP_add_influence_ldp_nationalists = yes
+			}
+			else = {
+				set_temp_variable = {
+					var = JAP_ldp_nationalists_var_temp
+					value = 0.05
+				}
+				JAP_add_influence_ldp_nationalists = yes
+			}
+		}
+	}
+}
+
+JAP_oil_crisis_cat = {
+	JAP_waning_oil_crisis_mission = {
+		icon = GFX_JAP_waning_oil_crisis_mission
+		priority = 10
+		allowed = {
+			tag = JAP
+		}
+		available = {
+			hidden_trigger = {
+				NOT = {
+					OR = {
+						has_idea = JAP_oil_crash1
+						has_idea = JAP_oil_crash2
+						has_idea = JAP_oil_crash3
+					}
+				}
+			}
+		}
+		visible = {
+			hidden_trigger = {
+				OR = {
+					has_idea = JAP_oil_crash1
+					has_idea = JAP_oil_crash2
+					has_idea = JAP_oil_crash3
+				}
+			}
+		}
+		cancel_if_not_visible = yes
+		activation = {
+			always = no
+		}
+		is_good = no
+		selectable_mission = no
+		days_mission_timeout = 200
+		timeout_effect = {
+			JAP_decrease_oil_crisis = yes
+			activate_mission = JAP_waning_oil_crisis_mission
+		}
+		complete_effect = {
+		}
+	}
+	JAP_asean_oil = {
+		icon = GFX_decision_generic_oil
+		priority = 1
+		available = {
+		}
+		visible = {
+			tag = JAP
+			hidden_trigger = {
+				OR = {
+					has_idea = JAP_oil_crash1
+					has_idea = JAP_oil_crash2
+					has_idea = JAP_oil_crash3
+				}
+			}
+		}
+		ai_will_do = {
+			base = 100
+		}
+		fire_only_once = yes
+		cancel_if_not_visible = no
+		cost = 50
+		days_remove = 28
+		complete_effect = {
+		}
+		remove_effect = {
+			add_days_mission_timeout = {
+				mission = JAP_waning_oil_crisis_mission
+				days = -50
+			}
+		}
+	}
+	JAP_russian_deal = {
+		icon = GFX_decision_generic_oil
+		priority = 1
+		available = {
+		}
+		visible = {
+			tag = JAP
+			hidden_trigger = {
+				OR = {
+					has_idea = JAP_oil_crash1
+					has_idea = JAP_oil_crash2
+					has_idea = JAP_oil_crash3
+				}
+			}
+		}
+		ai_will_do = {
+			base = 100
+		}
+		fire_only_once = yes
+		cancel_if_not_visible = no
+		cost = 50
+		days_remove = 28
+		complete_effect = {
+		}
+		remove_effect = {
+			SOV = {
+				country_event = {
+					id = jap.183
+				}
+			}
+			custom_effect_tooltip = SOV_agree_tt
+			event_option_tooltip = jap.184.a
+			custom_effect_tooltip = SOV_economic_wars_gas_disagree_tt
+			event_option_tooltip = jap.185.a
+		}
+	}
+	JAP_resell_russian_oil = {
+		icon = GFX_decision_generic_oil
+		priority = 1
+		available = {
+		}
+		visible = {
+			tag = JAP
+			hidden_trigger = {
+				has_country_flag = JAP_rus_love_wins
+			}
+		}
+		ai_will_do = {
+			base = 100
+		}
+		fire_only_once = yes
+		cancel_if_not_visible = no
+		cost = 50
+		days_remove = 28
+		complete_effect = {
+		}
+		remove_effect = {
+			add_days_mission_timeout = {
+				mission = JAP_waning_oil_crisis_mission
+				days = 100
+			}
+			add_timed_idea = {
+				idea = JAP_oil_resell
+				days = 100
+			}
+		}
+	}
+	JAP_develop_argentine_oil = {
+		icon = GFX_decision_generic_oil
+		priority = 1
+		available = {
+			NOT = {
+				has_country_flag = JAP_economic_partnership_ongoing
+			}
+		}
+		targets = {
+			ARG
+		}
+		visible = {
+			tag = JAP
+			hidden_trigger = {
+				OR = {
+					has_idea = JAP_oil_crash1
+					has_idea = JAP_oil_crash2
+					has_idea = JAP_oil_crash3
+				}
+			}
+		}
+		ai_will_do = {
+			base = 100
+		}
+		fire_only_once = yes
+		cancel_if_not_visible = no
+		cost = 75
+		days_remove = 50
+		complete_effect = {
+		}
+		remove_effect = {
+			add_days_mission_timeout = {
+				mission = JAP_waning_oil_crisis_mission
+				days = -75
+			}
+			512 = {
+				add_resource = {
+					type = oil
+					amount = 24
+				}
+			}
+			ARG = {
+				add_timed_idea = {
+					idea = JAP_south_america_cooperation
+					days = 100
+				}
+				give_resource_rights = {
+					receiver = JAP
+					state = 512
+					resources = {
+						oil
+					}
+				}
+			}
+			add_opinion_modifier = {
+				target = ARG
+				modifier = economic_ties
+			}
+			ARG = {
+				add_opinion_modifier = {
+					target = JAP
+					modifier = economic_ties
+				}
+			}
+		}
+	}
+	JAP_develop_indonesia_oil = {
+		icon = GFX_decision_generic_oil
+		priority = 1
+		available = {
+			NOT = {
+				has_country_flag = JAP_economic_partnership_ongoing
+			}
+		}
+		targets = {
+			INS
+		}
+		visible = {
+			tag = JAP
+			hidden_trigger = {
+				OR = {
+					has_idea = JAP_oil_crash1
+					has_idea = JAP_oil_crash2
+					has_idea = JAP_oil_crash3
+				}
+			}
+		}
+		ai_will_do = {
+			base = 100
+		}
+		fire_only_once = yes
+		cancel_if_not_visible = no
+		cost = 75
+		days_remove = 50
+		complete_effect = {
+		}
+		remove_effect = {
+			add_days_mission_timeout = {
+				mission = JAP_waning_oil_crisis_mission
+				days = -75
+			}
+			334 = {
+				add_resource = {
+					type = oil
+					amount = 13
+				}
+			}
+			INS = {
+				add_timed_idea = {
+					idea = JAP_south_america_cooperation
+					days = 100
+				}
+				give_resource_rights = {
+					receiver = JAP
+					state = 334
+					resources = {
+						oil
+					}
+				}
+			}
+			add_opinion_modifier = {
+				target = INS
+				modifier = economic_ties
+			}
+			INS = {
+				add_opinion_modifier = {
+					target = JAP
+					modifier = economic_ties
+				}
+			}
+		}
+	}
+	JAP_develop_ecuador_oil = {
+		icon = GFX_decision_generic_oil
+		priority = 1
+		available = {
+			NOT = {
+				has_country_flag = JAP_economic_partnership_ongoing
+			}
+		}
+		targets = {
+			ECU
+		}
+		visible = {
+			tag = JAP
+			hidden_trigger = {
+				OR = {
+					has_idea = JAP_oil_crash1
+					has_idea = JAP_oil_crash2
+					has_idea = JAP_oil_crash3
+				}
+			}
+		}
+		ai_will_do = {
+			base = 100
+		}
+		fire_only_once = yes
+		cancel_if_not_visible = no
+		cost = 75
+		days_remove = 50
+		complete_effect = {
+		}
+		remove_effect = {
+			add_days_mission_timeout = {
+				mission = JAP_waning_oil_crisis_mission
+				days = -75
+			}
+			901 = {
+				add_resource = {
+					type = oil
+					amount = 12
+				}
+			}
+			ECU = {
+				add_timed_idea = {
+					idea = JAP_south_america_cooperation
+					days = 100
+				}
+				give_resource_rights = {
+					receiver = JAP
+					state = 901
+					resources = {
+						oil
+					}
+				}
+			}
+			add_opinion_modifier = {
+				target = ECU
+				modifier = economic_ties
+			}
+			ECU = {
+				add_opinion_modifier = {
+					target = JAP
+					modifier = economic_ties
+				}
+			}
+		}
+	}
+	JAP_promote_alternative_energy = {
+		icon = GFX_decision_generic_oil
+		available = {
+		}
+		visible = {
+			tag = JAP
+			hidden_trigger = {
+				OR = {
+					has_idea = JAP_oil_crash1
+					has_idea = JAP_oil_crash2
+					has_idea = JAP_oil_crash3
+				}
+			}
+		}
+		ai_will_do = {
+			base = 100
+		}
+		fire_only_once = yes
+		cancel_if_not_visible = no
+		cost = 100
+		days_remove = 25
+		complete_effect = {
+		}
+		remove_effect = {
+			534 = {
+				add_building_construction = {
+					type = synthetic_refinery
+					level = 1
+					instant_build = yes
+				}
+			}
+			530 = {
+				add_building_construction = {
+					type = synthetic_refinery
+					level = 1
+					instant_build = yes
+				}
+			}
+			536 = {
+				if = {
+					limit = {
+						is_core_of = ROOT
+						is_able_to_build_energy_farm_in_state = yes
+						free_building_slots = {
+							building = energy_farm
+							size > 0
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = energy_farm
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			modify_building_resources = {
+				building = synthetic_refinery
+				resource = oil
+				amount = 3
+			}
+			add_days_mission_timeout = {
+				mission = JAP_waning_oil_crisis_mission
+				days = -50
+			}
+		}
+	}
+}
+
+JAP_japan_economy_category = {
+	JAP_we_will_build_japan = {
+		icon = GFX_JAP_economic_campaign
+		allowed = {
+			original_tag = JAP
+		}
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = JAP_leap_to_prosperity
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = JAP_economic_thing
+			}
+		}
+		ai_will_do = {
+			base = 15
+		}
+		cost = 75
+		days_remove = 100
+		days_re_enable = 100
+		fire_only_once = yes
+		cancel_if_not_visible = yes
+		complete_effect = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = JAP_japan_economy_dummy
+					add_idea = JAP_japan_economy_conspeed
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = JAP_japan_economy_production_speed_buildings_factor_dynamic
+					value = 0.05
+				}
+				add_to_variable = {
+					var = JAP_japan_economy_industrial_development_monthly_dynamic
+					value = 0.01
+				}
+			}
+			set_country_flag = JAP_economic_thing
+		}
+		remove_effect = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = JAP_japan_economy_conspeed
+					add_idea = JAP_japan_economy_dummy
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = JAP_japan_economy_production_speed_buildings_factor_dynamic
+					value = -0.05
+				}
+				add_to_variable = {
+					var = JAP_japan_economy_industrial_development_monthly_dynamic
+					value = -0.01
+				}
+			}
+			set_temp_variable = {
+				var = income_var_temp
+				value = -25
+			}
+			add_income = yes
+			clr_country_flag = JAP_economic_thing
+		}
+	}
+	JAP_people_cooperation_japan = {
+		icon = GFX_JAP_economic_campaign
+		allowed = {
+			original_tag = JAP
+		}
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = JAP_leap_to_prosperity
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = JAP_economic_thing
+			}
+		}
+		ai_will_do = {
+			base = 15
+		}
+		cost = 75
+		days_remove = 100
+		days_re_enable = 100
+		fire_only_once = yes
+		cancel_if_not_visible = yes
+		complete_effect = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = JAP_japan_economy_dummy
+					add_idea = JAP_japan_economy_congoods
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = JAP_japan_economy_consumer_goods_factor_dynamic
+					value = -0.05
+				}
+				add_to_variable = {
+					var = JAP_japan_economy_poverty_development_monthly_dynamic
+					value = 0.01
+				}
+			}
+			set_country_flag = JAP_economic_thing
+		}
+		remove_effect = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = JAP_japan_economy_congoods
+					add_idea = JAP_japan_economy_dummy
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = JAP_japan_economy_consumer_goods_factor_dynamic
+					value = 0.05
+				}
+				add_to_variable = {
+					var = JAP_japan_economy_poverty_development_monthly_dynamic
+					value = -0.01
+				}
+			}
+			set_temp_variable = {
+				var = income_var_temp
+				value = -25
+			}
+			add_income = yes
+			clr_country_flag = JAP_economic_thing
+		}
+	}
+	JAP_increase_productivity_japan = {
+		icon = GFX_JAP_economic_campaign
+		allowed = {
+			original_tag = JAP
+		}
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = JAP_leap_to_prosperity
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = JAP_economic_thing
+			}
+		}
+		ai_will_do = {
+			base = 15
+		}
+		cost = 75
+		days_remove = 100
+		days_re_enable = 100
+		fire_only_once = yes
+		cancel_if_not_visible = yes
+		complete_effect = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = JAP_japan_economy_dummy
+					add_idea = JAP_japan_economy_capacity
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = JAP_japan_economy_industrial_capacity_factory_dynamic
+					value = 0.05
+				}
+				add_to_variable = {
+					var = JAP_japan_economy_industrial_capacity_dockyard_dynamic
+					value = 0.05
+				}
+			}
+			set_country_flag = JAP_economic_thing
+		}
+		remove_effect = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = JAP_japan_economy_capacity
+					add_idea = JAP_japan_economy_dummy
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = JAP_japan_economy_industrial_capacity_factory_dynamic
+					value = -0.05
+				}
+				add_to_variable = {
+					var = JAP_japan_economy_industrial_capacity_dockyard_dynamic
+					value = -0.05
+				}
+			}
+			set_temp_variable = {
+				var = income_var_temp
+				value = -25
+			}
+			add_income = yes
+			clr_country_flag = JAP_economic_thing
+		}
+	}
+	JAP_research_innovations_japan = {
+		icon = GFX_JAP_economic_campaign
+		allowed = {
+			original_tag = JAP
+		}
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = JAP_technological_renaissance
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = JAP_economic_thing
+			}
+		}
+		ai_will_do = {
+			base = 15
+		}
+		cost = 75
+		days_remove = 100
+		days_re_enable = 100
+		fire_only_once = yes
+		cancel_if_not_visible = yes
+		complete_effect = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = JAP_japan_economy_dummy
+					add_idea = JAP_japan_economy_research
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = JAP_japan_economy_research_speed_factor_dynamic
+					value = 0.05
+				}
+				add_to_variable = {
+					var = JAP_japan_economy_academic_development_monthly_dynamic
+					value = 0.01
+				}
+			}
+			set_country_flag = JAP_economic_thing
+		}
+		remove_effect = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = JAP_japan_economy_research
+					add_idea = JAP_japan_economy_dummy
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = JAP_japan_economy_research_speed_factor_dynamic
+					value = -0.05
+				}
+				add_to_variable = {
+					var = JAP_japan_economy_academic_development_monthly_dynamic
+					value = -0.01
+				}
+			}
+			set_temp_variable = {
+				var = income_var_temp
+				value = -25
+			}
+			add_income = yes
+			clr_country_flag = JAP_economic_thing
+		}
+	}
+	JAP_railway_modernization_start = {
+		icon = GFX_JAP_modernization_of_railways_decision
+		available = {
+		}
+		visible = {
+			has_completed_focus = JAP_age_of_reconstruction
+		}
+		cost = 50
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 10
+		}
+		remove_effect = {
+			activate_mission = JAP_railway_modernization
+			custom_effect_tooltip = JAP_after_mission_tt
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = JAP_japan_economy_dummy
+					add_idea = JAP_japan_economy_modernization
+				}
+			}
+		}
+	}
+	JAP_railway_modernization = {
+		icon = GFX_JAP_modernization_of_railways_mission
+		allowed = {
+			tag = SOV
+		}
+		visible = {
+			has_completed_focus = JAP_age_of_reconstruction
+		}
+		available = {
+			has_railway_level = {
+				state = 1333
+				level = 3
+			}
+			has_railway_level = {
+				state = 536
+				level = 2
+			}
+			has_railway_level = {
+				state = 528
+				level = 3
+			}
+			has_railway_level = {
+				state = 530
+				level = 2
+			}
+		}
+		activation = {
+			always = no
+		}
+		is_good = no
+		selectable_mission = no
+		days_mission_timeout = 200
+		complete_effect = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = JAP_japan_economy_dummy
+					add_idea = JAP_japan_economy_modernization
+				}
+			}
+		}
+		timeout_effect = {
+			add_political_power = -25
+			set_temp_variable = {
+				var = debt_var_temp
+				value = 45
+			}
+			add_debt = yes
+		}
+	}
+	JAP_infrastructure_north_tohoku = {
+		available = {
+			owns_state = 1336			#North Tohoku
+		}
+		visible = {
+			has_completed_focus = JAP_develop_northern_prefectures
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 1336
+			}
+		}
+		#North Tohoku
+		ai_hint_pp_cost = 50
+		cost = JAP_prefectures_dev_cost
+		icon = GFX_JAP_japan_infra
+		days_remove = 60
+		fire_only_once = yes
+		modifier = {
+			consumer_goods_factor = 0.04
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		remove_effect = {
+			1336 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+		}
+	}
+	JAP_industrial_north_tohoku = {
+		available = {
+			owns_state = 1336			#North Tohoku
+		}
+		visible = {
+			has_completed_focus = JAP_develop_northern_prefectures
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 1336
+			}
+		}
+		#North Tohoku
+		ai_hint_pp_cost = 50
+		cost = JAP_prefectures_dev_cost
+		icon = GFX_JAP_japan_civ
+		days_remove = 60
+		fire_only_once = yes
+		modifier = {
+			consumer_goods_factor = 0.04
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		remove_effect = {
+			1336 = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	JAP_revive_nuclear_reactor_north_tohoku = {
+		available = {
+			owns_state = 1336			#North Tohoku
+		}
+		visible = {
+			has_completed_focus = JAP_develop_northern_prefectures
+			OR = {
+				has_government = conservative
+				has_government = authoritarian_democrat
+			}
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 1336
+			}
+		}
+		#North Tohoku
+		ai_hint_pp_cost = 75
+		cost = JAP_energetic_cost
+		icon = GFX_JAP_japan_energy
+		days_remove = 60
+		fire_only_once = yes
+		modifier = {
+			consumer_goods_factor = 0.04
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		remove_effect = {
+			add_stability = -0.04
+			1336 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = nuclear_reactor
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	JAP_buld_energy_farm_north_tohoku = {
+		available = {
+			owns_state = 1336			#North Tohoku
+		}
+		visible = {
+			has_completed_focus = JAP_develop_northern_prefectures
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 1336
+			}
+		}
+		#North Tohoku
+		ai_hint_pp_cost = 75
+		cost = JAP_energetic_cost
+		icon = GFX_JAP_japan_energy
+		days_remove = 60
+		fire_only_once = yes
+		modifier = {
+			consumer_goods_factor = 0.04
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		remove_effect = {
+			1336 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = energy_farm
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	JAP_infrastructure_tohoku = {
+		available = {
+			owns_state = 533			#Tohoku
+		}
+		visible = {
+			has_completed_focus = JAP_develop_northern_prefectures
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 533
+			}
+		}
+		#Tohoku
+		ai_hint_pp_cost = 50
+		cost = JAP_prefectures_dev_cost
+		icon = GFX_JAP_japan_infra
+		days_remove = 60
+		fire_only_once = yes
+		modifier = {
+			consumer_goods_factor = 0.04
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		remove_effect = {
+			533 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+		}
+	}
+	JAP_industrial_tohoku = {
+		available = {
+			owns_state = 533			#Tohoku
+		}
+		visible = {
+			has_completed_focus = JAP_develop_northern_prefectures
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 533
+			}
+		}
+		#Tohoku
+		ai_hint_pp_cost = 50
+		cost = JAP_prefectures_dev_cost
+		icon = GFX_JAP_japan_civ
+		days_remove = 60
+		fire_only_once = yes
+		modifier = {
+			consumer_goods_factor = 0.04
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		remove_effect = {
+			533 = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	JAP_infrastructure_south_hokkaido = {
+		available = {
+			owns_state = 1333			#South Hokkaido
+		}
+		visible = {
+			has_completed_focus = JAP_develop_northern_prefectures
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 1333
+			}
+		}
+		#South Hokkaido
+		ai_hint_pp_cost = 50
+		cost = JAP_prefectures_dev_cost
+		icon = GFX_JAP_japan_infra
+		days_remove = 60
+		fire_only_once = yes
+		modifier = {
+			consumer_goods_factor = 0.04
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		remove_effect = {
+			1333 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+		}
+	}
+	JAP_put_tomari_nuclear_power_back_into_operation = {
+		available = {
+			owns_state = 1333			#South Hokkaido
+		}
+		visible = {
+			has_completed_focus = JAP_develop_northern_prefectures
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 1333
+			}
+		}
+		#South Hokkaido
+		ai_hint_pp_cost = 75
+		cost = JAP_energetic_cost
+		icon = GFX_JAP_japan_energy
+		days_remove = 80
+		fire_only_once = yes
+		modifier = {
+			consumer_goods_factor = 0.06
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		remove_effect = {
+			add_stability = -0.04
+			1333 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = nuclear_reactor
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	JAP_infrastructure_hokkaido = {
+		available = {
+			owns_state = 536			#Hokkaido
+		}
+		visible = {
+			has_completed_focus = JAP_develop_northern_prefectures
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 536
+			}
+		}
+		#Hokkaido
+		ai_hint_pp_cost = 50
+		cost = JAP_prefectures_dev_cost
+		icon = GFX_JAP_japan_infra
+		days_remove = 60
+		fire_only_once = yes
+		modifier = {
+			consumer_goods_factor = 0.04
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		remove_effect = {
+			536 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+		}
+	}
+	JAP_industrial_hokkaido = {
+		available = {
+			owns_state = 536			#Hokkaido
+		}
+		visible = {
+			has_completed_focus = JAP_develop_northern_prefectures
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 536
+			}
+		}
+		#Hokkaido
+		ai_hint_pp_cost = 50
+		cost = JAP_prefectures_dev_cost
+		icon = GFX_JAP_japan_civ
+		days_remove = 60
+		fire_only_once = yes
+		modifier = {
+			consumer_goods_factor = 0.08
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		remove_effect = {
+			536 = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	JAP_industrial_koshinetsu = {
+		available = {
+			owns_state = 534			#koshinetsu
+		}
+		visible = {
+			has_completed_focus = JAP_support_centre_prefectures
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 534
+			}
+		}
+		#koshinetsu
+		ai_hint_pp_cost = 50
+		cost = JAP_prefectures_dev_cost
+		icon = GFX_JAP_japan_civ
+		days_remove = 60
+		fire_only_once = yes
+		modifier = {
+			consumer_goods_factor = 0.04
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		remove_effect = {
+			534 = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	JAP_buld_energy_farm_koshinetsu = {
+		available = {
+			owns_state = 534			#koshinetsu
+		}
+		visible = {
+			has_completed_focus = JAP_support_centre_prefectures
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 534
+			}
+		}
+		#koshinetsu
+		ai_hint_pp_cost = 75
+		cost = JAP_energetic_cost
+		icon = GFX_JAP_japan_energy
+		days_remove = 60
+		fire_only_once = yes
+		modifier = {
+			consumer_goods_factor = 0.04
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		remove_effect = {
+			534 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = energy_farm
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	JAP_buld_power_plant_koshinetsu = {
+		available = {
+			owns_state = 534			#koshinetsu
+		}
+		visible = {
+			has_completed_focus = JAP_develop_northern_prefectures
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 534
+			}
+		}
+		#koshinetsu
+		ai_hint_pp_cost = 75
+		cost = JAP_energetic_cost
+		icon = GFX_JAP_japan_energy
+		days_remove = 60
+		fire_only_once = yes
+		modifier = {
+			consumer_goods_factor = 0.04
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		remove_effect = {
+			534 = {
+				add_building_construction = {
+					type = power_plant
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	JAP_infrastructure_hokuriku = {
+		available = {
+			owns_state = 535			#hokuriku
+		}
+		visible = {
+			has_completed_focus = JAP_support_centre_prefectures
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 535
+			}
+		}
+		#hokuriku
+		ai_hint_pp_cost = 50
+		cost = JAP_prefectures_dev_cost
+		icon = GFX_JAP_japan_infra
+		days_remove = 60
+		fire_only_once = yes
+		modifier = {
+			consumer_goods_factor = 0.04
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		remove_effect = {
+			535 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+		}
+	}
+	JAP_industrial_hokuriku = {
+		available = {
+			owns_state = 535			#koshinetsu
+		}
+		visible = {
+			has_completed_focus = JAP_support_centre_prefectures
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 535
+			}
+		}
+		#koshinetsu
+		ai_hint_pp_cost = 50
+		cost = JAP_prefectures_dev_cost
+		icon = GFX_JAP_japan_civ
+		days_remove = 60
+		fire_only_once = yes
+		modifier = {
+			consumer_goods_factor = 0.04
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		remove_effect = {
+			535 = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	JAP_put_shika_nuclear_power_back_into_operation = {
+		available = {
+			owns_state = 535			#koshinetsu
+		}
+		visible = {
+			has_completed_focus = JAP_support_centre_prefectures
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 535
+			}
+		}
+		#koshinetsu
+		ai_hint_pp_cost = 75
+		cost = JAP_energetic_cost
+		icon = GFX_JAP_japan_energy
+		days_remove = 80
+		fire_only_once = yes
+		modifier = {
+			consumer_goods_factor = 0.06
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		remove_effect = {
+			add_stability = -0.04
+			535 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = nuclear_reactor
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	JAP_infrastructure_tokai = {
+		available = {
+			owns_state = 532			#Tokai
+		}
+		visible = {
+			has_completed_focus = JAP_support_centre_prefectures
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 532
+			}
+		}
+		#Tokai
+		ai_hint_pp_cost = 50
+		cost = JAP_prefectures_dev_cost
+		icon = GFX_JAP_japan_infra
+		days_remove = 60
+		fire_only_once = yes
+		modifier = {
+			consumer_goods_factor = 0.04
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		remove_effect = {
+			532 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+		}
+	}
+	JAP_buld_energy_farm_tokai = {
+		available = {
+			owns_state = 532			#tokai
+		}
+		visible = {
+			has_completed_focus = JAP_support_centre_prefectures
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 532
+			}
+		}
+		#tokai
+		ai_hint_pp_cost = 75
+		cost = JAP_energetic_cost
+		icon = GFX_JAP_japan_energy
+		days_remove = 60
+		fire_only_once = yes
+		modifier = {
+			consumer_goods_factor = 0.04
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		remove_effect = {
+			532 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = energy_farm
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	JAP_buld_power_plant_tokai = {
+		available = {
+			owns_state = 532			#tokai
+		}
+		visible = {
+			has_completed_focus = JAP_support_centre_prefectures
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 532
+			}
+		}
+		#tokai
+		ai_hint_pp_cost = 75
+		cost = JAP_energetic_cost
+		icon = GFX_JAP_japan_energy
+		days_remove = 60
+		fire_only_once = yes
+		modifier = {
+			consumer_goods_factor = 0.04
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		remove_effect = {
+			532 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = power_plant
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	JAP_industrial_kanto = {
+		available = {
+			owns_state = 282			#Kanto
+		}
+		visible = {
+			has_completed_focus = JAP_support_centre_prefectures
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 282
+			}
+		}
+		#Kanto
+		ai_hint_pp_cost = 50
+		cost = JAP_prefectures_dev_cost
+		icon = GFX_JAP_japan_civ
+		days_remove = 60
+		fire_only_once = yes
+		modifier = {
+			consumer_goods_factor = 0.04
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		remove_effect = {
+			282 = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	JAP_arms_factory_kansai = {
+		available = {
+			owns_state = 531			#Kansai
+		}
+		visible = {
+			has_completed_focus = JAP_revitalize_southern_prefectures
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 531
+			}
+		}
+		#Kansai
+		ai_hint_pp_cost = 50
+		cost = JAP_prefectures_dev_cost
+		icon = GFX_JAP_japan_military
+		days_remove = 60
+		fire_only_once = yes
+		modifier = {
+			consumer_goods_factor = 0.04
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		remove_effect = {
+			531 = {
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	JAP_dockyards_kansai = {
+		available = {
+			owns_state = 531			#Kansai
+		}
+		visible = {
+			has_completed_focus = JAP_revitalize_southern_prefectures
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 531
+			}
+		}
+		#Kansai
+		ai_hint_pp_cost = 50
+		cost = JAP_prefectures_dev_cost
+		icon = GFX_JAP_japan_doc
+		days_remove = 60
+		fire_only_once = yes
+		modifier = {
+			consumer_goods_factor = 0.04
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		remove_effect = {
+			531 = {
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	JAP_dockyards_chugoku = {
+		available = {
+			owns_state = 529			#Chugoku
+		}
+		visible = {
+			has_completed_focus = JAP_revitalize_southern_prefectures
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 529
+			}
+		}
+		#Chugoku
+		ai_hint_pp_cost = 50
+		cost = JAP_prefectures_dev_cost
+		icon = GFX_JAP_japan_doc
+		days_remove = 60
+		fire_only_once = yes
+		modifier = {
+			consumer_goods_factor = 0.04
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		remove_effect = {
+			529 = {
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	JAP_infrastructure_chugoku = {
+		available = {
+			owns_state = 529			#Chugoku
+		}
+		visible = {
+			has_completed_focus = JAP_revitalize_southern_prefectures
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 529
+			}
+		}
+		#Chugoku
+		ai_hint_pp_cost = 50
+		cost = JAP_prefectures_dev_cost
+		icon = GFX_JAP_japan_infra
+		days_remove = 60
+		fire_only_once = yes
+		modifier = {
+			consumer_goods_factor = 0.04
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		remove_effect = {
+			529 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+		}
+	}
+	JAP_arms_factory_chugoku = {
+		available = {
+			owns_state = 529			#Kansai
+		}
+		visible = {
+			has_completed_focus = JAP_revitalize_southern_prefectures
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 529
+			}
+		}
+		#Kansai
+		ai_hint_pp_cost = 50
+		cost = JAP_prefectures_dev_cost
+		icon = GFX_JAP_japan_military
+		days_remove = 60
+		fire_only_once = yes
+		modifier = {
+			consumer_goods_factor = 0.04
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		remove_effect = {
+			529 = {
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	JAP_arms_factory_shikoku = {
+		available = {
+			owns_state = 530			#shikoku
+		}
+		visible = {
+			has_completed_focus = JAP_revitalize_southern_prefectures
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 530
+			}
+		}
+		#shikoku
+		ai_hint_pp_cost = 50
+		cost = JAP_prefectures_dev_cost
+		icon = GFX_JAP_japan_military
+		days_remove = 60
+		fire_only_once = yes
+		modifier = {
+			consumer_goods_factor = 0.04
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		remove_effect = {
+			530 = {
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	JAP_dockayrds_shikoku = {
+		available = {
+			owns_state = 530			#shikoku
+		}
+		visible = {
+			has_completed_focus = JAP_revitalize_southern_prefectures
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 530
+			}
+		}
+		#shikoku
+		ai_hint_pp_cost = 50
+		cost = JAP_prefectures_dev_cost
+		icon = GFX_JAP_japan_doc
+		days_remove = 60
+		fire_only_once = yes
+		modifier = {
+			consumer_goods_factor = 0.04
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		remove_effect = {
+			530 = {
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	JAP_dockayrds_kyushu = {
+		available = {
+			owns_state = 528			#kyushu
+		}
+		visible = {
+			has_completed_focus = JAP_revitalize_southern_prefectures
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 528
+			}
+		}
+		#kyushu
+		ai_hint_pp_cost = 50
+		cost = JAP_prefectures_dev_cost
+		icon = GFX_JAP_japan_doc
+		days_remove = 60
+		fire_only_once = yes
+		modifier = {
+			consumer_goods_factor = 0.04
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		remove_effect = {
+			528 = {
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	JAP_arms_factory_kyushu = {
+		available = {
+			owns_state = 528			#kyushu
+		}
+		visible = {
+			has_completed_focus = JAP_revitalize_southern_prefectures
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 528
+			}
+		}
+		#kyushu
+		ai_hint_pp_cost = 50
+		cost = JAP_prefectures_dev_cost
+		icon = GFX_JAP_japan_military
+		days_remove = 60
+		fire_only_once = yes
+		modifier = {
+			consumer_goods_factor = 0.04
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		remove_effect = {
+			528 = {
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	JAP_infrastructure_kyushu = {
+		available = {
+			owns_state = 528			#kyushu
+		}
+		visible = {
+			has_completed_focus = JAP_revitalize_southern_prefectures
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 528
+			}
+		}
+		#kyushu
+		ai_hint_pp_cost = 50
+		cost = JAP_prefectures_dev_cost
+		icon = GFX_JAP_japan_infra
+		days_remove = 60
+		fire_only_once = yes
+		modifier = {
+			consumer_goods_factor = 0.04
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		remove_effect = {
+			528 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+		}
+	}
+	JAP_infrastructure_tokyo = {
+		available = {
+			owns_state = 1332			#tokyo
+		}
+		visible = {
+			has_completed_focus = JAP_expand_urban_areas
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 1332
+			}
+		}
+		#tokyo
+		ai_hint_pp_cost = 50
+		cost = JAP_prefectures_dev_cost
+		icon = GFX_JAP_japan_infra
+		days_remove = 60
+		fire_only_once = yes
+		modifier = {
+			consumer_goods_factor = 0.04
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		remove_effect = {
+			1332 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 4
+			}
+		}
+	}
+	JAP_infrastructure_yokohama = {
+		available = {
+			owns_state = 1341			#Yokohama
+		}
+		visible = {
+			has_completed_focus = JAP_expand_urban_areas
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 1341
+			}
+		}
+		#Yokohama
+		ai_hint_pp_cost = 50
+		cost = JAP_prefectures_dev_cost
+		icon = GFX_JAP_japan_infra
+		days_remove = 60
+		fire_only_once = yes
+		modifier = {
+			consumer_goods_factor = 0.04
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		remove_effect = {
+			1341 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 4
+			}
+		}
+	}
+	JAP_infrastructure_sendai = {
+		available = {
+			owns_state = 1335			#Sendai
+		}
+		visible = {
+			has_completed_focus = JAP_expand_urban_areas
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 1335
+			}
+		}
+		#Sendai
+		ai_hint_pp_cost = 50
+		cost = JAP_prefectures_dev_cost
+		icon = GFX_JAP_japan_infra
+		days_remove = 60
+		fire_only_once = yes
+		modifier = {
+			consumer_goods_factor = 0.04
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		remove_effect = {
+			1335 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 3
+			}
+		}
+	}
+	JAP_infrastructure_sapporo = {
+		available = {
+			owns_state = 1334			#Sapporo
+		}
+		visible = {
+			has_completed_focus = JAP_expand_urban_areas
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 1334
+			}
+		}
+		#Sapporo
+		ai_hint_pp_cost = 50
+		cost = JAP_prefectures_dev_cost
+		icon = GFX_JAP_japan_infra
+		days_remove = 60
+		fire_only_once = yes
+		modifier = {
+			consumer_goods_factor = 0.04
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		remove_effect = {
+			1334 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 3
+			}
+		}
+	}
+	JAP_infrastructure_osaka = {
+		available = {
+			owns_state = 1340			#Sapporo
+		}
+		visible = {
+			has_completed_focus = JAP_expand_urban_areas
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 1340
+			}
+		}
+		#Sapporo
+		ai_hint_pp_cost = 50
+		cost = JAP_prefectures_dev_cost
+		icon = GFX_JAP_japan_infra
+		days_remove = 60
+		fire_only_once = yes
+		modifier = {
+			consumer_goods_factor = 0.04
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		remove_effect = {
+			1340 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 3
+			}
+		}
+	}
+	JAP_infrastructure_nagoya = {
+		available = {
+			owns_state = 1337			#nagoya
+		}
+		visible = {
+			has_completed_focus = JAP_expand_urban_areas
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 1337
+			}
+		}
+		#nagoya
+		ai_hint_pp_cost = 50
+		cost = JAP_prefectures_dev_cost
+		icon = GFX_JAP_japan_infra
+		days_remove = 60
+		fire_only_once = yes
+		modifier = {
+			consumer_goods_factor = 0.04
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		remove_effect = {
+			1337 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 3
+			}
+		}
+	}
+	JAP_infrastructure_fukuoka = {
+		available = {
+			owns_state = 1338			#fukuoka
+		}
+		visible = {
+			has_completed_focus = JAP_expand_urban_areas
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 1338
+			}
+		}
+		#fukuoka
+		ai_hint_pp_cost = 50
+		cost = JAP_prefectures_dev_cost
+		icon = GFX_JAP_japan_infra
+		days_remove = 60
+		fire_only_once = yes
+		modifier = {
+			consumer_goods_factor = 0.04
+		}
+		ai_will_do = {
+			factor = 20
+		}
+		remove_effect = {
+			1338 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 3
+			}
+		}
+	}
+}
+
+JAP_coronavirus_category = {
+	JAP_the_pandemic_worsens_mission = {
+		icon = generic_coronavirus
+		allowed = {
+			tag = JAP
+		}
+		visible = {
+			has_country_flag = JAP_coronavirus_strikes
+		}
+		available = {
+			has_country_flag = JAP_dealt_with_coronavirus
+		}
+		activation = {
+			always = no
+		}
+		is_good = no
+		selectable_mission = no
+		days_mission_timeout = 85
+		timeout_effect = {
+			JAP_increase_coronavirus = yes
+			activate_mission = JAP_the_pandemic_worsens_mission
+			if = {
+				limit = {
+					has_government = conservative
+				}
+				set_temp_variable = {
+					var = JAP_election_approval_rating_ldp_var_temp
+					value = -0.01
+				}
+				JAP_add_election_approval_rating_ldp = yes
+				hidden_effect = {
+					add_popularity = {
+						ideology = conservative
+						popularity = -0.01
+					}
+				}
+			}
+		}
+	}
+	JAP_youre_gay = {
+		available = {
+		}
+		visible = {
+			is_debug = yes
+			is_ai = no
+		}
+		complete_effect = {
+			add_days_mission_timeout = {
+				mission = JAP_vaccine_research_mission
+				days = -290
+			}
+		}
+	}
+	JAP_vaccine_research_mission = {
+		icon = generic_vaccine
+		allowed = {
+			tag = JAP
+		}
+		available = {
+			always = no
+		}
+		visible = {
+			has_completed_focus = JAP_research_the_vaccine
+		}
+		activation = {
+			always = no
+		}
+		is_good = no
+		selectable_mission = no
+		days_mission_timeout = 300
+		timeout_effect = {
+			set_country_flag = JAP_dealt_with_coronavirus
+			custom_effect_tooltip = JAP_vaccine_research_tt
+			activate_mission = JAP_waning_coronavirus_mission
+			if = {
+				limit = {
+					has_government = conservative
+				}
+				set_temp_variable = {
+					var = JAP_election_approval_rating_ldp_var_temp
+					value = 0.05
+				}
+				JAP_add_election_approval_rating_ldp = yes
+				hidden_effect = {
+					add_popularity = {
+						ideology = conservative
+						popularity = 0.05
+					}
+				}
+			}
+		}
+	}
+	JAP_waning_coronavirus_mission = {
+		icon = generic_coronavirus
+		allowed = {
+			tag = JAP
+		}
+		available = {
+			NOT = {
+				OR = {
+					has_idea = JAP_covid_idea_1
+				}
+				AND = {
+					has_idea = JAP_covid_idea_2
+				}
+				AND = {
+					has_idea = JAP_covid_idea_3
+				}
+				AND = {
+					has_idea = JAP_covid_idea_4
+				}
+				AND = {
+					has_idea = JAP_covid_idea_5
+				}
+			}
+		}
+		visible = {
+			has_country_flag = JAP_dealt_with_coronavirus
+		}
+		activation = {
+			always = no
+		}
+		is_good = no
+		selectable_mission = no
+		days_mission_timeout = 50
+		timeout_effect = {
+			JAP_decrease_coroldpirus = yes
+			activate_mission = JAP_waning_coronavirus_mission
+		}
+	}
+	JAP_distribute_masks = {
+		icon = generic_mask
+		available = {
+			has_completed_focus = JAP_deal_with_the_pandemic
+		}
+		visible = {
+			has_completed_focus = JAP_deal_with_the_pandemic
+			NOT = {
+				has_country_flag = JAP_dealt_with_coronavirus
+			}
+		}
+		fire_only_once = no
+		cost = 20
+		days_remove = 10
+		days_re_enable = 30
+		complete_effect = {
+			add_days_mission_timeout = {
+				mission = JAP_the_pandemic_worsens_mission
+				days = 20
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	JAP_enforce_minor_lockdowns = {
+		icon = generic_mask
+		available = {
+			has_completed_focus = JAP_ease_the_lockdowns
+		}
+		visible = {
+			has_completed_focus = JAP_ease_the_lockdowns
+			NOT = {
+				has_country_flag = JAP_dealt_with_coronavirus
+			}
+		}
+		fire_only_once = no
+		cost = 15
+		days_remove = 14
+		days_re_enable = 14
+		complete_effect = {
+			set_temp_variable = {
+				var = JAP_election_approval_rating_ldp_var_temp
+				value = -0.01
+			}
+			JAP_add_election_approval_rating_ldp = yes
+		}
+		remove_effect = {
+			add_days_mission_timeout = {
+				mission = JAP_the_pandemic_worsens_mission
+				days = 14
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	JAP_enforce_lockdowns = {
+		icon = generic_mask
+		available = {
+			has_completed_focus = JAP_deal_with_the_pandemic
+			NOT = {
+				has_completed_focus = JAP_ease_the_lockdowns
+			}
+			NOT = {
+				has_country_flag = JAP_enforcing_lockdowns
+			}
+		}
+		visible = {
+			has_completed_focus = JAP_deal_with_the_pandemic
+			NOT = {
+				has_completed_focus = JAP_ease_the_lockdowns
+			}
+			NOT = {
+				has_country_flag = JAP_dealt_with_coronavirus
+			}
+		}
+		fire_only_once = no
+		cost = 25
+		days_remove = 21
+		days_re_enable = 21
+		complete_effect = {
+			set_country_flag = {
+				flag = JAP_enforcing_lockdowns
+				days = 21
+				value = 1
+			}
+			set_temp_variable = {
+				var = JAP_election_approval_rating_ldp_var_temp
+				value = -0.02
+			}
+			JAP_add_election_approval_rating_ldp = yes
+		}
+		remove_effect = {
+			add_days_mission_timeout = {
+				mission = JAP_the_pandemic_worsens_mission
+				days = 21
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	JAP_enforce_mass_lockdowns = {
+		icon = generic_mask
+		available = {
+			has_completed_focus = JAP_continue_the_lockdowns
+			NOT = {
+				has_country_flag = JAP_enforcing_lockdowns
+			}
+		}
+		visible = {
+			has_completed_focus = JAP_continue_the_lockdowns
+			NOT = {
+				has_country_flag = JAP_dealt_with_coronavirus
+			}
+		}
+		fire_only_once = no
+		cost = 30
+		days_remove = 28
+		days_re_enable = 28
+		complete_effect = {
+			add_stability = -0.01
+			set_country_flag = {
+				flag = JAP_enforcing_lockdowns
+				days = 28
+				value = 1
+			}
+			set_temp_variable = {
+				var = JAP_election_approval_rating_ldp_var_temp
+				value = -0.03
+			}
+			JAP_add_election_approval_rating_ldp = yes
+		}
+		remove_effect = {
+			add_days_mission_timeout = {
+				mission = JAP_the_pandemic_worsens_mission
+				days = 30
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	JAP_announce_guidelines = {
+		icon = generic_coronavirus
+		available = {
+			has_completed_focus = JAP_deal_with_the_pandemic
+		}
+		visible = {
+			has_completed_focus = JAP_deal_with_the_pandemic
+		}
+		fire_only_once = yes
+		cost = 10
+		complete_effect = {
+			add_days_mission_timeout = {
+				mission = JAP_the_pandemic_worsens_mission
+				days = 10
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	JAP_restrict_travel_PRC = {
+		icon = generic_coronavirus
+		available = {
+			has_completed_focus = JAP_restrict_travel
+			PRC = {
+				NOT = {
+					has_country_flag = PRC_dealt_with_coronavirus
+				}
+			}
+		}
+		visible = {
+			has_completed_focus = JAP_restrict_travel
+		}
+		fire_only_once = yes
+		cost = 30
+		complete_effect = {
+			add_days_mission_timeout = {
+				mission = JAP_the_pandemic_worsens_mission
+				days = 20
+			}
+			add_opinion_modifier = {
+				target = PRC
+				modifier = restricted_travel
+			}
+			add_stability = -0.03
+		}
+	}
+	JAP_restrict_travel_USA = {
+		icon = generic_coronavirus
+		available = {
+			has_completed_focus = JAP_restrict_travel
+			USA = {
+				has_country_flag = USA_coronavirus_strikes
+			}
+		}
+		visible = {
+			has_completed_focus = JAP_restrict_travel
+		}
+		fire_only_once = yes
+		cost = 35
+		complete_effect = {
+			add_days_mission_timeout = {
+				mission = JAP_the_pandemic_worsens_mission
+				days = 20
+			}
+			add_opinion_modifier = {
+				target = USA
+				modifier = restricted_travel
+			}
+			add_stability = -0.05
+		}
+	}
+	JAP_restrict_travel_SOV = {
+		icon = generic_coronavirus
+		available = {
+			has_completed_focus = JAP_restrict_travel
+			SOV = {
+				OR = {
+					has_idea = SOV_coronavirus_pandemic_idea4
+					has_idea = SOV_coronavirus_pandemic_idea3
+					has_idea = SOV_coronavirus_pandemic_idea2
+					has_idea = SOV_coronavirus_pandemic_idea1
+					has_idea = SOV_coronavirus_pandemic_idea
+				}
+			}
+		}
+		visible = {
+			has_completed_focus = JAP_restrict_travel
+		}
+		fire_only_once = yes
+		cost = 25
+		complete_effect = {
+			add_days_mission_timeout = {
+				mission = JAP_the_pandemic_worsens_mission
+				days = 15
+			}
+			add_opinion_modifier = {
+				target = SOV
+				modifier = restricted_travel
+			}
+			add_stability = -0.03
+		}
+	}
+}
+
+JAP_taiwan_war_category = {
+	JAP_spread_propaganda_on_wechat = {
+		available = {
+			CHI = {
+				has_war_with = TAI
+			}
+		}
+		visible = {
+			CHI = {
+				has_war_with = TAI
+			}
+		}
+		fire_only_once = no
+		cost = 75
+		days_remove = 30
+		days_re_enable = 30
+		icon = generic_propaganda_campaigns
+		complete_effect = {
+			hidden_effect = {
+				CHI = {
+					country_event = {
+						id = prc.70
+					}
+				}
+			}
+		}
+	}
+	JAP_arm_islamist_rebels = {
+		available = {
+			CHI = {
+				has_war_with = TAI
+			}
+		}
+		visible = {
+			CHI = {
+				has_war_with = TAI
+			}
+		}
+		icon = generic_civil_support
+		fire_only_once = no
+		cost = 75
+		days_remove = 30
+		days_re_enable = 30
+		complete_effect = {
+			hidden_effect = {
+				CHI = {
+					country_event = {
+						id = prc.71
+					}
+				}
+			}
+		}
+	}
+	JAP_defending_taiwan = {
+		available = {
+			CHI = {
+				has_war_with = TAI
+			}
+		}
+		visible = {
+			CHI = {
+				has_war_with = TAI
+			}
+		}
+		icon = GFX_JAP_jsdf
+		fire_only_once = no
+		cost = 75
+		days_remove = 30
+		days_re_enable = 120
+		complete_effect = {
+			add_timed_idea = {
+				idea = JAP_defense_of_taiwan_idea
+				days = 60
+			}
+		}
+	}
+	JAP_recommission_old_equipment = {
+		available = {
+		}
+		visible = {
+			has_country_flag = JAP_taiwan_equipment_bonus
+			check_variable = {
+				JAP_tank_shit < 5
+			}
+		}
+		fire_only_once = no
+		days_remove = 30
+		days_re_enable = 25
+		icon = generic_industry
+		modifier = {
+			industrial_capacity_factory = -0.025
+		}
+		remove_effect = {
+			add_equipment_to_stockpile = {
+				type = medium_tank_chassis_0
+				variant_name = "Type 74E"
+				amount = 75
+				producer = JAP
+			}
+			add_equipment_to_stockpile = {
+				type = command_control_equipment2
+				amount = 200
+				producer = JAP
+			}
+			add_equipment_to_stockpile = {
+				type = Anti_tank_1 #Type 79 Jyu-MAT
+				amount = 100
+				producer = JAP
+			}
+			add_equipment_to_stockpile = {
+				type = Anti_Air_1 #Type 91 SAM
+				amount = 100
+				producer = JAP
+			}
+			add_equipment_to_stockpile = {
+				type = medium_tank_amphibious_chassis_1
+				variant_name = "Type 73"
+				amount = 150
+				producer = JAP
+			}
+			custom_effect_tooltip = JAP_decision_5_times_tt
+			hidden_effect = {
+				add_to_variable = {
+					var = JAP_tank_shit
+					value = 1
+				}
+			}
+		}
+		complete_effect = {
+			set_temp_variable = { treasury_change = -25 }
+			modify_treasury_effect = yes
+		}
+	}
+	JAP_destroy_fuzhou_industry = {
+		icon = GFX_PRC_rocket_strike
+		allowed = {
+			tag = JAP
+		}
+		visible = {
+			has_completed_focus = JAP_strike_chinese_military_bases
+		}
+		available = {
+			has_completed_focus = JAP_strike_chinese_military_bases
+		}
+		cost = 30
+		fire_only_once = yes
+		days_remove = 3
+		complete_effect = {
+		}
+		remove_effect = {
+			CHI = {
+				every_controlled_state = {
+					limit = {
+						state = 537
+					}
+					damage_building = {
+						type = industrial_complex
+						damage = 1
+					}
+					damage_building = {
+						type = infrastructure
+						damage = 2
+					}
+					add_manpower = -3500
+				}
+			}
+		}
+	}
+	JAP_destroy_shanghai_industry = {
+		icon = GFX_PRC_rocket_strike
+		allowed = {
+			tag = JAP
+		}
+		visible = {
+			has_completed_focus = JAP_strike_chinese_military_bases
+		}
+		available = {
+			has_completed_focus = JAP_strike_chinese_military_bases
+		}
+		cost = 30
+		fire_only_once = yes
+		days_remove = 3
+		complete_effect = {
+		}
+		remove_effect = {
+			CHI = {
+				every_controlled_state = {
+					limit = {
+						state = 540
+					}
+					damage_building = {
+						type = industrial_complex
+						damage = 1.5
+					}
+					damage_building = {
+						type = arms_factory
+						damage = 0.5
+					}
+					add_manpower = -3000
+				}
+			}
+		}
+	}
+	JAP_naval_strike_fuzhou = {
+		icon = GFX_PRC_rocket_strike
+		allowed = {
+			tag = JAP
+		}
+		visible = {
+			has_completed_focus = JAP_strike_chinese_military_bases
+		}
+		available = {
+			has_completed_focus = JAP_strike_chinese_military_bases
+			has_war_with = CHI
+		}
+		cost = 40
+		fire_only_once = no
+		days_remove = 3
+		days_re_enable = 60
+		complete_effect = {
+		}
+		remove_effect = {
+			custom_effect_tooltip = JAP_strike_fuzhou_tt
+			damage_units = {
+				state = 537
+				damage = 0.2
+				org_damage = 0.2
+				str_damage = 0.2
+				ratio = yes
+				army = no
+				navy = yes
+			}
+			CHI = {
+				add_stability = -0.025
+				add_war_support = 0.025
+			}
+		}
+	}
+	JAP_naval_strike_shanghai = {
+		icon = GFX_PRC_rocket_strike
+		allowed = {
+			tag = JAP
+		}
+		visible = {
+			has_completed_focus = JAP_strike_chinese_military_bases
+		}
+		available = {
+			has_completed_focus = JAP_strike_chinese_military_bases
+			has_war_with = CHI
+		}
+		cost = 40
+		fire_only_once = no
+		days_remove = 3
+		days_re_enable = 60
+		complete_effect = {
+		}
+		remove_effect = {
+			custom_effect_tooltip = JAP_strike_shanghai_tt
+			damage_units = {
+				state = 540
+				damage = 0.2
+				org_damage = 0.2
+				str_damage = 0.2
+				ratio = yes
+				army = no
+				navy = yes
+			}
+			CHI = {
+				add_stability = -0.025
+				add_war_support = 0.025
+			}
+		}
+	}
+	JAP_break_the_blockade_of_taiwan_dec = {
+		icon = GFX_PRC_sea_blockade
+		allowed = {
+			tag = JAP
+		}
+		visible = {
+			TAI = {
+				OR = {
+					has_idea = CHI_chinese_blockade
+				}
+			}
+			has_completed_focus = JAP_break_the_blockade_of_taiwan
+		}
+		available = {
+			ships_in_area = {
+				area = 75
+				size > 10
+			}
+			ships_in_area = {
+				area = 76
+				size > 10
+			}
+			ships_in_area = {
+				area = 193
+				size > 10
+			}
+			ships_in_area = {
+				area = 200
+				size > 10
+			}
+		}
+		cost = 15
+		fire_only_once = yes
+		days_remove = 10
+		complete_effect = {
+		}
+		remove_effect = {
+			TAI = {
+				remove_ideas = CHI_chinese_blockade
+			}
+			add_political_power = 35
+			add_stability = 0.025
+			add_war_support = 0.025
+		}
+	}
+	JAP_throw_them_back_dec = {
+		icon = GFX_JAP_jsdf
+		allowed = {
+			tag = JAP
+		}
+		visible = {
+			has_completed_focus = JAP_throw_them_into_the_sea
+		}
+		available = {
+			CHI = {
+				OR = {
+					controls_state = 598
+					controls_state = 599
+					controls_state = 600
+					controls_state = 1155
+					controls_state = 1156
+					controls_state = 1157
+					controls_state = 1158
+				}
+			}
+		}
+		cost = 15
+		fire_only_once = yes
+		days_remove = 5
+		complete_effect = {
+		}
+		remove_effect = {
+			add_timed_idea = {
+				idea = PDO_taiwan_counter_attack_idea
+				days = 45
+			}
+			add_war_support = 0.05
+			AST = {
+				add_timed_idea = {
+					idea = PDO_taiwan_counter_attack_idea
+					days = 45
+				}
+				add_war_support = 0.05
+			}
+			TAI = {
+				add_timed_idea = {
+					idea = PDO_taiwan_counter_attack_idea
+					days = 45
+				}
+				add_war_support = 0.05
+			}
+		}
+	}
+	JAP_activate_mission_kinmen = {
+		available = {
+			CHI = {
+				has_war_with = TAI
+			}
+		}
+		visible = {
+			has_completed_focus = JAP_kinmen_operation
+		}
+		fire_only_once = yes
+		cost = 75
+		complete_effect = {
+			activate_mission = JAP_free_kinmen_island
+			hidden_effect = {
+				CHI = {
+					country_event = {
+						id = prc.77
+					}
+				}
+			}
+		}
+	}
+	JAP_free_kinmen_island = {
+		visible = {
+			CHI = {
+				has_war_with = TAI
+			}
+		}
+		allowed = {
+			tag = JAP
+		}
+		available = {
+			OR = {
+				430 = {
+					is_controlled_by = JAP
+				}
+				430 = {
+					is_controlled_by = TAI
+				}
+				430 = {
+					is_controlled_by = AST
+				}
+			}
+			divisions_in_state = {
+				type = infantry
+				size < 2
+				state = 430
+			}
+		}
+		activation = {
+			always = no
+		}
+		icon = GFX_SOV_decision_vdv_training
+		fire_only_once = yes
+		days_mission_timeout = 60
+		is_good = no
+		ai_will_do = {
+			base = 10
+		}
+		complete_effect = {
+			country_event = {
+				id = jap.20
+			}
+		}
+		timeout_effect = {
+			country_event = {
+				id = jap.21
+			}
+		}
+	}
+	JAP_taiwan_fleet = {
+		available = {
+			CHI = {
+				has_war_with = TAI
+			}
+		}
+		visible = {
+			has_completed_focus = JAP_maintain_sea_and_air_superiority
+		}
+		fire_only_once = yes
+		cost = 100
+		days_remove = 30
+		complete_effect = {
+			add_timed_idea = {
+				idea = JAP_taiwan_fleet_help
+				days = 100
+			}
+		}
+	}
+	JAP_taiwan_air = {
+		available = {
+			CHI = {
+				has_war_with = TAI
+			}
+		}
+		visible = {
+			has_completed_focus = JAP_maintain_sea_and_air_superiority
+		}
+		fire_only_once = yes
+		cost = 100
+		days_remove = 30
+		complete_effect = {
+			add_timed_idea = {
+				idea = JAP_taiwan_air_help
+				days = 100
+			}
+		}
+	}
+}
+
+JAP_PEC_category = {
+	JAP_PEC_east_asia_defence_fund = {
+		target_root_trigger = {
+			has_country_flag = JAP_PEC_economic_explotation_flag
+		}
+		visible = {
+			hidden_trigger = {
+				ROOT = {
+					has_completed_focus = JAP_defeat_east_economic_autarky
+				}
+			}
+			FROM = {
+				has_country_flag = JAP_PEC_member_flag
+			}
+		}
+		targets = {
+			MAY
+			PHI
+			SIA
+			RAJ
+			KOR
+		}
+		cost = JAP_PEC_cost_support
+		days_remove = 150
+		fire_only_once = yes
+		modifier = {
+			consumer_goods_factor = 0.05
+			tax_gain_multiplier_modifier = -0.05
+			civilian_factory_use = 3
+			custom_modifier_tooltip = JAP_PEC_decision_tooltip
+		}
+		targeted_modifier = {
+			tag = FROM
+			consumer_goods_factor = -0.05
+			military_development_monthly = 0.02
+			industrial_development_monthly = 0.02
+		}
+		remove_effect = {
+			FROM = {
+				add_ideas = JAP_east_asia_defence_fund_idea
+				random_owned_controlled_state = {
+					add_extra_state_shared_building_slots = 3
+					add_building_construction = {
+						type = arms_factory
+						level = 2
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 20
+		}
+	}
+	JAP_PEC_seize_asia_markets_arms = {
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = JAP_defeat_east_economic_autarky
+			}
+		}
+		icon = generic_wreckers
+		available = {
+			NOT = {
+				has_country_flag = JAP_asia_markets_cooldown
+			}
+		}
+		cancel_if_not_visible = yes
+		fire_only_once = no
+		days_re_enable = 25
+		days_remove = 80
+		ai_will_do = {
+			base = 10
+		}
+		cost = 25
+		modifier = {
+			civilian_factory_use = 10
+		}
+		complete_effect = {
+			set_country_flag = JAP_asia_markets_cooldown
+		}
+		remove_effect = {
+			add_offsite_building = { type = arms_factory level = 2 }
+			set_temp_variable = {
+				var = industrial_development_var_temp
+				value = 0.1
+			}
+			add_industrial_development = yes
+			clr_country_flag = JAP_asia_markets_cooldown
+		} 
+	}
+	JAP_PEC_seize_asia_markets_industrial = {
+		visible = {
+			hidden_trigger = {
+				has_completed_focus = JAP_defeat_east_economic_autarky
+			}
+		}
+		icon = generic_wreckers
+		available = {
+			NOT = {
+				has_country_flag = JAP_asia_markets_cooldown
+			}
+		}
+		cancel_if_not_visible = yes
+		fire_only_once = no
+		days_re_enable = 25
+		days_remove = 80
+		ai_will_do = {
+			base = 10
+		}
+		cost = 25
+		modifier = {
+			civilian_factory_use = 10
+		}
+		complete_effect = {
+			set_country_flag = JAP_asia_markets_cooldown
+		}
+		remove_effect = {
+			add_offsite_building = { type = industrial_complex level = 2 }
+			set_temp_variable = {
+				var = industrial_development_var_temp
+				value = 0.1
+			}
+			add_industrial_development = yes
+			clr_country_flag = JAP_asia_markets_cooldown
+		}
+	}
+	JAP_PEC_help_asia = {
+		target_root_trigger = {
+			has_country_flag = JAP_PEC_help_asia_flag
+		}
+		visible = {
+			FROM = {
+				has_country_flag = JAP_PEC_member_flag
+			}
+		}
+		targets = {
+			MAY
+			PHI
+			SIN
+			SIA
+			RAJ
+			KOR
+			PAP
+		}
+		cost = JAP_PEC_cost_support
+		days_remove = 250
+		days_re_enable = 100
+		modifier = {
+			consumer_goods_factor = 0.025
+			tax_gain_multiplier_modifier = 0.05
+			custom_modifier_tooltip = JAP_PEC_decision_tooltip
+		}
+		targeted_modifier = {
+			tag = FROM
+			consumer_goods_factor = -0.05
+			poverty_development_monthly = 0.02
+		}
+		remove_effect = {
+			set_temp_variable = {
+				debt = FROM.max_manpower_k
+			}
+			if = {
+				limit = {
+					FROM = {
+						tag = RAJ
+					}
+					divide_temp_variable = {
+						debt = -150000
+					}
+				}
+			}
+			else = {
+				divide_temp_variable = {
+					debt = -700
+				}
+			}
+			multiply_temp_variable = {
+				debt = FROM.num_of_factories
+			}
+			divide_temp_variable = {
+				debt = JAP.num_of_factories
+			}
+			add_debt = yes
+			FROM = {
+				add_political_power = 50
+				add_stability = 0.015
+				set_temp_variable = {
+					var = poverty_development_var_temp
+					value = 0.1
+				}
+				add_poverty_development = yes
+			}
+		}
+		ai_will_do = {
+			base = 20
+		}
+	}
+	JAP_PEC_help_america = {
+		target_root_trigger = {
+			has_country_flag = JAP_PEC_help_america_flag
+		}
+		visible = {
+			FROM = {
+				has_country_flag = JAP_PEC_member_flag
+			}
+		}
+		targets = {
+			PRU
+			ARG
+			CHL
+			COL
+			ELS
+			ECU
+		}
+		cost = JAP_PEC_cost_support
+		days_remove = 250
+		days_re_enable = 100
+		modifier = {
+			consumer_goods_factor = 0.05
+			tax_gain_multiplier_modifier = 0.075
+			custom_modifier_tooltip = JAP_PEC_decision_tooltip
+		}
+		targeted_modifier = {
+			tag = FROM
+			consumer_goods_factor = -0.01
+			industrial_development_monthly = 0.02
+		}
+		remove_effect = {
+			set_temp_variable = {
+				debt = FROM.max_manpower_k
+			}
+			if = {
+				limit = {
+					FROM = {
+						tag = RAJ
+					}
+					divide_temp_variable = {
+						debt = -150000
+					}
+				}
+			}
+			else = {
+				divide_temp_variable = {
+					debt = -700
+				}
+			}
+			multiply_temp_variable = {
+				debt = FROM.num_of_factories
+			}
+			divide_temp_variable = {
+				debt = JAP.num_of_factories
+			}
+			add_debt = yes
+			FROM = {
+				random_owned_controlled_state = {
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 20
+		}
+	}
+	JAP_PEC_invite_america = {
+		target_root_trigger = {
+			has_country_flag = JAP_PEC_invite_america_flag
+		}
+		icon = GFX_JAP_pec
+		visible = {
+			FROM = {
+				NOT = {
+					has_country_flag = JAP_PEC_member_flag
+				}
+			}
+		}
+		targets = {
+			PRU
+			ARG
+			CHL
+			COL
+			ELS
+			ECU
+		}
+		cost = 25
+		days_remove = 10
+		remove_effect = {
+			FROM = {
+				country_event = {
+					id = jap.66
+				}
+			}
+		}
+		ai_will_do = {
+			base = 1000
+		}
+	}
+	JAP_PEC_invite_asia = {
+		target_root_trigger = {
+			has_country_flag = JAP_PEC_invite_asia_flag
+			FROM = {
+				NOT = {
+					has_country_flag = JAP_PEC_member_flag
+				}
+			}
+		}
+		visible = {
+			FROM = {
+				NOT = {
+					has_country_flag = JAP_PEC_member_flag
+				}
+			}
+		}
+		icon = GFX_JAP_pec
+		targets = {
+			RAJ
+			KOR
+			PAP
+		}
+		cost = 25
+		days_remove = 10
+		remove_effect = {
+			FROM = {
+				country_event = {
+					id = jap.66
+				}
+			}
+		}
+		ai_will_do = {
+			base = 1000
+		}
+	}
+	JAP_PEC_invite_south_asia = {
+		target_root_trigger = {
+			has_country_flag = JAP_PEC_invite_south_asia_flag
+			has_country_flag = JAP_cold_war_flag
+		}
+		icon = GFX_JAP_pec
+		visible = {
+			FROM = {
+				NOT = {
+					has_country_flag = JAP_PEC_member_flag
+				}
+			}
+		}
+		available = {
+			FROM = {
+				has_war = no
+			}
+		}
+		targets = {
+			MAY
+			PHI
+			SIN
+			SIA
+		}
+		cost = 75
+		days_remove = 15
+		remove_effect = {
+			FROM = {
+				country_event = {
+					id = jap.66
+				}
+			}
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+}
+
+JAP_foreign_policy_cat = {
+	JAP_invite_new_zealand_pdto = {
+		available = {
+			JAP = {
+				has_country_flag = JAP_cold_war_flag
+			}
+		}
+		visible = {
+			has_completed_focus = JAP_defeat_unite_free_asia
+		}
+		fire_only_once = yes
+		cost = 10
+		days_remove = 40
+		targets = {
+			NZL
+		}
+		remove_effect = {
+			JAP = {
+				add_to_faction = NZL
+			}
+			NZL = {
+				set_country_flag = pdto_member
+			}
+		}
+		ai_will_do = {
+			base = 1000
+		}
+	}
+	JAP_invite_papua_new_guinea_pdto = {
+		available = {
+			JAP = {
+				has_country_flag = JAP_cold_war_flag
+			}
+		}
+		visible = {
+			has_completed_focus = JAP_defeat_unite_free_asia
+		}
+		fire_only_once = yes
+		cost = 10
+		days_remove = 40
+		targets = {
+			PAP
+		}
+		remove_effect = {
+			news_event = sino_jap_coldwar.10
+			JAP = {
+				add_to_faction = PAP
+			}
+			PAP = {
+				set_country_flag = pdto_member
+			}
+		}
+		ai_will_do = {
+			base = 1000
+		}
+	}
+	JAP_invite_india_pdto = {
+		available = {
+			JAP = {
+				has_country_flag = JAP_cold_war_flag
+			}
+			PAK = {
+				OR = {
+					has_country_flag = PAK_lost_indo_pakistan_war
+					has_country_flag = PAK_won_indo_pakistan_war
+				}
+			}
+		}
+		visible = {
+			has_completed_focus = JAP_defeat_unite_free_asia
+		}
+		fire_only_once = yes
+		cost = 10
+		days_remove = 70
+		targets = {
+			RAJ
+		}
+		remove_effect = {
+			news_event = sino_jap_coldwar.9
+			JAP = {
+				add_to_faction = RAJ
+			}
+			RAJ = {
+				set_country_flag = pdto_member
+			}
+		}
+		ai_will_do = {
+			base = 2000
+		}
+	}
+	JAP_invite_south_asia_in_pdto = {
+		target_root_trigger = {
+			has_country_flag = JAP_cold_war_flag
+		}
+		visible = {
+			FROM = {
+				is_in_faction = no
+				has_war = no
+			}
+		}
+		available = {
+		}
+		targets = {
+			MAY
+			PHI
+			SIN
+			SIA
+		}
+		complete_effect = {
+			if = {
+				limit = {
+					FROM = { tag = SIA }
+				}
+				news_event = sino_jap_coldwar.4
+			}
+			if = {
+				limit = {
+					FROM = { tag = SIN }
+				}
+				news_event = sino_jap_coldwar.5
+			}
+			if = {
+				limit = {
+					FROM = { tag = MAY }
+				}
+				news_event = sino_jap_coldwar.6
+			}
+			if = {
+				limit = {
+					FROM = { tag = PHI }
+				}
+				news_event = sino_jap_coldwar.7
+			}
+			JAP = {
+				add_to_faction = FROM
+			}
+			FROM = {
+				set_country_flag = pdto_member
+			}
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+}
+
+JAP_pdto_dec_cat = {
+	JAP_pdto_military_exercises = {
+		visible = {
+			has_completed_focus = JAP_form_pdto2
+		}
+		available = {
+			has_completed_focus = JAP_first_pdto_military_exercises
+		}
+		fire_only_once = yes
+		days_remove = 20
+		complete_effect = {
+			TAI = {
+				country_event = jap.57
+			}
+			AST = {
+				country_event = jap.57
+			}
+			add_timed_idea = {
+				idea = JAP_pdto_exercises1
+				days = 20
+			}
+		}
+		remove_effect = {
+			TAI = {
+				add_ideas = JAP_pdto_exercises2
+			}
+			AST = {
+				add_ideas = JAP_pdto_exercises2
+			}
+			add_ideas = JAP_pdto_exercises2
+		}
+		cost = 75
+	}
+	JAP_taiwanese_training_idea1 = {
+		visible = {
+			has_completed_focus = JAP_form_pdto2
+		}
+		available = {
+			has_completed_focus = JAP_invest_taiwanese_defences
+		}
+		fire_only_once = yes
+		days_remove = 14
+		remove_effect = {
+			TAI = {
+				add_ideas = officer_military_school
+			}
+		}
+		cost = 25
+	}
+	JAP_taiwanese_training_idea2 = {
+		visible = {
+			has_completed_focus = JAP_form_pdto2
+		}
+		available = {
+			has_completed_focus = JAP_invest_taiwanese_defences
+			has_idea = officer_military_school
+		}
+		fire_only_once = yes
+		days_remove = 14
+		remove_effect = {
+			TAI = {
+				add_ideas = officer_military_academy
+			}
+		}
+		cost = 50
+	}
+	JAP_taiwanese_supervision_idea = {
+		visible = {
+			has_completed_focus = JAP_form_pdto2
+		}
+		available = {
+			has_completed_focus = JAP_invest_taiwanese_defences
+		}
+		fire_only_once = yes
+		days_remove = 14
+		remove_effect = {
+			TAI = {
+				add_ideas = high_supervision
+			}
+		}
+		cost = 50
+	}
+	JAP_taiwanese_military_development = {
+		visible = {
+			has_completed_focus = JAP_form_pdto2
+		}
+		available = {
+			has_completed_focus = JAP_invest_taiwanese_defences
+		}
+		fire_only_once = yes
+		days_remove = 14
+		remove_effect = {
+			TAI = {
+				army_experience = 25
+				set_temp_variable = {
+					var = military_development_var_temp
+					value = 0.1
+				}
+				add_military_development = yes
+			}
+		}
+		cost = 25
+	}
+	JAP_send_military_advisiors_to_taiwan = {
+		visible = {
+			has_completed_focus = JAP_form_pdto2
+		}
+		available = {
+			has_completed_focus = JAP_invest_taiwanese_defences
+		}
+		fire_only_once = yes
+		days_remove = 14
+		remove_effect = {
+			TAI = {
+				add_ideas = JAP_CHI_japan_advisiors
+			}
+		}
+		cost = 50
+	}
+	JAP_develop_taiwanese_military_production = {
+		visible = {
+			has_completed_focus = JAP_form_pdto2
+		}
+		available = {
+			has_completed_focus = JAP_invest_taiwanese_defences
+		}
+		fire_only_once = yes
+		days_remove = 14
+		complete_effect = {
+			set_temp_variable = {
+				treasury_change = -10
+			}
+			modify_treasury_effect = yes
+		}
+		remove_effect = {
+			TAI = {
+				add_ideas = JAP_CHI_japan_military_production_help
+			}
+		}
+		cost = 100
+	}
+}
+
+JAP_great_asian_war = {
+	JAP_GAW_war_exhaustion = {
+		name = PRC_GAW_war_exhaustion
+		priority = 99
+		icon = GFX_SOV_decision_nato_war_deadline
+		available = {
+			hidden_trigger = {
+				always = no
+			}
+			JAP = {
+				OR = {
+					has_capitulated = yes
+					is_puppet_of = CHI
+				}
+			}
+			AST = {
+				OR = {
+					has_capitulated = yes
+					is_puppet_of = CHI
+				}
+			}
+			RAJ = {
+				OR = {
+					has_capitulated = yes
+					is_puppet_of = CHI
+					has_war = no
+				}
+			}
+		}
+		days_mission_timeout = 150
+		activation = {
+			always = no
+		}
+		visible = {
+			NOT = {
+				OR = {
+					has_global_flag = PRC_chinese_gaw_victory_global
+					has_global_flag = PRC_japanese_gaw_victory_global
+				}
+			}
+		}
+		fire_only_once = no
+		cancel_if_not_visible = yes
+		is_good = no
+		cancel_trigger = {
+			hidden_trigger = {
+				always = no
+			}
+			CHI = {
+				surrender_progress > 0.6
+			}
+			NOT = {
+				has_country_flag = GAW_disabled
+			}
+		}
+		cancel_effect = {
+			effect_tooltip = {
+				news_event = {
+					id = news.414
+					days = 1
+				}
+			}
+		}
+		timeout_effect = {
+			PRC_increase_war_exhaustion = yes
+			activate_mission = JAP_GAW_war_exhaustion
+		}
+		complete_effect = {
+			effect_tooltip = {
+				news_event = {
+					id = news.413
+					days = 1
+				}
+			}
+		}
+	}
+	JAP_korean_war_joining = {
+		priority = 1
+		icon = GFX_JAP_election_day
+		available = {
+			always = no
+		}
+		days_mission_timeout = 60
+		activation = {
+			always = no
+		}
+		visible = {
+			tag = JAP
+		}
+		fire_only_once = yes
+		cancel_if_not_visible = yes
+		is_good = no
+		complete_effect = {
+		}
+		timeout_effect = {
+			declare_war_on = {
+				target = NKO
+				type = annex_everything
+			}
+			add_to_faction = KOR
+			KOR = {
+				set_country_flag = pdto_member
+			}
+			news_event = sino_jap_coldwar.11
+			news_event = {
+				id = jap.1001
+				hours = 6
+			}
+		}
+	}
+	JAP_authorize_north_korean_intervention = {
+		icon = GFX_JAP_jsdf
+		available = {
+			NKO = {
+				has_war_with = KOR
+			}
+		}
+		visible = {
+			has_active_mission = JAP_korean_war_joining
+			NOT = {
+				has_global_flag = pan_asian_war_ongoing
+			}
+		}
+		fire_only_once = yes
+		cost = 25
+		days_remove = 10
+		complete_effect = {
+			add_timed_idea = {
+				idea = PRC_north_korean_intervention
+				days = 100
+			}
+			add_ai_strategy = {
+				type = send_volunteers_desire
+				id = KOR
+				value = 500
+			}
+		}
+		ai_will_do = {
+			base = 150
+		}
+	}
+	PRC_arm_the_rok_armed_forces = {
+		icon = GFX_JAP_jsdf
+		available = {
+			has_active_mission = JAP_korean_war_joining
+		}
+		visible = {
+			has_active_mission = JAP_korean_war_joining
+		}
+		cost = 35
+		days_remove = 15
+		days_re_enable = 30
+		fire_only_once = no
+		remove_effect = {
+			army_experience = 25
+			KOR = {
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = 7500
+					producer = JAP
+				}
+				add_equipment_to_stockpile = {
+					type = support_equipment
+					amount = 750
+					producer = JAP
+				}
+				add_equipment_to_stockpile = {
+					type = artillery_equipment
+					amount = 750
+					producer = JAP
+				}
+				add_equipment_to_stockpile = {
+					type = motorized_equipment
+					amount = 750
+					producer = JAP
+				}
+				set_temp_variable = {
+					var = military_development_var_temp
+					value = 0.25
+				}
+				add_military_development = yes
+			}
+			set_temp_variable = {
+				treasury_change = -15
+			}
+			modify_treasury_effect = yes
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	JAP_energy_rationing = {
+		priority = 1
+		icon = generic_propaganda_campaigns
+		allowed = {
+			original_tag = JAP
+		}
+		visible = {
+			has_completed_focus = JAP_second_war_in_greater_east_asia
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 15
+		}
+		cost = 50
+		days_remove = 120
+		days_re_enable = 100
+		fire_only_once = no
+		modifier = {
+			energy_use_multiplier = -0.15
+			army_fuel_consumption_factor = -0.1
+			navy_fuel_consumption_factor = -0.1
+			air_fuel_consumption_factor = -0.1
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+		}
+	}
+	JAP_plan_qingdao_offensive_dec = {
+		icon = generic_industry
+		allowed = {
+			tag = JAP
+		}
+		visible = {
+			has_completed_focus = JAP_third_sino_japanese_war
+		}
+		available = {
+			has_war_with = CHI
+		}
+		cost = 30
+		fire_only_once = yes
+		days_remove = 15
+		highlight_states = {
+			highlight_state_targets = {
+				state = 1420
+				state = 1229
+				state = 1393
+				state = 1230
+			}
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					1420 = {
+						has_dynamic_modifier = {
+							modifier = PRC_unplanned_offensive
+						}
+					}
+				}
+				every_state = {
+					limit = {
+						OR = {
+							state = 1420
+							state = 1229
+							state = 1393
+							state = 1230
+						}
+					}
+					remove_dynamic_modifier = {
+						modifier = PRC_unplanned_offensive
+					}
+				}
+			}
+			custom_effect_tooltip = JAP_landing_in_the_qingdao_tt
+			hidden_effect = {
+				load_oob = JAP_qingdao
+			}
+		}
+		ai_will_do = {
+			base = 150
+		}
+	}
+	JAP_plan_zhengzhou_offensive_dec = {
+		icon = generic_industry
+		allowed = {
+			tag = JAP
+		}
+		visible = {
+			has_completed_focus = JAP_third_sino_japanese_war
+			1226 = {
+				has_dynamic_modifier = {
+					modifier = PRC_unplanned_offensive
+				}
+			}
+		}
+		available = {
+			has_war_with = CHI
+		}
+		cost = 30
+		fire_only_once = yes
+		days_remove = 15
+		highlight_states = {
+			highlight_state_targets = {
+				state = 1226
+				state = 1223
+				state = 606
+				state = 598
+			}
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			every_state = {
+				limit = {
+					OR = {
+						state = 1226
+						state = 1223
+						state = 606
+						state = 598
+					}
+				}
+				remove_dynamic_modifier = {
+					modifier = PRC_unplanned_offensive
+				}
+			}
+		}
+		ai_will_do = {
+			base = 150
+		}
+	}
+	JAP_plan_shanghai_nanjing_offensive_dec = {
+		icon = generic_industry
+		allowed = {
+			tag = JAP
+		}
+		visible = {
+			has_completed_focus = JAP_third_sino_japanese_war
+		}
+		available = {
+			has_war_with = CHI
+		}
+		cost = 50
+		fire_only_once = yes
+		days_remove = 15
+		highlight_states = {
+			highlight_state_targets = {
+				state = 540
+				state = 613
+				state = 1222
+				state = 1228
+			}
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					540 = {
+						has_dynamic_modifier = {
+							modifier = PRC_unplanned_offensive
+						}
+					}
+				}
+				every_state = {
+					limit = {
+						OR = {
+							state = 540
+							state = 613
+							state = 1222
+							state = 1228
+						}
+					}
+					remove_dynamic_modifier = {
+						modifier = PRC_unplanned_offensive
+					}
+				}
+			}
+			custom_effect_tooltip = JAP_landing_in_the_shanghai_tt
+			hidden_effect = {
+				load_oob = JAP_shanghai
+			}
+		}
+		ai_will_do = {
+			base = 200
+		}
+	}
+	JAP_plan_hanhgzhou_wenbou_offensive_dec = {
+		icon = generic_industry
+		allowed = {
+			tag = JAP
+		}
+		visible = {
+			has_completed_focus = JAP_third_sino_japanese_war
+			1220 = {
+				has_dynamic_modifier = {
+					modifier = PRC_unplanned_offensive
+				}
+			}
+		}
+		available = {
+			has_war_with = CHI
+		}
+		cost = 30
+		fire_only_once = yes
+		days_remove = 15
+		highlight_states = {
+			highlight_state_targets = {
+				state = 1220
+				state = 1221
+				state = 1159
+				state = 596
+				state = 1219
+			}
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			every_state = {
+				limit = {
+					OR = {
+						state = 1220
+						state = 1221
+						state = 1159
+						state = 596
+						state = 1219
+					}
+				}
+				remove_dynamic_modifier = {
+					modifier = PRC_unplanned_offensive
+				}
+			}
+		}
+		ai_will_do = {
+			base = 150
+		}
+	}
+	JAP_plan_fuzhou_offensive_dec = {
+		icon = generic_industry
+		allowed = {
+			tag = JAP
+		}
+		visible = {
+			has_completed_focus = JAP_third_sino_japanese_war
+			1218 = {
+				has_dynamic_modifier = {
+					modifier = PRC_unplanned_offensive
+				}
+			}
+		}
+		available = {
+			has_war_with = CHI
+		}
+		cost = 30
+		fire_only_once = yes
+		days_remove = 15
+		highlight_states = {
+			highlight_state_targets = {
+				state = 1218
+				state = 537
+				state = 1216
+				state = 1217
+			}
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			every_state = {
+				limit = {
+					OR = {
+						state = 1218
+						state = 537
+						state = 1216
+						state = 1217
+					}
+				}
+				remove_dynamic_modifier = {
+					modifier = PRC_unplanned_offensive
+				}
+			}
+		}
+		ai_will_do = {
+			base = 150
+		}
+	}
+	JAP_plan_hongkong_guanzhou_offensive_dec = {
+		icon = generic_industry
+		allowed = {
+			tag = JAP
+		}
+		visible = {
+			has_completed_focus = JAP_third_sino_japanese_war
+		}
+		available = {
+			has_war_with = CHI
+		}
+		cost = 50
+		fire_only_once = yes
+		days_remove = 15
+		highlight_states = {
+			highlight_state_targets = {
+				state = 592
+				state = 1395
+				state = 729
+				state = 326
+			}
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					592 = {
+						has_dynamic_modifier = {
+							modifier = PRC_unplanned_offensive
+						}
+					}
+				}
+				every_state = {
+					limit = {
+						OR = {
+							state = 592
+							state = 1395
+							state = 729
+							state = 326
+						}
+					}
+					remove_dynamic_modifier = {
+						modifier = PRC_unplanned_offensive
+					}
+				}
+			}
+			custom_effect_tooltip = JAP_landing_in_the_hong_kong_tt
+			hidden_effect = {
+				load_oob = JAP_hong_kong
+			}
+		}
+		ai_will_do = {
+			base = 200
+		}
+	}
+	JAP_plan_guandong_offensive_dec = {
+		icon = generic_industry
+		allowed = {
+			tag = JAP
+		}
+		visible = {
+			has_completed_focus = JAP_third_sino_japanese_war
+			1206 = {
+				has_dynamic_modifier = {
+					modifier = PRC_unplanned_offensive
+				}
+			}
+		}
+		available = {
+			has_war_with = CHI
+		}
+		cost = 30
+		fire_only_once = yes
+		days_remove = 15
+		highlight_states = {
+			highlight_state_targets = {
+				state = 1206
+				state = 1207
+				state = 728
+				state = 591
+			}
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			every_state = {
+				limit = {
+					OR = {
+						state = 1206
+						state = 1207
+						state = 728
+						state = 591
+					}
+				}
+				remove_dynamic_modifier = {
+					modifier = PRC_unplanned_offensive
+				}
+			}
+		}
+		ai_will_do = {
+			base = 150
+		}
+	}
+	JAP_plan_nanchang_offensive_dec = {
+		icon = generic_industry
+		allowed = {
+			tag = JAP
+		}
+		visible = {
+			has_completed_focus = JAP_third_sino_japanese_war
+			600 = {
+				has_dynamic_modifier = {
+					modifier = PRC_unplanned_offensive
+				}
+			}
+		}
+		available = {
+			has_war_with = CHI
+		}
+		cost = 30
+		fire_only_once = yes
+		days_remove = 15
+		highlight_states = {
+			highlight_state_targets = {
+				state = 600
+				state = 1227
+				state = 1214
+				state = 1213
+				state = 1219
+			}
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			every_state = {
+				limit = {
+					OR = {
+						state = 600
+						state = 1227
+						state = 1214
+						state = 1213
+						state = 1219
+					}
+				}
+				remove_dynamic_modifier = {
+					modifier = PRC_unplanned_offensive
+				}
+			}
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+	JAP_plan_guanxi_offensive_dec = {
+		icon = generic_industry
+		allowed = {
+			tag = JAP
+		}
+		visible = {
+			has_completed_focus = JAP_third_sino_japanese_war
+			594 = {
+				has_dynamic_modifier = {
+					modifier = PRC_unplanned_offensive
+				}
+			}
+		}
+		available = {
+			has_war_with = CHI
+		}
+		cost = 50
+		fire_only_once = yes
+		days_remove = 15
+		highlight_states = {
+			highlight_state_targets = {
+				state = 594
+				state = 1191
+				state = 599
+				state = 1205
+				state = 593
+				state = 1203
+				state = 1204
+			}
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			every_state = {
+				limit = {
+					OR = {
+						state = 594
+						state = 1191
+						state = 599
+						state = 1205
+						state = 593
+						state = 1203
+						state = 1204
+					}
+				}
+				remove_dynamic_modifier = {
+					modifier = PRC_unplanned_offensive
+				}
+			}
+		}
+		ai_will_do = {
+			base = 200
+		}
+	}
+	JAP_initiate_ketsugo_plan_dec = {
+		icon = generic_industry
+		allowed = {
+			tag = JAP
+		}
+		visible = {
+			has_completed_focus = JAP_war_for_japans_survival
+		}
+		available = {
+			OR = {
+				528 = {
+					is_controlled_by = CHI
+				}
+				529 = {
+					is_controlled_by = CHI
+				}
+				530 = {
+					is_controlled_by = CHI
+				}
+			}
+		}
+		cost = 25
+		fire_only_once = yes
+		highlight_states = {
+			highlight_state_targets = {
+				state = 1338
+			}
+		}
+		complete_effect = {
+			if = {
+				limit = {
+					OR = {
+						528 = {
+							has_dynamic_modifier = {
+								modifier = PRC_unplanned_offensive
+							}
+						}
+						529 = {
+							has_dynamic_modifier = {
+								modifier = PRC_unplanned_offensive
+							}
+						}
+						530 = {
+							has_dynamic_modifier = {
+								modifier = PRC_unplanned_offensive
+							}
+						}
+						1338 = {
+							has_dynamic_modifier = {
+								modifier = PRC_unplanned_offensive
+							}
+						}
+					}
+				}
+				every_state = {
+					limit = {
+						OR = {
+							state = 528
+							state = 529
+							state = 530
+							state = 1338
+						}
+					}
+					remove_dynamic_modifier = {
+						modifier = PRC_unplanned_offensive
+					}
+				}
+			}
+			add_timed_idea = {
+				idea = JAP_ketsugo_idea
+				days = 35
+			}
+			custom_effect_tooltip = JAP_japan_reserves_tt
+			hidden_effect = {
+				load_oob = GAW_reserves_jap2
+			}
+		}
+		remove_effect = {
+		}
+		ai_will_do = {
+			base = 250
+		}
+	}
+	JAP_operation_full_moon_dec = {
+		icon = generic_industry
+		allowed = {
+			tag = JAP
+		}
+		visible = {
+			has_completed_focus = JAP_together_with_korea
+			OR = {
+				NOT = {
+					country_exists = KOR
+				}
+				KOR = {
+					has_capitulated = yes
+				}
+			}
+		}
+		available = {
+			JAP_no_offensive_actions = yes
+			OR = {
+				NOT = {
+					country_exists = KOR
+				}
+				KOR = {
+					has_capitulated = yes
+				}
+			}
+		}
+		cost = 25
+		fire_only_once = yes
+		highlight_states = {
+			highlight_state_targets = {
+				state = 1409
+				state = 1412
+			}
+		}
+		complete_effect = {
+			add_timed_idea = {
+				idea = JAP_operation_full_moon_idea
+				days = 35
+			}
+		}
+		remove_effect = {
+		}
+		ai_will_do = {
+			base = 175
+		}
+	}
+	JAP_seoul_pyongyang_operation_dec = {
+		icon = generic_industry
+		allowed = {
+			tag = JAP
+		}
+		visible = {
+			has_completed_focus = JAP_together_with_korea
+		}
+		available = {
+			JAP_no_offensive_actions = yes
+			country_exists = KOR
+			KOR = {
+				has_war_with = NKO
+			}
+		}
+		cost = 25
+		fire_only_once = yes
+		highlight_states = {
+			highlight_state_targets = {
+				state = 1043
+				state = 1041
+			}
+		}
+		complete_effect = {
+			every_state = {
+				limit = {
+					region = 186
+				}
+				remove_dynamic_modifier = {
+					modifier = PRC_korean_war_modifer3
+				}
+				remove_dynamic_modifier = {
+					modifier = PRC_korean_war_modifer2
+				}
+				remove_dynamic_modifier = {
+					modifier = PRC_korean_war_modifer
+				}
+			}
+			add_timed_idea = {
+				idea = JAP_seoul_pyongyang_operation_idea
+				days = 35
+			}
+		}
+		remove_effect = {
+		}
+		ai_will_do = {
+			base = 200
+		}
+	}
+	JAP_wajo_operation_dec = {
+		icon = generic_industry
+		allowed = {
+			tag = JAP
+		}
+		visible = {
+			has_completed_focus = JAP_together_with_korea
+		}
+		available = {
+			JAP_no_offensive_actions = yes
+			country_exists = KOR
+			KOR = {
+				has_war_with = NKO
+			}
+			OR = {
+				1041 = {
+					is_controlled_by = CHI
+				}
+				871 = {
+					is_controlled_by = CHI
+				}
+				1041 = {
+					is_controlled_by = NKO
+				}
+				871 = {
+					is_controlled_by = NKO
+				}
+			}
+		}
+		cost = 25
+		fire_only_once = yes
+		highlight_states = {
+			highlight_state_targets = {
+				state = 1041
+				state = 871
+			}
+		}
+		complete_effect = {
+			add_timed_idea = {
+				idea = JAP_operation_wajo_idea
+				days = 35
+			}
+		}
+		remove_effect = {
+		}
+		ai_will_do = {
+			base = 150
+		}
+	}
+	JAP_cross_amnok_river_dec = {
+		icon = generic_industry
+		allowed = {
+			tag = JAP
+		}
+		visible = {
+			has_completed_focus = JAP_secure_a_foothold_in_manchuria
+		}
+		available = {
+			JAP_no_offensive_actions = yes
+			OR = {
+				NOT = {
+					country_exists = NKO
+				}
+				NKO = {
+					has_capitulated = yes
+				}
+			}
+		}
+		cost = 25
+		fire_only_once = yes
+		highlight_states = {
+			highlight_state_targets = {
+				state = 1413
+				state = 1417
+				state = 1414
+				state = 1415
+				state = 1416
+			}
+		}
+		complete_effect = {
+			add_timed_idea = {
+				idea = JAP_amnok_operation_idea
+				days = 35
+			}
+			if = {
+				limit = {
+					1413 = {
+						has_dynamic_modifier = {
+							modifier = PRC_unplanned_offensive
+						}
+					}
+				}
+				every_state = {
+					limit = {
+						OR = {
+							state = 1413
+							state = 1417
+							state = 1414
+							state = 1415
+							state = 1416
+						}
+					}
+					remove_dynamic_modifier = {
+						modifier = PRC_unplanned_offensive
+					}
+				}
+			}
+		}
+		remove_effect = {
+		}
+		ai_will_do = {
+			base = 150
+		}
+	}
+	JAP_operation_white_sun_dec = {
+		icon = generic_industry
+		allowed = {
+			tag = JAP
+		}
+		visible = {
+			has_completed_focus = JAP_reclaim_the_island
+			NOT = {
+				CHI = {
+					has_war_with = TAI
+				}
+			}
+		}
+		available = {
+			JAP_no_offensive_actions = yes
+		}
+		cost = 25
+		fire_only_once = yes
+		highlight_states = {
+			highlight_state_targets = {
+				state = 1148
+				state = 524
+				state = 1149
+				state = 1150
+				state = 430
+				state = 1451
+			}
+		}
+		complete_effect = {
+			add_timed_idea = {
+				idea = JAP_operation_white_sun_idea
+				days = 40
+			}
+			if = {
+				limit = {
+					1148 = {
+						has_dynamic_modifier = {
+							modifier = PRC_unplanned_offensive
+						}
+					}
+				}
+				every_state = {
+					limit = {
+						OR = {
+							state = 1148
+							state = 524
+							state = 1149
+							state = 1150
+							state = 430
+							state = 1451
+						}
+					}
+					remove_dynamic_modifier = {
+						modifier = PRC_unplanned_offensive
+					}
+				}
+			}
+		}
+		remove_effect = {
+		}
+		ai_will_do = {
+			base = 175
+		}
+	}
+	JAP_operation_red_earth = {
+		icon = generic_industry
+		allowed = {
+			tag = JAP
+		}
+		visible = {
+			has_completed_focus = JAP_reclaim_the_island
+			NOT = {
+				CHI = {
+					has_war_with = TAI
+				}
+			}
+		}
+		available = {
+			has_idea = JAP_operation_white_sun_idea
+			has_equipment = {
+				infantry_equipment > 10000
+			}
+			has_equipment = {
+				support_equipment > 1000
+			}
+		}
+		cost = 25
+		fire_only_once = yes
+		days_remove = 10
+		highlight_states = {
+			highlight_state_targets = {
+				state = 524
+			}
+		}
+		complete_effect = {
+			modify_timed_idea = {
+				idea = JAP_operation_white_sun_idea
+				days = 35
+			}
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -10000
+			}
+			add_equipment_to_stockpile = {
+				type = support_equipment
+				amount = -1000
+			}
+		}
+		remove_effect = {
+			custom_effect_tooltip = JAP_operation_red_earth_tt
+			hidden_effect = {
+				load_oob = JAP_red_earth
+			}
+		}
+		ai_will_do = {
+			base = 200
+		}
+	}
+	JAP_operation_hideyoshi_dec = {
+		icon = generic_industry
+		allowed = {
+			tag = JAP
+		}
+		visible = {
+			has_completed_focus = JAP_straight_into_the_dragons_lair
+		}
+		available = {
+			JAP_no_offensive_actions = yes
+		}
+		cost = 25
+		fire_only_once = yes
+		highlight_states = {
+			highlight_state_targets = {
+				state = 1157
+				state = 608
+				state = 609
+			}
+		}
+		complete_effect = {
+			add_timed_idea = {
+				idea = JAP_operation_hideyoshi_idea
+				days = 35
+			}
+			if = {
+				limit = {
+					1157 = {
+						has_dynamic_modifier = {
+							modifier = PRC_unplanned_offensive
+						}
+					}
+				}
+				every_state = {
+					limit = {
+						OR = {
+							state = 1157
+							state = 608
+							state = 609
+						}
+					}
+					remove_dynamic_modifier = {
+						modifier = PRC_unplanned_offensive
+					}
+				}
+			}
+		}
+		remove_effect = {
+		}
+		ai_will_do = {
+			base = 200
+		}
+	}
+	JAP_operation_summer_palace_dec = {
+		icon = generic_industry
+		allowed = {
+			tag = JAP
+		}
+		visible = {
+			has_completed_focus = JAP_straight_into_the_dragons_lair
+		}
+		available = {
+			JAP_no_offensive_actions = yes
+			1222 = {
+				is_controlled_by_ROOT_or_ally = yes
+			}
+			540 = {
+				is_controlled_by_ROOT_or_ally = yes
+			}
+			613 = {
+				is_controlled_by_ROOT_or_ally = yes
+			}
+			592 = {
+				is_controlled_by_ROOT_or_ally = yes
+			}
+			326 = {
+				is_controlled_by_ROOT_or_ally = yes
+			}
+			594 = {
+				is_controlled_by_ROOT_or_ally = yes
+			}
+			1229 = {
+				is_controlled_by_ROOT_or_ally = yes
+			}
+			1420 = {
+				is_controlled_by_ROOT_or_ally = yes
+			}
+		}
+		cost = 25
+		fire_only_once = yes
+		complete_effect = {
+			add_timed_idea = {
+				idea = JAP_operation_summer_palace_idea
+				days = 35
+			}
+			every_state = {
+				limit = {
+					OR = {
+						region = 143
+						region = 220
+						region = 216
+						region = 219
+						region = 152
+					}
+				}
+				remove_dynamic_modifier = {
+					modifier = PRC_unplanned_offensive
+				}
+			}
+			custom_effect_tooltip = JAP_removes_unplanned_offensives
+		}
+		remove_effect = {
+		}
+		ai_will_do = {
+			base = 150
+		}
+	}
+	JAP_operation_tsuki_shigure_dec = {
+		icon = generic_industry
+		allowed = {
+			tag = JAP
+		}
+		visible = {
+			has_completed_focus = JAP_operations_in_southeast_asia
+		}
+		available = {
+			JAP_no_offensive_actions = yes
+			OR = {
+				has_war_with = VIE
+				has_war_with = LAO
+				has_war_with = CBD
+				has_war_with = SIA
+			}
+		}
+		cost = 25
+		fire_only_once = yes
+		complete_effect = {
+			add_timed_idea = {
+				idea = JAP_operation_tsuki_shigure_idea
+				days = 35
+			}
+			every_state = {
+				limit = {
+					region = 142
+				}
+				remove_dynamic_modifier = {
+					modifier = PRC_unplanned_offensive
+				}
+			}
+		}
+		remove_effect = {
+		}
+		ai_will_do = {
+			base = 150
+		}
+	}
+	JAP_take_burma = {
+		icon = generic_industry
+		allowed = {
+			tag = JAP
+		}
+		visible = {
+			OR = {
+				NOT = {
+					BRM = {
+						is_ally_with = JAP
+					}
+				}
+				BRM = {
+					is_ally_with = CHI
+				}
+			}
+			BRM = {
+				has_war_with = JAP
+			}
+		}
+		available = {
+			JAP_no_offensive_actions = yes
+		}
+		cost = 25
+		fire_only_once = yes
+		days_remove = 10
+		complete_effect = {
+		}
+		remove_effect = {
+			every_state = {
+				limit = {
+					region = 189
+				}
+				remove_dynamic_modifier = {
+					modifier = PRC_unplanned_offensive
+				}
+			}
+			add_timed_idea = {
+				idea = JAP_burma_offensive_idea
+				days = 35
+			}
+		}
+		ai_will_do = {
+			base = 150
+		}
+	}
+	JAP_indonesia_offensive_dec = {
+		icon = generic_industry
+		allowed = {
+			tag = JAP
+		}
+		visible = {
+			has_completed_focus = JAP_operations_in_southeast_asia
+		}
+		available = {
+			JAP_no_offensive_actions = yes
+			has_war_with = IND
+		}
+		cost = 25
+		fire_only_once = yes
+		complete_effect = {
+			add_timed_idea = {
+				idea = JAP_indonesia_offensive_idea
+				days = 35
+			}
+			every_state = {
+				limit = {
+					OR = {
+						region = 158
+						region = 93
+						region = 167
+						region = 159
+						region = 187
+					}
+				}
+				remove_dynamic_modifier = {
+					modifier = PRC_unplanned_offensive
+				}
+			}
+		}
+		remove_effect = {
+		}
+		ai_will_do = {
+			base = 150
+		}
+	}
+	JAP_send_advisors_to_australia = {
+		visible = {
+			has_completed_focus = JAP_our_southern_allies
+			is_ally_with = AST
+		}
+		icon = GFX_SOV_decision_sponsor_communists
+		available = {
+			hidden_trigger = {
+				tag = JAP
+			}
+			is_ally_with = AST
+			AST = {
+				has_capitulated = no
+			}
+			NOT = {
+				any_allied_country = {
+					has_idea = JAP_japanese_advisors_gaw
+				}
+			}
+		}
+		cancel_if_not_visible = yes
+		days_re_enable = 40
+		days_remove = 40
+		ai_will_do = {
+			base = 10
+		}
+		custom_cost_trigger = {
+			command_power > 14
+		}
+		custom_cost_text = 15cp_cost
+		icon = GFX_SOV_decision_sponsor_communists
+		complete_effect = {
+			add_command_power = -15
+			AST = {
+				add_timed_idea = {
+					idea = JAP_japanese_advisors_gaw
+					days = 40
+				}
+			}
+		}
+		remove_effect = {
+		}
+	}
+	JAP_send_advisors_to_phil = {
+		visible = {
+			has_completed_focus = JAP_our_southern_allies
+			is_ally_with = PHI
+		}
+		icon = GFX_SOV_decision_sponsor_communists
+		available = {
+			hidden_trigger = {
+				tag = JAP
+			}
+			is_ally_with = PHI
+			PHI = {
+				has_capitulated = no
+			}
+			NOT = {
+				any_allied_country = {
+					has_idea = JAP_japanese_advisors_gaw
+				}
+			}
+		}
+		cancel_if_not_visible = yes
+		days_re_enable = 40
+		days_remove = 40
+		ai_will_do = {
+			base = 10
+		}
+		custom_cost_trigger = {
+			command_power > 14
+		}
+		custom_cost_text = 15cp_cost
+		icon = GFX_SOV_decision_sponsor_communists
+		complete_effect = {
+			add_command_power = -15
+			PHI = {
+				add_timed_idea = {
+					idea = JAP_japanese_advisors_gaw
+					days = 40
+				}
+			}
+		}
+		remove_effect = {
+		}
+	}
+	JAP_send_advisors_to_thai = {
+		visible = {
+			has_completed_focus = JAP_our_southern_allies
+			is_ally_with = SIA
+		}
+		icon = GFX_SOV_decision_sponsor_communists
+		available = {
+			hidden_trigger = {
+				tag = JAP
+			}
+			is_ally_with = SIA
+			SIA = {
+				has_capitulated = no
+			}
+			NOT = {
+				any_allied_country = {
+					has_idea = JAP_japanese_advisors_gaw
+				}
+			}
+		}
+		cancel_if_not_visible = yes
+		days_re_enable = 40
+		days_remove = 40
+		ai_will_do = {
+			base = 10
+		}
+		custom_cost_trigger = {
+			command_power > 14
+		}
+		custom_cost_text = 15cp_cost
+		icon = GFX_SOV_decision_sponsor_communists
+		complete_effect = {
+			add_command_power = -15
+			SIA = {
+				add_timed_idea = {
+					idea = JAP_japanese_advisors_gaw
+					days = 40
+				}
+			}
+		}
+		remove_effect = {
+		}
+	}
+	JAP_send_advisors_to_malaysia = {
+		visible = {
+			has_completed_focus = JAP_our_southern_allies
+			is_ally_with = MAY
+		}
+		icon = GFX_SOV_decision_sponsor_communists
+		available = {
+			hidden_trigger = {
+				tag = JAP
+			}
+			is_ally_with = MAY
+			MAY = {
+				has_capitulated = no
+			}
+			NOT = {
+				any_allied_country = {
+					has_idea = JAP_japanese_advisors_gaw
+				}
+			}
+		}
+		cancel_if_not_visible = yes
+		days_re_enable = 40
+		days_remove = 40
+		ai_will_do = {
+			base = 10
+		}
+		custom_cost_trigger = {
+			command_power > 14
+		}
+		custom_cost_text = 15cp_cost
+		icon = GFX_SOV_decision_sponsor_communists
+		complete_effect = {
+			add_command_power = -15
+			MAY = {
+				add_timed_idea = {
+					idea = JAP_japanese_advisors_gaw
+					days = 40
+				}
+			}
+		}
+		remove_effect = {
+		}
+	}
+	JAP_australia_send_guns = {
+		visible = {
+			tag = JAP
+			has_completed_focus = JAP_our_southern_allies
+			is_ally_with = AST
+		}
+		available = {
+			hidden_trigger = {
+				tag = JAP
+			}
+			is_ally_with = AST
+			AST = {
+				has_capitulated = no
+			}
+			NOT = {
+				CHI = {
+					has_completed_focus = PRC_starve_the_island
+				}
+			}
+		}
+		icon = GFX_SOV_decision_military_aid		#иконку сменить
+		fire_only_once = no
+		days_remove = 20
+		days_re_enable = 40
+		remove_effect = {
+			AST = {
+				add_equipment_to_stockpile = {
+					type = infantry_equipment_2
+					amount = 2000
+					producer = JAP
+				}
+				add_equipment_to_stockpile = {
+					type = support_equipment
+					amount = 300
+					producer = JAP
+				}
+				add_equipment_to_stockpile = {
+					type = anti_tank_equipment_1
+					amount = 100
+					producer = JAP
+				}
+				add_equipment_to_stockpile = {
+					type = anti_air_equipment_1
+					amount = 100
+					producer = JAP
+				}
+				add_equipment_to_stockpile = {
+					type = motorized_equipment
+					amount = 140
+					producer = JAP
+				}
+			}
+		}
+		cost = 100
+	}
+	JAP_phil_send_guns = {
+		visible = {
+			tag = JAP
+			has_completed_focus = JAP_our_southern_allies
+			is_ally_with = PHI
+		}
+		available = {
+			hidden_trigger = {
+				tag = JAP
+			}
+			is_ally_with = PHI
+			PHI = {
+				has_capitulated = no
+			}
+		}
+		icon = GFX_SOV_decision_military_aid		#иконку сменить
+		fire_only_once = no
+		days_remove = 20
+		days_re_enable = 40
+		remove_effect = {
+			PHI = {
+				add_equipment_to_stockpile = {
+					type = infantry_equipment_2
+					amount = 2000
+					producer = JAP
+				}
+				add_equipment_to_stockpile = {
+					type = support_equipment
+					amount = 300
+					producer = JAP
+				}
+				add_equipment_to_stockpile = {
+					type = anti_tank_equipment_1
+					amount = 100
+					producer = JAP
+				}
+				add_equipment_to_stockpile = {
+					type = anti_air_equipment_1
+					amount = 100
+					producer = JAP
+				}
+				add_equipment_to_stockpile = {
+					type = motorized_equipment
+					amount = 140
+					producer = JAP
+				}
+			}
+		}
+		cost = 100
+	}
+	JAP_thai_send_guns = {
+		visible = {
+			tag = JAP
+			has_completed_focus = JAP_our_southern_allies
+			is_ally_with = SIA
+		}
+		available = {
+			hidden_trigger = {
+				tag = JAP
+			}
+			is_ally_with = SIA
+			SIA = {
+				has_capitulated = no
+			}
+		}
+		icon = GFX_SOV_decision_military_aid		#иконку сменить
+		fire_only_once = no
+		days_remove = 20
+		days_re_enable = 40
+		remove_effect = {
+			SIA = {
+				add_equipment_to_stockpile = {
+					type = infantry_equipment_2
+					amount = 2000
+					producer = JAP
+				}
+				add_equipment_to_stockpile = {
+					type = support_equipment
+					amount = 300
+					producer = JAP
+				}
+				add_equipment_to_stockpile = {
+					type = anti_tank_equipment_1
+					amount = 100
+					producer = JAP
+				}
+				add_equipment_to_stockpile = {
+					type = anti_air_equipment_1
+					amount = 100
+					producer = JAP
+				}
+				add_equipment_to_stockpile = {
+					type = motorized_equipment
+					amount = 140
+					producer = JAP
+				}
+			}
+		}
+		cost = 100
+	}
+	JAP_vietnam_send_guns = {
+		visible = {
+			tag = JAP
+			has_completed_focus = JAP_our_southern_allies
+			is_ally_with = VIE
+		}
+		available = {
+			hidden_trigger = {
+				tag = JAP
+			}
+			is_ally_with = VIE
+			VIE = {
+				has_capitulated = no
+			}
+		}
+		icon = GFX_SOV_decision_military_aid		#иконку сменить
+		fire_only_once = no
+		days_remove = 20
+		days_re_enable = 40
+		remove_effect = {
+			VIE = {
+				add_equipment_to_stockpile = {
+					type = infantry_equipment_2
+					amount = 2000
+					producer = JAP
+				}
+				add_equipment_to_stockpile = {
+					type = support_equipment
+					amount = 300
+					producer = JAP
+				}
+				add_equipment_to_stockpile = {
+					type = anti_tank_equipment_1
+					amount = 100
+					producer = JAP
+				}
+				add_equipment_to_stockpile = {
+					type = anti_air_equipment_1
+					amount = 100
+					producer = JAP
+				}
+				add_equipment_to_stockpile = {
+					type = motorized_equipment
+					amount = 140
+					producer = JAP
+				}
+			}
+		}
+		cost = 100
+	}
+	JAP_malaya_send_guns = {
+		visible = {
+			tag = JAP
+			has_completed_focus = JAP_our_southern_allies
+			is_ally_with = MAY
+		}
+		available = {
+			hidden_trigger = {
+				tag = JAP
+			}
+			is_ally_with = MAY
+			MAY = {
+				has_capitulated = no
+			}
+		}
+		icon = GFX_SOV_decision_military_aid		#иконку сменить
+		fire_only_once = no
+		days_remove = 20
+		days_re_enable = 40
+		remove_effect = {
+			MAY = {
+				add_equipment_to_stockpile = {
+					type = infantry_equipment_2
+					amount = 2000
+					producer = JAP
+				}
+				add_equipment_to_stockpile = {
+					type = support_equipment
+					amount = 300
+					producer = JAP
+				}
+				add_equipment_to_stockpile = {
+					type = anti_tank_equipment_1
+					amount = 100
+					producer = JAP
+				}
+				add_equipment_to_stockpile = {
+					type = anti_air_equipment_1
+					amount = 100
+					producer = JAP
+				}
+				add_equipment_to_stockpile = {
+					type = motorized_equipment
+					amount = 140
+					producer = JAP
+				}
+			}
+		}
+		cost = 100
+	}
+}

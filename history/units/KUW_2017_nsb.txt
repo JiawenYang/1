@@ -1,0 +1,276 @@
+﻿division_template = {
+	name = "Liwa Mechaniqui" 	#Mechanised Brigade
+
+	regiments = {
+		Arm_Inf_Bat = { x = 0 y = 0 }
+		Mech_Inf_Bat = { x = 0 y = 1 }
+	}
+	support = {
+		Mech_Recce_Comp = { x = 0 y = 0 }
+		SP_Arty_Battery = { x = 0 y = 1 }
+		H_Engi_Comp = { x = 0 y = 2 }
+		armor_Comp = { x = 0 y = 3 }
+	}
+}
+
+division_template = {
+	name = "Liwa Mushat" 	#Infantry Brigade
+
+	regiments = {
+		Mech_Inf_Bat = { x = 0 y = 0 }
+		Mech_Inf_Bat = { x = 0 y = 1 }
+	}
+	support = {
+		Mot_Recce_Comp = { x = 0 y = 0 }
+		SP_Arty_Battery = { x = 0 y = 1 }
+		L_Engi_Comp = { x = 0 y = 2 }
+	}
+}
+
+division_template = {
+	name = "Liwa Moudar'a" 	#Armoured Brigade
+
+	regiments = {
+		armor_Bat = { x = 0 y = 0 }
+		armor_Bat = { x = 0 y = 1 }
+
+		Arm_Inf_Bat = { x = 1 y = 0 }
+	}
+	support = {
+		Mech_Recce_Comp = { x = 0 y = 0 }
+		SP_Arty_Battery = { x = 0 y = 1 }
+		H_Engi_Comp = { x = 0 y = 2 }
+	}
+}
+
+division_template = {
+	name = "Liwa Commando" 	#Commando Brigade
+
+	regiments = {
+		Special_Forces = { x = 0 y = 0 }
+	}
+
+	priority = 2
+}
+
+division_template = {
+	name = "Liwa Haris Milkiun"
+
+	regiments = {
+		Mot_Inf_Bat = { x = 0 y = 0 }
+	}
+
+	priority = 2
+}
+
+units = {
+	division = {
+		name = "6. 'Tahrir' Liwa Mechaniqui"
+		location = 8085 #
+		division_template = "Liwa Mechaniqui"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "26. 'Al-Soor' Liwa Mechaniqui"
+		location = 8085 #
+		division_template = "Liwa Mechaniqui"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "94. 'Al-Yarmouk' Liwa Mechaniqui"
+		location = 8085 #
+		division_template = "Liwa Mushat"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "15. 'Mubarak' Liwa Moudar'a"
+		location = 8085 #
+		division_template = "Liwa Moudar'a"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "35. 'Shahid' Liwa Moudar'a"
+		location = 8085 #
+		division_template = "Liwa Moudar'a"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "25. Liwa Commando"
+		location = 8085 #
+		division_template = "Liwa Commando"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "Liwa Haris Milkiun"
+		location = 8085
+		division_template = "Liwa Haris Milkiun"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.01
+	}
+}
+
+instant_effect = {
+
+	add_equipment_to_stockpile = {
+		variant_name = "M16A1"
+		type = infantry_weapons_2		 #M16A1
+		amount = 1000
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "G3"
+		type = infantry_weapons_2		 #G3（封存）
+		amount = 30000
+		producer = GER
+	}
+
+	add_equipment_to_stockpile = {
+		type = medium_tank_chassis_2
+		amount = 218
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		type = medium_tank_chassis_1
+		amount = 150
+		producer = SER
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Warrior"
+		type = medium_tank_amphibious_chassis_3		 #Warrior
+		amount = 254
+		producer = ENG
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BMP-3"
+		type = medium_tank_amphibious_chassis_2		 #BMP-3
+		amount = 245
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BMP-2"
+		type = medium_tank_amphibious_chassis_1		 #BMP-2
+		amount = 76
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "M113"
+		type = medium_tank_amphibious_chassis_1		 #M113
+		amount = 230
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "M113"
+		type = medium_tank_amphibious_chassis_1		 #M113（封存）
+		amount = 100
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Fahd"
+		type = medium_tank_amphibious_chassis_1		 #Fahd
+		amount = 40
+		producer = EGY
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Humvee"
+		type = util_vehicle_3		 #Humvee
+		amount = 770
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "PLZ-45"
+		type = medium_tank_artillery_chassis_1		 #PLZ-45
+		#version_name = "PLZ-45"
+		amount = 75
+		producer = CHI
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "M109"
+		type = medium_tank_artillery_chassis_0		 #M109
+		amount = 23
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BM-30"
+		type = medium_tank_rocket_chassis_1		 #BM-30
+		#version_name = "BM-30 Smerch"
+		amount = 27
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		type = Heavy_Anti_tank_1		 #TOW
+		amount = 9
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "TOW"
+		type = Heavy_Anti_tank_1		 #TOW-II
+		amount = 90
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Konkurs"
+		type = Heavy_Anti_tank_1		 #Konkurs
+		amount = 240
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "9K111 Fagot"
+		type = Anti_tank_1		 #Fagot
+		amount = 460
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		type = cnc_equipment_4
+		amount = 200
+		producer = KUW
+	}
+
+	add_equipment_to_stockpile = {
+		type = Anti_Air_0
+		amount = 200
+		producer = KUW
+	} 
+	add_equipment_to_stockpile = {
+		variant_name = "Apache"
+		type = heavy_tank_chassis_1	#Apache
+		amount = 16
+		producer = KUW
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "AS-332"
+		type = transport_helicopter_1		#AS-332
+		amount = 5
+		producer = KUW
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "SA-330"
+		type = transport_helicopter_1		#SA-330
+		amount = 6
+		producer = FRA
+	}
+}

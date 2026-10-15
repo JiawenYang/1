@@ -1,0 +1,398 @@
+add_namespace = influencecml
+
+news_event = {
+	id = influencecml.1
+	hidden = yes
+
+	trigger = {
+		country_exists = USA
+		USA = { is_subject = no }
+		NOT = {
+			original_tag = USA
+			original_tag = SOV
+			original_tag = CHI
+			original_tag = FRA
+			AND = {
+				original_tag = ENG
+				CHI = { has_completed_focus = CHI_End_US_Hegemony }
+			}
+			has_idea = prousa
+			has_idea = subjectusa
+			has_idea = subjectsov
+			is_subject = yes
+		}
+		OR = {
+			has_government = democratic
+			has_idea = peninsula_shield_force_member
+		}
+		NOT = { has_idea = cfa_franc }
+		NOT = { has_idea = ASEAN_member }
+	}
+
+	immediate = {
+		add_ideas = prousa
+	}
+}
+
+news_event = {
+	id = influencecml.3
+	hidden = yes
+
+	trigger = {
+		country_exists = SOV
+		SOV = { is_subject = no }
+		NOT = {
+			original_tag = USA
+			original_tag = SOV
+			original_tag = CHI
+			original_tag = FRA
+			AND = {
+				original_tag = ENG
+				CHI = { has_completed_focus = CHI_End_US_Hegemony }
+			}
+			has_idea = prosov
+			has_idea = subjectusa
+			has_idea = subjectsov
+			is_subject = yes
+		}
+		has_government = communism
+		OR = {
+			is_arabic_nation = yes
+			AND = {
+				OR = {
+					is_french_africa_nation = yes
+					is_central_african_nation = yes
+				}
+				NOT = { has_dynamic_modifier = { modifier = Commonwealth_member_modifier } }
+			}
+			is_North_America = yes
+			is_Central_America = yes
+			is_caribbean_nation = yes
+			is_european_nation = yes
+			is_Central_Asia = yes
+			is_Caucasus = yes
+		}
+		NOT = { has_idea = cfa_franc }
+		NOT = { has_idea = ASEAN_member }
+	}
+
+	immediate = {
+		add_ideas = prosov
+	}
+}
+
+news_event = {
+	id = influencecml.5
+	hidden = yes
+
+	trigger = {
+		NOT = {
+			original_tag = USA
+			original_tag = SOV
+			original_tag = CHI
+			original_tag = FRA
+			AND = {
+				original_tag = ENG
+				CHI = { has_completed_focus = CHI_End_US_Hegemony }
+			}
+			has_idea = proprc
+			has_idea = subjectusa
+			has_idea = subjectsov
+			is_subject = yes
+		}
+		OR = {
+			OR = {
+				original_tag = CBD
+				original_tag = ETH
+				original_tag = LAO
+				original_tag = WAA
+				original_tag = ZIM
+			}
+			AND = {
+				is_asian_nation = yes
+				is_arabic_nation = no
+				CHI = { has_idea = super_power }
+			}
+			AND = {
+				is_african_nation = yes
+				has_dynamic_modifier = { modifier = Commonwealth_member_modifier }
+				CHI = { has_idea = super_power }
+			}
+			AND = {
+				is_South_America = yes
+				CHI = { has_idea = super_power }
+			}
+			AND = {
+				has_idea = ASEAN_member
+				CHI = { has_idea = super_power }
+			}
+		}
+		NOT = { has_idea = cfa_franc }
+	}
+
+	immediate = {
+		add_ideas = proprc
+	}
+}
+
+news_event = {
+	id = influencecml.7
+	hidden = yes
+
+	trigger = {
+		NOT = {
+			original_tag = USA
+			original_tag = SOV
+			original_tag = CHI
+			original_tag = FRA
+			AND = {
+				original_tag = ENG
+				CHI = { has_completed_focus = CHI_End_US_Hegemony }
+			}
+			has_idea = profra
+			has_idea = subjectusa
+			has_idea = subjectsov
+			is_subject = yes
+		}
+		NOT = { has_government = communism }
+		is_subject = no
+		has_idea = cfa_franc
+	}
+
+	immediate = {
+		add_ideas = profra
+	}
+}
+
+news_event = {
+	id = influencecml.9
+	hidden = yes
+
+	trigger = {
+		CHI = { has_completed_focus = CHI_End_US_Hegemony }
+		NOT = {
+			original_tag = USA
+			original_tag = SOV
+			original_tag = CHI
+			original_tag = FRA
+			AND = {
+				original_tag = ENG
+				CHI = { has_completed_focus = CHI_End_US_Hegemony }
+			}
+			has_idea = prouk
+			has_idea = subjectusa
+			has_idea = subjectsov
+			is_subject = yes
+		}
+		has_government = democratic
+		is_subject = no
+		is_major = no
+		has_dynamic_modifier = { modifier = Commonwealth_member_modifier }
+	}
+
+	immediate = {
+		add_ideas = prouk
+	}
+}
+
+news_event = {
+	id = influencecml.14
+	hidden = yes
+
+	trigger = {
+		country_exists = BRA
+		BRA = { is_subject = no }
+		NOT = {
+			has_idea = probra
+			is_subject = yes
+		}
+		NOT = { original_tag = BRA }
+		is_subject = no
+		has_dynamic_modifier = { modifier = mercosur_member_state_modifier }
+	}
+
+	immediate = {
+		add_ideas = probra
+	}
+}
+
+news_event = {
+	id = influencecml.16
+	hidden = yes
+
+	trigger = {
+		country_exists = GER
+		GER = { is_subject = no }
+		NOT = {
+			has_idea = proger
+			is_subject = yes
+		}
+		NOT = { original_tag = FRA }
+		NOT = { original_tag = GER }
+		has_idea = euro
+	}
+
+	immediate = {
+		add_ideas = proger
+	}
+}
+
+news_event = {
+	id = influencecml.20
+	hidden = yes
+
+	trigger = {
+		country_exists = JAP
+		JAP = { is_subject = no }
+		NOT = {
+			has_idea = projap
+			is_subject = yes
+		}
+		OR = {
+			original_tag = PHI
+			AND = {
+				NOT = { original_tag = BAN }
+				NOT = { original_tag = BHU }
+				NOT = { original_tag = NEP }
+				NOT = { original_tag = PAK }
+				NOT = { original_tag = RAJ }
+				NOT = { original_tag = SRL }
+				has_country_flag = JAP_PEC_member_flag
+			}
+			AND = {
+				has_idea = ASEAN_member
+				has_government = democratic
+			}
+			AND = {
+				original_tag = TAI
+				western_liberals_are_in_power = yes
+			}
+			AND = {
+				original_tag = KOR
+				western_conservatism_are_in_power = yes
+			}
+		}
+	}
+
+	immediate = {
+		add_ideas = projap
+	}
+}
+
+news_event = {
+	id = influencecml.24
+	hidden = yes
+
+	trigger = {
+		country_exists = PER
+		PER = { is_subject = no }
+		PER = { NOT = { has_country_flag = PER_turn_off_IR_stuff } }
+		NOT = {
+			has_idea = proper
+			is_subject = yes
+		}
+		has_idea = shia
+		has_government = communism
+	}
+
+	immediate = {
+		add_ideas = proper
+	}
+}
+
+news_event = {
+	id = influencecml.26
+	hidden = yes
+
+	trigger = {
+		country_exists = RAJ
+		RAJ = { is_subject = no }
+		NOT = {
+			has_idea = proraj
+			is_subject = yes
+		}
+		OR = {
+			original_tag = BHU
+			AND = {
+				is_South_Asia = yes
+				has_government = neutrality
+			}
+			AND = {
+				original_tag = NEP
+				NOT = { has_government = communism }
+			}
+		}
+	}
+
+	immediate = {
+		add_ideas = proraj
+	}
+}
+
+news_event = {
+	id = influencecml.28
+	hidden = yes
+
+	trigger = {
+		country_exists = SAF
+		SAF = { is_subject = no }
+		NOT = {
+			has_idea = prosaf
+			is_subject = yes
+		}
+		NOT = { original_tag = SAF }
+		is_sub_saharan_nation = yes
+		has_government = communism
+	}
+
+	immediate = {
+		add_ideas = prosaf
+	}
+}
+
+news_event = {
+	id = influencecml.30
+	hidden = yes
+
+	trigger = {
+		country_exists = SAU
+		SAU = { is_subject = no }
+		NOT = {
+			has_idea = prosau
+			is_subject = yes
+		}
+		NOT = { original_tag = SAU }
+		OR = {
+			has_idea = idea_gcc_member_state
+			AND = {
+				original_tag = YEM
+				has_government = democratic
+			}
+		}
+	}
+
+	immediate = {
+		add_ideas = prosau
+	}
+}
+
+news_event = {
+	id = influencecml.34
+	hidden = yes
+
+	trigger = {
+		country_exists = TUR
+		TUR = { is_subject = no }
+		NOT = {
+			has_idea = protur
+			is_subject = yes
+		}
+		NOT = { original_tag = TUR }
+		is_arabic_nation = yes
+		neutrality_neutral_muslim_brotherhood_are_in_power = yes
+	}
+
+	immediate = {
+		add_ideas = protur
+	}
+}

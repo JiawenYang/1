@@ -1,0 +1,272 @@
+division_template = {
+	name = "Airmobile Brigade"
+
+	regiments = {
+		L_Air_assault_Bat = { x = 0 y = 0 }
+		L_Air_assault_Bat = { x = 0 y = 1 }
+		L_Air_assault_Bat = { x = 0 y = 2 }
+		L_Air_assault_Bat = { x = 0 y = 3 }
+	}
+}
+division_template = {
+	name = "Light Mechanized Brigade"
+
+	regiments = {
+		Mech_Inf_Bat = { x = 0 y = 0 }
+		Mech_Inf_Bat = { x = 0 y = 1 }
+		Mot_Inf_Bat = { x = 1 y = 0 }
+		Mot_Inf_Bat = { x = 1 y = 1 }
+		Mech_Inf_Bat = { x = 2 y = 0 }
+		SP_Arty_Bat = { x = 2 y = 1 }
+	}
+}
+division_template = {
+	name = "Mechanized Brigade"
+
+	regiments = {
+		armor_Bat = { x = 0 y = 0 }
+		Arm_Inf_Bat = { x = 1 y = 0 }
+		Arm_Inf_Bat = { x = 1 y = 1 }
+		Mech_Inf_Bat = { x = 1 y = 2 }
+		Mot_Inf_Bat = { x = 2 y = 0 }
+		Mech_Inf_Bat = { x = 3 y = 0 }
+		SP_Arty_Bat = { x = 3 y = 1 }
+	}
+}
+division_template = {
+	name = "Korps Commandotroepen"
+
+	regiments = {
+		special_forces = { x = 0 y = 0 }
+	}
+	priority = 2
+}
+#Marines
+division_template = {
+	name = "Korps Mariniers"
+
+	regiments = {
+		Mech_Marine_Bat = { x = 0 y = 0 }
+		Mot_Marine_Bat = { x = 0 y = 1 }
+		special_forces = { x = 1 y = 0 }
+	}
+}
+division_template = {
+	name = "Raiding Squadron"
+
+	regiments = {
+		special_forces = { x = 0 y = 0 }
+	}
+	priority = 2
+}
+
+units = {
+	division = {
+		name = "11th Airmobile Brigade"
+		location = 6241
+		division_template = "Airmobile Brigade"
+		start_experience_factor = 0.8
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "13th Light Mechanized Brigade"
+		location = 6500
+		division_template = "Light Mechanized Brigade"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "43rd Mechanized Brigade"
+		location = 9403
+		division_template = "Mechanized Brigade"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "Korps Commandotroepen"
+		location = 3262
+		division_template = "Korps Commandotroepen"
+		start_experience_factor = 0.9
+		start_equipment_factor = 0.01
+	}
+	#marines
+	division = {
+		name = "Korps Mariniers"
+		location = 9498
+		division_template = "Korps Mariniers"
+		start_experience_factor = 0.8
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "32nd Raiding Squadron"
+		location = 153
+		division_template = "Raiding Squadron"
+		start_experience_factor = 0.9
+		start_equipment_factor = 0.01
+	}
+
+	#diesel_attack_submarine_3 = Walrus-Class
+	#missile_frigate_4 = De Zeven Provinciën-Class
+	#missile_frigate_1 = Karel Doorman-Class
+	#LPD_1 = Rotterdam Class
+}
+
+instant_effect = {
+
+	add_equipment_to_stockpile = {
+		variant_name = "C7NLD"
+		type = infantry_weapons_4 #C7NLD
+		amount = 1930
+		producer = HOL
+	}
+	add_equipment_to_stockpile = {
+		type = cnc_equipment_5 #C4ISTAR Equipment
+		producer = HOL
+		amount = 434
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "C8NLD"
+		type = infantry_weapons_4 #C8NLD
+		amount = 1500
+		producer = HOL
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "HK-416"
+		type = infantry_weapons_6 #HK-416
+		amount = 150
+		producer = HOL
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Spike"
+		type = Anti_tank_2 #Spike
+		amount = 162
+		producer = ISR
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Spike"
+		type = Heavy_Anti_tank_2 #Spike
+		amount = 36
+		producer = ISR
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "FIM-92 Stinger"
+		type = Anti_Air_1 #FIM-92 Stinger
+		amount = 147
+		producer = USA
+	}
+	#Vehicles
+	add_equipment_to_stockpile = {
+		type = medium_tank_chassis_1
+		amount = 18
+		producer = GER
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Boxer"
+		type = medium_tank_amphibious_chassis_3 #Boxer
+		amount = 85
+		producer = GER
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Patria Pasi"
+		type = medium_tank_amphibious_chassis_1 #Patria Pasi
+		amount = 70
+		producer = FIN
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Bv 206"
+		type = medium_tank_amphibious_chassis_1 #Bv-206
+		amount = 87
+		producer = SWE
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Bv-10"
+		type = medium_tank_amphibious_chassis_2 #Bv-10
+		amount = 73
+		producer = HOL
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Tpz-1"
+		type = medium_tank_amphibious_chassis_1 #Tpz-1
+		amount = 9
+		producer = GER
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "CV90"
+		type = medium_tank_flame_chassis_2 #CV90
+		amount = 184
+		producer = SWE
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Pz-2000"
+		type = medium_tank_artillery_chassis_2 #Pz-2000
+		amount = 57
+		producer = HOL
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "FENNEK"
+		type = util_vehicle_4 #FENNEK
+		amount = 365
+		producer = HOL
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Bushmaster"
+		type = util_vehicle_4 #Bushmaster
+		amount = 85
+		producer = AST
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Lohr LVA"
+		type = util_vehicle_3 #lohr lva
+		producer = FRA
+		amount = 150
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "VECTOR"
+		type = util_vehicle_5 #VECTOR
+		producer = HOL
+		amount = 50
+	}
+
+	### Airforce ###
+	add_equipment_to_stockpile = {
+		variant_name = "NHIndustries NH-90"
+		type = transport_helicopter_4 #NHIndustries NH-90
+		amount = 18
+		producer = HOL
+	}
+
+	add_equipment_to_stockpile = {
+		type = transport_helicopter_2
+		amount = 8
+		producer = HOL
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "AH-64D"
+		type = heavy_tank_chassis_2 #AH-64D
+		amount = 28
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Chinook"
+		type = transport_helicopter_3 #Chinook
+		amount = 17
+		producer = HOL
+	}
+
+	#Reserve Stockpiles (Sealed)
+	add_equipment_to_stockpile = {
+		variant_name = "FN FAL"
+		type = infantry_weapons_2 #FN FAL（封存）
+		amount = 60000
+		producer = BEL
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "YPR-765"
+		type = medium_tank_flame_chassis_1 #YPR-765（封存）
+		amount = 250
+		producer = HOL
+	}
+}

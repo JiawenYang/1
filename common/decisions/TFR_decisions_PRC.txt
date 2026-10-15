@@ -1,0 +1,4052 @@
+PRC_taiwan_war_cat = {
+	PRC_operation_crimson_sky = {
+		icon = GFX_PRC_crimson_sky
+		allowed = {
+			tag = CHI
+		}
+		fire_only_once = yes
+		cost = 0
+		custom_cost_text = PRC_operation_crimson_sky_decision_cost
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 30
+			}
+		}
+		days_remove = 30
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -30
+			}
+		}
+		remove_effect = {
+			add_timed_idea = {
+				idea = PRC_operation_crimson_sky_idea
+				days = 100
+			}
+		}
+		ai_will_do = {
+			base = 50
+		}
+	}
+	PRC_operation_guan_yu = {
+		icon = GFX_PRC_guan_yu
+		allowed = {
+			tag = CHI
+		}
+		ai_will_do = {
+			base = 900
+		}
+		fire_only_once = yes
+		cost = 0
+		custom_cost_text = PRC_operation_crimson_sky_decision_cost
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 30
+			}
+		}
+		days_remove = 30
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -30
+			}
+		}
+		remove_effect = {
+			add_timed_idea = {
+				idea = PRC_operation_guan_yu_idea
+				days = 150
+			}
+		}
+	}
+	PRC_operation_li_jing_decision = {
+		icon = generic_industry
+		available = {
+			tag = CHI
+			TAI = {
+				surrender_progress > 0.25
+			}
+		}
+		ai_will_do = {
+			base = 900
+		}
+		fire_only_once = yes
+		cost = 0
+		custom_cost_text = PRC_operation_crimson_sky_decision_cost
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 30
+			}
+		}
+		days_remove = 30
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -30
+			}
+		}
+		remove_effect = {
+			add_timed_idea = {
+				idea = PRC_operation_li_jing
+				days = 125
+			}
+		}
+	}
+	PRC_taiwan_bombing_raid = {
+		icon = GFX_decision_generic_deploy_nukes
+		allowed = {
+			tag = CHI
+		}
+		visible = {
+			has_completed_focus = PRC_indiscriminate_missile_strikes
+		}
+		available = {
+			has_completed_focus = PRC_indiscriminate_missile_strikes
+		}
+		fire_only_once = yes
+		cost = 50
+		complete_effect = {
+			TAI = {
+				add_timed_idea = {
+					idea = PRC_bombing_raids
+					days = 100
+				}
+				add_war_support = -0.05
+			}
+		}
+		ai_will_do = {
+			base = 50
+		}
+	}
+	PRC_anti_western_proaganda = {
+		icon = GFX_PRC_anti_western
+		allowed = {
+			tag = CHI
+		}
+		fire_only_once = no
+		cost = 75
+		days_remove = 30
+		days_re_enable = 350
+		complete_effect = {
+			add_timed_idea = {
+				idea = PRC_anti_western_proaganda_idea
+				days = 100
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	PRC_defend_kinmen_island = {
+		visible = {
+			CHI = {
+				has_war_with = TAI
+			}
+		}
+		allowed = {
+			tag = CHI
+		}
+		available = {
+			OR = {
+				430 = {
+					is_controlled_by = JAP
+				}
+				430 = {
+					is_controlled_by = TAI
+				}
+				430 = {
+					is_controlled_by = AST
+				}
+				1109 = {
+					is_controlled_by = JAP
+				}
+				1109 = {
+					is_controlled_by = TAI
+				}
+				1109 = {
+					is_controlled_by = AST
+				}
+			}
+			OR = {
+				divisions_in_state = {
+					type = infantry
+					size < 2
+					state = 430
+				}
+				divisions_in_state = {
+					type = infantry
+					size < 2
+					state = 1109
+				}
+			}
+		}
+		activation = {
+			always = no
+		}
+		icon = GFX_SOV_decision_vdv_training
+		fire_only_once = yes
+		days_mission_timeout = 59
+		is_good = no
+		ai_will_do = {
+			factor = 10
+		}
+		complete_effect = {
+			country_event = {
+				id = prc.78
+			}
+		}
+		timeout_effect = {
+			country_event = {
+				id = prc.79
+			}
+		}
+	}
+	PRC_destroy_taiwan_infr = {
+		icon = GFX_PRC_rocket_strike
+		allowed = {
+			tag = CHI
+		}
+		visible = {
+			has_completed_focus = PRC_indiscriminate_missile_strikes
+		}
+		available = {
+			has_completed_focus = PRC_indiscriminate_missile_strikes
+		}
+		cost = 30
+		fire_only_once = yes
+		days_remove = 3
+		complete_effect = {
+		}
+		remove_effect = {
+			TAI = {
+				every_controlled_state = {
+					damage_building = {
+						type = infrastructure
+						damage = 2
+					}
+					add_manpower = -2000
+				}
+			}
+		}
+	}
+	PRC_destroy_taiwan_civ_industry = {
+		icon = GFX_PRC_rocket_strike
+		allowed = {
+			tag = CHI
+		}
+		visible = {
+			has_completed_focus = PRC_indiscriminate_missile_strikes
+		}
+		available = {
+			has_completed_focus = PRC_indiscriminate_missile_strikes
+		}
+		cost = 30
+		fire_only_once = yes
+		days_remove = 3
+		complete_effect = {
+		}
+		remove_effect = {
+			TAI = {
+				every_controlled_state = {
+					damage_building = {
+						type = industrial_complex
+						damage = 1.5
+					}
+					add_manpower = -2000
+				}
+			}
+		}
+	}
+	PRC_destroy_taiwan_war_industry = {
+		icon = GFX_PRC_rocket_strike
+		allowed = {
+			tag = CHI
+		}
+		visible = {
+			has_completed_focus = PRC_indiscriminate_missile_strikes
+		}
+		available = {
+			has_completed_focus = PRC_indiscriminate_missile_strikes
+		}
+		cost = 30
+		fire_only_once = yes
+		days_remove = 3
+		complete_effect = {
+		}
+		remove_effect = {
+			TAI = {
+				every_controlled_state = {
+					damage_building = {
+						type = arms_factory
+						damage = 0.5
+					}
+					add_manpower = -2000
+				}
+			}
+		}
+	}
+	PRC_strike_okinawa = {
+		icon = GFX_PRC_rocket_strike
+		allowed = {
+			tag = CHI
+		}
+		visible = {
+			has_completed_focus = PRC_indiscriminate_missile_strikes
+		}
+		available = {
+			has_completed_focus = PRC_indiscriminate_missile_strikes
+			has_war_with = JAP
+			JAP = {
+				has_full_control_of_state = 618
+			}
+		}
+		cost = 30
+		fire_only_once = no
+		days_remove = 3
+		days_re_enable = 60
+		complete_effect = {
+		}
+		remove_effect = {
+			custom_effect_tooltip = PRC_strike_okinawa_tt
+			damage_units = {
+				state = 618
+				damage = 0.15
+				org_damage = 0.15
+				str_damage = 0.15
+				ratio = yes
+				army = yes
+				navy = no
+			}
+			damage_units = {
+				state = 827
+				damage = 0.15
+				org_damage = 0.15
+				str_damage = 0.15
+				ratio = yes
+				army = yes
+				navy = no
+			}
+			JAP = {
+				add_stability = -0.025
+				add_war_support = 0.025
+			}
+		}
+	}
+	PRC_break_the_naval_blockade = {
+		icon = GFX_PRC_sea_blockade
+		allowed = {
+			tag = CHI
+		}
+		visible = {
+			has_idea = PRC_blockade_of_trade_routes_idea
+		}
+		available = {
+			ships_in_area = {
+				area = 75
+				size > 10
+			}
+			ships_in_area = {
+				area = 72
+				size > 10
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+		cost = 15
+		fire_only_once = yes
+		days_remove = 10
+		complete_effect = {
+		}
+		remove_effect = {
+			random_list = {
+				40 = {
+					remove_ideas = PRC_blockade_of_trade_routes_idea
+				}
+				60 = {
+					country_event = prc.238
+				}
+			}
+			add_political_power = 35
+			add_stability = 0.025
+			add_war_support = 0.025
+		}
+	}
+	PRC_expanding_trade_through_russia = {
+		icon = GFX_decision_SOV_brics_economy_decision
+		allowed = {
+			tag = CHI
+		}
+		visible = {
+			has_idea = PRC_blockade_of_trade_routes_idea2
+		}
+		available = {
+		}
+		ai_will_do = {
+			factor = 100
+		}
+		cost = 25
+		fire_only_once = yes
+		days_remove = 20
+		complete_effect = {
+		}
+		remove_effect = {
+			remove_ideas = PRC_blockade_of_trade_routes_idea2
+			SOV = {
+				country_event = prc.239
+			}
+		}
+	}
+}
+
+PRC_national_peoples_congress_cat = {
+	PRC_myanmar_negotiations = {
+		visible = {
+			has_country_flag = PRC_myanmar_negotiations_flag
+			NOT = {
+				has_completed_focus = PRC_revolution_in_myanmar
+			}
+		}
+		available = {
+		}
+		fire_only_once = no
+		cost = 15
+		days_remove = 25
+		days_re_enable = 350
+		complete_effect = {
+		}
+		remove_effect = {
+			every_country = {
+				limit = {
+					OR = {
+						tag = KNC
+						tag = SHN
+						tag = KAR
+						tag = ARK
+						tag = BRM
+					}
+				}
+				add_timed_idea = {
+					idea = BRM_national_ceasefire
+					days = 350
+				}
+			}
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+
+	CHI_16th_National_Congress_of_CPC = {
+
+		icon = emblem_of_china
+
+		available = {
+			always = no
+		}
+		activation = {
+			original_tag = CHI
+			CHI = { 
+				has_government = communism
+				NOT = { has_completed_focus = CHI_Hu_Jintao_Agenda }
+			}
+		}
+		days_mission_timeout = 1049
+		fire_only_once = yes
+		selectable_mission = yes
+		complete_effect = {
+		}
+		timeout_effect = {
+			CHI = { complete_national_focus = CHI_Hu_Jintao_Agenda }
+		}
+	}
+
+	CHI_10th_National_Peoples_Congress = {
+
+		icon = emblem_of_china
+
+		available = {
+			always = no
+		}
+		activation = {
+			original_tag = CHI
+			CHI = { 
+				has_government = communism
+			}
+			NOT = { has_idea = CHI_wenjiabao }
+		}
+		days_mission_timeout = 1169
+		fire_only_once = yes
+		selectable_mission = yes
+		complete_effect = {
+		}
+		timeout_effect = {
+			swap_ideas = {
+				remove_idea = CHI_zhurongji
+				add_idea = CHI_wenjiabao
+			}
+		}
+	}
+
+	CHI_18th_National_Congress_of_CPC = {
+
+		icon = emblem_of_china
+
+		available = {
+			always = no
+		}
+		activation = {
+			original_tag = CHI
+			CHI = { 
+				has_government = communism
+				has_completed_focus = CHI_Hu_Jintao_Agenda
+				NOT = { has_completed_focus = CHI_Xi_Jinping_Agenda }
+			}
+		}
+		days_mission_timeout = 3653
+		fire_only_once = yes
+		selectable_mission = yes
+		complete_effect = {
+		}
+		timeout_effect = {
+			CHI = { complete_national_focus = CHI_Xi_Jinping_Agenda }
+		}
+	}
+
+	CHI_12th_National_Peoples_Congress = {
+
+		icon = emblem_of_china
+
+		available = {
+			always = no
+		}
+		activation = {
+			original_tag = CHI
+			CHI = { 
+				has_government = communism
+				has_idea = CHI_wenjiabao
+			}
+			NOT = { has_idea = CHI_likeqiang }
+		}
+		days_mission_timeout = 3653
+		fire_only_once = yes
+		selectable_mission = yes
+		complete_effect = {
+		}
+		timeout_effect = {
+			swap_ideas = {
+				remove_idea = CHI_wenjiabao
+				add_idea = CHI_likeqiang
+			}
+		}
+	}
+}
+
+PRC_foreign_policy_category = {
+	PRC_BRI_invite_asia = {
+		target_root_trigger = {
+			has_country_flag = PRC_BRI_invite_asia_flag
+		}
+		visible = {
+			has_war = no
+			is_subject = no
+			custom_trigger_tooltip = {
+				tooltip = CHI_aggression_less_20_tt
+				check_variable = { chinese_aggression < 21 }
+			}
+			FROM = {
+				NOT = {
+					has_country_flag = PRC_BRI_member_flag
+					has_idea = PRC_BRI_member
+					has_idea = Non_State_Actor
+					has_idea = Lacks_International_Recognition
+					original_tag = PAK
+					original_tag = SRI
+				}
+				has_war = no
+				is_subject = no
+				has_country_flag = signed_BRI
+			}
+		}
+		visible = {
+			has_completed_focus = CHI_Belt_and_Road_Initiative
+			FROM = {
+				NOT = {
+					has_country_flag = PRC_BRI_member_flag
+					has_idea = PRC_BRI_member
+				}
+			}
+		}
+		icon = GFX_SOV_china_investment
+		targets = { AFG ARA ARM AST AZE BAN BHU BLC BRM GEO ISI JOR KAZ KIR KYR KOR JAP LEB MAR MIC MLD MON NAU NEP NPM NKO NKR NZL PAP PAL PER RAJ RYU SAM SAZ SOL SHA SIB SRI SYR TAL TAJ TLS TON TRK TUL TUV UZB YAN YEM }
+		cost = 35
+		days_remove = 10
+		complete_effect = {
+			set_temp_variable = { treasury_change = -5 }
+			modify_treasury_effect = yes
+		}
+		remove_effect = {
+			set_temp_variable = { percent_change = 2 }
+			set_temp_variable = { tag_index = CHI }
+			set_temp_variable = { influence_target = FROM }
+			change_influence_percentage = yes
+			FROM = {
+				every_owned_state = {
+					add_building_construction = {
+						type = infrastructure
+						level = 2
+						instant_build = yes
+					}
+				}
+				add_opinion_modifier = {
+					target = CHI
+					modifier = belt_and_road_initiative
+				}
+				add_opinion_modifier = {
+					target = CHI
+					modifier = belt_and_road_initiative_trade
+				}
+				country_event = {
+					id = prc.476
+				}
+				effect_tooltip = {
+					add_ideas = PRC_BRI_member
+				}
+			}
+		}
+		ai_will_do = {
+			base = 1000
+		}
+	}
+	PRC_sanction_japan = {
+		available = {
+			NOT = {
+				has_war_with = JAP
+				is_ally_with = JAP
+			}
+		}
+		visible = {
+			has_completed_focus = PRC_economic_war_with_the_pdto
+		}
+		fire_only_once = yes
+		cost = 35
+		days_remove = 25
+		ai_will_do = {
+			base = 150
+		}
+		modifier = {
+		}
+		complete_effect = {
+			set_temp_variable = { treasury_change = -150 }
+			modify_treasury_effect = yes
+		}
+		remove_effect = {
+			send_embargo = JAP
+			JAP = {
+				country_event = {
+					id = prc.475
+					days = 1
+				}
+				add_ideas = PRC_PDTO_chinese_sanctions_idea
+			}
+		}
+	}
+	PRC_sanction_india = {
+		available = {
+			has_completed_focus = PRC_counter_indian_aggression
+			NOT = {
+				has_war_with = RAJ
+			}
+		}
+		visible = {
+			has_completed_focus = PRC_economic_war_with_the_pdto
+		}
+		fire_only_once = yes
+		cost = 35
+		days_remove = 25
+		ai_will_do = {
+			base = 150
+		}
+		modifier = {
+		}
+		complete_effect = {
+			set_temp_variable = { treasury_change = -125 }
+			modify_treasury_effect = yes
+		}
+		remove_effect = {
+			send_embargo = RAJ
+			RAJ = {
+				country_event = {
+					id = prc.475
+					days = 1
+				}
+				add_ideas = PRC_PDTO_chinese_sanctions_idea
+			}
+		}
+	}
+	PRC_sanction_australia = {
+		available = {
+			NOT = {
+				has_war_with = AST
+				is_ally_with = AST
+			}
+		}
+		visible = {
+			has_completed_focus = PRC_economic_war_with_the_pdto
+		}
+		fire_only_once = yes
+		cost = 35
+		days_remove = 25
+		ai_will_do = {
+			base = 150
+		}
+		modifier = {
+		}
+		complete_effect = {
+			set_temp_variable = { treasury_change = -75 }
+			modify_treasury_effect = yes
+		}
+		remove_effect = {
+			send_embargo = AST
+			AST = {
+				country_event = {
+					id = prc.475
+					days = 1
+				}
+				add_ideas = PRC_PDTO_chinese_sanctions_idea
+			}
+		}
+	}
+	PRC_sanction_korea = {
+		available = {
+			NOT = {
+				has_war_with = KOR
+				is_ally_with = KOR
+			}
+		}
+		visible = {
+			has_completed_focus = PRC_economic_war_with_the_pdto
+		}
+		fire_only_once = yes
+		cost = 35
+		days_remove = 25
+		ai_will_do = {
+			base = 150
+		}
+		modifier = {
+		}
+		complete_effect = {
+			set_temp_variable = { treasury_change = -150 }
+			modify_treasury_effect = yes
+		}
+		remove_effect = {
+			send_embargo = KOR
+			KOR = {
+				country_event = {
+					id = prc.475
+					days = 1
+				}
+				add_ideas = PRC_PDTO_chinese_sanctions_idea
+			}
+		}
+	}
+	PRC_invest_pakistan_military = {
+		available = {
+			PAK = {
+				OR = {
+					has_country_flag = PAK_lost_indo_pakistan_war
+					has_country_flag = PAK_won_indo_pakistan_war
+				}
+			}
+		}
+		visible = {
+			has_completed_focus = PRC_support_pakistan
+		}
+		fire_only_once = no
+		days_remove = 35
+		days_re_enable = 50
+		cost = 50
+		complete_effect = {
+			set_temp_variable = { treasury_change = -0.6 }
+			modify_treasury_effect = yes
+			hidden_effect = {
+			}
+			PAK = {
+				set_temp_variable = { treasury_change = 0.6 }
+				modify_treasury_effect = yes
+				set_temp_variable = {
+					var = military_development_var_temp
+					value = 0.05
+				}
+				add_military_development = yes
+				if = {
+					limit = {
+						NOT = {
+							has_idea = PRC_pakistan_military_support
+						}
+					}
+					add_timed_idea = {
+						idea = PRC_pakistan_military_support
+						days = 70
+					}
+				}
+			}
+		}
+	}
+	PRC_invest_pakistan_industry = {
+		available = {
+			PAK = {
+				OR = {
+					has_country_flag = PAK_lost_indo_pakistan_war
+					has_country_flag = PAK_won_indo_pakistan_war
+				}
+			}
+		}
+		visible = {
+			has_completed_focus = PRC_support_pakistan
+		}
+		fire_only_once = no
+		days_remove = 35
+		days_re_enable = 50
+		cost = 35
+		complete_effect = {
+			set_temp_variable = { treasury_change = 3.5 }
+			modify_treasury_effect = yes
+			PAK = {
+				set_temp_variable = { treasury_change = 0.95 }
+				modify_treasury_effect = yes
+				random_list = {
+					60 = {
+					}
+					40 = {
+						random_owned_controlled_state = {
+							limit = {
+								is_core_of = PAK
+								free_building_slots = {
+									building = industrial_complex
+									size > 1
+									include_locked = yes
+								}
+							}
+							add_extra_state_shared_building_slots = 2
+							add_building_construction = {
+								type = industrial_complex
+								level = 2
+								instant_build = yes
+							}
+						}
+					}
+				}
+				set_temp_variable = {
+					var = industrial_development_var_temp
+					value = 0.05
+				}
+				add_industrial_development = yes
+				if = {
+					limit = {
+						NOT = {
+							has_idea = PRC_pakistan_industrial_support
+						}
+					}
+					add_timed_idea = {
+						idea = PRC_pakistan_industrial_support
+						days = 70
+					}
+				}
+			}
+		}
+	}
+	PRC_invite_pakistan_to_eadi = {
+		#какой долбаеб это делал потом переделаю #ну как, какой... известно, какой -IAVL #переделал
+		available = {
+			PAK = {
+				OR = {
+					has_country_flag = PAK_lost_indo_pakistan_war
+					has_country_flag = PAK_won_indo_pakistan_war
+				}
+			}
+		}
+		visible = {
+			if = {
+				limit = {
+					NOT = {
+						has_country_flag = PRC_nationalist_win
+					}
+				}
+				has_completed_focus = PRC_establish_eadi
+			}
+			NOT = {
+				PAK = {
+					is_in_faction = yes
+				}
+			}
+			NOT = {
+				has_country_flag = PRC_destroy_pakistan_flag
+			}
+		}
+		fire_only_once = yes
+		days_remove = 50
+		cancel_if_not_visible = yes
+		ai_will_do = {
+			base = 10
+		}
+		modifier = {
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			CHI = {
+				add_to_faction = PAK
+			}
+			PAK = {
+				set_country_flag = eadi_member
+				add_ideas = CHI_sco_member
+			}
+			news_event = sino_jap_coldwar.21
+		}
+	}
+	PRC_train_pakistan_army = {
+		available = {
+			PAK = {
+				OR = {
+					has_country_flag = PAK_lost_indo_pakistan_war
+					has_country_flag = PAK_won_indo_pakistan_war
+				}
+			}
+		}
+		visible = {
+			has_completed_focus = PRC_support_pakistan
+		}
+		fire_only_once = no
+		days_remove = 35
+		days_re_enable = 150
+		ai_will_do = {
+			base = 10
+		}
+		cost = 50
+		complete_effect = {
+			PAK = {
+				1321 = {
+					create_unit = {
+						division = "division_template = \"Infantry Division\" start_experience_factor = 0.8 start_equipment_factor = 0.01"
+						owner = PAK
+						count = 5
+					}
+					create_unit = {
+						division = "division_template = \"Armored Division\" start_experience_factor = 0.8 start_equipment_factor = 0.01"
+						owner = PAK
+						count = 2
+					}
+				}
+				add_equipment_to_stockpile = {
+					type = infantry_equipment_1
+					amount = 1500
+					producer = CHI
+				}
+				add_equipment_to_stockpile = {
+					type = anti_tank_equipment_1
+					amount = 300
+					producer = CHI
+				}
+				add_equipment_to_stockpile = {
+					type = anti_air_equipment_1
+					amount = 300
+					producer = CHI
+				}
+				add_equipment_to_stockpile = {
+					type = support_equipment
+					amount = 500
+					producer = CHI
+				}
+				add_equipment_to_stockpile = {
+					type = motorized_equipment
+					amount = 500
+					producer = CHI
+				}
+			}
+		}
+	}
+	PRC_invite_cambodia_eadi = {
+		icon = GFX_PRC_new_left_decision
+		visible = {
+			CBD = {
+				is_in_faction = no
+			}
+			CHI = {
+				has_completed_focus = PRC_south_asian_brothers
+			}
+			SIA = { is_ally_with = JAP }
+		}
+		available = {
+			CHI = {
+				has_country_flag = PRC_cold_war_flag
+			}
+		}
+		fire_only_once = yes
+		cost = 100
+		complete_effect = {
+			CHI = {
+				add_to_faction = CBD
+			}
+			CBD = {
+				set_country_flag = eadi_member
+				add_ideas = CHI_sco_member
+			}
+			news_event = sino_jap_coldwar.14
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+	PRC_invite_indonesia_eadi = {
+		icon = GFX_PRC_new_left_decision
+		visible = {
+			IND = {
+				is_in_faction = no
+			}
+			CHI = {
+				has_completed_focus = PRC_south_asian_brothers
+			}
+			MAY = { is_ally_with = JAP }
+			SIN = { is_ally_with = JAP }
+		}
+		available = {
+			CHI = {
+				has_country_flag = PRC_cold_war_flag
+			}
+		}
+		fire_only_once = yes
+		cost = 100
+		complete_effect = {
+			CHI = {
+				add_to_faction = IND
+			}
+			IND = {
+				set_country_flag = eadi_member
+				add_ideas = CHI_sco_member
+			}
+			news_event = sino_jap_coldwar.20
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+	PRC_invite_laos_eadi = {
+		icon = GFX_PRC_new_left_decision
+		visible = {
+			LAO = {
+				is_in_faction = no
+			}
+			CHI = {
+				has_completed_focus = PRC_south_asian_brothers
+			}
+			SIA = { is_ally_with = JAP }
+		}
+		available = {
+			CHI = {
+				has_country_flag = PRC_cold_war_flag
+			}
+		}
+		fire_only_once = yes
+		cost = 100
+		complete_effect = {
+			CHI = {
+				add_to_faction = LAO
+			}
+			LAO = {
+				set_country_flag = eadi_member
+				add_ideas = CHI_sco_member
+			}
+			news_event = sino_jap_coldwar.15
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+	PRC_invite_myanmar_eadi = {
+		icon = GFX_PRC_new_left_decision
+		visible = {
+			BRM = {
+				is_in_faction = no
+				has_government = communism
+			}
+			CHI = {
+				has_completed_focus = PRC_revolution_in_myanmar
+			}
+		}
+		fire_only_once = yes
+		complete_effect = {
+			CHI = {
+				add_to_faction = BRM
+			}
+			set_global_flag = BRM_prochinese_asian_cold_war
+			BRM = {
+				set_country_flag = eadi_member
+				swap_ideas = {
+					remove_idea = ASEAN_member
+					add_idea = CHI_sco_member
+				}
+			}
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+	PRC_develop_myanmar_armed_forces = {
+		icon = GFX_PRC_new_left_decision
+		allowed = {
+			tag = CHI
+		}
+		visible = {
+			has_completed_focus = PRC_revolution_in_myanmar
+			NOT = {
+				BRM = {
+					is_ally_with = JAP
+				}
+			}
+		}
+		available = {
+			BRM = {
+				has_war = no
+				is_ally_with = CHI
+			}
+		}
+		cost = 75
+		fire_only_once = yes
+		days_remove = 60
+		complete_effect = {
+		}
+		remove_effect = {
+			set_temp_variable = {
+				treasury_change = 10
+			}
+			modify_treasury_effect = yes
+			send_equipment = {
+				equipment = infantry_weapons
+				amount = 90600
+				target = BRM
+			}
+			send_equipment = {
+				equipment = cnc_equipment
+				amount = 8940
+				target = BRM
+			}
+			send_equipment = {
+				equipment = artillery_equipment
+				amount = 342
+				target = BRM
+			}
+			send_equipment = {
+				equipment = AA_Equipment
+				amount = 2740
+				target = BRM
+			}
+			send_equipment = {
+				equipment = L_AT_Equipment
+				amount = 4110
+				target = BRM
+			}
+			send_equipment = {
+				equipment = H_AT_Equipment
+				amount = 510
+				target = BRM
+			}
+			send_equipment = {
+				equipment = medium_tank_chassis
+				amount = 630
+				target = BRM
+			}
+			send_equipment = {
+				equipment = util_vehicle_equipment
+				amount = 8740
+				target = BRM
+			}
+			send_equipment = {
+				equipment = medium_tank_artillery_chassis
+				amount = 300
+				target = BRM
+			}
+			send_equipment = {
+				equipment = medium_tank_destroyer_chassis
+				amount = 420
+				target = BRM
+			}
+			send_equipment = {
+				equipment = medium_tank_amphibious_chassis
+				amount = 5100
+				target = BRM
+			}
+			hidden_effect = {
+				BRM = {
+					add_manpower = -323950
+					load_oob = BRM_2017_nsb
+					set_temp_variable = {
+						treasury_change = -10
+					}
+					modify_treasury_effect = yes
+				}
+			}
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+	PRC_invite_vietnam_to_eadi = {
+		icon = GFX_PRC_new_left_decision
+		visible = {
+			VIE = {
+				is_in_faction = no
+				NOT = { has_idea = South_China_Sea_Dispute }
+			}
+			CHI = {
+				has_completed_focus = PRC_south_asian_brothers
+			}
+		}
+		available = {
+			CHI = {
+				has_country_flag = PRC_cold_war_flag
+			}
+		}
+		fire_only_once = yes
+		cost = 100
+		complete_effect = {
+			CHI = {
+				add_to_faction = VIE
+			}
+			VIE = {
+				set_country_flag = eadi_member
+				add_ideas = CHI_sco_member
+			}
+			news_event = sino_jap_coldwar.13
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+	PRC_relinquish_chinese_claims = {
+		cost = 75
+		available = {
+			CBD = { is_in_faction_with = CHI }
+			LAO = { is_in_faction_with = CHI }
+		}
+		visible = {
+			VIE = {
+				is_in_faction = no
+				has_idea = South_China_Sea_Dispute
+			}
+			CHI = {
+				has_country_flag = PRC_cold_war_flag
+				has_completed_focus = PRC_south_asian_brothers
+			}
+		}
+		fire_only_once = yes
+		complete_effect = {
+			VIE = { remove_ideas = South_China_Sea_Dispute }
+			if = {
+				limit = {
+					801 = {
+						is_owned_by = VIE
+					}
+				}
+				801 = {
+					transfer_state_to = CHI
+					add_core_of = CHI
+				}
+			}
+			491 = {
+				remove_claim_by = VIE
+			}
+			526 = {
+				remove_claim_by = VIE
+			}
+			802 = {
+				remove_claim_by = VIE
+			}
+			813 = {
+				remove_claim_by = VIE
+			}
+			816 = {
+				remove_claim_by = VIE
+			}
+		}
+		ai_will_do = {
+			base = 50
+		}
+	}
+	PRC_authorize_north_korean_intervention = {
+		icon = GFX_PRC_new_left_decision
+		available = {
+			NKO = {
+				has_war_with = KOR
+			}
+		}
+		visible = {
+			has_completed_focus = PRC_ressonance_from_the_past
+			NOT = {
+				has_global_flag = pan_asian_war_ongoing
+			}
+		}
+		fire_only_once = yes
+		cost = 50
+		days_remove = 10
+		complete_effect = {
+			add_timed_idea = {
+				idea = PRC_north_korean_intervention
+				days = 100
+			}
+			add_ai_strategy = {
+				type = send_volunteers_desire
+				id = NKO
+				value = 500
+			}
+		}
+		ai_will_do = {
+			base = 150
+		}
+	}
+	PRC_arm_the_prk = {
+		icon = GFX_PRC_new_left_decision
+		available = {
+			has_completed_focus = PRC_our_commitment_to_korea
+		}
+		visible = {
+			has_completed_focus = PRC_our_commitment_to_korea
+		}
+		cost = 50
+		days_remove = 70
+		remove_effect = {
+			send_equipment = {
+				equipment = infantry_weapons
+				amount = 7500
+				target = NKO
+			}
+			send_equipment = {
+				equipment = command_control_equipment
+				amount = 750
+				target = NKO
+			}
+			send_equipment = {
+				equipment = artillery_equipment
+				amount = 750
+				target = NKO
+			}
+			send_equipment = {
+				equipment = util_vehicle_equipment
+				amount = 750
+				target = NKO
+			}
+			NKO = {
+				set_temp_variable = {
+					var = military_development_var_temp
+					value = 0.25
+				}
+				add_military_development = yes
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	PRC_ease_korean_economic_burden = {
+		icon = GFX_PRC_new_left_decision
+		available = {
+			has_completed_focus = PRC_our_commitment_to_korea
+		}
+		visible = {
+			has_completed_focus = PRC_our_commitment_to_korea
+			NKO = {
+				OR = {
+					has_idea = NKO_international_sanctions_idea
+					has_idea = NKO_international_sanctions_idea2
+					has_idea = NKO_international_sanctions_idea3
+				}
+			}
+		}
+		cost = 50
+		days_remove = 75
+		remove_effect = {
+			NKO = {
+				if = {
+					limit = {
+						has_idea = NKO_international_sanctions_idea
+					}
+					swap_ideas = {
+						remove_idea = NKO_international_sanctions_idea
+						add_idea = NKO_international_sanctions_idea2
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = NKO_international_sanctions_idea2
+					}
+					swap_ideas = {
+						remove_idea = NKO_international_sanctions_idea2
+						add_idea = NKO_international_sanctions_idea3
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = NKO_international_sanctions_idea3
+					}
+					swap_ideas = {
+						remove_idea = NKO_international_sanctions_idea3
+						add_idea = NKO_international_sanctions_idea4
+					}
+				}
+				else = {
+					remove_ideas = NKO_international_sanctions_idea4
+				}
+				set_temp_variable = {
+					var = industrial_development_var_temp
+					value = 0.125
+				}
+				add_industrial_development = yes
+				set_temp_variable = {
+					var = poverty_development_var_temp
+					value = 0.125
+				}
+				add_poverty_development = yes
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	PRC_send_pla_advisors = {
+		icon = GFX_PRC_new_left_decision
+		available = {
+			NKO = {
+				has_war_with = KOR
+			}
+		}
+		visible = {
+			has_completed_focus = PRC_ressonance_from_the_past
+			NOT = {
+				has_global_flag = pan_asian_war_ongoing
+			}
+		}
+		fire_only_once = yes
+		cost = 25
+		days_remove = 10
+		remove_effect = {
+			NKO = {
+				add_ideas = PRK_chinese_military_advisors
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	PRC_launch_cyberattack_rok = {
+		icon = GFX_PRC_new_left_decision
+		available = {
+			OR = {
+				has_war_with = KOR
+				NKO = {
+					has_war_with = KOR
+				}
+			}
+		}
+		visible = {
+			OR = {
+				has_war_with = KOR
+				NKO = {
+					has_war_with = KOR
+				}
+			}
+		}
+		fire_only_once = yes
+		custom_cost_text = PRC_launch_cyberattack_rok_cost
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 50
+			}
+		}
+		days_remove = 5
+		remove_effect = {
+			hidden_effect = {
+				add_command_power = -50
+			}
+			KOR = {
+				add_timed_idea = {
+					idea = KOR_recent_cyberattack
+					days = 70
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	PRC_invite_nepal_eadi = {
+		icon = GFX_PRC_new_left_decision
+		available = {
+			CHI = {
+				has_country_flag = PRC_cold_war_flag
+			}
+		}
+		visible = {
+			has_completed_focus = PRC_himalayan_frontier
+		}
+		fire_only_once = yes
+		cost = 100
+		days_remove = 30
+		remove_effect = {
+			CHI = {
+				add_to_faction = NEP
+			}
+			NEP = {
+				set_country_flag = eadi_member
+				add_ideas = CHI_sco_member
+			}
+			news_event = sino_jap_coldwar.22
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+	PRC_invite_sri_lanka_eadi = {
+		icon = GFX_PRC_new_left_decision
+		available = {
+			CHI = {
+				has_country_flag = PRC_cold_war_flag
+			}
+		}
+		visible = {
+			has_completed_focus = PRC_counter_indian_aggression
+		}
+		fire_only_once = yes
+		cost = 100
+		days_remove = 30
+		remove_effect = {
+			CHI = {
+				add_to_faction = SRI
+			}
+			SRI = {
+				set_country_flag = eadi_member
+				add_ideas = CHI_sco_member
+			}
+			news_event = sino_jap_coldwar.23
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+}
+
+PRC_balance_of_power_category = {
+	PRC_ban_private_education = {
+		icon = GFX_FRA_Reconfigure_the_Education_System
+		allowed = {
+			tag = CHI
+		}
+		visible = {
+			tag = CHI
+			NOT = {
+				CHI = {
+					has_country_flag = PRC_expand_charter_schools_flag
+				}
+			}
+		}
+		available = {
+			check_variable = { government_coalition_strength > 0.7 }
+		}
+		fire_only_once = yes
+		cost = 50
+		days_remove = 70
+		complete_effect = {
+		}
+		remove_effect = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_made_in_china_dummy_idea
+					add_idea = PRC_ban_private_education_idea
+				}
+			}
+			add_power_balance_value = {
+				id = PRC_power_balance
+				value = -0.03
+			}
+			set_temp_variable = {
+				var = PRC_approval_rating_var_temp
+				value = -0.1
+			}
+			PRC_add_party_approval = yes
+			hidden_effect = {
+				set_country_flag = PRC_ban_private_education_flag
+				add_to_variable = {
+					var = PRC_mic_research_speed_factor_dynamic_var
+					value = -0.03
+				}
+				add_to_variable = {
+					var = PRC_mic_consumer_goods_factor_dynamic_var
+					value = 0.02
+				}
+				add_to_variable = {
+					var = PRC_mic_political_power_gain_dynamic_var
+					value = 0.05
+				}
+				add_to_variable = {
+					var = PRC_mic_academic_development_monthly_dynamic_var
+					value = 0.01
+				}
+			}
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+	PRC_expand_charter_schools = {
+		icon = GFX_FRA_Reconfigure_the_Education_System
+		allowed = {
+			tag = CHI
+		}
+		visible = {
+			tag = CHI
+			NOT = {
+				CHI = {
+					has_country_flag = PRC_ban_private_education_flag
+				}
+			}
+		}
+		available = {
+			check_variable = { government_coalition_strength > 0.7 }
+		}
+		fire_only_once = yes
+		cost = 50
+		days_remove = 70
+		complete_effect = {
+		}
+		remove_effect = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_made_in_china_dummy_idea
+					add_idea = PRC_expand_charter_schools_idea
+				}
+			}
+			add_power_balance_value = {
+				id = PRC_power_balance
+				value = 0.03
+			}
+			set_temp_variable = {
+				var = PRC_approval_rating_var_temp
+				value = -0.1
+			}
+			PRC_add_party_approval = yes
+			hidden_effect = {
+				set_country_flag = PRC_expand_charter_schools_flag
+				add_to_variable = {
+					var = PRC_mic_research_speed_factor_dynamic_var
+					value = 0.05
+				}
+				add_to_variable = {
+					var = PRC_mic_consumer_goods_factor_dynamic_var
+					value = -0.02
+				}
+				add_to_variable = {
+					var = PRC_mic_society_development_monthly_dynamic_var
+					value = -0.01
+				}
+			}
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+	PRC_government_employment_program = {
+		icon = GFX_PRC_decision_youth_project
+		allowed = {
+			tag = CHI
+		}
+		visible = {
+			tag = CHI
+		}
+		available = {
+			set_temp_variable = {
+				var = PRC_approval_rating_trigger_temp
+				value = 0.75
+			}
+			PRC_has_approval_rating_greater_than_or_equals = yes
+		}
+		fire_only_once = yes
+		cost = 100
+		days_remove = 70
+		complete_effect = {
+		}
+		remove_effect = {
+			add_power_balance_value = {
+				id = PRC_power_balance
+				value = -0.04
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_made_in_china_dummy_idea
+					add_idea = PRC_government_employment_program_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = PRC_mic_production_factory_efficiency_gain_factor_dynamic_var
+					value = -0.1
+				}
+				add_to_variable = {
+					var = PRC_mic_inflation_multiplier_modifier_dynamic_var
+					value = 0.01
+				}
+				add_to_variable = {
+					var = PRC_mic_production_factory_max_efficiency_factor_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = PRC_mic_industrial_development_monthly_dynamic_var
+					value = 0.01
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+	PRC_regulate_financial_speculation = {
+		icon = GFX_SOV_china_investment
+		allowed = {
+			tag = CHI
+		}
+		visible = {
+			tag = CHI
+		}
+		available = {
+			check_variable = { government_coalition_strength > 0.65 }
+		}
+		fire_only_once = yes
+		cost = 75
+		days_remove = 70
+		complete_effect = {
+		}
+		remove_effect = {
+			add_power_balance_value = {
+				id = PRC_power_balance
+				value = -0.04
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_made_in_china_dummy_idea
+					add_idea = PRC_regulate_financial_speculation_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = PRC_mic_production_speed_buildings_factor_dynamic_var
+					value = -0.1
+				}
+				add_to_variable = {
+					var = PRC_mic_consumer_goods_factor_dynamic_var
+					value = -0.03
+				}
+				add_to_variable = {
+					var = PRC_mic_poverty_development_monthly_dynamic_var
+					value = 0.02
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+		}
+	}
+}
+
+PRC_indo_pakistan_war = {
+	PRC_indo_pakistani_war_mission = {
+		priority = 1
+		icon = GFX_PRC_indo_pakistani_war_decision
+		available = {
+			hidden_trigger = {
+				PAK = {
+					controls_state = 426
+					OR = {
+						controls_state = 431
+						AND = {
+							controls_state = 429
+							controls_state = 984
+							controls_state = 987
+						}
+					}
+				}
+				NOT = {
+					RAJ = {
+						controls_state = 427
+						controls_state = 428
+						controls_state = 993
+					}
+				}
+			}
+		}
+		days_mission_timeout = 450
+		activation = {
+			hidden_trigger = {
+				always = no
+			}
+		}
+		fire_only_once = no
+		cancel_if_not_visible = no
+		is_good = no
+		cancel_trigger = {
+			hidden_trigger = {
+				PAK = {
+					surrender_progress > 0.8
+				}
+			}
+		}
+		cancel_effect = {
+			hidden_effect = {
+				RAJ = {
+					white_peace = PAK
+					remove_ideas = RAJ_clash_of_the_millions
+					remove_ideas = RAJ_clash_of_the_millions2
+					transfer_state = 420
+					transfer_state = 421
+					transfer_state = 427
+					add_state_core = 426
+					add_state_core = 563
+					add_state_core = 573
+					transfer_state = 426
+					transfer_state = 563
+					transfer_state = 573
+				}
+				PAK = {
+					set_country_flag = PAK_lost_indo_pakistan_war
+					remove_ideas = PAK_clash_of_the_millions
+					country_event = {
+						id = pak.10
+						days = 100
+					}
+				}
+				422 = {
+					set_demilitarized_zone = yes
+				}
+				CHI = {
+					clr_country_flag = PRC_indo_pakistan_war_ongoing
+				}
+			}
+		}
+		timeout_effect = {
+			news_event = {
+				id = PAK.13
+				hours = 7
+			}
+			hidden_effect = {
+				PAK = {
+					white_peace = RAJ
+					remove_ideas = PAK_clash_of_the_millions
+					set_country_flag = PAK_lost_indo_pakistan_war
+				}
+				RAJ = {
+					remove_ideas = RAJ_clash_of_the_millions
+					remove_ideas = RAJ_clash_of_the_millions2
+					transfer_state = 427
+				}
+				420 = {
+					set_demilitarized_zone = yes
+				}
+				421 = {
+					set_demilitarized_zone = yes
+				}
+				427 = {
+					set_demilitarized_zone = yes
+				}
+				428 = {
+					set_demilitarized_zone = yes
+				}
+				429 = {
+					set_demilitarized_zone = yes
+				}
+				984 = {
+					set_demilitarized_zone = yes
+				}
+				987 = {
+					set_demilitarized_zone = yes
+				}
+				993 = {
+					set_demilitarized_zone = yes
+				}
+				426 = {
+					set_demilitarized_zone = yes
+				}
+				563 = {
+					set_demilitarized_zone = yes
+				}
+				573 = {
+					set_demilitarized_zone = yes
+				}
+				CHI = {
+					clr_country_flag = PRC_indo_pakistan_war_ongoing
+				}
+			}
+		}
+		complete_effect = {
+			hidden_effect = {
+				PAK = {
+					white_peace = RAJ
+					add_state_core = 428
+					add_state_core = 429
+					add_state_core = 984
+					add_state_core = 987
+					transfer_state = 428
+					transfer_state = 429
+					transfer_state = 984
+					transfer_state = 987
+				}
+				431 = {
+					set_demilitarized_zone = yes
+				}
+				432 = {
+					set_demilitarized_zone = yes
+				}
+				436 = {
+					set_demilitarized_zone = yes
+				}
+				440 = {
+					set_demilitarized_zone = yes
+				}
+				1063 = {
+					set_demilitarized_zone = yes
+				}
+				CHI = {
+					clr_country_flag = PRC_indo_pakistan_war_ongoing
+				}
+			}
+		}
+	}
+	PRC_send_pakistan_planes = {
+		visible = {
+			tag = CHI
+		}
+		complete_effect = {
+			set_temp_variable = {
+				treasury_change = -20
+			}
+			modify_treasury_effect = yes
+		}
+		remove_effect = {
+			PAK = {
+				add_equipment_to_stockpile = {
+					type = small_plane_strike_airframe_2
+					variant_name = "Chengdu J-10C Menglong"
+					amount = 15
+					producer = CHI
+				}
+			}
+		}
+		icon = GFX_decision_generic_air
+		cost = 50
+		fire_only_once = no
+		days_remove = 1
+		days_re_enable = 60
+		ai_will_do = {
+			base = 25			#dont swamp yourself in debt
+		}
+	}
+	PRC_send_pakistan_weapons = {
+		available = {
+		}
+		visible = {
+			tag = CHI
+		}
+		complete_effect = {
+			set_temp_variable = {
+				treasury_change = -5
+			}
+			modify_treasury_effect = yes
+		}
+		remove_effect = {
+			PAK = {
+				add_equipment_to_stockpile = {
+					type = infantry_weapons1
+					amount = 2500
+					producer = CHI
+				}
+				add_equipment_to_stockpile = {
+					type = command_control_equipment1
+					amount = 750
+					producer = CHI
+				}
+				add_equipment_to_stockpile = {
+					type = Anti_tank_1
+					amount = 500
+					producer = CHI
+				}
+				add_equipment_to_stockpile = {
+					type = Anti_Air_1
+					amount = 500
+					producer = CHI
+				}
+			}
+		}
+		icon = GFX_decision_generic_industry
+		cost = 25
+		fire_only_once = no
+		days_remove = 20
+		days_re_enable = 30
+		ai_will_do = {
+			base = 15
+		}
+	}
+	PRC_embed_advisors_pakistan = {
+		available = {
+		}
+		visible = {
+			tag = CHI
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			PAK = { add_ideas = PRC_chinese_advisors }
+			set_country_flag = PRC_advisors_sent
+			unlock_decision_tooltip = PRC_initiate_operation_gul
+			unlock_decision_tooltip = PRC_initiate_operation_khalid
+		}
+		icon = GFX_decision_generic_military
+		cost = 25
+		fire_only_once = yes
+		days_remove = 20
+		days_re_enable = 20
+		ai_will_do = {
+			base = 15
+		}
+	}
+	PRC_initiate_operation_gul = {
+		available = {
+			has_country_flag = PRC_advisors_sent
+			NOT = {
+				has_country_flag = PRC_ongoing_offensive
+			}
+		}
+		visible = {
+			tag = CHI
+		}
+		complete_effect = {
+			set_country_flag = PRC_ongoing_offensive
+			PAK = {
+				add_timed_idea = {
+					idea = PAK_operation_gul
+					days = 100
+				}
+			}
+		}
+		remove_effect = {
+			hidden_effect = {
+				country_event = {
+					id = prc.135
+				}
+				clr_country_flag = PRC_ongoing_offensive
+			}
+		}
+		icon = GFX_decision_generic_crossed_guns
+		cost = 25
+		fire_only_once = yes
+		days_remove = 100
+		ai_will_do = {
+			base = 100
+		}
+	}
+	PRC_initiate_operation_khalid = {
+		available = {
+			has_country_flag = PRC_advisors_sent
+			NOT = {
+				has_country_flag = PRC_ongoing_offensive
+			}
+		}
+		visible = {
+			tag = CHI
+		}
+		complete_effect = {
+			set_country_flag = PRC_ongoing_offensive
+			PAK = {
+				add_timed_idea = {
+					idea = PAK_operation_khalid
+					days = 100
+				}
+			}
+		}
+		remove_effect = {
+			hidden_effect = {
+				clr_country_flag = PRC_ongoing_offensive
+			}
+		}
+		icon = GFX_decision_generic_crossed_guns
+		cost = 25
+		fire_only_once = yes
+		days_remove = 100
+		ai_will_do = {
+			base = 100
+		}
+	}
+}
+
+PRC_the_chinese_century_category = {
+	PRC_clean_up_kinmen = {
+		icon = GFX_PRC_soliders
+		allowed = {
+			tag = CHI
+		}
+		visible = {
+			CHI = { controls_state = 1158 }
+			has_completed_focus = PRC_utilize_xinjiang_methods
+		}
+		available = {
+		}
+		cost = 30
+		fire_only_once = yes
+		days_remove = 60
+		highlight_states = {
+			highlight_state_targets = {
+				state = 1158
+			}
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			add_state_core = 1158
+		}
+		ai_will_do = {
+			base = 999
+		}
+	}
+	PRC_clean_up_tainan = {
+		icon = GFX_PRC_soliders
+		allowed = {
+			tag = CHI
+		}
+		visible = {
+			CHI = { controls_state = 599 }
+			CHI = { controls_state = 1157 }
+			has_completed_focus = PRC_utilize_xinjiang_methods
+		}
+		available = {
+		}
+		cost = 30
+		fire_only_once = yes
+		days_remove = 60
+		highlight_states = {
+			highlight_state_targets = {
+				state = 599
+				state = 1157
+			}
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			add_state_core = 599
+			add_state_core = 1157
+		}
+		ai_will_do = {
+			base = 999
+		}
+	}
+	PRC_clean_up_hualan = {
+		icon = GFX_PRC_soliders
+		allowed = {
+			tag = CHI
+		}
+		visible = {
+			CHI = { controls_state = 600 }
+			has_completed_focus = PRC_utilize_xinjiang_methods
+		}
+		available = {
+		}
+		cost = 30
+		fire_only_once = yes
+		days_remove = 60
+		highlight_states = {
+			highlight_state_targets = {
+				state = 600
+			}
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			add_state_core = 600
+		}
+		ai_will_do = {
+			base = 999
+		}
+	}
+	PRC_clean_up_taichzhun = {
+		icon = GFX_PRC_soliders
+		allowed = {
+			tag = CHI
+		}
+		visible = {
+			CHI = { controls_state = 1155 }
+			CHI = { controls_state = 1156 }
+			has_completed_focus = PRC_utilize_xinjiang_methods
+		}
+		available = {
+		}
+		cost = 30
+		fire_only_once = yes
+		days_remove = 60
+		highlight_states = {
+			highlight_state_targets = {
+				state = 1155
+				state = 1156
+			}
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			add_state_core = 1155
+			add_state_core = 1156
+		}
+		ai_will_do = {
+			base = 999
+		}
+	}
+	PRC_clean_up_taibei = {
+		icon = GFX_PRC_soliders
+		allowed = {
+			tag = CHI
+		}
+		visible = {
+			has_completed_focus = PRC_utilize_xinjiang_methods
+		}
+		available = {
+			599 = {
+				is_core_of = CHI
+			}
+			600 = {
+				is_core_of = CHI
+			}
+			1156 = {
+				is_core_of = CHI
+			}
+			1158 = {
+				is_core_of = CHI
+			}
+		}
+		cost = 30
+		fire_only_once = yes
+		days_remove = 60
+		highlight_states = {
+			highlight_state_targets = {
+				state = 598
+			}
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			add_state_core = 598
+		}
+		ai_will_do = {
+			base = 999
+		}
+	}
+	PRC_build_korea_new_district = {
+		icon = GFX_PRC_decision_industrial_expension
+		allowed = {
+			tag = CHI
+		}
+		visible = {
+			has_completed_focus = PRC_integrate_sezs
+		}
+		available = {
+		}
+		cost = 15
+		fire_only_once = yes
+		days_remove = 120
+		highlight_states = {
+			highlight_state_targets = {
+				state = 552
+			}
+		}
+		complete_effect = {
+			set_temp_variable = {
+				treasury_change = -2.5
+			}
+			modify_treasury_effect = yes
+		}
+		remove_effect = {
+			552 = {
+				add_dynamic_modifier = {
+					modifier = PRC_national_new_zone
+				}
+			}
+		}
+		ai_will_do = {
+			base = 999
+		}
+	}
+	PRC_build_russia_new_district = {
+		icon = GFX_PRC_decision_industrial_expension
+		allowed = {
+			tag = CHI
+		}
+		visible = {
+			has_completed_focus = PRC_integrate_sezs
+		}
+		available = {
+		}
+		cost = 15
+		fire_only_once = yes
+		days_remove = 120
+		highlight_states = {
+			highlight_state_targets = {
+				state = 555
+			}
+		}
+		complete_effect = {
+			set_temp_variable = {
+				treasury_change = -2.5
+			}
+			modify_treasury_effect = yes
+		}
+		remove_effect = {
+			555 = {
+				add_dynamic_modifier = {
+					modifier = PRC_national_new_zone
+				}
+			}
+		}
+		ai_will_do = {
+			base = 999
+		}
+	}
+	PRC_build_qindao_new_district = {
+		icon = GFX_PRC_decision_industrial_expension
+		allowed = {
+			tag = CHI
+		}
+		visible = {
+			has_completed_focus = PRC_integrate_sezs
+		}
+		available = {
+		}
+		cost = 15
+		fire_only_once = yes
+		days_remove = 120
+		highlight_states = {
+			highlight_state_targets = {
+				state = 435
+			}
+		}
+		complete_effect = {
+			set_temp_variable = {
+				treasury_change = -2.5
+			}
+			modify_treasury_effect = yes
+		}
+		remove_effect = {
+			435 = {
+				add_dynamic_modifier = {
+					modifier = PRC_national_new_zone
+				}
+			}
+		}
+		ai_will_do = {
+			base = 999
+		}
+	}
+	PRC_build_asia_new_district = {
+		icon = GFX_PRC_decision_industrial_expension
+		allowed = {
+			tag = CHI
+		}
+		visible = {
+			has_completed_focus = PRC_integrate_sezs
+		}
+		available = {
+		}
+		cost = 15
+		fire_only_once = yes
+		days_remove = 120
+		highlight_states = {
+			highlight_state_targets = {
+				state = 592
+			}
+		}
+		complete_effect = {
+			set_temp_variable = {
+				treasury_change = -2.5
+			}
+			modify_treasury_effect = yes
+		}
+		remove_effect = {
+			592 = {
+				add_dynamic_modifier = {
+					modifier = PRC_national_new_zone
+				}
+			}
+		}
+		ai_will_do = {
+			base = 999
+		}
+	}
+	PRC_accelerate_automation = {
+		icon = GFX_SOV_decision_soviet_computers
+		name = SOV_accelerate_automation
+		visible = {
+			has_completed_focus = PRC_anti_corpruption_tech
+		}
+		available = {
+			has_tech = computing5
+		}
+		ai_will_do = {
+			base = 100
+		}
+		cost = 50
+		fire_only_once = yes
+		days_remove = 50
+		complete_effect = {
+		}
+		remove_effect = {
+			set_temp_variable = {
+				var = academic_development_var_temp
+				value = 0.05
+			}
+			add_academic_development = yes
+			set_temp_variable = {
+				var = industrial_development_var_temp
+				value = 0.05
+			}
+			add_industrial_development = yes
+			set_temp_variable = {
+				var = farming_development_var_temp
+				value = 0.05
+			}
+			add_industrial_development = yes
+			set_temp_variable = {
+				var = society_development_var_temp
+				value = 0.075
+			}
+			add_society_development = yes
+			add_stability = 0.025
+		}
+	}
+	PRC_asteroid_mining_programme = {
+		visible = {
+			has_completed_focus = PRC_fund_space_dev
+		}
+		ai_will_do = {
+			base = 100
+		}
+		modifier = {
+			political_power_gain = -0.1
+			consumer_goods_factor = 0.06
+		}
+		fire_only_once = yes
+		complete_effect = {
+			set_temp_variable = {
+				treasury_change = -50
+			}
+			modify_treasury_effect = yes
+		}
+		remove_effect = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_chinese_space_age_dummy
+					add_idea = PRC_chinese_space_age_asteroid_mining_programme
+				}
+			}
+			add_to_variable = {
+				var = PRC_chinese_space_age_research_speed_factor_dynamic
+				value = 0.01
+			}
+			add_to_variable = {
+				var = PRC_chinese_space_age_consumer_goods_factor_dynamic
+				value = -0.01
+			}
+			add_to_variable = {
+				var = PRC_chinese_space_age_tax_gain_multiplier_modifier_dynamic
+				value = 0.065
+			}
+			add_to_variable = {
+				var = PRC_chinese_space_age_business_value_factor_dynamic
+				value = 0.015
+			}
+			add_to_variable = {
+				var = PRC_chinese_space_age_production_lack_of_resource_penalty_factor_dynamic
+				value = -0.06
+			}
+		}
+		days_remove = 365
+		icon = GFX_decision_PRC_asteroid_mining_programme
+		cost = 100
+	}
+	PRC_new_moon_race_programme = {
+		visible = {
+			has_completed_focus = PRC_fund_space_dev
+		}
+		ai_will_do = {
+			base = 100
+		}
+		modifier = {
+			political_power_gain = 0.1
+			consumer_goods_factor = 0.05
+		}
+		fire_only_once = yes
+		complete_effect = {
+			set_temp_variable = {
+				treasury_change = -35
+			}
+			modify_treasury_effect = yes
+		}
+		remove_effect = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_chinese_space_age_dummy
+					add_idea = PRC_chinese_space_age_moon_landing_programme
+				}
+			}
+			add_to_variable = {
+				var = PRC_chinese_space_age_research_speed_factor_dynamic
+				value = 0.005
+			}
+			add_to_variable = {
+				var = PRC_chinese_space_age_society_development_monthly_dynamic
+				value = 0.01
+			}
+			add_to_variable = {
+				var = PRC_chinese_space_age_production_speed_infrastructure_factor_dynamic
+				value = 0.01
+			}
+			add_to_variable = {
+				var = PRC_chinese_space_age_political_power_factor_dynamic
+				value = 0.015
+			}
+			add_to_variable = {
+				var = PRC_chinese_space_age_industrial_capacity_factory_dynamic
+				value = 0.05
+			}
+		}
+		days_remove = 365
+		icon = GFX_decision_PRC_new_moon_race_programme
+		cost = 100
+	}
+	PRC_expand_satellite_launching_programme = {
+		visible = {
+			has_completed_focus = PRC_fund_space_dev
+		}
+		ai_will_do = {
+			base = 100
+		}
+		modifier = {
+			political_power_gain = -0.05
+			consumer_goods_factor = 0.02
+		}
+		complete_effect = {
+			set_temp_variable = {
+				treasury_change = -20
+			}
+			modify_treasury_effect = yes
+		}
+		remove_effect = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_chinese_space_age_dummy
+					add_idea = PRC_chinese_space_age_expand_satellite_launching_programme
+				}
+			}
+			add_to_variable = {
+				var = PRC_chinese_space_age_production_factory_efficiency_gain_factor_dynamic
+				value = 0.015
+			}
+			add_to_variable = {
+				var = PRC_chinese_space_age_production_speed_buildings_factor_dynamic
+				value = 0.0125
+			}
+			add_to_variable = {
+				var = PRC_chinese_space_age_tax_gain_multiplier_modifier_dynamic
+				value = 0.025
+			}
+			add_to_variable = {
+				var = PRC_chinese_space_age_business_value_factor_dynamic
+				value = 0.015
+			}
+		}
+		days_remove = 180
+		days_re_enable = 365
+		icon = GFX_decision_PRC_expand_satellite_launching_programme
+		cost = 65
+	}
+	PRC_build_xi_jinpings_thought_center_in_moscow = {
+		icon = GFX_SOV_decision_increase_moscow_budget
+		allowed = {
+			tag = CHI
+		}
+		visible = {
+			has_completed_focus = PRC_xi_jinping_thought_abroad
+		}
+		available = {
+			SOV = {
+				has_government = communism
+			}
+		}
+		ai_will_do = {
+			base = 100
+		}
+		cost = 35
+		fire_only_once = yes
+		days_remove = 30
+		highlight_states = {
+			highlight_state_targets = {
+				state = 652
+			}
+		}
+		on_map_mode = map_and_decisions_view
+		complete_effect = {
+		}
+		remove_effect = {
+			SOV = {
+				country_event = prc.286
+			}
+			add_offsite_building = {
+				type = offices
+				level = 1
+			}
+		}
+	}
+	PRC_build_xi_jinpings_thought_center_in_petersburg = {
+		icon = GFX_SOV_decision_technocrats
+		allowed = {
+			tag = CHI
+		}
+		visible = {
+			has_completed_focus = PRC_xi_jinping_thought_abroad
+		}
+		available = {
+			SOV = {
+				has_government = communism
+			}
+		}
+		ai_will_do = {
+			base = 100
+		}
+		cost = 35
+		fire_only_once = yes
+		days_remove = 30
+		highlight_states = {
+			highlight_state_targets = {
+				state = 644
+			}
+		}
+		on_map_mode = map_and_decisions_view
+		complete_effect = {
+		}
+		remove_effect = {
+			SOV = {
+				add_offsite_building = {
+					type = offices
+					level = 1
+				}
+			}
+			add_offsite_building = {
+				type = offices
+				level = 1
+			}
+		}
+	}
+	PRC_build_xi_jinpings_thought_center_in_islamabad = {
+		icon = GFX_PRC_islam
+		allowed = {
+			tag = CHI
+		}
+		visible = {
+			has_completed_focus = PRC_xi_jinping_thought_abroad
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 100
+		}
+		cost = 35
+		fire_only_once = yes
+		days_remove = 30
+		highlight_states = {
+			highlight_state_targets = {
+				state = 422
+			}
+		}
+		on_map_mode = map_and_decisions_view
+		complete_effect = {
+		}
+		remove_effect = {
+			PAK = {
+				add_offsite_building = {
+					type = offices
+					level = 1
+				}
+			}
+			add_offsite_building = {
+				type = offices
+				level = 1
+			}
+		}
+	}
+	PRC_complete_pearl_river_megacity_cen = {
+		name = PRC_complete_pearl_river_megacity
+		icon = GFX_PRC_decision_youth_project
+		allowed = {
+			tag = CHI
+		}
+		visible = {
+			has_completed_focus = PRC_endorse_the_megaprojects_cen
+		}
+		fire_only_once = yes
+		cost = 100
+		days_remove = 365
+		modifier = {
+			civilian_factory_use = 15
+		}
+		complete_effect = {
+			set_temp_variable = {
+				treasury_change = -75
+			}
+			modify_treasury_effect = yes
+		}
+		remove_effect = {
+			country_event = {
+				id = prc.112
+			}
+			532 = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 3
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 3
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = offices
+					level = 3
+					instant_build = yes
+				}
+			}
+			595 = {
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = offices
+					level = 2
+					instant_build = yes
+				}
+			}
+			1106 = {
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = offices
+					level = 1
+					instant_build = yes
+				}
+			}
+			set_temp_variable = {
+				var = PRC_enviromental_progress_temp
+				value = -0.05
+			}
+			PRC_add_enviromental_progress = yes
+		}
+		ai_will_do = {
+			factor = 50
+		}
+	}
+	PRC_beijing_tianjin_megacity_cen = {
+		name = PRC_beijing_tianjin_megacity
+		icon = GFX_PRC_decision_youth_project
+		allowed = {
+			tag = CHI
+		}
+		visible = {
+			has_completed_focus = PRC_endorse_the_megaprojects_cen
+		}
+		fire_only_once = yes
+		cost = 100
+		days_remove = 365
+		modifier = {
+			civilian_factory_use = 15
+		}
+		complete_effect = {
+			set_temp_variable = {
+				treasury_change = -75
+			}
+			modify_treasury_effect = yes
+		}
+		remove_effect = {
+			country_event = {
+				id = prc.113
+			}
+			547 = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = offices
+					level = 1
+					instant_build = yes
+				}
+			}
+			548 = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = offices
+					level = 1
+					instant_build = yes
+				}
+			}
+			set_temp_variable = {
+				var = PRC_enviromental_progress_temp
+				value = -0.05
+			}
+			PRC_add_enviromental_progress = yes
+			if = {
+				limit = {
+					has_country_flag = PRC_xiongania_enable
+					NOT = {
+						has_country_flag = PRC_capital_construction_process_is_finished_flag
+					}
+				}
+				set_temp_variable = {
+					var = PRC_xiongania_progress_temp
+					value = 2.5
+				}
+				PRC_add_xiongania_progress = yes
+			}
+			if = {
+				limit = {
+					has_active_mission = PRC_xion_moving_process
+					NOT = {
+						has_country_flag = PRC_capital_bureaucracy_process_is_finished_flag
+					}
+				}
+				add_days_mission_timeout = {
+					mission = PRC_xion_moving_process
+					days = -75
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 50
+		}
+	}
+	PRC_beijing_shanghai_railway_cen = {
+		name = PRC_beijing_shanghai_railway
+		available = {
+		}
+		visible = {
+			has_completed_focus = PRC_endorse_the_megaprojects_cen
+		}
+		complete_effect = {
+			set_temp_variable = {
+				treasury_change = -50
+			}
+			modify_treasury_effect = yes
+		}
+		remove_effect = {
+			set_temp_variable = {
+				var = industrial_development_var_temp
+				value = 0.05
+			}
+			add_industrial_development = yes
+			build_railway = {
+				level = 3
+				start_state = 547
+				target_state = 540
+			}
+			536 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			541 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			435 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			544 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			549 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			set_temp_variable = {
+				var = PRC_enviromental_progress_temp
+				value = -0.025
+			}
+			PRC_add_enviromental_progress = yes
+			if = {
+				limit = {
+					has_country_flag = PRC_xiongania_enable
+					NOT = {
+						has_country_flag = PRC_capital_construction_process_is_finished_flag
+					}
+				}
+				set_temp_variable = {
+					var = PRC_xiongania_progress_temp
+					value = 1.5
+				}
+				PRC_add_xiongania_progress = yes
+			}
+			if = {
+				limit = {
+					has_active_mission = PRC_xion_moving_process
+					NOT = {
+						has_country_flag = PRC_capital_bureaucracy_process_is_finished_flag
+					}
+				}
+				add_days_mission_timeout = {
+					mission = PRC_xion_moving_process
+					days = -50
+				}
+			}
+		}
+		icon = GFX_PRC_railroad_train
+		cost = 35
+		fire_only_once = yes
+		days_remove = 70
+		ai_will_do = {
+			base = 1
+		}
+	}
+	PRC_kela_power_station_cen = {
+		name = PRC_kela_power_station
+		available = {
+		}
+		visible = {
+			has_completed_focus = PRC_endorse_the_megaprojects_cen
+		}
+		complete_effect = {
+			set_temp_variable = {
+				treasury_change = -50
+			}
+			modify_treasury_effect = yes
+		}
+		remove_effect = {
+			586 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = energy_farm
+					level = 2
+					instant_build = yes
+				}
+			}
+			set_temp_variable = {
+				var = industrial_development_var_temp
+				value = 0.05
+			}
+			add_industrial_development = yes
+			set_temp_variable = {
+				var = PRC_enviromental_progress_temp
+				value = 0.05
+			}
+			PRC_add_enviromental_progress = yes
+		}
+		icon = GFX_PRC_decision_youth_project
+		cost = 35
+		fire_only_once = yes
+		days_remove = 60
+		ai_will_do = {
+			base = 1
+		}
+	}
+	PRC_venezuela_oil_cen = {
+		name = PRC_venezuela_oil
+		available = {
+		}
+		visible = {
+			has_completed_focus = PRC_endorse_the_megaprojects_cen
+		}
+		complete_effect = {
+			set_temp_variable = {
+				treasury_change = -50
+			}
+			modify_treasury_effect = yes
+		}
+		remove_effect = {
+			VEN = {
+				set_temp_variable = {
+					var = industrial_development_var_temp
+					value = 0.05
+				}
+				add_industrial_development = yes
+			}
+			875 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = synthetic_refinery
+					level = 2
+					instant_build = yes
+				}
+				add_resource = {
+					type = oil
+					amount = 55
+				}
+			}
+			set_temp_variable = {
+				var = industrial_development_var_temp
+				value = 0.05
+			}
+			add_industrial_development = yes
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_made_in_china_dummy_idea
+					add_idea = PRC_venezuela_oil_idea
+				}
+			}
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = fuel_silo
+					level = 3
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = fuel_silo
+					level = 3
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = fuel_silo
+					level = 3
+					instant_build = yes
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = PRC_mic_fuel_gain_factor_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = PRC_mic_tax_gain_multiplier_modifier_dynamic_var
+					value = 0.05
+				}
+				add_to_variable = {
+					var = PRC_mic_faction_trade_opinion_factor_dynamic_var
+					value = 0.05
+				}
+			}
+		}
+		icon = GFX_decision_generic_oil
+		cost = 50
+		fire_only_once = yes
+		days_remove = 60
+		ai_will_do = {
+			base = 1
+		}
+	}
+}
+
+PRC_enviromental_policy_category = {
+	PRC_environmental_engineering_acceptance_mission = {
+		icon = GFX_Ecologists
+		allowed = {
+			tag = CHI
+		}
+		activation = {
+			always = no
+		}
+		available = {
+			hidden_trigger = {
+				always = no
+			}
+		}
+		priority = 99
+		is_good = yes
+		fire_only_once = yes
+		selectable_mission = no
+		days_mission_timeout = 10200
+		timeout_effect = {
+			set_country_flag = PRC_environment_acceptance
+			country_event = prc.277			#russia.256
+			custom_effect_tooltip = PRC_environment_acceptance_mission_tt
+		}
+	}
+	PRC_roll_back_harmful_environmental_policies = {
+		available = {
+		}
+		visible = {
+			NOT = {
+				has_country_flag = PRC_environment_acceptance
+			}
+		}
+		complete_effect = {
+			set_temp_variable = {
+				var = industrial_development_var_temp
+				value = -0.075
+			}
+			add_industrial_development = yes
+			add_stability = 0.025
+		}
+		remove_effect = {
+			set_temp_variable = {
+				var = PRC_enviromental_progress_temp
+				value = 0.05
+			}
+			PRC_add_enviromental_progress = yes
+		}
+		icon = GFX_Ecologists
+		cost = 40
+		days_remove = 30
+		fire_only_once = no
+		days_re_enable = 180
+		ai_will_do = {
+			base = 1
+		}
+	}
+	PRC_improve_the_environmental_friendliness_of_military_factories = {
+		icon = GFX_decision_generic_factory
+		allowed = {
+			tag = CHI
+		}
+		visible = {
+			NOT = {
+				has_country_flag = PRC_environment_acceptance
+			}
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 100
+		}
+		cost = 40
+		fire_only_once = no
+		days_re_enable = 300
+		days_remove = 50
+		complete_effect = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_chinese_enviroment_dummy_idea
+					add_idea = PRC_improve_the_environmental_friendliness_of_military_factories_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = PRC_ce_industrial_capacity_factory_dynamic_var
+					value = -0.05
+				}
+			}
+		}
+		remove_effect = {
+			set_temp_variable = {
+				var = PRC_enviromental_progress_temp
+				value = 0.05
+			}
+			PRC_add_enviromental_progress = yes
+		}
+	}
+	PRC_improve_the_environmental_friendliness_of_civilian_factories = {
+		icon = GFX_decision_generic_factory
+		allowed = {
+			tag = CHI
+		}
+		visible = {
+			NOT = {
+				has_country_flag = PRC_environment_acceptance
+			}
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 100
+		}
+		cost = 40
+		fire_only_once = no
+		days_re_enable = 300
+		days_remove = 50
+		complete_effect = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_chinese_enviroment_dummy_idea
+					add_idea = PRC_improve_the_environmental_friendliness_of_civilian_factories_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = PRC_ce_consumer_goods_factor_dynamic_var
+					value = 0.025
+				}
+				add_to_variable = {
+					var = PRC_ce_production_speed_buildings_factor_dynamic_var
+					value = -0.05
+				}
+			}
+		}
+		remove_effect = {
+			set_temp_variable = {
+				var = PRC_enviromental_progress_temp
+				value = 0.05
+			}
+			PRC_add_enviromental_progress = yes
+		}
+	}
+	PRC_yangtze_river_fishing_ban_law = {
+		icon = GFX_Ecologists
+		allowed = {
+			tag = CHI
+		}
+		visible = {
+			NOT = {
+				has_country_flag = PRC_environment_acceptance
+			}
+		}
+		available = {
+			has_full_control_of_state = 570
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 570
+			}
+		}
+		ai_will_do = {
+			base = 75
+		}
+		cost = 50
+		fire_only_once = yes
+		days_remove = 180
+		modifier = {
+			civilian_factory_use = 3
+		}
+		remove_effect = {
+			set_temp_variable = {
+				var = PRC_enviromental_progress_temp
+				value = 0.15
+			}
+			PRC_add_enviromental_progress = yes
+			set_temp_variable = {
+				treasury_change = -10
+			}
+			modify_treasury_effect = yes
+		}
+	}
+	PRC_establish_green_great_wall = {
+		icon = GFX_Ecologists
+		allowed = {
+			tag = CHI
+		}
+		visible = {
+			NOT = {
+				has_country_flag = PRC_environment_acceptance
+			}
+		}
+		available = {
+			has_full_control_of_state = 556
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 556
+			}
+		}
+		ai_will_do = {
+			base = 75
+		}
+		cost = 25
+		fire_only_once = yes
+		days_remove = 180
+		modifier = {
+			civilian_factory_use = 5
+		}
+		remove_effect = {
+			set_temp_variable = {
+				var = PRC_enviromental_progress_temp
+				value = 0.15
+			}
+			PRC_add_enviromental_progress = yes
+			add_stability = 0.01
+			621 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	PRC_Cancel_redline_for_farm_land = {
+		icon = GFX_decision_generic_investment
+		allowed = {
+			tag = CHI
+		}
+		visible = {
+			NOT = {
+				has_country_flag = PRC_environment_acceptance
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+		cost = 40
+		fire_only_once = no
+		days_remove = 90
+		days_remove = 180
+		modifier = {
+			production_speed_industrial_complex_factor = 0.15
+		}
+		remove_effect = {
+			set_temp_variable = {
+				var = PRC_enviromental_progress_temp
+				value = -0.1
+			}
+			PRC_add_enviromental_progress = yes
+		}
+	}
+	PRC_Develop_reserve_resources = {
+		icon = GFX_decision_generic_exploit_land
+		allowed = {
+			tag = CHI
+		}
+		available = {
+			OR = {
+				has_war = yes
+				has_war_support > 0.5
+			}
+		}
+		visible = {
+			NOT = {
+				has_country_flag = PRC_environment_acceptance
+			}
+		}
+		ai_will_do = {
+			base = 50
+		}
+		cost = 25
+		fire_only_once = no
+		days_remove = 180
+		modifier = {
+			industrial_capacity_factory = 0.075
+			local_resources_factor = 0.25
+		}
+		remove_effect = {
+			set_temp_variable = {
+				var = PRC_enviromental_progress_temp
+				value = -0.1
+			}
+			PRC_add_enviromental_progress = yes
+		}
+	}
+	PRC_turn_a_blind_eye_to_abuses_of_environmental_laws = {
+		icon = GFX_SOV_china_investment
+		allowed = {
+			tag = CHI
+		}
+		visible = {
+			NOT = {
+				has_country_flag = PRC_environment_acceptance
+			}
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 100
+		}
+		cost = 50
+		fire_only_once = no
+		days_re_enable = 350
+		days_remove = 50
+		complete_effect = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_chinese_enviroment_dummy_idea
+					add_idea = PRC_turn_a_blind_eye_to_abuses_of_environmental_laws_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = PRC_ce_consumer_goods_factor_dynamic_var
+					value = -0.015
+				}
+				add_to_variable = {
+					var = PRC_ce_production_speed_buildings_factor_dynamic_var
+					value = 0.035
+				}
+				add_to_variable = {
+					var = PRC_ce_industrial_capacity_factory_dynamic_var
+					value = 0.025
+				}
+			}
+		}
+		remove_effect = {
+			set_temp_variable = {
+				var = PRC_enviromental_progress_temp
+				value = -0.05
+			}
+			PRC_add_enviromental_progress = yes
+			set_temp_variable = {
+				treasury_change = 50
+			}
+			modify_treasury_effect = yes
+		}
+	}
+	PRC_give_more_freedom_to_corporations = {
+		icon = GFX_SOV_china_investment
+		allowed = {
+			tag = CHI
+		}
+		visible = {
+			NOT = {
+				has_country_flag = PRC_environment_acceptance
+			}
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 100
+		}
+		cost = 75
+		fire_only_once = yes
+		days_remove = 50
+		complete_effect = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_chinese_enviroment_dummy_idea
+					add_idea = PRC_turn_a_blind_eye_to_abuses_of_environmental_laws_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = PRC_ce_consumer_goods_factor_dynamic_var
+					value = -0.015
+				}
+				add_to_variable = {
+					var = PRC_ce_production_speed_buildings_factor_dynamic_var
+					value = 0.035
+				}
+				add_to_variable = {
+					var = PRC_ce_industrial_capacity_factory_dynamic_var
+					value = 0.025
+				}
+			}
+		}
+		remove_effect = {
+			set_temp_variable = {
+				var = PRC_enviromental_progress_temp
+				value = -0.1
+			}
+			PRC_add_enviromental_progress = yes
+			every_military_industrial_organization = {
+				add_mio_funds = 750
+			}
+			set_temp_variable = {
+				treasury_change = 35
+			}
+			modify_treasury_effect = yes
+		}
+	}
+}
+
+PRC_xiongania_category = {
+	PRC_xion_full_speed_ahead = {
+		icon = GFX_PRC_decision_industrial_expension
+		allowed = {
+			tag = CHI
+		}
+		visible = {
+			has_country_flag = PRC_xiongania_enable
+		}
+		available = {
+			has_country_flag = PRC_capital_construction_process_is_finished_flag
+			has_country_flag = PRC_capital_bureaucracy_process_is_finished_flag
+		}
+		ai_will_do = {
+			base = 200
+		}
+		cost = 25
+		fire_only_once = yes
+		#days_remove = 50
+		priority = 10
+		complete_effect = {
+			country_event = {
+				id = prc.412
+				days = 1
+			}
+		}
+		remove_effect = {
+		}
+	}
+	PRC_xion_moving_process = {
+		icon = GFX_SOV_decision_soviet_apartaments
+		allowed = {
+			tag = CHI
+		}
+		activation = {
+			always = no
+		}
+		available = {
+			has_country_flag = PRC_capital_moving_process_is_finished_flag
+		}
+		is_good = no
+		selectable_mission = no
+		days_mission_timeout = 2250
+		priority = 9
+		timeout_effect = {
+			country_event = {
+				id = prc.414
+				days = 1
+			}
+		}
+	}
+	PRC_bureaucracy_collapsing_mission = {
+		icon = GFX_PRC_things_going_bad
+		allowed = {
+			tag = CHI
+		}
+		activation = {
+			always = no
+		}
+		available = {
+			has_country_flag = PRC_capital_bureaucracy_process_is_finished_flag
+			hidden_trigger = {
+				is_ai = yes
+			}
+		}
+		is_good = no
+		selectable_mission = no
+		days_mission_timeout = 225
+		priority = 8
+		timeout_effect = {
+			if = {
+				limit = {
+					NOT = {
+						has_country_flag = PRC_capital_bureaucracy_process_is_finished_flag
+					}
+				}
+				PRC_decrease_overloaded_bureaucracy = yes
+				activate_mission = PRC_bureaucracy_collapsing_mission
+			}
+		}
+	}
+	PRC_agitation_for_relocation_to_the_new_capital = {
+		available = {
+		}
+		visible = {
+			has_country_flag = PRC_xiongania_enable
+		}
+		complete_effect = {
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					state_population > 1000000
+				}
+				add_manpower = -10000
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					state_population > 1000000
+				}
+				add_manpower = -10000
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					state_population > 1000000
+				}
+				add_manpower = -10000
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					state_population > 1000000
+				}
+				add_manpower = -10000
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					state_population > 1000000
+				}
+				add_manpower = -10000
+			}
+		}
+		remove_effect = {
+			549 = {
+				add_manpower = 50000
+			}
+			add_days_mission_timeout = {
+				mission = PRC_xion_moving_process
+				days = -75
+			}
+			set_temp_variable = {
+				var = PRC_xiongania_progress_temp
+				value = 3.5
+			}
+			PRC_add_xiongania_progress = yes
+		}
+		icon = GFX_FRA_Rally_the_People_idea
+		cost = 35
+		days_remove = 60
+		fire_only_once = no
+		days_re_enable = 120
+		priority = 7
+		ai_will_do = {
+			base = 100
+		}
+	}
+	PRC_give_free_apartments_to_young_families = {
+		available = {
+		}
+		visible = {
+			has_country_flag = PRC_xiongania_enable
+		}
+		complete_effect = {
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					state_population > 1000000
+				}
+				add_manpower = -7500
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					state_population > 1000000
+				}
+				add_manpower = -7500
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					state_population > 1000000
+				}
+				add_manpower = -7500
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					state_population > 1000000
+				}
+				add_manpower = -7500
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					state_population > 1000000
+				}
+				add_manpower = -7500
+			}
+			set_temp_variable = {
+				treasury_change = -15
+			}
+			modify_treasury_effect = yes
+		}
+		remove_effect = {
+			549 = {
+				add_manpower = 37500
+			}
+			add_days_mission_timeout = {
+				mission = PRC_xion_moving_process
+				days = -75
+			}
+			set_temp_variable = {
+				var = PRC_xiongania_progress_temp
+				value = 3.5
+			}
+			PRC_add_xiongania_progress = yes
+		}
+		icon = GFX_FRA_Rally_the_People_idea
+		cost = 35
+		days_remove = 50
+		fire_only_once = no
+		days_re_enable = 160
+		priority = 7
+		ai_will_do = {
+			base = 100
+		}
+	}
+	PRC_involve_young_specialists_in_the_new_capital = {
+		available = {
+		}
+		visible = {
+			has_country_flag = PRC_xiongania_enable
+		}
+		complete_effect = {
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					state_population > 1000000
+				}
+				add_manpower = -5000
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					state_population > 1000000
+				}
+				add_manpower = -5000
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					state_population > 1000000
+				}
+				add_manpower = -5000
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					state_population > 1000000
+				}
+				add_manpower = -5000
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					state_population > 1000000
+				}
+				add_manpower = -5000
+			}
+		}
+		remove_effect = {
+			549 = {
+				add_manpower = 25000
+			}
+			add_days_mission_timeout = {
+				mission = PRC_xion_moving_process
+				days = -150
+			}
+			set_temp_variable = {
+				var = PRC_xiongania_progress_temp
+				value = 5
+			}
+			PRC_add_xiongania_progress = yes
+			set_temp_variable = {
+				var = industrial_development_var_temp
+				value = 0.05
+			}
+			add_industrial_development = yes
+		}
+		icon = GFX_PRC_decision_youth_project
+		cost = 50
+		days_remove = 50
+		fire_only_once = no
+		days_re_enable = 150
+		priority = 7
+		ai_will_do = {
+			base = 100
+		}
+	}
+	PRC_accelerate_the_relocation_of_the_state_apparatus = {
+		available = {
+		}
+		visible = {
+			has_country_flag = PRC_xiongania_enable
+		}
+		complete_effect = {
+			547 = {
+				add_manpower = -5000
+			}
+		}
+		remove_effect = {
+			549 = {
+				add_manpower = 5000
+			}
+			add_days_mission_timeout = {
+				mission = PRC_xion_moving_process
+				days = -250
+			}
+			set_temp_variable = {
+				var = PRC_xiongania_progress_temp
+				value = 1.5
+			}
+			PRC_add_xiongania_progress = yes
+		}
+		icon = GFX_decision_unknown
+		cost = 75
+		days_remove = 30
+		fire_only_once = no
+		days_re_enable = 200
+		priority = 7
+		ai_will_do = {
+			base = 100
+		}
+	}
+	PRC_swamp_draining_near_xiongnan = {
+		available = {
+		}
+		visible = {
+			has_country_flag = PRC_xiongania_enable
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			set_temp_variable = {
+				var = PRC_xiongania_progress_temp
+				value = 5
+			}
+			PRC_add_xiongania_progress = yes
+		}
+		icon = GFX_decision_generic_construction
+		cost = 25
+		days_remove = 200
+		fire_only_once = no
+		days_re_enable = 150
+		priority = 7
+		ai_will_do = {
+			base = 100
+		}
+	}
+	PRC_integration_of_nearby_settlements_into_xiongnan = {
+		available = {
+		}
+		visible = {
+			has_country_flag = PRC_xiongania_enable
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			set_temp_variable = {
+				var = PRC_xiongania_progress_temp
+				value = 3.5
+			}
+			PRC_add_xiongania_progress = yes
+		}
+		icon = GFX_decision_unknown
+		cost = 35
+		days_remove = 75
+		fire_only_once = no
+		days_re_enable = 300
+		priority = 7
+		ai_will_do = {
+			base = 100
+		}
+	}
+	PRC_green_energy_development_in_xiongan = {
+		available = {
+		}
+		visible = {
+			has_country_flag = PRC_xiongania_enable
+		}
+		complete_effect = {
+			set_temp_variable = {
+				treasury_change = 10
+			}
+			modify_treasury_effect = yes
+		}
+		remove_effect = {
+			549 = {
+				if = {
+					limit = {
+						is_core_of = ROOT
+						free_building_slots = {
+							building = synthetic_refinery
+							size > 1
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = synthetic_refinery
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			set_temp_variable = {
+				var = PRC_xiongania_progress_temp
+				value = 5
+			}
+			PRC_add_xiongania_progress = yes
+		}
+		icon = GFX_Ecologists
+		cost = 50
+		days_remove = 150
+		fire_only_once = yes
+		priority = 7
+		ai_will_do = {
+			base = 100
+		}
+	}
+	PRC_xiongan_nuclear_power_plant = {
+		available = {
+			549 = {
+				nuclear_reactor < 1
+			}
+		}
+		visible = {
+			has_country_flag = PRC_xiongania_enable
+		}
+		complete_effect = {
+			set_temp_variable = {
+				treasury_change = -15
+			}
+			modify_treasury_effect = yes
+		}
+		remove_effect = {
+			549 = {
+				if = {
+					limit = {
+						is_core_of = ROOT
+						is_able_to_build_nuclear_reactor_in_state = yes
+						free_building_slots = {
+							building = nuclear_reactor
+							size > 0
+							include_locked = yes
+						}
+					}
+					add_building_construction = {
+						type = nuclear_reactor
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			set_temp_variable = {
+				var = PRC_xiongania_progress_temp
+				value = 7.5
+			}
+			PRC_add_xiongania_progress = yes
+		}
+		icon = GFX_PRC_atomic_nuclear
+		cost = 50
+		days_remove = 250
+		fire_only_once = yes
+		priority = 7
+		ai_will_do = {
+			base = 100
+		}
+	}
+	PRC_xiongan_implement_6g_networks = {
+		available = {
+		}
+		visible = {
+			has_country_flag = PRC_xiongania_enable
+		}
+		complete_effect = {
+			set_temp_variable = {
+				treasury_change = -30
+			}
+			modify_treasury_effect = yes
+		}
+		remove_effect = {
+			set_temp_variable = {
+				var = PRC_xiongania_progress_temp
+				value = 5
+			}
+			PRC_add_xiongania_progress = yes
+			add_days_mission_timeout = {
+				mission = PRC_xion_moving_process
+				days = -200
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_made_in_china_dummy_idea
+					add_idea = PRC_xiongan_implement_6g_networks_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = PRC_mic_research_speed_factor_dynamic_var
+					value = 0.025
+				}
+			}
+		}
+		icon = GFX_SOV_decision_soviet_computers
+		cost = 75
+		days_remove = 150
+		fire_only_once = yes
+		priority = 7
+		ai_will_do = {
+			base = 100
+		}
+	}
+	PRC_xiongan_experimental_artificial_intelligence_center = {
+		available = {
+			has_completed_focus = PRC_invest_in_ai
+		}
+		visible = {
+			has_country_flag = PRC_xiongania_enable
+		}
+		complete_effect = {
+			set_temp_variable = {
+				treasury_change = -35
+			}
+			modify_treasury_effect = yes
+		}
+		remove_effect = {
+			set_temp_variable = {
+				var = PRC_xiongania_progress_temp
+				value = 5
+			}
+			PRC_add_xiongania_progress = yes
+			add_days_mission_timeout = {
+				mission = PRC_xion_moving_process
+				days = -200
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_made_in_china_dummy_idea
+					add_idea = PRC_xiongan_implement_6g_networks_idea
+				}
+			}
+			549 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = offices
+					level = 1
+					instant_build = yes
+				}
+				add_dynamic_modifier = {
+					modifier = PRC_ai_governed_city
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = PRC_mic_research_speed_factor_dynamic_var
+					value = 0.05
+				}
+			}
+		}
+		icon = GFX_SOV_decision_soviet_computers
+		cost = 75
+		days_remove = 175
+		fire_only_once = yes
+		priority = 7
+		ai_will_do = {
+			base = 100
+		}
+	}
+}

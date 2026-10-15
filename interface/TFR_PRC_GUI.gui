@@ -1,0 +1,43 @@
+guitypes = {
+
+	containerwindowtype = {
+		name = "PRC_xiongania_bar_gui"
+		size = { width = 100%% height = 100 }
+		containerwindowtype = {
+			name = "xiongania_progressbar_container"
+			position = { x = 20 y = 20 }
+			icontype = {
+				name = "xiongania_progbar_2"
+				quadtexturesprite = "GFX_PRC_bar_progress_green_xiongania_red"
+				position = { x = 8 y = 7 }
+			}
+			icontype = {
+				name = "progbar_frame"
+				spritetype = "GFX_PRCref_progress_frame"
+				alwaystransparent = yes
+			}
+			instantTextBoxType = {
+				name = "xiongania_progress_text"
+				text = "[?CHI:PRC_xiongania_progress]%"
+				position = { x = 395 y = 10 }
+				font = "hoi_24header"
+				format = center
+				maxwidth = 110
+				maxheight = 30
+				text_color_code = G
+			}
+		}
+		instantTextBoxType = {
+			name = "xiongania_progress_name"
+			position = { x = 0 y = -10 }
+			text = PRC_xiongania_progress_name_tt
+			font = "hoi_24header"
+			maxwidth = 500
+			#maxheight = 36
+			format = center
+			pdx_tooltip = PRC_xiongania_progbar_tt
+		}
+	}
+}
+
+

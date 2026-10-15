@@ -1,0 +1,862 @@
+# AI Ship Designs for Generic Nations -Try to use these if you are not unique.
+##Screens, Escorts and Destroyers - Main Bread and Butter of the Fleets
+generic_corvettes = {
+	category = naval #Modules FINALIZED - Bird 11/8/2020
+	roles = { naval_corvettes }
+	priority = {
+		base = 100
+		modifier = { #Small naval powers unite
+			factor = 25
+			num_of_naval_factories < 10
+		}
+		modifier = { #Multiplicative - Small powers should focus here
+			factor = 100
+			OR = {
+				has_idea = regional_power
+				has_idea = minor_power
+				has_idea = non_power
+			}
+		}
+		modifier = {
+			factor = 0.01
+			OR = {
+				has_idea = large_power
+				has_idea = great_power
+				has_idea = super_power
+			}
+		}
+		modifier = { #Major powers unless otherwise stated will avoid if possible
+			factor = 0.01
+			num_of_naval_factories > 9
+		}
+		#Tag Specific Weighting
+		modifier = { #China/India go for numbers
+			factor = 0.80
+			OR = {
+				tag = RAJ
+				tag = CHI
+			}
+		}
+		modifier = { #Post-Soviet tend to prefer Corvettes
+			factor = 2.5
+			OR = {
+				tag = UKR
+				tag = SOV
+			}
+		}
+		modifier = { ##Countries that don't build corvettes - Simply just a kill switch
+			factor = 0
+			tag = USA #America never builds Corvettes. Smallest ship class is a frigate
+		}
+		modifier = { #Major naval powers should be less likely to build these screens
+			factor = 0.35
+			OR = {
+				tag = ENG
+				tag = FRA
+				tag = ITA
+				tag = SPR
+				tag = SWE
+				tag = DEN
+				tag = RAJ
+			}
+		}
+	}
+	blocked_for = {
+		USA
+		BRA
+		CAN
+		GER
+		GRE
+		HOL
+		IND
+		ITA
+		CHI
+		JAP
+		KOR
+		NKO
+		PER
+		POR
+		RAJ
+		SIA
+		SOV
+		SPR
+		SWE
+		TAI
+		TUR
+	}
+
+
+
+
+
+
+
+	corvette_hull_6 = {
+		role_icon_index = 2
+		priority = {
+			base = -1
+			modifier = { add = 1000 has_tech = corvette_hull_6 }
+		}
+
+		target_variant = {
+			type = corvette_hull_6
+			match_value = 2000
+
+			modules = {
+				fixed_ship_engine_slot = module_light_surface_jet_turbine_power3
+				fixed_ship_fire_control_system_slot = module_futuristic_integrated_missile_radar_control
+				fixed_ship_radar_slot = module_radar_6
+				fixed_ship_auxillary_slot = module_asm_5
+				fixed_ship_battery_slot = module_76mm_gun_4
+				front_1_custom_slot = module_ciws_4
+				rear_1_custom_slot = module_light_helipad_1
+			}
+		}
+	}
+}
+generic_frigates = {
+	category = naval #Modules Finalized 11/08/2020
+	roles = { naval_frigate }
+
+	priority = {
+		base = 100
+		modifier = { #Should never build these
+			factor = 0
+			num_of_naval_factories < 5
+		}
+		modifier = {
+			factor = 100
+			OR = {
+				has_idea = regional_power
+				has_idea = large_power
+				has_idea = super_power
+			}
+		}
+		modifier = {
+			factor = 0.50
+			OR = {
+				has_idea = regional_power
+				has_idea = minor_power
+				has_idea = non_power
+			}
+		}
+		modifier = {
+			factor = 2.0
+			num_of_naval_factories > 10
+		}
+		modifier = {
+			factor = 0.5
+			tag = USA #USA is less likely to make frigates. They are more for minesweeps/layers
+		}
+	}
+
+	blocked_for = {
+		DEN #Denmark - Unique Frigates AI
+		AST #Australia
+		USA
+		BRA
+		CAN
+		GER
+		GRE
+		HOL
+		IND
+		ITA
+		CHI
+		JAP
+		KOR
+		NKO
+		PER
+		POR
+		RAJ
+		SIA
+		SOV
+		SPR
+		SWE
+		TAI
+		TUR
+	}
+
+
+
+
+
+
+	frigate_hull_6 = {
+		role_icon_index = 2
+		priority = {
+			base = -1
+			modifier = { add = 1000 has_tech = frigate_hull_6 }
+		}
+
+		target_variant = {
+			type = frigate_hull_6
+			match_value = 2000
+
+			modules = {
+				fixed_ship_engine_slot = module_light_surface_jet_turbine_power3
+				fixed_ship_fire_control_system_slot = module_futuristic_integrated_missile_radar_control
+				fixed_ship_radar_slot = module_radar_6
+				fixed_ship_auxillary_slot_2 = module_ram_5
+				fixed_ship_auxillary_slot_1 = module_asm_5
+				fixed_ship_auxillary_slot = module_vls_sam_4
+				fixed_ship_battery_slot = module_76mm_gun_3
+				front_1_custom_slot = module_torpedoes_4
+				rear_1_custom_slot = module_light_helipad_2
+			}
+		}
+	}
+}
+generic_destroyer = {
+	category = naval
+	roles = { naval_destroyer }
+	priority = {
+		base = 100
+		modifier = {
+			factor = 25
+			num_of_naval_factories > 10
+		}
+		modifier = { ##Should be a kill switch here if you have less then 10 dockyards
+			factor = 0
+			num_of_naval_factories < 10
+		}
+		modifier = {
+			factor = 100
+			OR = {
+				has_idea = large_power
+				has_idea = great_power
+				has_idea = super_power
+			}
+		}
+		modifier = { ##Minors should avoid destroyers. Frigates and Corvettes are better suited for local needs
+			factor = 0.25
+			OR = {
+				has_idea = regional_power
+				has_idea = minor_power
+				has_idea = non_power
+			}
+		}
+		modifier = { #Nations with a higher preference for Destroyers
+			factor = 2.5
+			OR = {
+				tag = USA
+				tag = CHI
+				tag = ENG
+				tag = FRA
+				tag = SOV
+				tag = RAJ
+				tag = JAP
+				tag = SAF
+				tag = GER
+				tag = SPR
+				tag = ITA
+				tag = TUR
+			}
+		}
+	}
+
+	blocked_for = {
+		ARG # Argentina - Possesses Unique Destroyer Hulls
+		USA # United States
+		AST # Australia - POssesses Unique Destroyer Hulls
+		BRA
+		CAN
+		GER
+		GRE
+		HOL
+		IND
+		ITA
+		CHI
+		JAP
+		KOR
+		PER
+		POR
+		RAJ
+		SIA
+		SOV
+		SPR
+		SWE
+		TAI
+		TUR
+	}
+
+
+
+
+
+}
+
+stealth_destroyer = {
+	category = naval
+	roles = { naval_stealth_destroyer }
+	priority = {
+		base = 100
+		modifier = { #Only major naval powers will use this. America will be the most likely.
+			factor = 0
+			NOT = {
+				tag = USA
+				tag = CHI
+				tag = SOV
+				tag = FRA
+				tag = RAJ
+				tag = ENG
+				tag = GER
+				tag = BRA
+				tag = SAF
+			}
+		}
+		modifier = { #Major Naval Powers
+			factor = 1.25
+			OR = {
+				tag = USA
+				tag = CHI
+				tag = SOV
+				tag = FRA
+			}
+		}
+	}
+	blocked_for = {
+		USA
+		BRA
+		CAN
+		GER
+		ITA
+		CHI
+		JAP
+		KOR
+		POR
+		RAJ
+		SOV
+		SPR
+		TUR
+	}
+
+
+
+}
+
+#Cruisers, BattleCruisers, Battleships -- Heavy Vessels.
+cruiser_gun_based = { #Should be fairly unlikely but here is something for just the memes
+	category = naval
+	roles = { naval_cruiser }
+	priority = {
+		factor = 100
+		modifier = {
+			factor = 10
+			is_major = yes
+		}
+		modifier = {
+			factor = 25
+			num_of_naval_factories > 10
+		}
+		modifier = { ##Should be a kill switch here if you have less then 10 dockyards
+			factor = 0
+			num_of_naval_factories < 10
+		}
+		modifier = {
+			factor = 100
+			OR = {
+				has_idea = large_power
+				has_idea = great_power
+				has_idea = super_power
+			}
+		}
+		modifier = { ##Minors should avoid destroyers. Frigates and Corvettes are better suited for local needs
+			factor = 0.25
+			OR = {
+				has_idea = regional_power
+				has_idea = minor_power
+				has_idea = non_power
+			}
+		}
+		modifier = { #Most major navies will avoid this class of ship
+			factor = 0
+			OR = {
+				tag = USA
+				tag = CHI
+				tag = ENG
+				tag = FRA
+				tag = SPR
+				tag = ITA
+			}
+		}
+		modifier = {
+			factor = 0.30
+			OR = {
+				tag = RAJ
+				tag = ARG
+				tag = BRA
+				tag = MEX
+				tag = GER #Legacy of the Bismarck
+				tag = DEN
+				tag = SWE
+				tag = SOV
+			}
+		}
+	}
+	blocked_for = {
+		USA
+		ITA
+		CHI
+		JAP
+		SOV
+	}
+
+}
+
+##NOTE:
+##Not creating generic AI for battleships nor battlecruisers
+#battleship
+#battlecruiser
+
+#Carriers, Support Ships
+helicopter_operator = {
+	category = naval
+	roles = { naval_helicopter_operator }
+	priority = {
+		base = 100
+
+		modifier = {
+			factor = 100
+			OR = {
+				has_idea = regional_power
+				has_idea = large_power
+				has_idea = great_power
+				has_idea = super_power
+			}
+		}
+		modifier = {
+			factor = 0
+			OR = {
+				has_idea = minor_power
+				has_idea = non_power
+			}
+		}
+		##Tag Specific Weights
+		modifier = { #Just a check to keep the AI from deciding it suddenly needs LHD/LHA
+			factor = 0.05
+			NOT = {
+				tag = USA
+				tag = ENG
+				tag = JAP
+				tag = CHI
+				tag = SOV
+				tag = FRA
+				tag = ITA
+				tag = GER
+				tag = SPR
+				tag = SAF
+			}
+		}
+		#25% more likely to build just cuz of tags - All these operate light carriers
+		modifier = {
+			factor = 1.25
+			OR = {
+				tag = USA
+				tag = ENG
+				tag = JAP
+				tag = CHI
+				tag = SOV
+				tag = FRA
+				tag = ITA
+				tag = GER
+				tag = SPR
+				tag = SAF
+			}
+		}
+		#Kill Switches/Modifiers based on dockyards
+		modifier = {
+			factor = 10
+			num_of_naval_factories > 9
+		}
+		modifier = {
+			factor = 15
+			num_of_naval_factories > 15
+		}
+		modifier = {
+			factor = 0
+			num_of_naval_factories < 10
+		}
+	}
+	blocked_for = {
+		USA
+		BRA
+		CAN
+		GER
+		GRE
+		HOL
+		IND
+		ITA
+		CHI
+		KOR
+		PER
+		POR
+		RAJ
+		SIA
+		SOV
+		SPR
+		SWE
+		TAI
+		TUR
+	}
+
+
+
+
+}
+lhd_heli_operator = {
+	category = naval
+	roles = { naval_lhd }
+	priority = {
+		base = 100
+
+		modifier = {
+			factor = 100
+			OR = {
+				has_idea = regional_power
+				has_idea = large_power
+				has_idea = great_power
+				has_idea = super_power
+			}
+		}
+		modifier = {
+			factor = 0
+			OR = {
+				has_idea = minor_power
+				has_idea = non_power
+			}
+		}
+		##Tag Specific Weights
+		modifier = { #Just a check to keep the AI from deciding it suddenly needs LHD/LHA
+			factor = 0.05
+			NOT = {
+				tag = USA
+				tag = ENG
+				tag = JAP
+				tag = CHI
+				tag = SOV
+				tag = FRA
+				tag = ITA
+				tag = GER
+				tag = SPR
+				tag = SAF
+			}
+		}
+		#25% more likely to build just cuz of tags - All these operate light carriers
+		modifier = {
+			factor = 1.25
+			OR = {
+				tag = USA
+				tag = ENG
+				tag = JAP
+				tag = CHI
+				tag = SOV
+				tag = FRA
+				tag = ITA
+				tag = GER
+				tag = SPR
+				tag = SAF
+			}
+		}
+		#Kill Switches/Modifiers based on dockyards
+		modifier = {
+			factor = 10
+			num_of_naval_factories > 9
+		}
+		modifier = {
+			factor = 15
+			num_of_naval_factories > 15
+		}
+		modifier = {
+			factor = 0
+			num_of_naval_factories < 10
+		}
+	}
+
+	default_lha_basic = {
+		role_icon_index = 2
+		priority = {
+			factor = 0
+		}
+
+		target_variant = {
+			match_value = 1000.00
+			type = helicopter_operator
+			modules = {
+				fixed_ship_engine_slot = module_surface_diesel_power
+				fixed_ship_fire_control_system_slot = module_analog_fire_control
+				fixed_ship_radar_slot = module_radar_2
+				fixed_ship_auxillary_slot_3 = module_ciws_2
+				fixed_ship_auxillary_slot_2 = module_fuel_tank
+				fixed_ship_auxillary_slot = module_esm_1
+				fixed_ship_battery_slot = module_light_flight_deck_1
+				front_1_custom_slot = module_helipads_1
+				mid_1_custom_slot = module_aa_missiles_2
+				rear_1_custom_slot = module_helipads_1
+			}
+		}
+
+		allowed_modules = {
+			#Weaponry
+			module_light_guns_category
+			module_helipads_category
+			module_flight_decks_category
+			module_turret_missile_category
+			module_point_defense_system_category
+			module_vls_category
+			module_anti_submarine_mortar_category
+			#Support
+			module_radar_category
+			module_sonar_category
+			module_fire_control_system_category
+			module_surface_power_source_category
+			module_fuel_tanks_category
+		}
+	}
+
+
+
+
+}
+
+generic_carrier = {
+	category = naval
+	roles = { naval_carrier }
+	priority = {
+		factor = 100
+		modifier = {
+			factor = 0
+			num_of_naval_factories < 15
+		}
+		modifier = {
+			factor = 100
+			OR = {
+				has_idea = large_power
+				has_idea = super_power
+			}
+		}
+		modifier = {
+			factor = 0
+			OR = {
+				has_idea = regional_power
+				has_idea = minor_power
+				has_idea = non_power
+			}
+		}
+		modifier = {
+			factor = 1.5
+			num_of_naval_factories > 14
+		}
+		modifier = {
+			factor = 2.0
+			num_of_naval_factories > 20
+		}
+		modifier = {
+			factor = 0.10
+			NOT = {
+				tag = USA
+				tag = ENG
+				tag = JAP
+				tag = CHI
+				tag = SOV
+				tag = FRA
+				tag = ITA
+				tag = GER
+				tag = SPR
+				tag = SAF
+			}
+		}
+	}
+	blocked_for = {
+		USA
+		BRA
+		GRE
+		ITA
+		CHI
+		JAP
+		KOR
+		RAJ
+		SIA
+		SOV
+		SPR
+	}
+
+	default_carriers = {
+		priority = {
+			factor = 0
+		}
+
+		role_icon_index = 7
+
+		target_variant = {
+			match_value = 1000.0
+
+			type = carrier
+			modules = {
+				fixed_ship_engine_slot = module_surface_oil_power
+				fixed_ship_fire_control_system_slot = module_analog_fire_control
+				fixed_ship_radar_slot = module_radar_2
+				fixed_ship_auxillary_slot_2 = module_ciws_2
+				fixed_ship_auxillary_slot_1 = module_ram_2
+				fixed_ship_auxillary_slot = module_esm_1
+				fixed_ship_flight_deck = module_flight_deck_3
+				front_1_custom_slot = module_helipads_1
+				front_2_custom_slot = module_ciws_2
+				mid_1_custom_slot = module_ciws_2
+				mid_2_custom_slot = module_fuel_tank
+				mid_3_custom_slot = module_helipads_1
+				rear_1_custom_slot = module_ram_2
+				rear_2_custom_slot = module_helipads_1
+			}
+		}
+
+		allowed_modules = {
+			#Weaponry
+			module_flight_decks_category
+			module_helipads_category
+			module_point_defense_system_category
+			module_turret_missile_category
+			module_vls_category
+			#Support
+			module_radar_category
+			module_sonar_category
+			module_fire_control_system_category
+			module_surface_power_source_category
+		}
+	}
+
+
+
+
+
+}
+
+#Subamrines
+generic_heavy_nuclear_submarine = {
+	category = naval
+	roles = { naval_attack_submarine }
+	priority = {
+		factor = 0
+	}
+	blocked_for = {
+		USA
+		BRA
+		CAN
+		GER
+		GRE
+		HOL
+		IND
+		ITA
+		CHI
+		JAP
+		KOR
+		NKO
+		PER
+		POR
+		RAJ
+		SIA
+		SOV
+		SPR
+		SWE
+		TAI
+		TUR
+	}
+
+
+
+
+
+
+
+	attack_submarine_hull_6 = {
+		role_icon_index = 6
+		priority = {
+			base = -1
+			modifier = { add = 1000 has_tech = attack_submarine_hull_6 }
+		}
+		target_variant = {
+			match_value = 6000.0
+			type = attack_submarine_hull_6
+			modules = {
+				fixed_ship_engine_slot = module_sub_fut_reactor_power
+				fixed_ship_radar_slot = module_sonar_6
+				fixed_ship_auxillary_slot_3 = module_torpedoes_4
+				fixed_ship_auxillary_slot_2 = module_sub_esm_3
+				fixed_ship_auxillary_slot_1 = module_vls_sub_asm_5
+				fixed_ship_auxillary_slot = module_torpedoes_4
+				fixed_ship_battery_slot = module_anti_ship_torpedoes_4
+			}
+		}
+	}
+}
+generic_missile_submarine = {
+	category = naval
+	roles = { naval_missile_submarine }
+	blocked_for = {
+		USA
+		ITA
+		CHI
+		JAP
+		KOR
+		NKO
+		RAJ
+		SOV
+		TAI
+	}
+
+	priority = {
+		factor = 4
+		modifier = {
+			factor = 10
+			OR = {
+				has_war_with = ENG
+				has_war_with = USA
+				has_war_with = JAP
+			}
+
+		}
+	}
+
+
+
+
+
+
+
+	missile_submarine_hull_6 = {
+		role_icon_index = 6
+		priority = {
+			base = -1
+			modifier = { add = 1000 has_tech = missile_submarine_hull_6 }
+		}
+		target_variant = {
+			match_value = 6000.0
+			type = missile_submarine_hull_6
+			modules = {
+				fixed_ship_engine_slot = module_sub_fut_reactor_power
+				fixed_ship_radar_slot = module_sonar_6
+				fixed_ship_auxillary_slot_2 = module_sub_esm_2
+				fixed_ship_auxillary_slot_1 = module_vls_sub_lam_5
+				fixed_ship_auxillary_slot = module_vls_sub_asm_5
+				front_1_custom_slot = module_vls_sub_lam_5
+				fixed_ship_battery_slot = module_anti_ship_torpedoes_4
+			}
+		}
+	}
+
+}
+
+#Mine Vessels
+mine_sweeper = {
+	category = naval
+	roles = { naval_mine_sweeper }
+
+	priority = {
+		factor = 200
+		modifier = {
+			factor = 5
+			has_war = yes
+		}
+	}
+
+
+}

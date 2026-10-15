@@ -1,0 +1,199 @@
+﻿division_template = {
+	name = "Mechanized Brigade"
+
+	regiments = {
+		Mech_Inf_Bat = { x = 0 y = 0 }
+		Mech_Inf_Bat = { x = 0 y = 1 }
+		Mech_Inf_Bat = { x = 0 y = 2 }
+		SP_Arty_Bat = { x = 0 y = 3 }
+		Mech_Inf_Bat = { x = 0 y = 4 }
+	}
+}
+division_template = {
+	name = "Mechanized Brigade 2"
+
+	regiments = {
+		Mech_Inf_Bat = { x = 0 y = 0 }
+		Mech_Inf_Bat = { x = 0 y = 1 }
+		SP_Arty_Bat = { x = 0 y = 2 }
+		Mot_Inf_Bat = { x = 1 y = 0 }
+	}
+	support = {
+		armor_Comp = { x = 0 y = 0 }
+	}
+}
+division_template = {
+	name = "Special Forces"
+
+	regiments = {
+		Special_Forces = { x = 0 y = 0 }
+	}
+
+	priority = 2
+}
+
+units = {
+	division = {
+		name = "1st Mechanized Brigade"
+		location = 9692
+		division_template = "Mechanized Brigade"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "2nd Mechanized Brigade"
+		location = 6573
+		division_template = "Mechanized Brigade 2"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "5th Special Operations Regiment"
+		location = 9692
+		division_template = "Special Forces"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.01
+	}
+}
+
+instant_effect = {
+
+	add_equipment_to_stockpile = {
+		variant_name = "Zastava M70"
+		type = infantry_weapons_3			#Zastava M70/AR系
+		amount = 1250
+		producer = SLO
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "FN F2000"
+		type = infantry_weapons_5			#FN F2000
+		producer = BEL
+		amount = 1500
+	}
+	add_equipment_to_stockpile = {
+		type = cnc_equipment_1
+		amount = 155
+		producer = SLO
+	}
+	add_equipment_to_stockpile = {
+		type = Anti_tank_1
+		amount = 45
+		producer = SLO
+	}
+	add_equipment_to_stockpile = {
+		type = Heavy_Anti_tank_1
+		amount = 40
+		producer = SLO
+	}
+	add_equipment_to_stockpile = {
+		type = Anti_Air_1
+		amount = 60
+		producer = SLO
+	}
+	add_equipment_to_stockpile = {
+		type = medium_tank_chassis_1
+		amount = 30
+		producer = SOV
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "BMP-1"
+		type = medium_tank_flame_chassis_0
+		amount = 148
+		producer = SOV
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "BMP-2"
+		type = medium_tank_flame_chassis_1
+		amount = 91
+		producer = SOV
+	}
+	add_equipment_to_stockpile = {
+		type = medium_tank_amphibious_chassis_0
+		amount = 72
+		producer = CZE
+	}
+	add_equipment_to_stockpile = {
+		type = medium_tank_amphibious_chassis_1
+		amount = 7
+		producer = CZE
+	}
+	add_equipment_to_stockpile = {
+		type = medium_tank_amphibious_chassis_1
+		producer = SLO
+		amount = 15
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "RG-32 Scout"
+		type = util_vehicle_5 #RG-32 Scout
+		amount = 7
+		producer = SWE
+		#version_name = "RG-32 Scout"
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "M-77 Dana"
+		type = medium_tank_artillery_chassis_1 #M-77 Dana
+		amount = 3
+		producer = SLO
+	}
+	add_equipment_to_stockpile = {
+		type = medium_tank_artillery_chassis_1
+		producer = SLO
+		amount = 16
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "D-30"
+		type = artillery_1 #D-30
+		amount = 19
+		producer = SOV
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "RM-70"
+		type = medium_tank_rocket_chassis_1
+		amount = 30
+		producer = CZE
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Strela-10"
+		type = medium_tank_aa_chassis_1 #SA-13 Strela-10
+		amount = 48
+		producer = SOV
+		#version_name = "9K35 Strela-10"
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Mi-24"
+		type = heavy_tank_chassis_0 #Mil Mi-24 Hind
+		amount = 24
+		producer = SOV
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Mi-17"
+		type = transport_helicopter_1 #Mil Mi-17
+		amount = 13
+		producer = SOV
+		#version_name = "Mil Mi-17"
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Mi-8"
+		type = transport_helicopter_1 #Mil Mi-8
+		amount = 1
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Zastava M70"
+		type = infantry_weapons_2			#Zastava（封存）
+		producer = SLO
+		amount = 30000
+	}
+	add_equipment_to_stockpile = {
+		type = medium_tank_chassis_1
+		amount = 60			#M-84（封存）
+		producer = SER
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Valuk"
+		type = APC_4			#Valuk（封存）
+		producer = SLO
+		amount = 40
+	}
+}

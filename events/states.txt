@@ -1,0 +1,79 @@
+add_namespace = state
+
+news_event = {
+	id = state.1
+	hidden = yes
+
+	trigger = {
+		AND = {
+			475 = { NOT = { has_dynamic_modifier = { modifier = PRC_tibet_autonomous_region } } }
+			CHI = { controls_state = 475 }
+		}
+	}
+	immediate = {
+		475 = { add_dynamic_modifier = { modifier = PRC_tibet_autonomous_region } }
+	}
+}
+news_event = {
+	id = state.2
+	hidden = yes
+
+	trigger = {
+		AND = {
+			983 = { NOT = { has_dynamic_modifier = { modifier = PRC_tibet_autonomous_region } } }
+			CHI = { controls_state = 475 }
+			CHI = { controls_state = 983 }
+		}
+	}
+	immediate = {
+		983 = { add_dynamic_modifier = { modifier = PRC_tibet_autonomous_region } }
+	}
+}
+
+news_event = {
+	id = state.3
+	hidden = yes
+
+	trigger = {
+		AND = {
+			591 = { NOT = { has_dynamic_modifier = { modifier = PRC_xinjiang_uygur_autonomous_region } } }
+			CHI = { controls_state = 591 }
+		}
+	}
+	immediate = {
+		591 = { add_dynamic_modifier = { modifier = PRC_xinjiang_uygur_autonomous_region } }
+		591 = { add_dynamic_modifier = { modifier = PRC_strengthened_production_and_construction_corps } }
+		591 = { add_dynamic_modifier = { modifier = CHI_XinJiang_Situation } }
+	}
+}
+
+news_event = {
+	id = state.4
+	hidden = yes
+
+	trigger = {
+		AND = {
+			598 = { has_dynamic_modifier = { modifier = PRC_taiwan } }
+			CHI = { controls_state = 939 }
+		}
+	}
+	immediate = {
+		939 = { add_dynamic_modifier = { modifier = PRC_taiwan } }
+	}
+}
+
+news_event = {
+	id = state.5
+	hidden = yes
+
+	trigger = {
+		AND = {
+			TAI = { is_subject_of = CHI }
+			CHI = { controls_state = 939 }
+		}
+	}
+	immediate = {
+		TAI = { transfer_state = 939 }
+		939 = { add_core_of = TAI }
+	}
+}

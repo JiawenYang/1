@@ -1,0 +1,2762 @@
+# ============================================================================
+# 国别特色营（第七轮）
+# ============================================================================
+# 23国44型：38新增ID + 6重定义ID（Marine_Bat_USA/Airborne_Bat_USA/
+# Marine_Bat_SOV/Airborne_Bat_SOV/Marine_Bat_CHI/Airborne_Bat_CHI）
+# 全部 special_forces=yes、active=no、ai_priority=5
+# 装备规则：轻步型步武=人数×0.9，L_AT=每百人8，AA=每百人4，cnc=每百人5
+# ============================================================================
+
+sub_units = {
+
+	# ======================== 重定义6型（从第六轮迁入，OOB引用零改动） ========================
+
+	Marine_Bat_USA = { # 美军陆战队步兵营（LAV-25 + AAV-7，4步枪连）
+		sprite = MD_light_armor
+		map_icon_category = armored
+		priority = 30
+		active = no
+		ai_priority = 5
+		marines = yes
+		type = {
+			mechanized
+			armor
+		}
+		group = marine_infantry
+
+		categories = {
+			category_front_line
+			category_all_armor
+			category_apc
+			category_army
+			category_non_militia
+		}
+
+		combat_width = 4
+
+		max_strength = 14
+		max_organisation = 30
+		default_morale = 0.09
+		manpower = 2400
+		entrenchment = -0.10
+		suppression = 2.5
+
+		training_time = 180
+		weight = 2
+
+		transport = medium_tank_flame_chassis
+
+		essential = {
+			medium_tank_flame_chassis
+		}
+
+		need = {
+			infantry_weapons_type = 1320
+			L_AT_Equipment = 40
+			H_AT_Equipment = 12
+			AA_Equipment = 12
+			cnc_equipment_type = 36
+			medium_tank_flame_chassis = 40
+			util_vehicle_type = 35
+		}
+		plains = { attack = 0.10 movement = 0.10 }
+		desert = { attack = 0.10 movement = 0.10 }
+		hills = { attack = -0.05 movement = -0.05 }
+		forest = { attack = -0.10 movement = -0.10 }
+		mountain = { attack = -0.25 defence = -0.10 movement = -0.15 }
+		jungle = { attack = -0.10 movement = -0.05 }
+		marsh = { attack = 0.05 movement = 0.05 }
+		urban = { attack = 0.05 }
+		amphibious = { attack = 0.15 movement = 0.05 }
+
+	}
+
+	Airborne_Bat_USA = { # 美军空降步兵营（82空降师，LAV-25 空降型，可伞降）
+		sprite = MD_infantry_2
+		map_icon_category = armored
+		priority = 30
+		active = no
+		ai_priority = 5
+		special_forces = yes
+		can_be_parachuted = yes
+		type = {
+			mechanized
+		}
+		group = airborne_infantry
+
+		categories = {
+			category_front_line
+			category_all_armor
+			category_apc
+			category_army
+			category_non_militia
+		}
+
+		combat_width = 4
+
+		max_strength = 12
+		max_organisation = 30
+		default_morale = 0.10
+		manpower = 1750
+		entrenchment = 0.0
+		suppression = 2
+
+		training_time = 180
+		weight = 1.5
+
+		transport = util_vehicle_type
+
+		essential = {
+			medium_tank_flame_chassis
+		}
+
+		need = {
+			infantry_weapons_type = 960
+			L_AT_Equipment = 50
+			H_AT_Equipment = 12
+			AA_Equipment = 12
+			cnc_equipment_type = 32
+			util_vehicle_type = 40
+		}
+		plains = { attack = 0.10 movement = 0.10 }
+		desert = { attack = 0.05 movement = 0.05 }
+		hills = { attack = 0.05 defence = 0.05 }
+		forest = { attack = 0.10 defence = 0.10 movement = 0.05 }
+		mountain = { attack = 0.10 defence = 0.10 movement = 0.05 }
+		jungle = { attack = 0.05 defence = 0.10 movement = 0.05 }
+		marsh = { attack = 0.05 defence = 0.05 movement = 0.05 }
+		urban = { attack = 0.05 defence = 0.10 }
+		amphibious = { attack = 0.05 }
+
+	}
+
+	Marine_Bat_SOV = { # 俄军海军步兵营（BTR-80 两栖 + PT-76，4连）
+		sprite = MD_light_armor
+		map_icon_category = armored
+		priority = 30
+		active = no
+		ai_priority = 5
+		marines = yes
+		type = {
+			mechanized
+			armor
+		}
+		group = marine_infantry
+
+		categories = {
+			category_front_line
+			category_all_armor
+			category_apc
+			category_army
+			category_non_militia
+		}
+
+		combat_width = 4
+
+		max_strength = 13
+		max_organisation = 28
+		default_morale = 0.08
+		manpower = 1750
+		entrenchment = -0.10
+		suppression = 2.5
+
+		training_time = 180
+		weight = 2
+
+		transport = medium_tank_amphibious_chassis
+
+		essential = {
+			medium_tank_flame_chassis
+		}
+
+		need = {
+			infantry_weapons_type = 960
+			L_AT_Equipment = 40
+			AA_Equipment = 12
+			cnc_equipment_type = 36
+			medium_tank_amphibious_chassis = 40
+			util_vehicle_type = 15
+		}
+		plains = { attack = 0.10 movement = 0.10 }
+		desert = { attack = 0.10 movement = 0.10 }
+		hills = { attack = -0.05 movement = -0.05 }
+		forest = { attack = -0.10 movement = -0.10 }
+		mountain = { attack = -0.25 defence = -0.10 movement = -0.15 }
+		jungle = { attack = -0.10 movement = -0.05 }
+		marsh = { attack = 0.05 movement = 0.05 }
+		urban = { attack = 0.05 }
+		amphibious = { attack = 0.15 movement = 0.05 }
+
+	}
+
+	Airborne_Bat_SOV = { # 俄军空降突击营（VDV，BMD-4M 空降战车，可伞降）
+		sprite = MD_infantry_2
+		map_icon_category = armored
+		priority = 30
+		active = no
+		ai_priority = 5
+		special_forces = yes
+		can_be_parachuted = yes
+		type = {
+			mechanized
+		}
+		group = airborne_infantry
+
+		categories = {
+			category_front_line
+			category_all_armor
+			category_apc
+			category_army
+			category_non_militia
+		}
+
+		combat_width = 4
+
+		max_strength = 12
+		max_organisation = 30
+		default_morale = 0.10
+		manpower = 1500
+		entrenchment = 0.0
+		suppression = 2
+
+		training_time = 180
+		weight = 1.5
+
+		transport = medium_tank_amphibious_chassis
+
+		essential = {
+			medium_tank_flame_chassis
+		}
+
+		need = {
+			infantry_weapons_type = 820
+			L_AT_Equipment = 30
+			AA_Equipment = 8
+			cnc_equipment_type = 32
+			medium_tank_amphibious_chassis = 30
+		}
+		plains = { attack = 0.10 movement = 0.10 }
+		desert = { attack = 0.05 movement = 0.05 }
+		hills = { attack = 0.05 defence = 0.05 }
+		forest = { attack = 0.10 defence = 0.10 movement = 0.05 }
+		mountain = { attack = 0.10 defence = 0.10 movement = 0.05 }
+		jungle = { attack = 0.05 defence = 0.10 movement = 0.05 }
+		marsh = { attack = 0.05 defence = 0.05 movement = 0.05 }
+		urban = { attack = 0.05 defence = 0.10 }
+		amphibious = { attack = 0.05 }
+
+	}
+
+	Marine_Bat_CHI = { # 中国海军陆战队步兵营（ZBD-05 两栖战车，4连）
+		sprite = MD_light_armor
+		map_icon_category = armored
+		priority = 30
+		active = no
+		ai_priority = 5
+		marines = yes
+		type = {
+			mechanized
+			armor
+		}
+		group = marine_infantry
+
+		categories = {
+			category_front_line
+			category_all_armor
+			category_apc
+			category_army
+			category_non_militia
+		}
+
+		combat_width = 4
+
+		max_strength = 14
+		max_organisation = 29
+		default_morale = 0.09
+		manpower = 1500
+		entrenchment = -0.10
+		suppression = 2.5
+
+		training_time = 180
+		weight = 2
+
+		transport = medium_tank_amphibious_chassis
+
+		essential = {
+			medium_tank_flame_chassis
+		}
+
+		need = {
+			infantry_weapons_type = 820
+			L_AT_Equipment = 40
+			AA_Equipment = 12
+			cnc_equipment_type = 36
+			medium_tank_amphibious_chassis = 30
+			util_vehicle_type = 20
+		}
+		plains = { attack = 0.10 movement = 0.10 }
+		desert = { attack = -0.05 }
+		hills = { attack = -0.10 movement = -0.05 }
+		forest = { attack = -0.15 movement = -0.10 }
+		mountain = { attack = -0.25 defence = -0.10 movement = -0.15 }
+		jungle = { attack = -0.10 movement = -0.05 }
+		marsh = { attack = 0.10 movement = 0.15 }
+		urban = { attack = 0.05 }
+		amphibious = { attack = 0.25 movement = 0.10 }
+
+	}
+
+	Airborne_Bat_CHI = { # 中国空降兵步兵营（ZBD-03 空降战车，可伞降）
+		sprite = MD_infantry_2
+		map_icon_category = armored
+		priority = 30
+		active = no
+		ai_priority = 5
+		special_forces = yes
+		can_be_parachuted = yes
+		type = {
+			mechanized
+		}
+		group = airborne_infantry
+
+		categories = {
+			category_front_line
+			category_all_armor
+			category_apc
+			category_army
+			category_non_militia
+		}
+
+		combat_width = 4
+
+		max_strength = 12
+		max_organisation = 31
+		default_morale = 0.10
+		manpower = 1500
+		entrenchment = 0.0
+		suppression = 2
+
+		training_time = 180
+		weight = 1.5
+
+		transport = medium_tank_amphibious_chassis
+
+		essential = {
+			medium_tank_flame_chassis
+		}
+
+		need = {
+			infantry_weapons_type = 820
+			L_AT_Equipment = 40
+			AA_Equipment = 12
+			cnc_equipment_type = 32
+			medium_tank_amphibious_chassis = 30
+		}
+		plains = { attack = 0.10 movement = 0.10 }
+		desert = { attack = 0.05 movement = 0.05 }
+		hills = { attack = 0.05 defence = 0.05 }
+		forest = { attack = 0.10 defence = 0.10 movement = 0.05 }
+		mountain = { attack = 0.10 defence = 0.10 movement = 0.05 }
+		jungle = { attack = 0.05 defence = 0.10 movement = 0.05 }
+		marsh = { attack = 0.05 defence = 0.05 movement = 0.05 }
+		urban = { attack = 0.05 defence = 0.10 }
+		amphibious = { attack = 0.05 }
+
+	}
+
+	# ======================== 美国（4新增） ========================
+
+	Ranger_Bat_USA = { # 美军第75游骑兵团属营（可伞降，山地/城市战精锐）
+		sprite = MD_infantry_2
+		map_icon_category = infantry
+		special_forces = yes
+		mountaineers = yes
+		rangers = yes
+		can_be_parachuted = yes
+		ai_priority = 5
+		priority = 10
+		active = no
+		type = { infantry }
+		group = special_forces
+
+		categories = {
+			category_front_line
+			category_special_forces
+			category_conventional_infantry
+			category_light_infantry
+			category_all_infantry
+			category_army
+			category_non_militia
+			category_all_ranger
+			category_inf_ranger
+			category_rcon_ranger
+		}
+
+		combat_width = 3
+
+		max_strength = 14
+		max_organisation = 36
+		default_morale = 0.14
+		manpower = 1160
+		entrenchment = 0.1
+		suppression = 1
+
+		training_time = 200
+		weight = 0.5
+
+		transport = util_vehicle_type
+
+		need = {
+			infantry_weapons_type = 930
+			L_AT_Equipment = 40
+			AA_Equipment = 12
+			cnc_equipment_type = 32
+			util_vehicle_type = 30
+		}
+		plains = { attack = -0.05 }
+		desert = { attack = 0.05 movement = 0.05 }
+		hills = { attack = 0.10 defence = 0.15 }
+		forest = { attack = 0.15 defence = 0.20 movement = 0.10 }
+		mountain = { attack = 0.20 defence = 0.25 movement = 0.10 }
+		jungle = { attack = 0.15 defence = 0.20 movement = 0.10 }
+		marsh = { attack = 0.10 defence = 0.15 movement = 0.10 }
+		urban = { attack = 0.10 defence = 0.10 }
+		amphibious = { attack = 0.05 }
+
+	}
+
+	SOF_Bat_USA = { # 美军特种作战营（绿色贝雷帽，可伞降/海岸渗透）
+		sprite = MD_infantry_2
+		map_icon_category = infantry
+		special_forces = yes
+		can_be_parachuted = yes
+		can_exfiltrate_from_coast = yes
+		mountaineers = yes
+		rangers = yes
+		marines = yes
+		ai_priority = 5
+		priority = 15
+		active = no
+		type = { infantry }
+		group = special_forces
+
+		categories = {
+			category_front_line
+			category_conventional_infantry
+			category_special_forces
+			category_light_infantry
+			category_all_infantry
+			category_army
+			category_non_militia
+			category_foot_inf
+		}
+
+		combat_width = 5
+
+		max_strength = 14
+		max_organisation = 32
+		default_morale = 0.14
+		manpower = 600
+		entrenchment = 0.1
+		suppression = 1
+
+		training_time = 200
+		weight = 0.5
+
+		transport = util_vehicle_type
+
+		need = {
+			infantry_weapons_type = 480
+			L_AT_Equipment = 20
+			AA_Equipment = 8
+			cnc_equipment_type = 30
+			util_vehicle_type = 20
+		}
+		plains = { attack = 0.05 }
+		desert = { attack = 0.10 movement = 0.05 }
+		hills = { attack = 0.10 defence = 0.10 }
+		forest = { attack = 0.15 defence = 0.15 }
+		mountain = { attack = 0.15 defence = 0.15 movement = 0.05 }
+		jungle = { attack = 0.15 defence = 0.15 }
+		marsh = { attack = 0.10 defence = 0.10 }
+		urban = { attack = 0.15 defence = 0.15 }
+		amphibious = { attack = 0.05 }
+
+	}
+
+	SEAL_Bat_USA = { # 美军海豹突击队营（两栖/海岸渗透特战）
+		sprite = MD_infantry_2
+		map_icon_category = infantry
+		special_forces = yes
+		marines = yes
+		can_exfiltrate_from_coast = yes
+		can_be_parachuted = yes
+		ai_priority = 5
+		priority = 15
+		active = no
+		type = { infantry }
+		group = special_forces
+
+		categories = {
+			category_front_line
+			category_conventional_infantry
+			category_special_forces
+			category_light_infantry
+			category_all_infantry
+			category_army
+			category_non_militia
+			category_all_amphibous
+			category_inf_amphib
+			category_foot_inf
+		}
+
+		combat_width = 5
+
+		max_strength = 14
+		max_organisation = 32
+		default_morale = 0.14
+		manpower = 500
+		entrenchment = 0.1
+		suppression = 1
+
+		training_time = 200
+		weight = 0.5
+
+		transport = util_vehicle_type
+
+		need = {
+			infantry_weapons_type = 400
+			L_AT_Equipment = 16
+			AA_Equipment = 6
+			cnc_equipment_type = 24
+			util_vehicle_type = 16
+		}
+		amphibious = { attack = 0.25 defence = 0.10 }
+		marsh = { attack = 0.15 defence = 0.15 movement = 0.10 }
+		forest = { attack = 0.10 defence = 0.10 }
+		hills = { attack = 0.05 defence = 0.10 }
+		urban = { attack = 0.15 defence = 0.10 }
+		plains = { attack = -0.05 }
+		desert = { attack = -0.05 }
+
+	}
+
+	AirAssault_Bat_USA = { # 美军第101空中突击师属营（直升机机降突击）
+		sprite = MD_infantry_2
+		map_icon_category = infantry
+		ai_priority = 5
+		priority = 10
+		active = no
+		type = { infantry }
+		group = airmobile
+
+		categories = {
+			category_front_line
+			category_special_forces
+			category_conventional_infantry
+			category_all_infantry
+			category_army
+			category_non_militia
+			category_all_airborne
+			category_air_aslt
+		}
+
+		combat_width = 3
+
+		max_strength = 14
+		max_organisation = 36
+		default_morale = 0.14
+		suppression = 2.0
+		manpower = 1800
+		entrenchment = -0.3
+
+		training_time = 200
+		weight = 0.5
+
+		need = {
+			infantry_weapons_type = 1000
+			L_AT_Equipment = 50
+			AA_Equipment = 12
+			cnc_equipment_type = 32
+			heavy_tank_amphibious_chassis = 24
+		}
+		hills = { attack = 0.05 defence = 0.10 }
+		forest = { attack = 0.05 defence = 0.10 }
+		mountain = { attack = 0.05 defence = 0.15 }
+		jungle = { attack = 0.05 defence = 0.10 }
+		marsh = { defence = 0.10 movement = 0.05 }
+		urban = { attack = 0.05 defence = 0.05 }
+
+		transport = heavy_tank_amphibious_chassis
+
+	}
+
+	# ======================== 俄罗斯（1新增） ========================
+
+	Spetsnaz_Bat_SOV = { # 俄军格鲁乌特战营（可伞降/海岸渗透）
+		sprite = MD_infantry_2
+		map_icon_category = infantry
+		special_forces = yes
+		can_be_parachuted = yes
+		can_exfiltrate_from_coast = yes
+		mountaineers = yes
+		rangers = yes
+		marines = yes
+		ai_priority = 5
+		priority = 15
+		active = no
+		type = { infantry }
+		group = special_forces
+
+		categories = {
+			category_front_line
+			category_conventional_infantry
+			category_special_forces
+			category_light_infantry
+			category_all_infantry
+			category_army
+			category_non_militia
+			category_foot_inf
+		}
+
+		combat_width = 5
+
+		max_strength = 14
+		max_organisation = 32
+		default_morale = 0.14
+		manpower = 700
+		entrenchment = 0.1
+		suppression = 1
+
+		training_time = 200
+		weight = 0.5
+
+		transport = util_vehicle_type
+
+		need = {
+			infantry_weapons_type = 560
+			L_AT_Equipment = 26
+			AA_Equipment = 10
+			cnc_equipment_type = 24
+			util_vehicle_type = 20
+		}
+		plains = { attack = 0.05 }
+		desert = { attack = 0.10 movement = 0.05 }
+		hills = { attack = 0.10 defence = 0.10 }
+		forest = { attack = 0.15 defence = 0.15 }
+		mountain = { attack = 0.15 defence = 0.15 movement = 0.05 }
+		jungle = { attack = 0.15 defence = 0.15 }
+		marsh = { attack = 0.10 defence = 0.10 }
+		urban = { attack = 0.15 defence = 0.15 }
+		amphibious = { attack = 0.05 }
+
+	}
+
+	# ======================== 中国（2新增） ========================
+
+	SOF_Bat_CHI = { # 中国陆军特种作战旅属营（可伞降）
+		sprite = MD_infantry_2
+		map_icon_category = infantry
+		special_forces = yes
+		can_be_parachuted = yes
+		mountaineers = yes
+		rangers = yes
+		marines = yes
+		ai_priority = 5
+		priority = 15
+		active = no
+		type = { infantry }
+		group = special_forces
+
+		categories = {
+			category_front_line
+			category_conventional_infantry
+			category_special_forces
+			category_light_infantry
+			category_all_infantry
+			category_army
+			category_non_militia
+			category_foot_inf
+		}
+
+		combat_width = 5
+
+		max_strength = 14
+		max_organisation = 32
+		default_morale = 0.14
+		manpower = 800
+		entrenchment = 0.1
+		suppression = 1
+
+		training_time = 200
+		weight = 0.5
+
+		transport = util_vehicle_type
+
+		need = {
+			infantry_weapons_type = 640
+			L_AT_Equipment = 26
+			AA_Equipment = 10
+			cnc_equipment_type = 24
+			util_vehicle_type = 20
+		}
+		plains = { attack = 0.05 }
+		desert = { attack = 0.10 movement = 0.05 }
+		hills = { attack = 0.10 defence = 0.10 }
+		forest = { attack = 0.15 defence = 0.15 }
+		mountain = { attack = 0.15 defence = 0.15 movement = 0.05 }
+		jungle = { attack = 0.15 defence = 0.15 }
+		marsh = { attack = 0.10 defence = 0.10 }
+		urban = { attack = 0.15 defence = 0.15 }
+		amphibious = { attack = 0.05 }
+
+	}
+
+	AirAssault_Bat_CHI = { # 中国陆军空中突击旅属营（直升机机降）
+		sprite = MD_infantry_2
+		map_icon_category = infantry
+		ai_priority = 5
+		priority = 10
+		active = no
+		type = { infantry }
+		group = airmobile
+
+		categories = {
+			category_front_line
+			category_special_forces
+			category_conventional_infantry
+			category_all_infantry
+			category_army
+			category_non_militia
+			category_all_airborne
+			category_air_aslt
+		}
+
+		combat_width = 3
+
+		max_strength = 14
+		max_organisation = 36
+		default_morale = 0.14
+		suppression = 2.0
+		manpower = 1500
+		entrenchment = -0.3
+
+		training_time = 200
+		weight = 0.5
+
+		need = {
+			infantry_weapons_type = 820
+			L_AT_Equipment = 40
+			AA_Equipment = 12
+			cnc_equipment_type = 32
+			heavy_tank_amphibious_chassis = 20
+		}
+		hills = { attack = 0.05 defence = 0.10 }
+		forest = { attack = 0.05 defence = 0.10 }
+		mountain = { attack = 0.05 defence = 0.15 }
+		jungle = { attack = 0.05 defence = 0.10 }
+		marsh = { defence = 0.10 movement = 0.05 }
+		urban = { attack = 0.05 defence = 0.05 }
+
+		transport = heavy_tank_amphibious_chassis
+
+	}
+
+	# ======================== 英国（3新增） ========================
+
+	Para_Bat_ENG = { # 英军伞兵团属营（可伞降）
+		sprite = MD_infantry_2
+		map_icon_category = infantry
+		special_forces = yes
+		can_be_parachuted = yes
+		ai_priority = 5
+		priority = 10
+		active = no
+		type = { infantry }
+		group = airborne_infantry
+
+		categories = {
+			category_front_line
+			category_special_forces
+			category_light_infantry
+			category_all_infantry
+			category_conventional_infantry
+			category_army
+			category_non_militia
+			category_foot_inf
+			category_inf_airborne
+		}
+
+		combat_width = 3
+
+		max_strength = 14
+		max_organisation = 38
+		default_morale = 0.14
+		suppression = 1
+		manpower = 1750
+		entrenchment = 0
+
+		training_time = 180
+		weight = 0.5
+
+		transport = util_vehicle_type
+
+		need = {
+			infantry_weapons_type = 960
+			L_AT_Equipment = 50
+			AA_Equipment = 12
+			cnc_equipment_type = 32
+			util_vehicle_type = 36
+		}
+		plains = { attack = -0.05 }
+		desert = { attack = -0.05 }
+		hills = { attack = 0.05 defence = 0.10 }
+		forest = { attack = 0.10 defence = 0.15 movement = 0.05 }
+		mountain = { attack = 0.10 defence = 0.15 movement = 0.05 }
+		jungle = { attack = 0.10 defence = 0.15 }
+		marsh = { attack = 0.05 defence = 0.10 movement = 0.05 }
+		urban = { attack = 0.05 defence = 0.05 }
+
+	}
+
+	RM_Cdo_Bat_ENG = { # 皇家陆战队突击队营（两栖/海岸渗透）
+		sprite = MD_infantry_2
+		map_icon_category = infantry
+		special_forces = yes
+		marines = yes
+		can_exfiltrate_from_coast = yes
+		ai_priority = 5
+		priority = 10
+		active = no
+		type = { infantry }
+		group = special_forces
+
+		categories = {
+			category_front_line
+			category_conventional_infantry
+			category_special_forces
+			category_light_infantry
+			category_all_infantry
+			category_army
+			category_non_militia
+			category_all_amphibous
+			category_inf_amphib
+			category_foot_inf
+		}
+
+		combat_width = 4
+
+		max_strength = 14
+		max_organisation = 32
+		default_morale = 0.14
+		manpower = 1750
+		entrenchment = 0.1
+		suppression = 1
+
+		training_time = 200
+		weight = 0.5
+
+		transport = util_vehicle_type
+
+		need = {
+			infantry_weapons_type = 960
+			L_AT_Equipment = 50
+			AA_Equipment = 12
+			cnc_equipment_type = 32
+			util_vehicle_type = 32
+		}
+		amphibious = { attack = 0.25 defence = 0.10 }
+		marsh = { attack = 0.15 defence = 0.15 movement = 0.10 }
+		forest = { attack = 0.10 defence = 0.10 }
+		hills = { attack = 0.05 defence = 0.10 }
+		urban = { attack = 0.15 defence = 0.10 }
+		plains = { attack = -0.05 }
+		desert = { attack = -0.05 }
+
+	}
+
+	SAS_Bat_ENG = { # 英军特别空勤团（SAS）营（全标记特战）
+		sprite = MD_infantry_2
+		map_icon_category = infantry
+		special_forces = yes
+		can_be_parachuted = yes
+		can_exfiltrate_from_coast = yes
+		mountaineers = yes
+		rangers = yes
+		marines = yes
+		ai_priority = 5
+		priority = 15
+		active = no
+		type = { infantry }
+		group = special_forces
+
+		categories = {
+			category_front_line
+			category_conventional_infantry
+			category_special_forces
+			category_light_infantry
+			category_all_infantry
+			category_army
+			category_non_militia
+			category_foot_inf
+		}
+
+		combat_width = 5
+
+		max_strength = 14
+		max_organisation = 32
+		default_morale = 0.14
+		manpower = 500
+		entrenchment = 0.1
+		suppression = 1
+
+		training_time = 200
+		weight = 0.5
+
+		transport = util_vehicle_type
+
+		need = {
+			infantry_weapons_type = 400
+			L_AT_Equipment = 16
+			AA_Equipment = 6
+			cnc_equipment_type = 24
+			util_vehicle_type = 16
+		}
+		plains = { attack = 0.05 }
+		desert = { attack = 0.10 movement = 0.05 }
+		hills = { attack = 0.10 defence = 0.10 }
+		forest = { attack = 0.15 defence = 0.15 }
+		mountain = { attack = 0.15 defence = 0.15 movement = 0.05 }
+		jungle = { attack = 0.15 defence = 0.15 }
+		marsh = { attack = 0.10 defence = 0.10 }
+		urban = { attack = 0.15 defence = 0.15 }
+		amphibious = { attack = 0.05 }
+
+	}
+
+	# ======================== 法国（3新增） ========================
+
+	REP_Bat_FRA = { # 法国外籍军团第2外籍伞兵团（2e REP）营（可伞降）
+		sprite = MD_infantry_2
+		map_icon_category = infantry
+		special_forces = yes
+		can_be_parachuted = yes
+		ai_priority = 5
+		priority = 10
+		active = no
+		type = { infantry }
+		group = airborne_infantry
+
+		categories = {
+			category_front_line
+			category_special_forces
+			category_light_infantry
+			category_all_infantry
+			category_conventional_infantry
+			category_army
+			category_non_militia
+			category_foot_inf
+			category_inf_airborne
+		}
+
+		combat_width = 3
+
+		max_strength = 14
+		max_organisation = 38
+		default_morale = 0.14
+		suppression = 1
+		manpower = 2000
+		entrenchment = 0
+
+		training_time = 180
+		weight = 0.5
+
+		transport = util_vehicle_type
+
+		need = {
+			infantry_weapons_type = 1100
+			L_AT_Equipment = 50
+			AA_Equipment = 12
+			cnc_equipment_type = 32
+			util_vehicle_type = 36
+		}
+		plains = { attack = -0.05 }
+		desert = { attack = -0.05 }
+		hills = { attack = 0.05 defence = 0.10 }
+		forest = { attack = 0.10 defence = 0.15 movement = 0.05 }
+		mountain = { attack = 0.10 defence = 0.15 movement = 0.05 }
+		jungle = { attack = 0.10 defence = 0.15 }
+		marsh = { attack = 0.05 defence = 0.10 movement = 0.05 }
+		urban = { attack = 0.05 defence = 0.05 }
+
+	}
+
+	CdoMarine_Bat_FRA = { # 法国海军突击队营（两栖/海岸渗透）
+		sprite = MD_infantry_2
+		map_icon_category = infantry
+		special_forces = yes
+		marines = yes
+		can_exfiltrate_from_coast = yes
+		ai_priority = 5
+		priority = 10
+		active = no
+		type = { infantry }
+		group = special_forces
+
+		categories = {
+			category_front_line
+			category_conventional_infantry
+			category_special_forces
+			category_light_infantry
+			category_all_infantry
+			category_army
+			category_non_militia
+			category_all_amphibous
+			category_inf_amphib
+			category_foot_inf
+		}
+
+		combat_width = 4
+
+		max_strength = 14
+		max_organisation = 32
+		default_morale = 0.14
+		manpower = 600
+		entrenchment = 0.1
+		suppression = 1
+
+		training_time = 200
+		weight = 0.5
+
+		transport = util_vehicle_type
+
+		need = {
+			infantry_weapons_type = 480
+			L_AT_Equipment = 16
+			AA_Equipment = 6
+			cnc_equipment_type = 24
+			util_vehicle_type = 28
+		}
+		amphibious = { attack = 0.25 defence = 0.10 }
+		marsh = { attack = 0.15 defence = 0.15 movement = 0.10 }
+		forest = { attack = 0.10 defence = 0.10 }
+		hills = { attack = 0.05 defence = 0.10 }
+		urban = { attack = 0.15 defence = 0.10 }
+		plains = { attack = -0.05 }
+		desert = { attack = -0.05 }
+
+	}
+
+	Marine_Bat_FRA = { # 法国海军步兵营（9e BIMa，两栖）
+		sprite = MD_light_armor
+		map_icon_category = armored
+		priority = 30
+		active = no
+		ai_priority = 5
+		marines = yes
+		type = {
+			mechanized
+			armor
+		}
+		group = marine_infantry
+
+		categories = {
+			category_front_line
+			category_all_armor
+			category_apc
+			category_army
+			category_non_militia
+		}
+
+		combat_width = 4
+
+		max_strength = 14
+		max_organisation = 30
+		default_morale = 0.09
+		manpower = 1750
+		entrenchment = -0.10
+		suppression = 2.5
+
+		training_time = 180
+		weight = 2
+
+		transport = medium_tank_flame_chassis
+
+		essential = {
+			medium_tank_flame_chassis
+		}
+
+		need = {
+			infantry_weapons_type = 960
+			L_AT_Equipment = 40
+			AA_Equipment = 12
+			cnc_equipment_type = 32
+			medium_tank_flame_chassis = 30
+			util_vehicle_type = 15
+		}
+		plains = { attack = 0.10 movement = 0.10 }
+		desert = { attack = 0.10 movement = 0.10 }
+		hills = { attack = -0.05 movement = -0.05 }
+		forest = { attack = -0.10 movement = -0.10 }
+		mountain = { attack = -0.25 defence = -0.10 movement = -0.15 }
+		jungle = { attack = -0.10 movement = -0.05 }
+		marsh = { attack = 0.05 movement = 0.05 }
+		urban = { attack = 0.05 }
+		amphibious = { attack = 0.15 movement = 0.05 }
+
+	}
+
+	# ======================== 德国（3新增） ========================
+
+	FJ_Bat_GER = { # 德军伞降猎兵营（可伞降）
+		sprite = MD_infantry_2
+		map_icon_category = infantry
+		special_forces = yes
+		can_be_parachuted = yes
+		ai_priority = 5
+		priority = 10
+		active = no
+		type = { infantry }
+		group = airborne_infantry
+
+		categories = {
+			category_front_line
+			category_special_forces
+			category_light_infantry
+			category_all_infantry
+			category_conventional_infantry
+			category_army
+			category_non_militia
+			category_foot_inf
+			category_inf_airborne
+		}
+
+		combat_width = 3
+
+		max_strength = 14
+		max_organisation = 38
+		default_morale = 0.14
+		suppression = 1
+		manpower = 1750
+		entrenchment = 0
+
+		training_time = 180
+		weight = 0.5
+
+		transport = util_vehicle_type
+
+		need = {
+			infantry_weapons_type = 960
+			L_AT_Equipment = 50
+			AA_Equipment = 12
+			cnc_equipment_type = 32
+			util_vehicle_type = 36
+		}
+		plains = { attack = -0.05 }
+		desert = { attack = -0.05 }
+		hills = { attack = 0.05 defence = 0.10 }
+		forest = { attack = 0.10 defence = 0.15 movement = 0.05 }
+		mountain = { attack = 0.10 defence = 0.15 movement = 0.05 }
+		jungle = { attack = 0.10 defence = 0.15 }
+		marsh = { attack = 0.05 defence = 0.10 movement = 0.05 }
+		urban = { attack = 0.05 defence = 0.05 }
+
+	}
+
+	KSK_Bat_GER = { # 德军KSK特战营（全标记）
+		sprite = MD_infantry_2
+		map_icon_category = infantry
+		special_forces = yes
+		can_be_parachuted = yes
+		can_exfiltrate_from_coast = yes
+		mountaineers = yes
+		rangers = yes
+		marines = yes
+		ai_priority = 5
+		priority = 15
+		active = no
+		type = { infantry }
+		group = special_forces
+
+		categories = {
+			category_front_line
+			category_conventional_infantry
+			category_special_forces
+			category_light_infantry
+			category_all_infantry
+			category_army
+			category_non_militia
+			category_foot_inf
+		}
+
+		combat_width = 5
+
+		max_strength = 14
+		max_organisation = 32
+		default_morale = 0.14
+		manpower = 500
+		entrenchment = 0.1
+		suppression = 1
+
+		training_time = 200
+		weight = 0.5
+
+		transport = util_vehicle_type
+
+		need = {
+			infantry_weapons_type = 400
+			L_AT_Equipment = 16
+			AA_Equipment = 6
+			cnc_equipment_type = 24
+			util_vehicle_type = 16
+		}
+		plains = { attack = 0.05 }
+		desert = { attack = 0.10 movement = 0.05 }
+		hills = { attack = 0.10 defence = 0.10 }
+		forest = { attack = 0.15 defence = 0.15 }
+		mountain = { attack = 0.15 defence = 0.15 movement = 0.05 }
+		jungle = { attack = 0.15 defence = 0.15 }
+		marsh = { attack = 0.10 defence = 0.10 }
+		urban = { attack = 0.15 defence = 0.15 }
+		amphibious = { attack = 0.05 }
+
+	}
+
+	Geb_Bat_GER = { # 德军山地猎兵营（mountaineers）
+		sprite = MD_infantry_2
+		map_icon_category = infantry
+		special_forces = yes
+		mountaineers = yes
+		ai_priority = 5
+		priority = 10
+		active = no
+		type = { infantry }
+		group = infantry
+
+		categories = {
+			category_front_line
+			category_light_infantry
+			category_conventional_infantry
+			category_all_infantry
+			category_army
+			category_non_militia
+			category_foot_inf
+		}
+
+		combat_width = 3
+
+		max_strength = 14
+		max_organisation = 40
+		default_morale = 0.14
+		manpower = 1900
+		entrenchment = 0
+		suppression = 1
+
+		training_time = 120
+		weight = 0.5
+		transport = cnc_equipment_type
+
+		need = {
+			infantry_weapons_type = 1050
+			L_AT_Equipment = 50
+			AA_Equipment = 12
+			cnc_equipment_type = 32
+		}
+		plains = { attack = -0.05 }
+		desert = { attack = -0.05 movement = -0.05 }
+		hills = { attack = 0.05 defence = 0.10 }
+		forest = { attack = 0.10 defence = 0.15 movement = 0.05 }
+		mountain = { attack = 0.15 defence = 0.20 movement = 0.05 }
+		jungle = { attack = 0.10 defence = 0.15 movement = 0.05 }
+		marsh = { attack = 0.05 defence = 0.10 movement = 0.10 }
+		urban = { attack = 0.10 defence = 0.10 }
+		amphibious = { attack = -0.05 }
+
+	}
+
+	# ======================== 日本（2新增） ========================
+
+	Airborne_Bat_JAP = { # 日本第1空挺团属营（可伞降）
+		sprite = MD_infantry_2
+		map_icon_category = infantry
+		special_forces = yes
+		can_be_parachuted = yes
+		ai_priority = 5
+		priority = 10
+		active = no
+		type = { infantry }
+		group = airborne_infantry
+
+		categories = {
+			category_front_line
+			category_special_forces
+			category_light_infantry
+			category_all_infantry
+			category_conventional_infantry
+			category_army
+			category_non_militia
+			category_foot_inf
+			category_inf_airborne
+		}
+
+		combat_width = 3
+
+		max_strength = 14
+		max_organisation = 38
+		default_morale = 0.14
+		suppression = 1
+		manpower = 1500
+		entrenchment = 0
+
+		training_time = 180
+		weight = 0.5
+
+		transport = util_vehicle_type
+
+		need = {
+			infantry_weapons_type = 820
+			L_AT_Equipment = 40
+			AA_Equipment = 12
+			cnc_equipment_type = 32
+			util_vehicle_type = 36
+		}
+		plains = { attack = -0.05 }
+		desert = { attack = -0.05 }
+		hills = { attack = 0.05 defence = 0.10 }
+		forest = { attack = 0.10 defence = 0.15 movement = 0.05 }
+		mountain = { attack = 0.10 defence = 0.15 movement = 0.05 }
+		jungle = { attack = 0.10 defence = 0.15 }
+		marsh = { attack = 0.05 defence = 0.10 movement = 0.05 }
+		urban = { attack = 0.05 defence = 0.05 }
+
+	}
+
+	ARDB_Bat_JAP = { # 日本水陆机动团属营（两栖，AAV-7）
+		sprite = MD_light_armor
+		map_icon_category = armored
+		priority = 30
+		active = no
+		ai_priority = 5
+		marines = yes
+		type = {
+			mechanized
+			armor
+		}
+		group = marine_infantry
+
+		categories = {
+			category_front_line
+			category_all_armor
+			category_apc
+			category_army
+			category_non_militia
+		}
+
+		combat_width = 4
+
+		max_strength = 14
+		max_organisation = 30
+		default_morale = 0.09
+		manpower = 1750
+		entrenchment = -0.10
+		suppression = 2.5
+
+		training_time = 180
+		weight = 2
+
+		transport = medium_tank_flame_chassis
+
+		essential = {
+			medium_tank_flame_chassis
+		}
+
+		need = {
+			infantry_weapons_type = 960
+			L_AT_Equipment = 40
+			AA_Equipment = 12
+			cnc_equipment_type = 32
+			medium_tank_flame_chassis = 20
+			util_vehicle_type = 20
+		}
+		plains = { attack = 0.10 movement = 0.10 }
+		desert = { attack = 0.10 movement = 0.10 }
+		hills = { attack = -0.05 movement = -0.05 }
+		forest = { attack = -0.10 movement = -0.10 }
+		mountain = { attack = -0.25 defence = -0.10 movement = -0.15 }
+		jungle = { attack = -0.10 movement = -0.05 }
+		marsh = { attack = 0.05 movement = 0.05 }
+		urban = { attack = 0.05 }
+		amphibious = { attack = 0.15 movement = 0.05 }
+
+	}
+
+	# ======================== 韩国（2新增） ========================
+
+	Marine_Bat_KOR = { # 韩国海军陆战队营（两栖）
+		sprite = MD_light_armor
+		map_icon_category = armored
+		priority = 30
+		active = no
+		ai_priority = 5
+		marines = yes
+		type = {
+			mechanized
+			armor
+		}
+		group = marine_infantry
+
+		categories = {
+			category_front_line
+			category_all_armor
+			category_apc
+			category_army
+			category_non_militia
+		}
+
+		combat_width = 4
+
+		max_strength = 14
+		max_organisation = 30
+		default_morale = 0.09
+		manpower = 1750
+		entrenchment = -0.10
+		suppression = 2.5
+
+		training_time = 180
+		weight = 2
+
+		transport = medium_tank_flame_chassis
+
+		essential = {
+			medium_tank_flame_chassis
+		}
+
+		need = {
+			infantry_weapons_type = 960
+			L_AT_Equipment = 40
+			AA_Equipment = 12
+			cnc_equipment_type = 34
+			medium_tank_flame_chassis = 30
+			util_vehicle_type = 20
+		}
+		plains = { attack = 0.10 movement = 0.10 }
+		desert = { attack = 0.10 movement = 0.10 }
+		hills = { attack = -0.05 movement = -0.05 }
+		forest = { attack = -0.10 movement = -0.10 }
+		mountain = { attack = -0.25 defence = -0.10 movement = -0.15 }
+		jungle = { attack = -0.10 movement = -0.05 }
+		marsh = { attack = 0.05 movement = 0.05 }
+		urban = { attack = 0.05 }
+		amphibious = { attack = 0.15 movement = 0.05 }
+
+	}
+
+	SOF_Bat_KOR = { # 韩国707特战营（可伞降）
+		sprite = MD_infantry_2
+		map_icon_category = infantry
+		special_forces = yes
+		can_be_parachuted = yes
+		ai_priority = 5
+		priority = 15
+		active = no
+		type = { infantry }
+		group = special_forces
+
+		categories = {
+			category_front_line
+			category_conventional_infantry
+			category_special_forces
+			category_light_infantry
+			category_all_infantry
+			category_army
+			category_non_militia
+			category_foot_inf
+		}
+
+		combat_width = 5
+
+		max_strength = 14
+		max_organisation = 32
+		default_morale = 0.14
+		manpower = 500
+		entrenchment = 0.1
+		suppression = 1
+
+		training_time = 200
+		weight = 0.5
+
+		transport = util_vehicle_type
+
+		need = {
+			infantry_weapons_type = 400
+			L_AT_Equipment = 16
+			AA_Equipment = 6
+			cnc_equipment_type = 24
+			util_vehicle_type = 16
+		}
+		plains = { attack = 0.05 }
+		desert = { attack = 0.10 movement = 0.05 }
+		hills = { attack = 0.10 defence = 0.10 }
+		forest = { attack = 0.15 defence = 0.15 }
+		mountain = { attack = 0.15 defence = 0.15 movement = 0.05 }
+		jungle = { attack = 0.15 defence = 0.15 }
+		marsh = { attack = 0.10 defence = 0.10 }
+		urban = { attack = 0.15 defence = 0.15 }
+		amphibious = { attack = 0.05 }
+
+	}
+
+	# ======================== 以色列（2新增） ========================
+
+	Para_Bat_ISR = { # 以色列伞兵旅属营（可伞降）
+		sprite = MD_infantry_2
+		map_icon_category = infantry
+		special_forces = yes
+		can_be_parachuted = yes
+		ai_priority = 5
+		priority = 10
+		active = no
+		type = { infantry }
+		group = airborne_infantry
+
+		categories = {
+			category_front_line
+			category_special_forces
+			category_light_infantry
+			category_all_infantry
+			category_conventional_infantry
+			category_army
+			category_non_militia
+			category_foot_inf
+			category_inf_airborne
+		}
+
+		combat_width = 3
+
+		max_strength = 14
+		max_organisation = 38
+		default_morale = 0.14
+		suppression = 1
+		manpower = 1500
+		entrenchment = 0
+
+		training_time = 180
+		weight = 0.5
+
+		transport = util_vehicle_type
+
+		need = {
+			infantry_weapons_type = 820
+			L_AT_Equipment = 45
+			AA_Equipment = 12
+			cnc_equipment_type = 32
+			util_vehicle_type = 36
+		}
+		plains = { attack = -0.05 }
+		desert = { attack = -0.05 }
+		hills = { attack = 0.05 defence = 0.10 }
+		forest = { attack = 0.10 defence = 0.15 movement = 0.05 }
+		mountain = { attack = 0.10 defence = 0.15 movement = 0.05 }
+		jungle = { attack = 0.10 defence = 0.15 }
+		marsh = { attack = 0.05 defence = 0.10 movement = 0.05 }
+		urban = { attack = 0.05 defence = 0.05 }
+
+	}
+
+	Sayeret_Bat_ISR = { # 以色列总参侦察营（Sayeret Matkal，全标记）
+		sprite = MD_infantry_2
+		map_icon_category = infantry
+		special_forces = yes
+		rangers = yes
+		can_exfiltrate_from_coast = yes
+		can_be_parachuted = yes
+		mountaineers = yes
+		marines = yes
+		ai_priority = 5
+		priority = 15
+		active = no
+		type = { infantry }
+		group = special_forces
+
+		categories = {
+			category_front_line
+			category_conventional_infantry
+			category_special_forces
+			category_light_infantry
+			category_all_infantry
+			category_army
+			category_non_militia
+			category_foot_inf
+		}
+
+		combat_width = 5
+
+		max_strength = 14
+		max_organisation = 32
+		default_morale = 0.14
+		manpower = 500
+		entrenchment = 0.1
+		suppression = 1
+
+		training_time = 200
+		weight = 0.5
+
+		transport = util_vehicle_type
+
+		need = {
+			infantry_weapons_type = 400
+			L_AT_Equipment = 16
+			AA_Equipment = 6
+			cnc_equipment_type = 24
+			util_vehicle_type = 16
+		}
+		plains = { attack = 0.05 }
+		desert = { attack = 0.10 movement = 0.05 }
+		hills = { attack = 0.10 defence = 0.10 }
+		forest = { attack = 0.15 defence = 0.15 }
+		mountain = { attack = 0.15 defence = 0.15 movement = 0.05 }
+		jungle = { attack = 0.15 defence = 0.15 }
+		marsh = { attack = 0.10 defence = 0.10 }
+		urban = { attack = 0.15 defence = 0.15 }
+		amphibious = { attack = 0.05 }
+
+	}
+
+	# ======================== 印度（2新增） ========================
+
+	Para_Bat_RAJ = { # 印度伞兵突击营（Para Cdo，可伞降）
+		sprite = MD_infantry_2
+		map_icon_category = infantry
+		special_forces = yes
+		can_be_parachuted = yes
+		ai_priority = 5
+		priority = 10
+		active = no
+		type = { infantry }
+		group = airborne_infantry
+
+		categories = {
+			category_front_line
+			category_special_forces
+			category_light_infantry
+			category_all_infantry
+			category_conventional_infantry
+			category_army
+			category_non_militia
+			category_foot_inf
+			category_inf_airborne
+		}
+
+		combat_width = 3
+
+		max_strength = 14
+		max_organisation = 38
+		default_morale = 0.14
+		suppression = 1
+		manpower = 1500
+		entrenchment = 0
+
+		training_time = 180
+		weight = 0.5
+
+		transport = util_vehicle_type
+
+		need = {
+			infantry_weapons_type = 820
+			L_AT_Equipment = 40
+			AA_Equipment = 12
+			cnc_equipment_type = 32
+			util_vehicle_type = 36
+		}
+		plains = { attack = -0.05 }
+		desert = { attack = -0.05 }
+		hills = { attack = 0.05 defence = 0.10 }
+		forest = { attack = 0.10 defence = 0.15 movement = 0.05 }
+		mountain = { attack = 0.10 defence = 0.15 movement = 0.05 }
+		jungle = { attack = 0.10 defence = 0.15 }
+		marsh = { attack = 0.05 defence = 0.10 movement = 0.05 }
+		urban = { attack = 0.05 defence = 0.05 }
+
+	}
+
+	Gorkha_Bat_RAJ = { # 印度廓尔喀步枪营（山地战精锐）
+		sprite = MD_infantry_2
+		map_icon_category = infantry
+		special_forces = yes
+		mountaineers = yes
+		ai_priority = 5
+		priority = 10
+		active = no
+		type = { infantry }
+		group = infantry
+
+		categories = {
+			category_front_line
+			category_light_infantry
+			category_conventional_infantry
+			category_all_infantry
+			category_army
+			category_non_militia
+			category_foot_inf
+		}
+
+		combat_width = 3
+
+		max_strength = 14
+		max_organisation = 40
+		default_morale = 0.14
+		manpower = 2000
+		entrenchment = 0
+		suppression = 1
+
+		training_time = 120
+		weight = 0.5
+		transport = cnc_equipment_type
+
+		need = {
+			infantry_weapons_type = 1100
+			L_AT_Equipment = 50
+			AA_Equipment = 12
+			cnc_equipment_type = 32
+		}
+		plains = { attack = -0.05 }
+		desert = { attack = -0.05 movement = -0.05 }
+		hills = { attack = 0.05 defence = 0.10 }
+		forest = { attack = 0.10 defence = 0.15 movement = 0.05 }
+		mountain = { attack = 0.15 defence = 0.20 movement = 0.05 }
+		jungle = { attack = 0.10 defence = 0.15 movement = 0.05 }
+		marsh = { attack = 0.05 defence = 0.10 movement = 0.10 }
+		urban = { attack = 0.10 defence = 0.10 }
+		amphibious = { attack = -0.05 }
+
+	}
+
+	# ======================== 朝鲜（2新增） ========================
+
+	SOF_Bat_NKO = { # 朝鲜特种作战军狙击营（可伞降）
+		sprite = MD_infantry_2
+		map_icon_category = infantry
+		special_forces = yes
+		can_be_parachuted = yes
+		ai_priority = 5
+		priority = 15
+		active = no
+		type = { infantry }
+		group = special_forces
+
+		categories = {
+			category_front_line
+			category_conventional_infantry
+			category_special_forces
+			category_light_infantry
+			category_all_infantry
+			category_army
+			category_non_militia
+			category_foot_inf
+		}
+
+		combat_width = 5
+
+		max_strength = 14
+		max_organisation = 32
+		default_morale = 0.14
+		manpower = 800
+		entrenchment = 0.1
+		suppression = 1
+
+		training_time = 200
+		weight = 0.5
+
+		transport = util_vehicle_type
+
+		need = {
+			infantry_weapons_type = 640
+			L_AT_Equipment = 26
+			AA_Equipment = 8
+			cnc_equipment_type = 24
+			util_vehicle_type = 25
+		}
+		plains = { attack = 0.05 }
+		desert = { attack = 0.10 movement = 0.05 }
+		hills = { attack = 0.10 defence = 0.10 }
+		forest = { attack = 0.15 defence = 0.15 }
+		mountain = { attack = 0.15 defence = 0.15 movement = 0.05 }
+		jungle = { attack = 0.15 defence = 0.15 }
+		marsh = { attack = 0.10 defence = 0.10 }
+		urban = { attack = 0.15 defence = 0.15 }
+		amphibious = { attack = 0.05 }
+
+	}
+
+	Amph_Bat_NKO = { # 朝鲜两栖突击营（marines）
+		sprite = MD_light_armor
+		map_icon_category = armored
+		priority = 30
+		active = no
+		ai_priority = 5
+		marines = yes
+		type = {
+			mechanized
+			armor
+		}
+		group = marine_infantry
+
+		categories = {
+			category_front_line
+			category_all_armor
+			category_apc
+			category_army
+			category_non_militia
+		}
+
+		combat_width = 4
+
+		max_strength = 14
+		max_organisation = 30
+		default_morale = 0.09
+		manpower = 1500
+		entrenchment = -0.10
+		suppression = 2.5
+
+		training_time = 180
+		weight = 2
+
+		transport = medium_tank_flame_chassis
+
+		essential = {
+			medium_tank_flame_chassis
+		}
+
+		need = {
+			infantry_weapons_type = 820
+			L_AT_Equipment = 40
+			AA_Equipment = 10
+			cnc_equipment_type = 32
+			medium_tank_flame_chassis = 30
+			util_vehicle_type = 15
+		}
+		plains = { attack = 0.10 movement = 0.10 }
+		desert = { attack = 0.10 movement = 0.10 }
+		hills = { attack = -0.05 movement = -0.05 }
+		forest = { attack = -0.10 movement = -0.10 }
+		mountain = { attack = -0.25 defence = -0.10 movement = -0.15 }
+		jungle = { attack = -0.10 movement = -0.05 }
+		marsh = { attack = 0.05 movement = 0.05 }
+		urban = { attack = 0.05 }
+		amphibious = { attack = 0.15 movement = 0.05 }
+
+	}
+
+	# ======================== 乌克兰（2新增） ========================
+
+	AirAssault_Bat_UKR = { # 乌克兰空中突击旅属营（可伞降）
+		sprite = MD_infantry_2
+		map_icon_category = infantry
+		special_forces = yes
+		can_be_parachuted = yes
+		ai_priority = 5
+		priority = 10
+		active = no
+		type = { infantry }
+		group = airmobile
+
+		categories = {
+			category_front_line
+			category_special_forces
+			category_conventional_infantry
+			category_all_infantry
+			category_army
+			category_non_militia
+			category_all_airborne
+			category_air_aslt
+		}
+
+		combat_width = 3
+
+		max_strength = 14
+		max_organisation = 36
+		default_morale = 0.14
+		suppression = 2.0
+		manpower = 1500
+		entrenchment = -0.3
+
+		training_time = 200
+		weight = 0.5
+
+		need = {
+			infantry_weapons_type = 820
+			L_AT_Equipment = 40
+			AA_Equipment = 12
+			cnc_equipment_type = 32
+			heavy_tank_amphibious_chassis = 18
+		}
+		hills = { attack = 0.05 defence = 0.10 }
+		forest = { attack = 0.05 defence = 0.10 }
+		mountain = { attack = 0.05 defence = 0.15 }
+		jungle = { attack = 0.05 defence = 0.10 }
+		marsh = { defence = 0.10 movement = 0.05 }
+		urban = { attack = 0.05 defence = 0.05 }
+
+		transport = heavy_tank_amphibious_chassis
+
+	}
+
+	SOF_Bat_UKR = { # 乌克兰SSO特战营（全标记）
+		sprite = MD_infantry_2
+		map_icon_category = infantry
+		special_forces = yes
+		can_be_parachuted = yes
+		can_exfiltrate_from_coast = yes
+		mountaineers = yes
+		rangers = yes
+		marines = yes
+		ai_priority = 5
+		priority = 15
+		active = no
+		type = { infantry }
+		group = special_forces
+
+		categories = {
+			category_front_line
+			category_conventional_infantry
+			category_special_forces
+			category_light_infantry
+			category_all_infantry
+			category_army
+			category_non_militia
+			category_foot_inf
+		}
+
+		combat_width = 5
+
+		max_strength = 14
+		max_organisation = 32
+		default_morale = 0.14
+		manpower = 600
+		entrenchment = 0.1
+		suppression = 1
+
+		training_time = 200
+		weight = 0.5
+
+		transport = util_vehicle_type
+
+		need = {
+			infantry_weapons_type = 480
+			L_AT_Equipment = 16
+			AA_Equipment = 8
+			cnc_equipment_type = 24
+			util_vehicle_type = 16
+		}
+		plains = { attack = 0.05 }
+		desert = { attack = 0.10 movement = 0.05 }
+		hills = { attack = 0.10 defence = 0.10 }
+		forest = { attack = 0.15 defence = 0.15 }
+		mountain = { attack = 0.15 defence = 0.15 movement = 0.05 }
+		jungle = { attack = 0.15 defence = 0.15 }
+		marsh = { attack = 0.10 defence = 0.10 }
+		urban = { attack = 0.15 defence = 0.15 }
+		amphibious = { attack = 0.05 }
+
+	}
+
+	# ======================== 土耳其（2新增） ========================
+
+	Bordo_Bat_TUR = { # 土耳其栗色贝雷帽特战营（可伞降）
+		sprite = MD_infantry_2
+		map_icon_category = infantry
+		special_forces = yes
+		can_be_parachuted = yes
+		ai_priority = 5
+		priority = 15
+		active = no
+		type = { infantry }
+		group = special_forces
+
+		categories = {
+			category_front_line
+			category_conventional_infantry
+			category_special_forces
+			category_light_infantry
+			category_all_infantry
+			category_army
+			category_non_militia
+			category_foot_inf
+		}
+
+		combat_width = 5
+
+		max_strength = 14
+		max_organisation = 32
+		default_morale = 0.14
+		manpower = 600
+		entrenchment = 0.1
+		suppression = 1
+
+		training_time = 200
+		weight = 0.5
+
+		transport = util_vehicle_type
+
+		need = {
+			infantry_weapons_type = 480
+			L_AT_Equipment = 16
+			AA_Equipment = 8
+			cnc_equipment_type = 24
+			util_vehicle_type = 18
+		}
+		plains = { attack = 0.05 }
+		desert = { attack = 0.10 movement = 0.05 }
+		hills = { attack = 0.10 defence = 0.10 }
+		forest = { attack = 0.15 defence = 0.15 }
+		mountain = { attack = 0.15 defence = 0.15 movement = 0.05 }
+		jungle = { attack = 0.15 defence = 0.15 }
+		marsh = { attack = 0.10 defence = 0.10 }
+		urban = { attack = 0.15 defence = 0.15 }
+		amphibious = { attack = 0.05 }
+
+	}
+
+	Komando_Bat_TUR = { # 土耳其突击旅属营（山地战）
+		sprite = MD_infantry_2
+		map_icon_category = infantry
+		special_forces = yes
+		mountaineers = yes
+		ai_priority = 5
+		priority = 10
+		active = no
+		type = { infantry }
+		group = infantry
+
+		categories = {
+			category_front_line
+			category_light_infantry
+			category_conventional_infantry
+			category_all_infantry
+			category_army
+			category_non_militia
+			category_foot_inf
+		}
+
+		combat_width = 3
+
+		max_strength = 14
+		max_organisation = 40
+		default_morale = 0.14
+		manpower = 1500
+		entrenchment = 0
+		suppression = 1
+
+		training_time = 120
+		weight = 0.5
+		transport = util_vehicle_type
+
+		need = {
+			infantry_weapons_type = 820
+			L_AT_Equipment = 40
+			AA_Equipment = 12
+			cnc_equipment_type = 32
+			util_vehicle_type = 30
+		}
+		plains = { attack = -0.05 }
+		desert = { attack = -0.05 movement = -0.05 }
+		hills = { attack = 0.05 defence = 0.10 }
+		forest = { attack = 0.10 defence = 0.15 movement = 0.05 }
+		mountain = { attack = 0.15 defence = 0.20 movement = 0.05 }
+		jungle = { attack = 0.10 defence = 0.15 movement = 0.05 }
+		marsh = { attack = 0.05 defence = 0.10 movement = 0.10 }
+		urban = { attack = 0.10 defence = 0.10 }
+		amphibious = { attack = -0.05 }
+
+	}
+
+	# ======================== 伊朗（2新增） ========================
+
+	Quds_Bat_PER = { # 伊朗圣城旅属营（可伞降）
+		sprite = MD_infantry_2
+		map_icon_category = infantry
+		special_forces = yes
+		can_be_parachuted = yes
+		ai_priority = 5
+		priority = 15
+		active = no
+		type = { infantry }
+		group = special_forces
+
+		categories = {
+			category_front_line
+			category_conventional_infantry
+			category_special_forces
+			category_light_infantry
+			category_all_infantry
+			category_army
+			category_non_militia
+			category_foot_inf
+		}
+
+		combat_width = 5
+
+		max_strength = 14
+		max_organisation = 32
+		default_morale = 0.14
+		manpower = 700
+		entrenchment = 0.1
+		suppression = 1
+
+		training_time = 200
+		weight = 0.5
+
+		transport = util_vehicle_type
+
+		need = {
+			infantry_weapons_type = 560
+			L_AT_Equipment = 20
+			AA_Equipment = 8
+			cnc_equipment_type = 24
+			util_vehicle_type = 20
+		}
+		plains = { attack = 0.05 }
+		desert = { attack = 0.10 movement = 0.05 }
+		hills = { attack = 0.10 defence = 0.10 }
+		forest = { attack = 0.15 defence = 0.15 }
+		mountain = { attack = 0.15 defence = 0.15 movement = 0.05 }
+		jungle = { attack = 0.15 defence = 0.15 }
+		marsh = { attack = 0.10 defence = 0.10 }
+		urban = { attack = 0.15 defence = 0.15 }
+		amphibious = { attack = 0.05 }
+
+	}
+
+	Takavar_Bat_PER = { # 伊朗Takavar空降突击营（可伞降）
+		sprite = MD_infantry_2
+		map_icon_category = infantry
+		special_forces = yes
+		can_be_parachuted = yes
+		ai_priority = 5
+		priority = 10
+		active = no
+		type = { infantry }
+		group = airborne_infantry
+
+		categories = {
+			category_front_line
+			category_special_forces
+			category_light_infantry
+			category_all_infantry
+			category_conventional_infantry
+			category_army
+			category_non_militia
+			category_foot_inf
+			category_inf_airborne
+		}
+
+		combat_width = 3
+
+		max_strength = 14
+		max_organisation = 38
+		default_morale = 0.14
+		suppression = 1
+		manpower = 1500
+		entrenchment = 0
+
+		training_time = 180
+		weight = 0.5
+
+		transport = util_vehicle_type
+
+		need = {
+			infantry_weapons_type = 820
+			L_AT_Equipment = 40
+			AA_Equipment = 12
+			cnc_equipment_type = 32
+			util_vehicle_type = 30
+		}
+		plains = { attack = -0.05 }
+		desert = { attack = -0.05 }
+		hills = { attack = 0.05 defence = 0.10 }
+		forest = { attack = 0.10 defence = 0.15 movement = 0.05 }
+		mountain = { attack = 0.10 defence = 0.15 movement = 0.05 }
+		jungle = { attack = 0.10 defence = 0.15 }
+		marsh = { attack = 0.05 defence = 0.10 movement = 0.05 }
+		urban = { attack = 0.05 defence = 0.05 }
+
+	}
+
+	# ======================== 意大利（2新增） ========================
+
+	Folgore_Bat_ITA = { # 意大利闪电旅属空降营（可伞降）
+		sprite = MD_infantry_2
+		map_icon_category = infantry
+		special_forces = yes
+		can_be_parachuted = yes
+		ai_priority = 5
+		priority = 10
+		active = no
+		type = { infantry }
+		group = airborne_infantry
+
+		categories = {
+			category_front_line
+			category_special_forces
+			category_light_infantry
+			category_all_infantry
+			category_conventional_infantry
+			category_army
+			category_non_militia
+			category_foot_inf
+			category_inf_airborne
+		}
+
+		combat_width = 3
+
+		max_strength = 14
+		max_organisation = 38
+		default_morale = 0.14
+		suppression = 1
+		manpower = 1500
+		entrenchment = 0
+
+		training_time = 180
+		weight = 0.5
+
+		transport = util_vehicle_type
+
+		need = {
+			infantry_weapons_type = 820
+			L_AT_Equipment = 40
+			AA_Equipment = 12
+			cnc_equipment_type = 32
+			util_vehicle_type = 32
+		}
+		plains = { attack = -0.05 }
+		desert = { attack = -0.05 }
+		hills = { attack = 0.05 defence = 0.10 }
+		forest = { attack = 0.10 defence = 0.15 movement = 0.05 }
+		mountain = { attack = 0.10 defence = 0.15 movement = 0.05 }
+		jungle = { attack = 0.10 defence = 0.15 }
+		marsh = { attack = 0.05 defence = 0.10 movement = 0.05 }
+		urban = { attack = 0.05 defence = 0.05 }
+
+	}
+
+	SanMarco_Bat_ITA = { # 意大利圣马可团属陆战队营（两栖）
+		sprite = MD_light_armor
+		map_icon_category = armored
+		priority = 30
+		active = no
+		ai_priority = 5
+		marines = yes
+		type = {
+			mechanized
+			armor
+		}
+		group = marine_infantry
+
+		categories = {
+			category_front_line
+			category_all_armor
+			category_apc
+			category_army
+			category_non_militia
+		}
+
+		combat_width = 4
+
+		max_strength = 14
+		max_organisation = 30
+		default_morale = 0.09
+		manpower = 1500
+		entrenchment = -0.10
+		suppression = 2.5
+
+		training_time = 180
+		weight = 2
+
+		transport = medium_tank_flame_chassis
+
+		essential = {
+			medium_tank_flame_chassis
+		}
+
+		need = {
+			infantry_weapons_type = 820
+			L_AT_Equipment = 40
+			AA_Equipment = 12
+			cnc_equipment_type = 32
+			medium_tank_flame_chassis = 28
+			util_vehicle_type = 18
+		}
+		plains = { attack = 0.10 movement = 0.10 }
+		desert = { attack = 0.10 movement = 0.10 }
+		hills = { attack = -0.05 movement = -0.05 }
+		forest = { attack = -0.10 movement = -0.10 }
+		mountain = { attack = -0.25 defence = -0.10 movement = -0.15 }
+		jungle = { attack = -0.10 movement = -0.05 }
+		marsh = { attack = 0.05 movement = 0.05 }
+		urban = { attack = 0.05 }
+		amphibious = { attack = 0.15 movement = 0.05 }
+
+	}
+
+	# ======================== 波兰（1新增） ========================
+
+	GROM_Bat_POL = { # 波兰GROM特战营（全标记）
+		sprite = MD_infantry_2
+		map_icon_category = infantry
+		special_forces = yes
+		can_be_parachuted = yes
+		can_exfiltrate_from_coast = yes
+		mountaineers = yes
+		rangers = yes
+		marines = yes
+		ai_priority = 5
+		priority = 15
+		active = no
+		type = { infantry }
+		group = special_forces
+
+		categories = {
+			category_front_line
+			category_conventional_infantry
+			category_special_forces
+			category_light_infantry
+			category_all_infantry
+			category_army
+			category_non_militia
+			category_foot_inf
+		}
+
+		combat_width = 5
+
+		max_strength = 14
+		max_organisation = 32
+		default_morale = 0.14
+		manpower = 500
+		entrenchment = 0.1
+		suppression = 1
+
+		training_time = 200
+		weight = 0.5
+
+		transport = util_vehicle_type
+
+		need = {
+			infantry_weapons_type = 400
+			L_AT_Equipment = 16
+			AA_Equipment = 6
+			cnc_equipment_type = 24
+			util_vehicle_type = 16
+		}
+		plains = { attack = 0.05 }
+		desert = { attack = 0.10 movement = 0.05 }
+		hills = { attack = 0.10 defence = 0.10 }
+		forest = { attack = 0.15 defence = 0.15 }
+		mountain = { attack = 0.15 defence = 0.15 movement = 0.05 }
+		jungle = { attack = 0.15 defence = 0.15 }
+		marsh = { attack = 0.10 defence = 0.10 }
+		urban = { attack = 0.15 defence = 0.15 }
+		amphibious = { attack = 0.05 }
+
+	}
+
+	# ======================== 西班牙（1新增） ========================
+
+	Legion_Bat_SPR = { # 西班牙外籍军团营（可伞降）
+		sprite = MD_infantry_2
+		map_icon_category = infantry
+		special_forces = yes
+		can_be_parachuted = yes
+		ai_priority = 5
+		priority = 10
+		active = no
+		type = { infantry }
+		group = airborne_infantry
+
+		categories = {
+			category_front_line
+			category_special_forces
+			category_light_infantry
+			category_all_infantry
+			category_conventional_infantry
+			category_army
+			category_non_militia
+			category_foot_inf
+			category_inf_airborne
+		}
+
+		combat_width = 3
+
+		max_strength = 14
+		max_organisation = 38
+		default_morale = 0.14
+		suppression = 1
+		manpower = 1500
+		entrenchment = 0
+
+		training_time = 180
+		weight = 0.5
+
+		transport = util_vehicle_type
+
+		need = {
+			infantry_weapons_type = 820
+			L_AT_Equipment = 40
+			AA_Equipment = 12
+			cnc_equipment_type = 32
+			util_vehicle_type = 32
+		}
+		plains = { attack = -0.05 }
+		desert = { attack = -0.05 }
+		hills = { attack = 0.05 defence = 0.10 }
+		forest = { attack = 0.10 defence = 0.15 movement = 0.05 }
+		mountain = { attack = 0.10 defence = 0.15 movement = 0.05 }
+		jungle = { attack = 0.10 defence = 0.15 }
+		marsh = { attack = 0.05 defence = 0.10 movement = 0.05 }
+		urban = { attack = 0.05 defence = 0.05 }
+
+	}
+
+	# ======================== 加拿大（1新增） ========================
+
+	CSOR_Bat_CAN = { # 加拿大CSOR特战营（可伞降）
+		sprite = MD_infantry_2
+		map_icon_category = infantry
+		special_forces = yes
+		can_be_parachuted = yes
+		ai_priority = 5
+		priority = 15
+		active = no
+		type = { infantry }
+		group = special_forces
+
+		categories = {
+			category_front_line
+			category_conventional_infantry
+			category_special_forces
+			category_light_infantry
+			category_all_infantry
+			category_army
+			category_non_militia
+			category_foot_inf
+		}
+
+		combat_width = 5
+
+		max_strength = 14
+		max_organisation = 32
+		default_morale = 0.14
+		manpower = 600
+		entrenchment = 0.1
+		suppression = 1
+
+		training_time = 200
+		weight = 0.5
+
+		transport = util_vehicle_type
+
+		need = {
+			infantry_weapons_type = 480
+			L_AT_Equipment = 16
+			AA_Equipment = 8
+			cnc_equipment_type = 24
+			util_vehicle_type = 18
+		}
+		plains = { attack = 0.05 }
+		desert = { attack = 0.10 movement = 0.05 }
+		hills = { attack = 0.10 defence = 0.10 }
+		forest = { attack = 0.15 defence = 0.15 }
+		mountain = { attack = 0.15 defence = 0.15 movement = 0.05 }
+		jungle = { attack = 0.15 defence = 0.15 }
+		marsh = { attack = 0.10 defence = 0.10 }
+		urban = { attack = 0.15 defence = 0.15 }
+		amphibious = { attack = 0.05 }
+
+	}
+
+	# ======================== 澳大利亚（1新增） ========================
+
+	SASR_Bat_AST = { # 澳大利亚SASR特战营（rangers+exfiltrate）
+		sprite = MD_infantry_2
+		map_icon_category = infantry
+		special_forces = yes
+		rangers = yes
+		can_exfiltrate_from_coast = yes
+		can_be_parachuted = yes
+		mountaineers = yes
+		ai_priority = 5
+		priority = 15
+		active = no
+		type = { infantry }
+		group = special_forces
+
+		categories = {
+			category_front_line
+			category_conventional_infantry
+			category_special_forces
+			category_light_infantry
+			category_all_infantry
+			category_army
+			category_non_militia
+			category_foot_inf
+		}
+
+		combat_width = 5
+
+		max_strength = 14
+		max_organisation = 32
+		default_morale = 0.14
+		manpower = 500
+		entrenchment = 0.1
+		suppression = 1
+
+		training_time = 200
+		weight = 0.5
+
+		transport = util_vehicle_type
+
+		need = {
+			infantry_weapons_type = 400
+			L_AT_Equipment = 16
+			AA_Equipment = 6
+			cnc_equipment_type = 24
+			util_vehicle_type = 16
+		}
+		plains = { attack = 0.05 }
+		desert = { attack = 0.10 movement = 0.05 }
+		hills = { attack = 0.10 defence = 0.10 }
+		forest = { attack = 0.15 defence = 0.15 }
+		mountain = { attack = 0.15 defence = 0.15 movement = 0.05 }
+		jungle = { attack = 0.15 defence = 0.15 }
+		marsh = { attack = 0.10 defence = 0.10 }
+		urban = { attack = 0.15 defence = 0.15 }
+		amphibious = { attack = 0.05 }
+
+	}
+
+	# ======================== 巴西（1新增） ========================
+
+	Jungle_Bat_BRA = { # 巴西丛林战营（mountaineers，丛林地形加成）
+		sprite = MD_infantry_2
+		map_icon_category = infantry
+		special_forces = yes
+		mountaineers = yes
+		ai_priority = 5
+		priority = 10
+		active = no
+		type = { infantry }
+		group = infantry
+
+		categories = {
+			category_front_line
+			category_light_infantry
+			category_conventional_infantry
+			category_all_infantry
+			category_army
+			category_non_militia
+			category_foot_inf
+		}
+
+		combat_width = 3
+
+		max_strength = 14
+		max_organisation = 40
+		default_morale = 0.14
+		manpower = 1500
+		entrenchment = 0
+		suppression = 1
+
+		training_time = 120
+		weight = 0.5
+		transport = cnc_equipment_type
+
+		need = {
+			infantry_weapons_type = 820
+			L_AT_Equipment = 40
+			AA_Equipment = 12
+			cnc_equipment_type = 32
+		}
+		plains = { attack = -0.05 }
+		desert = { attack = -0.05 movement = -0.05 }
+		hills = { attack = 0.05 defence = 0.10 }
+		forest = { attack = 0.15 defence = 0.20 movement = 0.10 }
+		mountain = { attack = 0.10 defence = 0.15 movement = 0.05 }
+		jungle = { attack = 0.20 defence = 0.25 movement = 0.10 }
+		marsh = { attack = 0.10 defence = 0.15 movement = 0.10 }
+		urban = { attack = 0.05 defence = 0.05 }
+		amphibious = { attack = 0.05 }
+
+	}
+
+	# ======================== 巴基斯坦（1新增） ========================
+
+	SSG_Bat_PAK = { # 巴基斯坦SSG特战营（可伞降）
+		sprite = MD_infantry_2
+		map_icon_category = infantry
+		special_forces = yes
+		can_be_parachuted = yes
+		ai_priority = 5
+		priority = 15
+		active = no
+		type = { infantry }
+		group = special_forces
+
+		categories = {
+			category_front_line
+			category_conventional_infantry
+			category_special_forces
+			category_light_infantry
+			category_all_infantry
+			category_army
+			category_non_militia
+			category_foot_inf
+		}
+
+		combat_width = 5
+
+		max_strength = 14
+		max_organisation = 32
+		default_morale = 0.14
+		manpower = 800
+		entrenchment = 0.1
+		suppression = 1
+
+		training_time = 200
+		weight = 0.5
+
+		transport = util_vehicle_type
+
+		need = {
+			infantry_weapons_type = 640
+			L_AT_Equipment = 26
+			AA_Equipment = 10
+			cnc_equipment_type = 24
+			util_vehicle_type = 20
+		}
+		plains = { attack = 0.05 }
+		desert = { attack = 0.10 movement = 0.05 }
+		hills = { attack = 0.10 defence = 0.10 }
+		forest = { attack = 0.15 defence = 0.15 }
+		mountain = { attack = 0.15 defence = 0.15 movement = 0.05 }
+		jungle = { attack = 0.15 defence = 0.15 }
+		marsh = { attack = 0.10 defence = 0.10 }
+		urban = { attack = 0.15 defence = 0.15 }
+		amphibious = { attack = 0.05 }
+
+	}
+
+	# ======================== 台湾（1新增） ========================
+
+	Marine_Bat_TAI = { # 台湾陆战蛙人营（marines+exfiltrate）
+		sprite = MD_infantry_2
+		map_icon_category = infantry
+		special_forces = yes
+		marines = yes
+		can_exfiltrate_from_coast = yes
+		ai_priority = 5
+		priority = 10
+		active = no
+		type = { infantry }
+		group = special_forces
+
+		categories = {
+			category_front_line
+			category_conventional_infantry
+			category_special_forces
+			category_light_infantry
+			category_all_infantry
+			category_army
+			category_non_militia
+			category_all_amphibous
+			category_inf_amphib
+			category_foot_inf
+		}
+
+		combat_width = 4
+
+		max_strength = 14
+		max_organisation = 32
+		default_morale = 0.14
+		manpower = 1250
+		entrenchment = 0.1
+		suppression = 1
+
+		training_time = 200
+		weight = 0.5
+
+		transport = util_vehicle_type
+
+		need = {
+			infantry_weapons_type = 690
+			L_AT_Equipment = 40
+			AA_Equipment = 12
+			cnc_equipment_type = 32
+			util_vehicle_type = 24
+		}
+		amphibious = { attack = 0.25 defence = 0.10 }
+		marsh = { attack = 0.15 defence = 0.15 movement = 0.10 }
+		forest = { attack = 0.10 defence = 0.10 }
+		hills = { attack = 0.05 defence = 0.10 }
+		urban = { attack = 0.15 defence = 0.10 }
+		plains = { attack = -0.05 }
+		desert = { attack = -0.05 }
+
+	}
+
+	# ======================== 埃及（1新增） ========================
+
+	Saiqa_Bat_EGY = { # 埃及闪电部队突击营（可伞降）
+		sprite = MD_infantry_2
+		map_icon_category = infantry
+		special_forces = yes
+		can_be_parachuted = yes
+		ai_priority = 5
+		priority = 10
+		active = no
+		type = { infantry }
+		group = airborne_infantry
+
+		categories = {
+			category_front_line
+			category_special_forces
+			category_light_infantry
+			category_all_infantry
+			category_conventional_infantry
+			category_army
+			category_non_militia
+			category_foot_inf
+			category_inf_airborne
+		}
+
+		combat_width = 3
+
+		max_strength = 14
+		max_organisation = 38
+		default_morale = 0.14
+		suppression = 1
+		manpower = 1500
+		entrenchment = 0
+
+		training_time = 180
+		weight = 0.5
+
+		transport = util_vehicle_type
+
+		need = {
+			infantry_weapons_type = 820
+			L_AT_Equipment = 40
+			AA_Equipment = 12
+			cnc_equipment_type = 32
+			util_vehicle_type = 30
+		}
+		plains = { attack = -0.05 }
+		desert = { attack = -0.05 }
+		hills = { attack = 0.05 defence = 0.10 }
+		forest = { attack = 0.10 defence = 0.15 movement = 0.05 }
+		mountain = { attack = 0.10 defence = 0.15 movement = 0.05 }
+		jungle = { attack = 0.10 defence = 0.15 }
+		marsh = { attack = 0.05 defence = 0.10 movement = 0.05 }
+		urban = { attack = 0.05 defence = 0.05 }
+
+	}
+
+}

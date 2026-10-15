@@ -1,0 +1,379 @@
+defined_text = {
+	name = get_xizang_status
+	
+	text = {
+		trigger = {
+			CHI = { controls_state = 589 }
+		}
+		localization_key = "chinese_control_xizang"
+	}
+	text = {
+		trigger = {
+			AND = {
+				TIB = { controls_state = 589 }
+				TIB = { is_subject = no }
+			}
+		}
+		localization_key = "independent_xizang"
+	}
+	text = {
+		trigger = {
+			OR = {
+				AND = {
+					TIB = { controls_state = 589 }
+					TIB = { is_subject = yes }
+				}
+				AND = {
+					CHI = { NOT = { controls_state = 589 } }
+					TIB = { NOT = { controls_state = 589 } }
+				}
+			}
+		}
+		localization_key = "foreign_control_xizang"
+	}
+}
+
+defined_text = {
+	name = get_xinjiang_status
+	
+	text = {
+		trigger = {
+			CHI = { controls_state = 592 }
+		}
+		localization_key = "chinese_control_xinjiang"
+	}
+	text = {
+		trigger = {
+			AND = {
+				ETK = { controls_state = 592 }
+				ETK = { is_subject = no }
+			}
+		}
+		localization_key = "independent_xinjiang"
+	}
+	text = {
+		trigger = {
+			OR = {
+				AND = {
+					ETK = { controls_state = 592 }
+					ETK = { is_subject = yes }
+				}
+				AND = {
+					CHI = { NOT = { controls_state = 592 } }
+					ETK = { NOT = { controls_state = 592 } }
+				}
+			}
+		}
+		localization_key = "foreign_control_xinjiang"
+	}
+}
+
+defined_text = {
+	name = get_hongkong_status
+	
+	text = {
+		trigger = {
+			AND = {
+				CHI = { controls_state = 595 }
+				595 = { NOT = { has_dynamic_modifier = { modifier = PRC_hong_kong } } }
+			}
+		}
+		localization_key = "chinese_control_hongkong"
+	}
+	text = {
+		trigger = {
+			AND = {
+				CHI = { controls_state = 595 }
+				595 = { has_dynamic_modifier = { modifier = PRC_hong_kong } }
+			}
+		}
+		localization_key = "chinese_hongkong_sar"
+	}
+	text = {
+		trigger = {
+			OR = {
+				AND = {
+					HKG = { controls_state = 595 }
+					HKG = { is_subject = yes }
+				}
+				AND = {
+					CHI = { NOT = { controls_state = 595 } }
+					HKG = { NOT = { controls_state = 595 } }
+				}
+			}
+		}
+		localization_key = "foreign_control_hongkong"
+	}
+	text = {
+		trigger = {
+			AND = {
+				HKG = { controls_state = 595 }
+				HKG = { is_subject = no }
+			}
+		}
+		localization_key = "independent_hongkong"
+	}
+}
+
+defined_text = {
+	name = get_macau_status
+	
+	text = {
+		trigger = {
+			AND = {
+				CHI = { controls_state = 1106 }
+				1106 = { NOT = { has_dynamic_modifier = { modifier = PRC_macau } } }
+			}
+		}
+		localization_key = "chinese_control_macau"
+	}
+	text = {
+		trigger = {
+			AND = {
+				CHI = { controls_state = 1106 }
+				1106 = { has_dynamic_modifier = { modifier = PRC_macau } }
+			}
+		}
+		localization_key = "chinese_macau_sar"
+	}
+	text = {
+		trigger = {
+			OR = {
+				AND = {
+					MAC = { controls_state = 1106 }
+					MAC = { is_subject = yes }
+				}
+				AND = {
+					CHI = { NOT = { controls_state = 1106 } }
+					MAC = { NOT = { controls_state = 1106 } }
+				}
+			}
+		}
+		localization_key = "foreign_control_macau"
+	}
+	text = {
+		trigger = {
+			AND = {
+				MAC = { controls_state = 1106 }
+				MAC = { is_subject = no }
+			}
+		}
+		localization_key = "independent_macau"
+	}
+}
+
+defined_text = {
+	name = get_mongolia_status
+	
+	text = {
+		trigger = {
+			AND = {
+				CHI = { controls_state = 596 }
+				596 = { NOT = { has_dynamic_modifier = { modifier = PRC_mongolia } } }
+			}
+		}
+		localization_key = "chinese_control_mongolia"
+	}
+	text = {
+		trigger = {
+			AND = {
+				CHI = { controls_state = 596 }
+				596 = { has_dynamic_modifier = { modifier = PRC_mongolia } }
+			}
+		}
+		localization_key = "mongolia_sar"
+	}
+	text = {
+		trigger = {
+			OR = {
+				AND = {
+					MON = { controls_state = 596 }
+					MON = { is_subject = yes }
+				}
+				AND = {
+					CHI = { NOT = { controls_state = 596 } }
+					MON = { NOT = { controls_state = 596 } }
+				}
+			}
+		}
+		localization_key = "foreign_control_mongolia"
+	}
+	text = {
+		trigger = {
+			AND = {
+				MON = { controls_state = 596 }
+				MON = { is_subject = no }
+			}
+		}
+		localization_key = "independent_mongolia"
+	}
+}
+
+defined_text = {
+	name = get_diaoyu_status
+	
+	text = {
+		trigger = {
+			OR = {
+				CHI = { controls_state = 939 }
+				TAI = { controls_state = 939 }
+			}
+		}
+		localization_key = "chinese_control_diaoyu"
+	}
+	text = {
+		trigger = {
+			JAP = { controls_state = 939 }
+		}
+		localization_key = "japan_control_diaoyu"
+	}
+}
+
+defined_text = {
+	name = get_nanhai_status
+	
+	text = {
+		trigger = {
+			AND = {
+				has_country_flag = maritime_boundary_agreed
+				NOT = {
+					AND = {
+						CHI = { controls_state = 491 }
+						CHI = { controls_state = 526 }
+						CHI = { controls_state = 801 }
+						CHI = { controls_state = 802 }
+						CHI = { controls_state = 813 }
+						CHI = { controls_state = 816 }
+					}
+				}
+			}
+		}
+		localization_key = "foreign_control_nanhai_settled"
+	}
+	text = {
+		trigger = {
+			NOT = {
+				AND = {
+					CHI = { controls_state = 491 }
+					CHI = { controls_state = 526 }
+					CHI = { controls_state = 801 }
+					CHI = { controls_state = 802 }
+					CHI = { controls_state = 813 }
+					CHI = { controls_state = 816 }
+				}
+			}
+			NOT = { has_country_flag = maritime_boundary_agreed }
+		}
+		localization_key = "foreign_control_nanhai"
+	}
+	text = {
+		trigger = {
+			AND = {
+				CHI = { controls_state = 491 }
+				CHI = { controls_state = 526 }
+				CHI = { controls_state = 801 }
+				CHI = { controls_state = 802 }
+				CHI = { controls_state = 813 }
+				CHI = { controls_state = 816 }
+				NOT = { has_country_flag = maritime_boundary_agreed }
+			}
+		}
+		localization_key = "chinese_control_nanhai"
+	}
+	text = {
+		trigger = {
+			AND = {
+				CHI = { controls_state = 491 }
+				CHI = { controls_state = 526 }
+				CHI = { controls_state = 801 }
+				CHI = { controls_state = 802 }
+				CHI = { controls_state = 813 }
+				CHI = { controls_state = 816 }
+				has_country_flag = maritime_boundary_agreed
+			}
+		}
+		localization_key = "chinese_control_nanhai_shared"
+	}
+}
+
+defined_text = {
+	name = get_taiwan_status
+	
+	text = {
+		trigger = {
+			AND = {
+				NOT = { country_exists = TAI }
+				CHI = { controls_state = 598 }
+				598 = { NOT = { has_dynamic_modifier = { modifier = PRC_taiwan } } }
+			}
+		}
+		localization_key = "chinese_control_taiwan"
+	}
+	text = {
+		trigger = {
+			OR = {
+				TAI = { is_subject_of = CHI }
+				AND = {
+					CHI = { controls_state = 598 }
+					598 = { has_dynamic_modifier = { modifier = PRC_taiwan } }
+				}
+			}
+		}
+		localization_key = "taiwan_sar"
+	}
+	text = {
+		trigger = {
+			AND = {
+				country_exists = TAI
+				TAI = { is_subject = no }
+				NOT = { TAI = { is_subject_of = CHI } }
+			}
+		}
+		localization_key = "independent_taiwan"
+	}
+	text = {
+		trigger = {
+			OR = {
+				AND = {
+					TAI = { controls_state = 598 }
+					TAI = { is_subject = yes }
+					NOT = { TAI = { is_subject_of = CHI } }
+				}
+				AND = {
+					CHI = { NOT = { controls_state = 598 } }
+					NOT = { country_exists = TAI }
+				}
+			}
+		}
+		localization_key = "foreign_control_taiwan"
+	}
+}
+
+defined_text = {
+	name = get_zangnan_status
+	
+	text = {
+		trigger = {
+			CHI = { controls_state = 475 }
+		}
+		localization_key = "chinese_control_zangnan"
+	}
+	text = {
+		trigger = {
+			AND = {
+				RAJ = { controls_state = 475 }
+				RAJ = { has_idea = Sino_Indian_Tensions }
+			}
+		}
+		localization_key = "india_control_zangnan"
+	}
+	text = {
+		trigger = {
+			AND = {
+				RAJ = { controls_state = 475 }
+				RAJ = { NOT = { has_idea = Sino_Indian_Tensions } }
+			}
+		}
+		localization_key = "india_control_arunachal"
+	}
+}

@@ -1,0 +1,642 @@
+# ============================================================
+# 海军学说子分支 - 完整合并文件
+# 规则：
+#   - 船单位级：写在 battleship = { } / frigate = { } 等
+#   - 飞机单位级：写在 cv_mr_fighter = { } / cv_med_cas_fighter = { } / cv_nav_strike = { }
+#   - 全局：写在 stage_X = { } 顶层
+# ============================================================
+
+
+# ============================================================
+# 路线1：海洋过渡（QL_PRC_NAVAL_OCEAN_TRANSITION）
+# ============================================================
+
+ql_prc_naval_surface_fleet_path_1 = {
+	track = ql_prc_naval_surface_fleet
+	name = QL_SUB_QL_PRC_NAVAL_SURFACE_FLEET_PATH_1
+	description = QL_SUB_QL_PRC_NAVAL_SURFACE_FLEET_PATH_1_DESC
+	icon = GFX_ql_sub_naval_1_1
+	xp_cost = 75
+	xp_type = navy
+	available = {
+		has_doctrine = ql_prc_naval_ocean_transition
+	}
+	ai_will_do = { base = 1 }
+
+	# 顶部全局：远洋护卫
+	naval_mines_effect_reduction = 0.1       # 水雷效果减免 +10%（全局：减少敌方水雷对己方舰船的伤害）
+	battleship = {
+		naval_range = 0.1                    # 战列舰：航程 +10%（单位级）
+		hg_attack = 0.1                      # 战列舰：重炮攻击 +10%（单位级）
+	}
+	battle_cruiser = {
+		naval_range = 0.1                    # 战巡：航程 +10%（单位级）
+		hg_attack = 0.1                      # 战巡：重炮攻击 +10%（单位级）
+	}
+	cruiser = {
+		naval_range = 0.1                    # 重巡：航程 +10%（单位级）
+		hg_attack = 0.1                      # 重巡：重炮攻击 +10%（单位级）
+	}
+	destroyer = {
+		naval_range = 0.1                    # 驱逐舰：航程 +10%（单位级）
+		hg_attack = 0.1                      # 驱逐舰：重炮攻击 +10%（单位级）
+	}
+	frigate = {
+		naval_range = 0.1                    # 轻巡：航程 +10%（单位级）
+		hg_attack = 0.1                      # 轻巡：重炮攻击 +10%（单位级）
+	}
+
+	rewards = {
+		# 1. 海域信息搜集
+		stage_1 = {
+			positioning = 0.15                   # 占位 +15%（全局：舰队阵位，影响命中与被命中）
+			naval_speed_factor = 0.15            # 舰船速度 +15%（全局：全国海军舰船最大速度）
+			battleship = { surface_detection = 0.1 sub_detection = 0.1 }   # 对海探测 +10%、对潜探测 +10%（单位级）
+			battle_cruiser = { surface_detection = 0.1 sub_detection = 0.1 }
+			cruiser = { surface_detection = 0.1 sub_detection = 0.1 }
+			destroyer = { surface_detection = 0.1 sub_detection = 0.1 }
+			frigate = { surface_detection = 0.1 sub_detection = 0.1 }
+		}
+		# 2. 高速末端突防
+		stage_2 = {
+			battleship = { hg_attack = 0.1 hg_armor_piercing = 0.1 }   # 重炮攻击 +10%、重炮穿甲 +10%（单位级）
+			battle_cruiser = { hg_attack = 0.1 hg_armor_piercing = 0.1 }
+			cruiser = { hg_attack = 0.1 hg_armor_piercing = 0.1 }
+			destroyer = { hg_attack = 0.1 hg_armor_piercing = 0.1 }
+			frigate = { hg_attack = 0.1 hg_armor_piercing = 0.1 }
+		}
+		# 3. 联合远洋行动
+		stage_3 = {
+			navy_fuel_consumption_factor = -0.1   # 补给消耗 -10%（全局：所有单位补给使用降低）
+			battleship = { naval_range = 0.1 }   # 航程 +10%（单位级）
+			battle_cruiser = { naval_range = 0.1 }
+			cruiser = { naval_range = 0.1 }
+			destroyer = { naval_range = 0.1 }
+			frigate = { naval_range = 0.1 }
+		}
+		# 4. 补给护航任务
+		stage_4 = {
+			screening_efficiency = 0.2           # 屏卫效率 +20%（全局：屏卫舰保护主力舰的效率）
+			destroyer = { sub_detection = 0.2 sub_attack = 0.15 }   # 对潜探测 +20%、反潜攻击 +15%（单位级）
+			frigate = { sub_detection = 0.2 sub_attack = 0.15 }
+		}
+		# 5. 舰群带刀侍卫
+		stage_5 = {
+			naval_mines_effect_reduction = 0.15   # 水雷效果减免 +15%（全局）
+			battleship = { hg_attack = 0.15 hg_armor_piercing = 0.15 anti_air_attack = 0.15 }   # 重炮攻击/穿甲/对空 +15%（单位级）
+			battle_cruiser = { hg_attack = 0.15 hg_armor_piercing = 0.15 anti_air_attack = 0.15 }
+			cruiser = { hg_attack = 0.15 hg_armor_piercing = 0.15 anti_air_attack = 0.15 }
+			destroyer = { hg_attack = 0.15 hg_armor_piercing = 0.15 anti_air_attack = 0.15 }
+			frigate = { hg_attack = 0.15 hg_armor_piercing = 0.15 anti_air_attack = 0.15 }
+		}
+	}
+}
+
+ql_prc_naval_submarine_fleet_path_1 = {
+	track = ql_prc_naval_submarine_fleet
+	name = QL_SUB_QL_PRC_NAVAL_SUBMARINE_FLEET_PATH_1
+	description = QL_SUB_QL_PRC_NAVAL_SUBMARINE_FLEET_PATH_1_DESC
+	icon = GFX_ql_sub_naval_2_1
+	xp_cost = 75
+	xp_type = navy
+	available = {
+		has_doctrine = ql_prc_naval_ocean_transition
+	}
+	ai_will_do = { base = 1 }
+
+	# 顶部全局：水下长城
+	attack_submarine = { sub_visibility = -0.1 }   # 潜艇：水下可见度 -10%（单位级：更难被反潜发现）
+
+	rewards = {
+		# 1. 极限规避保养
+		stage_1 = {
+			attack_submarine = {
+				reliability = 0.1      # 潜艇：可靠性 +10%（单位级：降低事故/损耗）
+				naval_range = 0.1      # 潜艇：最大航程 +10%（单位级）
+			}
+		}
+		# 2. 水下编组防御
+		stage_2 = {
+			attack_submarine = {
+				torpedo_attack = 0.1   # 潜艇：鱼雷攻击 +10%（单位级）
+				sub_attack = 0.1       # 潜艇：反潜攻击 +10%（单位级）
+			}
+		}
+		# 3. 深海机动部署
+		stage_3 = {
+			naval_retreat_chance_after_initial_combat = 0.3  # 初次交战后撤退几率 +30%（全局）
+			attack_submarine = { naval_speed = 0.15 }        # 潜艇：速度 +15%（单位级）
+		}
+		# 4. 立体声呐组网
+		stage_4 = {
+			attack_submarine = { sub_detection = 0.2 }  # 潜艇：对潜探测 +20%（单位级）
+		}
+		# 5. 无人潜航装置
+		stage_5 = {
+			attack_submarine = { max_organisation = 15 }  # 潜艇：组织度 +15（单位级）
+		}
+	}
+}
+
+ql_prc_naval_aviation_path_1 = {
+	track = ql_prc_naval_aviation
+	name = QL_SUB_QL_PRC_NAVAL_AVIATION_PATH_1
+	description = QL_SUB_QL_PRC_NAVAL_AVIATION_PATH_1_DESC
+	icon = GFX_ql_sub_naval_3_1
+	xp_cost = 75
+	xp_type = navy
+	available = {
+		has_doctrine = ql_prc_naval_ocean_transition
+	}
+	ai_will_do = { base = 1 }
+
+	# 顶部全局：航空制海
+	sortie_efficiency = 0.1                 # 舰载机出击效率 +10%（全局：航母舰载机出击频率）
+
+	rewards = {
+		# 1. 快速甲板轮替
+		stage_1 = {
+			sortie_efficiency = 0.1             # 舰载机出击效率 +10%（全局）
+			carrier_sortie_hours_delay = -0.3   # 阻拦索速度 +30%（全局：舰载机回收更快，出击间隔更短）
+			carrier = {
+				max_organisation = 10           # 航母：组织度 +10（单位级）
+			}
+		}
+		# 2. 舰队预警架构
+		stage_2 = {
+			spotting_chance = 0.15
+			carrier = {
+				surface_detection = 0.15        # 航母：对海探测 +15%（单位级）
+				sub_detection = 0.15            # 航母：对潜探测 +15%（单位级）
+			}
+		}
+		# 3. 饱和反舰打击
+		stage_3 = {
+			cv_nav_strike = {
+				naval_strike_targetting = 0.15  # 舰载海军轰炸机：对海瞄准 +15%（单位级/飞机）
+				naval_strike_attack = 0.15      # 舰载海军轰炸机：对海攻击 +15%（单位级/飞机）
+			}
+		}
+		# 4. 前出牵制部署
+		stage_4 = {
+			carrier = {
+				naval_speed = 0.1               # 航母：最大速度 +10%（单位级）
+				naval_range = 0.1               # 航母：最大航程 +10%（单位级）
+			}
+		}
+		# 5. 决战型战斗群
+		stage_5 = {
+			sortie_efficiency = 0.1             # 舰载机出击效率 +10%（全局）
+			cv_nav_strike = {
+				naval_strike_attack = 0.1       # 舰载海军轰炸机：对海攻击 +10%（单位级/飞机）
+			}
+		}
+	}
+}
+
+ql_prc_naval_systems_path_1 = {
+	track = ql_prc_naval_systems
+	name = QL_SUB_QL_PRC_NAVAL_SYSTEMS_PATH_1
+	description = QL_SUB_QL_PRC_NAVAL_SYSTEMS_PATH_1_DESC
+	icon = GFX_ql_sub_naval_4_1
+	xp_cost = 75
+	xp_type = navy
+	available = {
+		has_doctrine = ql_prc_naval_ocean_transition
+	}
+	ai_will_do = { base = 1 }
+
+	# 顶部全局：区域拒止
+	positioning = 0.1                        # 阵位 +10%（全局）
+	battleship = { surface_detection = 0.1 sub_detection = 0.1 }   # 对海/对潜探测 +10%（单位级）
+	battle_cruiser = { surface_detection = 0.1 sub_detection = 0.1 }
+	cruiser = { surface_detection = 0.1 sub_detection = 0.1 }
+	destroyer = { surface_detection = 0.1 sub_detection = 0.1 }
+	frigate = { surface_detection = 0.1 sub_detection = 0.1 }
+
+	rewards = {
+		# 1. 关键海域封锁
+		stage_1 = {
+			positioning = 0.1                    # 阵位 +10%（全局）
+			screening_efficiency = 0.2           # 屏卫效率 +20%（全局）
+			battleship = { surface_detection = 0.15  sub_attack  = 0.15 }   # 对海探测/对空攻击 +15%（单位级）
+			battle_cruiser = { surface_detection = 0.15  sub_attack  = 0.15 }
+			cruiser = { surface_detection = 0.15  sub_attack  = 0.15 }
+			destroyer = { surface_detection = 0.15  sub_attack  = 0.15 }
+			frigate = { surface_detection = 0.15  sub_attack  = 0.15 }
+		}
+		# 2. 谋划围点打援
+		stage_2 = {
+			spotting_chance = 0.1             # 索敌速度 +10%（全局）
+			battleship = { hg_attack = 0.1 hg_armor_piercing = 0.1 }   # 重炮攻击/穿甲 +10%（单位级）
+			battle_cruiser = { hg_attack = 0.1 hg_armor_piercing = 0.1 }
+			cruiser = { hg_attack = 0.1 hg_armor_piercing = 0.1 }
+			destroyer = { hg_attack = 0.1 hg_armor_piercing = 0.1 }
+			frigate = { hg_attack = 0.1 hg_armor_piercing = 0.1 }
+		}
+		# 3. 综合补给舰队
+		stage_3 = {
+			navy_fuel_consumption_factor = -0.1    # 海军补给消耗 -10%（全局）
+		}
+		# 4. 培养实战意识
+		stage_4 = {
+			naval_accidents_chance = -0.2      # 海军事故几率 -20%（全局）
+			repair_speed_factor = 0.2          # 船坞修理速度 +20%（全局）
+		}
+		# 5. 智能舰队建设
+		stage_5 = {
+			positioning = 0.1                    # 阵位 +10%（全局）
+			naval_hit_chance = 0.3               # 海军命中率 +30%（全局）
+			navy_org_factor = 0.1               # 海军组织度 +10%（全局）
+		}
+	}
+}
+
+
+# ============================================================
+# 路线2：马赛克杀伤链（QL_PRC_NAVAL_MOSAIC_KILL_CHAIN）
+# ============================================================
+
+ql_prc_naval_surface_fleet_path_2 = {
+	track = ql_prc_naval_surface_fleet
+	name = QL_SUB_QL_PRC_NAVAL_SURFACE_FLEET_PATH_2
+	description = QL_SUB_QL_PRC_NAVAL_SURFACE_FLEET_PATH_2_DESC
+	icon = GFX_ql_sub_naval_1_2
+	xp_cost = 75
+	xp_type = navy
+	available = {
+		has_doctrine = ql_prc_naval_mosaic_kill_chain
+	}
+	ai_will_do = { base = 1 }
+
+	# 顶部全局：马赛克杀伤链
+	screening_without_screens = 0.3
+	navy_max_range_factor = 0.15
+
+	rewards = {
+		# 1. 由海向陆投射
+		stage_1 = {
+			shore_bombardment_bonus = 0.1          # 对岸炮击 +10%（全局）
+			amphibious_invasion_defence = 0.15     # 两栖入侵防御 +15%（全局）
+		}
+		# 2. 灾难管理措施
+		stage_2 = {
+			navy_casualty_on_hit = -0.15           # 受到攻击造成的伤亡 -15%（全局）
+			navy_casualty_on_sink = -0.15          # 舰艇沉没造成的伤亡 -15%（全局）
+		}
+		# 3. 防空指挥旗舰
+		stage_3 = {
+			battleship = { anti_air_attack = 0.1 }     # 战列舰：对空攻击 +10%（单位级）
+			battle_cruiser = { anti_air_attack = 0.1 } # 战巡：对空攻击 +10%（单位级）
+			cruiser = { anti_air_attack = 0.1 }        # 重巡：对空攻击 +10%（单位级）
+		}
+		# 4. 防御阵型编组
+		stage_4 = {
+			naval_torpedo_damage_reduction_factor = 0.1   # 鱼雷伤害减免 +10%（全局）
+			battleship = { max_organisation = 20 }        # 战列舰：组织度 +20（单位级）
+			battle_cruiser = { max_organisation = 20 }
+			cruiser = { max_organisation = 20 }
+		}
+		# 5. 崇拜海洋霸权
+		stage_5 = {
+			naval_has_potf_in_combat_attack = 0.1  # 与舰队荣耀并肩作战时的攻击 +10%（全局）
+		}
+	}
+}
+
+ql_prc_naval_submarine_fleet_path_2 = {
+	track = ql_prc_naval_submarine_fleet
+	name = QL_SUB_QL_PRC_NAVAL_SUBMARINE_FLEET_PATH_2
+	description = QL_SUB_QL_PRC_NAVAL_SUBMARINE_FLEET_PATH_2_DESC
+	icon = GFX_ql_sub_naval_2_2
+	xp_cost = 75
+	xp_type = navy
+	available = {
+		has_doctrine = ql_prc_naval_mosaic_kill_chain
+	}
+	ai_will_do = { base = 1 }
+
+	navy_fuel_consumption_factor = -0.1
+
+	rewards = {
+		# 1. 武器系统调试
+		stage_1 = {
+			attack_submarine = {
+				surface_detection = 0.1            # 潜艇：对海探测 +10%（单位级）
+				hg_attack  = 0.1               # 潜艇：鱼雷攻击 +10%（单位级）
+				sub_detection = 0.1                   # 潜艇：潜 +10%（单位级）
+			}
+			naval_torpedo_hit_chance_factor = 0.1
+		}
+		# 2. 海域值班轮换
+		stage_2 = {
+			attack_submarine = { max_organisation = 10 }  # 潜艇：组织度 +10（单位级）
+		}
+		# 3. 远洋威慑行动
+		stage_3 = {
+			navy_fuel_consumption_factor = -0.15    # 燃油消耗 -15%（全局）
+			attack_submarine = {
+				naval_range = 0.15              # 潜艇：最大航程 +15%（单位级）
+			}
+		}
+		# 4. 反探测技战术
+		stage_4 = {
+			attack_submarine = { sub_visibility = -0.1 }  # 潜艇：水下可见度 -10%（单位级）
+		}
+		# 5. 海底地形情报
+		stage_5 = {
+			attack_submarine = { naval_speed = 0.1 }      # 潜艇：速度 +10%（单位级）
+		}
+	}
+}
+
+ql_prc_naval_aviation_path_2 = {
+	track = ql_prc_naval_aviation
+	name = QL_SUB_QL_PRC_NAVAL_AVIATION_PATH_2
+	description = QL_SUB_QL_PRC_NAVAL_AVIATION_PATH_2_DESC
+	icon = GFX_ql_sub_naval_3_2
+	xp_cost = 75
+	xp_type = navy
+	available = {
+		has_doctrine = ql_prc_naval_mosaic_kill_chain
+	}
+	ai_will_do = { base = 1 }
+
+	# 顶部全局：海军航空
+	sortie_efficiency = 0.1                   # 舰载机出击效率 +10%（全局）
+
+
+	rewards = {
+		# 1. 全天候战斗力
+		stage_1 = {
+			air_carrier_night_penalty_reduction_factor = 0.15
+			carrier_sortie_hours_delay = 3
+		}
+		# 2. 成熟甲板运作
+		stage_2 = {
+			sortie_efficiency = 0.1              # 舰载机出击效率 +10%（全局）
+			carrier = {
+				max_organisation = 10           # 航母：组织度 +10（单位级）
+			}
+		}
+		# 3. 舰载攻击机队
+		stage_3 = {
+			cv_mr_fighter = {
+				air_range = 0.1                 # 舰载战斗机：航程 +10%（单位级/飞机）
+				air_ground_attack = 0.1         # 舰载战斗机：对地攻击 +10%（单位级/飞机）
+				air_attack = 0.1                # 舰载战斗机：对空攻击 +10%（单位级/飞机）
+			}
+		}
+		# 4. 水面精确打击
+		stage_4 = {
+			navy_fuel_consumption_factor = -0.1           # 补给消耗 -10%（全局）
+			sortie_efficiency = 0.1             # 舰载机出击效率 +10%（全局）
+		}
+		# 5. 战航武器学校
+		stage_5 = {
+			cv_mr_fighter = { air_attack = 0.1 }      # 舰载战斗机：对空攻击 +10%（单位级/飞机）
+			cv_med_cas_fighter = { air_attack = 0.1 } # 舰载近距支援机：对空攻击 +10%（单位级/飞机）
+			cv_nav_strike = { air_attack = 0.1 }      # 舰载海军轰炸机：对空攻击 +10%（单位级/飞机）
+		}
+	}
+}
+
+ql_prc_naval_systems_path_2 = {
+	track = ql_prc_naval_systems
+	name = QL_SUB_QL_PRC_NAVAL_SYSTEMS_PATH_2
+	description = QL_SUB_QL_PRC_NAVAL_SYSTEMS_PATH_2_DESC
+	icon = GFX_ql_sub_naval_4_2
+	xp_cost = 75
+	xp_type = navy
+	available = {
+		has_doctrine = ql_prc_naval_mosaic_kill_chain
+	}
+	ai_will_do = { base = 1 }
+	navy_org_factor = 0.1
+	rewards = {
+		# 1. 空海一体建设
+		stage_1 = {
+			cv_mr_fighter = {
+				naval_strike_attack = 0.1       # 舰载战斗机：对海攻击 +10%（单位级/飞机）
+				naval_strike_targetting = 0.1   # 舰载战斗机：对海瞄准 +10%（单位级/飞机）
+			}
+		}
+		# 2. 岛礁机动能力
+		stage_2 = {
+			naval_invasion_plan_cap = 3                       # 登陆作战计划上限 +3（全局）
+			naval_invasion_planning_bonus_speed = 0.2         # 登陆计划速度 +20%（全局）
+		}
+		# 3. 分散后勤部署
+		stage_3 = {
+			extra_marine_supply_grace = 120              # 无补给宽限时间 +120（全局）
+			navy_fuel_consumption_factor = -0.1       # 补给消耗 -10%（全局）
+		}
+		# 4. 特遣编队训练
+		stage_4 = {
+			naval_retreat_chance_after_initial_combat = 0.2   # 初次交战后撤退几率 +20%（全局）
+		}
+		# 5. 隐蔽火力投射
+		stage_5 = {
+			naval_night_attack = 0.1           # 夜间攻击 +10%（全局）
+			night_spotting_chance = 0.1        # 夜间索敌 +10%（全局）
+		}
+	}
+}
+
+
+# ============================================================
+# 路线3：区域威慑（QL_PRC_NAVAL_REGIONAL_DETERRENCE）
+# ============================================================
+
+ql_prc_naval_surface_fleet_path_3 = {
+	track = ql_prc_naval_surface_fleet
+	name = QL_SUB_QL_PRC_NAVAL_SURFACE_FLEET_PATH_3
+	description = QL_SUB_QL_PRC_NAVAL_SURFACE_FLEET_PATH_3_DESC
+	icon = GFX_ql_sub_naval_1_3
+	xp_cost = 75
+	xp_type = navy
+	available = {
+		has_doctrine = ql_prc_naval_regional_deterrence
+	}
+	ai_will_do = { base = 1 }
+
+	# 顶部全局：区域威慑舰队
+	equipment_bonus = {
+		screen_ship = { hg_attack = 0.1 }
+	}
+
+	rewards = {
+		# 1. 小型猎杀集群
+		stage_1 = {
+			frigate = {
+				max_organisation = 20            # 轻型护卫舰（导弹艇）：组织度 +20（单位级）
+				hg_attack = 0.05                 # 轻型护卫舰（导弹艇）：重炮攻击 +5%（单位级）
+			}
+		}
+		# 2. 发起联合封锁
+		stage_2 = {
+			convoy_escort_efficiency = 0.15      # 护航效率 +15%（全局）
+			naval_speed_factor = 0.15            # 舰船速度 +15%（全局）
+		}
+		# 3. 海域警戒机制
+		stage_3 = {
+			frigate = {
+				hg_attack = 0.05                 # 轻型护卫舰：重炮攻击 +5%（单位级）
+			}
+		}
+		# 4. 基于目标训练
+		stage_4 = {
+			frigate = {
+				naval_speed = 0.1                # 轻型护卫舰（导弹艇）：移速 +10%（单位级）
+			}
+		}
+		# 5. 突击主力舰队
+		stage_5 = {
+			frigate = {
+				hg_attack = 0.1                  # 轻型护卫舰：重炮攻击 +10%（单位级）
+				hg_armor_piercing = 0.1          # 轻型护卫舰：重炮穿甲 +10%（单位级）
+			}
+		}
+	}
+}
+
+ql_prc_naval_submarine_fleet_path_3 = {
+	track = ql_prc_naval_submarine_fleet
+	name = QL_SUB_QL_PRC_NAVAL_SUBMARINE_FLEET_PATH_3
+	description = QL_SUB_QL_PRC_NAVAL_SUBMARINE_FLEET_PATH_3_DESC
+	icon = GFX_ql_sub_naval_2_3
+	xp_cost = 75
+	xp_type = navy
+	available = {
+		has_doctrine = ql_prc_naval_regional_deterrence
+	}
+	ai_will_do = { base = 1 }
+	naval_torpedo_screen_penetration_factor = 0.1
+	naval_enemy_fleet_size_ratio_penalty_factor = 0.1
+	rewards = {
+		# 1. 预先突击计划
+		stage_1 = {
+			attack_submarine = {
+				torpedo_attack = 0.1             # 潜艇：鱼雷攻击 +10%（单位级）
+				sub_attack = 0.1
+			}
+		}
+		# 2. 抵近目标攻击
+		stage_2 = {
+			naval_torpedo_hit_chance_factor = 0.1  # 鱼雷命中率 +10%（全局）
+			attack_submarine = {
+				max_organisation = 15            # 潜艇：组织度 +15（单位级）
+			}
+		}
+		# 3. 确保自身安全
+		stage_3 = {
+			naval_retreat_chance_after_initial_combat = 0.2  # 初次交战后撤退几率 +20%（全局）
+		}
+		# 4. 巡航噪声抑制
+		stage_4 = {
+			attack_submarine = {
+				surface_visibility = -0.1        # 潜艇：水面可见度 -10%（单位级）
+				sub_visibility = -0.1            # 潜艇：水下可见度 -10%（单位级）
+			}
+		}
+		# 5. 水下编队训练
+		stage_5 = {
+			positioning = 0.15                   # 阵位 +15%（全局）
+		}
+	}
+}
+
+ql_prc_naval_aviation_path_3 = {
+	track = ql_prc_naval_aviation
+	name = QL_SUB_QL_PRC_NAVAL_AVIATION_PATH_3
+	description = QL_SUB_QL_PRC_NAVAL_AVIATION_PATH_3_DESC
+	icon = GFX_ql_sub_naval_3_3
+	xp_cost = 75
+	xp_type = navy
+	available = {
+		has_doctrine = ql_prc_naval_regional_deterrence
+	}
+	ai_will_do = { base = 1 }
+	critical_receive_chance = -0.15
+	rewards = {
+		# 1. 远洋跟踪群
+		stage_1 = {
+			carrier = {
+				surface_detection = 0.15         # 航母：对海探测 +15%（单位级）
+				sub_detection = 0.15             # 航母：对潜探测 +15%（单位级）
+			}
+		}
+		# 2. 指挥防空行动
+		stage_2 = {
+			carrier = { anti_air_attack = 0.1 }  # 航母：对空攻击 +10%（单位级）
+			destroyer = { anti_air_attack = 0.1 } # 驱逐舰：对空攻击 +10%（单位级）
+		}
+		# 3. 快速机队反应
+		stage_3 = {
+			cv_mr_fighter = {
+				maximum_speed = 0.1              # 舰载战斗机：最大速度 +10%（单位级/飞机）
+				air_attack = 0.1                 # 舰载战斗机：对空攻击 +10%（单位级/飞机）
+			}
+		}
+		# 4. 恶劣海况运作
+		stage_4 = {
+			navy_weather_penalty = -0.2          # 海军天气惩罚 -20%（全局）
+		}
+		# 5. 大洋破袭作战
+		stage_5 = {
+			air_port_strike_efficiency = 0.15    # 港口打击任务效率 +15%（全局）
+			cv_mr_fighter = {
+				air_defence = 0.1                # 舰载战斗机：对空防御 +10%（单位级/飞机）
+			}
+		}
+	}
+}
+
+ql_prc_naval_systems_path_3 = {
+	track = ql_prc_naval_systems
+	name = QL_SUB_QL_PRC_NAVAL_SYSTEMS_PATH_3
+	description = QL_SUB_QL_PRC_NAVAL_SYSTEMS_PATH_3_DESC
+	icon = GFX_ql_sub_naval_4_3
+	xp_cost = 75
+	xp_type = navy
+	available = {
+		has_doctrine = ql_prc_naval_regional_deterrence
+	}
+	ai_will_do = { base = 1 }
+
+	# 顶部全局
+	navy_max_range_factor = -0.05
+	strike_force_movement_org_loss = -0.1
+
+	rewards = {
+		# 1. 岸基探测引导
+		stage_1 = {
+			frigate = {
+				surface_detection = 0.15         # 轻型护卫舰：对海探测 +15%（单位级）
+				sub_detection = 0.15             # 轻型护卫舰：对潜探测 +15%（单位级）
+			}
+		}
+		# 2. 青年舰艇学院
+		stage_2 = {
+			experience_gain_destroyer_combat_factor = 0.15        # 驱逐舰战斗经验增长 +15%（全局）
+			experience_gain_attack_submarine_combat_factor = 0.15 # 攻击潜艇战斗经验增长 +15%（全局）
+		}
+		# 3. 完善港口设施
+		stage_3 = {
+			production_speed_naval_base_factor = 0.2   # 海军基地建造速度 +20%（全局）
+			repair_speed_naval_base_factor = 0.2       # 修复速度 +20%（全局）
+		}
+		# 4. 海军情报中心
+		stage_4 = {
+			navy_intel_to_others = -20                # 泄露给他国的海军情报 -20%（全局）
+		}
+		# 5. 改进反舰装备
+		stage_5 = {
+			navy_org_factor = 0.15                     # 海军组织度恢复速度 +15%（全局）
+			frigate = {
+				hg_attack = 0.1                        # 轻型护卫舰：重炮攻击 +10%（单位级）
+				hg_armor_piercing = 0.1                # 轻型护卫舰：重炮穿甲 +10%（单位级）
+			}
+		}
+	}
+}

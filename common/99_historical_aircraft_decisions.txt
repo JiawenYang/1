@@ -1,0 +1,546 @@
+﻿historical_aircraft_category = {
+	# AH-64E Apache AH-2
+	eng_apache_ah2_fe_decision = {
+		icon = GFX_decision_generic_aircraft
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_army_experience > 34
+		}
+		custom_cost_text = army_xp_15
+
+		visible = {
+			original_tag = ENG
+			date > 2023.1.1
+		}
+
+		available = {
+			has_tech = nsb_attack_helicopter_tech_3
+			has_tech = nsb_engine_tech_3
+			has_tech = nsb_multiple_atgm_tech_3
+			has_tech = nsb_rocket_pods_tech_3
+			has_tech = nsb_defense_tech_2
+			has_tech = nsb_light_nose_gun_tech_3
+			has_tech = tech_combat_radar_3
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision eng_apache_ah2_fe_decision"
+			army_experience = -15
+			create_equipment_variant = {
+				name = "Apache AH-2"
+				type = heavy_tank_chassis_2
+				parent_version = 0
+				modules = {
+					chassis_type_slot = helicopter_medium_chassis
+					helicopter_body_layout = gunship_layout
+					helicopter_body_mount_1 = helicopter_multiple_atgm_gen3
+					helicopter_body_mount_2 = helicopter_rocket_pod_gen3
+					nose_gun_type_slot = helicopter_heavy_nose_gun_gen3
+					engine_type_slot = helicopter_turbine_engine_gen3
+					defence_type_slot = flare_launchers
+					sensor_and_avionics_slot = sensors_and_avionics_gen_3
+					armor_type_slot = helicopter_armor_gen3
+					helicopter_wing_mount_1 = helicopter_aa_missile_gen3
+				}
+				upgrades = {
+					helicopter_nsb_upgrade = 3
+				}
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+
+	# Protector RG1
+	eng_protector_rg1_fe_decision = {
+		icon = GFX_decision_generic_aircraft
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_air_experience > 19
+		}
+		custom_cost_text = air_xp_20
+
+		visible = {
+			original_tag = ENG
+			date > 2025.1.1
+		}
+
+		available = {
+			has_tech = gen_4_light
+			has_tech = avionics_3
+			has_tech = countermeasures_2
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision eng_protector_rg1_fe_decision"
+			air_experience = -20
+			create_equipment_variant = {
+				name = "Protector RG1"
+				type = small_plane_suicide_airframe_2
+				parent_version = 0
+				modules = {
+					fixed_main_weapon_slot = avionics_drone_2
+					fixed_gun_slot = empty
+					fixed_auxiliary_weapon_slot_1 = empty
+					engine_type_slot = engine_prop_single_2
+					avionics_type_slot = avionics_manned_3
+					wingform_type_slot = wing_straight
+					special_slot_type_1 = spec_countermeasures_2
+					special_slot_type_2 = spec_recon_3
+					special_slot_type_3 = empty
+				}
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+
+	# P-8A Poseidon
+	eng_p8a_poseidon_fe_decision = {
+		icon = GFX_decision_generic_aircraft
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_air_experience > 19
+		}
+		custom_cost_text = air_xp_20
+
+		visible = {
+			original_tag = ENG
+			date > 2020.1.1
+		}
+
+		available = {
+			has_tech = gen_4_large
+			has_tech = avionics_3
+			has_tech = engines_3
+			has_tech = countermeasures_2
+			has_tech = naval_weapons_2
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision eng_p8a_poseidon_fe_decision"
+			air_experience = -20
+			create_equipment_variant = {
+				name = "P-8A Poseidon MRA1"
+				type = large_plane_maritime_patrol_airframe_1
+				parent_version = 0
+				modules = {
+					fixed_main_weapon_slot = weap_as_hardpoint_1
+					fixed_gun_slot = empty
+					fixed_auxiliary_weapon_slot_1 = empty
+					fixed_auxiliary_weapon_slot_2 = weap_as_hardpoint_1
+					engine_type_slot = engine_jet_double_3
+					avionics_type_slot = avionics_manned_3
+					wingform_type_slot = wing_swept
+					special_slot_type_1 = spec_countermeasures_2
+					special_slot_type_2 = spec_redundant_2
+					special_slot_type_3 = empty
+				}
+				upgrades = {
+					plane_bba_radar_upgrade = 3
+				}
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+
+	# E-7 Wedgetail
+	eng_e7_wedgetail_fe_decision = {
+		icon = GFX_decision_generic_aircraft
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_air_experience > 19
+		}
+		custom_cost_text = air_xp_20
+
+		visible = {
+			original_tag = ENG
+			date > 2026.1.1
+		}
+
+		available = {
+			has_tech = gen_4_large
+			has_tech = avionics_3
+			has_tech = engines_3
+			has_tech = countermeasures_3
+			has_tech = awacs_2
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision eng_e7_wedgetail_fe_decision"
+			air_experience = -20
+			create_equipment_variant = {
+				name = "E-7 Wedgetail AEW1"
+				type = large_plane_awacs_airframe_2
+				parent_version = 0
+				modules = {
+					fixed_main_weapon_slot = weap_buff_awacs_2
+					fixed_gun_slot = empty
+					fixed_auxiliary_weapon_slot_1 = empty
+					fixed_auxiliary_weapon_slot_2 = empty
+					engine_type_slot = engine_jet_double_3
+					avionics_type_slot = avionics_manned_3
+					wingform_type_slot = wing_swept
+					special_slot_type_1 = spec_countermeasures_3
+					special_slot_type_2 = spec_redundant_2
+					special_slot_type_3 = empty
+				}
+				upgrades = {
+					plane_bba_radar_upgrade = 3
+				}
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+
+	# BAE Tempest
+	eng_tempest_fe_decision = {
+		icon = GFX_decision_generic_fighter
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_air_experience > 29
+		}
+		custom_cost_text = air_xp_30
+
+		visible = {
+			original_tag = ENG
+			date > 2035.1.1
+		}
+
+		available = {
+			has_tech = gen_6_light
+			has_tech = stealth_tech_1
+			has_tech = engines_4
+			has_tech = avionics_4
+			has_tech = air_weapons_4
+			has_tech = countermeasures_3
+			NOT = { has_completed_focus = ENG_bae_systems_tempest }
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision eng_tempest_fe_decision"
+			air_experience = -30
+			create_equipment_variant = {
+				name = "BAE Tempest"
+				type = small_plane_airframe_4
+				parent_version = 0
+				modules = {
+					fixed_main_weapon_slot = weap_int_mp_med_hardpoint_2
+					fixed_gun_slot = weap_multi_gun_3
+					fixed_auxiliary_weapon_slot_1 = weap_int_a2a_hardpoint_1
+					engine_type_slot = engine_light_single_4
+					avionics_type_slot = avionics_manned_4
+					wingform_type_slot = wing_diamond
+					special_slot_type_1 = spec_countermeasures_3
+					special_slot_type_2 = spec_stealthmats_1
+					special_slot_type_3 = spec_stealthshape_1
+					special_slot_type_4 = empty
+				}
+				upgrades = {
+					plane_bba_radar_upgrade = 5
+					plane_bba_engine_upgrade = 4
+				}
+				icon = "gfx/interface/technologies/ENG/AIR/Tempest.dds"
+				design_team = mio:ENG_bae_systems_manufacturer
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+
+	# F-35A
+	ger_f35a_fe_decision = {
+		icon = GFX_decision_generic_fighter
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_air_experience > 29
+		}
+		custom_cost_text = air_xp_30
+
+		visible = {
+			original_tag = GER
+			date > 2026.1.1
+		}
+
+		available = {
+			has_tech = gen_5_light
+			has_tech = stealth_tech_1
+			has_tech = engines_3
+			has_tech = avionics_4
+			has_tech = air_weapons_4
+			has_tech = ag_weapons_3
+			has_tech = countermeasures_3
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision ger_f35a_fe_decision"
+			air_experience = -30
+			create_equipment_variant = {
+				name = "F-35A Lightning II"
+				type = small_plane_strike_airframe_3
+				parent_version = 0
+				modules = {
+					fixed_main_weapon_slot = weap_int_mp_med_hardpoint_2
+					fixed_gun_slot = weap_multi_gun_3
+					engine_type_slot = engine_light_single_3
+					avionics_type_slot = avionics_manned_4
+					wingform_type_slot = wing_diamond
+					special_slot_type_1 = spec_countermeasures_3
+					special_slot_type_2 = spec_stealthmats_1
+					special_slot_type_3 = spec_stealthshape_1
+					special_slot_type_4 = empty
+					fixed_auxiliary_weapon_slot_1 = weap_int_a2a_hardpoint_1
+				}
+				upgrades = {
+					plane_bba_radar_upgrade = 5
+					plane_bba_engine_upgrade = 4
+				}
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+
+	# CH-53K
+	ger_ch53k_fe_decision = {
+		icon = GFX_decision_generic_aircraft
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_air_experience > 19
+		}
+		custom_cost_text = air_xp_20
+
+		visible = {
+			original_tag = GER
+			date > 2027.1.1
+		}
+
+		available = {
+			has_tech = nsb_transport_helicopter_2
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision ger_ch53k_fe_decision"
+			air_experience = -20
+			create_equipment_variant = {
+				name = "CH-53K King Stallion"
+				type = transport_helicopter_2
+				parent_version = 0
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+
+	# P-8A Poseidon
+	ger_p8a_poseidon_fe_decision = {
+		icon = GFX_decision_generic_aircraft
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_air_experience > 19
+		}
+		custom_cost_text = air_xp_20
+
+		visible = {
+			original_tag = GER
+			date > 2024.1.1
+		}
+
+		available = {
+			has_tech = gen_4_large
+			has_tech = avionics_3
+			has_tech = engines_3
+			has_tech = countermeasures_2
+			has_tech = naval_weapons_2
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision ger_p8a_poseidon_fe_decision"
+			air_experience = -20
+			create_equipment_variant = {
+				name = "P-8A Poseidon"
+				type = large_plane_maritime_patrol_airframe_1
+				parent_version = 0
+				modules = {
+					fixed_main_weapon_slot = weap_as_hardpoint_1
+					fixed_gun_slot = empty
+					fixed_auxiliary_weapon_slot_1 = empty
+					fixed_auxiliary_weapon_slot_2 = weap_as_hardpoint_1
+					engine_type_slot = engine_jet_double_3
+					avionics_type_slot = avionics_manned_3
+					wingform_type_slot = wing_swept
+					special_slot_type_1 = spec_countermeasures_2
+					special_slot_type_2 = spec_redundant_2
+					special_slot_type_3 = empty
+				}
+				upgrades = {
+					plane_bba_radar_upgrade = 3
+				}
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+
+	# Heron TP
+	ger_heron_tp_fe_decision = {
+		icon = GFX_decision_generic_aircraft
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_air_experience > 14
+		}
+		custom_cost_text = air_xp_15
+
+		visible = {
+			original_tag = GER
+			date > 2018.6.1
+		}
+
+		available = {
+			has_tech = gen_4_large
+			has_tech = avionics_3
+			has_tech = engines_3
+			has_tech = countermeasures_2
+			has_tech = drone_3
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision ger_heron_tp_fe_decision"
+			air_experience = -15
+			create_equipment_variant = {
+				name = "Heron TP"
+				type = large_plane_maritime_patrol_airframe_1
+				parent_version = 0
+				modules = {
+					fixed_main_weapon_slot = empty
+					fixed_gun_slot = empty
+					fixed_auxiliary_weapon_slot_1 = empty
+					fixed_auxiliary_weapon_slot_2 = empty
+					engine_type_slot = engine_prop_quad_2
+					avionics_type_slot = avionics_manned_3
+					wingform_type_slot = wing_straight
+					special_slot_type_1 = spec_countermeasures_2
+					special_slot_type_2 = spec_recon_3
+					special_slot_type_3 = spec_redundant_3
+				}
+				upgrades = {
+					plane_bba_radar_upgrade = 2
+				}
+				icon = "gfx/interface/technologies/GER/AIR/Heron.dds"
+				model = "large_plane_maritime_patrol_airframe_1_entity"
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+
+	# Eurodrone
+	ger_eurodrone_fe_decision = {
+		icon = GFX_decision_generic_aircraft
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_air_experience > 19
+		}
+		custom_cost_text = air_xp_20
+
+		visible = {
+			original_tag = GER
+			date > 2028.1.1
+		}
+
+		available = {
+			has_tech = gen_4_light
+			has_tech = avionics_3
+			has_tech = countermeasures_2
+			has_tech = drone_2
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision ger_eurodrone_fe_decision"
+			air_experience = -20
+			create_equipment_variant = {
+				name = "Eurodrone"
+				type = small_plane_suicide_airframe_2
+				parent_version = 0
+				modules = {
+					fixed_main_weapon_slot = avionics_drone_2
+					fixed_gun_slot = empty
+					fixed_auxiliary_weapon_slot_1 = empty
+					engine_type_slot = engine_prop_single_2
+					avionics_type_slot = avionics_manned_3
+					wingform_type_slot = wing_straight
+					special_slot_type_1 = spec_countermeasures_2
+					special_slot_type_2 = spec_recon_3
+					special_slot_type_3 = empty
+				}
+				icon = "gfx/interface/technologies/FRA/AIR/UAV2.dds"
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+
+	# JH-7A
+	jh7a_decision = {
+		icon = GFX_decision_generic_aircraft
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_air_experience > 14
+		}
+		custom_cost_text = air_xp_15
+
+		visible = {
+			original_tag = CHI
+		}
+
+		available = {
+			has_tech = gen_4_medium
+			has_tech = ag_weapons_2
+			has_tech = engines_2
+			has_tech = avionics_2
+			has_tech = countermeasures_1
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision jh7a_decision"
+			air_experience = -15
+			create_equipment_variant = {
+				name = "JH-7A"
+				type = medium_plane_cas_airframe_2
+				parent_version = 0
+				modules = {
+					fixed_main_weapon_slot = weap_ag_cas_hardpoint_2
+					fixed_auxiliary_weapon_slot_1 = weap_as_hardpoint_2
+					engine_type_slot = engine_jet_double_2
+					avionics_type_slot = avionics_manned_2
+					wingform_type_slot = wing_swept
+					special_slot_type_1 = spec_countermeasures_1
+					special_slot_type_2 = spec_tgp_2
+				}
+				upgrades = {
+					plane_bba_radar_upgrade = 1
+				}
+				icon = "gfx/interface/technologies/CHI/AIR/JH-7A.dds"
+				model = "CHI_medium_plane_cas_airframe_2_entity"
+				design_team = mio:CHI_avic_manufacturer
+			}
+		}
+
+		ai_will_do = {
+			base = 1000
+		}
+	}
+}

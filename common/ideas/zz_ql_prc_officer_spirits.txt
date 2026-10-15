@@ -1,0 +1,596 @@
+ideas = {
+#
+    academy_spirit = {
+
+        ql_prc_army_spirit_01 = {  # 精神名称：职业军队建设
+            ledger = army
+            picture = ql_spirit_33
+            visible = {
+                has_doctrine = ql_prc_land_multi_domain_expedition
+                original_tag = USA
+            }
+			allowed_to_remove = { always = no }
+            modifier = {
+                custom_modifier_tooltip = ql_prc_army_spirit_01_tt   # 升级奖励提示
+                terrain_trait_xp_gain_factor = 0.2           # 地形特质经验获取 +20%
+                trait_commando_xp_gain_factor = 0.2          # 特战培训经验 +20%
+            }
+
+            ai_will_do = { base = 199 }
+        }
+
+        ql_prc_army_spirit_02 = {  # 精神名称：听党话跟党走
+            ledger = army
+            picture = ql_spirit_14
+            visible = {
+                has_doctrine = ql_prc_land_integrated_mobility
+                original_tag = CHI
+            }
+			allowed_to_remove = { always = no }
+            modifier = {
+                custom_modifier_tooltip = ql_prc_army_spirit_02_tt   # 升级奖励提示
+                grant_medal_cost_factor = -0.5               # 授勋花费 -50%
+                max_command_power = 50                       # 最大指挥点数 +50
+                command_power_gain = 0.5                     # 每日CP获取 +0.5
+            }
+
+            ai_will_do = { base = 199 }
+        }
+
+        ql_prc_army_spirit_03 = {  # 精神名称：国家武装力量
+            ledger = army
+            picture = ql_spirit_15
+            visible = {
+                has_doctrine = ql_prc_land_hybrid_modal_warfare
+                original_tag = SOV
+                check_variable = { ruling_party = 6 }
+            }
+			allowed_to_remove = { always = no }
+            modifier = {
+                custom_modifier_tooltip = ql_prc_army_spirit_03_tt   # 升级奖励提示
+                trait_organizer_xp_gain_factor = 0.2    # 军事战役学经验 +20%（组织专家特质）
+                trait_engineer_xp_gain_factor = 0.2          # 工兵指挥官特质经验 +20%
+                unit_leader_as_advisor_cp_cost_factor = -0.75 # 指挥官作为顾问费用 -75%
+            }
+
+            ai_will_do = { base = 199 }
+        }
+    }
+
+    naval_academy_spirit = {
+
+        ql_prc_navy_spirit_07 = {  # 精神名称：重视航空威慑
+            ledger = navy
+            picture = ql_spirit_36
+            visible = {
+                has_doctrine = ql_prc_naval_mosaic_kill_chain
+                original_tag = USA
+            }
+			allowed_to_remove = { always = no }
+            modifier = {
+                custom_modifier_tooltip = ql_prc_navy_spirit_07_tt   # 升级奖励提示
+                navy_carrier_air_targetting_factor = 0.1     # 航空母舰对海瞄准 +10%
+                experience_gain_carrier_combat_factor = 0.2  # 航母航海指挥经验 +20%
+                navy_intel_to_others = -10                   # 泄漏给他国的海军情报 -10%
+            }
+
+            ai_will_do = { base = 199 }
+        }
+
+        ql_prc_navy_spirit_08 = {  # 精神名称：强调信息决胜
+            ledger = navy
+            picture = ql_spirit_22
+            visible = {
+                has_doctrine = ql_prc_naval_ocean_transition
+                original_tag = CHI
+            }
+			allowed_to_remove = { always = no }
+            modifier = {
+                custom_modifier_tooltip = ql_prc_navy_spirit_08_tt   # 升级奖励提示
+                naval_detection = 0.15                       # 海军对海探测 +15%
+                navy_submarine_detection_factor = 0.15       # 海军对潜探测 +15%
+            }
+
+            ai_will_do = { base = 199 }
+        }
+
+        ql_prc_navy_spirit_09 = {  # 精神名称：少壮海员培训
+            ledger = navy
+            picture = ql_spirit_19
+            visible = {
+                has_doctrine = ql_prc_naval_regional_deterrence
+                original_tag = SOV
+                check_variable = { ruling_party = 6 }
+            }
+			allowed_to_remove = { always = no }
+            modifier = {
+                custom_modifier_tooltip = ql_prc_navy_spirit_09_tt   # 升级奖励提示
+                port_strike = 0.1                            # 港口袭击效率 +10%
+                experience_gain_destroyer_combat_factor = 0.15 # 导弹艇/轻护战斗经验 +15%
+            }
+
+            ai_will_do = { base = 199 }
+        }
+
+        ql_prc_navy_spirit_11 = {  # 精神名称：探讨海洋传统
+            ledger = navy
+            picture = ql_spirit_25
+            visible = {
+                has_doctrine = ql_prc_naval_mosaic_kill_chain
+                original_tag = ENG
+            }
+			allowed_to_remove = { always = no }
+            modifier = {
+                navy_leader_start_level = 1                  # 新海军将领初始等级 +1
+                experience_gain_navy_unit_factor = 0.2       # 大型舰艇战术经验获取 +20%
+                trait_superior_tactician_xp_gain_factor = 0.15 # 巡洋舰/全能舰战斗经验 +15%
+            }
+
+            ai_will_do = { base = 199 }
+        }
+
+        ql_prc_navy_spirit_12 = {  # 精神名称：专注潜艇训练
+            ledger = navy
+            picture = ql_spirit_01
+            visible = {
+                has_doctrine = ql_prc_naval_regional_deterrence
+                original_tag = SOV
+            }
+			allowed_to_remove = { always = no }
+            modifier = {
+                experience_gain_navy_factor = 0.2            # 潜艇航海指挥经验获取 +20%
+                experience_gain_attack_submarine_combat_factor = 0.2 # 攻击潜艇战斗经验增长 +20%
+                experience_gain_missile_submarine_combat_factor = 0.2 # 导弹潜艇战斗经验增长 +20%
+            }
+            equipment_bonus = {
+                attack_submarine = {
+                    sub_visibility = -0.05               # 攻击潜艇可见度 -5%
+                }
+                missile_submarine = {
+                    sub_visibility = -0.05               # 导弹潜艇可见度 -5%
+                }
+            }
+
+            ai_will_do = { base = 199 }
+        }
+    }
+
+    army_spirit = {
+
+        ql_prc_army_spirit_13 = {  # 精神名称：国际联合防务
+            ledger = army
+            picture = ql_spirit_16
+            visible = {
+                has_doctrine = ql_prc_land_multi_domain_expedition
+                original_tag = USA
+            }
+			allowed_to_remove = { always = no }
+            modifier = {
+                experience_gain_army_factor = 0.15           # 师经验增长 +15%
+                political_power_factor = 0.05                # 政治点数 +5%
+                planning_speed = 0.2                         # 计划速度 +20%
+            }
+
+            ai_will_do = { base = 199 }
+        }
+
+        ql_prc_army_spirit_14 = {  # 精神名称：全产业链能力
+            ledger = army
+            picture = ql_spirit_07
+            visible = {
+                has_doctrine = ql_prc_land_integrated_mobility
+                original_tag = CHI
+            }
+			allowed_to_remove = { always = no }
+            modifier = {
+                recon_factor = 0.1                           # 侦察 +10%
+                max_planning = 0.1                           # 计划上限 +10%
+            }
+            equipment_bonus = {
+                infantry = {
+                    build_cost_ic = -0.05
+                    instant = yes
+                }
+                support = {
+                    build_cost_ic = -0.05
+                    instant = yes
+                }
+                artillery_equipment = {
+                    build_cost_ic = -0.05
+                    instant = yes
+                }
+                anti_tank = {
+                    build_cost_ic = -0.05
+                    instant = yes
+                }
+                anti_air = {
+                    build_cost_ic = -0.05
+                    instant = yes
+                }
+                rocket = {
+                    build_cost_ic = -0.05
+                    instant = yes
+                }
+                armor = {
+                    build_cost_ic = -0.05
+                    instant = yes
+                }
+                motorized = {
+                    build_cost_ic = -0.05
+                    instant = yes
+                }
+                mechanized = {
+                    build_cost_ic = -0.05
+                    instant = yes
+                }
+                amphibious = {
+                    build_cost_ic = -0.05
+                    instant = yes
+                }
+            }
+
+            ai_will_do = { base = 199 }
+        }
+
+        ql_prc_army_spirit_15 = {  # 精神名称：高效武装系统
+            ledger = army
+            picture = ql_spirit_38
+            visible = {
+                has_doctrine = ql_prc_land_hybrid_modal_warfare
+                original_tag = SOV
+            }
+			allowed_to_remove = { always = no }
+            modifier = {
+                grant_medal_cost_factor = -0.5               # 授勋花费 -50%
+                experience_loss_factor = -1                  # 陆军军官每日指挥经验损失 -100%
+                production_factory_efficiency_gain_factor = 0.15 # 生产效率保持 +15%
+            }
+
+            ai_will_do = { base = 199 }
+        }
+    }
+
+    navy_spirit = {
+
+        ql_prc_navy_spirit_18 = {  # 精神名称：海洋学科积累
+            ledger = navy
+            picture = ql_spirit_28
+            visible = {
+                has_doctrine = ql_prc_naval_mosaic_kill_chain
+                original_tag = USA
+            }
+            research_bonus = {
+                cv_tech = 0.20                               # 航母研究速度 +20%
+            }
+			allowed_to_remove = { always = no }
+            modifier = {
+                navy_max_range_factor = 0.1                  # 海军最大航程系数 +10%
+                carrier_design_cost_factor = -0.4  # 航母设计价格 -40%
+            }
+
+            ai_will_do = { base = 199 }
+        }
+
+        ql_prc_navy_spirit_19 = {  # 精神名称：高效舰艇制造
+            ledger = navy
+            picture = ql_spirit_39
+            visible = {
+                has_doctrine = ql_prc_naval_ocean_transition
+                original_tag = CHI
+            }
+            research_bonus = {
+                naval_equipment = 0.10                       # 海军研究速度 +10%
+            }
+			allowed_to_remove = { always = no }
+            modifier = {
+                naval_repair_support_value_factor = 0.25     # 海军维修支援 +25%
+            }
+            equipment_bonus = {
+                capital_ship = {
+                    build_cost_ic = -0.05         # 主力舰：造价 -5%
+                    instant = yes
+                }
+                screen_ship = {
+                    build_cost_ic = -0.05         # 屏卫舰：造价 -5%
+                    instant = yes
+                }
+                submarine = {
+                    build_cost_ic = -0.05         # 潜艇：造价 -5%
+                    instant = yes
+                }
+                carrier = {
+                    build_cost_ic = -0.05         # 航母：造价 -5%
+                    instant = yes
+                }
+                convoy = {
+                    build_cost_ic = -0.05         # 运输船：造价 -5%
+                    instant = yes
+                }
+            }
+
+            ai_will_do = { base = 199 }
+        }
+
+        ql_prc_navy_spirit_20 = {  # 精神名称：极地运作经验
+            ledger = navy
+            picture = ql_spirit_27
+            visible = {
+                has_doctrine = ql_prc_naval_regional_deterrence
+                original_tag = SOV
+            }
+			allowed_to_remove = { always = no }
+            modifier = {
+                navy_weather_penalty = -0.4                  # 恶劣天气惩罚 -40%
+                navy_fuel_consumption_factor = -0.1          # 海军燃料消耗 -10%
+                naval_enemy_fleet_size_ratio_penalty_factor = 0.1 # 敌方舰队规模惩罚 +10%
+            }
+
+            ai_will_do = { base = 199 }
+        }
+
+        ql_prc_navy_spirit_21 = {  # 精神名称：重启重型战舰
+            ledger = navy
+            picture = ql_spirit_35
+            visible = {
+                has_doctrine = ql_prc_naval_mosaic_kill_chain
+                original_tag = ENG
+            }
+            research_bonus = {
+                ca_tech = 0.20                               # 巡洋舰/全能舰研究速度 +20%
+            }
+			allowed_to_remove = { always = no }
+            modifier = {
+                shore_bombardment_bonus = 0.25               # 对岸炮击 +25%
+                cruiser_design_cost_factor = -0.4  # 巡洋舰/全能舰设计价格 -40%
+            }
+
+            ai_will_do = { base = 199 }
+        }
+    }
+
+    air_force_spirit = {
+
+        ql_prc_air_spirit_23 = {  # 精神名称：尖端航空运输
+            ledger = air
+            picture = ql_spirit_20
+            visible = {
+                has_doctrine = ql_prc_air_agile_deployment
+                original_tag = USA
+            }
+            research_bonus = {
+                cat_bomber_tech = 0.15                       # 轰炸机研发速度 +15%
+            }
+			allowed_to_remove = { always = no }
+            modifier = {
+                air_strategic_bomber_bombing_factor = 0.2    # 战略轰炸 +20%
+                large_plane_airframe_design_cost_factor = -0.4    # 轰炸机设计成本 -40%
+            }
+
+            ai_will_do = { base = 199 }
+        }
+
+        ql_prc_air_spirit_24 = {  # 精神名称：优秀风洞实验
+            ledger = air
+            picture = ql_spirit_05
+            visible = {
+                has_doctrine = ql_prc_air_integrated_offence_defence
+                original_tag = CHI
+            }
+            research_bonus = {
+                cat_fighter_tech = 0.1                       # 战斗机技术 +10%
+                cat_air_accessory_tech = 0.1                 # 空军配件技术 +10%
+                cat_uav_tech = 0.1                           # 无人机技术 +10%
+            }
+			allowed_to_remove = { always = no }
+            modifier = {
+                air_superiority_efficiency = 0.1             # 夺取制空权效率 +10%
+                air_mission_efficiency = 0.05                # 全任务效率 +5%
+            }
+
+            ai_will_do = { base = 199 }
+        }
+
+        ql_prc_air_spirit_25 = {  # 精神名称：系统工程研究
+            ledger = air
+            picture = ql_spirit_31
+            visible = {
+                has_doctrine = ql_prc_air_aerospace_support
+                original_tag = SOV
+            }
+			allowed_to_remove = { always = no }
+            modifier = {
+                medium_plane_fighter_airframe_design_cost_factor = -0.1 # 战斗机设计成本 -10%
+                cv_medium_plane_airframe_design_cost_factor = -0.1      # 舰载战斗机设计成本 -10%
+                Air_UAV_equipment_design_cost_factor = -0.1             # 无人机设计成本 -10%
+                air_intercept_efficiency = 0.25              # 拦截任务效率 +25%
+                air_agility_factor = 0.05                    # 飞机机动性 +5%
+            }
+
+            ai_will_do = { base = 199 }
+        }
+    }
+
+    division_command_spirit = {
+
+        ql_prc_army_spirit_28 = {  # 精神名称：捍卫自由，持久安全
+            ledger = army
+            picture = ql_spirit_24
+            visible = {
+                has_doctrine = ql_prc_land_multi_domain_expedition
+                original_tag = USA
+            }
+			allowed_to_remove = { always = no }
+            modifier = {
+                coordination_bonus = 0.05                    # 协同性 +5%
+                intel_from_combat_factor = 0.15              # 战斗中获取的情报 +15%
+                tactic_cc_storm_preferred_weight_factor = 1 # 偏好战术"近距离强攻" +100%
+                land_reinforce_rate = 0.05                   # 增援率 +5%
+                supply_consumption_factor = -0.05            # 补给消耗 -5%
+            }
+
+            ai_will_do = { base = 199 }
+        }
+
+        ql_prc_army_spirit_29 = {  # 精神名称：人民至上，初心不忘
+            ledger = army
+            picture = ql_spirit_03
+            visible = {
+                has_doctrine = ql_prc_land_integrated_mobility
+                original_tag = CHI
+            }
+			allowed_to_remove = { always = no }
+            modifier = {
+                army_artillery_attack_factor = 0.05          # 炮兵攻击 +5%
+                experience_gain_army_factor = 0.1            # 陆军军官指挥经验获取 +10%
+                no_supply_grace = 72                         # 补给耗尽宽限 +72小时
+                tactic_assault_preferred_weight_factor = 1   # 偏好战术"强袭（火力突击）" +100%
+                breakthrough_factor = 0.1                    # 突破 +10%
+                recon_factor = 0.1                           # 侦察 +10%
+            }
+
+            ai_will_do = { base = 199 }
+        }
+
+        ql_prc_army_spirit_30 = {  # 精神名称：凝聚意志，坚定行动
+            ledger = army
+            picture = ql_spirit_11
+            visible = {
+                has_doctrine = ql_prc_land_hybrid_modal_warfare
+                original_tag = SOV
+            }
+			allowed_to_remove = { always = no }
+            modifier = {
+                dig_in_speed_factor = 0.1                    # 堑壕速度 +10%
+                max_dig_in_factor = 0.1                      # 堑壕上限 +10%
+                tactic_cc_attack_preferred_weight_factor = 1 # 偏好战术"近距离突击" +100%
+                army_speed_factor = 0.1                      # 师速度 +10%
+                org_loss_when_moving = -1                    # 移动中的组织度损失 -100%
+            }
+
+            ai_will_do = { base = 199 }
+        }
+    }
+
+    naval_command_spirit = {
+
+        ql_prc_navy_spirit_32 = {  # 精神名称：统御无垠大洋
+            ledger = navy
+            picture = ql_spirit_32
+            visible = {
+                has_doctrine = ql_prc_naval_mosaic_kill_chain
+                original_tag = USA
+            }
+			allowed_to_remove = { always = no }
+            modifier = {
+                navy_capital_ship_attack_factor = 0.1        # 主力舰攻击 +10%
+                navy_anti_air_attack_factor = 0.1            # 舰队防空攻击 +10%
+                naval_hit_chance = 0.15                      # 海军命中率 +15%
+                naval_invasion_prep_speed = 0.25             # 登陆准备时间 -25%
+            }
+
+            ai_will_do = { base = 199 }
+        }
+
+        ql_prc_navy_spirit_33 = {  # 精神名称：航向浩瀚深蓝
+            ledger = navy
+            picture = ql_spirit_34
+            visible = {
+                has_doctrine = ql_prc_naval_ocean_transition
+                original_tag = CHI
+            }
+            equipment_bonus = {
+                capital_ship = {
+                    hg_attack = 0.1                  # 主力舰：导弹攻击 +10%
+                    hg_armor_piercing = 0.1          # 主力舰：突防 +10%
+                }
+            }
+			allowed_to_remove = { always = no }
+            modifier = {
+                positioning = 0.15                           # 阵位 +15%
+                headquarters_experience_gain_factor = 0.2    # 旗舰经验增长 +20%
+            }
+
+            ai_will_do = { base = 199 }
+        }
+
+        ql_prc_navy_spirit_34 = {  # 精神名称：建设威慑力量
+            ledger = navy
+            picture = ql_spirit_21
+            visible = {
+                has_doctrine = ql_prc_naval_regional_deterrence
+                original_tag = SOV
+            }
+			allowed_to_remove = { always = no }
+            modifier = {
+                navy_submarine_attack_factor = 0.1           # 潜艇攻击 +10%
+                naval_torpedo_screen_penetration_factor = 0.25 # 鱼雷穿透屏卫 +25%
+                naval_retreat_chance = 0.15                  # 初次接战后的撤退概率 +15%
+                naval_retreat_speed = 0.15                   # 初次接战后的撤退速度 +15%
+            }
+
+            ai_will_do = { base = 199 }
+        }
+    }
+
+    air_force_command_spirit = {
+
+        ql_prc_air_spirit_36 = {  # 精神名称：全球打击能力
+            ledger = air
+            picture = ql_spirit_08
+            visible = {
+                has_doctrine = ql_prc_air_agile_deployment
+                original_tag = USA
+            }
+			allowed_to_remove = { always = no }
+            modifier = {
+                extra_paratrooper_supply_grace = 72          # 伞兵额外补给宽限 +72小时
+                air_escort_efficiency = 0.2                  # 空军护航任务效率 +20%
+                strategic_bomb_visibility = -0.15            # 战略轰炸可见度 -15%
+            }
+
+            ai_will_do = { base = 199 }
+        }
+
+        ql_prc_air_spirit_37 = {  # 精神名称：决胜千里之外
+            ledger = air
+            picture = ql_spirit_10
+            visible = {
+                has_doctrine = ql_prc_air_integrated_offence_defence
+                original_tag = CHI
+            }
+			allowed_to_remove = { always = no }
+            modifier = {
+                air_attack_factor = 0.1                      # 对空攻击 +10%
+                air_defence_factor = 0.1                     # 空中防御 +10%
+                air_mission_efficiency = 0.1                 # 空军全任务效率 +10%
+            }
+
+            ai_will_do = { base = 199 }
+        }
+
+        ql_prc_air_spirit_38 = {  # 精神名称：征服前线空域
+            ledger = air
+            picture = ql_spirit_23
+            visible = {
+                has_doctrine = ql_prc_air_aerospace_support
+                original_tag = SOV
+            }
+			allowed_to_remove = { always = no }
+            modifier = {
+                air_cas_present_factor = 0.1                 # 存在CAS时战斗加成 +10%
+                air_cas_efficiency = 0.15                    # 密接支援效率 +15%
+                air_bombing_targetting = 0.1                 # 空中轰炸瞄准 +10%
+            }
+            equipment_bonus = {
+                tactical_bomber = {
+                    air_ground_attack = 0.1          # 战术轰炸机：对地攻击 +10%
+                }
+                fighter = {
+                    air_ground_attack = 0.1          # 战斗机：对地攻击 +10%
+                }
+            }
+
+            ai_will_do = { base = 199 }
+        }
+    }
+}

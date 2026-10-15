@@ -1,0 +1,830 @@
+ideas = {
+	country = {
+
+		###################################################################################################
+		### NAFTA Ideas
+		###################################################################################################
+
+		MEX_north_american_free_trade_agreement_idea = {
+			picture = MEX_north_american_free_trade_agreement
+			allowed = {
+				original_tag = MEX
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = { #needs opinion modifier 
+				consumer_goods_factor = 0.1
+				production_speed_buildings_factor = 0.1
+				tax_gain_multiplier_modifier = 0.2
+				local_resources_factor = 0.05
+				business_value_factor = 0.05
+				personal_value_factor = 0.1 
+				production_factory_efficiency_gain_factor = 0.1 
+				production_factory_max_efficiency_factor = 0.1
+				industrial_capacity_dockyard = 0.1
+				industrial_development_monthly = 0.02
+			}
+		}
+
+		USA_north_american_free_trade_agreement_idea = {
+			picture = USA_north_american_free_trade_agreement
+			allowed = {
+				original_tag = USA
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = { 
+				consumer_goods_factor = -0.1
+				production_speed_buildings_factor = 0.1
+				tax_gain_multiplier_modifier = 0.2
+				local_resources_factor = 0.05
+				business_value_factor = 0.05
+				personal_value_factor = 0.1 
+				production_factory_efficiency_gain_factor = 0.1 
+				production_factory_max_efficiency_factor = 0.1
+				industrial_capacity_dockyard = 0.1
+				industrial_development_monthly = 0.02
+			}
+		}
+
+		CAN_north_american_free_trade_agreement_idea = {
+			picture = CAN_north_american_free_trade_agreement
+			allowed = {
+				original_tag = CAN
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = { 
+				consumer_goods_factor = 0.05
+				production_speed_buildings_factor = 0.1
+				tax_gain_multiplier_modifier = 0.2
+				local_resources_factor = 0.05
+				business_value_factor = 0.05
+				personal_value_factor = 0.1 
+				production_factory_efficiency_gain_factor = 0.1 
+				production_factory_max_efficiency_factor = 0.1
+				industrial_capacity_dockyard = 0.1
+				industrial_development_monthly = 0.02
+			}
+		}
+
+		###################################################################################################
+		###################################################################################################
+
+		MEX_ghost_of_the_perfect_dictatorship_idea = {
+			picture = MEX_ghost_of_the_perfect_dictatorship
+			allowed = {
+				original_tag = MEX
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				stability_factor = -0.05
+				research_speed_factor = -0.1
+				political_power_gain = -0.1
+				society_development_monthly = -0.02
+				army_advisor_cost_factor = 0.1
+				business_value_factor = -0.08
+				drift_defence_factor = -0.05
+				personal_value_factor = -0.15
+			}
+		}
+		MEX_a_revolutionary_past_idea = {
+			picture = MEX_revolutionary_history
+			allowed = {
+				original_tag = MEX
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.1
+				political_power_gain = 0.30
+				nationalist_drift = -0.35
+				recruitable_population_factor = 0.05
+
+			}
+		}
+		MEX_central_american_caravans_idea = {
+			picture = MEX_central_american_caravans
+			allowed = {
+				original_tag = MEX
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				stability_weekly = -0.001
+				production_factory_efficiency_gain_factor = 0.05
+				monthly_population = 0.03
+				production_factory_start_efficiency_factor = 0.05
+				expense_growth_factor = 0.1
+			}
+		}
+
+		### Initial Focus Tree Ideas
+		
+		MEX_secure_border_idea = {
+			picture = MEX_central_american_caravans
+			name = MEX_central_american_caravans_idea
+			allowed = {
+				original_tag = MEX
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				stability_weekly = -0.001
+				production_factory_efficiency_gain_factor = 0.075
+				monthly_population = 0.075
+				production_factory_start_efficiency_factor = 0.075
+				expense_growth_factor = 0.15
+			}
+		}
+		MEX_face_of_rejection_idea = {
+			picture = MEX_central_american_caravans
+			name = MEX_central_american_caravans_idea
+			allowed = {
+				original_tag = MEX
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				stability_weekly = -0.0010
+				stability_factor = 0.02
+				production_factory_efficiency_gain_factor = 0.03
+				monthly_population = 0.03
+				production_factory_start_efficiency_factor = 0.03
+				expense_growth_factor = 0.075
+			}
+		}
+		MEX_ca_brothers_idea = {
+			picture = MEX_central_american_caravans
+			name = MEX_central_american_caravans_idea
+			allowed = {
+				original_tag = MEX
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				stability_weekly = -0.0010
+				production_factory_efficiency_gain_factor = 0.15
+				monthly_population = 0.15
+				production_factory_start_efficiency_factor = 0.15
+				expense_growth_factor = 0.20
+			}
+		}
+
+		MEX_united_states_mexico_canada_agreement_idea_good = {
+			picture = MEX_north_american_free_trade_agreement
+			allowed = {
+				original_tag = MEX
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = { #needs opinion modifier 
+				consumer_goods_factor = 0.15
+				production_speed_buildings_factor = 0.15
+				tax_gain_multiplier_modifier = 0.30
+				local_resources_factor = 0.075
+				business_value_factor = 0.075
+				personal_value_factor = 0.2 
+				production_factory_efficiency_gain_factor = 0.15 
+				production_factory_max_efficiency_factor = 0.15
+				industrial_capacity_dockyard = 0.15
+				industrial_development_monthly = 0.03
+			}
+		}
+		MEX_united_states_mexico_canada_agreement_idea_bad = {
+			picture = MEX_north_american_free_trade_agreement
+			name = MEX_united_states_mexico_canada_agreement_idea_good
+			allowed = {
+				original_tag = MEX
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = { #needs opinion modifier 
+				consumer_goods_factor = 0.125
+				production_speed_buildings_factor = 0.125
+				tax_gain_multiplier_modifier = 0.25
+				local_resources_factor = 0.05
+				business_value_factor = 0.05
+				personal_value_factor = 0.15
+				production_factory_efficiency_gain_factor = 0.125
+				production_factory_max_efficiency_factor = 0.125
+				industrial_capacity_dockyard = 0.125
+				industrial_development_monthly = 0.025
+			}
+		}
+
+		
+		### 2021 Focus Tree Branches
+		MEX_crusade_against_mafia_power_idea = {
+			# picture = MEX_callistas
+			allowed = {
+				original_tag = MEX
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = { 
+				political_power_gain = -0.25
+				drift_defence_factor = 0.10
+			}
+		}
+		MEX_pegasus_licenses_idea = {
+			# picture = MEX_callistas
+			name = MEX_crusade_against_mafia_power_idea
+			allowed = {
+				original_tag = MEX
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = { 
+				political_power_gain = -0.20
+				expense_growth_factor = 0.025
+				drift_defence_factor = 0.10
+				market_liberal_drift = -0.01
+				conservative_drift = -0.01
+			}
+		}
+		MEX_electrico_primor_idea = {
+			# picture = MEX_callistas
+			name = MEX_crusade_against_mafia_power_idea
+			allowed = {
+				original_tag = MEX
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = { 
+				political_power_gain = -0.05
+				expense_growth_factor = 0.01
+				drift_defence_factor = 0.20
+				conservative_drift = -0.01
+			}
+		}
+
+		MEX_defy_the_judicial_branch_idea = {
+			# # picture = MEX_callistas
+			allowed = {
+				original_tag = MEX
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = { 
+				political_power_gain = -0.30
+				drift_defence_factor = -0.10
+			}
+		}
+		MEX_end_moral_superiority_idea = {
+			# # picture = MEX_callistas
+			name = MEX_defy_the_judicial_branch_idea
+			allowed = {
+				original_tag = MEX
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = { 
+				political_power_gain = -0.05
+				drift_defence_factor = -0.15
+				political_advisor_cost_factor = 0.20
+				social_democrat_drift = -0.02
+			}
+		}
+		MEX_compromise_with_opposition_idea = {
+			# # picture = MEX_callistas
+			name = MEX_defy_the_judicial_branch_idea
+			allowed = {
+				original_tag = MEX
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = { 
+				political_power_gain = 0.15
+				drift_defence_factor = -0.20
+				political_advisor_cost_factor = 0.20
+				social_democrat_drift = -0.02
+				expense_growth_factor = -0.025
+			}
+		}
+
+
+		MEX_energy_reform_idea = {
+			# picture = MEX_callistas
+			name = MEX_energy_reform_idea
+			allowed = {
+				original_tag = MEX
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = { 
+				political_power_gain = -0.10
+				expense_growth_factor = 0.05
+				production_speed_industrial_complex_factor = 0.03
+				production_speed_power_plant_factor = 0.075
+				production_speed_infrastructure_factor = 0.05
+			}
+		}
+
+		MEX_energy_reform_primor_idea = {
+			# picture = MEX_callistas
+			name = MEX_energy_reform_idea
+			allowed = {
+				original_tag = MEX
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = { 
+				political_power_gain = -0.20
+				expense_growth_factor = 0.025
+				production_speed_industrial_complex_factor = 0.05
+				production_speed_power_plant_factor = 0.125
+				production_speed_infrastructure_factor = 0.05
+			}
+		}
+		MEX_energy_reform_sovereignity_idea = {
+			# picture = MEX_callistas
+			name = MEX_energy_reform_idea
+			allowed = {
+				original_tag = MEX
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = { 
+				political_power_gain = -0.40
+				expense_growth_factor = -0.025
+				# tax_gain_multiplier_modifier = 0.05
+				personal_value_factor = 0.05
+				production_speed_buildings_factor = 0.075
+				production_speed_power_plant_factor = 0.125
+			}
+		}
+
+		MEX_energy_reform_opposition_idea = {
+			# picture = MEX_callistas
+			name = MEX_energy_reform_idea
+			allowed = {
+				original_tag = MEX
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = { 
+				political_power_gain = -0.20
+				expense_growth_factor = 0.025
+				production_speed_industrial_complex_factor = 0.05
+				production_speed_power_plant_factor = 0.05
+				production_speed_infrastructure_factor = 0.075
+				production_speed_energy_farm_factor = 0.025
+				conservative_drift = 0.01
+				market_liberal_drift = 0.01
+			}
+		}
+		MEX_energy_reform_world_market_idea = {
+			# picture = MEX_callistas
+			name = MEX_energy_reform_idea
+			allowed = {
+				original_tag = MEX
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = { 
+				political_power_gain = -0.25
+				expense_growth_factor = 0.025
+				tax_gain_multiplier_modifier = 0.05
+				production_speed_industrial_complex_factor = 0.08
+				production_speed_power_plant_factor = 0.05
+				production_speed_infrastructure_factor = 0.075
+				production_speed_energy_farm_factor = 0.025
+				conservative_drift = 0.01
+				market_liberal_drift = 0.01
+			}
+		}
+
+		MEX_a_oil_bonaza = { 
+			picture = MEX_A_Oil_Bonanza
+
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.15
+				consumer_goods_factor = -0.20
+				production_speed_buildings_factor = 0.10
+				fuel_gain_factor = 0.10
+				factory_energy_consumption = -0.05
+				tax_gain_multiplier_modifier = 0.20
+				poverty_development_monthly = 0.02
+				industrial_development_monthly = 0.02
+				misc_income = 5
+			}
+		}
+
+		MEX_a_oil_bonaza_ideas_full_speed = { 
+			picture = MEX_A_Oil_Bonanza
+			name = MEX_a_oil_bonaza
+
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.15
+				consumer_goods_factor = -0.25
+				production_speed_buildings_factor = 0.10
+				fuel_gain_factor = 0.15
+				factory_energy_consumption = -0.08
+				tax_gain_multiplier_modifier = 0.15
+				poverty_development_monthly = 0.02
+				
+				# Full Speed Bonuses
+				consumer_goods_factor = -0.20
+				production_speed_buildings_factor = 0.15
+				fuel_gain_factor = 0.25
+				industrial_development_monthly = 0.05
+				local_resources_factor = 0.075
+			}
+		}
+
+		MEX_a_oil_bonaza_ideas_abundance = { 
+			picture = MEX_A_Oil_Bonanza
+			name = MEX_a_oil_bonaza
+
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				
+				production_speed_buildings_factor = 0.10
+				fuel_gain_factor = 0.15
+				industrial_development_monthly = 0.03
+
+				# Abundance Bonus
+				stability_factor = 0.25
+				consumer_goods_factor = -0.30
+				poverty_development_monthly = 0.05
+				tax_gain_multiplier_modifier = 0.25
+				factory_energy_consumption = -0.15
+			}
+		}
+
+
+		##########################################################################
+		### Drug War Mechenic Ideas
+		##########################################################################
+
+		MEX_large_scale_deployments_national_guard = { 
+			# picture = 
+			# name = 
+
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				political_power_gain = 0.10
+				mobilization_speed = 0.05
+				recruitable_population_factor = 0.10
+				training_time_factor = 0.10
+			}
+		}
+
+		MEX_american_security_cooperation = {
+			# picture = 
+			# name = 
+
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				training_time_factor = -0.10
+				experience_gain_army = 0.10
+				max_planning_factor = -0.05
+			}
+		}
+
+		##########################################################################
+		### COVID Healthcare Mechanic
+		##########################################################################
+
+		MEX_iron_quarentine = {
+			picture = MEX_iron_quarantine
+
+
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				consumer_goods_factor = 0.3
+				production_factory_max_efficiency_factor = -0.15
+				industrial_capacity_dockyard = -0.3
+				local_resources_factor = -0.3
+			}
+		}
+
+		##########################################################################
+		### MCW Ideas
+		##########################################################################
+
+		MEX_death_of_the_giant_idea = {
+			picture = MEX_death_of_the_giant
+
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				consumer_goods_factor = 0.25
+				stability_weekly = -0.0075
+				industrial_capacity_factory = -0.20
+				industrial_capacity_dockyard = -0.15
+				local_resources_factor = -0.10
+				research_speed_factor = -0.05
+
+				communist_drift = 0.37
+				totalitarian_socialist_drift = 0.37
+				fascist_drift = 0.37
+				nationalist_drift = 0.37
+				national_socialist_drift = 0.37
+			}
+		}
+
+		MEX_collapsed_authority_tfx = {
+			picture = MEX_collapsed_authority
+
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				army_org_factor = -0.15
+				stability_factor = -0.25
+				consumer_goods_factor = 0.35
+				production_speed_buildings_factor = -0.25
+				industrial_capacity_factory = -0.15
+				tax_gain_multiplier_modifier = -0.50
+			}
+		}
+
+		MEX_mexican_resconstruction_idea = {
+			picture = MEX_plan_mexico
+
+			traits = {
+		        ZZZ_blank_idea_trait
+		    }
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.20
+				consumer_goods_factor = -0.15
+				production_speed_industrial_complex_factor = 0.25
+				production_speed_arms_factory_factor = -0.15
+				tax_gain_multiplier_modifier = 0.15
+				industrial_capacity_factory = -0.25
+
+				industrial_development_monthly = 0.01
+				poverty_development_monthly = 0.01
+				society_development_monthly = 0.01
+				farming_development_monthly = 0.005
+
+			}
+		}
+
+		MEX_NATO_cooperation = {
+			picture = MEX_NATO_cooperation
+
+			traits = {
+		        ZZZ_blank_idea_trait
+		    }
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				army_org_factor = 0.10
+				army_morale_factor = 0.05
+				training_time_factor = 0.15
+				battalion_upkeep_factor = 0.10
+				planning_speed = 0.10
+				breakthrough_factor = 0.05
+				army_speed_factor = 0.05
+				org_loss_when_moving = -0.05
+				initiative_factor = 0.15
+				coordination_bonus = 0.15
+				ground_attack_factor = 0.20
+				send_volunteer_size = 2
+
+				military_development_monthly = 0.015
+			}
+
+			equipment_bonus = {
+				mechanized_equipment = {
+					build_cost_ic = -0.15
+					instant = yes
+				}
+				light_tank_equipment = {
+					build_cost_ic = -0.15
+					instant = yes
+				}
+				modern_tank_equipment = {
+					build_cost_ic = -0.15
+					instant = yes
+				}
+			}
+		}
+
+		MEX_CSTO_cooperation = {
+			picture = MEX_CSTO_cooperation
+
+			traits = {
+		        ZZZ_blank_idea_trait
+		    }
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				land_reinforce_rate = 0.05
+				minimum_training_level = -0.10
+				
+				army_armor_attack_factor = 0.10
+				mechanized_attack_factor = 0.10
+				light_armor_attack_factor = 0.10
+
+				breakthrough_factor = 0.15
+				army_org_factor = 0.05
+				special_forces_cap = -0.15
+				supply_consumption_factor = -0.05
+				air_superiority_efficiency = 0.15
+				send_volunteer_size = 4
+
+				battalion_upkeep_factor = 0.15
+				military_development_monthly = 0.01
+
+			}
+
+			equipment_bonus = {
+				mechanized_equipment = {
+					build_cost_ic = -0.20
+					instant = yes
+				}
+				light_tank_equipment = {
+					build_cost_ic = -0.20
+					instant = yes
+				}
+				modern_tank_equipment = {
+					build_cost_ic = -0.20
+					instant = yes
+				}
+			}
+		}
+	}
+
+	hidden_idea = {
+		MEX_militarization = { }
+		MEX_covid = { }
+		MEX_massive_social_programs = { }
+	}
+
+	hidden_ideas = {
+
+		########################################################################
+		### GDP Fix
+		########################################################################
+
+		TFX_MEX_gdp_fix = {
+			allowed = {
+				always = no
+			}
+			modifier = {
+				business_value_factor = -0.78
+				personal_value_factor = -0.78
+				tax_gain_multiplier_modifier = 0.45
+				expense_growth_factor = -0.35
+				tax_gain_multiplier_modifier = 0.68
+				expense_growth_factor = -0.68
+			}
+		}
+					
+		TFX_cartel_gdp_fix = {
+			allowed = {
+				always = no
+			}
+			modifier = {
+				business_value_factor = -0.78
+				personal_value_factor = -0.78
+				tax_gain_multiplier_modifier = 0.45
+				expense_growth_factor = -0.35
+				tax_gain_multiplier_modifier = 0.68
+				expense_growth_factor = -0.68
+			}
+		}
+		
+		LZM_gdp_fix = {
+			allowed = {
+				always = no
+			}
+			modifier = {
+				business_value_factor = -0.78
+				personal_value_factor = -0.78
+				tax_gain_multiplier_modifier = 0.45
+				expense_growth_factor = -0.35
+				tax_gain_multiplier_modifier = 0.68
+				expense_growth_factor = -0.68
+			}
+		}
+		
+		TFX_ZAP_gdp_fix = {
+			allowed = {
+				always = no
+			}
+			modifier = {
+				business_value_factor = -0.78
+				personal_value_factor = -0.78
+				tax_gain_multiplier_modifier = 0.45
+				expense_growth_factor = -0.35
+				tax_gain_multiplier_modifier = 0.68
+				expense_growth_factor = -0.68
+			}
+		}
+
+	}
+}

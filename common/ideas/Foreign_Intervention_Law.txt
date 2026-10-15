@@ -1,0 +1,303 @@
+ideas = {
+
+	foreign_intervention_law = {
+	
+		austrian_neutrality = {
+			picture = AUS_austrian_neutrality
+			
+			allowed = {
+				always = no
+			}
+			cancel_if_invalid = no
+			
+			modifier = {
+				stability_factor = 0.05
+				join_faction_tension = 0.7
+				army_attack_factor = -0.2
+				army_speed_factor = -0.1
+				ai_badass_factor = 0.75
+				ai_get_ally_desire_factor = -40
+				ai_call_ally_desire_factor = 10
+				ai_join_ally_desire_factor = -60
+				lend_lease_tension = 0.15
+				send_volunteers_tension = 0.30
+				guarantee_tension = 0.40
+				generate_wargoal_tension = 0.75
+				embargo_threshold_factor = 0.8
+			}
+		}
+			
+		BRA_not_world_power_idea = {
+			picture = BRA_future_world_power
+			
+			allowed = { always = no }
+			available = { always = no }
+			cancel_if_invalid = no
+				
+			modifier = {
+				war_support_factor = 0.05
+				political_power_gain = -0.1
+				mobilization_speed = 0.01
+				army_personnel_cost_multiplier_modifier = -0.05
+				lend_lease_tension = 0.15
+				send_volunteers_tension = 0.30
+				guarantee_tension = 0.40
+				join_faction_tension = 0.60
+				generate_wargoal_tension = 0.75
+				embargo_threshold_factor = 0.8
+				Foreign_Intervention_Law_cost_factor = 100
+			}
+		}
+
+		finnish_neutrality = {
+			picture = sisu
+			
+			allowed = { always = no }
+			available = { always = no }
+			cancel_if_invalid = no
+
+			modifier = {
+				army_morale_factor = 0.25
+				army_core_attack_factor = 0.25
+				army_core_defence_factor = 0.25
+				stability_factor = 0.05
+				conscription = 0.01
+				lend_lease_tension = 0.10
+				send_volunteers_tension = 0.20
+				guarantee_tension = 0.30
+				join_faction_tension = 0.55
+				generate_wargoal_tension = 0.55
+				embargo_threshold_factor = 0.6
+				send_volunteer_divisions_required = -0.10
+				send_volunteer_size = 1
+				consumer_goods_factor = 0.01
+				foreign_influence_modifier = 0.05
+			}
+		}
+
+		sisu = {
+			picture = sisu
+			
+			allowed = { always = no }
+			available = { always = no }
+			cancel_if_invalid = no
+
+			modifier = {
+				army_morale_factor = 0.2
+				army_core_attack_factor = 0.3
+				army_core_defence_factor = 0.3
+				conscription = 0.02
+				lend_lease_tension = 0.10
+				send_volunteers_tension = 0.20
+				guarantee_tension = 0.30
+				join_faction_tension = 0.45
+				generate_wargoal_tension = 0.55
+				embargo_threshold_factor = 0.6
+				send_volunteer_divisions_required = -0.10
+				send_volunteer_size = 1
+				consumer_goods_factor = 0.01
+				foreign_influence_modifier = 0.05
+			}
+		}
+			
+		JAP_japanese_pacifism_2_idea = {
+			picture = JAP_japanese_pacificism
+
+			on_add = {
+				set_rule = {
+					can_not_declare_war = yes
+				}
+			}
+			on_remove = {
+				set_rule = {
+					can_not_declare_war = no
+				}
+			}
+			allowed = { always = no }
+			available = { always = no }
+			cancel_if_invalid = no
+				
+			modifier = {
+				stability_factor = 0.15
+				war_support_weekly = -0.0002
+				army_attack_factor = -0.50
+				army_core_attack_factor = 0.60
+				army_defence_factor = -0.50
+				army_core_defence_factor = 0.60
+				production_cost_max_carrier = 60000
+				production_cost_max_helicopter_operator = 60000
+				production_cost_max_destroyer = 40000
+				production_cost_max_stealth_destroyer = 40000
+				production_cost_max_cruiser = 50000
+				expected_mil_modifier = -0.40
+				recruitable_population_factor = -0.80
+				experience_gain_air_factor = -0.50
+				experience_gain_army_factor = -0.50
+				experience_gain_navy_factor = -0.50
+				max_command_power_mult = -0.90
+				army_leader_cost_factor = 0.50
+				ai_focus_defense_factor = 0.20
+			}
+		}
+			
+		JAP_japanese_pacifism_3_idea = {
+			picture = JAP_japanese_pacificism
+
+			on_add = {
+				set_rule = {
+					can_not_declare_war = yes
+				}
+			}
+			on_remove = {
+				set_rule = {
+					can_not_declare_war = no
+				}
+			}
+			allowed = { always = no }
+			available = { always = no }
+			cancel_if_invalid = no
+				
+			modifier = {
+				stability_factor = 0.10
+				war_support_weekly = -0.0001
+				army_attack_factor = -0.50
+				army_core_attack_factor = 0.60
+				army_defence_factor = -0.50
+				army_core_defence_factor = 0.60
+				production_cost_max_carrier = 60000
+				production_cost_max_helicopter_operator = 60000
+				production_cost_max_destroyer = 40000
+				production_cost_max_stealth_destroyer = 40000
+				production_cost_max_cruiser = 50000
+				recruitable_population_factor = -0.80
+				experience_gain_air_factor = -0.50
+				experience_gain_army_factor = -0.50
+				experience_gain_navy_factor = -0.50
+				max_command_power_mult = -0.80
+				army_leader_cost_factor = 0.4
+				ai_focus_defense_factor = 0.10
+			}
+		}
+
+		SWE_nordic_neutrality = {
+			allowed = { always = no }
+			available = { always = no }
+			cancel_if_invalid = no
+
+			picture = SWE_nordic_neutrality
+
+			modifier = {
+				stability_factor = 0.05
+				army_attack_factor = -0.1
+				army_core_defence_factor = 0.15
+				war_support_factor = -0.1
+				ai_badass_factor = 0.75
+				ai_get_ally_desire_factor = -40
+				ai_call_ally_desire_factor = 10
+				ai_join_ally_desire_factor = -60
+				lend_lease_tension = 0.10
+				send_volunteers_tension = 0.20
+				guarantee_tension = 0.30
+				join_faction_tension = 0.55
+				generate_wargoal_tension = 0.55
+				embargo_threshold_factor = 0.6
+				send_volunteer_divisions_required = -0.10
+				send_volunteer_size = 1
+				consumer_goods_factor = 0.01
+				foreign_influence_modifier = 0.05
+			}
+		}
+
+		USA_world_police_idea = {
+			picture = USA_world_police
+			allowed = { always = no }
+			available = { always = no }
+			cancel_if_invalid = no
+
+			modifier = {
+				lend_lease_tension = 0.00
+				send_volunteers_tension = 0.05
+				guarantee_tension = 0.10
+				join_faction_tension = 0.15
+				generate_wargoal_tension = 0.15
+				embargo_threshold_factor = 0.2
+				justify_war_goal_time = -0.10
+				air_volunteer_cap = 1
+				send_volunteer_divisions_required = -0.30
+				consumer_goods_factor = 0.03
+				foreign_influence_modifier = 0.15
+				war_support_factor = -0.1
+				send_volunteer_size = 8
+				army_personnel_cost_multiplier_modifier = 0.05
+			}
+		}
+
+		undisturbed_isolation = {
+			allowed = { always = no }
+			available = { always = no }
+			cancel_if_invalid = no
+
+			modifier = {
+				consumer_goods_expected_value = 0.15
+				production_speed_industrial_complex_factor = -0.2
+				production_speed_arms_factory_factor = -0.2
+				production_speed_dockyard_factor = -0.5
+				conversion_cost_civ_to_mil_factor = 0.2
+				conversion_cost_mil_to_civ_factor = 0.2
+				generate_wargoal_tension = 1.00
+				join_faction_tension = 0.20
+				lend_lease_tension = 0.50
+				send_volunteers_tension = 0.20
+				guarantee_tension = 0.75
+				max_fuel_factor = -0.2
+				fuel_gain_factor = -0.2
+				agency_upgrade_time = 1.0
+			}
+		}
+
+		peaceful_coexistence1 = {
+			allowed = { always = no }
+			available = { always = no }
+			cancel_if_invalid = no
+			picture = emblem_of_china
+			name = state_system
+			modifier = {
+				lend_lease_tension = 0.10
+				send_volunteers_tension = 0.40
+				guarantee_tension = 0.30
+				join_faction_tension = 0.95
+				generate_wargoal_tension = 0.55
+				embargo_threshold_factor = 0.6
+				send_volunteer_divisions_required = -0.10
+				send_volunteer_size = 1
+				consumer_goods_factor = 0.01
+				foreign_influence_modifier = 0.05
+				political_power_gain = 0.25
+				stability_factor = 0.05
+				foreign_subversive_activites = -0.25
+				army_attack_factor = 0.05
+				planning_speed = 0.05
+			}
+		}
+
+		peaceful_coexistence = {
+			allowed = { always = no }
+			available = { always = no }
+			cancel_if_invalid = no
+			picture = emblem_of_china
+			name = chastity_paifang
+			modifier = {
+				lend_lease_tension = 0.15
+				send_volunteers_tension = 0.55
+				guarantee_tension = 0.40
+				join_faction_tension = 1.35
+				generate_wargoal_tension = 1.25
+				embargo_threshold_factor = 0.8
+				justify_war_goal_time = 0.05
+				political_power_gain = 0.5
+				stability_factor = 0.05
+				foreign_subversive_activites = -0.5
+			}
+		}
+	}
+}

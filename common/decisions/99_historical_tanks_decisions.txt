@@ -1,0 +1,1954 @@
+﻿historical_tanks_category = {
+	# Russian Helicopters
+	# Attack Helicopters
+
+	t14_decision = {
+		icon = GFX_decision_armata_button
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_army_experience > 34
+		}
+		custom_cost_text = army_xp_15
+
+		visible = {
+			original_tag = SOV
+		}
+
+		available = {
+			has_tech = medium_gun_tech_3
+			has_tech = diesel_engine_tech_5
+			has_tech = tank_components_tech_4
+			has_tech = era_tech_3
+			has_tech = mbt_tech_3
+			has_tech = armor_tech_3
+			has_tech = Heavy_Anti_tank_2
+			has_tech = defensive_systems_4
+			has_tech = electric_engine_tech_2
+			has_tech = mbt_tech
+			has_tech = medium_gun_tech
+			has_tech = tank_ammo_3
+			has_tech = tank_components_tech_3
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision t14_decision"
+			army_experience = -15
+			create_equipment_variant = {
+				name = "T-14 Armata"
+				type = medium_tank_chassis_3
+				modules = {
+					main_armament_slot = tank_medium_cannon_3
+					secondary_armament_slot = crows_mg
+					ammunition_load_slot = mixed_main_ammo_3
+					turret_type_slot = tank_unmanned_turret
+					suspension_type_slot = tank_torsion_bar_suspension_medium
+					armor_type_slot = tank_composite_armor_gen3
+					engine_type_slot = tank_diesel_engine_gen5
+					reload_type_slot = automatic_loading
+					special_type_slot_1 = smoothbore_atgm_gen3
+					special_type_slot_3 = hardkill_system_gen1
+					special_type_slot_4 = tank_battlestation_3
+					special_type_slot_5 = tank_aux_engine_2
+					special_type_slot_6 = reactive_armor_gen3
+				}
+				upgrades = {
+					tank_nsb_armor_upgrade = 2
+				}
+				icon = "gfx/interface/technologies/SOV/LAND/MBT5.dds"
+				model = "SOV_armor_Bat_3_entity"
+					design_team = mio:SOV_uralvagonzavod_tank_manufacturer
+				}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+	t15_decision = {
+		icon = GFX_decision_t15_button
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_army_experience > 34
+		}
+		custom_cost_text = army_xp_15
+
+		visible = {
+			original_tag = SOV
+		}
+
+		available = {
+			has_tech = big_autocannon_tech_3
+			has_tech = diesel_engine_tech_5
+			has_tech = tank_components_tech_3
+			has_tech = mbt_tech_4
+			has_tech = armor_tech_3
+			has_tech = big_autocannon_tech_4
+			has_tech = defensive_systems_4
+			has_tech = era_tech_3
+			has_tech = mbt_tech
+			has_tech = tank_ammo_2
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision t15_decision"
+			army_experience = -15
+			create_equipment_variant = {
+				name = "T-15"
+				type = medium_tank_flame_chassis_3
+				modules = {
+					main_armament_slot = big_autocannon_3
+					secondary_armament_slot = crows_mg
+					ammunition_load_slot = mixed_autocannon_ammo_2
+					turret_type_slot = tank_unmanned_turret
+					suspension_type_slot = tank_torsion_bar_suspension_medium
+					armor_type_slot = afv_composite_armor_gen3
+					engine_type_slot = tank_diesel_engine_gen5
+					reload_type_slot = automatic_loading
+					special_type_slot_1 = afv_atgm_gen4
+					special_type_slot_2 = afv_troop_capacity
+					special_type_slot_3 = hardkill_system_gen1
+					special_type_slot_4 = tank_battlestation_3
+					special_type_slot_5 = afv_mine_protection
+					special_type_slot_6 = reactive_armor_gen3
+				}
+				upgrades = {
+					tank_nsb_armor_upgrade = 2
+				}
+				icon = "gfx/interface/technologies/SOV/LAND/IFV6.dds"
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+	kurganets_decision = {
+		icon = GFX_decision_kurganets_button
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_army_experience > 34
+		}
+		custom_cost_text = army_xp_15
+
+		visible = {
+			original_tag = SOV
+		}
+
+		available = {
+			has_tech = diesel_engine_tech_4
+			has_tech = mbt_tech_4
+			has_tech = big_autocannon_tech_3
+			has_tech = tank_components_tech_3
+			has_tech = armor_tech_2
+			has_tech = infantry_weapons_1
+			has_tech = mbt_tech
+			has_tech = tank_ammo_2
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision kurganets_decision"
+			army_experience = -15
+			create_equipment_variant = {
+				name = "Kurganets-25"
+				type = medium_tank_amphibious_chassis_3
+				modules = {
+					main_armament_slot = big_autocannon_3
+					secondary_armament_slot = afv_coax_machine_gun_2
+					ammunition_load_slot = mixed_autocannon_ammo_2
+					turret_type_slot = tank_unmanned_turret
+					suspension_type_slot = tank_torsion_bar_suspension_medium
+					armor_type_slot = afv_composite_armor_gen2
+					engine_type_slot = tank_diesel_engine_gen4
+					reload_type_slot = automatic_loading
+					special_type_slot_1 = afv_gun_ports
+					special_type_slot_2 = afv_troop_capacity
+					special_type_slot_3 = afv_atgm_gen4
+					special_type_slot_4 = tank_battlestation_3
+					special_type_slot_5 = afv_mine_protection
+				}
+				upgrades = {
+				}
+				icon = "gfx/interface/technologies/SOV/LAND/APC6.dds"
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+	koalitsiya_decision = {
+		icon = GFX_decision_koalitsiya_button
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_army_experience > 34
+		}
+		custom_cost_text = army_xp_15
+
+		visible = {
+			original_tag = SOV
+		}
+
+		available = {
+			has_tech = tank_components_tech_3
+			has_tech = nsb_artillery_2
+			has_tech = diesel_engine_tech_4
+			has_tech = mbt_tech
+			has_tech = nsb_artillery_ammo_2
+			has_tech = nsb_gun_technology_3
+			has_tech = nsb_special_ammo_1
+			has_tech = nsb_special_ammo_2
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision koalitsiya_decision"
+			army_experience = -15
+			create_equipment_variant = {
+				name = "2S35 Koalitsiya-SV"
+				type = medium_tank_artillery_chassis_3
+				modules = {
+					main_armament_slot = art_med_gun_gen3
+					secondary_armament_slot = empty
+					ammunition_load_slot = artillery_medium_ammo_2
+					turret_type_slot = tank_base_tank_turret
+					suspension_type_slot = tank_torsion_bar_suspension_medium
+					armor_type_slot = tank_steel_armor_gen1
+					engine_type_slot = tank_diesel_engine_gen4
+					reload_type_slot = automatic_loading
+					special_type_slot_1 = heat_ammo_2
+					special_type_slot_2 = laser_guided_ammo_1
+					special_type_slot_3 = empty
+					special_type_slot_4 = tank_battlestation_3
+					special_type_slot_5 = empty
+					special_type_slot_6 = empty
+				}
+				upgrades = {
+				}
+				icon = "GFX_medium_tank_artillery_chassis_2_t"
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+	vbmr_decision = {
+		icon = GFX_decision_france_tank_button
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			check_variable = { treasury > 15 }
+		}
+		custom_cost_text = cost_15_0
+
+		visible = {
+			original_tag = FRA
+		}
+
+		available = {
+			has_tech = mbt_tech_4
+			has_tech = tank_components_tech_4
+			has_tech = infantry_weapons_3
+			has_tech = defensive_systems_2
+			has_tech = diesel_engine_tech_5
+			has_tech = mbt_tech
+			has_tech = mbt_tech_2
+			has_tech = tank_ammo_1
+			has_tech = tank_components_tech_3
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision vbmr_decision"
+			set_temp_variable = { treasury_change = -15 }
+			create_equipment_variant = {
+				name = "VBMR Griffon"
+				type = medium_tank_amphibious_chassis_3
+				modules = {
+					main_armament_slot = afv_machine_gun_3
+					secondary_armament_slot = afv_atgm_gen4
+					ammunition_load_slot = machine_gun_ammo_1
+					turret_type_slot = tank_unmanned_turret
+					suspension_type_slot = tank_wheeled_suspension_medium
+					armor_type_slot = tank_steel_armor_gen2
+					engine_type_slot = tank_diesel_engine_gen5
+					reload_type_slot = automatic_loading
+					special_type_slot_1 = smoke_launchers_2
+					special_type_slot_2 = afv_troop_capacity
+					special_type_slot_3 = afv_mine_protection
+					special_type_slot_4 = tank_battlestation_3
+					special_type_slot_5 = empty
+					special_type_slot_6 = empty
+				}
+				upgrades = {
+				}
+				icon = "gfx/interface/technologies/FRA/LAND/APC6.dds"
+				model = "vbmr_vehicle_entity"
+			}
+		}
+		ai_will_do = { factor = 1000 }
+	}
+	vbci2_decision = {
+		icon = GFX_decision_france_tank_button
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			check_variable = { treasury > 15 }
+		}
+		custom_cost_text = cost_15_0
+
+		visible = {
+			original_tag = FRA
+		}
+
+		available = {
+			has_tech = mbt_tech_4
+			has_tech = tank_components_tech_4
+			has_tech = big_autocannon_tech_3
+			has_tech = defensive_systems_2
+			has_tech = diesel_engine_tech_5
+			has_tech = mbt_tech
+			has_tech = mbt_tech_2
+			has_tech = tank_ammo_2
+			has_tech = tank_components_tech_3
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision vbci2_decision"
+			set_temp_variable = { treasury_change = -15 }
+			create_equipment_variant = {
+				name = "VBCI-2"
+				type = medium_tank_flame_chassis_3
+				modules = {
+					main_armament_slot = big_autocannon_3
+					secondary_armament_slot = afv_atgm_gen4
+					ammunition_load_slot = mixed_autocannon_ammo_2
+					turret_type_slot = tank_unmanned_turret
+					suspension_type_slot = tank_wheeled_suspension_medium
+					armor_type_slot = tank_steel_armor_gen2
+					engine_type_slot = tank_diesel_engine_gen5
+					reload_type_slot = automatic_loading
+					special_type_slot_1 = smoke_launchers_2
+					special_type_slot_2 = afv_troop_capacity
+					special_type_slot_3 = afv_mine_protection
+					special_type_slot_4 = tank_battlestation_3
+					special_type_slot_5 = empty
+					special_type_slot_6 = empty
+				}
+				upgrades = {
+				}
+				icon = "gfx/interface/technologies/FRA/LAND/IFV7.dds"
+				model = "VBCI2_entity"
+			}
+		}
+		ai_will_do = { factor = 1000 }
+	}
+	leclercxlr_decision = {
+		icon = GFX_decision_france_tank_button
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			check_variable = { treasury > 10 }
+		}
+		custom_cost_text = cost_10_0
+
+		visible = {
+			original_tag = FRA
+		}
+
+		available = {
+			has_tech = armor_tech_3
+			has_tech = tank_components_tech_4
+			has_tech = mbt_tech_2
+			has_tech = medium_gun_tech_2
+			has_tech = diesel_engine_tech_5
+			has_tech = era_tech_3
+			has_tech = defensive_systems_3
+			has_tech = infantry_weapons_1
+			has_tech = mbt_tech
+			has_tech = medium_gun_tech
+			has_tech = tank_ammo_2
+			has_tech = tank_components_tech_3
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision leclercxlr_decision"
+			set_temp_variable = { treasury_change = -10 }
+			create_equipment_variant = {
+				name = "Leclerc XLR"
+				type = medium_tank_chassis_2
+				parent_version = 3
+				modules = {
+					main_armament_slot = tank_medium_cannon_2
+					secondary_armament_slot = afv_coax_machine_gun_2
+					ammunition_load_slot = mixed_main_ammo_2
+					turret_type_slot = tank_base_tank_turret
+					suspension_type_slot = tank_torsion_bar_suspension_medium
+					armor_type_slot = tank_composite_armor_gen3
+					engine_type_slot = tank_diesel_engine_gen5
+					reload_type_slot = revolver_magazine
+					special_type_slot_1 = smoke_launchers_3
+					special_type_slot_2 = afv_mine_protection
+					special_type_slot_4 = tank_battlestation_3
+					special_type_slot_5 = additional_mg
+					special_type_slot_6 = reactive_armor_gen3
+				}
+				upgrades = {
+					tank_nsb_armor_upgrade = 4
+				}
+				mark_older_equipment_obsolete = yes
+				icon = "gfx/interface/technologies/FRA/LAND/MBT5.dds"
+				model = "FRA_MD_medium_armor_entity"
+				design_team = mio:FRA_nexter_manufacturer
+			}
+		}
+		ai_will_do = { factor = 1000 }
+	}
+	caesarng_decision = {
+		icon = GFX_decision_france_tank_button
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			check_variable = { treasury > 25 }
+		}
+		custom_cost_text = cost_25_0
+
+		visible = {
+			original_tag = FRA
+		}
+
+		available = {
+			has_tech = mbt_tech_4
+			has_tech = tank_components_tech_4
+			has_tech = defensive_systems_2
+			has_tech = diesel_engine_tech_4
+			has_tech = mbt_tech
+			has_tech = mbt_tech_2
+			has_tech = nsb_artillery_ammo_2
+			has_tech = nsb_gun_technology_3
+			has_tech = nsb_special_ammo_1
+			has_tech = nsb_special_ammo_2
+			has_tech = tank_components_tech_3
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision caesarng_decision"
+			set_temp_variable = { treasury_change = -25 }
+			create_equipment_variant = {
+				name = "CAESAR NG"
+				type = medium_tank_artillery_chassis_3
+				modules = {
+					main_armament_slot = art_med_gun_gen3
+					secondary_armament_slot = empty
+					ammunition_load_slot = artillery_medium_ammo_2
+					turret_type_slot = tank_base_tank_turret
+					suspension_type_slot = tank_wheeled_suspension_medium
+					armor_type_slot = tank_steel_armor_gen2
+					engine_type_slot = tank_diesel_engine_gen4
+					reload_type_slot = automatic_loading
+					special_type_slot_1 = smoke_launchers_2
+					special_type_slot_2 = cluster_ammo_2
+					special_type_slot_3 = heat_ammo_2
+					special_type_slot_4 = tank_battlestation_3
+					special_type_slot_5 = laser_guided_ammo_1
+					special_type_slot_6 = empty
+				}
+				upgrades = {
+				}
+				icon = "gfx/interface/technologies/FRA/LAND/SPG4.dds"
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+	cougarmrap_decision = {
+		icon = GFX_decision_money_dec
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			check_variable = { treasury > 5 }
+		}
+		custom_cost_text = cost_5_0
+
+		visible = {
+			original_tag = USA
+		}
+
+		available = {
+			date > 2002.1.1
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision cougarmrap_decision"
+			set_temp_variable = { treasury_change = -5 }
+			C01 = {
+				create_production_license = {
+					target = USA
+					equipment = {
+						type = util_vehicle_4
+						version_name = "Cougar MRAP"
+					}
+					cost_factor = 0
+				}
+			}
+		}
+		ai_will_do = { factor = 1000 }
+	}
+	vt4_decision = {
+		icon = GFX_decision_generic_tank
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_army_experience > 14
+		}
+		custom_cost_text = army_xp_15
+
+		visible = {
+			original_tag = CHI
+		}
+
+		available = {
+			has_tech = medium_gun_tech_3
+			has_tech = diesel_engine_tech_5
+			has_tech = tank_components_tech_3
+			has_tech = era_tech_3
+			has_tech = mbt_tech_1
+			has_tech = armor_tech_3
+			has_tech = defensive_systems_3
+			has_tech = infantry_weapons_1
+			has_tech = mbt_tech
+			has_tech = medium_gun_tech_2
+			has_tech = tank_ammo_2
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision vt4_decision"
+			army_experience = -15
+			create_equipment_variant = {
+				name = "Haidar"
+				type = medium_tank_chassis_2
+				modules = {
+					main_armament_slot = tank_medium_cannon_2
+					secondary_armament_slot = afv_coax_machine_gun_2
+					ammunition_load_slot = mixed_main_ammo_2
+					turret_type_slot = tank_base_tank_turret
+					suspension_type_slot = tank_torsion_bar_suspension_medium
+					armor_type_slot = tank_composite_armor_gen3
+					engine_type_slot = tank_diesel_engine_gen5
+					reload_type_slot = automatic_loading
+					special_type_slot_1 = smoke_launchers_3
+					special_type_slot_2 = additional_mg
+					special_type_slot_3 = empty
+					special_type_slot_4 = tank_battlestation_3
+					special_type_slot_5 = empty
+					special_type_slot_6 = reactive_armor_gen3
+				}
+				upgrades = {
+				}
+				icon = "gfx/interface/technologies/CHI/LAND/MBT5.dds"
+				model = "CHI_ZTZ99_entity"
+				obsolete = yes
+			}
+			create_production_license = {
+				target = PAK
+				equipment = {
+					type = medium_tank_chassis_2
+					version_name = "Haidar"
+				}
+				cost_factor = 0
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+	type100_decision = {
+		icon = GFX_decision_generic_tank
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_army_experience > 14
+		}
+		custom_cost_text = army_xp_15
+
+		visible = {
+			original_tag = CHI
+		}
+
+		available = {
+			has_tech = mbt_tech_3
+			has_tech = medium_gun_tech_3
+			has_tech = diesel_engine_tech_5
+			has_tech = tank_components_tech_4
+			has_tech = era_tech_3
+			has_tech = armor_tech_3
+			has_tech = defensive_systems_4
+			has_tech = electric_engine_tech_2
+			has_tech = mbt_tech
+			has_tech = tank_ammo_3
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision type100_decision"
+			army_experience = -15
+			create_equipment_variant = {
+				name = "ZTZ-100"
+				type = medium_tank_chassis_3
+				modules = {
+					main_armament_slot = tank_medium_cannon_3
+					secondary_armament_slot = crows_mg
+					ammunition_load_slot = mixed_main_ammo_3
+					turret_type_slot = tank_unmanned_turret
+					suspension_type_slot = tank_torsion_bar_suspension_medium
+					armor_type_slot = tank_composite_armor_gen3
+					engine_type_slot = tank_diesel_engine_gen5
+					reload_type_slot = automatic_loading
+					special_type_slot_1 = wet_ammo_storage
+					special_type_slot_2 = hardkill_system_gen1
+					special_type_slot_3 = afv_mine_protection
+					special_type_slot_4 = tank_battlestation_4
+					special_type_slot_5 = tank_aux_engine_2
+					special_type_slot_6 = reactive_armor_gen3
+				}
+				upgrades = {
+				}
+				model = "CHI_ZTZ99_entity"
+				design_team = mio:CHI_inner_mongolia_first_machinery_tank_manufacturer
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+	type100_support_decision = {
+		icon = GFX_decision_generic_tank
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_army_experience > 14
+		}
+		custom_cost_text = army_xp_15
+
+		visible = {
+			original_tag = CHI
+		}
+
+		available = {
+			has_tech = mbt_tech_3
+			has_tech = big_autocannon_tech_2
+			has_tech = diesel_engine_tech_3
+			has_tech = tank_components_tech_4
+			has_tech = defensive_systems_2
+			has_tech = electric_engine_tech_2
+			has_tech = mbt_tech
+			has_tech = Heavy_Anti_tank_3
+			has_tech = tank_ammo_2
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision type100_support_decision"
+			army_experience = -15
+			create_equipment_variant = {
+				name = "ZBD-100"
+				type = medium_tank_flame_chassis_3
+				modules = {
+					main_armament_slot = big_autocannon_2
+					secondary_armament_slot = crows_mg
+					ammunition_load_slot = mixed_autocannon_ammo_2
+					turret_type_slot = tank_unmanned_turret
+					suspension_type_slot = tank_torsion_bar_suspension_medium
+					armor_type_slot = afv_composite_armor_gen3
+					engine_type_slot = tank_diesel_engine_gen3
+					reload_type_slot = automatic_loading
+					special_type_slot_1 = smoke_launchers_2
+					special_type_slot_2 = afv_atgm_gen4
+					special_type_slot_3 = afv_mine_protection
+					special_type_slot_4 = tank_battlestation_4
+					special_type_slot_5 = afv_troop_capacity
+					special_type_slot_6 = empty
+				}
+				upgrades = {
+					tank_nsb_armor_upgrade = 0
+				}
+				model = "CHI_ZTZ99_entity"
+				design_team = mio:CHI_norinco_manufacturer
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+	bohgana_decision = {
+		icon = GFX_decision_koalitsiya_button
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_army_experience > 34
+		}
+		custom_cost_text = army_xp_15
+
+		visible = {
+			original_tag = UKR
+		}
+
+		available = {
+			has_tech = tank_components_tech_3
+			has_tech = nsb_artillery_2
+			has_tech = util_vehicle_4
+			has_tech = defensive_systems
+			has_tech = diesel_engine_tech_3
+			has_tech = mbt_tech
+			has_tech = nsb_artillery_ammo_2
+			has_tech = nsb_gun_technology_3
+			has_tech = tank_components_tech_2
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision bohgana_decision"
+			army_experience = -15
+			create_equipment_variant = {
+				name = "2C-22 Bohgana"
+				type = medium_tank_artillery_chassis_3
+				modules = {
+					main_armament_slot = art_med_gun_gen3
+					secondary_armament_slot = empty
+					ammunition_load_slot = artillery_medium_ammo_2
+					turret_type_slot = tank_base_tank_turret
+					suspension_type_slot = tank_wheeled_suspension_medium
+					armor_type_slot = tank_steel_armor_gen1
+					engine_type_slot = tank_diesel_engine_gen3
+					reload_type_slot = automatic_loading
+					special_type_slot_1 = smoke_launchers
+					special_type_slot_2 = afv_mine_protection
+					special_type_slot_3 = empty
+					special_type_slot_4 = tank_battlestation_2
+					special_type_slot_5 = empty
+					special_type_slot_6 = empty
+				}
+				upgrades = {
+				}
+				icon = "GFX_medium_tank_artillery_chassis_2_t_r"
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+	GER_Lynx = {
+		fire_only_once = yes
+		icon = decision
+		custom_cost_trigger = {
+			has_army_experience > 34
+		}
+		custom_cost_text = army_xp_15
+
+		visible = {
+			original_tag = GER
+		}
+		available = {
+			has_tech = big_autocannon_tech_3
+			has_tech = diesel_engine_tech_5
+			has_tech = tank_components_tech_3
+			has_tech = mbt_tech_4
+			has_tech = armor_tech_3
+			has_tech = big_autocannon_tech_4
+			has_tech = defensive_systems_2
+			has_tech = infantry_weapons_1
+			has_tech = mbt_tech
+			has_tech = tank_ammo_2
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision GER_Lynx"
+			army_experience = -15
+			create_equipment_variant = {
+				name = "Lynx"
+				type = medium_tank_flame_chassis_3
+				modules = {
+					main_armament_slot = big_autocannon_3
+					secondary_armament_slot = afv_coax_machine_gun_2
+					ammunition_load_slot = mixed_autocannon_ammo_2
+					turret_type_slot = tank_unmanned_turret
+					suspension_type_slot = tank_torsion_bar_suspension_medium
+					armor_type_slot = afv_composite_armor_gen3
+					engine_type_slot = tank_diesel_engine_gen5
+					reload_type_slot = automatic_loading
+					special_type_slot_1 = smoke_launchers_2
+					special_type_slot_2 = afv_mine_protection
+					special_type_slot_3 = afv_troop_capacity
+					special_type_slot_4 = tank_battlestation_3
+					special_type_slot_5 = additional_mg
+					special_type_slot_6 = empty
+				}
+				upgrades = {
+				}
+				icon = "GFX_GER_IFV_7"
+			}
+		}
+		ai_will_do = { factor = 1000 }
+	}
+	GER_RCH_155 = {
+		fire_only_once = yes
+		icon = decision
+		custom_cost_trigger = {
+			has_army_experience > 34
+		}
+		custom_cost_text = army_xp_15
+
+		visible = {
+			original_tag = GER
+		}
+		available = {
+			has_tech = big_autocannon_tech_3
+			has_tech = diesel_engine_tech_5
+			has_tech = tank_components_tech_3
+			has_tech = mbt_tech_4
+			has_tech = armor_tech_3
+			has_tech = big_autocannon_tech_3
+			has_tech = defensive_systems
+			has_tech = diesel_engine_tech_3
+			has_tech = mbt_tech
+			has_tech = nsb_artillery_ammo_2
+			has_tech = nsb_gun_technology_2
+			has_tech = tank_components_tech_2
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision GER_RCH_155"
+			army_experience = -15
+			create_equipment_variant = {
+				name = "RCH 155"
+				type = medium_tank_artillery_chassis_2
+				design_team = mio:GER_rheinmetall_tank_manufacturer
+				parent_version = 0
+				modules = {
+					main_armament_slot = art_med_gun_gen2
+					secondary_armament_slot = empty
+					ammunition_load_slot = artillery_medium_ammo_2
+					turret_type_slot = tank_base_tank_turret
+					suspension_type_slot = tank_torsion_bar_suspension_medium
+					armor_type_slot = tank_steel_armor_gen1
+					engine_type_slot = tank_diesel_engine_gen3
+					reload_type_slot = automatic_loading
+					special_type_slot_1 = smoke_launchers
+					special_type_slot_2 = afv_mine_protection
+					special_type_slot_3 = empty
+					special_type_slot_4 = tank_battlestation_2
+					special_type_slot_5 = empty
+					special_type_slot_6 = empty
+				}
+				upgrades = {
+				}
+				icon = "gfx/interface/technologies/GER/LAND/SPG4.dds"
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+	olifant_2_decision = {
+		icon = GFX_decision_generic_tank
+
+		fire_only_once = yes
+
+		visible = {
+			original_tag = SAF
+		}
+
+		available = {
+			has_tech = small_medium_gun_tech_2
+			has_tech = diesel_engine_tech_3
+			has_tech = tank_components_tech_2
+			has_tech = armor_tech
+			has_tech = defensive_systems
+			has_tech = diesel_engine_tech_4
+			has_tech = era_tech
+			has_tech = infantry_weapons_1
+			has_tech = mbt_tech
+			has_tech = medium_gun_tech
+			has_tech = medium_gun_tech_2
+			has_tech = tank_ammo_2
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision olifant_2_decision"
+			army_experience = -15
+			create_equipment_variant = {
+				name = "Olifant-2"
+				type = medium_tank_chassis_0
+				parent_version = 1
+				modules = {
+					main_armament_slot = tank_medium_cannon_2
+					secondary_armament_slot = afv_coax_machine_gun_2
+					ammunition_load_slot = mixed_main_ammo_2
+					turret_type_slot = tank_base_tank_turret
+					suspension_type_slot = tank_torsion_bar_suspension_medium
+					armor_type_slot = tank_composite_armor_gen1
+					engine_type_slot = tank_diesel_engine_gen4
+					reload_type_slot = manual_loading
+					special_type_slot_1 = smoke_launchers
+					special_type_slot_2 = afv_mine_protection
+					special_type_slot_4 = tank_battlestation_2
+					special_type_slot_5 = additional_mg
+					special_type_slot_6 = reactive_armor_gen1
+				}
+				upgrades = {
+					tank_nsb_armor_upgrade = 6
+				}
+				icon = "GFX_ENG_MBT_1"
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+	t72_czm4_decision = {
+		icon = GFX_decision_generic_tank
+
+		fire_only_once = yes
+
+		visible = {
+			original_tag = CZE
+		}
+
+		available = {
+			has_tech = medium_gun_tech_2
+			has_tech = diesel_engine_tech_4
+			has_tech = tank_components_tech_3
+			has_tech = armor_tech_2
+			has_tech = defensive_systems_3
+			has_tech = diesel_engine_tech_5
+			has_tech = era_tech_3
+			has_tech = infantry_weapons_1
+			has_tech = mbt_tech
+			has_tech = medium_gun_tech
+			has_tech = tank_ammo_2
+			has_tech = tank_components_tech_2
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision t72_czm4_decision"
+			army_experience = -15
+			create_equipment_variant = {
+				name = "T72CZM4"
+				type = medium_tank_chassis_1
+				parent_version = 0
+				modules = {
+					main_armament_slot = tank_medium_cannon_2
+					secondary_armament_slot = afv_coax_machine_gun_2
+					ammunition_load_slot = mixed_main_ammo_2
+					turret_type_slot = tank_soviet_turret
+					suspension_type_slot = tank_torsion_bar_suspension_medium
+					armor_type_slot = tank_composite_armor_gen2
+					engine_type_slot = tank_diesel_engine_gen5
+					reload_type_slot = automatic_loading
+					special_type_slot_1 = smoke_launchers_3
+					special_type_slot_2 = afv_mine_protection
+					special_type_slot_4 = tank_battlestation_2
+					special_type_slot_5 = additional_mg
+					special_type_slot_6 = reactive_armor_gen3
+				}
+				upgrades = {
+					tank_nsb_armor_upgrade = 4
+				}
+				icon = "GFX_GER_MBT_1"
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+	m84d_decision = {
+		icon = GFX_decision_generic_tank
+
+		fire_only_once = yes
+
+		visible = {
+			original_tag = CRO
+		}
+
+		available = {
+			has_tech = medium_gun_tech_2
+			has_tech = diesel_engine_tech_4
+			has_tech = tank_components_tech_3
+			has_tech = armor_tech_2
+			has_tech = defensive_systems_3
+			has_tech = diesel_engine_tech_5
+			has_tech = era_tech_3
+			has_tech = mbt_tech
+			has_tech = medium_gun_tech
+			has_tech = tank_ammo_2
+			has_tech = tank_components_tech_2
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision m84d_decision"
+			army_experience = -15
+			create_equipment_variant = {
+				name = "M-84D"
+				type = medium_tank_chassis_1
+				parent_version = 1
+				modules = {
+					main_armament_slot = tank_medium_cannon_2
+					secondary_armament_slot = crows_mg
+					ammunition_load_slot = mixed_main_ammo_2
+					turret_type_slot = tank_soviet_turret
+					suspension_type_slot = tank_torsion_bar_suspension_medium
+					armor_type_slot = tank_composite_armor_gen2
+					engine_type_slot = tank_diesel_engine_gen5
+					reload_type_slot = automatic_loading
+					special_type_slot_1 = smoke_launchers_3
+					special_type_slot_2 = afv_mine_protection
+					special_type_slot_4 = tank_battlestation_2
+					special_type_slot_5 = empty
+					special_type_slot_6 = reactive_armor_gen3
+				}
+				upgrades = {
+					tank_nsb_armor_upgrade = 4
+				}
+				icon = "GFX_SOV_MBT_2"
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+	al_bashier_decision = {
+		icon = GFX_decision_generic_tank
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_army_experience > 14
+		}
+		custom_cost_text = army_xp_15
+
+		visible = {
+			original_tag = SUD
+		}
+
+		available = {
+			has_tech = medium_gun_tech_2
+			has_tech = diesel_engine_tech_3
+			has_tech = tank_components_tech_2
+			has_tech = armor_tech_2
+			has_tech = defensive_systems
+			has_tech = diesel_engine_tech_4
+			has_tech = era_tech_2
+			has_tech = infantry_weapons_1
+			has_tech = mbt_tech
+			has_tech = tank_ammo_2
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision al_bashier_decision"
+			army_experience = -15
+			create_equipment_variant = {
+				name = "Al-Bashier"
+				type = medium_tank_chassis_1
+				parent_version = 0
+				modules = {
+					main_armament_slot = tank_medium_cannon_2
+					secondary_armament_slot = afv_coax_machine_gun_2
+					ammunition_load_slot = mixed_main_ammo_2
+					turret_type_slot = tank_soviet_turret
+					suspension_type_slot = tank_torsion_bar_suspension_medium
+					armor_type_slot = tank_composite_armor_gen2
+					engine_type_slot = tank_diesel_engine_gen4
+					reload_type_slot = automatic_loading
+					special_type_slot_1 = empty
+					special_type_slot_2 = smoke_launchers
+					special_type_slot_3 = additional_mg
+					special_type_slot_4 = tank_battlestation_2
+					special_type_slot_5 = afv_mine_protection
+					special_type_slot_6 = reactive_armor_gen2
+				}
+				upgrades = {
+					tank_nsb_armor_upgrade = 5
+				}
+				icon = "GFX_CHI_MBT_2"
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+	altay_decision = {
+		icon = GFX_decision_generic_tank
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_army_experience > 34
+		}
+		custom_cost_text = army_xp_15
+
+		visible = {
+			original_tag = TUR
+		}
+
+		available = {
+			has_tech = mbt_tech_2
+			has_tech = medium_gun_tech_3
+			has_tech = diesel_engine_tech_5
+			has_tech = tank_components_tech_4
+			has_tech = armor_tech_3
+			has_tech = era_tech_3
+			has_tech = Heavy_Anti_tank_2
+			has_tech = defensive_systems_4
+			has_tech = infantry_weapons_1
+			has_tech = mbt_tech
+			has_tech = medium_gun_tech
+			has_tech = medium_gun_tech_2
+			has_tech = tank_ammo_2
+			has_tech = tank_components_tech_3
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision altay_decision"
+			army_experience = -15
+			create_equipment_variant = {
+				name = "Altay"
+				type = medium_tank_chassis_2
+				parent_version = 1
+				modules = {
+					main_armament_slot = tank_medium_cannon_2
+					secondary_armament_slot = afv_coax_machine_gun_2
+					ammunition_load_slot = mixed_main_ammo_2
+					turret_type_slot = tank_base_tank_turret
+					suspension_type_slot = tank_torsion_bar_suspension_medium
+					armor_type_slot = tank_composite_armor_gen3
+					engine_type_slot = tank_diesel_engine_gen5
+					reload_type_slot = automatic_loading
+					special_type_slot_1 = hardkill_system_gen1
+					special_type_slot_2 = smoothbore_atgm_gen3
+					special_type_slot_4 = tank_battlestation_3
+					special_type_slot_5 = afv_mine_protection
+					special_type_slot_6 = reactive_armor_gen3
+				}
+				upgrades = {
+					tank_nsb_armor_upgrade = 5
+				}
+				icon = "gfx/interface/technologies/TUR/LAND/Altay1A1.dds"
+			}
+		}
+		ai_will_do = { factor = 1000 }
+	}
+	tulpar_decision = {
+		icon = GFX_decision_generic_tank
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_army_experience > 24
+		}
+		custom_cost_text = army_xp_25
+
+		visible = {
+			original_tag = TUR
+		}
+
+		available = {
+			has_tech = small_autocannon_tech_3
+			has_tech = medium_gun_tech_2
+			has_tech = diesel_engine_tech_4
+			has_tech = tank_components_tech_3
+			has_tech = era_tech_3
+			has_tech = armor_tech_2
+			has_tech = armor_tech_3
+			has_tech = defensive_systems_2
+			has_tech = defensive_systems_3
+			has_tech = diesel_engine_tech_3
+			has_tech = era_tech_2
+			has_tech = infantry_weapons_1
+			has_tech = mbt_tech
+			has_tech = small_autocannon_tech_2
+			has_tech = tank_ammo_1
+			has_tech = tank_ammo_2
+			has_tech = tank_components_tech_2
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision tulpar_decision"
+			army_experience = -25
+			create_equipment_variant = {
+				name = "Tulpar IFV"
+				type = medium_tank_amphibious_chassis_2
+				parent_version = 1
+				modules = {
+					main_armament_slot = small_autocannon_2
+					secondary_armament_slot = afv_coax_machine_gun_2
+					ammunition_load_slot = mixed_autocannon_ammo_1
+					turret_type_slot = tank_base_tank_turret
+					suspension_type_slot = tank_torsion_bar_suspension_medium
+					armor_type_slot = afv_composite_armor_gen3
+					engine_type_slot = tank_diesel_engine_gen4
+					reload_type_slot = automatic_loading
+					special_type_slot_1 = afv_troop_capacity
+					special_type_slot_2 = smoke_launchers_3
+					special_type_slot_3 = afv_mine_protection
+					special_type_slot_4 = tank_battlestation_3
+					special_type_slot_5 = additional_mg
+					special_type_slot_6 = reactive_armor_gen2
+				}
+				upgrades = {
+				}
+				icon = "gfx/interface/technologies/GER/LAND/IFV6.dds"
+			}
+			create_equipment_variant = {
+				name = "Tulpar LT"
+			type = medium_tank_chassis_2
+			parent_version = 1
+			modules = {
+				main_armament_slot = tank_medium_cannon_2
+				secondary_armament_slot = afv_coax_machine_gun_2
+				ammunition_load_slot = mixed_main_ammo_2
+				turret_type_slot = tank_base_tank_turret
+				suspension_type_slot = tank_torsion_bar_suspension_medium
+				armor_type_slot = afv_composite_armor_gen2
+				engine_type_slot = tank_diesel_engine_gen3
+				reload_type_slot = automatic_loading
+				special_type_slot_1 = smoke_launchers_2
+				special_type_slot_2 = afv_mine_protection
+				special_type_slot_3 = additional_mg
+				special_type_slot_4 = tank_battlestation_2
+				special_type_slot_5 = empty
+				special_type_slot_6 = empty
+			}
+			upgrades = {
+			}
+			icon = "gfx/interface/technologies/TUR/LAND/Tulpar_LT_A1.dds"
+			}
+		}
+		ai_will_do = { factor = 1000 }
+	}
+	borsuk_decision = {
+		icon = GFX_decision_generic_tank
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_army_experience > 24
+		}
+		custom_cost_text = army_xp_25
+
+		visible = {
+			original_tag = POL
+		}
+
+		available = {
+			has_tech = small_autocannon_tech_3
+			has_tech = medium_gun_tech_2
+			has_tech = diesel_engine_tech_4
+			has_tech = tank_components_tech_3
+			has_tech = era_tech_3
+			has_tech = armor_tech_3
+			has_tech = defensive_systems_3
+			has_tech = era_tech_2
+			has_tech = infantry_weapons_1
+			has_tech = mbt_tech
+			has_tech = small_autocannon_tech_2
+			has_tech = tank_ammo_1
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision borsuk_decision"
+			army_experience = -25
+			create_equipment_variant = {
+				name = "Borsuk"
+				type = medium_tank_amphibious_chassis_2
+				parent_version = 1
+				modules = {
+					main_armament_slot = small_autocannon_2
+					secondary_armament_slot = afv_coax_machine_gun_2
+					ammunition_load_slot = mixed_autocannon_ammo_1
+					turret_type_slot = tank_base_tank_turret
+					suspension_type_slot = tank_torsion_bar_suspension_medium
+					armor_type_slot = afv_composite_armor_gen3
+					engine_type_slot = tank_diesel_engine_gen4
+					reload_type_slot = automatic_loading
+					special_type_slot_1 = afv_troop_capacity
+					special_type_slot_2 = smoke_launchers_3
+					special_type_slot_3 = afv_mine_protection
+					special_type_slot_4 = tank_battlestation_3
+					special_type_slot_5 = additional_mg
+					special_type_slot_6 = reactive_armor_gen2
+				}
+				upgrades = {
+				}
+				icon = "gfx/interface/technologies/GER/LAND/IFV6.dds"
+			}
+		}
+		ai_will_do = { factor = 1000 }
+	}
+	lch_prachand_decision = {
+		icon = GFX_decision_generic_tank
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_army_experience > 24
+		}
+		custom_cost_text = army_xp_25
+
+		visible = {
+			original_tag = RAJ
+		}
+
+		available = {
+			has_tech = nsb_attack_helicopter_tech_2
+			has_tech = nsb_multiple_atgm_tech_2
+			has_tech = nsb_rocket_pods_tech_2
+			has_tech = nsb_engine_tech_2
+			has_tech = avionics_2
+			has_tech = avionics_1
+			has_tech = countermeasures_1
+			has_tech = nsb_atgm_tech_2
+			has_tech = nsb_attack_helicopter_tech_1
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision lch_prachand_decision"
+			army_experience = -25
+			create_equipment_variant = {
+				name = "LCH Prachand"
+				type = heavy_tank_chassis_2
+				modules = {
+					chassis_type_slot = helicopter_medium_chassis
+					helicopter_body_layout = gunship_layout
+					helicopter_body_mount_1 = helicopter_atgm_gen2
+					nose_gun_type_slot = helicopter_light_nose_gun_gen2
+					armor_type_slot = helicopter_armor_gen2
+					engine_type_slot = helicopter_turbine_engine_gen2
+					defence_type_slot = flare_launchers
+					sensor_and_avionics_slot = sensors_and_avionics_gen_2
+				}
+				upgrades = {
+				}
+				icon = "gfx/interface/technologies/SOV/AIR/AH4.dds"
+			}
+		}
+		ai_will_do = { factor = 1000 }
+	}
+	akash_ng_decision = {
+		icon = GFX_decision_generic_tank
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_army_experience > 14
+		}
+		custom_cost_text = army_xp_15
+
+		visible = {
+			original_tag = RAJ
+		}
+
+		available = {
+			has_tech = nsb_Anti_Air_3
+			has_tech = tech_combat_radar_3
+			has_tech = tank_components_tech_3
+			has_tech = defensive_systems_2
+			has_tech = diesel_engine_tech_3
+			has_tech = era_tech
+			has_tech = mbt_tech
+			has_tech = mbt_tech_2
+			has_tech = nsb_SHORAD_missile_1
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision akash_ng_decision"
+			army_experience = -15
+			create_equipment_variant = {
+				name = "Akash-NG"
+				type = medium_tank_aa_chassis_2
+				modules = {
+					main_armament_slot = missile_launcher_system
+					reload_type_slot = eight_missile_pack
+					ammunition_load_slot = spaa_short_range_missiles_2
+					turret_type_slot = tank_base_tank_turret
+					suspension_type_slot = tank_torsion_bar_suspension_medium
+					armor_type_slot = tank_steel_armor_gen2
+					engine_type_slot = tank_diesel_engine_gen3
+					special_type_slot_1 = smoke_launchers_2
+					special_type_slot_2 = reactive_armor_gen1
+					special_type_slot_3 = afv_mine_protection
+					special_type_slot_4 = spaa_off_vehicle_radar_gen4
+				}
+				upgrades = {
+				}
+				icon = "GFX_TUR_SP_Anti_Air_3_medium"
+			}
+		}
+		ai_will_do = { factor = 1000 }
+	}
+	ztz99b_decision = {
+		icon = GFX_decision_generic_tank
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_army_experience > 34
+		}
+		custom_cost_text = army_xp_15
+
+		visible = {
+			original_tag = CHI
+		}
+
+		available = {
+			has_tech = mbt_tech_4
+			has_tech = tank_ammo_3
+			has_tech = armor_tech_4
+			has_tech = diesel_engine_tech_4
+			has_tech = defensive_systems_4
+			has_tech = era_tech_3
+			has_tech = tank_components_tech_4
+			has_tech = medium_gun_tech_3
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision ztz99b_decision"
+			army_experience = -15
+			create_equipment_variant = {
+				name = "ZTZ-99B"
+				type = medium_tank_chassis_2
+				modules = {
+					main_armament_slot = tank_medium_cannon_2
+					secondary_armament_slot = afv_coax_machine_gun_2
+					ammunition_load_slot = mixed_main_ammo_3
+					turret_type_slot = tank_base_tank_turret
+					suspension_type_slot = tank_torsion_bar_suspension_medium
+					armor_type_slot = tank_composite_armor_gen3
+					engine_type_slot = tank_diesel_engine_gen4
+					reload_type_slot = automatic_loading
+					special_type_slot_2 = hardkill_system_gen1
+					special_type_slot_3 = afv_mine_protection
+					special_type_slot_4 = tank_battlestation_3
+					special_type_slot_5 = additional_mg
+					special_type_slot_6 = reactive_armor_gen3
+				}
+				upgrades = {
+					tank_nsb_armor_upgrade = 4
+				}
+				icon = "gfx/interface/technologies/CHI/LAND/MBT5.dds"
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+	zbl19_decision = {
+		icon = GFX_decision_generic_tank
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_army_experience > 34
+		}
+		custom_cost_text = army_xp_15
+
+		visible = {
+			original_tag = CHI
+		}
+
+		available = {
+			has_tech = small_autocannon_tech_3
+			has_tech = armor_tech_3
+			has_tech = diesel_engine_tech_3
+			has_tech = tank_components_tech_3
+			has_tech = defensive_systems_2
+			has_tech = mbt_tech_2
+			has_tech = tank_ammo_2
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision zbl19_decision"
+			army_experience = -15
+			create_equipment_variant = {
+				name = "ZBL-19"
+				type = medium_tank_amphibious_chassis_2
+				modules = {
+					main_armament_slot = small_autocannon_3
+					secondary_armament_slot = afv_coax_machine_gun_2
+					ammunition_load_slot = mixed_autocannon_ammo_2
+					turret_type_slot = tank_unmanned_turret
+					suspension_type_slot = tank_wheeled_suspension_medium
+					armor_type_slot = afv_composite_armor_gen2
+					engine_type_slot = tank_diesel_engine_gen3
+					reload_type_slot = automatic_loading
+					special_type_slot_1 = smoke_launchers_2
+					special_type_slot_2 = afv_reverse_doors
+					special_type_slot_3 = afv_troop_capacity
+					special_type_slot_4 = tank_battlestation_3
+					special_type_slot_5 = afv_mine_protection
+					special_type_slot_6 = empty
+				}
+				design_team = mio:CHI_norinco_manufacturer
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+	leopard2a8_decision = {
+		icon = GFX_decision_generic_tank
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_army_experience > 34
+		}
+		custom_cost_text = army_xp_15
+
+		visible = {
+			original_tag = GER
+		}
+
+		available = {
+			has_tech = mbt_tech_4
+			has_tech = tank_ammo_3
+			has_tech = armor_tech_4
+			has_tech = diesel_engine_tech_4
+			has_tech = defensive_systems_4
+			has_tech = era_tech_3
+			has_tech = tank_components_tech_4
+			has_tech = medium_gun_tech_3
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision leopard2a8_decision"
+			army_experience = -15
+			create_equipment_variant = {
+				name = "Leopard 2A8"
+				type = medium_tank_chassis_2
+				modules = {
+					main_armament_slot = tank_medium_cannon_2
+					secondary_armament_slot = crows_mg
+					ammunition_load_slot = mixed_main_ammo_3
+					turret_type_slot = tank_base_tank_turret
+					suspension_type_slot = tank_torsion_bar_suspension_medium
+					armor_type_slot = tank_composite_armor_gen3
+					engine_type_slot = tank_diesel_engine_gen4
+					reload_type_slot = manual_loading
+					special_type_slot_2 = hardkill_system_gen1
+					special_type_slot_3 = afv_mine_protection
+					special_type_slot_4 = tank_battlestation_3
+					special_type_slot_5 = empty
+					special_type_slot_6 = reactive_armor_gen3
+				}
+				upgrades = {
+					tank_nsb_armor_upgrade = 4
+				}
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+	mi28nm_decision = {
+		icon = GFX_decision_generic_tank
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_army_experience > 34
+		}
+		custom_cost_text = army_xp_15
+
+		visible = {
+			original_tag = SOV
+		}
+
+		available = {
+			has_tech = nsb_attack_helicopter_tech_3
+			has_tech = nsb_heavy_atgm_tech_3
+			has_tech = nsb_rocket_pods_tech_3
+			has_tech = nsb_light_nose_gun_tech_3
+			has_tech = nsb_engine_tech_3
+			has_tech = tech_combat_radar_3
+			has_tech = nsb_defense_tech_2
+			has_tech = armor_tech_3
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision mi28nm_decision"
+			army_experience = -15
+			create_equipment_variant = {
+				name = "Mi-28NM"
+				type = heavy_tank_chassis_2
+				modules = {
+					chassis_type_slot = helicopter_medium_chassis
+					helicopter_body_layout = gunship_layout
+					helicopter_body_mount_1 = helicopter_heavy_atgm_gen3
+					helicopter_body_mount_2 = helicopter_rocket_pod_gen3
+					nose_gun_type_slot = helicopter_heavy_nose_gun_gen3
+					engine_type_slot = helicopter_turbine_engine_gen3
+					defence_type_slot = flare_launchers
+					sensor_and_avionics_slot = sensors_and_avionics_gen_3
+					armor_type_slot = helicopter_armor_gen3
+					helicopter_wing_mount_1 = helicopter_aa_missile_gen3
+				}
+				upgrades = {
+					helicopter_nsb_upgrade = 3
+				}
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+	ka52m_decision = {
+		icon = GFX_decision_generic_tank
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_army_experience > 34
+		}
+		custom_cost_text = army_xp_15
+
+		visible = {
+			original_tag = SOV
+		}
+
+		available = {
+			has_tech = nsb_attack_helicopter_tech_3
+			has_tech = nsb_multiple_atgm_tech_3
+			has_tech = nsb_rocket_pods_tech_3
+			has_tech = nsb_light_nose_gun_tech_3
+			has_tech = nsb_engine_tech_3
+			has_tech = tech_combat_radar_3
+			has_tech = nsb_defense_tech_2
+			has_tech = armor_tech_3
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision ka52m_decision"
+			army_experience = -15
+			create_equipment_variant = {
+				name = "Ka-52M"
+				type = heavy_tank_chassis_2
+				modules = {
+					chassis_type_slot = helicopter_medium_chassis
+					helicopter_body_layout = gunship_layout
+					helicopter_body_mount_1 = helicopter_multiple_atgm_gen3
+					helicopter_body_mount_2 = helicopter_rocket_pod_gen3
+					nose_gun_type_slot = helicopter_medium_nose_gun_gen3
+					engine_type_slot = helicopter_coaxial_engine_gen3
+					defence_type_slot = flare_launchers
+					sensor_and_avionics_slot = sensors_and_avionics_gen_3
+					armor_type_slot = helicopter_armor_gen3
+					helicopter_wing_mount_1 = helicopter_aa_missile_gen3
+				}
+				upgrades = {
+					helicopter_nsb_upgrade = 3
+				}
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+	arjun_mk2_decision = {
+		icon = GFX_decision_generic_tank
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_army_experience > 34
+		}
+		custom_cost_text = army_xp_15
+
+		visible = {
+			original_tag = RAJ
+		}
+
+		available = {
+			has_tech = mbt_tech_3
+			has_tech = tank_ammo_2
+			has_tech = armor_tech_3
+			has_tech = diesel_engine_tech_3
+			has_tech = defensive_systems_2
+			has_tech = tank_components_tech_3
+			has_tech = medium_gun_tech_2
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision arjun_mk2_decision"
+			army_experience = -15
+			create_equipment_variant = {
+				name = "Arjun Mk-2"
+				type = medium_tank_chassis_2
+				modules = {
+					main_armament_slot = tank_medium_cannon_2
+					secondary_armament_slot = afv_coax_machine_gun_2
+					ammunition_load_slot = mixed_main_ammo_2
+					turret_type_slot = tank_base_tank_turret
+					suspension_type_slot = tank_torsion_bar_suspension_medium
+					armor_type_slot = tank_composite_armor_gen3
+					engine_type_slot = tank_diesel_engine_gen3
+					reload_type_slot = manual_loading
+					special_type_slot_1 = smoke_launchers_2
+					special_type_slot_2 = additional_mg
+					special_type_slot_3 = afv_mine_protection
+					special_type_slot_4 = tank_battlestation_3
+					special_type_slot_5 = empty
+					special_type_slot_6 = reactive_armor_gen2
+				}
+				upgrades = {
+					tank_nsb_armor_upgrade = 3
+				}
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+
+	karrar_decision = {
+		icon = GFX_decision_generic_armor_button
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_army_experience > 34
+		}
+		custom_cost_text = army_xp_15
+
+		visible = {
+			original_tag = PER
+		}
+
+		available = {
+			has_tech = mbt_tech_1
+			has_tech = medium_gun_tech_2
+			has_tech = diesel_engine_tech_3
+			has_tech = tank_components_tech_3
+			has_tech = era_tech_2
+			has_tech = armor_tech_2
+			has_tech = tank_ammo_2
+			has_tech = defensive_systems_2
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision karrar_decision"
+			army_experience = -15
+			create_equipment_variant = {
+				name = "Karrar"
+				type = medium_tank_chassis_1
+				modules = {
+					main_armament_slot = tank_medium_cannon_2
+					secondary_armament_slot = afv_coax_machine_gun_2
+					ammunition_load_slot = mixed_main_ammo_2
+					turret_type_slot = tank_base_tank_turret
+					suspension_type_slot = tank_torsion_bar_suspension_medium
+					armor_type_slot = tank_composite_armor_gen1
+					engine_type_slot = tank_diesel_engine_gen3
+					reload_type_slot = automatic_loading
+					special_type_slot_1 = smoke_launchers
+					special_type_slot_2 = additional_mg
+					special_type_slot_3 = empty
+					special_type_slot_4 = tank_battlestation_3
+					special_type_slot_5 = empty
+					special_type_slot_6 = reactive_armor_gen2
+				}
+				upgrades = {
+					tank_nsb_armor_upgrade = 5
+				}
+				icon = "gfx/interface/technologies/PER/LAND/Karrar_A1.dds"
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+
+	nko_m2020_decision = {
+		icon = GFX_decision_generic_armor_button
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_army_experience > 34
+		}
+		custom_cost_text = army_xp_15
+
+		visible = {
+			original_tag = NKO
+		}
+
+		available = {
+			has_tech = mbt_tech_2
+			has_tech = medium_gun_tech_2
+			has_tech = diesel_engine_tech_3
+			has_tech = tank_components_tech_3
+			has_tech = era_tech_2
+			has_tech = armor_tech_2
+			has_tech = tank_ammo_2
+			has_tech = defensive_systems_2
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision nko_m2020_decision"
+			army_experience = -15
+			create_equipment_variant = {
+				name = "M-2020"
+				type = medium_tank_chassis_2
+				modules = {
+					main_armament_slot = tank_medium_cannon_2
+					secondary_armament_slot = afv_coax_machine_gun_2
+					ammunition_load_slot = mixed_main_ammo_2
+					turret_type_slot = tank_base_tank_turret
+					suspension_type_slot = tank_torsion_bar_suspension_medium
+					armor_type_slot = tank_composite_armor_gen2
+					engine_type_slot = tank_diesel_engine_gen3
+					reload_type_slot = automatic_loading
+					special_type_slot_1 = smoke_launchers
+					special_type_slot_2 = additional_mg
+					special_type_slot_3 = empty
+					special_type_slot_4 = tank_battlestation_3
+					special_type_slot_5 = empty
+					special_type_slot_6 = reactive_armor_gen2
+				}
+				upgrades = {
+					tank_nsb_armor_upgrade = 5
+				}
+				icon = "gfx/interface/technologies/NKO/LAND/MBT5.dds"
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+
+	k2_pip_decision = {
+		icon = GFX_decision_generic_armor_button
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_army_experience > 34
+		}
+		custom_cost_text = army_xp_15
+
+		visible = {
+			original_tag = KOR
+		}
+
+		available = {
+			has_tech = mbt_tech_2
+			has_tech = medium_gun_tech_2
+			has_tech = diesel_engine_tech_4
+			has_tech = tank_components_tech_3
+			has_tech = era_tech_3
+			has_tech = armor_tech_3
+			has_tech = tank_ammo_2
+			has_tech = defensive_systems_3
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision k2_pip_decision"
+			army_experience = -15
+			create_equipment_variant = {
+				name = "K2 PIP"
+				type = medium_tank_chassis_2
+				modules = {
+					main_armament_slot = tank_medium_cannon_2
+					secondary_armament_slot = crows_mg
+					ammunition_load_slot = mixed_main_ammo_2
+					turret_type_slot = tank_base_tank_turret
+					suspension_type_slot = tank_pneumatic_suspension_medium
+					armor_type_slot = tank_composite_armor_gen2
+					engine_type_slot = tank_diesel_engine_gen4
+					reload_type_slot = automatic_loading
+					special_type_slot_1 = hardkill_system_gen1
+					special_type_slot_2 = afv_mine_protection
+					special_type_slot_3 = empty
+					special_type_slot_4 = tank_battlestation_3
+					special_type_slot_5 = tank_aux_engine
+					special_type_slot_6 = reactive_armor_gen3
+				}
+				upgrades = {
+					tank_nsb_armor_upgrade = 5
+				}
+				icon = "GFX_KOR_MBT_5"
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+
+	alkhalid1_decision = {
+		icon = GFX_decision_generic_armor_button
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_army_experience > 34
+		}
+		custom_cost_text = army_xp_15
+
+		visible = {
+			original_tag = PAK
+		}
+
+		available = {
+			has_tech = mbt_tech_1
+			has_tech = medium_gun_tech_2
+			has_tech = diesel_engine_tech_3
+			has_tech = tank_components_tech_3
+			has_tech = era_tech_2
+			has_tech = armor_tech_2
+			has_tech = tank_ammo_2
+			has_tech = defensive_systems_2
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision alkhalid1_decision"
+			army_experience = -15
+			create_equipment_variant = {
+				name = "Al-Khalid I"
+				type = medium_tank_chassis_1
+				modules = {
+					main_armament_slot = tank_medium_cannon_2
+					secondary_armament_slot = afv_coax_machine_gun_2
+					ammunition_load_slot = mixed_main_ammo_2
+					turret_type_slot = tank_soviet_turret
+					suspension_type_slot = tank_torsion_bar_suspension_medium
+					armor_type_slot = tank_composite_armor_gen1
+					engine_type_slot = tank_diesel_engine_gen3
+					reload_type_slot = automatic_loading
+					special_type_slot_1 = empty
+					special_type_slot_2 = smoke_launchers
+					special_type_slot_3 = spaced_armor_gen2
+					special_type_slot_4 = tank_battlestation_3
+					special_type_slot_5 = additional_mg
+					special_type_slot_6 = reactive_armor_gen2
+				}
+				upgrades = {
+					tank_nsb_armor_upgrade = 5
+				}
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+
+	m84as2_decision = {
+		icon = GFX_decision_generic_armor_button
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_army_experience > 34
+		}
+		custom_cost_text = army_xp_15
+
+		visible = {
+			original_tag = SER
+		}
+
+		available = {
+			has_tech = mbt_tech_1
+			has_tech = medium_gun_tech_2
+			has_tech = diesel_engine_tech_3
+			has_tech = tank_components_tech_3
+			has_tech = era_tech_2
+			has_tech = armor_tech_2
+			has_tech = tank_ammo_2
+			has_tech = defensive_systems_2
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision m84as2_decision"
+			army_experience = -15
+			create_equipment_variant = {
+				name = "M-84AS2"
+				type = medium_tank_chassis_1
+				modules = {
+					main_armament_slot = tank_medium_cannon_2
+					secondary_armament_slot = afv_coax_machine_gun_2
+					ammunition_load_slot = mixed_main_ammo_2
+					turret_type_slot = tank_soviet_turret
+					suspension_type_slot = tank_torsion_bar_suspension_medium
+					armor_type_slot = tank_composite_armor_gen1
+					engine_type_slot = tank_diesel_engine_gen3
+					reload_type_slot = automatic_loading
+					special_type_slot_1 = smoke_launchers
+					special_type_slot_2 = additional_mg
+					special_type_slot_3 = empty
+					special_type_slot_4 = tank_battlestation_3
+					special_type_slot_5 = empty
+					special_type_slot_6 = reactive_armor_gen2
+				}
+				upgrades = {
+					tank_nsb_armor_upgrade = 4
+				}
+				icon = "gfx/interface/technologies/SER/LAND/MBT2_M84AS2.dds"
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+}

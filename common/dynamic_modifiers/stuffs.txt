@@ -1,0 +1,426 @@
+antarctica_laboratory_dynamic_modifier = {
+	enable = { always = yes }
+}
+
+influence_drift_modifier = {
+	enable = { always = yes }
+}
+
+neighbor_effect_modifiers = {
+	enable = { always = yes }
+}
+
+Commonwealth_member_modifier = {
+	enable = { always = yes }
+}
+
+united_nations_member = {
+	enable = { always = yes }
+}
+JAP_army_modifier = {
+	icon = GFX_idea_japanese_army
+
+	experience_gain_army = JAP_experience_gain_army_landforces
+	max_planning = JAP_max_planning_landforces
+	planning_speed = JAP_planning_speed_landforces
+	training_time_factor = JAP_training_time_factor_landforces
+	org_loss_when_moving = JAP_org_loss_when_moving_landforces
+	resistance_damage_to_garrison = JAP_resistance_damage_to_garrison_landforces
+	resistance_growth = JAP_resistance_growth_landforces
+	police_cost_multiplier_modifier = JAP_police_cost_multiplier_modifier_landforces
+	recon_factor_while_entrenched = JAP_recon_factor_while_entrenched_landforces
+	army_artillery_attack_factor = JAP_army_artillery_attack_factor_landforces
+	army_armor_speed_factor = JAP_army_armor_speed_factor_landforces
+	mechanized_attack_factor = JAP_mechanized_attack_factor_landforces
+	medium_tank_rocket_chassis_design_cost_factor = JAP_medium_tank_rocket_chassis_design_cost_factor_landforces
+	rocket_attack_factor = JAP_rocket_attack_factor_landforces
+	trait_artillery_expert_xp_gain_factor = JAP_trait_artillery_expert_xp_gain_factor_landforces
+	recon_factor = JAP_recon_factor_landforces
+	army_intel_factor = JAP_army_intel_factor_landforces
+	experience_gain_air = JAP_experience_gain_air_airforce
+	air_detection = JAP_air_detection_airforce
+	air_mission_efficiency = JAP_air_mission_efficiency_airforce
+	air_attack_factor = JAP_air_attack_factor_airforce
+	air_mission_xp_gain_factor = JAP_air_mission_xp_gain_factor_airforce
+	air_range_factor = JAP_air_range_factor_airforce
+	air_cas_efficiency = JAP_air_cas_efficiency_airforce
+	spysat_production_speed_modifier = JAP_spysat_production_speed_modifier_airforce
+	airforce_intel_factor = JAP_airforce_intel_factor_airforce
+	strategic_bomb_visibility = JAP_strategic_bomb_visibility_airforce
+	experience_gain_navy = JAP_experience_gain_navy_navy
+	navy_org_factor = JAP_navy_org_factor_navy
+	navy_submarine_detection_factor = JAP_navy_submarine_detection_factor_navy
+	naval_coordination = JAP_naval_coordination_navy
+	special_forces_attack_factor = JAP_special_forces_attack_factor_navy
+	naval_invasion_prep_speed = JAP_naval_invasion_prep_speed_navy
+	navy_max_range_factor = JAP_navy_max_range_factor_navy
+	positioning = JAP_positioning_navy
+	trait_air_controller_xp_gain_factor = JAP_trait_air_controller_xp_gain_factor_navy
+	trait_ironside_xp_gain_factor = JAP_trait_ironside_xp_gain_factor_navy
+	navy_intel_factor = JAP_navy_intel_factor_navy
+	military_factories_productivity = 0.10
+	production_factory_max_efficiency_factor = JAP_production_factory_max_efficiency_factor_industry
+	production_speed_buildings_factor = JAP_production_speed_buildings_factor_industry
+	energy_use_modifier_civs = JAP_energy_use_modifier_civs_industry
+	energy_use_modifier_mils = JAP_energy_use_modifier_mils_industry
+	production_speed_arms_factory_factor = JAP_production_speed_arms_factory_factor_industry
+	production_speed_dockyard_factor = JAP_production_speed_dockyard_factor_industry
+	industrial_capacity_dockyard = JAP_industrial_capacity_dockyard_industry
+	industrial_capacity_factory = JAP_industrial_capacity_factory_industry
+	line_change_production_efficiency_factor = JAP_line_change_production_efficiency_factor_industry
+	mil_facs_worker_requirement_modifier = JAP_mil_facs_worker_requirement_modifier_industry
+	scientist_breakthrough_bonus_factor = JAP_scientist_breakthrough_bonus_factor_industry
+	scientist_research_bonus_factor = JAP_scientist_research_bonus_factor_industry
+
+	custom_modifier_tooltip = JAP_carrier_aviation_tt
+	custom_modifier_tooltip = JAP_japanese_tech_agency_tt
+}
+
+USA_lawless_city_state_dynamic = {
+	icon = GFX_idea_NYP_lawless_city
+	army_defence_factor = -0.33
+	recruitable_population_factor = -0.66
+	resistance_growth = 0.33
+	resistance_decay = -0.33
+}
+
+population_tax_stability_hit = {
+	enable = { always = yes }
+	stability_factor = stability_factor_from_population_tax
+	poverty_development_monthly = poverty_development_monthly_from_population_tax
+	social_cost_multiplier_modifier = law_spending_from_population_tax
+	health_cost_multiplier_modifier = law_spending_from_population_tax
+	econ_cycle_upg_cost_multiplier_modifier = law_spending_from_population_tax
+}
+
+very_high_interest_country_modifiers = {
+	icon = "GFX_idea_great_depression2"
+	enable = { always = yes }
+
+	production_speed_buildings_factor = production_speed_buildings_factor_very_high_interest_modifier
+	industrial_capacity_factory = industrial_capacity_factory_very_high_interest_modifier
+	industrial_capacity_dockyard = industrial_capacity_dockyard_very_high_interest_modifier
+	stability_factor = stability_factor_very_high_interest_modifier
+	custom_modifier_tooltip = very_high_interest_country_modifiers_tt
+}
+
+RAJ_hoxaists_rebel = {
+	enable = { always = yes }
+	remove_trigger = {
+		has_communist_government = yes
+	}
+	icon = GFX_idea_Indian_Communism
+	custom_modifier_tooltip = RAJ_land_mines_desc_info
+	recruitable_population_factor = -0.5
+	state_resources_factor = -0.60
+	army_speed_factor_for_controller = -0.5
+	army_defence_factor = -0.4
+	army_attack_factor = -0.1
+	state_productivity_growth_modifier = -0.25
+}
+RAJ_hoxaists_rebel1 = {
+	enable = { always = yes }
+	remove_trigger = {
+		OR = {
+			NOT = {
+				emerging_communist_state_are_not_in_power = yes
+				neutrality_neutral_communism_are_not_in_power = yes
+				emerging_anarchist_communism_are_not_in_power = yes
+				has_country_flag = mao_civvar_staret
+			}
+		}
+	}
+	icon = GFX_idea_Indian_Communism
+	custom_modifier_tooltip = RAJ_land_mines_desc_info
+	recruitable_population_factor = -0.45
+	state_resources_factor = -0.50
+	army_speed_factor_for_controller = -0.41
+	army_defence_factor = -0.32
+	army_attack_factor = -0.09
+	state_productivity_growth_modifier = -0.20
+}
+RAJ_hoxaists_rebel2 = {
+	enable = { always = yes }
+	remove_trigger = {
+		OR = {
+			NOT = {
+				emerging_communist_state_are_not_in_power = yes
+				neutrality_neutral_communism_are_not_in_power = yes
+				emerging_anarchist_communism_are_not_in_power = yes
+				has_country_flag = mao_civvar_staret
+			}
+		}
+	}
+	icon = GFX_idea_Indian_Communism
+	custom_modifier_tooltip = RAJ_land_mines_desc_info
+	recruitable_population_factor = -0.36
+	state_resources_factor = -0.39
+	army_speed_factor_for_controller = -0.31
+	army_defence_factor = -0.25
+	army_attack_factor = -0.06
+	state_productivity_growth_modifier = -0.15
+}
+RAJ_hoxaists_rebel3 = {
+	enable = { always = yes }
+	remove_trigger = {
+		OR = {
+			NOT = {
+				emerging_communist_state_are_not_in_power = yes
+				neutrality_neutral_communism_are_not_in_power = yes
+				emerging_anarchist_communism_are_not_in_power = yes
+				has_country_flag = mao_civvar_staret
+			}
+		}
+	}
+	icon = GFX_idea_Indian_Communism
+	custom_modifier_tooltip = RAJ_land_mines_desc_info
+	recruitable_population_factor = -0.27
+	state_resources_factor = -0.3
+	army_speed_factor_for_controller = -0.21
+	army_defence_factor = -0.17
+	army_attack_factor = -0.04
+	state_productivity_growth_modifier = -0.10
+}
+RAJ_hoxaists_rebel4 = {
+	enable = { always = yes }
+	remove_trigger = {
+		OR = {
+			NOT = {
+				emerging_communist_state_are_not_in_power = yes
+				neutrality_neutral_communism_are_not_in_power = yes
+				emerging_anarchist_communism_are_not_in_power = yes
+				has_country_flag = mao_civvar_staret
+			}
+		}
+	}
+	icon = GFX_idea_Indian_Communism
+	custom_modifier_tooltip = RAJ_land_mines_desc_info
+	recruitable_population_factor = -0.17
+	state_resources_factor = -0.15
+	army_speed_factor_for_controller = -0.11
+	army_defence_factor = -0.08
+	army_attack_factor = -0.02
+	state_productivity_growth_modifier = -0.05
+}
+
+GER_Bundeswehr_modifier = {
+	icon = GFX_idea_GER_army
+	enable = { always = yes }
+
+	remove_trigger = {
+		NOT = {
+			original_tag = GER
+		}
+	}
+
+		#Marine
+		positioning = GER_positioning
+		navy_max_range_factor = GER_navy_max_range_factor
+		navy_fuel_consumption_factor = GER_navy_fuel_consumption_factor
+		naval_speed_factor = GER_naval_speed_factor
+		naval_damage_factor = GER_naval_damage_factor
+		naval_defense_factor = GER_naval_defense_factor
+		navy_anti_air_attack_factor = GER_navy_anti_air_attack_factor
+		naval_coordination = GER_naval_coordination
+		naval_detection = GER_naval_detection
+		navy_org_factor = GER_navy_org_factor
+		spotting_chance = GER_spotting_chance
+		naval_accidents_chance = GER_naval_accidents_chance
+		naval_mine_hit_chance = GER_naval_mine_hit_chance
+		naval_mines_damage_factor = GER_naval_mines_damage_factor
+		naval_mines_effect_reduction = GER_naval_mines_effect_reduction
+		naval_morale_factor = GER_naval_morale_factor
+		navy_capital_ship_attack_factor = GER_navy_capital_ship_attack_factor
+		naval_invasion_prep_speed = GER_naval_invasion_prep_speed
+		naval_invasion_planning_bonus_speed = GER_naval_invasion_planning_bonus_speed
+		critical_receive_chance = GER_critical_receive_chance
+		naval_critical_score_chance_factor = GER_naval_critical_score_chance_factor
+		naval_hit_chance = GER_naval_hit_chance
+		naval_enemy_fleet_size_ratio_penalty_factor = GER_naval_enemy_fleet_size_ratio_penalty_factor
+		naval_retreat_speed_after_initial_combat = GER_naval_retreat_speed_after_initial_combat
+		naval_retreat_chance_after_initial_combat = GER_naval_retreat_chance_after_initial_combat
+		naval_torpedo_cooldown_factor = GER_naval_torpedo_cooldown_factor
+		naval_torpedo_hit_chance_factor = GER_naval_torpedo_hit_chance_factor
+		screening_without_screens = GER_screening_without_screens
+		ships_at_battle_start = GER_ships_at_battle_start
+		navy_screen_attack_factor = GER_navy_screen_attack_factor
+		navy_screen_defence_factor = GER_navy_screen_defence_factor
+		navy_personnel_cost_multiplier_modifier = GER_navy_personnel_cost_multiplier_modifier_marine
+
+		#Luftwaffe
+		air_attack_factor = GER_air_attack
+		air_defence_factor = GER_air_defence
+		air_mission_efficiency = GER_air_mission_efficiency
+		air_intercept_efficiency = GER_intercept_efficiency
+		air_cas_efficiency = GER_cas_efficiency
+		naval_strike_targetting_factor = GER_naval_strike_targetting
+		air_accidents_factor = GER_air_accidents
+		ground_attack_factor = GER_ground_attack
+		air_night_penalty = GER_air_night_penalty
+		air_weather_penalty = GER_air_weather_penalty
+		air_home_defence_factor = GER_home_defence_factor
+		air_training_xp_gain_factor = GER_air_training_xp_gain_factor
+		air_ace_generation_chance_factor = GER_air_ace_generator_chance_factor
+		air_range_factor = GER_air_range_factor
+		air_close_air_support_org_damage_factor = GER_air_close_air_support_org_damage_factor
+		air_superiority_bonus_in_combat = GER_air_superiority_bonus_in_combat
+		air_superiority_efficiency = GER_air_superiority_efficiency
+		air_mission_xp_gain_factor = GER_air_mission_xp_gain_factor
+		airforce_personnel_cost_multiplier_modifier = GER_airforce_personnel_cost_multiplier_modifier_luftwaffe
+		research_speed_factor = GER_research_speed_factor_luftwaffe
+		decryption_factor = GER_decryption_factor_luftwaffe
+		paradrop_organization_factor = GER_paradrop_organization_factor_luftwaffe
+		extra_paratrooper_supply_grace = GER_extra_paratrooper_supply_grace_luftwaffe
+		paratrooper_aa_defense = GER_paratrooper_aa_defense_luftwaffe
+		paratrooper_weight_factor = GER_paratrooper_weight_factor_luftwaffe
+
+		#Heer
+		personnel_cost_multiplier_modifier = GER_personnel_cost_multiplier_modifier_heer
+		army_attack_factor = GER_Army_attack
+		army_defence_factor = GER_Army_defence
+		recon_factor = GER_recon_factor
+		breakthrough_factor = GER_breakthrough_factor
+		army_artillery_attack_factor = Ger_army_artillery_attack_factor
+		army_artillery_defence_factor = GER_army_artillery_defence_factor
+		experience_gain_factor = GER_leader_xp_gain
+		experience_gain_army = GER_experience_gain_army
+		army_org_regain = GER_army_org_regain
+		terrain_penalty_reduction = GER_terrain_penalty_reduction
+		attrition = GER_attrition_modifier
+		max_planning_factor = GER_max_planning_modifier
+		land_night_attack = GER_army_night_attack
+		army_core_defence_factor = GER_army_core_defence_factor
+		special_forces_out_of_supply_factor = GER_special_forces_out_of_supply_factor
+		army_attack_speed_factor = GER_army_attack_speed_factor
+		special_forces_attack_factor = GER_special_forces_attack_factor
+		initiative_factor = GER_initiative_factor
+		army_armor_attack_factor = GER_army_armor_attack
+		army_armor_defence_factor = GER_army_armor_defence
+		army_armor_speed_factor = GER_army_armor_speed
+		intel_from_combat_factor = GER_intel_from_combat_factor
+		army_leader_start_level = GER_army_leader_start_level
+		army_leader_start_attack_level = GER_army_leader_start_attack_level
+		army_leader_start_defense_level = GER_army_leader_start_defence_level
+		army_leader_start_logistics_level = GER_army_leader_start_logistics_level
+		army_leader_start_planning_level = GER_army_leader_start_planning_level
+		acclimatization_hot_climate_gain_factor = GER_acclimatization_hot_climate_gain_factor
+		acclimatization_cold_climate_gain_factor = GER_acclimatization_cold_climate_gain_factor
+		army_infantry_attack_factor = GER_army_infantry_attack_factor
+		army_infantry_defence_factor = GER_army_infantry_defence_factor
+		mechanized_attack_factor = GER_mechanized_attack_factor
+		mechanized_defence_factor = GER_mechanized_defence_factor
+		modifier_army_sub_unit_L_Air_assault_Bat_attack_factor = GER_modifier_army_sub_unit_L_Air_assault_Bat_attack_factor
+		modifier_army_sub_unit_L_Air_assault_Bat_defence_factor = GER_modifier_army_sub_unit_L_Air_assault_Bat_defence_factor
+		modifier_army_sub_unit_attack_helo_bat_attack_factor = GER_modifier_army_sub_unit_attack_helo_bat_attack_factor
+		modifier_army_sub_unit_attack_helo_bat_defence_factor = GER_modifier_army_sub_unit_attack_helo_bat_defence_factor
+		army_morale_factor = GER_army_morale_factor
+		army_core_attack_factor = GER_army_core_attack_factor
+		combat_width_factor = GER_combat_width_factor
+		recon_factor_while_entrenched = GER_recon_factor_while_entrenched
+		planning_speed = GER_planning_speed
+		no_supply_grace = GER_no_supply_grace
+		land_reinforce_rate = GER_land_reinforce_rate
+		out_of_supply_factor = GER_out_of_supply_factor
+		send_volunteer_size = GER_send_volunteer_size
+		minimum_training_level = GER_minimum_training_level
+		training_time_factor = GER_training_time_factor
+		dig_in_speed_factor = GER_dig_in_speed_factor
+		mobilization_speed = GER_mobilization_speed
+		command_abilities_cost_factor = GER_command_abilities_cost_factor
+		army_speed_factor = GER_army_speed_factor
+		army_org_factor = GER_army_org_factor
+		special_forces_cap = GER_special_forces_cap
+		special_forces_defence_factor = GER_special_forces_defence_factor
+		modifier_army_sub_unit_Special_Forces_speed_factor = GER_modifier_army_sub_unit_Special_Forces_speed_factor
+		amphibious_invasion = GER_amphibious_invasion
+		dockyard_productivity = GER_dockyard_productivity
+		army_personnel_cost_multiplier_modifier = GER_army_personnel_cost_multiplier_modifier_heer
+		supply_combat_penalties_on_core_factor = GER_supply_combat_penalties_on_core_factor_heer
+		supply_consumption_factor = GER_supply_factor
+		intel_network_gain_factor = GER_intel_network_gain_factor_heer
+}
+
+BRM_peoples_war = {
+	icon = GFX_modifiers_BRM_peoples_war
+
+	air_cas_present_factor = -0.75
+	army_attack_factor = -0.95
+	army_speed_factor = -0.95
+	ground_attack_factor = -0.75
+	attrition = -0.65
+	army_defence_factor = 0.5
+	army_org_factor = 0.05
+}
+
+tribes_state = {
+	enable = { always = yes }
+	icon = GFX_idea_AFG_insurgency_idea
+	enemy_local_supplies = -0.45
+	enemy_attrition = 0.15
+	enemy_army_speed_factor = -0.2
+	enemy_truck_attrition_factor = 0.15
+	resistance_growth = 0.2
+	resistance_damage_to_garrison = 0.15
+	resistance_decay = -0.1
+	compliance_gain = -0.05
+	compliance_growth = -0.05
+	non_core_manpower = -0.15
+}
+
+Underground_modifier = {
+	enable = { always = yes }
+	icon = GFX_idea_generic_metro_idea
+	state_productivity_growth_modifier = 0.1
+	custom_modifier_tooltip = underground_modifier_tt
+}
+
+EU_member_dynamic = {
+	hidden = yes
+	army_core_defence_factor = eu_army_core_defence_factor_dynamic_var
+	army_attack_factor = eu_army_attack_factor_dynamic_var
+	army_org_factor = eu_army_org_factor_dynamic_var
+	political_power_gain = eu_political_power_gain_dynamic_var #-0.3
+	stability_factor = eu_stability_factor_dynamic_var
+	stability_weekly = eu_stability_weekly_dynamic_var
+	war_support_factor = eu_war_support_factor_dynamic_var
+	war_support_weekly = eu_war_support_weekly_dynamic_var
+	consumer_goods_factor = eu_consumer_goods_factor_dynamic_var
+	local_resources_factor = eu_local_resources_factor_dynamic_var
+	global_building_slots_factor = eu_global_building_slots_factor_dynamic_var
+	research_speed_factor = eu_research_speed_factor_dynamic_var
+	production_factory_max_efficiency_factor = eu_production_factory_max_efficiency_factor_dynamic_var
+	production_factory_efficiency_gain_factor = eu_production_factory_efficiency_gain_factor_dynamic_var #0.1
+	production_factory_start_efficiency_factor = eu_production_factory_start_efficiency_factor_dynamic_var
+	line_change_production_efficiency_factor = eu_line_change_production_efficiency_factor_dynamic_var
+	production_speed_buildings_factor = eu_production_speed_buildings_factor_dynamic_var
+	industry_repair_factor = eu_industry_repair_factor_dynamic_var
+	industrial_capacity_factory = eu_industrial_capacity_factory_dynamic_var #0.05
+	industrial_capacity_dockyard = eu_industrial_capacity_dockyard_dynamic_var #0.05
+	dig_in_speed_factor = eu_dig_in_speed_factor_dynamic_var
+	max_dig_in_factor = eu_max_dig_in_factor_dynamic_var
+	production_speed_bunker_factor = eu_production_speed_bunker_factor_dynamic_var
+	production_speed_supply_node_factor = eu_production_speed_supply_node_factor_dynamic_var
+	production_speed_infrastructure_factor = eu_production_speed_infrastructure_factor_dynamic_var
+	production_speed_industrial_complex_factor = eu_production_speed_industrial_complex_factor_dynamic_var
+	production_speed_office_park_factor = eu_production_speed_office_park_factor_dynamic_var
+	production_speed_rail_way_factor = eu_production_speed_rail_way_factor_dynamic_var
+	production_speed_arms_factory_factor = eu_production_speed_arms_factory_factor_dynamic_var
+	production_speed_dockyard_factor = eu_production_speed_dockyard_factor_dynamic_var
+	production_speed_power_plant_factor = eu_production_speed_power_plant_factor_dynamic_var
+	production_speed_nuclear_reactor_factor = eu_production_speed_nuclear_reactor_factor_dynamic_var
+	production_speed_energy_farm_factor = eu_production_speed_energy_farm_factor_dynamic_var
+	industrial_development_monthly = eu_industrial_development_monthly_dynamic_var
+	poverty_development_monthly = eu_poverty_development_monthly_dynamic_var
+	farming_development_monthly = eu_farming_development_monthly_dynamic_var
+	academic_development_monthly = eu_academic_development_monthly_dynamic_var
+	society_development_monthly = eu_society_development_monthly_dynamic_var
+	tax_gain_multiplier_modifier = eu_tax_gain_multiplier_modifier_dynamic_var
+	expense_growth_factor = eu_expense_growth_factor_dynamic_var
+	business_value_factor = eu_business_value_factor_dynamic_var #0.05
+	personal_value_factor = eu_personal_value_factor_dynamic_var
+	tax_business_rate = eu_tax_business_rate_dynamic_var
+	tax_personal_rate = eu_tax_personal_rate_dynamic_var
+	interest_rate = eu_interest_rate_dynamic_var
+	inflation_monthly = eu_inflation_monthly_dynamic_var
+	custom_modifier_tooltip = EU_member_dynamic_modifier_tooltip
+}

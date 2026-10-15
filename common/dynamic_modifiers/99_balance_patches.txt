@@ -1,0 +1,25 @@
+# =============================================================================
+# Balance Patches — 通货膨胀动态修正覆盖
+# 作用：将 6 个直读 inflation_rate_var 的成本项改为读取 inflation_cost_clamped_var
+#       （由 calculate_inflation_effects 钳制在 [-25%, +50%]），避免通缩时
+#       项目/投资/采购等成本变 -200%（免费）。
+# 加载：本子模组在 MD 之后加载，同名 dynamic_modifier 覆盖原版定义。
+# =============================================================================
+
+inflation_dynamic_modifier = {
+	icon = "GFX_idea_inflation_spirit"
+	projects_cost_modifier = inflation_cost_clamped_var
+	economic_cycles_cost_factor = inflation_rate_econ_var
+	corruption_cost_factor = inflation_corruption_var
+	country_productivity_growth_modifier = inflation_rate_prod_var
+	production_speed_buildings_factor = inflation_construction_speed_var
+	industrial_capacity_factory = inflation_rate_output_var
+	industrial_capacity_dockyard = inflation_rate_output_var
+	consumer_goods_factor = inflation_goods_var
+	trade_laws_cost_factor = trade_law_cost_var
+	propaganda_campaign_cost_modifier = inflation_cost_clamped_var
+	investment_cost_modifier = inflation_cost_clamped_var
+	receiving_investment_cost_modifier = inflation_cost_clamped_var
+	international_market_purchase_modifier = inflation_cost_clamped_var
+	internal_investments_money_cost_modifier = inflation_cost_clamped_var
+}

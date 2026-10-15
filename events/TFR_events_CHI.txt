@@ -1,0 +1,1023 @@
+﻿add_namespace = roc
+add_namespace = taiwan_temp_skeleton
+add_namespace = taiwan_detente
+country_event = {
+	id = taiwan_temp_skeleton.1
+	title = taiwan_temp_skeleton.1.t
+	desc = taiwan_temp_skeleton.1.d
+	picture = GFX_PRC_minus_soc_credit
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = taiwan_temp_skeleton.1.a
+		ai_chance = {
+			base = 1
+		}
+		add_ideas = CHI_reintroduce_nuclear
+		country_event = {
+			id = taiwan_temp_skeleton.2
+			days = 7
+		}
+	}
+}
+
+country_event = {
+	id = taiwan_temp_skeleton.2
+	title = taiwan_temp_skeleton.2.t
+	desc = taiwan_temp_skeleton.2.d
+	picture = GFX_PRC_minus_soc_credit
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = taiwan_temp_skeleton.2.a
+		ai_chance = {
+			base = 1
+		}
+		add_ideas = CHI_DPP_protest
+		country_event = {
+			id = taiwan_temp_skeleton.3
+			days = 7
+		}
+	}
+}
+
+country_event = {
+	id = taiwan_temp_skeleton.3
+	title = taiwan_temp_skeleton.3.t
+	desc = taiwan_temp_skeleton.3.d
+	picture = GFX_PRC_minus_soc_credit
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = taiwan_temp_skeleton.3.a
+		ai_chance = {
+			base = 1
+		}
+		add_timed_idea = {
+			idea = CHI_abolish_CIPAS
+			days = 120
+		}
+		country_event = {
+			id = taiwan_temp_skeleton.4
+			days = 7
+		}
+	}
+}
+
+country_event = {
+	id = taiwan_temp_skeleton.4
+	title = taiwan_temp_skeleton.4.t
+	desc = taiwan_temp_skeleton.4.d
+	picture = GFX_PRC_minus_soc_credit
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = taiwan_temp_skeleton.4.a
+		ai_chance = {
+			base = 1
+		}
+		add_timed_idea = {
+			idea = CHI_toughen_industries
+			days = 120
+		}
+	}
+}
+
+country_event = {
+	id = taiwan_temp_skeleton.5
+	title = taiwan_temp_skeleton.5.t
+	desc = taiwan_temp_skeleton.5.d
+	picture = GFX_CHI_KMT_win_elections
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = taiwan_temp_skeleton.5.a
+		ai_chance = {
+			base = 1
+		}
+		add_ideas = CHI_made_in_TW		#CHI_green_energy
+		country_event = {
+			id = taiwan_temp_skeleton.6
+			days = 7
+		}
+	}
+}
+
+country_event = {
+	id = taiwan_temp_skeleton.6
+	title = taiwan_temp_skeleton.6.t
+	desc = taiwan_temp_skeleton.6.d
+	picture = GFX_PRC_minus_soc_credit
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = taiwan_temp_skeleton.6.a
+		ai_chance = {
+			base = 1
+		}
+		add_ideas = CHI_KMT_protests
+		country_event = {
+			id = taiwan_temp_skeleton.7
+			days = 7
+		}
+	}
+}
+
+country_event = {
+	id = taiwan_temp_skeleton.7
+	title = taiwan_temp_skeleton.7.t
+	desc = taiwan_temp_skeleton.7.d
+	picture = GFX_PRC_minus_soc_credit
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = taiwan_temp_skeleton.7.a
+		ai_chance = {
+			base = 1
+		}
+		add_timed_idea = {
+			idea = CHI_green_energy
+			days = 120
+		}
+		country_event = {
+			id = taiwan_temp_skeleton.8
+			days = 7
+		}
+	}
+}
+
+country_event = {
+	id = taiwan_temp_skeleton.8
+	title = taiwan_temp_skeleton.8.t
+	desc = taiwan_temp_skeleton.8.d
+	picture = GFX_PRC_minus_soc_credit
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = taiwan_temp_skeleton.8.a
+		ai_chance = {
+			base = 1
+		}
+		add_timed_idea = {
+			idea = CHI_farplanning_infrastructure
+			days = 120
+		}
+	}
+}
+
+#The Defiant Island
+country_event = {
+	id = roc.1
+	title = roc.1.t
+	desc = roc.1.d
+	picture = GFX_PRC_taiwan_beautiful
+	is_triggered_only = yes
+	trigger = {
+		tag = TAI
+	}
+	option = {
+		name = roc.1.a
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+
+#PRC Preparing Invasion
+country_event = {
+	id = roc.2
+	title = roc.2.t
+	desc = roc.2.d
+	picture = GFX_china_south_sea
+	is_triggered_only = yes
+	trigger = {
+		tag = TAI
+	}
+	immediate = {
+		hidden_effect = {
+			remove_ideas = CHI_american_protection_idea
+			country_event = {
+				id = roc.3
+				days = 14
+			}
+		}
+	}
+	option = {
+		name = roc.2.a
+		ai_chance = {
+			base = 1
+		}
+		hidden_effect = {
+			if = {
+				limit = {
+					TAI = {
+						is_ai = no
+					}
+				}
+				#remove_ideas = CHI_Taiwan_Bravery
+				#add_ideas = CHI_Taiwan_Bravery_2
+				1148 = {
+					add_building_construction = {
+						type = bunker
+						level = 5
+						instant_build = yes
+						province = 7186
+					}
+				}
+				1148 = {
+					add_building_construction = {
+						type = bunker
+						level = 5
+						instant_build = yes
+						province = 13961
+					}
+				}
+				1149 = {
+					add_building_construction = {
+						type = bunker
+						level = 5
+						instant_build = yes
+						province = 13968
+					}
+				}
+				1150 = {
+					add_building_construction = {
+						type = bunker
+						level = 5
+						instant_build = yes
+						province = 12068
+					}
+				}
+				1150 = {
+					add_building_construction = {
+						type = bunker
+						level = 5
+						instant_build = yes
+						province = 13965
+					}
+				}
+				load_oob = CHI_taipei_reserves
+			}
+		}
+		if = {
+			limit = {
+				has_government = social_liberal
+			}
+			add_ideas = CHI_mobilize_balckbear
+		}
+		effect_tooltip = {
+			remove_ideas = CHI_american_protection_idea
+		}
+	}
+}
+
+#PDO Intervention
+country_event = {
+	id = roc.3
+	title = roc.3.t
+	desc = roc.3.d
+	picture = GFX_JAP_pdto_form
+	is_triggered_only = yes
+	trigger = {
+		tag = TAI
+	}
+	option = {
+		name = roc.3.a
+		ai_chance = {
+			base = 1
+		}
+		effect_tooltip = {
+			add_war_support = 0.1
+		}
+	}
+}
+
+#Reserve Divisions
+country_event = {
+	id = roc.7
+	title = roc.7.t
+	desc = roc.7.d
+	picture = GFX_Taiwan_Flag
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+	}
+	option = {
+		name = roc.7.a
+		#load_oob = CHI_invasion_reserves
+	}
+}
+
+#Reserve Divisions
+country_event = {
+	id = roc.8
+	title = roc.8.t
+	desc = roc.8.d
+	picture = GFX_Taiwan_Flag
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+	}
+	option = {
+		name = roc.8.a
+		#load_oob = CHI_invasion_reserves2
+	}
+}
+
+#Army in control NEWS
+news_event = {
+	id = roc.10
+	title = roc.10.t
+	desc = roc.10.d
+	picture = GFX_militarists_taiwan
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+	}
+	option = {
+		name = roc.10.a
+	}
+}
+
+#Coup
+news_event = {
+	id = roc.14
+	title = roc.14.t
+	desc = roc.14.d
+	picture = GFX_Taiwan_Flag
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+	}
+	option = {
+		name = roc.14.a
+	}
+}
+
+#KMT
+news_event = {
+	id = roc.15
+	title = roc.15.t
+	desc = roc.15.d
+	picture = GFX_Taiwan_Flag
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+	}
+	option = {
+		name = roc.15.a
+	}
+}
+
+#TPP
+news_event = {
+	id = roc.16
+	title = roc.16.t
+	desc = roc.16.d
+	picture = GFX_Taiwan_Flag
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+	}
+	option = {
+		name = roc.16.a
+	}
+}
+
+#Zhao
+news_event = {
+	id = roc.17
+	title = roc.17.t
+	desc = roc.17.d
+	picture = GFX_Taiwan_Flag
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+	}
+	option = {
+		name = roc.17.a
+	}
+}
+
+news_event = {
+	id = roc.19
+	title = roc.19.t
+	desc = roc.19.d
+	picture = GFX_Taiwan_Flag
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+	}
+	option = {
+		name = roc.19.a
+		trigger = {
+			tag = TAI
+		}
+	}
+	option = {
+		name = roc.19.b
+		trigger = {
+			tag = TAI
+		}
+	}
+	option = {
+		name = roc.19.c
+		trigger = {
+			NOT = {
+				OR = {
+					tag = TAI
+					tag = TAI
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = roc.22
+	title = roc.22.t
+	desc = roc.22.d
+	picture = GFX_Taiwan_Flag
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+	}
+	option = {
+		name = roc.22.a
+	}
+}
+
+country_event = {
+	id = roc.23
+	title = roc.23.t
+	desc = roc.23.d
+	picture = GFX_Taiwan_Flag
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+	}
+	option = {
+		name = roc.23.a
+	}
+}
+
+country_event = {
+	id = roc.24
+	title = roc.24.t
+	desc = roc.24.d
+	picture = GFX_Taiwan_Flag
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+	}
+	option = {
+		name = roc.24.a
+	}
+}
+
+#DPP Reaction
+news_event = {
+	id = roc.27
+	title = roc.27.t
+	desc = roc.27.d
+	picture = GFX_Taiwan_Flag
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+	}
+	option = {
+		name = roc.27.a
+	}
+}
+
+#KMT Reaction
+news_event = {
+	id = roc.28
+	title = roc.28.t
+	desc = roc.28.d
+	picture = GFX_Taiwan_Flag
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+	}
+	option = {
+		name = roc.28.a
+	}
+}
+
+#PRC protest
+country_event = {
+	id = roc.29
+	title = roc.29.t
+	desc = roc.29.d
+	picture = GFX_CHI_criticize_DPP
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+	}
+	option = {
+		name = roc.29.a
+		hidden_effect = {
+			#USA = {
+			#	country_event = { id = roc.291 days = 5 }
+			#}
+			TAI = {
+				country_event = {
+					id = roc.291
+					days = 5
+				}
+			}
+			TAI = {
+				swap_ideas = {
+					remove_idea = CHI_chinese_blockade
+					add_idea = CHI_chinese_blockade_2
+				}
+				country_event = {
+					id = roc.291
+					days = 5
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	#Second Wave of Missile Strikes
+	id = roc.33
+	title = roc.33.t
+	desc = roc.33.d
+	picture = GFX_PRC_rocket_strikes2
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+	}
+	immediate = {
+		hidden_effect = {
+			if = {
+				limit = {
+					NOT = {
+						has_template = "Infantry Brigade"
+					}
+				}
+				division_template = {
+					name = "Infantry Brigade"
+					is_locked = no
+					regiments = {
+						L_Inf_Bat = { x = 0 y = 0 }
+						L_Inf_Bat = { x = 0 y = 1 }
+						L_Inf_Bat = { x = 0 y = 2 }
+
+						L_Inf_Bat = { x = 1 y = 0 }
+						L_Inf_Bat = { x = 1 y = 1 }
+						Arty_Bat = { x = 1 y = 2 }
+					}
+				}
+			}
+			add_manpower = -39900
+			600 = {
+				create_unit = {
+					division = "name = \"Infantry Brigade\" division_template = \"Infantry Brigade\" start_experience_factor = 0.4 start_equipment_factor = 0.01"
+					prioritize_location = 1175
+					owner = TAI
+					count = 5
+				}
+			}
+			random_owned_controlled_state = {
+				create_unit = {
+					division = "name = \"Infantry Brigade\" division_template = \"Infantry Brigade\" start_experience_factor = 0.4 start_equipment_factor = 0.01"
+					owner = TAI
+					count = 5
+				}
+			}
+		}
+	}
+	option = {
+		name = roc.33.a
+		set_country_flag = CHI_protecting_the_island_flag
+		focus_unlock = yes
+		complete_national_focus = CHI_island_in_one_fate
+		add_ideas = CHI_repairs_under_fire_idea
+		custom_effect_tooltip = PRC_second_wave_missile_strikes_tt
+		damage_units = {
+			state = 598
+			damage = 0.15
+			org_damage = 0.15
+			str_damage = 0.15
+			ratio = yes
+			army = yes
+			navy = no
+		}
+		damage_units = {
+			state = 599
+			damage = 0.15
+			org_damage = 0.15
+			str_damage = 0.15
+			ratio = yes
+			army = yes
+			navy = no
+		}
+		damage_units = {
+			state = 600
+			damage = 0.15
+			org_damage = 0.15
+			str_damage = 0.15
+			ratio = yes
+			army = yes
+			navy = no
+		}
+		damage_units = {
+			state = 1155
+			damage = 0.15
+			org_damage = 0.15
+			str_damage = 0.15
+			ratio = yes
+			army = yes
+			navy = no
+		}
+		damage_units = {
+			state = 1156
+			damage = 0.15
+			org_damage = 0.15
+			str_damage = 0.15
+			ratio = yes
+			army = yes
+			navy = no
+		}
+		damage_units = {
+			state = 1157
+			damage = 0.15
+			org_damage = 0.15
+			str_damage = 0.15
+			ratio = yes
+			army = yes
+			navy = no
+		}
+	}
+}
+
+country_event = {
+	#TAIWAN HAS MORE THAN 15% SURRENDER PROGRESS IN TAIWAN WAR
+	id = roc.34
+	title = roc.34.t
+	desc = roc.34.d
+	picture = GFX_CHI_event_taiwan_32
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = roc.34.a
+		if = {
+			limit = {
+				has_idea = CHI_last_stand_idea
+			}
+			swap_ideas = {
+				remove_idea = CHI_last_stand_idea
+				add_idea = CHI_last_stand_1_idea
+			}
+		}
+		else = {
+			add_ideas = CHI_last_stand_idea
+		}
+		add_manpower = -11970
+		if = {
+			limit = {
+				NOT = {
+					has_template = "Infantry Brigade"
+				}
+			}
+			division_template = {
+				name = "Infantry Brigade"
+				is_locked = no
+				regiments = {
+					L_Inf_Bat = { x = 0 y = 0 }
+					L_Inf_Bat = { x = 0 y = 1 }
+					L_Inf_Bat = { x = 0 y = 2 }
+
+					L_Inf_Bat = { x = 1 y = 0 }
+					L_Inf_Bat = { x = 1 y = 1 }
+					Arty_Bat = { x = 1 y = 2 }
+				}
+			}
+		}
+		random_owned_controlled_state = {
+			create_unit = {
+				division = "name = \"Infantry Brigade\" division_template = \"Infantry Brigade\" start_experience_factor = 0.2 start_equipment_factor = 0.01"
+				prioritize_location = 11914
+				owner = TAI
+				count = 3
+			}
+		}
+	}
+}
+
+country_event = {
+	id = roc.35
+	title = roc.35.t
+	desc = roc.35.d
+	picture = GFX_CHI_event_taiwan_32
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+	}
+	option = {
+		name = roc.35.a
+	}
+}
+
+#USA react
+country_event = {
+	id = roc.291
+	title = roc.291.t
+	desc = roc.291.d
+	picture = GFX_event_taiwanwarlose
+	is_triggered_only = yes
+	fire_only_once = no
+	trigger = {
+	}
+	option = {
+		name = roc.291.a
+		hidden_effect = {
+			country_event = {
+				id = roc.292
+				days = 15
+			}
+		}
+	}
+}
+
+country_event = {
+	id = roc.292
+	title = roc.292.t
+	desc = roc.292.d
+	picture = GFX_event_taiwanwarlose
+	is_triggered_only = yes
+	fire_only_once = no
+	trigger = {
+	}
+	option = {
+		name = roc.292.a
+		hidden_effect = {
+			country_event = {
+				id = roc.293
+				days = 25
+			}
+		}
+	}
+}
+
+country_event = {
+	id = roc.293
+	title = roc.293.t
+	desc = roc.293.d
+	picture = GFX_CHI_pelosi_visit
+	is_triggered_only = yes
+	fire_only_once = no
+	trigger = {
+	}
+	option = {
+		name = roc.293.a
+	}
+}
+
+#PRC drill
+country_event = {
+	id = roc.30
+	title = roc.30.t
+	desc = roc.30.d
+	picture = GFX_CHI_PRC_taiwan_strait_drill
+	is_triggered_only = yes
+	fire_only_once = no
+	trigger = {
+	}
+	option = {
+		name = roc.30.a
+		trigger = {
+			original_tag = TAI
+		}
+		TAI = {
+			army_experience = 15
+			navy_experience = 5
+			add_war_support = 0.01
+		}
+	}
+	option = {
+		name = roc.30.b
+		trigger = {
+			original_tag = TAI
+		}
+		army_experience = 15
+		navy_experience = 5
+		add_war_support = 0.01
+	}
+}
+
+country_event = {
+	id = taiwan_detente.0
+	title = taiwan_detente.0.t
+	desc = taiwan_detente.0.d
+	picture = GFX_Taiwan_Election
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = taiwan_detente.0.a
+	}
+}
+
+country_event = {
+	id = taiwan_detente.1
+	title = taiwan_detente.1.t
+	desc = taiwan_detente.1.d
+	picture = GFX_CHI_KMT_win_elections
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = taiwan_detente.1.a
+		remove_ideas = CHI_chinese_blockade
+		TAI = {
+			country_event = {
+				id = taiwan_detente.2
+			}
+		}
+	}
+}
+
+country_event = {
+	id = taiwan_detente.2
+	title = taiwan_detente.2.t
+	desc = taiwan_detente.2.d
+	picture = GFX_CHI_KMT_seek_detente
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = taiwan_detente.2.a
+		#set_country_flag = PRC_taiwan_detente_category_unlocked_flag #undercooked stuff
+		#unlock_decision_category_tooltip = PRC_taiwan_detente_cat
+		#TAI = { country_event = { id = taiwan_detente.3 days = 30 } }
+	}
+}
+
+country_event = {
+	id = taiwan_detente.3
+	title = taiwan_detente.3.t
+	desc = taiwan_detente.3.d
+	picture = GFX_CHI_KMT_seek_detente
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = taiwan_detente.3.a
+		TAI = {
+			remove_ideas = CHI_prc_embargo_idea
+		}
+		TAI = {
+			break_embargo = TAI
+		}
+		TAI = {
+			break_embargo = CHI
+		}
+		country_event = {
+			id = taiwan_detente.4
+			days = 20
+		}
+		TAI = {
+			country_event = {
+				id = taiwan_detente.4
+				days = 20
+			}
+		}
+		hidden_effect = {
+			TAI = {
+				country_event = {
+					id = roc.293
+					days = 25
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = taiwan_detente.4
+	title = taiwan_detente.4.t
+	desc = taiwan_detente.4.d
+	picture = GFX_CHI_detente
+	is_triggered_only = yes
+	fire_only_once = no
+	option = {
+		name = taiwan_detente.4.a
+		country_event = {
+			id = taiwan_detente.5
+			days = 20
+		}
+	}
+}
+
+country_event = {
+	id = taiwan_detente.5
+	title = taiwan_detente.5.t
+	desc = taiwan_detente.5.d
+	picture = GFX_CHI_detente
+	is_triggered_only = yes
+	fire_only_once = no
+	option = {
+		name = taiwan_detente.5.a
+		country_event = {
+			id = taiwan_detente.6
+			days = 20
+		}
+	}
+}
+
+country_event = {
+	id = taiwan_detente.6
+	title = taiwan_detente.6.t
+	desc = taiwan_detente.6.d
+	picture = GFX_CHI_singapore_conference
+	is_triggered_only = yes
+	fire_only_once = no
+	option = {
+		name = taiwan_detente.6.a
+	}
+}
+
+country_event = {
+	id = taiwan_detente.7
+	title = taiwan_detente.7.t
+	desc = taiwan_detente.7.d
+	picture = GFX_CHI_singapore_conference
+	is_triggered_only = yes
+	fire_only_once = no
+	option = {
+		name = taiwan_detente.7.a
+		country_event = {
+			id = taiwan_detente.8
+			days = 3
+		}
+	}
+}
+
+country_event = {
+	id = taiwan_detente.8
+	title = taiwan_detente.8.t
+	desc = taiwan_detente.8.d
+	picture = GFX_CHI_singapore_conference
+	is_triggered_only = yes
+	fire_only_once = no
+	option = {
+		name = taiwan_detente.8.a
+		country_event = {
+			id = taiwan_detente.9
+			days = 3
+		}
+	}
+}
+
+country_event = {
+	id = taiwan_detente.9
+	title = taiwan_detente.9.t
+	desc = taiwan_detente.9.d
+	picture = GFX_CHI_singapore_conference
+	is_triggered_only = yes
+	fire_only_once = no
+	option = {
+		name = taiwan_detente.9.a
+		clr_country_flag = PRC_taiwan_detente_category_unlocked_flag
+		if = {
+			limit = {
+				original_tag = TAI
+			}
+			country_event = {
+				id = taiwan_detente.10
+				days = 5
+			}
+		}
+	}
+}
+
+country_event = {
+	id = taiwan_detente.10
+	title = taiwan_detente.10.t
+	desc = taiwan_detente.10.d
+	picture = GFX_CHI_PRC_final_choice
+	is_triggered_only = yes
+	fire_only_once = no
+	option = {
+		name = taiwan_detente.10.a
+	}
+}
+
+### GREAT ASIAN WAR ###	
+country_event = {
+	#GREAT ASIAN WAR BEGINS
+	id = roc.500
+	title = roc.500.t
+	desc = roc.500.d
+	picture = GFX_CHI_event_taiwan_32
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = roc.500.a
+		add_ideas = CHI_last_stand_idea
+		set_country_flag = CHI_our_final_fight_flag
+		#focus_unlock = yes
+		#complete_national_focus = CHI_our_final_fight
+	}
+}

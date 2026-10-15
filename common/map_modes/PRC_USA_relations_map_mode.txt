@@ -1,0 +1,46 @@
+scripted_map_modes = {
+	PRC_USA_RELATIONS_MAP_MODE = {
+		bottom = {
+			type = none
+		}
+		top = {
+			type = country
+			color = {
+				FROM = {
+					if = {
+						limit = { 
+							OR = {
+								original_tag = USA
+								has_country_flag = PRC_USA_relations_stand_USA
+						   	}
+						}
+						set_temp_variable = { red = 0 }
+						set_temp_variable = { green = 0 }
+						set_temp_variable = { blue = 255 }
+					}
+					if = {
+						limit = { 
+							OR = {
+								original_tag = CHI
+								has_country_flag = PRC_USA_relations_stand_PRC
+						   	}
+						}
+						set_temp_variable = { red = 255 }
+						set_temp_variable = { green = 189 }
+						set_temp_variable = { blue = 0 }
+					}
+
+						divide_temp_variable = { red = 255 }
+						divide_temp_variable = { green = 255 }
+						divide_temp_variable = { blue = 255 }
+						set_temp_variable = { alpha = 1 }
+				}
+			}
+		}
+
+		far_text = country
+		near_text = none
+
+		update_daily = yes
+	}
+}

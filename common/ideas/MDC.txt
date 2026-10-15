@@ -1,0 +1,1384 @@
+ideas = {
+	#Weapons Law
+	Weapons_Law = {
+		law = yes
+		use_list_view = yes
+
+		allow_weapons = {
+			allowed_civil_war = { always = yes }
+
+			cost = 1500
+			removal_cost = -1
+			picture = generic_regulate_weapon_agree
+
+			modifier = {
+				stability_factor = -0.15
+				recruitable_population_factor = 0.25
+				resistance_growth_on_our_occupied_states = 0.25
+				police_cost_multiplier_modifier = 0.25
+				army_core_defence_factor = 0.25
+				training_time_factor = -0.25
+			}
+
+			cancel_if_invalid = no
+		}
+
+		regulate_weapons = {
+			allowed_civil_war = { always = yes }
+
+			cost = 1500
+			removal_cost = -1
+			picture = generic_regulate_weapon_middle
+
+			modifier = {
+				stability_factor = -0.05
+				recruitable_population_factor = 0.05
+				resistance_growth_on_our_occupied_states = 0.05
+				police_cost_multiplier_modifier = 0.05
+				army_core_defence_factor = 0.05
+				training_time_factor = -0.05
+			}
+
+			default = yes
+			cancel_if_invalid = no
+		}
+
+		ban_weapons = {
+			allowed_civil_war = { always = yes }
+
+			cost = 1500
+			removal_cost = -1
+			picture = generic_regulate_weapon_disagree
+
+			modifier = {
+				stability_factor = 0.15
+				police_cost_multiplier_modifier = -0.25
+			}
+
+			cancel_if_invalid = no
+		}
+	}
+	#Economy Mobilization
+	Economy_Mobilization = {
+		law = yes
+		use_list_view = yes
+		business_as_usual_law = {
+			picture = laws_economic_business_as_usual
+			removal_cost = -1
+			cancel_if_invalid = no
+			allowed = {
+				original_tag = SOV
+			}
+			allowed_to_remove = {
+				always = no
+			}
+			modifier = {
+				stability_factor = 0.05
+				consumer_goods_factor = 0.05
+				civilian_factories_productivity = 0.05
+				offices_productivity = 0.05
+				small_businesses_productivity_modifier = 0.08
+				conversion_cost_civ_to_mil_factor = 0.09
+				business_value_factor = 0.13
+				max_fuel_factor = -0.14
+				low_stability_weekly = 0.0025
+				energy_use_multiplier = -0.3
+			}
+		}
+		common_prosperity_law = {
+			picture = laws_economic_common_prosperity
+			removal_cost = -1
+			cancel_if_invalid = no
+			visible = {
+				tag = CHI
+				has_idea = common_prosperity_law
+				NOT = {
+					OR = {
+						has_idea = common_prosperity_law_1
+						has_idea = common_prosperity_law_2
+					}
+				}
+				#has_country_flag = common_prosperity_law_test_flag
+			}
+			available = {
+				limit = {
+						tag = CHI
+						NOT = {
+							has_idea = common_prosperity_law_1
+							has_idea = common_prosperity_law_2
+						}
+					}
+				hidden_trigger = {
+					has_country_flag = common_prosperity_law_test_flag
+				}
+			}
+			modifier = {
+				stability_factor = 0.05
+				consumer_goods_factor = 0.05
+				civilian_factories_productivity = 0.05
+				offices_productivity = 0.05
+				small_businesses_productivity_modifier = 0.05
+				conversion_cost_mil_to_civ_factor = -0.05
+				business_value_factor = 0.18
+				production_speed_arms_factory_factor = -0.2
+				production_speed_dockyard_factor = -0.2
+				conversion_cost_civ_to_mil_factor = 0.35
+				production_speed_industrial_complex_factor = 0.3
+				production_speed_infrastructure_factor = 0.2
+				max_fuel_factor = -0.15
+				industrial_development_monthly = 0.01
+				society_development_monthly = 0.005
+				low_stability_weekly = 0.005
+				energy_use_multiplier = -0.2
+			}
+		}
+		common_prosperity_law_right_1 = {
+			picture = laws_economic_common_prosperity
+			name = common_prosperity_law
+			#desc = common_prosperity_law_desc
+			removal_cost = -1
+			cancel_if_invalid = no
+			visible = {
+				tag = CHI
+				has_idea = common_prosperity_law_right_1
+				#has_country_flag = common_prosperity_law_test_flag
+			}
+			allowed_to_remove = {
+				hidden_trigger = {
+					OR = {
+						has_completed_focus = PRC_taiwanese_affairs_dont_concern_mainland
+						has_completed_focus = PRC_economic_conversion_to_military_needs
+	
+					}
+				}
+			}
+			available = {
+				limit = {
+					tag = CHI
+					NOT = {
+						has_idea = common_prosperity_law_1
+						has_idea = common_prosperity_law_2
+					}
+				}
+			}
+			modifier = {
+				stability_factor = 0.05
+				consumer_goods_factor = 0.05
+				civilian_factories_productivity = 0.05
+				offices_productivity = 0.05
+				small_businesses_productivity_modifier = 0.05
+				conversion_cost_mil_to_civ_factor = -0.05
+				business_value_factor = 0.19
+				production_speed_arms_factory_factor = -0.25
+				production_speed_dockyard_factor = -0.25
+				conversion_cost_civ_to_mil_factor = 0.35
+				production_speed_industrial_complex_factor = 0.32
+				production_speed_infrastructure_factor = 0.22
+				max_fuel_factor = -0.15
+				industrial_development_monthly = 0.013
+				society_development_monthly = 0.013
+				low_stability_weekly = 0.006
+				energy_use_multiplier = -0.2
+			}
+		}
+		common_prosperity_law_right_2 = {
+			picture = laws_economic_common_prosperity
+			name = common_prosperity_law
+			#desc = common_prosperity_law_desc
+			removal_cost = -1
+			cancel_if_invalid = no
+			visible = {
+				tag = CHI
+				has_idea = common_prosperity_law_right_2
+				#has_country_flag = common_prosperity_law_test_flag
+			}
+			allowed_to_remove = {
+				hidden_trigger = {
+					OR = {
+						has_completed_focus = PRC_taiwanese_affairs_dont_concern_mainland
+						has_completed_focus = PRC_economic_conversion_to_military_needs
+	
+					}
+				}
+			}
+			available = {
+				limit = {
+					tag = CHI
+					NOT = {
+						has_idea = common_prosperity_law_1
+						has_idea = common_prosperity_law_2
+					}
+				}
+			}
+			modifier = {
+				stability_factor = 0.05
+				consumer_goods_factor = 0.05
+				civilian_factories_productivity = 0.05
+				offices_productivity = 0.05
+				small_businesses_productivity_modifier = 0.05
+				conversion_cost_mil_to_civ_factor = -0.05
+				business_value_factor = 0.2
+				production_speed_arms_factory_factor = -0.2
+				production_speed_dockyard_factor = -0.2
+				conversion_cost_civ_to_mil_factor = 0.35
+				production_speed_industrial_complex_factor = 0.34
+				production_speed_infrastructure_factor = 0.24
+				max_fuel_factor = -0.15
+				industrial_development_monthly = 0.008
+				society_development_monthly = 0.004
+				low_stability_weekly = 0.005
+				energy_use_multiplier = -0.2
+			}
+		}
+		common_prosperity_law_right_3 = {
+			picture = laws_economic_common_prosperity
+			name = common_prosperity_law
+			#desc = common_prosperity_law_desc
+			removal_cost = -1
+			cancel_if_invalid = no
+			visible = {
+				tag = CHI
+				has_idea = common_prosperity_law_right_3
+				#has_country_flag = common_prosperity_law_test_flag
+			}
+			allowed_to_remove = {
+				hidden_trigger = {
+					OR = {
+						has_completed_focus = PRC_taiwanese_affairs_dont_concern_mainland
+						has_completed_focus = PRC_economic_conversion_to_military_needs
+	
+					}
+				}
+			}
+			available = {
+				limit = {
+					tag = CHI
+					NOT = {
+						has_idea = common_prosperity_law_1
+						has_idea = common_prosperity_law_2
+					}
+				}
+			}
+			modifier = {
+				stability_factor = 0.05
+				consumer_goods_factor = 0.05
+				civilian_factories_productivity = 0.05
+				offices_productivity = 0.05
+				small_businesses_productivity_modifier = 0.05
+				conversion_cost_mil_to_civ_factor = -0.05
+				business_value_factor = 0.23
+				production_speed_arms_factory_factor = -0.15
+				production_speed_dockyard_factor = -0.15
+				conversion_cost_civ_to_mil_factor = 0.2
+				production_speed_industrial_complex_factor = 0.36
+				production_speed_infrastructure_factor = 0.26
+				max_fuel_factor = -0.15
+				industrial_development_monthly = 0.006
+				society_development_monthly = 0.003
+				poverty_development_monthly = -0.002
+				low_stability_weekly = 0.004
+				energy_use_multiplier = -0.2
+			}
+		}
+		common_prosperity_law_right_4 = {
+			picture = laws_economic_common_prosperity
+			name = common_prosperity_law
+			#desc = common_prosperity_law_desc
+			removal_cost = -1
+			cancel_if_invalid = no
+			visible = {
+				tag = CHI
+				has_idea = common_prosperity_law_right_4
+				#has_country_flag = common_prosperity_law_test_flag
+			}
+			allowed_to_remove = {
+				hidden_trigger = {
+					OR = {
+						has_completed_focus = PRC_taiwanese_affairs_dont_concern_mainland
+						has_completed_focus = PRC_economic_conversion_to_military_needs
+	
+					}
+				}
+			}
+			available = {
+				limit = {
+					tag = CHI
+					NOT = {
+						has_idea = common_prosperity_law_1
+						has_idea = common_prosperity_law_2
+					}
+				}
+			}
+			modifier = {
+				stability_factor = 0.05
+				consumer_goods_factor = 0.05
+				civilian_factories_productivity = 0.05
+				offices_productivity = 0.05
+				small_businesses_productivity_modifier = 0.05
+				conversion_cost_mil_to_civ_factor = -0.05
+				business_value_factor = 0.25
+				production_speed_arms_factory_factor = -0.1
+				production_speed_dockyard_factor = -0.1
+				conversion_cost_civ_to_mil_factor = 0.25
+				production_speed_industrial_complex_factor = 0.38
+				production_speed_infrastructure_factor = 0.28
+				max_fuel_factor = -0.15
+				industrial_development_monthly = 0.005
+				society_development_monthly = 0.002
+				poverty_development_monthly = -0.005
+				low_stability_weekly = 0.003
+				energy_use_multiplier = -0.2
+			}
+		}
+		common_prosperity_law_left_1 = {
+			picture = laws_economic_common_prosperity
+			name = common_prosperity_law
+			#desc = common_prosperity_law_desc
+			removal_cost = -1
+			cancel_if_invalid = no
+			visible = {
+				tag = CHI
+				has_idea = common_prosperity_law_left_1
+				#has_country_flag = common_prosperity_law_test_flag
+			}
+			allowed_to_remove = {
+				hidden_trigger = {
+					OR = {
+						has_completed_focus = PRC_taiwanese_affairs_dont_concern_mainland
+						has_completed_focus = PRC_economic_conversion_to_military_needs
+	
+					}
+				}
+			}
+			available = {
+				limit = {
+					tag = CHI
+					NOT = {
+						has_idea = common_prosperity_law_1
+						has_idea = common_prosperity_law_2
+					}
+				}
+			}
+			modifier = {
+				stability_factor = 0.05
+				consumer_goods_factor = 0.05
+				civilian_factories_productivity = 0.05
+				offices_productivity = 0.05
+				small_businesses_productivity_modifier = 0.05
+				conversion_cost_mil_to_civ_factor = -0.05
+				business_value_factor = 0.16
+				production_speed_arms_factory_factor = -0.3
+				production_speed_dockyard_factor = -0.3
+				conversion_cost_civ_to_mil_factor = 0.4
+				production_speed_industrial_complex_factor = 0.28
+				production_speed_infrastructure_factor = 0.18
+				max_fuel_factor = -0.15
+				industrial_development_monthly = 0.012
+				society_development_monthly = 0.007
+				low_stability_weekly = 0.006
+				energy_use_multiplier = -0.2
+			}
+		}
+		common_prosperity_law_left_2 = {
+			picture = laws_economic_common_prosperity
+			name = common_prosperity_law
+			#desc = common_prosperity_law_desc
+			removal_cost = -1
+			cancel_if_invalid = no
+			visible = {
+				tag = CHI
+				has_idea = common_prosperity_law_left_2
+				#has_country_flag = common_prosperity_law_test_flag
+			}
+			allowed_to_remove = {
+				hidden_trigger = {
+					OR = {
+						has_completed_focus = PRC_taiwanese_affairs_dont_concern_mainland
+						has_completed_focus = PRC_economic_conversion_to_military_needs
+	
+					}
+				}
+			}
+			available = {
+				limit = {
+					tag = CHI
+					NOT = {
+						has_idea = common_prosperity_law_1
+						has_idea = common_prosperity_law_2
+					}
+				}
+			}
+			modifier = {
+				stability_factor = 0.05
+				consumer_goods_factor = 0.05
+				civilian_factories_productivity = 0.05
+				offices_productivity = 0.05
+				small_businesses_productivity_modifier = 0.05
+				conversion_cost_mil_to_civ_factor = -0.05
+				business_value_factor = 0.14
+				production_speed_arms_factory_factor = -0.3
+				production_speed_dockyard_factor = -0.3
+				conversion_cost_civ_to_mil_factor = 0.45
+				production_speed_industrial_complex_factor = 0.26
+				production_speed_infrastructure_factor = 0.16
+				max_fuel_factor = -0.15
+				industrial_development_monthly = 0.015
+				society_development_monthly = 0.01
+				low_stability_weekly = 0.007
+				energy_use_multiplier = -0.2
+			}
+		}
+		common_prosperity_law_left_3 = {
+			picture = laws_economic_common_prosperity
+			name = common_prosperity_law
+			#desc = common_prosperity_law_desc
+			removal_cost = -1
+			cancel_if_invalid = no
+			visible = {
+				tag = CHI
+				has_idea = common_prosperity_law_left_3
+				#has_country_flag = common_prosperity_law_test_flag
+			}
+			allowed_to_remove = {
+				hidden_trigger = {
+					OR = {
+						has_completed_focus = PRC_taiwanese_affairs_dont_concern_mainland
+						has_completed_focus = PRC_economic_conversion_to_military_needs
+	
+					}
+				}
+			}
+			available = {
+				limit = {
+					tag = CHI
+					NOT = {
+						has_idea = common_prosperity_law_1
+						has_idea = common_prosperity_law_2
+					}
+				}
+			}
+			modifier = {
+				stability_factor = 0.05
+				consumer_goods_factor = 0.05
+				civilian_factories_productivity = 0.05
+				offices_productivity = 0.05
+				small_businesses_productivity_modifier = 0.05
+				conversion_cost_mil_to_civ_factor = -0.05
+				business_value_factor = 0.1
+				production_speed_arms_factory_factor = -0.35
+				production_speed_dockyard_factor = -0.35
+				conversion_cost_civ_to_mil_factor = 0.5
+				production_speed_industrial_complex_factor = 0.24
+				production_speed_infrastructure_factor = 0.14
+				max_fuel_factor = -0.15
+				industrial_development_monthly = 0.018
+				society_development_monthly = 0.012
+				poverty_development_monthly = 0.01
+				low_stability_weekly = 0.0085
+				energy_use_multiplier = -0.2
+			}
+		}
+		common_prosperity_law_left_4 = {
+			picture = laws_economic_common_prosperity
+			name = common_prosperity_law
+			#desc = common_prosperity_law_desc
+			removal_cost = -1
+			cancel_if_invalid = no
+			visible = {
+				tag = CHI
+				has_idea = common_prosperity_law_left_4
+				#has_country_flag = common_prosperity_law_test_flag
+			}
+			allowed_to_remove = {
+				hidden_trigger = {
+					OR = {
+						has_completed_focus = PRC_taiwanese_affairs_dont_concern_mainland
+						has_completed_focus = PRC_economic_conversion_to_military_needs
+	
+					}
+				}
+			}
+			available = {
+				limit = {
+					tag = CHI
+					NOT = {
+						has_idea = common_prosperity_law_1
+						has_idea = common_prosperity_law_2
+					}
+				}
+			}
+			modifier = {
+				stability_factor = 0.05
+				consumer_goods_factor = 0.05
+				civilian_factories_productivity = 0.05
+				offices_productivity = 0.05
+				small_businesses_productivity_modifier = 0.05
+				conversion_cost_mil_to_civ_factor = -0.05
+				business_value_factor = 0.05
+				production_speed_arms_factory_factor = -0.3
+				production_speed_dockyard_factor = -0.3
+				conversion_cost_civ_to_mil_factor = 0.55
+				production_speed_industrial_complex_factor = 0.22
+				production_speed_infrastructure_factor = 0.12
+				max_fuel_factor = -0.15
+				industrial_development_monthly = 0.02
+				society_development_monthly = 0.015
+				poverty_development_monthly = 0.012
+				low_stability_weekly = 0.01
+				energy_use_multiplier = -0.2
+			}
+		}
+		common_prosperity_law_1 = {
+			picture = laws_economic_common_prosperity
+			name = common_prosperity_law
+			#desc = common_prosperity_law_desc
+			removal_cost = -1
+			level = 7
+			cancel_if_invalid = no
+			visible = {
+				tag = CHI
+				has_idea = common_prosperity_law_1
+				NOT = {
+					OR = {
+						has_idea = common_prosperity_law
+						has_idea = common_prosperity_law_2
+					}
+				}
+			}
+			allowed_to_remove = {
+				hidden_trigger = {
+	               always = no
+				}
+			}
+			available = {
+				limit = {
+						tag = CHI
+						NOT = {
+							has_idea = common_prosperity_law
+							has_idea = common_prosperity_law_2
+						}
+					}
+				hidden_trigger = {
+					has_country_flag = common_prosperity_law_test_flag
+				}
+			}
+			modifier = {
+				stability_factor = 0.05
+				consumer_goods_factor = 0.05
+				civilian_factories_productivity = 0.05
+				offices_productivity = 0.05
+				small_businesses_productivity_modifier = 0.05
+				conversion_cost_mil_to_civ_factor = -0.05
+				business_value_factor = 0.18
+				production_speed_arms_factory_factor = -0.2
+				production_speed_dockyard_factor = -0.2
+				conversion_cost_civ_to_mil_factor = 0.25
+				production_speed_industrial_complex_factor = 0.2
+				production_speed_infrastructure_factor = 0.1
+				max_fuel_factor = -0.15
+				industrial_development_monthly = 0.01
+				society_development_monthly = 0.005
+				low_stability_weekly = 0.005
+				energy_use_multiplier = -0.2
+			}
+		}
+		common_prosperity_law_2 = {
+			picture = laws_economic_common_prosperity
+			name = common_prosperity_law
+			#desc = common_prosperity_law_desc
+			removal_cost = -1
+			cancel_if_invalid = no
+			visible = {
+				tag = CHI
+				has_idea = common_prosperity_law_2
+				NOT = {
+				OR = {
+					has_idea = common_prosperity_law
+					has_idea = common_prosperity_law_1
+					}
+			}
+			}
+
+			allowed_to_remove = {
+				hidden_trigger = {
+					always = no
+	
+				}
+			}
+			available = {
+				hidden_trigger = {
+					limit = {
+						tag = CHI
+						NOT = {
+							has_idea = common_prosperity_law
+							has_idea = common_prosperity_law_1
+						}
+					}
+					has_country_flag = common_prosperity_law_test_flag
+				}
+			}
+			modifier = {
+				stability_factor = 0.05
+				consumer_goods_factor = 0.05
+				civilian_factories_productivity = 0.05
+				offices_productivity = 0.05
+				small_businesses_productivity_modifier = 0.05
+				conversion_cost_mil_to_civ_factor = -0.05
+				business_value_factor = 0.18
+				production_speed_arms_factory_factor = -0.2
+				production_speed_dockyard_factor = -0.2
+				conversion_cost_civ_to_mil_factor = 0.1
+				production_speed_industrial_complex_factor = 0.2
+				production_speed_infrastructure_factor = 0.1
+				max_fuel_factor = -0.15
+				industrial_development_monthly = 0.01
+				society_development_monthly = 0.005
+				low_stability_weekly = 0.005
+				energy_use_multiplier = -0.2
+			}
+		}
+		nationalist_consumerism_law = {
+			picture = laws_economic_special_focus_sov_ldpr
+			name = nationalist_consumerism_law
+			removal_cost = -1
+			cancel_if_invalid = no
+			allowed_to_remove = {
+				hidden_trigger = {
+					always = no
+				}
+			}
+			allowed = {
+				original_tag = SOV
+			}
+			allowed_to_remove = {
+				always = no
+			}
+			modifier = {
+				stability_factor = 0.05
+				consumer_goods_factor = 0.05
+				civilian_factories_productivity = 0.05
+				offices_productivity = 0.05
+				small_businesses_productivity_modifier = 0.05
+				conversion_cost_civ_to_mil_factor = 0.1
+				conversion_cost_mil_to_civ_factor = -0.05
+				business_value_factor = 0.18
+				production_speed_arms_factory_factor = -0.2
+				production_speed_dockyard_factor = 0.2
+				personal_expense_factor = -0.1
+				max_fuel_factor = -0.15
+				industrial_development_monthly = 0.01
+				society_development_monthly = 0.003
+				energy_use_multiplier = -0.2
+			}
+		}
+
+		civil_economy = {
+			allowed_civil_war = { always = yes }
+
+			cost = 300
+			removal_cost = -1
+			picture = generic_civilian_economy_idea
+			allowed = {
+				NOT = { original_tag = SOV }
+				NOT = { original_tag = CHI }
+			}
+
+			modifier = {
+				stability_factor = 0.05
+				consumer_goods_factor = 0.05
+				civilian_factories_productivity = 0.05
+				offices_productivity = 0.05
+				small_businesses_productivity_modifier = 0.05
+				conversion_cost_civ_to_mil_factor = 0.05
+				conversion_cost_mil_to_civ_factor = -0.05
+				business_value_factor = 0.1
+				max_fuel_factor = -0.2
+				industrial_development_monthly = 0.005
+				low_stability_weekly = 0.002
+				energy_use_multiplier = -0.2
+			}
+			available = {
+				has_idea = partial_mobilization_economy
+			}
+
+			default = yes
+			cancel_if_invalid = no
+		}
+
+		partial_mobilization_economy  = {
+			allowed_civil_war = { always = yes }
+
+			cost = 300
+			removal_cost = -1
+			picture = generic_partial_mobilization_economy_idea
+			allowed = {
+				NOT = { original_tag = SOV }
+				NOT = { original_tag = CHI }
+			}
+			available = {
+				OR = {
+					has_idea = civil_economy
+					has_idea = war_economy_mdc
+				}
+				OR = {
+					threat > 0.25
+					has_war = yes
+					has_country_flag = AI_is_threatened
+					any_allied_country = { has_war = yes }
+				}
+			}
+			on_add = { add_offsite_building = { level = 1 type = arms_factory } }
+			modifier = {
+				stability_factor = -0.05
+				war_stability_factor = 0.05
+				consumer_goods_factor = -0.05
+				civilian_factories_productivity = -0.05
+				offices_productivity = -0.05
+				small_businesses_productivity_modifier = -0.05
+				military_factories_productivity = 0.05
+				dockyard_productivity = 0.05
+				industrial_capacity_factory = 0.05
+				industrial_capacity_dockyard = 0.05
+				total_workforce_modifier = 0.05
+				production_factory_start_efficiency_factor = 0.05
+				production_factory_max_efficiency_factor = 0.05
+				production_factory_efficiency_gain_factor = 0.05
+				production_lack_of_resource_penalty_factor = -0.05
+				production_speed_arms_factory_factor = 0.05
+				production_speed_dockyard_factor = 0.05
+				production_speed_radar_station_factor = 0.05
+				production_speed_anti_air_building_factor = 0.05
+				production_speed_rocket_site_factor = 0.05
+				production_speed_bunker_factor = 0.05
+				production_speed_coastal_bunker_factor = 0.05
+				conversion_cost_civ_to_mil_factor = -0.05
+				energy_use_multiplier = -0.05
+			}
+			on_remove = { add_offsite_building = { level = -1 type = arms_factory } }
+
+			cancel_if_invalid = no
+
+			ai_will_do = {
+				base = 150
+			}
+		}
+
+		war_economy_mdc  = {
+			allowed_civil_war = { always = yes }
+
+			cost = 300
+			removal_cost = -1
+			picture = generic_war_economy_idea
+			allowed = {
+				NOT = { original_tag = SOV }
+				NOT = { original_tag = CHI }
+			}
+			available = {
+				OR = {
+					has_idea = partial_mobilization_economy
+					has_idea = total_war_economy
+				}
+				has_war = yes
+			}
+			on_add = { add_offsite_building = { level = 2 type = arms_factory } }
+			modifier = {
+				stability_factor = -0.1
+				war_stability_factor = 0.1
+				consumer_goods_factor = -0.1
+				civilian_factories_productivity = -0.1
+				offices_productivity = -0.1
+				small_businesses_productivity_modifier = -0.1
+				military_factories_productivity = 0.1
+				dockyard_productivity = 0.1
+				industrial_capacity_factory = 0.1
+				industrial_capacity_dockyard = 0.1
+				total_workforce_modifier = 0.1
+				production_factory_start_efficiency_factor = 0.1
+				production_factory_max_efficiency_factor = 0.1
+				production_factory_efficiency_gain_factor = 0.1
+				production_lack_of_resource_penalty_factor = -0.1
+				production_speed_arms_factory_factor = 0.1
+				production_speed_dockyard_factor = 0.1
+				production_speed_radar_station_factor = 0.1
+				production_speed_anti_air_building_factor = 0.1
+				production_speed_rocket_site_factor = 0.1
+				production_speed_bunker_factor = 0.1
+				production_speed_coastal_bunker_factor = 0.1
+				conversion_cost_civ_to_mil_factor = -0.1
+				business_value_factor = -0.05
+				max_fuel_factor = 0.1
+				industrial_development_monthly = -0.005
+				energy_use_multiplier = 0.05
+			}
+			on_remove = { add_offsite_building = { level = -2 type = arms_factory } }
+
+			cancel_if_invalid = no
+
+			ai_will_do = {
+				base = 150
+			}
+		}
+		total_war_economy  = {
+			allowed_civil_war = { always = yes }
+
+			cost = 300
+			removal_cost = -1
+			picture = generic_total_war_economy_idea
+			allowed = {
+				NOT = { original_tag = SOV }
+				NOT = { original_tag = CHI }
+			}
+			available = {
+				has_idea = war_economy_mdc
+				has_war = yes
+			}
+			on_add = { add_offsite_building = { level = 3 type = arms_factory } }
+			modifier = {
+				stability_factor = -0.15
+				war_stability_factor = 0.15
+				consumer_goods_factor = -0.15
+				civilian_factories_productivity = -0.15
+				offices_productivity = -0.15
+				small_businesses_productivity_modifier = -0.15
+				military_factories_productivity = 0.15
+				dockyard_productivity = 0.15
+				industrial_capacity_factory = 0.15
+				industrial_capacity_dockyard = 0.15
+				total_workforce_modifier = 0.15
+				production_factory_start_efficiency_factor = 0.15
+				production_factory_max_efficiency_factor = 0.15
+				production_factory_efficiency_gain_factor = 0.15
+				production_lack_of_resource_penalty_factor = -0.15
+				production_speed_arms_factory_factor = 0.15
+				production_speed_dockyard_factor = 0.15
+				production_speed_radar_station_factor = 0.15
+				production_speed_anti_air_building_factor = 0.15
+				production_speed_rocket_site_factor = 0.15
+				production_speed_bunker_factor = 0.15
+				production_speed_coastal_bunker_factor = 0.15
+				conversion_cost_civ_to_mil_factor = -0.15
+				business_value_factor = -0.1
+				max_fuel_factor = 0.2
+				mobilization_speed = 0.25
+				industrial_development_monthly = -0.01
+				energy_use_multiplier = 0.15
+			}
+			on_remove = { add_offsite_building = { level = -3 type = arms_factory } }
+
+			cancel_if_invalid = no
+
+			ai_will_do = {
+				base = 150
+			}
+		}
+		war_communism_of_21st_century = {
+			picture = laws_economic_special_focus_sov_cprf
+			cost = 100
+			removal_cost = -1
+			cancel_if_invalid = no
+			allowed = {
+				original_tag = SOV
+			}
+			allowed_to_remove = {
+				always = no
+			}
+			on_add = { add_offsite_building = { level = 3 type = arms_factory } }
+			on_remove = { add_offsite_building = { level = -3 type = arms_factory } }
+			modifier = {
+				stability_factor = -0.15
+				war_stability_factor = 0.15
+				consumer_goods_factor = -0.15
+				civilian_factories_productivity = -0.15
+				offices_productivity = -0.15
+				small_businesses_productivity_modifier = -0.15
+				military_factories_productivity = 0.15
+				dockyard_productivity = 0.15
+				industrial_capacity_factory = 0.15
+				industrial_capacity_dockyard = 0.15
+				total_workforce_modifier = 0.15
+				production_factory_start_efficiency_factor = 0.15
+				production_factory_max_efficiency_factor = 0.15
+				production_factory_efficiency_gain_factor = 0.15
+				production_lack_of_resource_penalty_factor = -0.15
+				production_speed_arms_factory_factor = 0.2
+				production_speed_dockyard_factor = -0.05
+				production_speed_radar_station_factor = 0.15
+				production_speed_anti_air_building_factor = 0.15
+				production_speed_rocket_site_factor = 0.15
+				production_speed_bunker_factor = 0.15
+				production_speed_coastal_bunker_factor = 0.15
+				conversion_cost_civ_to_mil_factor = -0.15
+				business_value_factor = -0.1
+				stability_factor = -0.25
+				max_fuel_factor = 0.3
+				mobilization_speed = 0.4
+				energy_use_multiplier = 0.10
+			}
+			ai_will_do = {
+				base = 1
+			}
+		}
+		all_russian_total_mobilization = {
+			picture = laws_economic_special_focus_sov_ldpr
+			cost = 100
+			removal_cost = -1
+			cancel_if_invalid = no
+			allowed = {
+				original_tag = SOV
+			}
+			allowed_to_remove = {
+				always = no
+			}
+			on_add = { add_offsite_building = { level = 3 type = arms_factory } }
+			on_remove = { add_offsite_building = { level = -3 type = arms_factory } }
+			modifier = {
+				stability_factor = -0.15
+				war_stability_factor = 0.15
+				consumer_goods_factor = -0.15
+				civilian_factories_productivity = -0.15
+				offices_productivity = -0.15
+				small_businesses_productivity_modifier = -0.15
+				military_factories_productivity = 0.15
+				dockyard_productivity = 0.15
+				industrial_capacity_factory = 0.15
+				industrial_capacity_dockyard = 0.15
+				total_workforce_modifier = 0.15
+				production_factory_start_efficiency_factor = 0.15
+				production_factory_max_efficiency_factor = 0.15
+				production_factory_efficiency_gain_factor = 0.15
+				production_lack_of_resource_penalty_factor = -0.15
+				production_speed_arms_factory_factor = 0.2
+				production_speed_dockyard_factor = -0.05
+				production_speed_radar_station_factor = 0.15
+				production_speed_anti_air_building_factor = 0.15
+				production_speed_rocket_site_factor = 0.15
+				production_speed_bunker_factor = 0.15
+				production_speed_coastal_bunker_factor = 0.15
+				conversion_cost_civ_to_mil_factor = -0.15
+				business_value_factor = -0.1
+				stability_factor = -0.25
+				max_fuel_factor = 0.3
+				mobilization_speed = 0.4
+				poverty_development_monthly = -0.025
+				energy_use_multiplier = 0.15
+			}
+			ai_will_do = {
+				base = 1
+			}
+		}
+		all_russian_consolidation = {
+			picture = laws_economic_special_focus_sov_ur
+			cost = 100
+			removal_cost = -1
+			level = 1
+			allowed = {
+				original_tag = SOV
+			}
+			allowed_to_remove = {
+				always = no
+			}
+			on_add = { add_offsite_building = { level = 3 type = arms_factory } }
+			on_remove = { add_offsite_building = { level = -3 type = arms_factory } }
+			modifier = {
+				stability_factor = -0.15
+				war_stability_factor = 0.15
+				consumer_goods_factor = -0.15
+				civilian_factories_productivity = -0.15
+				offices_productivity = -0.15
+				small_businesses_productivity_modifier = -0.15
+				military_factories_productivity = 0.15
+				dockyard_productivity = 0.15
+				industrial_capacity_factory = 0.15
+				industrial_capacity_dockyard = 0.15
+				total_workforce_modifier = 0.15
+				production_factory_start_efficiency_factor = 0.15
+				production_factory_max_efficiency_factor = 0.15
+				production_factory_efficiency_gain_factor = 0.15
+				production_lack_of_resource_penalty_factor = -0.15
+				production_speed_arms_factory_factor = 0.2
+				production_speed_industrial_complex_factor = 0.15
+				production_speed_dockyard_factor = 0.15
+				production_speed_radar_station_factor = 0.15
+				production_speed_anti_air_building_factor = 0.15
+				production_speed_rocket_site_factor = 0.15
+				production_speed_bunker_factor = 0.15
+				production_speed_coastal_bunker_factor = 0.15
+				conversion_cost_civ_to_mil_factor = -0.2
+				business_value_factor = -0.15
+				stability_factor = -0.1
+				max_fuel_factor = 0.35
+				mobilization_speed = 0.45
+				poverty_development_monthly = -0.025
+				academic_development_monthly = -0.025
+				energy_use_multiplier = 0.1
+			}
+			ai_will_do = {
+				base = 1
+			}
+		}
+	}
+	#Population Pyramids
+    pop_pyramid = {
+		law = yes
+		use_list_view = yes
+
+		population_pyramid_1 = {
+			allowed_civil_war = { always = yes }
+			available = { always = no }
+			picture = generic_pyramide_up
+			modifier = {
+				war_support_factor = 0.1
+				social_cost_multiplier_modifier = -0.1
+				health_cost_multiplier_modifier = -0.1
+				education_cost_multiplier_modifier = 0.1
+				total_workforce_modifier = 0.125
+				monthly_population = 0.25
+				foreign_influence_defense_modifier = -0.15
+				drift_defence_factor = -0.15
+			}
+			cancel_if_invalid = no
+		}
+		population_pyramid_2 = {
+			allowed_civil_war = { always = yes }
+			available = { always = no }
+			picture = generic_pyramide_middle
+			modifier = {
+				stability_factor = 0.05
+			}
+			default = yes
+			cancel_if_invalid = no
+		}
+		population_pyramid_3 = {
+			allowed_civil_war = { always = yes }
+			available = { always = no }
+			picture = generic_pyramide_down
+			modifier = {
+				war_support_factor = -0.1
+				social_cost_multiplier_modifier = 0.1
+				health_cost_multiplier_modifier = 0.1
+				education_cost_multiplier_modifier = -0.1
+				total_workforce_modifier = -0.125
+				monthly_population = -0.25
+				foreign_influence_defense_modifier = 0.15
+				drift_defence_factor = 0.15
+			}
+			cancel_if_invalid = no
+		}
+			
+		JAP_aging_population_idea = {
+			picture = JAP_declining_population
+				
+			allowed = { always = no }
+			available = { always = no }
+			
+			modifier = {
+				monthly_population = -1.75
+				recruitable_population_factor = -0.1
+				production_factory_efficiency_gain_factor = -0.5
+				personal_value_factor = -0.1
+				personal_expense_factor = 0.1
+				inflation_multiplier_modifier = -0.2
+				society_development_monthly = -0.04
+				poverty_development_monthly = -0.02
+				stability_factor = 0.2
+				war_support_factor = -0.1
+				social_cost_multiplier_modifier = 0.1
+				health_cost_multiplier_modifier = 0.1
+				education_cost_multiplier_modifier = -0.1
+				total_workforce_modifier = -0.125
+				foreign_influence_defense_modifier = 0.15
+				drift_defence_factor = 0.15
+			}
+			cancel_if_invalid = no
+		}
+			
+		JAP_aging_population_2_idea = {
+			picture = JAP_declining_population
+				
+			allowed = {
+			    always = no
+			}
+				
+			modifier = {
+				monthly_population = -0.85
+				expense_growth_factor = 0.15
+				personal_value_factor = -0.1
+				personal_expense_factor = 0.1
+				inflation_multiplier_modifier = -0.2
+				society_development_monthly = -0.03
+				poverty_development_monthly = -0.01
+			}
+			cancel_if_invalid = no
+		}
+			
+		JAP_aging_population_3_idea = {
+			picture = JAP_declining_population
+				
+			allowed = {
+			    always = no
+			}
+				
+			modifier = {
+				monthly_population = -0.80
+				expense_growth_factor = 0.15
+				personal_value_factor = -0.1
+				personal_expense_factor = 0.1
+				inflation_multiplier_modifier = -0.2
+				society_development_monthly = -0.025
+			}
+			cancel_if_invalid = no
+		}
+			
+		JAP_aging_population_4_idea = {
+			picture = JAP_declining_population
+				
+			allowed = {
+			    always = no
+			}
+				
+			modifier = {
+				monthly_population = -0.80
+				expense_growth_factor = 0.125
+				personal_value_factor = -0.1
+				personal_expense_factor = 0.075
+				inflation_multiplier_modifier = -0.2
+				society_development_monthly = -0.02
+			}
+			cancel_if_invalid = no
+		}
+			
+		JAP_aging_population_5_idea = {
+			picture = JAP_declining_population
+				
+			allowed = {
+				always = no
+			}
+				
+			modifier = {
+				monthly_population = -0.70
+				expense_growth_factor = 0.1
+				personal_value_factor = -0.05
+				personal_expense_factor = 0.05
+				inflation_multiplier_modifier = -0.1
+				society_development_monthly = -0.01
+			}
+			cancel_if_invalid = no
+		}
+			
+		JAP_aging_population_6_idea = {
+			name = JAP_aging_population_idea
+			picture = JAP_declining_population
+				
+			allowed = {
+			    always = no
+			}
+				
+			modifier = {
+				monthly_population = -0.60
+				expense_growth_factor = 0.075
+				personal_value_factor = -0.025
+				personal_expense_factor = 0.025
+				society_development_monthly = -0.005
+			}
+			cancel_if_invalid = no
+		}
+
+		KOR_aging_popu = {
+			picture = KOR_aging_population
+				
+			allowed = { always = no }
+			available = { always = no }
+
+			modifier = {
+				monthly_population = -1
+				stability_factor = -0.05
+				recruitable_population_factor = -0.05
+				production_factory_efficiency_gain_factor = -0.03
+				personal_value_factor = -0.05
+				personal_expense_factor = 0.05
+				inflation_multiplier_modifier = -0.1
+				society_development_monthly = -0.02
+				poverty_development_monthly = -0.01
+				stability_factor = 0.2
+				war_support_factor = -0.1
+				social_cost_multiplier_modifier = 0.1
+				health_cost_multiplier_modifier = 0.1
+				education_cost_multiplier_modifier = -0.1
+				total_workforce_modifier = -0.125
+				foreign_influence_defense_modifier = 0.15
+				drift_defence_factor = 0.15
+			}
+			cancel_if_invalid = no
+		}
+	}
+	#Birth Policy
+    birth_policy = {
+		law = yes
+		use_list_view = yes
+
+		encourage_birth = {
+			allowed_civil_war = { always = yes }
+			available = { NOT = { has_idea = encourage_abortion } }
+			removal_cost = -1
+			picture = generic_birth_up
+			modifier = {
+				custom_modifier_tooltip = encourage_birth_idea_TT
+				health_cost_multiplier_modifier = 0.25
+			}
+			on_add = {
+				hidden_effect = {
+					set_variable = { encourage_birth_var = 0.01 }
+					add_dynamic_modifier = { modifier = encourage_birth_dynamic_modifier }
+				}
+			}
+			cancel_if_invalid = no
+
+			ai_will_do = {
+				base = 0
+				modifier = {
+					add = 150
+					has_idea = population_pyramid_3
+				}
+			}
+		}
+		no_birth_control = {
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = generic_birth_middle
+			modifier = {
+				stability_factor = 0.05
+			}
+			default = yes
+			cancel_if_invalid = no
+		}
+		discourage_birth = {
+			allowed_civil_war = { always = yes }
+			available = {
+				AND = {
+					NOT = {
+						has_idea = ban_abortion
+					}
+				}
+			}
+			removal_cost = -1
+			picture = generic_birth_bad
+			modifier = {
+				custom_modifier_tooltip = discourage_birth_idea_TT
+				health_cost_multiplier_modifier = 0.25
+			}
+			on_add = {
+				hidden_effect = {
+					set_variable = { discourage_birth_var = 0.01 }
+					add_dynamic_modifier = { modifier = discourage_birth_dynamic_modifier }
+				}
+			}
+			cancel_if_invalid = no
+		}
+
+		CHI_one_child_policy = {
+			#独生子女政策
+			allowed = { always = no }
+			available = { always = no }
+			picture = PRC_one_child_policy
+			name = one_child_policy
+			modifier = {
+				MONTHLY_POPULATION = -0.75
+				migration_rate_value_factor = -0.50
+				social_cost_multiplier_modifier = 0.2
+				health_cost_multiplier_modifier = -0.2
+				education_cost_multiplier_modifier = -0.3
+				total_workforce_modifier = 0.02
+			}
+			cancel_if_invalid = no
+		}
+		CHI_two_child_policy = {
+			#二孩政策
+			allowed = { always = no }
+			available = { always = no }
+			picture = PRC_one_child_policy
+			name = two_child_policy
+			modifier = {
+				MONTHLY_POPULATION = -0.50
+				social_cost_multiplier_modifier = 0.2
+				education_cost_multiplier_modifier = -0.2
+				total_workforce_modifier = -0.125
+				stability_factor = 0.2
+				war_support_factor = -0.1
+				foreign_influence_defense_modifier = 0.15
+				drift_defence_factor = 0.15
+			}
+			cancel_if_invalid = no
+		}
+		CHI_three_child_policy = {
+			#三孩政策
+			allowed = { always = no }
+			available = { always = no }
+			picture = PRC_one_child_policy
+			name = CHI_three_child_policy
+			modifier = {
+				social_cost_multiplier_modifier = 0.15
+				health_cost_multiplier_modifier = 0.05
+				education_cost_multiplier_modifier = -0.05
+				total_workforce_modifier = -0.1
+				stability_factor = 0.2
+				war_support_factor = -0.1
+				monthly_population = -0.25
+				foreign_influence_defense_modifier = 0.15
+				drift_defence_factor = 0.15
+			}
+			cancel_if_invalid = no
+		}
+	}
+	#Abortion Policy
+    abortion_policy = {
+		law = yes
+		use_list_view = yes
+
+		ban_abortion = {
+			allowed_civil_war = { always = yes }
+			available = {
+				AND = {
+					NOT = {
+						has_idea = discourage_birth
+					}
+				}
+			}
+			removal_cost = -1
+			picture = generic_abort_disagree
+			modifier = {
+				monthly_population = 0.15
+				health_cost_multiplier_modifier = 0.15
+				stability_factor = -0.05
+			}
+			cancel_if_invalid = no
+		}
+		no_abortion_control = {
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = generic_abort_middle
+			modifier = {
+				stability_factor = 0.05
+			}
+			default = yes
+			cancel_if_invalid = no
+		}
+		encourage_abortion = {
+			allowed_civil_war = { always = yes }
+			available = {
+				AND = {
+					NOT = {
+						has_idea = encourage_birth
+					}
+				}
+			}
+			removal_cost = -1
+			picture = generic_abort_agree
+			modifier = {
+				monthly_population = -0.15
+				health_cost_multiplier_modifier = 0.15
+				stability_factor = -0.05
+			}
+			cancel_if_invalid = no
+		}
+	}
+}

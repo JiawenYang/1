@@ -1,0 +1,167 @@
+set_leader_IOM = {
+
+	if = { limit = { has_country_flag = set_conservatism }
+
+		if = { limit = { check_variable = { conservatism_leader = 0 } }
+			add_to_variable = { conservatism_leader = 1 }
+			hidden_effect = { kill_country_leader = yes }
+
+			create_country_leader = {
+				name = "Alan Bell"
+				picture = "AlanBell.dds"
+				ideology = conservatism
+				traits = {
+					western_conservatism
+				}
+			}
+
+			if = { limit = { has_country_flag = do_not_retire } subtract_from_variable = { conservatism_leader = 1 } }
+			if = { limit = { date < 2016.1.2 } set_temp_variable = { b = 1 } }
+		}
+		if = { limit = { check_variable = { conservatism_leader = 1 } }
+
+			create_country_leader = {
+				name = "Alfred Cannan"
+				picture = "Alfred_Cannan.dds"
+				ideology = conservatism
+				traits = {
+					western_conservatism
+				}
+			}
+		}
+	}
+	else_if = { limit = { has_country_flag = set_socialism }
+		if = { limit = { check_variable = { socialism_leader = 0 } }
+			add_to_variable = { socialism_leader = 1 }
+			hidden_effect = { kill_country_leader = yes }
+
+			create_country_leader = {
+				name = "David Cretney"
+				picture = "DavidCretney.dds"
+				ideology = socialism
+				traits = {
+					western_socialism
+				}
+			}
+
+			if = { limit = { has_country_flag = do_not_retire } subtract_from_variable = { socialism_leader = 1 } }
+			if = { limit = { date < 2016.1.2 } set_temp_variable = { b = 1 } }
+		}
+		if = { limit = { check_variable = { socialism_leader = 1 } }
+
+			create_country_leader = {
+				name = "Joney Faragher"
+				picture = "JoneyFaragher.dds"
+				ideology = socialism
+				traits = {
+					western_socialism
+				}
+			}
+		}
+	}
+	else_if = { limit = { has_country_flag = set_neutral_Social }
+		if = { limit = { check_variable = { neutral_Social_leader = 0 } }
+
+			create_country_leader = {
+				name = "Bernard Moffatt"
+				picture = "BernardMoffatt.dds"
+				ideology = neutral_Social
+				traits = {
+					neutrality_neutral_Social
+				}
+			}
+		}
+		if = { limit = { check_variable = { neutral_Social_leader = 1 } }
+
+			create_country_leader = {
+				name = "Mark Kermode"
+				picture = "MarkKermode.dds"
+				ideology = neutral_Social
+				traits = {
+					neutrality_neutral_Social
+				}
+			}
+		}
+	}
+	else_if = { limit = { has_country_flag = set_Nat_Populism }
+		if = { limit = { check_variable = { Nat_Populism_leader = 0 } }
+
+			create_country_leader = {
+				name = "Phil Gawne"
+				picture = "PhilGawne.dds"
+				ideology = Nat_Populism
+				traits = {
+					nationalist_Nat_Populism
+				}
+			}
+		}
+	}
+	else_if = { limit = { has_country_flag = set_Conservative }
+		if = { limit = { check_variable = { Conservative_leader = 0 } }
+
+			create_country_leader = {
+				name = "Robert Corteen Carswell"
+				picture = "Robert_Corteen_Carswell.dds"
+				ideology = Conservative
+				traits = {
+					emerging_Conservative
+				}
+			}
+		}
+	} 
+	else_if = { limit = { has_country_flag = set_communist_state }
+		if = { limit = { check_variable = { communist_state_leader = 0 } }
+
+			create_country_leader = {
+				name = "Manx Communists"
+				picture = "ManxCommunistParty.dds"
+				ideology = communist_state
+				traits = {
+					emerging_communist_state
+				}
+			}
+		}
+	}
+	else_if = { limit = { has_country_flag = set_liberalism }
+		if = { limit = { check_variable = { liberalism_leader = 0 } }
+			add_to_variable = { liberalism_leader = 1 }
+			hidden_effect = { kill_country_leader = yes }
+
+			create_country_leader = {
+				name = "Peter Karran"
+				picture = "PeterKarran.dds"
+				ideology = liberalism
+				traits = {
+					western_liberalism
+				}
+			}
+
+			if = { limit = { has_country_flag = do_not_retire } subtract_from_variable = { liberalism_leader = 1 } }
+			if = { limit = { date < 2016.1.2 } set_temp_variable = { b = 1 } }
+		}
+		if = { limit = { check_variable = { liberalism_leader = 1 } }
+
+			create_country_leader = {
+				name = "Lawrie Hooper"
+				picture = "LawrieHooper.dds"
+				ideology = liberalism
+				traits = {
+					western_liberalism
+				}
+			}
+		}
+	}
+	else_if = { limit = { has_country_flag = set_Monarchist }
+		if = { limit = { check_variable = { Monarchist_leader = 0 } }
+
+			create_country_leader = {
+				name = "David Drew Howe"
+				picture = "DavidDrewHowe.dds"
+				ideology = Monarchist
+				traits = {
+					nationalist_Monarchist
+				}
+			}
+		} 
+	}
+}

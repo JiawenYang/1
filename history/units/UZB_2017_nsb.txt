@@ -1,0 +1,356 @@
+﻿division_template = {
+	name = "Motor Rifle Brigade"
+
+	regiments = {
+		Mech_Inf_Bat = { x = 0 y = 0 }
+		Arm_Inf_Bat = { x = 0 y = 1 }
+
+		Mot_Inf_Bat = { x = 1 y = 0 }
+
+		armor_Bat = { x = 2 y = 0 }
+
+		SP_Arty_Bat = { x = 3 y = 0 }
+		SP_Arty_Bat = { x = 3 y = 1 }
+
+	}
+
+	support = {
+		Mech_Recce_Comp = { x = 0 y = 0 }
+		SP_AA_Battery = { x = 0 y = 1 }
+		H_Engi_Comp = { x = 0 y = 2 }
+	} 
+}
+
+division_template = {
+	name = "Motor Rifle Brigade 2"
+
+	regiments = {
+		Mot_Inf_Bat = { x = 0 y = 0 }
+		Mot_Inf_Bat = { x = 0 y = 1 }
+		Mot_Inf_Bat = { x = 0 y = 2 }
+
+		Arty_Bat = { x = 1 y = 0 }
+		Arty_Bat = { x = 1 y = 1 }
+
+	}
+	support = {
+		armor_Comp = { x = 0 y = 0 }
+		Mech_Recce_Comp = { x = 0 y = 1 }
+		H_Engi_Comp = { x = 0 y = 2 }
+	}
+}
+
+division_template = {
+	name = "Air Assault Brigade"
+
+	regiments = {
+		L_Air_assault_Bat = { x = 0 y = 0 }
+		L_Air_assault_Bat = { x = 0 y = 1 }
+		L_Air_assault_Bat = { x = 0 y = 2 }
+		L_Air_assault_Bat = { x = 0 y = 3 } 
+	}
+}
+
+division_template = {
+	name = "Airborne Brigade"
+
+	regiments = {
+		Mech_Air_Inf_Bat = { x = 0 y = 0 }
+		Mech_Air_Inf_Bat = { x = 0 y = 1 }
+
+		Arty_Bat = { x = 1 y = 0 } 
+	}
+}
+
+units = {
+	division = {
+		name = "36th Motor Rifle Brigade"
+		location = 11687 	#Jizzakh
+		division_template = "Motor Rifle Brigade"
+		start_experience_factor = 0.25
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "4th Airborne Brigade"
+		location = 1216 	#Samarqand
+		division_template = "Airborne Brigade"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "48th Motor Rifle Brigade"
+		location = 1479	#Nukus
+		division_template = "Motor Rifle Brigade"
+		start_experience_factor = 0.25
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "3rd Motor Rifle Brigade"
+		location = 7775		#Navoi
+		division_template = "Motor Rifle Brigade 2"
+		start_experience_factor = 0.25
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "7th Motor Rifle Brigade"
+		location = 10205	#Kokayty
+		division_template = "Motor Rifle Brigade 2"
+		start_experience_factor = 0.25
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "21st Motor Rifle Brigade"
+		location = 12239		#Xeyrabad
+		division_template = "Motor Rifle Brigade 2"
+		start_experience_factor = 0.25
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "22nd Motor Rifle Brigade"
+		location = 12722		#Sherabad
+		division_template = "Motor Rifle Brigade 2"
+		start_experience_factor = 0.25
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "25th Motor Rifle Brigade"
+		location = 7639	#Qarshi
+		division_template = "Motor Rifle Brigade 2"
+		start_experience_factor = 0.25
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "11th Motor Rifle Brigade" #fake name
+		location = 1459	#Chirchik
+		division_template = "Motor Rifle Brigade 2"
+		start_experience_factor = 0.25
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "15th Motor Rifle Brigade" #fake name
+		location = 1216	#Samarqand
+		division_template = "Motor Rifle Brigade 2"
+		start_experience_factor = 0.25
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "37th Motor Rifle Brigade"
+		location = 1483		#Andijan
+		division_template = "Motor Rifle Brigade"
+		start_experience_factor = 0.25
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "17th Air Assault Brigade"
+		location = 2058	#Ferghana
+		division_template = "Air Assault Brigade"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.01
+	}
+}
+
+instant_effect = { 
+
+	add_equipment_to_stockpile = {
+		variant_name = "AKM"
+		type = infantry_weapons_2			#AKM
+		amount = 3900
+		producer = SOV
+	}
+	add_equipment_to_stockpile = {
+		type = cnc_equipment_3
+		amount = 700
+		producer = UZB
+	}
+	add_equipment_to_stockpile = {
+		type = Anti_tank_1
+		amount = 450
+		producer = UZB
+	}
+	add_equipment_to_stockpile = {
+		type = Heavy_Anti_tank_1
+		amount = 185
+		producer = UZB
+	}
+	add_equipment_to_stockpile = {
+		type = Anti_Air_0
+		amount = 500
+		producer = UZB
+	}
+	add_equipment_to_stockpile = {
+		type = Anti_Air_2
+		amount = 200
+		producer = UZB
+	}
+	add_equipment_to_stockpile = {
+		type = util_vehicle_3
+		amount = 670
+		producer = UZB
+	}
+	add_equipment_to_stockpile = {
+		type = util_vehicle_1
+		amount = 1000
+		producer = UZB
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "T-72"
+		type = medium_tank_chassis_1 #T-72
+		amount = 70
+		producer = SOV
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "T-64"
+		type = medium_tank_chassis_1 #T-64
+		amount = 100
+		producer = SOV
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "T-62"
+		type = medium_tank_chassis_0 #T-62
+		amount = 170
+		producer = SOV
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "BMP-1"
+		type = medium_tank_flame_chassis_0 #BMP-1 (BRM)
+		amount = 6
+		producer = SOV
+	}
+	add_equipment_to_stockpile = {
+		type = medium_tank_flame_chassis_0
+		amount = 120
+		producer = UZB
+	}
+	add_equipment_to_stockpile = {
+		type = medium_tank_flame_chassis_1
+		amount = 9
+		producer = UZB
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "BMP-2"
+		type = medium_tank_flame_chassis_1 #BMP-2
+		amount = 270
+		producer = SOV
+	}
+	add_equipment_to_stockpile = {
+		type = medium_tank_amphibious_chassis_1
+		amount = 50
+		producer = UZB
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "BRDM-2"
+		type = medium_tank_amphibious_chassis_0 #BRDM-2
+		amount = 13
+		producer = SOV
+		#version_name = "BRDM-2"
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "BTR-60"
+		type = medium_tank_amphibious_chassis_0 #BTR-60
+		amount = 24
+		producer = SOV
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "BTR-70"
+		type = medium_tank_amphibious_chassis_1 #BTR-70
+		amount = 25
+		producer = SOV
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "BTR-80"
+		type = medium_tank_amphibious_chassis_2 #BTR-80
+		amount = 210
+		producer = SOV
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "MaxxPro"
+		type = util_vehicle_6 #MaxxPro MRAP
+		amount = 50
+		producer = USA
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "2S1 Gvozdika"
+		type = medium_tank_artillery_chassis_0 #2S1 Gvozdika
+		amount = 36
+		producer = SOV
+		#version_name = "2S1 Gvozdika"
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "2S3 Akatsiya"
+		type = medium_tank_artillery_chassis_0 #2S3 Akatsiya
+		amount = 48
+		producer = SOV
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "D-30"
+		type = artillery_1 #D-30
+		amount = 60
+		producer = SOV
+	}
+	add_equipment_to_stockpile = {
+		type = artillery_2 #2A36 Giatsint-B
+		amount = 140
+		producer = UZB
+		#version_name = "2A36 Giatsint-B"
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "BM-21 Grad"
+		type = medium_tank_rocket_chassis_0 #BM-21 Grad
+		amount = 60
+		producer = SOV
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "BM-27 Uragan"
+		type = medium_tank_rocket_chassis_1 #BM-27 Uragan
+		amount = 48
+		producer = SOV
+	} 
+	#### Sealed Storage（封存）####
+	add_equipment_to_stockpile = {
+		variant_name = "AK-47"
+		type = infantry_weapons_2			#AK-47（封存）
+		amount = 80000
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "T-55"
+		type = medium_tank_chassis_0		#T-55（封存，SOV变体）
+		producer = SOV
+		amount = 150
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "T-62"
+		type = medium_tank_chassis_0		#T-62（封存，SOV变体）
+		producer = SOV
+		amount = 100
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Mi-24 Hind"
+		type = heavy_tank_chassis_0 #Mi-24 Hind
+		amount = 29
+		producer = SOV
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Mil Mi-6"
+		type = transport_helicopter_1 #Mil Mi-6
+		amount = 26
+		producer = SOV
+		#version_name = "Mil Mi-6"
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Mi-26"
+		type = transport_helicopter_2 #Mil Mi-26 Halo
+		amount = 1
+		producer = SOV
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Mi-8"
+		type = transport_helicopter_1 #Mil Mi-8
+		amount = 152
+		producer = SOV
+	} 
+}

@@ -1,0 +1,120 @@
+	# ============================================================
+	# Korea special administrative divisions (ported from TFR Korea Plus)
+	# State ID mapping to Millennium Dawn layout:
+	#   TFR 1041 (Seoul)  -> MD 604 (Gyeonggi: Seoul + Incheon)
+	#   TFR 1409 (Busan)  -> MD 605 (Yeongnam: Busan + Ulsan + Daegu)
+	#   TFR 525  (Daejeon)-> MD 606 (Chungcheong: Daejeon + Sejong)
+	#   TFR 869  (Gwangju)-> MD 607 (Honam)
+	#   TFR 869  (Jeju)   -> MD 608 (Jeju)
+	#   TFR 1043 (Pyongyang) -> MD 602 (Pyongyang)
+	# ============================================================
+
+	KOR_seoul_city = {
+		icon = GFX_modifiers_KOR_seoul
+		enable = { is_controlled_by = KOR }
+		remove_trigger = {
+			NOT = { is_owned_by = KOR }
+		}
+		state_production_speed_buildings_factor = 0.05
+		local_building_slots = 3
+		local_supplies = 0.1
+	}
+
+	KOR_incheon_city = {
+		icon = GFX_modifiers_KOR_incheon
+		enable = { is_controlled_by = KOR }
+		remove_trigger = {
+			NOT = { is_owned_by = KOR }
+		}
+		state_production_speed_buildings_factor = 0.03
+		local_building_slots = 1
+		local_supplies = 0.05
+	}
+
+	KOR_busan_city = {
+		icon = GFX_modifiers_KOR_busan
+		enable = { is_controlled_by = KOR }
+		remove_trigger = {
+			NOT = { is_owned_by = KOR }
+		}
+		state_production_speed_buildings_factor = 0.02
+		local_building_slots = 1
+		local_supplies = 0.03
+	}
+
+	KOR_ulsan_city = {
+		icon = GFX_modifiers_KOR_ulsan
+		enable = { is_controlled_by = KOR }
+		remove_trigger = {
+			NOT = { is_owned_by = KOR }
+		}
+		state_production_speed_buildings_factor = 0.03
+		local_building_slots = 1
+		local_supplies = 0.05
+	}
+
+	KOR_daegu_city = {
+		icon = GFX_modifiers_KOR_daegu
+		enable = { is_controlled_by = KOR }
+		remove_trigger = {
+			NOT = { is_owned_by = KOR }
+		}
+		state_production_speed_buildings_factor = 0.03
+		local_building_slots = 1
+		local_supplies = 0.05
+	}
+
+	KOR_daejeon_city = {
+		icon = GFX_modifiers_KOR_daejeon
+		enable = { is_controlled_by = KOR }
+		remove_trigger = {
+			NOT = { is_owned_by = KOR }
+		}
+		state_production_speed_buildings_factor = 0.03
+		local_building_slots = 1
+		local_supplies = 0.05
+	}
+
+	KOR_sejong_special_city = {
+		icon = GFX_modifiers_KOR_sejong
+		enable = { is_controlled_by = KOR }
+		remove_trigger = {
+			NOT = { is_owned_by = KOR }
+		}
+		state_production_speed_buildings_factor = 0.03
+		local_building_slots = 1
+		local_supplies = 0.05
+	}
+
+	KOR_gwangju_city = {
+		icon = GFX_modifiers_KOR_gwangju
+		enable = { is_controlled_by = KOR }
+		remove_trigger = {
+			NOT = { is_owned_by = KOR }
+		}
+		state_production_speed_buildings_factor = 0.03
+		local_building_slots = 1
+		local_supplies = 0.05
+	}
+
+	KOR_jeju_special_self_governing_province = {
+		icon = GFX_modifiers_KOR_jeju
+		enable = { is_controlled_by = KOR }
+		remove_trigger = {
+			NOT = { is_owned_by = KOR }
+		}
+		state_production_speed_buildings_factor = 0.03
+		local_building_slots = 1
+		local_supplies = 0.05
+	}
+
+	PRK_pyongyang_city = {
+		icon = GFX_modifiers_PRK_pyongyang
+		enable = { is_controlled_by = NKO }
+		remove_trigger = {
+			NOT = { is_owned_by = NKO }
+		}
+		mobilization_speed = 0.15
+		state_production_speed_buildings_factor = 0.07
+		local_building_slots = 2
+	}

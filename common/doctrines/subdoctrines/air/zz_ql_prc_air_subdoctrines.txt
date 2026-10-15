@@ -1,0 +1,613 @@
+# ============================================================
+# 路线1：远程空（PLAAF）
+# ============================================================
+
+ql_prc_air_superiority_wing_path_1 = {
+	track = ql_prc_air_superiority_wing
+	name = QL_SUB_QL_PRC_AIR_SUPERIORITY_WING_PATH_1
+	description = QL_SUB_QL_PRC_AIR_SUPERIORITY_WING_PATH_1_DESC
+	icon = GFX_ql_sub_air_1_1
+	xp_cost = 75
+	xp_type = air
+	available = {
+		has_doctrine = ql_prc_air_integrated_offence_defence
+	}
+	ai_will_do = { base = 1 }
+
+	# 顶部全局：远程制空
+	air_range_factor = 0.1
+	air_superiority_efficiency = 0.1          # 夺取制空权任务效率 +10%（全局）
+	air_power_projection_factor = 0.2
+
+	rewards = {
+		# 1. 金头盔对抗赛
+		stage_1 = {
+			air_ace_generation_chance_factor = 0.3   # 王牌飞行员产生几率 +30%（全局）
+		}
+		# 2. 长程制空巡逻
+		stage_2 = {
+			category_fighter = {
+				air_range = 0.1                   # 战斗机：航程 +10%（单位级/飞机）
+			}
+			air_maximum_speed_factor = 0.1       # 最大速度 +10%（全局）
+			air_superiority_efficiency = 0.1      # 夺取制空权任务效率 +10%（全局）
+		}
+		# 3. 体系化数据链
+		stage_3 = {
+			air_detection = 0.1
+		}
+		# 4. 无人僚机协同
+		stage_4 = {
+			category_fighter = {
+				air_defence = 0.1                 # 战斗机：空中防御 +10%（单位级/飞机）
+				air_agility = 0.1                 # 战斗机：机动 +10%（单位级/飞机）
+				air_attack = 0.1                  # 战斗机：对空攻击 +10%（单位级/飞机）
+			}
+			air_mission_efficiency = 0.1          # 空军全部任务效率 +10%（全局）
+			air_superiority_efficiency = 0.1      # 夺取制空权任务效率额外 +10%（全局）
+		}
+		# 5. 决胜临近空间
+		stage_5 = {
+			air_mission_efficiency = 0.1          # 空军全部任务效率 +10%（全局）
+			air_superiority_efficiency = 0.1
+			air_cas_efficiency = 0.1
+			air_intercept_efficiency = 0.1
+			air_nav_efficiency = 0.1
+			port_strike = 0.1
+			air_strategic_bomber_bombing_factor = 0.1
+		}
+	}
+}
+ql_prc_air_attack_wing_path_1 = {
+	track = ql_prc_air_attack_wing
+	name = QL_SUB_QL_PRC_AIR_ATTACK_WING_PATH_1
+	description = QL_SUB_QL_PRC_AIR_ATTACK_WING_PATH_1_DESC
+	icon = GFX_ql_sub_air_2_1
+	xp_cost = 75
+	xp_type = air
+	available = {
+		has_doctrine = ql_prc_air_integrated_offence_defence
+	}
+	ai_will_do = { base = 1 }
+
+	# 顶部全局：蜂群作战
+	equipment_bonus = {
+		small_plane_suicide_airframe = {
+			build_cost_ic = -0.1             # 无人机机身：生产花费 -10%（全局/装备）
+			instant = yes
+		}
+	}
+	air_manpower_requirement_factor = -0.9   # 空军人员需求 -90%（全局，蜂群无人机）
+
+	rewards = {
+		# 1. 侦察打击评估
+		stage_1 = {
+			army_bonus_air_superiority_factor = 0.2
+			air_superiority_bonus_in_combat = 0.2
+		}
+		# 2. 全时滞空待命
+		stage_2 = {
+			category_Air_UAV = {                      # 无人机（单位级/飞机）
+				air_ground_attack = 0.1               # 无人机：对地攻击 +10%
+				air_range = 0.1                     # 无人机：航程 +10%
+			}
+			army_bonus_air_superiority_factor = 0.2   # 陆军制空权加成 +20%（全局）
+		}
+		# 3. 蜂群集体协同
+		stage_3 = {
+			category_Air_UAV = {
+				air_defence = 0.1                     # 无人机：空中防御 +10%
+				air_agility = 0.1                     # 无人机：机动 +10%
+			}
+		}
+		# 4. 波次突防策略
+		stage_4 = {
+			air_cas_efficiency = 0.1                  # CAS任务效率 +10%（全局）
+			army_bonus_air_superiority_factor = 0.2   # 陆军制空权加成 +20%（全局）
+		}
+		# 5. 智能飞控模块
+		stage_5 = {
+			category_Air_UAV = {
+				air_ground_attack = 0.1               # 无人机：对地攻击 +10%
+				air_agility = 0.1                     # 无人机：机动 +10%
+			}
+		}
+	}
+}
+ql_prc_air_bomber_wing_path_1 = {
+	track = ql_prc_air_bomber_wing
+	name = QL_SUB_QL_PRC_AIR_BOMBER_WING_PATH_1
+	description = QL_SUB_QL_PRC_AIR_BOMBER_WING_PATH_1_DESC
+	icon = GFX_ql_sub_air_3_1
+	xp_cost = 75
+	xp_type = air
+	available = {
+		has_doctrine = ql_prc_air_integrated_offence_defence
+	}
+	ai_will_do = { base = 1 }
+
+	# 顶部全局：节点瘫痪
+
+	category_strat_bomber = {                     # 轰炸机（单位级/飞机）
+		air_bombing = 0.1                         # 战略轰炸 +10%
+		air_defence = 0.2                         # 空中防御 +20%
+	}
+
+	rewards = {
+		# 1. 防区外突袭
+		stage_1 = {
+			category_strat_bomber = {
+				air_defence = 0.1                     # 轰炸机：空中防御 +10%
+				air_range = 0.1                       # 轰炸机：航程 +10%
+			}
+		}
+		# 2. 战略毁伤观测
+		stage_2 = {
+			category_strat_bomber = {
+				air_bombing = 0.1                     # 轰炸机：战略轰炸 +10%
+				naval_strike_attack = 0.1             # 轰炸机：对海攻击 +10%
+			}
+		}
+		# 3. 战区支援协调
+		stage_3 = {
+			air_mission_xp_gain_factor = 0.3          # 空军联队任务经验增长 +30%（全局）
+			category_strat_bomber = { air_range = 0.1 } # 轰炸机：航程 +10%
+		}
+		# 4. 联合接袭战术
+		stage_4 = {
+			category_strat_bomber = {
+				naval_strike_attack = 0.2             # 轰炸机：对海攻击 +20%
+				naval_strike_targetting = 0.2         # 轰炸机：对海瞄准 +20%
+			}
+		}
+		# 5. 并行打击方案
+		stage_5 = {
+			category_strat_bomber = {
+				air_agility = 0.2                     # 轰炸机：机动 +20%
+				air_defence = 0.2                     # 轰炸机：空中防御 +20%
+			}
+		}
+	}
+}
+
+ql_prc_air_systems_path_1 = {
+	track = ql_prc_air_systems
+	name = QL_SUB_QL_PRC_AIR_SYSTEMS_PATH_1
+	description = QL_SUB_QL_PRC_AIR_SYSTEMS_PATH_1_DESC
+	icon = GFX_ql_sub_air_4_1
+	xp_cost = 75
+	xp_type = air
+	available = {
+		has_doctrine = ql_prc_air_integrated_offence_defence
+	}
+	ai_will_do = { base = 1 }
+
+	# 顶部全局：数智空军
+	air_mission_efficiency = 0.1              # 空军任务效率 +10%（全局）
+	air_superiority_detect_factor = 0.1       # 制空探测 +10%（预警机体系，全局）
+
+	rewards = {
+		# 1. 先进战场预警
+		stage_1 = {
+			air_superiority_detect_factor = 0.05      # 制空探测 +5%（预警机引导，全局）
+		}
+		# 2. 培训红剑体系
+		stage_2 = {
+			category_fighter = { air_attack = 0.1 }   # 战斗机：对空攻击 +10%（单位级/飞机）
+			cv_mr_fighter = { air_attack = 0.1 }      # 舰载战斗机：对空攻击 +10%（单位级/飞机）
+		}
+		# 3. 发展蓝盾反导
+		stage_3 = {
+			air_intercept_efficiency = 0.1            # 拦截任务效率 +10%（全局）
+			category_army = { air_attack = 0.1 }      # 陆军对空攻击 +10%（单位级/陆军类别）
+			navy_anti_air_attack_factor = 0.1         # 海军对空攻击 +10%（全局）
+			naval_mines_effect_reduction = 0.1        # 拦雷值 +10%（全局）
+		}
+		# 4. 高带宽信息网
+		stage_4 = {
+			air_detection = 0.1                       # 对空探测 +10%（全局）
+			air_mission_efficiency = 0.05             # 空军全部任务效率 +5%（全局）
+			air_superiority_efficiency = 0.05
+			air_cas_efficiency = 0.05
+			air_intercept_efficiency = 0.05
+			air_nav_efficiency = 0.05
+			port_strike = 0.05
+			air_strategic_bomber_bombing_factor = 0.05
+			air_mission_efficiency = 0.05
+		}
+		# 5. 策划空中战役
+		stage_5 = {
+			air_mission_efficiency = 0.1              # 空军全部任务效率 +10%（全局）
+			air_superiority_efficiency = 0.1
+			air_cas_efficiency = 0.1
+			air_intercept_efficiency = 0.1
+			air_nav_efficiency = 0.1
+			port_strike = 0.1
+			air_strategic_bomber_bombing_factor = 0.1
+			air_mission_efficiency = 0.1
+		}
+	}
+}
+
+
+# ============================================================
+# 路线2：敏捷作战部署（USAF）
+# ============================================================
+
+ql_prc_air_superiority_wing_path_2 = {
+	track = ql_prc_air_superiority_wing
+	name = QL_SUB_QL_PRC_AIR_SUPERIORITY_WING_PATH_2
+	description = QL_SUB_QL_PRC_AIR_SUPERIORITY_WING_PATH_2_DESC
+	icon = GFX_ql_sub_air_1_2
+	xp_cost = 75
+	xp_type = air
+	available = {
+		has_doctrine = ql_prc_air_agile_deployment
+	}
+	ai_will_do = { base = 1 }
+
+	# 顶部全局：敏捷部署
+	category_fighter = {
+		air_agility = 0.1                     # 战斗机：机动 +10%（单位级/飞机）
+	}
+
+	rewards = {
+		# 1. 红旗联合演习
+		stage_1 = {
+			air_mission_xp_gain_factor = 0.2      # 空军联队任务经验增长 +20%（全局）
+		}
+		# 2. 全方位电子战
+		stage_2 = {
+			category_fighter = {
+				air_attack = 0.1                  # 战斗机：对空攻击 +10%（单位级/飞机）
+				air_defence = 0.1                 # 战斗机：空中防御 +10%（单位级/飞机）
+			}
+			air_superiority_efficiency = 0.1      # 制空权 +10%（全局）
+		}
+		# 3. 前沿机场调派
+		stage_3 = {
+			production_speed_air_base_factor = 0.3    # 空军基地建造速度 +30%（全局）
+			repair_speed_air_base_factor = 0.2        # 空军基地修复速度 +20%（全局）
+		}
+		# 4. 抗损优化改革
+		stage_4 = {
+			air_wing_xp_loss_when_killed_factor = -0.3   # 空军联队受损时失去经验 -30%（全局）
+		}
+		# 5. 天基预警系统
+		stage_5 = {
+			air_detection = 0.15                  # 对空探测 +15%（全局）
+			air_superiority_efficiency = 0.1      # 夺取制空权任务效率 +10%（全局）
+		}
+	}
+}
+ql_prc_air_attack_wing_path_2 = {
+	track = ql_prc_air_attack_wing
+	name = QL_SUB_QL_PRC_AIR_ATTACK_WING_PATH_2
+	description = QL_SUB_QL_PRC_AIR_ATTACK_WING_PATH_2_DESC
+	icon = GFX_ql_sub_air_2_2
+	xp_cost = 75
+	xp_type = air
+	available = {
+		has_doctrine = ql_prc_air_agile_deployment
+	}
+	ai_will_do = { base = 1 }
+
+	# 顶部全局：灵活支援
+	army_bonus_air_superiority_factor = 0.15      # 陆军制空权加成 +15%（全局）
+
+	rewards = {
+		# 1. 扩大军事存在
+		stage_1 = {
+			air_volunteer_cap = 24               # 志愿航空队上限 +20%（全局）
+		}
+		# 2. 策划斩首行动
+		stage_2 = {
+			category_Air_UAV = {
+				air_ground_attack = 0.1           # 无人机：对地攻击 +10%
+			}
+			air_cas_present_factor = 0.2          # 密接支援存在 +20%（全局）
+		}
+		# 3. 察打一体机体
+		stage_3 = {
+			intel_from_combat_factor = 0.3        # 战斗中获取的情报 +30%（全局）
+			army_bonus_air_superiority_factor = 0.2   # 陆军制空权加成 +20%（全局）
+		}
+		# 4. 抵近支援联络
+		stage_4 = {
+			category_fighter = {
+				air_ground_attack = 0.2           # 战斗机：对地攻击 +20%（单位级/飞机）
+			}
+			category_Air_UAV = {
+				air_ground_attack = 0.1           # 无人机：对地攻击 +10%
+			}
+			army_bonus_air_superiority_factor = 0.15  # 陆军制空权加成 +15%（全局）
+		}
+		# 5. 智能飞控模块
+		stage_5 = {
+			air_cas_efficiency = 0.1              # CAS任务效率 +10%（全局）
+		}
+	}
+}
+
+ql_prc_air_bomber_wing_path_2 = {
+	track = ql_prc_air_bomber_wing
+	name = QL_SUB_QL_PRC_AIR_BOMBER_WING_PATH_2
+	description = QL_SUB_QL_PRC_AIR_BOMBER_WING_PATH_2_DESC
+	icon = GFX_ql_sub_air_3_2
+	xp_cost = 75
+	xp_type = air
+	available = {
+		has_doctrine = ql_prc_air_agile_deployment
+	}
+	ai_will_do = { base = 1 }
+
+	# 顶部全局：隐蔽突袭
+	rewards = {
+		# 1. 长程空中加油
+		stage_1 = {
+			air_fuel_consumption_factor = -0.1    # 空军燃料消耗 -10%（全局）
+			category_strat_bomber = {
+				air_range = 0.15                  # 轰炸机：航程 +15%（单位级/飞机）
+			}
+		}
+		# 2. 地毯式轰炸
+		stage_2 = {
+			category_strat_bomber = {
+				air_bombing = 0.1                 # 轰炸机：战略轰炸 +10%
+				air_defence = 0.1                 # 轰炸机：空中防御 +10%
+			}
+		}
+		# 3. 空基远程威慑
+		stage_3 = {
+			air_power_projection_factor = 0.2     # 跨空域力量投射修正系数 +20%（全局）
+		}
+		# 4. 敌防空网
+		stage_4 = {
+			strategic_bomb_visibility = -0.1      # 战略轰炸可见度 -10%（全局）
+		}
+		# 5. 改进护航策略
+		stage_5 = {
+			air_escort_efficiency = 0.2           # 空军护航效率 +20%（全局）
+		}
+	}
+}
+
+ql_prc_air_systems_path_2 = {
+	track = ql_prc_air_systems
+	name = QL_SUB_QL_PRC_AIR_SYSTEMS_PATH_2
+	description = QL_SUB_QL_PRC_AIR_SYSTEMS_PATH_2_DESC
+	icon = GFX_ql_sub_air_4_2
+	xp_cost = 75
+	xp_type = air
+	available = {
+		has_doctrine = ql_prc_air_agile_deployment
+	}
+	ai_will_do = { base = 1 }
+
+	# 顶部全局：战略空军
+	air_strategic_bomber_bombing_factor = 0.1
+	rewards = {
+		# 1. 空中扫荡作战
+		stage_1 = {
+			air_detection = 0.1                   # 对空探测 +10%（全局）
+		}
+		# 2. 野鼬鼠特遣队
+		stage_2 = {
+			category_strat_bomber = {
+				air_defence = 0.1                 # 轰炸机：空中防御 +10%
+			}
+		}
+		# 3. 实战技术积累
+		stage_3 = {
+			air_superiority_efficiency = 0.1      # 制空权、空中优势 +10%（全局）
+			army_bonus_air_superiority_factor = 0.1
+		}
+		# 4. 隐身杀伤链
+		stage_4 = {
+			category_fighter = {
+				air_attack = 0.1                  # 战斗机：对空攻击 +10%（单位级/飞机）
+			}
+			category_Air_UAV = {
+				air_ground_attack = 0.1           # 无人机：对地攻击 +10%
+			}
+		}
+		# 5. 洲际空运部署
+		stage_5 = {
+			extra_paratrooper_supply_grace = 120  # 空降单位：携行补给 +120H（全局）
+			special_forces_out_of_supply_factor = -0.6   # 特种部队非战斗补给耗尽 -60%（全局）
+		}
+	}
+}
+
+
+# ============================================================
+# 路线3：空天联合支援（RAAF）
+# ============================================================
+
+ql_prc_air_superiority_wing_path_3 = {
+	track = ql_prc_air_superiority_wing
+	name = QL_SUB_QL_PRC_AIR_SUPERIORITY_WING_PATH_3
+	description = QL_SUB_QL_PRC_AIR_SUPERIORITY_WING_PATH_3_DESC
+	icon = GFX_ql_sub_air_1_3
+	xp_cost = 75
+	xp_type = air
+	available = {
+		has_doctrine = ql_prc_air_aerospace_support
+	}
+	ai_will_do = { base = 1 }
+
+	# 顶部全局：空域拒止
+	air_home_defence_factor = 0.15            # 本地空域防卫修正系数 +15%（全局）
+
+	rewards = {
+		# 1. 完善截击流程
+		stage_1 = {
+			air_interception_detect_factor = 0.15   # 拦截任务探测 +15%（全局）
+		}
+		# 2. 建设野战场
+		stage_2 = {
+			category_fighter = {
+				air_attack = 0.1                  # 战斗机：对空攻击 +10%（单位级/飞机）
+			}
+			air_maximum_speed_factor = 0.1       # 最大速度 +10%（全局）
+		}
+		# 3. 强调编组协调
+		stage_3 = {
+			category_fighter = {
+				air_agility = 0.1                 # 战斗机：机动 +10%（单位级/飞机）
+			}
+		}
+		# 4. 战区掩护行动
+		stage_4 = {
+			air_cas_present_factor = 0.15         # 地面支援 +15%（全局）
+		}
+		# 5. 现代指挥枢纽
+		stage_5 = {
+			air_fuel_consumption_factor = -0.1    # 空军燃料消耗 -10%（全局）
+			air_intercept_efficiency = 0.1        # 拦截任务效率 +10%（全局）
+		}
+	}
+}
+
+ql_prc_air_attack_wing_path_3 = {
+	track = ql_prc_air_attack_wing
+	name = QL_SUB_QL_PRC_AIR_ATTACK_WING_PATH_3
+	description = QL_SUB_QL_PRC_AIR_ATTACK_WING_PATH_3_DESC
+	icon = GFX_ql_sub_air_2_3
+	xp_cost = 75
+	xp_type = air
+	available = {
+		has_doctrine = ql_prc_air_aerospace_support
+	}
+	ai_will_do = { base = 1 }
+
+	# 顶部全局：飞行坦克
+	category_fighter = {
+		air_defence = 0.1                     # 战斗机：空中防御 +10%（单位级/飞机）
+	}
+
+	rewards = {
+		# 1. 前线轰炸机队
+		stage_1 = {
+			category_fighter = {
+				air_ground_attack = 0.15          # 战斗机：对地攻击 +15%（单位级/飞机）
+			}
+		}
+		# 2. 低空密接强袭
+		stage_2 = {
+			ace_effectiveness_factor = 0.15       # 王牌效率 +15%（全局）
+			category_fighter = {
+				air_ground_attack = 0.1           # 战斗机：对地攻击 +10%（单位级/飞机）
+			}
+		}
+		# 3. 地面侦测汇报
+		stage_3 = {
+			airforce_intel_factor = 0.15          # 空军情报 +15%（全局）
+		}
+		# 4. 空地协调防御
+		stage_4 = {
+			category_cas = {
+				air_defence = 0.1                 # 近距支援机：空中防御 +10%（单位级/飞机）
+			}
+		}
+		# 5. 巡飞弹打击网
+		stage_5 = {
+			category_Air_UAV = {
+				air_range = 0.15                  # 无人机：航程 +15%
+				air_ground_attack = 0.1           # 无人机：对地攻击 +10%
+			}
+		}
+	}
+}
+
+ql_prc_air_bomber_wing_path_3 = {
+	track = ql_prc_air_bomber_wing
+	name = QL_SUB_QL_PRC_AIR_BOMBER_WING_PATH_3
+	description = QL_SUB_QL_PRC_AIR_BOMBER_WING_PATH_3_DESC
+	icon = GFX_ql_sub_air_3_3
+	xp_cost = 75
+	xp_type = air
+	available = {
+		has_doctrine = ql_prc_air_aerospace_support
+	}
+	ai_will_do = { base = 1 }
+
+	# 顶部全局：高速战法
+	air_wing_xp_loss_when_killed_factor = -0.15   # 空军联队受损时失去经验 -15%（全局）
+
+	rewards = {
+		# 1. 常态前出巡航
+		stage_1 = {
+			category_strat_bomber = {
+				air_range = 0.1                   # 轰炸机：航程 +10%
+			}
+			air_maximum_speed_factor = 0.1       # 最大速度 +10%（全局）
+		}
+		# 2. 护航航线规划
+		stage_2 = {
+			air_escort_efficiency = 0.2           # 空军护航效率 +20%（全局）
+		}
+		# 3. 改进挂载方案
+		stage_3 = {
+			category_strat_bomber = {
+				air_bombing = 0.1                 # 轰炸机：战略轰炸 +10%
+				naval_strike_attack = 0.1         # 轰炸机：对海攻击 +10%
+			}
+		}
+		# 4. 重火力攻坚战
+		stage_4 = {
+			air_cas_present_factor = 0.15         # 地面支援 +15%（全局）
+		}
+		# 5. 发挥规模优势
+		stage_5 = {
+			category_strat_bomber = {
+				naval_strike_attack = 0.15        # 轰炸机：对海攻击 +15%
+			}
+		}
+	}
+}
+
+ql_prc_air_systems_path_3 = {
+	track = ql_prc_air_systems
+	name = QL_SUB_QL_PRC_AIR_SYSTEMS_PATH_3
+	description = QL_SUB_QL_PRC_AIR_SYSTEMS_PATH_3_DESC
+	icon = GFX_ql_sub_air_4_3
+	xp_cost = 75
+	xp_type = air
+	available = {
+		has_doctrine = ql_prc_air_aerospace_support
+	}
+	ai_will_do = { base = 1 }
+
+	# 顶部全局：空天防御
+	category_army = { air_attack = 0.05 }     # 陆军对空攻击 +5%（单位级/陆军类别）
+	cas_damage_reduction = 0.15               # CAS伤害减免 +15%（全局）
+
+
+	rewards = {
+		# 1. 整合防空力量
+		stage_1 = {
+			production_speed_anti_air_building_factor = 0.2   # 防空阵地建设速度 +20%（全局）
+		}
+		# 2. 重装甲空降军
+		stage_2 = {
+			category_all_airborne = {
+				max_organisation = 2              # 空降单位：组织度 +2（单位级/陆军类别）
+			}
+		}
+		# 3. 空天一体整合
+		stage_3 = {
+			air_accidents_factor = -0.15          # 空军事故几率 -15%（全局）
+		}
+		# 4. 紧急修复作业
+		stage_4 = {
+			repair_speed_anti_air_building_factor = 0.3   # 防空阵地修复速度 +30%（全局）
+		}
+		# 5. 掩护前线补给
+		stage_5 = {
+			large_transport = {
+				air_range = 0.15                  # 运输机：航程 +15%（单位级/飞机）
+			}
+		}
+	}
+}

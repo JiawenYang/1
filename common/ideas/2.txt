@@ -1,0 +1,1355 @@
+ideas = {
+
+	country = {
+		#冷战失败者
+		RUS_cold_war_losers = {
+			picture = disjointed_government
+			modifier = {
+				political_power_factor = -0.025
+				stability_factor = -0.05
+				corruption_cost_factor = 0.5
+				hegemony_influences_resistance_mult = -0.20
+				democratic_drift = 0.10
+				neutrality_drift = 0.10
+				communism_drift = 0.70
+				nationalist_drift = 0.10
+				research_speed_factor = 0.5
+			}
+		}
+
+		east_europe_privatization = {
+			name = east_europe_privatization_name
+
+			removal_cost = -1
+
+			cancel = {
+				OR = {
+					has_idea = IP_spread_the_revolution
+					has_idea = EU_member
+				}
+			}
+
+			picture = SOV_privatization_icon
+
+			allowed = {
+				always = no
+			}
+
+			modifier = {
+				political_power_gain = -0.05
+				stability_factor = -0.1
+				production_factory_efficiency_gain_factor = -0.05
+				production_speed_arms_factory_factor = -0.1
+				production_speed_industrial_complex_factor = -0.05
+				consumer_goods_factor = 0.30
+			}
+		}
+			
+		failing_currency = {
+			picture = HEZ_currency_crisis
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+				
+			modifier = {
+				stability_factor = -0.15
+				consumer_goods_factor = 0.4
+				production_factory_max_efficiency_factor = -0.2
+				industrial_capacity_dockyard = -0.35
+				local_resources_factor = -0.35
+				tax_gain_multiplier_modifier = -0.15
+				inflation_multiplier_modifier = 0.3
+				poverty_development_monthly = -0.01
+				trade_opinion_factor = 0.2
+				political_power_factor = -0.25
+				political_power_gain = -0.05
+				production_factory_efficiency_gain_factor = -0.02
+				production_lack_of_resource_penalty_factor = 0.05
+				business_value_factor = -0.1
+			}
+		}
+
+		ARG_bloated_social_welfare = {
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+				
+			modifier = {
+				stability_factor = 0.15
+				consumer_goods_factor = 0.05
+				production_speed_buildings_factor = -0.025
+				industrial_capacity_factory = 0.07
+				industrial_capacity_dockyard = 0.05
+				tax_gain_multiplier_modifier = -0.5
+				personal_value_factor = 0.11
+				academic_development_monthly = 0.01
+				inflation_multiplier_modifier = 1
+				business_value_factor = -0.35
+			}
+		}
+			
+		BRA_mass_homicide_idea = {
+			picture = generic_mass_homicide
+			
+			allowed = { 
+				original_tag = BRA
+			}
+				
+			modifier = {
+				monthly_population = -0.2
+				stability_factor = -0.1
+				stability_weekly = -0.001
+			}
+		}
+			
+		BRA_agricultural_society_idea = {
+			picture = BRA_agricultural_society
+			
+			allowed = { 
+				original_tag = BRA
+			}
+				
+			modifier = {
+				consumer_goods_factor = 0.15
+				industrial_capacity_factory = -0.2
+				production_factory_max_efficiency_factor = -0.1
+				local_resources_factor = 0.075
+			}
+		}
+
+		CEN_banana_republic = {
+			picture = GFX_idea_CEN_banana_republic
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				stability_factor = -0.05
+				tax_gain_multiplier_modifier = 0.15
+				industrial_development_monthly = -0.01
+				society_development_monthly = -0.01
+				political_power_gain = 0.3
+				democratic_acceptance = 45
+			}
+		}
+		CEN_banana_republic_red = {
+			picture = GFX_idea_CEN_banana_republic_red
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				stability_factor = -0.05
+				tax_gain_multiplier_modifier = 0.1
+				industrial_development_monthly = -0.01
+				political_power_gain = 0.3
+				communism_acceptance = 45
+			}
+		}
+	
+		COG_africas_world_war = {
+			name = COG_africas_world_war_name
+
+			removal_cost = -1
+
+			cancel = {
+				has_war = no
+			}
+
+			picture = COG_africas_world_war_icon
+			
+			allowed = {
+				always = no
+			}
+
+			modifier = {
+				stability_factor = -0.3
+				monthly_population = -0.7
+				surrender_limit = 0.1
+			}
+		}
+
+		ENG_nato_eu_leader_idea = {
+			picture = ENG_nato_leadership
+			
+			allowed = {
+				original_tag = ENG
+			}
+			cancel = {
+				OR = {
+					NOT = { has_idea = NATO_member }
+					is_subject = yes # This is to have new puppets not be subjects
+				}
+			}
+				
+			modifier = {
+				army_personnel_cost_multiplier_modifier = 0.05
+				army_org_factor = 0.10
+				command_power_gain = 0.10
+				military_development_monthly = 0.01
+			}
+		}
+		
+		FRA_french_spirit_idea = {
+			
+			allowed = {
+				tag = FRA
+			}
+			
+			picture = FRA_french_spirit
+			
+			modifier = {
+				stability_factor = -0.1
+				political_power_cost = 0.1
+				war_support_factor = 0.1
+				army_core_defence_factor = 0.05
+				army_core_attack_factor = 0.05
+			}
+		}
+		GER_limit_army = {
+			name = GER_limit_army_name
+
+			removal_cost = -1
+
+			picture = generic_peace
+
+			allowed = {
+				always = no
+			}
+
+			cancel = {
+				is_puppet_of = SOV
+			}
+
+			modifier = {
+				stability_factor = 0.1
+				war_support_factor = -0.1
+				production_speed_industrial_complex_factor = 0.1
+				production_speed_arms_factory_factor = -0.2
+				training_time_factor = 0.75
+				industrial_capacity_factory = -0.1
+				mobilization_speed = -0.3
+				research_speed_factor = 0.35
+				Military_Spending_cost_factor = 100
+				Conscription_Law_cost_factor = 100
+				Foreign_Intervention_Law_cost_factor = 100
+			}
+		}
+		idea_ISR_vanguard_of_judaism = {
+			picture = ISR_vanguard_of_judaism
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+			
+			modifier = {
+				conscription = 0.005
+				political_power_gain = 0.25
+				planning_speed = 0.25
+				army_morale_factor = 0.10
+				drift_defence_factor = 0.25
+				war_support_factor = 0.2
+			}
+			
+		}
+		idea_ISR_american_funding = {
+			picture = ISR_usa_fund
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			modifier = {
+				stability_factor = 0.20
+				tax_gain_multiplier_modifier = 0.33
+				consumer_goods_factor = -0.15
+				production_speed_buildings_factor = 0.125
+				production_speed_infrastructure_factor = 0.075
+				production_speed_industrial_complex_factor = 0.075
+				military_factory_donations = 8
+			}
+			targeted_modifier = {
+				tag = USA
+				consumer_goods_factor = 0.15
+			}
+		}
+		ISR_french_funding_idea = {
+			picture = ISR_fra_fund
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			modifier = {
+				stability_factor = 0.05
+				tax_gain_multiplier_modifier = 0.11
+				consumer_goods_factor = -0.05
+				production_speed_buildings_factor = 0.025
+				production_speed_infrastructure_factor = 0.025
+				production_speed_industrial_complex_factor = 0.025
+				military_factory_donations = 2
+			}
+			targeted_modifier = {
+				tag = FRA
+				consumer_goods_factor = 0.05
+			}
+		}
+		NKO_hermit_kingdom = {
+
+			picture = nko_hermit_kingdom_idea
+			allowed = { original_tag = NKO }
+			allowed_civil_war = { is_in_array = { ruling_party = 4 } }
+			cancel = {
+				NOT = { is_in_array = { ruling_party = 4 } }
+			}
+			modifier = {
+				stability_factor = 0.50
+				interest_rate_multiplier_modifier = -1
+				foreign_influence_defense_modifier = 0.5
+				personal_expense_factor = -0.5
+				special_forces_cap = 0.10
+				democratic_drift = -0.10
+				communism_drift = 1.00
+				neutrality_drift = -0.10
+				nationalist_drift = -0.10
+				custom_modifier_tooltip = non_power_tt
+				hidden_modifier = {
+					corruption_cost_factor = -0.2
+					economic_cycles_cost_factor = -0.2
+					internal_factions_cost_factor = -0.2
+					bureaucracy_cost_factor = -0.2
+					Military_Spending_cost_factor = -0.2
+					crime_fighting_cost_factor = -0.2
+					education_budget_cost_factor = -0.2
+					health_budget_cost_factor = -0.2
+					social_budget_cost_factor = -0.2
+					trade_laws_cost_factor = -0.2
+					Nuclear_Status_cost_factor = -0.1
+					Nuclear_Stance_cost_factor = -0.1
+					Conscription_Law_cost_factor = -0.2
+					Military_Status_Women_cost_factor = -0.2
+					Foreign_Intervention_Law_cost_factor = -0.2
+					Officer_Training_Law_cost_factor = -0.2
+					materiel_manufacturer_cost_factor = -0.2
+					tank_manufacturer_cost_factor = -0.2
+					aircraft_manufacturer_cost_factor = -0.2
+					naval_manufacturer_cost_factor = -0.2
+					tax_rate_change_multiplier_modifier = -0.2
+					migration_laws_cost_factor = -0.2
+				}
+			}
+		}
+			
+		JAP_political_monopoly_idea = {
+			picture = JAP_political_monopoly
+				
+			allowed = {
+				tag = JAP
+			}
+				
+			modifier = {
+				party_popularity_stability_factor = 0.2
+				political_power_gain = -0.1
+				society_development_monthly = -0.02
+			}
+		}
+			
+		JAP_political_monopoly_1_idea = {
+			name = JAP_political_monopoly_idea
+			picture = JAP_political_monopoly
+				
+			allowed = {
+				tag = JAP
+			}
+				
+			modifier = {
+				party_popularity_stability_factor = 0.2
+				political_power_gain = -0.05
+				society_development_monthly = -0.01
+			}
+		}
+			
+		JAP_political_monopoly_2_idea = {
+			name = JAP_political_monopoly_idea
+			picture = JAP_political_monopoly
+				
+			allowed = {
+				tag = JAP
+			}
+				
+			modifier = {
+				party_popularity_stability_factor = 0.25
+				political_power_gain = 0.05
+				society_development_monthly = 0.005
+			}
+		}
+			
+		JAP_economic_stagnation_-2_idea = {
+			name = JAP_economic_stagnation_idea
+			picture = JAP_economic_stagnation
+				
+			allowed = {
+				tag = JAP
+			}
+				
+			modifier = {
+				tax_gain_multiplier_modifier = -0.3
+				global_building_slots_factor = -0.3
+				production_factory_efficiency_gain_factor = -0.3
+				poverty_development_monthly = -0.035
+			}
+		}
+	
+		JAP_economic_stagnation_-1_idea = {
+			name = JAP_economic_stagnation_idea
+			picture = JAP_economic_stagnation
+				
+			allowed = {
+					tag = JAP
+			}
+				
+			modifier = {
+				tax_gain_multiplier_modifier = -0.25
+				global_building_slots_factor = -0.25
+				production_factory_efficiency_gain_factor = -0.25
+				poverty_development_monthly = -0.035
+			}
+		}
+			
+		JAP_economic_stagnation_idea = {
+			name = JAP_economic_stagnation_idea
+			picture = JAP_economic_stagnation
+				
+			allowed = {
+				tag = JAP
+			}
+				
+			modifier = {
+				tax_gain_multiplier_modifier = -0.2
+				global_building_slots_factor = -0.2
+				production_factory_efficiency_gain_factor = -0.2
+				poverty_development_monthly = -0.03
+			}
+		}
+			
+		JAP_economic_stagnation_2_idea = {
+			name = JAP_economic_stagnation_idea
+			picture = JAP_economic_stagnation
+				
+			allowed = {
+				always = no
+			}
+				
+			modifier = {
+				tax_gain_multiplier_modifier = -0.15
+				global_building_slots_factor = -0.15
+				production_factory_efficiency_gain_factor = -0.15
+				poverty_development_monthly = -0.015
+			}
+		}
+			
+		JAP_economic_stagnation_3_idea = {
+			name = JAP_economic_stagnation_idea
+			picture = JAP_economic_stagnation
+				
+			allowed = {
+				always = no
+			}
+				
+			modifier = {
+				tax_gain_multiplier_modifier = -0.1
+				global_building_slots_factor = -0.15
+				production_factory_efficiency_gain_factor = -0.10
+				poverty_development_monthly = -0.005
+			}
+		}
+			
+		JAP_economic_stagnation_4_idea = {
+			name = JAP_economic_stagnation_idea
+			picture = JAP_economic_stagnation
+				
+			allowed = {
+				always = no
+			}
+				
+			modifier = {
+				tax_gain_multiplier_modifier = -0.05
+				global_building_slots_factor = -0.10
+				production_factory_efficiency_gain_factor = -0.05
+			}
+		}
+			
+		JAP_economic_stagnation_5_idea = {
+			name = JAP_economic_stagnation_idea
+			picture = JAP_economic_stagnation
+				
+			allowed = {
+				always = no
+			}
+				
+			modifier = {
+				global_building_slots_factor = -0.05
+			}
+		}
+
+		KOR_chaebol_dependence = {
+			picture = KOR_dominance_of_chaebols
+
+			modifier = {
+				corruption_cost_factor = 1
+				internal_factions_cost_factor = 5
+				consumer_goods_factor = 0.1
+				production_speed_buildings_factor = -0.05
+				personal_value_factor = -0.25
+				poverty_development_monthly = -0.02
+				business_value_factor = 0.3
+			}
+		}
+
+		KOR_chaebol_dependence1 = {
+			picture = KOR_dominance_of_chaebols
+
+			name = KOR_chaebol_dependence
+
+			modifier = {
+				corruption_cost_factor = 1.25
+				internal_factions_cost_factor = 5
+				consumer_goods_factor = 0.125
+				production_speed_buildings_factor = -0.067
+				personal_value_factor = -0.3
+				poverty_development_monthly = -0.027
+				business_value_factor = 0.367
+			}
+		}
+
+		KOR_chaebol_dependence2 = {
+			picture = KOR_dominance_of_chaebols
+
+			name = KOR_chaebol_dependence
+
+			modifier = {
+				corruption_cost_factor = 1.5
+				internal_factions_cost_factor = 5
+				consumer_goods_factor = 0.15
+				production_speed_buildings_factor = -0.083
+				personal_value_factor = -0.35
+				poverty_development_monthly = -0.033
+				business_value_factor = 0.433
+			}
+		}
+
+		KOR_chaebol_dependence3 = {
+			picture = KOR_dominance_of_chaebols
+
+			name = KOR_chaebol_dependence
+
+			modifier = {
+				corruption_cost_factor = 0.75
+				internal_factions_cost_factor = 5
+				consumer_goods_factor = 0.075
+				production_speed_buildings_factor = -0.017
+				personal_value_factor= -0.2
+				poverty_development_monthly = -0.003
+				business_value_factor = 0.233
+			}
+		}
+
+		KOR_chaebol_dependence4 = {
+			picture = KOR_dominance_of_chaebols
+
+			name = KOR_chaebol_dependence
+
+			modifier = {
+				corruption_cost_factor = 0.5
+				internal_factions_cost_factor = 5
+				consumer_goods_factor = 0.05
+				production_speed_buildings_factor = 0.013
+				personal_value_factor = -0.15
+				poverty_development_monthly = 0.007
+				business_value_factor = 0.167
+			}
+		}
+
+		KOR_chaebol_dependence5 = {
+			picture = KOR_dominance_of_chaebols
+
+			name = KOR_chaebol_dependence
+
+			modifier = {
+				corruption_cost_factor = 0.25
+				internal_factions_cost_factor = 5
+				consumer_goods_factor = 0.025
+				production_speed_buildings_factor = 0.05
+				agricolture_productivity_modifier = -0.1
+				gdp_from_resource_sector_modifier = -0.1
+				poverty_development_monthly = 0.02
+				business_value_factor = 0.1
+			}
+		}
+
+		KOR_chaebol_dependence6 = {
+			picture = KOR_dominance_of_chaebols
+
+			name = KOR_chaebol_dependence
+
+			modifier = {
+				corruption_cost_factor = 1.75
+				internal_factions_cost_factor = 5
+				consumer_goods_factor = 0.175
+				production_speed_buildings_factor = -0.1
+				personal_value_factor = -0.4
+				poverty_development_monthly = -0.04
+				business_value_factor = 0.5
+			}
+		}
+			
+		MOL_relations_with_romania = {
+			picture = MOL_relations_with_romania
+			
+			allowed = { 
+				original_tag = MLV
+			}
+				
+			modifier = {
+				political_power_factor = 0.05
+				production_speed_industrial_complex_factor = 0.1
+				business_value_factor = 0.2
+			}
+			
+			targeted_modifier = {
+				tag = ROM
+				cic_to_target_factor = 0.1
+				extra_trade_to_target_factor = 0.5
+				trade_cost_for_target_factor = -0.2
+			}
+		}	
+
+		MOL_underdeveloped_army = {
+			picture = MOL_Underdeveloped_army
+			
+			allowed = { 
+				original_tag = MLV
+			}
+				
+			modifier = {
+				army_attack_factor = -0.05
+				air_mission_efficiency = -0.1
+				breakthrough_factor = -0.1
+				conscription_factor = -0.15
+				military_development_monthly = -0.02
+			}
+		}
+
+		MOL_pro_european_opposition = {
+			picture = MOL_pro_european_opposition
+			allowed = { 
+				original_tag = MLV
+			}
+			cancel = {
+				OR = {
+					has_government = democratic
+					has_government = neutrality
+				} 
+			}
+				
+			modifier = {
+				political_power_gain = -0.025
+				army_core_defence_factor = -0.05
+				democratic_drift = 0.02
+				neutrality_drift = 0.02
+			}
+		}		
+		MOL_pro_russian_opposition = {
+			picture = MOL_pro_russian_opposition
+			allowed = { 
+				original_tag = MLV
+			}
+			cancel = { has_government = communism }
+				
+			modifier = {
+				political_power_gain = -0.025
+				army_core_defence_factor = -0.05
+				communism_drift = 0.02
+			}
+		}
+
+		MON_divided_government_idea = {
+			picture = GFX_idea_MON_divided_government_idea
+				
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			cancel = { has_idea = communist_cadres }
+			modifier = {
+				stability_factor = -0.075
+				personal_value_factor = -0.2
+				industrial_capacity_factory = -0.1
+			}
+		}
+
+		MON_mpp_dominated_politics_idea = {
+			picture = GFX_idea_MON_mpp_dominated_politics_idea
+				
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			cancel = { has_idea = communist_cadres }
+			modifier = {
+				political_power_factor = -0.05
+				production_factory_max_efficiency_factor = 0.05
+				communism_drift = 0.04
+				consumer_goods_factor = 0.1
+			}
+		}
+		MON_between_two_giants_idea = {
+			picture = GFX_idea_MON_between_two_giants_idea
+			
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			cancel = {
+				is_subject = yes
+			}
+			modifier = {
+				war_support_factor = -0.1
+				political_power_gain = 0.15
+				business_value_factor = 0.2
+				tax_gain_multiplier_modifier = 0.1
+			}
+		}
+		MZB_flag_of_the_kalashnikov = {
+			name = MZB_flag_of_the_kalashnikov
+
+			cancel = { NOT = { has_government = communism } }
+
+			picture = MZB_flag_of_the_kalashnikov_icon
+
+			allowed = {
+				always = no
+			}
+			
+			modifier = {
+				army_attack_factor = 0.05
+				war_support_factor = 0.05
+			}
+		}
+		
+		MZB_central_african_railway_network = {
+			name = MZB_central_african_railway_network
+
+			removal_cost = -1
+
+			picture = GER_eurail
+
+			allowed = {
+				always = no
+			}
+			
+			modifier = {
+				production_speed_rail_way_factor = 0.10 
+				supply_node_range = 0.05
+				consumer_goods_factor = 0.1
+			}
+		}
+
+		PAK_military_incharge = {
+			name = PAK_military_incharge_name
+
+			removal_cost = -1
+
+			allowed = {
+				always = yes
+			}
+			cancel = {
+				OR = {
+					NOT = {
+						has_idea = the_military
+					}
+					is_puppet_of = RAJ		
+				}
+			}
+			picture = military_incharge
+
+			modifier = {
+				army_morale_factor = 0.10
+				civilian_factories_productivity = -0.15
+				opinion_gain_monthly = -5
+				conversion_cost_civ_to_mil_factor = 0.01
+				command_power_gain = -0.2
+			}
+		}
+
+		PHI_legacy_of_the_martial_law_idea = {
+			picture = PHI_legacy_of_martial_law
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				political_power_gain = -0.05
+				neutrality_drift = 0.02
+				communism_drift = 0.04
+				nationalist_drift = -0.08
+			}
+		}
+
+		PHI_mutual_defence_treaty_idea = {
+			picture = PHI_MDT
+				allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				army_attack_factor = 0.05
+				experience_gain_navy_unit = 0.05
+				naval_morale = 10
+				conscription_factor = -0.10
+			}
+		}
+
+		PHI_marcos_family_idea = {
+			picture = PHI_marcos_family
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				stability_factor = 0.05
+				democratic_drift = 0.08
+				political_power_gain = -0.15
+			}
+		}
+
+		RAJ_a_rising_power_idea = {
+
+			picture = RAJ_south_asian_tiger
+
+			modifier = {
+				neutrality_drift = 0.03
+				stability_factor = 0.10
+				training_time_factor = -0.05
+				drift_defence_factor = 0.10
+				political_power_factor = 0.25
+				consumer_goods_factor = -0.05
+				foreign_influence_defense_modifier = 0.25
+			}
+		}
+		SAU_loyal_allegiance_council = {
+			picture = "GFX_idea_florida_siege"
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+				
+			modifier = {
+				drift_defence_factor = 0.1
+				stability_factor = 0.1
+			}
+		}
+		SAU_foriegn_advisors = {
+			picture = "GFX_idea_florida_siege"
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+				
+			modifier = {
+				planning_speed = 0.10
+				army_morale_factor = 0.1
+				experience_gain_army = 0.05
+			}
+		}
+		SAU_prince_pmcs = {
+			picture = "GFX_idea_florida_siege"
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+				
+			modifier = {
+				special_forces_attack_factor = 0.15
+				breakthrough_factor = 0.05
+				special_forces_cap = 0.1
+			}
+		}
+			
+		SAU_petro_dollar = {
+			picture = "GFX_idea_florida_siege"
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+				
+			modifier = {
+				fuel_gain_from_states = 10
+				max_fuel = 150
+				base_fuel_gain_factor = 0.1
+				tax_gain_multiplier_modifier = 0.25
+			}
+		}
+		NSTFR_SIA_RoyalArmy_idea = { #泰国王家陆军
+			picture = NSTFR_SIA_RoyalArmy_idea
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			modifier = {
+				army_core_defence_factor = 0.1
+				army_org_factor = 0.15
+				military_development_monthly = 0.001
+				initiative_factor = -0.1
+			}
+		}
+		SIG_economic_titan_idea = {
+			picture = SIG_economic_titan
+
+			allowed={
+				always = no
+			}
+			allowed_civil_war={
+				always = yes
+			}
+
+			modifier {
+				stability_factor = 0.1
+				consumer_goods_factor = 0.1
+				production_speed_buildings_factor = 0.05
+				personal_value_factor = 0.1
+				business_value_factor = 0.3
+			}
+		}
+		SIG_fortified_island_idea = {
+			picture = SIG_island
+
+			allowed={
+				always = no
+			}
+			allowed_civil_war={
+				always = yes
+			}
+
+			modifier {
+				army_defence_factor = 0.2
+				max_planning_factor = 0.1
+				army_org_factor = 0.05
+				land_reinforce_rate = 0.1
+				coordination_bonus = 0.075
+				initiative_factor = 0.075
+			}
+		}
+			
+		TUR_turkish_nationalism_idea = {
+			picture = TUR_turkish_nationalism
+			
+			allowed = { 
+				original_tag = TUR
+			}
+				
+			modifier = {
+				war_support_factor = 0.05
+				army_core_defence_factor = 0.07
+				conscription = 0.01
+				defensive_war_stability_factor = 0.3
+				democratic_drift = 0.20
+				communism_drift = 0.10
+				neutrality_drift = 0.60
+				nationalist_drift = 0.10
+			}
+		}
+		VEN_bolivarian_revolution = {
+			picture = GFX_idea_VEN_bolivarian_revolution
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				political_power_gain = 0.07
+				party_popularity_stability_factor = 0.05
+				stability_factor = 0.035
+				war_support_factor = 0.05
+				army_morale_factor = 0.05
+				army_attack_factor = 0.035
+				communism_drift = 0.03
+				society_development_monthly = 0.01
+			}
+		}
+
+		NSTFR_VIN_people_army_idea = { #越南人民军
+			picture = NSTFR_VIN_people_army_idea
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			modifier = {
+				army_core_defence_factor = 0.1
+				battalion_upkeep_factor = -0.15
+				heat_attrition_factor = -0.1
+				army_advisor_cost_factor = 0.25
+				army_org_factor = -0.1
+			}
+		}
+		VIN_fifty_years_resistance = {
+			name = VIN_fifty_years_resistance_name
+
+			removal_cost = -1
+
+			picture = VIN_fifty_years_resistance_icon
+
+			allowed = {
+				always = no
+			}
+
+			modifier = {
+				war_support_factor = -0.15
+				conscription_factor = -0.1
+			}
+		}
+		VIN_fifty_years_resistance_1 = {
+			name = VIN_fifty_years_resistance_name
+
+			removal_cost = -1
+
+			picture = VIN_fifty_years_resistance_icon
+
+			allowed = {
+				always = no
+			}
+
+			modifier = {
+				war_support_factor = -0.1
+				conscription_factor = -0.1
+			}
+		}
+		VIN_fifty_years_resistance_2 = {
+			name = VIN_fifty_years_resistance_name
+
+			removal_cost = -1
+
+			picture = VIN_fifty_years_resistance_icon
+
+			allowed = {
+				always = no
+			}
+
+			modifier = {
+				war_support_factor = -0.08
+				conscription_factor = -0.1
+				consumer_goods_factor = 0.05
+			}
+		}
+		VIN_fifty_years_resistance_3 = {
+			name = VIN_fifty_years_resistance_name
+
+			removal_cost = -1
+
+			picture = VIN_fifty_years_resistance_icon
+
+			allowed = {
+				always = no
+			}
+
+			modifier = {
+				war_support_factor = -0.05
+				conscription_factor = -0.1
+				consumer_goods_factor = 0.1
+			}
+		}
+		VIN_fifty_years_resistance_4 = {
+			name = VIN_fifty_years_resistance_4_name
+
+			removal_cost = -1
+
+			picture = VIN_fifty_years_resistance_icon
+
+			allowed = {
+				always = no
+			}
+
+			modifier = {
+				war_support_factor = -0.05
+				consumer_goods_factor = 0.1
+			}
+		}
+		VIN_failure_of_1980s = {
+			name = VIN_failure_of_1980s_name
+
+			removal_cost = -1
+
+			picture = VIN_bao_cap_icon
+
+			allowed = {
+				always = no
+			}
+
+			modifier = {
+				stability_factor = -0.05
+				consumer_goods_factor = 0.3
+				production_speed_buildings_factor = -0.10
+				global_building_slots_factor = -0.65
+			}
+		}
+
+		VIN_doi_moi = {
+			name = VIN_doi_moi_name
+
+			removal_cost = -1
+
+			picture = VIN_doi_moi_icon
+
+			allowed = {
+				always = no
+			}
+			cancel = { NOT = { has_idea = communist_cadres } }
+
+			modifier = {
+				production_speed_buildings_factor = 0.1
+				production_factory_max_efficiency_factor = 0.05
+				industrial_capacity_factory = 0.05
+				industrial_capacity_dockyard = 0.05
+				drift_defence_factor = -0.1
+			}
+		}
+		VIN_doi_moi_1 = {
+			name = VIN_doi_moi_name_1
+
+			removal_cost = -1
+
+			picture = VIN_doi_moi_icon
+
+			allowed = {
+				always = no
+			}
+
+			modifier = {
+				production_speed_buildings_factor = 0.12
+				production_factory_max_efficiency_factor = 0.05
+				industrial_capacity_factory = 0.05
+				industrial_capacity_dockyard = 0.05
+				drift_defence_factor = -0.15
+				min_export = 0.05
+			}
+		}
+		VIN_doi_moi_2_hien_phap_1 = {
+			name = VIN_doi_moi_name_1
+
+			removal_cost = -1
+
+			picture = VIN_doi_moi_icon
+
+			allowed = {
+				always = no
+			}
+
+			modifier = {
+				production_speed_buildings_factor = 0.12
+				production_factory_max_efficiency_factor = 0.05
+				industrial_capacity_factory = 0.05
+				industrial_capacity_dockyard = 0.05
+				drift_defence_factor = -0.2
+				min_export = 0.05
+			}
+		}
+		VIN_doi_moi_2_hien_phap_2 = {
+			name = VIN_doi_moi_name_1
+
+			removal_cost = -1
+
+			picture = VIN_doi_moi_icon
+
+			allowed = {
+				always = no
+			}
+
+			modifier = {
+				production_speed_buildings_factor = 0.12
+				production_factory_max_efficiency_factor = 0.05
+				industrial_capacity_factory = 0.05
+				industrial_capacity_dockyard = 0.05
+				drift_defence_factor = -0.1
+				min_export = 0.05
+			}
+		}
+		VIN_doi_moi_3_labour_code_1 = {
+			name = VIN_doi_moi_name_1
+
+			removal_cost = -1
+
+			picture = VIN_doi_moi_icon
+
+			allowed = {
+				always = no
+			}
+
+			modifier = {
+				production_speed_buildings_factor = 0.12
+				production_factory_max_efficiency_factor = 0.03
+				line_change_production_efficiency_factor = 0.1
+				industrial_capacity_factory = 0.1
+				industrial_capacity_dockyard = 0.05
+				drift_defence_factor = -0.2
+				min_export = 0.1
+			}
+		}
+		VIN_doi_moi_3_labour_code_2 = {
+			name = VIN_doi_moi_name_1
+
+			removal_cost = -1
+
+			picture = VIN_doi_moi_icon
+
+			allowed = {
+				always = no
+			}
+
+			modifier = {
+				production_speed_buildings_factor = 0.12
+				production_factory_max_efficiency_factor = 0.03
+				line_change_production_efficiency_factor = 0.1
+				industrial_capacity_factory = 0.1
+				industrial_capacity_dockyard = 0.05
+				drift_defence_factor = -0.1
+				min_export = 0.1
+			}
+		}
+
+		VIN_patriotic_tradition = {
+			name = VIN_patriotic_tradition_name
+
+			removal_cost = -1
+
+			picture = VIN_patriotic_tradition_icon
+
+			allowed = {
+				always = no
+			}
+			cancel = { NOT = { has_idea = communist_cadres } }
+
+			modifier = {
+				army_core_defence_factor = 0.12
+				defensive_war_stability_factor = 0.2
+				offensive_war_stability_factor = 0.2
+				resistance_growth_on_our_occupied_states = 0.2
+				out_of_supply_factor = -0.2
+				compliance_growth_on_our_occupied_states = -0.2
+				resistance_target_on_our_occupied_states = 0.2
+				surrender_limit = 0.1
+			}
+		}
+		VIN_failure_of_1980s = {
+			name = VIN_failure_of_1980s_name
+
+			removal_cost = -1
+
+			picture = VIN_bao_cap_icon
+
+			allowed = {
+				always = no
+			}
+
+			modifier = {
+				stability_factor = -0.05
+				consumer_goods_factor = 0.3
+				production_speed_buildings_factor = -0.10
+				global_building_slots_factor = -0.65
+			}
+		}
+
+		VIN_corruption_trials = {
+			picture = VIN_corruption_trials
+
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes 
+			}
+			removal_cost = -1
+			modifier = {
+				stability_factor = -0.05
+				political_power_gain = -0.05
+				society_development_monthly = 0.05
+				drift_defence_factor = -0.10
+				business_value_factor = 0.05
+				tax_gain_multiplier_modifier = 0.05
+			}
+		}
+	}
+}

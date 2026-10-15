@@ -1,0 +1,759 @@
+﻿division_template = {
+	name = "Hativa Sheva"			#Armoured Brigade
+
+	regiments = {
+		armor_Bat = { x = 0 y = 0 }
+		armor_Bat = { x = 0 y = 1 }
+		armor_Bat = { x = 0 y = 2 }
+		Mech_Inf_Bat = { x = 0 y = 3 }
+		SP_Arty_Bat = { x = 0 y = 4 }
+	}
+
+	support = {
+		Arm_Recce_Comp = { x = 0 y = 0 }
+	}
+}
+
+division_template = {
+	name = "Infantry Brigade"			#Infantry Brigade
+
+	regiments = {
+		Arm_Inf_Bat = { x = 0 y = 0 }
+		Mech_Inf_Bat = { x = 0 y = 1 }
+		Mech_Inf_Bat = { x = 0 y = 2 }
+		SP_Arty_Bat = { x = 0 y = 3 }
+	}
+
+	support = {
+		Mot_Recce_Comp = { x = 0 y = 0 }
+		L_Engi_Comp = { x = 0 y = 1 }
+	}
+}
+
+division_template = {
+	name = "Hativat HaTzanhanim"			#Paratrooper Brigade
+
+	regiments = {
+		Para_Bat_ISR = { x = 0 y = 0 }
+		Para_Bat_ISR = { x = 0 y = 1 }
+		Para_Bat_ISR = { x = 0 y = 2 }
+	}
+
+	support = {
+		Mot_Recce_Comp = { x = 0 y = 0 }
+		L_Engi_Comp = { x = 0 y = 1 }
+	}
+}
+
+division_template = {
+	name = "Hativat Commando"			#Commando Brigade
+
+	regiments = {
+		Special_Forces = { x = 0 y = 0 }
+		Special_Forces = { x = 0 y = 1 }
+		Special_Forces = { x = 0 y = 2 }
+		Special_Forces = { x = 0 y = 3 }
+	}
+	priority = 2
+}
+
+division_template = {
+	name = "Reserve Hativat HaTzanhanim"			#Reserve Paratrooper Brigade
+
+	regiments = {
+		Para_Bat_ISR = { x = 0 y = 0 }
+		Para_Bat_ISR = { x = 0 y = 1 }
+		Para_Bat_ISR = { x = 0 y = 2 }
+	}
+
+	support = {
+		L_Recce_Comp = { x = 0 y = 0 }
+		L_Engi_Comp = { x = 0 y = 1 }
+	}
+
+	priority = 0
+}
+
+division_template = {
+	name = "Reserve Infantry Brigade"			#Reserve Infantry Brigade
+
+	regiments = {
+		Mech_Inf_Bat = { x = 0 y = 0 }
+		Mot_Inf_Bat = { x = 0 y = 1 }
+		Mot_Inf_Bat = { x = 0 y = 2 }
+		Arty_Bat = { x = 0 y = 3 }
+	}
+
+	support = {
+		Mot_Recce_Comp = { x = 0 y = 0 }
+		L_Engi_Comp = { x = 0 y = 1 }
+	}
+
+	priority = 0
+}
+
+division_template = {
+	name = "Territorial Infantry Brigade"			#Territorial Infantry Brigade
+
+	regiments = {
+		L_Inf_Bat = { x = 0 y = 0 }
+		L_Inf_Bat = { x = 0 y = 1 }
+		L_Inf_Bat = { x = 0 y = 2 }
+		L_Inf_Bat = { x = 1 y = 0 }
+		L_Inf_Bat = { x = 1 y = 1 }
+		L_Inf_Bat = { x = 1 y = 2 }
+		L_Inf_Bat = { x = 2 y = 0 }
+		L_Inf_Bat = { x = 2 y = 1 }
+		L_Inf_Bat = { x = 2 y = 2 }
+
+	}
+	priority = 0
+}
+
+division_template = {
+	name = "Reserve Hativa Sheva"			#Reserve Armoured Brigade
+
+	regiments = {
+		armor_Bat = { x = 0 y = 0 }
+		armor_Bat = { x = 0 y = 1 }
+		armor_Bat = { x = 0 y = 2 }
+		Mech_Inf_Bat = { x = 0 y = 3 }
+		Arty_Bat = { x = 0 y = 4 }
+	}
+
+	support = {
+		Mech_Recce_Comp = { x = 0 y = 0 }
+	}
+
+	priority = 0
+}
+
+units = {
+
+	#Northern Command
+	##36th Armor Division
+	division = {
+		name = "7 Hativa Sheva 'Saar me-Golan'"
+		location = 13205			#Golan heights
+		division_template = "Hativa Sheva"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "188 Hativa Sheva 'Barak'"
+		location = 13205			#Golan heights
+		division_template = "Hativa Sheva"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "1 Infantry Brigade 'Golani'"
+		location = 13205			#Golan heights
+		division_template = "Infantry Brigade"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "6 (Reserve) Infantry Brigade 'Etzioni'"
+		location = 13205			#Golan heights
+		division_template = "Reserve Infantry Brigade"
+		start_experience_factor = 0.65
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "263 (Reserve) Hativa Sheva 'Merkavot ha-Esh'"
+		location = 13205			#Golan heights
+		division_template = "Reserve Hativa Sheva"
+		start_experience_factor = 0.65
+		start_equipment_factor = 0.01
+	}
+
+	##91st Territorial Division
+	division = {
+		name = "3 (Reserve) Infantry Brigade 'Alexandroni'"
+		location = 1065			#Lebanese Border
+		division_template = "Reserve Infantry Brigade"
+		start_experience_factor = 0.65
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "8 (Reserve) Hativa Sheva 'Old Man'"
+		location = 1065			#Lebanese Border
+		division_template = "Reserve Hativa Sheva"
+		start_experience_factor = 0.65
+		start_equipment_factor = 0.01
+	}
+
+	##210th Territorial Division
+	division = {
+		name = "11 (Reserve) Infantry Brigade 'Yiftah'"
+		location = 13205			#Syrian Border
+		division_template = "Reserve Infantry Brigade"
+		start_experience_factor = 0.65
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "679 (Reserve) Hativa Sheva 'Yiftah'"
+		location = 13205			#Syrian Border
+		division_template = "Reserve Hativa Sheva"
+		start_experience_factor = 0.65
+		start_equipment_factor = 0.01
+	}
+
+	##319th Territorial Division
+	division = {
+		name = "4 (Reserve) Hativa Sheva 'Kiryati'"
+		location = 1065			#North Patrol
+		division_template = "Reserve Hativa Sheva"
+		start_experience_factor = 0.65
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "2 (Reserve) Infantry Brigade 'Carmeli'"
+		location = 1065			#Carmel Mountains
+		division_template = "Reserve Infantry Brigade"
+		start_experience_factor = 0.65
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "228 (Reserve) Infantry Brigade 'Alon'"
+		location = 12839			#
+		division_template = "Reserve Infantry Brigade"
+		start_experience_factor = 0.65
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "205 (Reserve) Hativa Sheva 'Iron Fist'"
+		location = 12839			#
+		division_template = "Reserve Hativa Sheva"
+		start_experience_factor = 0.65
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "226 (Reserve) Hativat HaTzanhanim 'Eagle'"
+		location = 1015			#South training
+		division_template = "Reserve Hativat HaTzanhanim"
+		start_experience_factor = 0.65
+		start_equipment_factor = 0.01
+	}
+
+	#Central Command
+	##98th Paratroopers Division
+	division = {
+		name = "35 Hativat HaTzanhanim 'Flying Serpent'"
+		location = 4206			#Air Commando
+		division_template = "Hativat HaTzanhanim"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "55 (Reserve) Hativat HaTzanhanim 'Hod Ha-Hanit'"
+		location = 4206			#Front line paratroopers
+		division_template = "Reserve Hativat HaTzanhanim"
+		start_experience_factor = 0.65
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "551 (Reserve) Hativat HaTzanhanim 'Hetzei Ha-Esh'"
+		location = 1086			#Jerusalem
+		division_template = "Reserve Hativat HaTzanhanim"
+		start_experience_factor = 0.65
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "89 Hativat Commando 'Oz'"
+		location = 4206			#
+		division_template = "Hativat Commando"
+		start_experience_factor = 0.9
+		start_equipment_factor = 0.01
+	}
+
+	##340th Armoured Division
+	division = {
+		name = "847 (Reserve) Hativa Sheva 'Chariots of Steel'"
+		location = 1086			#
+		division_template = "Reserve Hativa Sheva"
+		start_experience_factor = 0.65
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "5 (Reserve) Infantry Brigade 'Sharon'"
+		location = 1086			#Area of the Sharon Strip
+		division_template = "Reserve Infantry Brigade"
+		start_experience_factor = 0.65
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "16 (Reserve) Infantry Brigade 'Jerusalem'"
+		location = 1086			#
+		division_template = "Reserve Infantry Brigade"
+		start_experience_factor = 0.65
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "900 Infantry Brigade 'Kfir'"
+		location = 1086			#
+		division_template = "Infantry Brigade"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.01
+	}
+
+	##877th Territorial Division
+	division = {
+		name = "417 (Territorial) Infantry Brigade 'Jordan Valley'"
+		location = 12839			#North-East
+		division_template = "Territorial Infantry Brigade"
+		start_experience_factor = 0.65
+		start_equipment_factor = 0.01
+	}
+
+	#Southern Command
+	##80th Territorial Division
+	division = {
+		name = "406 (Territorial) Infantry Brigade 'Yoav'"
+		location = 7176			#
+		division_template = "Territorial Infantry Brigade"
+		start_experience_factor = 0.65
+		start_equipment_factor = 0.01
+	}
+
+	##143rd Territorial Division
+	division = {
+		name = "(Territorial) Infantry Brigade 'Gefen'"
+		location = 4088			#Gaza
+		division_template = "Territorial Infantry Brigade"
+		start_experience_factor = 0.65
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "(Territorial) Infantry Brigade 'Katif'"
+		location = 4088			#Gaza
+		division_template = "Territorial Infantry Brigade"
+		start_experience_factor = 0.65
+		start_equipment_factor = 0.01
+	}
+
+	##162nd Armoured Division
+	division = {
+		name = "37 (Reserve) Hativa Sheva 'Ram'"
+		location = 1015			#
+		division_template = "Reserve Hativa Sheva"
+		start_experience_factor = 0.65
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "401 Hativa Sheva 'Ikvot HaBarzel'"
+		location = 1015			#
+		division_template = "Hativa Sheva"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "84 Infantry Brigade 'Giv'ati'"
+		location = 13205			#Far north
+		division_template = "Infantry Brigade"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "933 Infantry Brigade 'Nahal'"
+		location = 1015			#Sea unit
+		division_template = "Infantry Brigade"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.01
+	}
+
+	##252nd Armoured Division
+	division = {
+		name = "10 (Reserve) Hativa Sheva 'Harel'"
+		location = 11970			#Egyptian Border
+		division_template = "Reserve Hativa Sheva"
+		start_experience_factor = 0.65
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "14 (Reserve) Hativa Sheva 'Macvhatz'"
+		location = 11970			#Egyptian Border
+		division_template = "Reserve Hativa Sheva"
+		start_experience_factor = 0.65
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "12 (Reserve) Infantry Brigade 'Negev'"
+		location = 11970			#
+		division_template = "Reserve Infantry Brigade"
+		start_experience_factor = 0.65
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "646 (Reserve) Hativat HaTzanhanim 'Skyfox'"
+		location = 11970			#
+		division_template = "Reserve Hativat HaTzanhanim"
+		start_experience_factor = 0.65
+		start_equipment_factor = 0.01
+	}
+}
+
+instant_effect = {
+
+	### Sealed Storage（封存）###
+
+	#封存装甲车/装甲运兵车
+	add_equipment_to_stockpile = {
+		type = medium_tank_amphibious_chassis_1			#M113 Zelda（封存）
+		producer = USA
+		amount = 2500
+	}
+	add_equipment_to_stockpile = {
+		type = medium_tank_amphibious_chassis_1			#Nagmashot/Nakpadon（封存）
+		producer = ISR
+		amount = 200
+	}
+	add_equipment_to_stockpile = {
+		type = medium_tank_amphibious_chassis_1			#Achzarit（封存）
+		producer = ISR
+		amount = 100
+	}
+
+	#封存牵引火炮
+	add_equipment_to_stockpile = {
+		type = artillery_1			#M101 105榴（封存）
+		producer = USA
+		amount = 300
+	}
+	add_equipment_to_stockpile = {
+		type = artillery_1			#M114/M71 155榴（封存）
+		producer = USA
+		amount = 200
+	}
+	add_equipment_to_stockpile = {
+		type = artillery_1			#各型迫击炮（封存）
+		producer = ISR
+		amount = 600
+	}
+
+	#封存自行火炮
+	add_equipment_to_stockpile = {
+		type = medium_tank_artillery_chassis_1			#M109 Doher（封存）
+		producer = USA
+		amount = 250
+	}
+	add_equipment_to_stockpile = {
+		type = medium_tank_artillery_chassis_2			#M109 Doher后期型（封存）
+		producer = USA
+		amount = 80
+	}
+	add_equipment_to_stockpile = {
+		type = medium_tank_artillery_chassis_0			#M107 175重炮（封存）
+		producer = USA
+		amount = 60
+	}
+	add_equipment_to_stockpile = {
+		type = medium_tank_artillery_chassis_1			#M110 203重炮（封存）
+		producer = USA
+		amount = 100
+	}
+
+	#封存火箭炮
+	add_equipment_to_stockpile = {
+		type = medium_tank_rocket_chassis_0			#LAR-160/240（封存）
+		producer = ISR
+		amount = 80
+	}
+
+	#封存高炮/防空
+	add_equipment_to_stockpile = {
+		type = Anti_Air_0			#M163/Machbet火神（封存）
+		producer = USA
+		amount = 150
+	}
+	add_equipment_to_stockpile = {
+		type = medium_tank_aa_chassis_0			#MIM-72 Chaparral（封存）
+		producer = USA
+		amount = 40
+	}
+	add_equipment_to_stockpile = {
+		type = Anti_Air_1			#Stinger老型（封存）
+		producer = USA
+		amount = 800
+	}
+
+	#封存反坦克导弹
+	add_equipment_to_stockpile = {
+		type = Anti_tank_1			#Dragon老型（封存）
+		producer = USA
+		amount = 300
+	}
+	add_equipment_to_stockpile = {
+		type = Anti_tank_1			#TOW老型（封存）
+		producer = USA
+		amount = 300
+	}
+	add_equipment_to_stockpile = {
+		type = Heavy_Anti_tank_1			#TOW重型老型（封存）
+		producer = USA
+		amount = 200
+	}
+
+	#封存运输车辆
+	add_equipment_to_stockpile = {
+		type = util_vehicle_2			#老卡车（封存）
+		producer = ISR
+		amount = 6000
+	}
+	add_equipment_to_stockpile = {
+		type = util_vehicle_1			#M151吉普（封存）
+		producer = ISR
+		amount = 1500
+	}
+
+	add_equipment_to_stockpile = {
+		type = cnc_equipment_5
+		amount = 3500
+		producer = ISR
+	}
+	add_equipment_to_stockpile = {
+		type = infantry_weapons_5			#Tavor X95
+		amount = 100000
+		producer = ISR
+	}
+	add_equipment_to_stockpile = {
+		type = infantry_weapons_4			#TAR-21
+		amount = 6000
+		producer = ISR
+	}
+	add_equipment_to_stockpile = {
+		type = infantry_weapons_2			#IMI Galil
+		amount = 1000
+		producer = ISR
+	}
+	add_equipment_to_stockpile = {
+		type = infantry_weapons_2			#IMI Galil（封存）
+		amount = 50000
+		producer = ISR
+	}
+	add_equipment_to_stockpile = {
+		type = infantry_weapons_3			#M16A2/A3
+		amount = 15000
+		producer = USA
+	}
+	add_equipment_to_stockpile = {
+		type = infantry_weapons_4			#CAR-15
+		amount = 1000
+		producer = ISR
+	}
+	add_equipment_to_stockpile = {
+		type = infantry_weapons_5			#M4
+		amount = 1000
+		producer = USA
+	}
+	add_equipment_to_stockpile = {
+		type = infantry_weapons_1			#TAR-21
+		amount = 1000
+		producer = ISR
+	}
+	add_equipment_to_stockpile = {
+		type = Heavy_Anti_tank_1			#TOW
+		amount = 100
+		producer = USA
+	}
+	add_equipment_to_stockpile = {
+		type = Heavy_Anti_tank_1			#MAPATS
+		amount = 100
+		producer = ISR
+	}
+	add_equipment_to_stockpile = {
+		type = Heavy_Anti_tank_2			#Spike
+		amount = 500
+		producer = ISR
+	}
+	add_equipment_to_stockpile = {
+		type = Anti_tank_1			#M47 Dragon
+		amount = 200
+		producer = USA
+	}
+	add_equipment_to_stockpile = {
+		type = Anti_tank_2			#Spike
+		amount = 1000
+		producer = ISR
+	}
+	add_equipment_to_stockpile = {
+		type = medium_tank_aa_chassis_2			#Iron Dome
+		#version_name = "Iron Dome"
+		amount = 10
+		producer = ISR
+	}
+	add_equipment_to_stockpile = {
+		type = Anti_Air_1			#Stinger
+		amount = 1000
+		producer = USA
+	}
+	add_equipment_to_stockpile = {
+		type = medium_tank_chassis_2
+		variant_name = "Merkava Mk.3"
+		amount = 1100
+		producer = ISR
+	}
+	add_equipment_to_stockpile = {
+		type = medium_tank_chassis_2
+		amount = 300
+		producer = ISR
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Merkava Mk.4M"
+		type = medium_tank_chassis_2			#Merkava Mk.4M（战利品APS，2011年起改装）
+		amount = 160
+		producer = ISR
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Merkava Mk.2"
+		type = medium_tank_chassis_1			#Merkava Mk.2（封存）
+		amount = 500
+		producer = ISR
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Merkava Mk.3"
+		type = medium_tank_chassis_2			#Merkava Mk.3（封存）
+		amount = 500
+		producer = ISR
+	}
+	add_equipment_to_stockpile = {
+		type = medium_tank_amphibious_chassis_1			#M113
+		amount = 6131
+		producer = USA
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Zelda"
+		type = medium_tank_amphibious_chassis_1			#Zelda (M113)（封存）
+		amount = 1200
+		producer = ISR
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Achzarit"
+		type = medium_tank_amphibious_chassis_0			#Achzarit
+		amount = 215
+		producer = ISR
+	}
+	add_equipment_to_stockpile = {
+		type = medium_tank_flame_chassis_2			#Nagmachon
+		amount = 200
+		producer = ISR
+	}
+	add_equipment_to_stockpile = {
+		type = medium_tank_flame_chassis_2			#Nakpadon
+		#version_name = "Nakpadon"
+		amount = 200
+		producer = ISR
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Namer IFV"
+		type = medium_tank_amphibious_chassis_2			#Namer IFV
+		amount = 120
+		producer = ISR
+	}
+	add_equipment_to_stockpile = {
+		type = util_vehicle_1			#AIL Abir
+		amount = 1000
+		producer = ISR
+	}
+	add_equipment_to_stockpile = {
+		type = util_vehicle_3			#AIL Storm
+		amount = 300
+		producer = ISR
+	}
+	add_equipment_to_stockpile = {
+		type = util_vehicle_3			#Humvee
+		amount = 2000
+		producer = USA
+	}
+	add_equipment_to_stockpile = {
+		type = util_vehicle_4			#AIL Storm II
+		amount = 400
+		producer = ISR
+	}
+	add_equipment_to_stockpile = {
+		type = util_vehicle_5			#Wolf
+		#version_name = "Wolf Armoured Vehicle"
+		amount = 300
+		producer = ISR
+	}
+	add_equipment_to_stockpile = {
+		type = util_vehicle_5			#Sand Cat
+		amount = 79
+		producer = ISR
+	}
+	add_equipment_to_stockpile = {
+		type = util_vehicle_3			#Otokar Akrep
+		amount = 30
+		producer = ISR
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "L-33"
+		type = medium_tank_artillery_chassis_0			#Ro'em L-33
+		amount = 50
+		producer = ISR
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "M109A5 Doher"
+		type = medium_tank_artillery_chassis_1			#M109A5
+		amount = 600
+		producer = USA
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "M270 Menatetz"
+		type = medium_tank_rocket_chassis_1			#M270
+		amount = 48
+		producer = USA
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "LAR-160"
+		type = medium_tank_rocket_chassis_0			#LAR-160
+		amount = 50
+		producer = ISR
+	}
+	add_equipment_to_stockpile = {
+		type = artillery_1			#Soltam M71
+		amount = 350
+		producer = ISR
+	} 
+	add_equipment_to_stockpile = {
+		variant_name = "AH-1F Tzefa"
+		type = heavy_tank_chassis_0			#AH-1 Cobra
+		amount = 49
+		producer = USA
+	}
+	add_equipment_to_stockpile = {
+		type = heavy_tank_chassis_1			#Eurocopter Panther
+		amount = 7
+		producer = FRA
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "AH-64A Peten"
+		type = heavy_tank_chassis_2			#AH-64
+		amount = 30
+		producer = USA
+	}
+	add_equipment_to_stockpile = {
+		type = heavy_tank_chassis_2			#AH-64D
+		amount = 22
+		producer = USA
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "CH-53 Sea Stallion"
+		type = transport_helicopter_2			#Sea Stallion
+		amount = 37
+		producer = ISR
+	}
+	add_equipment_to_stockpile = {
+		type = transport_helicopter_1			#Bell 206
+		#version_name = "Bell 206"
+		amount = 18
+		producer = ISR
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "UH-60 Black Hawk"
+		type = transport_helicopter_2			#Black Hawk
+		amount = 49
+		producer = ISR
+	} 
+}

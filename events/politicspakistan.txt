@@ -1,0 +1,196 @@
+add_namespace = politicspakistan
+
+news_event = {
+	id = politicspakistan.7
+	hidden = yes
+	fire_only_once = yes
+
+	trigger = {
+		country_exists = PAK
+		PAK = { is_subject = no }
+		date > 2017.07.31
+	}
+
+	immediate = {
+		PAK = {
+			create_country_leader = {
+				name = "Shahid Khaqan Abbasi"
+				picture = "Shahid_Khaqan_Abbasi.dds"
+				ideology = Conservative
+				traits = {
+					emerging_Conservative
+				}
+			}
+		}
+	}
+}
+
+news_event = {
+	id = politicspakistan.8
+	hidden = yes
+	fire_only_once = yes
+
+	trigger = {
+		country_exists = PAK
+		PAK = { is_subject = no }
+		date > 2018.08.17
+	}
+
+	immediate = {
+		PAK = {
+			set_politics = {
+				ruling_party = nationalist
+				last_election = "2018.07.25"
+				election_frequency = 60
+				elections_allowed = yes
+			}
+			set_popularities = {
+				democratic = 18.5
+				communism = 33.2
+				fascism = 6.2
+				neutrality = 0.0
+				nationalist = 42.1
+			}
+			create_country_leader = {
+				name = "Imran Khan"
+				picture = "PAK_Imran_Khan.dds"
+				ideology = Nat_Populism
+				traits = {
+					nationalist_Nat_Populism
+				}
+			}
+			set_variable = { party_pop_array^0 = 0 } #Western_Autocracy
+			set_variable = { party_pop_array^1 = 0 } #conservatism
+			set_variable = { party_pop_array^2 = 0.018 } #liberalism
+			set_variable = { party_pop_array^3 = 0.167 } #socialism
+			set_variable = { party_pop_array^4 = 0 } #communist_state
+			set_variable = { party_pop_array^5 = 0.02 } #anarchist_communism
+			set_variable = { party_pop_array^6 = 0.312 } #Conservative
+			set_variable = { party_pop_array^7 = 0 } #Autocracy
+			set_variable = { party_pop_array^8 = 0 } #Mod_Vilayat_e_Faqih
+			set_variable = { party_pop_array^9 = 0 } #Vilayat_e_Faqih
+			set_variable = { party_pop_array^10 = 0 } #Kingdom
+			set_variable = { party_pop_array^11 = 0.062 } #Caliphate
+			set_variable = { party_pop_array^12 = 0 } #Neutral_Muslim_Brotherhood
+			set_variable = { party_pop_array^13 = 0 } #Neutral_Autocracy
+			set_variable = { party_pop_array^14 = 0 } #Neutral_conservatism
+			set_variable = { party_pop_array^15 = 0 } #oligarchism
+			set_variable = { party_pop_array^16 = 0 } #Neutral_Libertarian
+			set_variable = { party_pop_array^17 = 0 } #Neutral_green
+			set_variable = { party_pop_array^18 = 0 } #neutral_Social
+			set_variable = { party_pop_array^19 = 0 } #Neutral_Communism
+			set_variable = { party_pop_array^20 = 0.408 } #Nat_Populism
+			set_variable = { party_pop_array^21 = 0.001 } #Nat_Fascism
+			set_variable = { party_pop_array^22 = 0.012 } #Nat_Autocracy
+			set_variable = { party_pop_array^23 = 0 } #Monarchist
+			clear_array = ruling_party
+			clear_array = gov_coalition_array
+			add_to_array = { ruling_party = 6 }
+			add_to_array = { gov_coalition_array = 22 }
+			update_government_coalition_strength = yes
+			update_party_name = yes
+			set_coalition_drift = yes
+			recalculate_party = yes
+		}
+	}
+}
+
+news_event = {
+	id = politicspakistan.9
+	hidden = yes
+	fire_only_once = yes
+
+	trigger = {
+		country_exists = PAK
+		PAK = { is_subject = no }
+		date > 2022.04.10
+	}
+
+	immediate = {
+		PAK = {
+			set_politics = {
+				ruling_party = communism
+				elections_allowed = yes
+			}
+			create_country_leader = {
+				name = "Shehbaz Sharif"
+				picture = "Shehbaz_Sharif.dds"
+				ideology = Conservative
+				traits = {
+					emerging_Conservative
+				}
+			}
+			clear_array = ruling_party
+			clear_array = gov_coalition_array
+			add_to_array = { ruling_party = 6 }
+			add_to_array = { gov_coalition_array = 3 }
+			add_to_array = { gov_coalition_array = 5 }
+			update_government_coalition_strength = yes
+			update_party_name = yes
+			set_coalition_drift = yes
+			recalculate_party = yes
+		}
+	}
+}
+
+news_event = {
+	id = politicspakistan.10
+	hidden = yes
+	fire_only_once = yes
+
+	trigger = {
+		country_exists = PAK
+		PAK = { is_subject = no }
+		date > 2024.03.02
+	}
+
+	immediate = {
+		PAK = {
+			set_politics = {
+				ruling_party = communism
+				last_election = "2024.02.08"
+				election_frequency = 60
+				elections_allowed = yes
+			}
+			set_popularities = {
+				democratic = 19.1
+				communism = 29.8
+				fascism = 5.9
+				neutrality = 2.7
+				nationalist = 42.5
+			}
+			set_variable = { party_pop_array^0 = 0 } #Western_Autocracy
+			set_variable = { party_pop_array^1 = 0 } #conservatism
+			set_variable = { party_pop_array^2 = 0.023 } #liberalism
+			set_variable = { party_pop_array^3 = 0.168 } #socialism
+			set_variable = { party_pop_array^4 = 0 } #communist_state
+			set_variable = { party_pop_array^5 = 0.013 } #anarchist_communism
+			set_variable = { party_pop_array^6 = 0.285 } #Conservative
+			set_variable = { party_pop_array^7 = 0 } #Autocracy
+			set_variable = { party_pop_array^8 = 0 } #Mod_Vilayat_e_Faqih
+			set_variable = { party_pop_array^9 = 0 } #Vilayat_e_Faqih
+			set_variable = { party_pop_array^10 = 0 } #Kingdom
+			set_variable = { party_pop_array^11 = 0.059 } #Caliphate
+			set_variable = { party_pop_array^12 = 0.027 } #Neutral_Muslim_Brotherhood
+			set_variable = { party_pop_array^13 = 0 } #Neutral_Autocracy
+			set_variable = { party_pop_array^14 = 0 } #Neutral_conservatism
+			set_variable = { party_pop_array^15 = 0 } #oligarchism
+			set_variable = { party_pop_array^16 = 0 } #Neutral_Libertarian
+			set_variable = { party_pop_array^17 = 0 } #Neutral_green
+			set_variable = { party_pop_array^18 = 0 } #neutral_Social
+			set_variable = { party_pop_array^19 = 0 } #Neutral_Communism
+			set_variable = { party_pop_array^20 = 0.374 } #Nat_Populism
+			set_variable = { party_pop_array^21 = 0.044 } #Nat_Fascism
+			set_variable = { party_pop_array^22 = 0.007 } #Nat_Autocracy
+			set_variable = { party_pop_array^23 = 0 } #Monarchist
+			clear_array = ruling_party
+			clear_array = gov_coalition_array
+			add_to_array = { ruling_party = 6 }
+			add_to_array = { gov_coalition_array = 3 }
+			update_government_coalition_strength = yes
+			update_party_name = yes
+			set_coalition_drift = yes
+			recalculate_party = yes
+		}
+	}
+}

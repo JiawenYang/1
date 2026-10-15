@@ -1,0 +1,110 @@
+#中美关系
+defined_text = {
+	name = PRC_USA_relations_show_desc
+
+	text = {
+		trigger = { 
+			OR = {
+				original_tag = USA
+				original_tag = CHI
+			}
+		}
+		localization_key = "CHI_category_PRC_USA_relations_show_change"
+	}
+	text = {
+		trigger = { 
+			NOT = {
+				OR = {
+					original_tag = USA
+					original_tag = CHI
+				}
+			}
+		}
+		localization_key = "CHI_category_PRC_USA_relations_show_change_other"
+	}
+}
+#世界经济形容词
+defined_text = {
+	name = MDGR_economic_cycle_adjective_desc
+
+	text = {
+		trigger = { 
+			check_variable = {
+				MDGR_economic_cycle_adjective < -0.666
+			}
+		}
+		localization_key = "MDGR_economic_cycle_adjective_desc_1"
+	}
+	text = {
+		trigger = { 
+			check_variable = {
+				MDGR_economic_cycle_adjective < -0.333
+			}
+			check_variable = {
+				MDGR_economic_cycle_adjective > -0.667
+			}
+		}
+		localization_key = "MDGR_economic_cycle_adjective_desc_2"
+	}
+	text = {
+		trigger = { 
+			check_variable = {
+				MDGR_economic_cycle_adjective < 0.001
+			}
+			check_variable = {
+				MDGR_economic_cycle_adjective > -0.334
+			}
+		}
+		localization_key = "MDGR_economic_cycle_adjective_desc_3"
+	}
+	text = {
+		trigger = { 
+			check_variable = {
+				MDGR_economic_cycle_adjective < 0.333
+			}
+			check_variable = {
+				MDGR_economic_cycle_adjective > 0
+			}
+		}
+		localization_key = "MDGR_economic_cycle_adjective_desc_4"
+	}
+	text = {
+		trigger = { 
+			check_variable = {
+				MDGR_economic_cycle_adjective < 0.666
+			}
+			check_variable = {
+				MDGR_economic_cycle_adjective > 0.332
+			}
+		}
+		localization_key = "MDGR_economic_cycle_adjective_desc_5"
+	}
+	text = {
+		trigger = { 
+			check_variable = {
+				MDGR_economic_cycle_adjective > 0.665
+			}
+		}
+		localization_key = "MDGR_economic_cycle_adjective_desc_6"
+	}
+}
+
+#是否参与全球化
+defined_text = {
+	name = MDGR_economic_cycle_identification_desc
+
+	text = {
+		trigger = { 
+			NOT = {
+				has_country_flag = MDGR_anti_global_economic_cycle
+			}
+		}
+		localization_key = "MDGR_economic_cycle_identification_desc_ok"
+	}
+	text = {
+		trigger = { 
+			has_country_flag = MDGR_anti_global_economic_cycle
+		}
+		localization_key = "MDGR_economic_cycle_identification_desc_no"
+	}
+}

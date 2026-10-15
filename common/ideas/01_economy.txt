@@ -1,0 +1,688 @@
+ideas = {
+	###Type of Economy
+	type_of_economy = {
+		law = yes
+		use_list_view = yes
+
+		econ_capitalist_economy = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			default = yes
+			on_add = {
+				log = "[GetDateText]: [Root.GetName]: add idea econ_capitalist_economy"
+				custom_effect_tooltip = econ_capitalist_economy_tooltip
+			}
+			modifier = {
+				communism_drift = -0.02
+				stability_factor = -0.02
+				drift_defence_factor = -0.05
+				production_speed_buildings_factor = -0.1
+				conversion_cost_mil_to_civ_factor = 0.1
+				conversion_cost_civ_to_mil_factor = 0.1
+				local_resources_factor = -0.1
+				production_speed_offices_factor = 0.3
+				corruption_cost_factor = 0.3
+				consumer_goods_factor = -0.02
+				production_factory_efficiency_gain_factor = 0.02
+				production_speed_infrastructure_factor = -0.015
+				business_value_factor = 0.05
+				personal_value_factor = -0.05
+			}
+		}
+		econ_inclusive_capitalism = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			modifier = {
+				communism_drift = -0.02
+				stability_factor = -0.02
+				drift_defence_factor = -0.05
+				production_speed_buildings_factor = -0.1
+				conversion_cost_mil_to_civ_factor = 0.1
+				conversion_cost_civ_to_mil_factor = 0.1
+				local_resources_factor = -0.1
+				production_speed_offices_factor = 0.32
+				corruption_cost_factor = 0.3
+				consumer_goods_factor = 0.02
+				production_speed_infrastructure_factor = 0.015
+				production_speed_industrial_complex_factor = -0.025
+				business_value_factor = 0.02
+				personal_value_factor = 0.02
+			}
+		}
+		econ_mixed_economy = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			on_add = {
+				log = "[GetDateText]: [Root.GetName]: add idea econ_mixed_economy"
+				custom_effect_tooltip = econ_mixed_economy_tooltip
+			}
+			modifier = {
+				production_speed_buildings_factor = 0.1
+				conversion_cost_mil_to_civ_factor = -0.1
+				conversion_cost_civ_to_mil_factor = -0.1
+				local_resources_factor = 0.1
+				production_speed_agriculture_district_factor = -0.2
+				production_speed_offices_factor = 0.115
+				corruption_cost_factor = 0.1
+				consumer_goods_factor = -0.025
+				production_factory_start_efficiency_factor = 0.02
+				production_speed_industrial_complex_factor = 0.015
+				business_value_factor = 0.035
+				personal_value_factor = -0.015
+			}
+		}
+		econ_party_state_capitalism = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			on_add = {
+				log = "[GetDateText]: [Root.GetName]: add idea econ_party_state_capitalism"
+				custom_effect_tooltip = econ_party_state_capitalism_tooltip
+			}
+			modifier = {
+				communism_drift = -0.02
+				stability_factor = -0.02
+				drift_defence_factor = -0.05
+				production_speed_buildings_factor = -0.1
+				conversion_cost_mil_to_civ_factor = 0.1
+				conversion_cost_civ_to_mil_factor = 0.1
+				local_resources_factor = -0.1
+				production_speed_offices_factor = 0.34
+				corruption_cost_factor = 0.3
+				consumer_goods_factor = -0.03
+				production_factory_efficiency_gain_factor = -0.02
+				production_speed_industrial_complex_factor = 0.04
+				productivity_growth_modifier = 0.025
+				production_factory_start_efficiency_factor = -0.015
+			}
+		}
+		econ_american_capitalism = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			on_add = {
+				log = "[GetDateText]: [Root.GetName]: add idea econ_american_capitalism"
+				custom_effect_tooltip = econ_american_capitalism_tooltip
+			}
+			modifier = {
+				communism_drift = -0.05
+				stability_factor = -0.05
+				drift_defence_factor = -0.1
+				production_speed_buildings_factor = -0.2
+				conversion_cost_mil_to_civ_factor = 0.2
+				conversion_cost_civ_to_mil_factor = 0.2
+				local_resources_factor = -0.2
+				production_speed_offices_factor = 0.4
+				corruption_cost_factor = 0.4
+				consumer_goods_factor = -0.03
+				production_factory_efficiency_gain_factor = 0.035
+				production_speed_infrastructure_factor = -0.035
+				business_value_factor = 0.1
+				personal_value_factor = -0.1
+			}
+		}
+		econ_collective_capitalism = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			on_add = {
+				log = "[GetDateText]: [Root.GetName]: add idea econ_collective_capitalism"
+				custom_effect_tooltip = econ_collective_capitalism_tooltip
+			}
+			modifier = {
+				communism_drift = -0.02
+				stability_factor = -0.02
+				drift_defence_factor = -0.05
+				production_speed_buildings_factor = -0.1
+				conversion_cost_mil_to_civ_factor = 0.1
+				conversion_cost_civ_to_mil_factor = 0.1
+				local_resources_factor = -0.1
+				production_speed_offices_factor = 0.36
+				corruption_cost_factor = 0.3
+				consumer_goods_factor = -0.02
+				industrial_capacity_dockyard = 0.05
+				production_speed_infrastructure_factor = -0.05
+				business_value_factor = 0.1
+				personal_value_factor = -0.05
+			}
+		}
+		econ_oligopolistic_capitalism = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			on_add = {
+				log = "[GetDateText]: [Root.GetName]: add idea econ_oligopolistic_capitalism"
+				custom_effect_tooltip = econ_oligopolistic_capitalism_tooltip
+			}
+			modifier = {
+				communism_drift = -0.02
+				neutrality_drift = 0.02
+				stability_factor = -0.02
+				drift_defence_factor = -0.05
+				production_speed_buildings_factor = -0.1
+				conversion_cost_mil_to_civ_factor = 0.1
+				conversion_cost_civ_to_mil_factor = 0.1
+				local_resources_factor = -0.1
+				production_speed_offices_factor = 0.3
+				corruption_cost_factor = 0.3
+				consumer_goods_factor = -0.04
+				production_speed_infrastructure_factor = -0.06
+				production_factory_max_efficiency_factor = 0.035
+				production_speed_synthetic_refinery_factor = 0.1
+				business_value_factor = 0.15
+				personal_value_factor = -0.15
+			}
+		}
+		econ_welfare_capitalism = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			on_add = {
+				log = "[GetDateText]: [Root.GetName]: add idea econ_welfare_capitalism"
+				custom_effect_tooltip = econ_welfare_capitalism_tooltip
+			}
+			modifier = {
+				communism_drift = 0.02
+				stability_factor = 0.03
+				drift_defence_factor = 0.05
+				consumer_goods_factor = 0.025
+				production_speed_infrastructure_factor = 0.05
+				production_factory_efficiency_gain_factor = -0.065
+				production_speed_industrial_complex_factor = 0.05
+				personal_expense_factor = 0.035
+				business_value_factor = -0.1
+				personal_value_factor = 0.1
+			}
+		}
+		econ_maga_capitalism = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			on_add = {
+				log = "[GetDateText]: [Root.GetName]: add idea econ_maga_capitalism"
+				custom_effect_tooltip = econ_maga_capitalism_tooltip
+			}
+			modifier = {
+				communism_drift = -0.05
+				stability_factor = -0.05
+				drift_defence_factor = -0.1
+				production_speed_buildings_factor = -0.2
+				conversion_cost_mil_to_civ_factor = 0.2
+				conversion_cost_civ_to_mil_factor = 0.2
+				local_resources_factor = -0.2
+				production_speed_offices_factor = 0.4
+				corruption_cost_factor = 0.4
+				consumer_goods_factor = 0.02
+				production_speed_infrastructure_factor = 0.045
+				production_factory_efficiency_gain_factor = -0.05
+				production_speed_industrial_complex_factor = 0.05
+				personal_expense_factor = 0.03
+				business_value_factor = -0.05
+				personal_value_factor = 0.1
+			}
+		}
+		econ_managed_economy = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			on_add = {
+				log = "[GetDateText]: [Root.GetName]: add idea econ_managed_economy"
+				custom_effect_tooltip = econ_managed_economy_tooltip
+			}
+			modifier = {
+				nationalist_drift = 0.02
+				stability_factor = 0.03
+				drift_defence_factor = 0.05
+				consumer_goods_factor = -0.05
+				production_speed_arms_factory_factor = 0.05
+				industrial_capacity_factory = 0.06
+				line_change_production_efficiency_factor = -0.1
+				productivity_growth_modifier = -0.1
+				high_unemployment_threshold_modifier = -0.015
+				personal_expense_factor = -0.1
+			}
+		}
+		econ_kaiser_economy = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			on_add = {
+				log = "[GetDateText]: [Root.GetName]: add idea econ_kaiser_economy"
+				custom_effect_tooltip = econ_kaiser_economy_tooltip
+			}
+			modifier = {
+				nationalist_drift = 0.02
+				stability_factor = 0.03
+				drift_defence_factor = 0.05
+				consumer_goods_factor = -0.05
+				production_speed_industrial_complex_factor = -0.1
+				production_speed_arms_factory_factor = 0.035
+				industrial_capacity_factory = 0.1
+				mobilization_speed = 0.15
+				poverty_development_monthly = -0.02
+				productivity_growth_modifier = -0.15
+				personal_expense_factor = -0.15
+				business_value_factor = -0.15
+			}
+		}
+		econ_planned_economy = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			on_add = {
+				log = "[GetDateText]: [Root.GetName]: add idea econ_planned_economy"
+				custom_effect_tooltip = econ_planned_economy_tooltip
+			}
+			modifier = {
+				communism_drift = 0.05
+				stability_factor = 0.05
+				drift_defence_factor = 0.1
+				production_speed_buildings_factor = 0.1
+				conversion_cost_mil_to_civ_factor = 0.1
+				conversion_cost_civ_to_mil_factor = 0.1
+				local_resources_factor = 0.1
+				production_speed_agriculture_district_factor = -0.2
+				production_speed_offices_factor = -0.3
+				corruption_cost_factor = -0.1
+				consumer_goods_factor = -0.05
+				production_speed_infrastructure_factor = 0.1
+				industrial_capacity_factory = 0.1
+				production_factory_start_efficiency_factor = 0.075
+				line_change_production_efficiency_factor = -0.05
+				production_factory_efficiency_gain_factor = -0.1
+				productivity_growth_modifier = -0.25
+				personal_expense_factor = 0.1
+			}
+		}
+		econ_socialist_market = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			on_add = {
+				log = "[GetDateText]: [Root.GetName]: add idea econ_socialist_market"
+				custom_effect_tooltip = econ_socialist_market_tooltip
+			}
+			modifier = {
+				production_speed_buildings_factor = 0.1
+				conversion_cost_mil_to_civ_factor = -0.1
+				conversion_cost_civ_to_mil_factor = -0.1
+				local_resources_factor = 0.1
+				production_speed_agriculture_district_factor = -0.2
+				production_speed_offices_factor = 0.1
+				corruption_cost_factor = 0.1
+				consumer_goods_factor = -0.015
+				production_speed_infrastructure_factor = 0.05
+				industrial_capacity_factory = 0.035
+				production_factory_start_efficiency_factor = 0.05
+				production_factory_efficiency_gain_factor = -0.035
+				productivity_growth_modifier = 0.1
+				personal_expense_factor = 0.1
+			}
+		}
+		econ_developed_socialism = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			on_add = {
+				log = "[GetDateText]: [Root.GetName]: add idea econ_developed_socialism"
+				custom_effect_tooltip = econ_developed_socialism_tooltip
+			}
+			modifier = {
+				communism_drift = 0.05
+				stability_factor = 0.05
+				drift_defence_factor = 0.1
+				production_speed_buildings_factor = 0.1
+				conversion_cost_mil_to_civ_factor = -0.1
+				conversion_cost_civ_to_mil_factor = -0.1
+				local_resources_factor = 0.1
+				production_speed_agriculture_district_factor = -0.2
+				production_speed_offices_factor = -0.3
+				corruption_cost_factor = -0.1
+				consumer_goods_factor = -0.03
+				production_speed_industrial_complex_factor = 0.1
+				industrial_capacity_factory = 0.05
+				production_lack_of_resource_penalty_factor = -0.05
+				line_change_production_efficiency_factor = -0.1
+				production_factory_efficiency_gain_factor = -0.1
+				personal_expense_factor = 0.05
+				personal_value_factor = 0.05
+			}
+		}
+		econ_military_controlled_economy = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			on_add = {
+				log = "[GetDateText]: [Root.GetName]: add idea econ_military_controlled_economy"
+				custom_effect_tooltip = econ_military_controlled_economy_tooltip
+			}
+			modifier = {
+				nationalist_drift = 0.02
+				stability_factor = 0.03
+				drift_defence_factor = 0.05
+				consumer_goods_factor = -0.05
+				production_speed_arms_factory_factor = 0.1
+				industrial_capacity_factory = 0.05
+				production_lack_of_resource_penalty_factor = -0.1
+				production_factory_efficiency_gain_factor = 0.1
+				production_factory_start_efficiency_factor = -0.075
+				personal_expense_factor = -0.1
+				high_unemployment_threshold_modifier = -0.025
+			}
+		}
+		econ_worker_controlled_economy = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			on_add = {
+				log = "[GetDateText]: [Root.GetName]: add idea econ_worker_controlled_economy"
+				custom_effect_tooltip = econ_worker_controlled_economy_tooltip
+			}
+			modifier = {
+				nationalist_drift = 0.02
+				stability_factor = 0.03
+				drift_defence_factor = 0.05
+				consumer_goods_factor = 0.02
+				production_speed_industrial_complex_factor = 0.1
+				industrial_capacity_factory = 0.05
+				personal_expense_factor = 0.1
+				personal_value_factor = 0.1
+				production_factory_max_efficiency_factor = 0.05
+				line_change_production_efficiency_factor = -0.1
+			}
+		}	
+	}
+	supervision_laws = {
+		law = yes
+		use_list_view = yes
+		lower_supervision = {
+			removal_cost = -1
+			cost = 100
+			level = 5
+			picture = laws_lower_supervision
+			cancel_if_invalid = no
+			available = {
+				NOT = {
+					has_idea = high_military
+					has_idea = higher_military
+					has_idea = highest_military
+				}
+			}
+			modifier = {
+				army_attack_factor = 0.1
+				war_support_factor = -0.1
+				experience_gain_factor = -0.2
+				military_development_monthly = -0.01
+			}
+			ai_will_do = {
+				base = 1
+			}
+		}
+		low_supervision = {
+			removal_cost = -1
+			cost = 100
+			level = 4
+			picture = laws_low_supervision
+			cancel_if_invalid = no
+			available = {
+				NOT = {
+					has_idea = high_military
+					has_idea = higher_military
+					has_idea = highest_military
+				}
+			}
+			modifier = {
+				army_attack_factor = 0.05
+				war_support_factor = -0.05
+				experience_gain_factor = -0.1
+				military_development_monthly = -0.005
+			}
+			ai_will_do = {
+				base = 1
+			}
+		}
+		medium_supervision = {
+			removal_cost = -1
+			cost = 100
+			level = 3
+			picture = laws_medium_supervision
+			cancel_if_invalid = no
+			default = yes
+			available = {
+				NOT = {
+					has_idea = higher_military
+					has_idea = highest_military
+				}
+			}
+			modifier = {
+				army_attack_factor = -0.05
+				experience_gain_factor = 0.05
+			}
+			ai_will_do = {
+				base = 1
+			}
+		}
+		high_supervision = {
+			removal_cost = -1
+			cost = 100
+			level = 2
+			picture = laws_supervision_high
+			cancel_if_invalid = no
+			available = {
+			}
+			modifier = {
+				army_attack_factor = -0.05
+				war_support_factor = 0.05
+				experience_gain_factor = 0.1
+				personnel_cost_multiplier_modifier = 0.05
+				military_development_monthly = 0.005
+			}
+			ai_will_do = {
+				base = 1
+			}
+		}
+		higher_supervision = {
+			removal_cost = -1
+			cost = 100
+			level = 1
+			picture = laws_higher_supervision
+			cancel_if_invalid = no
+			available = {
+				OR = {
+					has_idea = law_high_society
+					has_idea = higher_society
+					has_idea = highest_society
+				}
+			}
+			modifier = {
+				army_attack_factor = -0.1
+				war_support_factor = 0.1
+				experience_gain_factor = 0.2
+				personnel_cost_multiplier_modifier = 0.1
+				military_development_monthly = 0.01
+			}
+			ai_will_do = {
+				base = 1
+			}
+		}
+		PRC_pla_picket_law = {
+			removal_cost = -1
+			cost = 100
+			level = 2
+			picture = PRC_pla_picket_law
+			allowed = {
+				always = no
+			}
+			allowed_to_remove = {
+				always = no
+			}
+			modifier = {
+				war_support_factor = 0.1
+				army_org_factor = 0.05
+				experience_gain_factor = 0.1
+				personnel_cost_multiplier_modifier = 0.1
+				military_development_monthly = 0.005
+			}
+			ai_will_do = {
+				base = 1
+			}
+		}
+	}
+
+	military_racial_integration_laws = {
+		law = yes
+		use_list_view = yes
+		lower_racial_integration = {
+			removal_cost = -1
+			cost = 100
+			level = 5
+			picture = laws_lower_racial_integration
+			modifier = {
+				non_core_manpower = -0.1
+			}
+			ai_will_do = {
+				base = 1
+			}
+		}
+		low_racial_integration = {
+			removal_cost = -1
+			cost = 100
+			level = 4
+			picture = laws_low_racial_integration
+			modifier = {
+				non_core_manpower = -0.075
+				army_org_factor = 0.025
+			}
+			ai_will_do = {
+				base = 1
+			}
+		}
+		medium_racial_integration = {
+			default = yes
+			removal_cost = -1
+			cost = 100
+			level = 3
+			picture = laws_medium_racial_integration
+			modifier = {
+				non_core_manpower = -0.05
+				army_org_factor = 0.05
+				breakthrough_factor = 0.05
+			}
+			ai_will_do = {
+				base = 1
+			}
+		}
+		high_racial_integration = {
+			removal_cost = -1
+			cost = 100
+			level = 2
+			picture = laws_high_racial_integration
+			default = yes
+			modifier = {
+				non_core_manpower = 0.1
+				army_org_factor = 0.025
+				breakthrough_factor = 0.025
+			}
+			ai_will_do = {
+				base = 1
+			}
+		}
+		FRA_foreign_legion_integration = {
+			removal_cost = -1
+			cost = 100
+			level = 2
+			picture = FRA_Foreign_legions
+			available = {
+				original_tag = FRA
+			}
+			visible = {
+				tag = FRA
+			}
+			allowed_to_remove = {
+				always = no
+			}
+			default = yes
+			modifier = {
+				special_forces_training_time_factor = -0.15
+				command_abilities_cost_factor = -0.15
+				special_forces_cap = 0.10
+				modifier_army_sub_unit_Special_Forces_attack_factor = 0.05
+				modifier_army_sub_unit_Special_Forces_defence_factor = 0.05
+				send_volunteer_size = 3
+			}
+			ai_will_do = {
+				base = 1
+			}
+		}
+		higher_racial_integration = {
+			removal_cost = -1
+			cost = 100
+			level = 1
+			picture = laws_higher_racial_integration
+			modifier = {
+				conscription_factor = 0.05
+				non_core_manpower = 0.25
+				breakthrough_factor = 0.025
+				field_officer_promotion_penalty = -0.2
+				military_leader_cost_factor = -0.2
+				promote_cost_factor = -0.2
+			}
+			ai_will_do = {
+				base = 1
+			}
+		}
+	}
+}
+
+

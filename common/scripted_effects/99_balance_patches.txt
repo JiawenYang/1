@@ -1,0 +1,117 @@
+# =============================================================================
+# Balance Patches — 千禧黎明数值膨胀修正
+# 作用：在不修改原文件的前提下，通过同名覆盖（last-definition-wins）钳制
+#       极端通胀派生值、货币通胀成本上限，并给手动借债加冷却。
+# 加载：本子模组 descriptor.mod 的 dependencies 指向 MD，加载顺序在 MD 之后，
+#       故本文件中同名 scripted_effect 会覆盖原版定义。
+# =============================================================================
+
+# --- Patch 1：通胀派生变量二次钳制 ---------------------------------------------
+# 原版 inflation_rate_var 允许 ±200%，派生出 ±340% 建造速度、±270% 工厂产出、
+# 以及 -200%（即免费）的项目/投资/采购成本。此处保留通胀率本身的显示与货币逻辑，
+# 只对游戏性出口做非对称 clamp，正常对局（±30% 通胀）完全无感。
+calculate_inflation_effects = {
+	set_variable = {
+		inflation_rate_prod_var = {
+			value = inflation_rate_var
+			multiply = 1.25
+			clamp = { min = -0.10 max = 0.10 }
+		}
+	}
+	set_variable = {
+		inflation_rate_econ_var = {
+			value = inflation_rate_var
+			multiply = 1.25
+			clamp = { min = -0.25 max = 0.50 }
+		}
+	}
+	set_variable = {
+		inflation_construction_speed_var = {
+			value = inflation_rate_var
+			multiply = 1.70
+			clamp = { min = -0.15 max = 0.25 }
+		}
+	}
+	set_variable = {
+		inflation_rate_output_var = {
+			value = inflation_rate_var
+			multiply = -1.35
+			clamp = { min = -0.25 max = 0.15 }
+		}
+	}
+	set_variable = {
+		trade_law_cost_var = {
+			value = inflation_rate_var
+			multiply = 1.5
+			clamp = { min = -0.25 max = 0.50 }
+		}
+	}
+	set_variable = {
+		inflation_goods_var = {
+			value = inflation_rate_var
+			multiply = -0.4
+			clamp = { min = -0.15 max = 0.30 }
+		}
+	}
+	set_variable = {
+		inflation_corruption_var = {
+			value = inflation_rate_var
+			clamp = { min = -0.25 max = 0.50 }
+		}
+	}
+	# 给 6 个直读通胀率的成本项用：最多打 75 折（-25%），永远不会免费
+	set_variable = {
+		inflation_cost_clamped_var = {
+			value = inflation_rate_var
+			clamp = { min = -0.25 max = 0.50 }
+		}
+	}
+
+	refresh_currency_inflation_effects = yes
+}
+
+# --- Patch 2：货币通胀成本上限收窄 ---------------------------------------------
+# 原版 clamp 上限为 10000（纯摆设），此处收到 +50%。
+refresh_currency_inflation_effects = {
+	# 币值低于平价（弱势）加剧通胀压力；高于平价则缓解
+	set_variable = {
+		currency_inflation_feed = {
+			value = 1
+			divide = currency_strength
+			subtract = 1
+			multiply = @currency_inflation_sensitivity
+		}
+	}
+	set_variable = {
+		inflation_cost_combined_var = {
+			value = inflation_rate_var
+			add = currency_inflation_feed
+			subtract = { value = reserve_roi_bonus multiply = 0.5 }
+			clamp = { min = 0 max = 0.50 }
+		}
+	}
+}
+
+# --- Patch 3：手动借债加 7 天冷却 ----------------------------------------------
+# 原版借债按钮无点击冷却，可连点 1/10/100/1000B。利率<20% 与金融崩溃兜底仍在，
+# 此处仅加 7 天 flag 冷却，堵掉"瞬间把债务率拉满再投资套利"的极端操作。
+take_manual_debt_effect = {
+	if = {
+		limit = {
+			check_variable = { interest_rate < 20 }
+			NOT = { has_active_mission = cheap_loan_from_the_imf_mission }
+			NOT = { has_country_flag = manual_debt_cooldown }
+			OR = {
+				check_variable = { take_debt_min_gdp = 0 }
+				check_variable = { gdp_total > take_debt_min_gdp }
+			}
+		}
+		add_to_variable = { treasury = take_debt_amount }
+		add_to_variable = { debt = take_debt_cost }
+		set_country_flag = { flag = manual_debt_cooldown value = 1 days = 7 }
+		ingame_update_setup = yes
+	}
+	if = { limit = { is_debug = yes }
+		log = "[GetDateText]: [THIS.GetName]: DEBUG: take_manual_debt [?take_debt_amount] (Total Debt: [?debt]b, Interest Rate: [?interest_rate]% balance:[?treasury_rate]b, Total Treasury:[?treasury], Total Treasury Rate:[?treasury_rate])"
+	}
+}

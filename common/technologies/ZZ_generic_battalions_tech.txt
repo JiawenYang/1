@@ -1,0 +1,70 @@
+# ============================================================================
+# 通用营技术门控（第十轮）
+# ============================================================================
+# 说明：
+# 1. 通用（无国别）陆战/空降/空突营在 MD_land_units.txt 中已设为 active = no，
+#    本文件用 3 个无 folder 科技作为 enable_subunits 挂载点；
+# 2. 无 folder → 不进科技树、玩家不可见、AI 不研究，仅由 ZZ6 - startup.txt
+#    的 set_technology 按国发放；
+# 3. 发放对象：不具备该类专属营的国家（专属国清单见各块注释）；
+# 4. 空降（运输机）与空突（直升机）分属两类，各自独立门控，互不吞并。
+# ============================================================================
+
+technologies = {
+
+	# ---- 通用海军陆战营（4 个）----
+	# 专属国（不发放）：USA SOV CHI FRA JAP KOR NKO ITA TAI ENG
+	zz_generic_marine_bat_tech = {
+		research_cost = 1
+		start_year = 2000
+		allow = {
+			always = yes
+		}
+		enable_subunits = {
+			L_Marine_Bat
+			Mot_Marine_Bat
+			Mech_Marine_Bat
+			Arm_Marine_Bat
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	# ---- 通用空降营（4 个，运输机投送）----
+	# 专属国（不发放）：USA SOV CHI ENG FRA GER JAP ISR RAJ PER ITA SPR EGY
+	zz_generic_airborne_bat_tech = {
+		research_cost = 1
+		start_year = 2000
+		allow = {
+			always = yes
+		}
+		enable_subunits = {
+			L_Air_Inf_Bat
+			Mot_Air_Inf_Bat
+			Mech_Air_Inf_Bat
+			Arm_Air_Inf_Bat
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	# ---- 通用空中突击营（2 个，直升机机降）----
+	# 专属国（不发放）：USA CHI UKR
+	zz_generic_air_assault_bat_tech = {
+		research_cost = 1
+		start_year = 2000
+		allow = {
+			always = yes
+		}
+		enable_subunits = {
+			L_Air_assault_Bat
+			air_assault_arty_Bat
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+}

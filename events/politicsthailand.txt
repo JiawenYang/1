@@ -1,0 +1,208 @@
+add_namespace = politicsthailand
+
+country_event = { #巴育·占奥差
+	id = politicsthailand.71
+	title = politicsthailand.71.t
+	desc = politicsthailand.71.d
+	hidden = yes
+	fire_only_once = yes
+
+	trigger = {
+		tag = SIA
+		date > 2019.03.24
+	}	
+
+	option = {
+		name = politicsthailand.71.a
+
+		set_popularities = {
+			democratic = 13.0
+			communism = 20.7
+			fascism = 0.0
+			neutrality = 38.5
+			nationalist = 27.8
+		}
+		set_politics = {
+			ruling_party = nationalist
+			last_election = "2019.03.24"
+			election_frequency = 48
+			elections_allowed = yes
+		}
+
+		start_politics_input = yes
+
+		### Party Popularities
+		set_variable = { party_pop_array^0 = 0 } #Western_Autocracy
+		set_variable = { party_pop_array^1 = 0.13 } #conservatism
+		set_variable = { party_pop_array^2 = 0 } #liberalism
+		set_variable = { party_pop_array^3 = 0.207 } #socialism
+		set_variable = { party_pop_array^4 = 0 } #communist_state
+		set_variable = { party_pop_array^5 = 0 } #anarchist_communism
+		set_variable = { party_pop_array^6 = 0 } #Conservative
+		set_variable = { party_pop_array^7 = 0 } #Autocracy
+		set_variable = { party_pop_array^8 = 0 } #Mod_Vilayat_e_Faqih
+		set_variable = { party_pop_array^9 = 0 } #Vilayat_e_Faqih
+		set_variable = { party_pop_array^10 = 0 } #Kingdom
+		set_variable = { party_pop_array^11 = 0 } #Caliphate
+		set_variable = { party_pop_array^12 = 0 } #Neutral_Muslim_Brotherhood
+		set_variable = { party_pop_array^13 = 0 } #Neutral_Autocracy
+		set_variable = { party_pop_array^14 = 0.123 } #Neutral_conservatism
+		set_variable = { party_pop_array^15 = 0 } #oligarchism
+		set_variable = { party_pop_array^16 = 0 } #Neutral_Libertarian
+		set_variable = { party_pop_array^17 = 0 } #Neutral_green
+		set_variable = { party_pop_array^18 = 0.262 } #neutral_Social
+		set_variable = { party_pop_array^19 = 0 } #Neutral_Communism
+		set_variable = { party_pop_array^20 = 0 } #Nat_Populism
+		set_variable = { party_pop_array^21 = 0 } #Nat_Fascism
+		set_variable = { party_pop_array^22 = 0.278 } #Nat_Autocracy
+		set_variable = { party_pop_array^23 = 0 } #Monarchist
+		clear_array = ruling_party
+		clear_array = gov_coalition_array
+		add_to_array = { ruling_party = 22 }
+		update_government_coalition_strength = yes
+		update_party_name = yes
+		set_coalition_drift = yes
+		recalculate_party = yes
+		change_state_system_presidential_system = yes
+		log = "[GetDateText]: [This.GetName]: politicsthailand.7.a executed"
+	}
+}
+
+country_event = { #赛塔·他威信
+	id = politicsthailand.8
+	title = politicsthailand.8.t
+	desc = politicsthailand.8.d
+	hidden = yes
+	fire_only_once = yes
+
+	trigger = {
+		tag = SIA
+		date > 2023.08.21
+	}	
+
+	option = {
+		name = politicsthailand.8.a
+		create_country_leader = {
+			name = "Srettha Thavisin"
+			picture = "Srettha_Thavisin.dds"
+			expire = "2050.1.1"
+			ideology = neutral_Social
+			traits = {
+				neutrality_neutral_Social
+				businessman
+			}
+		}
+		set_popularities = {
+			democratic = 47.0
+			communism = 20.7
+			fascism = 0.0
+			neutrality = 37.1
+			nationalist = 16.2
+		}
+		set_politics = {
+			ruling_party = neutrality
+			last_election = "2023.05.14"
+			election_frequency = 48
+			elections_allowed = yes
+		}
+
+		start_politics_input = yes
+
+		### Party Popularities
+		set_variable = { party_pop_array^0 = 0 } #Western_Autocracy
+		set_variable = { party_pop_array^1 = 0.028 } #conservatism
+		set_variable = { party_pop_array^2 = 0 } #liberalism
+		set_variable = { party_pop_array^3 = 0.442 } #socialism
+		set_variable = { party_pop_array^4 = 0 } #communist_state
+		set_variable = { party_pop_array^5 = 0 } #anarchist_communism
+		set_variable = { party_pop_array^6 = 0 } #Conservative
+		set_variable = { party_pop_array^7 = 0 } #Autocracy
+		set_variable = { party_pop_array^8 = 0 } #Mod_Vilayat_e_Faqih
+		set_variable = { party_pop_array^9 = 0 } #Vilayat_e_Faqih
+		set_variable = { party_pop_array^10 = 0 } #Kingdom
+		set_variable = { party_pop_array^11 = 0 } #Caliphate
+		set_variable = { party_pop_array^12 = 0 } #Neutral_Muslim_Brotherhood
+		set_variable = { party_pop_array^13 = 0 } #Neutral_Autocracy
+		set_variable = { party_pop_array^14 = 0.035 } #Neutral_conservatism
+		set_variable = { party_pop_array^15 = 0 } #oligarchism
+		set_variable = { party_pop_array^16 = 0 } #Neutral_Libertarian
+		set_variable = { party_pop_array^17 = 0 } #Neutral_green
+		set_variable = { party_pop_array^18 = 0.336 } #neutral_Social
+		set_variable = { party_pop_array^19 = 0 } #Neutral_Communism
+		set_variable = { party_pop_array^20 = 0 } #Nat_Populism
+		set_variable = { party_pop_array^21 = 0 } #Nat_Fascism
+		set_variable = { party_pop_array^22 = 0.162 } #Nat_Autocracy
+		set_variable = { party_pop_array^23 = 0 } #Monarchist
+		clear_array = ruling_party
+		clear_array = gov_coalition_array
+		add_to_array = { ruling_party = 18 }
+		update_government_coalition_strength = yes
+		update_party_name = yes
+		set_coalition_drift = yes
+		recalculate_party = yes
+		log = "[GetDateText]: [This.GetName]: politicsthailand.8.a executed"
+	}
+}
+
+country_event = { #佩通坦·钦那瓦
+	id = politicsthailand.9
+	title = politicsthailand.9.t
+	desc = politicsthailand.9.d
+	hidden = yes
+	fire_only_once = yes
+
+	trigger = {
+		tag = SIA
+		date > 2024.08.15
+	}	
+
+	option = {
+		name = politicsthailand.9.a
+		create_country_leader = {
+			name = "Paetongtarn Shinawatra"
+			picture = "Paetongtarn_Shinawatra.dds"
+			expire = "2030.1.1"
+			ideology = neutral_Social
+			traits = {
+				neutrality_neutral_Social
+				businessman
+				Ancestral_origin_in_Guangdong
+			}
+		}
+		log = "[GetDateText]: [This.GetName]: politicsthailand.9.a executed"
+	}
+}
+
+country_event = { #佩通坦·钦那瓦
+	id = politicsthailand.10
+	title = politicsthailand.10.t
+	desc = politicsthailand.10.d
+	hidden = yes
+	fire_only_once = yes
+
+	trigger = {
+		tag = SIA
+		date > 2025.09.06
+	}	
+
+	option = {
+		name = politicsthailand.10.a
+		create_country_leader = {
+			name = "Anutin Charnvirakul"
+			picture = "Anutin_Charnvirakul.dds"
+			expire = "2050.1.1"
+			ideology = Neutral_conservatism
+			traits = {
+				neutrality_Neutral_conservatism
+			}
+		}
+		clear_array = ruling_party
+		clear_array = gov_coalition_array
+		add_to_array = { ruling_party = 14 }
+		update_government_coalition_strength = yes
+		update_party_name = yes
+		set_coalition_drift = yes
+		recalculate_party = yes
+		log = "[GetDateText]: [This.GetName]: politicsthailand.10.a executed"
+	}
+}

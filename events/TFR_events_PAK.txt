@@ -1,0 +1,143 @@
+﻿add_namespace = PAK
+
+country_event = {
+	id = PAK.2
+	title = PAK.2.t
+	desc = PAK.2.d
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		PAK = {
+			add_state_core = 427
+			transfer_state = 427
+			add_manpower = -19500
+			load_oob = "HUL_Pakistan_India_war"
+			country_event = {
+				id = PAK.3
+				days = 14
+			}
+		}
+	}
+	
+	option = {
+		name = PAK.2
+	}
+}
+
+country_event = {
+	id = PAK.3
+	title = PAK.3.t
+	desc = PAK.3.d
+	
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			news_event = {
+				id = PAK.7
+			}
+
+			RAJ = {
+				declare_war_on = {
+					target = PAK
+					type = annex_everything
+				}
+				add_ideas = RAJ_clash_of_the_millions
+			}
+
+			PAK = {
+				add_ideas = PAK_clash_of_the_millions
+				add_ideas = defence_07
+				add_ideas = consumption_economy
+				add_manpower = -143750
+				load_oob = "PAK_Pakistan_India_war"
+			}
+			CHI = {
+				country_event = { id = prc.134 }
+			}
+		}
+	}
+
+	option = {
+		name = PAK.3.a
+	}
+}
+
+news_event = {
+	id = PAK.7
+	title = PAK.7.t
+	desc = PAK.7.d
+	picture = GFX_India_Pakistan_War
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = PAK.7.a
+		
+	}
+}
+
+#What type of angy wangy do i want....
+country_event = {
+	id = PAK.10
+	title = PAK.10.t
+	desc = PAK.10.d
+	
+	is_triggered_only = yes
+	
+	option = {#I want to martyr myself
+		ai_chance = {
+			factor = 1
+		}
+		name = PAK.10.a
+		add_stability = -0.1
+		add_ideas = PAK_sword_and_ummah
+	}
+	
+	option = {#uhhhhhhhh
+		name = PAK.10.b
+		ai_chance = {
+		    factor = 1
+		}
+	}
+}
+
+#Join EADI after India joined PDTO
+country_event = {
+	id = PAK.12
+	title = PAK.12.t
+	desc = PAK.12.d
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = CHI
+		CHI = { is_in_faction = yes }
+		RAJ = { is_in_faction = yes }
+	}
+	
+	option = {
+		name = PAK.12.a
+		CHI = {
+			add_to_faction = PAK
+		}
+		PAK = {
+			set_country_flag = eadi_member
+		}
+	}
+}
+
+news_event = {
+	id = PAK.13
+	title = PAK.13.t
+	desc = PAK.13.d
+	picture = GFX_India_Pakistan_War
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = PAK.13.a
+		
+	}
+}

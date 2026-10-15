@@ -1,0 +1,334 @@
+﻿division_template = {
+	name = "Spetsialni Sili Polk"
+
+	regiments = {
+		Special_Forces = { x = 0 y = 0 }
+		Mot_Air_Inf_Bat = { x = 0 y = 1 }
+		L_Inf_Bat = { x = 0 y = 2 }
+	}
+
+	support = {
+		L_Engi_Comp = { x = 0 y = 0 }
+	}
+
+	priority = 2
+}
+
+
+division_template = {
+	name = "Mekhanizirana Brigada"
+
+	regiments = {
+		Mech_Inf_Bat = { x = 0 y = 0 }
+		Mech_Inf_Bat = { x = 0 y = 1 }
+		Arm_Inf_Bat = { x = 0 y = 2 }
+		Arm_Inf_Bat = { x = 0 y = 3 }
+		SP_Arty_Bat = { x = 1 y = 0 }
+		SP_AA_Bat = { x = 1 y = 1 }
+		Mech_Inf_Bat = { x = 1 y = 2 }
+	}
+
+	support = {
+		armor_Recce_Comp = { x = 0 y = 0 }
+		armor_Comp = { x = 0 y = 1 }
+	}
+}
+
+division_template = {
+	name = "Nezavisima Mekhanizirana Brigada"
+
+	regiments = {
+		Mech_Inf_Bat = { x = 0 y = 0 }
+	}
+
+	support = {
+		armor_Comp = { x = 0 y = 0 }
+	}
+}
+
+units = {
+	division = {
+		name = "68-i Spetsialni Sili Polk"
+		location = 6923			#Plovdiv
+		division_template = "Spetsialni Sili Polk"
+		start_experience_factor = 0.7
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "61-ta Mekhanizirana Brigada"
+		location = 6982		#Karlovo
+		division_template = "Mekhanizirana Brigada"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "2-ra Mekhanizirana Brigada"
+		location = 6814		#Stara Zagora
+		division_template = "Mekhanizirana Brigada"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "3-ta Nezavisima Mekhanizirana Brigada"
+		location = 935		#Stara Zagora
+		division_template = "Nezavisima Mekhanizirana Brigada"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.01
+	}
+}
+
+instant_effect = {
+
+	add_equipment_to_stockpile = {
+		type = cnc_equipment_1
+		amount = 300
+		producer = BUL
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "AKK"
+		type = infantry_weapons_2	 #AKK
+		amount = 1000
+		producer = BUL
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "AR-M1"
+		type = infantry_weapons_2	 #AR-M1
+		amount = 2000
+		producer = BUL
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "AT-3"
+		type = small_plane_strike_airframe_1		 #AT-3
+		amount = 200
+		producer = BUL
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "AT-5"
+		type = Heavy_Anti_tank_1		 #AT-5
+		amount = 300
+		producer = BUL
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "AT-6"
+		type = Heavy_Anti_tank_1		 #AT-6
+		#version_name = "AT-6 Spiral"
+		amount = 500
+		producer = BUL
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "AT-4"
+		type = Anti_tank_1		 #AT-4
+		amount = 222
+		producer = BUL
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "AT-7"
+		type = Anti_tank_1		 #AT-7
+		#version_name = "AT-7 Metis"
+		amount = 50
+		producer = BUL
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "SA-7"
+		type = Anti_Air_0		 #SA-7
+		amount = 100
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "SA-16"
+		type = Anti_Air_1		 #SA-16
+		amount = 100
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		type = medium_tank_chassis_1
+		amount = 531
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		type = medium_tank_chassis_0
+		amount = 270
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		type = medium_tank_chassis_0
+		amount = 1400
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BMP-23"
+		type = medium_tank_flame_chassis_0		 #BMP-23
+		amount = 214
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BMP-1"
+		type = medium_tank_flame_chassis_0		 #BMP-1
+		amount = 460
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BTR-60"
+		type = medium_tank_amphibious_chassis_0		 #BTR-60
+		amount = 781
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "M113"
+		type = medium_tank_amphibious_chassis_1		 #M113
+		amount = 31
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "MT-LB"
+		type = medium_tank_amphibious_chassis_1		 #MT-LB
+		amount = 540
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BRDM-2"
+		type = medium_tank_destroyer_chassis_0		 #BRDM-2
+		#version_name = "BRDM-2"
+		amount = 74
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "UAZ-469"
+		type = util_vehicle_2		 #UAZ-469
+		amount = 500
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Humvee"
+		type = util_vehicle_3		 #HUmvee
+		amount = 52
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "G-Class"
+		type = util_vehicle_4		 #G-Class
+		amount = 600
+		producer = BUL
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Plasan Sand Cat"
+		type = util_vehicle_5		 #Plasan Sand Cat
+		amount = 25
+		producer = BUL
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "MaxxPro"
+		type = util_vehicle_6		 #MaxxPro
+		amount = 4
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "2S1 Gvozdika"
+		type = medium_tank_artillery_chassis_0		 #2S1 Gvozdika
+		#version_name = "2S1 Gvozdika"
+		amount = 506
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "2S3 Akatsiya"
+		type = medium_tank_artillery_chassis_0		 #2S3 Akatsiya
+		amount = 70
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BM-21 Grad"
+		type = medium_tank_rocket_chassis_0		 #BM-21 Grad
+		amount = 192
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "SA-8"
+		type = medium_tank_aa_chassis_0		 #SA-8
+		amount = 24
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "SA-9"
+		type = medium_tank_aa_chassis_0		 #SA-9
+		#version_name = "SA-9 Strela-1"
+		amount = 50
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "SA-9"
+		type = medium_tank_aa_chassis_0		 #SA-9
+		#version_name = "S-125 Pechora"
+		amount = 50
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "SA-13"
+		type = medium_tank_aa_chassis_1		 #SA-13
+		#version_name = "9K35 Strela-10"
+		amount = 20
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "AS532"
+		type = transport_helicopter_2		 #AS532
+		amount = 12
+		producer = FRA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Mi-17"
+		type = transport_helicopter_1		 #Mi-17
+		#version_name = "Mil Mi-17"
+		amount = 4
+		producer = SOV
+	}
+
+	#Reserve Stockpiles (Sealed)
+	add_equipment_to_stockpile = {
+		variant_name = "AKK"
+		type = infantry_weapons_2	 #AKK（封存）
+		amount = 80000
+		producer = BUL
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "T-55"
+		type = medium_tank_chassis_0		 #T-55（封存）
+		amount = 350
+		producer = SOV
+	}
+}

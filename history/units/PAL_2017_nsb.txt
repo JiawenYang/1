@@ -1,0 +1,95 @@
+﻿division_template = {
+	name = "Government Force" #presidentiel guards, security force, paramilitary, police, ect
+
+	regiments = {
+		L_Inf_Bat = { x = 0 y = 0 }
+		Militia_Bat = { x = 0 y = 1 }
+		Militia_Bat = { x = 0 y = 2 }
+
+		Militia_Bat = { x = 1 y = 0 }
+		Militia_Bat = { x = 1 y = 1 }
+		Militia_Bat = { x = 1 y = 2 }
+	}
+	support = {
+		Mot_Recce_Comp = { x = 0 y = 0 }
+	}
+	priority = 1
+}   
+division_template = {
+	name = "Palestinian Groups"
+
+	regiments = {
+		Militia_Bat = { x = 0 y = 0 }
+	}
+	priority = 0
+}
+units = { 
+	division = {
+		name = "Government Force - West Bank"
+		location = 11620 #West Bank
+		division_template = "Government Force"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.01
+		force_equipment_variants = { infantry_weapons_1 = { amount = 100 owner = PAL creator = SOV version_name = "AKM" } }
+	}   
+}
+
+instant_effect = {
+
+	add_equipment_to_stockpile = {
+		type = infantry_weapons_1
+		producer = SOV
+		amount = 1000
+	}
+	add_equipment_to_stockpile = {
+		type = infantry_weapons_3
+		producer = USA
+		amount = 1500
+	}
+	add_equipment_to_stockpile = {
+		type = infantry_weapons_2
+		producer = PAL
+		amount = 30
+	}   
+	add_equipment_to_stockpile = {
+		type = Anti_tank_1
+		producer = SOV
+		amount = 200
+	} 
+	add_equipment_to_stockpile = {
+		type = Anti_tank_1
+		producer = PAL
+		amount = 20
+	}
+	add_equipment_to_stockpile = {
+		type = Anti_Air_0
+		producer = SOV
+		amount = 10
+	}
+	add_equipment_to_stockpile = {
+		type = Anti_Air_0
+		producer = SOV
+		amount = 10
+	}  
+	add_equipment_to_stockpile = {
+		type = transport_helicopter_1
+		amount = 6
+		producer = SOV
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "AK-47"
+		type = infantry_weapons_2	#AK-47（封存）
+		amount = 30000
+		producer = SOV
+	}
+	add_equipment_to_stockpile = {
+		type = medium_tank_chassis_0
+		amount = 30	#T-55（缴获封存）
+		producer = SOV
+	}
+	add_equipment_to_stockpile = {
+		type = medium_tank_chassis_0
+		amount = 20	#T-62（缴获封存）
+		producer = SOV
+	} 
+}

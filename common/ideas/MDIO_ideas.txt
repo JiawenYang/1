@@ -1,0 +1,71 @@
+ideas = {
+	###
+	pop_pyramid = {
+		law = yes
+		use_list_view = yes
+			
+		SER_massive_emigration_problem = {
+			picture = SER_Massive_Emigration
+				
+			allowed = { always = no }
+			available = { always = no }
+				
+			modifier = {
+				stability_factor = 0.2
+				war_support_factor = -0.1
+				social_cost_multiplier_modifier = 0.1
+				health_cost_multiplier_modifier = 0.1
+				education_cost_multiplier_modifier = -0.1
+				total_workforce_modifier = -0.125
+				monthly_population = -0.5
+				foreign_influence_defense_modifier = 0.15
+				drift_defence_factor = 0.15
+				research_speed_factor = -0.1
+			}
+			cancel_if_invalid = no
+		}
+		USA_low_immigration_idea = {
+			picture = USA_immigration
+				
+			allowed = { always = no }
+			available = { always = no }
+			modifier = {
+				migration_rate_value_factor = 0.2
+				stability_factor = 0.05
+				political_power_gain = -0.1
+				production_factory_start_efficiency_factor = -0.05
+			}
+		}
+		USA_medium_immigration_idea = {
+			picture = USA_immigration1
+				
+			allowed = { always = no }
+			available = { always = no }
+			modifier = {
+				migration_rate_value_factor = 0.4
+				stability_factor = -0.05
+				stability_weekly = -0.001
+				production_factory_start_efficiency_factor = 0.1
+				production_factory_efficiency_gain_factor = 0.05
+				expense_growth_factor = 0.1
+			}
+			cancel_if_invalid = no
+		}
+		USA_high_immigration_idea = {
+			picture = USA_immigration2
+				
+			allowed = { always = no }
+			available = { always = no }
+			modifier = {
+				migration_rate_value_factor = 0.6
+				stability_factor = -0.15
+				stability_weekly = -0.002
+				production_factory_start_efficiency_factor = 0.25
+				production_factory_efficiency_gain_factor = 0.1
+				expense_growth_factor = 0.2
+			}
+			cancel_if_invalid = no
+		}
+	}
+
+}

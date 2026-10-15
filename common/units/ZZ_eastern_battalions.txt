@@ -1,0 +1,295 @@
+# ============================================================================
+# 东方阵营通用营（第七轮）
+# ============================================================================
+# 以俄军2017年实编为基准：坦克营3连31车、摩步营40车500人。
+# sprite/group/categories/地形块与西方对应型完全一致，
+# 确保类别绑定的学说明文自动惠及两套。
+# 授予国：SOV CHI NKO UKR BLR KAZ UZB ARM AZE GEO SYR IRQ PER VIE BRM CUB
+# ============================================================================
+
+sub_units = {
+
+	E_Tank_Bat = { # 东方坦克营（俄式3连31车）
+		sprite = MD_medium_armor
+		map_icon_category = armored
+		priority = 30
+		active = no
+		ai_priority = 3
+		type = {
+			armor
+			mechanized
+		}
+		group = armor
+
+		categories = {
+			category_tanks
+			category_front_line
+			category_real_tanks
+			category_all_armor
+			category_army
+			category_non_militia
+		}
+
+		combat_width = 4
+
+		essential = {
+			medium_tank_chassis
+		}
+
+		need = {
+			medium_tank_chassis = 31
+			cnc_equipment_type = 20
+			infantry_weapons_type = 150
+			L_AT_Equipment = 12
+			AA_Equipment = 8
+			util_vehicle_type = 15
+		}
+		plains = { attack = 0.20 defence = 0.10 movement = 0.10 }
+		desert = { attack = 0.15 defence = 0.10 movement = 0.10 }
+		hills = { attack = -0.10 movement = -0.10 }
+		forest = { attack = -0.25 defence = -0.10 movement = -0.15 }
+		mountain = { attack = -0.35 defence = -0.20 movement = -0.25 }
+		jungle = { attack = -0.30 defence = -0.15 movement = -0.20 }
+		marsh = { attack = -0.20 defence = -0.05 movement = -0.25 }
+		urban = { attack = -0.15 defence = -0.10 }
+		amphibious = { attack = -0.10 movement = -0.10 }
+
+		manpower = 600
+		max_organisation = 20
+		max_strength = 12
+		default_morale = 0.06
+		training_time = 180
+		weight = 2
+		entrenchment = -0.15
+		suppression = 2.5
+
+		transport = medium_tank_chassis
+
+	}
+	E_Arm_Inf_Bat = { # 东方机步营（BMP-2/BMP-3，40车）
+		sprite = MD_light_armor
+		map_icon_category = armored
+		ai_priority = 5
+		priority = 25
+		active = no
+
+		type = {
+			mechanized
+		}
+
+		group = armor
+
+		categories = {
+			category_front_line
+			category_all_infantry
+			category_conventional_infantry
+			category_army
+			category_all_armor
+			category_IFV
+			category_non_militia
+			category_mech_inf
+		}
+
+		combat_width = 4
+
+		#Size Definitions
+		max_strength = 14
+		max_organisation = 26
+		default_morale = 0.08
+		manpower = 1150
+		entrenchment = -0.3
+		suppression = 2.5
+
+		#Misc Abilities
+		training_time = 120
+		weight = 1
+
+		# this is what moves us and sets speed
+		transport = medium_tank_flame_chassis
+
+		need = {
+			infantry_weapons_type = 630
+			L_AT_Equipment = 40
+			H_AT_Equipment = 12
+			AA_Equipment = 14
+			cnc_equipment_type = 30
+			medium_tank_flame_chassis = 42
+		}
+		plains = { attack = 0.05 movement = 0.10 }
+		desert = { attack = 0.05 movement = 0.10 }
+		hills = { attack = 0.05 movement = -0.05 }
+		forest = { attack = -0.05 movement = -0.10 }
+		mountain = { attack = -0.25 defence = -0.15 movement = -0.20 }
+		jungle = { attack = -0.20 movement = -0.15 }
+		marsh = { attack = -0.20 movement = -0.20 }
+		urban = { attack = -0.05 defence = -0.10 }
+
+	}
+	E_Mech_Inf_Bat = { # 东方摩步营（BTR-80/BTR-82A轮式APC，40车）
+		sprite = MD_mechanized
+		map_icon_category = armored
+
+		priority = 20
+		active = no
+		type = { mechanized }
+
+		group = armor
+
+		categories = {
+			category_front_line
+			category_all_infantry
+			category_conventional_infantry
+			category_army
+			category_all_armor
+			category_apc
+			category_non_militia
+			category_mech_inf
+		}
+
+		combat_width = 4
+
+		#Size Definitions
+		max_strength = 13
+		max_organisation = 30
+		default_morale = 0.09
+		manpower = 1150
+		entrenchment = -0.2
+		suppression = 2
+
+		#Misc Abilities
+		training_time = 120
+		weight = 1
+
+		# this is what moves us and sets speed
+		transport = medium_tank_amphibious_chassis
+
+		essential = {
+			medium_tank_amphibious_chassis
+		}
+
+		need = {
+			infantry_weapons_type = 630
+			L_AT_Equipment = 40
+			AA_Equipment = 14
+			cnc_equipment_type = 30
+			medium_tank_amphibious_chassis = 42
+		}
+		plains = { attack = 0.10 movement = 0.15 }
+		desert = { attack = 0.10 movement = 0.15 }
+		hills = { attack = -0.05 movement = -0.05 }
+		forest = { attack = -0.15 movement = -0.10 }
+		mountain = { attack = -0.25 defence = -0.15 movement = -0.20 }
+		jungle = { attack = -0.20 movement = -0.15 }
+		marsh = { attack = -0.05 movement = 0.05 }
+		urban = { attack = -0.10 }
+
+	}
+	E_Mot_Inf_Bat = { # 东方摩步营（乌拉尔卡车）
+		sprite = MD_motorized
+		map_icon_category = infantry
+		ai_priority = 5
+		priority = 15
+		active = yes
+
+		type = {
+			motorized
+		}
+
+		group = mobile
+
+		categories = {
+			category_front_line
+			category_conventional_infantry
+			category_all_infantry
+			category_mot_inf
+			category_army
+			category_non_militia
+		}
+
+		combat_width = 4
+
+		#Size Definitions
+		max_strength = 12
+		max_organisation = 34
+		default_morale = 0.10
+		manpower = 1150
+		entrenchment = -0.1
+		suppression = 2
+
+		#Misc Abilities
+		training_time = 120
+		weight = 1
+
+		transport = util_vehicle_type
+
+		need = {
+			infantry_weapons_type = 630
+			L_AT_Equipment = 40
+			AA_Equipment = 14
+			cnc_equipment_type = 30
+			util_vehicle_type = 45
+		}
+		plains = { attack = 0.10 movement = 0.10 }
+		desert = { attack = 0.05 movement = 0.10 }
+		hills = { movement = -0.05 }
+		forest = { attack = -0.10 movement = -0.10 }
+		mountain = { attack = -0.20 defence = -0.10 movement = -0.15 }
+		jungle = { attack = -0.15 movement = -0.15 }
+		marsh = { attack = -0.10 movement = -0.15 }
+		urban = { attack = -0.05 }
+
+	}
+	E_L_Inf_Bat = { # 东方轻步兵营
+		sprite = MD_infantry_2
+		map_icon_category = infantry
+		ai_priority = 5
+		priority = 10
+		active = yes
+		mountaineers = yes
+		type = { infantry }
+		group = infantry
+
+		categories = {
+			category_front_line
+			category_light_infantry
+			category_conventional_infantry
+			category_all_infantry
+			category_army
+			category_non_militia
+			category_foot_inf
+		}
+
+		combat_width = 3
+
+		#Size Definitions
+		max_strength = 14
+		max_organisation = 38
+		default_morale = 0.12
+		manpower = 1050
+		entrenchment = 0
+		suppression = 1
+
+		#Misc Abilities
+		training_time = 120
+		weight = 0.5
+		transport = cnc_equipment_type
+
+		need = {
+			infantry_weapons_type = 580
+			L_AT_Equipment = 40
+			AA_Equipment = 14
+			cnc_equipment_type = 32
+		}
+		plains = { attack = -0.05 }
+		desert = { attack = -0.05 movement = -0.05 }
+		hills = { attack = 0.05 defence = 0.10 }
+		forest = { attack = 0.10 defence = 0.15 movement = 0.05 }
+		mountain = { attack = 0.15 defence = 0.20 movement = 0.05 }
+		jungle = { attack = 0.10 defence = 0.15 movement = 0.05 }
+		marsh = { attack = 0.05 defence = 0.10 movement = 0.10 }
+		urban = { attack = 0.10 defence = 0.10 }
+		amphibious = { attack = -0.05 }
+
+	}
+
+}

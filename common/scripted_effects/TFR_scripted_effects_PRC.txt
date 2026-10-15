@@ -1,0 +1,2142 @@
+##################################
+####    CHI Scriped Effects   ####
+##################################
+
+######################
+### -char effects- ###
+######################
+
+#hide character effect
+PRC_hide_character_effect = {
+	retire = yes
+}
+
+#recruit character
+PRC_recruit_character_effect = {
+	if = {
+		limit = {
+			NOT = {
+				THIS = { has_character_flag = is_dead }
+				PLA = { has_character = PREV }
+			}
+		}
+		if = {
+			limit = { THIS = { is_army_leader = yes } }
+			demote_to_general = yes
+			remove_trait = { trait = recently_promoted }
+		}
+		set_nationality = CHI
+	}
+}
+
+#Party Approval
+	PRC_add_party_approval = {
+		custom_effect_tooltip = PRC_add_party_approval_tt
+		
+		add_to_variable = {
+			var = PRC_approval_rating_var
+			value = PRC_approval_rating_var_temp
+		}
+		
+		clamp_variable = {
+			var = PRC_approval_rating_var
+			min = -0.5
+			max = 1
+		}
+
+		set_variable = {
+			var = PRC_approval_rating_dynamic_var
+			value = PRC_approval_rating_var
+		}
+		
+		multiply_variable = {
+			var = PRC_approval_rating_dynamic_var
+			value = 0.1
+		}
+	}
+
+	PRC_add_capital_flight_timeout = {
+		custom_effect_tooltip = PRC_capital_flight_timeout_tt
+		
+		add_to_variable = {
+			var = PRC_capital_flight_timeout
+			value = PRC_capital_flight_timeout_temp
+		}
+		
+		clamp_variable = {
+			var = PRC_capital_flight_timeout
+			min = 0
+			max = 1
+		}
+	}
+
+	PRC_add_enviromental_progress = {
+		if = {
+			limit = {
+				NOT = {
+					has_country_flag = PRC_environmental_reform_success
+				}
+			}
+			custom_effect_tooltip = PRC_add_enviromental_progress_tt
+		
+			add_to_variable = {
+				var = PRC_enviromental_progress
+				value = PRC_enviromental_progress_temp
+			}
+
+			clamp_variable = {
+				var = PRC_enviromental_progress
+				min = 0
+				max = 1
+			}
+			if = {
+				limit = {
+					date > 2020.01.01
+					check_variable = {
+						var = PRC_enviromental_progress
+						value = 0.3
+						compare = less_than_or_equals
+					}
+				}
+				CHI = {
+					country_event = { id = prc.223 days = 6 }
+				}
+			}
+			if = {
+				limit = {
+					date > 2020.01.01
+					check_variable = {
+						var = PRC_enviromental_progress
+						value = 0.2
+						compare = less_than_or_equals
+					}
+				}
+				CHI = {
+					country_event = { id = prc.224 days = 8 }
+					country_event = { id = prc.225 days = 45 }
+				}
+			}
+		}
+	}
+
+	PRC_add_reforms_progress = {
+		custom_effect_tooltip = PRC_add_reforms_progress_tooltip
+		add_to_variable = {
+			var = PRC_reforms_progress
+			value = PRC_reforms_progress_temp
+		}
+	
+		clamp_variable = {
+			var = PRC_reforms_progress
+			min = 0
+			max = 100
+		}		
+	}
+
+	PRC_add_xiongania_progress = {
+		if = {
+			limit = {
+				NOT = {
+					has_country_flag = PRC_capital_construction_process_is_finished_flag
+				}
+			}
+			custom_effect_tooltip = PRC_add_xiongania_progress_tooltip
+			add_to_variable = {
+				var = PRC_xiongania_progress
+				value = PRC_xiongania_progress_temp
+			}
+
+			clamp_variable = {
+				var = PRC_xiongania_progress
+				min = 0
+				max = 100
+			}
+
+			if = {
+				limit = {
+					check_variable = {
+						var = PRC_xiongania_progress
+						value = 99
+						compare = greater_than_or_equals
+					}
+				}
+				CHI = {
+					country_event = { id = prc.413 days = 5 }
+				}
+			}
+		}
+	}
+
+	PRC_decrease_overloaded_bureaucracy = {
+		effect_tooltip = {
+			swap_ideas = {					
+				remove_idea = PRC_overloaded_bureaucracy_idea
+				add_idea = PRC_overloaded_bureaucracy_idea_bad
+			}
+		}
+		hidden_effect = {
+			add_to_variable = {
+				var = PRC_bureaucracy_stability_factor_dynamic_var
+				value = -0.025
+			}
+			add_to_variable = {
+				var = PRC_bureaucracy_political_power_factor_dynamic_var
+				value = -0.025
+			}
+			add_to_variable = {
+				var = PRC_bureaucracy_production_speed_buildings_factor_dynamic_var
+				value = -0.025
+			}
+			add_to_variable = {
+				var = PRC_bureaucracy_industrial_capacity_factory_dynamic_var
+				value = -0.025
+			}
+			add_to_variable = {
+				var = PRC_bureaucracy_industrial_capacity_dockyard_dynamic_var
+				value = -0.025
+			}
+		}		
+	}
+
+	PRC_increase_overloaded_bureaucracy = {
+		effect_tooltip = {
+			swap_ideas = {					
+				remove_idea = PRC_overloaded_bureaucracy_idea
+				add_idea = PRC_overloaded_bureaucracy_idea_good
+			}
+		}
+		hidden_effect = {
+			add_to_variable = {
+				var = PRC_bureaucracy_stability_factor_dynamic_var
+				value = 0.025
+			}
+			add_to_variable = {
+				var = PRC_bureaucracy_political_power_factor_dynamic_var
+				value = 0.025
+			}
+			add_to_variable = {
+				var = PRC_bureaucracy_production_speed_buildings_factor_dynamic_var
+				value = 0.025
+			}
+			add_to_variable = {
+				var = PRC_bureaucracy_industrial_capacity_factory_dynamic_var
+				value = 0.025
+			}
+			add_to_variable = {
+				var = PRC_bureaucracy_industrial_capacity_dockyard_dynamic_var
+				value = 0.025
+			}
+		}		
+	}
+
+	PRC_add_loji_project_web_progress = {
+		if = {
+			limit = {
+				NOT = {
+					has_country_flag = PRC_loji_project_web_success
+				}
+			}
+			custom_effect_tooltip = PRC_add_loji_project_web_progress_tooltip
+			add_to_variable = {
+				var = PRC_loji_project_web_progress
+				value = PRC_loji_project_web_progress_temp
+			}
+
+			clamp_variable = {
+				var = PRC_loji_project_web_progress
+				min = 0
+				max = 1
+			}
+			if = {
+				limit = {
+					check_variable = {
+						var = PRC_loji_project_web_progress
+						value = 0.99
+						compare = greater_than_or_equals
+					}
+				}
+				CHI = {
+					country_event = { id = prc.481 days = 1 }
+				}
+			}
+		}		
+	}
+
+	PRC_add_afg_current_eco_dependence = {
+		if = {
+			limit = {
+				NOT = {
+					has_country_flag = PRC_afghanistan_initiative_eco_success
+				}
+			}
+			custom_effect_tooltip = PRC_add_afg_current_eco_dependence_tooltip
+			add_to_variable = {
+				var = PRC_afg_current_eco_dependence
+				value = PRC_afg_current_eco_dependence_temp
+			}
+
+			clamp_variable = {
+				var = PRC_afg_current_eco_dependence
+				min = 0
+				max = 1
+			}
+			if = {
+				limit = {
+					check_variable = {
+						var = PRC_afg_current_eco_dependence
+						value = 0.95
+						compare = greater_than_or_equals
+					}
+				}
+				CHI = {
+					country_event = { id = prc.364 days = 1 }
+				}
+			}
+		}		
+	}
+
+	PRC_add_afg_current_gov_loyalty = {
+		if = {
+			limit = {
+				NOT = {
+					has_country_flag = PRC_afghanistan_initiative_gov_success
+				}
+			}
+			custom_effect_tooltip = PRC_add_afg_current_gov_loyalty_tooltip
+			add_to_variable = {
+				var = PRC_afg_current_gov_loyalty
+				value = PRC_afg_current_gov_loyalty_temp
+			}
+
+			clamp_variable = {
+				var = PRC_afg_current_gov_loyalty
+				min = 0
+				max = 1
+			}
+			if = {
+				limit = {
+					check_variable = {
+						var = PRC_afg_current_gov_loyalty
+						value = 0.95
+						compare = greater_than_or_equals
+					}
+				}
+				CHI = {
+					country_event = { id = prc.365 days = 1 }
+				}
+			}
+			if = {
+				limit = {
+					check_variable = {
+						var = PRC_afg_current_gov_loyalty
+						value = 0.1
+						compare = less_than_or_equals
+					}
+				}
+				CHI = {
+					country_event = { id = prc.371 days = 1 }
+				}
+			}
+		}		
+	}
+
+	PRC_add_eternal_capital_progress = {
+		if = {
+			limit = {
+				NOT = {
+					has_country_flag = PRC_eternal_capital_project_is_finished_flag
+				}
+			}
+			custom_effect_tooltip = PRC_add_eternal_capital_progress_tooltip
+			add_to_variable = {
+				var = PRC_eternal_capital_progress
+				value = PRC_eternal_capital_progress_temp
+			}
+
+			clamp_variable = {
+				var = PRC_eternal_capital_progress
+				min = 0
+				max = 1
+			}
+
+			if = {
+				limit = {
+					check_variable = {
+						var = PRC_eternal_capital_progress
+						value = 0.99
+						compare = greater_than_or_equals
+					}
+				}
+				CHI = {
+					country_event = { id = prc.392 hours = 6 }
+				}
+			}
+		}
+	}
+
+	PRC_add_army_reform_progress = {
+		if = {
+			limit = {
+				NOT = {
+					has_country_flag = PRC_army_reform_success
+				}
+			}
+			custom_effect_tooltip = PRC_add_army_reform_progress_tooltip
+			add_to_variable = {
+				var = PRC_army_reform_progress
+				value = PRC_army_reform_progress_temp
+			}
+
+			clamp_variable = {
+				var = PRC_army_reform_progress
+				min = 0
+				max = 1
+			}
+			if = {
+				limit = {
+					check_variable = {
+						var = PRC_army_reform_progress
+						value = 0.99
+						compare = greater_than_or_equals
+					}
+				}
+				CHI = {
+					country_event = { id = prc.278 days = 1 }
+				}
+			}
+		}		
+	}
+	PRC_decrease_corrupt_bureaucracy = {
+		if = {
+			limit = {
+				has_idea = PRC_corrupt_bureaucracy_negative2_idea
+			}
+			swap_ideas = {
+				remove_idea = PRC_corrupt_bureaucracy_negative2_idea
+				add_idea = PRC_corrupt_bureaucracy_negative1_idea
+			}
+		}
+		else_if = {
+			limit = {
+				has_idea = PRC_corrupt_bureaucracy_negative1_idea
+			}
+			swap_ideas = {
+				remove_idea = PRC_corrupt_bureaucracy_negative1_idea
+				add_idea = PRC_corrupt_bureaucracy_idea
+			}
+		}
+		else_if = {
+			limit = {
+				has_idea = PRC_corrupt_bureaucracy_idea
+			}
+			swap_ideas = {
+				remove_idea = PRC_corrupt_bureaucracy_idea
+				add_idea = PRC_corrupt_bureaucracy2_idea
+			}
+		}		
+		else_if = {
+			limit = {
+				has_idea = PRC_corrupt_bureaucracy2_idea
+			}
+			swap_ideas = {
+				remove_idea = PRC_corrupt_bureaucracy2_idea
+				add_idea = PRC_corrupt_bureaucracy3_idea
+			}
+		}
+		else_if = {
+			limit = {
+				has_idea = PRC_corrupt_bureaucracy3_idea
+			}
+			swap_ideas = {
+				remove_idea = PRC_corrupt_bureaucracy3_idea
+				add_idea = PRC_corrupt_bureaucracy4_idea
+			}
+		}
+		else_if = {
+			limit = {
+				has_idea = PRC_corrupt_bureaucracy4_idea
+			}
+			swap_ideas = {
+				remove_idea = PRC_corrupt_bureaucracy4_idea
+				add_idea = PRC_corrupt_bureaucracy5_idea
+			}
+		}
+		else_if = {
+			limit = {
+				has_idea = PRC_corrupt_bureaucracy5_idea
+			}
+			remove_ideas = PRC_corrupt_bureaucracy5_idea
+		}
+	}
+	PRC_increase_corrupt_bureaucracy = {
+		if = {
+			limit = {
+				has_idea = PRC_corrupt_bureaucracy_negative1_idea
+			}
+			swap_ideas = {
+				remove_idea = PRC_corrupt_bureaucracy_negative1_idea
+				add_idea = PRC_corrupt_bureaucracy_negative2_idea
+			}
+		}	
+		if = {
+			limit = {
+				has_idea = PRC_corrupt_bureaucracy_idea
+			}
+			swap_ideas = {
+				remove_idea = PRC_corrupt_bureaucracy_idea
+				add_idea = PRC_corrupt_bureaucracy_negative1_idea
+			}
+		}
+		if = {
+			limit = {
+				has_idea = PRC_corrupt_bureaucracy2_idea
+			}
+			swap_ideas = {
+				remove_idea = PRC_corrupt_bureaucracy2_idea
+				add_idea = PRC_corrupt_bureaucracy_idea
+			}
+		}
+		else_if = {
+			limit = {
+				has_idea = PRC_corrupt_bureaucracy3_idea
+			}
+			swap_ideas = {
+				remove_idea = PRC_corrupt_bureaucracy3_idea
+				add_idea = PRC_corrupt_bureaucracy2_idea
+			}
+		}
+		else_if = {
+			limit = {
+				has_idea = PRC_corrupt_bureaucracy4_idea
+			}
+			swap_ideas = {
+				remove_idea = PRC_corrupt_bureaucracy4_idea
+				add_idea = PRC_corrupt_bureaucracy3_idea
+			}
+		}		
+		else_if = {
+			limit = {
+				has_idea = PRC_corrupt_bureaucracy5_idea
+			}
+			swap_ideas = {
+				remove_idea = PRC_corrupt_bureaucracy5_idea
+				add_idea = PRC_corrupt_bureaucracy4_idea
+			}
+		}
+	}
+	PRC_increase_comprehensive_transformation = {
+	if = {
+		limit = {
+			NOT = {
+				OR = {
+					has_idea = PRC_comprehensive_transformation_1
+					has_idea = PRC_comprehensive_transformation_2
+					has_idea = PRC_comprehensive_transformation_3
+					has_idea = PRC_comprehensive_transformation_4
+					has_idea = PRC_comprehensive_transformation_5
+					has_idea = PRC_comprehensive_transformation_6
+				}
+			}
+		}
+		add_ideas = PRC_comprehensive_transformation_1
+	}
+	else_if = {
+		limit = {
+			has_idea = PRC_comprehensive_transformation_1
+		}
+		swap_ideas = {
+			remove_idea = PRC_comprehensive_transformation_1
+			add_idea = PRC_comprehensive_transformation_2
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = PRC_comprehensive_transformation_2
+		}
+		swap_ideas = {
+			remove_idea = PRC_comprehensive_transformation_2
+			add_idea = PRC_comprehensive_transformation_3
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = PRC_comprehensive_transformation_3
+		}
+		swap_ideas = {
+			remove_idea = PRC_comprehensive_transformation_3
+			add_idea = PRC_comprehensive_transformation_4
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = PRC_comprehensive_transformation_4
+		}
+		swap_ideas = {
+			remove_idea = PRC_comprehensive_transformation_4
+			add_idea = PRC_comprehensive_transformation_5
+		}
+	}	
+}
+	PRC_increase_corona = {
+		if = {
+			limit = {
+				has_idea = PRC_coronavirus_pandemic_idea4
+			}
+			swap_ideas = {
+				remove_idea = PRC_coronavirus_pandemic_idea4
+				add_idea = PRC_coronavirus_pandemic_idea3
+			}
+		}
+		else_if = {
+			limit = { 
+				has_idea = PRC_coronavirus_pandemic_idea3
+			}
+			swap_ideas = {
+				remove_idea = PRC_coronavirus_pandemic_idea3
+				add_idea = PRC_coronavirus_pandemic_idea2
+			}
+		}
+		else_if = {
+			limit = {
+				has_idea = PRC_coronavirus_pandemic_idea2
+			}
+			swap_ideas = {
+				remove_idea = PRC_coronavirus_pandemic_idea2
+				add_idea = PRC_coronavirus_pandemic_idea1
+			}
+		}
+		else_if = {
+			limit = { 
+				has_idea = PRC_coronavirus_pandemic_idea1 
+			}
+			swap_ideas = {
+				remove_idea = PRC_coronavirus_pandemic_idea1
+				add_idea = PRC_coronavirus_pandemic_idea
+			}
+		}
+		else_if = {
+			limit = { 
+				has_idea = PRC_coronavirus_pandemic_idea
+			}
+			add_stability = -0.05
+		}
+		else = {
+			add_ideas = PRC_coronavirus_pandemic_idea4
+		}
+	}
+
+PRC_increase_new_religious_policy_idea = { #better
+	if = {
+		limit = {
+			NOT = {
+				OR = {
+					has_idea = PRC_new_religious_policy_idea_negative_2
+					has_idea = PRC_new_religious_policy_idea
+					has_idea = PRC_new_religious_policy_idea2
+					has_idea = PRC_new_religious_policy_idea3
+					has_idea = PRC_new_religious_policy_idea4
+					has_idea = PRC_new_religious_policy_idea5
+					has_idea = PRC_new_religious_policy_idea6
+				}
+			}
+		}
+		add_ideas = PRC_new_religious_policy_idea
+	}
+	else_if = {
+		limit = {
+			has_idea = PRC_new_religious_policy_idea_negative_2
+		}
+		swap_ideas = {
+			remove_idea = PRC_new_religious_policy_idea_negative_2
+			add_idea = PRC_new_religious_policy_idea
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = PRC_new_religious_policy_idea
+		}
+		swap_ideas = {
+			remove_idea = PRC_new_religious_policy_idea
+			add_idea = PRC_new_religious_policy_idea2
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = PRC_new_religious_policy_idea2
+		}
+		swap_ideas = {
+			remove_idea = PRC_new_religious_policy_idea2
+			add_idea = PRC_new_religious_policy_idea3
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = PRC_new_religious_policy_idea3
+		}
+		swap_ideas = {
+			remove_idea = PRC_new_religious_policy_idea3
+			add_idea = PRC_new_religious_policy_idea4
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = PRC_new_religious_policy_idea4
+		}
+		swap_ideas = {
+			remove_idea = PRC_new_religious_policy_idea4
+			add_idea = PRC_new_religious_policy_idea5
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = PRC_new_religious_policy_idea5
+		}
+		swap_ideas = {
+			remove_idea = PRC_new_religious_policy_idea5
+			add_idea = PRC_new_religious_policy_idea6
+		}
+	}
+}
+
+PRC_decrease_new_religious_policy_idea = { #worse
+	if = {
+		limit = {
+			has_idea = PRC_new_religious_policy_idea6
+		}
+		swap_ideas = {
+			remove_idea = PRC_new_religious_policy_idea6
+			add_idea = PRC_new_religious_policy_idea5
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = PRC_new_religious_policy_idea5
+		}
+		swap_ideas = {
+			remove_idea = PRC_new_religious_policy_idea5
+			add_idea = PRC_new_religious_policy_idea4
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = PRC_new_religious_policy_idea4
+		}
+		swap_ideas = {
+			remove_idea = PRC_new_religious_policy_idea4
+			add_idea = PRC_new_religious_policy_idea3
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = PRC_new_religious_policy_idea3
+		}
+		swap_ideas = {
+			remove_idea = PRC_new_religious_policy_idea3
+			add_idea = PRC_new_religious_policy_idea2
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = PRC_new_religious_policy_idea2
+		}
+		swap_ideas = {
+			remove_idea = PRC_new_religious_policy_idea2
+			add_idea = PRC_new_religious_policy_idea
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = PRC_new_religious_policy_idea
+		}
+		swap_ideas = {
+			remove_idea = PRC_new_religious_policy_idea
+			add_idea = PRC_new_religious_policy_idea_negative_2
+		}
+	}
+}
+	
+	#Influence Effects
+	
+	
+	PRC_add_influence_nat = {
+		custom_effect_tooltip = PRC_influence_nat_tooltip
+		
+		add_to_variable = {
+			var = PRC_influence_nat_var
+			value = PRC_influence_nat_var_temp
+		}
+		
+		clamp_variable = {
+			var = PRC_influence_nat_var
+			min = 0
+			max = 1
+		}
+
+		set_variable = {
+			var = PRC_influence_nat_dynamic_var
+			value = PRC_influence_nat_var
+		}
+		
+		multiply_variable = {
+			var = PRC_influence_nat_dynamic_var
+			value = 0.1
+		}
+	}
+	
+	PRC_add_influence_cen = {
+		custom_effect_tooltip = PRC_influence_cen_tooltip
+		
+		add_to_variable = {
+			var = PRC_influence_cen_var
+			value = PRC_influence_cen_var_temp
+		}
+		
+		clamp_variable = {
+			var = PRC_influence_cen_var
+			min = 0
+			max = 1
+		}
+
+		set_variable = {
+			var = PRC_influence_cen_dynamic_var
+			value = PRC_influence_cen_var
+		}
+		
+		multiply_variable = {
+			var = PRC_influence_cen_dynamic_var
+			value = 0.2
+		}
+	}
+	
+	PRC_add_influence_new = {
+		custom_effect_tooltip = PRC_influence_new_tooltip
+		
+		add_to_variable = {
+			var = PRC_influence_new_var
+			value = PRC_influence_new_var_temp
+		}
+		
+		clamp_variable = {
+			var = PRC_influence_new_var
+			min = 0
+			max = 1
+		}
+
+		set_variable = {
+			var = PRC_influence_new_dynamic_var
+			value = PRC_influence_new_var
+		}
+		
+		multiply_variable = {
+			var = PRC_influence_new_dynamic_var
+			value = 0.2
+		}
+	}
+	
+	PRC_add_influence_lib = {
+		custom_effect_tooltip = PRC_influence_lib_tooltip
+		
+		add_to_variable = {
+			var = PRC_influence_lib_var
+			value = PRC_influence_lib_var_temp
+		}
+		
+		clamp_variable = {
+			var = PRC_influence_lib_var
+			min = 0
+			max = 1
+		}
+
+		set_variable = {
+			var = PRC_influence_lib_dynamic_var
+			value = PRC_influence_lib_var
+		}
+		
+		multiply_variable = {
+			var = PRC_influence_lib_dynamic_var
+			value = 0.2
+		}
+	}
+	
+	PRC_who_won_power_struggle = {
+		if = {
+			limit = {
+				AND = {
+					check_variable = { 
+						PRC_influence_new_var > PRC_influence_lib_var
+					}
+					check_variable = { 
+						PRC_influence_new_var > PRC_influence_aut_var 
+					}
+					check_variable = { 
+						PRC_influence_new_var > PRC_influence_cen_var 
+					}
+					check_variable = { 
+						PRC_influence_new_var > PRC_influence_nat_var 
+					}
+				}
+			}
+			set_country_flag = PRC_new_left_victory_flag
+			country_event = {
+				id = prc.17
+				days = 1
+			}
+		}
+		else_if = {
+			limit = {
+				AND = {
+					check_variable = { PRC_influence_lib_var > PRC_influence_new_var }
+					check_variable = { PRC_influence_lib_var > PRC_influence_aut_var }
+					check_variable = { PRC_influence_lib_var > PRC_influence_cen_var }
+					check_variable = { PRC_influence_lib_var > PRC_influence_nat_var }
+				}
+			}
+			set_country_flag = PRC_liberal_victory_flag
+			country_event = {
+				id = prc.19
+				days = 1
+			}
+		}
+		else_if = {
+			limit = {
+				AND = {
+					check_variable = { PRC_influence_aut_var > PRC_influence_new_var }
+					check_variable = { PRC_influence_aut_var > PRC_influence_lib_var}
+					check_variable = { PRC_influence_aut_var > PRC_influence_cen_var }
+					check_variable = { PRC_influence_aut_var > PRC_influence_nat_var }
+				}
+			}
+			set_country_flag = PRC_authoritarian_victory_flag
+			country_event = {
+				id = prc.22
+				days = 1
+			}
+		}
+		else_if = {
+			limit = {
+				AND = {
+					check_variable = { PRC_influence_cen_var > PRC_influence_new_var }
+					check_variable = { PRC_influence_cen_var > PRC_influence_lib_var}
+					check_variable = { PRC_influence_cen_var > PRC_influence_aut_var }
+					check_variable = { PRC_influence_cen_var > PRC_influence_nat_var }
+				}
+			}
+			set_country_flag = PRC_centrists_victory_flag
+			country_event = {
+				id = prc.20
+				days = 1
+			}
+		}
+		else_if = {
+			limit = {
+				AND = {
+					check_variable = { PRC_influence_nat_var > PRC_influence_new_var }
+					check_variable = { PRC_influence_nat_var > PRC_influence_lib_var}
+					check_variable = { PRC_influence_nat_var > PRC_influence_aut_var }
+					check_variable = { PRC_influence_nat_var > PRC_influence_cen_var }
+				}
+			}
+			set_country_flag = PRC_nationalist_victory_flag
+			country_event = {
+				id = prc.21
+				days = 1
+			}
+		}
+		else = {
+			add_political_power = 2000
+		}
+	}
+	
+	#SE Asia
+	PRC_add_CAM_influence = {
+		custom_effect_tooltip = PRC_add_CAM_influence_tt
+		
+		add_to_variable = {
+			var = global.PRC_influence_CAM_var 
+			value = global.PRC_influence_CAM_var_temp
+		}
+		
+		clamp_variable = {
+			var = global.PRC_influence_CAM_var
+			min = 0
+			max = 1
+		}
+	}
+	PRC_subtract_CAM_influence = {
+		custom_effect_tooltip = PRC_subtract_CAM_influence_tt
+		
+		add_to_variable = {
+			var = global.PRC_influence_CAM_var 
+			value = global.PRC_influence_CAM_var_temp
+		}
+		
+		clamp_variable = {
+			var = global.PRC_influence_CAM_var
+			min = 0
+			max = 1
+		}
+	}
+	PRC_add_INS_influence = {
+		custom_effect_tooltip = PRC_add_INS_influence_tt
+		
+		add_to_variable = {
+			var = global.PRC_influence_INS_var 
+			value = global.PRC_influence_INS_var_temp
+		}
+		
+		clamp_variable = {
+			var = global.PRC_influence_INS_var
+			min = 0
+			max = 1
+		}
+	}
+	PRC_subtract_INS_influence = {
+		custom_effect_tooltip = PRC_subtract_INS_influence_tt
+		
+		add_to_variable = {
+			var = global.PRC_influence_INS_var 
+			value = global.PRC_influence_INS_var_temp
+		}
+		
+		clamp_variable = {
+			var = global.PRC_influence_INS_var
+			min = 0
+			max = 1
+		}
+	}
+	PRC_add_LAO_influence = {
+		custom_effect_tooltip = PRC_add_LAO_influence_tt
+		
+		add_to_variable = {
+			var = global.PRC_influence_LAO_var 
+			value = global.PRC_influence_LAO_var_temp
+		}
+		
+		clamp_variable = {
+			var = global.PRC_influence_LAO_var
+			min = 0
+			max = 1
+		}
+	}
+	PRC_subtract_LAO_influence = {
+		custom_effect_tooltip = PRC_subtract_LAO_influence_tt
+		
+		add_to_variable = {
+			var = global.PRC_influence_LAO_var 
+			value = global.PRC_influence_LAO_var_temp
+		}
+		
+		clamp_variable = {
+			var = global.PRC_influence_LAO_var
+			min = 0
+			max = 1
+		}
+	}
+	PRC_add_MAL_influence = {
+		custom_effect_tooltip = PRC_add_MAL_influence_tt
+		
+		add_to_variable = {
+			var = global.PRC_influence_MAL_var 
+			value = global.PRC_influence_MAL_var_temp
+		}
+		
+		clamp_variable = {
+			var = global.PRC_influence_MAL_var
+			min = 0
+			max = 1
+		}
+	}
+	PRC_subtract_MAL_influence = {
+		custom_effect_tooltip = PRC_subtract_MAL_influence_tt
+		
+		add_to_variable = {
+			var = global.PRC_influence_MAL_var 
+			value = global.PRC_influence_MAL_var_temp
+		}
+		
+		clamp_variable = {
+			var = global.PRC_influence_MAL_var
+			min = 0
+			max = 1
+		}
+	}
+	PRC_add_BRM_influence = {
+		custom_effect_tooltip = PRC_add_BRM_influence_tt
+		
+		add_to_variable = {
+			var = global.PRC_influence_BRM_var 
+			value = global.PRC_influence_BRM_var_temp
+		}
+		
+		clamp_variable = {
+			var = global.PRC_influence_BRM_var
+			min = 0
+			max = 1
+		}
+	}
+	PRC_subtract_BRM_influence = {
+		custom_effect_tooltip = PRC_subtract_BRM_influence_tt
+		
+		add_to_variable = {
+			var = global.PRC_influence_BRM_var 
+			value = global.PRC_influence_BRM_var_temp
+		}
+		
+		clamp_variable = {
+			var = global.PRC_influence_BRM_var
+			min = 0
+			max = 1
+		}
+	}
+	PRC_add_PHI_influence = {
+		custom_effect_tooltip = PRC_add_PHI_influence_tt
+		
+		add_to_variable = {
+			var = global.PRC_influence_PHI_var 
+			value = global.PRC_influence_PHI_var_temp
+		}
+		
+		clamp_variable = {
+			var = global.PRC_influence_PHI_var
+			min = 0
+			max = 1
+		}
+	}
+	PRC_subtract_PHI_influence = {
+		custom_effect_tooltip = PRC_subtract_PHI_influence_tt
+		
+		add_to_variable = {
+			var = global.PRC_influence_PHI_var 
+			value = global.PRC_influence_PHI_var_temp
+		}
+		
+		clamp_variable = {
+			var = global.PRC_influence_PHI_var
+			min = 0
+			max = 1
+		}
+	}
+	PRC_add_SIG_influence = {
+		custom_effect_tooltip = PRC_add_SIG_influence_tt
+		
+		add_to_variable = {
+			var = global.PRC_influence_SIG_var 
+			value = global.PRC_influence_SIG_var_temp
+		}
+		
+		clamp_variable = {
+			var = global.PRC_influence_SIG_var
+			min = 0
+			max = 1
+		}
+	}
+	PRC_subtract_SIG_influence = {
+		custom_effect_tooltip = PRC_subtract_SIG_influence_tt
+		
+		add_to_variable = {
+			var = global.PRC_influence_SIG_var 
+			value = global.PRC_influence_SIG_var_temp
+		}
+		
+		clamp_variable = {
+			var = global.PRC_influence_SIG_var
+			min = 0
+			max = 1
+		}
+	}
+	PRC_add_SIA_influence = {
+		custom_effect_tooltip = PRC_add_SIA_influence_tt
+		
+		add_to_variable = {
+			var = global.PRC_influence_SIA_var 
+			value = global.PRC_influence_SIA_var_temp
+		}
+		
+		clamp_variable = {
+			var = global.PRC_influence_SIA_var
+			min = 0
+			max = 1
+		}
+	}
+	PRC_subtract_SIA_influence = {
+		custom_effect_tooltip = PRC_subtract_SIA_influence_tt
+		
+		add_to_variable = {
+			var = global.PRC_influence_SIA_var 
+			value = global.PRC_influence_SIA_var_temp
+		}
+		
+		clamp_variable = {
+			var = global.PRC_influence_SIA_var
+			min = 0
+			max = 1
+		}
+	}
+	PRC_add_VIN_influence = {
+		custom_effect_tooltip = PRC_add_VIN_influence_tt
+		
+		add_to_variable = {
+			var = global.PRC_influence_VIN_var 
+			value = global.PRC_influence_VIN_var_temp
+		}
+		
+		clamp_variable = {
+			var = global.PRC_influence_VIN_var
+			min = 0
+			max = 1
+		}
+	}
+	PRC_subtract_VIN_influence = {
+		custom_effect_tooltip = PRC_subtract_VIN_influence_tt
+		
+		add_to_variable = {
+			var = global.PRC_influence_VIN_var 
+			value = global.PRC_influence_VIN_var_temp
+		}
+		
+		clamp_variable = {
+			var = global.PRC_influence_VIN_var
+			min = 0
+			max = 1
+		}
+	}
+	
+	PRC_increase_war_exhaustion = {
+		add_to_variable = {
+			PRC_war_exhaustion_war_support_factor_dynamic = -0.015
+		}
+		add_to_variable = {
+			PRC_war_exhaustion_army_attack_factor_dynamic = -0.015
+		}
+		add_to_variable = {
+			PRC_war_exhaustion_army_defence_factor_dynamic = -0.015
+		}
+		add_to_variable = {
+			PRC_war_exhaustion_army_org_factor_dynamic = -0.01
+		}
+		add_to_variable = {
+			PRC_war_exhaustion_army_morale_factor_dynamic = -0.02
+		}
+		add_to_variable = {
+			PRC_war_exhaustion_surrender_limit_dynamic = -0.005
+		}
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = PRC_war_exhaustion
+				add_idea = PRC_war_exhaustion2
+			}
+		}
+	}
+
+	PRC_end_taiwan_war = {
+		clr_global_flag = PRC_ongoing_taiwan_war
+		white_peace = AST
+		white_peace = JAP
+		country_event = {
+			id = prc.250
+			days = 120
+		}
+		country_event = {
+			id = prc.254
+			days = 200
+		}
+		clr_global_flag = battle_of_okinawa
+		every_state = { #защита от дебила
+			limit = {
+				is_owned_by = JAP
+				NOT = {
+					OR = {
+						state = 526
+						state = 876
+					}
+				}
+			}
+			remove_dynamic_modifier = {
+				modifier = PRC_non_combat_area
+				scope = CHI #потом скоупы поменять
+			}
+		}
+		every_state = { #защита от дебила
+			limit = {
+				is_owned_by = AST
+			}
+			remove_dynamic_modifier = {
+				modifier = PRC_non_combat_area
+				scope = CHI
+			}
+		}
+		every_state = { #защита от дебила
+			limit = {
+				is_owned_by = CHI
+				is_coastal = yes
+				NOT = {
+					OR = {
+						state = 430
+						state = 1109
+					}
+				}
+			}
+			remove_dynamic_modifier = {
+				modifier = PRC_non_combat_area
+			}
+		}
+		AST = {
+			country_event = Australia.18
+		}
+		JAP = {
+			if = {
+				limit = {
+					OR = {
+						has_idea = low_society
+						has_idea = lower_society
+					}
+				}
+				add_ideas = medium_society
+				set_temp_variable = {
+					var = society_development_var_temp
+					value = 0.25
+				}
+				add_society_development = yes
+			}
+		}
+	}
+
+	PRC_gaw_start = {
+		every_state = {
+			limit = {
+				OR = {
+					state = 787
+					state = 1132
+					state = 440
+					state = 1380
+					state = 442
+					state = 443
+					state = 445
+					state = 1324
+					state = 441
+					state = 1131
+					state = 1373
+					state = 439
+					state = 1381
+					state = 437
+					state = 1397
+					state = 1398
+					state = 1370
+					state = 789
+					state = 432
+					state = 1367
+					state = 434
+					state = 1366
+					state = 1368
+					state = 1369
+					state = 430
+					state = 431
+					state = 424
+					state = 1418
+					state = 1413
+					state = 1417
+					state = 1414
+					state = 1415
+					state = 1416
+					state = 422
+					region = 146
+					region = 189
+					region = 142
+					region = 188
+					region = 160
+					region = 159
+					region = 187
+					region = 158
+					region = 93
+					region = 167
+					region = 193
+					region = 194
+					region = 195
+					region = 156
+					region = 76
+					region = 154
+					region = 165
+					region = 164
+					region = 143
+					region = 145
+					region = 220
+					region = 216
+					region = 219
+					region = 152
+					state = 428
+					state = 433
+					state = 1379
+					state = 438
+					state = 436
+					state = 1400
+					state = 1399
+					state = 435
+					state = 1371
+					state = 426
+					state = 1372
+					state = 427
+					state = 425
+					state = 423
+					state = 320
+					state = 429
+					state = 716
+					state = 1394
+					state = 328
+					state = 717
+				}
+			}
+			add_dynamic_modifier = {
+				modifier = PRC_unplanned_offensive
+				days = 575
+			}
+		}
+		#every_state = {
+		#	limit = {
+		#		OR = {
+		#		}
+		#	}
+		#	add_dynamic_modifier = {
+		#		modifier = PRC_non_combat_area
+		#	}
+		#}
+		if = {
+			limit = {
+				CBD = {
+					is_in_faction = no
+				}
+			}
+			if = {
+				limit = {
+					check_variable = { global.PRC_influence_CAM_var > global.JAP_influence_CAM_var }
+				}
+				CHI = { add_to_faction = CBD }
+			}
+			else_if = {
+				limit = {
+					check_variable = { global.PRC_influence_CAM_var < global.JAP_influence_CAM_var }
+				}
+				JAP = { add_to_faction = CBD }
+			}
+			else_if = {
+				limit = {
+					check_variable = { global.PRC_influence_CAM_var = global.JAP_influence_CAM_var }
+				}
+				random_list = {
+					50 = {
+						CHI = { add_to_faction = CBD }
+					}
+					50 = {
+						JAP = { add_to_faction = CBD }
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				IND = {
+					is_in_faction = no
+				}
+			}
+			if = {
+				limit = {
+					check_variable = { global.PRC_influence_CAM_var > global.JAP_influence_CAM_var }
+				}
+				CHI = { add_to_faction = IND }
+			}
+			else_if = {
+				limit = {
+					check_variable = { global.PRC_influence_CAM_var < global.JAP_influence_CAM_var }
+				}
+				JAP = { add_to_faction = IND }
+			}
+			else_if = {
+				limit = {
+					check_variable = { global.PRC_influence_CAM_var = global.JAP_influence_CAM_var }
+				}
+				random_list = {
+					50 = {
+						CHI = { add_to_faction = IND }
+					}
+					50 = {
+						JAP = { add_to_faction = IND }
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				LAO = {
+					is_in_faction = no
+				}
+			}
+			if = {
+				limit = {
+					check_variable = { global.PRC_influence_CAM_var > global.JAP_influence_CAM_var }
+				}
+				CHI = { add_to_faction = LAO }
+			}
+			else_if = {
+				limit = {
+					check_variable = { global.PRC_influence_CAM_var < global.JAP_influence_CAM_var }
+				}
+				JAP = { add_to_faction = LAO }
+			}
+			else_if = {
+				limit = {
+					check_variable = { global.PRC_influence_CAM_var = global.JAP_influence_CAM_var }
+				}
+				random_list = {
+					50 = {
+						CHI = { add_to_faction = LAO }
+					}
+					50 = {
+						JAP = { add_to_faction = LAO }
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				MAY = {
+					is_in_faction = no
+				}
+			}
+			if = {
+				limit = {
+					check_variable = { global.PRC_influence_CAM_var > global.JAP_influence_CAM_var }
+				}
+				CHI = { add_to_faction = MAY }
+			}
+			else_if = {
+				limit = {
+					check_variable = { global.PRC_influence_CAM_var < global.JAP_influence_CAM_var }
+				}
+				JAP = { add_to_faction = MAY }
+			}
+			else_if = {
+				limit = {
+					check_variable = { global.PRC_influence_CAM_var = global.JAP_influence_CAM_var }
+				}
+				random_list = {
+					50 = {
+						CHI = { add_to_faction = MAY }
+					}
+					50 = {
+						JAP = { add_to_faction = MAY }
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				BRM = {
+					is_in_faction = no
+				}
+			}
+			if = {
+				limit = {
+					check_variable = { global.PRC_influence_CAM_var > global.JAP_influence_CAM_var }
+				}
+				CHI = { add_to_faction = BRM }
+			}
+			else_if = {
+				limit = {
+					check_variable = { global.PRC_influence_CAM_var < global.JAP_influence_CAM_var }
+				}
+				JAP = { add_to_faction = BRM }
+			}
+			else_if = {
+				limit = {
+					check_variable = { global.PRC_influence_CAM_var = global.JAP_influence_CAM_var }
+				}
+				random_list = {
+					50 = {
+						CHI = { add_to_faction = BRM }
+					}
+					50 = {
+						JAP = { add_to_faction = BRM }
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				PHI = {
+					is_in_faction = no
+				}
+			}
+			if = {
+				limit = {
+					check_variable = { global.PRC_influence_CAM_var > global.JAP_influence_CAM_var }
+				}
+				CHI = { add_to_faction = PHI }
+			}
+			else_if = {
+				limit = {
+					check_variable = { global.PRC_influence_CAM_var < global.JAP_influence_CAM_var }
+				}
+				JAP = { add_to_faction = PHI }
+			}
+			else_if = {
+				limit = {
+					check_variable = { global.PRC_influence_CAM_var = global.JAP_influence_CAM_var }
+				}
+				random_list = {
+					50 = {
+						CHI = { add_to_faction = PHI }
+					}
+					50 = {
+						JAP = { add_to_faction = PHI }
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				SIN = {
+					is_in_faction = no
+				}
+			}
+			if = {
+				limit = {
+					check_variable = { global.PRC_influence_CAM_var > global.JAP_influence_CAM_var }
+				}
+				CHI = { add_to_faction = SIN }
+			}
+			else_if = {
+				limit = {
+					check_variable = { global.PRC_influence_CAM_var < global.JAP_influence_CAM_var }
+				}
+				JAP = { add_to_faction = SIN }
+			}
+			else_if = {
+				limit = {
+					check_variable = { global.PRC_influence_CAM_var = global.JAP_influence_CAM_var }
+				}
+				random_list = {
+					50 = {
+						CHI = { add_to_faction = SIN }
+					}
+					50 = {
+						JAP = { add_to_faction = SIN }
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				SIA = {
+					is_in_faction = no
+				}
+			}
+			if = {
+				limit = {
+					check_variable = { global.PRC_influence_CAM_var > global.JAP_influence_CAM_var }
+				}
+				CHI = { add_to_faction = SIA }
+			}
+			else_if = {
+				limit = {
+					check_variable = { global.PRC_influence_CAM_var < global.JAP_influence_CAM_var }
+				}
+				JAP = { add_to_faction = SIA }
+			}
+			else_if = {
+				limit = {
+					check_variable = { global.PRC_influence_CAM_var = global.JAP_influence_CAM_var }
+				}
+				random_list = {
+					50 = {
+						CHI = { add_to_faction = SIA }
+					}
+					50 = {
+						JAP = { add_to_faction = SIA }
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				VIE = {
+					is_in_faction = no
+				}
+			}
+			if = {
+				limit = {
+					check_variable = { global.PRC_influence_CAM_var > global.JAP_influence_CAM_var }
+				}
+				CHI = { add_to_faction = VIE }
+			}
+			else_if = {
+				limit = {
+					check_variable = { global.PRC_influence_CAM_var < global.JAP_influence_CAM_var }
+				}
+				JAP = { add_to_faction = VIE }
+			}
+			else_if = {
+				limit = {
+					check_variable = { global.PRC_influence_CAM_var = global.JAP_influence_CAM_var }
+				}
+				random_list = {
+					50 = {
+						CHI = { add_to_faction = VIE }
+					}
+					50 = {
+						JAP = { add_to_faction = VIE }
+					}
+				}
+			}
+		}
+		JAP = {
+			country_event = {
+				id = jap.1002
+				hours = 6
+			}
+			activate_mission = JAP_GAW_war_exhaustion
+			PRC_GAW_check_faction_members = yes
+			add_dynamic_modifier = {
+				modifier = PRC_war_exhaustion_dynamic
+			}
+			load_oob = GAW_reserves_jap1
+		}
+		if = {
+			limit = {
+				JAP = {
+					is_ai = yes
+				}
+			}
+			JAP = {
+				load_oob = GAW_reserves_jap1_ai
+			}
+		}
+		news_event = news.415
+		set_global_flag = pan_asian_war_ongoing
+		clr_global_flag = GAW_soon
+		activate_mission = PRC_GAW_war_exhaustion
+		PRC_GAW_check_faction_members = yes
+		add_dynamic_modifier = {
+			modifier = PRC_war_exhaustion_dynamic
+		}
+		AST = {
+			country_event = {
+				id = Australia_gaw.1
+				hours = 6
+			}
+			activate_mission = JAP_GAW_war_exhaustion
+			PRC_GAW_check_faction_members = yes
+			add_dynamic_modifier = {
+				modifier = PRC_war_exhaustion_dynamic
+			}
+			load_oob = GAW_reserves_ast1_ai
+			if = {
+				limit = { has_dlc = "Man the Guns" }
+					load_oob = "AST_2000_naval_mtg"
+					load_oob = "AST_2000_naval_mtg"
+					load_oob = "AST_2000_naval_mtg"
+				else = {
+					load_oob = "AST_2000_naval_legacy"
+					load_oob = "AST_2000_naval_legacy"
+					load_oob = "AST_2000_naval_legacy"
+				}
+			}
+		}
+		RAJ = {
+			country_event = {
+				id = RAJ.19
+				hours = 6
+			}
+			activate_mission = JAP_GAW_war_exhaustion
+			PRC_GAW_check_faction_members = yes
+			add_dynamic_modifier = {
+				modifier = PRC_war_exhaustion_dynamic
+			}
+			load_oob = GAW_militia_raj1
+			load_oob = GAW_templates_for_ai
+			if = {
+				limit = { has_dlc = "Man the Guns" }
+					load_oob = "RAJ_2000_naval_mtg"
+				else = {
+					load_oob = "RAJ_2000_naval_legacy"
+				}
+			}
+		}
+		TAI = {
+			country_event = {
+				id = roc.500
+				hours = 6
+			}
+			activate_mission = JAP_GAW_war_exhaustion
+			PRC_GAW_check_faction_members = yes
+			add_dynamic_modifier = {
+				modifier = PRC_war_exhaustion_dynamic
+			}
+		}
+		CUB = {
+			activate_mission = great_asian_war_mission
+		}
+		if = {
+			limit = {
+				CHI = {
+					is_ai = yes
+				}
+			}
+			IND = {
+				load_oob = GAW_militia_ins2
+			}
+		}
+		if = {
+			limit = {
+				CHI = {
+					is_ai = no
+				}
+			}
+			IND = {
+				load_oob = GAW_militia_ins1
+			}
+		}
+		if = {
+			limit = {
+				CHI = {
+					is_ai = yes
+				}
+			}
+			PAK = {
+				load_oob = GAW_militia_pak1
+			}
+		}
+		if = {
+			limit = {
+				JAP  = {
+					is_ai = yes
+				}
+				CHI  = {
+					is_ai = no
+				}
+			}
+			every_country = {
+				limit = {
+					OR = {
+						tag = AST
+						tag = RAJ
+						tag = JAP
+					}
+				}
+				add_ideas = JAP_AST_RAJ_ai_buff_against_prc_player_gaw
+			}
+		}
+		if = {
+			limit = {
+				JAP  = {
+					is_ai = no
+				}
+				CHI  = {
+					is_ai = yes
+				}
+			}
+			CHI =  {
+				add_ideas = PRC_ai_buff_against_jap_player_gaw
+			}
+		}
+		every_country = {
+			limit = {
+				OR = {
+					tag = NEP
+					tag = SRI
+					tag = VIE
+					tag = LAO
+					tag = CBD
+					tag = SIA
+					tag = MAY
+					tag = SIN
+					tag = IND
+					tag = PHI
+					tag = PNG
+					tag = NZL
+					tag = BAN
+				}
+			}
+			load_oob = GAW_templates_for_ai
+			capital_scope = {
+				create_unit = {
+					division = "division_template = \"GAW Militia\" start_experience_factor = 0.2 start_equipment_factor = 1.0"
+					owner = PREV
+					count = 6
+				}
+				create_unit = {
+					division = "division_template = \"GAW Regular Infantry\" start_experience_factor = 0.2 start_equipment_factor = 1.0"
+					owner = PREV
+					count = 4
+				}
+			}
+		}
+		if = {
+			limit = {
+				CHI = {
+					has_completed_focus = PRC_towards_a_digital_world
+					is_ironman = yes
+					has_any_custom_difficulty_setting = no
+					game_rules_allow_achievements = yes
+					has_start_date < 2020.01.02
+					difficulty > 3
+					is_debug = no
+					is_ai = no
+					NOT = {
+						OR = {
+							is_in_faction_with = VIE
+							is_in_faction_with = BHU
+							is_in_faction_with = NEP
+							is_in_faction_with = LAO
+							is_in_faction_with = CBD
+							is_in_faction_with = SIA
+							is_in_faction_with = BRM
+							is_in_faction_with = MAY
+							is_in_faction_with = SIN
+							is_in_faction_with = IND
+							is_in_faction_with = SRI
+							is_in_faction_with = PAK
+						}
+					}
+				}
+			}
+			set_global_flag = PRC_big_sister_victory_conditions_fulfilled
+		}
+		if = {
+			limit = {
+				CHI = {
+					has_country_flag = PRC_nationalist_win
+				}
+			}
+			if = {
+				limit = {
+					CHI = {
+						is_ai = yes
+					}
+				}
+				every_country = {
+					limit = {
+						is_ally_with = JAP
+					}
+					add_ideas = PDTO_our_final_war_idea
+				}
+			}
+			else_if = {
+				limit = {
+					CHI = {
+						is_ai = no
+					}
+					JAP = {
+						is_ai = no
+					}
+				}
+				every_country = {
+					limit = {
+						is_ally_with = JAP
+					}
+					add_ideas = PDTO_our_final_war_idea
+				}
+			}
+			else_if = {
+				limit = {
+					CHI = {
+						is_ai = no
+					}
+					JAP = {
+						is_ai = yes
+					}
+				}
+				every_country = {
+					limit = {
+						is_ally_with = JAP
+					}
+					add_ideas = PDTO_our_final_war_idea_ai
+				}
+			}
+			every_country = {
+				limit = {
+					is_ally_with = JAP
+				}
+				add_offsite_building = { type = arms_factory level = 5 }
+				add_manpower = 100000
+				capital_scope = {
+					create_unit = {
+						division = "division_template = \"GAW Militia\" start_experience_factor = 0.2 start_equipment_factor = 1.0"
+						owner = PREV
+						count = 8
+					}
+					create_unit = {
+						division = "division_template = \"GAW Regular Infantry\" start_experience_factor = 0.2 start_equipment_factor = 1.0"
+						owner = PREV
+						count = 6
+					}
+				}
+			}
+		}
+	}
+
+PRC_GAW_check_faction_members = {
+	hidden_effect = {
+		if = {
+			limit = {
+				is_ally_with = VIE
+			}
+			add_days_mission_timeout = {
+				mission = PRC_GAW_war_exhaustion
+				days = 20
+			}
+		}
+		if = {
+			limit = {
+				is_ally_with = LAO
+			}
+			add_days_mission_timeout = {
+				mission = PRC_GAW_war_exhaustion
+				days = 20
+			}
+		}
+		if = {
+			limit = {
+				is_ally_with = CBD
+			}
+			add_days_mission_timeout = {
+				mission = PRC_GAW_war_exhaustion
+				days = 20
+			}
+		}
+		if = {
+			limit = {
+				is_ally_with = SIA
+			}
+			add_days_mission_timeout = {
+				mission = PRC_GAW_war_exhaustion
+				days = 20
+			}
+		}
+		if = {
+			limit = {
+				is_ally_with = BRM
+			}
+			add_days_mission_timeout = {
+				mission = PRC_GAW_war_exhaustion
+				days = 20
+			}
+		}
+		if = {
+			limit = {
+				is_ally_with = MAY
+			}
+			add_days_mission_timeout = {
+				mission = PRC_GAW_war_exhaustion
+				days = 20
+			}
+		}
+		if = {
+			limit = {
+				is_ally_with = SIN
+			}
+			add_days_mission_timeout = {
+				mission = PRC_GAW_war_exhaustion
+				days = 20
+			}
+		}
+		if = {
+			limit = {
+				is_ally_with = IND
+			}
+			add_days_mission_timeout = {
+				mission = PRC_GAW_war_exhaustion
+				days = 20
+			}
+		}
+		if = {
+			limit = {
+				is_ally_with = PHI
+			}
+			add_days_mission_timeout = {
+				mission = PRC_GAW_war_exhaustion
+				days = 20
+			}
+		}
+	}
+}
+
+PRC_join_BRI = {
+	set_country_flag = PRC_BRI_member_flag
+	add_ideas = {
+		PRC_BRI_member
+	}
+	CHI = {
+		add_to_variable = {
+			PRC_BRI_number_of_members = 1
+		}
+		add_to_variable = {
+			PRC_BRI_consumer_goods_factor = -0.001
+		}
+		add_to_variable = {
+			PRC_BRI_tax_gain_multiplier_modifier = 0.001
+		}
+		add_to_variable = {
+			PRC_BRI_lend_lease_tension = -0.01
+		}
+		add_to_variable = {
+			PRC_BRI_global_building_slots_factor = 0.005
+		}
+		add_to_variable = {
+			PRC_BRI_production_speed_buildings_factor = 0.005
+		}
+	}
+	add_to_array = {
+		CHI.PRC_BRI_members = THIS
+	}
+	add_opinion_modifier = {
+		target = CHI
+		modifier = friendship_of_peoples
+	}
+	CHI = {
+		add_opinion_modifier = {
+			target = ROOT
+			modifier = friendship_of_peoples
+		}
+	}
+}
+PRC_leave_BRI = {
+	remove_ideas = {
+		PRC_BRI_member
+	}
+	CHI = {
+		add_to_variable = {
+			PRC_BRI_number_of_members = -1
+		}
+		add_to_variable = {
+			PRC_BRI_consumer_goods_factor = 0.001
+		}
+		add_to_variable = {
+			PRC_BRI_tax_gain_multiplier_modifier = -0.001
+		}
+		add_to_variable = {
+			PRC_BRI_lend_lease_tension = 0.01
+		}
+		add_to_variable = {
+			PRC_BRI_global_building_slots_factor = -0.005
+		}
+		add_to_variable = {
+			PRC_BRI_production_speed_buildings_factor = -0.005
+		}
+	}
+	remove_from_array = {
+		CHI.PRC_BRI_members = THIS
+	}
+}
+
+TFR_PRC_clear_econ_law_effect = {
+	hidden_effect = {
+		remove_ideas = common_prosperity_law_right_1
+		remove_ideas = common_prosperity_law_right_2
+		remove_ideas = common_prosperity_law_right_3
+		remove_ideas = common_prosperity_law_right_4
+		remove_ideas = common_prosperity_law
+		remove_ideas = common_prosperity_law_left_1
+		remove_ideas = common_prosperity_law_left_2
+		remove_ideas = common_prosperity_law_left_3
+		remove_ideas = common_prosperity_law_left_4
+	}
+}

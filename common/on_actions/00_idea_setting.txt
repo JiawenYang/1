@@ -1,0 +1,2025 @@
+on_actions = {
+
+	on_monthly = {
+		effect = {
+			every_country = {
+				set_country_flag = disabled_protests_system
+			}
+		}
+	}
+
+	on_startup = {
+		effect = {
+			every_country = {
+				limit = { original_tag = USA is_ai = no }
+				scoped_play_song = "the_star_spangled_banner_remastered"
+			}
+			every_country = {
+				limit = { original_tag = SOV is_ai = no }
+				scoped_play_song = "fog"
+			}
+			every_country = {
+				limit = { original_tag = CHI is_ai = no }
+				scoped_play_song = "a_new_world"
+			}
+			every_country = {
+				limit = { original_tag = TAI is_ai = no }
+				scoped_play_song = "struggling_in_the_southeast"
+			}
+			every_country = {
+				limit = { original_tag = FRA is_ai = no }
+				scoped_play_song = "jacques_chirac_now"
+			}
+			every_country = {
+				limit = { original_tag = ENG is_ai = no }
+				scoped_play_song = "god_save_the_queen_sexpistol"
+			}
+			every_country = {
+				limit = { original_tag = GER is_ai = no }
+				scoped_play_song = "das_deutschlandlied_remastered"
+			}
+			every_country = {
+				limit = { original_tag = JAP is_ai = no }
+				scoped_play_song = "setsuna"
+			}
+			every_country = {
+				limit = { original_tag = RAJ is_ai = no }
+				scoped_play_song = "behti_hawa_sa_tha_woh"
+			}
+			every_country = {
+				limit = { original_tag = KOR is_ai = no }
+				scoped_play_song = "patriotic_song_remastered"
+			}
+			every_country = {
+				limit = { original_tag = NKO is_ai = no }
+				scoped_play_song = "going_to_mount_baekdu"
+			}
+			every_country = {
+				limit = { original_tag = BRA is_ai = no }
+				scoped_play_song = "danza_kuduro"
+			}
+			every_country = {
+				limit = { original_tag = SER is_ai = no }
+				scoped_play_song = "remove_kebab"
+			}
+			every_country = {
+				limit = { original_tag = CRO is_ai = no }
+				scoped_play_song = "bojna_cavoglave"
+			}
+			every_country = {
+				limit = { original_tag = BOS is_ai = no }
+				scoped_play_song = "bosanska_artiljerija"
+			}
+			every_country = {
+				limit = { original_tag = KOS is_ai = no }
+				scoped_play_song = "thank_you_usa"
+			}
+			every_country = {
+				limit = { original_tag = SAF is_ai = no }
+				scoped_play_song = "wavin_flag"
+			}
+			every_country = {
+				limit = { original_tag = SYR is_ai = no }
+				scoped_play_song = "god_syria_and_bashar"
+			}
+			every_country = {
+				limit = { original_tag = CBD is_ai = no }
+				scoped_play_song = "sat_tee_touy"
+			}
+			every_country = {
+				limit = { original_tag = MON is_ai = no }
+				scoped_play_song = "national_anthem_of_mongolia_remastered"
+			}
+			every_country = {
+				limit = { original_tag = TAI }
+				USA = {
+					diplomatic_relation = {
+						country = PREV
+						relation = guarantee
+						active = no
+					}
+				}
+			}
+			#Initial Variables
+			#EU Modifiers
+			set_variable = {
+				var = GLOBAL.eu_political_power_gain_dynamic_var
+				value = -0.15
+			}
+			set_variable = {
+				var = GLOBAL.eu_stability_factor_dynamic_var
+				value = 0
+			} 
+			set_variable = {
+				var = GLOBAL.eu_stability_weekly_dynamic_var
+				value = 0
+			} 
+			set_variable = {
+				var = GLOBAL.eu_war_support_factor_dynamic_var
+				value = 0
+			} 
+			set_variable = {
+				var = GLOBAL.eu_war_support_weekly_dynamic_var
+				value = 0
+			} 
+			set_variable = {
+				var = GLOBAL.eu_consumer_goods_factor_dynamic_var
+				value = 0
+			}
+			set_variable = {
+				var = GLOBAL.eu_local_resources_factor_dynamic_var
+				value = 0
+			}
+			set_variable = {
+				var = GLOBAL.eu_global_building_slots_factor_dynamic_var
+				value = 0
+			}
+			set_variable = {
+				var = GLOBAL.eu_research_speed_factor_dynamic_var
+				value = 0
+			}
+			set_variable = {
+				var = GLOBAL.eu_production_factory_max_efficiency_factor_dynamic_var
+				value = 0
+			}
+			set_variable = {
+				var = GLOBAL.eu_production_factory_efficiency_gain_factor_dynamic_var
+				value = 0.1
+			}
+			set_variable = {
+				var = GLOBAL.eu_production_factory_start_efficiency_factor_dynamic_var
+				value = 0
+			}
+			set_variable = {
+				var = GLOBAL.eu_line_change_production_efficiency_factor_dynamic_var
+				value = 0
+			}
+			set_variable = {
+				var = GLOBAL.eu_production_speed_buildings_factor_dynamic_var
+				value = 0
+			}
+			set_variable = {
+				var = GLOBAL.eu_industrial_capacity_factory_dynamic_var
+				value = 0.05
+			}
+			set_variable = {
+				var = GLOBAL.eu_industrial_capacity_dockyard_dynamic_var
+				value = 0.05
+			}
+			set_variable = {
+				var = GLOBAL.eu_production_speed_infrastructure_factor_dynamic_var
+				value = 0
+			}
+			set_variable = {
+				var = GLOBAL.eu_production_speed_industrial_complex_factor_dynamic_var
+				value = 0
+			}
+			set_variable = {
+				var = GLOBAL.eu_production_speed_office_park_factor_dynamic_var
+				value = 0
+			}
+			set_variable = {
+				var = GLOBAL.eu_production_speed_rail_way_factor_dynamic_var
+				value = 0
+			}
+			set_variable = {
+				var = GLOBAL.eu_production_speed_arms_factory_factor_dynamic_var
+				value = 0
+			}
+			set_variable = {
+				var = GLOBAL.eu_production_speed_dockyard_factor_dynamic_var
+				value = 0
+			}
+			set_variable = {
+				var = GLOBAL.eu_production_speed_power_plant_factor_dynamic_var
+				value = 0
+			}
+			set_variable = {
+				var = GLOBAL.eu_production_speed_nuclear_reactor_factor_dynamic_var
+				value = 0
+			}
+			set_variable = {
+				var = GLOBAL.eu_production_speed_energy_farm_factor_dynamic_var
+				value = 0
+			}
+			set_variable = {
+				var = GLOBAL.eu_industrial_development_monthly_dynamic_var
+				value = 0
+			}
+			set_variable = {
+				var = GLOBAL.eu_poverty_development_monthly_dynamic_var
+				value = 0
+			}
+			set_variable = {
+				var = GLOBAL.eu_farming_development_monthly_dynamic_var
+				value = 0
+			}
+			set_variable = {
+				var = GLOBAL.eu_academic_development_monthly_dynamic_var
+				value = 0
+			}
+			set_variable = {
+				var = GLOBAL.eu_society_development_monthly_dynamic_var
+				value = 0
+			}
+			set_variable = {
+				var = GLOBAL.eu_tax_gain_multiplier_modifier_dynamic_var
+				value = 0
+			}
+			set_variable = {
+				var = GLOBAL.eu_expense_growth_factor_dynamic_var
+				value = 0
+			}
+			set_variable = {
+				var = GLOBAL.eu_business_value_factor_dynamic_var
+				value = 0.05
+			}
+			set_variable = {
+				var = GLOBAL.eu_personal_value_factor_dynamic_var
+				value = 0
+			}
+			set_variable = {
+				var = GLOBAL.eu_personal_expense_dynamic_var
+				value = 0
+			}
+			set_variable = {
+				var = GLOBAL.eu_personal_expense_factor_dynamic_var
+				value = 0
+			}
+			set_variable = {
+				var = GLOBAL.eu_tax_business_rate_dynamic_var
+				value = 0
+			}
+			set_variable = {
+				var = GLOBAL.eu_tax_personal_rate_dynamic_var
+				value = 0
+			}
+			set_variable = {
+				var = GLOBAL.eu_interest_rate_dynamic_var
+				value = 0
+			}
+			set_variable = {
+				var = GLOBAL.eu_inflation_monthly_dynamic_var
+				value = 0
+			}
+			#Tags that join EU
+			every_country = {
+				limit = {
+					has_idea = EU_member
+				}
+				EU_join_effect = yes
+			}
+
+	every_country = {
+		set_country_flag = disabled_protests_system
+	}
+
+	every_country = {
+		limit = { 
+			OR = {
+				original_tag = SAU 
+			}
+		}
+		create_faction_from_template = faction_template_gcc
+		set_faction_leader = yes
+		add_to_faction = KUW
+		add_to_faction = OMA
+		add_to_faction = UAE
+		add_to_faction = QAT
+		add_to_faction = BHR
+	}
+
+	every_country = {
+		limit = { 
+			OR = {
+				original_tag = AUS 
+			}
+		}
+		add_ideas = austrian_neutrality
+	}
+
+	every_country = {
+		limit = { 
+			OR = {
+				original_tag = BRA 
+			}
+		}
+		add_ideas = BRA_systemic_corruption_idea
+		add_ideas = BRA_not_world_power_idea
+	}
+
+	every_country = {
+		limit = { 
+			OR = {
+				original_tag = AUS 
+			}
+		}
+		add_ideas = austrian_neutrality
+	}
+
+	every_country = {
+		limit = { 
+			OR = {
+				original_tag = FIN
+			}
+		}
+		add_ideas = finnish_neutrality
+	}
+
+	every_country = {
+		limit = { 
+			OR = {
+				original_tag = PER
+			}
+		}
+		add_ideas = PER_widespread_corruption
+	}
+
+	every_country = {
+		limit = { 
+			OR = {
+				original_tag = MLV
+			}
+		}
+		add_ideas = MOL_corruption_plague
+	}
+
+	every_country = {
+		limit = { 
+			OR = {
+				original_tag = MON
+			}
+		}
+		add_ideas = MON_corrupt_bureaucracy_idea
+	}
+
+	every_country = {
+		limit = { 
+			OR = {
+				original_tag = SAF
+			}
+		}
+		add_ideas = SAF_anc_corruption
+	}
+
+	every_country = {
+		limit = { 
+			OR = {
+				original_tag = SWE 
+			}
+		}
+		add_ideas = SWE_nordic_neutrality
+	}
+				CHI = {
+					remove_state_core = 598
+					remove_state_core = 599
+					remove_state_core = 600
+					remove_state_core = 1155
+					remove_state_core = 1156
+					remove_state_core = 157
+					remove_state_core = 1158
+				}
+				598 = { add_claim_by = CHI }
+				599 = { add_claim_by = CHI }
+				600 = { add_claim_by = CHI }
+				1155 = { add_claim_by = CHI }
+				1156 = { add_claim_by = CHI }
+				157 = { add_claim_by = CHI }
+				1158 = { add_claim_by = CHI }
+				every_state = { #remove core for former Mainland states
+				limit = {
+				is_greater_china_state = yes
+				}
+				remove_core_of = TAI
+				}
+				every_state = { #remove claim for former Mainland states
+				limit = {
+				is_greater_china_state = yes
+				}
+				remove_claim_by = TAI
+				}
+				496 = { remove_claim_by = TAI }
+				722 = { remove_claim_by = TAI }
+				1011 = { remove_claim_by = TAI }
+				every_state = { #add core for current own
+				limit = {
+				is_taiwan_area_state = yes
+				}
+				add_core_of = TAI
+				}
+				1015 = { add_core_of = TAI }
+
+
+
+
+
+				
+
+	every_country = {
+				limit = { OR = {  
+							original_tag = CAM
+							original_tag = CDI
+							original_tag = EGY
+							original_tag = GAH
+							original_tag = KEN
+							original_tag = MRT
+							original_tag = SWA
+							original_tag = ZIM
+ 	} 
+ }
+				clear_array = agri_crop_allocation
+				clear_array = agri_crop_price
+			}
+
+	every_country = {
+				limit = { OR = {  
+							original_tag = AGL
+							original_tag = UNI
+							original_tag = BFA
+							original_tag = CAR
+							original_tag = VER
+							original_tag = DRC
+							original_tag = MLC
+							original_tag = RCD
+							original_tag = ERI
+							original_tag = GUI
+							original_tag = LES
+							original_tag = LIB
+							original_tag = MAU
+							original_tag = SIE
+							original_tag = SOM
+							original_tag = JUB
+							original_tag = SWS
+							original_tag = SNA
+							original_tag = PUN
+							original_tag = SML
+							original_tag = SSU
+							original_tag = HAI
+							original_tag = AFG
+							original_tag = TAL
+							original_tag = BAN
+							original_tag = BHU
+							original_tag = CBD
+							original_tag = LAO
+							original_tag = SHN
+							original_tag = KAR
+							original_tag = KAC
+							original_tag = WAA
+							original_tag = BRM
+							original_tag = NHN
+							original_tag = CHS
+							original_tag = NEP
+							original_tag = NPM
+							original_tag = YEM
+							original_tag = SOL
+							original_tag = MLD
+							original_tag = PLY
+							original_tag = EGU
+ 	} 
+ }
+				add_to_array = { agri_crop_allocation = 0.889 } # Basic = 0
+				add_to_array = { agri_crop_allocation = 0.111 } # Cash = 1
+
+				add_to_array = { agri_crop_price = 15 } # Basic = 0
+				add_to_array = { agri_crop_price = 25 } # Cash = 1
+			}
+
+
+
+
+
+
+
+
+
+	
+	every_country = {
+		limit = {
+			original_tag = VIE
+		}
+		add_dynamic_modifier = {
+			modifier = VIE_communist_party_vietnam_dynamic
+		}
+		set_variable = { VIE_cpv_political_power_gain_dynamic_var = 0.15 }
+		set_variable = { VIE_cpv_stability_factor_dynamic_var = 0.15 }
+		set_variable = { VIE_cpv_democratic_drift_dynamic_var = 0.25 }
+		set_variable = { VIE_cpv_communism_drift_dynamic_var = 0.70 }
+		set_variable = { VIE_cpv_neutrality_drift_dynamic_var = -0.10 }
+		set_variable = { VIE_cpv_nationalist_drift_dynamic_var = 0.05 }
+		set_variable = { VIE_cpv_drift_defence_factor_dynamic_var = 0.25 }
+	}
+
+
+	13 = { add_dynamic_modifier = { modifier = ENG_city_of_london } }
+	16 = { add_dynamic_modifier = { modifier = ENG_wales } }
+	1192 = { add_dynamic_modifier = { modifier = ENG_wales } }
+	8 = { add_dynamic_modifier = { modifier = ENG_scotland } }
+	9 = { add_dynamic_modifier = { modifier = ENG_scotland } }
+	437 = { add_dynamic_modifier = { modifier = ENG_scotland } }
+	1190 = { add_dynamic_modifier = { modifier = ENG_scotland } }
+	1194 = { add_dynamic_modifier = { modifier = ENG_scotland } }
+	1195 = { add_dynamic_modifier = { modifier = ENG_scotland } }
+	1196 = { add_dynamic_modifier = { modifier = ENG_scotland } }
+	17 = { add_dynamic_modifier = { modifier = ENG_northern_ireland } }
+	794 = { add_dynamic_modifier = { modifier = USA_Alabama } }
+	794 = { add_dynamic_modifier = { modifier = USA_progop } }
+	814 = { add_dynamic_modifier = { modifier = USA_Alaska } }
+	814 = { add_dynamic_modifier = { modifier = USA_progop } }
+	806 = { add_dynamic_modifier = { modifier = USA_Arizona } }
+	798 = { add_dynamic_modifier = { modifier = USA_Arkansas } }
+	811 = { add_dynamic_modifier = { modifier = USA_California } }
+	811 = { add_dynamic_modifier = { modifier = USA_prodem } }
+	804 = { add_dynamic_modifier = { modifier = USA_Colorado } }
+	768 = { add_dynamic_modifier = { modifier = USA_Connecticut } }
+	768 = { add_dynamic_modifier = { modifier = USA_prodem } }
+	1083 = { add_dynamic_modifier = { modifier = USA_Delaware } }
+	1083 = { add_dynamic_modifier = { modifier = USA_prodem } }
+	795 = { add_dynamic_modifier = { modifier = USA_Florida } }
+	792 = { add_dynamic_modifier = { modifier = USA_Georgia } }
+	817 = { add_dynamic_modifier = { modifier = USA_Hawaii } }
+	817 = { add_dynamic_modifier = { modifier = USA_prodem } }
+	808 = { add_dynamic_modifier = { modifier = USA_Idaho } }
+	808 = { add_dynamic_modifier = { modifier = USA_progop } }
+	778 = { add_dynamic_modifier = { modifier = USA_Illinois } }
+	778 = { add_dynamic_modifier = { modifier = USA_prodem } }
+	781 = { add_dynamic_modifier = { modifier = USA_Iowa } }
+	776 = { add_dynamic_modifier = { modifier = USA_Indiana } }
+	784 = { add_dynamic_modifier = { modifier = USA_Kansas } }
+	784 = { add_dynamic_modifier = { modifier = USA_progop } }
+	782 = { add_dynamic_modifier = { modifier = USA_Kentucky } }
+	782 = { add_dynamic_modifier = { modifier = USA_Kentucky } }
+	797 = { add_dynamic_modifier = { modifier = USA_Louisiana } }
+	767 = { add_dynamic_modifier = { modifier = USA_Massachusetts } }
+	767 = { add_dynamic_modifier = { modifier = USA_prodem } }
+	764 = { add_dynamic_modifier = { modifier = USA_Maine } }
+	764 = { add_dynamic_modifier = { modifier = USA_prodem } }
+	772 = { add_dynamic_modifier = { modifier = USA_Maryland } }
+	772 = { add_dynamic_modifier = { modifier = USA_prodem } }
+	788 = { add_dynamic_modifier = { modifier = USA_Montana } }
+	777 = { add_dynamic_modifier = { modifier = USA_Michigan } }
+	780 = { add_dynamic_modifier = { modifier = USA_Minnesota } }
+	780 = { add_dynamic_modifier = { modifier = USA_prodem } }
+	796 = { add_dynamic_modifier = { modifier = USA_Mississippi } }
+	796 = { add_dynamic_modifier = { modifier = USA_progop } }
+	783 = { add_dynamic_modifier = { modifier = USA_Missouri } }
+	785 = { add_dynamic_modifier = { modifier = USA_Nebraska } }
+	807 = { add_dynamic_modifier = { modifier = USA_Nevada } }
+	765 = { add_dynamic_modifier = { modifier = USA_New_Hampshire } }
+	770 = { add_dynamic_modifier = { modifier = USA_New_Jersey } }
+	770 = { add_dynamic_modifier = { modifier = USA_prodem } }
+	803 = { add_dynamic_modifier = { modifier = USA_New_Mexico } }
+	769 = { add_dynamic_modifier = { modifier = USA_New_York } }
+	769 = { add_dynamic_modifier = { modifier = USA_prodem } }
+	790 = { add_dynamic_modifier = { modifier = USA_North_Carolina } }
+	787 = { add_dynamic_modifier = { modifier = USA_North_Dakota } }
+	787 = { add_dynamic_modifier = { modifier = USA_progop } }
+	775 = { add_dynamic_modifier = { modifier = USA_Ohio } }
+	799 = { add_dynamic_modifier = { modifier = USA_Oklahoma } }
+	799 = { add_dynamic_modifier = { modifier = USA_progop } }
+	810 = { add_dynamic_modifier = { modifier = USA_Oregon } }
+	810 = { add_dynamic_modifier = { modifier = USA_prodem } }
+	771 = { add_dynamic_modifier = { modifier = USA_Pennsylvania } }
+	1084 = { add_dynamic_modifier = { modifier = USA_Rhode_Island } }
+	1084 = { add_dynamic_modifier = { modifier = USA_prodem } }
+	791 = { add_dynamic_modifier = { modifier = USA_South_Carolina } }
+	791 = { add_dynamic_modifier = { modifier = USA_progop } }
+	786 = { add_dynamic_modifier = { modifier = USA_South_Dakota } }
+	786 = { add_dynamic_modifier = { modifier = USA_progop } }
+	793 = { add_dynamic_modifier = { modifier = USA_Tennessee } }
+	793 = { add_dynamic_modifier = { modifier = USA_progop } }
+	800 = { add_dynamic_modifier = { modifier = USA_Texas } }
+	800 = { add_dynamic_modifier = { modifier = USA_progop } }
+	805 = { add_dynamic_modifier = { modifier = USA_Utah } }
+	805 = { add_dynamic_modifier = { modifier = USA_progop } }
+	766 = { add_dynamic_modifier = { modifier = USA_Vermont } }
+	766 = { add_dynamic_modifier = { modifier = USA_prodem } }
+	773 = { add_dynamic_modifier = { modifier = USA_Virginia } }
+	809 = { add_dynamic_modifier = { modifier = USA_Washington } }
+	809 = { add_dynamic_modifier = { modifier = USA_prodem } }
+	774 = { add_dynamic_modifier = { modifier = USA_West_Virginia } }
+	774 = { add_dynamic_modifier = { modifier = USA_progop } }
+	779 = { add_dynamic_modifier = { modifier = USA_Wisconsin } }
+	789 = { add_dynamic_modifier = { modifier = USA_Wyoming } }
+	789 = { add_dynamic_modifier = { modifier = USA_progop } }
+
+	HOL = {
+		if = {
+			limit = {
+				has_global_flag = GAME_RULE_allow_colored_puppets
+			}
+			set_autonomy = {
+				target = NLA
+				autonomy_state = autonomy_autonomous_state_colored
+			}
+			else = {
+				set_autonomy = {
+					target = NLA
+					autonomy_state = autonomy_autonomous_state
+				}
+			}
+		}
+	}
+	ENG = {
+		if = {
+			limit = {
+				has_global_flag = GAME_RULE_allow_colored_puppets
+			}
+			set_autonomy = {
+				target = STH
+				autonomy_state = autonomy_autonomous_state_colored
+			}
+			else = {
+				set_autonomy = {
+					target = STH
+					autonomy_state = autonomy_autonomous_state
+				}
+			}
+		}
+	}
+	ENG = {
+		if = {
+			limit = {
+				has_global_flag = GAME_RULE_allow_colored_puppets
+			}
+			set_autonomy = {
+				target = IOM
+				autonomy_state = autonomy_autonomous_state_colored
+			}
+			else = {
+				set_autonomy = {
+					target = IOM
+					autonomy_state = autonomy_autonomous_state
+				}
+			}
+		}
+	}
+
+NLA = {
+	set_popularities = {
+		democratic = 60
+		communism = 23.3
+		fascism = 0.0
+		neutrality = 16.7
+		nationalist = 0.0
+	}
+	set_politics = {
+		ruling_party = democratic
+		last_election = "1997.2.25"
+		election_frequency = 60
+		elections_allowed = yes
+	}
+
+	start_politics_input = yes
+
+	### Party Popularities
+	set_variable = { party_pop_array^0 = 0 } #Western_Autocracy
+	set_variable = { party_pop_array^1 = 0.3 } #conservatism
+	set_variable = { party_pop_array^2 = 0.3 } #liberalism
+	set_variable = { party_pop_array^3 = 0.29 } #socialism
+	set_variable = { party_pop_array^4 = 0 } #communist_state
+	set_variable = { party_pop_array^5 = 0 } #anarchist_communism
+	set_variable = { party_pop_array^6 = 0 } #Conservative
+	set_variable = { party_pop_array^7 = 0 } #Autocracy
+	set_variable = { party_pop_array^8 = 0 } #Mod_Vilayat_e_Faqih
+	set_variable = { party_pop_array^9 = 0 } #Vilayat_e_Faqih
+	set_variable = { party_pop_array^10 = 0 } #Kingdom
+	set_variable = { party_pop_array^11 = 0 } #Caliphate
+	set_variable = { party_pop_array^12 = 0 } #Neutral_Muslim_Brotherhood
+	set_variable = { party_pop_array^13 = 0 } #Neutral_Autocracy
+	set_variable = { party_pop_array^14 = 0 } #Neutral_conservatism
+	set_variable = { party_pop_array^15 = 0 } #oligarchism
+	set_variable = { party_pop_array^16 = 0 } #Neutral_Libertarian
+	set_variable = { party_pop_array^17 = 0 } #Neutral_green
+	set_variable = { party_pop_array^18 = 0.11 } #neutral_Social
+	set_variable = { party_pop_array^19 = 0 } #Neutral_Communism
+	set_variable = { party_pop_array^20 = 0 } #Nat_Populism
+	set_variable = { party_pop_array^21 = 0 } #Nat_Fascism
+	set_variable = { party_pop_array^22 = 0 } #Nat_Autocracy
+	set_variable = { party_pop_array^23 = 0 } #Monarchist
+
+	### Ruling Party
+	add_to_array = { ruling_party = 18 }
+
+	startup_politics = yes
+}
+
+			547 = { #北京
+				add_dynamic_modifier = { modifier = CHI_beijing }
+				set_variable = { CHI_capital_production_speed_buildings = 0.10 }
+				set_variable = { CHI_capital_productivity_growth = 0.25 }
+			}
+			540 = { #上海
+				add_dynamic_modifier = { modifier = CHI_shanghai }
+				set_variable = { CHI_Pudong_New_Area_production_speed_buildings = 0.15 }
+				set_variable = { CHI_Pudong_New_Area_productivity_growth = 0.30 }
+				set_variable = { CHI_Pudong_New_Area_building_slots = 0.80 }
+			}
+			532 = { #珠三角
+				add_dynamic_modifier = { modifier = CHI_Special_Economic_Zones }
+				set_variable = { CHI_Special_Economic_Zonesstate_production_speed_buildings = 0.20 }
+				set_variable = { CHI_Special_Economic_Zones_productivity_growth = 0.25 }
+				set_variable = { CHI_Special_Economic_Zones_global_building_slots = 1 }
+			}
+			537 = { #福建
+				add_dynamic_modifier = { modifier = CHI_Special_Economic_Zones }
+				set_variable = { CHI_Special_Economic_Zonesstate_production_speed_buildings = 0.15 }
+				set_variable = { CHI_Special_Economic_Zones_productivity_growth = 0.15 }
+				set_variable = { CHI_Special_Economic_Zones_global_building_slots = 0.15 }
+			}
+			531 = { #海南
+				add_dynamic_modifier = { modifier = CHI_Special_Economic_Zones }
+				set_variable = { CHI_Special_Economic_Zonesstate_production_speed_buildings = 0.15 }
+				set_variable = { CHI_Special_Economic_Zones_productivity_growth = 0.25 }
+				set_variable = { CHI_Special_Economic_Zones_global_building_slots = 0.15 }
+			}
+
+	every_state = {
+		limit = {
+			OR = {
+				is_controlled_by = LBA
+				is_controlled_by = MAU
+				is_controlled_by = SHA
+				state = 373
+				state = 1179
+				state = 379
+				state = 380
+				state = 381
+				state = 382
+				state = 389
+				state = 390
+				state = 217
+				state = 218
+				state = 219
+				state = 577
+				state = 590
+				state = 1198
+				state = 221
+				state = 576
+				state = 614
+				state = 327
+				state = 580
+				state = 329
+				state = 1108
+				state = 1163
+				state = 1165
+				state = 187
+			}
+		}
+		add_dynamic_modifier = { modifier = encroaching_sahara }
+	}
+	every_state = {
+		limit = {
+			NOT = { is_core_of = ALG }
+			NOT = { is_core_of = EGY }
+			NOT = { is_core_of = MOR }
+			NOT = { is_core_of = TUN }
+		  	NOT = { state = 475 }
+		  	NOT = { state = 591 }
+			OR = {
+				is_on_continent = africa
+				is_core_of = ALB
+				is_core_of = AZE
+				is_core_of = BOS
+				is_core_of = BRM
+				is_core_of = CRO
+				is_core_of = FYR
+				is_core_of = IND
+				is_core_of = IRQ
+				is_core_of = JOR
+				is_core_of = KAZ
+				is_core_of = KYR
+				is_core_of = LEB
+				is_core_of = PAK
+				is_core_of = RAJ
+				is_core_of = SAU
+				is_core_of = SER
+				is_core_of = SRI
+				is_core_of = SYR
+				is_core_of = SLV
+				is_core_of = TAJ
+				is_core_of = TRK
+				is_core_of = UZB
+				is_core_of = YEM
+			}
+		}
+		add_dynamic_modifier = { modifier = tribes_state }
+	}
+
+
+
+
+
+
+
+
+
+
+	every_state = {
+		limit = {
+			NOT = { has_state_category = state_inhospitable }
+			OR = {
+				is_controlled_by = JAP
+				state = 827
+			}
+		}
+		add_dynamic_modifier = { modifier = shinto }
+	}
+
+	every_state = {
+		limit = {
+			NOT = { has_state_category = state_inhospitable }
+			NOT = { has_dynamic_modifier = { modifier = shinto } }
+			OR = {
+				is_controlled_by = CHI
+				is_controlled_by = HKG
+				is_controlled_by = KOR
+				is_controlled_by = MAC
+				is_controlled_by = NKO
+				is_controlled_by = TAI
+			}
+		  	NOT = { state = 556 }
+		  	NOT = { state = 578 }
+		  	NOT = { state = 585 }
+		  	NOT = { state = 588 }
+		  	NOT = { state = 589 }
+		  	NOT = { state = 591 }
+		  	NOT = { state = 592 }
+		  	NOT = { state = 1097 }
+		}
+		add_dynamic_modifier = { modifier = confucian }
+	}
+
+	every_state = {
+		limit = {
+			NOT = { has_state_category = state_inhospitable }
+			NOT = { has_dynamic_modifier = { modifier = shinto } }
+			NOT = { has_dynamic_modifier = { modifier = confucian } }
+			OR = {
+				is_controlled_by = BRM
+				is_controlled_by = KAC
+				is_controlled_by = KAR
+				is_controlled_by = NHN
+				is_controlled_by = SHN
+				is_controlled_by = WAA
+				is_controlled_by = SIA
+				is_controlled_by = LAO
+				is_controlled_by = CBD
+				is_controlled_by = SRI
+				state = 578
+			}
+		}
+		add_dynamic_modifier = { modifier = theravada }
+	}
+
+	every_state = {
+		limit = {
+			NOT = { has_state_category = state_inhospitable }
+			NOT = { has_dynamic_modifier = { modifier = shinto } }
+			NOT = { has_dynamic_modifier = { modifier = confucian } }
+			NOT = { has_dynamic_modifier = { modifier = theravada } }
+			OR = {
+				is_controlled_by = MON
+				is_controlled_by = BHU
+				state = 475
+				state = 556
+				state = 585
+				state = 588
+				state = 589
+				state = 993
+				state = 1107
+				state = 1011
+				state = 1097
+			}
+		}
+		add_dynamic_modifier = { modifier = vajrayana }
+	}
+
+	every_state = {
+		limit = {
+			NOT = { has_state_category = state_inhospitable }
+			NOT = { has_dynamic_modifier = { modifier = shinto } }
+			NOT = { has_dynamic_modifier = { modifier = confucian } }
+			NOT = { has_dynamic_modifier = { modifier = theravada } }
+			NOT = { has_dynamic_modifier = { modifier = vajrayana } }
+			OR = {
+				is_controlled_by = SIN
+				is_controlled_by = VIE
+			}
+		}
+		add_dynamic_modifier = { modifier = mahayana }
+	}
+
+	every_state = {
+		limit = {
+			NOT = { has_state_category = state_inhospitable }
+			NOT = { has_dynamic_modifier = { modifier = shinto } }
+			NOT = { has_dynamic_modifier = { modifier = confucian } }
+			NOT = { has_dynamic_modifier = { modifier = theravada } }
+			NOT = { has_dynamic_modifier = { modifier = vajrayana } }
+			NOT = { has_dynamic_modifier = { modifier = mahayana } }
+			OR = {
+				is_controlled_by = MRT
+				is_core_of = NEP
+				is_controlled_by = RAJ
+				state = 635
+				state = 706
+			}
+		  	NOT = { state = 427 }
+		  	NOT = { state = 429 }
+		  	NOT = { state = 476 }
+		  	NOT = { state = 477 }
+		  	NOT = { state = 478 }
+		  	NOT = { state = 980 }
+		  	NOT = { state = 993 }
+		}
+		add_dynamic_modifier = { modifier = hindu }
+	}
+
+	every_state = {
+		limit = {
+			NOT = { has_state_category = state_inhospitable }
+			NOT = { has_dynamic_modifier = { modifier = shinto } }
+			NOT = { has_dynamic_modifier = { modifier = confucian } }
+			NOT = { has_dynamic_modifier = { modifier = theravada } }
+			NOT = { has_dynamic_modifier = { modifier = vajrayana } }
+			NOT = { has_dynamic_modifier = { modifier = mahayana } }
+			NOT = { has_dynamic_modifier = { modifier = hindu } }
+			state = 429
+		}
+		add_dynamic_modifier = { modifier = sikh }
+	}
+
+	every_state = {
+		limit = {
+			NOT = { has_state_category = state_inhospitable }
+			NOT = { has_dynamic_modifier = { modifier = shinto } }
+			NOT = { has_dynamic_modifier = { modifier = confucian } }
+			NOT = { has_dynamic_modifier = { modifier = theravada } }
+			NOT = { has_dynamic_modifier = { modifier = vajrayana } }
+			NOT = { has_dynamic_modifier = { modifier = mahayana } }
+			NOT = { has_dynamic_modifier = { modifier = hindu } }
+			NOT = { has_dynamic_modifier = { modifier = sikh } }
+			OR = {
+				is_controlled_by = AZE
+				is_controlled_by = BHR
+				is_controlled_by = HEZ
+				is_controlled_by = PER
+				state = 169
+				state = 171
+				state = 174
+				state = 189
+				state = 195
+				state = 421
+				state = 553
+				state = 557
+				state = 624
+				state = 722
+				state = 951
+				state = 952
+				state = 1103
+				state = 1104
+				state = 1122
+				state = 1123
+				state = 1124
+				state = 1141
+				state = 1142
+				state = 1143
+				state = 1081
+			}
+		  	NOT = { state = 401 }
+		  	NOT = { state = 408 }
+		}
+		add_dynamic_modifier = { modifier = shia }
+	}
+
+	every_state = {
+		limit = {
+			NOT = { has_state_category = state_inhospitable }
+			NOT = { has_dynamic_modifier = { modifier = shinto } }
+			NOT = { has_dynamic_modifier = { modifier = confucian } }
+			NOT = { has_dynamic_modifier = { modifier = theravada } }
+			NOT = { has_dynamic_modifier = { modifier = vajrayana } }
+			NOT = { has_dynamic_modifier = { modifier = mahayana } }
+			NOT = { has_dynamic_modifier = { modifier = hindu } }
+			NOT = { has_dynamic_modifier = { modifier = sikh } }
+			NOT = { has_dynamic_modifier = { modifier = shia } }
+			OR = {
+				is_controlled_by = ACE
+				is_controlled_by = AFG
+				is_controlled_by = ALB
+				is_controlled_by = ALG
+				is_controlled_by = BAN
+				is_controlled_by = BFA
+				is_core_of = BHR
+				is_controlled_by = BRU
+				is_controlled_by = CHA
+				is_controlled_by = CHE
+				is_controlled_by = COM
+				is_controlled_by = DJI
+				is_controlled_by = ERI
+				is_controlled_by = EGY
+				is_controlled_by = GAM
+				is_controlled_by = GUB
+				is_controlled_by = GUI
+				is_controlled_by = HAM
+				is_controlled_by = IND
+				is_core_of = IRQ
+				is_controlled_by = JOR
+				is_controlled_by = KAZ
+				is_controlled_by = KOS
+				is_controlled_by = KYR
+				is_core_of = KUW
+				is_controlled_by = LBA
+				is_controlled_by = GNA
+				is_controlled_by = GNC
+				is_controlled_by = HOR
+				is_controlled_by = MAL
+				is_controlled_by = MAU
+				is_controlled_by = MAY
+				is_controlled_by = MLD
+				is_controlled_by = MOR
+				is_controlled_by = NCY
+				is_controlled_by = NGR
+				is_controlled_by = PAK
+				is_controlled_by = PAL
+				is_controlled_by = QAT
+				is_controlled_by = SAU
+				is_controlled_by = SEN
+				is_controlled_by = SHA
+				is_core_of = SIE
+				is_core_of = SOM
+				is_controlled_by = SUD
+				is_controlled_by = SYR
+				is_controlled_by = TAJ
+				is_controlled_by = TAL
+				is_controlled_by = TRK
+				is_controlled_by = TUN
+				is_controlled_by = TUR
+				is_controlled_by = UAE
+				is_controlled_by = UZB
+				is_controlled_by = YEM
+				state = 128
+				state = 234
+				state = 236
+				state = 245
+				state = 253
+				state = 257
+				state = 258
+				state = 261
+				state = 323
+				state = 338
+				state = 339
+				state = 340
+				state = 341
+				state = 343
+				state = 348
+				state = 353
+				state = 401
+				state = 408
+				state = 427
+				state = 587
+				state = 591
+				state = 592
+				state = 632
+				state = 661
+				state = 664
+				state = 671
+				state = 672
+				state = 674
+				state = 921
+				state = 923
+				state = 940
+				state = 1019
+				state = 1047
+				state = 1048
+				state = 1049
+				state = 1050
+				state = 1051
+				state = 1125
+				state = 1126
+			}
+		  	NOT = { state = 635 }
+		  	NOT = { state = 636 }
+		  	NOT = { state = 638 }
+		  	NOT = { state = 714 }
+		  	NOT = { state = 715 }
+		  	NOT = { state = 734 }
+		  	NOT = { state = 1185 }
+		}
+		add_dynamic_modifier = { modifier = sunni }
+	}
+
+	every_state = {
+		limit = {
+			NOT = { has_state_category = state_inhospitable }
+			NOT = { has_dynamic_modifier = { modifier = shinto } }
+			NOT = { has_dynamic_modifier = { modifier = confucian } }
+			NOT = { has_dynamic_modifier = { modifier = theravada } }
+			NOT = { has_dynamic_modifier = { modifier = vajrayana } }
+			NOT = { has_dynamic_modifier = { modifier = mahayana } }
+			NOT = { has_dynamic_modifier = { modifier = hindu } }
+			NOT = { has_dynamic_modifier = { modifier = sikh } }
+			NOT = { has_dynamic_modifier = { modifier = shia } }
+			NOT = { has_dynamic_modifier = { modifier = sunni } }
+			is_controlled_by = OMA
+		}
+		add_dynamic_modifier = { modifier = ibadi }
+	}
+
+	every_state = {
+		limit = {
+			NOT = { has_state_category = state_inhospitable }
+			NOT = { has_dynamic_modifier = { modifier = shinto } }
+			NOT = { has_dynamic_modifier = { modifier = confucian } }
+			NOT = { has_dynamic_modifier = { modifier = theravada } }
+			NOT = { has_dynamic_modifier = { modifier = vajrayana } }
+			NOT = { has_dynamic_modifier = { modifier = mahayana } }
+			NOT = { has_dynamic_modifier = { modifier = hindu } }
+			NOT = { has_dynamic_modifier = { modifier = sikh } }
+			NOT = { has_dynamic_modifier = { modifier = shia } }
+			NOT = { has_dynamic_modifier = { modifier = sunni } }
+			NOT = { has_dynamic_modifier = { modifier = ibadi } }
+			OR = {
+				is_controlled_by = ABK
+				is_controlled_by = BOS
+				is_controlled_by = BLR
+				is_controlled_by = BUL
+				is_controlled_by = CYP
+				is_controlled_by = FYR
+				is_core_of = GEO
+				is_controlled_by = GRE
+				is_controlled_by = KAZ
+				is_core_of = MLV
+				is_controlled_by = ROM
+				is_controlled_by = SER
+				is_controlled_by = SOO
+				is_controlled_by = SOV
+				is_controlled_by = UKR
+				is_controlled_by = DPR
+				is_controlled_by = LPR
+				state = 812
+			}
+		  	NOT = { state = 1052 }
+		  	NOT = { state = 672 }
+		}
+		add_dynamic_modifier = { modifier = orthodox }
+	}
+
+	every_state = {
+		limit = {
+			NOT = { has_state_category = state_inhospitable }
+			NOT = { has_dynamic_modifier = { modifier = shinto } }
+			NOT = { has_dynamic_modifier = { modifier = confucian } }
+			NOT = { has_dynamic_modifier = { modifier = theravada } }
+			NOT = { has_dynamic_modifier = { modifier = vajrayana } }
+			NOT = { has_dynamic_modifier = { modifier = mahayana } }
+			NOT = { has_dynamic_modifier = { modifier = hindu } }
+			NOT = { has_dynamic_modifier = { modifier = sikh } }
+			NOT = { has_dynamic_modifier = { modifier = shia } }
+			NOT = { has_dynamic_modifier = { modifier = sunni } }
+			NOT = { has_dynamic_modifier = { modifier = ibadi } }
+			NOT = { has_dynamic_modifier = { modifier = orthodox } }
+			OR = {
+				is_controlled_by = ARM
+				is_controlled_by = ETH
+				is_controlled_by = NKR
+			}
+		}
+		add_dynamic_modifier = { modifier = coptic }
+	}
+
+	every_state = {
+		limit = {
+			NOT = { has_state_category = state_inhospitable }
+			NOT = { has_dynamic_modifier = { modifier = shinto } }
+			NOT = { has_dynamic_modifier = { modifier = confucian } }
+			NOT = { has_dynamic_modifier = { modifier = theravada } }
+			NOT = { has_dynamic_modifier = { modifier = vajrayana } }
+			NOT = { has_dynamic_modifier = { modifier = mahayana } }
+			NOT = { has_dynamic_modifier = { modifier = hindu } }
+			NOT = { has_dynamic_modifier = { modifier = sikh } }
+			NOT = { has_dynamic_modifier = { modifier = shia } }
+			NOT = { has_dynamic_modifier = { modifier = sunni } }
+			NOT = { has_dynamic_modifier = { modifier = ibadi } }
+			NOT = { has_dynamic_modifier = { modifier = orthodox } }
+			NOT = { has_dynamic_modifier = { modifier = coptic } }
+			state = 805
+		}
+		add_dynamic_modifier = { modifier = mormon }
+	}
+
+	every_state = {
+		limit = {
+			NOT = { has_state_category = state_inhospitable }
+			NOT = { has_dynamic_modifier = { modifier = shinto } }
+			NOT = { has_dynamic_modifier = { modifier = confucian } }
+			NOT = { has_dynamic_modifier = { modifier = theravada } }
+			NOT = { has_dynamic_modifier = { modifier = vajrayana } }
+			NOT = { has_dynamic_modifier = { modifier = mahayana } }
+			NOT = { has_dynamic_modifier = { modifier = hindu } }
+			NOT = { has_dynamic_modifier = { modifier = sikh } }
+			NOT = { has_dynamic_modifier = { modifier = shia } }
+			NOT = { has_dynamic_modifier = { modifier = sunni } }
+			NOT = { has_dynamic_modifier = { modifier = ibadi } }
+			NOT = { has_dynamic_modifier = { modifier = orthodox } }
+			NOT = { has_dynamic_modifier = { modifier = coptic } }
+			NOT = { has_dynamic_modifier = { modifier = mormon } }
+			is_controlled_by = ISR
+		}
+		add_dynamic_modifier = { modifier = jewish }
+	}
+
+	every_state = {
+		limit = {
+			NOT = { has_state_category = state_inhospitable }
+			NOT = { has_dynamic_modifier = { modifier = shinto } }
+			NOT = { has_dynamic_modifier = { modifier = confucian } }
+			NOT = { has_dynamic_modifier = { modifier = theravada } }
+			NOT = { has_dynamic_modifier = { modifier = vajrayana } }
+			NOT = { has_dynamic_modifier = { modifier = mahayana } }
+			NOT = { has_dynamic_modifier = { modifier = hindu } }
+			NOT = { has_dynamic_modifier = { modifier = sikh } }
+			NOT = { has_dynamic_modifier = { modifier = shia } }
+			NOT = { has_dynamic_modifier = { modifier = sunni } }
+			NOT = { has_dynamic_modifier = { modifier = ibadi } }
+			NOT = { has_dynamic_modifier = { modifier = orthodox } }
+			NOT = { has_dynamic_modifier = { modifier = coptic } }
+			NOT = { has_dynamic_modifier = { modifier = mormon } }
+			NOT = { has_dynamic_modifier = { modifier = jewish } }
+			OR = {
+				is_controlled_by = AST
+				is_controlled_by = BAH
+				is_controlled_by = BAR
+				is_controlled_by = BOT
+				is_controlled_by = CAN
+				is_controlled_by = CAR
+				is_controlled_by = DEN
+				is_controlled_by = ENG
+				is_controlled_by = EST
+				is_controlled_by = FIJ
+				is_controlled_by = FIN
+				is_controlled_by = GAH
+				is_controlled_by = GER
+				is_controlled_by = GRA
+				is_controlled_by = GUY
+				is_controlled_by = HOL
+				is_controlled_by = ICE
+				is_controlled_by = JAM
+				is_controlled_by = KEN
+				is_controlled_by = LAT
+				is_controlled_by = LES
+				is_controlled_by = LIB
+				is_controlled_by = MAR
+				is_controlled_by = MLW
+				is_controlled_by = MOZ
+				is_controlled_by = NAM
+				is_controlled_by = NAU
+				is_controlled_by = NIG
+				is_controlled_by = NZL
+				is_controlled_by = NRY
+				is_controlled_by = PAP
+				is_controlled_by = RAJ
+				is_controlled_by = SAF
+				is_controlled_by = SAM
+				is_controlled_by = SWA
+				is_controlled_by = SWE
+				is_controlled_by = STK
+				is_controlled_by = STV
+				is_controlled_by = SUR
+				is_controlled_by = TON
+				is_controlled_by = TNZ
+				is_controlled_by = TRI
+				is_controlled_by = USA
+				is_controlled_by = ZAM
+				is_controlled_by = ZIM
+				state = 301
+				state = 304
+				state = 306
+				state = 307
+				state = 313
+				state = 314
+				state = 316
+				state = 322
+				state = 636
+				state = 638
+				state = 1185
+		  	}
+		  	NOT = { state = 17 }
+		  	NOT = { state = 39 }
+		  	NOT = { state = 40 }
+		  	NOT = { state = 42 }
+		  	NOT = { state = 43 }
+		  	NOT = { state = 244 }
+		  	NOT = { state = 252 }
+		  	NOT = { state = 263 }
+		  	NOT = { state = 762 }
+		  	NOT = { state = 811 }
+		  	NOT = { state = 818 }
+		  	NOT = { state = 967 }
+		  	NOT = { state = 1159 }
+		  	NOT = { state = 1160 }
+		}
+		add_dynamic_modifier = { modifier = protestant }
+	}
+
+	every_state = {
+		limit = {
+			NOT = { has_state_category = state_inhospitable }
+			NOT = { has_dynamic_modifier = { modifier = shinto } }
+			NOT = { has_dynamic_modifier = { modifier = confucian } }
+			NOT = { has_dynamic_modifier = { modifier = theravada } }
+			NOT = { has_dynamic_modifier = { modifier = vajrayana } }
+			NOT = { has_dynamic_modifier = { modifier = mahayana } }
+			NOT = { has_dynamic_modifier = { modifier = hindu } }
+			NOT = { has_dynamic_modifier = { modifier = sikh } }
+			NOT = { has_dynamic_modifier = { modifier = shia } }
+			NOT = { has_dynamic_modifier = { modifier = sunni } }
+			NOT = { has_dynamic_modifier = { modifier = ibadi } }
+			NOT = { has_dynamic_modifier = { modifier = orthodox } }
+			NOT = { has_dynamic_modifier = { modifier = coptic } }
+			NOT = { has_dynamic_modifier = { modifier = mormon } }
+			NOT = { has_dynamic_modifier = { modifier = jewish } }
+			NOT = { has_dynamic_modifier = { modifier = protestant } }
+		}
+		add_dynamic_modifier = { modifier = christian }
+	}
+
+	every_country = {
+		limit = { 
+			capital_scope = {
+				has_dynamic_modifier = { modifier = confucian }
+			}
+		}
+		add_ideas = confucian
+	}
+
+	every_country = {
+		limit = { 
+			capital_scope = {
+				has_dynamic_modifier = { modifier = theravada }
+			}
+		}
+		add_ideas = theravada
+	}
+
+	every_country = {
+		limit = { 
+			capital_scope = {
+				has_dynamic_modifier = { modifier = vajrayana }
+			}
+		}
+		add_ideas = vajrayana
+	}
+
+	every_country = {
+		limit = { 
+			capital_scope = {
+				has_dynamic_modifier = { modifier = mahayana }
+			}
+		}
+		add_ideas = mahayana
+	}
+
+	every_country = {
+		limit = { 
+			capital_scope = {
+				has_dynamic_modifier = { modifier = coptic }
+			}
+		}
+		add_ideas = coptic
+	}
+
+	every_country = {
+		limit = { 
+			capital_scope = {
+				has_dynamic_modifier = { modifier = christian }
+			}
+		}
+		add_ideas = christian
+	}
+
+	every_country = {
+		limit = { 
+			capital_scope = {
+				has_dynamic_modifier = { modifier = protestant }
+			}
+		}
+		add_ideas = protestant
+	}
+
+	every_country = {
+		limit = { 
+			capital_scope = {
+				has_dynamic_modifier = { modifier = sunni }
+			}
+			NOT = { original_tag = SYR }
+		}
+		add_ideas = sunni
+	}
+
+
+
+
+
+
+
+
+
+
+# 并肩作战 (high_racial_integration)
+every_country = {
+	limit = {
+		original_tag = FRA
+	}
+	add_ideas = FRA_foreign_legion_integration
+}
+
+every_country = {
+	limit = {
+		OR = {
+			original_tag = ZIM
+			original_tag = ZAM
+			original_tag = YEM
+			original_tag = VIE
+			original_tag = VER
+			original_tag = VEN
+			original_tag = VAN
+			original_tag = UZB
+			original_tag = UGA
+			original_tag = TRI
+			original_tag = TOG
+			original_tag = TNZ
+			original_tag = SYR
+			original_tag = SWA
+			original_tag = SUR
+			original_tag = SUD
+			original_tag = SSU
+			original_tag = SRI
+			original_tag = SOM
+			original_tag = SIE
+			original_tag = SIA
+			original_tag = SEN
+			original_tag = SAO
+			original_tag = SAM
+			original_tag = RWA
+			original_tag = RAJ
+			original_tag = QAT
+			original_tag = PRU
+			original_tag = PHI
+			original_tag = PAR
+			original_tag = PAP
+			original_tag = PAN
+			original_tag = PAK
+			original_tag = OMA
+			original_tag = NIG
+			original_tag = NIC
+			original_tag = NGR
+			original_tag = NAM
+			original_tag = MRT
+			original_tag = MOZ
+			original_tag = MOR
+			original_tag = MLD
+			original_tag = MEX
+			original_tag = MAY
+			original_tag = MAU
+			original_tag = MAL
+			original_tag = MAD
+			original_tag = LIB
+			original_tag = LES
+			original_tag = LBA
+			original_tag = LAO
+			original_tag = KUW
+			original_tag = KEN
+			original_tag = JOR
+			original_tag = JAM
+			original_tag = IRQ
+			original_tag = IND
+			original_tag = HON
+			original_tag = HAI
+			original_tag = GUY
+			original_tag = GUI
+			original_tag = GUB
+			original_tag = GUA
+			original_tag = GAM
+			original_tag = GAB
+			original_tag = ETH
+			original_tag = ERI
+			original_tag = ELS
+			original_tag = EGY
+			original_tag = EGU
+			original_tag = ECU
+			original_tag = DRC
+			original_tag = DOM
+			original_tag = DJI
+			original_tag = COL
+			original_tag = CNG
+			original_tag = CDI
+			original_tag = CBD
+			original_tag = CAR
+			original_tag = CAM
+			original_tag = BUR
+			original_tag = BRU
+			original_tag = BRM
+			original_tag = BOT
+			original_tag = BOL
+			original_tag = BLZ
+			original_tag = BFA
+			original_tag = BEN
+			original_tag = BAN
+			original_tag = ALG
+			original_tag = ALB
+			original_tag = AGL
+			original_tag = AFG
+		}
+	}
+	add_ideas = population_pyramid_1
+}
+
+every_country = {
+	limit = {
+		OR = {
+			original_tag = AUS
+			original_tag = BEL
+			original_tag = DEN
+			original_tag = EST
+			original_tag = FIN
+			original_tag = GER
+			original_tag = GRE
+			original_tag = HOL
+			original_tag = ICE
+			original_tag = ITA
+			original_tag = LUX
+			original_tag = MLT
+			original_tag = NRY
+			original_tag = POR
+			original_tag = SIN
+			original_tag = SLV
+			original_tag = SPR
+			original_tag = SWE
+			original_tag = SWI
+			original_tag = TAI
+		}
+	}
+	add_ideas = population_pyramid_3
+}
+
+every_country = {
+	limit = {
+		OR = {
+			original_tag = JAP
+		}
+	}
+	add_ideas = JAP_aging_population_idea
+}
+
+every_country = {
+	limit = {
+		OR = {
+			original_tag = ALB
+			original_tag = BLR
+			original_tag = BUL
+			original_tag = CRO
+			original_tag = CZE
+			original_tag = GEO
+			original_tag = HUN
+			original_tag = KOS
+			original_tag = LAT
+			original_tag = LIT
+			original_tag = MLV
+			original_tag = PMR
+			original_tag = POL
+			original_tag = ROM
+			original_tag = SER
+			original_tag = SLO
+			original_tag = SOV
+			original_tag = UKR
+		}
+	}
+	add_ideas = SER_massive_emigration_problem
+}
+
+every_country = {
+	limit = {
+		OR = {
+			original_tag = USA
+		}
+	}
+	add_ideas = USA_medium_immigration_idea
+}
+
+every_country = {
+	limit = {
+		check_variable = { government_coalition_strength < majority_threshold }
+		has_elections = yes
+		OR = {
+			has_idea = law_parliamentary_system
+			has_idea = law_constitutional_monarchy
+		}
+	}
+	add_ideas = hung_parliament
+}
+
+
+
+
+
+
+
+
+
+
+
+
+	164 = { set_variable = { productivity_state_var = 619.865 } }
+	201 = { set_variable = { productivity_state_var = 483.734 } }
+	238 = { set_variable = { productivity_state_var = 306.075 } }
+	239 = { set_variable = { productivity_state_var = 306.075 } }
+	297 = { set_variable = { productivity_state_var = 351.456 } }
+	300 = { set_variable = { productivity_state_var = 351.456 } }
+	301 = { set_variable = { productivity_state_var = 351.456 } }
+	372 = { set_variable = { productivity_state_var = 341.800 } }
+	489 = { set_variable = { productivity_state_var = 343.731 } }
+	630 = { set_variable = { productivity_state_var = 605.132 } }
+	633 = { set_variable = { productivity_state_var = 613.551 } }
+	705 = { set_variable = { productivity_state_var = 552.288 } }
+	706 = { set_variable = { productivity_state_var = 552.288 } }
+	815 = { set_variable = { productivity_state_var = 982.917 } }
+	928 = { set_variable = { productivity_state_var = 306.075 } }
+			SYM={
+				add_state_core=198
+				add_state_core=199
+				add_state_core=200
+				add_state_core=196
+				add_state_core=194
+				add_state_core=1105
+			}
+			CHI = {
+				country_event = {
+					id = prc.411
+					days = 71
+				}
+				add_ideas = PRC_corrupt_bureaucracy_idea
+				set_temp_variable = { 
+					var = PRC_influence_cen_var_temp
+					value = 0.4
+				}
+				PRC_add_influence_cen = yes	
+				set_temp_variable = { 
+					var = PRC_influence_lib_var_temp
+					value = 0.15
+				}
+				PRC_add_influence_lib = yes	
+				set_temp_variable = { 
+					var = PRC_influence_nat_var_temp
+					value = 0.25
+				}
+				PRC_add_influence_nat = yes	
+				set_temp_variable = { 
+					var = PRC_influence_new_var_temp
+					value = 0.15
+				}
+				PRC_add_influence_new = yes
+			}
+
+	every_country = {
+		limit = { 
+			original_tag = CHI
+		}
+		set_temp_variable = { arms_ss_gain = 60 }
+		CHI_add_arms_self_sufficiency = yes
+	}
+
+	every_country = {
+				limit = { 
+					OR = { 
+						original_tag = FAO
+						original_tag = GRL
+						original_tag = MNT
+						original_tag = PTR
+						original_tag = STH
+						} 
+					}
+				add_ideas = Non_State_Actor
+			}
+	every_country = {
+		limit = { 
+			OR = { 
+				original_tag = GER
+				} 
+			}
+		remove_dynamic_modifier = { modifier = GER_Deutsche_Marine_modifier }
+		remove_dynamic_modifier = { modifier = GER_Luftwaffe_modifier }
+	}
+	
+
+	every_country = {
+				limit = { 
+					OR = { 
+						original_tag = NKO
+						} 
+					}
+				remove_ideas = Planned_Economy
+			}
+
+	every_country = {
+				limit = { 
+					OR = { 
+						original_tag = SOV
+						} 
+					}
+				add_ideas = g7_member
+			}
+
+	every_country = {
+				limit = { 
+					OR = { 
+						original_tag = TUN
+						original_tag = YEM
+						} 
+					}
+				remove_ideas = hybrid_regime_western
+			}
+
+	every_country = {
+				limit = { original_tag = ALG }
+				remove_ideas = hybrid_regime_emerging
+			}
+
+        595 = {
+            add_core_of = CHI
+            remove_dynamic_modifier = { modifier = CHI_HKG_sinicization_modifier }
+            }
+        1106 = {
+            add_core_of = CHI
+            remove_dynamic_modifier = { modifier = CHI_MAC_sinicization_modifier }
+        }
+        589 = {
+            add_core_of = CHI
+            force_enable_resistance = { clear = yes occupier = CHI }
+            cancel_resistance = yes
+            remove_dynamic_modifier = { modifier = CHI_TIB_sinicization_modifier }
+        }
+        592 = {
+            add_core_of = CHI
+            force_enable_resistance = { clear = yes occupier = CHI }
+            cancel_resistance = yes
+            remove_dynamic_modifier = { modifier = CHI_ETK_sinicization_modifier }
+        }
+        591 = {
+            add_core_of = CHI
+            force_enable_resistance = { clear = yes occupier = CHI }
+            cancel_resistance = yes
+            remove_dynamic_modifier = { modifier = CHI_ETK_sinicization_modifier }
+        }
+        556 = {
+            add_core_of = CHI
+            force_enable_resistance = { clear = yes occupier = CHI }
+            cancel_resistance = yes
+            remove_dynamic_modifier = { modifier = CHI_OMG_sinicization_modifier }
+        }
+        1097 = {
+            add_core_of = CHI
+            force_enable_resistance = { clear = yes occupier = CHI }
+            cancel_resistance = yes
+            remove_dynamic_modifier = { modifier = CHI_OMG_sinicization_modifier }
+        }
+            
+        CHI = { 
+            annex_country = { target = HKG }
+            annex_country = { target = MAC }
+        }
+
+		every_country = {
+			limit = { 
+				original_tag = FRA
+			}
+			946 = { remove_core_of = MNC }
+			946 = { add_core_of = FRA }
+			annex_country = {
+				target = MNC
+				transfer_troops = yes
+			}
+		}
+
+		every_country = {
+			limit = { 
+				original_tag = ITA
+			}
+			85 = { remove_core_of = MLT }
+			85 = { add_core_of = ITA }
+			85 = { add_dynamic_modifier = { modifier = micro_malta } }
+			annex_country = {
+				target = MLT
+				transfer_troops = yes
+			}
+			929 = { remove_core_of = HLS }
+			929 = { add_core_of = ITA }
+			929 = { add_dynamic_modifier = { modifier = micro_vatican_city } }
+			annex_country = {
+				target = HLS
+				transfer_troops = yes
+			}
+			948 = { remove_core_of = SMA }
+			948 = { add_core_of = ITA }
+			948 = { add_dynamic_modifier = { modifier = micro_san_marino } }
+			annex_country = {
+				target = SMA
+				transfer_troops = yes
+			}
+		}
+
+		every_country = {
+			limit = { 
+				original_tag = SPR
+			}
+			945 = { remove_core_of = ADO }
+			945 = { add_core_of = SPR }
+			945 = { add_dynamic_modifier = { modifier = micro_andorra } }
+			annex_country = {
+				target = ADO
+				transfer_troops = yes
+			}
+		}
+
+		every_country = {
+			limit = { 
+				original_tag = SWI
+			}
+			947 = { remove_core_of = LIC }
+			947 = { add_core_of = SWI }
+			947 = { add_dynamic_modifier = { modifier = micro_liechtenstein } }
+			annex_country = {
+				target = LIC
+				transfer_troops = yes
+			}
+		}
+
+		every_country = {
+			limit = { 
+				original_tag = SAF
+			}
+			271 = { remove_core_of = SWA }
+			271 = { add_core_of = SAF }
+			annex_country = {
+				target = SWA
+				transfer_troops = yes
+			}
+			272 = { remove_core_of = LES }
+			272 = { add_core_of = SAF }
+			annex_country = {
+				target = LES
+				transfer_troops = yes
+			}
+		}
+
+		every_country = {
+			limit = { 
+				original_tag = MAY
+			}
+			752 = { remove_core_of = BRU }
+			752 = { add_core_of = MAY }
+			annex_country = {
+				target = BRU
+				transfer_troops = yes
+			}
+		}
+
+		every_country = {
+			limit = { 
+				original_tag = SRI
+			}
+			480 = { remove_core_of = MLD }
+			480 = { add_core_of = SRI }
+			annex_country = {
+				target = MLD
+				transfer_troops = yes
+			}
+		}
+
+		every_country = {
+			limit = { 
+				original_tag = AST
+			}
+			533 = { remove_core_of = SOL }
+			941 = { remove_core_of = SOL }
+			533 = { add_core_of = AST }
+			annex_country = {
+				target = SOL
+				transfer_troops = yes
+			}
+			535 = { remove_core_of = FIJ }
+			535 = { add_core_of = AST }
+			annex_country = {
+				target = FIJ
+				transfer_troops = yes
+			}
+			543 = { remove_core_of = VAN }
+			543 = { add_core_of = AST }
+			annex_country = {
+				target = VAN
+				transfer_troops = yes
+			}
+			568 = { remove_core_of = TUL }
+			568 = { add_core_of = AST }
+			annex_country = {
+				target = TUL
+				transfer_troops = yes
+			}
+			569 = { remove_core_of = SAM }
+			569 = { add_core_of = AST }
+			annex_country = {
+				target = SAM
+				transfer_troops = yes
+			}
+			546 = { remove_core_of = KIR }
+			546 = { add_core_of = AST }
+			551 = { remove_core_of = KIR }
+			551 = { add_core_of = AST }
+			1116 = { remove_core_of = KIR }
+			1116 = { add_core_of = AST }
+			annex_country = {
+				target = KIR
+				transfer_troops = yes
+			}
+			819 = { remove_core_of = PAU }
+			819 = { add_core_of = AST }
+			annex_country = {
+				target = PAU
+				transfer_troops = yes
+			}
+			820 = { remove_core_of = MAR }
+			820 = { add_core_of = AST }
+			annex_country = {
+				target = MAR
+				transfer_troops = yes
+			}
+			821 = { remove_core_of = MIC }
+			821 = { add_core_of = AST }
+			annex_country = {
+				target = MIC
+				transfer_troops = yes
+			}
+			1115 = { remove_core_of = TON }
+			1115 = { add_core_of = AST }
+			annex_country = {
+				target = TON
+				transfer_troops = yes
+			}
+			1117 = { remove_core_of = NAU }
+			1117 = { add_core_of = AST }
+			annex_country = {
+				target = NAU
+				transfer_troops = yes
+			}
+		}
+
+		every_country = {
+			limit = { 
+				original_tag = BAR
+			}
+			863 = { remove_core_of = STK }
+			863 = { add_core_of = BAR }
+			annex_country = {
+				target = STK
+				transfer_troops = yes
+			}
+			864 = { remove_core_of = STL }
+			864 = { add_core_of = BAR }
+			annex_country = {
+				target = STL
+				transfer_troops = yes
+			}
+			866 = { remove_core_of = STV }
+			866 = { add_core_of = BAR }
+			annex_country = {
+				target = STV
+				transfer_troops = yes
+			}
+			867 = { remove_core_of = DMI }
+			867 = { add_core_of = BAR }
+			annex_country = {
+				target = DMI
+				transfer_troops = yes
+			}
+			868 = { remove_core_of = GRA }
+			868 = { add_core_of = BAR }
+			annex_country = {
+				target = GRA
+				transfer_troops = yes
+			}
+			869 = { remove_core_of = TRI }
+			869 = { add_core_of = BAR }
+			annex_country = {
+				target = TRI
+				transfer_troops = yes
+			}
+			1210 = { remove_core_of = ANT }
+			1210 = { add_core_of = BAR }
+			annex_country = {
+				target = ANT
+				transfer_troops = yes
+			}
+		}
+		}
+	}
+}

@@ -1,0 +1,37 @@
+# ============================================================================
+# 东方支援连/排技术门控（第十轮）
+# ============================================================================
+# 说明：
+# 1. 东方阵营的 6 个支援连/排（炮兵/反坦克/防空/侦察/工兵/陆航）在
+#    ZZ_eastern_support_companies.txt 中已设为 active = no，本文件作为
+#    enable_subunits 挂载点；
+# 2. 无 folder → 不进科技树、玩家不可见、AI 不研究，仅由
+#    ZZ6 - startup.txt 的 set_technology 按国发放；
+# 3. 发放对象（16 东方国）：SOV CHI NKO UKR BLR KAZ UZB ARM AZE GEO
+#    SYR IRQ PER VIE BRM CUB。
+# ============================================================================
+
+technologies = {
+
+	# ---- 东方支援连/排（6 类）----
+	# 发放国（16）：SOV CHI NKO UKR BLR KAZ UZB ARM AZE GEO SYR IRQ PER VIE BRM CUB
+	zz_eastern_support_tech = {
+		research_cost = 1
+		start_year = 2000
+		allow = {
+			always = yes
+		}
+		enable_subunits = {
+			E_Arty_Comp
+			E_AT_Comp
+			E_AA_Comp
+			E_Recce_Comp
+			E_Engi_Comp
+			E_Helo_Comp
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+}

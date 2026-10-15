@@ -1,0 +1,691 @@
+shared_focus = {
+	id = AST_war_beyond_the_seas
+	icon = GFX_focus_AST_war_beyond_the_seas
+	x = 27
+	y = 5
+	cost = 5
+	available_if_capitulated = yes
+	ai_will_do = {
+		factor = 1000
+	}
+	available = {
+		always = no
+	}
+	allow_branch = {
+		has_global_flag = pan_asian_war_ongoing
+		NOT = {
+			is_ally_with = CHI
+			has_country_flag = GAW_disabled
+		}
+	}
+	completion_reward = {
+	}
+}
+shared_focus = {
+	id = AST_secure_the_indian_ocean
+	icon = GFX_focus_AST_secure_the_indian_ocean
+	x = -4
+	y = 1
+	cost = 4.3
+	available_if_capitulated = yes
+	relative_position_id = AST_war_beyond_the_seas
+	ai_will_do = {
+		factor = 100
+	}
+	prerequisite = {
+		focus = AST_war_beyond_the_seas
+	}
+	available = {
+		has_manpower > 17999
+		has_equipment = { Inf_equipment > 5999 }
+		has_equipment = { cnc_equipment > 719 }
+		has_equipment = { AA_Equipment > 191 }
+		has_equipment = { L_AT_Equipment > 287 }
+	}
+	completion_reward = {
+		746 = {
+			add_extra_state_shared_building_slots = 3
+			add_building_construction = {
+				type = dockyard
+				level = 3
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = naval_base
+				level = 5
+				province = 1652
+				instant_build = yes
+			}
+		}
+		749 = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = dockyard
+				level = 1
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = naval_base
+				level = 3
+				province = 13002
+				instant_build = yes
+			}
+		}
+		748 = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = dockyard
+				level = 1
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = naval_base
+				level = 3
+				province = 13005
+				instant_build = yes
+			}
+		}
+		custom_effect_tooltip = AST_secure_the_indian_ocean_tt
+		hidden_effect = {
+			damage_units = {
+				state = 481
+				damage = 0.3
+				org_damage = 0.3
+				str_damage = 0.3
+				ratio = yes
+				army = yes
+				navy = no
+			}
+			damage_units = {
+				state = 482
+				damage = 0.3
+				org_damage = 0.3
+				str_damage = 0.3
+				ratio = yes
+				army = yes
+				navy = no
+			}
+			damage_units = {
+				state = 483
+				damage = 0.3
+				org_damage = 0.3
+				str_damage = 0.3
+				ratio = yes
+				army = yes
+				navy = no
+			}
+			load_oob = AST_sri_lanka
+		}
+	}
+	ai_will_do = {
+		factor = 1000
+	}
+}
+shared_focus = {
+	id = AST_south_china_sea_excursion
+	icon = GFX_focus_AST_south_china_sea_excursion
+	x = -4
+	y = 3
+	cost = 4.3
+	available_if_capitulated = yes
+	relative_position_id = AST_war_beyond_the_seas
+	ai_will_do = {
+		factor = 100
+	}
+	prerequisite = {
+		focus = AST_secure_the_indian_ocean
+	}
+	available = {
+	}
+	completion_reward = {
+		custom_effect_tooltip = AST_south_china_sea_excursion_tt
+		add_timed_idea = {
+			idea = AST_south_china_sea_excursion_idea
+			days = 100
+		}
+		hidden_effect = {
+			add_manpower = -3050
+			load_oob = AST_south_china_excursion_fleet
+		}
+	}
+	ai_will_do = {
+		factor = 1000
+	}
+}
+shared_focus = {
+	id = AST_support_the_sea_defensive_effort
+	icon = GFX_focus_AST_support_the_sea_defensive_effort
+	x = -2
+	y = 1
+	cost = 4.3
+	available_if_capitulated = yes
+	relative_position_id = AST_war_beyond_the_seas
+	ai_will_do = {
+		factor = 100
+	}
+	prerequisite = {
+		focus = AST_war_beyond_the_seas
+	}
+	available = {
+	}
+	completion_reward = {
+		custom_effect_tooltip = AST_support_the_sea_defensive_effort_tt
+		every_country = {
+			limit = {
+				OR = {
+					original_tag = BRM
+					original_tag = SIA
+					original_tag = LAO
+					original_tag = VIE
+					original_tag = CBD
+					original_tag = PHI
+					original_tag = MAY
+					original_tag = IND
+				}
+				is_ally_with = AST
+			}
+			add_offsite_building = {
+				type = arms_factory
+				level = 2
+			}
+			add_offsite_building = {
+				type = dockyard
+				level = 2
+			}
+			add_offsite_building = {
+				type = industrial_complex
+				level = 1
+			}
+		}
+		add_offsite_building = {
+			type = arms_factory
+			level = 1
+		}
+	}
+	ai_will_do = {
+		factor = 1000
+	}
+}
+shared_focus = {
+	id = AST_invoke_the_defence_act
+	icon = GFX_focus_AST_invoke_the_defence_act
+	x = 0
+	y = 1
+	cost = 4.3
+	available_if_capitulated = yes
+	relative_position_id = AST_war_beyond_the_seas
+	ai_will_do = {
+		factor = 200
+	}
+	prerequisite = {
+		focus = AST_war_beyond_the_seas
+	}
+	available = {
+	}
+	completion_reward = {
+		add_ideas = AST_invoked_defense_act_idea
+		hidden_effect = {
+			add_ideas = defence_07
+			add_ideas = partial_draft_army
+		}
+	}
+	ai_will_do = {
+		factor = 1000
+	}
+}
+shared_focus = {
+	id = AST_kickstart_the_defence_industry
+	icon = GFX_focus_AST_kickstart_the_defence_industry
+	x = -1
+	y = 2
+	cost = 4.3
+	available_if_capitulated = yes
+	relative_position_id = AST_war_beyond_the_seas
+	ai_will_do = {
+		factor = 100
+	}
+	prerequisite = {
+		focus = AST_invoke_the_defence_act
+	}
+	available = {
+	}
+	completion_reward = {
+		random_owned_controlled_state = {
+			limit = {
+				is_core_of = ROOT
+				state_population > 500000
+				free_building_slots = {
+					building = arms_factory
+					size > 1
+					include_locked = yes
+				}
+			}
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = arms_factory
+				level = 2
+				instant_build = yes
+			}
+		}
+		random_owned_controlled_state = {
+			limit = {
+				is_core_of = ROOT
+				state_population > 500000
+				free_building_slots = {
+					building = arms_factory
+					size > 1
+					include_locked = yes
+				}
+			}
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = arms_factory
+				level = 2
+				instant_build = yes
+			}
+		}
+		random_owned_controlled_state = {
+			limit = {
+				is_core_of = ROOT
+				state_population > 500000
+				free_building_slots = {
+					building = arms_factory
+					size > 1
+					include_locked = yes
+				}
+			}
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = arms_factory
+				level = 1
+				instant_build = yes
+			}
+		}
+		random_owned_controlled_state = {
+			limit = {
+				is_core_of = ROOT
+				state_population > 500000
+				free_building_slots = {
+					building = arms_factory
+					size > 1
+					include_locked = yes
+				}
+			}
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = arms_factory
+				level = 1
+				instant_build = yes
+			}
+		}
+		set_temp_variable = {
+			treasury_change = -50
+		}
+		modify_treasury_effect = yes
+	}
+	ai_will_do = {
+		factor = 1000
+	}
+}
+shared_focus = {
+	id = AST_deploy_long_range_naval_weaponry
+	icon = GFX_focus_AST_deploy_long_range_naval_weaponry
+	x = -2
+	y = 3
+	cost = 4.3
+	available_if_capitulated = yes
+	relative_position_id = AST_war_beyond_the_seas
+	ai_will_do = {
+		factor = 100
+	}
+	prerequisite = {
+		focus = AST_operation_cuppa
+	}
+	prerequisite = {
+		focus = AST_kickstart_the_defence_industry
+	}
+	available = {
+	}
+	completion_reward = {
+		navy_experience = 50
+		add_doctrine_cost_reduction = {
+			cost_reduction = 0.5
+			uses = 2
+			category = CAT_naval_doctrine
+		}
+		add_ideas = AST_enhanced_long_range_naval_weaponry_idea
+	}
+	ai_will_do = {
+		factor = 1000
+	}
+}
+shared_focus = {
+	id = AST_support_indian_operations
+	icon = GFX_focus_AST_support_indian_operations
+	x = -1
+	y = 4
+	cost = 4.3
+	available_if_capitulated = yes
+	relative_position_id = AST_war_beyond_the_seas
+	ai_will_do = {
+		factor = 100
+	}
+	prerequisite = {
+		focus = AST_secure_the_indian_ocean
+	}
+	prerequisite = {
+		focus = AST_support_the_sea_defensive_effort
+	}
+	prerequisite = {
+		focus = AST_australian_expeditionary_forces
+	}
+	available = {
+		462 = {
+			is_controlled_by_ROOT_or_ally = yes
+		}
+	}
+	bypass = {
+		NOT = {
+			is_ally_with = RAJ
+		}
+	}
+	completion_reward = {
+		add_manpower = -16280
+		custom_effect_tooltip = AST_support_indian_operations_tt
+		army_experience = 35
+		RAJ = {
+			add_ideas = AST_RAJ_australian_assistance_in_military_operations_idea
+		}
+		hidden_effect = {
+			division_template = {			
+				name = "Australian Shock Brigade"
+				priority = 2
+				regiments = {
+				    Mech_Inf_Bat = { x = 0 y = 0 }
+					Mech_Inf_Bat = { x = 0 y = 1 }
+					Mech_Inf_Bat = { x = 1 y = 0 }
+					Mech_Inf_Bat = { x = 1 y = 1 }
+					SP_Arty_Bat = { x = 2 y = 0 }
+					SP_Arty_Bat = { x = 2 y = 1 }
+			    }
+				support = {
+					L_Recce_Comp = { x = 0 y = 0 }
+					H_Engi_Comp = { x = 0 y = 1 }
+					Arty_Battery = { x = 0 y = 2 }
+					SP_AA_Battery = { x = 0 y = 3 }
+				}
+			}
+			462 = {
+	    		create_unit = {
+					division = "division_template = \"Australian Shock Brigade\" start_experience_factor = 0.6 start_equipment_factor = 0.01"
+					owner = ROOT
+					count = 4
+				}
+			}
+		}
+	}
+	ai_will_do = {
+		factor = 1000
+	}
+}
+shared_focus = {
+	id = AST_australian_expeditionary_forces
+	icon = GFX_focus_AST_australian_expeditionary_forces
+	x = 0
+	y = 3
+	cost = 4.3
+	available_if_capitulated = yes
+	relative_position_id = AST_war_beyond_the_seas
+	ai_will_do = {
+		factor = 200
+	}
+	prerequisite = {
+		focus = AST_invoke_the_defence_act
+	}
+	available = {
+	}
+	completion_reward = {
+		add_ideas = AST_australian_expeditionary_forces_idea
+	}
+	ai_will_do = {
+		factor = 1000
+	}
+}
+shared_focus = {
+	id = AST_protecting_australian_shores
+	icon = GFX_focus_AST_protecting_australian_shores
+	x = 1
+	y = 2
+	cost = 4.3
+	available_if_capitulated = yes
+	relative_position_id = AST_war_beyond_the_seas
+	ai_will_do = {
+		factor = 100
+	}
+	prerequisite = {
+		focus = AST_invoke_the_defence_act
+	}
+	available = {
+		747 = {
+			is_fully_controlled_by = AST
+		}
+		741 = {
+			is_fully_controlled_by = AST
+		}
+		1221 = {
+			is_fully_controlled_by = AST
+		}
+	}
+	bypass = {
+		OR = {
+			NOT = {
+				747 = {
+					is_fully_controlled_by = AST
+				}
+			}
+			NOT = {
+				741 = {
+					is_fully_controlled_by = AST
+				}
+			}
+			NOT = {
+				1221 = {
+					is_fully_controlled_by = AST
+				}
+			}
+		}
+	}
+	completion_reward = {
+		add_stability = 0.1
+		add_war_support = 0.05
+		custom_effect_tooltip = AST_protecting_australian_shores_tt
+		747 = {
+			add_building_construction = {
+				type = coastal_bunker
+				level = 3
+				instant_build = yes
+				province = 7669
+			}
+		}
+		741 = {
+			add_building_construction = {
+				type = coastal_bunker
+				level = 3
+				instant_build = yes
+				province = 7566
+			}
+			add_building_construction = {
+				type = coastal_bunker
+				level = 3
+				instant_build = yes
+				province = 7564
+			}
+		}
+		1221 = {
+			add_building_construction = {
+				type = coastal_bunker
+				level = 3
+				instant_build = yes
+				province = 4864
+			}
+			add_building_construction = {
+				type = coastal_bunker
+				level = 3
+				instant_build = yes
+				province = 12406
+			}
+			add_building_construction = {
+				type = coastal_bunker
+				level = 3
+				instant_build = yes
+				province = 7520
+			}
+		}
+		hidden_effect = {
+			load_oob = AST_coastal_brigades
+		}
+	}
+	ai_will_do = {
+		factor = 1000
+	}
+}
+shared_focus = {
+	id = AST_oceanian_forward_operating_bases
+	icon = GFX_focus_AST_oceanian_forward_operating_bases
+	x = 2
+	y = 3
+	cost = 4.3
+	available_if_capitulated = yes
+	relative_position_id = AST_war_beyond_the_seas
+	ai_will_do = {
+		factor = 100
+	}
+	prerequisite = {
+		focus = AST_protecting_australian_shores
+	}
+	available = {
+	}
+	completion_reward = {
+		747 = {
+			add_building_construction = {
+				type = naval_base
+				level = 2
+				province = 7669
+				instant_build = yes
+			}
+		}
+		741 = {
+			add_building_construction = {
+				type = naval_base
+				level = 2
+				province = 7566
+				instant_build = yes
+			}
+		}
+		add_ideas = AST_oceanian_forward_operating_bases_idea
+	}
+	ai_will_do = {
+		factor = 1000
+	}
+}
+shared_focus = {
+	id = AST_prepare_to_assist_japanese_operations
+	icon = GFX_focus_AST_prepare_to_assist_japanese_operations
+	x = 1
+	y = 4
+	cost = 4.3
+	available_if_capitulated = yes
+	relative_position_id = AST_war_beyond_the_seas
+	ai_will_do = {
+		factor = 200
+	}
+	prerequisite = {
+		focus = AST_australian_expeditionary_forces
+	}
+	available = {
+		615 = {
+			is_controlled_by_ROOT_or_ally = yes
+		}
+	}
+	completion_reward = {
+		add_manpower = -20880
+		custom_effect_tooltip = AST_prepare_to_assist_japanese_operations_tt
+		army_experience = 20
+		JAP = {
+			add_ideas = AST_JAP_australian_assistance_in_military_operations_idea
+		}
+		hidden_effect = {
+			division_template = {			
+				name = "Gaijin Marines Brigade"
+				priority = 2
+				regiments = {
+				    L_Marine_Bat = { x = 0 y = 0 }
+					L_Marine_Bat = { x = 0 y = 1 }
+					L_Marine_Bat = { x = 0 y = 2 }
+					L_Marine_Bat = { x = 1 y = 0 }
+					L_Marine_Bat = { x = 1 y = 1 }
+					L_Marine_Bat = { x = 1 y = 2 }
+					SP_Arty_Bat = { x = 2 y = 0 }
+					SP_Arty_Bat = { x = 2 y = 1 }
+					Mech_Marine_Bat = { x = 3 y = 0 }
+					Mech_Marine_Bat = { x = 3 y = 1 }
+			    }
+				support = {
+					L_Recce_Comp = { x = 0 y = 0 }
+					L_Engi_Comp = { x = 0 y = 1 }
+					Arty_Battery = { x = 0 y = 2 }
+					SP_AA_Battery = { x = 0 y = 3 }
+				}
+			}
+			615 = {
+	    		create_unit = {
+					division = "division_template = \"Gaijin Marines Brigade\" start_experience_factor = 0.6 start_equipment_factor = 0.01"
+					owner = ROOT
+					count = 3
+				}
+			}
+		}
+	}
+	ai_will_do = {
+		factor = 1000
+	}
+}
+shared_focus = {
+	id = AST_taking_the_dragon_down_unda
+	icon = GFX_focus_AST_taking_the_dragon_down_unda
+	x = 0
+	y = 5
+	cost = 4.3
+	available_if_capitulated = yes
+	relative_position_id = AST_war_beyond_the_seas
+	ai_will_do = {
+		factor = 100
+	}
+	prerequisite = {
+		focus = AST_focus_on_the_defence_of_taiwan
+		focus = AST_prepare_to_assist_japanese_operations
+	}
+	prerequisite = {
+		focus = AST_australian_expeditionary_forces
+	}
+	prerequisite = {
+		focus = AST_oceanian_forward_operating_bases
+	}
+	prerequisite = {
+		focus = AST_support_indian_operations
+	}
+	available = {
+		CHI = {
+			surrender_progress > 0.05
+		}
+	}
+	completion_reward = {
+		add_timed_idea = {
+			idea = AST_the_final_blow_idea
+			days = 80
+		}
+	}
+	ai_will_do = {
+		factor = 1000
+	}
+}

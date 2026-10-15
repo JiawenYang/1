@@ -1,0 +1,713 @@
+﻿
+division_template = {
+	name = "Infantry Division"
+
+	regiments = {
+		Mot_Inf_Bat = { x = 0 y = 0 }
+		Mot_Inf_Bat = { x = 0 y = 1 }
+		Mot_Inf_Bat = { x = 0 y = 2 }
+		Mot_Inf_Bat = { x = 0 y = 3 }
+		Mot_Inf_Bat = { x = 0 y = 3 }
+		Mot_Inf_Bat = { x = 0 y = 4 }
+		Mot_Inf_Bat = { x = 1 y = 0 }
+		Mot_Inf_Bat = { x = 1 y = 1 }
+		Mot_Inf_Bat = { x = 1 y = 2 }
+		Mot_Inf_Bat = { x = 1 y = 3 }
+		Mot_Inf_Bat = { x = 1 y = 4 }
+		Mot_Inf_Bat = { x = 2 y = 0 }
+		Mot_Inf_Bat = { x = 2 y = 1 }
+		L_Inf_Bat = { x = 2 y = 2 }
+		Arty_Bat = { x = 3 y = 0 }
+		Arty_Bat = { x = 3 y = 1 }
+		Arty_Bat = { x = 3 y = 2 }
+		Arty_Bat = { x = 3 y = 3 }
+	}
+
+	support = {
+		armor_Comp = { x = 0 y = 0 }
+	}
+}
+
+division_template = {
+	name = "Mechanized Division"
+
+	regiments = {
+		armor_Bat = { x = 0 y = 0 }
+		armor_Bat = { x = 0 y = 1 }
+		armor_Bat = { x = 0 y = 2 }
+		armor_Bat = { x = 0 y = 3 }
+		SP_AA_Bat = { x = 0 y = 4 }
+
+		Mech_Inf_Bat = { x = 1 y = 0 }
+		Mech_Inf_Bat = { x = 1 y = 1 }
+		Mech_Inf_Bat = { x = 1 y = 2 }
+		Mech_Inf_Bat = { x = 1 y = 3 }
+
+		Mech_Inf_Bat = { x = 2 y = 0 }
+		Mech_Inf_Bat = { x = 2 y = 1 }
+		Mech_Inf_Bat = { x = 2 y = 2 }
+
+		SP_Arty_Bat = { x = 3 y = 0 }
+		SP_Arty_Bat = { x = 3 y = 1 }
+		SP_Arty_Bat = { x = 3 y = 2 }
+		SP_Arty_Bat = { x = 3 y = 3 }
+	}
+	support = {
+		H_Engi_Comp = { x = 0 y = 0 }
+		armor_Comp = { x = 0 y = 1 }
+		Arty_Battery = { x = 0 y = 2 }
+		SP_AA_Battery = { x = 0 y = 3 }
+		armor_Recce_Comp = { x = 0 y = 4 }
+	}
+}
+
+division_template = {
+	name = "Armored Regiment"
+
+	regiments = {
+		armor_Bat = { x = 0 y = 0 }
+		Mech_Inf_Bat = { x = 0 y = 1 }
+		SP_Arty_Bat = { x = 0 y = 2 }
+		}
+
+	support = {
+		H_Engi_Comp = { x = 0 y = 0 }
+		armor_Comp = { x = 0 y = 1 }
+		SP_AA_Battery = { x = 0 y = 2 }
+	}
+}
+
+division_template = {
+	name = "Armored Brigade"
+
+	regiments = {
+		armor_Bat = { x = 0 y = 0 }
+		armor_Bat = { x = 0 y = 1 }
+		Arm_Inf_Bat = { x = 0 y = 2 }
+		Arm_Inf_Bat = { x = 0 y = 3 }
+		Mech_Inf_Bat = { x = 1 y = 0 }
+		SP_Arty_Bat = { x = 1 y = 1 }
+		SP_Arty_Bat = { x = 1 y = 2 }
+
+	}
+
+	support = {
+		H_Engi_Comp = { x = 0 y = 0 }
+	}
+}
+
+division_template = {
+	name = "Naval Infantry Brigade"
+
+	regiments = {
+	Mech_Marine_Bat = { x = 0 y = 0 }
+	Mot_Marine_Bat = { x = 1 y = 0 }
+	Mot_Marine_Bat = { x = 1 y = 1 }
+	Mot_Marine_Bat = { x = 1 y = 2 }
+	L_arm_Bat = { x = 2 y = 0 }
+	SP_Arty_Bat = { x = 3 y = 0 }
+	}
+}
+
+division_template = {
+	name = "Special Forces Brigade"
+
+	regiments = {
+		L_Air_Inf_Bat = { x = 0 y = 0 }
+		L_Air_Inf_Bat = { x = 0 y = 1 }
+		L_Air_Inf_Bat = { x = 0 y = 2 }
+		L_Air_Inf_Bat = { x = 0 y = 3 }
+		L_Air_Inf_Bat = { x = 0 y = 4 }
+	}
+}
+
+#UNITS#
+
+units = {
+#Binh đoàn Quyết thắng. It is stationed in Tam Điệp District, Ninh Bình
+
+#308th Infantry Division.  Ha Noi $
+
+	#Sư đoàn 308
+	division = {
+		name = "308th Division"
+		location = 10129
+		division_template = "Infantry Division"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.01
+	}
+
+#312th Infantry Division. Thai Nguyen $
+
+	#sư đoàn bộ binh 312
+	division = {
+		name = "312th Victory Division"
+		location = 12048
+		division_template = "Infantry Division"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.01
+	}
+
+#390th Infantry Division Thanh Hoa $
+
+	#Sư đoàn 390
+	division = {
+		name = "390th Division"
+		location = 11936
+		division_template = "Infantry Division"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.01
+	}
+
+
+
+#202nd Tank Brigade  Ninh Binh$
+
+	division = {
+		name = "202nd Tank Brigade"
+		location = 1185
+		division_template = "Armored Brigade"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.01
+	}
+
+
+#2nd Corps - Binh đoàn Hương Giang.Stationed in Lạng Giang District, Bắc Giang.
+
+
+#304th Division
+
+	#Sư đoàn 304th
+	division = {
+		name = "304th Division"
+		location = 7015
+		division_template = "Infantry Division"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.01
+	}
+
+#306th Infantry Division
+	#sư đoàn bộ binh 306th
+	division = {
+		name = "306th Division"
+		location = 7015
+		division_template = "Infantry Division"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.01
+	}
+
+#325th Division
+#Sư đoàn 390
+	division = {
+		name = "325th Division"
+		location = 7015
+		division_template = "Infantry Division"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.01
+	}
+
+# 	203rd Tank Brigade
+	division = {
+		name = "203rd Tank Brigade"
+		location = 7015
+		division_template = "Armored Brigade"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.01
+	}
+
+#3rd Corps - Binh đoàn Tây Nguyên. Stationed in Pleiku, Gia Lai.
+
+# 10th Infantry Division
+#sư đoàn bộ binh 10th
+	division = {
+		name = "10th Infantry Division"
+		location = 4363
+		division_template = "Infantry Division"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.01
+	}
+
+# 31st Infantry Division
+	#sư đoàn bộ binh 31st
+	division = {
+		name = "31st Infantry Division"
+		location = 4363
+		division_template = "Infantry Division"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.01
+	}
+
+# 320th Infantry Division
+	#sư đoàn bộ binh 320th
+	division = {
+		name = "320th Infantry Division"
+		location = 4363
+		division_template = "Infantry Division"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.01
+	}
+
+
+# 198th Special Force Sapper Regiment
+#lính biệt động quân 198th
+	division = {
+		name = "198th Commando Regiment"
+		location = 4363
+		division_template = "Special Forces Brigade"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.01
+	}
+
+
+# 273rd Tank Regiment
+	division = {
+		name = "273rd Tank Brigade"
+		location = 4363
+		division_template = "Armored Brigade"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.01
+	}
+
+#4th Corps - Binh đoàn Cửu Long. Stationed in Dĩ An, Bình Dương
+
+
+# 7th Infantry Division
+
+	#sư đoàn bộ binh 7th
+	division = {
+		name = "7th Infantry Division"
+		location = 4401
+		division_template = "Infantry Division"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.01
+	}
+
+# 9th Infantry Division
+
+	#sư đoàn bộ binh 31st
+	division = {
+		name = "9th Infantry Division"
+		location = 4401
+		division_template = "Infantry Division"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.01
+	}
+
+# 309th Infantry Division
+	#sư đoàn bộ binh 324th
+	division = {
+		name = "324th Infantry Division"
+		location = 4401
+		division_template = "Infantry Division"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.01
+	}
+
+# 22 Armored Brigade
+	division = {
+		name = "22nd Tank Brigade"
+		location = 4401
+		division_template = "Armored Brigade"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.01
+	}
+
+# 	429th Special Force Regiment
+
+	#lính biệt động quân 429th
+	division = {
+		name = "429th Commando Regiment"
+		location = 4401
+		division_template = "Special Forces Brigade"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.01
+	}
+
+# Divisions in the Military Balance Book but not located #
+
+	division = {
+		name = "1st Infantry Division"
+		location = 12065
+		division_template = "Infantry Division"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.01
+	}
+
+
+	division = {
+		name = "2nd Infantry Division"
+		location = 4119
+		division_template = "Infantry Division"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "3rd Infantry Division"
+		location = 7518
+		division_template = "Infantry Division"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "4th Infantry Division"
+		location = 12319
+		division_template = "Infantry Division"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "5th Infantry Division"
+		location = 12008
+		division_template = "Infantry Division"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "6th Infantry Division"
+		location = 10129
+		division_template = "Infantry Division"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "7th Infantry Division"
+		location = 10129
+		division_template = "Infantry Division"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "8th Infantry Division"
+		location = 10129
+		division_template = "Infantry Division"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "9th Infantry Division"
+		location = 10129
+		division_template = "Infantry Division"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "324th Infantry Division"
+		location = 10129
+		division_template = "Infantry Division"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.01
+	}
+
+
+	# Mechanized #
+
+	division = {
+		name = "1st Mechanized Division"
+		location = 1157
+		division_template = "Mechanized Division"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "2nd Mechanized Division"
+		location = 1073
+		division_template = "Mechanized Division"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.01
+	}
+
+	# Tanks #
+
+		division = {
+		name = "1st Tank Brigade"
+		location = 9948
+		division_template = "Armored Brigade"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.01
+	}
+
+		division = {
+		name = "2nd Tank Brigade"
+		location = 7093
+		division_template = "Armored Brigade"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.01
+	}
+
+
+	# Marines #
+	division = {
+		name = "Paracel Islands Response Force"
+		location = 10309
+		division_template = "Naval Infantry Brigade"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "South China Sea Force"
+		location = 10309
+		division_template = "Naval Infantry Brigade"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.01
+	}
+}
+
+instant_effect = {
+
+	### Aircraft
+	add_equipment_to_stockpile = {
+		variant_name = "Mi-24"
+		type = heavy_tank_chassis_0 #Mi-24
+		amount = 28
+		producer = SOV
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Mi-8"
+		type = transport_helicopter_1 #Mi-8
+		amount = 14
+		producer = SOV
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Mi-17"
+		type = transport_helicopter_1 #Mil Mi-17
+		amount = 3
+		producer = SOV
+		#version_name = "Mil Mi-17"
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "UH-1 Iroquois"
+		type = transport_helicopter_1 #Bell UH-1 Iroquois
+		amount = 11
+		producer = USA
+	}
+	#Land Equipment
+	add_equipment_to_stockpile = {
+		variant_name = "T-55"
+		type = medium_tank_chassis_0 #T-55
+		amount = 850
+		producer = SOV
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "T-54/T-55"
+		type = medium_tank_chassis_0 #T-54/T-55（封存）
+		amount = 900
+		producer = SOV
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "T-62"
+		type = medium_tank_chassis_0 #T-62
+		amount = 70
+		producer = SOV
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "T-62"
+		type = medium_tank_chassis_0 #T-62（封存）
+		amount = 100
+		producer = SOV
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Type-59"
+		type = medium_tank_chassis_0 #Type 59 China tank
+		amount = 350
+		producer = CHI
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "PT-76"
+		type = medium_tank_destroyer_chassis_0 #PT-76
+		amount = 300
+		producer = SOV
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Type-62"
+		type = medium_tank_destroyer_chassis_0 #Type 62 China
+		producer = CHI
+		amount = 320
+		#version_name = "Type 62"
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "BRDM-2"
+		type = medium_tank_destroyer_chassis_0 #BRDM-2
+		amount = 100
+		producer = SOV
+		#version_name = "BRDM-2"
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "BMP-1"
+		type = medium_tank_flame_chassis_0 #BMP-1
+		amount = 150
+		producer = SOV
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "BMP-2"
+		type = medium_tank_flame_chassis_1 #BMP-2
+		amount = 150
+		producer = SOV
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "M113"
+		type = medium_tank_amphibious_chassis_1 #M113
+		amount = 200
+		producer = USA
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Type-63"
+		type = medium_tank_amphibious_chassis_0 #Type 63
+		amount = 80
+		producer = CHI
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "BTR-60"
+		type = medium_tank_amphibious_chassis_0 #BTR-60
+		amount = 1100
+		producer = SOV
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "2S3"
+		type = medium_tank_artillery_chassis_0 #2S3
+		amount = 122
+		producer = SOV
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "M107"
+		type = medium_tank_artillery_chassis_0 #M107
+		amount = 22
+		producer = USA
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Type-63"
+		type = medium_tank_rocket_chassis_0 #Type 63 Rocket
+		amount = 22
+		producer = CHI
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "BM-21"
+		type = medium_tank_rocket_chassis_0 #BM-21
+		amount = 350
+		producer = SOV
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "M102"
+		type = artillery_1 #M102
+		amount = 1400
+		producer = USA
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "M102"
+		type = artillery_1 #M102
+		amount = 138
+		producer = USA
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "M114"
+		type = artillery_1 #M114
+		amount = 44
+		producer = USA
+		#version_name = "M114"
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "AK-47"
+		type = infantry_weapons_1  #Ak-47
+		amount = 65000
+		producer = SOV
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "AK-47"
+		type = infantry_weapons_2  #AK-47（封存）
+		amount = 200000
+		producer = SOV
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Type-56"
+		type = infantry_weapons_1  #Type 56
+		amount = 5000
+		producer = CHI
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "AKM"
+		type = infantry_weapons_2  #AKM/AKMS
+		amount = 5000
+		producer = SOV
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Galil ACE"
+		type = infantry_weapons_3  #Galil ACE 31/32
+		producer = VIE
+		amount = 1200
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "IWI Tavor TAR-21"
+		type = infantry_weapons_5  #IWI Tavor TAR-21
+		amount = 1000
+		producer = VIE
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "vz. 58"
+		type = infantry_weapons_1  #vz. 58
+		amount = 2070
+		producer = VIE
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "FN FNC"
+		type = infantry_weapons_2  #FN FNC
+		amount = 600
+		producer = BEL
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "CAR-15"
+		type = infantry_weapons_2  #CAR-15 XM177E2
+		amount = 400
+		producer = VIE
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "SA-18 Igla"
+		type = Anti_Air_1  #Igla
+		amount = 2265
+		producer = SOV
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "T-12"
+		type = Anti_tank_1  #T-12
+		amount = 1860
+		producer = SOV
+	}
+	add_equipment_to_stockpile = {
+		type = Heavy_Anti_tank_1  #SU-100/122
+		amount = 189
+		producer = VIE
+	}
+	add_equipment_to_stockpile = {
+		type = cnc_equipment_1
+		amount = 7750
+		producer = VIE
+	}
+	add_equipment_to_stockpile = {
+		type = util_vehicle_1
+		amount = 16000
+		producer = VIE
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Strela-2"
+		type = Anti_Air_0  #Strela-2
+		amount = 360
+		producer = SOV
+	}
+	add_equipment_to_stockpile = {
+		type = medium_tank_aa_chassis_0
+		amount = 72
+		producer = VIE
+	}
+	add_equipment_to_stockpile = {
+		type = Heavy_Anti_tank_1
+		amount = 1500
+		producer = VIE
+	}
+}

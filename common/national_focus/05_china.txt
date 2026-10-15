@@ -1,0 +1,6528 @@
+﻿# Author(s): TheGeneral
+focus_tree = {
+	id = china_focus
+	country = {
+		factor = 0
+		modifier = {
+			add = 20
+			tag = CHI
+		}
+	}
+
+	shared_focus = CHI_NKO_bilateral_cooperation
+	shared_focus = CHI_SOV_treaty_good_neighbourliness
+	shared_focus = PRC_creating_the_reputation_society
+	shared_focus = PRC_dare_to_dream
+	shared_focus = PRC_comprehensive_deepening_of_reforms
+	shared_focus = PRC_economic_autarky
+	shared_focus = PRC_continue_eco_dev
+	shared_focus = PRC_establish_eadi
+	shared_focus = PRC_our_commitment_to_korea
+
+	continuous_focus_position = { x = 1800 y = 1250 }
+
+	## Shortcuts
+	shortcut = {
+		name = CHI_diplomacy_shortcut
+		target = CHI_Chinese_Diplomacy
+		scroll_wheel_factor = 0.80
+	}
+	shortcut = {
+		name = CHI_SAR_one_china_framework
+		target = CHI_SAR_one_china_framework
+		scroll_wheel_factor = 0.80
+	}
+	shortcut = {
+		name = CHI_military_shortcut
+		target = CHI_open_the_august_1st_building
+		scroll_wheel_factor = 0.80
+	}
+
+	#Begin XI Jingping Branch
+	focus = {
+		id = CHI_the_chinese_dream
+		icon = focus_xi_jinping
+
+		x = 9
+		y = 0
+
+		cost = 10
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		available = { has_country_leader = { name = "Xi Jinping" } }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_the_chinese_dream"
+			add_power_balance_value = { id = CHI_factional_balance value = -0.08 tooltip_side = CHI_princeling_shanghai }
+			add_timed_idea = { idea = CHI_chinese_dream_momentum years = 3 }
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2012.1.1
+			}
+			modifier = {
+				factor = 3
+				OR = {
+					is_historical_focus_on = yes
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
+				has_global_flag = CHI_HEGEMON_FOCUS_PATH
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_made_in_china_2025
+		icon = GFX_focus_PRC_made_in_china_2025
+
+		x = 5
+		y = 1
+		relative_position_id = CHI_the_chinese_dream
+
+		cost = 10
+
+		prerequisite = { focus = CHI_the_chinese_dream }
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		available = { has_country_leader = { name = "Xi Jinping" } }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_made_in_china_2025"
+			add_tech_bonus = { name = CHI_made_in_china_2025 bonus = 0.50 uses = 6 category = CAT_Civilian }
+			newline = yes
+			add_timed_idea = {
+				idea = CHI_made_in_china_2025_idea
+				years = 2
+			}
+			newline = yes
+			USA = { add_opinion_modifier = { target = ROOT modifier = CHI_made_in_china_opinion } }
+			for_each_loop = {
+				array = global.EU_potential
+				value = v
+				var:v = {
+					add_opinion_modifier = { target = ROOT modifier = CHI_made_in_china_opinion }
+				}
+			}
+			newline = yes
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_economy_modifier }
+			add_to_variable = { CHI_economy_civ_facs_worker_requirement_modifier = -0.20 tooltip = civ_facs_worker_requirement_modifier_tt }
+			add_to_variable = { CHI_economy_production_speed_buildings_factor = -0.15 tooltip = production_speed_buildings_factor_tt }
+			add_to_variable = { CHI_economy_civilian_factories_productivity = 0.25 tooltip = civilian_factories_productivity_tt }
+			add_to_variable = { CHI_economy_productivity_growth_modifier = 0.01 tooltip = productivity_growth_modifier_tt }
+			add_to_variable = { CHI_economy_consumer_goods_factor = 0.05 tooltip = consumer_goods_factor_tt }
+			add_to_variable = { CHI_economy_high_unemployment_threshold_modifier = -0.05 tooltip = high_unemployment_threshold_modifier_tt }
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2015.1.1
+			}
+			modifier = {
+				add = 4
+				is_historical_focus_on = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_two_centeraries
+		icon = focus_PRC_hundred_regiments_offensive
+
+		x = -5
+		y = 1
+		relative_position_id = CHI_the_chinese_dream
+
+		cost = 3
+
+		prerequisite = { focus = CHI_the_chinese_dream }
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		available = { has_country_leader = { name = "Xi Jinping" } }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_two_centeraries"
+			add_timed_idea = { idea = CHI_two_centenary_resolve years = 5 }
+			country_event = CHI_political_events.4
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2017.1.1
+			}
+			modifier = {
+				add = 4
+				is_historical_focus_on = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_xi_jinping_thought_enshrined
+		icon = CHI_no_terms
+
+		x = -5
+		y = 2
+		relative_position_id = CHI_the_chinese_dream
+
+		cost = 10
+
+		prerequisite = { focus = CHI_two_centeraries }
+		mutually_exclusive = { focus = CHI_two_establishments }
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		available = { has_country_leader = { name = "Xi Jinping" } }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_xi_jinping_thought_enshrined"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_political_system }
+			add_to_variable = { CHI_pol_war_support_factor = 0.05 tooltip = war_support_factor_tt }
+			add_to_variable = { CHI_pol_agency_upgrade_time = -0.10 tooltip = agency_upgrade_time_tt }
+			add_to_variable = { CHI_pol_resistance_garrison_penetration_chance = -0.05 tooltip = resistance_garrison_penetration_chance_tt }
+			newline = yes
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_economy_modifier }
+			add_to_variable = { CHI_economy_production_speed_internet_station_factor = 0.05 tooltip = production_speed_internet_station_factor_tt }
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2017.1.1
+			}
+			modifier = {
+				factor = 3
+				OR = {
+					is_historical_focus_on = yes
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_global_flag = CHI_HEGEMON_FOCUS_PATH
+					has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_abolish_term_limits
+		icon = focus_PRC_consolidate_politcal_power
+
+		x = 0
+		y = 1
+		relative_position_id = CHI_xi_jinping_thought_enshrined
+
+		cost = 7
+
+		prerequisite = { focus = CHI_xi_jinping_thought_enshrined }
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		available = { has_country_leader = { name = "Xi Jinping" } }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_abolish_term_limits"
+			add_ideas = CHI_personal_rule_mandate
+			add_power_balance_value = { id = CHI_factional_balance value = -0.10 tooltip_side = CHI_princeling_shanghai }
+			newline = yes
+			add_country_leader_trait = CHI_xi_abolishes_limits
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2017.1.1
+			}
+			modifier = {
+				add = 4
+				is_historical_focus_on = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_wolf_warrior_doctrine
+		icon = strike_at_democracy1
+
+		x = 31
+		y = 1
+		relative_position_id = CHI_the_chinese_dream
+
+		cost = 3
+
+		prerequisite = { focus = CHI_the_chinese_dream }
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		available = { has_country_leader = { name = "Xi Jinping" } }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_wolf_warrior_doctrine"
+			add_country_leader_trait = CHI_wolf_warrior_spirit
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2017.1.1
+			}
+			modifier = {
+				add = 4
+				is_historical_focus_on = yes
+			}
+		}
+	}
+	# End XI Jingping Branch
+
+	# Military
+	focus = {
+		id = CHI_open_the_august_1st_building
+		icon = focus_PRC_central_military_commision
+
+		x = 80
+		y = 0
+
+		cost = 10
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_open_the_august_1st_building"
+			add_dynamic_modifier = { modifier = CHI_landforce_modifier }
+			add_to_variable = { CHI_land_max_command_power_mult = 0.10 tooltip = max_command_power_mult_tt }
+			add_to_variable = { CHI_land_army_leader_cost_factor = -0.10 tooltip = army_leader_cost_factor_tt }
+			add_to_variable = { CHI_land_military_leader_cost_factor = -0.10 tooltip = military_leader_cost_factor_tt }
+			hidden_effect = {
+				add_dynamic_modifier = { modifier = CHI_navy_modifier }
+				add_dynamic_modifier = { modifier = CHI_airforce_modifier }
+				add_dynamic_modifier = { modifier = CHI_defense_industry }
+			}
+		}
+
+		ai_will_do = { base = 8 }
+	}
+
+	## Reform branch - Eat Imperial Grain
+	focus = {
+		id = CHI_eat_imperial_grain
+		icon = focus_PRC_hundred_regiments_offensive
+
+		x = 12
+		y = 1
+		relative_position_id = CHI_open_the_august_1st_building
+
+		cost = 10
+
+		prerequisite = { focus = CHI_open_the_august_1st_building }
+
+		search_filters = { FOCUS_FILTER_CORRUPTION FOCUS_FILTER_POLITICAL FOCUS_FILTER_EXPENDITURE }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_eat_imperial_grain"
+			add_ideas = CHI_divestiture_transition_idea
+			newline = yes
+			set_temp_variable = { temp_opinion = 10 }
+			change_the_military_opinion = yes
+			set_temp_variable = { temp_opinion = -10 }
+			change_communist_cadres_opinion = yes
+			newline = yes
+			set_temp_variable = { treasury_change = -50 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2004.1.1
+			}
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+			modifier = {
+				factor = 3
+				OR = {
+					is_historical_focus_on = yes
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
+				has_global_flag = CHI_HEGEMON_FOCUS_PATH
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_fifty_vanke_handover
+		icon = industry_military
+
+		x = -2
+		y = 1
+		relative_position_id = CHI_eat_imperial_grain
+
+		cost = 5
+
+		prerequisite = { focus = CHI_eat_imperial_grain }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_fifty_vanke_handover"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_economy_modifier }
+			add_to_variable = { CHI_economy_production_speed_buildings_factor = 0.05 tooltip = production_speed_buildings_factor_tt }
+			newline = yes
+			two_random_arms_factory = yes
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2004.1.1
+			}
+			modifier = {
+				factor = 0
+				can_staff_an_arms_industry = no
+			}
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_sasac
+		icon = central_planned_economy
+
+		x = -2
+		y = 0
+		relative_position_id = CHI_fifty_vanke_handover
+
+		cost = 5
+
+		prerequisite = { focus = CHI_eat_imperial_grain }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_sasac"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_economy_modifier }
+			add_to_variable = { CHI_di_industrial_capacity_factory = 0.05 tooltip = industrial_capacity_factory_tt }
+			add_to_variable = { CHI_di_production_cost_arms_factory_factor = -0.05 tooltip = production_cost_arms_factory_factor_tt }
+			newline = yes
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_defense_industry }
+			add_to_variable = { CHI_di_military_industry_tax_modifier = -0.05 tooltip = military_industry_tax_modifier_tt }
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2004.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_nco_corps_reform
+		icon = military_academy
+
+		x = 2
+		y = 1
+		relative_position_id = CHI_eat_imperial_grain
+
+		cost = 7
+
+		prerequisite = { focus = CHI_eat_imperial_grain }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_nco_corps_reform"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_landforce_modifier }
+			add_to_variable = { CHI_land_experience_gain_army_factor = 0.05 tooltip = experience_gain_army_factor_tt }
+			add_to_variable = { CHI_land_army_org_factor = 0.05 tooltip = army_org_factor_tt }
+			newline = yes
+			set_temp_variable = { temp_opinion = 5 }
+			change_the_military_opinion = yes
+			set_temp_variable = { temp_opinion = -5 }
+			change_communist_cadres_opinion = yes
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2004.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_establish_defence_conglomerates
+		icon = industrialization
+
+		x = 1
+		y = 1
+		relative_position_id = CHI_sasac
+
+		cost = 7
+
+		prerequisite = { focus = CHI_sasac }
+		prerequisite = { focus = CHI_fifty_vanke_handover }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = CHI_defence_base_recovered_req_tt
+				num_of_military_factories > 70
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_establish_defence_conglomerates"
+			remove_ideas = CHI_divestiture_transition_idea
+			newline = yes
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_defense_industry }
+			add_to_variable = { CHI_di_industrial_capacity_factory = 0.05 tooltip = industrial_capacity_factory_tt }
+			add_to_variable = { CHI_di_production_speed_arms_factory_factor = 0.10 tooltip = production_speed_arms_factory_factor_tt }
+			add_to_variable = { CHI_di_military_industry_tax_modifier = -0.05 tooltip = military_industry_tax_modifier_tt }
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2004.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_above_the_neck_reform
+		icon = army_general_stuff1
+
+		x = -1
+		y = 1
+		relative_position_id = CHI_nco_corps_reform
+
+		cost = 7
+
+		prerequisite = { focus = CHI_nco_corps_reform }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_above_the_neck_reform"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_landforce_modifier }
+			add_to_variable = { CHI_land_max_command_power_mult = 0.10 tooltip = max_command_power_mult_tt }
+			add_to_variable = { CHI_land_military_leader_cost_factor = -0.10 tooltip = military_leader_cost_factor_tt }
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2004.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_below_the_neck_disband
+		icon = army_recruting
+
+		x = 1
+		y = 1
+		relative_position_id = CHI_nco_corps_reform
+
+		cost = 7
+
+		prerequisite = { focus = CHI_nco_corps_reform }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_below_the_neck_disband"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_landforce_modifier }
+			add_to_variable = { CHI_land_army_org_factor = 0.05 tooltip = army_org_factor_tt }
+			add_to_variable = { CHI_land_breakthrough_factor = 0.05 tooltip = breakthrough_factor_tt }
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2004.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_avic_reunification
+		icon = aviation_industry
+
+		x = -1
+		y = 1
+		relative_position_id = CHI_establish_defence_conglomerates
+
+		cost = 10
+
+		prerequisite = { focus = CHI_establish_defence_conglomerates }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_avic_reunification"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_defense_industry }
+			add_to_variable = { CHI_di_military_factories_productivity = 0.05 tooltip = military_factories_productivity_tt }
+			add_to_variable = { CHI_di_military_industry_tax_modifier = -0.05 tooltip = military_industry_tax_modifier_tt }
+			newline = yes
+			if = {
+				limit = { has_dlc = "By Blood Alone" }
+				add_tech_bonus = {
+					name = CHI_avic_reunification
+					bonus = 0.50
+					uses = 2
+					category = CAT_avionics
+					category = CAT_fixed_wing
+				}
+			}
+			else = {
+				add_tech_bonus = {
+					name = CHI_avic_reunification
+					bonus = 0.50
+					uses = 2
+					category = CAT_fixed_wing
+				}
+			}
+			two_random_arms_factory = yes
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2004.1.1
+			}
+			modifier = {
+				factor = 0
+				can_staff_an_arms_industry = no
+			}
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_norinco_rationalism
+		icon = industry_tanks
+
+		x = 1
+		y = 1
+		relative_position_id = CHI_establish_defence_conglomerates
+
+		cost = 7
+
+		prerequisite = { focus = CHI_establish_defence_conglomerates }
+
+		search_filters = { FOCUS_FILTER_CHI_RUSSIAN_ARMS FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_norinco_rationalism"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_defense_industry }
+			add_to_variable = { CHI_di_production_factory_efficiency_gain_factor = 0.05 tooltip = production_factory_efficiency_gain_factor_tt }
+			add_to_variable = { CHI_di_military_industry_tax_modifier = -0.05 tooltip = military_industry_tax_modifier_tt }
+			newline = yes
+			add_tech_bonus = {
+				name = CHI_norinco_rationalism
+				bonus = 0.50
+				uses = 2
+				category = CAT_inf_wep
+				category = CAT_arty
+			}
+			newline = yes
+			two_random_arms_factory = yes
+			newline = yes
+			set_temp_variable = { arms_ss_gain = 20 }
+			CHI_add_arms_self_sufficiency = yes
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2004.1.1
+			}
+			modifier = {
+				factor = 0
+				can_staff_an_arms_industry = no
+			}
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_own_designs
+		icon = goal_JAP_protect_science
+
+		x = 3
+		y = 1
+		relative_position_id = CHI_establish_defence_conglomerates
+
+		cost = 7
+
+		prerequisite = { focus = CHI_establish_defence_conglomerates }
+
+		search_filters = { FOCUS_FILTER_CHI_RUSSIAN_ARMS FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_own_designs"
+			unlock_decision_tooltip = CHI_localise_licensed_system
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_economy_modifier }
+			add_to_variable = { CHI_economy_research_speed_factor = 0.05 tooltip = research_speed_factor_tt }
+			newline = yes
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_defense_industry }
+			add_to_variable = { CHI_di_production_factory_efficiency_gain_factor = 0.05 tooltip = production_factory_efficiency_gain_factor_tt }
+			add_to_variable = { CHI_di_mio_research_bonus = 0.05 tooltip = military_industrial_organization_research_bonus_tt }
+			add_to_variable = { CHI_di_personnel_cost_multiplier_modifier = 0.05 tooltip = personnel_cost_multiplier_modifier_tt }
+			newline = yes
+			set_temp_variable = { treasury_change = -50 }
+			modify_treasury_effect = yes
+			newline = yes
+			set_temp_variable = { arms_ss_gain = 20 }
+			CHI_add_arms_self_sufficiency = yes
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2004.1.1
+			}
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_ws15_bottleneck_solve
+		icon = jet_engine
+
+		x = -2
+		y = 2
+		relative_position_id = CHI_establish_defence_conglomerates
+
+		cost = 7
+
+		prerequisite = { focus = CHI_avic_reunification }
+
+		search_filters = { FOCUS_FILTER_CHI_RUSSIAN_ARMS FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_ws15_bottleneck_solve"
+			if = {
+				limit = { has_dlc = "By Blood Alone" }
+				add_tech_bonus = {
+					name = CHI_ws15_bottleneck_solve
+					bonus = 0.75
+					uses = 2
+					category = CAT_air_engine
+				}
+			}
+			else = {
+				add_tech_bonus = {
+					name = CHI_ws15_bottleneck_solve
+					bonus = 0.75
+					uses = 2
+					category = CAT_air_eqp
+				}
+			}
+			newline = yes
+			set_temp_variable = { arms_ss_gain = 25 }
+			CHI_add_arms_self_sufficiency = yes
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2004.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_jiangnan_scale
+		icon = civitavecchia_port
+
+		x = 0
+		y = 2
+		relative_position_id = CHI_establish_defence_conglomerates
+
+		cost = 7
+
+		prerequisite = { focus = CHI_avic_reunification }
+		prerequisite = { focus = CHI_norinco_rationalism }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_jiangnan_scale"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_economy_modifier }
+			add_to_variable = { CHI_economy_dockyard_output_factor = 0.05 tooltip = industrial_capacity_dockyard_tt }
+			newline = yes
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_defense_industry }
+			add_to_variable = { CHI_di_dockyard_income_tax_modifier = -0.05 tooltip = dockyard_income_tax_modifier_tt }
+			newline = yes
+			two_random_dockyards = yes
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2004.1.1
+			}
+			modifier = {
+				factor = 0
+				can_staff_an_dockyard = no
+			}
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_central_military_civil_fusion
+		icon = Focus_Generic_Consumer_Goods
+
+		x = 2
+		y = 2
+		relative_position_id = CHI_establish_defence_conglomerates
+
+		cost = 5
+
+		prerequisite = { focus = CHI_norinco_rationalism focus = CHI_own_designs }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_central_military_civil_fusion"
+			country_event = { id = CHI_military_event.2 days = 2 }
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_economy_modifier }
+			add_to_variable = { CHI_economy_research_speed_factor = 0.05 tooltip = research_speed_factor_tt }
+			newline = yes
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_defense_industry }
+			add_to_variable = { CHI_di_production_factory_max_efficiency_factor = 0.05 tooltip = production_factory_max_efficiency_factor_tt }
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2004.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_original_innovation_problem
+		icon = blr_research_with_china
+
+		x = -2
+		y = 3
+		relative_position_id = CHI_establish_defence_conglomerates
+
+		cost = 7
+
+		prerequisite = { focus = CHI_ws15_bottleneck_solve }
+
+		search_filters = { FOCUS_FILTER_CHI_RUSSIAN_ARMS FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_original_innovation_problem"
+			unlock_decision_tooltip = CHI_norinco_innovation
+			unlock_decision_tooltip = CHI_caic_innovation
+			unlock_decision_tooltip = CHI_inner_mongolia_innovation
+			unlock_decision_tooltip = CHI_avic_innovation
+			unlock_decision_tooltip = CHI_cetc_innovation
+			unlock_decision_tooltip = CHI_casic_innovation
+			unlock_decision_tooltip = CHI_casc_innovation
+			unlock_decision_tooltip = CHI_haig_innovation
+			unlock_decision_tooltip = CHI_sac_innovation
+			unlock_decision_tooltip = CHI_cssc_innovation
+			unlock_decision_tooltip = CHI_csic_innovation
+			unlock_decision_tooltip = CHI_csgc_innovation
+			unlock_decision_tooltip = CHI_poly_innovation
+			unlock_decision_tooltip = CHI_crrc_innovation
+			newline = yes
+			set_temp_variable = { arms_ss_gain = 15 }
+			CHI_add_arms_self_sufficiency = yes
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2005.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_rare_earth_leverage
+		icon = embargo
+
+		x = 1
+		y = 3
+		relative_position_id = CHI_establish_defence_conglomerates
+
+		cost = 5
+
+		prerequisite = { focus = CHI_central_military_civil_fusion }
+		prerequisite = { focus = CHI_jiangnan_scale }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_rare_earth_leverage"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_economy_modifier }
+			add_to_variable = { CHI_economy_local_resources_tungsten_factor = 0.10 tooltip = local_resources_tungsten_factor_tt }
+			newline = yes
+			unlock_decision_tooltip = CHI_rare_earth_embargo_decision
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2005.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_joint_operations_command
+		icon = peoples_liberation_army
+
+		x = 0
+		y = 2
+		relative_position_id = CHI_nco_corps_reform
+
+		cost = 10
+
+		prerequisite = { focus = CHI_above_the_neck_reform }
+		prerequisite = { focus = CHI_below_the_neck_disband }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_joint_operations_command"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_landforce_modifier }
+			add_to_variable = { CHI_land_coordination_bonus = 0.05 tooltip = coordination_bonus_tt }
+			add_to_variable = { CHI_land_initiative_factor = 0.05 tooltip = initiative_factor_tt }
+			newline = yes
+			unlock_decision_tooltip = CHI_eastern_theatre_command
+			unlock_decision_tooltip = CHI_southern_theatre_command
+			unlock_decision_tooltip = CHI_western_theatre_command
+			unlock_decision_tooltip = CHI_northern_theatre_command
+			unlock_decision_tooltip = CHI_central_theatre_command
+			newline = yes
+			set_temp_variable = { treasury_change = -25 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2004.1.1
+			}
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_train_as_you_fight
+		icon = Generic_Soldiers_Defense
+
+		x = -1
+		y = 3
+		relative_position_id = CHI_nco_corps_reform
+
+		cost = 7
+
+		prerequisite = { focus = CHI_joint_operations_command }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_train_as_you_fight"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_landforce_modifier }
+			add_to_variable = { CHI_land_minimum_training_level = -0.10 tooltip = minimum_training_level_tt }
+			add_to_variable = { CHI_land_trait_guerrilla_leader_trait_xp_gain_factor = 0.10 tooltip = trait_guerrilla_leader_trait_xp_gain_factor_tt }
+			add_to_variable = { CHI_land_terrain_trait_xp_gain_factor = 0.10 tooltip = terrain_trait_xp_gain_factor_tt }
+			newline = yes
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_airforce_modifier }
+			add_to_variable = { CHI_air_experience_gain_air = 0.05 tooltip = experience_gain_air_tt }
+			newline = yes
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_navy_modifier }
+			add_to_variable = { CHI_navy_experience_gain_navy = 0.05 tooltip = experience_gain_navy_tt }
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2004.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_train_generals
+		icon = military_mission
+
+		x = 1
+		y = 3
+		relative_position_id = CHI_nco_corps_reform
+
+		cost = 5
+
+		prerequisite = { focus = CHI_joint_operations_command }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_train_generals"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_landforce_modifier }
+			add_to_variable = { CHI_land_army_leader_start_planning_level = 1 tooltip = army_leader_start_planning_level_tt }
+			add_to_variable = { CHI_land_army_leader_start_logistics_level = 1 tooltip = army_leader_start_logistics_level_tt }
+			add_to_variable = { CHI_land_grant_medal_cost_factor = -0.10 tooltip = grant_medal_cost_factor_tt }
+			add_to_variable = { CHI_land_assign_army_leader_cp_cost = -10 tooltip = assign_army_leader_cp_cost_tt }
+			add_to_variable = { CHI_land_automatic_grant_medal_chance = 0.25 tooltip = automatic_grant_medal_chance_tt }
+			add_to_variable = { CHI_land_personnel_cost_multiplier_modifier = 0.10 tooltip = personnel_cost_multiplier_modifier_tt }
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2004.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_military_training_outline
+		icon = coalition_army
+
+		x = 0
+		y = 4
+		relative_position_id = CHI_nco_corps_reform
+
+		cost = 3
+
+		prerequisite = { focus = CHI_joint_operations_command }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		available = { CHI_corruption_under_control = yes }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_military_training_outline"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_landforce_modifier }
+			add_to_variable = { CHI_land_army_attack_factor = 0.05 tooltip = army_attack_factor_tt }
+			add_to_variable = { CHI_land_army_defence_factor = 0.05 tooltip = army_defence_factor_tt }
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2004.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_army_reorganisation
+		icon = army_reform
+
+		x = -1
+		y = 5
+		relative_position_id = CHI_nco_corps_reform
+
+		cost = 5
+
+		prerequisite = { focus = CHI_military_training_outline }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		available = { CHI_corruption_under_control = yes }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_army_reorganisation"
+			add_timed_idea = { idea = CHI_army_reorganisation_disruption_idea days = 180 }
+			newline = yes
+			custom_effect_tooltip = on_cancel_idea_tt
+			effect_tooltip = {
+				custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_landforce_modifier }
+				add_to_variable = { CHI_land_army_org_factor = 0.05 tooltip = army_org_factor_tt }
+				add_to_variable = { CHI_land_breakthrough_factor = 0.05 tooltip = breakthrough_factor_tt }
+				add_to_variable = { CHI_land_coordination_bonus = 0.05 tooltip = coordination_bonus_tt }
+			}
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2005.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_system_of_systems_operations
+		icon = army_nightvision
+
+		x = 1
+		y = 5
+		relative_position_id = CHI_nco_corps_reform
+
+		cost = 5
+
+		prerequisite = { focus = CHI_military_training_outline }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		available = {
+			CHI_corruption_under_control = yes
+			has_tech = artificial_intelligence_3
+			has_tech = robotics_3
+			has_tech = drone_3
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_system_of_systems_operations"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_landforce_modifier }
+			add_to_variable = { CHI_land_recon_factor = 0.10 tooltip = recon_factor_tt }
+			add_to_variable = { CHI_land_coordination_bonus = 0.10 tooltip = coordination_bonus_tt }
+			add_to_variable = { CHI_land_initiative_factor = 0.05 tooltip = initiative_factor_tt }
+			newline = yes
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_airforce_modifier }
+			add_to_variable = { CHI_air_air_detection = 0.05 tooltip = air_detection_tt }
+			add_to_variable = { CHI_air_air_interception_detect_factor = 0.05 tooltip = air_interception_detect_factor_tt }
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2005.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	## Army branch - Streamline the Ranks
+	focus = {
+		id = CHI_streamline_the_ranks
+		icon = focus_PRC_peoples_liberation_army
+
+		x = -25
+		y = 1
+		relative_position_id = CHI_open_the_august_1st_building
+
+		cost = 10
+
+		prerequisite = { focus = CHI_open_the_august_1st_building }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_streamline_the_ranks"
+			add_ideas = CHI_streamline_the_ranks_idea
+			set_variable = { CHI_streamline_div_baseline = num_divisions }
+			multiply_variable = { CHI_streamline_div_baseline = 0.8 }
+			round_variable = CHI_streamline_div_baseline
+			custom_effect_tooltip = on_cancel_idea_tt
+			effect_tooltip = {
+				custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_landforce_modifier }
+				add_to_variable = { CHI_land_army_org_factor = 0.05 tooltip = army_org_factor_tt }
+				add_to_variable = { CHI_land_recon_factor = 0.05 tooltip = recon_factor_tt }
+			}
+			newline = yes
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.6
+				name = CHI_streamline_the_ranks
+				category = land_doctrine
+				uses = 1
+			}
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2003.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_informatized_local_wars
+		icon = army_planning
+
+		x = 2
+		y = 1
+		relative_position_id = CHI_streamline_the_ranks
+
+		cost = 10
+
+		prerequisite = { focus = CHI_streamline_the_ranks }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_informatized_local_wars"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_landforce_modifier }
+			add_to_variable = { CHI_land_max_planning = 0.05 tooltip = max_planning_tt }
+			add_to_variable = { CHI_land_planning_speed = 0.10 tooltip = planning_speed_tt }
+			add_to_variable = { CHI_land_army_attack_factor = 0.03 tooltip = army_attack_factor_tt }
+			newline = yes
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_defense_industry }
+			add_to_variable = { CHI_di_production_factory_max_efficiency_factor = 0.05 tooltip = production_factory_max_efficiency_factor_tt }
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2010.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_combat_engineer_modernisation
+		icon = ukreplenia
+
+		x = -2
+		y = 1
+		relative_position_id = CHI_streamline_the_ranks
+
+		cost = 5
+
+		prerequisite = { focus = CHI_streamline_the_ranks }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		available = { CHI_corruption_under_control = yes }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_combat_engineer_modernisation"
+			add_tech_bonus = {
+				name = CHI_combat_engineer_modernisation
+				bonus = 0.50
+				uses = 1
+				category = CAT_support_weapons
+			}
+			newline = yes
+			add_tech_bonus = {
+				name = CHI_combat_engineer_modernisation
+				bonus = 0.25
+				uses = 1
+				category = CAT_excavation_tech
+			}
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2003.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_tactical_electronic_warfare
+		icon = radar2
+
+		x = 0
+		y = 1
+		relative_position_id = CHI_streamline_the_ranks
+
+		cost = 7
+
+		prerequisite = { focus = CHI_streamline_the_ranks }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		available = {
+			OR = {
+				is_special_project_completed = sp:sp_radar_jamming_module
+				has_tech = computing4
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_tactical_electronic_warfare"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_landforce_modifier }
+			add_to_variable = { CHI_land_recon_factor = 0.05 tooltip = recon_factor_tt }
+			add_to_variable = { CHI_land_army_defence_factor = 0.03 tooltip = army_defence_factor_tt }
+			every_owned_state = {
+				random_select_amount = 4
+				limit = { is_coastal = yes }
+				add_building_construction = {
+					type = radar_station
+					level = 2
+					instant_build = yes
+				}
+			}
+			newline = yes
+			set_temp_variable = { treasury_change = -3.5 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2003.1.1
+			}
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_type_95_adoption
+		icon = QBZ_95
+
+		x = -5
+		y = 1
+		relative_position_id = CHI_streamline_the_ranks
+
+		cost = 3
+
+		prerequisite = { focus = CHI_streamline_the_ranks }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_type_95_adoption"
+			add_timed_idea = {
+				idea = CHI_type_95_adoption_idea
+				years = 1
+			}
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2003.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_qbz191_rifle
+		icon = generic_rifle
+
+		x = 1
+		y = 1
+		relative_position_id = CHI_type_95_adoption
+
+		cost = 5
+
+		prerequisite = { focus = CHI_type_95_adoption }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_qbz191_rifle"
+			if = {
+				limit = { has_tech = infantry_weapons_5 }
+				add_tech_bonus = {
+					name = CHI_qbz191_rifle
+					ahead_reduction = 2.5
+					uses = 1
+					technology = infantry_weapons_6
+				}
+			}
+			else = {
+				add_tech_bonus = {
+					name = CHI_qbz191_rifle
+					bonus = 0.25
+					uses = 1
+					category = CAT_inf_wep
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2003.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_individual_soldier_system
+		icon = counter
+
+		x = -1
+		y = 1
+		relative_position_id = CHI_type_95_adoption
+
+		cost = 5
+
+		prerequisite = { focus = CHI_type_95_adoption }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		available = { has_tech = cnc_equipment_5 }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_individual_soldier_system"
+			sp:sp_tactical_augmented_reality = { add_project_progress_ratio = 0.50 }
+			newline = yes
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_landforce_modifier }
+			add_to_variable = { CHI_land_recon_factor = 0.025 tooltip = recon_factor_tt }
+			add_to_variable = { CHI_land_breakthrough_factor = 0.025 tooltip = breakthrough_factor_tt }
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2003.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_red_arrow_program
+		icon = army_ptur
+
+		x = 0
+		y = 2
+		relative_position_id = CHI_type_95_adoption
+
+		cost = 7
+
+		prerequisite = { focus = CHI_type_95_adoption }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_red_arrow_program"
+			add_tech_bonus = {
+				name = CHI_red_arrow_program
+				bonus = 0.25
+				uses = 2
+				category = CAT_l_at
+				category = CAT_h_at
+			}
+			newline = yes
+			add_equipment_to_stockpile = {
+				type = Anti_tank_2
+				amount = 200
+				producer = CHI
+			}
+			add_equipment_to_stockpile = {
+				type = Heavy_Anti_tank_2
+				amount = 200
+				producer = CHI
+			}
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2003.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_tactical_uav_integration
+		icon = army_nightvision
+
+		x = -2
+		y = 2
+		relative_position_id = CHI_type_95_adoption
+
+		cost = 3
+
+		prerequisite = { focus = CHI_individual_soldier_system }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		available = {
+			is_special_project_completed = sp:sp_tactical_augmented_reality
+			if = {
+				limit = { has_dlc = "By Blood Alone" }
+				has_tech = drone_1
+			}
+			else = { has_tech = Air_UAV1 }
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_tactical_uav_integration"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_landforce_modifier }
+			add_to_variable = { CHI_land_recon_factor = 0.10 tooltip = recon_factor_tt }
+			add_to_variable = { CHI_land_army_attack_factor = 0.03 tooltip = army_attack_factor_tt }
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2004.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_plz_howitzer_program
+		icon = Generic_SPG
+
+		x = -9
+		y = 1
+		relative_position_id = CHI_streamline_the_ranks
+
+		cost = 7
+
+		prerequisite = { focus = CHI_streamline_the_ranks }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_plz_howitzer_program"
+			add_tech_bonus = {
+				name = CHI_plz_howitzer_program
+				bonus = 0.25
+				uses = 1
+				category = CAT_sp_arty
+			}
+			newline = yes
+			if = {
+				limit = { has_dlc = "No Step Back" }
+				create_equipment_variant = {
+					name = "PLZ-05"
+					type = medium_tank_artillery_chassis_2
+					modules = {
+						main_armament_slot = art_med_gun_gen2
+						reload_type_slot = automatic_loading
+						ammunition_load_slot = artillery_medium_ammo_2
+						turret_type_slot = tank_base_tank_turret
+						suspension_type_slot = tank_torsion_bar_suspension_medium
+						engine_type_slot = tank_diesel_engine_gen2
+						special_type_slot_1 = empty
+						special_type_slot_2 = empty
+						special_type_slot_4 = tank_battlestation_2
+					}
+					upgrades = { tank_nsb_fire_upgrade = 2 }
+					icon = "GFX_CHI_SP_arty_2_medium"
+					design_team = mio:CHI_norinco_manufacturer
+				}
+			}
+			else = {
+				add_equipment_to_stockpile = {
+					type = medium_tank_artillery_chassis_2
+					amount = 150
+					producer = CHI
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2003.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_artillery_modernisation
+		icon = artillery2
+
+		x = 1
+		y = 1
+		relative_position_id = CHI_plz_howitzer_program
+
+		cost = 7
+
+		prerequisite = { focus = CHI_plz_howitzer_program }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		available = { CHI_corruption_under_control = yes }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_artillery_modernisation"
+			add_tech_bonus = {
+				name = CHI_artillery_modernisation
+				bonus = 0.15
+				uses = 1
+				category = CAT_arty
+			}
+			newline = yes
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_landforce_modifier }
+			add_to_variable = { CHI_land_army_artillery_attack_factor = 0.05 tooltip = army_artillery_attack_factor_tt }
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2003.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_phl_mlrs_modernisation
+		icon = Generic_MLRS
+
+		x = -1
+		y = 1
+		relative_position_id = CHI_plz_howitzer_program
+
+		cost = 7
+
+		prerequisite = { focus = CHI_plz_howitzer_program }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		available = { CHI_corruption_under_control = yes }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_phl_mlrs_modernisation"
+			add_tech_bonus = {
+				name = CHI_phl_mlrs_modernisation
+				ahead_reduction = 2.5
+				uses = 1
+				category = CAT_sp_r_arty
+			}
+			newline = yes
+			add_design_template_bonus = {
+				name = CHI_phl_mlrs_modernisation
+				uses = 1
+				cost_factor = 0.80
+				equipment = medium_tank_rocket_chassis
+			}
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2003.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_hq17_short_range_sam
+		icon = SAM
+
+		x = 0
+		y = 2
+		relative_position_id = CHI_plz_howitzer_program
+
+		cost = 5
+
+		prerequisite = { focus = CHI_artillery_modernisation }
+		prerequisite = { focus = CHI_phl_mlrs_modernisation }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_hq17_short_range_sam"
+			add_tech_bonus = {
+				name = CHI_hq17_short_range_sam
+				bonus = 0.15
+				uses = 1
+				category = CAT_sp_aa
+			}
+			newline = yes
+			two_anti_air = yes
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2004.1.1
+			}
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_hq17_medium_range_air_defense
+		icon = army_anti_missles
+
+		x = -1
+		y = 3
+		relative_position_id = CHI_plz_howitzer_program
+
+		cost = 7
+
+		prerequisite = { focus = CHI_hq17_short_range_sam }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_hq17_medium_range_air_defense"
+			add_tech_bonus = {
+				name = CHI_hq17_medium_range_air_defense
+				bonus = 0.15
+				uses = 1
+				category = CAT_sp_aa
+			}
+			newline = yes
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_airforce_modifier }
+			add_to_variable = { CHI_air_static_anti_air_damage_factor = 0.05 tooltip = static_anti_air_damage_factor_tt }
+			newline = yes
+			two_radar_station = yes
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2004.1.1
+			}
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_pgz_gun_missile_hybrid
+		icon = air_defense2
+
+		x = 1
+		y = 3
+		relative_position_id = CHI_plz_howitzer_program
+
+		cost = 3
+
+		prerequisite = { focus = CHI_hq17_short_range_sam }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_pgz_gun_missile_hybrid"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_airforce_modifier }
+			add_to_variable = { CHI_air_air_attack_factor = 0.05 tooltip = air_attack_factor_tt }
+			add_to_variable = { CHI_air_air_detection = 0.05 tooltip = air_detection_tt }
+			add_to_variable = { CHI_air_static_anti_air_hit_chance_factor = 0.05 tooltip = static_anti_air_hit_chance_factor_tt }
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2004.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_the_great_wall
+		icon = military_fort2
+
+		x = -4
+		y = 1
+		relative_position_id = CHI_informatized_local_wars
+
+		cost = 7
+
+		prerequisite = { focus = CHI_informatized_local_wars }
+		mutually_exclusive = { focus = CHI_the_iron_fist }
+		mutually_exclusive = { focus = CHI_the_sharp_blade }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_the_great_wall"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_landforce_modifier }
+			add_to_variable = { CHI_land_army_defence_factor = 0.05 tooltip = army_defence_factor_tt }
+			add_to_variable = { CHI_land_army_org_factor = 0.05 tooltip = army_org_factor_tt }
+			newline = yes
+			set_grand_doctrine = defence_in_depth
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2010.1.1
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					is_historical_focus_on = yes
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_HEGEMON_FOCUS_PATH
+					has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_the_iron_fist
+		icon = draw_up_war_plans
+
+		x = 0
+		y = 1
+		relative_position_id = CHI_informatized_local_wars
+
+		cost = 7
+
+		prerequisite = { focus = CHI_informatized_local_wars }
+		mutually_exclusive = { focus = CHI_the_great_wall }
+		mutually_exclusive = { focus = CHI_the_sharp_blade }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_the_iron_fist"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_landforce_modifier }
+			add_to_variable = { CHI_land_army_attack_factor = 0.05 tooltip = army_attack_factor_tt }
+			add_to_variable = { CHI_land_army_org_factor = 0.05 tooltip = army_org_factor_tt }
+			newline = yes
+			set_grand_doctrine = combined_arms
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2010.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_the_sharp_blade
+		icon = Generic_Revanchism02
+
+		x = 4
+		y = 1
+		relative_position_id = CHI_informatized_local_wars
+
+		cost = 7
+
+		prerequisite = { focus = CHI_informatized_local_wars }
+		mutually_exclusive = { focus = CHI_the_great_wall }
+		mutually_exclusive = { focus = CHI_the_iron_fist }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_the_sharp_blade"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_landforce_modifier }
+			add_to_variable = { CHI_land_planning_speed = 0.10 tooltip = planning_speed_tt }
+			add_to_variable = { CHI_land_army_attack_factor = 0.03 tooltip = army_attack_factor_tt }
+			newline = yes
+			set_grand_doctrine = shock_and_awe
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2010.1.1
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					is_historical_focus_on = yes
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_HEGEMON_FOCUS_PATH
+					has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_strategic_reserve_system
+		icon = conscription
+
+		x = -1
+		y = 1
+		relative_position_id = CHI_the_great_wall
+
+		cost = 5
+
+		prerequisite = { focus = CHI_the_great_wall focus = CHI_the_iron_fist focus = CHI_the_sharp_blade }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_strategic_reserve_system"
+			army_experience = 20
+			newline = yes
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_landforce_modifier }
+			add_to_variable = { CHI_land_training_time_factor = -0.05 tooltip = training_time_factor_tt }
+			add_to_variable = { CHI_land_recruitable_population = 0.025 tooltip = recruitable_population_tt }
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2010.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_peoples_armed_police_integration
+		icon = police_funding_bonus
+
+		x = 1
+		y = 1
+		relative_position_id = CHI_the_great_wall
+
+		cost = 3
+
+		prerequisite = { focus = CHI_the_great_wall focus = CHI_the_iron_fist focus = CHI_the_sharp_blade }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_peoples_armed_police_integration"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_landforce_modifier }
+			add_to_variable = { CHI_land_army_morale_factor = 0.05 tooltip = army_morale_factor_tt }
+			add_to_variable = { CHI_land_resistance_activity = -0.05 tooltip = resistance_activity_tt }
+			add_to_variable = { CHI_land_resistance_garrison_penetration_chance = -0.10 tooltip = resistance_garrison_penetration_chance_tt }
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2010.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_active_defense_doctrine
+		icon = border_conflict_bunker
+
+		x = 0
+		y = 2
+		relative_position_id = CHI_the_great_wall
+
+		cost = 7
+
+		prerequisite = { focus = CHI_strategic_reserve_system }
+		prerequisite = { focus = CHI_peoples_armed_police_integration }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_active_defense_doctrine"
+			add_tech_bonus = {
+				name = CHI_active_defense_doctrine
+				bonus = 0.15
+				uses = 1
+				category = CAT_land_doctrine
+			}
+			newline = yes
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_landforce_modifier }
+			add_to_variable = { CHI_land_dig_in_speed_factor = 0.10 tooltip = dig_in_speed_factor_tt }
+			add_to_variable = { CHI_land_army_defence_factor = 0.05 tooltip = army_defence_factor_tt }
+			add_to_variable = { CHI_land_defence_in_depth_mastery_gain_factor = 0.05 tooltip = defence_in_depth_mastery_gain_factor_tt }
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2010.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_underground_great_wall
+		icon = focus_ETH_freedom_at_gunpoint
+
+		x = 0
+		y = 3
+		relative_position_id = CHI_the_great_wall
+
+		cost = 5
+
+		prerequisite = { focus = CHI_active_defense_doctrine }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_underground_great_wall"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_landforce_modifier }
+			add_to_variable = { CHI_land_max_dig_in_factor = 0.20 tooltip = max_dig_in_factor_tt }
+			add_to_variable = { CHI_land_enemy_attrition = 0.05 tooltip = enemy_attrition_tt }
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2010.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_ztz99_rollout
+		icon = blr_china_type88
+
+		x = -1
+		y = 1
+		relative_position_id = CHI_the_iron_fist
+
+		cost = 7
+
+		prerequisite = { focus = CHI_the_great_wall focus = CHI_the_iron_fist focus = CHI_the_sharp_blade }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_ztz99_rollout"
+			add_timed_idea = {
+				idea = CHI_ztz99_rollout_idea
+				years = 1
+			}
+			newline = yes
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_landforce_modifier }
+			add_to_variable = { CHI_land_army_armor_attack_factor = 0.05 tooltip = army_armor_attack_factor_tt }
+			add_to_variable = { CHI_land_panzer_expert_xp_gain_factor = 0.10 tooltip = panzer_expert_xp_gain_factor_tt }
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2010.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_heavy_combined_arms_brigade
+		icon = army_doctrine
+
+		x = 1
+		y = 1
+		relative_position_id = CHI_the_iron_fist
+
+		cost = 7
+
+		prerequisite = { focus = CHI_the_great_wall focus = CHI_the_iron_fist focus = CHI_the_sharp_blade }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_heavy_combined_arms_brigade"
+			add_mastery = {
+				amount = 25
+				grand_doctrine = combined_arms
+			}
+			newline = yes
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_landforce_modifier }
+			add_to_variable = { CHI_land_army_attack_factor = 0.05 tooltip = army_attack_factor_tt }
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2010.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_zbd_mechanisation
+		icon = focus_FIN_foreign_anti_air
+
+		x = -1
+		y = 2
+		relative_position_id = CHI_the_iron_fist
+
+		cost = 3
+
+		prerequisite = { focus = CHI_ztz99_rollout }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_zbd_mechanisation"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_landforce_modifier }
+			add_to_variable = { CHI_land_army_armor_speed_factor = 0.05 tooltip = army_armor_speed_factor_tt }
+			add_to_variable = { CHI_land_coordination_bonus = 0.05 tooltip = coordination_bonus_tt }
+			add_to_variable = { CHI_land_initiative_factor = 0.05 tooltip = initiative_factor_tt }
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2010.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_long_range_firepower
+		icon = bombs3
+
+		x = 1
+		y = 2
+		relative_position_id = CHI_the_iron_fist
+
+		cost = 7
+
+		prerequisite = { focus = CHI_heavy_combined_arms_brigade }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_long_range_firepower"
+			add_ideas = CHI_long_range_firepower_idea
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_landforce_modifier }
+			add_to_variable = { CHI_land_army_attack_factor = 0.05 tooltip = army_attack_factor_tt }
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2010.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_type_15_light_tank
+		icon = tanks2
+
+		x = -1
+		y = 1
+		relative_position_id = CHI_the_sharp_blade
+
+		cost = 7
+
+		prerequisite = { focus = CHI_the_great_wall focus = CHI_the_iron_fist focus = CHI_the_sharp_blade }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_type_15_light_tank"
+			add_design_template_bonus = {
+				name = CHI_type_15_light_tank
+				uses = 1
+				cost_factor = 1
+				equipment = medium_tank_destroyer_chassis
+			}
+			newline = yes
+			add_equipment_to_stockpile = {
+				type = medium_tank_destroyer_chassis_2
+				amount = 40
+				producer = CHI
+			}
+			newline = yes
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_landforce_modifier }
+			add_to_variable = { CHI_land_recon_factor = 0.05 tooltip = recon_factor_tt }
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2010.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_army_aviation_corps
+		icon = Generic_Attack_Helicopter
+
+		x = -1
+		y = 2
+		relative_position_id = CHI_the_sharp_blade
+
+		cost = 7
+
+		prerequisite = { focus = CHI_type_15_light_tank }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_army_aviation_corps"
+			add_tech_bonus = {
+				name = CHI_army_aviation_corps
+				bonus = 0.15
+				uses = 1
+				category = CAT_heli
+			}
+			newline = yes
+			add_equipment_to_stockpile = {
+				type = attack_helicopter_3
+				amount = 25
+				producer = CHI
+			}
+			newline = yes
+			add_daily_mastery = {
+				name = CHI_army_aviation_corps
+				amount = 0.25
+				days = 365
+				sub_doctrine = air_assault_doctrine
+			}
+			add_daily_mastery = {
+				name = CHI_army_aviation_corps
+				amount = 0.25
+				days = 365
+				sub_doctrine = atk_helo_equipment
+			}
+			add_daily_mastery = {
+				name = CHI_army_aviation_corps
+				amount = 0.25
+				days = 365
+				sub_doctrine = transport_helo_equipment
+			}
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2010.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_special_operations_forces
+		icon = special_forces
+
+		x = 1
+		y = 1
+		relative_position_id = CHI_the_sharp_blade
+
+		cost = 7
+
+		prerequisite = { focus = CHI_the_great_wall focus = CHI_the_iron_fist focus = CHI_the_sharp_blade }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_special_operations_forces"
+			add_tech_bonus = {
+				name = CHI_special_operations_forces
+				bonus = 0.50
+				uses = 1
+				category = CAT_special_forces
+			}
+			newline = yes
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_landforce_modifier }
+			add_to_variable = { CHI_land_special_forces_out_of_supply_factor = -0.10 tooltip = special_forces_out_of_supply_factor_tt }
+			add_to_variable = { CHI_land_special_forces_cap = 0.05 tooltip = special_forces_cap_tt }
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2010.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_rapid_reaction_corps
+		icon = rapid_brigade
+
+		x = 1
+		y = 2
+		relative_position_id = CHI_the_sharp_blade
+
+		cost = 3
+
+		prerequisite = { focus = CHI_special_operations_forces }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_rapid_reaction_corps"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_landforce_modifier }
+			add_to_variable = { CHI_land_planning_speed = 0.15 tooltip = planning_speed_tt }
+			add_to_variable = { CHI_land_org_loss_when_moving = -0.10 tooltip = org_loss_when_moving_tt }
+			add_to_variable = { CHI_land_dig_in_speed_factor = 0.05 tooltip = dig_in_speed_factor_tt }
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2010.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_ztz96_mainstreaming
+		icon = tanks5
+
+		x = 10
+		y = 1
+		relative_position_id = CHI_streamline_the_ranks
+
+		cost = 5
+
+		prerequisite = { focus = CHI_streamline_the_ranks }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_ztz96_mainstreaming"
+			add_tech_bonus = {
+				name = CHI_ztz96_mainstreaming
+				bonus = 0.15
+				uses = 1
+				category = CAT_mbt
+			}
+			newline = yes
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_defense_industry }
+			add_to_variable = { CHI_di_production_factory_efficiency_gain_factor = 0.05 tooltip = production_factory_efficiency_gain_factor_tt }
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2003.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_ztz99a_apex
+		icon = Tank_sheep
+
+		x = 1
+		y = 1
+		relative_position_id = CHI_ztz96_mainstreaming
+
+		cost = 7
+
+		prerequisite = { focus = CHI_ztz96_mainstreaming }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_ztz99a_apex"
+			if = {
+				limit = { has_dlc = "No Step Back" }
+				create_equipment_variant = {
+					name = "Type 99A"
+					type = medium_tank_chassis_2
+					parent_version = 1
+					modules = {
+						main_armament_slot = tank_medium_cannon_3
+						ammunition_load_slot = mixed_main_ammo_3
+						turret_type_slot = tank_base_tank_turret
+						suspension_type_slot = tank_pneumatic_suspension_heavy
+						armor_type_slot = tank_composite_armor_gen3
+						engine_type_slot = tank_diesel_engine_gen3
+						reload_type_slot = manual_loading
+						special_type_slot_2 = smoke_launchers_2
+						secondary_armament_slot = afv_coax_machine_gun_2
+						special_type_slot_4 = tank_battlestation_3
+					}
+					upgrades = { tank_nsb_armor_upgrade = 6 }
+					icon = "GFX_CHI_mbt_tech_2_medium"
+					design_team = mio:CHI_inner_mongolia_first_machinery_tank_manufacturer
+				}
+				else = {
+					create_equipment_variant = {
+						name = "Type 99A"
+						type = MBT_3
+						upgrades = {
+							tank_armor_upgrade = 2
+							tank_engine_upgrade = 2
+						}
+					}
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2003.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_mengshi_program
+		icon = generic_utility_vehice
+
+		x = -1
+		y = 1
+		relative_position_id = CHI_ztz96_mainstreaming
+
+		cost = 3
+
+		prerequisite = { focus = CHI_ztz96_mainstreaming }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_mengshi_program"
+			add_tech_bonus = {
+				name = CHI_mengshi_program
+				bonus = 0.50
+				uses = 1
+				category = CAT_util
+			}
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2003.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_logistic_modernisation
+		icon = focus_generic_reinforcing_the_supply_network
+
+		x = -1
+		y = 2
+		relative_position_id = CHI_ztz96_mainstreaming
+
+		cost = 5
+
+		prerequisite = { focus = CHI_mengshi_program }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		available = { CHI_corruption_under_control = yes }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_logistic_modernisation"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_defense_industry }
+			add_to_variable = { CHI_land_army_fuel_capacity_factor = 0.15 tooltip = army_fuel_capacity_factor_tt }
+			add_to_variable = { CHI_land_supply_factor = 0.05 tooltip = supply_factor_tt }
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2004.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_zbd04_apex_ifv
+		icon = ifv
+
+		x = 2
+		y = 0
+		relative_position_id = CHI_ztz96_mainstreaming
+
+		cost = 7
+
+		prerequisite = { focus = CHI_streamline_the_ranks }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		available = { CHI_corruption_under_control = yes }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_zbd04_apex_ifv"
+			add_tech_bonus = {
+				name = CHI_zbd04_apex_ifv
+				bonus = 0.25
+				uses = 1
+				category = CAT_ifv
+			}
+			newline = yes
+			if = {
+				limit = { has_dlc = "No Step Back" }
+				create_equipment_variant = {
+					name = "ZBD-04"
+					type = medium_tank_flame_chassis_3
+					parent_version = 2
+					modules = {
+						main_armament_slot = small_autocannon_4
+						turret_type_slot = tank_base_tank_turret
+						reload_type_slot = manual_loading
+						suspension_type_slot = tank_torsion_bar_suspension_medium
+						armor_type_slot = afv_composite_armor_gen4
+						engine_type_slot = tank_diesel_engine_gen4
+						secondary_armament_slot = afv_coax_autocannon_3
+						special_type_slot_4 = tank_battlestation_4
+						special_type_slot_3 = afv_mine_protection
+						special_type_slot_5 = afv_troop_capacity
+						ammunition_load_slot = anti_armor_autocannon_ammo_3
+					}
+					icon = "gfx/interface/technologies/CHI/LAND/ZBD-04A.dds"
+					design_team = mio:CHI_norinco_manufacturer
+				}
+				else = {
+					create_equipment_variant = {
+						name = "ZBD-04"
+						type = APC_3
+					}
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2003.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_zb108_wheeled_family
+		icon = apc
+
+		x = 3
+		y = 1
+		relative_position_id = CHI_ztz96_mainstreaming
+
+		cost = 7
+
+		prerequisite = { focus = CHI_zbd04_apex_ifv }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_zb108_wheeled_family"
+			add_tech_bonus = {
+				name = CHI_zb108_wheeled_family
+				bonus = 0.25
+				uses = 1
+				category = CAT_apc
+			}
+			newline = yes
+			add_equipment_to_stockpile = {
+				type = APC_5
+				amount = 80
+				producer = CHI
+			}
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2003.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	## Air branch - Integrated Air and Space
+	focus = {
+		id = CHI_integrated_air_and_space
+		icon = focus_PRC_establish_pla_air_force
+
+		x = 21
+		y = 1
+		relative_position_id = CHI_open_the_august_1st_building
+
+		cost = 10
+
+		prerequisite = { focus = CHI_open_the_august_1st_building }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_integrated_air_and_space"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_airforce_modifier }
+			add_to_variable = { CHI_air_air_mission_efficiency = 0.05 tooltip = air_mission_efficiency_tt }
+			add_to_variable = { CHI_air_air_detection = 0.05 tooltip = air_detection_tt }
+			newline = yes
+			air_experience = 15
+			add_tech_bonus = { name = CHI_integrated_air_and_space bonus = 0.25 uses = 1 category = CAT_fixed_wing }
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2015.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_the_komsomolsk_pipeline
+		icon = BOS_buy_russian_jetts
+
+		x = -1
+		y = 1
+		relative_position_id = CHI_integrated_air_and_space
+
+		cost = 5
+
+		prerequisite = { focus = CHI_integrated_air_and_space }
+
+		search_filters = { FOCUS_FILTER_CHI_RUSSIAN_ARMS FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_the_komsomolsk_pipeline"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_airforce_modifier }
+			add_to_variable = { CHI_air_license_purchase_cost_factor = -0.05 tooltip = license_purchase_cost_tt }
+			add_to_variable = { CHI_air_license_production_speed = 0.05 tooltip = license_production_speed_tt }
+			newline = yes
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_economy_modifier }
+			add_to_variable = { CHI_economy_research_speed_factor = -0.03 tooltip = research_speed_factor_tt }
+			newline = yes
+			SOV = {
+				if = {
+					limit = { country_exists = SOV }
+					create_production_license = {
+						target = CHI
+						equipment = {
+							type = medium_plane_airframe_2
+							version_name = "Su-30"
+						}
+						cost_factor = 0.5
+					}
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2015.1.1
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					is_historical_focus_on = yes
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_HEGEMON_FOCUS_PATH
+					has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_the_self_reliant_path
+		icon = CHI_pro_china_russia
+
+		x = 1
+		y = 1
+		relative_position_id = CHI_integrated_air_and_space
+
+		cost = 7
+
+		prerequisite = { focus = CHI_integrated_air_and_space }
+
+		search_filters = { FOCUS_FILTER_CHI_RUSSIAN_ARMS FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_the_self_reliant_path"
+			add_timed_idea = {
+				idea = CHI_self_reliant_path_idea
+				years = 2
+			}
+			newline = yes
+			custom_effect_tooltip = on_cancel_idea_tt
+			effect_tooltip = {
+				custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_defense_industry }
+				add_to_variable = { CHI_di_line_change_production_efficiency_factor = 0.10 tooltip = line_change_production_efficiency_factor_tt }
+				newline = yes
+				custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_economy_modifier }
+				add_to_variable = { CHI_economy_research_speed_factor = 0.05 tooltip = research_speed_factor_tt }
+			}
+			newline = yes
+			if = {
+				limit = { has_dlc = "By Blood Alone" }
+				add_tech_bonus = { name = CHI_the_self_reliant_path bonus = 0.25 uses = 1 category = CAT_air_engine }
+			}
+			else = {
+				add_tech_bonus = { name = CHI_the_self_reliant_path bonus = 0.25 uses = 1 category = CAT_air_eqp }
+			}
+			newline = yes
+			set_temp_variable = { arms_ss_gain = 20 }
+			CHI_add_arms_self_sufficiency = yes
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2015.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_j11b_sinification
+		icon = yak_fighter
+
+		x = -1
+		y = 2
+		relative_position_id = CHI_integrated_air_and_space
+
+		cost = 7
+
+		prerequisite = { focus = CHI_the_komsomolsk_pipeline }
+
+		search_filters = { FOCUS_FILTER_CHI_RUSSIAN_ARMS FOCUS_FILTER_MILITARY_LAWS }
+
+		available = {
+			has_license = {
+				from = SOV
+				archetype = medium_plane_airframe
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_j11b_sinification"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_airforce_modifier }
+			add_to_variable = { CHI_air_air_superiority_efficiency = 0.05 tooltip = air_superiority_efficiency_tt }
+			newline = yes
+			if = {
+				limit = { has_dlc = "By Blood Alone" }
+				create_equipment_variant = {
+					name = "J-11B"
+					type = medium_plane_fighter_airframe_2
+					parent_version = 0
+					modules = {
+						fixed_main_weapon_slot = weap_a2a_hardpoint_2
+						fixed_gun_slot = weap_multi_gun_3
+						fixed_auxiliary_weapon_slot_1 = weap_a2a_hardpoint_2
+						fixed_auxiliary_weapon_slot_2 = weap_mp_light_hardpoint_2
+						engine_type_slot = engine_jet_double_2
+						avionics_type_slot = avionics_manned_2
+						wingform_type_slot = wing_swept
+						special_slot_type_1 = spec_countermeasures_1
+						special_slot_type_2 = spec_refuel_1
+					}
+					upgrades = { plane_bba_radar_upgrade = 1 }
+					icon = "gfx/interface/technologies/CHI/AIR/J-11B.dds"
+					design_team = mio:CHI_sac_manufacturer
+				}
+				add_equipment_to_stockpile = {
+					type = medium_plane_fighter_airframe_2
+					variant_name = "J-11B"
+					amount = 24
+					producer = CHI
+				}
+			}
+			else = {
+				add_equipment_to_stockpile = {
+					type = medium_plane_fighter_airframe
+					amount = 24
+					producer = CHI
+				}
+			}
+			552 = { add_building_construction = { type = air_base level = 1 instant_build = yes } }
+			newline = yes
+			set_temp_variable = { treasury_change = -2.5 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2015.1.1
+			}
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_project_no_10
+		icon = blr_china_chengduJ7
+
+		x = 1
+		y = 2
+		relative_position_id = CHI_integrated_air_and_space
+
+		cost = 7
+
+		prerequisite = { focus = CHI_the_self_reliant_path }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_project_no_10"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_airforce_modifier }
+			add_to_variable = { CHI_air_air_agility_factor = 0.05 tooltip = air_agility_factor_tt }
+			newline = yes
+			add_tech_bonus = { name = CHI_project_no_10 bonus = 0.25 uses = 2 category = CAT_air_eqp }
+			newline = yes
+			if = {
+				limit = { has_dlc = "By Blood Alone" }
+				create_equipment_variant = {
+					name = "J-10A"
+					type = medium_plane_fighter_airframe_2
+					parent_version = 0
+					modules = {
+						fixed_main_weapon_slot = weap_a2a_hardpoint_2
+						fixed_gun_slot = weap_multi_gun_2
+						fixed_auxiliary_weapon_slot_1 = weap_a2a_hardpoint_1
+						engine_type_slot = engine_jet_single_2
+						avionics_type_slot = avionics_manned_2
+						wingform_type_slot = wing_delta_canard
+						special_slot_type_1 = spec_countermeasures_1
+					}
+					icon = "gfx/interface/technologies/CHI/AIR/J-10A.dds"
+					design_team = mio:CHI_avic_manufacturer
+				}
+				add_equipment_to_stockpile = {
+					type = medium_plane_fighter_airframe_2
+					variant_name = "J-10A"
+					amount = 24
+					producer = CHI
+				}
+			}
+			else = {
+				add_equipment_to_stockpile = {
+					type = medium_plane_fighter_airframe
+					amount = 24
+					producer = CHI
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2015.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_saturn_engine_crisis
+		icon = jet_engine
+
+		x = 0
+		y = 3
+		relative_position_id = CHI_integrated_air_and_space
+
+		cost = 7
+
+		prerequisite = { focus = CHI_j11b_sinification focus = CHI_project_no_10 }
+
+		search_filters = { FOCUS_FILTER_CHI_RUSSIAN_ARMS FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_saturn_engine_crisis"
+			if = {
+				limit = { has_completed_focus = CHI_the_komsomolsk_pipeline }
+				custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_airforce_modifier }
+				add_to_variable = { CHI_air_air_mission_efficiency = 0.05 tooltip = air_mission_efficiency_tt }
+				add_to_variable = { CHI_air_air_attack_factor = -0.05 tooltip = air_attack_factor_tt }
+				add_to_variable = { CHI_air_experience_gain_air = -0.05 tooltip = experience_gain_air_tt }
+				newline = yes
+				custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_economy_modifier }
+				add_to_variable = { CHI_economy_research_speed_factor = 0.03 tooltip = research_speed_factor_tt }
+				newline = yes
+			}
+			else_if = {
+				limit = { has_completed_focus = CHI_the_self_reliant_path }
+				custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_airforce_modifier }
+				add_to_variable = { CHI_air_air_range_factor = 0.05 tooltip = air_range_factor_tt }
+				newline = yes
+				custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_economy_modifier }
+				add_to_variable = { CHI_economy_research_speed_factor = -0.05 tooltip = research_speed_factor_tt }
+				newline = yes
+			}
+			if = {
+				limit = { has_dlc = "By Blood Alone" }
+				add_tech_bonus = { name = CHI_saturn_engine_crisis bonus = 0.25 uses = 1 category = CAT_air_engine }
+			}
+			else = {
+				add_tech_bonus = { name = CHI_saturn_engine_crisis bonus = 0.25 uses = 1 category = CAT_air_eqp }
+			}
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2015.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_project_jxx
+		icon = CHI_focus_j20
+
+		x = -3
+		y = 4
+		relative_position_id = CHI_integrated_air_and_space
+
+		cost = 7
+
+		prerequisite = { focus = CHI_saturn_engine_crisis }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_project_jxx"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_airforce_modifier }
+			add_to_variable = { CHI_air_air_agility_factor = 0.05 tooltip = air_agility_factor_tt }
+			add_to_variable = { CHI_air_air_range_factor = 0.05 tooltip = air_range_factor_tt }
+			newline = yes
+			if = {
+				limit = { has_dlc = "By Blood Alone" }
+				add_tech_bonus = {
+					name = CHI_project_jxx
+					ahead_reduction = 2.5
+					uses = 1
+					technology = gen_5_light
+					technology = gen_5_medium
+					technology = gen_5_large
+				}
+				newline = yes
+				sp:sp_stealth_technology = { add_project_progress_ratio = 0.35 }
+			}
+			else = {
+				add_tech_bonus = {
+					name = CHI_project_jxx
+					ahead_reduction = 2.5
+					uses = 1
+					technology = AS_Fighter5
+					technology = MR_Fighter5
+					technology = Strike_fighter5
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2015.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_the_998_project
+		icon = focus_generic_daytime_bombing
+
+		x = 0
+		y = 4
+		relative_position_id = CHI_integrated_air_and_space
+
+		cost = 3
+
+		prerequisite = { focus = CHI_saturn_engine_crisis }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_the_998_project"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_airforce_modifier }
+			add_to_variable = { CHI_air_air_strategic_bomber_bombing_factor = 0.05 tooltip = air_strategic_bomber_bombing_factor_tt }
+			newline = yes
+			add_timed_idea = {
+				idea = CHI_the_998_project_idea
+				years = 1
+			}
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2015.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_kj2000_mainring_awacs
+		icon = army_radar
+
+		x = 4
+		y = 4
+		relative_position_id = CHI_integrated_air_and_space
+
+		cost = 5
+
+		prerequisite = { focus = CHI_saturn_engine_crisis }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_kj2000_mainring_awacs"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_airforce_modifier }
+			add_to_variable = { CHI_air_air_detection = 0.05 tooltip = air_detection_tt }
+			add_to_variable = { CHI_air_air_intercept_efficiency = 0.05 tooltip = air_intercept_efficiency_tt }
+			newline = yes
+			add_tech_bonus = { name = CHI_kj2000_mainring_awacs bonus = 0.25 uses = 1 category = CAT_awacs }
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2015.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_j10c_multirole_refit
+		icon = CHI_focus_j10
+
+		x = -1
+		y = 1
+		relative_position_id = CHI_project_jxx
+
+		cost = 7
+
+		prerequisite = { focus = CHI_project_jxx }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_j10c_multirole_refit"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_airforce_modifier }
+			add_to_variable = { CHI_air_air_agility_factor = 0.05 tooltip = air_agility_factor_tt }
+			add_to_variable = { CHI_air_air_attack_factor = 0.04 tooltip = air_attack_factor_tt }
+			newline = yes
+			if = {
+				limit = { has_dlc = "By Blood Alone" }
+				add_tech_bonus = { name = CHI_j10c_multirole_refit bonus = 0.25 uses = 2 category = CAT_air_to_air_weapons }
+			}
+			else = {
+				add_tech_bonus = { name = CHI_j10c_multirole_refit bonus = 0.25 uses = 2 category = CAT_air_eqp }
+			}
+			newline = yes
+			if = {
+				limit = { has_dlc = "By Blood Alone" }
+				create_equipment_variant = {
+					name = "J-10C"
+					type = medium_plane_fighter_airframe_2
+					parent_version = 0
+					modules = {
+						fixed_main_weapon_slot = weap_a2a_hardpoint_3
+						fixed_gun_slot = weap_multi_gun_2
+						fixed_auxiliary_weapon_slot_1 = weap_a2a_hardpoint_2
+						engine_type_slot = engine_jet_single_2
+						avionics_type_slot = avionics_manned_3
+						wingform_type_slot = wing_delta_canard
+						special_slot_type_1 = spec_countermeasures_1
+					}
+					upgrades = { plane_bba_radar_upgrade = 2 }
+					icon = "gfx/interface/technologies/CHI/AIR/J-10C.dds"
+					design_team = mio:CHI_avic_manufacturer
+				}
+				add_equipment_to_stockpile = {
+					type = medium_plane_fighter_airframe_2
+					variant_name = "J-10C"
+					amount = 24
+					producer = CHI
+				}
+			}
+			else = {
+				add_equipment_to_stockpile = {
+					type = medium_plane_fighter_airframe
+					amount = 24
+					producer = CHI
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2015.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_shenyang_j35_gyrfalcon
+		icon = CHI_focus_j35
+
+		x = 1
+		y = 1
+		relative_position_id = CHI_project_jxx
+
+		cost = 10
+
+		prerequisite = { focus = CHI_project_jxx }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_shenyang_j35_gyrfalcon"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_airforce_modifier }
+			add_to_variable = { CHI_air_air_agility_factor = 0.05 tooltip = air_agility_factor_tt }
+			newline = yes
+			if = {
+				limit = { has_dlc = "By Blood Alone" }
+				add_tech_bonus = {
+					name = CHI_shenyang_j35_gyrfalcon
+					ahead_reduction = 3
+					uses = 1
+					technology = gen_6_light
+					technology = gen_6_medium
+					technology = gen_6_large
+				}
+			}
+			else = {
+				add_tech_bonus = {
+					name = CHI_shenyang_j35_gyrfalcon
+					ahead_reduction = 3
+					uses = 1
+					technology = AS_Fighter7
+					technology = MR_Fighter7
+					technology = Strike_fighter7
+				}
+			}
+			newline = yes
+			if = {
+				limit = {
+					has_dlc = "By Blood Alone"
+					has_tech = gen_5_medium
+				}
+				create_equipment_variant = {
+					name = "J-35"
+					type = cv_medium_plane_airframe_3
+					parent_version = 0
+					modules = {
+						fixed_main_weapon_slot = weap_int_a2a_hardpoint_2
+						engine_type_slot = engine_jet_double_3
+						avionics_type_slot = avionics_manned_3
+						wingform_type_slot = wing_diamond
+						special_slot_type_1 = spec_countermeasures_1
+					}
+					icon = "gfx/interface/technologies/CHI/AIR/J-35.dds"
+					design_team = mio:CHI_sac_manufacturer
+				}
+				add_equipment_to_stockpile = {
+					type = cv_medium_plane_airframe_3
+					variant_name = "J-35"
+					amount = 12
+					producer = CHI
+				}
+			}
+			else_if = {
+				limit = { has_dlc = "By Blood Alone" }
+				add_tech_bonus = {
+					name = CHI_shenyang_j35_gyrfalcon
+					ahead_reduction = 3
+					uses = 1
+					technology = gen_5_medium
+				}
+				add_equipment_to_stockpile = {
+					type = CV_MR_Fighter4
+					amount = 12
+					producer = CHI
+				}
+			}
+			else = {
+				add_equipment_to_stockpile = {
+					type = CV_MR_Fighter4
+					amount = 12
+					producer = CHI
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2015.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_h6k_revival
+		icon = jet_mig21
+
+		x = 0
+		y = 1
+		relative_position_id = CHI_the_998_project
+
+		cost = 7
+
+		prerequisite = { focus = CHI_the_998_project }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_h6k_revival"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_airforce_modifier }
+			add_to_variable = { CHI_air_air_strategic_bomber_bombing_factor = 0.05 tooltip = air_strategic_bomber_bombing_factor_tt }
+			add_to_variable = { CHI_air_air_range_factor = 0.05 tooltip = air_range_factor_tt }
+			newline = yes
+			if = {
+				limit = { has_dlc = "By Blood Alone" }
+				create_equipment_variant = {
+					name = "H-6K"
+					type = large_plane_airframe_1
+					parent_version = 0
+					modules = {
+						fixed_main_weapon_slot = weap_ag_strat_2
+						fixed_auxiliary_weapon_slot_1 = weap_as_hardpoint_2
+						fixed_auxiliary_weapon_slot_2 = weap_as_hardpoint_2
+						engine_type_slot = engine_jet_double_2
+						avionics_type_slot = avionics_manned_2
+						wingform_type_slot = wing_swept
+						special_slot_type_2 = spec_refuel_2
+					}
+					upgrades = { plane_bba_radar_upgrade = 1 }
+					icon = "gfx/interface/technologies/CHI/AIR/H-6K.dds"
+					design_team = mio:CHI_avic_manufacturer
+				}
+				add_equipment_to_stockpile = {
+					type = large_plane_airframe_1
+					variant_name = "H-6K"
+					amount = 12
+					producer = CHI
+				}
+			}
+			else = {
+				add_equipment_to_stockpile = {
+					type = large_plane_airframe
+					amount = 12
+					producer = CHI
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2015.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_yj12_standoff_family
+		icon = f-15j
+
+		x = -1
+		y = 2
+		relative_position_id = CHI_the_998_project
+
+		cost = 5
+
+		prerequisite = { focus = CHI_h6k_revival }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_yj12_standoff_family"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_airforce_modifier }
+			add_to_variable = { CHI_air_naval_strike_targetting_factor = 0.05 tooltip = naval_strike_targetting_factor_tt }
+			newline = yes
+			if = {
+				limit = { has_dlc = "By Blood Alone" }
+				add_tech_bonus = { name = CHI_yj12_standoff_family bonus = 0.25 uses = 1 category = CAT_air_naval_weapons }
+				add_tech_bonus = { name = CHI_yj12_standoff_family bonus = 0.25 uses = 1 category = CAT_air_ground_weapons }
+			}
+			else = {
+				add_tech_bonus = { name = CHI_yj12_standoff_family bonus = 0.25 uses = 2 category = CAT_air_eqp }
+			}
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2015.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_jh7a_update
+		icon = CHI_focus_jh7
+
+		x = 1
+		y = 2
+		relative_position_id = CHI_the_998_project
+
+		cost = 7
+
+		prerequisite = { focus = CHI_h6k_revival }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_jh7a_update"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_airforce_modifier }
+			add_to_variable = { CHI_air_ground_attack_factor = 0.05 tooltip = ground_attack_factor_tt }
+			add_to_variable = { CHI_air_air_cas_efficiency = 0.05 tooltip = air_cas_efficiency_tt }
+			newline = yes
+			if = {
+				limit = { has_dlc = "By Blood Alone" }
+				create_equipment_variant = {
+					name = "JH-7A"
+					type = medium_plane_cas_airframe_2
+					parent_version = 0
+					modules = {
+						fixed_main_weapon_slot = weap_ag_cas_hardpoint_2
+						fixed_auxiliary_weapon_slot_1 = weap_as_hardpoint_2
+						engine_type_slot = engine_jet_double_2
+						avionics_type_slot = avionics_manned_2
+						wingform_type_slot = wing_swept
+						special_slot_type_1 = spec_countermeasures_1
+						special_slot_type_2 = spec_tgp_2
+					}
+					upgrades = { plane_bba_radar_upgrade = 1 }
+					icon = "gfx/interface/technologies/CHI/AIR/JH-7A.dds"
+					design_team = mio:CHI_avic_manufacturer
+				}
+				add_equipment_to_stockpile = {
+					type = medium_plane_cas_airframe_2
+					variant_name = "JH-7A"
+					amount = 24
+					producer = CHI
+				}
+			}
+			else = {
+				add_equipment_to_stockpile = {
+					type = medium_plane_cas_airframe
+					amount = 24
+					producer = CHI
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2015.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_j16_strike_platform
+		icon = CHI_focus_j15
+
+		x = 0
+		y = 3
+		relative_position_id = CHI_the_998_project
+
+		cost = 7
+
+		prerequisite = { focus = CHI_yj12_standoff_family }
+		prerequisite = { focus = CHI_jh7a_update }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_j16_strike_platform"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_airforce_modifier }
+			add_to_variable = { CHI_air_ground_attack_factor = 0.05 tooltip = ground_attack_factor_tt }
+			add_to_variable = { CHI_air_air_attack_factor = 0.05 tooltip = air_attack_factor_tt }
+			newline = yes
+			if = {
+				limit = { has_dlc = "By Blood Alone" }
+				create_equipment_variant = {
+					name = "J-16"
+					type = medium_plane_airframe_2
+					parent_version = 0
+					modules = {
+						fixed_main_weapon_slot = weap_mp_med_hardpoint_2
+						fixed_auxiliary_weapon_slot_1 = weap_as_hardpoint_2
+						fixed_auxiliary_weapon_slot_2 = weap_a2a_hardpoint_2
+						engine_type_slot = engine_jet_double_2
+						avionics_type_slot = avionics_manned_3
+						wingform_type_slot = wing_swept
+						special_slot_type_1 = spec_countermeasures_1
+					}
+					upgrades = { plane_bba_radar_upgrade = 2 }
+					icon = "gfx/interface/technologies/CHI/AIR/J-16.dds"
+					design_team = mio:CHI_sac_manufacturer
+				}
+				add_equipment_to_stockpile = {
+					type = medium_plane_airframe_2
+					variant_name = "J-16"
+					amount = 24
+					producer = CHI
+				}
+			}
+			else = {
+				add_equipment_to_stockpile = {
+					type = medium_plane_airframe
+					amount = 24
+					producer = CHI
+				}
+			}
+			552 = { add_building_construction = { type = air_base level = 1 instant_build = yes } }
+			newline = yes
+			set_temp_variable = { treasury_change = -2.5 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2015.1.1
+			}
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_cj10_cj20_cruise_missile_family
+		icon = guided_missile2
+
+		x = -0
+		y = 4
+		relative_position_id = CHI_the_998_project
+
+		cost = 5
+
+		prerequisite = { focus = CHI_j16_strike_platform }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_cj10_cj20_cruise_missile_family"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_airforce_modifier }
+			add_to_variable = { CHI_air_air_strategic_bomber_bombing_factor = 0.05 tooltip = air_strategic_bomber_bombing_factor_tt }
+			newline = yes
+			add_tech_bonus = { name = CHI_cj10_cj20_cruise_missile_family bonus = 0.25 uses = 3 category = CAT_missile }
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2015.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_the_sharp_sword_doctrine
+		icon = air_superiority
+
+		x = 0
+		y = 2
+		relative_position_id = CHI_project_jxx
+
+		cost = 5
+
+		prerequisite = { focus = CHI_j10c_multirole_refit }
+		prerequisite = { focus = CHI_shenyang_j35_gyrfalcon }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		available = { has_tech = suicide_drone_1 }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_the_sharp_sword_doctrine"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_airforce_modifier }
+			add_to_variable = { CHI_air_air_mission_efficiency = 0.05 tooltip = air_mission_efficiency_tt }
+			add_to_variable = { CHI_air_air_interception_detect_factor = 0.05 tooltip = air_interception_detect_factor_tt }
+			add_to_variable = { CHI_air_air_escort_efficiency = 0.05 tooltip = air_escort_efficiency_tt }
+			newline = yes
+			add_tech_bonus = { name = CHI_the_sharp_sword_doctrine bonus = 0.25 uses = 1 category = CAT_drones }
+			if = {
+				limit = { has_dlc = "By Blood Alone" }
+				add_tech_bonus = { name = CHI_the_sharp_sword_doctrine bonus = 0.25 uses = 1 category = CAT_avionics }
+			}
+			else = {
+				add_tech_bonus = { name = CHI_the_sharp_sword_doctrine bonus = 0.25 uses = 1 category = CAT_air_eqp }
+			}
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2015.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_hypersonic_strike_integration
+		icon = IRGC_missile
+
+		x = 0
+		y = 5
+		relative_position_id = CHI_project_jxx
+
+		cost = 7
+
+		prerequisite = { focus = CHI_cj10_cj20_cruise_missile_family }
+		prerequisite = { focus = CHI_the_sharp_sword_doctrine }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_hypersonic_strike_integration"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_airforce_modifier }
+			add_to_variable = { CHI_air_air_attack_factor = 0.05 tooltip = air_attack_factor_tt }
+			add_to_variable = { CHI_air_naval_strike_targetting_factor = 0.05 tooltip = naval_strike_targetting_factor_tt }
+			newline = yes
+			add_tech_bonus = { name = CHI_hypersonic_strike_integration bonus = 0.25 uses = 1 category = CAT_missile }
+			if = {
+				limit = { has_dlc = "By Blood Alone" }
+				add_tech_bonus = { name = CHI_hypersonic_strike_integration bonus = 0.25 uses = 1 category = CAT_air_ground_weapons }
+			}
+			else = {
+				add_tech_bonus = { name = CHI_hypersonic_strike_integration bonus = 0.25 uses = 1 category = CAT_air_eqp }
+			}
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2015.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_kj500_network_centric_hub
+		icon = advan_fighters
+
+		x = -2
+		y = 1
+		relative_position_id = CHI_kj2000_mainring_awacs
+
+		cost = 5
+
+		prerequisite = { focus = CHI_kj2000_mainring_awacs }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_kj500_network_centric_hub"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_airforce_modifier }
+			add_to_variable = { CHI_air_air_detection = 0.05 tooltip = air_detection_tt }
+			add_to_variable = { CHI_air_air_intercept_efficiency = 0.05 tooltip = air_intercept_efficiency_tt }
+			newline = yes
+			add_tech_bonus = { name = CHI_kj500_network_centric_hub bonus = 0.25 uses = 1 category = CAT_awacs }
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2015.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_the_tanker_gap
+		icon = nanjing_airport
+
+		x = 0
+		y = 1
+		relative_position_id = CHI_kj2000_mainring_awacs
+
+		cost = 5
+
+		prerequisite = { focus = CHI_kj2000_mainring_awacs }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_the_tanker_gap"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_airforce_modifier }
+			add_to_variable = { CHI_air_air_range_factor = 0.05 tooltip = air_range_factor_tt }
+			newline = yes
+			add_tech_bonus = { name = CHI_the_tanker_gap bonus = 0.25 uses = 1 category = CAT_fixed_wing }
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2015.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_y20_strategic_lift_program
+		icon = Generic_Transport_Aircraft
+
+		x = 2
+		y = 1
+		relative_position_id = CHI_kj2000_mainring_awacs
+
+		cost = 5
+
+		prerequisite = { focus = CHI_kj2000_mainring_awacs }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_y20_strategic_lift_program"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_airforce_modifier }
+			add_to_variable = { CHI_air_paradrop_organization_factor = 0.05 tooltip = paradrop_organization_factor_tt }
+			add_to_variable = { CHI_air_air_range_factor = 0.05 tooltip = air_range_factor_tt }
+			newline = yes
+			add_tech_bonus = { name = CHI_y20_strategic_lift_program bonus = 0.25 uses = 1 category = CAT_fixed_wing }
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2015.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_the_pterodactyl_generation
+		icon = drone2
+
+		x = -1
+		y = 2
+		relative_position_id = CHI_kj2000_mainring_awacs
+
+		cost = 5
+
+		prerequisite = { focus = CHI_kj500_network_centric_hub }
+		prerequisite = { focus = CHI_the_tanker_gap }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_the_pterodactyl_generation"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_airforce_modifier }
+			add_to_variable = { CHI_air_air_mission_efficiency = 0.04 tooltip = air_mission_efficiency_tt }
+			add_to_variable = { CHI_air_air_cas_efficiency = 0.05 tooltip = air_cas_efficiency_tt }
+			newline = yes
+			add_tech_bonus = { name = CHI_the_pterodactyl_generation bonus = 0.25 uses = 1 category = CAT_l_drone }
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2015.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_the_soaring_dragon
+		icon = p-1
+
+		x = 1
+		y = 2
+		relative_position_id = CHI_kj2000_mainring_awacs
+
+		cost = 5
+
+		prerequisite = { focus = CHI_the_tanker_gap }
+		prerequisite = { focus = CHI_y20_strategic_lift_program }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_the_soaring_dragon"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_airforce_modifier }
+			add_to_variable = { CHI_air_air_detection = 0.05 tooltip = air_detection_tt }
+			add_to_variable = { CHI_air_air_range_factor = 0.04 tooltip = air_range_factor_tt }
+			newline = yes
+			add_tech_bonus = { name = CHI_the_soaring_dragon bonus = 0.25 uses = 1 category = CAT_a_uav }
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2015.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_theaterization_of_command
+		icon = air_doctrine
+
+		x = 0
+		y = 3
+		relative_position_id = CHI_kj2000_mainring_awacs
+
+		cost = 3
+
+		prerequisite = { focus = CHI_the_pterodactyl_generation }
+		prerequisite = { focus = CHI_the_soaring_dragon }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_theaterization_of_command"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_airforce_modifier }
+			add_to_variable = { CHI_air_air_mission_efficiency = 0.05 tooltip = air_mission_efficiency_tt }
+			add_to_variable = { CHI_air_air_mission_xp_gain_factor = 0.05 tooltip = air_mission_xp_gain_factor_tt }
+			newline = yes
+			air_experience = 20
+			add_command_power = 50
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2015.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_h20_programme
+		icon = B2
+
+		x = 0
+		y = 4
+		relative_position_id = CHI_kj2000_mainring_awacs
+
+		cost = 10
+
+		prerequisite = { focus = CHI_theaterization_of_command }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_h20_programme"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_airforce_modifier }
+			add_to_variable = { CHI_air_air_strategic_bomber_bombing_factor = 0.07 tooltip = air_strategic_bomber_bombing_factor_tt }
+			add_to_variable = { CHI_air_air_range_factor = 0.07 tooltip = air_range_factor_tt }
+			newline = yes
+			if = {
+				limit = { has_dlc = "By Blood Alone" }
+				add_tech_bonus = { name = CHI_h20_programme bonus = 0.25 uses = 1 category = CAT_air_stealth }
+			}
+			add_tech_bonus = { name = CHI_h20_programme bonus = 0.25 uses = 1 category = CAT_fixed_wing }
+			559 = { add_building_construction = { type = air_base level = 1 instant_build = yes } }
+			newline = yes
+			if = {
+				limit = {
+					has_completed_focus = CHI_the_self_reliant_path
+					has_dlc = "By Blood Alone"
+				}
+				add_tech_bonus = { name = CHI_h20_programme bonus = 0.25 uses = 1 category = CAT_air_engine }
+			}
+			else = {
+				add_tech_bonus = { name = CHI_h20_programme bonus = 0.25 uses = 1 category = CAT_air_eqp }
+			}
+			newline = yes
+			set_temp_variable = { treasury_change = -2.5 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2015.1.1
+			}
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	## Naval branch
+	focus = {
+		id = CHI_liu_huaqing_first_island_chain
+		icon = focus_PRC_establish_pla_navy
+
+		x = -2
+		y = 1
+		relative_position_id = CHI_open_the_august_1st_building
+
+		cost = 10
+
+		prerequisite = { focus = CHI_open_the_august_1st_building }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_liu_huaqing_first_island_chain"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_navy_modifier }
+			add_to_variable = { CHI_navy_navy_org_factor = 0.04 tooltip = navy_org_factor_tt }
+			add_to_variable = { CHI_navy_naval_morale_factor = 0.04 tooltip = naval_morale_factor_tt }
+			add_to_variable = { CHI_navy_naval_coordination = 0.03 tooltip = naval_coordination_tt }
+			newline = yes
+			navy_experience = 15
+			add_tech_bonus = { name = CHI_liu_huaqing_first_island_chain bonus = 0.25 uses = 1 category = CAT_naval_all }
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2006.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_project_998
+		icon = anti_submarine
+
+		x = -5
+		y = 1
+		relative_position_id = CHI_liu_huaqing_first_island_chain
+
+		cost = 7
+
+		prerequisite = { focus = CHI_liu_huaqing_first_island_chain }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_project_998"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_navy_modifier }
+			add_to_variable = { CHI_navy_experience_gain_navy_factor = 0.05 tooltip = experience_gain_navy_factor_tt }
+			add_to_variable = { CHI_navy_navy_anti_air_attack_factor = 0.10 tooltip = navy_anti_air_attack_factor_tt }
+			add_to_variable = { CHI_navy_navy_max_range_factor = 0.10 tooltip = navy_max_range_factor_tt }
+			add_to_variable = { CHI_navy_naval_coordination = 0.05 tooltip = naval_coordination_tt }
+			newline = yes
+			add_tech_bonus = { name = CHI_project_998 bonus = 0.25 uses = 1 category = CAT_surface_ship }
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2008.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_the_sovremenny_bridge
+		icon = russian_cooperation
+
+		x = 5
+		y = 1
+		relative_position_id = CHI_liu_huaqing_first_island_chain
+
+		cost = 7
+
+		prerequisite = { focus = CHI_liu_huaqing_first_island_chain }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_the_sovremenny_bridge"
+			navy_experience = 10
+			create_ship = {
+				type = destroyer_hull_2
+				equipment_variant = "Sovremennyy Class"
+				creator = SOV
+				name = "Fuzhou"
+			}
+			create_ship = {
+				type = destroyer_hull_2
+				equipment_variant = "Sovremennyy Class"
+				creator = SOV
+				name = "Taizhou"
+			}
+			create_ship = {
+				type = destroyer_hull_2
+				equipment_variant = "Sovremennyy Class"
+				creator = SOV
+				name = "Ningbo"
+			}
+			SOV = { add_opinion_modifier = { target = CHI modifier = medium_increase } }
+			add_opinion_modifier = { target = SOV modifier = medium_increase }
+			newline = yes
+			set_temp_variable = { treasury_change = -45 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2006.1.1
+			}
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_the_yuan_and_the_shang
+		icon = Generic_Submarine1
+
+		x = -2
+		y = 1
+		relative_position_id = CHI_project_998
+
+		cost = 7
+
+		prerequisite = { focus = CHI_project_998 }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_the_yuan_and_the_shang"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_navy_modifier }
+			add_to_variable = { CHI_navy_navy_submarine_detection_factor = 0.07 tooltip = navy_submarine_detection_factor_tt }
+			newline = yes
+			add_tech_bonus = { name = CHI_the_yuan_and_the_shang bonus = 0.25 uses = 1 category = CAT_sub }
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2008.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_jiangnan_changxing_move
+		icon = naval_dockyard
+
+		x = 2
+		y = 1
+		relative_position_id = CHI_project_998
+
+		cost = 7
+
+		prerequisite = { focus = CHI_project_998 }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_jiangnan_changxing_move"
+			540 = {
+				add_extra_state_shared_building_slots = 4
+				add_building_construction = { type = dockyard level = 4 instant_build = yes }
+			}
+			newline = yes
+			mio:CHI_cssc_manufacturer = {
+				add_mio_task_capacity = 1
+				add_mio_funds = 2000
+			}
+			newline = yes
+			set_temp_variable = { treasury_change = -34 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2008.1.1
+			}
+			modifier = {
+				factor = 0
+				can_staff_an_dockyard = no
+			}
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_flying_leopard_doctrine
+		icon = hyuga
+
+		x = -2
+		y = 1
+		relative_position_id = CHI_the_sovremenny_bridge
+
+		cost = 7
+
+		prerequisite = { focus = CHI_the_sovremenny_bridge }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_flying_leopard_doctrine"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_navy_modifier }
+			add_to_variable = { CHI_navy_navy_anti_air_attack_factor = 0.05 tooltip = navy_anti_air_attack_factor_tt }
+			add_to_variable = { CHI_navy_naval_coordination = 0.03 tooltip = naval_coordination_tt }
+			newline = yes
+			navy_experience = 10
+			add_tech_bonus = { name = CHI_flying_leopard_doctrine bonus = 0.25 uses = 1 category = CAT_naval_all }
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2006.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_the_yuzhao_pathfinders
+		icon = legacy_of_marines
+
+		x = 1
+		y = 1
+		relative_position_id = CHI_the_sovremenny_bridge
+
+		cost = 7
+
+		prerequisite = { focus = CHI_the_sovremenny_bridge }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_the_yuzhao_pathfinders"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_navy_modifier }
+			add_to_variable = { CHI_navy_navy_max_range_factor = 0.05 tooltip = navy_max_range_factor_tt }
+			newline = yes
+			add_tech_bonus = { name = CHI_the_yuzhao_pathfinders bonus = 0.25 uses = 1 category = CAT_landing_craft }
+			set_temp_variable = { treasury_change = -20 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2006.1.1
+			}
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_054a_production_line
+		icon = frigates
+
+		x = -3
+		y = 2
+		relative_position_id = CHI_project_998
+
+		cost = 7
+
+		prerequisite = { focus = CHI_the_yuan_and_the_shang }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_054a_production_line"
+			create_equipment_variant = {
+				name = "Type 054A"
+				type = frigate_hull_4
+				allow_without_tech = yes
+				modules = {
+					fixed_ship_engine_slot = module_light_surface_jet_turbine_power3
+					fixed_ship_fire_control_system_slot = module_digital_integrated_fire_control
+					fixed_ship_radar_slot = module_radar_4
+					fixed_ship_auxillary_slot_2 = module_naval_missile_mount_quad
+					fixed_ship_auxillary_slot_1 = module_naval_missile_mount_quad
+					fixed_ship_auxillary_slot = module_naval_vls_cells_16
+					fixed_ship_battery_slot = module_76mm_gun_3
+					front_1_custom_slot = module_ciws_3
+					rear_1_custom_slot = module_light_helipad_2
+					fixed_ship_missile_ammo_slot = module_naval_ammo_balanced_3
+				}
+				icon = "gfx/interface/technologies/CHI/NAV/054A.dds"
+				design_team = mio:CHI_cssc_manufacturer
+			}
+			add_equipment_production = {
+				equipment = {
+					version_name = "Type 054A"
+					type = frigate_hull_4
+				}
+				amount = 1
+				progress = 0.15
+				requested_factories = 1
+			}
+			add_equipment_production = {
+				equipment = {
+					version_name = "Type 054A"
+					type = frigate_hull_4
+				}
+				amount = 1
+				progress = 0.15
+				requested_factories = 1
+			}
+			random_owned_state = {
+				limit = { is_coastal = yes }
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+			mio:CHI_cssc_manufacturer = { add_mio_funds = 2000 }
+			newline = yes
+			set_temp_variable = { treasury_change = -17 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2008.1.1
+			}
+			modifier = {
+				factor = 0
+				can_staff_an_dockyard = no
+			}
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_dragon_eye_over_lanzhou
+		icon = ENG_type31_frigate
+
+		x = -1
+		y = 2
+		relative_position_id = CHI_project_998
+
+		cost = 5
+
+		prerequisite = { focus = CHI_the_yuan_and_the_shang }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_dragon_eye_over_lanzhou"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_navy_modifier }
+			add_to_variable = { CHI_navy_naval_coordination = 0.03 tooltip = naval_coordination_tt }
+			newline = yes
+			add_tech_bonus = { name = CHI_dragon_eye_over_lanzhou bonus = 0.50 uses = 1 category = CAT_destroyer }
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2008.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_the_varyag_refit
+		icon = carriers
+
+		x = 1
+		y = 2
+		relative_position_id = CHI_project_998
+
+		cost = 7
+
+		prerequisite = { focus = CHI_jiangnan_changxing_move }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_the_varyag_refit"
+			552 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = { type = dockyard level = 2 instant_build = yes }
+			}
+			newline = yes
+			add_tech_bonus = { name = CHI_the_varyag_refit bonus = 0.25 uses = 1 category = CAT_carrier }
+			set_temp_variable = { treasury_change = -17 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2008.1.1
+			}
+			modifier = {
+				factor = 0
+				can_staff_an_dockyard = no
+			}
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_huludao_schoolhouse
+		icon = carriers2
+
+		x = 3
+		y = 2
+		relative_position_id = CHI_project_998
+
+		cost = 3
+
+		prerequisite = { focus = CHI_jiangnan_changxing_move }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_huludao_schoolhouse"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_navy_modifier }
+			add_to_variable = { CHI_navy_sortie_efficiency = 0.075 tooltip = sortie_efficiency_tt }
+			add_to_variable = { CHI_navy_experience_gain_carrier_training_factor = 0.10 tooltip = experience_gain_carrier_training_factor_tt }
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2008.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_sea_eagles_of_the_liaoning
+		icon = blr_mig_25
+
+		x = -4
+		y = 2
+		relative_position_id = CHI_the_sovremenny_bridge
+
+		cost = 7
+
+		prerequisite = { focus = CHI_flying_leopard_doctrine }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_sea_eagles_of_the_liaoning"
+			if = {
+				limit = { has_dlc = "By Blood Alone" }
+				create_equipment_variant = {
+					name = "J-15 Flying Shark"
+					type = cv_medium_plane_airframe_2
+					parent_version = 0
+					modules = {
+						fixed_main_weapon_slot = weap_mp_med_hardpoint_2
+						fixed_gun_slot = weap_multi_gun_3
+						engine_type_slot = engine_jet_double_3
+						avionics_type_slot = avionics_manned_3
+						wingform_type_slot = wing_swept
+						special_slot_type_1 = spec_countermeasures_2
+						special_slot_type_2 = empty
+						special_slot_type_3 = spec_redundant_2
+						special_slot_type_4 = spec_tgp_2
+						fixed_auxiliary_weapon_slot_1 = weap_a2a_hardpoint_2
+						fixed_auxiliary_weapon_slot_2 = weap_as_hardpoint_2
+					}
+					icon = "gfx/interface/technologies/CHI/AIR/J-15.dds"
+					design_team = mio:CHI_avic_manufacturer
+				}
+				add_equipment_to_stockpile = {
+					type = cv_medium_plane_airframe_2
+					variant_name = "J-15 Flying Shark"
+					amount = 24
+					producer = CHI
+				}
+			}
+			else = {
+				add_equipment_to_stockpile = {
+					type = CV_MR_Fighter3
+					amount = 24
+					producer = CHI
+				}
+			}
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_navy_modifier }
+			add_to_variable = { CHI_navy_sortie_efficiency = 0.05 tooltip = sortie_efficiency_tt }
+			newline = yes
+			set_temp_variable = { treasury_change = -22 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2013.1.1
+			}
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_sea_eagles_carrier_wing
+		icon = maya
+
+		x = -2
+		y = 2
+		relative_position_id = CHI_the_sovremenny_bridge
+
+		cost = 3
+
+		prerequisite = { focus = CHI_flying_leopard_doctrine }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_sea_eagles_carrier_wing"
+			add_ideas = CHI_sea_eagles_carrier_wing_idea
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2016.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_yuzhao_hull_coral_brigades
+		icon = infiltration
+
+		x = 0
+		y = 2
+		relative_position_id = CHI_the_sovremenny_bridge
+
+		cost = 3
+
+		prerequisite = { focus = CHI_the_yuzhao_pathfinders }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_yuzhao_hull_coral_brigades"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_navy_modifier }
+			add_to_variable = { CHI_navy_amphibious_invasion = 0.05 tooltip = amphibious_invasion_tt }
+			newline = yes
+			add_tech_bonus = { name = CHI_yuzhao_hull_coral_brigades bonus = 0.25 uses = 1 category = CAT_landing_craft }
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2006.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_the_type_901
+		icon = ENG_Expand_Trade_Fleet
+
+		x = 2
+		y = 2
+		relative_position_id = CHI_the_sovremenny_bridge
+
+		cost = 7
+
+		prerequisite = { focus = CHI_the_yuzhao_pathfinders }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_the_type_901"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_navy_modifier }
+			add_to_variable = { CHI_navy_navy_max_range_factor = 0.075 tooltip = navy_max_range_factor_tt }
+			newline = yes
+			add_tech_bonus = { name = CHI_the_type_901 bonus = 0.25 uses = 1 category = CAT_landing_craft }
+			mio:CHI_cssc_manufacturer = { add_mio_funds = 2000 }
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2006.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_service_of_the_three_distances
+		icon = focus_PHI_thats_not_an_island
+
+		x = 0
+		y = 3
+		relative_position_id = CHI_project_998
+
+		cost = 5
+
+		prerequisite = { focus = CHI_dragon_eye_over_lanzhou }
+		prerequisite = { focus = CHI_the_varyag_refit }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_service_of_the_three_distances"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_navy_modifier }
+			add_to_variable = { CHI_navy_navy_max_range_factor = 0.08 tooltip = navy_max_range_factor_tt }
+			add_to_variable = { CHI_navy_navy_org_factor = 0.04 tooltip = navy_org_factor_tt }
+			add_to_variable = { CHI_navy_naval_morale_factor = 0.03 tooltip = naval_morale_factor_tt }
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2008.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_the_renhai_cruiser
+		icon = cruisers
+
+		x = 0
+		y = 4
+		relative_position_id = CHI_liu_huaqing_first_island_chain
+
+		cost = 7
+
+		prerequisite = { focus = CHI_huludao_schoolhouse }
+		prerequisite = { focus = CHI_sea_eagles_of_the_liaoning }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		available = { is_special_project_completed = sp:sp_radar_jamming_module }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_the_renhai_cruiser"
+	        create_equipment_variant = {
+	            name = "Type 055 Class"
+	            type = destroyer_hull_3
+				name_group = CHI_DD_HISTORICAL
+				allow_without_tech = yes
+	            modules = {
+	                fixed_ship_engine_slot = module_surface_jet_turbine_power2
+	                fixed_ship_fire_control_system_slot = module_capital_advanced_integrated_missile_radar_control
+	                fixed_ship_radar_slot = module_radar_4
+	                fixed_ship_battery_slot = module_127mm_battery
+	                front_1_custom_slot = module_naval_vls_cells_32
+	                mid_1_custom_slot = module_naval_vls_cells_32
+	                mid_2_custom_slot = module_naval_vls_cells_32
+	                rear_1_custom_slot = module_naval_vls_cells_32
+	                fixed_ship_auxillary_slot = module_ciws_3
+	                fixed_ship_auxillary_slot_2 = module_ram_4
+	                fixed_ship_auxillary_slot_3 = module_torpedoes_3
+	                fixed_ship_missile_ammo_slot = module_naval_ammo_balanced_3
+	            }
+				icon = "gfx/interface/technologies/CHI/NAV/055.dds"
+				design_team = mio:CHI_cssc_manufacturer
+	        }
+			add_equipment_production = {
+				equipment = {
+					version_name = "Type 055 Renhai"
+					type = destroyer_hull_3
+				}
+				amount = 1
+				progress = 0.10
+				requested_factories = 2
+			}
+			random_owned_state = {
+				limit = { is_coastal = yes }
+				add_building_construction = {
+					type = dockyard
+					level = 3
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 3
+			}
+			mio:CHI_cssc_manufacturer = { add_mio_funds = 2000 add_mio_task_capacity = 1 }
+			newline = yes
+			set_temp_variable = { treasury_change = -25.5 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2020.1.1
+			}
+			modifier = {
+				factor = 0
+				can_staff_an_dockyard = no
+			}
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_shandong_at_sanya
+		icon = future_carrier
+
+		x = -1
+		y = 3
+		relative_position_id = CHI_the_sovremenny_bridge
+
+		cost = 7
+
+		prerequisite = { focus = CHI_sea_eagles_carrier_wing }
+		prerequisite = { focus = CHI_yuzhao_hull_coral_brigades }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		available = {
+			has_navy_size = {
+				size > 1
+				archetype = carrier
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_shandong_at_sanya"
+			if = {
+				limit = { NOT = { has_tech = carrier_hull_2 } }
+				set_technology = { carrier_hull_2 = 1 }
+				newline = yes
+			}
+			create_equipment_variant = {
+				name = "Type 002 Class"
+				icon = "gfx/interface/technologies/CHI/NAV/02.dds"
+				type = carrier_hull_2
+				name_group = CHI_CV_HISTORICAL
+				parent_version = 0
+				modules = {
+					fixed_ship_engine_slot = module_surface_diesel_power_1
+					fixed_ship_fire_control_system_slot = module_digital_integrated_fire_control
+					fixed_ship_radar_slot = module_radar_4
+					fixed_ship_auxillary_slot_2 = module_naval_vls_cells_16
+					fixed_ship_auxillary_slot_1 = module_ram_3
+					fixed_ship_auxillary_slot = module_esm_1
+					fixed_ship_flight_deck = module_flight_deck_3
+					front_1_custom_slot = module_ram_3
+					front_2_custom_slot = module_ciws_3
+					mid_1_custom_slot = module_helipads_2
+					mid_2_custom_slot = module_helipads_2
+					mid_3_custom_slot = module_helipads_2
+					fixed_ship_missile_ammo_slot = module_naval_ammo_air_defense_2
+					rear_1_custom_slot = module_ciws_3
+					rear_2_custom_slot = module_ram_3
+				}
+				design_team = mio:CHI_cssc_manufacturer
+			}
+			newline = yes
+			add_equipment_production = {
+				equipment = {
+					version_name = "Type 002 Class"
+					type = carrier_hull_2
+				}
+				amount = 1
+				progress = 0.10
+				requested_factories = 2
+			}
+			newline = yes
+			531 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = { type = dockyard level = 2 instant_build = yes }
+			}
+			newline = yes
+			set_temp_variable = { treasury_change = -17 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2019.1.1
+			}
+			modifier = {
+				factor = 0
+				can_staff_an_dockyard = no
+			}
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_the_fujian_catapults
+		icon = carriers2
+
+		x = -1
+		y = 5
+		relative_position_id = CHI_liu_huaqing_first_island_chain
+
+		cost = 7
+
+		prerequisite = { focus = CHI_service_of_the_three_distances }
+		prerequisite = { focus = CHI_the_renhai_cruiser }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_the_fujian_catapults"
+			if = {
+				limit = { NOT = { has_tech = carrier_hull_3 } }
+				set_technology = { carrier_hull_3 = 1 }
+				newline = yes
+			}
+			create_equipment_variant = {
+				name = "Type 003 Class"
+				icon = "gfx/interface/technologies/CHI/NAV/003.dds"
+				type = carrier_hull_3
+				parent_version = 0
+				modules = {
+					fixed_ship_engine_slot = module_surface_diesel_power_2
+					fixed_ship_fire_control_system_slot = module_advanced_integrated_missile_radar_control
+					fixed_ship_radar_slot = module_radar_4
+					fixed_ship_auxillary_slot_2 = module_naval_vls_cells_16
+					fixed_ship_auxillary_slot_1 = module_ram_4
+					fixed_ship_auxillary_slot = module_esm_1
+					fixed_ship_flight_deck = module_flight_deck_5
+					front_1_custom_slot = module_ram_4
+					front_2_custom_slot = module_ciws_3
+					mid_1_custom_slot = module_helipads_2
+					mid_2_custom_slot = module_helipads_2
+					mid_3_custom_slot = module_helipads_2
+					fixed_ship_missile_ammo_slot = module_naval_ammo_air_defense_3
+					rear_1_custom_slot = module_ciws_3
+					rear_2_custom_slot = module_ram_4
+				}
+				design_team = mio:CHI_cssc_manufacturer
+			}
+			newline = yes
+			add_tech_bonus = {
+				name = CHI_the_fujian_catapults
+				bonus = 0.5
+				uses = 1
+				category = CAT_aircraft_carriers
+			}
+			newline = yes
+			add_equipment_production = {
+				equipment = {
+					version_name = "Type 003 Class"
+					type = carrier_hull_3
+				}
+				amount = 1
+				progress = 0.10
+				requested_factories = 2
+			}
+			newline = yes
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_navy_modifier }
+			add_to_variable = { CHI_navy_sortie_efficiency = 0.05 tooltip = sortie_efficiency_tt }
+			add_to_variable = { CHI_navy_carrier_sortie_hours_delay = 0.10 tooltip = carrier_sortie_hours_delay_tt }
+			newline = yes
+			mio:CHI_cssc_manufacturer = { add_mio_funds = 2000 }
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2020.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_the_type_075_yushen
+		icon = hyuga
+
+		x = 1
+		y = 5
+		relative_position_id = CHI_liu_huaqing_first_island_chain
+
+		cost = 7
+
+		prerequisite = { focus = CHI_the_renhai_cruiser }
+		prerequisite = { focus = CHI_shandong_at_sanya }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_the_type_075_yushen"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_navy_modifier }
+			add_to_variable = { CHI_navy_navy_max_range_factor = 0.05 tooltip = navy_max_range_factor_tt }
+			add_to_variable = { CHI_navy_naval_coordination = 0.03 tooltip = naval_coordination_tt }
+			newline = yes
+			add_tech_bonus = { name = CHI_the_type_075_yushen bonus = 0.25 uses = 1 category = CAT_helicopter_operators }
+			create_equipment_variant = {
+				name = "Type 075 Class"
+				type = helicopter_operator_hull_3
+				name_group = CHI_CV_HISTORICAL
+				parent_version = 0
+				modules = {
+					fixed_ship_engine_slot = module_surface_diesel_power_2
+					fixed_ship_fire_control_system_slot = module_digital_integrated_fire_control
+					fixed_ship_radar_slot = module_radar_4
+					fixed_ship_auxillary_slot_3 = module_naval_missile_mount_single
+					fixed_ship_auxillary_slot_2 = module_ram_4
+					fixed_ship_auxillary_slot = module_ciws_3
+					fixed_ship_battery_slot = module_light_flight_deck_3
+					front_1_custom_slot = module_helipads_3
+					mid_1_custom_slot = module_fuel_tank
+					rear_1_custom_slot = module_helipads_3
+					fixed_ship_missile_ammo_slot = module_naval_ammo_air_defense_2
+				}
+				icon = "gfx/interface/technologies/CHI/NAV/075.dds"
+				design_team = mio:CHI_cssc_manufacturer
+			}
+			add_equipment_production = {
+				equipment = {
+					version_name = "Type 075 Class"
+					type = helicopter_operator_hull_3
+				}
+				amount = 1
+				progress = 0.10
+				requested_factories = 1
+			}
+			mio:CHI_cssc_manufacturer = { add_mio_funds = 2000 }
+			newline = yes
+			set_temp_variable = { treasury_change = -30 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2021.1.1
+			}
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_the_quiet_dragons
+		icon = submarines
+
+		x = 0
+		y = 1
+		relative_position_id = CHI_the_fujian_catapults
+
+		cost = 7
+
+		prerequisite = { focus = CHI_the_fujian_catapults }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_the_quiet_dragons"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_navy_modifier }
+			add_to_variable = { CHI_navy_navy_submarine_detection_factor = 0.08 tooltip = navy_submarine_detection_factor_tt }
+			newline = yes
+			add_tech_bonus = { name = CHI_the_quiet_dragons bonus = 0.25 uses = 1 category = CAT_sub }
+			mio:CHI_csic_manufacturer = { add_mio_funds = 2000 }
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2020.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_the_bohai_bastion
+		icon = Generic_Submarine3
+
+		x = 0
+		y = 1
+		relative_position_id = CHI_the_type_075_yushen
+
+		cost = 7
+
+		prerequisite = { focus = CHI_the_type_075_yushen }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_the_bohai_bastion"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_navy_modifier }
+			add_to_variable = { CHI_navy_navy_submarine_detection_factor = 0.07 tooltip = navy_submarine_detection_factor_tt }
+			add_to_variable = { CHI_navy_navy_max_range_factor = 0.05 tooltip = navy_max_range_factor_tt }
+			newline = yes
+			add_tech_bonus = { name = CHI_the_bohai_bastion bonus = 0.25 uses = 1 category = CAT_m_sub }
+			552 = {
+				add_building_construction = { type = dockyard level = 2 instant_build = yes }
+				add_extra_state_shared_building_slots = 2
+			}
+			set_temp_variable = { treasury_change = -17 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2021.1.1
+			}
+			modifier = {
+				factor = 0
+				can_staff_an_dockyard = no
+			}
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_undersea_supremacy
+		icon = wolfpacks
+
+		x = 0
+		y = 2
+		relative_position_id = CHI_the_fujian_catapults
+
+		cost = 7
+
+		prerequisite = { focus = CHI_the_quiet_dragons }
+		mutually_exclusive = { focus = CHI_the_surface_capital_fleet }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_undersea_supremacy"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_navy_modifier }
+			add_to_variable = { CHI_navy_naval_torpedo_reveal_chance_factor = -0.10 tooltip = naval_torpedo_reveal_chance_factor_tt }
+			add_to_variable = { CHI_navy_navy_submarine_attack_factor = 0.10 tooltip = navy_submarine_attack_factor_tt }
+			add_to_variable = { CHI_navy_guerre_de_course_mastery_gain_factor = 0.10 tooltip = guerre_de_course_mastery_gain_factor_tt }
+			newline = yes
+			mio:CHI_csic_manufacturer = { add_mio_funds = 2000 add_mio_task_capacity = 1 }
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2020.1.1
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					is_historical_focus_on = yes
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_HEGEMON_FOCUS_PATH
+					has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_the_surface_capital_fleet
+		icon = focus_SMB_blue_water_fleet
+
+		x = 0
+		y = 2
+		relative_position_id = CHI_the_type_075_yushen
+
+		cost = 7
+
+		prerequisite = { focus = CHI_the_bohai_bastion }
+		mutually_exclusive = { focus = CHI_undersea_supremacy }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_the_surface_capital_fleet"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_navy_modifier }
+			add_to_variable = { CHI_navy_naval_coordination = 0.10 tooltip = naval_coordination_tt }
+			add_to_variable = { CHI_navy_blue_water_mastery_gain_factor = 0.05 tooltip = blue_water_mastery_gain_factor_tt }
+			add_to_variable = { CHI_navy_screening_without_screens = 0.05 tooltip = screening_without_screens_tt }
+			newline = yes
+			mio:CHI_cssc_manufacturer = { add_mio_funds = 2000 add_mio_task_capacity = 1 }
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2021.1.1
+			}
+			modifier = {
+				add = 5
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_two_ocean_fleet
+		icon = focus_PRC_the_pla_naval_school
+
+		x = -1
+		y = 3
+		relative_position_id = CHI_the_type_075_yushen
+
+		cost = 10
+
+		prerequisite = { focus = CHI_the_surface_capital_fleet focus = CHI_undersea_supremacy }
+
+		search_filters = { FOCUS_FILTER_MILITARY_LAWS }
+
+		available = {
+			naval_strength_ratio = {
+				tag = USA
+				ratio > 0.75
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_two_ocean_fleet"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_navy_modifier }
+			add_to_variable = { CHI_navy_navy_max_range_factor = 0.10 tooltip = navy_max_range_factor_tt }
+			add_to_variable = { CHI_navy_navy_org_factor = 0.05 tooltip = navy_org_factor_tt }
+			add_to_variable = { CHI_navy_naval_morale_factor = 0.05 tooltip = naval_morale_factor_tt }
+			add_to_variable = { CHI_navy_naval_coordination = 0.05 tooltip = naval_coordination_tt }
+			newline = yes
+			if = {
+				limit = { has_completed_focus = CHI_undersea_supremacy }
+				newline = yes
+				add_to_variable = { CHI_navy_navy_submarine_detection_factor = 0.05 tooltip = navy_submarine_detection_factor_tt }
+				newline = yes
+				mio:CHI_csic_manufacturer = { add_mio_funds = 2000 }
+			}
+			else_if = {
+				limit = { has_completed_focus = CHI_the_surface_capital_fleet }
+				newline = yes
+				add_to_variable = { CHI_navy_navy_anti_air_attack_factor = 0.05 tooltip = navy_anti_air_attack_factor_tt }
+				newline = yes
+				mio:CHI_cssc_manufacturer = { add_mio_funds = 2000 }
+			}
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2021.1.1
+			}
+			modifier = {
+				add = 3
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+	### Taiwan Aggression — Expanded Branch
+	### Root focus
+	focus = {
+		id = CHI_TAI_combat_the_traitors
+		icon = GFX_focus_PRC_finalopportunity
+
+		x = 21
+		y = 1
+
+		relative_position_id = CHI_the_chinese_dream
+
+		cost = 7
+
+		prerequisite = { focus = CHI_the_chinese_dream }
+
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_TAI_combat_the_traitors"
+			add_war_support = 0.05
+			reduce_focus_completion_cost = {
+				focus = {
+					CHI_TAI_fleet_modernization
+					CHI_TAI_amphibious_doctrine
+					CHI_TAI_dongfeng_program
+					CHI_TAI_air_superiority
+					CHI_TAI_cyber_warfare
+					CHI_TAI_blockade_capability
+					CHI_TAI_operation_storm
+				}
+				cost = 10
+			}
+			set_temp_variable = { treasury_change = -7.5 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 0
+				date < 2027.1.1
+			}
+			modifier = {
+				factor = 0
+				can_staff_an_arms_industry = no
+			}
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+			modifier = {
+				factor = 3
+				OR = {
+					is_historical_focus_on = yes
+					has_global_flag = CHI_HISTORICAL_FOCUS_PATH
+					has_global_flag = CHI_HEGEMON_FOCUS_PATH
+				}
+			}
+			modifier = {
+				factor = 0
+				has_global_flag = CHI_PEACEFUL_RISE_FOCUS_PATH
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_TAI_fleet_modernization
+		icon = focus_generic_refit_civilian_ships
+
+		x = -6
+		y = 1
+		relative_position_id = CHI_TAI_combat_the_traitors
+
+		cost = 7
+
+		prerequisite = { focus = CHI_TAI_combat_the_traitors }
+
+		search_filters = { FOCUS_FILTER_MILITARY FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_TAI_fleet_modernization"
+			unlock_decision_tooltip = CHI_TAI_amphibious_exercise
+			custom_effect_tooltip = {
+				localization_key = modifies_dynamic_modifier_tt
+				MODIFIER = CHI_TAI_shared_modifier
+			}
+			add_to_variable = { CHI_TAI_industrial_capacity_dockyard = 0.05 tooltip = industrial_capacity_dockyard_tt }
+			newline = yes
+			537 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			}
+			538 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			}
+			set_temp_variable = { treasury_change = -17 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 0
+				date < 2027.1.1
+			}
+			modifier = {
+				factor = 0
+				can_staff_an_dockyard = no
+			}
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+			modifier = {
+				add = 1
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_TAI_amphibious_doctrine
+		icon = focus_generic_naval_invasion
+
+		x = -2
+		y = 1
+		relative_position_id = CHI_TAI_fleet_modernization
+
+		cost = 5
+
+		prerequisite = { focus = CHI_TAI_fleet_modernization }
+
+		search_filters = { FOCUS_FILTER_MILITARY }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_TAI_amphibious_doctrine"
+			unlock_decision_tooltip = CHI_TAI_strait_naval_exercise
+			add_timed_idea = {
+				idea = CHI_TAI_amphibious_mastery
+				days = 730
+			}
+			newline = yes
+			country_event = { id = china_sar.024 days = 7 }
+			newline = yes
+			unlock_decision_tooltip = {
+				decision = CHI_TAI_strait_naval_exercise
+				show_effect_tooltip = yes
+			}
+		}
+
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 0
+				date < 2027.1.1
+			}
+			modifier = {
+				add = 1
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_TAI_dongfeng_program
+		icon = guided_missile2
+
+		x = 2
+		y = 1
+		relative_position_id = CHI_TAI_fleet_modernization
+
+		cost = 5
+
+		prerequisite = { focus = CHI_TAI_fleet_modernization }
+
+		search_filters = { FOCUS_FILTER_MILITARY }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_TAI_dongfeng_program"
+			unlock_decision_tooltip = CHI_TAI_rocket_test
+			unlock_decision_tooltip = CHI_TAI_blockade_simulation
+			add_tech_bonus = {
+				name = CHI_TAI_dongfeng_program
+				bonus = 0.50
+				uses = 2
+				category = CAT_missile
+			}
+		}
+
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 0
+				date < 2027.1.1
+			}
+			modifier = {
+				add = 1
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_TAI_air_superiority
+		icon = air_superiority
+
+		x = 0
+		y = 1
+		relative_position_id = CHI_TAI_fleet_modernization
+
+		cost = 5
+
+		prerequisite = { focus = CHI_TAI_fleet_modernization }
+
+		search_filters = { FOCUS_FILTER_MILITARY }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_TAI_air_superiority"
+			unlock_decision_tooltip = CHI_TAI_adiz_incursion
+			unlock_decision_tooltip = CHI_TAI_grey_zone_ops
+			add_timed_idea = {
+				idea = CHI_TAI_air_dominance
+				days = 730
+			}
+		}
+
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 0
+				date < 2027.1.1
+			}
+			modifier = {
+				add = 1
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_TAI_cyber_warfare
+		icon = army_cyberwar
+
+		x = -1
+		y = 2
+		relative_position_id = CHI_TAI_fleet_modernization
+
+		cost = 5
+
+		prerequisite = { focus = CHI_TAI_amphibious_doctrine }
+		prerequisite = { focus = CHI_TAI_air_superiority }
+
+		search_filters = { FOCUS_FILTER_MILITARY }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_TAI_cyber_warfare"
+			unlock_decision_tooltip = CHI_TAI_cyberattack
+			add_to_variable = { cyber_offense_investment = 2 }
+			calculate_cyber_capability = yes
+			custom_effect_tooltip = cyber_gui_invest_offense_tt
+			if = {
+				limit = { has_dlc = "La Resistance" }
+				newline = yes
+				gain_random_agency_upgrade = yes
+			}
+		}
+
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 0
+				date < 2027.1.1
+			}
+			modifier = {
+				add = 1
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_TAI_blockade_capability
+		icon = wolfpacks
+
+		x = 1
+		y = 2
+		relative_position_id = CHI_TAI_fleet_modernization
+
+		cost = 5
+
+		prerequisite = { focus = CHI_TAI_air_superiority }
+		prerequisite = { focus = CHI_TAI_dongfeng_program }
+
+		search_filters = { FOCUS_FILTER_MILITARY FOCUS_FILTER_WAR_SUPPORT }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_TAI_blockade_capability"
+			unlock_decision_tooltip = CHI_TAI_maritime_zone
+			custom_effect_tooltip = {
+				localization_key = modifies_dynamic_modifier_tt
+				MODIFIER = CHI_TAI_shared_modifier
+			}
+			add_to_variable = { CHI_TAI_convoy_raiding_efficiency_factor = 0.10 tooltip = convoy_raiding_efficiency_factor_tt }
+			newline = yes
+			unlock_decision_tooltip = {
+				decision = CHI_TAI_maritime_zone
+				show_effect_tooltip = yes
+			}
+		}
+
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 0
+				date < 2027.1.1
+			}
+			modifier = {
+				add = 1
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				ai_is_threatened = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_TAI_one_china_enforcement
+		icon = taiwan
+
+		x = 4
+		y = 1
+		relative_position_id = CHI_TAI_combat_the_traitors
+
+		cost = 7
+
+		prerequisite = { focus = CHI_TAI_combat_the_traitors }
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_TAI_one_china_enforcement"
+			unlock_decision_tooltip = CHI_pressure_derecognize_TAI
+			add_to_variable = { CHI_taiwan_us_support = -3 tooltip = CHI_taiwan_us_support_tt }
+			clamp_variable = { var = CHI_taiwan_us_support min = 0 max = 100 }
+			newline = yes
+			every_other_country = {
+				limit = {
+					is_in_array = { recognised_countries = TAI }
+					exists = yes
+				}
+				country_event = { id = china_sar.023 days = 7 }
+			}
+			custom_effect_tooltip = TT_IF_THEY_ACCEPT
+			effect_tooltip = {
+				every_other_country = {
+					limit = {
+						is_in_array = { recognised_countries = TAI }
+						exists = yes
+					}
+					remove_from_array = { recognised_countries = TAI }
+					add_opinion_modifier = { target = CHI modifier = chi_tai_recognition_reward }
+				}
+			}
+			newline = yes
+			unlock_decision_tooltip = {
+				decision = CHI_pressure_derecognize_TAI
+				show_effect_tooltip = yes
+			}
+		}
+
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 0
+				date < 2027.1.1
+			}
+			modifier = {
+				add = 1
+				is_historical_focus_on = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_TAI_intl_org_blockade
+		icon = embargo
+
+		x = 0
+		y = 2
+		relative_position_id = CHI_TAI_one_china_enforcement
+
+		cost = 5
+
+		prerequisite = { focus = CHI_TAI_one_china_enforcement }
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_TAI_intl_org_blockade"
+			add_to_variable = { CHI_taiwan_us_support = -3 tooltip = CHI_taiwan_us_support_tt }
+			clamp_variable = { var = CHI_taiwan_us_support min = 0 max = 100 }
+			newline = yes
+			custom_effect_tooltip = CHI_TAI_intl_org_blockade_embargo_tt
+			hidden_effect = {
+				every_other_country = {
+					limit = {
+						is_in_array = { recognised_countries = TAI }
+						exists = yes
+						NOT = { original_tag = CHI }
+						NOT = { original_tag = TAI }
+					}
+					if = {
+						limit = { ROOT = { has_dlc = "By Blood Alone" } }
+						ROOT = { send_embargo = PREV }
+					}
+					else = { add_ideas = CHI_recognition_embargo }
+				}
+			}
+			newline = yes
+			TAI = {
+				custom_effect_tooltip = CHI_TAI_intl_org_blockade_tt
+				hidden_effect = { CHI_TAI_apply_isolation = yes }
+			}
+		}
+
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 0
+				date < 2027.1.1
+			}
+			modifier = {
+				add = 1
+				is_historical_focus_on = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_TAI_economic_leverage #Needs something more undermining of US companies
+		icon = better_money
+
+		x = 0
+		y = 1
+		relative_position_id = CHI_TAI_combat_the_traitors
+
+		cost = 5
+
+		prerequisite = { focus = CHI_TAI_combat_the_traitors }
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_TAI_economic_leverage"
+			add_to_variable = { CHI_taiwan_us_support = -3 tooltip = CHI_taiwan_us_support_tt }
+			clamp_variable = { var = CHI_taiwan_us_support min = 0 max = 100 }
+			newline = yes
+			custom_effect_tooltip = {
+				localization_key = modifies_dynamic_modifier_tt
+				MODIFIER = CHI_SAR_network_modifier
+			}
+			add_to_variable = { CHI_network_trade_opinion_factor = 0.05 tooltip = trade_opinion_factor_tt }
+		}
+
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 0
+				date < 2027.1.1
+			}
+			modifier = {
+				add = 1
+				is_historical_focus_on = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_TAI_lobby_network
+		icon = american_territorial_demands
+
+		x = -2
+		y = 1
+		relative_position_id = CHI_TAI_economic_leverage
+
+		cost = 3
+
+		prerequisite = { focus = CHI_TAI_economic_leverage }
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		available = { country_exists = USA }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_TAI_lobby_network"
+			unlock_decision_tooltip = CHI_TAI_influence_us_election
+			newline = yes
+			add_to_variable = { CHI_taiwan_us_support = -2 tooltip = CHI_taiwan_us_support_tt }
+			clamp_variable = { var = CHI_taiwan_us_support min = 0 max = 100 }
+			newline = yes
+			country_event = { id = china_sar.027 days = 7 }
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2002.1.1
+			}
+			modifier = {
+				add = 1
+				is_historical_focus_on = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_TAI_proxy_strategy
+		icon = war2
+
+		x = 0
+		y = 1
+		relative_position_id = CHI_TAI_economic_leverage
+
+		cost = 5
+
+		prerequisite = { focus = CHI_TAI_economic_leverage }
+
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_WAR_SUPPORT }
+
+		available = { country_exists = USA }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_TAI_proxy_strategy"
+			unlock_decision_tooltip = CHI_TAI_support_houthis
+			unlock_decision_tooltip = CHI_TAI_scs_provocations
+			unlock_decision_tooltip = CHI_TAI_middleeast_diversion
+			unlock_decision_tooltip = CHI_TAI_arm_iran
+			unlock_decision_tooltip = CHI_TAI_nk_provocations
+			unlock_decision_tooltip = CHI_TAI_support_russia
+			newline = yes
+			add_to_variable = { CHI_taiwan_us_support = -3 tooltip = CHI_taiwan_us_support_tt }
+			clamp_variable = { var = CHI_taiwan_us_support min = 0 max = 100 }
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2002.1.1
+			}
+			modifier = {
+				add = 1
+				is_historical_focus_on = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_TAI_distract_america
+		icon = usa_attacked
+
+		x = 2
+		y = 1
+		relative_position_id = CHI_TAI_economic_leverage
+
+		cost = 5
+
+		prerequisite = { focus = CHI_TAI_economic_leverage }
+
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_WAR_SUPPORT }
+
+		available = { country_exists = USA }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_TAI_distract_america"
+			if = {
+				limit = { USA = { has_war = yes } }
+				add_to_variable = { CHI_taiwan_us_support = -5 tooltip = CHI_taiwan_us_support_tt }
+			}
+			else = {
+				add_to_variable = { CHI_taiwan_us_support = -2 tooltip = CHI_taiwan_us_support_tt }
+			}
+			clamp_variable = { var = CHI_taiwan_us_support min = 0 max = 100 }
+			newline = yes
+			unlock_decision_tooltip = {
+				decision = CHI_TAI_fund_us_opposition
+				show_effect_tooltip = yes
+			}
+			unlock_decision_tooltip = {
+				decision = CHI_TAI_exploit_us_commitments
+				show_effect_tooltip = yes
+			}
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2002.1.1
+			}
+			modifier = {
+				add = 1
+				is_historical_focus_on = yes
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_TAI_tourism_freeze
+		icon = economic_tourism
+
+		x = 0
+		y = 2
+		relative_position_id = CHI_TAI_economic_leverage
+
+		cost = 3
+
+		prerequisite = { focus = CHI_TAI_proxy_strategy }
+
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_INDUSTRY }
+
+		available = {
+			country_exists = TAI
+			NOT = { has_war_with = TAI }
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_TAI_tourism_freeze"
+			add_to_variable = { CHI_taiwan_us_support = -2 tooltip = CHI_taiwan_us_support_tt }
+			clamp_variable = { var = CHI_taiwan_us_support min = 0 max = 100 }
+			TAI = { add_ideas = CHI_TAI_tourism_ban }
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				date < 2003.1.1
+			}
+			modifier = {
+				add = 1
+				is_historical_focus_on = yes
+			}
+		}
+	}
+}

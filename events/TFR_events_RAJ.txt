@@ -1,0 +1,246 @@
+﻿add_namespace = RAJ
+
+news_event = {
+	id = RAJ.9
+	title = RAJ.9.t
+	desc = RAJ.9.d
+	picture = GFX_ULFA2
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = RAJ.9.a
+		
+	}
+}
+
+#the great asian war
+country_event = {
+	id = RAJ.19
+	title = RAJ.19.t
+	desc = RAJ.19.d
+	picture = GFX_generic_elections
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	option = {
+		name = RAJ.19.a
+		set_country_flag = RAJ_war_against_the_dragon_flag
+		focus_unlock = yes
+		complete_national_focus = RAJ_war_against_the_dragon
+	}
+}
+
+#militia deployed in our capital
+country_event = {
+	id = RAJ.20
+	title = RAJ.20.t
+	desc = RAJ.20.d
+	picture = GFX_generic_elections
+	is_triggered_only = yes
+	fire_only_once = no
+	trigger = {
+		has_global_flag = pan_asian_war_ongoing
+		NOT = {
+			has_global_flag = RAJ_india_dead
+		}
+	}
+	
+	option = {
+		name = RAJ.20.a
+		add_manpower = -21000
+		capital_scope = {
+			create_unit = {
+				division = "division_template = \"GAW Militia\" start_experience_factor = 0.2 start_equipment_factor = 0.01"
+				owner = PREV
+				count = 6
+			}
+		}
+		country_event = {
+			id = RAJ.20
+			days = 30
+		}
+	}
+}
+
+#Large Order from India for Infantry Equipment Supply
+country_event = {
+	id = RAJ.21
+	title = RAJ.21.t
+	desc = RAJ.21.d
+	picture = GFX_PRC_nib
+	is_triggered_only = yes
+	fire_only_once = no
+	
+	option = {
+		name = RAJ.21.a
+		add_timed_idea = {
+			idea = RAJ_SOV_supply_for_india_idea
+			days = 60
+		}
+		RAJ = {
+			country_event = {
+				id = RAJ.24
+				days = 1
+			}
+			add_equipment_to_stockpile = {
+				type = infantry_weapons3
+				amount = 3500
+				producer = SOV
+			}
+			add_equipment_to_stockpile = {
+				type = command_control_equipment1
+				amount = 500
+				producer = SOV
+			}
+			add_equipment_to_stockpile = {
+				type = Anti_tank_2
+				amount = 350
+				producer = SOV
+			}
+			add_equipment_to_stockpile = {
+				type = Anti_Air_2
+				amount = 350
+				producer = SOV
+			}
+		}
+	}
+	option = {
+		name = RAJ.21.b
+		add_political_power = 10
+		RAJ = {
+			country_event = {
+				id = RAJ.25
+				days = 1
+			}
+		}
+	}
+}
+
+#Large Order from India for Jets Supply
+country_event = {
+	id = RAJ.22
+	title = RAJ.22.t
+	desc = RAJ.22.d
+	picture = GFX_SOV_su35_event
+	is_triggered_only = yes
+	fire_only_once = no
+	
+	option = {
+		name = RAJ.22.a
+		add_timed_idea = {
+			idea = RAJ_SOV_supply_for_india_idea
+			days = 100
+		}
+		RAJ = {
+			country_event = {
+				id = RAJ.24
+				days = 1
+			}
+			add_equipment_to_stockpile = {
+				type = medium_plane_fighter_airframe_2
+				variant_name = "Su-27S"
+				amount = 30
+				producer = SOV
+			}
+			add_equipment_to_stockpile = {
+				type = small_plane_cas_airframe_2
+				variant_name = "Su-25"
+				amount = 30
+				producer = SOV
+			}
+		}
+	}
+	option = {
+		name = RAJ.22.b
+		add_political_power = 10
+		RAJ = {
+			country_event = {
+				id = RAJ.25
+				days = 1
+			}
+		}
+	}
+}
+
+#Large Order from India for Armored Vechiles Supply
+country_event = {
+	id = RAJ.23
+	title = RAJ.23.t
+	desc = RAJ.23.d
+	picture = GFX_Generic_Tank_column
+	is_triggered_only = yes
+	fire_only_once = no
+	
+	option = {
+		name = RAJ.23.a
+		add_timed_idea = {
+			idea = RAJ_SOV_supply_for_india_idea
+			days = 80
+		}
+		RAJ = {
+			country_event = {
+				id = RAJ.24
+				days = 1
+			}
+			add_equipment_to_stockpile = {
+				type = medium_tank_chassis_3
+				variant_name = "T-90A"
+				amount = 350
+				producer = SOV
+			}
+			add_equipment_to_stockpile = {
+				type = medium_tank_flame_chassis_3
+				amount = 500
+				producer = SOV
+			}
+			add_equipment_to_stockpile = {
+				type = medium_tank_amphibious_chassis_3
+				amount = 500
+				producer = SOV
+			}
+			add_equipment_to_stockpile = {
+				type = util_vehicle_equipment_3
+				amount = 500
+				producer = SOV
+			}
+		}
+	}
+	option = {
+		name = RAJ.23.b
+		add_political_power = 10
+		RAJ = {
+			country_event = {
+				id = RAJ.25
+				days = 1
+			}
+		}
+	}
+}
+
+#Russia Agrees to Supply
+country_event = {
+	id = RAJ.24
+	title = RAJ.24.t
+	desc = RAJ.24.d
+	picture = GFX_generic_elections
+	is_triggered_only = yes
+	fire_only_once = no
+	
+	option = {
+		name = RAJ.24.a
+	}
+}
+
+#Russia Refuses to Supply
+country_event = {
+	id = RAJ.25
+	title = RAJ.25.t
+	desc = RAJ.25.d
+	picture = GFX_generic_elections
+	is_triggered_only = yes
+	fire_only_once = no
+	
+	option = {
+		name = RAJ.25.a
+	}
+}

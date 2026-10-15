@@ -1,0 +1,78 @@
+division_template = {
+	name = "Batallón de infantería"
+
+	regiments = {
+	   L_Inf_Bat = { x = 0 y = 0 }
+	}
+
+	support = {
+		Arm_Recce_Comp = { x = 0 y = 0 }
+	}
+
+}
+
+units = {
+
+	division = {
+		name = "1er Batallón de infantería"
+		location = 1903   	#
+		division_template = "Batallón de infantería"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "2do Batallón de infantería"
+		location = 8244   	#
+		division_template = "Batallón de infantería"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.01
+	}
+
+
+}
+
+instant_effect = { 
+	add_equipment_to_stockpile = {
+		type = infantry_weapons_2 			#AKM
+		amount = 500
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		type = cnc_equipment_1
+		amount = 100
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		type = medium_tank_flame_chassis_0 			#BMP-1
+		amount = 20
+		producer = SOV
+	} 
+
+	add_equipment_to_stockpile = {
+		type = transport_helicopter_2 			#Mi-26
+		amount = 1
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		type = heavy_tank_chassis_0 			#Mi-24
+		amount = 7
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		type = infantry_weapons_2 			#AK-47（封存）
+		amount = 10000
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		type = medium_tank_chassis_0
+		producer = SOV
+		variant_name = "T-55"
+		amount = 10		#T-55（封存）
+	}
+}

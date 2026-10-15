@@ -1,0 +1,365 @@
+on_actions = {
+	on_startup = {
+		effect = {
+			# 90-100: negligible_corruption
+			every_country = {
+				limit = {
+					OR = {
+						original_tag = DEN # 90 Denmark (2016)
+						original_tag = NZL # 90 New Zealand (2016)
+					}
+				}
+				add_ideas = { negligible_corruption }
+			}
+
+			# 80-89: slight_corruption
+			every_country = {
+				limit = {
+					OR = {
+						original_tag = FIN # 89 Finland (2016)
+						original_tag = SWE # 88 Sweden (2016)
+						original_tag = SWI # 86 Switzerland (2016)
+						original_tag = NRY # 85 Norway (2016)
+						original_tag = SIN # 84 Singapore (2016)
+						original_tag = HOL # 83 Netherlands (2016)
+						original_tag = CAN # 82 Canada (2016)
+						original_tag = GER # 81 Germany (2016)
+						original_tag = ENG # 81 United Kingdom (2016)
+						original_tag = LUX # 81 Luxembourg (2016)
+					}
+				}
+				add_ideas = { slight_corruption }
+			}
+
+			# 70-79: modest_corruption
+			every_country = {
+				limit = {
+					OR = {
+						original_tag = AST # 79 Australia (2016)
+						original_tag = ICE # 78 Iceland (2016)
+						original_tag = BEL # 77 Belgium (2016)
+						original_tag = HKG # 77 Hong Kong (2016)
+						original_tag = AUS # 75 Austria (2016)
+						original_tag = IRE # 73 Ireland (2016)
+						original_tag = JAP # 72 Japan (2016)
+						original_tag = URG # 71 Uruguay (2016)
+						original_tag = EST # 70 Estonia (2016)
+						original_tag = PTR # 73 Puerto Rico (2016, same as USA)
+						original_tag = ASK # 73 Alaska (2016, same as USA)
+						original_tag = CAL # 73 California (2016, same as USA)
+						original_tag = CAS # 73 Cascadia (2016, same as USA)
+						original_tag = FLA # 73 Florida (2016, same as USA)
+						original_tag = HWI # 73 Hawaii (2016, same as USA)
+						original_tag = IDH # 73 Idaho (2016, same as USA)
+						original_tag = NEN # 73 New England (2016, same as USA)
+						original_tag = NYK # 73 New York (2016, same as USA)
+						original_tag = TEX # 73 Texas (2016, same as USA)
+						original_tag = QUE # 73 Quebec (2016, same as CAN)
+						original_tag = GRL # 73 Greenland (2016, same as DEN)
+						original_tag = FAO # 73 Faroe Islands (2016, same as DEN)
+						original_tag = ADO # 73 Andorra (2016, same as ESP)
+						original_tag = MNC # 73 Monaco (2016, same as FRA)
+						original_tag = SMA # 73 San Marino (2016, same as ITA)
+						original_tag = HLS # 73 Holy See (2016, same as ITA)
+						original_tag = EUU # 75 EU (2016, same as EU)
+					}
+				}
+				add_ideas = { modest_corruption }
+			}
+
+			# 60-69: medium_corruption
+			every_country = {
+				limit = {
+					OR = {
+						original_tag = FRA # 69 France (2016)
+						original_tag = CHL # 66 Chile (2016)
+						original_tag = UAE # 66 United Arab Emirates (2016)
+						original_tag = BAH # 66 Bahamas (2016)
+						original_tag = BHU # 65 Bhutan (2016)
+						original_tag = ISR # 64 Israel (2016)
+						original_tag = POL # 62 Poland (2016)
+						original_tag = POR # 62 Portugal (2016)
+						original_tag = TAI # 61 Taiwan (2016)
+						original_tag = QAT # 61 Qatar (2016)
+						original_tag = SLV # 61 Slovenia (2016)
+						original_tag = BAR # 61 Barbados (2016)
+						original_tag = BOT # 60 Botswana (2016)
+						original_tag = STL # 60 Saint Lucia (2016)
+						original_tag = STV # 60 Saint Vincent and the Grenadines (2016)
+						original_tag = NCL # 66 New Caledonia (2016, same as FRA)
+						original_tag = FGU # 66 French Guyana (2016, same as FRA)
+						original_tag = NAV # 66 Basque Country (2016, same as SPR)
+						original_tag = SPA # 66 Andalucia (2016, same as SPR)
+						original_tag = CAT # 66 Catalonia (2016, same as SPR)
+						original_tag = RYU # 60 Ryukyu (2016, same as JAP)
+						original_tag = SCO # 65 Scotland (2016, same as ENG)
+						original_tag = WAL # 65 Wales (2016, same as ENG)
+						original_tag = COR # 65 Cornwall (2016, same as ENG)
+						original_tag = IOM # 65 Isle of Mann (2016, same as ENG)
+						original_tag = STH # 65 St Helena (2016, same as ENG)
+						original_tag = CNR # 66 Canary Islands (2016, same as ESP)
+						original_tag = NLA # 60 Netherlands Antilles (2016, same as HOL)
+					}
+				}
+				add_ideas = { medium_corruption }
+			}
+
+			# 50-59: widespread_corruption
+			every_country = {
+				limit = {
+					OR = {
+						original_tag = LIT # 59 Lithuania (2016)
+						original_tag = VER # 59 Cape Verde (2016)
+						original_tag = DMI # 59 Dominica (2016)
+						original_tag = SPR # 58 Spain (2016)
+						original_tag = COS # 58 Costa Rica (2016)
+						original_tag = BRU # 58 Brunei (2016)
+						original_tag = GEO # 57 Georgia (2016)
+						original_tag = LAT # 57 Latvia (2016)
+						original_tag = GRA # 56 Grenada (2016)
+						original_tag = CZE # 55 Czech Republic (2016)
+						original_tag = CYP # 55 Cyprus (2016)
+						original_tag = MLT # 55 Malta (2016)
+						original_tag = RWA # 54 Rwanda (2016)
+						original_tag = MRT # 54 Mauritius (2016)
+						original_tag = KOR # 53 South Korea (2016)
+						original_tag = NAM # 52 Namibia (2016)
+						original_tag = SLO # 51 Slovakia (2016)
+					}
+				}
+				add_ideas = { widespread_corruption }
+			}
+
+			# 40-49: systematic_corruption
+			every_country = {
+				limit = {
+					OR = {
+						original_tag = TUN # 41 Tunisia (2016)
+						original_tag = JOR # 48 Jordan (2016)
+						original_tag = MAY # 49 Malaysia (2016)
+						original_tag = CRO # 49 Croatia (2016)
+						original_tag = ROM # 48 Romania (2016)
+						original_tag = HUN # 48 Hungary (2016)
+						original_tag = CUB # 47 Cuba (2016)
+						original_tag = SAU # 46 Saudi Arabia (2016)
+						original_tag = SAO # 46 Sao Tome and Principe (2016)
+						original_tag = SEN # 45 Senegal (2016)
+						original_tag = OMA # 45 Oman (2016)
+						original_tag = MNT # 45 Montenegro (2016)
+						original_tag = SUR # 45 Suriname (2016)
+						original_tag = GRE # 44 Greece (2016)
+						original_tag = BHR # 43 Bahrain (2016)
+						original_tag = GAH # 43 Ghana (2016)
+						original_tag = SER # 42 Serbia (2016)
+						original_tag = BFA # 42 Burkina Faso (2016)
+						original_tag = SOL # 42 Solomon Islands (2016)
+						original_tag = BLR # 40 Belarus (2016)
+						original_tag = TUR # 41 Turkey (2016)
+						original_tag = BUL # 41 Bulgaria (2016)
+						original_tag = KUW # 41 Kuwait (2016)
+						original_tag = RAJ # 40 India (2016)
+						original_tag = QTF # 46 Qatif (2016, same as SAU)
+						original_tag = MIC # 42 Micronesian Federation (2016, same as USA)
+						original_tag = MAR # 42 Marshall Islands (2016, same as USA)
+						original_tag = NAU # 40 Nauru (2016, same as AUS)
+						original_tag = SAM # 42 Samoa (2016, same as NZL)
+						original_tag = TON # 40 Tonga (2016, same as NZL)
+						original_tag = PKK # 41 Kurdistan Workers Party (2016, same as TUR)
+					}
+				}
+				add_ideas = { systematic_corruption }
+			}
+
+			# 30-39: unrestrained_corruption
+			every_country = {
+				limit = {
+					OR = {
+						original_tag = ALB # 39 Albania (2016)
+						original_tag = BOS # 39 Bosnia and Herzegovina (2016)
+						original_tag = JAM # 39 Jamaica (2016)
+						original_tag = LES # 39 Lesotho (2016)
+						original_tag = ZAM # 38 Zambia (2016)
+						original_tag = PAN # 38 Panama (2016)
+						original_tag = FYR # 37 Macedonia (2016)
+						original_tag = IND # 37 Indonesia (2016)
+						original_tag = COL # 37 Colombia (2016)
+						original_tag = MOR # 37 Morocco (2016)
+						original_tag = LIB # 37 Liberia (2016)
+						original_tag = ARG # 36 Argentina (2016)
+						original_tag = SRI # 36 Sri Lanka (2016)
+						original_tag = BEN # 36 Benin (2016)
+						original_tag = ELS # 36 El Salvador (2016)
+						original_tag = KOS # 36 Kosovo (2016)
+						original_tag = SIA # 35 Thailand (2016)
+						original_tag = PHI # 35 Philippines (2016)
+						original_tag = PRU # 35 Peru (2016)
+						original_tag = TRI # 35 Trinidad and Tobago (2016)
+						original_tag = TIM # 35 East Timor (2016)
+						original_tag = NGR # 35 Niger (2016)
+						original_tag = GAB # 35 Gabon (2016)
+						original_tag = ETH # 34 Ethiopia (2016)
+						original_tag = EGY # 34 Egypt (2016)
+						original_tag = ALG # 34 Algeria (2016)
+						original_tag = GUY # 34 Guyana (2016)
+						original_tag = ARM # 33 Armenia (2016)
+						original_tag = VIE # 33 Vietnam (2016)
+						original_tag = BOL # 33 Bolivia (2016)
+						original_tag = PAK # 32 Pakistan (2016)
+						original_tag = TNZ # 32 Tanzania (2016)
+						original_tag = MAL # 32 Mali (2016)
+						original_tag = BLC # 32 Balochistan (2016, same as PAK)
+						original_tag = TLS # 30 Talishstan (2016, same as AZE)
+						original_tag = MEX # 30 Mexico (2016)
+						original_tag = AZE # 30 Azerbaijan (2016)
+						original_tag = HON # 30 Honduras (2016)
+						original_tag = SIE # 30 Sierra Leone (2016)
+						original_tag = PAR # 30 Paraguay (2016)
+						original_tag = LAO # 30 Laos (2016)
+						original_tag = DJI # 30 Djibouti (2016)
+						original_tag = SLA # 30 Sinaloa Cartel (2016, same as MEX)
+						original_tag = TRC # 30 Tierra Caliente (2016, same as MEX)
+					}
+				}
+				add_ideas = { unrestrained_corruption }
+			}
+
+			# 20-29: rampant_corruption
+			every_country = {
+				limit = {
+					OR = {
+						original_tag = SOV # 29 Russia (2016)
+						original_tag = ADY # 29 Adygea (2016, same as SOV)
+						original_tag = ALT # 29 Altai (2016, same as SOV)
+						original_tag = BSH # 29 Bashkiria (2016, same as SOV)
+						original_tag = BRY # 29 Buryatia (2016, same as SOV)
+						original_tag = CKK # 29 Chukotka (2016, same as SOV)
+						original_tag = DAG # 29 Dagestan (2016, same as SOV)
+						original_tag = ING # 29 Ingushetia (2016, same as SOV)
+						original_tag = KAE # 29 Karelia (2016, same as SOV)
+						original_tag = KHM # 29 Khanty-Mansi (2016, same as SOV)
+						original_tag = KHS # 29 Khakassia (2016, same as SOV)
+						original_tag = KLM # 29 Kalmykia (2016, same as SOV)
+						original_tag = KOM # 29 Komi (2016, same as SOV)
+						original_tag = KBK # 29 Kabardino Balkaria (2016, same as SOV)
+						original_tag = KCC # 29 Karachay Cherkessia (2016, same as SOV)
+						original_tag = KRP # 29 Karakalpakstan (2016, same as SOV)
+						original_tag = KSH # 29 Kashubia (2016, same as SOV)
+						original_tag = KUB # 29 Kuban Republic (2016, same as SOV)
+						original_tag = MEL # 29 Mari El (2016, same as SOV)
+						original_tag = MOV # 29 Mordovia (2016, same as SOV)
+						original_tag = NEE # 29 Nenets (2016, same as SOV)
+						original_tag = TAT # 29 Tatarstan (2016, same as SOV)
+						original_tag = CHE # 29 Chechnya (2016, same as SOV)
+						original_tag = CHU # 29 Chuvashia (2016, same as SOV)
+						original_tag = GOR # 29 Gorskaya Republic (2016, same as SOV)
+						original_tag = CSB # 29 Central Siberia (2016, same as SOV)
+						original_tag = SIB # 29 Siberian Republic (2016, same as SOV)
+						original_tag = FAR # 29 Far Eastern Republic (2016, same as SOV)
+						original_tag = ESB # 29 Eastern Siberia (2016, same as SOV)
+						original_tag = RUS # 29 Lokot Republic (2016, same as SOV)
+						original_tag = NEP # 29 Nepal (2016)
+						original_tag = NPM # 29 Nepal Maoist (2016, same as NEP)
+						original_tag = KAZ # 29 Kazakhstan (2016)
+						original_tag = BRM # 28 Myanmar (2016)
+						original_tag = ARK # 28 Rakhine (2016, same as BRM)
+						original_tag = CHS # 28 Chin (2016, same as BRM)
+						original_tag = WAA # 28 Wa (2016, same as BRM)
+						original_tag = KAC # 28 Kachin (2016, same as BRM)
+						original_tag = KAR # 28 Karen (2016, same as BRM)
+						original_tag = SHN # 28 South Shan State (2016, same as BRM)
+						original_tag = NHN # 28 North Shan State (2016, same as BRM)
+						original_tag = NIG # 28 Nigeria (2016)
+						original_tag = GUA # 28 Guatemala (2016)
+						original_tag = KYR # 28 Kyrgyzstan (2016)
+						original_tag = PAP # 28 Papua New Guinea (2016)
+						original_tag = LEB # 28 Lebanon (2016)
+						original_tag = MOZ # 27 Mozambique (2016)
+						original_tag = GUI # 27 Guinea (2016)
+						original_tag = MAU # 27 Mauritania (2016)
+						original_tag = NIC # 26 Nicaragua (2016)
+						original_tag = BAN # 26 Bangladesh (2016)
+						original_tag = KEN # 26 Kenya (2016)
+						original_tag = MAD # 26 Madagascar (2016)
+						original_tag = CAM # 26 Cameroon (2016)
+						original_tag = GAM # 26 Gambia (2016)
+						original_tag = FNC # 26 Forces Nouvelles de Cote d'Ivoire (2016, same as CDI)
+						original_tag = UGA # 25 Uganda (2016)
+						original_tag = TAJ # 25 Tajikistan (2016)
+						original_tag = COM # 24 Comoros (2016)
+						original_tag = ZIM # 22 Zimbabwe (2016)
+						original_tag = TRK # 22 Turkmenistan (2016)
+						original_tag = DRC # 21 Democratic Republic of Congo (2016)
+						original_tag = UZB # 21 Uzbekistan (2016)
+						original_tag = CBD # 21 Cambodia (2016)
+						original_tag = MLC # 21 Movement for the Liberation of Congo (2016, same as DRC)
+						original_tag = RCD # 21 Rally for Congolese Democracy (2016, same as DRC)
+						original_tag = KHM # 21 Khmer Rouge (2016, same as CBD)
+						original_tag = CHA # 20 Chad (2016)
+						original_tag = HAI # 20 Haiti (2016)
+						original_tag = BUR # 20 Burundi (2016)
+						original_tag = CNG # 20 Congo (2016)
+						original_tag = CAR # 20 Central African Republic (2016)
+						original_tag = BAL # 20 Anti-Balaka (2016, same as CAR)
+						original_tag = SEL # 20 Seleka (2016, same as CAR)
+						original_tag = LUR # 20 Liberians United for Reconciliation and Democracy (2016, same as LIB)
+					}
+				}
+				add_ideas = { rampant_corruption }
+			}
+
+			# 10-19: crippling_corruption
+			every_country = {
+				limit = {
+					OR = {
+						original_tag = AGL # 18 Angola (2016)
+						original_tag = ERI # 18 Eritrea (2016)
+						original_tag = IRQ # 17 Iraq (2016)
+						original_tag = KUR # 17 Kurdistan (2016, same as IRQ)
+						original_tag = PUK # 17 PUK Kurdistan (2016, same as IRQ)
+						original_tag = IEK # 17 Islamic Emirate of Kurdistan (2016, same as IRQ)
+						original_tag = VEN # 17 Venezuela (2016)
+						original_tag = GUB # 16 Guinea-Bissau (2016)
+						original_tag = AFG # 15 Afghanistan (2016)
+						original_tag = TAL # 15 Afghan Taliban (2016, same as AFG)
+						original_tag = BDA # 15 Badakhshan (2016, same as AFG)
+						original_tag = HAZ # 15 Hazaristan (2016, same as AFG)
+						original_tag = SUD # 14 Sudan (2016)
+						original_tag = YEM # 14 Yemen (2016)
+						original_tag = SYM # 14 South Yemen (2016, same as YEM)
+						original_tag = AQY # 14 Al-Qaeda in Yemen (2016, same as YEM)
+						original_tag = HEJ # 14 Hejaz (2016, same as YEM)
+						original_tag = HOU # 14 Houthi Yemen (2016, same as YEM)
+						original_tag = LBA # 14 Libya (2016)
+						original_tag = GNA # 14 Government of National Accord (2016, same as LBA)
+						original_tag = GNC # 14 National Salvation Government (2016, same as LBA)
+						original_tag = HOR # 14 House of Representatives (2016, same as LBA)
+						original_tag = CYR # 14 Cyrenaica (2016, same as LBA)
+						original_tag = FEZ # 14 Fezzan (2016, same as LBA)
+						original_tag = SYR # 13 Syria (2016)
+						original_tag = FSA # 13 Free Syrian Army (2016, same as SYR)
+						original_tag = ISI # 13 Islamic State (2016, same as SYR)
+						original_tag = NUS # 13 Al-Nusra (2016, same as SYR)
+						original_tag = ALA # 13 Alawite State (2016, same as SYR)
+						original_tag = DRU # 13 Druze State (2016, same as SYR)
+						original_tag = ROJ # 13 Rojava (2016, same as SYR)
+						original_tag = SSU # 11 South Sudan (2016)
+						original_tag = SOM # 10 Somalia (2016)
+						original_tag = SML # 10 Somaliland (2016, same as SOM)
+						original_tag = PUN # 10 Puntland (2016, same as SOM)
+						original_tag = JUB # 10 Jubaland (2016, same as SOM)
+						original_tag = SWS # 10 South West State of Somalia (2016, same as SOM)
+						original_tag = SNA # 10 Somali National Alliance (2016, same as SOM)
+						original_tag = SHB # 10 Al-Shabaab (2016, same as SOM)
+						original_tag = NKO # 12 North Korea (2016)
+						original_tag = TIE # 17 Tibesti (2016, same as CHA)
+						original_tag = PAL # 15 Palau (2016, same as USA)
+						original_tag = PRK # 12 North Korea (2016, same as NKO)
+						original_tag = GLC # 18 Great Lakes Confederation (2016, same as AFR)
+					}
+				}
+				add_ideas = { crippling_corruption }
+			}
+
+		}
+	}
+}

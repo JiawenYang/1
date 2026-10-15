@@ -1,0 +1,657 @@
+defined_text = {
+	name = GetGlobalAssociationTT
+	text = {
+		trigger = {
+			THIS = { is_in_faction = yes }
+		}
+		localization_key = "TFR_GLOBAL_ASSOCIATION_RANDOM_TT"
+	}
+	text = {
+		trigger = {
+			THIS = { has_idea = NATO_member }
+		}
+		localization_key = "TFR_GLOBAL_ASSOCIATION_NATO_TT"
+	}
+	text = {
+		trigger = {
+			THIS = { has_idea = CSTO_member }
+		}
+		localization_key = "TFR_GLOBAL_ASSOCIATION_CSTO_TT"
+	}
+	text = {
+		trigger = {
+			THIS = { has_country_flag = EADI_member }
+		}
+		localization_key = "TFR_GLOBAL_ASSOCIATION_EADI_TT"
+	}
+	text = {
+		trigger = {
+			THIS = { has_idea = peninsula_shield_force_member }
+		}
+		localization_key = "TFR_GLOBAL_ASSOCIATION_PSF_TT"
+	}
+	text = {
+		trigger = {
+			THIS = { has_country_flag = pdto_member }
+		}
+		localization_key = "TFR_GLOBAL_ASSOCIATION_PDTO_TT"
+	}
+	text = {
+		trigger = {
+			THIS = { has_country_flag = West_African_Anti_Imperialist_Front_member }
+		}
+		localization_key = "TFR_GLOBAL_ASSOCIATION_WAAIF_TT"
+	}
+	text = {
+		trigger = {
+			THIS = { has_country_flag = WDTO_member }
+		}
+		localization_key = "TFR_GLOBAL_ASSOCIATION_WDTO_TT"
+	}
+	text = {
+		trigger = {
+			THIS = { has_idea = faction_resistance_axis_member }
+		}
+		localization_key = "TFR_GLOBAL_ASSOCIATION_AOR_TT"
+	}
+	text = {
+		trigger = {
+			THIS = { has_country_flag = official_neutrality }
+		}
+		localization_key = "TFR_GLOBAL_ASSOCIATION_NEUTRAL_TT"
+	}
+}
+defined_text = {
+	name = GetGlobalAssociationEconTT
+	text = {
+		trigger = {
+			THIS = { has_idea = EU_member }
+		}
+		localization_key = "TFR_GLOBAL_ASSOCIATION_EU_TT"
+	}
+	text = {
+		trigger = {
+			THIS = { has_idea = CHI_sco_member }
+		}
+		localization_key = "TFR_GLOBAL_ASSOCIATION_SCO_TT"
+	}
+	text = {
+		trigger = {
+			THIS = { has_country_flag = JAP_PEC_member_flag }
+		}
+		localization_key = "TFR_GLOBAL_ASSOCIATION_PEC_TT"
+	}
+	text = {
+		trigger = {
+			THIS = { has_idea = ASEAN_member }
+		}
+		localization_key = "TFR_GLOBAL_ASSOCIATION_ASEAN_TT"
+	}
+	text = {
+		trigger = {
+			THIS = { has_idea = idea_gcc_member_state }
+		}
+		localization_key = "TFR_GLOBAL_ASSOCIATION_GCC_TT"
+	}
+	text = {
+		trigger = {
+			THIS = { has_idea = ecowas_member_state }
+		}
+		localization_key = "TFR_GLOBAL_ASSOCIATION_ECOWAS_TT"
+	}
+	text = {
+		trigger = {
+			THIS = { has_dynamic_modifier = { modifier = mercosur_member_state_modifier } }
+		}
+		localization_key = "TFR_GLOBAL_ASSOCIATION_MERCOSUR_TT"
+	}
+}
+defined_text = {
+	name = factioncontentTT
+
+	text = {
+		trigger = {
+			THIS = { has_idea = NATO_member }
+		}
+		localization_key = "NATO_member_desc"
+	}
+	text = {
+		trigger = {
+			THIS = { has_idea = CSTO_member }
+		}
+		localization_key = "CSTO_member_desc"
+	}
+	text = {
+		trigger = {
+			THIS = { 
+				AND = {
+					has_country_flag = eadi_member
+					original_tag = CHI
+				}
+			}
+		}
+		localization_key = "CHI_diplo_icon_tooltip_desc"
+	}
+	text = {
+		trigger = {
+			THIS = {
+				AND = {
+					has_country_flag = eadi_member
+					NOT = { original_tag = CHI }
+				}
+			}
+		}
+		localization_key = "EADI_diplo_icon_tooltip_desc"
+	}
+	text = {
+		trigger = {
+			THIS = {
+				AND = {
+					has_country_flag = eadi_member
+					original_tag = CHI
+				}
+			}
+		}
+		localization_key = "CHI_diplo_icon_tooltip_desc"
+	}
+	text = {
+		trigger = {
+			THIS = {
+				AND = {
+					has_country_flag = pdto_member
+					NOT = { original_tag = JAP }
+					NOT = { original_tag = AST }
+					NOT = { original_tag = RAJ }
+				}
+			}
+		}
+		localization_key = "PDTO_diplo_icon_tooltip_desc"
+	}
+	text = {
+		trigger = {
+			THIS = {
+				AND = {
+					has_country_flag = pdto_member
+					original_tag = JAP
+				}
+			}
+		}
+		localization_key = "JAP_diplo_icon_tooltip_desc"
+	}
+	text = {
+		trigger = {
+			THIS = {
+				AND = {
+					has_country_flag = pdto_member
+					original_tag = AST
+				}
+			}
+		}
+		localization_key = "AST_diplo_icon_tooltip_desc"
+	}
+	text = {
+		trigger = {
+			THIS = {
+				AND = {
+					has_country_flag = pdto_member
+					original_tag = RAJ
+				}
+			}
+		}
+		localization_key = "RAJ_diplo_icon_tooltip_desc"
+	}
+	text = {
+		trigger = {
+			THIS = { has_country_flag = West_African_Anti_Imperialist_Front_member }
+		}
+		localization_key = "West_African_Anti_Imperialist_Front_member_desc"
+	}
+	text = {
+		trigger = {
+			THIS = { has_country_flag = WDTO_member }
+		}
+		localization_key = "WDTO_member_desc"
+	}
+	text = {
+		trigger = {
+			THIS = { has_idea = faction_resistance_axis_member }
+		}
+		localization_key = "faction_resistance_axis_member_desc"
+	}
+}
+defined_text = {
+	name = factioncontenteconTT
+	text = {
+		trigger = {
+			THIS = { has_idea = EU_member }
+		}
+		localization_key = "EU_member_desc"
+	}
+	text = {
+		trigger = {
+			THIS = { has_idea = CHI_sco_member }
+		}
+		localization_key = "sco_member_desc"
+	}
+	text = {
+		trigger = {
+			THIS = { has_idea = ASEAN_Member }
+		}
+		localization_key = "ASEAN_Member_desc"
+	}
+	text = {
+		trigger = {
+			THIS = { has_idea = idea_gcc_member_state }
+		}
+		localization_key = "idea_gcc_member_state_desc"
+	}
+}
+defined_text = {
+	name = factionruleTT
+
+	text = {
+		trigger = {
+			THIS = { has_idea = NATO_member }
+		}
+		localization_key = "NATO_member_tooltip"
+	}
+	text = {
+		trigger = {
+			THIS = { has_idea = CSTO_member }
+		}
+		localization_key = "CSTO_member_tooltip"
+	}
+	text = {
+		trigger = {
+			THIS = { has_idea = faction_resistance_axis_member }
+		}
+		localization_key = "faction_resistance_axis_member_TT"
+	}
+}
+defined_text = {
+	name = GetGlobalInfluenceFirstTT
+
+	text = {
+		trigger = {
+			THIS = {
+				OR = {
+					has_idea = prousa
+					AND = {
+						OR = {
+							original_tag = ENG
+							is_subject_of = ENG
+						}
+						CHI = { NOT = { has_completed_focus = CHI_End_US_Hegemony } }
+					}
+				}
+			}
+		}
+		localization_key = "prousa"
+	}
+	text = {
+		trigger = {
+			THIS = {
+				OR = {
+					has_idea = subjectusa
+					is_subject_of = USA
+				}
+			}
+		}
+		localization_key = "subjectusa"
+	}
+	text = {
+		trigger = {
+			THIS = {
+				has_idea = prosov
+			}
+		}
+		localization_key = "prosov"
+	}
+	text = {
+		trigger = {
+			THIS = {
+				OR = {
+					has_idea = subjectsov
+					is_subject_of = SOV
+				}
+			}
+		}
+		localization_key = "subjectsov"
+	}
+	text = {
+		trigger = {
+			THIS = {
+				has_idea = proprc
+			}
+		}
+		localization_key = "proprc"
+	}
+	text = {
+		trigger = {
+			THIS = {
+				is_subject_of = CHI
+			}
+		}
+		localization_key = "subjectprc"
+	}
+	text = {
+		trigger = {
+			THIS = {
+				has_idea = profra
+			}
+		}
+		localization_key = "profra"
+	}
+	text = {
+		trigger = {
+			THIS = {
+				is_subject_of = FRA
+			}
+		}
+		localization_key = "subjectfra"
+	}
+	text = {
+		trigger = {
+			THIS = {
+				has_idea = prouk
+			}
+		}
+		localization_key = "prouk"
+	}
+	text = {
+		trigger = {
+			THIS = {
+				is_subject_of = ENG
+			}
+		}
+		localization_key = "subjectuk"
+	}
+	text = {
+		trigger = {
+			THIS = {
+				OR = {
+					original_tag = USA
+					original_tag = SOV
+					original_tag = CHI
+					original_tag = FRA
+					original_tag = ENG
+				}
+			}
+		}
+		localization_key = "thecountryyourself"
+	}
+}
+
+defined_text = {
+	name = GetGlobalInfluenceSecondTT
+
+	text = {
+		trigger = {
+			THIS = {
+				has_idea = proast
+			}
+		}
+		localization_key = "proast"
+	}
+	text = {
+		trigger = {
+			THIS = {
+				OR = {
+					has_idea = subjectast
+					is_subject_of = AST
+				}
+			}
+		}
+		localization_key = "subjectast"
+	}
+	text = {
+		trigger = {
+			THIS = {
+				has_idea = probra
+			}
+		}
+		localization_key = "probra"
+	}
+	text = {
+		trigger = {
+			THIS = {
+				OR = {
+					has_idea = subjectbra
+					is_subject_of = BRA
+				}
+			}
+		}
+		localization_key = "subjectbra"
+	}
+	text = {
+		trigger = {
+			THIS = {
+				has_idea = proger
+			}
+		}
+		localization_key = "proger"
+	}
+	text = {
+		trigger = {
+			THIS = {
+				OR = {
+					has_idea = subjectger
+					is_subject_of = GER
+				}
+			}
+		}
+		localization_key = "subjectger"
+	}
+	text = {
+		trigger = {
+			THIS = {
+				has_idea = proisr
+			}
+		}
+		localization_key = "proisr"
+	}
+	text = {
+		trigger = {
+			THIS = {
+				OR = {
+					has_idea = subjectisr
+					is_subject_of = ISR
+				}
+			}
+		}
+		localization_key = "subjectisr"
+	}
+	text = {
+		trigger = {
+			THIS = {
+				has_idea = projap
+			}
+		}
+		localization_key = "projap"
+	}
+	text = {
+		trigger = {
+			THIS = {
+				OR = {
+					has_idea = subjectjap
+					is_subject_of = JAP
+				}
+			}
+		}
+		localization_key = "subjectjap"
+	}
+	text = {
+		trigger = {
+			THIS = {
+				has_idea = prolba
+			}
+		}
+		localization_key = "prolba"
+	}
+	text = {
+		trigger = {
+			THIS = {
+				OR = {
+					has_idea = subjectlba
+					is_subject_of = LBA
+				}
+			}
+		}
+		localization_key = "subjectlba"
+	}
+	text = {
+		trigger = {
+			THIS = {
+				has_idea = proper
+			}
+		}
+		localization_key = "proper"
+	}
+	text = {
+		trigger = {
+			THIS = {
+				OR = {
+					has_idea = subjectper
+					is_subject_of = PER
+				}
+			}
+		}
+		localization_key = "subjectper"
+	}
+	text = {
+		trigger = {
+			THIS = {
+				has_idea = proraj
+			}
+		}
+		localization_key = "proraj"
+	}
+	text = {
+		trigger = {
+			THIS = {
+				OR = {
+					has_idea = subjectraj
+					is_subject_of = RAJ
+				}
+			}
+		}
+		localization_key = "subjectraj"
+	}
+	text = {
+		trigger = {
+			THIS = {
+				has_idea = prosaf
+			}
+		}
+		localization_key = "prosaf"
+	}
+	text = {
+		trigger = {
+			THIS = {
+				OR = {
+					has_idea = subjectsaf
+					is_subject_of = SAF
+				}
+			}
+		}
+		localization_key = "subjectsaf"
+	}
+	text = {
+		trigger = {
+			THIS = {
+				has_idea = prosau
+			}
+		}
+		localization_key = "prosau"
+	}
+	text = {
+		trigger = {
+			THIS = {
+				OR = {
+					has_idea = subjectsau
+					is_subject_of = SAU
+				}
+			}
+		}
+		localization_key = "subjectsau"
+	}
+	text = {
+		trigger = {
+			THIS = {
+				has_idea = proser
+			}
+		}
+		localization_key = "proser"
+	}
+	text = {
+		trigger = {
+			THIS = {
+				OR = {
+					has_idea = subjectser
+					is_subject_of = SER
+				}
+			}
+		}
+		localization_key = "subjectser"
+	}
+	text = {
+		trigger = {
+			THIS = {
+				has_idea = protur
+			}
+		}
+		localization_key = "protur"
+	}
+	text = {
+		trigger = {
+			THIS = {
+				OR = {
+					has_idea = subjecttur
+					is_subject_of = TUR
+				}
+			}
+		}
+		localization_key = "subjecttur"
+	}
+	text = {
+		trigger = {
+			THIS = {
+				has_idea = provie
+			}
+		}
+		localization_key = "provie"
+	}
+	text = {
+		trigger = {
+			THIS = {
+				OR = {
+					has_idea = subjectvie
+					is_subject_of = VIE
+				}
+			}
+		}
+		localization_key = "subjectvie"
+	}
+	text = {
+		trigger = {
+			THIS = {
+				OR = {
+					original_tag = AST
+					original_tag = BRA
+					original_tag = GER
+					original_tag = ISR
+					original_tag = JAP
+					original_tag = LBA
+					original_tag = PER
+					original_tag = RAJ
+					original_tag = SAF
+					original_tag = SAU
+					original_tag = SER
+					original_tag = TUR
+					original_tag = VIE
+				}
+			}
+		}
+		localization_key = "thecountryyourself"
+	}
+}

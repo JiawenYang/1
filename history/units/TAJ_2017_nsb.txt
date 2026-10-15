@@ -1,0 +1,216 @@
+﻿division_template = {
+	name = "Motor Rifle Brigade"
+
+	regiments = {
+		Mot_Inf_Bat = { x = 0 y = 0 }
+		Mot_Inf_Bat = { x = 0 y = 1 }
+		Mot_Inf_Bat = { x = 0 y = 2 }
+	}
+	support = {
+		armor_Comp = { x = 0 y = 0 }
+		Mech_Recce_Comp = { x = 0 y = 1 }
+	}
+}
+
+division_template = {
+	name = "Motor Rifle Brigade 2"
+
+	regiments = {
+		Mot_Inf_Bat = { x = 0 y = 0 }
+		Mot_Inf_Bat = { x = 0 y = 1 }
+		Mot_Inf_Bat = { x = 0 y = 2 }
+	}
+	support = {
+		armor_Comp = { x = 0 y = 0 }
+		Arm_Recce_Comp = { x = 0 y = 1 }
+		Arty_Battery = { x = 0 y = 2 }
+		Mech_Recce_Comp = { x = 0 y = 3 }
+	}
+}
+
+division_template = {
+	name = "Tajik Mobile Forces"
+
+	regiments = {
+		Mot_Air_Inf_Bat = { x = 0 y = 0 }
+		L_Air_Inf_Bat = { x = 0 y = 1 }
+		Mot_Air_Inf_Bat = { x = 1 y = 0 }
+		L_Air_Inf_Bat = { x = 1 y = 1 }
+	}
+}
+
+division_template = {
+	name = "Tank Brigade"
+
+	regiments = {
+		armor_Bat = { x = 0 y = 0 }
+		armor_Bat = { x = 0 y = 1 }
+		armor_Bat = { x = 0 y = 2 }
+		Arm_Inf_Bat = { x = 1 y = 0 }
+		Mech_Inf_Bat = { x = 1 y = 1 }
+		SP_Arty_Bat = { x = 2 y = 0 }
+		SP_Arty_Bat = { x = 2 y = 1 }
+		Arm_Inf_Bat = { x = 3 y = 0 }
+	}
+}
+
+units = {
+	division = {
+		name = "1st Motorized Rifle Brigade (khorugh)"
+		location = 10417
+		division_template = "Motor Rifle Brigade 2"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "3rd Motorized Rifle Brigade (Khujand)"
+		location = 12430
+		division_template = "Motor Rifle Brigade 2"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "89th Tank Regiment"
+		location = 1384
+		division_template = "Tank Brigade"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "7th Airborne Assault Brigade"
+		location = 1384
+		division_template = "Tajik Mobile Forces"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.01
+	}
+}
+
+instant_effect = {
+
+	add_equipment_to_stockpile = {
+		variant_name = "BTR-60"
+		type = medium_tank_amphibious_chassis_0 #BTR-60
+		amount = 76
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BTR-70"
+		type = medium_tank_amphibious_chassis_1 #BTR-70
+		amount = 53
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BTR-80"
+		type = medium_tank_amphibious_chassis_2 #BTR-80
+		amount = 70
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BMP-1"
+		type = medium_tank_flame_chassis_0 #BMP-1
+		amount = 80
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BMP-2"
+		type = medium_tank_flame_chassis_1 #BMP-2
+		amount = 68
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		type = medium_tank_chassis_0
+		amount = 83
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		type = medium_tank_chassis_1
+		amount = 170
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		type = artillery_1
+		amount = 90
+		producer = TAJ
+	}
+
+	add_equipment_to_stockpile = {
+		type = medium_tank_rocket_chassis_0
+		amount = 128
+		producer = TAJ
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "AKM"
+		type = infantry_weapons_2			#AKM
+		amount = 2750
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		type = cnc_equipment_1
+		amount = 450
+		producer = TAJ
+	}
+
+	add_equipment_to_stockpile = {
+		type = Heavy_Anti_tank_1
+		amount = 40
+		producer = TAJ
+	}
+
+	add_equipment_to_stockpile = {
+		type = Anti_tank_1
+		amount = 100
+		producer = TAJ
+	}
+
+	add_equipment_to_stockpile = {
+		type = Anti_Air_0
+		amount = 100
+		producer = TAJ
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "UAZ-469"
+		type = util_vehicle_2 #UAZ-469
+		amount = 630
+		producer = SOV
+	}
+
+	#### Sealed Storage（封存）####
+	add_equipment_to_stockpile = {
+		variant_name = "AK-47"
+		type = infantry_weapons_2			#AK-47（封存）
+		amount = 40000
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "T-55"
+		type = medium_tank_chassis_0		#T-55（封存，SOV变体）
+		producer = SOV
+		amount = 60
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Mi-24"
+		type = heavy_tank_chassis_0 		#Mi-24
+		amount = 6
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Mi-8"
+		type = transport_helicopter_1 		#Mi-8
+		amount = 14
+		producer = SOV
+	}
+ 
+}

@@ -1,0 +1,104 @@
+add_namespace = socioeconomic_development
+
+news_event = {
+	id = socioeconomic_development.1
+	hidden = yes
+
+	trigger = {
+		has_idea = agrarian_economy
+		check_variable = { THIS.overall_productivity > 600 }
+		NOT = { has_idea = recession }
+		NOT = { has_idea = depression }
+	}
+
+	immediate = {
+		set_temp_variable = { temp_opinion = -10 }
+		change_farmers_opinion = yes
+		clear_array = agri_crop_allocation
+		clear_array = agri_crop_price
+		EDU_update_education_idea_DYNMOD = yes
+		remove_ideas = agrarian_economy
+		add_ideas = industrializing
+	}
+}
+
+news_event = {
+	id = socioeconomic_development.2
+	hidden = yes
+
+	trigger = {
+		has_idea = industrializing
+		check_variable = { gdp_per_capita > 6.999 }
+		OR = {
+			NOT = { check_variable = { literacy_rate < 0.85 } }
+			NOT = { has_variable = literacy_rate }
+		}
+		OR = {
+			has_idea = medium_poverty
+			has_idea = high_poverty
+			has_idea = higher_poverty
+			has_idea = highest_poverty
+		}
+		OR = {
+			has_idea = high_industry
+			has_idea = higher_industry
+			has_idea = highest_industry
+		}
+		OR = {
+			has_idea = medium_society
+			has_idea = law_high_society
+			has_idea = higher_society
+			has_idea = highest_society
+		}
+	}
+
+	immediate = {
+		remove_ideas = industrializing
+		add_ideas = industrialized
+	}
+}
+
+news_event = {
+	id = socioeconomic_development.3
+	hidden = yes
+
+	trigger = {
+		has_idea = industrialized
+		check_variable = { gdp_per_capita > 19.999 }
+		check_variable = { THIS.overall_productivity > 850 }
+		OR = {
+			NOT = { check_variable = { literacy_rate < 0.95 } }
+			NOT = { has_variable = literacy_rate }
+		}
+		OR = {
+			has_idea = high_poverty
+			has_idea = higher_poverty
+			has_idea = highest_poverty
+		}
+		OR = {
+			has_idea = higher_industry
+			has_idea = highest_industry
+		}
+		OR = {
+			has_idea = higher_society
+			has_idea = highest_society
+		}
+		NOT = {
+			OR = {
+				has_idea = corruption_level_06
+				has_idea = corruption_level_07
+				has_idea = corruption_level_08
+				has_idea = corruption_level_09
+				has_idea = corruption_level_10
+				has_idea = bankrupcy
+				has_country_flag = bailout_given
+				has_offensive_war = yes
+			}
+		}
+	}
+
+	immediate = {
+		remove_ideas = industrialized
+		add_ideas = developed
+	}
+}

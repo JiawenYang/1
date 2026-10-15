@@ -1,0 +1,291 @@
+﻿division_template = {
+	name = "Infantry Brigade (A)"
+
+	regiments = {
+		Mot_Inf_Bat = { x = 0 y = 0 }
+		Arty_Bat = { x = 0 y = 1 }
+		Arm_Inf_Bat = { x = 1 y = 0 }
+		Mech_Inf_Bat = { x = 2 y = 0 }
+	}
+
+	support = {
+		Mot_Recce_Comp = { x = 0 y = 0 }
+		L_Engi_Comp = { x = 0 y = 1 }
+	}
+}
+
+division_template = {
+	name = "Infantry Brigade (SPA)"
+
+	regiments = {
+		Mot_Inf_Bat = { x = 0 y = 0 }
+		SP_Arty_Bat = { x = 0 y = 1 }
+		Arm_Inf_Bat = { x = 1 y = 0 }
+		Mech_Inf_Bat = { x = 2 y = 0 }
+	}
+
+	support = {
+		Mot_Recce_Comp = { x = 0 y = 0 }
+		L_Engi_Comp = { x = 0 y = 1 }
+	}
+}
+
+division_template = {
+	name = "Armored Battalion"
+
+	regiments = {
+		armor_Bat = { x = 0 y = 0 }
+	}
+}
+
+units = {
+	division = {
+		name = "4th Infantry Brigade"
+		location = 6942		#Capljina
+		division_template = "Infantry Brigade (A)"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "5th Infantry Brigade"
+		location = 6799		#Tuzla
+		division_template = "Infantry Brigade (SPA)"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "5th Infantry Brigade"
+		location = 6983		#Banja Luka
+		division_template = "Infantry Brigade (SPA)"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "Armored Battalion"
+		location = 6799		#Tuzla
+		division_template = "Armored Battalion"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.01
+	}
+}
+
+instant_effect = {
+
+	add_equipment_to_stockpile = {
+		variant_name = "M113"
+		type = medium_tank_amphibious_chassis_1			#M113
+		amount = 80
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "M16"
+		type = infantry_weapons_2			#M16
+		amount = 300
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "M4"
+		type = infantry_weapons_5			#M4
+		amount = 300
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "G36"
+		type = infantry_weapons_4			#G36
+		amount = 300
+		producer = GER
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "HK33"
+		type = infantry_weapons_1		#HK33
+		amount = 300
+		producer = BOS
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "AK-103"
+		type = infantry_weapons_4			#AK-103
+		amount = 300
+		producer = BOS
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Zastava M70"
+		type = infantry_weapons_2			#Zastava M70/M72
+		amount = 300
+		producer = BOS
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "T-91"
+		type = infantry_weapons_5			#T-91
+		amount = 300
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		type = medium_tank_chassis_1
+		amount = 87
+		producer = SER
+	}
+
+	add_equipment_to_stockpile = {
+		type = medium_tank_chassis_0
+		amount = 52
+		producer = FRA
+	}
+
+	add_equipment_to_stockpile = {
+		type = medium_tank_chassis_0
+		amount = 45
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		type = medium_tank_chassis_0
+		amount = 150
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "AMX-10P"
+		type = medium_tank_flame_chassis_1			#AMX-10P
+		amount = 25
+		producer = FRA
+	}
+
+	add_equipment_to_stockpile = {
+		type = medium_tank_flame_chassis_0
+		amount = 103
+		producer = SER
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BOV-VP"
+		type = medium_tank_amphibious_chassis_1			#BOV-VP
+		amount = 42
+		producer = BOS
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BTR-70"
+		type = medium_tank_amphibious_chassis_1			#BTR-70
+		amount = 3
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "D-30"
+		type = artillery_1			#D-30
+		amount = 277
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "2S1 Gvozdika"
+		type = medium_tank_artillery_chassis_0			#2S1 Gvozdika
+		#version_name = "2S1 Gvozdika"
+		amount = 24
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BM-21 Grad"
+		type = medium_tank_rocket_chassis_0			#BM-21 Grad
+		amount = 41
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "M-63 Plamen"
+		type = medium_tank_rocket_chassis_0
+		amount = 27
+		producer = BOS
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "M-77 Oganj"
+		type = medium_tank_rocket_chassis_1
+		amount = 34
+		producer = BOS
+	}
+
+	add_equipment_to_stockpile = {
+		type = medium_tank_rocket_chassis_0
+		amount = 34
+		producer = SER
+	}
+
+	add_equipment_to_stockpile = {
+		type = Heavy_Anti_tank_1				#AT-3 Sagger
+		amount = 260
+		producer = BOS
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "AT-4 Spigot"
+		type = Anti_tank_1				#AT-4 Spigot
+		amount = 52
+		producer = BOS
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "MILAN"
+		type = Anti_tank_1				#MILAN
+		amount = 840
+		producer = FRA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "SA-7"
+		type = Anti_Air_0				#SA-7
+		amount = 200
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "SA-16"
+		type = Anti_Air_1				#SA-16
+		amount = 200
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Mercedes Benz G-270"
+		type = util_vehicle_2		#Mercedez Benz G-270
+		amount = 33
+		producer = BOS
+	}
+
+	add_equipment_to_stockpile = {
+		type = cnc_equipment_1
+		amount = 250
+		producer = BOS
+	}
+
+	add_equipment_to_stockpile = {
+		type = util_vehicle_1
+		amount = 200
+		producer = BOS
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "AK-47"
+		type = infantry_weapons_2			#AK-47（封存）
+		amount = 50000
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		type = medium_tank_chassis_0
+		amount = 60			#T-55（封存）
+		producer = SOV
+	}
+}

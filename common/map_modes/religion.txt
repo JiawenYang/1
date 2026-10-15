@@ -1,0 +1,133 @@
+scripted_map_modes = {
+	religion_map_mode = { #
+		top = {
+			type = state
+
+			color = {
+				set_temp_variable = { red = 0.0 }
+				set_temp_variable = { blue = 0.0 }
+				set_temp_variable = { green = 0.0 }
+				set_temp_variable = { alpha = 1 }
+				FROM = {
+					if = {
+						limit = { has_dynamic_modifier = { modifier = orthodox } }
+						set_temp_variable = { red = 0.576 }
+						set_temp_variable = { green = 0.415 }
+						set_temp_variable = { blue = 0.647 }
+					}
+					else_if = {
+						limit = { has_dynamic_modifier = { modifier = protestant } }
+						set_temp_variable = { red = 0.474 }
+						set_temp_variable = { green = 0.572 }
+						set_temp_variable = { blue = 0.780 }
+					}
+					else_if = {
+						limit = { has_dynamic_modifier = { modifier = christian } }
+						set_temp_variable = { red = 0.890 }
+						set_temp_variable = { green = 0.674 }
+						set_temp_variable = { blue = 0.227 }
+					}
+					else_if = {
+						limit = { has_dynamic_modifier = { modifier = coptic } }
+						set_temp_variable = { red = 0.560 }
+						set_temp_variable = { green = 0.501 }
+						set_temp_variable = { blue = 0.313 }
+					}
+					else_if = {
+						limit = { has_dynamic_modifier = { modifier = mormon } }
+						set_temp_variable = { red = 0.737 }
+						set_temp_variable = { green = 0.701 }
+						set_temp_variable = { blue = 0.627 }
+					}
+					else_if = {
+						limit = { has_dynamic_modifier = { modifier = jewish } }
+						set_temp_variable = { red = 0.184 }
+						set_temp_variable = { green = 0.368 }
+						set_temp_variable = { blue = 0.525 }
+					}
+					else_if = {
+						limit = { has_dynamic_modifier = { modifier = sunni } }
+						set_temp_variable = { red = 0.411 }
+						set_temp_variable = { green = 0.678 }
+						set_temp_variable = { blue = 0.349 }
+					}
+					else_if = {
+						limit = { has_dynamic_modifier = { modifier = shia } }
+						set_temp_variable = { red = 0.268 }
+						set_temp_variable = { green = 0.523 }
+						set_temp_variable = { blue = 0.211 }
+					}
+					else_if = {
+						limit = { has_dynamic_modifier = { modifier = ibadi } }
+						set_temp_variable = { red = 0.552 }
+						set_temp_variable = { green = 0.588 }
+						set_temp_variable = { blue = 0.325 }
+					}
+					else_if = {
+						limit = { has_dynamic_modifier = { modifier = mahayana } }
+						set_temp_variable = { red = 0.886 }
+						set_temp_variable = { green = 0.678 }
+						set_temp_variable = { blue = 0.443 }
+					}
+					else_if = {
+						limit = { has_dynamic_modifier = { modifier = theravada } }
+						set_temp_variable = { red = 0.641 }
+						set_temp_variable = { green = 0.298 }
+						set_temp_variable = { blue = 0.294 }
+					}
+					else_if = {
+						limit = { has_dynamic_modifier = { modifier = confucian } }
+						set_temp_variable = { red = 0.905 }
+						set_temp_variable = { green = 0.949 }
+						set_temp_variable = { blue = 0.443 }
+					}
+					else_if = {
+						limit = { has_dynamic_modifier = { modifier = shinto } }
+						set_temp_variable = { red = 0.847 }
+						set_temp_variable = { green = 0.188 }
+						set_temp_variable = { blue = 0.121 }
+					}
+					else_if = {
+						limit = { has_dynamic_modifier = { modifier = hindu } }
+						set_temp_variable = { red = 0.717 }
+						set_temp_variable = { green = 0.419 }
+						set_temp_variable = { blue = 0.549 }
+					}
+					else_if = {
+						limit = { has_dynamic_modifier = { modifier = sikh } }
+						set_temp_variable = { red = 0.474 }
+						set_temp_variable = { green = 0.329 }
+						set_temp_variable = { blue = 0.325 }
+					}
+					else_if = {
+						limit = { has_dynamic_modifier = { modifier = vajrayana } }
+						set_temp_variable = { red = 0.941 }
+						set_temp_variable = { green = 0.556 }
+						set_temp_variable = { blue = 0.223 }
+					}
+					else={
+						set_temp_variable = { red = 1.0 }
+						set_temp_variable = { blue = 0.5 }
+						set_temp_variable = { green = 0.5 }
+					}
+					set_temp_variable = { alpha = 1 }
+				}
+			}
+
+			targets = {
+
+			}
+
+			thickness = no
+		}
+
+		bottom = {
+			type = none
+		}
+
+		far_text = country
+		near_text = state
+
+		update_daily = no
+	}
+}

@@ -1,0 +1,444 @@
+division_template = {
+	name = "Light Tank Regiment"
+
+	regiments = {
+		L_arm_Bat = { x = 0 y = 0 }
+		Arm_Inf_Bat = { x = 0 y = 1 }
+	}
+	support = {
+		SP_Arty_Battery = { x = 0 y = 0 }
+		SP_Arty_Battery = { x = 0 y = 1 }
+		H_Engi_Comp = { x = 0 y = 2 }
+	}
+}
+
+division_template = {
+	name = "Tank Regiment"
+
+	regiments = {
+		armor_Bat = { x = 0 y = 0 }
+		Arm_Inf_Bat = { x = 0 y = 1 }
+	}
+	support = {
+		armor_Recce_Comp = { x = 0 y = 0 }
+		SP_Arty_Battery = { x = 0 y = 1 }
+		SP_Arty_Battery = { x = 0 y = 2 }
+		H_Engi_Comp = { x = 0 y = 3 }
+	}
+}
+
+division_template = {
+	name = "Mechanized Battalion"
+
+	regiments = {
+		Arm_Inf_Bat = { x = 0 y = 0 }
+	}
+	support = {
+		armor_Recce_Comp = { x = 0 y = 0 }
+		SP_Arty_Battery = { x = 0 y = 1 }
+		SP_Arty_Battery = { x = 0 y = 2 }
+		H_Engi_Comp = { x = 0 y = 3 }
+	}
+}
+
+division_template = {
+	name = "Infantry Battalion"
+
+	regiments = {
+		Mot_Inf_Bat = { x = 0 y = 0 }
+	}
+	support = {
+		armor_Recce_Comp = { x = 0 y = 0 }
+		Arty_Battery = { x = 0 y = 1 }
+		L_Engi_Comp = { x = 0 y = 2 }
+	}
+}
+
+division_template = {
+	name = "Light Infantry Battalion"
+
+	regiments = {
+		L_Inf_Bat = { x = 0 y = 0 }
+	}
+	support = {
+		L_Recce_Comp = { x = 0 y = 0 }
+		Arty_Battery = { x = 0 y = 1 }
+		L_Engi_Comp = { x = 0 y = 2 }
+	}
+}
+
+division_template = {
+	name = "Parachute Battalion"
+
+	regiments = {
+		L_Air_Inf_Bat = { x = 0 y = 0 }
+	}
+	support = {
+		L_Recce_Comp = { x = 0 y = 0 }
+	}
+}
+
+division_template = {
+	name = "Marine Battalion"
+
+	regiments = {
+		L_Marine_Bat = { x = 0 y = 0 }
+	}
+	support = {
+		L_Recce_Comp = { x = 0 y = 0 }
+		Arty_Battery = { x = 0 y = 1 }
+		L_Engi_Comp = { x = 0 y = 2 }
+	}
+}
+
+division_template = {
+	name = "Special Forces Battalion"
+
+	regiments = {
+		Special_Forces = { x = 0 y = 0 }
+	}
+	priority = 2
+}
+
+division_template = {
+	name = "Infantry Brigade" #for the AI and player to build
+
+	regiments = {
+		Mot_Inf_Bat = { x = 0 y = 0 }
+		Mot_Inf_Bat = { x = 0 y = 1 }
+		Mot_Inf_Bat = { x = 0 y = 2 }
+		L_arm_Bat = { x = 1 y = 0 }
+		L_Inf_Bat = { x = 1 y = 1 }
+		Arty_Bat = { x = 1 y = 2 }
+	}
+}
+
+units = {
+####### SAF Army #######
+
+	division = {
+		name = "1st Tank Regiment"
+		location = 12648
+		division_template = "Tank Regiment"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "1st Special Service Battalion"
+		location = 12648
+		division_template = "Light Tank Regiment"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "1st Parachute Battalion"
+		location = 12648
+		division_template = "Parachute Battalion"
+		start_experience_factor = 0.4
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "1st Infantry Battalion"
+		location = 12648
+		division_template = "Mechanized Battalion"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "8th Infantry Battalion"
+		location = 1382
+		division_template = "Mechanized Battalion"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "21st Infantry Battalion"
+		location = 10400
+		division_template = "Light Infantry Battalion"
+		start_experience_factor = 0.4
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "2nd Infantry Battalion"
+		location = 1561
+		division_template = "Infantry Battalion"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "4th Infantry Battalion"
+		location = 1537
+		division_template = "Infantry Battalion"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "5th Infantry Battalion"
+		location = 1360
+		division_template = "Infantry Battalion"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "7th Infantry Battalion"
+		location = 10566
+		division_template = "Infantry Battalion"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "10th Infantry Battalion"
+		location = 1478
+		division_template = "Infantry Battalion"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "14th Infantry Battalion"
+		location = 7576
+		division_template = "Infantry Battalion"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "15th Infantry Battalion"
+		location = 1842
+		division_template = "Infantry Battalion"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "121st Infantry Battalion"
+		location = 1363
+		division_template = "Infantry Battalion"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "9th Infantry Battalion" #marine
+		location = 12589
+		division_template = "Marine Battalion"
+		start_experience_factor = 0.4
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "6th Infantry Battalion" #Airmobile
+		location = 1223
+		division_template = "Parachute Battalion"
+		start_experience_factor = 0.4
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "4th Special Forces Regiment"
+		location = 1247
+		division_template = "Special Forces Battalion"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "5th Special Forces Regiment"
+		location = 10566
+		division_template = "Special Forces Battalion"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.01
+	}
+
+###### Navy ########
+}
+
+instant_effect = {
+
+	#### Aircraft #### 
+	add_equipment_to_stockpile = {
+		variant_name = "Rooikat"
+		type = heavy_tank_chassis_1 #Rooiwak
+		producer = SAF
+		amount = 11
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Lynx AH9A"
+		type = heavy_tank_chassis_1 #Lynx AH9A
+		amount = 4
+		producer = SAF
+	} 
+	add_equipment_to_stockpile = {
+		variant_name = "Atlas Oryx"
+		type = transport_helicopter_2 #Atlas Oryx
+		producer = SAF
+		amount = 36
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "AgustaWestland AW109"
+		type = transport_helicopter_1 #AgustaWestland AW109
+		amount = 27
+		producer = ITA
+	}
+
+	### Vehicles ###
+	add_equipment_to_stockpile = {
+		variant_name = "Olifant 2"
+		type = medium_tank_chassis_0		#Olifant-2
+		producer = SAF
+		amount = 24
+	}
+
+	add_equipment_to_stockpile = {
+		type = medium_tank_chassis_0
+		producer = SAF
+		amount = 133
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Ratel 20"
+		type = medium_tank_flame_chassis_1 #Ratel-20
+		producer = SAF
+		amount = 424
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Badger"
+		type = medium_tank_flame_chassis_3 #Badger
+		producer = SAF
+		amount = 16
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Ratel 90"
+		type = medium_tank_destroyer_chassis_1 #Ratel 90
+		producer = SAF
+		amount = 110
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Rooikat 76"
+		type = medium_tank_destroyer_chassis_1 #Rooikat-76
+		producer = SAF
+		amount = 176
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Casspir"
+		type = util_vehicle_3 #Casspir
+		producer = SAF
+		amount = 370
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Mamba"
+		type = util_vehicle_4 #Mamba
+		producer = SAF
+		amount = 440
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "G5"
+		type = artillery_1 #G5
+		producer = SAF
+		amount = 72
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "G6"
+		type = medium_tank_artillery_chassis_1 #G6
+		producer = SAF
+		amount = 43
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Valkiri Mk II"
+		type = medium_tank_rocket_chassis_2 #Valkiri Mk II
+		producer = SAF
+		amount = 25
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Valkiri MkI"
+		type = medium_tank_rocket_chassis_1 #Valkiri MkI
+		producer = SAF
+		amount = 26
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Starstreak"
+		type = Anti_Air_1 #Starstreak
+		amount = 8
+		producer = ENG
+	}
+
+	# div stuff
+
+	### Inf Equip
+	add_equipment_to_stockpile = {
+		variant_name = "R4"
+		type = infantry_weapons_3 #1985
+		producer = USA
+		amount = 5000
+	}
+
+
+	add_equipment_to_stockpile = {
+		variant_name = "ZT-3"
+		type = Anti_tank_2 #ZT-3
+		producer = SAF
+		amount = 70
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "MILAN"
+		type = Anti_tank_1 #Milan
+		amount = 90
+		producer = FRA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "ZT3 Ingwe"
+		type = Heavy_Anti_tank_1 #ZT3 Ingwe
+		producer = SAF
+		amount = 50
+	}
+
+	add_equipment_to_stockpile = {
+		type = cnc_equipment_3 #1995
+		producer = SAF
+		amount = 580
+	}
+
+	#### Sealed Storage（封存）####
+	add_equipment_to_stockpile = {
+		variant_name = "R1 FN FAL"
+		type = infantry_weapons_2 #R1 FN FAL（封存）
+		amount = 100000
+		producer = SAF
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Olifant Mk1A"
+		type = medium_tank_chassis_0 #Olifant Mk1A（封存）
+		amount = 100
+		producer = SAF
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Ratel 90"
+		type = medium_tank_flame_chassis_0 #Ratel 90（封存）
+		amount = 120
+		producer = SAF
+	}
+}

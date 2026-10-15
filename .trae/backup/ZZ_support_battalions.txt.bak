@@ -1,0 +1,501 @@
+# ============================================================================
+# 营级支援单位（第七轮）
+# ============================================================================
+# 营级支援=实编营（12-18门/辆、160-300人），属性约为连级2.5-3倍，占用同一support栏位。
+# schema对齐MD_regimental_support.txt：group=support、combat_width=0、
+# allowed_battalion_groups、战斗属性惩罚、ai_priority=0（AI优先连级）。
+# 全部active=yes默认可用（免新科技，装备需求本身构成生产门槛）。
+#
+# 装备底盘映射：
+#   artillery_equipment            → 拖曳火炮
+#   medium_tank_artillery_chassis  → 自行火炮
+#   medium_tank_rocket_chassis     → 自行火箭炮
+#   medium_tank_aa_chassis         → 自行防空
+#   medium_tank_amphibious_chassis → 轮式装甲车
+#   heavy_tank_chassis             → 武装直升机
+#
+# 注：工坊原版已有Light_attack_helo_bat（helo_ops_tech解锁，需直升机专项工程），
+# 本文件Helo_Sup_Bn为无科技门槛的通用版，两者并存不冲突。
+# ============================================================================
+
+sub_units = {
+
+	Arty_Sup_Bn = { # 野战炮兵营（拖曳18门，3炮兵连+营部）
+		sprite = MD_infantry_2
+		map_icon_category = infantry
+		ai_priority = 0
+		priority = 2
+		active = yes
+		affects_speed = yes
+
+		type = {
+			artillery
+			support
+		}
+
+		group = support
+		divisional = no
+		allowed_battalion_groups = { militia infantry airborne_infantry marine_infantry }
+
+		categories = {
+			category_support_battalions
+			category_army
+			category_artillery
+		}
+
+		combat_width = 0
+
+		need = {
+			infantry_weapons_type = 200
+			artillery_equipment = 18
+			cnc_equipment_type = 24
+			util_vehicle_type = 40
+		}
+
+		manpower = 350
+		training_time = 150
+		max_organisation = 24
+		default_morale = 0.06
+		max_strength = 8
+		weight = 0.3
+
+		# Support nerfs to combat abilities
+		defense = -0.5
+		breakthrough = -0.5
+		soft_attack = -0.3
+		hard_attack = -0.3
+		ap_attack = -0.2
+		suppression = 2
+
+		transport = artillery_equipment
+
+		can_be_parachuted = yes
+	}
+
+	SP_Arty_Sup_Bn = { # 自行火炮营（12辆，3炮兵连）
+		sprite = MD_medium_armor
+		map_icon_category = armored
+		ai_priority = 0
+		priority = 2
+		active = yes
+		affects_speed = yes
+
+		type = {
+			armor
+			artillery
+			mechanized
+			support
+		}
+
+		group = support
+		divisional = no
+		allowed_battalion_groups = { mobile armor marine_infantry }
+
+		categories = {
+			category_support_battalions
+			category_all_armor
+			category_army
+			category_spart
+			category_artillery
+		}
+
+		combat_width = 0
+
+		need = {
+			infantry_weapons_type = 80
+			medium_tank_artillery_chassis = 12
+			cnc_equipment_type = 12
+			util_vehicle_type = 16
+		}
+
+		essential = {
+			medium_tank_artillery_chassis
+		}
+
+		manpower = 280
+		max_organisation = 20
+		default_morale = 0.06
+		max_strength = 8
+		training_time = 180
+		weight = 1.25
+
+		# Support nerfs to combat abilities
+		defense = -0.5
+		breakthrough = -0.5
+		soft_attack = -0.3
+		hard_attack = -0.3
+		armor_value = -0.3
+		ap_attack = -0.2
+		suppression = 2
+
+		transport = medium_tank_artillery_chassis
+		# ZZ combat data modifier (armored support)
+		hardness = -0.30
+	}
+
+	SP_R_Arty_Sup_Bn = { # 自行火箭炮营（12辆，3火箭炮连）
+		sprite = MD_medium_armor
+		map_icon_category = armored
+		ai_priority = 0
+		priority = 2
+		active = yes
+		affects_speed = yes
+
+		type = {
+			armor
+			rocket
+			mechanized
+			support
+		}
+
+		group = support
+		divisional = no
+		allowed_battalion_groups = { mobile armor marine_infantry }
+
+		categories = {
+			category_support_battalions
+			category_all_armor
+			category_army
+			category_mlrs
+			category_artillery
+		}
+
+		combat_width = 0
+
+		need = {
+			infantry_weapons_type = 80
+			medium_tank_rocket_chassis = 12
+			cnc_equipment_type = 12
+			util_vehicle_type = 16
+		}
+
+		essential = {
+			medium_tank_rocket_chassis
+		}
+
+		manpower = 260
+		max_organisation = 20
+		default_morale = 0.06
+		max_strength = 8
+		training_time = 180
+		weight = 1.25
+
+		# Support nerfs to combat abilities
+		defense = -0.5
+		breakthrough = -0.5
+		soft_attack = -0.3
+		hard_attack = -0.3
+		armor_value = -0.3
+		ap_attack = -0.2
+		suppression = 2
+
+		transport = medium_tank_rocket_chassis
+		# ZZ combat data modifier (armored support)
+		hardness = -0.30
+	}
+
+	AA_Sup_Bn = { # 防空导弹营（12辆，3防空连）
+		sprite = MD_medium_armor
+		map_icon_category = armored
+		ai_priority = 0
+		priority = 2
+		active = yes
+		affects_speed = yes
+
+		type = {
+			armor
+			anti_air
+			mechanized
+			support
+		}
+
+		group = support
+		divisional = no
+		allowed_battalion_groups = { mobile combat_support armor marine_infantry airborne_infantry }
+
+		categories = {
+			category_support_battalions
+			category_all_armor
+			category_army
+			category_SP_AA
+		}
+
+		combat_width = 0
+
+		need = {
+			infantry_weapons_type = 60
+			medium_tank_aa_chassis = 12
+			cnc_equipment_type = 12
+			util_vehicle_type = 16
+		}
+
+		manpower = 220
+		max_organisation = 20
+		default_morale = 0.06
+		max_strength = 8
+		training_time = 180
+		weight = 2.5
+
+		# Support nerfs to combat abilities
+		defense = -0.5
+		breakthrough = -0.5
+		soft_attack = -0.3
+		hard_attack = -0.3
+		armor_value = -0.3
+		ap_attack = -0.2
+		suppression = 1
+
+		transport = medium_tank_aa_chassis
+		can_be_parachuted = yes
+		# ZZ combat data modifier (armored support)
+		hardness = -0.30
+	}
+
+	AT_Sup_Bn = { # 反坦克营（3反坦克连，重型反坦克导弹）
+		sprite = MD_infantry_2
+		map_icon_category = infantry
+		ai_priority = 0
+		priority = 2
+		active = yes
+		affects_speed = yes
+		divisional = no
+		allowed_battalion_groups = { infantry mobile armor airborne_infantry marine_infantry }
+
+		type = {
+			infantry
+			support
+		}
+
+		group = support
+
+		categories = {
+			category_support_battalions
+			category_all_infantry
+			category_army
+		}
+
+		combat_width = 0
+
+		need = {
+			infantry_weapons_type = 200
+			H_AT_Equipment = 30
+			cnc_equipment_type = 18
+			util_vehicle_type = 16
+		}
+
+		essential = {
+			infantry_weapons_type
+		}
+
+		manpower = 260
+		max_organisation = 24
+		default_morale = 0.06
+		max_strength = 6
+		training_time = 150
+		weight = 0.75
+		entrenchment = -0.3
+
+		# Support nerfs to combat abilities
+		defense = -0.2
+		breakthrough = -0.7
+		soft_attack = -0.4
+		hard_attack = 1.5
+		ap_attack = 3
+		suppression = 0.0
+
+		transport = util_vehicle_type
+		can_be_parachuted = yes
+	}
+
+	Recce_Sup_Bn = { # 装甲侦察营（轮式侦察车12辆，3侦察连）
+		sprite = MD_light_armor
+		map_icon_category = armored
+		ai_priority = 0
+		priority = 2
+		active = yes
+		affects_speed = yes
+		divisional = no
+
+		type = {
+			armor
+			mechanized
+			support
+		}
+
+		group = support
+		allowed_battalion_groups = { mobile armor combat_support airborne_infantry }
+
+		categories = {
+			category_all_recon
+			category_support_battalions
+			category_army
+		}
+
+		combat_width = 0
+
+		essential = {
+			medium_tank_amphibious_chassis
+		}
+
+		need = {
+			infantry_weapons_type = 120
+			medium_tank_amphibious_chassis = 16
+			cnc_equipment_type = 16
+		}
+		desert = { attack = 0.02 defence = 0.02 }
+		forest = { defence = 0.02 }
+		mountain = { defence = 0.02 }
+		hills = { defence = 0.02 }
+		marsh = { defence = 0.02 }
+		urban = { attack = 0.05 defence = 0.02 }
+		supercity = { attack = 0.03 defence = 0.02 }
+
+		manpower = 300
+		max_organisation = 24
+		default_morale = 0.08
+		max_strength = 8
+		training_time = 180
+		weight = 1.25
+		recon = 2
+		initiative = 0.1
+
+		defense = -0.5
+		breakthrough = -0.5
+		soft_attack = -0.3
+		hard_attack = -0.3
+		armor_value = -0.3
+		ap_attack = -0.2
+		suppression = 2
+
+		transport = medium_tank_amphibious_chassis
+
+		same_support_type = recon
+		can_be_parachuted = yes
+	}
+
+	Engi_Sup_Bn = { # 战斗工兵营（3工兵连）
+		sprite = MD_infantry_2
+		map_icon_category = infantry
+		ai_priority = 0
+		priority = 2
+		active = yes
+		affects_speed = yes
+		divisional = no
+		allowed_battalion_groups = { militia infantry mobile armor combat_support airborne_infantry marine_infantry special_forces }
+
+		type = {
+			infantry
+			support
+		}
+
+		group = support
+
+		categories = {
+			category_support_battalions
+			category_all_infantry
+			category_army
+		}
+
+		combat_width = 0
+
+		need = {
+			infantry_weapons_type = 220
+			cnc_equipment_type = 20
+			util_vehicle_type = 20
+		}
+
+		essential = {
+			infantry_weapons_type
+		}
+
+		manpower = 280
+		max_organisation = 30
+		default_morale = 0.12
+		max_strength = 10
+		training_time = 180
+		weight = 1.25
+
+		# Support nerfs to combat abilities
+		defense = 0
+		breakthrough = 0
+		soft_attack = -0.3
+		hard_attack = -0.3
+		ap_attack = -0.2
+		suppression = 0.0
+
+		forest = { attack = 0.05 defence = 0.05 }
+		jungle = { attack = 0.05 defence = 0.05 }
+		mountain = { attack = 0.05 defence = 0.05 }
+		marsh = { attack = 0.05 defence = 0.05 }
+		urban = { attack = 0.05 defence = 0.05 }
+		supercity = { attack = 0.05 defence = 0.05 }
+
+		transport = util_vehicle_type
+		can_be_parachuted = yes
+	}
+
+	Helo_Sup_Bn = { # 陆航支援营（武装直升机8架，2-3陆航连）
+		sprite = MD_light_armor
+		map_icon_category = armored
+		special_forces = no
+		ai_priority = 0
+		priority = 2
+		active = yes
+		affects_speed = yes
+
+		type = {
+			armor
+			support
+		}
+
+		group = support
+		divisional = no
+		allowed_battalion_groups = { infantry mobile airmobile armor marine_infantry }
+
+		categories = {
+			category_support_battalions
+			category_army
+			category_non_militia
+			category_all_airborne
+			category_atk_helo
+			category_air_aslt
+		}
+
+		combat_width = 0
+
+		manpower = 150
+		max_organisation = 10
+		default_morale = 0.03
+		max_strength = 1
+		training_time = 200
+		weight = 2
+
+		# Support nerfs to combat abilities
+		defense = -0.5
+		breakthrough = -0.5
+		soft_attack = -0.3
+		hard_attack = -0.3
+		armor_value = -0.3
+		ap_attack = -0.2
+		suppression = 1
+
+		transport = heavy_tank_chassis
+
+		need = {
+			heavy_tank_chassis = 8
+			cnc_equipment_type = 12
+		}
+
+		plains = { attack = 0.15 defence = 0.15 }
+		desert = { attack = 0.15 defence = 0.15 }
+		forest = { attack = -0.15 movement = 0.15 }
+		hills = { movement = 0.1 }
+		mountain = { attack = -0.3 defence = -0.2 movement = 0.3 }
+		urban = { attack = -0.15 defence = -0.15 movement = 0.2 }
+		supercity = { attack = -0.15 defence = -0.1 movement = 0.1 }
+		jungle = { attack = -0.3 movement = 0.2 }
+		marsh = { attack = -0.3 defence = -0.1 }
+		river = { movement = 0.5 }
+	}
+
+}

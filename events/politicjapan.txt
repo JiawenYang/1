@@ -1,0 +1,115 @@
+add_namespace = politicsjapan
+
+country_event = { #菅义伟
+	id = politicsjapan.11
+	title = politicsjapan.11.t
+	desc = politicsjapan.11.d
+
+	fire_only_once = yes
+	hidden = yes
+	trigger = {
+		tag = JAP
+		date > 2020.09.16
+		NOT = {
+			JAP = {
+				is_subject_of = CHI
+			}
+		}
+	}	
+
+	option = {
+		name = politicsjapan.11.a
+		create_country_leader = {
+			name = "Yoshihide Suga"
+			desc = yoshihide_suga_DESC
+			picture = "yoshihide_suga.dds"
+			ideology = conservatism
+			traits = {
+				western_conservatism
+				CHI_Silent_doer
+				cautious
+				rational
+			}
+		}
+		log = "[GetDateText]: [This.GetName]: politicsjapan.11.a executed"
+	}
+}
+
+country_event = { #岸田文雄
+	id = politicsjapan.12
+	title = politicsjapan.12.t
+	desc = politicsjapan.12.d
+	hidden = yes
+	fire_only_once = yes
+
+	trigger = {
+		tag = JAP
+		date > 2021.10.04
+		NOT = {
+			JAP = {
+				is_subject_of = CHI
+			}
+		}
+	}	
+
+	option = {
+		name = politicsjapan.12.a
+		create_country_leader = {
+			name = "Fumio Kishida"
+			desc = fumio_kishida_DESC
+			picture = "fumio_kishida.dds"
+			ideology = conservatism
+			traits = {
+				western_conservatism
+				lawyer
+				polished
+				rational
+				cautious
+				capable
+				Reformer
+				economist
+				pro_american
+			}
+		}
+		log = "[GetDateText]: [This.GetName]: politicsjapan.12.a executed"
+	}
+}
+
+country_event = { #石破茂
+	id = politicsjapan.13
+	title = politicsjapan.13.t
+	desc = politicsjapan.13.d
+	hidden = yes
+	fire_only_once = yes
+
+	trigger = {
+		tag = JAP
+		date > 2024.10.01
+		NOT = {
+			JAP = {
+				is_subject_of = CHI
+			}
+		}
+	}	
+
+	option = {
+		name = politicsjapan.13.a
+		create_country_leader = {
+			name = "Shigeru Ishiba"
+			desc = shigeru_ishiba_DESC
+			picture = "shigeru_ishiba.dds"
+			ideology = conservatism
+			traits = {
+				western_conservatism
+				lawyer
+				experienced_banker
+				career_politician
+				agricultural_resource_economist
+				rational
+				cautious
+				drunkard
+			}
+		}
+		log = "[GetDateText]: [This.GetName]: politicsjapan.13.a executed"
+	}
+}

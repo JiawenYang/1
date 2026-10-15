@@ -1,0 +1,33 @@
+	decisions_SOV = {
+		icon = russia
+
+		allowed = {
+			original_tag = SOV
+		}
+	}	
+	SOV_brics_category = {
+		icon = GFX_SOV_decision_decision_brics_cat
+		visible_when_empty = yes
+		allowed = {
+			OR = {
+				tag = SOV
+				tag = PRC
+			}
+		}
+		priority = {
+			base = 4
+			modifier = {
+				add = -2
+				tag = PRC
+			}
+		}
+		visible = {
+			SOV = {
+				has_completed_focus = SOV_brics
+			}
+			NOT = {
+				is_ai = yes
+				has_global_flag = nato_nato_won_nato_war
+			}
+		}
+	}

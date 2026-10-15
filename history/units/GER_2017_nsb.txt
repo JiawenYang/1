@@ -1,0 +1,433 @@
+﻿division_template = {
+	name = "Panzerbrigade"
+
+	regiments = {
+		Mech_Inf_Bat = { x = 0 y = 0 }
+		armor_Bat = { x = 0 y = 1 }
+		Arm_Inf_Bat = { x = 0 y = 2 }
+		Arm_Inf_Bat = { x = 0 y = 3 }
+		Mech_Inf_Bat = { x = 0 y = 4 }
+		Mech_Inf_Bat = { x = 1 y = 0 }
+	}
+
+	support = {
+		SP_Arty_Battery = { x = 0 y = 0 }
+	}
+}
+
+division_template = {
+	name = "Panzergrenadierbrigade"
+
+	regiments = {
+		Mech_Inf_Bat = { x = 0 y = 0 }
+		Arm_Inf_Bat = { x = 0 y = 1 }
+		Mech_Inf_Bat = { x = 0 y = 2 }
+		Mech_Inf_Bat = { x = 0 y = 3 }
+		Mech_Inf_Bat = { x = 0 y = 4 }
+
+	}
+	support = {
+		SP_Arty_Battery = { x = 0 y = 0 }
+	}
+}
+
+division_template = {
+	name = "Gebirgsjägerbrigade"
+
+	regiments = {
+		L_Inf_Bat = { x = 0 y = 0 }
+		L_Inf_Bat = { x = 0 y = 1 }
+		L_Inf_Bat = { x = 0 y = 2 }
+		L_Inf_Bat = { x = 0 y = 3 }
+		L_Inf_Bat = { x = 1 y = 0 }
+	}
+}
+
+division_template = {
+	name = "Luftlandebrigade"
+
+	regiments = {
+		FJ_Bat_GER = { x = 0 y = 0 }
+		FJ_Bat_GER = { x = 0 y = 1 }
+		L_Inf_Bat = { x = 0 y = 2 }
+		L_Inf_Bat = { x = 1 y = 0 }
+	}
+}
+
+division_template = {
+	name = "Kommandobataillon"
+
+	regiments = {
+		Special_Forces = { x = 0 y = 0 }
+	}
+
+	priority = 2
+}
+
+division_template = {
+	name = "Deutsch-Französische Brigade"
+
+	regiments = {
+		Mech_Inf_Bat = { x = 0 y = 0 }
+		Mech_Inf_Bat = { x = 0 y = 1 }
+		SP_Arty_Bat = { x = 0 y = 2 }
+		Mech_Inf_Bat = { x = 0 y = 3 }
+	}
+}
+
+units = {
+	#German Army Structure
+	#https://en.wikipedia.org/wiki/Structure_of_the_German_Army
+
+	#1st Panzerdivision
+	division = {
+		name = "Panzerlehrbrigade 9"
+		location = 6535
+		division_template = "Panzerbrigade"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.01
+	}
+	#1st Panzerdivision
+	division = {
+		name = "Panzerbrigade 21"
+		location = 3355
+		division_template = "Panzerbrigade"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "Panzergrenadierbrigade 41"
+		location = 293
+		division_template = "Panzergrenadierbrigade"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.01
+	}
+
+	#10th Panzerdivision
+	division = {
+		name = "Panzerbrigade 12"
+		location = 3571
+		division_template = "Panzerbrigade"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "Gebirgsjägerbrigade 23"
+		location = 707
+		division_template = "Gebirgsjägerbrigade"
+		start_experience_factor = 0.8
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "Panzergrenadierbrigade 37"
+		location = 11481 #Frankenburg, Saxony
+		division_template = "Panzergrenadierbrigade"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.01
+	}
+	#Rapid Forces Division
+	division = {
+		name = "Luftlandebrigade 1"
+		location = 11531
+		division_template = "Luftlandebrigade"
+		start_experience_factor = 0.8
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "Kommando Spezialkräfte"
+		location = 11486 #Calw, Baden-Württemberg
+		division_template = "Kommandobataillon"
+		start_experience_factor = 0.9
+		start_equipment_factor = 0.01
+	}
+
+	#Franco-German Brigade
+	division = {
+		name = "Deutsch-Französische Brigade"
+		location = 11560
+		division_template = "Deutsch-Französische Brigade"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.01
+	}
+
+	###Ship Index###
+
+	#diesel_attack_submarine_4 = Type 212
+	#missile_frigate_3 = Sachsen class
+	#missile_frigate_2 = Brandenburg class
+	#frigate_2 = Bremen class
+	#missile_corvette_3 = Braunschweig class
+}
+
+instant_effect = {
+
+	add_equipment_to_stockpile = {
+		variant_name = "Heckler & Koch G36"
+		type = infantry_weapons_4 #Heckler & Koch G36
+		producer = GER
+		amount = 5700
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "C4ISTAR"
+		type = cnc_equipment_5 #C4ISTAR
+		producer = GER
+		amount = 900
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Panzerfaust 3"
+		type = Anti_tank_1 #Panzerfaust 3
+		producer = GER
+		amount = 250
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "MILAN"
+		type = Heavy_Anti_tank_2 #Milan
+		producer = FRA
+		amount = 100
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "FIM-92 Stinger"
+		type = Anti_Air_1 #Stinger
+		amount = 250
+		producer = USA
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Eurocopter Tiger"
+		type = heavy_tank_chassis_2 #Eurocopter Tiger UHT
+		producer = FRA
+		amount = 37
+	}
+	add_equipment_to_stockpile = {
+		type = medium_tank_chassis_1
+		amount = 150
+		producer = GER
+	}
+	add_equipment_to_stockpile = {
+		type = medium_tank_chassis_2
+		amount = 157
+		producer = GER
+	}
+	add_equipment_to_stockpile = {
+		type = util_vehicle_4
+		producer = GER
+		amount = 166 #Fennek
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Wiesel AWC"
+		type = medium_tank_destroyer_chassis_1 #Wiesel AWC
+		producer = GER
+		amount = 103 #+ 97 from ifv
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Marder 1A5"
+		type = medium_tank_flame_chassis_1 #Marder 1A5
+		producer = GER
+		amount = 200
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Marder 1"
+		type = medium_tank_flame_chassis_2 #Marder 1 A3
+		producer = GER
+		amount = 190
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Puma IFV"
+		type = medium_tank_flame_chassis_2 #Puma IFV
+		producer = GER
+		amount = 15
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Tpz-1 Fuchs"
+		type = medium_tank_amphibious_chassis_1 #Tpz-1 Fuchs
+		producer = GER
+		amount = 8
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Bv 206"
+		type = medium_tank_amphibious_chassis_1 #Bv-206
+		amount = 194
+		producer = SWE
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "M113"
+		type = medium_tank_amphibious_chassis_1 #M113
+		amount = 259
+		producer = USA
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "GTK Boxer"
+		type = medium_tank_amphibious_chassis_2 # GTK Boxer
+		producer = GER
+		amount = 245
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Tpz-1 Fuchs"
+		type = medium_tank_amphibious_chassis_1 #Tpz-1 Fuchs
+		producer = GER
+		amount = 531
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Dingo"
+		type = util_vehicle_5 #Dingo
+		producer = GER
+		amount = 177
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "PzH 2000"
+		type = medium_tank_artillery_chassis_2 #PzH 2000
+		producer = GER
+		amount = 99
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "M270"
+		type = medium_tank_rocket_chassis_0 #M270
+		amount = 38
+		producer = USA
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "A400M Atlas"
+		type = large_plane_air_transport_airframe_4 # A400M Atlas
+		amount = 7
+		producer = GER
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "C-160D Transall"
+		type = large_plane_air_transport_airframe_1 #C-160D Transall
+		producer = GER
+		amount = 53
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "A310 MRTT"
+		type = large_plane_air_transport_airframe_3 #A310 MRTT
+		amount = 1
+		producer = GER
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "A340 MRTT"
+		type = large_plane_air_transport_airframe_3 #A340 MRTT
+		amount = 2
+		producer = GER
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "A319 MRTT"
+		type = large_plane_air_transport_airframe_3 #A319 MRTT
+		amount = 2
+		producer = GER
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "NH90"
+		type = transport_helicopter_2 #NH90
+		amount = 47
+		producer = FRA
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "UH-1"
+		type = transport_helicopter_1 #UH-1
+		amount = 115
+		producer = USA
+	}
+
+	### Sealed Storage（封存）###
+
+	#封存装甲车/步战车
+	add_equipment_to_stockpile = {
+		variant_name = "Marder 1A3"
+		type = medium_tank_flame_chassis_1 #Marder 1A3老型（封存）
+		amount = 100
+		producer = GER
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "TPz Fuchs"
+		type = medium_tank_amphibious_chassis_1 #TPz Fuchs老型（封存）
+		amount = 60
+		producer = GER
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Bv 206"
+		type = medium_tank_amphibious_chassis_1 #Bv 206老型（封存）
+		producer = SWE
+		amount = 50
+	}
+
+	#封存牵引火炮
+	add_equipment_to_stockpile = {
+		variant_name = "FH70"
+		type = artillery_1 #FH70 155牵引炮（封存）
+		producer = ENG
+		amount = 40
+	}
+	add_equipment_to_stockpile = {
+		type = artillery_1 #各型迫击炮（封存）
+		producer = GER
+		amount = 100
+	}
+
+	#封存自行火炮
+	add_equipment_to_stockpile = {
+		variant_name = "M109G"
+		type = medium_tank_artillery_chassis_0 #M109G老型（封存）
+		producer = USA
+		amount = 60
+	}
+
+	#封存火箭炮
+	add_equipment_to_stockpile = {
+		variant_name = "LARS 2"
+		type = medium_tank_rocket_chassis_0 #LARS 2火箭炮（封存）
+		amount = 30
+		producer = GER
+	}
+
+	#封存高炮/防空
+	add_equipment_to_stockpile = {
+		variant_name = "Gepard"
+		type = medium_tank_aa_chassis_0 #Gepard高炮（封存）
+		amount = 80
+		producer = GER
+	}
+	add_equipment_to_stockpile = {
+		type = Anti_Air_0 #老式高炮/便携防空（封存）
+		producer = GER
+		amount = 100
+	}
+
+	#封存反坦克导弹
+	add_equipment_to_stockpile = {
+		type = Anti_tank_1 #Mamba老型反坦克导弹（封存）
+		amount = 100
+		producer = SAF
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "MILAN"
+		type = Heavy_Anti_tank_1 #Milan老型重型反坦克导弹（封存）
+		amount = 100
+		producer = FRA
+	}
+
+	#封存运输车辆
+	add_equipment_to_stockpile = {
+		type = util_vehicle_2 #老式卡车（封存）
+		amount = 500
+		producer = GER
+	}
+
+	#Reserve Stockpiles (Sealed)
+	add_equipment_to_stockpile = {
+		variant_name = "G3"
+		type = infantry_weapons_2 #G3（封存）
+		producer = GER
+		amount = 100000
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Leopard 2A4"
+		type = medium_tank_chassis_1 #Leopard 2A4（封存）
+		producer = GER
+		amount = 400
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "M113"
+		type = medium_tank_amphibious_chassis_1 #M113（封存）
+		amount = 600
+		producer = USA
+	}
+}

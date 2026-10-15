@@ -1,0 +1,2031 @@
+	##ONE CHINA TREE ##
+	shared_focus = {
+		id = CHI_One_China_Policy
+		icon = one_china_policy_prc
+
+		x = 33
+		y = 0
+		cost = 5
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			log = "[GetDateText]: [This.GetName]: focus CHI_One_China_Policy executed"
+		}
+	}
+
+	shared_focus = {
+		id = CHI_Dialogue_with_the_Taiwan_Self_Government
+		icon = align_to_taiwan
+
+		x = -3
+		y = 1
+		relative_position_id = CHI_One_China_Policy
+
+		prerequisite = { focus = CHI_One_China_Policy }
+
+		cost = 5
+
+		allow_branch = {
+			NOT = { has_completed_focus = CHI_Road_to_War }
+			NOT = { has_completed_focus = CHI_Establish_Taiwan_SAR }
+		}
+		available = {
+			NOT = { has_war_with = TAI }
+			country_exists = TAI
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [This.GetName]: focus CHI_Dialogue_with_the_Taiwan_Self_Government executed"
+			set_temp_variable = {
+				modify_chinese_aggression = -1
+			}
+			CHI_modify_chinese_aggression = yes
+			TAI = {
+				add_opinion_modifier = {
+					target = CHI
+					modifier = political_outreach
+				}
+				capital_scope = {
+					add_building_construction = {
+						type = offices
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			CHI = {
+				add_opinion_modifier = {
+					target = TAI
+					modifier = political_outreach
+				}
+				capital_scope = {
+					add_building_construction = {
+						type = offices
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 1
+		}
+	}
+
+	shared_focus = {
+		id = CHI_Three_Links
+		icon = generic_ship1
+		x = -3
+		y = 2
+		relative_position_id = CHI_One_China_Policy
+		prerequisite = {
+			focus = CHI_Dialogue_with_the_Taiwan_Self_Government
+		}
+		search_filters = {
+			FOCUS_FILTER_INFLUENCE
+		}
+		bypass = {
+			TAI = {
+				exists = no
+			}
+		}
+		cost = 2
+		available = {
+			NOT = {
+				has_war_with = TAI
+			}
+			TAI = {
+				has_opinion = {
+					target = CHI
+					value > -51
+				}
+			}
+		}
+		completion_reward = {
+			add_opinion_modifier = {
+				target = TAI
+				modifier = three_links
+			}
+			TAI = {
+				add_opinion_modifier = {
+					target = CHI
+					modifier = three_links
+				}
+				set_temp_variable = {
+					party_index = 1
+				}
+				set_temp_variable = {
+					party_popularity_increase = 0.02
+				}
+				add_relative_party_popularity = yes
+				set_temp_variable = {
+					party_index = 2
+				}
+				add_relative_party_popularity = yes
+			}
+			CHI = {
+				capital_scope = {
+					add_building_construction = {
+						type = offices
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			set_temp_variable = {
+				percent_change = 2
+			}
+			set_temp_variable = {
+				tag_index = CHI
+			}
+			set_temp_variable = {
+				influence_target = TAI
+			}
+			change_influence_percentage = yes
+			log = "[GetDateText]: [This.GetName]: focus CHI_Three_Links executed"
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+	shared_focus = {
+		id = CHI_Opening_Tourism_to_Taiwan
+		icon = armenia_turizm
+		x = -3
+		y = 3
+		relative_position_id = CHI_One_China_Policy
+		prerequisite = {
+			focus = CHI_Three_Links
+		}
+		search_filters = {
+			FOCUS_FILTER_INFLUENCE
+		}
+		bypass = {
+			TAI = {
+				exists = no
+			}
+		}
+		cost = 2
+		available = {
+			NOT = {
+				has_war_with = TAI
+			}
+			TAI = {
+				has_opinion = {
+					target = CHI
+					value > -31
+				}
+				custom_trigger_tooltip = {
+					tooltip = TAI_DPP_not_ruling_tt
+					OR = {
+						is_in_array = {
+							ruling_party = 1
+						}
+						is_in_array = {
+							ruling_party = 6
+						}
+						is_in_array = {
+							ruling_party = 14
+						}
+					}
+				}
+				
+			}
+		}
+		completion_reward = {
+
+			set_temp_variable = {
+				percent_change = 5
+			}
+			set_temp_variable = {
+				tag_index = CHI
+			}
+			set_temp_variable = {
+				influence_target = TAI
+			}
+			change_influence_percentage = yes
+
+			capital_scope = {
+				set_temp_variable = { temp = 10 }
+				add_to_variable = { productivity_state_var = temp }
+				custom_effect_tooltip = CHI_state_productivity_change2_TT
+			}
+			add_opinion_modifier = {
+				target = TAI
+				modifier = declaration_of_friendship
+			}
+			TAI = {
+				capital_scope = {
+					set_temp_variable = { temp = 10 }
+					add_to_variable = { productivity_state_var = temp }
+					custom_effect_tooltip = CHI_state_productivity_change2_TT
+				}
+				add_opinion_modifier = {
+					target = CHI
+					modifier = declaration_of_friendship
+				}
+			}
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+
+	shared_focus = {
+		id = CHI_Cross_Strait_Service_Trade_Agreement
+		icon = ExpandTrade
+		x = -3
+		y = 4
+		relative_position_id = CHI_One_China_Policy
+		prerequisite = {
+			focus = CHI_Opening_Tourism_to_Taiwan
+		}
+		search_filters = {
+			FOCUS_FILTER_INFLUENCE
+		}
+		bypass = {
+			TAI = {
+				exists = no
+			}
+		}
+		cost = 2
+		available = {
+			NOT = {
+				has_war_with = TAI
+			}
+			TAI = {
+				has_opinion = {
+					target = CHI
+					value > -31
+				}
+				custom_trigger_tooltip = {
+					tooltip = TAI_DPP_not_ruling_tt
+					OR = {
+						is_in_array = {
+							ruling_party = 1
+						}
+						is_in_array = {
+							ruling_party = 6
+						}
+						is_in_array = {
+							ruling_party = 14
+						}
+					}
+				}
+				
+			}
+		}
+		completion_reward = {
+			add_opinion_modifier = {
+				target = TAI
+				modifier = MGDR_CHI_Cross_Strait_Service_Trade_Agreement
+			}
+
+			TAI = {
+				if = {
+					limit = {
+						has_start_date < 2016.01.01
+					}
+					country_event = {
+						id = china.23
+					}
+				}
+				set_temp_variable = {
+					party_index = 1
+				}
+				set_temp_variable = {
+					party_popularity_increase = 0.02
+				}
+				add_relative_party_popularity = yes
+				set_temp_variable = {
+					party_index = 2
+				}
+				add_relative_party_popularity = yes
+				capital_scope = {
+					add_building_construction = {
+						type = offices
+						level = 1
+						instant_build = yes
+					}
+				}
+				add_opinion_modifier = {
+					target = CHI
+					modifier = MGDR_CHI_Cross_Strait_Service_Trade_Agreement
+				}
+			}
+			capital_scope = {
+				add_building_construction = {
+					type = offices
+					level = 1
+					instant_build = yes
+				}
+			}
+			log = "[GetDateText]: [This.GetName]: focus CHI_Cross_Strait_Service_Trade_Agreement executed"
+		}
+		ai_will_do = {
+			base = 1
+		}
+	}
+
+	shared_focus = {
+		id = CHI_Establish_Taiwan_SAR
+		icon = GFX_focus_PRC_one_china_two_systems
+		relative_position_id = CHI_One_China_Policy
+
+		x = -5
+		y = 1
+
+		prerequisite = { focus = CHI_One_China_Policy }
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+
+		cost = 20
+
+		available = {
+			if = {
+				limit = {
+					has_completed_focus = CHI_End_US_Hegemony
+				}
+				news_event = {
+					id = prc.80
+					days = 70
+				}
+			}
+			country_exists = TAI
+			NOT = { has_completed_focus = CHI_Road_to_War }
+			OR = {
+				AND = {
+					has_idea = super_power
+					has_tech = AS_Fighter4
+					has_tech = carrier_hull_3
+					custom_trigger_tooltip = {
+						tooltip = china_usa_navy_ratio_70_tt
+						check_variable = { china_usa_navy > 70 }
+					}
+					TAI = {
+						custom_trigger_tooltip = {
+							tooltip = TAI_KMT_ruling_tt
+							OR = {
+								is_in_array = { ruling_party = 1 }
+								is_in_array = { ruling_party = 6 }
+								is_in_array = { ruling_party = 14 }
+							}
+						}
+					}
+				}
+				TAI = {
+					custom_trigger_tooltip = {
+						tooltip = TAI_COM_ruling_tt
+						OR = {
+							is_in_array = { ruling_party = 4 }
+							is_in_array = { ruling_party = 5 }
+							is_in_array = { ruling_party = 19 }
+						}
+					}
+				}
+			}
+		}
+
+		completion_reward = {
+			mark_focus_tree_layout_dirty = yes
+			clr_country_flag = PRC_taiwan_war
+			set_global_flag = PRC_taiwan_war_won
+			set_country_flag = PRC_centrist_win
+			set_country_leader_portrait = {
+				ideology = communist_state
+				portrait = GFX_portrait_PRC_xi_jinping_taiwan_win
+			}
+			custom_effect_tooltip = PRC_one_china_two_systems_tt
+			set_temp_variable = { hegemony_victory_change = 200 }
+			PRC_USA_relations_get_victory_point = yes
+			add_ideas = CHI_TSMC_company
+			add_ideas = CHI_Foxconn_company
+			add_ideas = CHI_Formosa_company
+			add_timed_idea = {
+				idea = PRC_chinese_triumphalism
+				days = 1000
+			}
+			USA = {
+				set_temp_variable = { hegemony_victory_change = -200 }
+				PRC_USA_relations_get_victory_point = yes
+			}
+			hidden_effect = {
+				every_state = { #remove core for former Mainland states
+					limit = {
+						is_greater_china_state = yes
+					}
+					remove_core_of = TAI
+				}
+				every_state = { #remove claim for former Mainland states
+					limit = {
+						is_greater_china_state = yes
+					}
+					remove_claim_by = TAI
+				}
+				496 = { remove_claim_by = TAI }
+				722 = { remove_claim_by = TAI }
+				1011 = { remove_claim_by = TAI }
+				every_state = { #add core for current own
+					limit = {
+						is_taiwan_area_state = yes
+					}
+					add_core_of = TAI
+				}
+				if = {
+					limit = {
+						has_completed_focus = CHI_End_US_Hegemony
+					}
+					JAP = {
+						add_ideas = intervention_regional_interventionism
+					}
+				}
+				JAP = {
+					remove_ideas = JAP_helicopter_bonus
+					remove_ideas = JAP_helicopter_destroyers
+					remove_ideas = JAP_kawasaki_bonus
+					remove_ideas = PDO_taiwan_intervention_idea
+					remove_ideas = PDO_taiwan_intervention_2_idea
+				}
+				CHI = {
+					remove_state_core = 598
+					remove_state_core = 599
+					remove_state_core = 600
+					remove_state_core = 1155
+					remove_state_core = 1156
+					remove_state_core = 1157
+					remove_state_core = 1158
+					transfer_state = 430
+					transfer_state = 491
+					transfer_state = 1015
+					transfer_state = 1109
+					add_state_core = 491
+					430 = { remove_core_of = TAI }
+					491 = { remove_core_of = TAI }
+					1015 = { remove_core_of = TAI }
+					1109 = { remove_core_of = TAI }
+					annex_country = {
+						target = TAI
+						transfer_troops = no
+					}
+				}
+				598 = { add_dynamic_modifier = { modifier = PRC_taiwan } }
+				598 = { remove_dynamic_modifier = { modifier = CHI_taibei } }
+				599 = { add_dynamic_modifier = { modifier = PRC_taiwan } }
+				599 = { remove_dynamic_modifier = { modifier = CHI_gaoxiong } }
+				600 = { add_dynamic_modifier = { modifier = PRC_taiwan } }
+				939 = { add_dynamic_modifier = { modifier = PRC_taiwan } }
+				1155 = { add_dynamic_modifier = { modifier = PRC_taiwan } }
+				1156 = { remove_dynamic_modifier = { modifier = CHI_taizhong } }
+				1156 = { add_dynamic_modifier = { modifier = PRC_taiwan } }
+				1157 = { add_dynamic_modifier = { modifier = PRC_taiwan } }
+				1158 = { add_dynamic_modifier = { modifier = PRC_taiwan } }
+				news_event = { id = china_news.24 days = 5 }
+			}
+			set_country_flag = TAI_sar_exec
+			set_temp_variable = { temp_opinion = 5 }
+			change_communist_cadres_opinion = yes
+			log = "[GetDateText]: [This.GetName]: focus CHI_Establish_Taiwan_SAR executed"
+		}
+
+		ai_will_do = {
+			base = 1
+		}
+	}
+	shared_focus = {
+		id = PRC_china_victorious_and_united
+		icon = GFX_focus_PRC_china_victorious_and_united
+		relative_position_id = CHI_One_China_Policy
+		prerequisite = {
+			focus = CHI_One_China_Policy
+		}
+
+		x = -3
+		y = 1
+		cost = 4
+		available_if_capitulated = yes
+		allow_branch = {
+			has_country_flag = TAI_sar_exec
+		}
+		ai_will_do = {
+			factor = 100
+		}
+		completion_reward = {
+			custom_effect_tooltip = PRC_china_victorious_and_united_tt
+			swap_ruler_traits = {
+				remove = CHI_Traditional_culture_enthusiasts
+				add = hos_red_dragon_rider_1
+			}
+			country_event = prc.205
+			hidden_effect = {
+				scoped_play_song = "TFR_mu_tfr_the_dragons_roar"
+				swap_ideas = {
+					remove_idea = PRC_personal_expense_factor_fix
+					add_idea = PRC_personal_expense_factor_fix_centrists
+				}
+			}
+		}
+	}
+	shared_focus = {
+		id = PRC_utilize_xinjiang_methods
+		icon = GFX_focus_PRC_utilize_xinjiang_methods
+		relative_position_id = PRC_china_victorious_and_united
+		prerequisite = {
+			focus = PRC_china_victorious_and_united
+		}
+		x = 1
+		y = 1
+		cost = 3
+		available_if_capitulated = yes
+		allow_branch = {
+			has_country_flag = PRC_analyze_first_days_unlocked_flag
+			has_completed_focus = CHI_Establish_Taiwan_SAR
+		}
+		ai_will_do = {
+			factor = 100
+		}
+		completion_reward = {
+			custom_effect_tooltip = PRC_jinping_authoritarianism_tt
+			unlock_decision_tooltip = PRC_clean_up_kinmen
+			unlock_decision_tooltip = PRC_clean_up_tainan
+			unlock_decision_tooltip = PRC_clean_up_hualan
+			unlock_decision_tooltip = PRC_clean_up_taichzhun
+			unlock_decision_tooltip = PRC_clean_up_taibei
+			hidden_effect = {
+				country_event = {
+					id = prc.336
+					days = 30
+				}
+			}
+		}
+	}
+	shared_focus = {
+		id = PRC_unify_the_bureacracy
+		icon = GFX_focus_PRC_unify_the_bureacracy
+		relative_position_id = PRC_china_victorious_and_united
+		prerequisite = {
+			focus = PRC_china_victorious_and_united
+		}
+		x = -2
+		y = 1
+		cost = 3
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 100
+		}
+		completion_reward = {
+			country_event = prc.209
+			add_political_power = 75
+			add_stability = 0.025
+			if = {
+				limit = {
+					NOT = { has_country_flag = PRC_analyze_first_days_unlocked_flag }
+				}
+				add_state_core = 598
+				add_state_core = 599
+				add_state_core = 600
+				add_state_core = 1155
+				add_state_core = 1156
+				add_state_core = 1157
+				add_state_core = 1158
+			}
+		}
+	}
+	shared_focus = {
+		id = PRC_gradual_stabilization
+		icon = GFX_focus_PRC_gradual_stabilization
+		relative_position_id = PRC_china_victorious_and_united
+		prerequisite = {
+			focus = PRC_unify_the_bureacracy
+		}
+		available = {
+			598 = {
+				is_core_of = CHI
+			}
+		}
+		x = -2
+		y = 2
+		cost = 3
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 100
+		}
+		completion_reward = {
+			country_event = prc.208
+			add_timed_idea = {
+				idea = PRC_gradual_stabilization_idea
+				days = 150
+			}
+		}
+	}
+	shared_focus = {
+		id = PRC_evacuation_of_key_industries
+		icon = GFX_focus_PRC_evacuation_of_key_industries
+		relative_position_id = PRC_utilize_xinjiang_methods
+		prerequisite = {
+			focus = PRC_utilize_xinjiang_methods
+		}
+		x = -1
+		y = 1
+		cost = 3
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 100
+		}
+		completion_reward = {
+			598 = {
+				add_building_construction = {
+					type = industrial_complex
+					level = -2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = -1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					state_population > 10000000
+					free_building_slots = {
+						building = industrial_complex
+						size > 1
+						include_locked = yes
+					}
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			599 = {
+				add_building_construction = {
+					type = industrial_complex
+					level = -2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = -1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					state_population > 10000000
+					free_building_slots = {
+						building = industrial_complex
+						size > 1
+						include_locked = yes
+					}
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			600 = {
+				add_building_construction = {
+					type = industrial_complex
+					level = -2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = -1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					state_population > 10000000
+					free_building_slots = {
+						building = industrial_complex
+						size > 1
+						include_locked = yes
+					}
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			1155 = {
+				add_building_construction = {
+					type = industrial_complex
+					level = -2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = -1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					state_population > 10000000
+					free_building_slots = {
+						building = industrial_complex
+						size > 1
+						include_locked = yes
+					}
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			1156 = {
+				add_building_construction = {
+					type = industrial_complex
+					level = -2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = -1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					state_population > 10000000
+					free_building_slots = {
+						building = industrial_complex
+						size > 1
+						include_locked = yes
+					}
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			1157 = {
+				add_building_construction = {
+					type = industrial_complex
+					level = -2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = -1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					state_population > 10000000
+					free_building_slots = {
+						building = industrial_complex
+						size > 1
+						include_locked = yes
+					}
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			set_temp_variable = {
+				var = industrial_development_var_temp
+				value = 0.1
+			}
+			add_industrial_development = yes
+		}
+	}
+	shared_focus = {
+		id = PRC_accelerate_local_recovery
+		icon = GFX_focus_PRC_accelerate_local_recovery
+		relative_position_id = PRC_utilize_xinjiang_methods
+		prerequisite = {
+			focus = PRC_utilize_xinjiang_methods
+		}
+		x = 1
+		y = 1
+		cost = 3
+		available_if_capitulated = yes
+		mutually_exclusive = {
+			focus = PRC_evacuation_of_key_industries
+		}
+		ai_will_do = {
+			factor = 100
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = PRC_accelerate_local_recovery_idea
+				days = 180
+			}
+			custom_effect_tooltip = SOV_after_this_idea_tooltip
+			effect_tooltip = {
+				598 = {
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				599 = {
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				600 = {
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				1155 = {
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				1156 = {
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				1157 = {
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			set_temp_variable = {
+				treasury_change = -75
+			}
+			modify_treasury_effect = yes
+		}
+	}
+	shared_focus = {
+		id = PRC_the_chinese_century
+		icon = GFX_focus_PRC_the_chinese_century_1
+		relative_position_id = PRC_china_victorious_and_united
+		prerequisite = {
+			focus = PRC_gradual_stabilization
+		}
+		x = 0
+		y = 3
+		cost = 4
+		available_if_capitulated = yes
+		available = {
+			if = {
+				limit = {
+					OR = {
+						has_completed_focus = PRC_finish_what_mao_started
+						has_completed_focus = CHI_Resume_the_Civil_War
+					}
+				}
+				has_completed_focus = PRC_evacuation_of_key_industries
+				has_completed_focus = PRC_accelerate_local_recovery
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+		completion_reward = {
+			country_event = prc.210
+			add_political_power = 150
+			set_country_flag = PRC_for_policy_tree_available
+			effect_tooltip = {
+				add_ideas = PRC_the_chinese_century_idea
+			}
+			hidden_effect = {
+				remove_ideas = PRC_chinese_communist_party_idea
+				add_dynamic_modifier = {
+					modifier = PRC_communist_party_of_china_dynamic
+				}
+				add_to_variable = {
+					var = PRC_cpc_academic_development_monthly_dynamic_var
+					value = 0.005
+				}
+				add_to_variable = {
+					var = PRC_cpc_society_development_monthly_dynamic_var
+					value = 0.005
+				}
+				add_to_variable = {
+					var = PRC_cpc_political_power_gain_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = PRC_cpc_stability_factor_dynamic_var
+					value = 0.025
+				}
+				remove_ideas = {
+					PRC_the_separatist_problem
+					PRC_the_separatist_problem_2
+					PRC_the_separatist_problem_3
+					PRC_the_separatist_problem_4
+				}
+			}
+		}
+	}
+
+	#war preparations
+	shared_focus = {
+		id = CHI_Road_to_War
+		icon = GFX_focus_PRC_finalopportunity
+		relative_position_id = CHI_One_China_Policy
+		prerequisite = { focus = CHI_One_China_Policy }
+		x = 1
+		y = 1
+		cost = 3
+		available_if_capitulated = yes
+		allow_branch = {
+			NOT = { has_completed_focus = CHI_Establish_Taiwan_SAR }
+		}
+		available = {
+			has_completed_focus = CHI_New_Era_PLA
+			NOT = { has_war_with = TAI }
+			has_idea = super_power
+			country_exists = TAI
+			has_tech = AS_Fighter4
+			has_tech = carrier_hull_3
+			custom_trigger_tooltip = {
+				tooltip = china_usa_navy_ratio_70_tt
+				check_variable = { china_usa_navy > 70 }
+			}
+		}
+		ai_will_do = {
+			factor = 1000
+		}
+		completion_reward = {
+			mark_focus_tree_layout_dirty = yes
+			country_event = prc.2
+			if = {
+				limit = {
+					NOT = {
+						has_completed_focus = CHI_End_US_Hegemony
+					}
+				}
+				custom_effect_tooltip = CHI_bribe_decisions_tt
+			}
+			log = "[GetDateText]: [This.GetName]: focus CHI_Road_to_War executed"
+			set_country_flag = PRC_taiwan_war
+			set_temp_variable = { treasury_change = -5 }
+			modify_treasury_effect = yes
+			set_temp_variable = { temp_opinion = 5 }
+			change_communist_cadres_opinion = yes
+			set_temp_variable = { temp_opinion = 10 }
+			change_the_military_opinion = yes
+			add_war_support = 0.05
+			add_timed_idea = {
+				idea = CHI_war_preparations
+				days = 500
+			}
+			TAI = {
+				if = {
+					limit = {
+						CHI = {
+							NOT = {
+								has_completed_focus = CHI_End_US_Hegemony
+							}
+						}
+					}
+					country_event = {
+						id = taiwan_news.3
+						days = 90
+					}
+					country_event = {
+						id = taiwan.9
+					}
+				}
+				set_temp_variable = { party_index = 1 }
+				set_temp_variable = { party_popularity_increase = -0.05 }
+				add_relative_party_popularity = yes
+				set_temp_variable = { party_index = 2 }
+				add_relative_party_popularity = yes
+			}
+			set_temp_variable = { modify_chinese_aggression = 4 }
+			CHI_modify_chinese_aggression = yes
+		}
+	}
+	shared_focus = {
+		id = PRC_prepare_landing_craft
+		icon = GFX_focus_PRC_preparelandingcraft
+		relative_position_id = CHI_Road_to_War
+		x = -2
+		y = 1
+		cost = 2
+		prerequisite = {
+			focus = CHI_Road_to_War
+		}
+		ai_will_do = {
+			factor = 1000
+		}
+		allow_branch = {
+			has_completed_focus = CHI_Road_to_War
+			NOT = { has_completed_focus = CHI_Establish_Taiwan_SAR }
+		}
+		completion_reward = {
+			if = {
+				limit = {
+					NOT = {
+						has_tech = tech_amphibious_assault_ship
+					}
+				}
+				set_technology = {
+					tech_amphibious_assault_ship = 1
+				}
+			}
+			else_if = {
+				limit = {
+					has_tech = tech_amphibious_assault_ship
+					NOT = {
+						has_tech = tech_air_cushioned_landing_craft
+					}
+				}
+				set_technology = {
+					tech_air_cushioned_landing_craft = 1
+				}
+			}
+			else_if = {
+				limit = {
+					has_tech = tech_amphibious_assault_ship
+					has_tech = tech_air_cushioned_landing_craft
+					NOT = {
+						has_tech = tech_modern_landing_craft
+					}
+				}
+				set_technology = {
+					tech_modern_landing_craft = 1
+				}
+			}
+			else_if = {
+				limit = {
+					has_tech = tech_amphibious_assault_ship
+					has_tech = tech_air_cushioned_landing_craft
+					has_tech = tech_modern_landing_craft
+					NOT = {
+						has_tech = tech_specialized_protective_equipment
+					}
+				}
+				set_technology = {
+					tech_specialized_protective_equipment = 1
+				}
+			}
+			else_if = {
+				limit = {
+					has_tech = tech_amphibious_assault_ship
+					has_tech = tech_air_cushioned_landing_craft
+					has_tech = tech_modern_landing_craft
+					has_tech = tech_specialized_protective_equipment
+					NOT = {
+						has_tech = tech_advanced_landing_craft
+					}
+				}
+				set_technology = {
+					tech_advanced_landing_craft = 1
+				}
+			}
+		}
+	}
+	shared_focus = {
+		id = PRC_modern_combined_arms
+		icon = GFX_focus_PRC_moderncombinedarms
+		allow_branch = {
+			has_completed_focus = CHI_Road_to_War
+			NOT = { has_completed_focus = CHI_Establish_Taiwan_SAR }
+		}
+		relative_position_id = CHI_Road_to_War
+		x = 0
+		y = 1
+		cost = 3
+		prerequisite = {
+			focus = CHI_Road_to_War
+		}
+		ai_will_do = {
+			factor = 5
+		}
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				name = CAT_land_doctrine
+				cost_reduction = 0.75
+				uses = 2
+				category = CAT_land_doctrine
+			}
+			add_doctrine_cost_reduction = {
+				name = GENERIC_air_force_reform
+				cost_reduction = 0.75
+				uses = 2
+				category = CAT_air_doctrine
+			}
+		}
+	}
+	shared_focus = {
+		id = PRC_blockade_taiwan
+		icon = GFX_focus_PRC_blockadetaiwan
+		relative_position_id = CHI_Road_to_War
+		x = 2
+		y = 1
+		cost = 2
+		allow_branch = {
+			has_completed_focus = CHI_Road_to_War
+			NOT = { has_completed_focus = CHI_Establish_Taiwan_SAR }
+		}
+		prerequisite = {
+			focus = CHI_Road_to_War
+		}
+		ai_will_do = {
+			factor = 1000
+		}
+		completion_reward = {
+			TAI = {
+				add_ideas = CHI_chinese_blockade
+				add_named_threat = {
+					threat = 3.5
+					name = PRC_blockade_of_taiwan
+				}
+			}
+			hidden_effect = {
+				news_event = {
+					id = prc.6
+				}
+			}
+		}
+	}
+	shared_focus = {
+		id = PRC_conduct_final_training
+		icon = GFX_focus_PRC_finaltraining
+		relative_position_id = CHI_Road_to_War
+		x = -1
+		y = 2
+		cost = 3
+		prerequisite = {
+			focus = PRC_prepare_landing_craft
+		}
+		prerequisite = {
+			focus = PRC_modern_combined_arms
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			army_experience = 100
+			add_timed_idea = {
+				idea = PRC_conduct_final_trining_idea
+				days = 120
+			}
+		}
+	}
+	shared_focus = {
+		id = PRC_expand_the_j20_program
+		icon = GFX_focus_PRC_j20programme
+		relative_position_id = CHI_Road_to_War
+		x = 1
+		y = 2
+		cost = 3
+		prerequisite = {
+			focus = PRC_modern_combined_arms
+		}
+		prerequisite = {
+			focus = PRC_blockade_taiwan
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			air_experience = 100
+			add_equipment_to_stockpile = {
+				type = medium_plane_fighter_airframe_3
+				amount = 30
+				producer = CHI
+			}
+		}
+	}
+	shared_focus = {
+		id = PRC_operation_silent_dawn
+		icon = GFX_focus_PRC_operationsilentdawn
+		available = {
+			has_completed_focus = PRC_sieze_kinmen
+		}
+		relative_position_id = CHI_Road_to_War
+		x = 0
+		y = 3
+		will_lead_to_war_with = TAI
+		cost = 3
+		prerequisite = {
+			focus = PRC_conduct_final_training
+		}
+		prerequisite = {
+			focus = PRC_expand_the_j20_program
+		}
+		ai_will_do = {
+			factor = 1000
+		}
+		completion_reward = {
+			news_event = prc.82
+			TAI = {
+				add_timed_idea = {
+					idea = CHI_silent_dawn
+					days = 180
+				}
+				every_owned_state = {
+					damage_building = {
+						type = infrastructure
+						damage = 0.75
+					}
+					damage_building = {
+						type = arms_factory
+						damage = 0.5
+					}
+					damage_building = {
+						type = industrial_complex
+						damage = 0.5
+					}
+					damage_building = {
+						type = dockyard
+						damage = 0.5
+					}
+				}
+			}
+		}
+	}
+	shared_focus = {
+		id = PRC_sieze_kinmen
+		icon = GFX_focus_PRC_seizekinmen
+		relative_position_id = CHI_Road_to_War
+		x = 2
+		y = 3
+		cost = 3
+		available = {
+			has_completed_focus = PRC_plan_on_high_alert
+		}
+		prerequisite = {
+			focus = PRC_blockade_taiwan
+		}
+		ai_will_do = {
+			factor = 1000
+		}
+		completion_reward = {
+			country_event = {
+				id = prc.9
+				days = 1
+			}
+			add_war_support = 0.1
+			430 = {
+				transfer_state_to = CHI
+			}
+			491 = {
+				transfer_state_to = CHI
+			}
+			1015 = {
+				transfer_state_to = CHI
+			}
+			1109 = {
+				transfer_state_to = CHI
+			}
+			1158 = {
+				transfer_state_to = CHI
+			}
+			add_named_threat = {
+				threat = 2.5
+				name = PRC_invasion_of_kinmen_threat
+			}
+			hidden_effect = {
+				news_event = {
+					id = prc.8
+				}
+			}
+		}
+	}
+	shared_focus = {
+		id = PRC_plan_on_high_alert
+		icon = GFX_focus_PRC_planready
+		relative_position_id = CHI_Road_to_War
+		x = -2
+		y = 3
+		cost = 3
+		prerequisite = {
+			focus = PRC_prepare_landing_craft
+		}
+		ai_will_do = {
+			factor = 1000
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = PRC_plan_high_alert
+				days = 250
+			}
+		}
+	}
+	shared_focus = {
+		id = CHI_Resume_the_Civil_War
+		name = PRC_finish_what_mao_started
+		icon = GFX_focus_PRC_finishwhatmaostarted
+		relative_position_id = CHI_Road_to_War
+		x = 0
+		y = 4
+		will_lead_to_war_with = TAI
+		cost = 0.5
+		allow_branch = {
+			has_completed_focus = CHI_Road_to_War
+			JAP = {
+				NOT = { has_country_flag = pdto_member }
+			}
+			NOT = { has_completed_focus = CHI_Establish_Taiwan_SAR }
+		}
+		prerequisite = {
+			focus = PRC_operation_silent_dawn
+		}
+		ai_will_do = {
+			factor = 9999
+		}
+		completion_reward = {
+			mark_focus_tree_layout_dirty = yes
+			set_temp_variable = { modify_chinese_aggression = 5 }
+			CHI_modify_chinese_aggression = yes
+			TAI = {
+				country_event = {
+					id = roc.33
+				}
+			}
+			declare_war_on = {
+				target = TAI
+				type = annex_everything
+			}
+			add_named_threat = {
+				threat = 10
+				name = PRC_invasion_of_taiwan_threat
+			}
+			set_global_flag = PRC_ongoing_taiwan_war
+			unlock_decision_category_tooltip = PRC_taiwan_war_cat
+			hidden_effect = {
+				country_event = {
+					id = prc.442
+					days = 137
+				}
+				country_event = {
+					id = prc.68
+					days = 140
+				}
+				country_event = {
+					id = prc.73
+					days = 200
+				}
+				country_event = {
+					id = prc.154
+					days = 2
+				}
+				swap_ideas = {
+					remove_idea = PRC_the_separatist_problem
+					add_idea = PRC_the_separatist_problem_2
+				}
+			}
+		}
+	}
+	shared_focus = {
+		id = PRC_finish_what_mao_started
+		icon = GFX_focus_PRC_finishwhatmaostarted
+		relative_position_id = CHI_Road_to_War
+		x = 0
+		y = 4
+		allow_branch = {
+			has_completed_focus = CHI_Road_to_War
+			JAP = {
+				has_country_flag = pdto_member
+			}
+			NOT = { has_completed_focus = CHI_Establish_Taiwan_SAR }
+		}
+		will_lead_to_war_with = JAP
+		will_lead_to_war_with = AST
+		will_lead_to_war_with = TAI
+		cost = 0.5
+		prerequisite = {
+			focus = PRC_operation_silent_dawn
+		}
+		ai_will_do = {
+			factor = 9999
+		}
+		completion_reward = {
+			mark_focus_tree_layout_dirty = yes
+			set_temp_variable = { modify_chinese_aggression = 5 }
+			CHI_modify_chinese_aggression = yes
+			TAI = {
+				country_event = {
+					id = roc.33
+				}
+			}
+			declare_war_on = {
+				target = TAI
+				type = annex_everything
+			}
+			add_named_threat = {
+				threat = 10
+				name = PRC_invasion_of_taiwan_threat
+			}
+			set_global_flag = PRC_ongoing_taiwan_war
+			unlock_decision_category_tooltip = PRC_taiwan_war_cat
+			hidden_effect = {
+				country_event = {
+					id = prc.236
+					days = 4
+				}
+				country_event = {
+					id = prc.442
+					days = 137
+				}
+				country_event = {
+					id = prc.68
+					days = 140
+				}
+				country_event = {
+					id = prc.73
+					days = 200
+				}
+				country_event = {
+					id = prc.154
+					days = 2
+				}
+				swap_ideas = {
+					remove_idea = PRC_the_separatist_problem
+					add_idea = PRC_the_separatist_problem_2
+				}
+				if = {
+					limit = {
+						JAP = {
+							has_country_flag = pdto_member
+						}
+					}
+					JAP = {
+						country_event = {
+							id = jap.8
+						}
+					}
+					every_state = {
+						limit = {
+							is_owned_by = JAP
+							NOT = {
+								state = 618
+								state = 827
+								state = 939
+							}
+						}
+						add_dynamic_modifier = {
+							modifier = PRC_non_combat_area
+							scope = CHI
+						}
+					}
+				}
+				if = {
+					limit = {
+						AST = {
+							has_country_flag = pdto_member
+						}
+					}
+					AST = {
+						country_event = {
+							id = jap.8
+						}
+					}
+					every_state = {
+						limit = {
+							is_owned_by = AST
+						}
+						add_dynamic_modifier = {
+							modifier = PRC_non_combat_area
+							scope = CHI
+						}
+					}
+				}
+				every_country = {
+					limit = {
+						is_in_faction_with = TAI
+					}
+					add_ideas = PDTO_stand_up_to_taiwan_idea
+				}
+			}
+		}
+	}
+	##war tree
+	shared_focus = {
+		id = PRC_analyze_first_days
+		icon = GFX_focus_PRC_analyze_the_first_days
+		available = { always = no }
+		allow_branch = {
+			has_global_flag = PRC_ongoing_taiwan_war
+			NOT = { has_completed_focus = CHI_Establish_Taiwan_SAR }
+		}
+		prerequisite = {
+			focus = CHI_Resume_the_Civil_War
+		}
+		prerequisite = {
+			focus = PRC_finish_what_mao_started
+		}
+		relative_position_id = CHI_Road_to_War
+		x = 0
+		y = 5
+		cost = 0.5
+		ai_will_do = {
+			factor = 1000
+		}
+		completion_reward = {
+			country_event = prc.84
+		}
+	}
+	shared_focus = {
+		id = PRC_fast_finalization
+		icon = GFX_focus_PRC_fast_finalization
+		available = {
+			has_country_flag = PRC_fast_finalization_flag
+		}
+		prerequisite = {
+			focus = PRC_analyze_first_days
+		}
+		relative_position_id = CHI_Road_to_War
+		x = -2
+		y = 6
+		cost = 1
+		ai_will_do = {
+			factor = 1000
+		}
+		mutually_exclusive = {
+			focus = PRC_slowly_but_surely
+		}
+		completion_reward = {
+			set_temp_variable = {
+				var = PRC_influence_nat_var_temp
+				value = 0.05
+			}
+			PRC_add_influence_nat = yes
+			set_temp_variable = {
+				var = PRC_influence_new_var_temp
+				value = 0.05
+			}
+			PRC_add_influence_new = yes
+			add_war_support = 0.025
+		}
+	}
+	shared_focus = {
+		id = PRC_slowly_but_surely
+		icon = GFX_focus_PRC_slowly_but_surely
+		available = {
+			has_country_flag = PRC_slowly_but_surely_flag
+		}
+		prerequisite = {
+			focus = PRC_analyze_first_days
+		}
+		relative_position_id = CHI_Road_to_War
+		x = 2
+		y = 6
+		cost = 1
+		ai_will_do = {
+			factor = 1000
+		}
+		mutually_exclusive = {
+			focus = PRC_fast_finalization
+		}
+		completion_reward = {
+			set_temp_variable = {
+				var = PRC_influence_cen_var_temp
+				value = 0.05
+			}
+			PRC_add_influence_cen = yes
+			set_temp_variable = {
+				var = PRC_influence_lib_var_temp
+				value = 0.05
+			}
+			PRC_add_influence_lib = yes
+			add_stability = 0.025
+		}
+	}
+	shared_focus = {
+		id = PRC_air_deconservation
+		icon = GFX_focus_PRC_air_deconservation
+		prerequisite = {
+			focus = PRC_fast_finalization
+			focus = PRC_slowly_but_surely
+		}
+		relative_position_id = CHI_Road_to_War
+		x = 0
+		y = 7
+		cost = 3
+		ai_will_do = {
+			factor = 1000
+		}
+		completion_reward = {
+			custom_effect_tooltip = PRC_air_deconservation_tt
+			hidden_effect = {
+				if = {
+					limit = {
+						has_dlc = "By Blood Alone"
+					}
+					add_equipment_to_stockpile = {
+						type = medium_plane_cas_airframe_2
+						amount = 10
+						variant_name = "JH-7 Flying Leopard"
+						producer = CHI
+					}
+					add_equipment_to_stockpile = {
+						type = small_plane_strike_airframe_1
+						amount = 50
+						variant_name = "J-6"
+						producer = CHI
+					}
+					add_equipment_to_stockpile = {
+						type = medium_plane_fighter_airframe_1
+						amount = 20
+						variant_name = "J-7II"
+						producer = CHI
+					}
+					add_equipment_to_stockpile = {
+						type = small_plane_cas_airframe_1
+						amount = 50
+						variant_name = "Nanchang Q-5"
+						producer = CHI
+					}
+				}
+				else = {
+					add_equipment_to_stockpile = {
+						type = fighter_equipment
+						amount = 100
+						producer = CHI
+					}
+					add_equipment_to_stockpile = {
+						type = CAS_equipment
+						amount = 20
+						producer = CHI
+					}
+				}
+			}
+		}
+	}
+	shared_focus = {
+		id = PRC_crackdown_on_separatists
+		icon = GFX_focus_PRC_crackdown_on_separatists
+		prerequisite = {
+			focus = PRC_fast_finalization
+		}
+		relative_position_id = CHI_Road_to_War
+		x = -1
+		y = 8
+		cost = 2
+		ai_will_do = {
+			factor = 1000
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = PRC_the_separatist_problem_2
+				add_idea = PRC_the_separatist_problem_3
+			}
+			set_temp_variable = {
+				var = PRC_influence_nat_var_temp
+				value = 0.05
+			}
+			PRC_add_influence_nat = yes
+		}
+	}
+	shared_focus = {
+		id = PRC_indiscriminate_missile_strikes
+		icon = GFX_focus_PRC_indiscriminate_missile_mtrikes
+		prerequisite = {
+			focus = PRC_fast_finalization
+		}
+		relative_position_id = CHI_Road_to_War
+		x = -2
+		y = 7
+		cost = 1.5
+		ai_will_do = {
+			factor = 1000
+		}
+		completion_reward = {
+			add_stability = -0.025
+			unlock_decision_tooltip = PRC_destroy_taiwan_infr
+			unlock_decision_tooltip = PRC_destroy_taiwan_civ_industry
+			unlock_decision_tooltip = PRC_destroy_taiwan_war_industry
+			unlock_decision_tooltip = PRC_taiwan_bombing_raid
+			if = {
+				limit = {
+					has_war_with = JAP
+				}
+				unlock_decision_tooltip = PRC_strike_senkaku
+				unlock_decision_tooltip = PRC_strike_okinawa
+			}
+		}
+	}
+	shared_focus = {
+		id = PRC_taiwanese_affairs_dont_concern_mainland
+		icon = GFX_focus_PRC_taiwanese_affairs_dont_concern
+		prerequisite = {
+			focus = PRC_fast_finalization
+		}
+		relative_position_id = CHI_Road_to_War
+		x = -3
+		y = 8
+		cost = 3
+		ai_will_do = {
+			factor = 1000
+		}
+		completion_reward = {
+			add_stability = 0.05
+			swap_ideas = {
+				remove_idea = common_prosperity_law
+				add_idea = common_prosperity_law_1
+			}
+		}
+	}
+	shared_focus = {
+		id = PRC_final_offensive
+		icon = GFX_focus_PRC_the_final_offensive
+		prerequisite = {
+			focus = PRC_crackdown_on_separatists
+		}
+		prerequisite = {
+			focus = PRC_indiscriminate_missile_strikes
+		}
+		prerequisite = {
+			focus = PRC_taiwanese_affairs_dont_concern_mainland
+		}
+		relative_position_id = CHI_Road_to_War
+		x = -2
+		y = 10
+		cost = 5
+		ai_will_do = {
+			factor = 1000
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = PRC_final_offensive_idea
+				days = 100
+			}
+		}
+	}
+	shared_focus = {
+		id = PRC_unite_people
+		icon = GFX_focus_PRC_unite_the_people
+		prerequisite = {
+			focus = PRC_slowly_but_surely
+		}
+		relative_position_id = CHI_Road_to_War
+		x = 1
+		y = 8
+		cost = 5
+		ai_will_do = {
+			factor = 1000
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = PRC_the_separatist_problem_2
+				add_idea = PRC_the_separatist_problem_4
+			}
+			set_temp_variable = {
+				var = PRC_influence_cen_var_temp
+				value = 0.05
+			}
+			PRC_add_influence_cen = yes
+		}
+	}
+	shared_focus = {
+		id = PRC_minimize_civilian_casualties
+		icon = GFX_focus_PRC_minimize_casualties
+		prerequisite = {
+			focus = PRC_slowly_but_surely
+		}
+		relative_position_id = CHI_Road_to_War
+		x = 2
+		y = 7
+		cost = 1.5
+		ai_will_do = {
+			factor = 1000
+		}
+		completion_reward = {
+			add_stability = 0.025
+			increase_supervision = yes
+			set_temp_variable = {
+				var = PRC_influence_cen_var_temp
+				value = 0.025
+			}
+			PRC_add_influence_cen = yes
+			set_temp_variable = {
+				var = PRC_influence_lib_var_temp
+				value = 0.025
+			}
+			PRC_add_influence_lib = yes
+		}
+	}
+	shared_focus = {
+		id = PRC_economic_conversion_to_military_needs
+		icon = GFX_focus_PRC_economic_conversion
+		prerequisite = {
+			focus = PRC_slowly_but_surely
+		}
+		relative_position_id = CHI_Road_to_War
+		x = 3
+		y = 8
+		cost = 5
+		ai_will_do = {
+			factor = 1000
+		}
+		completion_reward = {
+			add_stability = -0.025
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = industrial_complex
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = -1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = industrial_complex
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = -1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = industrial_complex
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = -1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = industrial_complex
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = -1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = industrial_complex
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = -1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	shared_focus = {
+		id = PRC_no_hurry
+		icon = GFX_focus_PRC_no_hurry
+		prerequisite = {
+			focus = PRC_unite_people
+		}
+		prerequisite = {
+			focus = PRC_minimize_civilian_casualties
+		}
+		prerequisite = {
+			focus = PRC_economic_conversion_to_military_needs
+		}
+		relative_position_id = CHI_Road_to_War
+		x = 2
+		y = 10
+		cost = 5
+		ai_will_do = {
+			factor = 1000
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = PRC_no_hurry_idea
+				days = 180
+			}
+		}
+	}

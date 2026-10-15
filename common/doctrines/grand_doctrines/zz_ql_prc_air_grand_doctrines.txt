@@ -1,0 +1,215 @@
+# ============================================================
+# 空军 Grand Doctrine 合并文件
+# 路线1：攻防一体兼备（PLAAF）
+# 路线2：敏捷作战部署（USAF）
+# 路线3：空天联合支援（RAAF）
+# 规则：文档里有的键 = 全局（顶层）；文档里没有的键 = 机型单位级（category_xxx = { }）
+# ============================================================
+
+
+# ============================================================
+# 路线1：攻防一体兼备（PLAAF）
+# ============================================================
+
+ql_prc_air_integrated_offence_defence = {
+	folder = air
+	name = QL_GRAND_QL_PRC_AIR_INTEGRATED_OFFENCE_DEFENCE
+	description = QL_GRAND_QL_PRC_AIR_INTEGRATED_OFFENCE_DEFENCE_DESC
+	icon = GFX_ql_grand_air_1
+	available = {
+		OR = {
+			original_tag = CHI
+		}
+	}
+	visible = {
+		OR = {
+			original_tag = CHI
+		}
+	}
+	xp_cost = 100
+	xp_type = air
+	ai_will_do = { base = 1 }
+	tracks = { ql_prc_air_superiority_wing ql_prc_air_attack_wing ql_prc_air_bomber_wing ql_prc_air_systems training_and_ops aircraft_design }
+
+	# 顶栏：对空攻击、机动、夺取制空权任务效率 +10%
+	air_attack_factor = 0.1                   # 空军攻击力 +10%（全局）
+	air_agility_factor = 0.1                  # 飞机机动性 +10%（全局）
+	air_superiority_efficiency = 0.1          # 夺取制空权任务效率 +10%（全局）
+
+	milestones = {
+		# 1. 战斗机 对空攻击、机动 +10%、夺取制空权任务效率 +10%
+		{
+			air_superiority_efficiency = 0.1      # 夺取制空权任务效率 +10%（全局）
+			category_fighter = {
+				air_attack = 0.1                  # 战斗机：对空攻击 +10%（单位级/飞机）
+				air_agility = 0.1                 # 战斗机：机动 +10%（单位级/飞机）
+			}
+		}
+		# 2. 对地攻击系数 +20%、CAS任务效率 +20%
+		{
+			ground_attack_factor = 0.2            # 对地攻击 +20%（全局）
+			air_cas_efficiency = 0.2              # CAS任务效率 +20%（全局）
+		}
+		# 3. 全局 轰炸机 战略轰炸、空中防御 +20%
+		{
+			air_strategic_bomber_bombing_factor = 0.2   # 战略轰炸 +20%（全局）
+			air_defence_factor = 0.2                    # 空军防御力 +20%（全局）
+		}
+		# 4. 空军全部任务效率 +10%
+		{
+			air_mission_efficiency = 0.1          # 空军全部任务效率 +10%（全局）
+		}
+		# 5. 训练与作战体系
+		{
+			experience_gain_air_factor = 0.1         # 空军经验获取 +10%（全局）
+		}
+		# 6. 装备发展体系
+		{
+			air_superiority_efficiency = 0.05             # 制空任务效率 +5%（全局）
+			air_detection = 0.05                          # 空中探测 +5%（全局）
+		}
+	}
+}
+
+
+# ============================================================
+# 路线2：敏捷作战部署（USAF）
+# ============================================================
+
+ql_prc_air_agile_deployment = {
+	folder = air
+	name = QL_GRAND_QL_PRC_AIR_AGILE_DEPLOYMENT
+	description = QL_GRAND_QL_PRC_AIR_AGILE_DEPLOYMENT_DESC
+	icon = GFX_ql_grand_air_2
+	available = {
+		OR = {
+			original_tag = ENG
+			original_tag = GER
+			original_tag = ITA
+			original_tag = FRA
+			original_tag = POL
+			original_tag = JAP
+			original_tag = RAJ
+			original_tag = AST
+			original_tag = KOR
+			original_tag = USA
+		}
+	}
+	visible = {
+		OR = {
+			original_tag = ENG
+			original_tag = GER
+			original_tag = ITA
+			original_tag = FRA
+			original_tag = POL
+			original_tag = JAP
+			original_tag = RAJ
+			original_tag = AST
+			original_tag = KOR
+			original_tag = USA
+		}
+	}
+	xp_cost = 100
+	xp_type = air
+	ai_will_do = { base = 1 }
+	tracks = { ql_prc_air_superiority_wing ql_prc_air_attack_wing ql_prc_air_bomber_wing ql_prc_air_systems training_and_ops aircraft_design }
+
+	# 顶栏：战略轰炸 +10%、空军护航效率 +10%
+	air_strategic_bomber_bombing_factor = 0.1   # 战略轰炸 +10%（全局）
+	air_escort_efficiency = 0.1                 # 空军护航效率 +10%（全局）
+
+	milestones = {
+		# 1. 王牌飞行员产生几率 +15%、王牌效率 +20%
+		{
+			air_ace_generation_chance_factor = 0.15   # 王牌飞行员产生几率 +15%（全局）
+			ace_effectiveness_factor = 0.2            # 王牌效率 +20%（全局）
+		}
+		# 2. 跨空域力量投射修正系数 +15%
+		{
+			air_power_projection_factor = 0.15    # 跨空域力量投射修正系数 +15%（全局）
+		}
+		# 3. 无人机 空中防御、对地攻击 +10%
+		{
+			category_Air_UAV = {
+				air_defence = 0.1                 # 无人机：空中防御 +10%
+				air_ground_attack = 0.1           # 无人机：对地攻击 +10%
+			}
+		}
+		# 4. 轰炸机 战略轰炸 +15%
+		{
+			category_strat_bomber = {
+				air_bombing = 0.15                # 轰炸机：战略轰炸 +15%
+			}
+		}
+		# 5. 空军联队任务经验增长 +10%、跨空域力量投射修正系数 +15%
+		{
+			air_mission_xp_gain_factor = 0.1      # 空军联队任务经验增长 +10%（全局）
+			air_power_projection_factor = 0.15    # 跨空域力量投射修正系数 +15%（全局）
+		}
+		# 6. 装备发展体系
+		{
+			air_superiority_efficiency = 0.05             # 制空任务效率 +5%（全局）
+			air_detection = 0.05                          # 空中探测 +5%（全局）
+		}
+	}
+}
+
+
+# ============================================================
+# 路线3：空天联合支援（RAAF）
+# ============================================================
+
+ql_prc_air_aerospace_support = {
+	folder = air
+	name = QL_GRAND_QL_PRC_AIR_AEROSPACE_SUPPORT
+	description = QL_GRAND_QL_PRC_AIR_AEROSPACE_SUPPORT_DESC
+	icon = GFX_ql_grand_air_3
+	available = {
+		OR = {
+			original_tag = SOV
+		}
+	}
+	visible = {
+		OR = {
+			original_tag = SOV
+		}
+	}
+	xp_cost = 100
+	xp_type = air
+	ai_will_do = { base = 1 }
+	tracks = { ql_prc_air_superiority_wing ql_prc_air_attack_wing ql_prc_air_bomber_wing ql_prc_air_systems training_and_ops aircraft_design }
+
+	# 顶栏：全局 密接支援任务效率 + 战斗中空优加成
+	air_cas_efficiency = 0.1                  # 密接支援任务效率 +10%（全局）
+	air_superiority_bonus_in_combat = 0.1     # 战斗中制空权加成 +10%（全局）
+
+	milestones = {
+		# 1. 战斗机探测 +10%
+		{
+			air_detection = 0.1                   # 战斗机探测 +10%（全局）
+		}
+		# 2. 空军联队任务经验增长 +10%、制空权 +15%
+		{
+			air_mission_xp_gain_factor = 0.1      # 空军联队任务经验增长 +10%（全局）
+			air_superiority_efficiency = 0.15     # 制空权 +15%（全局）
+		}
+		# 3. 轰炸机 最大速度 +15%
+		{
+			air_maximum_speed_factor = 0.15      # 轰炸机：最大速度 +15%（全局）
+		}
+		# 4. 夜间行动惩罚、恶劣天气惩罚 -15%
+		{
+			air_night_penalty = -0.15             # 夜间行动惩罚 -15%（全局）
+			air_weather_penalty = -0.15           # 恶劣天气惩罚 -15%（全局）
+		}
+		# 5. 训练与作战体系
+		{
+			experience_gain_air_factor = 0.1         # 空军经验获取 +10%（全局）
+		}
+		# 6. 装备发展体系
+		{
+			air_superiority_efficiency = 0.05             # 制空任务效率 +5%（全局）
+			air_detection = 0.05                          # 空中探测 +5%（全局）
+		}
+	}
+}

@@ -1,0 +1,62 @@
+﻿###########################
+# North Korean Events
+###########################
+add_namespace = nk
+
+#GAW Korea Sector
+country_event = {
+	id = nk.14
+	title = nk.14.t
+	desc = nk.14.d
+	picture = report_event_equipment
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = NKO
+	}
+	option = {
+		name = nk.14.a
+		news_event = {
+			id = news.340
+			days = 1
+		}
+		declare_war_on = {
+			target = KOR
+			type = annex_everything
+		}
+		add_war_support = 0.15
+		add_timed_idea = {
+			idea = PRK_surprise_offensive
+			days = 50
+		}
+		KOR = {
+			add_timed_idea = {
+				idea = KOR_surprise_offensive
+				days = 50
+			}
+		}
+		hidden_effect = {
+			every_state = {
+				limit = {
+					OR = {
+						is_owned_by = KOR
+						is_owned_by = NKO
+					}
+				}
+				add_dynamic_modifier = {
+					modifier = PRC_korean_war_modifer
+				}
+			}
+			if = {
+				limit = {
+					CHI = {
+						has_completed_focus = PRC_finilize_korean_revolution
+					}
+				}
+				JAP = {
+					country_event = jap.1000
+				}
+			}
+		}
+	}
+}

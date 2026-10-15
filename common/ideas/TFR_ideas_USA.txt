@@ -1,0 +1,686 @@
+ideas = {
+	hidden_ideas = {
+		USA_organized_defence = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				army_defence_factor = 0.2
+				army_org_factor = 0.1
+			}
+		}
+	}
+	country = {
+		USA_political_establishment = {
+			picture = USA_political_establishment
+			allowed = {
+				original_tag = USA
+			}
+			modifier = {
+				#political_power_gain = -0.15
+				conservative_drift = 0.02
+				social_liberal_drift = 0.02
+			}
+		}
+		USA_worker_strikes = {
+			picture = generic_strike
+			allowed = {
+				original_tag = USA
+			}
+			modifier = {
+				consumer_goods_factor = 0.1
+				production_factory_efficiency_gain_factor = -0.05
+				production_factory_max_efficiency_factor = -0.05
+				#power_balance_weekly = -0.005
+			}
+		}
+		USA_political_division = {
+			picture = USA_political_division
+			allowed = {
+				original_tag = USA
+			}
+			modifier = {
+				political_power_gain = -0.3
+				stability_factor = -0.15
+				disabled_ideas = 1
+			}
+		}
+		USA_political_division1 = {
+			picture = USA_political_division
+			allowed = {
+				original_tag = USA
+			}
+			modifier = {
+				political_power_gain = -0.3
+				stability_factor = -0.15
+			}
+		}
+		USA_political_division2 = {
+			picture = USA_political_division
+			allowed = {
+				original_tag = USA
+			}
+			modifier = {
+				political_power_gain = -0.2
+				stability_factor = -0.1
+			}
+		}
+		USA_political_division3 = {
+			picture = USA_political_division
+			allowed = {
+				original_tag = USA
+			}
+			modifier = {
+				political_power_gain = -0.1
+				stability_factor = -0.05
+			}
+		}
+		USA_national_schizophrenia_idea = {
+			picture = TFR_natschizo
+			allowed = {
+				tag = USA
+			}
+			removal_cost = -1
+			modifier = {
+				political_power_gain = -0.4
+				stability_factor = -0.15
+				disabled_ideas = 1
+			}
+		}
+		USA_the_trump_economy_idea = {
+			picture = USA_the_trump_economy
+			allowed = {
+				tag = USA
+			}
+			available = {
+				NOT = {
+					has_global_flag = USA_american_civil_war_global
+				}
+			}
+			removal_cost = -1
+			modifier = {
+				tax_gain_multiplier_modifier = 0.1
+				business_value_factor = 0.1
+				personal_value_factor = 0.1
+				stability_factor = 0.1
+				industrial_capacity_factory = 0.1
+				industrial_capacity_dockyard = 0.1
+				production_speed_buildings_factor = 0.1
+				local_resources_factor = 0.1
+			}
+		}
+		USA_locked_down_economy_idea = {
+			picture = USA_locked_down_economy
+			allowed = {
+				tag = USA
+			}
+			modifier = {
+				consumer_goods_factor = 0.3
+				production_factory_max_efficiency_factor = -0.15
+				industrial_capacity_dockyard = -0.3
+				local_resources_factor = -0.3
+				#power_balance_weekly = -0.003
+			}
+		}
+		USA_locked_down_economy_idea1 = {
+			picture = USA_locked_down_economy
+			allowed = {
+				tag = USA
+			}
+			modifier = {
+				consumer_goods_factor = 0.2
+				production_factory_max_efficiency_factor = -0.1
+				industrial_capacity_dockyard = -0.2
+				local_resources_factor = -0.2
+				#power_balance_weekly = -0.002
+			}
+		}
+		USA_locked_down_economy_idea2 = {
+			picture = USA_locked_down_economy
+			allowed = {
+				tag = USA
+			}
+			modifier = {
+				consumer_goods_factor = 0.1
+				production_factory_max_efficiency_factor = -0.05
+				industrial_capacity_dockyard = -0.1
+				local_resources_factor = -0.1
+				#power_balance_weekly = -0.001
+			}
+		}
+		USA_oil_crisis_idea = {
+			picture = USA_oil
+			allowed = {
+				tag = USA
+			}
+			modifier = {
+				consumer_goods_factor = 0.3
+				production_factory_max_efficiency_factor = -0.15
+				industrial_capacity_dockyard = -0.3
+				local_resources_factor = -0.3
+				factory_energy_consumption = 0.3
+			}
+		}
+		USA_oil_crisis_idea1 = {
+			picture = USA_oil1
+			allowed = {
+				tag = USA
+			}
+			modifier = {
+				consumer_goods_factor = 0.2
+				production_factory_max_efficiency_factor = -0.1
+				industrial_capacity_dockyard = -0.2
+				local_resources_factor = -0.2
+				factory_energy_consumption = 0.2
+			}
+		}
+		USA_oil_crisis_idea2 = {
+			picture = USA_oil
+			allowed = {
+				tag = USA
+			}
+			modifier = {
+				consumer_goods_factor = 0.1
+				production_factory_max_efficiency_factor = -0.05
+				industrial_capacity_dockyard = -0.1
+				local_resources_factor = -0.1
+				factory_energy_consumption = 0.1
+			}
+		}
+		USA_america_first_idea = {
+			picture = USA_america_first
+			allowed = {
+				tag = USA
+			}
+			available = {
+				NOT = {
+					has_global_flag = USA_american_civil_war_global
+				}
+			}
+			modifier = {
+				trade_opinion_factor = 0.25
+				min_export = -0.1
+				production_speed_industrial_complex_factor = 0.1
+				production_speed_arms_factory_factor = -0.1
+				production_speed_dockyard_factor = -0.1
+				production_speed_bunker_factor = -0.9
+				production_speed_air_base_factor = -0.9
+				conversion_cost_mil_to_civ_factor = 2
+				conversion_cost_civ_to_mil_factor = 2
+				ai_focus_defense_factor = 0.5
+			}
+		}
+		USA_political_chaos = {
+			picture = USA_political_chaos
+			allowed = {
+				tag = USA
+			}
+			modifier = {
+				political_power_gain = -0.5
+				stability_factor = -0.15
+				industrial_capacity_factory = -0.15
+				industrial_capacity_dockyard = -0.15
+				consumer_goods_factor = 0.3
+			}
+		}
+		USA_constitutional_protections = {
+			picture = USA_constitutional_protections
+			allowed = {
+				tag = USA
+			}
+			modifier = {
+				stability_weekly = 0.001
+				drift_defence_factor = -0.25
+			}
+		}
+		USA_second_amendment_idea = {
+			picture = USA_second_ammendment
+			allowed = {
+				tag = USA
+			}
+			modifier = {
+				political_power_gain = -0.15
+				modifier_army_sub_unit_militia_defence_factor = 0.05
+			}
+		}
+		USA_second_amendment_idea1 = {
+			picture = USA_second_ammendment
+			allowed = {
+				tag = USA
+			}
+			modifier = {
+				modifier_army_sub_unit_militia_attack_factor = 0.05
+				modifier_army_sub_unit_militia_defence_factor = 0.05
+			}
+		}
+		USA_second_amendment_idea2 = {
+			picture = USA_second_ammendment
+			allowed = {
+				tag = USA
+			}
+			modifier = {
+				modifier_army_sub_unit_militia_attack_factor = 0.1
+				modifier_army_sub_unit_militia_defence_factor = 0.1
+			}
+		}
+		USA_on_the_up = {
+			picture = USA_on_the_up
+			allowed = {
+				tag = USA
+			}
+			available = {
+				NOT = {
+					has_country_flag = USA_coronavirus_strikes
+					has_global_flag = USA_american_civil_war_global
+				}
+			}
+			removal_cost = -1
+			modifier = {
+				political_power_gain = 0.25
+				stability_weekly = 0.005
+			}
+		}
+		USA_reinvigorate_the_economy_idea = {
+			picture = generic_production_bonus
+			allowed = {
+				tag = USA
+			}
+			modifier = {
+				political_power_gain = -0.25
+				production_factory_efficiency_gain_factor = 0.1
+				production_speed_industrial_complex_factor = 0.2
+				production_factory_max_efficiency_factor = 0.1
+			}
+		}
+		USA_mass_riots_idea = {
+			picture = USA_mass_riots
+			allowed = {
+				tag = USA
+			}
+			modifier = {
+				stability_factor = -0.15
+				stability_weekly = -0.003
+				MONTHLY_POPULATION = -0.3
+				consumer_goods_factor = 0.15
+			}
+		}
+		USA_mass_riots_idea1 = {
+			picture = USA_mass_riots
+			allowed = {
+				tag = USA
+			}
+			modifier = {
+				stability_factor = -0.1
+				stability_weekly = -0.002
+				MONTHLY_POPULATION = -0.2
+				consumer_goods_factor = 0.1
+			}
+		}
+		USA_mass_riots_idea2 = {
+			picture = USA_mass_riots
+			allowed = {
+				tag = USA
+			}
+			modifier = {
+				stability_factor = -0.05
+				stability_weekly = -0.001
+				MONTHLY_POPULATION = -0.1
+				consumer_goods_factor = 0.05
+			}
+		}
+		USA_mingle_with_the_movement_idea = {
+			picture = USA_mass_riots_biden
+			allowed = {
+				tag = USA
+			}
+			modifier = {
+				stability_factor = -0.2
+				stability_weekly = -0.002
+				political_power_gain = 0.2
+			}
+		}
+		USA_mingle_with_the_movement_idea1 = {
+			picture = USA_mass_riots_biden
+			allowed = {
+				tag = USA
+			}
+			modifier = {
+				stability_factor = -0.3
+				stability_weekly = -0.002
+				political_power_gain = 0.4
+			}
+		}
+		USA_back_the_blue_idea = {
+			picture = generic_secret_police
+			allowed = {
+				tag = USA
+			}
+			modifier = {
+				political_power_gain = 0.1
+			}
+		}
+		USA_the_siege_on_the_whitehouse_idea = {
+			picture = generic_secret_police
+			allowed = {
+				tag = USA
+			}
+			modifier = {
+				political_power_gain = -0.25
+				stability_weekly = -0.001
+			}
+		}
+		USA_reduced_military_spending = {
+			picture = bul_zveno
+			allowed = {
+				tag = USA
+			}
+			modifier = {
+				industrial_capacity_factory = -0.25
+				industrial_capacity_dockyard = -0.25
+				production_speed_arms_factory_factor = -0.25
+				production_speed_dockyard_factor = -0.25
+			}
+		}
+		USA_militia_support_idea = {
+			picture = ast_volunteer_defence_corps
+			allowed = {
+				tag = USA
+			}
+			modifier = {
+				modifier_army_sub_unit_militia_attack_factor = 0.05
+				modifier_army_sub_unit_militia_defence_factor = 0.05
+			}
+		}
+		USA_congressional_stagnation_idea = {
+			picture = USA_congressional_stagnation
+			allowed = {
+				tag = USA
+			}
+			modifier = {
+				political_power_gain = -0.1
+			}
+		}
+		USA_military_disorganization_idea = {
+			picture = USA_military_disorganization
+			allowed = {
+				tag = USA
+			}
+			modifier = {
+				army_org_factor = -0.1
+				command_power_gain_mult = -0.3
+				ai_focus_defense_factor = 1
+			}
+		}
+		USA_unified_military_idea = {
+			picture = generic_victors_of_ww1
+			allowed = {
+				tag = USA
+			}
+			modifier = {
+				experience_gain_air_factor = 0.15
+				experience_gain_army_factor = 0.15
+				experience_gain_navy_factor = 0.15
+				command_power_gain_mult = 0.15
+			}
+		}
+		USA_enforce_order_idea = {
+			picture = generic_intel_bonus
+			allowed = {
+				tag = USA
+			}
+			modifier = {
+				political_power_gain = 0.1
+			}
+		}
+		USA_enforce_order_law_idea = {
+			picture = generic_intel_bonus
+			allowed = {
+				tag = USA
+			}
+			modifier = {
+				political_power_gain = 0.2
+			}
+		}
+		USA_enforce_order_force_idea = {
+			picture = generic_intel_bonus
+			allowed = {
+				tag = USA
+			}
+			modifier = {
+				political_power_gain = 0.1
+				conscription_factor = 0.1
+			}
+		}
+		USA_arrested_the_traitors_idea = {
+			picture = generic_intel_bonus
+			allowed = {
+				tag = USA
+			}
+			modifier = {
+				army_morale_factor = 0.1
+				max_surrender_limit_offset = -0.05
+			}
+		}
+		USA_restoring_order_idea = {
+			picture = ast_classify_aliens
+			allowed = {
+				tag = USA
+			}
+			modifier = {
+				stability_weekly = 0.002
+			}
+		}
+		USA_battle_for_america_idea = {
+			picture = USA_battle_for_america
+			allowed = {
+				always = no
+			}
+			available = {
+				has_global_flag = USA_shattered_union_global
+			}
+			removal_cost = -1
+			rule = {
+				can_send_volunteers = no
+			}
+			modifier = {
+				surrender_limit = 1
+				max_surrender_limit_offset = 0.1
+				#poverty_development_monthly = -0.01
+				#farming_development_monthly = -0.01
+				#industrial_development_monthly = -0.01
+				#society_development_monthly = -0.01
+				ai_call_ally_desire_factor = 100
+				ai_join_ally_desire_factor = 100
+				ai_desired_divisions_factor = 2
+				hidden_modifier = {
+					invasion_preparation = 100
+				}
+			}
+		}
+		USA_american_neutrality_idea = {
+			picture = USA_american_neutrality
+			allowed = {
+				always = no
+			}
+			available = {
+			}
+			removal_cost = -1
+			modifier = {
+				defensive_war_stability_factor = 0.2
+				army_core_attack_factor = 0.2
+				army_core_defence_factor = 0.2
+			}
+		}
+		USA_aerial_dictatorship_idea = {
+			picture = USA_aerial_dictatorship
+			allowed = {
+				always = no
+			}
+			available = {
+			}
+			removal_cost = -1
+			modifier = {
+				political_power_gain = -0.15
+				army_attack_against_minor_factor = -0.2
+				paradrop_organization_factor = 0.2
+				air_mission_efficiency = 0.1
+				ai_focus_aviation_factor = 0.5
+				ai_focus_aggressive_factor = 0.25
+			}
+		}
+		USA_resistance_support_idea = {
+			picture = USA_resistance_support
+			allowed = {
+				always = no
+			}
+			available = {
+				NOT = {
+					has_global_flag = USA_american_civil_war_over_global
+				}
+			}
+			removal_cost = -1
+			modifier = {
+				army_attack_factor = 0.1
+				army_defence_factor = 0.1
+			}
+		}
+		USA_to_the_moon_idea = {
+			picture = USA_to_the_moon
+			allowed = {
+				always = no
+			}
+			available = {
+				NOT = {
+					has_global_flag = USA_american_civil_war_over_global
+				}
+			}
+			removal_cost = -1
+			modifier = {
+				political_power_gain = -0.1
+				stability_weekly = -0.002
+			}
+		}
+		USA_patriotic_defense_idea = {
+			picture = usa_war_department
+			allowed = {
+				always = no
+			}
+			available = {
+				NOT = {
+					has_global_flag = USA_american_civil_war_over_global
+				}
+			}
+			removal_cost = -1
+			modifier = {
+				army_core_attack_factor = 0.05
+				army_core_defence_factor = 0.1
+			}
+		}
+		USA_minimalized_militias_idea = {
+			picture = USC_wrangling_in_the_militia_idea
+			allowed = {
+				always = no
+			}
+			available = {
+				NOT = {
+					has_global_flag = USA_american_civil_war_over_global
+				}
+			}
+			removal_cost = -1
+			modifier = {
+				modifier_army_sub_unit_militia_attack_factor = -0.05
+				modifier_army_sub_unit_militia_defence_factor = -0.05
+			}
+		}
+		USA_low_morale_idea = {
+			picture = USA_low_morale
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				army_org_factor = -0.1
+				army_morale_factor = -0.05
+			}
+		}
+		NEG_northern_insurgency_idea = {
+			picture = NEG_Northern_Insurgency
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				resistance_growth = 0.1
+				resistance_damage_to_garrison = 0.1
+			}
+		}
+		NEG_mills_collins_coalition_idea = {
+			picture = NEG_coalitiongoverment
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.1
+				drift_defence_factor = 0.25
+			}
+		}
+		NCY_imperial_legacy_idea = {
+			picture = NCY_heir_to_the_empire
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				political_power_gain = 0.1
+				army_core_attack_factor = 0.1
+			}
+		}
+		NCY_unionist_aid_idea = {
+			picture = USB_defenders_of_democracy
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				army_morale_factor = 0.05
+				industrial_capacity_factory = 0.125
+			}
+		}	
+		USA_rightful_president_idea = {
+			picture = USA_rightful_president_idea
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				political_power_gain = 0.075
+				army_morale_factor = 0.05
+				army_attack_factor = 0.025
+				army_defence_factor = 0.015
+			}
+		}
+	}
+}

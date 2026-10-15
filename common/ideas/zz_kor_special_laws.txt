@@ -1,0 +1,603 @@
+ideas = {
+	# KOR special laws — ported from TFR, merged with MD baseline per-country law level.
+	# Parallel versions (_lvN) fuse the Korean flavour with each country's starting tier.
+
+	employment_pressure = {
+		# Labor law (KOR only) — merged with MD strong_regulations (level 2)
+		KOR_safety_law = {
+			removal_cost = -1
+			cost = 100
+			level = 2
+			picture = laws_KOR_safety_law
+			allowed = { tag = KOR }
+			visible = {
+				hidden_trigger = {
+					original_tag = KOR
+					has_idea = KOR_safety_law
+				}
+			}
+			allowed_to_remove = {
+				hidden_trigger = {
+					always = no
+				}
+			}
+			modifier = {
+				stability_factor = -0.005
+				production_factory_efficiency_gain_factor = 0.05
+				production_speed_buildings_factor = 0.05
+				industrial_capacity_factory = 0.025
+				industrial_capacity_dockyard = 0.025
+				society_development_monthly = -0.005
+				buildings_worker_requirement_modifier = 0.12
+				high_unemployment_threshold_modifier = 0.02
+			}
+			ai_will_do = {
+				base = 1
+			}
+		}
+	}
+
+	crime_fighting = {
+		# National Security Act (KOR only) — merged with MD police_02 (level 2)
+		KOR_police_law = {
+			removal_cost = -1
+			cost = 100
+			level = 2
+			picture = laws_KOR_police_law
+			allowed = { tag = KOR }
+			visible = {
+				hidden_trigger = {
+					original_tag = KOR
+					NOT = {
+						has_country_flag = KOR_police_law_outed_flag
+					}
+				}
+			}
+			allowed_to_remove = {
+				hidden_trigger = {
+					always = no
+				}
+			}
+			on_add = {
+				custom_effect_tooltip = police_02_TT
+				set_variable = { police_law = 2 }
+				refresh_expected_spending_frames = yes
+				ingame_update_setup = yes
+				update_protest_dirty_var = yes
+			}
+			modifier = {
+				political_power_factor = -0.01
+				stability_factor = 0.08
+				personal_expense_factor = 0.2
+				resistance_growth = -0.1
+				resistance_decay = 0.1
+				compliance_growth = 0.1
+				army_intel_to_others = 15
+				airforce_intel_to_others = 15
+				navy_intel_to_others = 15
+				civilian_intel_to_others = 15
+				society_development_monthly = -0.005
+				command_power_gain = 0.25
+				political_power_gain = -0.1
+				foreign_subversive_activites = -0.15
+				decryption = 1
+				planning_speed = 0.10
+				foreign_influence_defense_modifier = 0.05
+				required_garrison_factor = -0.1
+				terror_threat_base_detect_modifier = 6
+				terror_threat_base_defense_modifier = 10
+			}
+			ai_will_do = {
+				base = 1
+			}
+		}
+	}
+
+	social_budget = {
+		# Korean-style welfare — social_03 baseline + Korean flavour (level 3)
+		KOR_korean_welfare = {
+			removal_cost = -1
+			cost = 100
+			level = 3
+			picture = laws_KOR_korean_welfare
+			visible = {
+				hidden_trigger = {
+					OR = {
+						original_tag = KOR
+						original_tag = BRA
+						original_tag = CHL
+						original_tag = MEX
+						original_tag = OMA
+						original_tag = TUR
+						original_tag = USA
+					}
+					has_idea = KOR_korean_welfare
+				}
+			}
+			allowed_to_remove = {
+				hidden_trigger = {
+					always = no
+				}
+			}
+			on_add = {
+				custom_effect_tooltip = social_03_TT
+				set_variable = { social_law = 3 }
+				refresh_expected_spending_frames = yes
+				ingame_update_setup = yes
+				update_protest_dirty_var = yes
+			}
+			modifier = {
+				political_power_gain = 0.14
+				political_power_factor = 0.14
+				stability_factor = 0.09
+				high_unemployment_threshold_modifier = 0.02
+				personal_expense_factor = 0.35
+				production_speed_infrastructure_factor = 0.1
+				society_development_monthly = 0.003
+				poverty_development_monthly = 0.003
+			}
+		}
+
+		# social_04 baseline + Korean flavour (level 4)
+		KOR_korean_welfare_lv4 = {
+			removal_cost = -1
+			cost = 100
+			level = 4
+			picture = laws_KOR_korean_welfare
+			visible = {
+				hidden_trigger = {
+					OR = {
+						original_tag = ARG
+						original_tag = AST
+						original_tag = BHR
+						original_tag = CAN
+						original_tag = CZE
+						original_tag = ISR
+						original_tag = JAP
+						original_tag = POL
+					}
+					has_idea = KOR_korean_welfare_lv4
+				}
+			}
+			allowed_to_remove = {
+				hidden_trigger = {
+					always = no
+				}
+			}
+			on_add = {
+				custom_effect_tooltip = social_04_TT
+				set_variable = { social_law = 4 }
+				refresh_expected_spending_frames = yes
+				ingame_update_setup = yes
+				update_protest_dirty_var = yes
+			}
+			modifier = {
+				political_power_gain = 0.20
+				political_power_factor = 0.20
+				monthly_population = 0.05
+				stability_factor = 0.12
+				high_unemployment_threshold_modifier = 0.03
+				personal_expense_factor = 0.35
+				production_speed_infrastructure_factor = 0.1
+				society_development_monthly = 0.003
+				poverty_development_monthly = 0.003
+			}
+		}
+
+		# social_05 baseline + Korean flavour (level 5)
+		KOR_korean_welfare_lv5 = {
+			removal_cost = -1
+			cost = 100
+			level = 5
+			picture = laws_KOR_korean_welfare
+			visible = {
+				hidden_trigger = {
+					OR = {
+						original_tag = ENG
+						original_tag = GER
+						original_tag = HOL
+						original_tag = HUN
+						original_tag = ITA
+						original_tag = SWI
+						original_tag = URG
+					}
+					has_idea = KOR_korean_welfare_lv5
+				}
+			}
+			allowed_to_remove = {
+				hidden_trigger = {
+					always = no
+				}
+			}
+			on_add = {
+				custom_effect_tooltip = social_05_TT
+				set_variable = { social_law = 5 }
+				refresh_expected_spending_frames = yes
+				ingame_update_setup = yes
+				update_protest_dirty_var = yes
+			}
+			modifier = {
+				political_power_gain = 0.24
+				political_power_factor = 0.24
+				monthly_population = 0.15
+				stability_factor = 0.15
+				high_unemployment_threshold_modifier = 0.04
+				personal_expense_factor = 0.35
+				production_speed_infrastructure_factor = 0.1
+				society_development_monthly = 0.003
+				poverty_development_monthly = 0.003
+			}
+		}
+
+		# social_06 baseline + Korean flavour (level 6)
+		KOR_korean_welfare_lv6 = {
+			removal_cost = -1
+			cost = 100
+			level = 6
+			picture = laws_KOR_korean_welfare
+			visible = {
+				hidden_trigger = {
+					OR = {
+						original_tag = BEL
+						original_tag = FIN
+						original_tag = FRA
+						original_tag = KUW
+						original_tag = QAT
+						original_tag = SAU
+						original_tag = SPR
+						original_tag = SWE
+						original_tag = UAE
+					}
+					has_idea = KOR_korean_welfare_lv6
+				}
+			}
+			allowed_to_remove = {
+				hidden_trigger = {
+					always = no
+				}
+			}
+			on_add = {
+				custom_effect_tooltip = social_06_TT
+				set_variable = { social_law = 6 }
+				refresh_expected_spending_frames = yes
+				ingame_update_setup = yes
+				update_protest_dirty_var = yes
+			}
+			modifier = {
+				political_power_gain = 0.30
+				political_power_factor = 0.30
+				monthly_population = 0.30
+				stability_factor = 0.18
+				high_unemployment_threshold_modifier = 0.05
+				personal_expense_factor = 0.35
+				production_speed_infrastructure_factor = 0.1
+				society_development_monthly = 0.003
+				poverty_development_monthly = 0.003
+			}
+		}
+	}
+
+	education_budget = {
+		# Exam-oriented education — edu_04 baseline + Korean flavour (level 4)
+		KOR_korean_education = {
+			removal_cost = -1
+			cost = 100
+			level = 4
+			picture = laws_KOR_korean_education
+			visible = {
+				hidden_trigger = {
+					OR = {
+						original_tag = KOR
+						original_tag = JAP
+						original_tag = TAI
+					}
+					has_idea = KOR_korean_education
+				}
+			}
+			allowed_to_remove = {
+				hidden_trigger = {
+					always = no
+				}
+			}
+			on_add = {
+				custom_effect_tooltip = edu_04_TT
+				set_variable = { education_law = 4 }
+				refresh_expected_spending_frames = yes
+				ingame_update_setup = yes
+				update_protest_dirty_var = yes
+			}
+			modifier = {
+				political_power_gain = -0.15
+				foreign_influence_defense_modifier = -0.10
+				research_speed_factor = 0.15
+				production_speed_buildings_factor = 0.04
+				special_project_speed_factor = 0.12
+				stability_factor = 0.015
+				foreign_influence_modifier = 0.15
+				productivity_growth_modifier = 0.25
+				literacy_rate_education_modifier = 0.08
+				personal_expense_factor = 0.1
+				academic_development_monthly = 0.007
+			}
+		}
+
+		# edu_01 baseline + Korean flavour (level 1)
+		KOR_korean_education_lv1 = {
+			removal_cost = -1
+			cost = 100
+			level = 1
+			picture = laws_KOR_korean_education
+			visible = {
+				hidden_trigger = {
+					original_tag = RAJ
+					has_idea = KOR_korean_education_lv1
+				}
+			}
+			allowed_to_remove = {
+				hidden_trigger = {
+					always = no
+				}
+			}
+			on_add = {
+				custom_effect_tooltip = edu_01_TT
+				set_variable = { education_law = 1 }
+				refresh_expected_spending_frames = yes
+				ingame_update_setup = yes
+				update_protest_dirty_var = yes
+			}
+			modifier = {
+				research_speed_factor = 0.02
+				literacy_rate_education_modifier = 0.02
+				productivity_growth_modifier = -0.2
+				stability_factor = -0.015
+				personal_expense_factor = 0.1
+				academic_development_monthly = 0.007
+			}
+		}
+
+		# edu_02 baseline + Korean flavour (level 2)
+		KOR_korean_education_lv2 = {
+			removal_cost = -1
+			cost = 100
+			level = 2
+			picture = laws_KOR_korean_education
+			visible = {
+				hidden_trigger = {
+					original_tag = CHI
+					has_idea = KOR_korean_education_lv2
+				}
+			}
+			allowed_to_remove = {
+				hidden_trigger = {
+					always = no
+				}
+			}
+			on_add = {
+				custom_effect_tooltip = edu_02_TT
+				set_variable = { education_law = 2 }
+				refresh_expected_spending_frames = yes
+				ingame_update_setup = yes
+				update_protest_dirty_var = yes
+			}
+			modifier = {
+				research_speed_factor = 0.05
+				production_speed_buildings_factor = 0.02
+				special_project_speed_factor = 0.04
+				stability_factor = -0.005
+				foreign_influence_modifier = 0.05
+				productivity_growth_modifier = -0.1
+				literacy_rate_education_modifier = 0.04
+				personal_expense_factor = 0.1
+				academic_development_monthly = 0.007
+			}
+		}
+
+		# edu_03 baseline + Korean flavour (level 3)
+		KOR_korean_education_lv3 = {
+			removal_cost = -1
+			cost = 100
+			level = 3
+			picture = laws_KOR_korean_education
+			visible = {
+				hidden_trigger = {
+					original_tag = VIE
+					has_idea = KOR_korean_education_lv3
+				}
+			}
+			allowed_to_remove = {
+				hidden_trigger = {
+					always = no
+				}
+			}
+			on_add = {
+				custom_effect_tooltip = edu_03_TT
+				set_variable = { education_law = 3 }
+				refresh_expected_spending_frames = yes
+				ingame_update_setup = yes
+				update_protest_dirty_var = yes
+			}
+			modifier = {
+				political_power_gain = -0.05
+				foreign_influence_defense_modifier = -0.05
+				research_speed_factor = 0.10
+				production_speed_buildings_factor = 0.03
+				special_project_speed_factor = 0.08
+				stability_factor = 0.005
+				foreign_influence_modifier = 0.10
+				productivity_growth_modifier = 0.05
+				literacy_rate_education_modifier = 0.06
+				personal_expense_factor = 0.1
+				academic_development_monthly = 0.007
+			}
+		}
+	}
+
+	migration_laws = {
+		# Hard-to-obtain citizenship — regulated_immigration baseline (level 3)
+		KOR_korean_immigration = {
+			removal_cost = -1
+			cost = 100
+			level = 3
+			picture = laws_KOR_korean_immigration
+			visible = {
+				hidden_trigger = {
+					original_tag = KOR
+					has_idea = KOR_korean_immigration
+				}
+			}
+			allowed_to_remove = {
+				hidden_trigger = {
+					always = no
+				}
+			}
+			on_add = {
+				set_variable = { migration_law = 3 }
+				ingame_update_setup = yes
+			}
+			modifier = {
+				monthly_population = 0.2
+				political_power_gain = -0.1
+				min_export = -0.01
+				base_migration_rate_value = 0.20
+				drift_defence_factor = -0.10
+				nationalist_outlook_campaign_cost_modifier = -0.10
+				custom_modifier_tooltip = regulated_immigration_tt
+			}
+		}
+
+		# heavily_regulated_immigration baseline (level 4)
+		KOR_korean_immigration_lv4 = {
+			removal_cost = -1
+			cost = 100
+			level = 4
+			picture = laws_KOR_korean_immigration
+			visible = {
+				hidden_trigger = {
+					OR = {
+						original_tag = JAP
+						original_tag = CHI
+						original_tag = VIE
+					}
+					has_idea = KOR_korean_immigration_lv4
+				}
+			}
+			allowed_to_remove = {
+				hidden_trigger = {
+					always = no
+				}
+			}
+			on_add = {
+				set_variable = { migration_law = 4 }
+				ingame_update_setup = yes
+			}
+			modifier = {
+				monthly_population = 0.2
+				political_power_gain = -0.1
+				min_export = -0.01
+				base_migration_rate_value = 0.10
+				drift_defence_factor = 0.10
+				nationalist_outlook_campaign_cost_modifier = -0.15
+				custom_modifier_tooltip = heavily_regulated_immigration_tt
+			}
+		}
+
+		# closed_borders baseline (level 5) — currently unused, reserved for future single-ethnic countries
+		KOR_korean_immigration_lv5 = {
+			removal_cost = -1
+			cost = 100
+			level = 5
+			picture = laws_KOR_korean_immigration
+			visible = {
+				hidden_trigger = {
+					always = yes
+				}
+			}
+			allowed_to_remove = {
+				hidden_trigger = {
+					always = no
+				}
+			}
+			on_add = {
+				set_variable = { migration_law = 5 }
+				ingame_update_setup = yes
+			}
+			modifier = {
+				monthly_population = 0.2
+				political_power_gain = -0.1
+				min_export = -0.01
+				base_migration_rate_value = 0.05
+				drift_defence_factor = 0.20
+				nationalist_outlook_campaign_cost_modifier = -0.20
+				custom_modifier_tooltip = closed_borders_tt
+			}
+		}
+	}
+
+	female_laws = {
+		# Formal-but-unequal gender equality — medium_female baseline (level 3)
+		KOR_equal_female = {
+			removal_cost = -1
+			cost = 100
+			level = 3
+			allowed = {
+				OR = {
+					tag = KOR
+					tag = CHI
+					tag = ITA
+					tag = SPR
+					tag = SIN
+				}
+			}
+			visible = {
+				hidden_trigger = {
+					OR = {
+						original_tag = KOR
+						original_tag = CHI
+						original_tag = ITA
+						original_tag = SPR
+						original_tag = SIN
+					}
+					has_idea = KOR_equal_female
+				}
+			}
+			picture = laws_KOR_equal_female
+			allowed_to_remove = {
+			}
+			modifier = {
+				monthly_population = -0.05
+				industrial_capacity_factory = 0.065
+				industrial_capacity_dockyard = 0.03
+				society_development_monthly = 0.006
+			}
+		}
+
+		# low_female baseline + Korean flavour (level 4, conservative society)
+		KOR_equal_female_lv4 = {
+			removal_cost = -1
+			cost = 100
+			level = 4
+			allowed = {
+				OR = {
+					tag = JAP
+				}
+			}
+			visible = {
+				hidden_trigger = {
+					original_tag = JAP
+					has_idea = KOR_equal_female_lv4
+				}
+			}
+			picture = laws_KOR_equal_female
+			allowed_to_remove = {
+			}
+			modifier = {
+				monthly_population = -0.05
+				industrial_capacity_factory = 0.065
+				industrial_capacity_dockyard = 0.03
+				society_development_monthly = 0.003
+				business_value_factor = -0.01
+				personal_value_factor = 0.02
+			}
+		}
+	}
+}

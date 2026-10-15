@@ -1,0 +1,2358 @@
+future_tanks_category = {
+	# General Dynamics Ajax
+	eng_ajax_fe_decision = {
+		icon = GFX_decision_generic_army
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_army_experience > 34
+		}
+		custom_cost_text = army_xp_15
+
+		visible = {
+			original_tag = ENG
+			date > 2025.1.1
+		}
+
+		available = {
+			has_tech = mbt_tech_3
+			has_tech = armor_tech_3
+			has_tech = small_autocannon_tech_3
+			has_tech = diesel_engine_tech_3
+			has_tech = tank_components_tech_3
+			has_tech = tank_ammo_2
+			NOT = { has_completed_focus = ENG_general_dynamics_ajax }
+			NOT = { has_completed_focus = ENG_bae_cv90_MkIV }
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision eng_ajax_fe_decision"
+			army_experience = -15
+			create_equipment_variant = {
+				name = "General Dynamics Ajax"
+				type = medium_tank_flame_chassis_3
+				parent_version = 0
+				modules = {
+					main_armament_slot = small_autocannon_3
+					secondary_armament_slot = afv_coax_machine_gun_3
+					ammunition_load_slot = mixed_autocannon_ammo_3
+					turret_type_slot = tank_base_tank_turret
+					suspension_type_slot = tank_torsion_bar_suspension_medium
+					armor_type_slot = afv_composite_armor_gen3
+					engine_type_slot = afv_gasoline_engine_gen3
+					reload_type_slot = manual_loading
+					special_type_slot_1 = smoke_launchers_3
+					special_type_slot_3 = afv_mine_protection
+					special_type_slot_4 = tank_battlestation_3
+					special_type_slot_5 = afv_troop_capacity
+				}
+				icon = "gfx/interface/technologies/ENG/LAND/Ajax_A2.dds"
+				design_team = mio:ENG_general_dynamics_manufacturer
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+
+	# Challenger 3
+	eng_challenger3_fe_decision = {
+		icon = GFX_decision_generic_army
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_army_experience > 34
+		}
+		custom_cost_text = army_xp_15
+
+		visible = {
+			original_tag = ENG
+			date > 2027.1.1
+		}
+
+		available = {
+			has_tech = mbt_tech_3
+			has_tech = medium_gun_tech_3
+			has_tech = armor_tech_3
+			has_tech = diesel_engine_tech_6
+			has_tech = tank_components_tech_3
+			has_tech = tank_components_tech_4
+			has_tech = tank_ammo_3
+			has_tech = defensive_systems_4
+			has_tech = era_tech_3
+			NOT = { has_completed_focus = ENG_challenger_3 }
+			NOT = { has_completed_focus = ENG_mgcs_program }
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision eng_challenger3_fe_decision"
+			army_experience = -15
+			create_equipment_variant = {
+				name = "Challenger 3"
+				type = medium_tank_chassis_3
+				parent_version = 0
+				modules = {
+					main_armament_slot = tank_medium_cannon_3
+					secondary_armament_slot = crows_mg
+					ammunition_load_slot = anti_armor_main_ammo_3
+					turret_type_slot = tank_base_tank_turret
+					suspension_type_slot = tank_torsion_bar_suspension_heavy
+					armor_type_slot = tank_composite_armor_gen3
+					engine_type_slot = tank_diesel_engine_gen6
+					reload_type_slot = manual_loading
+					special_type_slot_1 = wet_ammo_storage
+					special_type_slot_2 = hardkill_system_gen1
+					special_type_slot_4 = tank_battlestation_3
+					special_type_slot_6 = spaced_armor_gen3
+				}
+				upgrades = {
+					tank_nsb_armor_upgrade = 2
+				}
+				icon = "gfx/interface/technologies/ENG/LAND/Challenger_3D.dds"
+				design_team = mio:ENG_rheinmetall_manufacturer
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+
+	# Boxer Mechanised Infantry Vehicle
+	eng_boxer_miv_fe_decision = {
+		icon = GFX_decision_generic_army
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_army_experience > 34
+		}
+		custom_cost_text = army_xp_15
+
+		visible = {
+			original_tag = ENG
+			date > 2022.1.1
+		}
+
+		available = {
+			has_tech = mbt_tech_2
+			has_tech = armor_tech_3
+			has_tech = diesel_engine_tech_4
+			has_tech = tank_components_tech_3
+			has_tech = era_tech_2
+			has_tech = infantry_weapons_1
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision eng_boxer_miv_fe_decision"
+			army_experience = -15
+			create_equipment_variant = {
+				name = "Boxer MIV"
+				type = medium_tank_amphibious_chassis_2
+				parent_version = 0
+				modules = {
+					main_armament_slot = afv_machine_gun_3
+					secondary_armament_slot = empty
+					ammunition_load_slot = machine_gun_ammo_2
+					turret_type_slot = tank_no_turret
+					suspension_type_slot = tank_wheeled_suspension_medium
+					engine_type_slot = tank_diesel_engine_gen4
+					armor_type_slot = afv_composite_armor_gen3
+					reload_type_slot = manual_loading
+					special_type_slot_1 = smoke_launchers_2
+					special_type_slot_2 = afv_mine_protection
+					special_type_slot_4 = tank_battlestation_3
+					special_type_slot_5 = afv_troop_capacity
+					special_type_slot_6 = spaced_armor_gen2
+				}
+				upgrades = {
+					tank_nsb_armor_upgrade = 3
+				}
+				design_team = mio:ENG_rheinmetall_manufacturer
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+
+	# Sky Sabre Land Ceptor
+	eng_sky_sabre_fe_decision = {
+		icon = GFX_decision_generic_army
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_army_experience > 34
+		}
+		custom_cost_text = army_xp_15
+
+		visible = {
+			original_tag = ENG
+			date > 2022.1.1
+		}
+
+		available = {
+			has_tech = mbt_tech
+			has_tech = nsb_Anti_Air_2
+			has_tech = nsb_Anti_Air_3
+			has_tech = nsb_SHORAD_missile_1
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision eng_sky_sabre_fe_decision"
+			army_experience = -15
+			create_equipment_variant = {
+				name = "Sky Sabre"
+				type = medium_tank_aa_chassis_2
+				parent_version = 0
+				modules = {
+					main_armament_slot = missile_launcher_system
+					secondary_armament_slot = empty
+					reload_type_slot = four_missile_pack
+					ammunition_load_slot = spaa_long_range_missiles_2
+					turret_type_slot = tank_base_tank_turret
+					suspension_type_slot = tank_wheeled_suspension_medium
+					armor_type_slot = tank_steel_armor_gen1
+					engine_type_slot = tank_diesel_engine_gen3
+					special_type_slot_1 = empty
+					special_type_slot_2 = empty
+					special_type_slot_3 = empty
+					special_type_slot_4 = spaa_off_vehicle_radar_gen3
+				}
+				design_team = mio:ENG_mbda_manufacturer
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+
+	# KF51 Panther
+	ger_kf51_panther_fe_decision = {
+		icon = GFX_decision_generic_army
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_army_experience > 34
+		}
+		custom_cost_text = army_xp_15
+
+		visible = {
+			original_tag = GER
+			date > 2026.1.1
+		}
+
+		available = {
+			has_tech = mbt_tech_3
+			has_tech = large_gun_tech_2
+			has_tech = armor_tech_3
+			has_tech = diesel_engine_tech_4
+			has_tech = tank_components_tech_4
+			has_tech = tank_ammo_3
+			has_tech = defensive_systems_4
+			has_tech = era_tech_3
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision ger_kf51_panther_fe_decision"
+			army_experience = -15
+			create_equipment_variant = {
+				name = "KF51 Panther"
+				type = medium_tank_chassis_3
+				parent_version = 0
+				modules = {
+					main_armament_slot = tank_large_cannon_2
+					ammunition_load_slot = mixed_main_ammo_3
+					turret_type_slot = tank_base_tank_turret
+					suspension_type_slot = tank_torsion_bar_suspension_medium
+					armor_type_slot = tank_composite_armor_gen3
+					engine_type_slot = tank_diesel_engine_gen4
+					reload_type_slot = automatic_loading
+					special_type_slot_1 = afv_mine_protection
+					special_type_slot_2 = wet_ammo_storage
+					special_type_slot_3 = hardkill_system_gen1
+					special_type_slot_4 = tank_battlestation_4
+					special_type_slot_6 = spaced_armor_gen3
+				}
+				upgrades = {
+					tank_nsb_armor_upgrade = 4
+				}
+				icon = "GFX_GER_MBT_4"
+				design_team = mio:GER_rheinmetall_tank_manufacturer
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+
+	# Leopard 3 MGCS
+	ger_leopard3_mgcs_fe_decision = {
+		icon = GFX_decision_generic_army
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_army_experience > 34
+		}
+		custom_cost_text = army_xp_15
+
+		visible = {
+			original_tag = GER
+			date > 2035.1.1
+		}
+
+		available = {
+			has_tech = mbt_tech_4
+			has_tech = large_gun_tech_3
+			has_tech = armor_tech_3
+			has_tech = diesel_engine_tech_6
+			has_tech = tank_components_tech_4
+			has_tech = tank_ammo_3
+			has_tech = defensive_systems_4
+			has_tech = era_tech_3
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision ger_leopard3_mgcs_fe_decision"
+			army_experience = -15
+			create_equipment_variant = {
+				name = "Leopard 3"
+				type = medium_tank_chassis_4
+				parent_version = 0
+				modules = {
+					main_armament_slot = tank_large_cannon_3
+					ammunition_load_slot = mixed_main_ammo_3
+					turret_type_slot = tank_unmanned_turret
+					suspension_type_slot = tank_torsion_bar_suspension_medium
+					armor_type_slot = tank_composite_armor_gen3
+					engine_type_slot = tank_diesel_engine_gen6
+					reload_type_slot = automatic_loading
+					special_type_slot_1 = afv_mine_protection
+					special_type_slot_2 = wet_ammo_storage
+					special_type_slot_3 = hardkill_system_gen1
+					special_type_slot_4 = tank_battlestation_4
+					special_type_slot_6 = spaced_armor_gen3
+				}
+				upgrades = {
+					tank_nsb_armor_upgrade = 4
+				}
+				icon = "GFX_GER_MBT_4"
+				design_team = mio:GER_krauss_maffei_tank_manufacturer
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+
+	# Tiger MkIII
+	ger_tiger_mkiii_fe_decision = {
+		icon = GFX_decision_generic_army
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_army_experience > 34
+		}
+		custom_cost_text = army_xp_15
+
+		visible = {
+			original_tag = GER
+			date > 2029.1.1
+		}
+
+		available = {
+			has_tech = nsb_attack_helicopter_tech_3
+			has_tech = nsb_engine_tech_3
+			has_tech = nsb_multiple_atgm_tech_3
+			has_tech = nsb_rocket_pods_tech_3
+			has_tech = nsb_defense_tech_2
+			has_tech = tech_combat_radar_3
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision ger_tiger_mkiii_fe_decision"
+			army_experience = -15
+			create_equipment_variant = {
+				name = "Tiger MkIII"
+				type = heavy_tank_chassis_2
+				parent_version = 0
+				modules = {
+					chassis_type_slot = helicopter_medium_chassis
+					helicopter_body_layout = gunship_layout
+					helicopter_body_mount_1 = helicopter_multiple_atgm_gen3
+					helicopter_body_mount_2 = helicopter_rocket_pod_gen3
+					engine_type_slot = helicopter_turbine_engine_gen3
+					defence_type_slot = flare_launchers
+					sensor_and_avionics_slot = sensors_and_avionics_gen_3
+					armor_type_slot = helicopter_armor_gen3
+				}
+				upgrades = {
+					helicopter_nsb_upgrade = 3
+				}
+				design_team = mio:GER_Eurocopter_helicopters_tank_manufacturer
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+	# Spähpanzer 3 Luchs 2 - from event GER_Cold_War.20
+	ger_sphpanzer3luchs2_fe_decision = {
+		icon = GFX_decision_generic_army
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_army_experience > 34
+		}
+		custom_cost_text = army_xp_15
+		visible = {
+			original_tag = GER
+			date > 2030.1.1
+		}
+		available = {
+			has_tech = mbt_tech_2
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision ger_sphpanzer3luchs2_fe_decision"
+			army_experience = -15
+				create_equipment_variant = {
+					name = "Spähpanzer 3 Luchs 2"
+					type = medium_tank_destroyer_chassis_2
+					parent_version = 0
+					modules = {
+						main_armament_slot = small_autocannon_2
+						reload_type_slot = automatic_loading
+						ammunition_load_slot = mixed_autocannon_ammo_1
+						turret_type_slot = tank_base_tank_turret
+						suspension_type_slot = tank_wheeled_suspension_medium
+						engine_type_slot = tank_diesel_engine_gen3
+						armor_type_slot = afv_composite_armor_gen2
+						special_type_slot_1 = afv_mine_protection
+						special_type_slot_2 = smoke_launchers_2
+						special_type_slot_4 = tank_battlestation_4
+					}
+					upgrades = {
+						tank_nsb_armor_upgrade = 2
+					}
+					icon = "gfx/interface/technologies/GER/LAND/GER_Luchs.dds"
+				}
+		}
+		ai_will_do = { factor = 1000 }
+	}
+	# Eurocopter Tiger - from event GER_Cold_War.23
+	ger_eurocoptertiger_fe_decision = {
+		icon = GFX_decision_generic_army
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_army_experience > 34
+		}
+		custom_cost_text = army_xp_15
+		visible = {
+			original_tag = GER
+			date > 2017.1.1
+		}
+		available = {
+			has_tech = nsb_attack_helicopter_tech_2
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision ger_eurocoptertiger_fe_decision"
+			army_experience = -15
+				create_equipment_variant = {
+					name = "Eurocopter Tiger"
+					type = heavy_tank_chassis_2
+					parent_version = 0
+					modules = {
+						chassis_type_slot = helicopter_medium_chassis
+						helicopter_body_layout = gunship_layout
+						helicopter_body_mount_1 = helicopter_rocket_pod_gen3
+						nose_gun_type_slot = helicopter_medium_nose_gun_gen2
+						armor_type_slot = helicopter_armor_gen3
+						engine_type_slot = helicopter_turbine_engine_gen2
+						defence_type_slot = flare_launchers
+						sensor_and_avionics_slot = sensors_and_avionics_gen_3
+						helicopter_wing_mount_1 = helicopter_multiple_atgm_gen3
+						defence_type_slot_2 = em_lock_detection_system_gen2
+					}
+					upgrades = {
+						helicopter_nsb_upgrade = 4
+					}
+					design_team = mio:GER_Eurocopter_helicopters_tank_manufacturer
+					icon = "gfx/interface/technologies/GER/AIR/AH3.dds"
+				}
+		}
+		ai_will_do = { factor = 1000 }
+	}
+	# Marder 1A5 - from event GER_Cold_War.24
+	ger_marder1a5_fe_decision = {
+		icon = GFX_decision_generic_army
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_army_experience > 34
+		}
+		custom_cost_text = army_xp_15
+		visible = {
+			original_tag = GER
+			date > 2017.1.1
+		}
+		available = {
+			has_tech = mbt_tech_1
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision ger_marder1a5_fe_decision"
+			army_experience = -15
+				create_equipment_variant = {
+					name = "Marder 1A5"
+					design_team = mio:GER_rheinmetall_tank_manufacturer
+					type = medium_tank_flame_chassis_1
+					parent_version = 0
+					modules = {
+						main_armament_slot = small_autocannon_2
+						reload_type_slot = automatic_loading
+						ammunition_load_slot = mixed_autocannon_ammo_2
+						turret_type_slot = tank_base_tank_turret
+						suspension_type_slot = tank_torsion_bar_suspension_medium
+						armor_type_slot = tank_steel_armor_gen1
+						engine_type_slot = tank_diesel_engine_gen2
+						special_type_slot_1 = afv_troop_capacity
+						special_type_slot_2 = afv_atgm_gen2
+						special_type_slot_3 = smoke_launchers_2
+						special_type_slot_4 = tank_battlestation_3
+						special_type_slot_5 = afv_mine_protection
+					}
+					upgrades = {
+						tank_nsb_armor_upgrade = 3
+					}
+					icon = "GFX_GER_IFV_3"
+				}
+		}
+		ai_will_do = { factor = 1000 }
+	}
+	# TPZ-2 Fuchs 2 - from event germany_foci.111
+	ger_tpz2fuchs2_fe_decision = {
+		icon = GFX_decision_generic_army
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_army_experience > 34
+		}
+		custom_cost_text = army_xp_15
+		visible = {
+			original_tag = GER
+			date > 2030.1.1
+		}
+		available = {
+			has_tech = mbt_tech_2
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision ger_tpz2fuchs2_fe_decision"
+			army_experience = -15
+				create_equipment_variant = {
+					name = "TPZ-2 Fuchs 2"
+					type = medium_tank_amphibious_chassis_2
+					parent_version = 0
+					modules = {
+						main_armament_slot = afv_machine_gun
+						reload_type_slot = automatic_loading
+						ammunition_load_slot = machine_gun_ammo_1
+						turret_type_slot = tank_no_turret
+						suspension_type_slot = tank_torsion_bar_suspension_medium
+						armor_type_slot = tank_steel_armor_gen2
+						engine_type_slot = tank_diesel_engine_gen3
+						special_type_slot_1 = empty
+						special_type_slot_2 = smoke_launchers
+						special_type_slot_3 = afv_mine_protection
+						special_type_slot_4 = tank_battlestation_2
+						special_type_slot_5 = afv_troop_capacity
+						special_type_slot_6 = spaced_armor_gen2
+					}
+					upgrades = {
+						tank_nsb_armor_upgrade = 1
+					}
+					icon = "GFX_GER_APC_5"
+				}
+		}
+		ai_will_do = { factor = 1000 }
+	}
+	# TPZ-1 Fuchs A7 - from event germany_foci.112
+	ger_tpz1fuchsa7_fe_decision = {
+		icon = GFX_decision_generic_army
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_army_experience > 34
+		}
+		custom_cost_text = army_xp_15
+		visible = {
+			original_tag = GER
+			date > 2017.1.1
+		}
+		available = {
+			has_tech = mbt_tech_1
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision ger_tpz1fuchsa7_fe_decision"
+			army_experience = -15
+				create_equipment_variant = {
+					name = "TPZ-1 Fuchs A7"
+					type = medium_tank_amphibious_chassis_1
+					parent_version = 0
+					modules = {
+						main_armament_slot = afv_machine_gun
+						reload_type_slot = automatic_loading
+						ammunition_load_slot = machine_gun_ammo_1
+						turret_type_slot = tank_no_turret
+						suspension_type_slot = tank_torsion_bar_suspension_medium
+						armor_type_slot = tank_steel_armor_gen1
+						engine_type_slot = tank_diesel_engine_gen2
+						special_type_slot_1 = empty
+						special_type_slot_2 = smoke_launchers
+						special_type_slot_3 = afv_mine_protection
+						special_type_slot_4 = tank_battlestation_2
+						special_type_slot_5 = afv_troop_capacity
+						special_type_slot_6 = spaced_armor_gen1
+					}
+					upgrades = {
+						tank_nsb_armor_upgrade = 2
+					}
+					icon = "GFX_GER_APC_5"
+				}
+		}
+		ai_will_do = { factor = 1000 }
+	}
+	# GTK Boxer - from event germany_foci.1133
+	ger_gtkboxer_fe_decision = {
+		icon = GFX_decision_generic_army
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_army_experience > 34
+		}
+		custom_cost_text = army_xp_15
+		visible = {
+			original_tag = GER
+			date > 2017.1.1
+		}
+		available = {
+			has_tech = mbt_tech_2
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision ger_gtkboxer_fe_decision"
+			army_experience = -15
+				create_equipment_variant = {
+					name = "GTK Boxer"
+					design_team = mio:GER_artec
+					type = medium_tank_amphibious_chassis_2
+					parent_version = 0
+					modules = {
+						main_armament_slot = afv_machine_gun
+						reload_type_slot = automatic_loading
+						ammunition_load_slot = machine_gun_ammo_1
+						turret_type_slot = tank_no_turret
+						suspension_type_slot = tank_torsion_bar_suspension_medium
+						armor_type_slot = afv_composite_armor_gen2
+						engine_type_slot = tank_diesel_engine_gen3
+						secondary_armament_slot = empty
+						special_type_slot_1 = smoke_launchers
+						special_type_slot_2 = afv_reverse_doors
+						special_type_slot_3 = afv_mine_protection
+						special_type_slot_4 = tank_battlestation_3
+						special_type_slot_5 = afv_troop_capacity
+						special_type_slot_6 = spaced_armor_gen1
+					}
+					upgrades = {
+						tank_nsb_armor_upgrade = 1
+					}
+					icon = "GFX_GER_APC_6"
+				}
+		}
+		ai_will_do = { factor = 1000 }
+	}
+	# TpZ-3 Fanaloka - from event germany_foci.1136
+	ger_tpz3fanaloka_fe_decision = {
+		icon = GFX_decision_generic_army
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_army_experience > 34
+		}
+		custom_cost_text = army_xp_15
+		visible = {
+			original_tag = GER
+			date > 2035.1.1
+		}
+		available = {
+			has_tech = mbt_tech_2
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision ger_tpz3fanaloka_fe_decision"
+			army_experience = -15
+				create_equipment_variant = {
+					name = "TpZ-3 Fanaloka"
+					type = medium_tank_amphibious_chassis_2
+					parent_version = 0
+					modules = {
+						main_armament_slot = small_autocannon_2
+						reload_type_slot = automatic_loading
+						ammunition_load_slot = mixed_autocannon_ammo_1
+						turret_type_slot = tank_base_tank_turret
+						suspension_type_slot = tank_torsion_bar_suspension_medium
+						armor_type_slot = afv_alum_armor_gen2
+						engine_type_slot = tank_diesel_engine_gen3
+						special_type_slot_1 = smoke_launchers_2
+						special_type_slot_2 = afv_reverse_doors
+						special_type_slot_3 = afv_mine_protection
+						special_type_slot_4 = tank_battlestation_3
+						special_type_slot_5 = afv_troop_capacity
+					}
+					upgrades = {
+						tank_nsb_armor_upgrade = 2
+					}
+					icon = "GFX_GER_APC_7"
+				}
+		}
+		ai_will_do = { factor = 1000 }
+	}
+	# TpZ-3 Fossa - from event germany_foci.1139
+	ger_tpz3fossa_fe_decision = {
+		icon = GFX_decision_generic_army
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_army_experience > 34
+		}
+		custom_cost_text = army_xp_15
+		visible = {
+			original_tag = GER
+			date > 2035.1.1
+		}
+		available = {
+			has_tech = mbt_tech_2
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision ger_tpz3fossa_fe_decision"
+			army_experience = -15
+				create_equipment_variant = {
+					name = "TpZ-3 Fossa"
+					type = medium_tank_amphibious_chassis_2
+					modules = {
+						main_armament_slot = afv_machine_gun_3
+						reload_type_slot = automatic_loading
+						ammunition_load_slot = machine_gun_ammo_1
+						turret_type_slot = tank_unmanned_turret
+						suspension_type_slot = tank_torsion_bar_suspension_medium
+						armor_type_slot = afv_composite_armor_gen3
+						engine_type_slot = tank_diesel_engine_gen5
+						special_type_slot_1 = smoke_launchers_2
+						special_type_slot_2 = afv_atgm_gen2
+						special_type_slot_3 = afv_reverse_doors
+						special_type_slot_4 = tank_battlestation_2
+						special_type_slot_5 = afv_troop_capacity
+					}
+					upgrades = {
+						tank_nsb_armor_upgrade = 4
+					}
+					icon = "GFX_medium_tank_amphibious_chassis_3_a"
+				}
+		}
+		ai_will_do = { factor = 1000 }
+	}
+	# Marder 2 - from event germany_foci.121
+	ger_marder2_fe_decision = {
+		icon = GFX_decision_generic_army
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_army_experience > 34
+		}
+		custom_cost_text = army_xp_15
+		visible = {
+			original_tag = GER
+			date > 2030.1.1
+		}
+		available = {
+			has_tech = mbt_tech_2
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision ger_marder2_fe_decision"
+			army_experience = -15
+				create_equipment_variant = {
+					name = "Marder 2"
+					design_team = mio:GER_rheinmetall_tank_manufacturer
+					type = medium_tank_flame_chassis_2
+					parent_version = 0
+					modules = {
+						main_armament_slot = small_autocannon_3
+						ammunition_load_slot = mixed_autocannon_ammo_1
+						reload_type_slot = automatic_loading
+						turret_type_slot = tank_base_tank_turret
+						suspension_type_slot = tank_torsion_bar_suspension_medium
+						armor_type_slot = tank_steel_armor_gen3
+						engine_type_slot = tank_diesel_engine_gen4
+						special_type_slot_1 = smoke_launchers_2
+						special_type_slot_2 = afv_atgm_gen3
+						special_type_slot_3 = afv_mine_protection
+						special_type_slot_4 = tank_battlestation_3
+						special_type_slot_5 = afv_troop_capacity
+					}
+					upgrades = {
+						tank_nsb_armor_upgrade = 4
+					}
+					icon = "GFX_GER_IFV_3"
+				}
+		}
+		ai_will_do = { factor = 1000 }
+	}
+	# Puma - from event germany_foci.125
+	ger_puma_fe_decision = {
+		icon = GFX_decision_generic_army
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_army_experience > 34
+		}
+		custom_cost_text = army_xp_15
+		visible = {
+			original_tag = GER
+			date > 2017.1.1
+		}
+		available = {
+			has_tech = mbt_tech_3
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision ger_puma_fe_decision"
+			army_experience = -15
+				create_equipment_variant = {
+					name = "Puma"
+					type = medium_tank_flame_chassis_3
+					parent_version = 0
+					modules = {
+						main_armament_slot = small_autocannon_3
+						ammunition_load_slot = mixed_autocannon_ammo_1
+						reload_type_slot = automatic_loading
+						turret_type_slot = tank_base_tank_turret
+						suspension_type_slot = tank_torsion_bar_suspension_medium
+						armor_type_slot = tank_steel_armor_gen3
+						engine_type_slot = tank_diesel_engine_gen4
+						special_type_slot_1 = smoke_launchers_2
+						special_type_slot_2 = afv_atgm_gen2
+						special_type_slot_3 = afv_mine_protection
+						special_type_slot_4 = tank_battlestation_4
+						special_type_slot_5 = afv_troop_capacity
+					}
+					upgrades = {
+						tank_nsb_armor_upgrade = 4
+					}
+					icon = "GFX_GER_IFV_4"
+				}
+		}
+		ai_will_do = { factor = 1000 }
+	}
+	# GTK Boxer IFV-RCT30 - from event germany_foci.1243
+	ger_gtkboxerifvrct30_fe_decision = {
+		icon = GFX_decision_generic_army
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_army_experience > 34
+		}
+		custom_cost_text = army_xp_15
+		visible = {
+			original_tag = GER
+			date > 2023.1.1
+		}
+		available = {
+			has_tech = mbt_tech_2
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision ger_gtkboxerifvrct30_fe_decision"
+			army_experience = -15
+				create_equipment_variant = {
+					name = "GTK Boxer IFV-RCT30"
+					type = medium_tank_flame_chassis_2
+					parent_version = 0
+					modules = {
+						main_armament_slot = small_autocannon_3
+						ammunition_load_slot = mixed_autocannon_ammo_1
+						reload_type_slot = automatic_loading
+						turret_type_slot = tank_unmanned_turret
+						suspension_type_slot = tank_torsion_bar_suspension_medium
+						armor_type_slot = afv_composite_armor_gen2
+						engine_type_slot = tank_diesel_engine_gen3
+						special_type_slot_1 = smoke_launchers_2
+						special_type_slot_2 = afv_reverse_doors
+						special_type_slot_3 = afv_mine_protection
+						special_type_slot_4 = tank_battlestation_3
+						special_type_slot_5 = afv_troop_capacity
+						special_type_slot_6 = spaced_armor_gen1
+					}
+					upgrades = {
+						tank_nsb_armor_upgrade = 2
+					}
+					icon = "GFX_GER_APC_7"
+					design_team = mio:GER_artec
+				}
+		}
+		ai_will_do = { factor = 1000 }
+	}
+	# SPz Vielfraß - from event germany_foci.1246
+	ger_spzvielfra_fe_decision = {
+		icon = GFX_decision_generic_army
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_army_experience > 34
+		}
+		custom_cost_text = army_xp_15
+		visible = {
+			original_tag = GER
+			date > 2035.1.1
+		}
+		available = {
+			has_tech = mbt_tech_2
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision ger_spzvielfra_fe_decision"
+			army_experience = -15
+				create_equipment_variant = {
+					name = "SPz Vielfraß"
+					type = medium_tank_flame_chassis_2
+					allow_without_tech = yes
+					parent_version = 0
+					modules = {
+						main_armament_slot = small_autocannon_2
+						reload_type_slot = automatic_loading
+						ammunition_load_slot = mixed_autocannon_ammo_1
+						turret_type_slot = tank_base_tank_turret
+						suspension_type_slot = tank_torsion_bar_suspension_medium
+						armor_type_slot = afv_composite_armor_gen2
+						engine_type_slot = tank_diesel_engine_gen4
+						special_type_slot_1 = smoke_launchers_2
+						special_type_slot_2 = afv_atgm_gen2
+						special_type_slot_4 = tank_battlestation_4
+						special_type_slot_5 = afv_troop_capacity
+						special_type_slot_6 = spaced_armor_gen2
+					}
+					upgrades = {
+						tank_nsb_armor_upgrade = 7
+					}
+					icon = "GFX_POL_APC_5_medium"
+				}
+		}
+		ai_will_do = { factor = 1000 }
+	}
+	# SPz Hermelin - from event germany_foci.1249
+	ger_spzhermelin_fe_decision = {
+		icon = GFX_decision_generic_army
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_army_experience > 34
+		}
+		custom_cost_text = army_xp_15
+		visible = {
+			original_tag = GER
+			date > 2035.1.1
+		}
+		available = {
+			has_tech = mbt_tech_3
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision ger_spzhermelin_fe_decision"
+			army_experience = -15
+				create_equipment_variant = {
+					name = "SPz Hermelin"
+					type = medium_tank_flame_chassis_3
+					allow_without_tech = yes
+					parent_version = 0
+					modules = {
+						main_armament_slot = big_autocannon_2
+						reload_type_slot = automatic_loading
+						ammunition_load_slot = mixed_autocannon_ammo_1
+						turret_type_slot = tank_base_tank_turret
+						suspension_type_slot = tank_torsion_bar_suspension_medium
+						armor_type_slot = afv_composite_armor_gen3
+						engine_type_slot = tank_diesel_engine_gen4
+						special_type_slot_1 = smoke_launchers
+						special_type_slot_2 = afv_atgm_gen2
+						special_type_slot_4 = tank_battlestation_4
+						special_type_slot_5 = afv_troop_capacity
+						special_type_slot_6 = spaced_armor_gen2
+					}
+					upgrades = {
+						tank_nsb_armor_upgrade = 7
+					}
+					icon = "GFX_GER_IFV_4"
+				}
+		}
+		ai_will_do = { factor = 1000 }
+	}
+	# Leopard 2KWS3 - from event germany_foci.131
+	ger_leopard2kws3_fe_decision = {
+		icon = GFX_decision_generic_army
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_army_experience > 34
+		}
+		custom_cost_text = army_xp_15
+		visible = {
+			original_tag = GER
+			date > 2030.1.1
+		}
+		available = {
+			has_tech = mbt_tech_1
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision ger_leopard2kws3_fe_decision"
+			army_experience = -15
+				create_equipment_variant = {
+					name = "Leopard 2KWS3"
+					design_team = mio:GER_krauss_maffei_tank_manufacturer
+					type = medium_tank_chassis_1
+					parent_version = 3
+					modules = {
+						main_armament_slot = tank_large_cannon
+						ammunition_load_slot = anti_armor_main_ammo_3
+						turret_type_slot = tank_base_tank_turret
+						suspension_type_slot = tank_torsion_bar_suspension_medium
+						armor_type_slot = tank_composite_armor_gen2
+						engine_type_slot = tank_diesel_engine_gen4
+						reload_type_slot = automatic_loading
+						special_type_slot_1 = smoke_launchers_2
+						special_type_slot_2 = wet_ammo_storage
+						special_type_slot_3 = empty
+						special_type_slot_4 = tank_battlestation_3 #Battlestation
+						special_type_slot_6 = spaced_armor_gen2 #ERA/Spaced
+					}
+					upgrades = {
+						tank_nsb_armor_upgrade = 4
+					}
+					icon = "GFX_GER_MBT_4"
+				}
+		}
+		ai_will_do = { factor = 1000 }
+	}
+	# KPz Löwe 1 - from event germany_foci.1346
+	ger_kpzlwe1_fe_decision = {
+		icon = GFX_decision_generic_army
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_army_experience > 34
+		}
+		custom_cost_text = army_xp_15
+		visible = {
+			original_tag = GER
+			date > 2035.1.1
+		}
+		available = {
+			has_tech = mbt_tech_3
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision ger_kpzlwe1_fe_decision"
+			army_experience = -15
+				create_equipment_variant = {
+					name = "KPz Löwe 1"
+					type = medium_tank_chassis_3
+					allow_without_tech = yes
+					parent_version = 0
+					modules = {
+						main_armament_slot = tank_medium_cannon_2
+						ammunition_load_slot = mixed_main_ammo_3
+						turret_type_slot = tank_base_tank_turret
+						suspension_type_slot = tank_torsion_bar_suspension_medium
+						armor_type_slot = tank_composite_armor_gen3
+						engine_type_slot = tank_diesel_engine_gen6
+						reload_type_slot = manual_loading
+						special_type_slot_2 = wet_ammo_storage
+						special_type_slot_3 = hardkill_system_gen1
+						special_type_slot_4 = tank_battlestation_4 #Battlestation
+						special_type_slot_6 = spaced_armor_gen3 #ERA/Spaced
+					}
+					upgrades = {
+						tank_nsb_armor_upgrade = 7
+					}
+					icon = "GFX_GER_MBT_4"
+				}
+		}
+		ai_will_do = { factor = 1000 }
+	}
+	# KPz MAUSS - from event germany_foci.1349
+	ger_kpzmauss_fe_decision = {
+		icon = GFX_decision_generic_army
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_army_experience > 34
+		}
+		custom_cost_text = army_xp_15
+		visible = {
+			original_tag = GER
+			date > 2035.1.1
+		}
+		available = {
+			has_tech = mbt_tech_4
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision ger_kpzmauss_fe_decision"
+			army_experience = -15
+				create_equipment_variant = {
+					name = "KPz MAUSS"
+					type = medium_tank_chassis_4
+					parent_version = 0
+					modules = {
+						main_armament_slot = tank_medium_cannon_3
+						ammunition_load_slot = mixed_main_ammo_3
+						turret_type_slot = tank_unmanned_turret
+						suspension_type_slot = tank_torsion_bar_suspension_medium
+						armor_type_slot = tank_composite_armor_gen3
+						engine_type_slot = tank_diesel_engine_gen6
+						reload_type_slot = automatic_loading
+						special_type_slot_2 = wet_ammo_storage
+						special_type_slot_3 = hardkill_system_gen1
+						special_type_slot_4 = tank_battlestation_4 #Battlestation
+						special_type_slot_6 = spaced_armor_gen3 #ERA/Spaced
+					}
+					upgrades = {
+						tank_nsb_armor_upgrade = 4
+					}
+					icon = "GFX_GER_MBT_4"
+				}
+		}
+		ai_will_do = { factor = 1000 }
+	}
+	# Eurocopter Tiger II - from event germany_foci.154
+	ger_eurocoptertigerii_fe_decision = {
+		icon = GFX_decision_generic_army
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_army_experience > 34
+		}
+		custom_cost_text = army_xp_15
+		visible = {
+			original_tag = GER
+			date > 2030.1.1
+		}
+		available = {
+			has_tech = nsb_attack_helicopter_tech_3
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision ger_eurocoptertigerii_fe_decision"
+			army_experience = -15
+				create_equipment_variant = {
+					name = "Eurocopter Tiger II"
+					type = heavy_tank_chassis_3 # 2015
+					parent_version = 0
+					modules = {
+						chassis_type_slot = helicopter_medium_chassis
+						helicopter_body_layout = gunship_layout
+						helicopter_body_mount_1 = helicopter_rocket_pod_gen3
+						nose_gun_type_slot = helicopter_medium_nose_gun_gen3
+						armor_type_slot = helicopter_armor_gen3
+						engine_type_slot = helicopter_turbine_engine_gen3
+						defence_type_slot = flare_launchers
+						sensor_and_avionics_slot = sensors_and_avionics_gen_3
+						helicopter_wing_mount_1 = helicopter_multiple_atgm_gen3
+						defence_type_slot_2 = em_lock_detection_system_gen2
+					}
+					upgrades = {
+						helicopter_nsb_upgrade = 3
+					}
+					design_team = mio:GER_Eurocopter_helicopters_tank_manufacturer
+				}
+		}
+		ai_will_do = { factor = 1000 }
+	}
+	# MBB Törni - from event germany_foci.154
+	ger_mbbtrni_fe_decision = {
+		icon = GFX_decision_generic_army
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_army_experience > 34
+		}
+		custom_cost_text = army_xp_15
+		visible = {
+			original_tag = GER
+			date > 2035.1.1
+		}
+		available = {
+			has_tech = nsb_attack_helicopter_tech_3
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision ger_mbbtrni_fe_decision"
+			army_experience = -15
+				create_equipment_variant = {
+					name = "MBB Törni"
+					type = heavy_tank_chassis_3 # 2015
+					parent_version = 0
+					modules = {
+						chassis_type_slot = helicopter_medium_chassis
+						helicopter_body_layout = gunship_layout
+						helicopter_body_mount_1 = helicopter_multiple_atgm_gen3
+						helicopter_body_mount_2 = helicopter_rocket_pod_gen3
+						nose_gun_type_slot = helicopter_medium_nose_gun_gen3
+						armor_type_slot = helicopter_armor_gen3
+						engine_type_slot = helicopter_turbine_engine_gen4
+						defence_type_slot = flare_launchers
+						sensor_and_avionics_slot = sensors_and_avionics_gen_3
+						helicopter_wing_mount_1 = helicopter_aa_missile_gen3
+						defence_type_slot_2 = em_lock_detection_system_gen2
+					}
+					upgrades = {
+						helicopter_nsb_upgrade = 2
+					}
+					design_team = mio:GER_MBB_helicopters_tank_manufacturer
+				}
+		}
+		ai_will_do = { factor = 1000 }
+	}
+	# Eurocopter Rudel - from event germany_foci.154
+	ger_eurocopterrudel_fe_decision = {
+		icon = GFX_decision_generic_army
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_army_experience > 34
+		}
+		custom_cost_text = army_xp_15
+		visible = {
+			original_tag = GER
+			date > 2035.1.1
+		}
+		available = {
+			has_tech = nsb_attack_helicopter_tech_3
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision ger_eurocopterrudel_fe_decision"
+			army_experience = -15
+				create_equipment_variant = {
+					name = "Eurocopter Rudel"
+					type = heavy_tank_chassis_3 # 2015
+					parent_version = 0
+					modules = {
+						chassis_type_slot = helicopter_medium_chassis
+						helicopter_body_layout = gunship_layout
+						helicopter_body_mount_1 = helicopter_rocket_pod_gen3
+						nose_gun_type_slot = helicopter_light_nose_gun_gen3
+						armor_type_slot = helicopter_armor_gen3
+						engine_type_slot = helicopter_piston_engine_gen3
+						defence_type_slot = flare_launchers
+						sensor_and_avionics_slot = sensors_and_avionics_gen_3
+						helicopter_wing_mount_1 = helicopter_multiple_atgm_gen3
+						defence_type_slot_2 = em_lock_detection_system_gen2
+					}
+					upgrades = {
+						helicopter_nsb_upgrade = 4
+					}
+					design_team = mio:GER_Eurocopter_helicopters_tank_manufacturer
+				}
+		}
+		ai_will_do = { factor = 1000 }
+	}
+	# Strv 122b - Leopard 2 upgrade for Sweden - from event 05_sweden.txt
+	swe_strv_122b_fe_decision = {
+		icon = GFX_decision_generic_army
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_army_experience > 34
+		}
+		custom_cost_text = army_xp_15
+		visible = {
+			original_tag = SWE
+			date > 2018.1.1
+		}
+		available = {
+			has_tech = mbt_tech_2
+			has_tech = medium_gun_tech_2
+			has_tech = armor_tech_2
+			has_tech = diesel_engine_tech_3
+			has_tech = tank_components_tech_3
+			has_tech = tank_ammo_2
+			has_tech = defensive_systems_2
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision swe_strv_122b_fe_decision"
+			army_experience = -15
+				create_equipment_variant = {
+					name = "Strv 122b"
+					type = medium_tank_chassis_2
+					parent_version = 1
+					modules = {
+						main_armament_slot = tank_medium_cannon_2
+						ammunition_load_slot = mixed_main_ammo_2
+						turret_type_slot = tank_base_tank_turret
+						suspension_type_slot = tank_torsion_bar_suspension_medium
+						armor_type_slot = tank_composite_armor_gen2
+						engine_type_slot = tank_diesel_engine_gen3
+						reload_type_slot = manual_loading
+						special_type_slot_1 = smoke_launchers_2
+						special_type_slot_2 = wet_ammo_storage
+						special_type_slot_3 = empty
+						special_type_slot_4 = tank_battlestation_3
+						special_type_slot_6 = spaced_armor_gen2
+					}
+					upgrades = {
+						tank_nsb_armor_upgrade = 7
+					}
+					icon = "GFX_SWE_MBT_4_medium"
+				}
+		}
+		ai_will_do = { factor = 1000 }
+	}
+}
+
+future_aircraft_category = {
+	# AH-64E Apache AH-2
+	eng_apache_ah2_fe_decision = {
+		icon = GFX_decision_generic_aircraft
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_army_experience > 34
+		}
+		custom_cost_text = army_xp_15
+
+		visible = {
+			original_tag = ENG
+			date > 2023.1.1
+		}
+
+		available = {
+			has_tech = nsb_attack_helicopter_tech_3
+			has_tech = nsb_engine_tech_3
+			has_tech = nsb_multiple_atgm_tech_3
+			has_tech = nsb_rocket_pods_tech_3
+			has_tech = nsb_defense_tech_2
+			has_tech = nsb_light_nose_gun_tech_3
+			has_tech = tech_combat_radar_3
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision eng_apache_ah2_fe_decision"
+			army_experience = -15
+			create_equipment_variant = {
+				name = "Apache AH-2"
+				type = heavy_tank_chassis_2
+				parent_version = 0
+				modules = {
+					chassis_type_slot = helicopter_medium_chassis
+					helicopter_body_layout = gunship_layout
+					helicopter_body_mount_1 = helicopter_multiple_atgm_gen3
+					helicopter_body_mount_2 = helicopter_rocket_pod_gen3
+					nose_gun_type_slot = helicopter_heavy_nose_gun_gen3
+					engine_type_slot = helicopter_turbine_engine_gen3
+					defence_type_slot = flare_launchers
+					sensor_and_avionics_slot = sensors_and_avionics_gen_3
+					armor_type_slot = helicopter_armor_gen3
+					helicopter_wing_mount_1 = helicopter_aa_missile_gen3
+				}
+				upgrades = {
+					helicopter_nsb_upgrade = 3
+				}
+				design_team = mio:ENG_boeing_manufacturer
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+
+	# Protector RG1
+	eng_protector_rg1_fe_decision = {
+		icon = GFX_decision_generic_aircraft
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_air_experience > 19
+		}
+		custom_cost_text = air_xp_20
+
+		visible = {
+			original_tag = ENG
+			date > 2025.1.1
+		}
+
+		available = {
+			has_tech = gen_4_light
+			has_tech = avionics_3
+			has_tech = countermeasures_2
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision eng_protector_rg1_fe_decision"
+			air_experience = -20
+			create_equipment_variant = {
+				name = "Protector RG1"
+				type = small_plane_suicide_airframe_2
+				parent_version = 0
+				modules = {
+					fixed_main_weapon_slot = avionics_drone_2
+					fixed_gun_slot = empty
+					fixed_auxiliary_weapon_slot_1 = empty
+					engine_type_slot = engine_prop_single_2
+					avionics_type_slot = avionics_manned_3
+					wingform_type_slot = wing_straight
+					special_slot_type_1 = spec_countermeasures_2
+					special_slot_type_2 = spec_recon_3
+					special_slot_type_3 = empty
+				}
+				design_team = mio:ENG_general_dynamics_manufacturer
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+
+	# P-8A Poseidon
+	eng_p8a_poseidon_fe_decision = {
+		icon = GFX_decision_generic_aircraft
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_air_experience > 19
+		}
+		custom_cost_text = air_xp_20
+
+		visible = {
+			original_tag = ENG
+			date > 2020.1.1
+		}
+
+		available = {
+			has_tech = gen_4_large
+			has_tech = avionics_3
+			has_tech = engines_3
+			has_tech = countermeasures_2
+			has_tech = naval_weapons_2
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision eng_p8a_poseidon_fe_decision"
+			air_experience = -20
+			create_equipment_variant = {
+				name = "P-8A Poseidon MRA1"
+				type = large_plane_maritime_patrol_airframe_1
+				parent_version = 0
+				modules = {
+					fixed_main_weapon_slot = weap_as_hardpoint_1
+					fixed_gun_slot = empty
+					fixed_auxiliary_weapon_slot_1 = empty
+					fixed_auxiliary_weapon_slot_2 = weap_as_hardpoint_1
+					engine_type_slot = engine_jet_double_3
+					avionics_type_slot = avionics_manned_3
+					wingform_type_slot = wing_swept
+					special_slot_type_1 = spec_countermeasures_2
+					special_slot_type_2 = spec_redundant_2
+					special_slot_type_3 = empty
+				}
+				upgrades = {
+					plane_bba_radar_upgrade = 3
+				}
+				design_team = mio:ENG_boeing_manufacturer
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+
+	# E-7 Wedgetail
+	eng_e7_wedgetail_fe_decision = {
+		icon = GFX_decision_generic_aircraft
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_air_experience > 19
+		}
+		custom_cost_text = air_xp_20
+
+		visible = {
+			original_tag = ENG
+			date > 2026.1.1
+		}
+
+		available = {
+			has_tech = gen_4_large
+			has_tech = avionics_3
+			has_tech = engines_3
+			has_tech = countermeasures_3
+			has_tech = awacs_2
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision eng_e7_wedgetail_fe_decision"
+			air_experience = -20
+			create_equipment_variant = {
+				name = "E-7 Wedgetail AEW1"
+				type = large_plane_awacs_airframe_2
+				parent_version = 0
+				modules = {
+					fixed_main_weapon_slot = weap_buff_awacs_2
+					fixed_gun_slot = empty
+					fixed_auxiliary_weapon_slot_1 = empty
+					fixed_auxiliary_weapon_slot_2 = empty
+					engine_type_slot = engine_jet_double_3
+					avionics_type_slot = avionics_manned_3
+					wingform_type_slot = wing_swept
+					special_slot_type_1 = spec_countermeasures_3
+					special_slot_type_2 = spec_redundant_2
+					special_slot_type_3 = empty
+				}
+				upgrades = {
+					plane_bba_radar_upgrade = 3
+				}
+				design_team = mio:ENG_boeing_manufacturer
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+
+	# BAE Tempest
+	eng_tempest_fe_decision = {
+		icon = GFX_decision_generic_fighter
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_air_experience > 29
+		}
+		custom_cost_text = air_xp_30
+
+		visible = {
+			original_tag = ENG
+			date > 2035.1.1
+		}
+
+		available = {
+			has_tech = gen_6_light
+			has_tech = stealth_tech_1
+			has_tech = engines_4
+			has_tech = avionics_4
+			has_tech = air_weapons_4
+			has_tech = countermeasures_3
+			NOT = { has_completed_focus = ENG_bae_systems_tempest }
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision eng_tempest_fe_decision"
+			air_experience = -30
+			create_equipment_variant = {
+				name = "BAE Tempest"
+				type = small_plane_airframe_4
+				parent_version = 0
+				modules = {
+					fixed_main_weapon_slot = weap_int_mp_med_hardpoint_2
+					fixed_gun_slot = weap_multi_gun_3
+					fixed_auxiliary_weapon_slot_1 = weap_int_a2a_hardpoint_1
+					engine_type_slot = engine_light_single_4
+					avionics_type_slot = avionics_manned_4
+					wingform_type_slot = wing_diamond
+					special_slot_type_1 = spec_countermeasures_3
+					special_slot_type_2 = spec_stealthmats_1
+					special_slot_type_3 = spec_stealthshape_1
+					special_slot_type_4 = empty
+				}
+				upgrades = {
+					plane_bba_radar_upgrade = 5
+					plane_bba_engine_upgrade = 4
+				}
+				icon = "gfx/interface/technologies/ENG/AIR/Tempest.dds"
+				design_team = mio:ENG_bae_systems_manufacturer
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+
+	# F-35A
+	ger_f35a_fe_decision = {
+		icon = GFX_decision_generic_fighter
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_air_experience > 29
+		}
+		custom_cost_text = air_xp_30
+
+		visible = {
+			original_tag = GER
+			date > 2026.1.1
+		}
+
+		available = {
+			has_tech = gen_5_light
+			has_tech = stealth_tech_1
+			has_tech = engines_3
+			has_tech = avionics_4
+			has_tech = air_weapons_4
+			has_tech = ag_weapons_3
+			has_tech = countermeasures_3
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision ger_f35a_fe_decision"
+			air_experience = -30
+			create_equipment_variant = {
+				name = "F-35A Lightning II"
+				type = small_plane_strike_airframe_3
+				parent_version = 0
+				modules = {
+					fixed_main_weapon_slot = weap_int_mp_med_hardpoint_2
+					fixed_gun_slot = weap_multi_gun_3
+					engine_type_slot = engine_light_single_3
+					avionics_type_slot = avionics_manned_4
+					wingform_type_slot = wing_diamond
+					special_slot_type_1 = spec_countermeasures_3
+					special_slot_type_2 = spec_stealthmats_1
+					special_slot_type_3 = spec_stealthshape_1
+					special_slot_type_4 = empty
+					fixed_auxiliary_weapon_slot_1 = weap_int_a2a_hardpoint_1
+				}
+				upgrades = {
+					plane_bba_radar_upgrade = 5
+					plane_bba_engine_upgrade = 4
+				}
+				design_team = mio:GER_airbus_defence_aircraft_manufacturer
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+
+	# CH-53K
+	ger_ch53k_fe_decision = {
+		icon = GFX_decision_generic_aircraft
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_air_experience > 19
+		}
+		custom_cost_text = air_xp_20
+
+		visible = {
+			original_tag = GER
+			date > 2027.1.1
+		}
+
+		available = {
+			has_tech = nsb_transport_helicopter_2
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision ger_ch53k_fe_decision"
+			air_experience = -20
+			create_equipment_variant = {
+				name = "CH-53K King Stallion"
+				type = transport_helicopter_2
+				parent_version = 0
+				design_team = mio:GER_MBB_helicopters_tank_manufacturer
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+
+	# P-8A Poseidon
+	ger_p8a_poseidon_fe_decision = {
+		icon = GFX_decision_generic_aircraft
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_air_experience > 19
+		}
+		custom_cost_text = air_xp_20
+
+		visible = {
+			original_tag = GER
+			date > 2024.1.1
+		}
+
+		available = {
+			has_tech = gen_4_large
+			has_tech = avionics_3
+			has_tech = engines_3
+			has_tech = countermeasures_2
+			has_tech = naval_weapons_2
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision ger_p8a_poseidon_fe_decision"
+			air_experience = -20
+			create_equipment_variant = {
+				name = "P-8A Poseidon"
+				type = large_plane_maritime_patrol_airframe_1
+				parent_version = 0
+				modules = {
+					fixed_main_weapon_slot = weap_as_hardpoint_1
+					fixed_gun_slot = empty
+					fixed_auxiliary_weapon_slot_1 = empty
+					fixed_auxiliary_weapon_slot_2 = weap_as_hardpoint_1
+					engine_type_slot = engine_jet_double_3
+					avionics_type_slot = avionics_manned_3
+					wingform_type_slot = wing_swept
+					special_slot_type_1 = spec_countermeasures_2
+					special_slot_type_2 = spec_redundant_2
+					special_slot_type_3 = empty
+				}
+				upgrades = {
+					plane_bba_radar_upgrade = 3
+				}
+				design_team = mio:GER_airbus_defence_aircraft_manufacturer
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+
+	# Heron TP
+	ger_heron_tp_fe_decision = {
+		icon = GFX_decision_generic_aircraft
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_air_experience > 14
+		}
+		custom_cost_text = air_xp_15
+
+		visible = {
+			original_tag = GER
+			date > 2018.6.1
+		}
+
+		available = {
+			has_tech = gen_4_large
+			has_tech = avionics_3
+			has_tech = engines_3
+			has_tech = countermeasures_2
+			has_tech = drone_3
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision ger_heron_tp_fe_decision"
+			air_experience = -15
+			create_equipment_variant = {
+				name = "Heron TP"
+				type = large_plane_maritime_patrol_airframe_1
+				parent_version = 0
+				modules = {
+					fixed_main_weapon_slot = empty
+					fixed_gun_slot = empty
+					fixed_auxiliary_weapon_slot_1 = empty
+					fixed_auxiliary_weapon_slot_2 = empty
+					engine_type_slot = engine_prop_quad_2
+					avionics_type_slot = avionics_manned_3
+					wingform_type_slot = wing_straight
+					special_slot_type_1 = spec_countermeasures_2
+					special_slot_type_2 = spec_recon_2
+					special_slot_type_3 = spec_redundant_3
+				}
+				upgrades = {
+					plane_bba_radar_upgrade = 2
+				}
+				icon = "gfx/interface/technologies/GER/AIR/Heron.dds"
+				model = "large_plane_maritime_patrol_airframe_1_entity"
+				design_team = mio:GER_airbus_defence_aircraft_manufacturer
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+
+	# Eurodrone
+	ger_eurodrone_fe_decision = {
+		icon = GFX_decision_generic_aircraft
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_air_experience > 19
+		}
+		custom_cost_text = air_xp_20
+
+		visible = {
+			original_tag = GER
+			date > 2028.1.1
+		}
+
+		available = {
+			has_tech = gen_4_light
+			has_tech = avionics_3
+			has_tech = countermeasures_2
+			has_tech = drone_2
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision ger_eurodrone_fe_decision"
+			air_experience = -20
+			create_equipment_variant = {
+				name = "Eurodrone"
+				type = small_plane_suicide_airframe_2
+				parent_version = 0
+				modules = {
+					fixed_main_weapon_slot = avionics_drone_2
+					fixed_gun_slot = empty
+					fixed_auxiliary_weapon_slot_1 = empty
+					engine_type_slot = engine_prop_single_2
+					avionics_type_slot = avionics_manned_3
+					wingform_type_slot = wing_straight
+					special_slot_type_1 = spec_countermeasures_2
+					special_slot_type_2 = spec_recon_3
+					special_slot_type_3 = empty
+				}
+				icon = "gfx/interface/technologies/FRA/AIR/UAV2.dds"
+				design_team = mio:GER_airbus_defence_aircraft_manufacturer
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+	# MiG-29 Fulcrum G - from event germany.583
+	ger_mig29fulcrumg_fe_decision = {
+		icon = GFX_decision_generic_aircraft
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_army_experience > 34
+		}
+		custom_cost_text = army_xp_15
+		visible = {
+			original_tag = GER
+			date > 2017.1.1
+		}
+		available = {
+			OR = {
+				AND = {
+					has_dlc = "By Blood Alone"
+					has_tech = gen_4_light
+				}
+				AND = {
+					NOT = { has_dlc = "By Blood Alone" }
+					has_tech = MR_Fighter2
+				}
+			}
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision ger_mig29fulcrumg_fe_decision"
+			army_experience = -15
+			if = {
+				limit = { has_dlc = "By Blood Alone" }
+				create_equipment_variant = {
+					name = "MiG-29 Fulcrum G"
+					type = small_plane_strike_airframe_2
+					parent_version = 0
+					modules = {
+						fixed_main_weapon_slot = weap_mp_light_hardpoint_2
+						fixed_gun_slot = weap_multi_gun_3
+						fixed_auxiliary_weapon_slot_1 = weap_a2a_hardpoint_2
+						engine_type_slot = engine_light_double_2
+						avionics_type_slot = avionics_manned_3
+						wingform_type_slot = wing_swept
+						special_slot_type_1 = spec_countermeasures_2
+					}
+					icon = "gfx/interface/technologies/SOV/AIR/MR2.dds"
+					model = "SOV_small_plane_airframe_2_entity"
+				}
+			}
+			else_if = {
+				limit = { NOT = { has_dlc = "By Blood Alone" } }
+				create_equipment_variant = {
+					name = "MiG-29 Fulcrum G"
+					type = MR_Fighter2
+					parent_version = 0
+					upgrades = {
+						strike_gun_upgrade = 0
+						plane_range_upgrade = 1
+						plane_engine_upgrade = 1
+						plane_reliability_upgrade = 1
+					}
+					icon = "gfx/interface/technologies/SOV/AIR/MR2.dds"
+					model = "SOV_small_plane_airframe_2_entity"
+				}
+			}
+		}
+		ai_will_do = { factor = 1000 }
+	}
+	# Eurofighter Thyphoon Naval - from event GER_Eurofighter.2
+	ger_eurofighterthyphoonnaval_fe_decision = {
+		icon = GFX_decision_generic_aircraft
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_army_experience > 34
+		}
+		custom_cost_text = army_xp_15
+		visible = {
+			original_tag = GER
+			date > 2030.1.1
+		}
+		available = {
+			has_tech = gen_4_medium
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision ger_eurofighterthyphoonnaval_fe_decision"
+			army_experience = -15
+				create_equipment_variant = {
+					name = "Eurofighter Thyphoon Naval"
+					type = medium_plane_maritime_patrol_airframe_2
+					design_team = mio:GER_Eurofighter_aircraft_manufacturer
+					modules = {
+						fixed_main_weapon_slot = weap_mp_med_hardpoint_1
+						fixed_gun_slot = weap_multi_gun_1
+						engine_type_slot = engine_jet_double_3
+						avionics_type_slot = avionics_manned_3
+						wingform_type_slot = wing_delta_canard
+						special_slot_type_1 = spec_countermeasures_2
+						special_slot_type_2 = empty
+						special_slot_type_3 = spec_tgp_2
+						fixed_auxiliary_weapon_slot_1 = weap_mp_light_hardpoint_2
+						fixed_auxiliary_weapon_slot_2 = weap_as_hardpoint_2
+					}
+					icon = "gfx/interface/technologies/GER/AIR/E2000.dds"
+					model = "GER_medium_plane_airframe_2_entity"
+				}
+		}
+		ai_will_do = { factor = 1000 }
+	}
+	# Eurofighter Thyphoon CV - from event GER_Eurofighter.2
+	ger_eurofighterthyphooncv_fe_decision = {
+		icon = GFX_decision_generic_aircraft
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_army_experience > 34
+		}
+		custom_cost_text = army_xp_15
+		visible = {
+			original_tag = GER
+			date > 2030.1.1
+		}
+		available = {
+			has_tech = gen_4_medium
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision ger_eurofighterthyphooncv_fe_decision"
+			army_experience = -15
+				create_equipment_variant = {
+					name = "Eurofighter Thyphoon CV"
+					type = cv_medium_plane_airframe_2
+					design_team = mio:GER_Eurofighter_aircraft_manufacturer
+					modules = {
+						fixed_main_weapon_slot = weap_mp_med_hardpoint_2
+						fixed_gun_slot = weap_multi_gun_1
+						engine_type_slot = engine_jet_double_3
+						avionics_type_slot = avionics_manned_3
+						wingform_type_slot = wing_delta_canard
+						special_slot_type_1 = spec_countermeasures_2
+						special_slot_type_2 = empty
+						special_slot_type_3 = spec_tgp_2
+						fixed_auxiliary_weapon_slot_1 = weap_mp_light_hardpoint_2
+						fixed_auxiliary_weapon_slot_2 = weap_as_hardpoint_2
+					}
+					icon = "gfx/interface/technologies/GER/AIR/E2000.dds"
+					model = "GER_medium_plane_airframe_2_entity"
+				}
+		}
+		ai_will_do = { factor = 1000 }
+	}
+
+}
+
+future_naval_category = {
+	# Type 26 City Class
+	eng_type26_fe_decision = {
+		icon = GFX_decision_generic_navy
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_navy_experience > 19
+		}
+		custom_cost_text = navy_xp_20
+
+		visible = {
+			original_tag = ENG
+			date > 2028.1.1
+		}
+
+		available = {
+			has_tech = frigate_hull_4
+			has_tech = tech_naval_systems_engineering
+			has_tech = tech_power_systems_2
+			has_tech = tech_fire_control_3
+			has_tech = tech_turret_missiles_aa_4
+			has_tech = tech_light_guns_3
+			has_tech = tech_point_defense_system_3
+			has_tech = aircraft_heli_engineering_3
+			has_tech = tech_torpedoes_3
+			has_tech = tech_vls_aa_3
+			has_tech = tech_turret_missiles_surface_2
+			has_tech = tech_combat_radar_3
+			has_tech = tech_diesel_power_systems_1
+			has_tech = tech_vls_surface_3
+			has_tech = tech_vls_surface_4
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision eng_type26_fe_decision"
+			navy_experience = -20
+			create_equipment_variant = {
+				name = "Type 26 City Class"
+				type = frigate_hull_4
+				name_group = ENG_HISTORICAL
+				parent_version = 0
+				modules = {
+					fixed_ship_engine_slot = module_light_surface_jet_turbine_power2
+					fixed_ship_fire_control_system_slot = module_advanced_integrated_missile_radar_control
+					fixed_ship_radar_slot = module_radar_4
+					fixed_ship_auxillary_slot_2 = module_ciws_3
+					fixed_ship_auxillary_slot_1 = module_naval_vls_cells_32
+					fixed_ship_auxillary_slot = module_naval_missile_mount_quad
+					fixed_ship_battery_slot = module_127mm_guns_3
+					front_1_custom_slot = module_torpedoes_3
+					rear_1_custom_slot = module_light_helipad_2
+					fixed_ship_missile_ammo_slot = module_naval_ammo_balanced_4
+				}
+				design_team = mio:ENG_bae_systems_manufacturer
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+
+	# Type 31 Inspiration Class
+	eng_type31_fe_decision = {
+		icon = GFX_decision_generic_navy
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_navy_experience > 19
+		}
+		custom_cost_text = navy_xp_20
+
+		visible = {
+			original_tag = ENG
+			date > 2027.1.1
+		}
+
+		available = {
+			has_tech = frigate_hull_5
+			has_tech = tech_naval_systems_engineering
+			has_tech = tech_diesel_power_systems_3
+			has_tech = tech_fire_control_2
+			has_tech = tech_combat_radar_4
+			has_tech = tech_light_guns_3
+			has_tech = tech_point_defense_system_4
+			has_tech = aircraft_heli_engineering_3
+			has_tech = tech_vls_surface_3
+			has_tech = tech_vls_surface_4
+			NOT = { has_completed_focus = ENG_type_31_frigate_inspiration_class }
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision eng_type31_fe_decision"
+			navy_experience = -20
+			create_equipment_variant = {
+				name = "Type 31 Inspiration Class"
+				type = frigate_hull_5
+				name_group = ENG_HISTORICAL
+				parent_version = 0
+				modules = {
+					fixed_ship_engine_slot = module_light_surface_diesel_power_3
+					fixed_ship_fire_control_system_slot = module_digital_integrated_fire_control
+					fixed_ship_radar_slot = module_radar_5
+					fixed_ship_auxillary_slot_2 = module_naval_vls_cells_16
+					fixed_ship_auxillary_slot_1 = module_esm_2
+					fixed_ship_auxillary_slot = module_naval_missile_mount_quad
+					fixed_ship_battery_slot = module_76mm_gun_3
+					front_1_custom_slot = module_ciws_4
+					rear_1_custom_slot = module_light_helipad_2
+					fixed_ship_missile_ammo_slot = module_naval_ammo_balanced_4
+				}
+				design_team = mio:ENG_babcock_manufacturer
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+
+	# Type 83 Destroyer
+	eng_type83_fe_decision = {
+		icon = GFX_decision_generic_navy
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_navy_experience > 19
+		}
+		custom_cost_text = navy_xp_20
+
+		visible = {
+			original_tag = ENG
+			date > 2035.1.1
+		}
+
+		available = {
+			has_tech = destroyer_hull_4
+			has_tech = tech_naval_systems_engineering
+			has_tech = tech_power_systems_3
+			has_tech = tech_fire_control_3
+			has_tech = tech_turret_missiles_aa_4
+			has_tech = tech_light_guns_3
+			has_tech = tech_point_defense_system_5
+			has_tech = aircraft_heli_engineering_3
+			has_tech = tech_torpedoes_3
+			has_tech = tech_torpedoes_4
+			has_tech = tech_vls_aa_3
+			has_tech = tech_combat_radar_3
+			has_tech = tech_combat_radar_4
+			has_tech = tech_diesel_power_systems_2
+			has_tech = tech_vls_surface_4
+			NOT = { has_completed_focus = ENG_type_83_destroyer }
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision eng_type83_fe_decision"
+			navy_experience = -20
+			create_equipment_variant = {
+				name = "Type 83"
+				type = destroyer_hull_4
+				name_group = ENG_HISTORICAL
+				parent_version = 0
+				modules = {
+					fixed_ship_engine_slot = module_surface_jet_turbine_power3
+					fixed_ship_fire_control_system_slot = module_screen_digital_integrated_fire_control
+					fixed_ship_radar_slot = module_radar_5
+					fixed_ship_auxillary_slot_3 = module_torpedoes_4
+					fixed_ship_auxillary_slot_2 = module_naval_missile_mount_quad
+					fixed_ship_auxillary_slot = module_naval_vls_cells_64
+					fixed_ship_battery_slot = module_76mm_gun_3
+					front_1_custom_slot = module_ciws_5
+					mid_1_custom_slot = module_fuel_tank
+					mid_2_custom_slot = module_ciws_5
+					rear_1_custom_slot = module_light_helipad_2
+					fixed_ship_missile_ammo_slot = module_naval_ammo_balanced_4
+				}
+				design_team = mio:ENG_bae_systems_manufacturer
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+
+	# Dreadnought Class
+	eng_dreadnought_fe_decision = {
+		icon = GFX_decision_generic_navy
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_navy_experience > 19
+		}
+		custom_cost_text = navy_xp_20
+
+		visible = {
+			original_tag = ENG
+			date > 2030.10.1
+		}
+
+		available = {
+			has_tech = missile_submarine_hull_4
+			has_tech = tech_nuclear_power_systems_3
+			has_tech = tech_combat_sonar_3
+			has_tech = tech_combat_sonar_4
+			has_tech = tech_combat_radar_4
+			has_tech = tech_torpedoes_3
+			has_tech = tech_naval_systems_engineering
+			has_tech = tech_vls_surface_4
+			NOT = { has_completed_focus = ENG_dreadnought_class }
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision eng_dreadnought_fe_decision"
+			navy_experience = -20
+			create_equipment_variant = {
+				name = "Dreadnought Class"
+				type = missile_submarine_hull_4
+				name_group = ENG_HISTORICAL
+				parent_version = 0
+				modules = {
+					fixed_ship_engine_slot = module_sub_mod_reactor_power
+					fixed_ship_radar_slot = module_sonar_5
+					fixed_ship_auxillary_slot_3 = module_naval_sub_vls_cells_32
+					fixed_ship_auxillary_slot_2 = module_sub_esm_2
+					fixed_ship_auxillary_slot_1 = module_naval_sub_vls_cells_32
+					fixed_ship_auxillary_slot = module_torpedoes_3
+					front_1_custom_slot = module_naval_sub_vls_cells_32
+					fixed_ship_battery_slot = module_anti_ship_torpedoes_3
+					fixed_ship_missile_ammo_slot = module_naval_sub_ammo_land_attack_3
+				}
+				design_team = mio:ENG_bae_systems_manufacturer
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+
+	# F126 Köln Class
+	ger_f126_fe_decision = {
+		icon = GFX_decision_generic_navy
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_navy_experience > 19
+		}
+		custom_cost_text = navy_xp_20
+
+		visible = {
+			original_tag = GER
+			date > 2028.1.1
+		}
+
+		available = {
+			has_tech = corvette_hull_4
+			has_tech = tech_naval_systems_engineering
+			has_tech = tech_diesel_power_systems_1
+			has_tech = tech_fire_control_2
+			has_tech = tech_combat_radar_3
+			has_tech = tech_light_guns_2
+			has_tech = tech_point_defense_system_3
+			has_tech = aircraft_heli_engineering_3
+			has_tech = tech_vls_surface_4
+			NOT = { has_completed_focus = GER_New_Corvettes }
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision ger_f126_fe_decision"
+			navy_experience = -20
+			create_equipment_variant = {
+				name = "Köln Class"
+				type = corvette_hull_4
+				name_group = GER_MODERN_CORVETTES_NAMES
+				parent_version = 0
+				modules = {
+					fixed_ship_engine_slot = module_light_surface_jet_turbine_power2
+					fixed_ship_fire_control_system_slot = module_advanced_integrated_missile_radar_control
+					fixed_ship_radar_slot = module_radar_5
+					fixed_ship_auxillary_slot = module_naval_missile_mount_quad
+					fixed_ship_battery_slot = module_76mm_gun_3
+					front_1_custom_slot = module_ram_3
+					rear_1_custom_slot = module_light_helipad_1
+					fixed_ship_missile_ammo_slot = module_naval_ammo_anti_ship_2
+				}
+				design_team = mio:GER_lurssen_werft_naval_manufacturer
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+
+	# Type 212CD
+	ger_212cd_fe_decision = {
+		icon = GFX_decision_generic_navy
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_navy_experience > 19
+		}
+		custom_cost_text = navy_xp_20
+
+		visible = {
+			original_tag = GER
+			date > 2032.1.1
+		}
+
+		available = {
+			has_tech = attack_submarine_hull_4
+			has_tech = tech_submarine_engineering_2
+			has_tech = tech_combat_sonar_3
+			has_tech = tech_torpedoes_3
+			has_tech = tech_naval_systems_engineering
+			has_tech = tech_diesel_power_systems_2
+			has_tech = tech_vls_surface_4
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision ger_212cd_fe_decision"
+			navy_experience = -20
+			create_equipment_variant = {
+				name = "Type 212CD Class"
+				type = attack_submarine_hull_4
+				name_group = GER_MODERN_SUBMARINES_NAMES
+				parent_version = 0
+				modules = {
+					fixed_ship_engine_slot = module_sub_diesel_electric_power3
+					fixed_ship_radar_slot = module_sonar_5
+					fixed_ship_auxillary_slot_3 = module_torpedoes_2
+					fixed_ship_auxillary_slot_2 = module_sub_esm_2
+					fixed_ship_auxillary_slot_1 = module_torpedoes_2
+					fixed_ship_auxillary_slot = module_naval_sub_vls_cells_8
+					fixed_ship_battery_slot = module_anti_ship_torpedoes_2
+					fixed_ship_missile_ammo_slot = module_naval_sub_ammo_anti_ship_3
+				}
+				design_team = mio:GER_HDW_naval_manufacturer
+			}
+		}
+
+		ai_will_do = { factor = 1000 }
+	}
+	# Kee-Lung Class (ex-Kidd) sold to Taiwan - from event department_of_state.95
+	tai_kee_lung_purchase_decision = {
+		icon = GFX_decision_generic_navy
+		fire_only_once = yes
+		visible = {
+			original_tag = TAI
+			country_exists = USA
+			date > 2004.1.1
+		}
+		available = {
+			has_tech = destroyer_hull_1
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision tai_kee_lung_purchase_decision"
+			set_temp_variable = { treasury_change = -2.5 }
+			modify_treasury_effect = yes
+			USA = {
+				create_equipment_variant = {
+					name = "Kee-Lung Class" # Formerly the Kidd-class Destroyer
+					type = destroyer_hull_1
+					parent_version = 1
+					modules = {
+						fixed_ship_engine_slot = module_surface_jet_turbine_power
+						fixed_ship_fire_control_system_slot = module_capital_digital_integrated_fire_control
+						fixed_ship_radar_slot = module_radar_3
+						fixed_ship_auxillary_slot_3 = module_torpedoes_2
+						fixed_ship_auxillary_slot_2 = module_naval_missile_mount_quad
+						fixed_ship_auxillary_slot = module_127mm_guns_2
+						fixed_ship_battery_slot = module_127mm_guns_2
+						front_1_custom_slot = module_naval_missile_mount_quad
+						mid_1_custom_slot = module_ciws_2
+						mid_2_custom_slot = module_ciws_2
+						rear_1_custom_slot = module_light_helipad_1
+						fixed_ship_missile_ammo_slot = module_naval_ammo_balanced_3
+					}
+					obsolete = yes
+				}
+				set_temp_variable = { treasury_change = 2.5 }
+				modify_treasury_effect = yes
+			}
+			create_ship = { type = destroyer_hull_1 equipment_variant = "Kee-Lung Class" creator = USA name = "ROCS Kee Lung (DDG-1801)" }
+			create_ship = { type = destroyer_hull_1 equipment_variant = "Kee-Lung Class" creator = USA name = "ROCS Su Ao (DDG-1802)" }
+			create_ship = { type = destroyer_hull_1 equipment_variant = "Kee-Lung Class" creator = USA name = "ROCS Tso Ying (DDG-1803)" }
+			create_ship = { type = destroyer_hull_1 equipment_variant = "Kee-Lung Class" creator = USA name = "ROCS Ma Kong (DDG-1805)" }
+		}
+		ai_will_do = { factor = 500 }
+	}
+	# Charles de Gaulle Class 2 sold to Egypt - from event egypt.151
+	egy_cdg2_purchase_decision = {
+		icon = GFX_decision_generic_navy
+		fire_only_once = yes
+		visible = {
+			original_tag = EGY
+			country_exists = FRA
+			date > 2016.1.1
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decision egy_cdg2_purchase_decision"
+			set_temp_variable = { treasury_change = -8 }
+			modify_treasury_effect = yes
+			FRA = {
+				create_equipment_variant = {
+					name = "Charles de Gaulle Class 2"
+					type = helicopter_operator_hull_2
+					parent_version = 0
+					modules = {
+						fixed_ship_engine_slot = module_surface_diesel_power_1
+						fixed_ship_fire_control_system_slot = module_digital_integrated_fire_control
+						fixed_ship_radar_slot = module_radar_4
+						fixed_ship_auxillary_slot_3 = module_fuel_tank
+						fixed_ship_auxillary_slot_2 = module_chain_gun
+						fixed_ship_auxillary_slot = module_chain_gun
+						fixed_ship_battery_slot = module_light_flight_deck_1
+						front_1_custom_slot = module_helipads_2
+						mid_1_custom_slot = module_helipads_2
+						rear_1_custom_slot = module_helipads_2
+					}
+				}
+				set_temp_variable = { treasury_change = 8 }
+				modify_treasury_effect = yes
+			}
+			EGY = {
+				set_technology = { helicopter_operator_hull_2 = 1 }
+			}
+			create_ship = {
+				type = helicopter_operator_hull_2
+				equipment_variant = "Charles de Gaulle Class 2"
+				creator = FRA
+				name = "Gamal Abdel Nasser"
+			}
+		}
+		ai_will_do = { factor = 500 }
+	}
+}
