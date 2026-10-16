@@ -1,0 +1,3989 @@
+# DSW France: retain TFR party leaders within MD ideology groups
+DSW_FRA_dep_add_income = {
+	custom_effect_tooltip = add_income_tooltip
+	add_to_variable = {
+		var = income_var
+		value = income_var_temp
+	}
+	DSW_FRA_dep_check_gdp = yes
+}
+DSW_FRA_dep_decrease_trade = {
+	if = {
+		limit = {
+			has_idea = low_trade
+		}
+		swap_ideas = {
+			remove_idea = low_trade
+			add_idea = lower_trade
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = medium_trade
+		}
+		swap_ideas = {
+			remove_idea = medium_trade
+			add_idea = low_trade
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = high_trade
+		}
+		swap_ideas = {
+			remove_idea = high_trade
+			add_idea = medium_trade
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = higher_trade
+		}
+		swap_ideas = {
+			remove_idea = higher_trade
+			add_idea = high_trade
+		}
+	}
+}
+DSW_FRA_dep_GER_add_eu_euroskepticism = {
+	custom_effect_tooltip = eu_euroskepticism_var_tooltip
+	add_to_variable = {
+		var = eu_euroskepticism_var
+		value = eu_euroskepticism_var_temp
+	}
+	clamp_variable = {
+		var = eu_euroskepticism_var
+		min = 0
+		max = 1
+	}
+}
+DSW_FRA_dep_remove_from_coalition = {
+	if = {
+		limit = {
+			is_in_array = {
+				coalition_partners_array = coalition_partner_var_temp
+			}
+		}
+		custom_effect_tooltip = remove_from_coalition
+		hidden_effect = {
+			clear_variable = is_in_coalition_with_@var:coalition_partner_var_temp
+			if = {
+				limit = {
+					has_dynamic_modifier = {
+						modifier = party_popularity_dynamic_modifier_coalition
+					}
+					check_variable = {
+						coalition_partners_array^num = 1
+					}
+				}
+				remove_dynamic_modifier = {
+					modifier = party_popularity_dynamic_modifier_coalition
+				}
+				clear_variable = coalition_pp_gain
+				clear_array = coalition_partners_array
+			}
+			else = {
+				remove_from_array = {
+					coalition_partners_array = coalition_partner_var_temp
+				}
+				subtract_from_variable = {
+					coalition_pp_gain = party_pop_array^coalition_partner_var_temp
+				}
+			}
+		}
+	}
+	hidden_effect = {
+		set_temp_variable = {
+			var = ruling_popularity_var_temp
+			value = -0.001
+		}
+		DSW_FRA_dep_add_ruling_party_popularity = yes
+	}
+	DSW_FRA_dep_update_party_popularity = yes
+}
+DSW_FRA_dep_increase_police = {
+	if = {
+		limit = {
+			has_idea = higher_police
+		}
+		swap_ideas = {
+			remove_idea = higher_police
+			add_idea = highest_police
+		}
+	}
+	if = {
+		limit = {
+			has_idea = high_police
+		}
+		swap_ideas = {
+			remove_idea = high_police
+			add_idea = higher_police
+		}
+	}
+	if = {
+		limit = {
+			has_idea = medium_police
+		}
+		swap_ideas = {
+			remove_idea = medium_police
+			add_idea = high_police
+		}
+	}
+	if = {
+		limit = {
+			has_idea = low_police
+		}
+		swap_ideas = {
+			remove_idea = low_police
+			add_idea = medium_police
+		}
+	}
+	if = {
+		limit = {
+			has_idea = lower_police
+		}
+		swap_ideas = {
+			remove_idea = lower_police
+			add_idea = low_police
+		}
+	}
+	if = {
+		limit = {
+			has_idea = lowest_police
+		}
+		swap_ideas = {
+			remove_idea = lowest_police
+			add_idea = lower_police
+		}
+	}
+}
+DSW_FRA_dep_change_government_type_fascist_dictatorship = {
+	custom_effect_tooltip = change_gov_type_fascist_dictatorship_tt
+	hidden_effect = {
+		DSW_FRA_dep_remove_gov_types = yes
+		add_ideas = ZZZ_fascist_dictatorship
+	}
+}
+DSW_FRA_dep_GER_add_eu_fed = {
+	custom_effect_tooltip = eu_fed_var_tooltip
+	add_to_variable = {
+		var = eu_fed_var
+		value = eu_fed_var_temp
+	}
+	clamp_variable = {
+		var = eu_fed_var
+		min = 0
+		max = 1
+	}
+	set_variable = {
+		var = eu_fed_var_dynamic_var
+		value = eu_fed_var
+	}
+	multiply_variable = {
+		var = eu_fed_var_dynamic_var
+		value = 0.2
+	}
+}
+DSW_FRA_dep_change_government_type_ultranationalist_dictatorship = {
+	custom_effect_tooltip = change_gov_type_ultranationalist_dictatorship_tt
+	hidden_effect = {
+		DSW_FRA_dep_remove_gov_types = yes
+		add_ideas = ZZZ_ultranationalist_dictatorship
+	}
+}
+DSW_FRA_dep_change_government_type_presidential_republic = {
+	custom_effect_tooltip = change_gov_type_presidential_republic_tt
+	hidden_effect = {
+		DSW_FRA_dep_remove_gov_types = yes
+		add_ideas = ZZZ_presidential_republic
+	}
+}
+DSW_FRA_dep_change_government_type_provisional_government = {
+	custom_effect_tooltip = change_gov_type_provisional_government_tt
+	hidden_effect = {
+		DSW_FRA_dep_remove_gov_types = yes
+		add_ideas = ZZZ_provisional_government
+	}
+}
+DSW_FRA_dep_increase_taxes = {
+	if = {
+		limit = {
+			has_idea = high_taxes
+		}
+		swap_ideas = {
+			remove_idea = high_taxes
+			add_idea = higher_taxes
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = medium_taxes
+		}
+		swap_ideas = {
+			remove_idea = medium_taxes
+			add_idea = high_taxes
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = low_taxes
+		}
+		swap_ideas = {
+			remove_idea = low_taxes
+			add_idea = medium_taxes
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = lower_taxes
+		}
+		swap_ideas = {
+			remove_idea = lower_taxes
+			add_idea = low_taxes
+		}
+	}
+}
+DSW_FRA_dep_change_government_type_communist_party_state = {
+	custom_effect_tooltip = change_gov_type_communist_party_state_tt
+	hidden_effect = {
+		DSW_FRA_dep_remove_gov_types = yes
+		add_ideas = ZZZ_communist_party_state
+	}
+}
+DSW_FRA_dep_add_debt = {
+	custom_effect_tooltip = add_debt_tooltip
+	add_to_variable = {
+		var = debt_var
+		value = debt_var_temp
+	}
+	DSW_FRA_dep_check_gdp = yes
+	hidden_effect = {
+		set_variable = {
+			var = debt_trillion_var
+			value = debt_var
+		}
+		multiply_variable = {
+			var = debt_trillion_var
+			value = 0.001
+		}
+		set_variable = {
+			var = debt_billion_var
+			value = debt_var
+		}
+		set_variable = {
+			var = debt_million_var
+			value = debt_var
+		}
+		multiply_variable = {
+			debt_million_var = 1000
+		}
+	}
+}
+DSW_FRA_dep_change_government_type_socialist_republic = {
+	custom_effect_tooltip = change_gov_type_socialist_republic_tt
+	hidden_effect = {
+		DSW_FRA_dep_remove_gov_types = yes
+		add_ideas = ZZZ_socialist_republic
+	}
+}
+DSW_FRA_dep_change_government_type_parliamentary_republic = {
+	custom_effect_tooltip = change_gov_type_parliamentary_republic_tt
+	hidden_effect = {
+		DSW_FRA_dep_remove_gov_types = yes
+		add_ideas = ZZZ_parliamentary_republic
+	}
+}
+DSW_FRA_dep_change_government_type_absolute_monarchy = {
+	custom_effect_tooltip = change_gov_type_absolute_monarchy_tt
+	hidden_effect = {
+		DSW_FRA_dep_remove_gov_types = yes
+		add_ideas = ZZZ_absolute_monarchy
+	}
+}
+DSW_FRA_dep_add_income_with_inflation = {
+	set_temp_variable = {
+		var = income_factor_var_temp
+		value = income_var_temp
+	}
+	multiply_temp_variable = {
+		var = income_factor_var_temp
+		value = inflation_var
+	}
+	add_to_temp_variable = {
+		var = income_var_temp
+		value = income_factor_var_temp
+	}
+	custom_effect_tooltip = add_income_tooltip
+	add_to_variable = {
+		var = income_var
+		value = income_var_temp
+	}
+	DSW_FRA_dep_check_gdp = yes
+}
+DSW_FRA_dep_change_government_type_semi_presidential_system = {
+	custom_effect_tooltip = change_gov_type_semi_presidential_system_tt
+	hidden_effect = {
+		DSW_FRA_dep_remove_gov_types = yes
+		add_ideas = ZZZ_semi_presidential_system
+	}
+}
+DSW_FRA_dep_FRA_add_nato_leadership = {
+	custom_effect_tooltip = FRA_nato_leadership_var_tooltip
+	add_to_variable = {
+		var = FRA_nato_leadership_var
+		value = FRA_nato_leadership_var_temp
+	}
+	clamp_variable = {
+		var = FRA_nato_leadership_var
+		min = 0
+		max = 1
+	}
+}
+DSW_FRA_dep_change_government_type_presidential_dictatorship = {
+	custom_effect_tooltip = change_gov_type_presidential_dictatorship_tt
+	hidden_effect = {
+		DSW_FRA_dep_remove_gov_types = yes
+		add_ideas = ZZZ_presidential_dictatorship
+	}
+}
+DSW_FRA_dep_add_to_coalition = {
+	if = {
+		limit = {
+			NOT = {
+				check_variable = {
+					political_power_ideology_var = coalition_partner_var_temp
+				}
+				is_in_array = {
+					coalition_partners_array = coalition_partner_var_temp
+				}
+				AND = {
+					has_government = var:coalition_partner_var_temp
+					has_dynamic_modifier = {
+						modifier = party_popularity_dynamic_modifier
+					}
+				}
+			}
+		}
+		custom_effect_tooltip = add_to_coalition
+		hidden_effect = {
+			set_temp_variable = {
+				party_index = 20
+			}
+			set_temp_variable = {
+				party_popularity_increase = 0
+			}
+			change_relative_party_popularity = yes
+			recalculate_party = yes
+		}
+	}
+	if = {
+		limit = {
+			NOT = {
+				check_variable = {
+					political_power_ideology_var = coalition_partner_var_temp
+				}
+				is_in_array = {
+					coalition_partners_array = coalition_partner_var_temp
+				}
+				AND = {
+					has_government = var:coalition_partner_var_temp
+					has_dynamic_modifier = {
+						modifier = party_popularity_dynamic_modifier
+					}
+				}
+			}
+		}
+		set_variable = {
+			is_in_coalition_with_@var:coalition_partner_var_temp = 1
+		}
+		add_to_array = {
+			coalition_partners_array = coalition_partner_var_temp
+		}
+		hidden_effect = {
+			if = {
+				limit = {
+					NOT = {
+						has_dynamic_modifier = {
+							modifier = party_popularity_dynamic_modifier_coalition
+						}
+					}
+				}
+				add_dynamic_modifier = {
+					modifier = party_popularity_dynamic_modifier_coalition
+				}
+			}
+		}
+		add_to_variable = {
+			coalition_pp_gain = party_pop_array^coalition_partner_var_temp
+		}
+	}
+	hidden_effect = {
+		set_temp_variable = {
+			var = ruling_popularity_var_temp
+			value = 0.001
+		}
+		DSW_FRA_dep_add_ruling_party_popularity = yes
+	}
+	DSW_FRA_dep_update_party_popularity = yes
+}
+DSW_FRA_dep_focus_unlock = {
+	custom_effect_tooltip = focus_unlock_tooltip
+	hidden_effect = {
+		mark_focus_tree_layout_dirty = yes
+	}
+}
+DSW_FRA_dep_change_economy_type_chaostic = {
+	custom_effect_tooltip = change_economy_type_chaostic_economy_tt
+	hidden_effect = {
+		remove_economy_types = yes
+		add_ideas = ZZZ_chaostic_economy
+	}
+}
+DSW_FRA_dep_change_government_type_revolutionary_front = {
+	custom_effect_tooltip = change_gov_type_revolutionary_front_tt
+	hidden_effect = {
+		DSW_FRA_dep_remove_gov_types = yes
+		add_ideas = ZZZ_revolutionary_front
+	}
+}
+DSW_FRA_dep_change_government_type_military_dictatorship = {
+	custom_effect_tooltip = change_gov_type_military_dictatorship_tt
+	hidden_effect = {
+		DSW_FRA_dep_remove_gov_types = yes
+		add_ideas = ZZZ_military_dictatorship
+	}
+}
+DSW_FRA_dep_remove_gov_types = {
+	remove_ideas = {
+		ZZZ_russian_political_system
+		ZZZ_chinese_political_system
+		ZZZ_taiwanese_semi_presidential_system
+		ZZZ_absolute_monarchy
+		ZZZ_military_dictatorship
+		ZZZ_socialist_republic
+		ZZZ_semi_constitutional_monarchy
+		ZZZ_constitutional_monarchy
+		ZZZ_neo_soviet_republic
+		ZZZ_nazi_dictatorship
+		ZZZ_fascist_dictatorship
+		ZZZ_revolutionary_front
+		ZZZ_corporate_council
+		ZZZ_communist_party_state
+		ZZZ_semi_presidential_system
+		ZZZ_parliamentary_republic
+		ZZZ_directorial_system
+		ZZZ_presidential_republic
+		ZZZ_presidential_dictatorship
+		ZZZ_ultranationalist_dictatorship
+		ZZZ_islamic_republic
+		ZZZ_american_presidential_republic
+		ZZZ_provisional_government
+		ZZZ_eurasianist_system
+		ZZZ_american_peoples_dictatorship
+		ZZZ_annihilation_cult
+		ZZZ_crime_syndicate
+		ZZZ_peoples_democracy
+		ZZZ_personalistic_dictatorship
+		ZZZ_counterintelligence_state
+		ZZZ_skeleton_state
+		ZZZ_left_free_territory
+		ZZZ_right_free_territory
+		ZZZ_free_territory
+	}
+}
+DSW_FRA_dep_update_party_popularity = {
+	hidden_effect = {
+		if = {
+			limit = {
+				has_variable = coalition_partners_array^num
+			}
+			set_variable = {
+				coalition_pp_gain = 0
+			}
+			for_each_loop = {
+				array = coalition_partners_array
+				add_to_variable = {
+					coalition_pp_gain = party_pop_array^v
+				}
+			}
+			multiply_variable = {
+				coalition_pp_gain = 0.5
+			}
+		}
+		if = {
+			limit = {
+				has_variable = ruling_party_wings_array^num
+			}
+			set_variable = {
+				ruling_party_wings_pp_gain = 0
+			}
+			for_each_loop = {
+				array = ruling_party_wings_array
+				add_to_variable = {
+					ruling_party_wings_pp_gain = party_pop_array^v
+				}
+			}
+			multiply_variable = {
+				ruling_party_wings_pp_gain = 0.9
+			}
+		}
+	}
+}
+DSW_FRA_dep_add_ruling_party_popularity = {
+	if = {
+		limit = {
+			check_variable = {
+				ruling_party = 4
+			}
+		}
+		set_temp_variable = {
+			var = totalitarian_socialist_popularity_var_temp
+			value = ruling_popularity_var_temp
+		}
+		DSW_FRA_dep_add_totalitarian_socialist_popularity = yes
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				ruling_party = 19
+			}
+		}
+		set_temp_variable = {
+			var = communist_popularity_var_temp
+			value = ruling_popularity_var_temp
+		}
+		DSW_FRA_dep_add_communist_popularity = yes
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				ruling_party = 18
+			}
+		}
+		set_temp_variable = {
+			var = libertarian_socialist_popularity_var_temp
+			value = ruling_popularity_var_temp
+		}
+		DSW_FRA_dep_add_libertarian_socialist_popularity = yes
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				ruling_party = 3
+			}
+		}
+		set_temp_variable = {
+			var = social_democrat_popularity_var_temp
+			value = ruling_popularity_var_temp
+		}
+		DSW_FRA_dep_add_social_democrat_popularity = yes
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				ruling_party = 2
+			}
+		}
+		set_temp_variable = {
+			var = social_liberal_popularity_var_temp
+			value = ruling_popularity_var_temp
+		}
+		DSW_FRA_dep_add_social_liberal_popularity = yes
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				ruling_party = 16
+			}
+		}
+		set_temp_variable = {
+			var = market_liberal_popularity_var_temp
+			value = ruling_popularity_var_temp
+		}
+		DSW_FRA_dep_add_market_liberal_popularity = yes
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				ruling_party = 1
+			}
+		}
+		set_temp_variable = {
+			var = conservative_popularity_var_temp
+			value = ruling_popularity_var_temp
+		}
+		DSW_FRA_dep_add_conservative_popularity = yes
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				ruling_party = 14
+			}
+		}
+		set_temp_variable = {
+			var = authoritarian_democrat_popularity_var_temp
+			value = ruling_popularity_var_temp
+		}
+		DSW_FRA_dep_add_authoritarian_democrat_popularity = yes
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				ruling_party = 22
+			}
+		}
+		set_temp_variable = {
+			var = nationalist_popularity_var_temp
+			value = ruling_popularity_var_temp
+		}
+		DSW_FRA_dep_add_nationalist_popularity = yes
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				ruling_party = 21
+			}
+		}
+		set_temp_variable = {
+			var = fascist_popularity_var_temp
+			value = ruling_popularity_var_temp
+		}
+		DSW_FRA_dep_add_fascist_popularity = yes
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				ruling_party = 20
+			}
+		}
+		set_temp_variable = {
+			var = national_socialist_popularity_var_temp
+			value = ruling_popularity_var_temp
+		}
+		DSW_FRA_dep_add_national_socialist_popularity = yes
+	}
+}
+DSW_FRA_dep_add_conservative_popularity = {
+	if = {
+		limit = {
+			check_variable = {
+				var = conservative_popularity_var_temp
+				value = 0
+				compare = greater_than
+			}
+		}
+		if = {
+			limit = {
+				NOT = {
+					check_variable = {
+						party_pop_array^1 < 0.33
+					}
+					check_variable = {
+						party_pop_array^1 > 0.5
+					}
+				}
+			}
+			multiply_temp_variable = {
+				var = conservative_popularity_var_temp
+				value = 0.66
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = {
+					check_variable = {
+						party_pop_array^1 < 0.5
+					}
+					check_variable = {
+						party_pop_array^1 > 0.66
+					}
+				}
+			}
+			multiply_temp_variable = {
+				var = conservative_popularity_var_temp
+				value = 0.5
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = {
+					check_variable = {
+						party_pop_array^1 < 0.66
+					}
+					check_variable = {
+						party_pop_array^1 > 0.75
+					}
+				}
+			}
+			multiply_temp_variable = {
+				var = conservative_popularity_var_temp
+				value = 0.34
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = {
+					check_variable = {
+						party_pop_array^1 < 0.75
+					}
+				}
+			}
+			multiply_temp_variable = {
+				var = conservative_popularity_var_temp
+				value = 0.25
+			}
+		}
+	}
+	custom_effect_tooltip = add_conservative_popularity_tooltip
+	hidden_effect = {
+		set_temp_variable = {
+			party_index = 1
+		}
+		set_temp_variable = {
+			party_popularity_increase = conservative_popularity_var_temp
+		}
+		change_relative_party_popularity = yes
+		recalculate_party = yes
+	}
+}
+DSW_FRA_dep_add_nationalist_popularity = {
+	if = {
+		limit = {
+			check_variable = {
+				var = nationalist_popularity_var_temp
+				value = 0
+				compare = greater_than
+			}
+		}
+		if = {
+			limit = {
+				NOT = {
+					check_variable = {
+						party_pop_array^22 < 0.33
+					}
+					check_variable = {
+						party_pop_array^22 > 0.5
+					}
+				}
+			}
+			multiply_temp_variable = {
+				var = nationalist_popularity_var_temp
+				value = 0.66
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = {
+					check_variable = {
+						party_pop_array^22 < 0.5
+					}
+					check_variable = {
+						party_pop_array^22 > 0.66
+					}
+				}
+			}
+			multiply_temp_variable = {
+				var = nationalist_popularity_var_temp
+				value = 0.5
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = {
+					check_variable = {
+						party_pop_array^22 < 0.66
+					}
+					check_variable = {
+						party_pop_array^22 > 0.75
+					}
+				}
+			}
+			multiply_temp_variable = {
+				var = nationalist_popularity_var_temp
+				value = 0.34
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = {
+					check_variable = {
+						party_pop_array^22 < 0.75
+					}
+				}
+			}
+			multiply_temp_variable = {
+				var = nationalist_popularity_var_temp
+				value = 0.25
+			}
+		}
+	}
+	custom_effect_tooltip = add_nationalist_popularity_tooltip
+	hidden_effect = {
+		set_temp_variable = {
+			party_index = 22
+		}
+		set_temp_variable = {
+			party_popularity_increase = nationalist_popularity_var_temp
+		}
+		change_relative_party_popularity = yes
+		recalculate_party = yes
+	}
+}
+DSW_FRA_dep_add_fascist_popularity = {
+	if = {
+		limit = {
+			check_variable = {
+				var = fascist_popularity_var_temp
+				value = 0
+				compare = greater_than
+			}
+		}
+		if = {
+			limit = {
+				NOT = {
+					check_variable = {
+						party_pop_array^21 < 0.33
+					}
+					check_variable = {
+						party_pop_array^21 > 0.5
+					}
+				}
+			}
+			multiply_temp_variable = {
+				var = fascist_popularity_var_temp
+				value = 0.66
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = {
+					check_variable = {
+						party_pop_array^21 < 0.5
+					}
+					check_variable = {
+						party_pop_array^21 > 0.66
+					}
+				}
+			}
+			multiply_temp_variable = {
+				var = fascist_popularity_var_temp
+				value = 0.5
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = {
+					check_variable = {
+						party_pop_array^21 < 0.66
+					}
+					check_variable = {
+						party_pop_array^21 > 0.75
+					}
+				}
+			}
+			multiply_temp_variable = {
+				var = fascist_popularity_var_temp
+				value = 0.34
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = {
+					check_variable = {
+						party_pop_array^21 < 0.75
+					}
+				}
+			}
+			multiply_temp_variable = {
+				var = fascist_popularity_var_temp
+				value = 0.25
+			}
+		}
+	}
+	custom_effect_tooltip = add_fascist_popularity_tooltip
+	hidden_effect = {
+		set_temp_variable = {
+			party_index = 21
+		}
+		set_temp_variable = {
+			party_popularity_increase = fascist_popularity_var_temp
+		}
+		change_relative_party_popularity = yes
+		recalculate_party = yes
+	}
+}
+DSW_FRA_dep_add_social_liberal_popularity = {
+	if = {
+		limit = {
+			check_variable = {
+				var = social_liberal_popularity_var_temp
+				value = 0
+				compare = greater_than
+			}
+		}
+		if = {
+			limit = {
+				NOT = {
+					check_variable = {
+						party_pop_array^2 < 0.33
+					}
+					check_variable = {
+						party_pop_array^2 > 0.5
+					}
+				}
+			}
+			multiply_temp_variable = {
+				var = social_liberal_popularity_var_temp
+				value = 0.66
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = {
+					check_variable = {
+						party_pop_array^2 < 0.5
+					}
+					check_variable = {
+						party_pop_array^2 > 0.66
+					}
+				}
+			}
+			multiply_temp_variable = {
+				var = social_liberal_popularity_var_temp
+				value = 0.5
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = {
+					check_variable = {
+						party_pop_array^2 < 0.66
+					}
+					check_variable = {
+						party_pop_array^2 > 0.75
+					}
+				}
+			}
+			multiply_temp_variable = {
+				var = social_liberal_popularity_var_temp
+				value = 0.34
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = {
+					check_variable = {
+						party_pop_array^2 < 0.75
+					}
+				}
+			}
+			multiply_temp_variable = {
+				var = social_liberal_popularity_var_temp
+				value = 0.25
+			}
+		}
+	}
+	custom_effect_tooltip = add_social_liberal_popularity_tooltip
+	hidden_effect = {
+		set_temp_variable = {
+			party_index = 2
+		}
+		set_temp_variable = {
+			party_popularity_increase = social_liberal_popularity_var_temp
+		}
+		change_relative_party_popularity = yes
+		recalculate_party = yes
+	}
+}
+DSW_FRA_dep_add_communist_popularity = {
+	if = {
+		limit = {
+			check_variable = {
+				var = communist_popularity_var_temp
+				value = 0
+				compare = greater_than
+			}
+		}
+		if = {
+			limit = {
+				NOT = {
+					check_variable = {
+						party_pop_array^19 < 0.33
+					}
+					check_variable = {
+						party_pop_array^19 > 0.5
+					}
+				}
+			}
+			multiply_temp_variable = {
+				var = communist_popularity_var_temp
+				value = 0.66
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = {
+					check_variable = {
+						party_pop_array^19 < 0.5
+					}
+					check_variable = {
+						party_pop_array^19 > 0.66
+					}
+				}
+			}
+			multiply_temp_variable = {
+				var = communist_popularity_var_temp
+				value = 0.5
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = {
+					check_variable = {
+						party_pop_array^19 < 0.66
+					}
+					check_variable = {
+						party_pop_array^19 > 0.75
+					}
+				}
+			}
+			multiply_temp_variable = {
+				var = communist_popularity_var_temp
+				value = 0.34
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = {
+					check_variable = {
+						party_pop_array^19 < 0.75
+					}
+				}
+			}
+			multiply_temp_variable = {
+				var = communist_popularity_var_temp
+				value = 0.25
+			}
+		}
+	}
+	hidden_effect = {
+		set_temp_variable = {
+			party_index = 19
+		}
+		set_temp_variable = {
+			party_popularity_increase = communist_popularity_var_temp
+		}
+		change_relative_party_popularity = yes
+		recalculate_party = yes
+	}
+	if = {
+		limit = {
+			NOT = {
+				tag = APA
+			}
+		}
+		custom_effect_tooltip = add_communist_popularity_tooltip
+	}
+	else_if = {
+		limit = {
+			tag = APA
+		}
+		custom_effect_tooltip = APA_add_octoberist_popularity_tooltip
+		DSW_FRA_dep_APA_popularity_change = yes
+	}
+}
+DSW_FRA_dep_add_market_liberal_popularity = {
+	if = {
+		limit = {
+			check_variable = {
+				var = market_liberal_popularity_var_temp
+				value = 0
+				compare = greater_than
+			}
+		}
+		if = {
+			limit = {
+				NOT = {
+					check_variable = {
+						party_pop_array^16 < 0.33
+					}
+					check_variable = {
+						party_pop_array^16 > 0.5
+					}
+				}
+			}
+			multiply_temp_variable = {
+				var = market_liberal_popularity_var_temp
+				value = 0.66
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = {
+					check_variable = {
+						party_pop_array^16 < 0.5
+					}
+					check_variable = {
+						party_pop_array^16 > 0.66
+					}
+				}
+			}
+			multiply_temp_variable = {
+				var = market_liberal_popularity_var_temp
+				value = 0.5
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = {
+					check_variable = {
+						party_pop_array^16 < 0.66
+					}
+					check_variable = {
+						party_pop_array^16 > 0.75
+					}
+				}
+			}
+			multiply_temp_variable = {
+				var = market_liberal_popularity_var_temp
+				value = 0.34
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = {
+					check_variable = {
+						party_pop_array^16 < 0.75
+					}
+				}
+			}
+			multiply_temp_variable = {
+				var = market_liberal_popularity_var_temp
+				value = 0.25
+			}
+		}
+	}
+	custom_effect_tooltip = add_market_liberal_popularity_tooltip
+	hidden_effect = {
+		set_temp_variable = {
+			party_index = 16
+		}
+		set_temp_variable = {
+			party_popularity_increase = market_liberal_popularity_var_temp
+		}
+		change_relative_party_popularity = yes
+		recalculate_party = yes
+	}
+}
+DSW_FRA_dep_add_libertarian_socialist_popularity = {
+	if = {
+		limit = {
+			check_variable = {
+				var = libertarian_socialist_popularity_var_temp
+				value = 0
+				compare = greater_than
+			}
+		}
+		if = {
+			limit = {
+				NOT = {
+					check_variable = {
+						party_pop_array^18 < 0.33
+					}
+					check_variable = {
+						party_pop_array^18 > 0.5
+					}
+				}
+			}
+			multiply_temp_variable = {
+				var = libertarian_socialist_popularity_var_temp
+				value = 0.66
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = {
+					check_variable = {
+						party_pop_array^18 < 0.5
+					}
+					check_variable = {
+						party_pop_array^18 > 0.66
+					}
+				}
+			}
+			multiply_temp_variable = {
+				var = libertarian_socialist_popularity_var_temp
+				value = 0.5
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = {
+					check_variable = {
+						party_pop_array^18 < 0.66
+					}
+					check_variable = {
+						party_pop_array^18 > 0.75
+					}
+				}
+			}
+			multiply_temp_variable = {
+				var = libertarian_socialist_popularity_var_temp
+				value = 0.34
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = {
+					check_variable = {
+						party_pop_array^18 < 0.75
+					}
+				}
+			}
+			multiply_temp_variable = {
+				var = libertarian_socialist_popularity_var_temp
+				value = 0.25
+			}
+		}
+	}
+	hidden_effect = {
+		set_temp_variable = {
+			party_index = 18
+		}
+		set_temp_variable = {
+			party_popularity_increase = libertarian_socialist_popularity_var_temp
+		}
+		change_relative_party_popularity = yes
+		recalculate_party = yes
+	}
+	if = {
+		limit = {
+			NOT = {
+				tag = APA
+			}
+		}
+		custom_effect_tooltip = add_libertarian_socialist_popularity_tooltip
+	}
+	else_if = {
+		limit = {
+			tag = APA
+		}
+		custom_effect_tooltip = APA_add_anarchist_popularity_tooltip
+		DSW_FRA_dep_APA_popularity_change = yes
+	}
+}
+DSW_FRA_dep_add_national_socialist_popularity = {
+	if = {
+		limit = {
+			check_variable = {
+				var = national_socialist_popularity_var_temp
+				value = 0
+				compare = greater_than
+			}
+		}
+		if = {
+			limit = {
+				NOT = {
+					check_variable = {
+						party_pop_array^20 < 0.33
+					}
+					check_variable = {
+						party_pop_array^20 > 0.5
+					}
+				}
+			}
+			multiply_temp_variable = {
+				var = national_socialist_popularity_var_temp
+				value = 0.66
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = {
+					check_variable = {
+						party_pop_array^20 < 0.5
+					}
+					check_variable = {
+						party_pop_array^20 > 0.66
+					}
+				}
+			}
+			multiply_temp_variable = {
+				var = national_socialist_popularity_var_temp
+				value = 0.5
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = {
+					check_variable = {
+						party_pop_array^20 < 0.66
+					}
+					check_variable = {
+						party_pop_array^20 > 0.75
+					}
+				}
+			}
+			multiply_temp_variable = {
+				var = national_socialist_popularity_var_temp
+				value = 0.34
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = {
+					check_variable = {
+						party_pop_array^20 < 0.75
+					}
+				}
+			}
+			multiply_temp_variable = {
+				var = national_socialist_popularity_var_temp
+				value = 0.25
+			}
+		}
+	}
+	custom_effect_tooltip = add_national_socialist_popularity_tooltip
+	hidden_effect = {
+		set_temp_variable = {
+			party_index = 20
+		}
+		set_temp_variable = {
+			party_popularity_increase = national_socialist_popularity_var_temp
+		}
+		change_relative_party_popularity = yes
+		recalculate_party = yes
+	}
+}
+DSW_FRA_dep_add_totalitarian_socialist_popularity = {
+	if = {
+		limit = {
+			check_variable = {
+				var = totalitarian_socialist_popularity_var_temp
+				value = 0
+				compare = greater_than
+			}
+		}
+		if = {
+			limit = {
+				NOT = {
+					check_variable = {
+						party_pop_array^4 < 0.33
+					}
+					check_variable = {
+						party_pop_array^4 > 0.5
+					}
+				}
+			}
+			multiply_temp_variable = {
+				var = totalitarian_socialist_popularity_var_temp
+				value = 0.66
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = {
+					check_variable = {
+						party_pop_array^4 < 0.5
+					}
+					check_variable = {
+						party_pop_array^4 > 0.66
+					}
+				}
+			}
+			multiply_temp_variable = {
+				var = totalitarian_socialist_popularity_var_temp
+				value = 0.5
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = {
+					check_variable = {
+						party_pop_array^4 < 0.66
+					}
+					check_variable = {
+						party_pop_array^4 > 0.75
+					}
+				}
+			}
+			multiply_temp_variable = {
+				var = totalitarian_socialist_popularity_var_temp
+				value = 0.34
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = {
+					check_variable = {
+						party_pop_array^4 < 0.75
+					}
+				}
+			}
+			multiply_temp_variable = {
+				var = totalitarian_socialist_popularity_var_temp
+				value = 0.25
+			}
+		}
+	}
+	hidden_effect = {
+		set_temp_variable = {
+			party_index = 4
+		}
+		set_temp_variable = {
+			party_popularity_increase = totalitarian_socialist_popularity_var_temp
+		}
+		change_relative_party_popularity = yes
+		recalculate_party = yes
+	}
+	if = {
+		limit = {
+			NOT = {
+				tag = APA
+			}
+		}
+		custom_effect_tooltip = add_totalitarian_socialist_popularity_tooltip
+	}
+	else_if = {
+		limit = {
+			tag = APA
+		}
+		custom_effect_tooltip = APA_add_jacobin_popularity_tooltip
+		DSW_FRA_dep_APA_popularity_change = yes
+	}
+}
+DSW_FRA_dep_add_social_democrat_popularity = {
+	if = {
+		limit = {
+			check_variable = {
+				var = social_democrat_popularity_var_temp
+				value = 0
+				compare = greater_than
+			}
+		}
+		if = {
+			limit = {
+				NOT = {
+					check_variable = {
+						party_pop_array^3 < 0.33
+					}
+					check_variable = {
+						party_pop_array^3 > 0.5
+					}
+				}
+			}
+			multiply_temp_variable = {
+				var = social_democrat_popularity_var_temp
+				value = 0.66
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = {
+					check_variable = {
+						party_pop_array^3 < 0.5
+					}
+					check_variable = {
+						party_pop_array^3 > 0.66
+					}
+				}
+			}
+			multiply_temp_variable = {
+				var = social_democrat_popularity_var_temp
+				value = 0.5
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = {
+					check_variable = {
+						party_pop_array^3 < 0.66
+					}
+					check_variable = {
+						party_pop_array^3 > 0.75
+					}
+				}
+			}
+			multiply_temp_variable = {
+				var = social_democrat_popularity_var_temp
+				value = 0.34
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = {
+					check_variable = {
+						party_pop_array^3 < 0.75
+					}
+				}
+			}
+			multiply_temp_variable = {
+				var = social_democrat_popularity_var_temp
+				value = 0.25
+			}
+		}
+	}
+	hidden_effect = {
+		set_temp_variable = {
+			party_index = 3
+		}
+		set_temp_variable = {
+			party_popularity_increase = social_democrat_popularity_var_temp
+		}
+		change_relative_party_popularity = yes
+		recalculate_party = yes
+	}
+	if = {
+		limit = {
+			NOT = {
+				tag = APA
+			}
+		}
+		custom_effect_tooltip = add_social_democrat_popularity_tooltip
+	}
+	else_if = {
+		limit = {
+			tag = APA
+		}
+		custom_effect_tooltip = APA_add_neosocialist_popularity_tooltip
+		DSW_FRA_dep_APA_popularity_change = yes
+	}
+}
+DSW_FRA_dep_add_authoritarian_democrat_popularity = {
+	if = {
+		limit = {
+			check_variable = {
+				var = authoritarian_democrat_popularity_var_temp
+				value = 0
+				compare = greater_than
+			}
+		}
+		if = {
+			limit = {
+				NOT = {
+					check_variable = {
+						party_pop_array^14 < 0.33
+					}
+					check_variable = {
+						party_pop_array^14 > 0.5
+					}
+				}
+			}
+			multiply_temp_variable = {
+				var = authoritarian_democrat_popularity_var_temp
+				value = 0.66
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = {
+					check_variable = {
+						party_pop_array^14 < 0.5
+					}
+					check_variable = {
+						party_pop_array^14 > 0.66
+					}
+				}
+			}
+			multiply_temp_variable = {
+				var = authoritarian_democrat_popularity_var_temp
+				value = 0.5
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = {
+					check_variable = {
+						party_pop_array^14 < 0.66
+					}
+					check_variable = {
+						party_pop_array^14 > 0.75
+					}
+				}
+			}
+			multiply_temp_variable = {
+				var = authoritarian_democrat_popularity_var_temp
+				value = 0.34
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = {
+					check_variable = {
+						party_pop_array^14 < 0.75
+					}
+				}
+			}
+			multiply_temp_variable = {
+				var = authoritarian_democrat_popularity_var_temp
+				value = 0.25
+			}
+		}
+	}
+	hidden_effect = {
+		set_temp_variable = {
+			party_index = 14
+		}
+		set_temp_variable = {
+			party_popularity_increase = authoritarian_democrat_popularity_var_temp
+		}
+		change_relative_party_popularity = yes
+		recalculate_party = yes
+	}
+	if = {
+		limit = {
+			NOT = {
+				tag = APA
+			}
+		}
+		custom_effect_tooltip = add_authoritarian_democrat_popularity_tooltip
+	}
+	else_if = {
+		limit = {
+			tag = APA
+		}
+		custom_effect_tooltip = APA_add_reactionary_popularity_tooltip
+		DSW_FRA_dep_APA_popularity_change = yes
+	}
+}
+DSW_FRA_dep_APA_popularity_change = {
+	set_variable = {
+		var = APA_totsoc_popularity_var
+		value = party_pop_array^4
+	}
+	set_variable = {
+		var = APA_totsoc_popularity_dynamic_var
+		value = APA_totsoc_popularity_var
+	}
+	multiply_variable = {
+		var = APA_totsoc_popularity_dynamic_var
+		value = 0.4
+	}
+	if = {
+		limit = {
+			check_variable = {
+				var = APA_support_jacobin_var
+				value = 0.2
+				compare = less_than
+			}
+		}
+		multiply_variable = {
+			var = APA_totsoc_popularity_dynamic_var
+			value = -1
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				var = APA_support_jacobin_var
+				value = 0.2
+				compare = greater_than_or_equals
+			}
+			check_variable = {
+				var = APA_support_jacobin_var
+				value = 0.4
+				compare = less_than
+			}
+		}
+		multiply_variable = {
+			var = APA_totsoc_popularity_dynamic_var
+			value = -0.5
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				var = APA_support_jacobin_var
+				value = 0.4
+				compare = greater_than_or_equals
+			}
+			check_variable = {
+				var = APA_support_jacobin_var
+				value = 0.6
+				compare = less_than
+			}
+		}
+		multiply_variable = {
+			var = APA_totsoc_popularity_dynamic_var
+			value = 0
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				var = APA_support_jacobin_var
+				value = 0.6
+				compare = greater_than_or_equals
+			}
+			check_variable = {
+				var = APA_support_jacobin_var
+				value = 0.8
+				compare = less_than
+			}
+		}
+		multiply_variable = {
+			var = APA_totsoc_popularity_dynamic_var
+			value = 0.5
+		}
+	}
+	set_variable = {
+		var = APA_autsoc_popularity_var
+		value = party_pop_array^19
+	}
+	set_variable = {
+		var = APA_autsoc_popularity_dynamic_var
+		value = APA_autsoc_popularity_var
+	}
+	if = {
+		limit = {
+			check_variable = {
+				var = APA_support_octoberist_var
+				value = 0.2
+				compare = less_than
+			}
+		}
+		multiply_variable = {
+			var = APA_autsoc_popularity_dynamic_var
+			value = -1
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				var = APA_support_octoberist_var
+				value = 0.2
+				compare = greater_than_or_equals
+			}
+			check_variable = {
+				var = APA_support_octoberist_var
+				value = 0.4
+				compare = less_than
+			}
+		}
+		multiply_variable = {
+			var = APA_autsoc_popularity_dynamic_var
+			value = -0.5
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				var = APA_support_octoberist_var
+				value = 0.4
+				compare = greater_than_or_equals
+			}
+			check_variable = {
+				var = APA_support_octoberist_var
+				value = 0.6
+				compare = less_than
+			}
+		}
+		multiply_variable = {
+			var = APA_autsoc_popularity_dynamic_var
+			value = 0
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				var = APA_support_octoberist_var
+				value = 0.6
+				compare = greater_than_or_equals
+			}
+			check_variable = {
+				var = APA_support_octoberist_var
+				value = 0.8
+				compare = less_than
+			}
+		}
+		multiply_variable = {
+			var = APA_autsoc_popularity_dynamic_var
+			value = 0.5
+		}
+	}
+	set_variable = {
+		var = APA_libsoc_popularity_var
+		value = party_pop_array^18
+	}
+	set_variable = {
+		var = APA_libsoc_popularity_dynamic_var
+		value = APA_libsoc_popularity_var
+	}
+	multiply_variable = {
+		var = APA_libsoc_popularity_dynamic_var
+		value = 0.2
+	}
+	if = {
+		limit = {
+			check_variable = {
+				var = APA_support_anarchist_var
+				value = 0.2
+				compare = less_than
+			}
+		}
+		multiply_variable = {
+			var = APA_libsoc_popularity_dynamic_var
+			value = -1
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				var = APA_support_anarchist_var
+				value = 0.2
+				compare = greater_than_or_equals
+			}
+			check_variable = {
+				var = APA_support_anarchist_var
+				value = 0.4
+				compare = less_than
+			}
+		}
+		multiply_variable = {
+			var = APA_libsoc_popularity_dynamic_var
+			value = -0.5
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				var = APA_support_anarchist_var
+				value = 0.4
+				compare = greater_than_or_equals
+			}
+			check_variable = {
+				var = APA_support_anarchist_var
+				value = 0.6
+				compare = less_than
+			}
+		}
+		multiply_variable = {
+			var = APA_libsoc_popularity_dynamic_var
+			value = 0
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				var = APA_support_anarchist_var
+				value = 0.6
+				compare = greater_than_or_equals
+			}
+			check_variable = {
+				var = APA_support_anarchist_var
+				value = 0.8
+				compare = less_than
+			}
+		}
+		multiply_variable = {
+			var = APA_libsoc_popularity_dynamic_var
+			value = 0.5
+		}
+	}
+	set_variable = {
+		var = APA_socdem_popularity_var
+		value = party_pop_array^3
+	}
+	set_variable = {
+		var = APA_socdem_popularity_dynamic_var
+		value = APA_socdem_popularity_var
+	}
+	multiply_variable = {
+		var = APA_socdem_popularity_dynamic_var
+		value = 0.4
+	}
+	if = {
+		limit = {
+			check_variable = {
+				var = APA_support_neosocialist_var
+				value = 0.2
+				compare = less_than
+			}
+		}
+		multiply_variable = {
+			var = APA_socdem_popularity_dynamic_var
+			value = -1
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				var = APA_support_neosocialist_var
+				value = 0.2
+				compare = greater_than_or_equals
+			}
+			check_variable = {
+				var = APA_support_neosocialist_var
+				value = 0.4
+				compare = less_than
+			}
+		}
+		multiply_variable = {
+			var = APA_socdem_popularity_dynamic_var
+			value = -0.5
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				var = APA_support_neosocialist_var
+				value = 0.4
+				compare = greater_than_or_equals
+			}
+			check_variable = {
+				var = APA_support_neosocialist_var
+				value = 0.6
+				compare = less_than
+			}
+		}
+		multiply_variable = {
+			var = APA_socdem_popularity_dynamic_var
+			value = 0
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				var = APA_support_neosocialist_var
+				value = 0.6
+				compare = greater_than_or_equals
+			}
+			check_variable = {
+				var = APA_support_neosocialist_var
+				value = 0.8
+				compare = less_than
+			}
+		}
+		multiply_variable = {
+			var = APA_socdem_popularity_dynamic_var
+			value = 0.5
+		}
+	}
+	set_variable = {
+		var = APA_reactionary_popularity_var
+		value = 0
+	}
+	add_to_variable = {
+		var = APA_reactionary_popularity_var
+		value = party_pop_array^2
+	}
+	add_to_variable = {
+		var = APA_reactionary_popularity_var
+		value = party_pop_array^16
+	}
+	add_to_variable = {
+		var = APA_reactionary_popularity_var
+		value = party_pop_array^1
+	}
+	add_to_variable = {
+		var = APA_reactionary_popularity_var
+		value = party_pop_array^14
+	}
+	set_variable = {
+		var = APA_reactionary_popularity_dynamic_var
+		value = APA_reactionary_popularity_var
+	}
+	multiply_variable = {
+		var = APA_reactionary_popularity_dynamic_var
+		value = -0.5
+	}
+	DSW_FRA_dep_APA_congress_support_change = yes
+}
+DSW_FRA_dep_APA_congress_support_change = {
+	set_temp_variable = {
+		var = APA_support_congress_total_var_temp
+		value = 0
+	}
+	set_temp_variable = {
+		var = APA_jacobin_support_congress_var_temp
+		value = party_pop_array^4
+	}
+	if = {
+		limit = {
+			check_variable = {
+				var = APA_support_jacobin_var
+				value = 0.6
+				compare = less_than
+			}
+		}
+		multiply_temp_variable = {
+			var = APA_jacobin_support_congress_var_temp
+			value = 0
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				var = APA_support_jacobin_var
+				value = 0.6
+				compare = greater_than_or_equals
+			}
+			check_variable = {
+				var = APA_support_jacobin_var
+				value = 0.8
+				compare = less_than
+			}
+		}
+		multiply_temp_variable = {
+			var = APA_jacobin_support_congress_var_temp
+			value = 0.5
+		}
+	}
+	add_to_temp_variable = {
+		var = APA_support_congress_total_var_temp
+		value = APA_jacobin_support_congress_var_temp
+	}
+	set_temp_variable = {
+		var = APA_octoberist_support_congress_var_temp
+		value = party_pop_array^19
+	}
+	if = {
+		limit = {
+			check_variable = {
+				var = APA_support_octoberist_var
+				value = 0.6
+				compare = less_than
+			}
+		}
+		multiply_temp_variable = {
+			var = APA_octoberist_support_congress_var_temp
+			value = 0
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				var = APA_support_octoberist_var
+				value = 0.6
+				compare = greater_than_or_equals
+			}
+			check_variable = {
+				var = APA_support_octoberist_var
+				value = 0.8
+				compare = less_than
+			}
+		}
+		multiply_variable = {
+			var = APA_octoberist_support_congress_var_temp
+			value = 0.5
+		}
+	}
+	add_to_temp_variable = {
+		var = APA_support_congress_total_var_temp
+		value = APA_octoberist_support_congress_var_temp
+	}
+	set_temp_variable = {
+		var = APA_anarchist_support_congress_var_temp
+		value = party_pop_array^18
+	}
+	if = {
+		limit = {
+			check_variable = {
+				var = APA_support_anarchist_var
+				value = 0.6
+				compare = less_than
+			}
+		}
+		multiply_temp_variable = {
+			var = APA_anarchist_support_congress_var_temp
+			value = 0
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				var = APA_support_anarchist_var
+				value = 0.6
+				compare = greater_than_or_equals
+			}
+			check_variable = {
+				var = APA_support_anarchist_var
+				value = 0.8
+				compare = less_than
+			}
+		}
+		multiply_temp_variable = {
+			var = APA_anarchist_support_congress_var_temp
+			value = 0.5
+		}
+	}
+	add_to_temp_variable = {
+		var = APA_support_congress_total_var_temp
+		value = APA_anarchist_support_congress_var_temp
+	}
+	set_temp_variable = {
+		var = APA_neosocialist_support_congress_var_temp
+		value = party_pop_array^3
+	}
+	if = {
+		limit = {
+			check_variable = {
+				var = APA_support_neosocialist_var
+				value = 0.6
+				compare = less_than
+			}
+		}
+		multiply_temp_variable = {
+			var = APA_neosocialist_support_congress_var_temp
+			value = 0
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				var = APA_support_neosocialist_var
+				value = 0.6
+				compare = greater_than_or_equals
+			}
+			check_variable = {
+				var = APA_support_neosocialist_var
+				value = 0.8
+				compare = less_than
+			}
+		}
+		multiply_temp_variable = {
+			var = APA_neosocialist_support_congress_var_temp
+			value = 0.5
+		}
+	}
+	add_to_temp_variable = {
+		var = APA_support_congress_total_var_temp
+		value = APA_neosocialist_support_congress_var_temp
+	}
+	set_variable = {
+		var = APA_support_congress_total_var
+		value = APA_support_congress_total_var_temp
+	}
+}
+DSW_FRA_dep_check_gdp = {
+	hidden_effect = {
+		if = {
+			limit = {
+				NOT = {
+					has_country_flag = anti_loop_flag
+				}
+				check_variable = {
+					var = income_var
+					value = 0
+					compare = less_than
+				}
+			}
+			set_variable = {
+				var = income_debt_var
+				value = income_var
+			}
+			multiply_variable = {
+				var = income_debt_var
+				value = -1
+			}
+			set_temp_variable = {
+				var = debt_var_temp
+				value = income_debt_var
+			}
+			set_country_flag = anti_loop_flag
+			DSW_FRA_dep_add_debt = yes
+			set_variable = {
+				var = income_var
+				value = 0
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = {
+					has_country_flag = anti_loop_flag
+				}
+				check_variable = {
+					var = debt_var
+					value = 0
+					compare = less_than
+				}
+			}
+			multiply_variable = {
+				var = debt_var
+				value = -1
+			}
+			set_temp_variable = {
+				var = income_var_temp
+				value = debt_var
+			}
+			set_country_flag = anti_loop_flag
+			DSW_FRA_dep_add_income = yes
+			set_variable = {
+				var = debt_var
+				value = 0
+			}
+		}
+		else_if = {
+			limit = {
+				has_country_flag = anti_loop_flag
+			}
+			clr_country_flag = anti_loop_flag
+		}
+	}
+	DSW_FRA_dep_update_economy = yes
+}
+DSW_FRA_dep_update_economy = {
+	set_variable = {
+		var = debt_gdp_var
+		value = debt_var
+	}
+	divide_variable = {
+		var = debt_gdp_var
+		value = gdp_total_var
+	}
+	set_variable = {
+		var = debt_dynamic_var
+		value = debt_gdp_var
+	}
+	set_variable = {
+		var = dtg_threshold_var
+		value = modifier@dtg_threshold
+	}
+	set_variable = {
+		var = dtg_threshold_factor_var
+		value = dtg_threshold_var
+	}
+	multiply_variable = {
+		var = dtg_threshold_factor_var
+		value = modifier@dtg_threshold_factor
+	}
+	add_to_variable = {
+		var = dtg_threshold_var
+		value = dtg_threshold_factor_var
+	}
+	subtract_from_variable = {
+		var = debt_dynamic_var
+		value = dtg_threshold_var
+	}
+	set_variable = {
+		var = debt_difference_var
+		value = debt_dynamic_var
+	}
+	set_variable = {
+		var = debt_stability_factor_dynamic_var
+		value = 0
+	}
+	set_variable = {
+		var = debt_negative_research_factor_dynamic_var
+		value = debt_dynamic_var
+	}
+	multiply_variable = {
+		var = debt_negative_research_factor_dynamic_var
+		value = -0.025
+	}
+	set_variable = {
+		var = debt_negative_development_factor_dynamic_var
+		value = debt_dynamic_var
+	}
+	multiply_variable = {
+		var = debt_negative_development_factor_dynamic_var
+		value = -0.0034
+	}
+	if = {
+		limit = {
+			check_variable = {
+				var = debt_difference_var
+				value = 0
+				compare = less_than
+			}
+		}
+		set_variable = {
+			var = debt_stability_factor_dynamic_var
+			value = debt_dynamic_var
+		}
+		multiply_variable = {
+			var = debt_stability_factor_dynamic_var
+			value = -0.134
+		}
+		set_variable = {
+			var = debt_production_factor_dynamic_var
+			value = debt_dynamic_var
+		}
+		multiply_variable = {
+			var = debt_production_factor_dynamic_var
+			value = -0.067
+		}
+		set_variable = {
+			var = debt_development_factor_dynamic_var
+			value = debt_dynamic_var
+		}
+		multiply_variable = {
+			var = debt_development_factor_dynamic_var
+			value = -0.0067
+		}
+		set_variable = {
+			var = debt_dynamic_var
+			value = 0
+		}
+	}
+	else = {
+		multiply_variable = {
+			var = debt_dynamic_var
+			value = -0.1
+		}
+	}
+	if = {
+		limit = {
+			check_variable = {
+				var = inflation_var
+				value = 0
+				compare = greater_than
+			}
+		}
+		set_variable = {
+			var = inflation_consumer_goods_factor_dynamic_var
+			value = inflation_var
+		}
+		multiply_variable = {
+			var = inflation_consumer_goods_factor_dynamic_var
+			value = 1
+		}
+		set_variable = {
+			var = inflation_stability_factor_dynamic_var
+			value = inflation_var
+		}
+		multiply_variable = {
+			var = inflation_stability_factor_dynamic_var
+			value = -0.5
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				var = inflation_var
+				value = 0
+				compare = less_than
+			}
+		}
+		set_variable = {
+			var = inflation_production_factory_max_efficiency_factor_dynamic_var
+			value = inflation_var
+		}
+		multiply_variable = {
+			var = inflation_production_factory_max_efficiency_factor_dynamic_var
+			value = 1
+		}
+		set_variable = {
+			var = inflation_production_speed_buildings_factor_dynamic_var
+			value = inflation_var
+		}
+		multiply_variable = {
+			var = inflation_production_speed_buildings_factor_dynamic_var
+			value = 2
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				var = inflation_var
+				value = 0
+				compare = equals
+			}
+		}
+		set_variable = {
+			var = inflation_production_factory_max_efficiency_factor_dynamic_var
+			value = inflation_var
+		}
+		multiply_variable = {
+			var = inflation_production_factory_max_efficiency_factor_dynamic_var
+			value = 1
+		}
+		set_variable = {
+			var = inflation_production_speed_buildings_factor_dynamic_var
+			value = inflation_var
+		}
+		multiply_variable = {
+			var = inflation_production_speed_buildings_factor_dynamic_var
+			value = 0.5
+		}
+	}
+}
+DSW_FRA_dep_Fascist_EU_join_effect = {
+	set_variable = {
+		var = FAF_EUN_army_attack_against_minor_factor_dynamic_var
+		value = GLOBAL.FAF_EUN_army_attack_against_minor_factor_dynamic_var
+	}
+	set_variable = {
+		var = FAF_EUN_army_core_defence_factor_dynamic_var
+		value = GLOBAL.FAF_EUN_army_core_defence_factor_dynamic_var
+	}
+	set_variable = {
+		var = FAF_EUN_consumer_goods_expected_value_dynamic_var
+		value = GLOBAL.FAF_EUN_consumer_goods_expected_value_dynamic_var
+	}
+	set_variable = {
+		var = FAF_EUN_political_power_cost_dynamic_var
+		value = GLOBAL.FAF_EUN_political_power_cost_dynamic_var
+	}
+	set_variable = {
+		var = FAF_EUN_society_development_monthly_dynamic_var
+		value = GLOBAL.FAF_EUN_society_development_monthly_dynamic_var
+	}
+	set_variable = {
+		var = FAF_EUN_industrial_development_monthly_dynamic_var
+		value = GLOBAL.FAF_EUN_industrial_development_monthly_dynamic_var
+	}
+	add_dynamic_modifier = {
+		modifier = FAF_european_nation_dynamic
+	}
+}
+DSW_FRA_dep_napoleon_EU_join_effect = {
+	set_variable = {
+		var = FAF_continental_system_trade_opinion_factor_dynamic_var
+		value = GLOBAL.FAF_continental_system_trade_opinion_factor_dynamic_var
+	}
+	set_variable = {
+		var = FAF_continental_system_naval_defense_factor_dynamic_var
+		value = GLOBAL.FAF_continental_system_naval_defense_factor_dynamic_var
+	}
+	set_variable = {
+		var = FAF_continental_system_naval_attrition_dynamic_var
+		value = GLOBAL.FAF_continental_system_naval_attrition_dynamic_var
+	}
+	set_variable = {
+		var = FAF_continental_system_naval_coordination_dynamic_var
+		value = GLOBAL.FAF_continental_system_naval_coordination_dynamic_var
+	}
+	set_variable = {
+		var = FAF_continental_system_naval_damage_factor_dynamic_var
+		value = GLOBAL.FAF_continental_system_naval_damage_factor_dynamic_var
+	}
+	set_variable = {
+		var = FAF_continental_system_national_socialist_acceptance_dynamic_var
+		value = GLOBAL.FAF_continental_system_national_socialist_acceptance_dynamic_var
+	}
+	set_variable = {
+		var = FAF_continental_system_nationalist_acceptance_dynamic_var
+		value = GLOBAL.FAF_continental_system_nationalist_acceptance_dynamic_var
+	}
+	set_variable = {
+		var = FAF_continental_system_fascist_acceptance_dynamic_var
+		value = GLOBAL.FAF_continental_system_fascist_acceptance_dynamic_var
+	}
+	add_dynamic_modifier = {
+		modifier = FAF_continental_system_dynamic
+	}
+}
+DSW_FRA_dep_NATO_unity_increase = {
+	every_country = {
+		limit = {
+			OR = {
+				has_idea = NATO_unity_1
+				has_idea = NATO_unity_2
+				has_idea = NATO_unity_3
+				has_idea = NATO_unity_4
+				has_idea = NATO_unity_5
+			}
+		}
+		if = {
+			limit = {
+				has_idea = NATO_unity_1
+			}
+			swap_ideas = {
+				remove_idea = NATO_unity_1
+				add_idea = NATO_unity_2
+			}
+		}
+		else_if = {
+			limit = {
+				has_idea = NATO_unity_2
+			}
+			swap_ideas = {
+				remove_idea = NATO_unity_2
+				add_idea = NATO_unity_3
+			}
+		}
+		else_if = {
+			limit = {
+				has_idea = NATO_unity_3
+			}
+			swap_ideas = {
+				remove_idea = NATO_unity_3
+				add_idea = NATO_unity_4
+			}
+		}
+		else_if = {
+			limit = {
+				has_idea = NATO_unity_4
+			}
+			swap_ideas = {
+				remove_idea = NATO_unity_4
+				add_idea = NATO_unity_5
+			}
+		}
+	}
+}
+DSW_FRA_dep_restore_previous_government_type = {
+	hidden_effect = {
+		if = {
+			limit = {
+				has_variable = original_government_type
+			}
+			if = {
+				limit = {
+					has_country_flag = original_government_type_had_elections
+				}
+				clr_country_flag = original_government_type_had_elections
+				set_country_flag = DSW_FRA_tfr_active
+				set_politics = {
+					ruling_party = var:original_government_type
+					elections_allowed = no
+				}
+				hidden_effect = {
+					DSW_FRA_refresh_party_leader = yes
+				}
+			}
+			else = {
+				set_country_flag = DSW_FRA_tfr_active
+				set_politics = {
+					ruling_party = var:original_government_type
+					elections_allowed = no
+				}
+				hidden_effect = {
+					DSW_FRA_refresh_party_leader = yes
+				}
+			}
+		}
+		clear_variable = original_government_type
+		if = {
+			limit = {
+				check_variable = {
+					original_popularities^num > 0
+				}
+			}
+			set_variable = {
+				party_pop_array^0 = 0
+			}
+			set_variable = {
+				party_pop_array^1 = 0
+			}
+			set_variable = {
+				party_pop_array^2 = 0
+			}
+			set_variable = {
+				party_pop_array^3 = 0
+			}
+			set_variable = {
+				party_pop_array^4 = 0
+			}
+			set_variable = {
+				party_pop_array^5 = 0
+			}
+			set_variable = {
+				party_pop_array^6 = 0
+			}
+			set_variable = {
+				party_pop_array^7 = 0
+			}
+			set_variable = {
+				party_pop_array^8 = 0
+			}
+			set_variable = {
+				party_pop_array^9 = 0
+			}
+			set_variable = {
+				party_pop_array^10 = 0
+			}
+			set_variable = {
+				party_pop_array^11 = 0
+			}
+			set_variable = {
+				party_pop_array^12 = 0
+			}
+			set_variable = {
+				party_pop_array^13 = 0
+			}
+			set_variable = {
+				party_pop_array^14 = 0
+			}
+			set_variable = {
+				party_pop_array^15 = 0
+			}
+			set_variable = {
+				party_pop_array^16 = 0
+			}
+			set_variable = {
+				party_pop_array^17 = 0
+			}
+			set_variable = {
+				party_pop_array^18 = 0
+			}
+			set_variable = {
+				party_pop_array^19 = 0
+			}
+			set_variable = {
+				party_pop_array^20 = 0
+			}
+			set_variable = {
+				party_pop_array^21 = 0
+			}
+			set_variable = {
+				party_pop_array^22 = 0
+			}
+			set_variable = {
+				party_pop_array^23 = 0
+			}
+			set_variable = {
+				party_pop_array^4 = original_popularities^0
+			}
+			divide_variable = {
+				party_pop_array^4 = 100
+			}
+			set_variable = {
+				party_pop_array^19 = original_popularities^1
+			}
+			divide_variable = {
+				party_pop_array^19 = 100
+			}
+			set_variable = {
+				party_pop_array^18 = original_popularities^2
+			}
+			divide_variable = {
+				party_pop_array^18 = 100
+			}
+			set_variable = {
+				party_pop_array^3 = original_popularities^3
+			}
+			divide_variable = {
+				party_pop_array^3 = 100
+			}
+			set_variable = {
+				party_pop_array^2 = original_popularities^4
+			}
+			divide_variable = {
+				party_pop_array^2 = 100
+			}
+			set_variable = {
+				party_pop_array^16 = original_popularities^5
+			}
+			divide_variable = {
+				party_pop_array^16 = 100
+			}
+			set_variable = {
+				party_pop_array^1 = original_popularities^6
+			}
+			divide_variable = {
+				party_pop_array^1 = 100
+			}
+			set_variable = {
+				party_pop_array^14 = original_popularities^7
+			}
+			divide_variable = {
+				party_pop_array^14 = 100
+			}
+			set_variable = {
+				party_pop_array^22 = original_popularities^8
+			}
+			divide_variable = {
+				party_pop_array^22 = 100
+			}
+			set_variable = {
+				party_pop_array^21 = original_popularities^9
+			}
+			divide_variable = {
+				party_pop_array^21 = 100
+			}
+			set_variable = {
+				party_pop_array^20 = original_popularities^10
+			}
+			divide_variable = {
+				party_pop_array^20 = 100
+			}
+			recalculate_party = yes
+			clear_array = original_popularities
+		}
+		if = {
+			limit = {
+				check_variable = {
+					original_coalitions^num > 0
+				}
+			}
+			for_each_loop = {
+				array = original_coalitions
+				set_temp_variable = {
+					coalition_partner_var = v
+				}
+				DSW_FRA_dep_add_to_coalition = yes
+			}
+			clear_array = original_coalitions
+		}
+		clr_country_flag = colonial_government
+		clr_country_flag = integrated_puppet
+		clr_country_flag = occupied_puppet
+		clr_country_flag = autonomous_puppet
+		clr_country_flag = nominal_puppet
+	}
+	if = {
+		limit = {
+			has_variable = DSW_FRA_saved_ruling_party
+		}
+		set_variable = {
+			ruling_party = DSW_FRA_saved_ruling_party
+		}
+		clear_variable = DSW_FRA_saved_ruling_party
+	}
+	if = {
+		limit = {
+			has_variable = DSW_FRA_saved_ruling_party
+		}
+		set_variable = {
+			ruling_party = DSW_FRA_saved_ruling_party
+		}
+		clear_variable = DSW_FRA_saved_ruling_party
+	}
+	if = {
+		limit = {
+			has_variable = DSW_FRA_saved_ruling_party
+		}
+		set_variable = {
+			ruling_party = DSW_FRA_saved_ruling_party
+		}
+		clear_variable = DSW_FRA_saved_ruling_party
+	}
+	if = {
+		limit = {
+			has_variable = DSW_FRA_saved_ruling_party
+		}
+		set_variable = {
+			ruling_party = DSW_FRA_saved_ruling_party
+		}
+		clear_variable = DSW_FRA_saved_ruling_party
+	}
+	if = {
+		limit = {
+			has_variable = DSW_FRA_saved_ruling_party
+		}
+		set_variable = {
+			ruling_party = DSW_FRA_saved_ruling_party
+		}
+		clear_variable = DSW_FRA_saved_ruling_party
+	}
+}
+DSW_FRA_dep_increase_training = {
+	if = {
+		limit = {
+			has_idea = higher_training
+		}
+		swap_ideas = {
+			remove_idea = higher_training
+			add_idea = highest_training
+		}
+	}
+	if = {
+		limit = {
+			has_idea = high_training
+		}
+		swap_ideas = {
+			remove_idea = high_training
+			add_idea = higher_training
+		}
+	}
+	if = {
+		limit = {
+			has_idea = medium_training
+		}
+		swap_ideas = {
+			remove_idea = medium_training
+			add_idea = high_training
+		}
+	}
+	if = {
+		limit = {
+			has_idea = low_training
+		}
+		swap_ideas = {
+			remove_idea = low_training
+			add_idea = medium_training
+		}
+	}
+	if = {
+		limit = {
+			has_idea = lower_training
+		}
+		swap_ideas = {
+			remove_idea = lower_training
+			add_idea = low_training
+		}
+	}
+}
+DSW_FRA_dep_NATO_unity_decrease = {
+	every_country = {
+		if = {
+			limit = {
+				has_idea = NATO_unity_4
+			}
+			swap_ideas = {
+				remove_idea = NATO_unity_4
+				add_idea = NATO_unity_3
+			}
+		}
+		else_if = {
+			limit = {
+				has_idea = NATO_unity_3
+			}
+			swap_ideas = {
+				remove_idea = NATO_unity_3
+				add_idea = NATO_unity_2
+			}
+		}
+		else_if = {
+			limit = {
+				has_idea = NATO_unity_2
+			}
+			swap_ideas = {
+				remove_idea = NATO_unity_2
+				add_idea = NATO_unity_1
+			}
+		}
+	}
+}
+DSW_FRA_dep_increase_state_category = {
+	if = {
+		limit = {
+			OR = {
+				has_state_category = wasteland
+				has_state_category = enclave
+				has_state_category = tiny_island
+			}
+		}
+		set_state_category = pastoral
+	}
+	else_if = {
+		limit = {
+			has_state_category = pastoral
+		}
+		effect_tooltip = {
+			add_extra_state_shared_building_slots = 1
+		}
+		set_state_category = rural
+	}
+	else_if = {
+		limit = {
+			has_state_category = rural
+		}
+		effect_tooltip = {
+			add_extra_state_shared_building_slots = 1
+		}
+		set_state_category = village
+	}
+	else_if = {
+		limit = {
+			has_state_category = village
+		}
+		effect_tooltip = {
+			add_extra_state_shared_building_slots = 1
+		}
+		set_state_category = town
+	}
+	else_if = {
+		limit = {
+			has_state_category = town
+		}
+		effect_tooltip = {
+			add_extra_state_shared_building_slots = 1
+		}
+		set_state_category = large_town
+	}
+	else_if = {
+		limit = {
+			has_state_category = large_town
+		}
+		effect_tooltip = {
+			add_extra_state_shared_building_slots = 1
+		}
+		set_state_category = suburb
+	}
+	else_if = {
+		limit = {
+			has_state_category = suburb
+		}
+		effect_tooltip = {
+			add_extra_state_shared_building_slots = 1
+		}
+		set_state_category = large_suburb
+	}
+	else_if = {
+		limit = {
+			has_state_category = large_suburb
+		}
+		effect_tooltip = {
+			add_extra_state_shared_building_slots = 1
+		}
+		set_state_category = city
+	}
+	else_if = {
+		limit = {
+			has_state_category = city
+		}
+		effect_tooltip = {
+			add_extra_state_shared_building_slots = 1
+		}
+		set_state_category = large_city
+	}
+	else_if = {
+		limit = {
+			has_state_category = large_city
+		}
+		effect_tooltip = {
+			add_extra_state_shared_building_slots = 1
+		}
+		set_state_category = metropolis
+	}
+	else_if = {
+		limit = {
+			has_state_category = metropolis
+		}
+		effect_tooltip = {
+			add_extra_state_shared_building_slots = 1
+		}
+		set_state_category = conurbation
+	}
+	else_if = {
+		limit = {
+			has_state_category = conurbation
+		}
+		effect_tooltip = {
+			add_extra_state_shared_building_slots = 1
+		}
+		set_state_category = megalopolis
+	}
+	else = {
+		add_extra_state_shared_building_slots = 1
+	}
+	custom_effect_tooltip = increase_state_category_by_one_level_tt
+}
+DSW_FRA_dep_get_current_government_type = {
+	set_variable = {
+		DSW_FRA_saved_ruling_party = ruling_party
+	}
+	set_variable = {
+		DSW_FRA_saved_ruling_party = ruling_party
+	}
+	set_variable = {
+		DSW_FRA_saved_ruling_party = ruling_party
+	}
+	set_variable = {
+		DSW_FRA_saved_ruling_party = ruling_party
+	}
+	set_variable = {
+		DSW_FRA_saved_ruling_party = ruling_party
+	}
+	clear_variable = original_government_type
+	set_variable = {
+		original_government_type = current_party_ideology_group
+	}
+	if = {
+		limit = {
+			check_variable = {
+				DSW_FRA_scripted_elections = 1
+			}
+		}
+		set_country_flag = original_government_type_had_elections
+	}
+	DSW_FRA_dep_get_current_popularities = yes
+	if = {
+		limit = {
+			has_coalition = yes
+		}
+		for_each_loop = {
+			array = coalition_partners
+			add_to_array = {
+				original_coalitions = v
+			}
+		}
+	}
+	if = {
+		limit = {
+			has_autonomy_state = colonial_government
+		}
+		set_country_flag = colonial_government
+	}
+	else_if = {
+		limit = {
+			has_autonomy_state = integrated_puppet
+		}
+		set_country_flag = integrated_puppet
+	}
+	else_if = {
+		limit = {
+			has_autonomy_state = occupied_puppet
+		}
+		set_country_flag = occupied_puppet
+	}
+	else_if = {
+		limit = {
+			has_autonomy_state = autonomous_puppet
+		}
+		set_country_flag = autonomous_puppet
+	}
+	else_if = {
+		limit = {
+			has_autonomy_state = nominal_puppet
+		}
+		set_country_flag = nominal_puppet
+	}
+	else_if = {
+		limit = {
+			is_subject = yes
+		}
+		set_country_flag = default_puppet
+	}
+}
+DSW_FRA_dep_get_current_popularities = {
+	clear_array = original_popularities
+	add_to_array = {
+		original_popularities = party_popularity_100@totalitarian_socialist
+	}
+	add_to_array = {
+		original_popularities = party_popularity_100@communist
+	}
+	add_to_array = {
+		original_popularities = party_popularity_100@libertarian_socialist
+	}
+	add_to_array = {
+		original_popularities = party_popularity_100@social_democrat
+	}
+	add_to_array = {
+		original_popularities = party_popularity_100@social_liberal
+	}
+	add_to_array = {
+		original_popularities = party_popularity_100@market_liberal
+	}
+	add_to_array = {
+		original_popularities = party_popularity_100@conservative
+	}
+	add_to_array = {
+		original_popularities = party_popularity_100@authoritarian_democrat
+	}
+	add_to_array = {
+		original_popularities = party_popularity_100@nationalist
+	}
+	add_to_array = {
+		original_popularities = party_popularity_100@fascist
+	}
+	set_temp_variable = {
+		sum = 100
+	}
+	for_each_loop = {
+		array = original_popularities
+		subtract_from_temp_variable = {
+			sum = v
+		}
+	}
+	add_to_array = {
+		original_popularities = sum
+	}
+}
+DSW_FRA_dep_add_total_campaign_slot = {
+	custom_effect_tooltip = add_campaign_slot_tooltip
+	if = {
+		limit = {
+			check_variable = {
+				var = campaign_slot_total_var
+				value = 0
+				compare = less_than_or_equals
+			}
+		}
+		set_variable = {
+			var = campaign_slot_total_var
+			value = campaign_slot_total_var_temp
+		}
+		set_variable = {
+			var = campaign_slot_var
+			value = campaign_slot_total_var_temp
+		}
+		custom_effect_tooltip = unlocks_campaigns_tooltip
+	}
+	else = {
+		add_to_variable = {
+			var = campaign_slot_total_var
+			value = campaign_slot_total_var_temp
+		}
+		add_to_variable = {
+			var = campaign_slot_var
+			value = campaign_slot_total_var_temp
+		}
+	}
+}
+DSW_FRA_dep_increase_trade = {
+	if = {
+		limit = {
+			has_idea = high_trade
+		}
+		swap_ideas = {
+			remove_idea = high_trade
+			add_idea = higher_trade
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = medium_trade
+		}
+		swap_ideas = {
+			remove_idea = medium_trade
+			add_idea = high_trade
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = low_trade
+		}
+		swap_ideas = {
+			remove_idea = low_trade
+			add_idea = medium_trade
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = lower_trade
+		}
+		swap_ideas = {
+			remove_idea = lower_trade
+			add_idea = low_trade
+		}
+	}
+}
+DSW_FRA_dep_add_inflation = {
+	custom_effect_tooltip = add_inflation_tooltip
+	add_to_variable = {
+		var = inflation_var
+		value = inflation_var_temp
+	}
+	DSW_FRA_dep_update_economy = yes
+}
+DSW_FRA_dep_decrease_immigration = {
+	if = {
+		limit = {
+			has_idea = lower_immigration
+		}
+		swap_ideas = {
+			remove_idea = lower_immigration
+			add_idea = FAF_involuntary_repatriation_law
+		}
+	}
+	if = {
+		limit = {
+			has_idea = low_immigration
+		}
+		swap_ideas = {
+			remove_idea = low_immigration
+			add_idea = lower_immigration
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = medium_immigration
+		}
+		swap_ideas = {
+			remove_idea = medium_immigration
+			add_idea = low_immigration
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = high_immigration
+		}
+		swap_ideas = {
+			remove_idea = high_immigration
+			add_idea = medium_immigration
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = higher_immigration
+		}
+		swap_ideas = {
+			remove_idea = higher_immigration
+			add_idea = high_immigration
+		}
+	}
+}
+DSW_FRA_dep_increase_safety = {
+	if = {
+		limit = {
+			has_idea = high_safety
+		}
+		swap_ideas = {
+			remove_idea = high_safety
+			add_idea = higher_safety
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = medium_safety
+		}
+		swap_ideas = {
+			remove_idea = medium_safety
+			add_idea = high_safety
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = low_safety
+		}
+		swap_ideas = {
+			remove_idea = low_safety
+			add_idea = medium_safety
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = lower_safety
+		}
+		swap_ideas = {
+			remove_idea = lower_safety
+			add_idea = low_safety
+		}
+	}
+}
+DSW_FRA_dep_add_debt_with_inflation = {
+	set_temp_variable = {
+		var = debt_factor_var_temp
+		value = debt_var_temp
+	}
+	multiply_temp_variable = {
+		var = debt_factor_var_temp
+		value = inflation_var
+	}
+	add_to_temp_variable = {
+		var = debt_var_temp
+		value = debt_factor_var_temp
+	}
+	custom_effect_tooltip = add_debt_tooltip
+	add_to_variable = {
+		var = debt_var
+		value = debt_var_temp
+	}
+	DSW_FRA_dep_check_gdp = yes
+	hidden_effect = {
+		set_variable = {
+			var = debt_trillion_var
+			value = debt_var
+		}
+		multiply_variable = {
+			var = debt_trillion_var
+			value = 0.001
+		}
+		set_variable = {
+			var = debt_billion_var
+			value = debt_var
+		}
+		set_variable = {
+			var = debt_million_var
+			value = debt_var
+		}
+		multiply_variable = {
+			debt_million_var = 1000
+		}
+	}
+}
+DSW_FRA_dep_increase_education = {
+	if = {
+		limit = {
+			has_idea = higher_education
+		}
+		add_stability = 0.05
+	}
+	else_if = {
+		limit = {
+			has_idea = high_education
+		}
+		swap_ideas = {
+			remove_idea = high_education
+			add_idea = higher_education
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = medium_education
+		}
+		swap_ideas = {
+			remove_idea = medium_education
+			add_idea = high_education
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = low_education
+		}
+		swap_ideas = {
+			remove_idea = low_education
+			add_idea = medium_education
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = lower_education
+		}
+		swap_ideas = {
+			remove_idea = lower_education
+			add_idea = low_education
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = privatized_education
+		}
+		set_temp_variable = {
+			party_index = 16
+		}
+		set_temp_variable = {
+			party_popularity_increase = 0.025
+		}
+		change_relative_party_popularity = yes
+		recalculate_party = yes
+		add_political_power = 25
+	}
+}
+DSW_FRA_dep_increase_interest_rates = {
+	if = {
+		limit = {
+			has_idea = high_interest_rates
+		}
+		swap_ideas = {
+			remove_idea = high_interest_rates
+			add_idea = higher_interest_rates
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = medium_interest_rates
+		}
+		swap_ideas = {
+			remove_idea = medium_interest_rates
+			add_idea = high_interest_rates
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = low_interest_rates
+		}
+		swap_ideas = {
+			remove_idea = low_interest_rates
+			add_idea = medium_interest_rates
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = lower_interest_rates
+		}
+		swap_ideas = {
+			remove_idea = lower_interest_rates
+			add_idea = low_interest_rates
+		}
+	}
+}
+DSW_FRA_dep_decrease_education = {
+	if = {
+		limit = {
+			has_idea = lower_education
+		}
+		add_stability = 0.05
+	}
+	else_if = {
+		limit = {
+			has_idea = low_education
+		}
+		swap_ideas = {
+			remove_idea = low_education
+			add_idea = lower_education
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = medium_education
+		}
+		swap_ideas = {
+			remove_idea = medium_education
+			add_idea = low_education
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = high_education
+		}
+		swap_ideas = {
+			remove_idea = high_education
+			add_idea = medium_education
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = higher_education
+		}
+		swap_ideas = {
+			remove_idea = higher_education
+			add_idea = high_education
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = privatized_education
+		}
+		set_temp_variable = {
+			party_index = 16
+		}
+		set_temp_variable = {
+			party_popularity_increase = -0.025
+		}
+		change_relative_party_popularity = yes
+		recalculate_party = yes
+		add_political_power = -25
+	}
+}
+DSW_FRA_dep_increase_welfare = {
+	if = {
+		limit = {
+			has_idea = high_welfare
+		}
+		swap_ideas = {
+			remove_idea = high_welfare
+			add_idea = higher_welfare
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = medium_welfare
+		}
+		swap_ideas = {
+			remove_idea = medium_welfare
+			add_idea = high_welfare
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = low_welfare
+		}
+		swap_ideas = {
+			remove_idea = low_welfare
+			add_idea = medium_welfare
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = lower_welfare
+		}
+		swap_ideas = {
+			remove_idea = lower_welfare
+			add_idea = low_welfare
+		}
+	}
+}
+DSW_FRA_dep_decrease_taxes = {
+	if = {
+		limit = {
+			has_idea = low_taxes
+		}
+		swap_ideas = {
+			remove_idea = low_taxes
+			add_idea = lower_taxes
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = medium_taxes
+		}
+		swap_ideas = {
+			remove_idea = medium_taxes
+			add_idea = low_taxes
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = high_taxes
+		}
+		swap_ideas = {
+			remove_idea = high_taxes
+			add_idea = medium_taxes
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = higher_taxes
+		}
+		swap_ideas = {
+			remove_idea = higher_taxes
+			add_idea = high_taxes
+		}
+	}
+}
+DSW_FRA_dep_increase_immigration = {
+	if = {
+		limit = {
+			has_idea = high_immigration
+		}
+		swap_ideas = {
+			remove_idea = high_immigration
+			add_idea = higher_immigration
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = medium_immigration
+		}
+		swap_ideas = {
+			remove_idea = medium_immigration
+			add_idea = high_immigration
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = low_immigration
+		}
+		swap_ideas = {
+			remove_idea = low_immigration
+			add_idea = medium_immigration
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = lower_immigration
+		}
+		swap_ideas = {
+			remove_idea = lower_immigration
+			add_idea = low_immigration
+		}
+	}
+}
+DSW_FRA_dep_decrease_safety = {
+	if = {
+		limit = {
+			has_idea = low_safety
+		}
+		swap_ideas = {
+			remove_idea = low_safety
+			add_idea = lower_safety
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = medium_safety
+		}
+		swap_ideas = {
+			remove_idea = medium_safety
+			add_idea = low_safety
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = high_safety
+		}
+		swap_ideas = {
+			remove_idea = high_safety
+			add_idea = medium_safety
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = higher_safety
+		}
+		swap_ideas = {
+			remove_idea = higher_safety
+			add_idea = high_safety
+		}
+	}
+}
+DSW_FRA_dep_decrease_interest_rates = {
+	if = {
+		limit = {
+			has_idea = low_interest_rates
+		}
+		swap_ideas = {
+			remove_idea = low_interest_rates
+			add_idea = lower_interest_rates
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = medium_interest_rates
+		}
+		swap_ideas = {
+			remove_idea = medium_interest_rates
+			add_idea = low_interest_rates
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = high_interest_rates
+		}
+		swap_ideas = {
+			remove_idea = high_interest_rates
+			add_idea = medium_interest_rates
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = higher_interest_rates
+		}
+		swap_ideas = {
+			remove_idea = higher_interest_rates
+			add_idea = high_interest_rates
+		}
+	}
+}
+DSW_FRA_dep_decrease_welfare = {
+	if = {
+		limit = {
+			has_idea = low_welfare
+		}
+		swap_ideas = {
+			remove_idea = low_welfare
+			add_idea = lower_welfare
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = medium_welfare
+		}
+		swap_ideas = {
+			remove_idea = medium_welfare
+			add_idea = low_welfare
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = high_welfare
+		}
+		swap_ideas = {
+			remove_idea = high_welfare
+			add_idea = medium_welfare
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = higher_welfare
+		}
+		swap_ideas = {
+			remove_idea = higher_welfare
+			add_idea = high_welfare
+		}
+	}
+}
+DSW_FRA_dep_decrease_conscription = {
+	if = {
+		limit = {
+			has_idea = highest_conscription
+		}
+		swap_ideas = {
+			remove_idea = highest_conscription
+			add_idea = higher_conscription
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = higher_conscription
+		}
+		swap_ideas = {
+			remove_idea = higher_conscription
+			add_idea = high_conscription
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = high_conscription
+		}
+		swap_ideas = {
+			remove_idea = high_conscription
+			add_idea = medium_conscription
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = medium_conscription
+		}
+		swap_ideas = {
+			remove_idea = medium_conscription
+			add_idea = low_conscription
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = low_conscription
+		}
+		swap_ideas = {
+			remove_idea = low_conscription
+			add_idea = lower_conscription
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = lower_conscription
+		}
+		swap_ideas = {
+			remove_idea = lower_conscription
+			add_idea = lowest_conscription
+		}
+	}
+}
+DSW_FRA_dep_change_economy_type_worker_controlled = {
+	custom_effect_tooltip = change_economy_type_worker_controlled_economy_tt
+	hidden_effect = {
+		remove_economy_types = yes
+		add_ideas = ZZZ_worker_controlled_economy
+	}
+}
+DSW_FRA_dep_increase_exemptions = {
+	if = {
+		limit = {
+			has_idea = religious_exemptions
+		}
+		swap_ideas = {
+			remove_idea = religious_exemptions
+			add_idea = general_exemptions
+		}
+	}
+	if = {
+		limit = {
+			has_idea = civil_service_exemptions
+		}
+		swap_ideas = {
+			remove_idea = civil_service_exemptions
+			add_idea = religious_exemptions
+		}
+	}
+	if = {
+		limit = {
+			has_idea = education_exemptions
+		}
+		swap_ideas = {
+			remove_idea = education_exemptions
+			add_idea = civil_service_exemptions
+		}
+	}
+	if = {
+		limit = {
+			has_idea = no_draft_exemptions
+		}
+		swap_ideas = {
+			remove_idea = no_draft_exemptions
+			add_idea = education_exemptions
+		}
+	}
+}
+DSW_FRA_dep_increase_female_service = {
+	if = {
+		limit = {
+			has_idea = higher_female_service
+		}
+		add_stability = 0.05
+	}
+	else_if = {
+		limit = {
+			has_idea = high_female_service
+		}
+		swap_ideas = {
+			remove_idea = high_female_service
+			add_idea = higher_female_service
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = medium_female_service
+		}
+		swap_ideas = {
+			remove_idea = medium_female_service
+			add_idea = high_female_service
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = low_female_service
+		}
+		swap_ideas = {
+			remove_idea = low_female_service
+			add_idea = medium_female_service
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = lower_female_service
+		}
+		swap_ideas = {
+			remove_idea = lower_female_service
+			add_idea = low_female_service
+		}
+	}
+}
+DSW_FRA_dep_increase_conscription = {
+	if = {
+		limit = {
+			has_idea = higher_conscription
+		}
+		swap_ideas = {
+			remove_idea = higher_conscription
+			add_idea = highest_conscription
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = high_conscription
+		}
+		swap_ideas = {
+			remove_idea = high_conscription
+			add_idea = higher_conscription
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = medium_conscription
+		}
+		swap_ideas = {
+			remove_idea = medium_conscription
+			add_idea = high_conscription
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = low_conscription
+		}
+		swap_ideas = {
+			remove_idea = low_conscription
+			add_idea = medium_conscription
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = lower_conscription
+		}
+		swap_ideas = {
+			remove_idea = lower_conscription
+			add_idea = low_conscription
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = lowest_conscription
+		}
+		swap_ideas = {
+			remove_idea = lowest_conscription
+			add_idea = lower_conscription
+		}
+	}
+}
+DSW_FRA_dep_change_government_type_nazi_dictatorship = {
+	custom_effect_tooltip = change_gov_type_nazi_dictatorship_tt
+	hidden_effect = {
+		DSW_FRA_dep_remove_gov_types = yes
+		add_ideas = ZZZ_nazi_dictatorship
+	}
+}
+DSW_FRA_dep_change_economy_type_corporatism = {
+	custom_effect_tooltip = change_economy_type_corporatism_tt
+	hidden_effect = {
+		remove_economy_types = yes
+		add_ideas = ZZZ_corporatism
+	}
+}
+DSW_FRA_dep_decrease_training = {
+	if = {
+		limit = {
+			has_idea = highest_training
+		}
+		swap_ideas = {
+			remove_idea = highest_training
+			add_idea = higher_training
+		}
+	}
+	if = {
+		limit = {
+			has_idea = higher_training
+		}
+		swap_ideas = {
+			remove_idea = higher_training
+			add_idea = high_training
+		}
+	}
+	if = {
+		limit = {
+			has_idea = high_training
+		}
+		swap_ideas = {
+			remove_idea = high_training
+			add_idea = medium_training
+		}
+	}
+	if = {
+		limit = {
+			has_idea = medium_training
+		}
+		swap_ideas = {
+			remove_idea = medium_training
+			add_idea = low_training
+		}
+	}
+	if = {
+		limit = {
+			has_idea = low_training
+		}
+		swap_ideas = {
+			remove_idea = low_training
+			add_idea = lower_training
+		}
+	}
+}
+DSW_FRA_dep_decrease_safety_max = {
+	if = {
+		limit = {
+			has_idea = high_safety
+		}
+		swap_ideas = {
+			remove_idea = high_safety
+			add_idea = lower_safety
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = medium_safety
+		}
+		swap_ideas = {
+			remove_idea = medium_safety
+			add_idea = lower_safety
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = low_safety
+		}
+		swap_ideas = {
+			remove_idea = low_safety
+			add_idea = lower_safety
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = higher_safety
+		}
+		swap_ideas = {
+			remove_idea = higher_safety
+			add_idea = lower_safety
+		}
+	}
+}
+DSW_FRA_dep_GER_add_nato_leadership = {
+	custom_effect_tooltip = GER_nato_leadership_var_tooltip
+	add_to_variable = {
+		var = GER_nato_leadership_var
+		value = GER_nato_leadership_var_temp
+	}
+	clamp_variable = {
+		var = GER_nato_leadership_var
+		min = 0
+		max = 1
+	}
+}
+DSW_FRA_dep_remove_campaign_slot = {
+	hidden_effect = {
+		subtract_from_variable = {
+			var = campaign_slot_var
+			value = 1
+		}
+	}
+}
+DSW_FRA_dep_add_campaign_slot = {
+	hidden_effect = {
+		add_to_variable = {
+			var = campaign_slot_var
+			value = 1
+		}
+	}
+}

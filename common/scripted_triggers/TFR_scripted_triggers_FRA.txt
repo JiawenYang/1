@@ -1,0 +1,38 @@
+# DSW France / TFR 2020 port. Source: The Fire Rises 1.0.9.1c.
+FRA_has_oil_crisis_greater_than_or_equals = {
+	custom_trigger_tooltip = {
+		tooltip = SOV_has_influence_oligarchs_greater_than_or_equals_tooltip
+		check_variable = {
+			var = FRA_crisis_severity_var
+			value = FRA_crisis_severity_trigger_temp
+			compare = less_than_or_equals
+		}
+	}
+}
+FRA_has_oil_crisis_less_than_or_equals = {
+	custom_trigger_tooltip = {
+		tooltip = SOV_has_influence_oligarchs_less_than_or_equals_tooltip
+		check_variable = {
+			var = FRA_crisis_severity_var
+			value = FRA_crisis_severity_trigger_temp
+			compare = greater_than_or_equals
+		}
+	}
+}
+FRA_is_west_africa_tag = {
+	OR = {
+		tag = BEN
+		tag = TOG
+		tag = GAH
+		tag = BFA
+		tag = CDI
+		tag = MAL
+		tag = LIB
+		tag = GUI
+		tag = SIE
+		tag = GUB
+		tag = SEN
+		tag = GAM
+		tag = MAU
+	}
+}

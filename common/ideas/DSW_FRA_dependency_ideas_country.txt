@@ -1,0 +1,370 @@
+# DSW France compatibility
+ideas = {
+	country = {
+		BEL_Economic_Crisis = {
+			picture = HEZ_currency_crisis
+			traits = {
+				ZZZ_blank_idea_trait
+			}
+			allowed = {
+				original_tag = BEL
+			}
+			modifier = {
+				consumer_goods_factor = 0.1
+				production_factory_max_efficiency_factor = -0.1
+				industrial_capacity_dockyard = -0.2
+				local_resources_factor = -0.2
+			}
+		}
+		ALG_French_Aid = {
+			picture = "GFX_unknown"
+			traits = {
+				ZZZ_blank_idea_trait
+			}
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				army_core_defence_factor = 0.05
+				army_core_attack_factor = 0.05
+				expense_growth_factor = 0.1
+			}
+		}
+		EU_member_dummy_idea = {
+			name = EU_member_dynamic
+			allowed = {
+				always = no
+			}
+			modifier = {
+
+			}
+		}
+		BEL_Wallonie_Seperatism_idea = {
+			picture = Wallonie
+			traits = {
+				ZZZ_blank_idea_trait
+			}
+			allowed = {
+				original_tag = BEL
+			}
+			modifier = {
+				stability_weekly = -0.02
+				stability_factor = -0.05
+			}
+		}
+		BEL_Economic_Crisis_worse = {
+			picture = HEZ_currency_crisis
+			traits = {
+				ZZZ_blank_idea_trait
+			}
+			allowed = {
+				original_tag = BEL
+			}
+			modifier = {
+				stability_factor = -0.05
+				consumer_goods_factor = 0.2
+				production_factory_max_efficiency_factor = -0.2
+				industrial_capacity_dockyard = -0.35
+				local_resources_factor = -0.35
+			}
+		}
+		NATO_victor_of_the_european_war = {
+			allowed = {
+
+			}
+			picture = NATO_victor_of_the_european_war
+			modifier = {
+				consumer_goods_factor = 0.25
+				war_support_factor = -0.25
+				industrial_capacity_factory = -0.25
+				production_speed_arms_factory_factor = -0.25
+			}
+		}
+		BEL_Flanders_Seperatism_idea = {
+			picture = Flanders
+			traits = {
+				ZZZ_blank_idea_trait
+			}
+			allowed = {
+				original_tag = BEL
+			}
+			modifier = {
+				stability_weekly = -0.02
+				stability_factor = -0.05
+			}
+		}
+		JAP_japanese_pacifism_idea = {
+			picture = JAP_japanese_pacificism
+			traits = {
+				ZZZ_blank_idea_trait
+			}
+			allowed = {
+				tag = JAP
+			}
+			modifier = {
+				war_support_factor = -0.25
+				justify_war_goal_time = 1
+				industrial_capacity_dockyard = -0.5
+				industrial_capacity_factory = -0.5
+				conscription_factor = -0.5
+				cat_old_land_doctrine_cost_factor = 0.5
+				cat_old_air_doctrine_cost_factor = 0.5
+				cat_old_naval_doctrine_cost_factor = 0.5
+				production_cost_max_ship_hull_submarine = 700
+				production_cost_max_ship_hull_cruiser = 5000
+				production_cost_max_ship_hull_heavy = 8000
+				production_cost_max_ship_hull_carrier = 4500
+			}
+		}
+		SWI_bunkers_of_the_revolution_idea = {
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			picture = ger_mefo_bills
+			modifier = {
+				production_speed_bunker_factor = 0.20
+				training_time_factor = -0.1
+				army_core_defence_factor = 0.15
+				army_org_factor = 0.2
+				army_org_regain = 0.15
+				dig_in_speed = 0.15
+				max_dig_in_factor = 0.25
+			}
+		}
+		SWI_mega_isolation_bunkers_of_the_revolution_idea = {
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			picture = ger_mefo_bills
+			modifier = {
+				production_speed_bunker_factor = 0.3
+				training_time_factor = -0.15
+				army_core_defence_factor = 0.2
+				army_org_factor = 0.25
+				army_org_regain = 0.2
+				dig_in_speed = 0.3
+				max_dig_in_factor = 0.5
+			}
+		}
+		GOD_Military_Catholic_ISIS = {
+			picture = GOD_awakening
+			traits = {
+				ZZZ_blank_idea_trait
+			}
+			allowed = {
+
+			}
+			modifier = {
+				army_attack_factor = 0.10
+				breakthrough_factor = 0.15
+			}
+		}
+		NATO_unity_2 = {
+			allowed = {
+
+			}
+			cancel = {
+				OR = {
+					is_puppet_of = SOV
+					NOT = {
+						has_country_flag = global_ass_lol
+					}
+				}
+			}
+			picture = NATO_unity_2
+			modifier = {
+				army_org_Factor = -0.1
+				battalion_upkeep_factor = 0.05
+				coordination_bonus = -0.05
+				mobilization_speed = -0.2
+				war_support_factor = -0.15
+			}
+		}
+		NATO_unity_1 = {
+			allowed = {
+
+			}
+			cancel = {
+				OR = {
+					is_puppet_of = SOV
+					NOT = {
+						has_country_flag = global_ass_lol
+					}
+				}
+			}
+			picture = NATO_unity_1
+			modifier = {
+				army_org_Factor = -0.2
+				battalion_upkeep_factor = 0.1
+				coordination_bonus = -0.1
+				mobilization_speed = -0.25
+				war_support_factor = -0.2
+			}
+		}
+		NATO_unity_5 = {
+			allowed = {
+
+			}
+			cancel = {
+				OR = {
+					is_puppet_of = SOV
+					NOT = {
+						has_country_flag = global_ass_lol
+					}
+				}
+			}
+			picture = NATO_unity_5
+			modifier = {
+				army_org_Factor = 0.05
+				battalion_upkeep_factor = -0.1
+				coordination_bonus = 0.1
+				mobilization_speed = 0.05
+				war_support_factor = 0.1
+			}
+		}
+		NATO_unity_3 = {
+			allowed = {
+
+			}
+			cancel = {
+				OR = {
+					is_puppet_of = SOV
+					NOT = {
+						has_country_flag = global_ass_lol
+					}
+				}
+			}
+			picture = NATO_unity_3
+			modifier = {
+				army_org_Factor = 0.03
+				battalion_upkeep_factor = 0.05
+				coordination_bonus = 0.05
+				mobilization_speed = -0.05
+				war_support_factor = -0.05
+			}
+		}
+		NATO_unity_4 = {
+			allowed = {
+
+			}
+			cancel = {
+				OR = {
+					is_puppet_of = SOV
+					NOT = {
+						has_country_flag = global_ass_lol
+					}
+				}
+			}
+			picture = NATO_unity_4
+			modifier = {
+				army_org_Factor = 0.04
+				battalion_upkeep_factor = -0.05
+				coordination_bonus = 0.05
+				mobilization_speed = 0.05
+				war_support_factor = 0.05
+			}
+		}
+		african_union_member = {
+			picture = au_member
+			traits = {
+				ZZZ_blank_idea_trait
+			}
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			modifier = {
+				industrial_capacity_factory = 0.025
+				political_power_gain = 0.05
+				justify_war_goal_time = 0.05
+			}
+		}
+		idea_ISR_american_funding = {
+			picture = ISR_usa_fund
+			traits = {
+				ZZZ_blank_idea_trait
+			}
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.20
+				income_growth_factor = 0.33
+				consumer_goods_factor = -0.15
+				production_speed_buildings_factor = 0.125
+				production_speed_infrastructure_factor = 0.075
+				production_speed_industrial_complex_factor = 0.075
+				military_factory_donations = 8
+			}
+		}
+		ISR_french_funding_idea = {
+			picture = ISR_fra_fund
+			traits = {
+				ZZZ_blank_idea_trait
+			}
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.05
+				income_growth_factor = 0.11
+				consumer_goods_factor = -0.05
+				production_speed_buildings_factor = 0.025
+				production_speed_infrastructure_factor = 0.025
+				production_speed_industrial_complex_factor = 0.025
+				military_factory_donations = 2
+			}
+		}
+		NOR_growing_class_divide_idea = {
+			picture = "GFX_idea_florida_siege"
+			traits = {
+				ZZZ_blank_idea_trait
+			}
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			modifier = {
+				social_democrat_drift = 0.03
+				authoritarian_democrat_drift = 0.06
+				political_power_gain = -0.10
+			}
+		}
+		APA_volunteer_expansion_idea = {
+			picture = APA_american_liberation_army
+			traits = {
+				ZZZ_blank_idea_trait
+			}
+			allowed = {
+				tag = APA
+			}
+			available = {
+				NOT = {
+					has_global_flag = USA_american_civil_war_over_global
+				}
+			}
+			modifier = {
+				send_volunteer_divisions_required = -0.75
+				send_volunteer_size = 2
+				air_volunteer_cap = 1
+			}
+		}
+	}
+}

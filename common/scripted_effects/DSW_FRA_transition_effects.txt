@@ -1,0 +1,877 @@
+# DSW France: retain TFR party leaders within MD ideology groups
+DSW_FRA_elect_macron_2017 = {
+	set_country_flag = DSW_FRA_macron_2017_elected
+	set_country_flag = FRA_historical_president_2017
+	set_country_flag = FRA_LREM_CREATED
+	set_variable = {
+		liberalism_leader = 1
+	}
+	set_temp_variable = {
+		rul_party_temp = 2
+	}
+	set_temp_variable = {
+		b = 0
+	}
+	change_ruling_party_effect = yes
+	recalculate_party = yes
+	set_politics = {
+		ruling_party = democratic
+		elections_allowed = yes
+		last_election = "2017.5.7"
+		election_frequency = 60
+	}
+}
+DSW_FRA_initialize_2020 = {
+	if = {
+		limit = {
+			tag = FRA
+			NOT = {
+				has_country_flag = DSW_FRA_tfr_active
+			}
+		}
+		set_country_flag = DSW_FRA_tfr_active
+		set_country_flag = DSW_FRA_macron_2017_elected
+		set_country_flag = FRA_LREM_CREATED
+		set_variable = {
+			liberalism_leader = 2
+		}
+		set_variable = {
+			current_term = 1
+		}
+		set_variable = {
+			term_limit = 0
+		}
+		set_variable = {
+			disable_elections = 1
+		}
+		clear_array = gov_coalition_array
+		kill_country_leader = yes
+		if = {
+			limit = {
+				has_character = FRA_thierry_burkhard
+			}
+			retire_character = FRA_thierry_burkhard
+		}
+		if = {
+			limit = {
+				has_character = FRA_pierre_schill
+			}
+			retire_character = FRA_pierre_schill
+		}
+		if = {
+			limit = {
+				has_character = FRA_christophe_prazuck
+			}
+			retire_character = FRA_christophe_prazuck
+		}
+		if = {
+			limit = {
+				has_character = FRA_philippe_lavigne
+			}
+			retire_character = FRA_philippe_lavigne
+		}
+		if = {
+			limit = {
+				has_character = FRA_stephane_mille
+			}
+			retire_character = FRA_stephane_mille
+		}
+		if = {
+			limit = {
+				has_character = FRA_nicolas_casanova
+			}
+			retire_character = FRA_nicolas_casanova
+		}
+		if = {
+			limit = {
+				has_character = FRA_Pierre_de_Villiers
+			}
+			retire_character = FRA_Pierre_de_Villiers
+		}
+		recruit_character = DSW_TFR_FRA_emmanuel_macron_char
+		recruit_character = DSW_TFR_FRA_Jean_Luc_Melenchon_char
+		recruit_character = DSW_TFR_FRA_Olivier_Faure_char
+		recruit_character = DSW_TFR_FRA_Georges_Gastaud_char
+		recruit_character = DSW_TFR_FRA_Philippe_Poutou_char
+		recruit_character = DSW_TFR_FRA_Francois_Ruffin_char
+		recruit_character = DSW_TFR_FRA_stephane_mille_char
+		recruit_character = DSW_TFR_FRA_philippe_lavigne_char
+		recruit_character = DSW_TFR_FRA_thierry_burkhard_char
+		recruit_character = DSW_TFR_FRA_Valerie_Pecresse_char
+		recruit_character = DSW_TFR_FRA_eric_zemmour_char
+		recruit_character = DSW_TFR_FRA_marie_le_pen_char
+		recruit_character = DSW_TFR_FRA_Yvan_Benedetti
+		recruit_character = DSW_TFR_FRA_Pierre_de_Villiers
+		recruit_character = DSW_TFR_FRA_Jean_Pierre_Bosser
+		recruit_character = DSW_TFR_FRA_Francois_Lecointre
+		recruit_character = DSW_TFR_FRA_Pierre_Chavancy
+		recruit_character = DSW_TFR_FRA_Bertrand_Ract_Madoux
+		recruit_character = DSW_TFR_FRA_Francois_Labuze
+		recruit_character = DSW_TFR_FRA_Franck_Boudet
+		recruit_character = DSW_TFR_FRA_Pascal_Ianni
+		recruit_character = DSW_TFR_FRA_Patrick_Brethous_char
+		recruit_character = DSW_TFR_FRA_Jordan_Bardella_char
+		recruit_character = DSW_TFR_FRA_Pierre_Schill_char
+		recruit_character = DSW_TFR_FRA_Francois_Xavier_Le_Pelletier_De_Woillemont_char
+		recruit_character = DSW_TFR_FRA_Etienne_du_Peyroux
+		recruit_character = DSW_TFR_FRA_Jean_Jacques_Fatinet
+		recruit_character = DSW_TFR_FRA_Guillaume_de_Sercey
+		recruit_character = DSW_TFR_FRA_Guillaume_Venard
+		recruit_character = DSW_TFR_FRA_Nicolas_Casanova
+		recruit_character = DSW_TFR_FRA_Christophe_Prazuck
+		recruit_character = DSW_TFR_FRA_Marc_de_Briancon
+		recruit_character = DSW_TFR_FRA_Alain_Bouquin
+		recruit_character = DSW_TFR_FRA_Bruno_le_Rey
+		recruit_character = DSW_TFR_FRA_Denis_Beraud
+		recruit_character = DSW_TFR_FRA_Bruno_Thouvenin
+		recruit_character = DSW_TFR_FRA_Louis_Michel_Guillaume
+		recruit_character = DSW_TFR_FRA_Charles_Henri_du_Che
+		recruit_character = DSW_TFR_FRA_Pascal_Ausseur
+		recruit_character = DSW_TFR_FRA_Emmanuel_de_Oliveira
+		recruit_character = DSW_TFR_FRA_Jean_Baptiste_Dupuis
+		recruit_character = DSW_TFR_FRA_Fabien_Roussel_char
+		recruit_character = DSW_TFR_FRA_Eric_Coquerel_char
+		recruit_character = DSW_TFR_FRA_Yannick_Jadot_char
+		recruit_character = DSW_TFR_FRA_Anne_Cecile_Ortemann
+		recruit_character = DSW_TFR_FRA_Stephane_Sejourne_char
+		recruit_character = DSW_TFR_FRA_Nicolas_Hulot_char
+		recruit_character = DSW_TFR_FRA_Christine_Lambart_char
+		recruit_character = DSW_TFR_FRA_European_Commission_char
+		recruit_character = DSW_TFR_FRA_Francois_Bayrou_char
+		recruit_character = DSW_TFR_FRA_Henri_de_Castries
+		recruit_character = DSW_TFR_FRA_Lafayette_dummy_char
+		set_variable = {
+			var = Diplomats_Var
+			value = 1
+		}
+		set_variable = {
+			var = happy_generals
+			value = 5
+		}
+		set_variable = {
+			var = neutral_generals
+			value = 14
+		}
+		set_variable = {
+			var = angered_generals
+			value = 3
+		}
+		set_variable = {
+			var = retired_generals
+			value = 1
+		}
+		set_variable = {
+			var = total_generals
+			value = 23
+		}
+		set_variable = {
+			var = FRA_nato_leadership_var
+			value = 0.15
+		}
+		set_variable = {
+			var = FRA_military_political_power_gain_dynamic_var
+			value = 0
+		}
+		set_variable = {
+			var = FRA_military_war_support_factor_dynamic_var
+			value = -0.1
+		}
+		set_variable = {
+			var = FRA_military_war_support_weekly_dynamic_var
+			value = 0
+		}
+		set_variable = {
+			var = FRA_military_weekly_manpower_dynamic_var
+			value = 0
+		}
+		set_variable = {
+			var = FRA_military_weekly_casualties_war_support_dynamic_var
+			value = 0
+		}
+		set_variable = {
+			var = FRA_military_weekly_convoys_war_support_dynamic_var
+			value = 0
+		}
+		set_variable = {
+			var = FRA_military_weekly_bombing_war_support_dynamic_var
+			value = 0
+		}
+		set_variable = {
+			var = FRA_military_experience_gain_army_dynamic_var
+			value = 0
+		}
+		set_variable = {
+			var = FRA_military_experience_gain_army_factor_dynamic_var
+			value = 0
+		}
+		set_variable = {
+			var = FRA_military_experience_loss_factor_dynamic_var
+			value = 0
+		}
+		set_variable = {
+			var = FRA_military_max_command_power_dynamic_var
+			value = 0
+		}
+		set_variable = {
+			var = FRA_military_command_power_gain_mult_dynamic_var
+			value = 0
+		}
+		set_variable = {
+			var = FRA_military_army_org_factor_dynamic_var
+			value = 0
+		}
+		set_variable = {
+			var = FRA_military_army_org_regain_dynamic_var
+			value = 0
+		}
+		set_variable = {
+			var = FRA_military_org_loss_when_moving_dynamic_var
+			value = 0
+		}
+		set_variable = {
+			var = FRA_military_army_strength_factor_dynamic_var
+			value = 0
+		}
+		set_variable = {
+			var = FRA_military_coordination_bonus_dynamic_var
+			value = 0
+		}
+		set_variable = {
+			var = FRA_military_land_reinforce_rate_dynamic_var
+			value = 0
+		}
+		set_variable = {
+			var = FRA_military_max_planning_factor_dynamic_var
+			value = 0
+		}
+		set_variable = {
+			var = FRA_military_planning_speed_dynamic_var
+			value = 0
+		}
+		set_variable = {
+			var = FRA_military_max_dig_in_factor_dynamic_var
+			value = 0
+		}
+		set_variable = {
+			var = FRA_military_dig_in_speed_factor_dynamic_var
+			value = 0
+		}
+		set_variable = {
+			var = FRA_military_army_morale_factor_dynamic_var
+			value = 0
+		}
+		set_variable = {
+			var = FRA_military_army_attack_factor_dynamic_var
+			value = 0
+		}
+		set_variable = {
+			var = FRA_military_army_defence_factor_dynamic_var
+			value = 0
+		}
+		set_variable = {
+			var = FRA_military_breakthrough_factor_dynamic_var
+			value = 0
+		}
+		set_variable = {
+			var = FRA_military_army_speed_factor_dynamic_var
+			value = 0
+		}
+		set_variable = {
+			var = FRA_military_army_core_attack_factor_dynamic_var
+			value = 0
+		}
+		set_variable = {
+			var = FRA_military_army_core_defence_factor_dynamic_var
+			value = 0
+		}
+		set_variable = {
+			var = FRA_military_modifier_army_sub_unit_militia_attack_factor_dynamic_var
+			value = 0
+		}
+		set_variable = {
+			var = FRA_military_modifier_army_sub_unit_militia_defence_factor_dynamic_var
+			value = 0
+		}
+		set_variable = {
+			var = FRA_military_equipment_capture_factor_dynamic_var
+			value = 0
+		}
+		set_variable = {
+			var = FRA_military_out_of_supply_factor_dynamic_var
+			value = 0
+		}
+		set_variable = {
+			var = FRA_military_supply_consumption_factor_dynamic_var
+			value = 0
+		}
+		set_variable = {
+			var = FRA_military_conscription_factor_dynamic_var
+			value = -0.4
+		}
+		set_variable = {
+			var = FRA_military_mobilization_speed_dynamic_var
+			value = -0.4
+		}
+		set_variable = {
+			var = FRA_military_training_time_factor_dynamic_var
+			value = 0
+		}
+		set_variable = {
+			var = FRA_military_resistance_decay_on_our_occupied_states_dynamic_var
+			value = 0
+		}
+		set_variable = {
+			var = FRA_military_resistance_growth_on_our_occupied_states_dynamic_var
+			value = 0
+		}
+		set_variable = {
+			var = FRA_military_terrain_penalty_reduction_dynamic_var
+			value = 0
+		}
+		set_variable = {
+			var = FRA_military_acclimatization_hot_climate_gain_factor_dynamic_var
+			value = 0
+		}
+		set_variable = {
+			var = FRA_military_acclimatization_cold_climate_gain_factor_dynamic_var
+			value = 0
+		}
+		set_variable = {
+			var = FRA_military_pocket_penalty_dynamic_var
+			value = 0
+		}
+		set_variable = {
+			var = FRA_military_land_doctrine_cost_factor_dynamic_var
+			value = 0.1
+		}
+		set_variable = {
+			var = FRA_military_battalion_upkeep_factor_dynamic_var
+			value = 0
+		}
+		set_variable = {
+			var = FRA_military_development_monthly_dynamic_var
+			value = 0
+		}
+		set_variable = {
+			var = FRA_air_experience_gain_air_dynamic_var
+			value = 0
+		}
+		set_variable = {
+			var = FRA_air_experience_gain_air_factor_dynamic_var
+			value = 0
+		}
+		set_variable = {
+			var = FRA_air_attack_factor_dynamic_var
+			value = 0
+		}
+		set_variable = {
+			var = FRA_air_defence_factor_dynamic_var
+			value = 0
+		}
+		set_variable = {
+			var = FRA_air_agility_factor_dynamic_var
+			value = 0
+		}
+		set_variable = {
+			var = FRA_air_accidents_factor_dynamic_var
+			value = 0
+		}
+		set_variable = {
+			var = FRA_air_wing_xp_loss_when_killed_factor_dynamic_var
+			value = 0
+		}
+		set_variable = {
+			var = FRA_air_untrained_pilots_penalty_factor_dynamic_var
+			value = 0
+		}
+		set_variable = {
+			var = FRA_air_mission_efficiency_dynamic_var
+			value = 0
+		}
+		set_variable = {
+			var = FRA_air_superiority_efficiency_dynamic_var
+			value = 0
+		}
+		set_variable = {
+			var = FRA_air_weather_penalty_dynamic_var
+			value = 0
+		}
+		set_variable = {
+			var = FRA_air_army_bonus_air_superiority_factor_dynamic_var
+			value = 0
+		}
+		set_variable = {
+			var = FRA_air_ground_attack_factor_dynamic_var
+			value = 0
+		}
+		set_variable = {
+			var = FRA_air_production_speed_anti_air_building_factor_dynamic_var
+			value = 0
+		}
+		set_variable = {
+			var = FRA_air_production_speed_air_base_factor_dynamic_var
+			value = 0
+		}
+		set_variable = {
+			var = FRA_air_ground_attack_factor_dynamic_var
+			value = 0
+		}
+		set_variable = {
+			var = FRA_military_aircraft_upkeep_factor_dynamic_var
+			value = 0
+		}
+		set_variable = {
+			var = FRA_military_air_doctrine_cost_factor_dynamic_var
+			value = 0.1
+		}
+		set_variable = {
+			var = FRA_naval_naval_doctrine_cost_factor_dynamic_var
+			value = 0.1
+		}
+		set_variable = {
+			var = FRA_naval_ship_upkeep_factor_dynamic_var
+			value = 0
+		}
+		remove_ideas = {
+			FRA_idea_military_improvement_army
+			FRA_idea_military_improvement_navy
+			FRA_idea_military_improvement_air_force
+			FRA_idea_military_improvement_army_and_navy
+			FRA_idea_military_improvement_army_and_air_force
+			FRA_idea_military_improvement_air_force_and_navy
+			FRA_idea_the_french_military
+			FRA_administrative_reforms_1
+			FRA_administrative_reforms_2
+			FRA_idea_central
+			FRA_idea_decentral
+			FRA_idea_french_armored_production
+			FRA_idea_space_agency_1
+			FRA_idea_space_agency_2
+			FRA_idea_cnes_failing
+			FRA_idea_space_agency_3
+			FRA_idea_space_agency_4
+			FRA_idea_reformed_cnes_non_lar
+			FRA_idea_reformed_cnes_lar
+			FRA_idea_prep_the_launch
+			FRA_idea_space_research
+			FRA_idea_nasa_partnership
+			FRA_idea_the_francosphere
+			FRA_idea_Grand_ambitions
+			FRA_idea_Light_for_Europe
+			FRA_cfa_franc_custodian
+			FRA_idea_the_french_pillar_of_counterterroism
+			FRA_idea_the_french_foreign_legion
+			FRA_unrestricted_subjugation_idea
+			FRA_SYR_anti_assad_regime_message_idea
+			FRA_SYR_escalation_from_the_damascus_spring_idea
+			FRA_educational_development_idea
+			FRA_idea_development_investment
+			FRA_resource_prospects_idea
+			FRA_Macron_eco
+			FRA_Ferrand_eco
+			FRA_vigipirate_surveillance_lar
+			FRA_vigipirate_surveillance_non_lar
+			FRA_ineluctable_collapse
+			FRA_resist_inevitable
+			FRA_resist_inevitable2
+			FRA_resist_inevitable3
+			FRA_socialism_renew
+			FRA_manif_pour_tous
+			FRA_grand_debat
+			FRA_bassin_minier
+			FRA_pension_reform
+			FRA_french_rearmament
+			FRA_french_rearmament2
+			FRA_french_rearmament3
+			FRA_Our_project
+			FRA_french_independant1
+			FRA_french_independant2
+			FRA_french_independant3
+			FRA_NATO_support
+			FRA_entente_china
+			FRA_regulation
+			FRA_eternal_fra
+			FRA_europhile_anger_idea
+			FRA_EU_Retaliate
+			FRA_EU_Retaliate2
+			FRA_left_nato
+			FRA_russian_cooperation1
+			FRA_a_certain_idea
+			FRA_russian_cooperation2
+			FRA_blocade
+			FRA_shocking
+			FRA_draft6threp
+			FRA_fail6threp
+			FRA_ecological_transition
+			FRA_insoumission
+			FRA_eu_social_climate
+			FRA_research_boost
+			FRA_refit_network
+			FRA_eden_garden
+			FRA_eu_green_reform
+			FRA_EU_transit
+			FRA_eu_ban_fossile
+			FRA_regulation_agra
+			FRA_regulation_indus
+			FRA_regulation_fuel
+			FRA_EU_rail
+			FRA_eu_pcf_reform
+			FRA_fr_military_assistance
+			FRA_european_internationale
+			FRA_international_will_be_humankind
+			FRA_eu_FN_reform
+			FRA_nuke_boost
+			FRA_Boreal_Space
+			FRA_france_for_french
+			FRA_red_purges
+			FRA_people_constitution
+			FRA_commies_redarmy1
+			FRA_commies_redarmy2
+			FRA_red_agent_lar
+			FRA_red_agent_non_lar
+			FRA_monarchist_anger
+			FRA_bonapart_constitution
+			FRA_bonapart_military_reform
+			FRA_army_reformed_1
+			FRA_army_reformed_infantry
+			FRA_army_reformed_cavalry
+			FRA_army_reformed_artillery_infantry
+			FRA_army_reformed_artillery_cavalry
+			FRA_army_reformed_air_infantry
+			FRA_army_reformed_air_cavalry
+			FRA_BCE_money
+			FRA_4th_empire
+			FRA_grande_arme_art_inf
+			FRA_grande_arme_art_cav
+			FRA_grande_arme_air_inf
+			FRA_grande_arme_air_cav
+			FRA_nationalism_in_europe
+			FRA_surrounded
+			FRA_Sachons_vaincre
+			FRA_prepare_to_fight
+			FRA_defense_napoleon
+			FRA_thousands_planes
+			FRA_trade_USA
+			FRA_king_camelot_lar
+			FRA_king_camelot_non_lar
+			FRA_king_constitution
+			FRA_chivalry
+			FRA_elite_army
+			FRA_prepare_crusade
+			FRA_political_preassure
+			FRA_navy_crusade
+			FRA_commie_europe_integration
+			FRA_strategic_independance
+			FRA_counter_insurgency
+			FRA_attack_benelux
+			FRA_attack_iberia
+			FRA_attack_germany
+			FRA_attack_holy_roman
+			FRA_BON_support_allies
+			FRA_attack_east
+			FRA_attack_russia_fast
+			FRA_attack_russia_slow
+			FRA_attack_UK_naval
+			FRA_attack_UK_air
+			FRA_BON_victory
+			FRA_exploitation
+			FRA_expansion_europe
+			FRA_expansion_europe_crusades
+			FRA_expansion_crusades
+			FRA_EMPIRE_occident
+			FRA_crusade_done_jerusalem
+			FRA_expansion_crusades_plus
+			FRA_protestant_anger
+			FRA_harsh_subjugation
+			FRA_victory_crusade_2_conversion
+			FRA_enlightment
+			FRA_victory_crusade_2_freedom_light
+			FRA_attack_colonies
+			FRA_FCAS_MGCS_project
+			FRA_RUS_joint_project
+			FRA_general_strike
+			FRA_sixth_republic_idea
+			FRA_commune_reborn_idea
+			FRA_kingdom_restored_idea
+			FRA_country_chaos
+			FRA_empire_restored_idea
+			FRA_extremist_paramilitary_left
+			FRA_extremist_paramilitary_right
+			FRA_radical_infiltration
+			FRA_traditionalist_infiltration
+			FRA_republic_stabilized_left
+			FRA_republic_stabilized_right
+			FRA_gaullist_foreign_policy
+			FRA_anti_american_stance
+			FRA_sovereigntist_eu_policy
+			FRA_fn_russia_alignment_idea
+			FRA_fn_nationalist_policy
+			FRA_fn_protectionism
+			FRA_communist_foreign_policy
+			FRA_worker_internationalism
+			FRA_recognize_palestine
+			FRA_lfi_non_aligned_policy
+			FRA_lfi_anti_nato
+			FRA_lfi_social_europe
+			FRA_global_south_solidarity
+			FRA_distance_nato
+			FRA_ps_platform
+			FRA_udf_platform
+			FRA_lr_platform
+			FRA_rpf_platform
+			FRA_fn_platform
+			FRA_lfi_platform
+			FRA_eelv_platform
+			FRA_pcf_platform
+			FRA_idea_transparency_reforms
+			FRA_idea_national_debate
+			FRA_idea_social_emergency_measures
+			FRA_idea_pension_reform_passed
+			FRA_idea_pension_compromise
+			FRA_idea_political_renewal
+			FRA_idea_urban_renewal
+			FRA_idea_national_unity
+			FRA_idea_technocratic_government
+			FRA_immigration_backlash
+			FRA_green_extraction_ban
+			FRA_heightened_security
+			FRA_state_of_emergency_terrorism
+			FRA_terror_threat_elevated
+			FRA_terror_threat_critical
+			FRA_national_mourning
+			FRA_damaged_infrastructure
+			FRA_tourism_crisis
+			FRA_investing_eu
+			FRA_election_result
+			FRA_spy_napoleon_lar
+			FRA_spy_napoleon_non_lar
+			FRA_5th_republic
+			FRA_war_against_republic
+			FRA_EU_strong
+			FRA_NOTRe_law
+			FRA_military_indus_boost
+			FRA_civilian_jobs_boost
+			FRA_internal_investment_boost
+			FRA_direct_construction_boost
+			FRA_indusfarm_boost
+			FRA_civilian_infra_boost
+			FRA_indusbuild_services_boost
+			FRA_techno_boost
+			FRA_res_health_boost
+			FRA_local_consumption_boost
+			FRA_job_planned_boost
+			FRA_ps_EUtrain
+			FRA_PCF_EUtrain
+			FRA_EU_LEAVE
+			FRA_patriotic_fervor
+			FRA_learning_from_worforce
+			FRA_attack_UK_king
+			FRA_french_papacy
+			FRA_cs_nationalised_systems_champion
+			FRA_cs_state_backed_silicon_base
+			FRA_cs_recapitalised_national_operator
+			FRA_cs_market_like_any_other
+			FRA_corporate_systems_ambition_ft_restructuring
+			FRA_corporate_systems_mobilcom_settlement_burden
+			FRA_corporate_systems_shift_plan_restructuring
+			FRA_corporate_systems_telecom_crash_restructuring
+			FRA_corporate_systems_vendor_replacement_burden
+			FRA_corporate_systems_wireless_exit_costs
+			FRA_corporate_systems_french_national_champions
+			FRA_corporate_systems_china_connected_infrastructure
+			FRA_corporate_systems_resilient_multivendor_network
+			FRA_nexter_manufacturer
+			FRA_naval_group_naval_manufacturer
+			FRA_naval_group_naval_manufacturer2
+			FRA_airbus_manufacturer
+			FRA_dassault_aviation_aircraft_manufacturer
+			FRA_eurocopter_manufacturer
+		}
+		add_ideas = {
+			FRA_french_spirit_idea
+			FRA_mass_migration_idea
+			FRA_yellow_vests_idea
+			FRA_Generation_of_Slackers_idea
+			FRA_CFA_Franc
+			FRA_ENA_idea
+			FRA_foreign_legion_integration
+			EU_euro_idea
+			FRA_Edouard_philippe_HM
+			FRA_jean_yves_le_drian_FM
+			FRA_Bruno_le_Maire_EM
+			FRA_christophe_castaner_IM
+			FRA_Florence_Parly_IntelM
+			FRA_Bernard_Emie
+		}
+		if = {
+			limit = {
+				has_character = DSW_TFR_FRA_emmanuel_macron_char
+			}
+			set_variable = {
+				DSW_FRA_party_leader_2 = token:DSW_TFR_FRA_emmanuel_macron_char
+			}
+		}
+		if = {
+			limit = {
+				has_character = DSW_TFR_FRA_marie_le_pen_char
+			}
+			set_variable = {
+				DSW_FRA_party_leader_1 = token:DSW_TFR_FRA_marie_le_pen_char
+			}
+		}
+		if = {
+			limit = {
+				has_character = DSW_TFR_FRA_Olivier_Faure_char
+			}
+			set_variable = {
+				DSW_FRA_party_leader_3 = token:DSW_TFR_FRA_Olivier_Faure_char
+			}
+		}
+		if = {
+			limit = {
+				has_character = DSW_TFR_FRA_Jean_Luc_Melenchon_char
+			}
+			set_variable = {
+				DSW_FRA_party_leader_18 = token:DSW_TFR_FRA_Jean_Luc_Melenchon_char
+			}
+		}
+		if = {
+			limit = {
+				has_character = DSW_TFR_FRA_Philippe_Poutou_char
+			}
+			set_variable = {
+				DSW_FRA_party_leader_19 = token:DSW_TFR_FRA_Philippe_Poutou_char
+			}
+		}
+		if = {
+			limit = {
+				has_character = DSW_TFR_FRA_Georges_Gastaud_char
+			}
+			set_variable = {
+				DSW_FRA_party_leader_4 = token:DSW_TFR_FRA_Georges_Gastaud_char
+			}
+		}
+		if = {
+			limit = {
+				has_character = DSW_TFR_FRA_eric_zemmour_char
+			}
+			set_variable = {
+				DSW_FRA_party_leader_14 = token:DSW_TFR_FRA_eric_zemmour_char
+			}
+		}
+		if = {
+			limit = {
+				has_character = DSW_TFR_FRA_Christine_Lambart_char
+			}
+			set_variable = {
+				DSW_FRA_party_leader_16 = token:DSW_TFR_FRA_Christine_Lambart_char
+			}
+		}
+		if = {
+			limit = {
+				has_character = DSW_TFR_FRA_Yvan_Benedetti
+			}
+			set_variable = {
+				DSW_FRA_party_leader_22 = token:DSW_TFR_FRA_Yvan_Benedetti
+			}
+		}
+		set_variable = {
+			ruling_party = 2
+		}
+		set_variable = {
+			DSW_FRA_tfr_party = 2
+		}
+		set_variable = {
+			DSW_FRA_scripted_elections = 1
+		}
+		set_politics = {
+			ruling_party = democratic
+			elections_allowed = no
+			last_election = "2017.5.7"
+			election_frequency = 60
+		}
+		set_variable = {
+			party_pop_array^0 = 0
+		}
+		set_variable = {
+			party_pop_array^0 = 0
+		}
+		set_variable = {
+			party_pop_array^1 = 0.27
+		}
+		set_variable = {
+			party_pop_array^2 = 0.31
+		}
+		set_variable = {
+			party_pop_array^3 = 0.05
+		}
+		set_variable = {
+			party_pop_array^4 = 0.005
+		}
+		set_variable = {
+			party_pop_array^5 = 0
+		}
+		set_variable = {
+			party_pop_array^6 = 0
+		}
+		set_variable = {
+			party_pop_array^7 = 0
+		}
+		set_variable = {
+			party_pop_array^8 = 0
+		}
+		set_variable = {
+			party_pop_array^9 = 0
+		}
+		set_variable = {
+			party_pop_array^10 = 0
+		}
+		set_variable = {
+			party_pop_array^11 = 0
+		}
+		set_variable = {
+			party_pop_array^12 = 0
+		}
+		set_variable = {
+			party_pop_array^13 = 0
+		}
+		set_variable = {
+			party_pop_array^14 = 0.06
+		}
+		set_variable = {
+			party_pop_array^15 = 0
+		}
+		set_variable = {
+			party_pop_array^16 = 0.05
+		}
+		set_variable = {
+			party_pop_array^17 = 0
+		}
+		set_variable = {
+			party_pop_array^18 = 0.2
+		}
+		set_variable = {
+			party_pop_array^19 = 0.015
+		}
+		set_variable = {
+			party_pop_array^20 = 0
+		}
+		set_variable = {
+			party_pop_array^21 = 0
+		}
+		set_variable = {
+			party_pop_array^22 = 0.04
+		}
+		set_variable = {
+			party_pop_array^23 = 0
+		}
+		recalculate_party = yes
+		promote_character = DSW_TFR_FRA_emmanuel_macron_char
+		load_focus_tree = {
+			tree = FRA_initial_tree
+			keep_completed = no
+		}
+		mark_focus_tree_layout_dirty = yes
+		DSW_FRA_refresh_party_leader = yes
+	}
+}

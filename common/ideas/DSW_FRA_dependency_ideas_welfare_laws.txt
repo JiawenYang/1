@@ -1,0 +1,292 @@
+# DSW France compatibility
+ideas = {
+	welfare_laws = {
+		higher_welfare = {
+			removal_cost = -1
+			cost = 100
+			level = 2
+			picture = laws_welfare4
+			available = {
+
+			}
+			allowed_to_remove = {
+				NOT = {
+					tag = APA
+					check_variable = {
+						ruling_party = 3
+					}
+					has_country_flag = APA_government_elected_flag
+				}
+			}
+			ai_will_do = {
+				base = 1
+				modifier = {
+					factor = 20
+					NOT = {
+						has_idea = high_welfare
+						has_idea = higher_society
+						has_idea = higher_poverty
+					}
+					check_variable = {
+						var = expenses_income_var
+						value = 0.5
+						compare = less_than
+					}
+				}
+				modifier = {
+					factor = 20
+					NOT = {
+						has_idea = higher_society
+						has_idea = high_society
+						has_idea = higher_poverty
+						has_idea = high_poverty
+					}
+				}
+			}
+			modifier = {
+				personal_expense = 0.6
+				production_speed_infrastructure_factor = 0.2
+				society_development_monthly = 0.01
+				poverty_development_monthly = 0.01
+				low_stability_weekly = 0.002
+			}
+		}
+		high_welfare = {
+			removal_cost = -1
+			cost = 100
+			level = 3
+			picture = laws_welfare3
+			available = {
+				if = {
+					limit = {
+						has_country_flag = DSW_FRA_pending_focus_PRC_servant_of_the_people
+					}
+					always = no
+				}
+			}
+			modifier = {
+				personal_expense = 0.45
+				production_speed_infrastructure_factor = 0.1
+				society_development_monthly = 0.005
+				poverty_development_monthly = 0.005
+				low_stability_weekly = 0.001
+			}
+			ai_will_do = {
+				base = 1
+				modifier = {
+					factor = 20
+					NOT = {
+						has_idea = medium_welfare
+						has_idea = higher_society
+						has_idea = higher_poverty
+					}
+					check_variable = {
+						var = expenses_income_var
+						value = 0.75
+						compare = less_than
+					}
+					check_variable = {
+						var = expenses_income_var
+						value = 0.5
+						compare = greater_than
+					}
+				}
+				modifier = {
+					factor = 20
+					NOT = {
+						has_idea = higher_society
+						has_idea = higher_poverty
+					}
+				}
+			}
+		}
+		medium_welfare = {
+			removal_cost = -1
+			cost = 100
+			level = 4
+			picture = laws_welfare2
+			default = yes
+			allowed = {
+
+			}
+			available = {
+				if = {
+					limit = {
+						has_country_flag = DSW_FRA_pending_focus_PRC_servant_of_the_people
+					}
+					always = no
+				}
+			}
+			ai_will_do = {
+				modifier = {
+					factor = 20
+					has_war = yes
+					NOT = {
+						has_idea = lower_welfare
+						has_idea = low_welfare
+					}
+				}
+				modifier = {
+					factor = 20
+					NOT = {
+						has_idea = lower_welfare
+						has_idea = low_welfare
+					}
+					OR = {
+						tag = SOV
+						tag = CHI
+						check_variable = {
+							ruling_party = 4
+						}
+						check_variable = {
+							ruling_party = 19
+						}
+						check_variable = {
+							ruling_party = 22
+						}
+						check_variable = {
+							ruling_party = 21
+						}
+						check_variable = {
+							ruling_party = 20
+						}
+					}
+				}
+			}
+			modifier = {
+				stability_factor = 0.015
+				poverty_development_monthly = 0.001
+				society_development_monthly = 0.001
+				personal_expense = 0.3
+			}
+		}
+		low_welfare = {
+			removal_cost = -1
+			cost = 100
+			level = 5
+			picture = laws_welfare1
+			available = {
+				if = {
+					limit = {
+						has_country_flag = DSW_FRA_pending_focus_PRC_servant_of_the_people
+					}
+					always = no
+				}
+			}
+			modifier = {
+				personal_expense = 0.15
+				production_speed_infrastructure_factor = -0.1
+				society_development_monthly = -0.005
+				poverty_development_monthly = -0.005
+			}
+			ai_will_do = {
+				base = 2
+				modifier = {
+					factor = 20
+					has_war = yes
+					NOT = {
+						has_idea = lower_welfare
+					}
+				}
+				modifier = {
+					factor = 20
+					NOT = {
+						has_idea = lower_welfare
+					}
+					check_variable = {
+						var = expenses_income_var
+						value = 1.25
+						compare = greater_than
+					}
+					check_variable = {
+						var = expenses_income_var
+						value = 1.5
+						compare = less_than
+					}
+				}
+				modifier = {
+					factor = 20
+					NOT = {
+						has_idea = lower_welfare
+					}
+					OR = {
+						tag = SOV
+						tag = CHI
+						check_variable = {
+							ruling_party = 4
+						}
+						check_variable = {
+							ruling_party = 19
+						}
+						check_variable = {
+							ruling_party = 22
+						}
+						check_variable = {
+							ruling_party = 21
+						}
+						check_variable = {
+							ruling_party = 20
+						}
+					}
+				}
+			}
+		}
+		lower_welfare = {
+			removal_cost = -1
+			cost = 100
+			level = 6
+			picture = laws_welfare
+			available = {
+				if = {
+					limit = {
+						has_country_flag = DSW_FRA_pending_focus_PRC_servant_of_the_people
+					}
+					always = no
+				}
+			}
+			modifier = {
+				personal_expense = 0
+				production_speed_infrastructure_factor = -0.2
+				society_development_monthly = -0.01
+				poverty_development_monthly = -0.01
+			}
+			ai_will_do = {
+				base = 2
+				modifier = {
+					factor = 20
+					has_war = yes
+				}
+				modifier = {
+					factor = 20
+					check_variable = {
+						var = expenses_income_var
+						value = 1.5
+						compare = greater_than
+					}
+				}
+				modifier = {
+					factor = 20
+					OR = {
+						tag = SOV
+						tag = CHI
+						check_variable = {
+							ruling_party = 4
+						}
+						check_variable = {
+							ruling_party = 19
+						}
+						check_variable = {
+							ruling_party = 22
+						}
+						check_variable = {
+							ruling_party = 21
+						}
+						check_variable = {
+							ruling_party = 20
+						}
+					}
+				}
+			}
+		}
+	}
+}
