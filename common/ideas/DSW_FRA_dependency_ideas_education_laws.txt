@@ -1,0 +1,253 @@
+# DSW France compatibility
+ideas = {
+	education_laws = {
+		lower_education = {
+			removal_cost = -1
+			cost = 100
+			level = 5
+			picture = laws_education
+			available = {
+				if = {
+					limit = {
+						has_country_flag = DSW_FRA_pending_focus_PRC_happiness_for_everybody
+					}
+					always = no
+				}
+			}
+			allowed_to_remove = {
+
+			}
+			modifier = {
+				stability_factor = -0.1
+				research_speed_factor = -0.1
+				academic_development_monthly = -0.01
+			}
+			ai_will_do = {
+				modifier = {
+					factor = 20
+					check_variable = {
+						var = expenses_income_var
+						value = 1.75
+						compare = greater_than
+					}
+				}
+			}
+		}
+		higher_education = {
+			removal_cost = -1
+			cost = 100
+			level = 1
+			picture = laws_education4
+			modifier = {
+				personal_expense = 0.2
+				stability_factor = 0.1
+				research_speed_factor = 0.1
+				academic_development_monthly = 0.015
+			}
+			ai_will_do = {
+				modifier = {
+					factor = 20
+					NOT = {
+						has_idea = higher_academic
+						has_idea = high_academic
+					}
+					check_variable = {
+						var = expenses_income_var
+						value = 0.75
+						compare = less_than
+					}
+				}
+			}
+		}
+		low_education = {
+			removal_cost = -1
+			cost = 100
+			level = 4
+			picture = laws_education1
+			available = {
+				if = {
+					limit = {
+						has_country_flag = DSW_FRA_pending_focus_PRC_happiness_for_everybody
+					}
+					always = no
+				}
+			}
+			allowed_to_remove = {
+				NOT = {
+					has_idea = PRC_redirected_money_idea
+				}
+			}
+			modifier = {
+				personal_expense = 0.05
+				stability_factor = -0.05
+				research_speed_factor = -0.05
+			}
+			ai_will_do = {
+				modifier = {
+					factor = 20
+					check_variable = {
+						var = expenses_income_var
+						value = 1.25
+						compare = greater_than
+					}
+					check_variable = {
+						var = expenses_income_var
+						value = 1.5
+						compare = less_than
+					}
+				}
+			}
+		}
+		privatized_education = {
+			removal_cost = -1
+			cost = 25
+			level = 5
+			picture = laws_education_private
+			visible = {
+				OR = {
+					check_variable = {
+						ruling_party = 16
+					}
+					check_variable = {
+						ruling_party = 1
+					}
+					has_country_flag = PRC_Jiankuis_offer_accepted
+				}
+			}
+			allowed_to_remove = {
+				NOT = {
+					has_idea = PRC_redirected_money_idea
+				}
+			}
+			modifier = {
+				research_speed_factor = 0.05
+				academic_development_monthly = 0.01
+				poverty_development_monthly = -0.005
+			}
+			ai_will_do = {
+				modifier = {
+					factor = 20
+					check_variable = {
+						ruling_party = 16
+					}
+				}
+				modifier = {
+					factor = 20
+					check_variable = {
+						var = expenses_income_var
+						value = 1.5
+						compare = greater_than
+					}
+					check_variable = {
+						var = expenses_income_var
+						value = 1.75
+						compare = less_than
+					}
+				}
+			}
+		}
+		medium_education = {
+			removal_cost = -1
+			cost = 100
+			level = 3
+			default = yes
+			picture = laws_education2
+			allowed_to_remove = {
+
+			}
+			available = {
+				if = {
+					limit = {
+						has_country_flag = DSW_FRA_pending_focus_PRC_happiness_for_everybody
+					}
+					always = no
+				}
+			}
+			modifier = {
+				personal_expense = 0.1
+				academic_development_monthly = 0.005
+			}
+			ai_will_do = {
+				modifier = {
+					factor = 20
+					check_variable = {
+						var = expenses_income_var
+						value = 1
+						compare = greater_than
+					}
+					check_variable = {
+						var = expenses_income_var
+						value = 1.25
+						compare = less_than
+					}
+				}
+			}
+		}
+		high_education = {
+			removal_cost = -1
+			cost = 100
+			level = 2
+			picture = laws_education3
+			available = {
+				if = {
+					limit = {
+						has_country_flag = DSW_FRA_pending_focus_PRC_happiness_for_everybody
+					}
+					always = no
+				}
+			}
+			modifier = {
+				personal_expense = 0.15
+				stability_factor = 0.05
+				research_speed_factor = 0.05
+				academic_development_monthly = 0.01
+			}
+			ai_will_do = {
+				modifier = {
+					factor = 20
+					NOT = {
+						has_idea = higher_academic
+					}
+					check_variable = {
+						var = expenses_income_var
+						value = 0.75
+						compare = greater_than
+					}
+					check_variable = {
+						var = expenses_income_var
+						value = 1
+						compare = less_than
+					}
+				}
+			}
+		}
+		free_school_education = {
+			removal_cost = -1
+			cost = 100
+			level = 5
+			picture = Anarchist_Edu_1
+			allowed_to_remove = {
+
+			}
+			visible = {
+				check_variable = {
+					ruling_party = 18
+				}
+			}
+			modifier = {
+				stability_factor = -0.1
+				research_speed_factor = -0.2
+				libertarian_socialist_drift = 0.02
+				academic_development_monthly = 0.01
+			}
+			ai_will_do = {
+				modifier = {
+					factor = 20
+					check_variable = {
+						ruling_party = 18
+					}
+				}
+			}
+		}
+	}
+}

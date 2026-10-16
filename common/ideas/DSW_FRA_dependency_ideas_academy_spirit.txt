@@ -1,0 +1,30 @@
+# DSW France compatibility
+ideas = {
+	academy_spirit = {
+		academy_scholarships_spirit = {
+			ledger = army
+			visible = {
+				OR = {
+					check_variable = {
+						ruling_party = 4
+					}
+					check_variable = {
+						ruling_party = 19
+					}
+					check_variable = {
+						ruling_party = 18
+					}
+				}
+			}
+			modifier = {
+				army_leader_start_level = 1
+				army_leader_cost_factor = -0.3
+				unit_leader_as_advisor_cp_cost_factor = -0.75
+				custom_modifier_tooltip = academy_scholarships_spirit_tt
+			}
+			ai_will_do = {
+				base = 1
+			}
+		}
+	}
+}

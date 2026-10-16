@@ -1,0 +1,160 @@
+# DSW France compatibility
+ideas = {
+	immigration_laws = {
+		lower_immigration = {
+			removal_cost = -1
+			cost = 100
+			level = 5
+			picture = laws_immigration
+			allowed_to_remove = {
+
+			}
+			available = {
+				if = {
+					limit = {
+						has_country_flag = DSW_FRA_pending_focus_PRC_servant_of_the_people
+					}
+					always = no
+				}
+			}
+			modifier = {
+				political_power_gain = 0.1
+				min_export = -0.05
+			}
+		}
+		low_immigration = {
+			allowed_civil_war = {
+
+			}
+			removal_cost = -1
+			cost = 100
+			level = 4
+			picture = laws_immigration1
+			allowed_to_remove = {
+
+			}
+			available = {
+				if = {
+					limit = {
+						has_country_flag = DSW_FRA_pending_focus_PRC_servant_of_the_people
+					}
+					always = no
+				}
+			}
+			modifier = {
+				MONTHLY_POPULATION = 0.1
+				min_export = -0.025
+			}
+		}
+		higher_immigration = {
+			allowed_civil_war = {
+
+			}
+			removal_cost = -1
+			cost = 100
+			level = 1
+			picture = laws_immigration4
+			allowed_to_remove = {
+
+			}
+			modifier = {
+				MONTHLY_POPULATION = 1
+				political_power_gain = -0.15
+				min_export = 0.05
+			}
+		}
+		high_immigration = {
+			allowed_civil_war = {
+
+			}
+			removal_cost = -1
+			cost = 100
+			level = 2
+			picture = laws_immigration3
+			allowed_to_remove = {
+
+			}
+			available = {
+				if = {
+					limit = {
+						has_country_flag = DSW_FRA_pending_focus_PRC_servant_of_the_people
+					}
+					always = no
+				}
+			}
+			modifier = {
+				MONTHLY_POPULATION = 0.5
+				political_power_gain = -0.1
+				min_export = 0.025
+			}
+		}
+		medium_immigration = {
+			allowed_civil_war = {
+
+			}
+			removal_cost = -1
+			cost = 100
+			level = 3
+			picture = laws_immigration2
+			default = yes
+			allowed_to_remove = {
+
+			}
+			available = {
+				if = {
+					limit = {
+						has_country_flag = DSW_FRA_pending_focus_PRC_servant_of_the_people
+					}
+					always = no
+				}
+			}
+			modifier = {
+				MONTHLY_POPULATION = 0.25
+				political_power_gain = -0.05
+			}
+		}
+		FAF_involuntary_repatriation_law = {
+			removal_cost = -1
+			cost = 100
+			level = 6
+			picture = laws_immigration_0
+			allowed_to_remove = {
+
+			}
+			allowed = {
+				OR = {
+					has_idea = lower_race
+					check_variable = {
+						ruling_party = 20
+					}
+					check_variable = {
+						ruling_party = 21
+					}
+					check_variable = {
+						ruling_party = 22
+					}
+				}
+			}
+			visible = {
+				OR = {
+					has_idea = lower_race
+					check_variable = {
+						ruling_party = 20
+					}
+					check_variable = {
+						ruling_party = 21
+					}
+					check_variable = {
+						ruling_party = 22
+					}
+				}
+			}
+			modifier = {
+				political_power_gain = 0.15
+				MONTHLY_POPULATION = -0.1
+				industrial_capacity_factory = -0.075
+				industrial_capacity_dockyard = -0.075
+			}
+		}
+	}
+}

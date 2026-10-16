@@ -1,0 +1,17 @@
+DSW_FRA_testing_category = {
+    DSW_FRA_test_election = {
+        icon = generic_political_reform
+        visible = { NOT = { has_country_flag = FRA_After_2022_Election_flag } }
+        available = { has_country_flag = DSW_FRA_tfr_active }
+        cost = 0
+        complete_effect = { country_event = { id = dsw_fra.2 } }
+        ai_will_do = { factor = 0 }
+    }
+    DSW_FRA_test_european_war_outcome = {
+        icon = generic_political_discourse
+        available = { has_country_flag = DSW_FRA_tfr_active }
+        cost = 0
+        complete_effect = { country_event = { id = dsw_fra.10 } }
+        ai_will_do = { factor = 0 }
+    }
+}

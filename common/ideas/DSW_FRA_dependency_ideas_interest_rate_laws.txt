@@ -1,0 +1,357 @@
+# DSW France compatibility
+ideas = {
+	interest_rate_laws = {
+		higher_interest_rates = {
+			removal_cost = -1
+			cost = 100
+			level = 2
+			picture = laws_interest_rates5
+			available = {
+				if = {
+					limit = {
+						has_country_flag = disabled_interest_rates_flag
+					}
+					NOT = {
+						has_country_flag = disabled_interest_rates_flag
+					}
+				}
+			}
+			modifier = {
+				interest_rate = 0.125
+				inflation_monthly = -0.002
+				poverty_development_monthly = -0.01
+				production_speed_buildings_factor = -0.1
+			}
+			ai_will_do = {
+				base = 2
+				modifier = {
+					factor = 20
+					check_variable = {
+						var = inflation_var
+						value = 0.1
+						compare = greater_than
+					}
+				}
+			}
+		}
+		high_interest_rates = {
+			removal_cost = -1
+			cost = 100
+			level = 3
+			picture = laws_interest_rates4
+			available = {
+				if = {
+					limit = {
+						has_country_flag = disabled_interest_rates_flag
+					}
+					NOT = {
+						has_country_flag = disabled_interest_rates_flag
+					}
+				}
+			}
+			modifier = {
+				interest_rate = 0.1
+				inflation_monthly = -0.001
+				poverty_development_monthly = -0.005
+				production_speed_buildings_factor = -0.05
+			}
+			ai_will_do = {
+				base = 2
+				modifier = {
+					factor = 20
+					NOT = {
+						has_idea = higher_interest_rates
+					}
+					check_variable = {
+						var = inflation_var
+						value = 0.05
+						compare = greater_than
+					}
+					check_variable = {
+						var = inflation_var
+						value = 0.1
+						compare = less_than
+					}
+				}
+			}
+		}
+		low_interest_rates = {
+			removal_cost = -1
+			cost = 100
+			level = 5
+			picture = laws_interest_rates2
+			default = yes
+			available = {
+				if = {
+					limit = {
+						has_country_flag = disabled_interest_rates_flag
+					}
+					NOT = {
+						has_country_flag = disabled_interest_rates_flag
+					}
+				}
+			}
+			modifier = {
+				interest_rate = 0.05
+				inflation_monthly = 0.001
+				production_speed_buildings_factor = 0.05
+				poverty_development_monthly = 0.005
+			}
+			ai_will_do = {
+				base = 2
+				modifier = {
+					factor = 20
+					check_variable = {
+						var = inflation_var
+						value = -0.1
+						compare = greater_than
+					}
+					check_variable = {
+						var = inflation_var
+						value = -0.05
+						compare = less_than
+					}
+				}
+				modifier = {
+					factor = 10
+					has_war = yes
+					NOT = {
+						has_idea = lowest_interest_rates
+						has_idea = lower_interest_rates
+					}
+				}
+				modifier = {
+					factor = 10
+					NOT = {
+						has_idea = lowest_interest_rates
+						has_idea = lower_interest_rates
+					}
+					OR = {
+						tag = SOV
+						tag = CHI
+						check_variable = {
+							ruling_party = 4
+						}
+						check_variable = {
+							ruling_party = 19
+						}
+						check_variable = {
+							ruling_party = 22
+						}
+						check_variable = {
+							ruling_party = 21
+						}
+						check_variable = {
+							ruling_party = 20
+						}
+					}
+				}
+			}
+		}
+		medium_interest_rates = {
+			removal_cost = -1
+			cost = 100
+			level = 4
+			picture = laws_interest_rates3
+			available = {
+				if = {
+					limit = {
+						has_country_flag = disabled_interest_rates_flag
+					}
+					NOT = {
+						has_country_flag = disabled_interest_rates_flag
+					}
+				}
+			}
+			modifier = {
+				interest_rate = 0.075
+				poverty_development_monthly = -0.0025
+			}
+			ai_will_do = {
+				base = 1
+				modifier = {
+					factor = 10
+					has_war = yes
+					NOT = {
+						has_idea = lowest_interest_rates
+						has_idea = lower_interest_rates
+						has_idea = low_interest_rates
+					}
+				}
+				modifier = {
+					factor = 10
+					NOT = {
+						has_idea = lowest_interest_rates
+						has_idea = lower_interest_rates
+						has_idea = low_interest_rates
+					}
+					OR = {
+						tag = SOV
+						tag = CHI
+						check_variable = {
+							ruling_party = 4
+						}
+						check_variable = {
+							ruling_party = 19
+						}
+						check_variable = {
+							ruling_party = 22
+						}
+						check_variable = {
+							ruling_party = 21
+						}
+						check_variable = {
+							ruling_party = 20
+						}
+					}
+				}
+			}
+		}
+		lower_interest_rates = {
+			removal_cost = -1
+			cost = 100
+			level = 6
+			picture = laws_interest_rates1
+			available = {
+				if = {
+					limit = {
+						has_country_flag = disabled_interest_rates_flag
+					}
+					NOT = {
+						has_country_flag = disabled_interest_rates_flag
+					}
+				}
+			}
+			modifier = {
+				interest_rate = 0.025
+				inflation_monthly = 0.002
+				production_speed_buildings_factor = 0.1
+				poverty_development_monthly = 0.01
+			}
+			ai_will_do = {
+				base = 2
+				modifier = {
+					factor = 20
+					has_idea = low_interest_rates
+					check_variable = {
+						var = inflation_var
+						value = -0.1
+						compare = less_than
+					}
+					check_variable = {
+						var = inflation_var
+						value = -0.15
+						compare = greater_than
+					}
+				}
+				modifier = {
+					factor = 10
+					has_war = yes
+					NOT = {
+						has_idea = lowest_interest_rates
+					}
+				}
+				modifier = {
+					factor = 10
+					NOT = {
+						has_idea = lowest_interest_rates
+					}
+					OR = {
+						tag = SOV
+						tag = CHI
+						check_variable = {
+							ruling_party = 4
+						}
+						check_variable = {
+							ruling_party = 19
+						}
+						check_variable = {
+							ruling_party = 22
+						}
+						check_variable = {
+							ruling_party = 21
+						}
+						check_variable = {
+							ruling_party = 20
+						}
+					}
+				}
+			}
+		}
+		lowest_interest_rates = {
+			removal_cost = -1
+			cost = 100
+			level = 7
+			picture = laws_interest_rates
+			allowed = {
+				OR = {
+					tag = JAP
+					tag = USC
+					tag = ATW
+				}
+			}
+			available = {
+				if = {
+					limit = {
+						tag = USC
+					}
+					has_country_flag = DSW_FRA_pending_focus_USC_establish_an_all_american_banking_system
+				}
+				if = {
+					limit = {
+						tag = ATW
+					}
+					has_country_flag = DSW_FRA_pending_focus_ATW_blood_money
+				}
+				if = {
+					limit = {
+						has_country_flag = disabled_interest_rates_flag
+					}
+					NOT = {
+						has_country_flag = disabled_interest_rates_flag
+					}
+				}
+			}
+			modifier = {
+				interest_rate = 0
+				inflation_monthly = 0.003
+				production_speed_buildings_factor = 0.15
+				poverty_development_monthly = 0.015
+			}
+			ai_will_do = {
+				base = 2
+				modifier = {
+					factor = 20
+					has_idea = lower_interest_rates
+					check_variable = {
+						var = inflation_var
+						value = -0.15
+						compare = less_than
+					}
+				}
+				modifier = {
+					factor = 20
+					OR = {
+						tag = SOV
+						tag = CHI
+						check_variable = {
+							ruling_party = 4
+						}
+						check_variable = {
+							ruling_party = 19
+						}
+						check_variable = {
+							ruling_party = 22
+						}
+						check_variable = {
+							ruling_party = 21
+						}
+						check_variable = {
+							ruling_party = 20
+						}
+					}
+				}
+			}
+		}
+	}
+}

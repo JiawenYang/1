@@ -1,0 +1,446 @@
+# DSW France compatibility
+ideas = {
+	economy = {
+		civilian_mobilization = {
+			picture = laws_economic_focus1
+			cost = 100
+			removal_cost = -1
+			level = 6
+			cancel_if_invalid = no
+			available = {
+				if = {
+					limit = {
+						tag = GER
+						NOT = {
+							has_idea = early_mobilization
+							has_idea = partial_mobilization
+							has_idea = war_mobilization
+							has_idea = total_mobilization
+							has_idea = permanent_mobilization
+						}
+					}
+					set_temp_variable = {
+						var = GER_support_bundestag_total_trigger_var_temp
+						value = 0.5
+					}
+					DSW_FRA_dep_GER_has_bundestag_support_greater_than = yes
+				}
+			}
+			modifier = {
+				business_value_factor = 0.1
+				consumer_goods_expected_value = 0.35
+				production_speed_arms_factory_factor = -0.2
+				production_speed_dockyard_factor = -0.2
+				conversion_cost_civ_to_mil_factor = 0.2
+				max_fuel_factor = -0.2
+				industrial_development_monthly = 0.005
+				low_stability_weekly = 0.002
+				factory_energy_consumption = -0.2
+			}
+		}
+		total_mobilization = {
+			picture = laws_economic_focus5
+			cost = 100
+			removal_cost = -1
+			level = 2
+			cancel_if_invalid = no
+			visible = {
+				NOT = {
+					has_idea = all_russian_total_mobilization
+					has_idea = all_russian_consolidation
+				}
+			}
+			available = {
+				has_war = yes
+				NOT = {
+					has_war_support < 0.8
+				}
+				if = {
+					limit = {
+						tag = GER
+						NOT = {
+							has_idea = permanent_mobilization
+						}
+					}
+					set_temp_variable = {
+						var = GER_support_bundestag_total_trigger_var_temp
+						value = 0.5
+					}
+					DSW_FRA_dep_GER_has_bundestag_support_greater_than = yes
+				}
+				if = {
+					limit = {
+						tag = JAP
+					}
+					NOT = {
+						has_idea = JAP_japanese_pacifism_idea
+					}
+				}
+				if = {
+					limit = {
+						tag = CHI
+					}
+					OR = {
+						has_country_flag = DSW_FRA_pending_focus_PRC_all_chinese_mobilization
+						has_country_flag = DSW_FRA_pending_focus_PRC_all_chinese_mobilization_imper
+					}
+				}
+				any_enemy_country = {
+					ic_ratio = {
+						tag = ROOT
+						ratio > 0.5
+					}
+				}
+			}
+			modifier = {
+				business_value_factor = -0.1
+				conscription_factor = -0.1
+				consumer_goods_expected_value = 0.15
+				production_speed_arms_factory_factor = 0.2
+				production_speed_dockyard_factor = 0.2
+				conversion_cost_civ_to_mil_factor = -0.2
+				max_fuel_factor = 0.2
+				mobilization_speed = 0.25
+				industrial_development_monthly = -0.01
+				factory_energy_consumption = 0.15
+			}
+			ai_will_do = {
+				base = 1
+				modifier = {
+					factor = 25
+					manpower_per_military_factory > 15000
+				}
+				modifier = {
+					factor = 0
+					manpower_per_military_factory < 7000
+				}
+				modifier = {
+					factor = 20
+					has_war = yes
+				}
+			}
+		}
+		partial_mobilization = {
+			picture = laws_economic_focus3
+			cost = 100
+			removal_cost = -1
+			level = 4
+			cancel_if_invalid = no
+			available = {
+				NOT = {
+					has_war_support < 0.25
+				}
+				if = {
+					limit = {
+						tag = GER
+						NOT = {
+							has_idea = war_mobilization
+							has_idea = total_mobilization
+							has_idea = permanent_mobilization
+						}
+					}
+					set_temp_variable = {
+						var = GER_support_bundestag_total_trigger_var_temp
+						value = 0.5
+					}
+					DSW_FRA_dep_GER_has_bundestag_support_greater_than = yes
+				}
+				if = {
+					limit = {
+						tag = JAP
+					}
+					NOT = {
+						has_idea = JAP_japanese_pacifism_idea
+					}
+				}
+				if = {
+					limit = {
+						tag = CHI
+					}
+					has_country_flag = DSW_FRA_pending_focus_PRC_suspend_the_consumer_economy
+				}
+			}
+			modifier = {
+				consumer_goods_expected_value = 0.25
+				factory_energy_consumption = -0.05
+			}
+			ai_will_do = {
+				base = 2
+				modifier = {
+					factor = 20
+					is_major = yes
+				}
+				modifier = {
+					factor = 20
+					has_war = yes
+					NOT = {
+						has_idea = total_mobilization
+						has_idea = war_mobilization
+					}
+				}
+			}
+		}
+		mass_consumerism = {
+			picture = laws_economic_focus
+			removal_cost = -1
+			level = 7
+			cancel_if_invalid = no
+			default = yes
+			allowed_to_remove = {
+
+			}
+			available = {
+
+			}
+			modifier = {
+				business_value_factor = 0.15
+				consumer_goods_expected_value = 0.4
+				production_speed_arms_factory_factor = -0.3
+				production_speed_dockyard_factor = -0.3
+				conversion_cost_civ_to_mil_factor = 0.3
+				max_fuel_factor = -0.3
+				industrial_development_monthly = 0.01
+				low_stability_weekly = 0.005
+				factory_energy_consumption = -0.2
+			}
+		}
+		permanent_mobilization = {
+			picture = laws_economic_focus6
+			cost = 100
+			removal_cost = -1
+			level = 1
+			cancel_if_invalid = no
+			allowed = {
+				OR = {
+					tag = GMA
+					tag = SOV
+					tag = ATW
+					tag = NSM
+					tag = GER
+					tag = POL
+					tag = CHI
+				}
+			}
+			visible = {
+				NOT = {
+					has_idea = all_russian_total_mobilization
+					has_idea = all_russian_consolidation
+				}
+				OR = {
+					AND = {
+						tag = SOV
+						has_country_flag = DSW_FRA_pending_focus_SOV_state_of_permanent_mobilization
+					}
+					AND = {
+						tag = GMA
+						has_country_flag = DSW_FRA_pending_focus_GMA_Privatize_Mobilization
+					}
+					AND = {
+						tag = GER
+						has_country_flag = DSW_FRA_pending_focus_GER_economy_fueld_by_war
+					}
+					AND = {
+						tag = POL
+						has_cosmetic_tag = PLD_National_Government
+					}
+					AND = {
+						tag = USB
+						has_country_flag = DSW_FRA_pending_focus_USB_the_visible_hand
+					}
+					AND = {
+						tag = CHI
+						has_country_flag = DSW_FRA_pending_focus_PRC_chinese_emergency_state
+					}
+					AND = {
+						tag = NSM
+						has_country_flag = DSW_FRA_pending_focus_NSM_Create_The_Peoples_Liberators
+					}
+					AND = {
+						tag = ATW
+						has_country_flag = DSW_FRA_pending_focus_ATW_obliterate_the_social_contract
+					}
+				}
+			}
+			available = {
+				OR = {
+					AND = {
+						has_war = yes
+						NOT = {
+							has_war_support < 0.5
+						}
+						surrender_progress > 0.25
+						date > 2027.01.01
+					}
+				}
+			}
+			allowed_to_remove = {
+				always = no
+			}
+			modifier = {
+				business_value_factor = -0.15
+				conscription_factor = -0.2
+				consumer_goods_expected_value = 0.1
+				production_speed_arms_factory_factor = 0.3
+				production_speed_dockyard_factor = 0.3
+				conversion_cost_civ_to_mil_factor = -0.3
+				max_fuel_factor = 0.3
+				industrial_development_monthly = -0.015
+				factory_energy_consumption = 0.1
+			}
+			ai_will_do = {
+				base = 0
+			}
+		}
+		war_mobilization = {
+			picture = laws_economic_focus4
+			cost = 100
+			removal_cost = -1
+			level = 3
+			cancel_if_invalid = no
+			available = {
+				NOT = {
+					has_war_support < 0.5
+				}
+				if = {
+					limit = {
+						tag = GER
+						NOT = {
+							has_idea = total_mobilization
+							has_idea = permanent_mobilization
+						}
+					}
+					set_temp_variable = {
+						var = GER_support_bundestag_total_trigger_var_temp
+						value = 0.5
+					}
+					DSW_FRA_dep_GER_has_bundestag_support_greater_than = yes
+				}
+				if = {
+					limit = {
+						tag = JAP
+					}
+					NOT = {
+						has_idea = JAP_japanese_pacifism_idea
+					}
+				}
+				if = {
+					limit = {
+						tag = CHI
+					}
+					has_country_flag = DSW_FRA_pending_focus_PRC_suspend_the_consumer_economy
+				}
+				if = {
+					limit = {
+						tag = FRA
+					}
+					OR = {
+						has_country_flag = Wartime_Mobilization_Allowed
+						has_war_support < 0.5
+					}
+				}
+				AND = {
+					has_war = yes
+					any_enemy_country = {
+						ic_ratio = {
+							tag = ROOT
+							ratio > 0.4
+						}
+					}
+				}
+			}
+			modifier = {
+				business_value_factor = -0.05
+				consumer_goods_expected_value = 0.2
+				production_speed_arms_factory_factor = 0.1
+				production_speed_dockyard_factor = 0.1
+				conversion_cost_civ_to_mil_factor = -0.1
+				max_fuel_factor = 0.1
+				industrial_development_monthly = -0.005
+				factory_energy_consumption = 0.05
+			}
+			ai_will_do = {
+				base = 5
+				modifier = {
+					factor = 20
+					manpower_per_military_factory > 1000
+				}
+				modifier = {
+					factor = 20
+					has_war = yes
+				}
+			}
+		}
+		early_mobilization = {
+			picture = laws_economic_focus2
+			cost = 100
+			removal_cost = -1
+			level = 5
+			cancel_if_invalid = no
+			available = {
+				NOT = {
+					has_war_support < 0.15
+				}
+				if = {
+					limit = {
+						tag = GER
+						NOT = {
+							has_idea = partial_mobilization
+							has_idea = war_mobilization
+							has_idea = total_mobilization
+							has_idea = permanent_mobilization
+						}
+					}
+					set_temp_variable = {
+						var = GER_support_bundestag_total_trigger_var_temp
+						value = 0.5
+					}
+					DSW_FRA_dep_GER_has_bundestag_support_greater_than = yes
+				}
+				if = {
+					limit = {
+						tag = JAP
+					}
+					NOT = {
+						has_idea = JAP_japanese_pacifism_idea
+					}
+				}
+				if = {
+					limit = {
+						tag = CHI
+					}
+					OR = {
+						has_country_flag = DSW_FRA_pending_focus_PRC_the_final_opportunity
+						has_country_flag = DSW_FRA_pending_focus_PRC_embrace_the_imperial_administrative_system
+					}
+				}
+			}
+			modifier = {
+				business_value_factor = 0.05
+				consumer_goods_expected_value = 0.3
+				production_speed_arms_factory_factor = -0.1
+				production_speed_dockyard_factor = -0.1
+				conversion_cost_civ_to_mil_factor = 0.1
+				max_fuel_factor = -0.1
+				industrial_development_monthly = 0.002
+				low_stability_weekly = 0.001
+				factory_energy_consumption = -0.15
+			}
+			ai_will_do = {
+				base = 2
+				modifier = {
+					factor = 20
+					is_major = yes
+				}
+				modifier = {
+					factor = 20
+					has_war = yes
+					NOT = {
+						has_idea = total_mobilization
+						has_idea = war_mobilization
+						has_idea = partial_mobilization
+					}
+				}
+			}
+		}
+	}
+}

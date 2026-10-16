@@ -1,0 +1,325 @@
+# DSW France compatibility
+ideas = {
+	tax_laws = {
+		high_taxes = {
+			removal_cost = -1
+			cost = 100
+			level = 2
+			picture = laws_taxes3
+			modifier = {
+				tax_business_rate = 0.25
+				tax_personal_rate = 0.2
+				conversion_cost_mil_to_civ_factor = 0.1
+				production_speed_industrial_complex_factor = -0.1
+				production_speed_office_park_factor = -0.1
+				fuel_gain_factor = -0.1
+				poverty_development_monthly = -0.005
+			}
+			ai_will_do = {
+				base = 2
+				modifier = {
+					factor = 20
+					OR = {
+						AND = {
+							has_war = no
+							has_idea = higher_taxes
+						}
+						AND = {
+							has_war = yes
+							NOT = {
+								has_idea = higher_taxes
+							}
+						}
+					}
+				}
+				modifier = {
+					factor = 20
+					check_variable = {
+						var = expenses_income_var
+						value = 1
+						compare = greater_than
+					}
+					check_variable = {
+						var = expenses_income_var
+						value = 1.25
+						compare = less_than
+					}
+					has_idea = higher_taxes
+				}
+				modifier = {
+					factor = 20
+					NOT = {
+						has_idea = higher_taxes
+					}
+					OR = {
+						tag = SOV
+						tag = CHI
+						check_variable = {
+							ruling_party = 4
+						}
+						check_variable = {
+							ruling_party = 19
+						}
+						check_variable = {
+							ruling_party = 22
+						}
+						check_variable = {
+							ruling_party = 21
+						}
+						check_variable = {
+							ruling_party = 20
+						}
+					}
+				}
+			}
+		}
+		higher_taxes = {
+			removal_cost = -1
+			cost = 100
+			level = 1
+			picture = laws_taxes4
+			modifier = {
+				tax_business_rate = 0.3
+				tax_personal_rate = 0.25
+				conversion_cost_mil_to_civ_factor = 0.2
+				production_speed_industrial_complex_factor = -0.2
+				production_speed_office_park_factor = -0.2
+				fuel_gain_factor = -0.2
+				poverty_development_monthly = -0.01
+			}
+			ai_will_do = {
+				base = 2
+				modifier = {
+					factor = 20
+					has_war = yes
+				}
+				modifier = {
+					factor = 20
+					check_variable = {
+						var = debt_difference_var
+						value = 0.2
+						compare = greater_than
+					}
+				}
+				modifier = {
+					factor = 20
+					check_variable = {
+						var = expenses_income_var
+						value = 1.25
+						compare = greater_than
+					}
+				}
+				modifier = {
+					factor = 20
+					OR = {
+						tag = SOV
+						tag = CHI
+						check_variable = {
+							ruling_party = 4
+						}
+						check_variable = {
+							ruling_party = 19
+						}
+						check_variable = {
+							ruling_party = 22
+						}
+						check_variable = {
+							ruling_party = 21
+						}
+						check_variable = {
+							ruling_party = 20
+						}
+					}
+				}
+			}
+		}
+		lower_taxes = {
+			removal_cost = -1
+			cost = 100
+			level = 5
+			picture = laws_taxes
+			available = {
+
+			}
+			modifier = {
+				tax_business_rate = 0.1
+				tax_personal_rate = 0.05
+				conversion_cost_mil_to_civ_factor = -0.2
+				production_speed_industrial_complex_factor = 0.2
+				production_speed_office_park_factor = 0.2
+				fuel_gain_factor = 0.2
+				poverty_development_monthly = 0.01
+			}
+			ai_will_do = {
+				base = 2
+				modifier = {
+					factor = 0
+					has_war = yes
+				}
+				modifier = {
+					factor = 20
+					check_variable = {
+						var = debt_difference_var
+						value = -0.3
+						compare = less_than
+					}
+					OR = {
+						has_idea = medium_taxes
+						has_idea = high_taxes
+						has_idea = higher_taxes
+					}
+				}
+				modifier = {
+					factor = 20
+					check_variable = {
+						var = expenses_income_var
+						value = 0.5
+						compare = less_than
+					}
+					OR = {
+						has_idea = medium_taxes
+						has_idea = high_taxes
+						has_idea = higher_taxes
+					}
+				}
+			}
+		}
+		low_taxes = {
+			removal_cost = -1
+			cost = 100
+			level = 4
+			picture = laws_taxes1
+			available = {
+
+			}
+			modifier = {
+				tax_business_rate = 0.15
+				tax_personal_rate = 0.1
+				conversion_cost_mil_to_civ_factor = -0.1
+				production_speed_industrial_complex_factor = 0.1
+				production_speed_office_park_factor = 0.1
+				fuel_gain_factor = 0.1
+				poverty_development_monthly = 0.005
+			}
+			ai_will_do = {
+				base = 2
+				modifier = {
+					factor = 0
+					has_war = yes
+				}
+				modifier = {
+					factor = 20
+					check_variable = {
+						var = debt_difference_var
+						value = -0.15
+						compare = less_than
+					}
+					check_variable = {
+						var = debt_difference_var
+						value = -0.3
+						compare = greater_than
+					}
+					OR = {
+						has_idea = medium_taxes
+						has_idea = high_taxes
+						has_idea = higher_taxes
+					}
+				}
+				modifier = {
+					factor = 20
+					check_variable = {
+						var = expenses_income_var
+						value = 0.5
+						compare = greater_than
+					}
+					check_variable = {
+						var = expenses_income_var
+						value = 0.75
+						compare = less_than
+					}
+					OR = {
+						has_idea = medium_taxes
+						has_idea = high_taxes
+						has_idea = higher_taxes
+					}
+				}
+			}
+		}
+		medium_taxes = {
+			removal_cost = -1
+			cost = 100
+			level = 3
+			picture = laws_taxes2
+			default = yes
+			modifier = {
+				tax_business_rate = 0.2
+				tax_personal_rate = 0.15
+			}
+			ai_will_do = {
+				base = 1
+				modifier = {
+					factor = 20
+					OR = {
+						AND = {
+							has_war = yes
+							NOT = {
+								has_idea = high_taxes
+								has_idea = higher_taxes
+							}
+						}
+						AND = {
+							has_war = no
+							OR = {
+								has_idea = high_taxes
+								has_idea = higher_taxes
+							}
+						}
+					}
+				}
+				modifier = {
+					factor = 20
+					check_variable = {
+						var = expenses_income_var
+						value = 0.75
+						compare = greater_than
+					}
+					check_variable = {
+						var = expenses_income_var
+						value = 1
+						compare = less_than
+					}
+					OR = {
+						has_idea = high_taxes
+						has_idea = higher_taxes
+					}
+				}
+				modifier = {
+					factor = 20
+					NOT = {
+						has_idea = higher_taxes
+						has_idea = high_taxes
+					}
+					OR = {
+						tag = SOV
+						tag = CHI
+						check_variable = {
+							ruling_party = 4
+						}
+						check_variable = {
+							ruling_party = 19
+						}
+						check_variable = {
+							ruling_party = 22
+						}
+						check_variable = {
+							ruling_party = 21
+						}
+						check_variable = {
+							ruling_party = 20
+						}
+					}
+				}
+			}
+		}
+	}
+}

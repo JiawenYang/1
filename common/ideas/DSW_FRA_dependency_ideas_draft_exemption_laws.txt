@@ -1,0 +1,171 @@
+# DSW France compatibility
+ideas = {
+	draft_exemption_laws = {
+		no_draft_exemptions = {
+			removal_cost = -1
+			cost = 100
+			level = 3
+			picture = laws_no_draft_exemptions
+			default = yes
+			available = {
+				if = {
+					limit = {
+						has_country_flag = DSW_FRA_pending_focus_SOV_motherland_of_virtue
+					}
+					always = no
+				}
+			}
+			modifier = {
+				war_support_factor = -0.05
+				farming_development_monthly = -0.002
+				society_development_monthly = -0.002
+				academic_development_monthly = -0.002
+			}
+			ai_will_do = {
+				base = 1
+				modifier = {
+					factor = 120
+					original_tag = SOV
+					has_country_leader = {
+						character = DSW_TFR_SOV_vladimir_zhirinovsky
+						ruling_only = yes
+					}
+				}
+			}
+		}
+		general_exemptions = {
+			removal_cost = -1
+			cost = 100
+			level = 1
+			picture = laws_general_exemptions
+			available = {
+				if = {
+					limit = {
+						has_country_flag = DSW_FRA_pending_focus_SOV_motherland_of_virtue
+					}
+					always = no
+				}
+				if = {
+					limit = {
+						has_country_flag = DSW_FRA_pending_focus_SOV_citizenship_for_service
+					}
+					always = no
+				}
+				if = {
+					limit = {
+						has_country_flag = DSW_FRA_pending_focus_SOV_soldiers_state
+					}
+					always = no
+				}
+			}
+			modifier = {
+				conscription_factor = -0.25
+				war_support_factor = 0.05
+				research_speed_factor = 0.05
+				political_power_gain = 0.1
+				farming_development_monthly = 0.002
+				society_development_monthly = 0.002
+				academic_development_monthly = 0.002
+			}
+			ai_will_do = {
+				base = 1
+			}
+		}
+		civil_service_exemptions = {
+			removal_cost = -1
+			cost = 100
+			level = 2
+			picture = laws_civil_service_exemptions
+			available = {
+				if = {
+					limit = {
+						has_country_flag = DSW_FRA_pending_focus_SOV_motherland_of_virtue
+					}
+					always = no
+				}
+				if = {
+					limit = {
+						has_country_flag = DSW_FRA_pending_focus_SOV_citizenship_for_service
+					}
+					always = no
+				}
+				if = {
+					limit = {
+						has_country_flag = DSW_FRA_pending_focus_SOV_soldiers_state
+					}
+					always = no
+				}
+			}
+			modifier = {
+				conscription_factor = -0.1
+				political_power_gain = 0.1
+				farming_development_monthly = 0.005
+			}
+			ai_will_do = {
+				base = 1
+			}
+		}
+		education_exemptions = {
+			removal_cost = -1
+			cost = 100
+			level = 2
+			picture = laws_education_exemptions
+			available = {
+				if = {
+					limit = {
+						has_country_flag = DSW_FRA_pending_focus_SOV_motherland_of_virtue
+					}
+					always = no
+				}
+				if = {
+					limit = {
+						has_country_flag = DSW_FRA_pending_focus_SOV_citizenship_for_service
+					}
+					always = no
+				}
+				if = {
+					limit = {
+						has_country_flag = DSW_FRA_pending_focus_SOV_soldiers_state
+					}
+					always = no
+				}
+			}
+			modifier = {
+				conscription_factor = -0.1
+				research_speed_factor = 0.05
+				academic_development_monthly = 0.005
+			}
+			ai_will_do = {
+				base = 1
+			}
+		}
+		religious_exemptions = {
+			removal_cost = -1
+			cost = 100
+			level = 2
+			picture = laws_religious_exemptions
+			available = {
+				if = {
+					limit = {
+						has_country_flag = DSW_FRA_pending_focus_SOV_citizenship_for_service
+					}
+					always = no
+				}
+				if = {
+					limit = {
+						has_country_flag = DSW_FRA_pending_focus_SOV_soldiers_state
+					}
+					always = no
+				}
+			}
+			modifier = {
+				conscription_factor = -0.1
+				war_support_factor = 0.05
+				society_development_monthly = 0.005
+			}
+			ai_will_do = {
+				base = 1
+			}
+		}
+	}
+}

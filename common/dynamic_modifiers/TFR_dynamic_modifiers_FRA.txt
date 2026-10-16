@@ -1,10 +1,11 @@
+# DSW France / TFR 2020 port. Source: The Fire Rises 1.0.9.1c.
 FRA_armed_forces_dynamic = {
 	icon = GFX_idea_FRA_french_armed_forces
-	enable = { 
+	enable = {
 		tag = FRA
 	}
 	political_power_gain = FRA_military_political_power_gain_dynamic_var
-	war_support_factor = FRA_military_war_support_factor_dynamic_var #-0.1
+	war_support_factor = FRA_military_war_support_factor_dynamic_var
 	war_support_weekly = FRA_military_war_support_weekly_dynamic_var
 	weekly_manpower = FRA_military_weekly_manpower_dynamic_var
 	weekly_casualties_war_support = FRA_military_weekly_casualties_war_support_dynamic_var
@@ -35,19 +36,17 @@ FRA_armed_forces_dynamic = {
 	equipment_capture_factor = FRA_military_equipment_capture_factor_dynamic_var
 	supply_consumption_factor = FRA_military_supply_consumption_factor_dynamic_var
 	out_of_supply_factor = FRA_military_out_of_supply_factor_dynamic_var
-	conscription_factor = FRA_military_conscription_factor_dynamic_var #-0.5
-	mobilization_speed = FRA_military_mobilization_speed_dynamic_var #-0.5
+	conscription_factor = FRA_military_conscription_factor_dynamic_var
+	mobilization_speed = FRA_military_mobilization_speed_dynamic_var
 	training_time_factor = FRA_military_training_time_factor_dynamic_var
 	resistance_decay_on_our_occupied_states = FRA_military_resistance_decay_on_our_occupied_states_dynamic_var
 	resistance_growth_on_our_occupied_states = FRA_military_resistance_growth_on_our_occupied_states_dynamic_var
 	acclimatization_cold_climate_gain_factor = FRA_military_acclimatization_cold_climate_gain_factor_dynamic_var
 	acclimatization_hot_climate_gain_factor = FRA_military_acclimatization_hot_climate_gain_factor_dynamic_var
 	pocket_penalty = FRA_military_pocket_penalty_dynamic_var
-	cat_old_land_doctrine_cost_factor = FRA_military_land_doctrine_cost_factor_dynamic_var #0.1
+	cat_old_land_doctrine_cost_factor = FRA_military_land_doctrine_cost_factor_dynamic_var
 	production_speed_offices_factor = FRA_military_production_speed_offices_factor_dynamic_var
 	military_development_monthly = FRA_military_development_monthly_dynamic_var
-
-	#Air
 	experience_gain_air = FRA_air_experience_gain_air_dynamic_var
 	experience_gain_air_factor = FRA_air_experience_gain_air_factor_dynamic_var
 	air_wing_xp_loss_when_killed_factor = FRA_air_wing_xp_loss_when_killed_factor_dynamic_var
@@ -65,13 +64,10 @@ FRA_armed_forces_dynamic = {
 	air_manpower_requirement_factor = FRA_air_manpower_requirement_factor_dynamic_var
 	air_untrained_pilots_penalty_factor = FRA_air_untrained_pilots_penalty_factor_dynamic_var
 	aircraft_upkeep_factor = FRA_air_aircraft_upkeep_factor_dynamic_var
-	cat_old_air_doctrine_cost_factor = FRA_air_doctrine_cost_factor_dynamic_var #0.1
-
-	#Navy
+	cat_old_air_doctrine_cost_factor = FRA_air_doctrine_cost_factor_dynamic_var
 	ship_upkeep_factor = FRA_naval_ship_upkeep_factor_dynamic_var
-	cat_old_naval_doctrine_cost_factor = FRA_naval_naval_doctrine_cost_factor_dynamic_var #0.1	
+	cat_old_naval_doctrine_cost_factor = FRA_naval_naval_doctrine_cost_factor_dynamic_var
 }
-
 FAF_verdun = {
 	icon = France_First
 	enable = {
@@ -82,7 +78,6 @@ FAF_verdun = {
 }
 FRA_civil_war_state = {
 	icon = GFX_idea_FRA_civil_war_idea
-
 	air_cas_present_factor = -0.75
 	army_attack_factor = -0.95
 	army_speed_factor = -0.95
@@ -101,7 +96,7 @@ FAF_villages_detruits = {
 }
 FPR_federal_soviet_republic = {
 	icon = GFX_FPR_FFSR_idea
-	enable = { 
+	enable = {
 		always = yes
 	}
 	local_supplies_for_controller = 0.05
@@ -111,7 +106,7 @@ FPR_federal_soviet_republic = {
 }
 FPR_empowered_anarchist_councils_dynamic_modifier = {
 	icon = GFX_modifiers_megacity
-	enable = { 
+	enable = {
 		always = yes
 	}
 	local_supplies_for_controller = 0.05
@@ -119,7 +114,6 @@ FPR_empowered_anarchist_councils_dynamic_modifier = {
 	mobilization_speed = 0.1
 	state_production_speed_buildings_factor = 0.1
 }
-
 FRA_civil_war_rebuilding_dynamic = {
 	icon = GFX_idea_FRA_Brick_By_Brick
 	production_speed_buildings_factor = FRA_rebuilding_production_speed_buildings_factor_dynamic
@@ -129,7 +123,6 @@ FRA_civil_war_rebuilding_dynamic = {
 	industrial_capacity_dockyard = FRA_rebuilding_industrial_capacity_dockyard_dynamic_var
 	resistance_activity = FRA_rebuilding_resistance_activity_dynamic_var
 }
- # this can be deleted
 FAF_civil_war_rebuilding_dynamic = {
 	icon = GFX_idea_FRA_Brick_By_Brick
 	production_speed_buildings_factor = FAF_rebuilding_production_speed_buildings_factor_dynamic
@@ -152,14 +145,13 @@ FPR_civil_war_rebuilding_dynamic = {
 	industrial_capacity_dockyard = FPR_rebuilding_industrial_capacity_dockyard_dynamic_var
 	resistance_activity = FPR_rebuilding_resistance_activity_dynamic_var
 }
-
 FRA_space_age_dynamic = {
 	icon = GFX_idea_FRA_Project_Frontier
 	production_speed_buildings_factor = FRA_french_space_age_production_speed_buildings_factor_dynamic
 	production_factory_efficiency_gain_factor = FRA_french_space_age_production_factory_efficiency_gain_factor_dynamic
-	industrial_capacity_factory =	FRA_french_space_age_industrial_capacity_factory_dynamic
+	industrial_capacity_factory = FRA_french_space_age_industrial_capacity_factory_dynamic
 	society_development_monthly = FRA_french_space_age_society_development_monthly_dynamic
-	political_power_factor = FRA_french_space_age_political_power_factor_dynamic 
+	political_power_factor = FRA_french_space_age_political_power_factor_dynamic
 	production_lack_of_resource_penalty_factor = FRA_french_space_age_production_lack_of_resource_penalty_factor_dynamic
 	consumer_goods_factor = FRA_french_space_age_consumer_goods_factor_dynamic
 	industrial_capacity_dockyard = FRA_french_space_age_industrial_capacity_dockyard_dynamic
@@ -191,8 +183,8 @@ FPR_Revolution_dynamic = {
 	army_attack_factor = FPR_revolution_military_army_attack_factor_dynamic_var
 	army_defence_factor = FPR_revolution_military_army_defence_factor_dynamic_var
 	breakthrough_factor = FPR_revolution_military_breakthrough_factor_dynamic_var
-	conscription_factor = FPR_revolution_military_conscription_factor_dynamic_var #-0.5
-	mobilization_speed = FPR_revolution_military_mobilization_speed_dynamic_var #-0.5
+	conscription_factor = FPR_revolution_military_conscription_factor_dynamic_var
+	mobilization_speed = FPR_revolution_military_mobilization_speed_dynamic_var
 	training_time_factor = FPR_revolution_military_training_time_factor_dynamic_var
 	consumer_goods_factor = FPR_revolution_consumergoods_dynamic_var
 	business_value_factor = FPR_revolution_business_value_factor_dynamic_var
@@ -215,7 +207,6 @@ FPR_Revolution_dynamic = {
 	production_lack_of_resource_penalty_factor = FPR_revolution_production_lack_of_resource_penalty_factor_dynamic_var
 	line_change_production_efficiency_factor = FPR_revolution_line_change_production_efficiency_factor_dynamic_var
 }
-
 FPR_no_gods_no_masters_dynamic = {
 	icon = GFX_idea_FPR_nogodsnomasters_ns
 	weekly_manpower = FPR_ngnm_weekly_manpower_dynamic_var
@@ -246,10 +237,11 @@ FAF_horde_dynamic = {
 }
 FAF_dauphine_province_modifier = {
 	icon = GFX_idea_FAF_dauphin
-	enable = { 
+	enable = {
 		always = yes
 	}
-    remove_trigger = {
+	remove_trigger = {
+
 	}
 	state_production_speed_industrial_complex_factor = 0.05
 	state_resources_factor = 0.1
@@ -260,10 +252,11 @@ FAF_dauphine_province_modifier = {
 }
 UKR_ukrainian_crimea_defense_modifier = {
 	icon = GFX_idea_FAF_dauphin
-	enable = { 
+	enable = {
 		always = yes
 	}
-    remove_trigger = {
+	remove_trigger = {
+
 	}
 	local_org_regain = 0.1
 	local_supplies = 0.1
@@ -273,10 +266,11 @@ UKR_ukrainian_crimea_defense_modifier = {
 }
 FAF_imperial_decentralization = {
 	icon = GFX_idea_FAF_imperial_decentralization
-	enable = { 
+	enable = {
 		always = yes
 	}
-    remove_trigger = {
+	remove_trigger = {
+
 	}
 	state_resources_factor = 0.05
 	recruitable_population_factor = 0.01
@@ -311,11 +305,10 @@ FRA_victory_conservative_dynamic = {
 	training_time_factor = FRA_victory_conservative_military_training_time_factor_dynamic_var
 	consumer_goods_factor = FRA_victory_conservative_consumer_goods_dynamic_var
 }
-
 FRA_victory_socialist_dynamic = {
 	icon = FRA_french_spirit
 	political_power_gain = FRA_victory_socialist_political_power_gain_dynamic_var
-	party_popularity_stability_factor = FRA_victory_socialist_party_pop_stability_dynamic_var  
+	party_popularity_stability_factor = FRA_victory_socialist_party_pop_stability_dynamic_var
 	stability_factor = FRA_victory_socialist_stability_factor_dynamic_var
 	war_support_factor = FRA_victory_socialist_war_support_factor_dynamic_var
 	production_factory_max_efficiency_factor = FRA_victory_socialist_production_factory_max_efficiency_factor_dynamic_var
@@ -341,11 +334,10 @@ FRA_victory_socialist_dynamic = {
 	training_time_factor = FRA_victory_socialist_military_training_time_factor_dynamic_var
 	consumer_goods_factor = FRA_victory_socialist_consumer_goods_dynamic_var
 }
-
 FRA_victory_liberal_dynamic = {
 	icon = FRA_french_spirit
 	political_power_gain = FRA_victory_liberal_political_power_gain_dynamic_var
-	party_popularity_stability_factor = FRA_victory_liberal_party_pop_stability_dynamic_var  
+	party_popularity_stability_factor = FRA_victory_liberal_party_pop_stability_dynamic_var
 	stability_factor = FRA_victory_liberal_stability_factor_dynamic_var
 	war_support_factor = FRA_victory_liberal_war_support_factor_dynamic_var
 	production_factory_max_efficiency_factor = FRA_victory_liberal_production_factory_max_efficiency_factor_dynamic_var
@@ -375,7 +367,6 @@ FRA_victory_liberal_dynamic = {
 	max_planning_factor = FRA_victory_liberal_max_planning_dynamic_var
 	consumer_goods_factor = FRA_victory_liberal_consumer_goods_dynamic_var
 }
-
 FRA_national_body_reconstruction_dynamic = {
 	icon = GFX_idea_FRA_Reforming_Civil_Services
 	political_power_gain = FRA_national_body_political_power_gain_dynamic_var
@@ -397,10 +388,9 @@ FRA_national_body_reconstruction_dynamic = {
 	production_lack_of_resource_penalty_factor = FRA_national_body_production_lack_of_resource_penalty_factor_dynamic_var
 	fuel_gain_factor = FRA_national_body_fuel_gain_factor_dynamic_var
 	fuel_gain_factor_from_states = FRA_national_body_fuel_gain_factor_from_states_dynamic_var
-
 	production_speed_buildings_factor = FRA_national_body_production_speed_buildings_factor_dynamic_var
-	industrial_capacity_factory = FRA_national_body_industrial_capacity_factory_dynamic_var #-0.2
-	industrial_capacity_dockyard = FRA_national_body_industrial_capacity_dockyard_dynamic_var #-0.2
+	industrial_capacity_factory = FRA_national_body_industrial_capacity_factory_dynamic_var
+	industrial_capacity_dockyard = FRA_national_body_industrial_capacity_dockyard_dynamic_var
 	production_speed_infrastructure_factor = FRA_national_body_production_speed_infrastructure_factor_dynamic_var
 	production_speed_industrial_complex_factor = FRA_national_body_production_speed_industrial_complex_factor_dynamic_var
 	production_speed_offices_factor = FRA_national_body_production_speed_offices_factor_dynamic_var
@@ -408,7 +398,7 @@ FRA_national_body_reconstruction_dynamic = {
 	production_speed_arms_factory_factor = FRA_national_body_production_speed_arms_factory_factor_dynamic_var
 	production_speed_dockyard_factor = FRA_national_body_production_speed_dockyard_factor_dynamic_var
 	production_speed_power_plant_factor = FRA_national_body_production_speed_power_plant_factor_dynamic_var
-	production_speed_nuclear_reactor_factor = FRA_national_body_production_speed_nuclear_reactor_factor_dynamic_var #-0.2
+	production_speed_nuclear_reactor_factor = FRA_national_body_production_speed_nuclear_reactor_factor_dynamic_var
 	production_speed_energy_farm_factor = FRA_national_body_production_speed_energy_farm_factor_dynamic_var
 	industrial_development_monthly = FRA_national_body_industrial_development_monthly_dynamic_var
 	poverty_development_monthly = FRA_national_body_poverty_development_monthly_dynamic_var
@@ -432,41 +422,33 @@ FPR_utopia_dynamic = {
 	icon = FPR_utopia
 	stability_factor = FPR_utopia_dynamic_dynamic_var_stability_factor
 	political_power_factor = FPR_utopia_dynamic_dynamic_var_political_power_factor
-	
 	consumer_goods_factor = FPR_utopia_dynamic_dynamic_var_consumer_goods_factor
-	
 	party_popularity_stability_factor = FPR_utopia_dynamic_dynamic_var_party_popularity_stability_factor
-	
 	war_support_weekly = FPR_utopia_dynamic_dynamic_var_war_support_weekly
-	
 	academic_development_monthly = FPR_utopia_dynamic_dynamic_var_academic_development_monthly
 	farming_development_monthly = FPR_utopia_dynamic_dynamic_var_farming_development_monthly
 	poverty_development_monthly = FPR_utopia_dynamic_dynamic_var_poverty_development_monthly
 	industrial_development_monthly = FPR_utopia_dynamic_dynamic_var_industrial_development_monthly
 	military_development_monthly = FPR_utopia_dynamic_dynamic_var_military_development_monthly
 	society_development_monthly = FPR_utopia_dynamic_dynamic_var_society_development_monthly
-	
 	head_minister_cost_factor = FPR_utopia_dynamic_dynamic_var_ministers_category_type_cost_factor
 	foreign_minister_cost_factor = FPR_utopia_dynamic_dynamic_var_ministers_category_type_cost_factor
 	economic_minister_cost_factor = FPR_utopia_dynamic_dynamic_var_ministers_category_type_cost_factor
 	interior_minister_cost_factor = FPR_utopia_dynamic_dynamic_var_ministers_category_type_cost_factor
 	intelligence_minister_cost_factor = FPR_utopia_dynamic_dynamic_var_ministers_category_type_cost_factor
 	theorist_minister_cost_factor = FPR_utopia_dynamic_dynamic_var_ministers_category_type_cost_factor
-	
 	economy_cost_factor = FPR_utopia_dynamic_dynamic_var_economic_laws_category_type_cost_factor
 	trade_laws_cost_factor = FPR_utopia_dynamic_dynamic_var_economic_laws_category_type_cost_factor
 	tax_laws_cost_factor = FPR_utopia_dynamic_dynamic_var_economic_laws_category_type_cost_factor
 	interest_rate_laws_cost_factor = FPR_utopia_dynamic_dynamic_var_economic_laws_category_type_cost_factor
 	welfare_laws_cost_factor = FPR_utopia_dynamic_dynamic_var_economic_laws_category_type_cost_factor
 	safety_laws_cost_factor = FPR_utopia_dynamic_dynamic_var_economic_laws_category_type_cost_factor
-	
 	mobilization_laws_cost_factor = FPR_utopia_dynamic_dynamic_var_manpower_laws_category_type_cost_factor
 	female_service_laws_cost_factor = FPR_utopia_dynamic_dynamic_var_manpower_laws_category_type_cost_factor
 	supervision_laws_cost_factor = FPR_utopia_dynamic_dynamic_var_manpower_laws_category_type_cost_factor
 	training_laws_cost_factor = FPR_utopia_dynamic_dynamic_var_manpower_laws_category_type_cost_factor
 	military_racial_integration_laws_cost_factor = FPR_utopia_dynamic_dynamic_var_manpower_laws_category_type_cost_factor
 	draft_exemption_laws_cost_factor = FPR_utopia_dynamic_dynamic_var_manpower_laws_category_type_cost_factor
-	
 	immigration_laws_cost_factor = FPR_utopia_dynamic_dynamic_var_social_laws_category_type_cost_factor
 	education_laws_cost_factor = FPR_utopia_dynamic_dynamic_var_social_laws_category_type_cost_factor
 	race_laws_cost_factor = FPR_utopia_dynamic_dynamic_var_social_laws_category_type_cost_factor
@@ -503,7 +485,6 @@ FAF_european_nation_dynamic = {
 	political_power_cost = FAF_EUN_political_power_cost_dynamic_var
 	society_development_monthly = FAF_EUN_society_development_monthly_dynamic_var
 	industrial_development_monthly = FAF_EUN_industrial_development_monthly_dynamic_var
-	
 }
 FAF_pride_of_france_dynamic = {
 	icon = GFX_idea_FAF_french_militarism
@@ -553,7 +534,6 @@ FAF_napoleonic_sympathies_dynamic = {
 	army_breakthrough_against_minor_factor = FAF_nsimp_army_breakthrough_against_minor_factor_dynamic_var
 	stability_factor = FAF_nsimp_stability_factor_dynamic_var
 	compliance_growth_on_our_occupied_states = FAF_nsimp_compliance_growth_on_our_occupied_states_dynamic_var
-	
 }
 FAF_Quadrilingual_Unification_dyanmic = {
 	icon = GFX_idea_FAF_quadralingual_unification
@@ -573,7 +553,6 @@ FAF_european_beauty_dynamic = {
 	global_building_slots = FAF_EUB_global_building_slots_dynamic_var
 	tax_gain_multiplier_modifier = FAF_EUB_tax_gain_multiplier_modifier_dynamic_var
 	monthly_population = FAF_EUB_monthly_population_dynamic_var
-
 }
 FAF_european_beauty_state_dynamic = {
 	icon = GFX_idea_FAF_european_beauty_state
@@ -647,7 +626,7 @@ FAF_a_new_republic_dynamic = {
 	military_development_monthly = FAF_a_new_republic_military_development_monthly_dynamic_var
 	farming_development_monthly = FAF_a_new_republic_farming_development_monthly_dynamic_var
 	production_factory_max_efficiency_factor = FAF_a_new_republic_production_factory_max_efficiency_factor_dynamic_var
-	industrial_capacity_factory = FAF_a_new_republic_industrial_capacity_factory_dynamic_var	
+	industrial_capacity_factory = FAF_a_new_republic_industrial_capacity_factory_dynamic_var
 	production_speed_buildings_factor = FAF_a_new_republic_production_speed_buildings_factor_dynamic_var
 	production_speed_infrastructure_factor = FAF_a_new_republic_production_speed_infrastructure_factor_dynamic_var
 	production_speed_offices_factor = FAF_a_new_republic_production_speed_offices_factor_dynamic_var
@@ -658,7 +637,7 @@ FAF_a_new_republic_dynamic = {
 	expense_growth_factor = FAF_a_new_republic_expense_growth_factor_dynamic_var
 	army_attack_factor = FAF_a_new_republic_army_attack_factor_dynamic_var
 	research_speed_factor = FAF_a_new_republic_research_speed_factor_dynamic_var
-	decryption =  FAF_a_new_republic_decryption_dynamic_var
+	decryption = FAF_a_new_republic_decryption_dynamic_var
 	encryption = FAF_a_new_republic_encryption_dynamic_var
 	local_resources_factor = FAF_a_new_republic_local_resources_factor_dynamic_var
 	personal_expense_factor = FAF_a_new_republic_personal_expense_factor_dynamic_var

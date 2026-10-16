@@ -1,0 +1,22 @@
+on_actions = {
+    on_daily_FRA = {
+        effect = {
+            if = { limit = { date > 2017.5.6 date < 2020.1.1 NOT = { has_country_flag = DSW_FRA_macron_2017_elected } NOT = { has_country_flag = DSW_FRA_tfr_active } } country_event = { id = dsw_fra.2017 } }
+            if = { limit = { date > 2019.12.31 NOT = { has_country_flag = DSW_FRA_tfr_active } } country_event = { id = dsw_fra.1 } }
+            if = {
+                limit = { has_country_flag = DSW_FRA_tfr_active }
+if = { limit = { date > 2020.1.15 NOT = { has_country_flag = DSW_FRA_timeline_yellow_vests_pause } } set_country_flag = DSW_FRA_timeline_yellow_vests_pause country_event = { id = france.16 days = 1 } }
+if = { limit = { date > 2020.2.9 NOT = { has_country_flag = DSW_FRA_timeline_covid } } set_country_flag = DSW_FRA_timeline_covid country_event = { id = france.15 days = 1 } }
+if = { limit = { date > 2020.3.22 NOT = { has_country_flag = DSW_FRA_timeline_yellow_vests_return } } set_country_flag = DSW_FRA_timeline_yellow_vests_return country_event = { id = france.17 days = 1 } }
+if = { limit = { date > 2021.5.2 NOT = { has_country_flag = DSW_FRA_timeline_military_demands } } set_country_flag = DSW_FRA_timeline_military_demands country_event = { id = france.5 days = 1 } }
+if = { limit = { date > 2022.3.1 NOT = { has_country_flag = DSW_FRA_timeline_nfp_candidate } } set_country_flag = DSW_FRA_timeline_nfp_candidate country_event = { id = france.47 days = 1 } }
+if = { limit = { date > 2022.4.10 NOT = { has_country_flag = DSW_FRA_timeline_election_2022 } } set_country_flag = DSW_FRA_timeline_election_2022 country_event = { id = france.3 days = 1 } }
+            }
+        }
+    }
+    on_weekly_FPR = {
+        effect = {
+            if = { limit = { FRA = { has_country_flag = DSW_FRA_tfr_active } has_completed_focus = FPR_The_Soft_Revolution NOT = { has_country_flag = FPR_utopia_goal_complete } } FPR_utopia_calculator = yes }
+        }
+    }
+}
