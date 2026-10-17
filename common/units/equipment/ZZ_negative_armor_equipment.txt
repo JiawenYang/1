@@ -1,0 +1,163 @@
+# ============================================================================
+# ZZ 负装甲配重装备（装甲率校准 · 仿 3731867125 机制）
+# ============================================================================
+# HOI4(NSB) 营装甲率 = need 中各装备条目硬度之和（每条目计一次，与数量无关），
+# 师装甲率 = 各营平均值。本文件提供负硬度装备条目，用于把合成营/东方坦克营的
+# 装甲率精确拉到设计值（重0.80/中0.70/两栖0.70/轻0.60/空突0.15/坦克0.90）。
+# 数值依据 MD 底盘代际硬度实测：MBT_1-8=0.9 IFV_1-8=0.5 APC_1-8=0.4
+# Rec_tank=0.7 SP_arty=0.9 SP_R_arty=0.3 SPAA(继承)=0.5 util=0.15 直升机=0.15。
+# ============================================================================
+
+equipments = {
+
+	ZZ_neg_armor_heavy = {
+		year = 2000
+
+		active = yes
+		can_license = no
+		is_archetype = yes
+		is_buildable = no
+		type = {
+			armor
+		}
+		group_by = archetype
+
+		interface_category = interface_category_land
+		reliability = 1
+		build_cost_ic = 1
+		hardness = -2.75
+	}
+	ZZ_neg_armor_heavy_1 = {
+		year = 2000
+		archetype = ZZ_neg_armor_heavy
+		active = yes
+		is_buildable = yes
+		priority = 10
+	}
+
+	ZZ_neg_armor_medium = {
+		year = 2000
+
+		active = yes
+		can_license = no
+		is_archetype = yes
+		is_buildable = no
+		type = {
+			armor
+		}
+		group_by = archetype
+
+		interface_category = interface_category_land
+		reliability = 1
+		build_cost_ic = 1
+		hardness = -2.10
+	}
+	ZZ_neg_armor_medium_1 = {
+		year = 2000
+		archetype = ZZ_neg_armor_medium
+		active = yes
+		is_buildable = yes
+		priority = 10
+	}
+
+	ZZ_neg_armor_amphibious = {
+		year = 2000
+
+		active = yes
+		can_license = no
+		is_archetype = yes
+		is_buildable = no
+		type = {
+			armor
+		}
+		group_by = archetype
+
+		interface_category = interface_category_land
+		reliability = 1
+		build_cost_ic = 1
+		hardness = -1.60
+	}
+	ZZ_neg_armor_amphibious_1 = {
+		year = 2000
+		archetype = ZZ_neg_armor_amphibious
+		active = yes
+		is_buildable = yes
+		priority = 10
+	}
+
+	ZZ_neg_armor_light = {
+		year = 2000
+
+		active = yes
+		can_license = no
+		is_archetype = yes
+		is_buildable = no
+		type = {
+			armor
+		}
+		group_by = archetype
+
+		interface_category = interface_category_land
+		reliability = 1
+		build_cost_ic = 1
+		hardness = -0.30
+	}
+	ZZ_neg_armor_light_1 = {
+		year = 2000
+		archetype = ZZ_neg_armor_light
+		active = yes
+		is_buildable = yes
+		priority = 10
+	}
+
+	ZZ_neg_armor_tank = {
+		year = 2000
+
+		active = yes
+		can_license = no
+		is_archetype = yes
+		is_buildable = no
+		type = {
+			armor
+		}
+		group_by = archetype
+
+		interface_category = interface_category_land
+		reliability = 1
+		build_cost_ic = 1
+		hardness = -0.35
+	}
+	ZZ_neg_armor_tank_1 = {
+		year = 2000
+		archetype = ZZ_neg_armor_tank
+		active = yes
+		is_buildable = yes
+		priority = 10
+	}
+
+	ZZ_neg_armor_heli = {
+		year = 2000
+
+		active = yes
+		can_license = no
+		is_archetype = yes
+		is_buildable = no
+		type = {
+			armor
+		}
+		group_by = archetype
+
+		interface_category = interface_category_land
+		reliability = 1
+		build_cost_ic = 1
+		hardness = -0.15
+	}
+	ZZ_neg_armor_heli_1 = {
+		year = 2000
+		archetype = ZZ_neg_armor_heli
+		active = yes
+		is_buildable = yes
+		priority = 10
+	}
+
+}

@@ -67,4 +67,60 @@ technologies = {
 		}
 	}
 
+	# ---- 西方五营（第十一轮）----
+	# 西方步兵/装甲五营在 MD_land_units.txt 中已设 active = no，
+	# 并从 Early_APC/mbt_tech_ops/infantry_weapons_1/util_vehicle_1/combat_eng_equipment 摘除，
+	# 仅由本科技恢复可见。东方 16 国（不发放）：SOV CHI NKO UKR BLR KAZ UZB ARM AZE GEO SYR IRQ PER VIE BRM CUB
+	zz_western_battalions_tech = {
+		research_cost = 1
+		start_year = 2000
+		allow = {
+			always = yes
+		}
+		enable_subunits = {
+			L_Inf_Bat
+			Mot_Inf_Bat
+			Mech_Inf_Bat
+			Arm_Inf_Bat
+			armor_Bat
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	# ---- 通用游骑兵营（第十一轮）----
+	# L_Ranger_Bat 在 MD_land_units.txt 中已设 active = no，仅由本科技恢复可见。
+	# 特色特战 16 国（不发放）：USA SOV CHI ENG GER KOR ISR NKO UKR TUR PER POL CAN AST PAK TAI
+	zz_generic_ranger_bat_tech = {
+		research_cost = 1
+		start_year = 2000
+		allow = {
+			always = yes
+		}
+		enable_subunits = {
+			L_Ranger_Bat
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	# ---- 通用特种作战部队（第十一轮）----
+	# Special_Forces 已设 active = no 并从 infantry_weapons_1 摘除，仅由本科技恢复可见。
+	# 特色特战 16 国（不发放）：USA SOV CHI ENG GER KOR ISR NKO UKR TUR PER POL CAN AST PAK TAI
+	zz_generic_special_forces_tech = {
+		research_cost = 1
+		start_year = 2000
+		allow = {
+			always = yes
+		}
+		enable_subunits = {
+			Special_Forces
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
 }

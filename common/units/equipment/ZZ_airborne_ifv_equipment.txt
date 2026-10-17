@@ -1,0 +1,18 @@
+# ============================================================================
+# ZZ 绌洪檷鎴樿溅搴曠洏锛圔MD 绯诲垪 / ZBD-03 涓撶敤锛屼粠閫氱敤姝ユ垬杞?medium_tank_flame_chassis 鎷嗗垎锛?# ============================================================================
+# 鎷嗗垎鐩殑锛欱MD-1/2/3/4M銆乑BD-03 涓€绫诲彲绌烘姇杞诲瀷灞ュ甫鎴樿溅涓嶅啀涓庢櫘閫氭鎴樿溅
+# 鍏辩敤搴曠洏銆備粎鑻忚仈/淇勭綏鏂笌涓浗鎷ユ湁璇ヨ澶囩嚎锛堝巻鍙蹭簨瀹烇級锛岄€氳繃闅愯棌绉戞妧
+# ZZ_airborne_ifv_tech 瑙ｉ攣锛堝紑灞€鏂囦欢宸插 SOV/CHI/URA 鎺堜簣锛夈€?# 缁撴瀯浠?MD 瀹樻柟 medium_tank_flame_chassis锛圡D_x_tank_chassis.txt L43-49锛夛細
+#   - archetype = medium_tank_chassis 鈫?鑷姩鐢熸垚 _0~_6 绾э紝缁ф壙鍏ㄩ儴妯″潡妲?#   - type = { armor flame } 鈫?涓庢鎴樿溅涓€鑷达紝afv_* 妯″潡鍏ㄩ儴鍙敤
+#   - 鐢熶骇/璁捐鍣ㄥ浘鏍囩户鎵挎瘝鍨?archetype_modern_tank_equipment锛屾棤闇€ dds
+# ============================================================================
+
+equipments = {
+	ZZ_airborne_ifv_chassis = {
+		archetype = medium_tank_chassis
+		type = { armor flame }
+		for_each = {
+			variant_name = { find_and_replace = { "chassis" "equipment" } }
+		}
+	}
+}

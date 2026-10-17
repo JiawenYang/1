@@ -1,3 +1,2527 @@
+JAP_territorial_disputes = {
+	#Negotiations to Resolve the Northern Territories Dispute
+	JAP_dec_negotiations_resolve_northern_territories_dispute = {
+		# TODO:icon
+		priority = 100
+
+		available = {
+			NOT = { has_war_with = SOV }
+			SOV = {
+				has_opinion = { target = ROOT value > 0 }
+			}
+		}
+
+		visible = {
+			SOV = {
+				owns_state = 1168 #South Kuril Islands
+			}
+			has_completed_focus = JAP_sov_kuril_islands
+		}
+
+		cost = 200
+		days_remove = 30
+		days_re_enable = 365
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove JAP_dec_negotiations_resolve_northern_territories_dispute"
+			country_event = JAP_territorial.01
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_global_flag = JAP_RETURN_OF_THE_EMPIRE_FOCUS_PATH
+			}
+		}
+	}
+
+	#Negotiations to Resolve the Senkaku Islands Dispute with [CHI.GetName]
+	JAP_dec_negotiations_resolve_senkaku_dispute_china = {
+		# TODO:icon
+		priority = 99
+
+		available = {
+			NOT = { has_war_with = CHI }
+			CHI = {
+				has_opinion = { target = ROOT value > 0 }
+			}
+		}
+
+		visible = {
+			939 = { is_claimed_by = CHI }
+			has_completed_focus = JAP_chi_senkaku
+		}
+
+		cost = 200
+		days_remove = 30
+		days_re_enable = 365
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove JAP_dec_negotiations_resolve_senkaku_dispute_china"
+			country_event = JAP_territorial.05
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_global_flag = JAP_RETURN_OF_THE_EMPIRE_FOCUS_PATH
+			}
+		}
+	}
+
+	#Negotiations to Resolve the Senkaku Islands Dispute with [TAI.GetName]
+	JAP_dec_negotiations_resolve_senkaku_dispute_taiwan = {
+		# TODO:icon
+		priority = 97
+
+		available = {
+			NOT = { has_war_with = TAI }
+			TAI = {
+				has_opinion = { target = ROOT value > 0 }
+			}
+		}
+
+		visible = {
+			939 = { is_claimed_by = TAI }
+			has_completed_focus = JAP_tai_senkaku
+		}
+
+		cost = 200
+		days_remove = 30
+		days_re_enable = 365
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove JAP_dec_negotiations_resolve_senkaku_dispute_taiwan"
+			country_event = JAP_territorial.09
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_global_flag = JAP_RETURN_OF_THE_EMPIRE_FOCUS_PATH
+			}
+		}
+	}
+
+	#Negotiations to Resolve the Takeshima Dispute
+	JAP_dec_negotiations_resolve_takeshima_dispute = {
+		# TODO:icon
+		priority = 98
+
+		available = {
+			NOT = { has_war_with = KOR }
+			KOR = {
+				has_opinion = { target = ROOT value > 0 }
+			}
+		}
+
+		visible = {
+			KOR = { has_opinion_modifier = minor_border_dispute }
+			has_completed_focus = JAP_kor_liancourt_rocks
+		}
+
+		cost = 200
+		days_remove = 30
+		days_re_enable = 365
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove JAP_dec_negotiations_resolve_takeshima_dispute"
+			country_event = JAP_territorial.13
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_global_flag = JAP_RETURN_OF_THE_EMPIRE_FOCUS_PATH
+			}
+		}
+	}
+}
+
+JAP_base_okinawa_decision = {
+	JAP_negotiation_base_okinawa = {
+		icon = GFX_decision_generic_army_support
+		available = { NOT = { has_war_with = USA } }
+		visible = { USA = { owns_state = 827 } }
+
+		ai_will_do = {
+			base = 5
+			modifier = {
+				add = 10
+				USA = { has_opinion = { target = JAP value > 50 } }
+			}
+		}
+
+		cost = 200
+		days_remove = 30
+		days_re_enable = 365
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove JAP_negotiation_base_okinawa"
+			country_event = JAP_diplomacy.01
+		}
+	}
+}
+
+JAP_great_east_japan_earthquake_decision = {
+	JAP_tohoku_infrastructure_decision = {
+		icon = GFX_decision_generic_construction
+
+		available = {
+			616 = {
+				infrastructure < 4
+				is_owned_and_controlled_by = JAP
+			}
+			has_completed_focus = JAP_tohoku_infrastructure
+		}
+
+		visible = {
+			has_country_flag = JAP_great_east_japan_earthquake_flag
+			616 = {
+				infrastructure < 4
+				is_owned_and_controlled_by = JAP
+			}
+			NOT = { has_country_flag = JAP_reconstruction_completed_flag }
+		}
+
+		ai_will_do = {
+			base = 100
+		}
+
+		days_remove = 60
+		days_re_enable = 0
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_tohoku_infrastructure_decision"
+			set_temp_variable = { treasury_change = -3.5 }
+			modify_treasury_effect = yes
+		}
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove JAP_tohoku_infrastructure_decision"
+			if = {
+				limit = { 616 = { infrastructure > 2 } }
+				country_event = Japan.201103113
+			}
+			else = { country_event = Japan.201103112 }
+			616 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				custom_effect_tooltip = {
+					localization_key = modifies_dynamic_modifier_tt
+					MODIFIER = JAP_scars_earthquake_and_tsunami
+				}
+				add_to_variable = { JAP_scars_earthquake_and_tsunami_state_production_speed_buildings_factor = 0.1 tooltip = state_production_speed_buildings_factor_tt }
+			}
+		}
+	}
+
+	JAP_kanto_infrastructure_decision = {
+		icon = GFX_decision_generic_construction
+
+		available = {
+			615 = {
+				infrastructure < 4
+				is_owned_and_controlled_by = JAP
+			}
+			has_completed_focus = JAP_kanto_infrastructure
+		}
+
+		visible = {
+			has_country_flag = JAP_great_east_japan_earthquake_flag
+			615 = {
+				infrastructure < 4
+				is_owned_and_controlled_by = JAP
+			}
+			NOT = { has_country_flag = JAP_reconstruction_completed_flag }
+		}
+
+		ai_will_do = {
+			base = 100
+		}
+
+		days_remove = 60
+		days_re_enable = 0
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_kanto_infrastructure_decision"
+			set_temp_variable = { treasury_change = -3.5 }
+			modify_treasury_effect = yes
+		}
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove JAP_kanto_infrastructure_decision"
+			if = {
+				limit = { 615 = { infrastructure > 2 } }
+				country_event = Japan.201103115
+			}
+			else = { country_event = Japan.201103114 }
+			615 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				custom_effect_tooltip = {
+					localization_key = modifies_dynamic_modifier_tt
+					MODIFIER = JAP_scars_earthquake
+				}
+				add_to_variable = { JAP_scars_earthquake_state_production_speed_buildings_factor = 0.05 tooltip = state_production_speed_buildings_factor_tt }
+			}
+		}
+	}
+
+	JAP_tohoku_communication_decision = {
+		icon = GFX_decision_generic_electricity
+
+		available = {
+			616 = {
+				internet_station < 2
+				is_owned_and_controlled_by = JAP
+			}
+			has_completed_focus = JAP_tohoku_infrastructure
+		}
+
+		visible = {
+			has_country_flag = JAP_great_east_japan_earthquake_flag
+			616 = {
+				internet_station < 2
+				is_owned_and_controlled_by = JAP
+			}
+			NOT = { has_country_flag = JAP_reconstruction_completed_flag }
+		}
+
+		ai_will_do = {
+			base = 100
+		}
+
+		days_remove = 60
+		days_re_enable = 0
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_tohoku_communication_decision"
+			set_temp_variable = { treasury_change = -3.0 }
+			modify_treasury_effect = yes
+		}
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove JAP_tohoku_communication_decision"
+			if = {
+				limit = { 616 = { internet_station > 0 } }
+				country_event = Japan.201103117
+			}
+			else = { country_event = Japan.201103116 }
+			616 = {
+				add_building_construction = {
+					type = internet_station
+					level = 1
+					instant_build = yes
+				}
+				custom_effect_tooltip = {
+					localization_key = modifies_dynamic_modifier_tt
+					MODIFIER = JAP_scars_earthquake_and_tsunami
+				}
+				add_to_variable = { JAP_scars_earthquake_and_tsunami_state_productivity_growth_modifier = 0.1 tooltip = state_productivity_growth_modifier_tt }
+			}
+		}
+	}
+
+	JAP_kanto_communication_decision = {
+		icon = GFX_decision_generic_electricity
+
+		available = {
+			615 = {
+				internet_station < 2
+				is_owned_and_controlled_by = JAP
+			}
+			has_completed_focus = JAP_kanto_infrastructure
+		}
+
+		visible = {
+			has_country_flag = JAP_great_east_japan_earthquake_flag
+			615 = {
+				internet_station < 2
+				is_owned_and_controlled_by = JAP
+			}
+			NOT = { has_country_flag = JAP_reconstruction_completed_flag }
+		}
+
+		ai_will_do = {
+			base = 100
+		}
+
+		days_remove = 60
+		days_re_enable = 0
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_kanto_communication_decision"
+			set_temp_variable = { treasury_change = -3.0 }
+			modify_treasury_effect = yes
+		}
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove JAP_kanto_communication_decision"
+			country_event = Japan.201103118
+			615 = {
+				add_building_construction = {
+					type = internet_station
+					level = 1
+					instant_build = yes
+				}
+				custom_effect_tooltip = {
+					localization_key = modifies_dynamic_modifier_tt
+					MODIFIER = JAP_scars_earthquake
+				}
+				add_to_variable = { JAP_scars_earthquake_state_productivity_growth_modifier = 0.05 tooltip = state_productivity_growth_modifier_tt }
+			}
+		}
+	}
+
+	JAP_tohoku_industrial_recovery_decision = {
+		icon = GFX_decision_generic_factory
+
+		available = {
+			616 = {
+				industrial_complex < 4
+				is_owned_and_controlled_by = JAP
+			}
+			has_completed_focus = JAP_industrial_recovery
+		}
+
+		visible = {
+			has_country_flag = JAP_great_east_japan_earthquake_flag
+			616 = {
+				industrial_complex < 4
+				is_owned_and_controlled_by = JAP
+			}
+			NOT = { has_country_flag = JAP_reconstruction_completed_flag }
+		}
+
+		ai_will_do = {
+			base = 100
+		}
+
+		days_remove = 60
+		days_re_enable = 0
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_tohoku_industrial_recovery_decision"
+			set_temp_variable = { treasury_change = -7.5 }
+			modify_treasury_effect = yes
+		}
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove JAP_tohoku_industrial_recovery_decision"
+			if = {
+				limit = { 616 = { industrial_complex > 2 } }
+				country_event = Japan.2011031110
+			}
+			else = { country_event = Japan.201103119 }
+			616 = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				custom_effect_tooltip = {
+					localization_key = modifies_dynamic_modifier_tt
+					MODIFIER = JAP_once_millennium_disaster
+				}
+				add_to_variable = { JAP_once_millennium_disaster_consumer_goods_factor = -0.02 tooltip = consumer_goods_factor_tt }
+			}
+		}
+	}
+
+	JAP_kanto_industrial_recovery_decision = {
+		icon = GFX_decision_generic_factory
+
+		available = {
+			615 = {
+				industrial_complex < 10
+				is_owned_and_controlled_by = JAP
+			}
+			has_completed_focus = JAP_industrial_recovery
+		}
+
+		visible = {
+			has_country_flag = JAP_great_east_japan_earthquake_flag
+			615 = {
+				industrial_complex < 10
+				is_owned_and_controlled_by = JAP
+			}
+			NOT = { has_country_flag = JAP_reconstruction_completed_flag }
+		}
+
+		ai_will_do = {
+			base = 100
+		}
+
+		days_remove = 60
+		days_re_enable = 0
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_kanto_industrial_recovery_decision"
+			set_temp_variable = { treasury_change = -7.5 }
+			modify_treasury_effect = yes
+		}
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove JAP_kanto_industrial_recovery_decision"
+			if = {
+				limit = { 615 = { industrial_complex > 8 } }
+				country_event = Japan.2011031112
+			}
+			else = { country_event = Japan.2011031111 }
+			615 = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				custom_effect_tooltip = {
+					localization_key = modifies_dynamic_modifier_tt
+					MODIFIER = JAP_once_millennium_disaster
+				}
+				add_to_variable = { JAP_once_millennium_disaster_consumer_goods_factor = -0.02 tooltip = consumer_goods_factor_tt }
+			}
+		}
+	}
+}
+
+JAP_domestic_policy_decision = {
+	JAP_focus_renewable_energy_decision = {
+		icon = GFX_decision_generic_windturbine
+		available = { NOT = { has_idea = JAP_focus_renewable_energy_idea } }
+		visible = { has_completed_focus = JAP_power_grid_stabilization }
+		cost = 50
+		ai_will_do = { base = 10 }
+		days_re_enable = 365
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_focus_renewable_energy_decision"
+			add_ideas = JAP_focus_renewable_energy_idea
+		}
+	}
+
+	JAP_focus_renewable_energy_decision_repeal = {
+		icon = GFX_decision_generic_windturbine
+		visible = { has_idea = JAP_focus_renewable_energy_idea }
+		cost = 100
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+
+		days_re_enable = 365
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_focus_renewable_energy_decision_repeal"
+			remove_ideas = JAP_focus_renewable_energy_idea
+		}
+	}
+
+	JAP_focus_thermal_power_decision = {
+		icon = GFX_decision_energy_build_button
+		available = { NOT = { has_idea = JAP_focus_thermal_power_idea } }
+		visible = { has_completed_focus = JAP_power_grid_stabilization }
+		cost = 50
+		ai_will_do = { base = 10 }
+		days_re_enable = 365
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_focus_thermal_power_decision"
+			add_ideas = JAP_focus_thermal_power_idea
+		}
+	}
+
+	JAP_focus_thermal_power_decision_repeal = {
+		icon = GFX_decision_energy_build_button
+		visible = { has_idea = JAP_focus_thermal_power_idea }
+		cost = 100
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+
+		days_re_enable = 365
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_focus_thermal_power_decision_repeal"
+			remove_ideas = JAP_focus_thermal_power_idea
+		}
+	}
+
+	JAP_saudi_aramco_crude_storage = {
+		visible = {
+			has_completed_focus = JAP_resource_security_initiative
+			country_exists = SAU
+			NOT = { has_war_with = SAU }
+		}
+
+		icon = sau_oil
+		cost = 75
+		fire_only_once = yes
+		days_remove = 100
+		available = { num_of_civilian_factories_available_for_projects > 5 }
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove JAP_saudi_aramco_crude_storage"
+			random_owned_state = {
+				add_resource = {
+					type = oil
+					amount = 2
+				}
+				add_building_construction = {
+					type = fuel_silo
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_state = {
+				add_resource = {
+					type = oil
+					amount = 2
+				}
+				add_building_construction = {
+					type = fuel_silo
+					level = 1
+					instant_build = yes
+				}
+			}
+			set_temp_variable = { percent_change = 5 }
+			set_temp_variable = { tag_index = SAU }
+			set_temp_variable = { influence_target = JAP }
+			change_influence_percentage = yes
+		}
+
+		modifier = { civilian_factory_use = 5 }
+		ai_will_do = { base = 1 }
+	}
+
+	JAP_kosaka_tsl_furnace = {
+		visible = { has_completed_focus = JAP_resource_security_initiative }
+		icon = aluminium
+		cost = 75
+		days_remove = 100
+		fire_only_once = yes
+		available = { num_of_civilian_factories_available_for_projects > 5 }
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove JAP_kosaka_tsl_furnace"
+			616 = {
+				add_resource = {
+					type = aluminium
+					amount = 6
+				}
+				add_resource = {
+					type = chromium
+					amount = 6
+				}
+			}
+		}
+
+		modifier = { return_on_investment_modifier = -0.10 }
+		ai_will_do = { base = 1 }
+	}
+
+	JAP_green_ship_recycling = {
+		visible = { has_completed_focus = JAP_resource_security_initiative }
+		icon = steel
+		cost = 150
+		days_remove = 200
+		fire_only_once = yes
+		available = { num_of_civilian_factories_available_for_projects > 5 }
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove JAP_green_ship_recycling"
+			610 = {
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+				add_resource = {
+					type = steel
+					amount = 6
+				}
+			}
+			add_ideas = JAP_green_ship_recycling_idea
+		}
+
+		modifier = {
+			industrial_capacity_dockyard = -0.15
+			production_speed_dockyard_factor = -0.15
+			civilian_factory_use = 5
+		}
+
+		ai_will_do = { base = 1 }
+	}
+
+	JAP_rubber_butadiene_branch_decision = {
+		visible = { has_completed_focus = JAP_resource_security_initiative }
+		icon = rubber
+		cost = 75
+		days_remove = 100
+		fire_only_once = yes
+		available = { num_of_civilian_factories_available_for_projects > 5 }
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove JAP_rubber_butadiene_branch_decision"
+			611 = {
+				add_resource = {
+					type = rubber
+					amount = 6
+				}
+			}
+		}
+
+		modifier = { civilian_factory_use = 5 }
+		ai_will_do = { base = 1 }
+	}
+
+	JAP_bibi_world_decision = {
+		visible = { has_completed_focus = JAP_resource_security_initiative }
+		icon = microchips
+		cost = 75
+		days_remove = 100
+		fire_only_once = yes
+		available = { num_of_civilian_factories_available_for_projects > 15 }
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove JAP_bibi_world_decision"
+			617 = {
+				add_building_construction = {
+					type = microchip_plant
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = renewable_energy_infra
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+
+		modifier = { civilian_factory_use = 15 }
+		ai_will_do = { base = 1 }
+	}
+
+	JAP_yufutsu_oil_expansion_decision = {
+		visible = { has_completed_focus = JAP_resource_security_initiative }
+		icon = oil
+		cost = 125
+		days_remove = 150
+		fire_only_once = yes
+		available = { num_of_civilian_factories_available_for_projects > 10 }
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove JAP_yufutsu_oil_expansion_decision"
+			617 = {
+				add_resource = {
+					type = oil
+					amount = 8
+				}
+			}
+		}
+
+		modifier = { civilian_factory_use = 10 }
+		ai_will_do = { base = 1 }
+	}
+
+	JAP_toray_expansion_program_decision = {
+		visible = { has_completed_focus = JAP_resource_security_initiative }
+		icon = oil
+		cost = 125
+		days_remove = 150
+		fire_only_once = yes
+		available = { num_of_civilian_factories_available_for_projects > 10 }
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove JAP_toray_expansion_program_decision"
+			random_owned_state = {
+				add_building_construction = {
+					type = composite_plant
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+		}
+
+		modifier = { civilian_factory_use = 10 }
+		ai_will_do = { base = 1 }
+	}
+
+	JAP_teijin_aerospace_prepreg_decision = {
+		visible = { has_completed_focus = JAP_resource_security_initiative }
+		icon = oil
+		cost = 125
+		days_remove = 150
+		fire_only_once = yes
+		available = { num_of_civilian_factories_available_for_projects > 10 }
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove JAP_teijin_aerospace_prepreg_decision"
+			random_owned_state = {
+				add_building_construction = {
+					type = composite_plant
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+		}
+
+		modifier = { civilian_factory_use = 10 }
+		ai_will_do = { base = 1 }
+	}
+
+	JAP_imperial_rescript_revival = {
+		visible = { has_completed_focus = JAP_imperial_reform_commission }
+		icon = GFX_decision_JAP_civic_faction
+		cost = 75
+		fire_only_once = yes
+		days_remove = 180
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove JAP_imperial_rescript_revival"
+			custom_effect_tooltip = {
+				localization_key = modifies_dynamic_modifier_tt
+				MODIFIER = JAP_monarchist_modifier
+			}
+			add_to_variable = { JAP_political_power_factor_monarchist = 0.10 tooltip = political_power_factor_tt }
+			add_to_variable = { JAP_war_support_factor_monarchist = 0.075 tooltip = war_support_factor_tt }
+			add_to_variable = { JAP_drift_defence_factor_monarchist = 0.15 tooltip = drift_defence_factor_tt }
+			add_to_variable = { JAP_stability_factor_monarchist = -0.05 tooltip = stability_factor_tt }
+		}
+
+		modifier = { bureaucracy_cost_multiplier_modifier = 0.15 }
+		ai_will_do = { base = 4 }
+	}
+
+	JAP_national_morals_education_act = {
+		visible = { has_completed_focus = JAP_imperial_reform_commission }
+		icon = GFX_decision_JAP_army_faction
+		cost = 75
+		fire_only_once = yes
+		days_remove = 180
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove JAP_national_morals_education_act"
+			custom_effect_tooltip = {
+				localization_key = modifies_dynamic_modifier_tt
+				MODIFIER = JAP_monarchist_modifier
+			}
+			add_to_variable = { JAP_monthly_population_monarchist = 0.10 tooltip = monthly_population_tt }
+			add_to_variable = { JAP_surrender_limit_monarchist = 0.075 tooltip = surrender_limit_tt }
+			add_to_variable = { JAP_research_speed_factor_monarchist = -0.05 tooltip = research_speed_factor_tt }
+			add_to_variable = { JAP_local_manpower_monarchist = 0.05 tooltip = local_manpower_tt }
+		}
+
+		modifier = { bureaucracy_cost_multiplier_modifier = 0.15 }
+		ai_will_do = { base = 2 }
+	}
+
+	JAP_state_rites_restoration = {
+		visible = { has_completed_focus = JAP_imperial_reform_commission }
+		icon = GFX_decision_JAP_civic_faction
+		cost = 75
+		fire_only_once = yes
+		days_remove = 180
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove JAP_state_rites_restoration"
+			custom_effect_tooltip = {
+				localization_key = modifies_dynamic_modifier_tt
+				MODIFIER = JAP_monarchist_modifier
+			}
+			add_to_variable = { JAP_drift_defence_factor_monarchist = 0.25 tooltip = drift_defence_factor_tt }
+			add_to_variable = { JAP_nationalist_drift_monarchist = 0.05 tooltip = nationalist_drift_tt }
+		}
+
+		modifier = { bureaucracy_cost_multiplier_modifier = 0.15 }
+		ai_will_do = { base = 3 }
+	}
+
+	JAP_neighborhood_associations_system = {
+		visible = { has_completed_focus = JAP_imperial_reform_commission }
+		icon = GFX_decision_JAP_zaibatsu_faction
+		cost = 75
+		fire_only_once = yes
+		days_remove = 180
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove JAP_neighborhood_associations_system"
+			custom_effect_tooltip = {
+				localization_key = modifies_dynamic_modifier_tt
+				MODIFIER = JAP_monarchist_modifier
+			}
+			add_to_variable = { JAP_monarchist_autonomy_gain_global_factor = -0.025 tooltip = autonomy_gain_global_factor_tt }
+			add_to_variable = { JAP_compliance_growth_monarchist = 0.05 tooltip = compliance_growth_tt }
+			add_to_variable = { JAP_consumer_goods_factor_monarchist = -0.05 tooltip = consumer_goods_factor_tt }
+		}
+
+		modifier = { bureaucracy_cost_multiplier_modifier = 0.15 }
+		ai_will_do = { base = 2 }
+	}
+
+	JAP_zaibatsu_empowerment_charter = {
+		visible = { has_completed_focus = JAP_imperial_reform_commission }
+		icon = GFX_decision_JAP_zaibatsu_faction
+		cost = 75
+		fire_only_once = yes
+		days_remove = 180
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove JAP_zaibatsu_empowerment_charter"
+			custom_effect_tooltip = {
+				localization_key = modifies_dynamic_modifier_tt
+				MODIFIER = JAP_monarchist_modifier
+			}
+			add_to_variable = { JAP_country_productivity_growth_modifier_monarchist = 0.05 tooltip = country_productivity_growth_modifier_tt }
+			add_to_variable = { JAP_production_factory_max_efficiency_factor_monarchist = 0.125 tooltip = production_factory_max_efficiency_factor_tt }
+		}
+
+		modifier = { bureaucracy_cost_multiplier_modifier = 0.15 }
+		ai_will_do = { base = 3 }
+	}
+
+	JAP_imperial_procurement_standardization = {
+		visible = { has_completed_focus = JAP_imperial_reform_commission }
+		icon = GFX_decision_JAP_zaibatsu_faction
+		cost = 75
+		fire_only_once = yes
+		days_remove = 180
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove JAP_imperial_procurement_standardization"
+			custom_effect_tooltip = {
+				localization_key = modifies_dynamic_modifier_tt
+				MODIFIER = JAP_monarchist_modifier
+			}
+			add_to_variable = { JAP_line_change_production_efficiency_factor_monarchist = 0.075 tooltip = line_change_production_efficiency_factor_tt }
+			add_to_variable = { JAP_production_factory_efficiency_gain_factor_monarchist = 0.10 tooltip = production_factory_efficiency_gain_factor_tt }
+			if = {
+				limit = { has_completed_focus = JAP_rare_earth_resilience }
+				add_to_variable = { JAP_resource_trade_cost_bonus_per_factory_monarchist = 1 tooltip = resource_trade_cost_bonus_per_factory_tt }
+			}
+		}
+
+		modifier = { bureaucracy_cost_multiplier_modifier = 0.15 }
+		ai_will_do = { base = 2 }
+	}
+
+	JAP_intellectual_platform_decision = {
+		icon = GFX_decision_generic_research_new
+
+		available = {
+			has_country_flag = intellectual_platform_rejected
+			has_war = no
+			country_exists = CHI
+			NOT = { has_war_with = CHI }
+			country_exists = KOR
+			NOT = { has_war_with = KOR }
+			nationalist_monarchists_are_in_power = no
+		}
+
+		visible = { has_country_flag = intellectual_platform_rejected }
+		cost = 100
+		days_remove = 15
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_intellectual_platform_decision"
+			country_event = JAP_diplomacy.05
+			newline = yes
+			custom_effect_tooltip = JAP_intellectual_platform_TT
+		}
+
+		ai_will_do = { base = 1 }
+	}
+
+	JAP_tokyo_startup_special_zone = {
+		icon = GFX_decision_attract_foreign_investor
+
+		visible = {
+			has_completed_focus = JAP_special_zones
+			NOT = { has_country_flag = JAP_tokyo_startup_special_zone_active }
+		}
+
+		available = { NOT = { has_country_flag = JAP_tokyo_startup_special_zone_active } }
+		cost = 50
+		fire_only_once = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_tokyo_startup_special_zone"
+			set_country_flag = JAP_tokyo_startup_special_zone_active
+			add_timed_idea = {
+				idea = JAP_tokyo_startup_special_zone_idea
+				days = 720
+			}
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	JAP_kansai_medical_special_zone = {
+		icon = GFX_decision_ISR_healthcare_button
+
+		visible = {
+			has_completed_focus = JAP_special_zones
+			NOT = { has_country_flag = JAP_kansai_medical_special_zone_active }
+		}
+
+		available = { NOT = { has_country_flag = JAP_kansai_medical_special_zone_active } }
+		cost = 50
+		fire_only_once = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_kansai_medical_special_zone"
+			set_country_flag = JAP_kansai_medical_special_zone_active
+			add_timed_idea = {
+				idea = JAP_kansai_medical_special_zone_idea
+				days = 720
+			}
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	JAP_kyushu_logistics_special_zone = {
+		icon = GFX_decision_generic_construction
+
+		visible = {
+			has_completed_focus = JAP_special_zones
+			NOT = { has_country_flag = JAP_kyushu_logistics_special_zone_active }
+		}
+
+		available = { NOT = { has_country_flag = JAP_kyushu_logistics_special_zone_active } }
+		cost = 50
+		fire_only_once = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_kyushu_logistics_special_zone"
+			set_country_flag = JAP_kyushu_logistics_special_zone_active
+			add_timed_idea = {
+				idea = JAP_kyushu_logistics_special_zone_idea
+				days = 720
+			}
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	JAP_expand_special_zones_nationwide = {
+		icon = GFX_decision_generic_factory
+
+		visible = {
+			has_completed_focus = JAP_expansion_regulatory_reform_zones
+			NOT = { has_country_flag = JAP_expand_special_zones_nationwide_done }
+		}
+
+		available = {
+			NOT = { has_country_flag = JAP_expand_special_zones_nationwide_done }
+			has_country_flag = JAP_tokyo_startup_special_zone_active
+			has_country_flag = JAP_kansai_medical_special_zone_active
+			has_country_flag = JAP_kyushu_logistics_special_zone_active
+		}
+
+		cost = 75
+		fire_only_once = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_expand_special_zones_nationwide"
+			set_country_flag = JAP_expand_special_zones_nationwide_done
+			custom_effect_tooltip = {
+				localization_key = modifies_dynamic_modifier_tt
+				MODIFIER = JAP_regulatory_reform_modifier
+			}
+			add_to_variable = { JAP_regulatory_reform_productivity_growth_modifier = 0.20 tooltip = productivity_growth_modifier_tt }
+			add_to_variable = { JAP_regulatory_reform_internal_investments_money_cost_modifier = -0.10 tooltip = internal_investments_money_cost_modifier_tt }
+			add_to_variable = { JAP_regulatory_reform_production_speed_buildings_factor = 0.03 tooltip = production_speed_buildings_factor_tt }
+		}
+
+		ai_will_do = { base = 20 }
+	}
+}
+
+JAP_article_nine_balance_of_power_category = {
+	JAP_restore_guarantee = {
+		icon = GFX_decision_usa_eagle
+		cost = 150
+		visible = { has_country_flag = JAP_usa_removed_guarantee_article_nine }
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_restore_guarantee"
+			USA = { country_event = JAP_diplomacy.21 }
+			custom_effect_tooltip = TT_IF_THEY_ACCEPT
+			effect_tooltip = {
+				USA = {
+					diplomatic_relation = {
+						country = JAP
+						relation = guarantee
+					}
+				}
+				add_power_balance_value = {
+					id = JAP_article_nine
+					value = 0.20
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				add = 40
+				JAP_ai_restrained_defence_path = yes
+			}
+			modifier = {
+				factor = 0
+				has_global_flag = JAP_RETURN_OF_THE_EMPIRE_FOCUS_PATH
+			}
+		}
+	}
+
+	JAP_remove_american_blockade = {
+		icon = GFX_decision_usa_ship
+		cost = 50
+		visible = { has_country_flag = JAP_american_naval_blockade_active }
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_remove_american_blockade"
+			USA = { country_event = JAP_diplomacy.24 }
+			custom_effect_tooltip = TT_IF_THEY_ACCEPT
+			effect_tooltip = {
+				USA = {
+					diplomatic_relation = {
+						country = JAP
+						relation = naval_blockade
+						active = no
+					}
+				}
+				add_power_balance_value = {
+					id = JAP_article_nine
+					value = 0.20
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				add = 40
+				JAP_ai_restrained_defence_path = yes
+			}
+			modifier = {
+				factor = 0
+				has_global_flag = JAP_RETURN_OF_THE_EMPIRE_FOCUS_PATH
+			}
+		}
+	}
+
+	JAP_restore_trade_relations = {
+		icon = GFX_decision_usa_goods
+		cost = 50
+		visible = { has_idea = JAP_american_pressure_article_nine }
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_restore_trade_relations"
+			USA = { country_event = JAP_diplomacy.18 }
+			custom_effect_tooltip = TT_IF_THEY_ACCEPT
+			effect_tooltip = {
+				remove_ideas = JAP_american_pressure_article_nine
+				USA = {
+					remove_opinion_modifier = {
+						target = JAP
+						modifier = JAP_usa_trade_pressure
+					}
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				add = 40
+				JAP_ai_restrained_defence_path = yes
+			}
+			modifier = {
+				factor = 0
+				has_global_flag = JAP_RETURN_OF_THE_EMPIRE_FOCUS_PATH
+			}
+		}
+	}
+
+	JAP_chinese_agression_five = {
+		icon = GFX_decision_chi_dagger
+		fire_only_once = no
+		days_remove = 360
+		cost = 50
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = CHI_aggression_gt_5_tt
+				CHI = { check_variable = { CHI_chinese_aggression > 4 } }
+			}
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_chinese_agression_five"
+			add_power_balance_value = {
+				id = JAP_article_nine
+				value = 0.10
+			}
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				add = 40
+				JAP_ai_restrained_defence_path = yes
+				power_balance_value = {
+					id = JAP_article_nine
+					value < -0.20
+				}
+			}
+			modifier = {
+				add = 20
+				JAP_ai_restrained_defence_path = yes
+				power_balance_value = {
+					id = JAP_article_nine
+					value < 0.20
+				}
+			}
+			modifier = {
+				factor = 0
+				JAP_ai_restrained_defence_path = yes
+				JAP_ai_rearmament_path = no
+				power_balance_value = {
+					id = JAP_article_nine
+					value > 0.55
+				}
+				JAP_article_nine_hard_threat = no
+			}
+			modifier = {
+				add = 35
+				JAP_ai_restrained_defence_path = yes
+				JAP_article_nine_hard_threat = yes
+			}
+			modifier = {
+				add = 20
+				JAP_ai_restrained_defence_path = yes
+				has_war = yes
+			}
+			modifier = {
+				add = 60
+				JAP_ai_rearmament_path = yes
+			}
+			modifier = {
+				factor = 0
+				has_global_flag = JAP_PACIFIST_FOCUS_PATH
+			}
+		}
+	}
+
+	JAP_chinese_agression_ten = {
+		icon = GFX_decision_chi_dagger
+		fire_only_once = no
+		days_remove = 180
+		cost = 50
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = CHI_aggression_gt_10_tt
+				CHI = { check_variable = { CHI_chinese_aggression > 9 } }
+			}
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_chinese_agression_ten"
+			add_power_balance_value = {
+				id = JAP_article_nine
+				value = 0.10
+			}
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				add = 40
+				JAP_ai_restrained_defence_path = yes
+				power_balance_value = {
+					id = JAP_article_nine
+					value < -0.20
+				}
+			}
+			modifier = {
+				add = 20
+				JAP_ai_restrained_defence_path = yes
+				power_balance_value = {
+					id = JAP_article_nine
+					value < 0.20
+				}
+			}
+			modifier = {
+				factor = 0
+				JAP_ai_restrained_defence_path = yes
+				JAP_ai_rearmament_path = no
+				power_balance_value = {
+					id = JAP_article_nine
+					value > 0.55
+				}
+				JAP_article_nine_hard_threat = no
+			}
+			modifier = {
+				add = 35
+				JAP_ai_restrained_defence_path = yes
+				JAP_article_nine_hard_threat = yes
+			}
+			modifier = {
+				add = 20
+				JAP_ai_restrained_defence_path = yes
+				has_war = yes
+			}
+			modifier = {
+				add = 60
+				JAP_ai_rearmament_path = yes
+			}
+			modifier = {
+				factor = 0
+				has_global_flag = JAP_PACIFIST_FOCUS_PATH
+			}
+		}
+	}
+
+	JAP_chinese_agression_twelve = {
+		icon = GFX_decision_chi_dagger
+		fire_only_once = no
+		days_remove = 365
+		cost = 50
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = CHI_aggression_gt_12_tt
+				CHI = { check_variable = { CHI_chinese_aggression > 11 } }
+			}
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_chinese_agression_twelve"
+			add_power_balance_value = {
+				id = JAP_article_nine
+				value = 0.10
+			}
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				add = 40
+				JAP_ai_restrained_defence_path = yes
+				power_balance_value = {
+					id = JAP_article_nine
+					value < -0.20
+				}
+			}
+			modifier = {
+				add = 20
+				JAP_ai_restrained_defence_path = yes
+				power_balance_value = {
+					id = JAP_article_nine
+					value < 0.20
+				}
+			}
+			modifier = {
+				factor = 0
+				JAP_ai_restrained_defence_path = yes
+				JAP_ai_rearmament_path = no
+				power_balance_value = {
+					id = JAP_article_nine
+					value > 0.55
+				}
+				JAP_article_nine_hard_threat = no
+			}
+			modifier = {
+				add = 35
+				JAP_ai_restrained_defence_path = yes
+				JAP_article_nine_hard_threat = yes
+			}
+			modifier = {
+				add = 20
+				JAP_ai_restrained_defence_path = yes
+				has_war = yes
+			}
+			modifier = {
+				add = 60
+				JAP_ai_rearmament_path = yes
+			}
+			modifier = {
+				factor = 0
+				has_global_flag = JAP_PACIFIST_FOCUS_PATH
+			}
+		}
+	}
+
+	JAP_chinese_agression_fourteen = {
+		icon = GFX_decision_chi_dagger
+		fire_only_once = no
+		days_remove = 180
+		cost = 50
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = CHI_aggression_gt_14_tt
+				CHI = { check_variable = { CHI_chinese_aggression > 13 } }
+			}
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_chinese_agression_fourteen"
+			add_power_balance_value = {
+				id = JAP_article_nine
+				value = 0.10
+			}
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				add = 40
+				JAP_ai_restrained_defence_path = yes
+				power_balance_value = {
+					id = JAP_article_nine
+					value < -0.20
+				}
+			}
+			modifier = {
+				add = 20
+				JAP_ai_restrained_defence_path = yes
+				power_balance_value = {
+					id = JAP_article_nine
+					value < 0.20
+				}
+			}
+			modifier = {
+				factor = 0
+				JAP_ai_restrained_defence_path = yes
+				JAP_ai_rearmament_path = no
+				power_balance_value = {
+					id = JAP_article_nine
+					value > 0.55
+				}
+				JAP_article_nine_hard_threat = no
+			}
+			modifier = {
+				add = 35
+				JAP_ai_restrained_defence_path = yes
+				JAP_article_nine_hard_threat = yes
+			}
+			modifier = {
+				add = 20
+				JAP_ai_restrained_defence_path = yes
+				has_war = yes
+			}
+			modifier = {
+				add = 60
+				JAP_ai_rearmament_path = yes
+			}
+			modifier = {
+				factor = 0
+				has_global_flag = JAP_PACIFIST_FOCUS_PATH
+			}
+		}
+	}
+
+	JAP_chinese_agression_sixteen = {
+		icon = GFX_decision_chi_dagger
+		fire_only_once = no
+		days_remove = 365
+		cost = 50
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = CHI_aggression_gt_16_tt
+				CHI = { check_variable = { CHI_chinese_aggression > 15 } }
+			}
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_chinese_agression_sixteen"
+			add_power_balance_value = {
+				id = JAP_article_nine
+				value = 0.10
+			}
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				add = 40
+				JAP_ai_restrained_defence_path = yes
+				power_balance_value = {
+					id = JAP_article_nine
+					value < -0.20
+				}
+			}
+			modifier = {
+				add = 20
+				JAP_ai_restrained_defence_path = yes
+				power_balance_value = {
+					id = JAP_article_nine
+					value < 0.20
+				}
+			}
+			modifier = {
+				factor = 0
+				JAP_ai_restrained_defence_path = yes
+				JAP_ai_rearmament_path = no
+				power_balance_value = {
+					id = JAP_article_nine
+					value > 0.55
+				}
+				JAP_article_nine_hard_threat = no
+			}
+			modifier = {
+				add = 35
+				JAP_ai_restrained_defence_path = yes
+				JAP_article_nine_hard_threat = yes
+			}
+			modifier = {
+				add = 20
+				JAP_ai_restrained_defence_path = yes
+				has_war = yes
+			}
+			modifier = {
+				add = 60
+				JAP_ai_rearmament_path = yes
+			}
+			modifier = {
+				factor = 0
+				has_global_flag = JAP_PACIFIST_FOCUS_PATH
+			}
+		}
+	}
+
+	JAP_chinese_agression_eighteen = {
+		icon = GFX_decision_chi_dagger
+		fire_only_once = no
+		days_remove = 180
+		cost = 50
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = CHI_aggression_gt_18_tt
+				CHI = { check_variable = { CHI_chinese_aggression > 17 } }
+			}
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_chinese_agression_eighteen"
+			add_power_balance_value = {
+				id = JAP_article_nine
+				value = 0.10
+			}
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				add = 40
+				JAP_ai_restrained_defence_path = yes
+				power_balance_value = {
+					id = JAP_article_nine
+					value < -0.20
+				}
+			}
+			modifier = {
+				add = 20
+				JAP_ai_restrained_defence_path = yes
+				power_balance_value = {
+					id = JAP_article_nine
+					value < 0.20
+				}
+			}
+			modifier = {
+				factor = 0
+				JAP_ai_restrained_defence_path = yes
+				JAP_ai_rearmament_path = no
+				power_balance_value = {
+					id = JAP_article_nine
+					value > 0.55
+				}
+				JAP_article_nine_hard_threat = no
+			}
+			modifier = {
+				add = 35
+				JAP_ai_restrained_defence_path = yes
+				JAP_article_nine_hard_threat = yes
+			}
+			modifier = {
+				add = 20
+				JAP_ai_restrained_defence_path = yes
+				has_war = yes
+			}
+			modifier = {
+				add = 60
+				JAP_ai_rearmament_path = yes
+			}
+			modifier = {
+				factor = 0
+				has_global_flag = JAP_PACIFIST_FOCUS_PATH
+			}
+		}
+	}
+
+	JAP_chinese_agression_twenty = {
+		icon = GFX_decision_chi_dagger
+		fire_only_once = no
+		days_remove = 60
+		cost = 50
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = CHI_aggression_gt_20_tt
+				CHI = { check_variable = { CHI_chinese_aggression > 19 } }
+			}
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_chinese_agression_twenty"
+			add_power_balance_value = {
+				id = JAP_article_nine
+				value = 0.10
+			}
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				add = 40
+				JAP_ai_restrained_defence_path = yes
+				power_balance_value = {
+					id = JAP_article_nine
+					value < -0.20
+				}
+			}
+			modifier = {
+				add = 20
+				JAP_ai_restrained_defence_path = yes
+				power_balance_value = {
+					id = JAP_article_nine
+					value < 0.20
+				}
+			}
+			modifier = {
+				factor = 0
+				JAP_ai_restrained_defence_path = yes
+				JAP_ai_rearmament_path = no
+				power_balance_value = {
+					id = JAP_article_nine
+					value > 0.55
+				}
+				JAP_article_nine_hard_threat = no
+			}
+			modifier = {
+				add = 35
+				JAP_ai_restrained_defence_path = yes
+				JAP_article_nine_hard_threat = yes
+			}
+			modifier = {
+				add = 20
+				JAP_ai_restrained_defence_path = yes
+				has_war = yes
+			}
+			modifier = {
+				add = 60
+				JAP_ai_rearmament_path = yes
+			}
+			modifier = {
+				factor = 0
+				has_global_flag = JAP_PACIFIST_FOCUS_PATH
+			}
+		}
+	}
+
+	JAP_world_tension_high = {
+		icon = GFX_decision_ignite_civil_war
+		fire_only_once = no
+		cost = 50
+		days_remove = 180
+		available = { threat > 0.15 }
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_world_tension_high"
+			add_power_balance_value = {
+				id = JAP_article_nine
+				value = 0.05
+			}
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				add = 40
+				JAP_ai_restrained_defence_path = yes
+				power_balance_value = {
+					id = JAP_article_nine
+					value < -0.20
+				}
+			}
+			modifier = {
+				add = 20
+				JAP_ai_restrained_defence_path = yes
+				power_balance_value = {
+					id = JAP_article_nine
+					value < 0.20
+				}
+			}
+			modifier = {
+				factor = 0
+				JAP_ai_restrained_defence_path = yes
+				JAP_ai_rearmament_path = no
+				power_balance_value = {
+					id = JAP_article_nine
+					value > 0.55
+				}
+				JAP_article_nine_hard_threat = no
+			}
+			modifier = {
+				add = 35
+				JAP_ai_restrained_defence_path = yes
+				JAP_article_nine_hard_threat = yes
+			}
+			modifier = {
+				add = 20
+				JAP_ai_restrained_defence_path = yes
+				has_war = yes
+			}
+			modifier = {
+				add = 60
+				JAP_ai_rearmament_path = yes
+			}
+			modifier = {
+				factor = 0
+				has_global_flag = JAP_PACIFIST_FOCUS_PATH
+			}
+		}
+	}
+
+	JAP_world_tension_high2 = {
+		icon = GFX_decision_ignite_civil_war
+		fire_only_once = no
+		cost = 50
+		days_remove = 180
+		available = { threat > 0.30 }
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_world_tension_high2"
+			add_power_balance_value = {
+				id = JAP_article_nine
+				value = 0.10
+			}
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				add = 40
+				JAP_ai_restrained_defence_path = yes
+				power_balance_value = {
+					id = JAP_article_nine
+					value < -0.20
+				}
+			}
+			modifier = {
+				add = 20
+				JAP_ai_restrained_defence_path = yes
+				power_balance_value = {
+					id = JAP_article_nine
+					value < 0.20
+				}
+			}
+			modifier = {
+				factor = 0
+				JAP_ai_restrained_defence_path = yes
+				JAP_ai_rearmament_path = no
+				power_balance_value = {
+					id = JAP_article_nine
+					value > 0.55
+				}
+				JAP_article_nine_hard_threat = no
+			}
+			modifier = {
+				add = 35
+				JAP_ai_restrained_defence_path = yes
+				JAP_article_nine_hard_threat = yes
+			}
+			modifier = {
+				add = 20
+				JAP_ai_restrained_defence_path = yes
+				has_war = yes
+			}
+			modifier = {
+				add = 60
+				JAP_ai_rearmament_path = yes
+			}
+			modifier = {
+				factor = 0
+				has_global_flag = JAP_PACIFIST_FOCUS_PATH
+			}
+		}
+	}
+
+	JAP_world_tension_high3 = {
+		icon = GFX_decision_ignite_civil_war
+		fire_only_once = no
+		cost = 50
+		days_remove = 180
+		available = { threat > 0.60 }
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_world_tension_high3"
+			add_power_balance_value = {
+				id = JAP_article_nine
+				value = 0.20
+			}
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				add = 40
+				JAP_ai_restrained_defence_path = yes
+				power_balance_value = {
+					id = JAP_article_nine
+					value < -0.20
+				}
+			}
+			modifier = {
+				add = 20
+				JAP_ai_restrained_defence_path = yes
+				power_balance_value = {
+					id = JAP_article_nine
+					value < 0.20
+				}
+			}
+			modifier = {
+				factor = 0
+				JAP_ai_restrained_defence_path = yes
+				JAP_ai_rearmament_path = no
+				power_balance_value = {
+					id = JAP_article_nine
+					value > 0.55
+				}
+				JAP_article_nine_hard_threat = no
+			}
+			modifier = {
+				add = 35
+				JAP_ai_restrained_defence_path = yes
+				JAP_article_nine_hard_threat = yes
+			}
+			modifier = {
+				add = 20
+				JAP_ai_restrained_defence_path = yes
+				has_war = yes
+			}
+			modifier = {
+				add = 60
+				JAP_ai_rearmament_path = yes
+			}
+			modifier = {
+				factor = 0
+				has_global_flag = JAP_PACIFIST_FOCUS_PATH
+			}
+		}
+	}
+
+	JAP_article_nine_protests_appeal = {
+		icon = GFX_decision_hol_war_on_pacifism
+		fire_only_once = no
+		cost = 50
+		days_remove = 100
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = JAP_article_nine_protests_appeal_tt
+				check_variable = { JAP.protest_strength > 49 }
+			}
+			custom_trigger_tooltip = {
+				tooltip = JAP_article_nine_protests_appeal_tt2
+				check_variable = { THIS.expected_military_sp > military_law }
+			}
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_article_nine_protests_appeal"
+			add_power_balance_value = {
+				id = JAP_article_nine
+				value = 0.20
+			}
+			increase_military_spending = yes
+			add_to_variable = { protest_strength = -25 }
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				add = 40
+				JAP_ai_restrained_defence_path = yes
+				power_balance_value = {
+					id = JAP_article_nine
+					value < -0.20
+				}
+			}
+			modifier = {
+				add = 20
+				JAP_ai_restrained_defence_path = yes
+				power_balance_value = {
+					id = JAP_article_nine
+					value < 0.20
+				}
+			}
+			modifier = {
+				factor = 0
+				JAP_ai_restrained_defence_path = yes
+				JAP_ai_rearmament_path = no
+				power_balance_value = {
+					id = JAP_article_nine
+					value > 0.55
+				}
+				JAP_article_nine_hard_threat = no
+			}
+			modifier = {
+				add = 35
+				JAP_ai_restrained_defence_path = yes
+				JAP_article_nine_hard_threat = yes
+			}
+			modifier = {
+				add = 20
+				JAP_ai_restrained_defence_path = yes
+				has_war = yes
+			}
+			modifier = {
+				add = 60
+				JAP_ai_rearmament_path = yes
+			}
+			modifier = {
+				factor = 0
+				has_global_flag = JAP_PACIFIST_FOCUS_PATH
+			}
+		}
+	}
+
+	JAP_article_nine_military_parties = {
+		icon = GFX_decision_generic_military
+		fire_only_once = no
+		cost = 250
+		days_remove = 365
+
+		available = {
+			OR = {
+				western_autocrats_are_in_power_or_coalition = yes
+				western_conservatism_are_in_power_or_coalition = yes
+				emerging_reactionaries_are_in_coalition = yes
+				emerging_reactionaries_are_in_power = yes
+				nationalist_fascists_are_in_power_or_coalition = yes
+				nationalist_military_junta_are_in_power_or_coalition = yes
+				nationalist_monarchists_are_in_power_or_coalition = yes
+			}
+			western_liberal_are_in_power_or_coalition = no
+			neutrality_neutral_social_in_power_or_coalition = no
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_article_nine_military_parties"
+			add_power_balance_value = {
+				id = JAP_article_nine
+				value = 0.125
+			}
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				add = 40
+				JAP_ai_restrained_defence_path = yes
+				power_balance_value = {
+					id = JAP_article_nine
+					value < -0.20
+				}
+			}
+			modifier = {
+				add = 20
+				JAP_ai_restrained_defence_path = yes
+				power_balance_value = {
+					id = JAP_article_nine
+					value < 0.20
+				}
+			}
+			modifier = {
+				factor = 0
+				JAP_ai_restrained_defence_path = yes
+				JAP_ai_rearmament_path = no
+				power_balance_value = {
+					id = JAP_article_nine
+					value > 0.55
+				}
+				JAP_article_nine_hard_threat = no
+			}
+			modifier = {
+				add = 35
+				JAP_ai_restrained_defence_path = yes
+				JAP_article_nine_hard_threat = yes
+			}
+			modifier = {
+				add = 20
+				JAP_ai_restrained_defence_path = yes
+				has_war = yes
+			}
+			modifier = {
+				add = 60
+				JAP_ai_rearmament_path = yes
+			}
+			modifier = {
+				factor = 0
+				has_global_flag = JAP_PACIFIST_FOCUS_PATH
+			}
+		}
+	}
+
+	JAP_north_korean_road_to_war = {
+		icon = GFX_decision_nko_speech
+		fire_only_once = no
+		days_remove = 360
+		cost = 50
+		available = { NKO = { has_completed_focus = NKO_the_road_to_war } }
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_north_korean_road_to_war"
+			add_power_balance_value = {
+				id = JAP_article_nine
+				value = 0.10
+			}
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				add = 40
+				JAP_ai_restrained_defence_path = yes
+				power_balance_value = {
+					id = JAP_article_nine
+					value < -0.20
+				}
+			}
+			modifier = {
+				add = 20
+				JAP_ai_restrained_defence_path = yes
+				power_balance_value = {
+					id = JAP_article_nine
+					value < 0.20
+				}
+			}
+			modifier = {
+				factor = 0
+				JAP_ai_restrained_defence_path = yes
+				JAP_ai_rearmament_path = no
+				power_balance_value = {
+					id = JAP_article_nine
+					value > 0.55
+				}
+				JAP_article_nine_hard_threat = no
+			}
+			modifier = {
+				add = 35
+				JAP_ai_restrained_defence_path = yes
+				JAP_article_nine_hard_threat = yes
+			}
+			modifier = {
+				add = 20
+				JAP_ai_restrained_defence_path = yes
+				has_war = yes
+			}
+			modifier = {
+				add = 60
+				JAP_ai_rearmament_path = yes
+			}
+			modifier = {
+				factor = 0
+				has_global_flag = JAP_PACIFIST_FOCUS_PATH
+			}
+		}
+	}
+
+	JAP_north_korean_threats_to_south_korea = {
+		icon = GFX_decision_nko_rocket
+		fire_only_once = no
+		days_remove = 360
+		cost = 50
+		available = { NKO = { has_completed_focus = NKO_threaten_the_south } }
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_north_korean_threats_to_south_korea"
+			add_power_balance_value = {
+				id = JAP_article_nine
+				value = 0.10
+			}
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				add = 40
+				JAP_ai_restrained_defence_path = yes
+				power_balance_value = {
+					id = JAP_article_nine
+					value < -0.20
+				}
+			}
+			modifier = {
+				add = 20
+				JAP_ai_restrained_defence_path = yes
+				power_balance_value = {
+					id = JAP_article_nine
+					value < 0.20
+				}
+			}
+			modifier = {
+				factor = 0
+				JAP_ai_restrained_defence_path = yes
+				JAP_ai_rearmament_path = no
+				power_balance_value = {
+					id = JAP_article_nine
+					value > 0.55
+				}
+				JAP_article_nine_hard_threat = no
+			}
+			modifier = {
+				add = 35
+				JAP_ai_restrained_defence_path = yes
+				JAP_article_nine_hard_threat = yes
+			}
+			modifier = {
+				add = 20
+				JAP_ai_restrained_defence_path = yes
+				has_war = yes
+			}
+			modifier = {
+				add = 60
+				JAP_ai_rearmament_path = yes
+			}
+			modifier = {
+				factor = 0
+				has_global_flag = JAP_PACIFIST_FOCUS_PATH
+			}
+		}
+	}
+
+	JAP_north_korean_increased_nuclear_testing = {
+		icon = GFX_decision_nko_nuclear_cloud
+		fire_only_once = no
+		days_remove = 360
+		cost = 50
+		available = { NKO = { has_completed_focus = NKO_accelerate_testing } }
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_north_korean_increased_nuclear_testing"
+			add_power_balance_value = {
+				id = JAP_article_nine
+				value = 0.10
+			}
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				add = 40
+				JAP_ai_restrained_defence_path = yes
+				power_balance_value = {
+					id = JAP_article_nine
+					value < -0.20
+				}
+			}
+			modifier = {
+				add = 20
+				JAP_ai_restrained_defence_path = yes
+				power_balance_value = {
+					id = JAP_article_nine
+					value < 0.20
+				}
+			}
+			modifier = {
+				factor = 0
+				JAP_ai_restrained_defence_path = yes
+				JAP_ai_rearmament_path = no
+				power_balance_value = {
+					id = JAP_article_nine
+					value > 0.55
+				}
+				JAP_article_nine_hard_threat = no
+			}
+			modifier = {
+				add = 35
+				JAP_ai_restrained_defence_path = yes
+				JAP_article_nine_hard_threat = yes
+			}
+			modifier = {
+				add = 20
+				JAP_ai_restrained_defence_path = yes
+				has_war = yes
+			}
+			modifier = {
+				add = 60
+				JAP_ai_rearmament_path = yes
+			}
+			modifier = {
+				factor = 0
+				has_global_flag = JAP_PACIFIST_FOCUS_PATH
+			}
+		}
+	}
+
+	JAP_north_korean_remilitarized_dmz = {
+		icon = GFX_decision_nko_soldiers
+		fire_only_once = no
+		days_remove = 360
+		cost = 50
+		available = { NKO = { has_completed_focus = NKO_remilitarize_the_dmz } }
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_north_korean_remilitarized_dmz"
+			add_power_balance_value = {
+				id = JAP_article_nine
+				value = 0.10
+			}
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				add = 40
+				JAP_ai_restrained_defence_path = yes
+				power_balance_value = {
+					id = JAP_article_nine
+					value < -0.20
+				}
+			}
+			modifier = {
+				add = 20
+				JAP_ai_restrained_defence_path = yes
+				power_balance_value = {
+					id = JAP_article_nine
+					value < 0.20
+				}
+			}
+			modifier = {
+				factor = 0
+				JAP_ai_restrained_defence_path = yes
+				JAP_ai_rearmament_path = no
+				power_balance_value = {
+					id = JAP_article_nine
+					value > 0.55
+				}
+				JAP_article_nine_hard_threat = no
+			}
+			modifier = {
+				add = 35
+				JAP_ai_restrained_defence_path = yes
+				JAP_article_nine_hard_threat = yes
+			}
+			modifier = {
+				add = 20
+				JAP_ai_restrained_defence_path = yes
+				has_war = yes
+			}
+			modifier = {
+				add = 60
+				JAP_ai_rearmament_path = yes
+			}
+			modifier = {
+				factor = 0
+				has_global_flag = JAP_PACIFIST_FOCUS_PATH
+			}
+		}
+	}
+
+	JAP_russian_agressiveness = {
+		icon = GFX_decision_sov_soldiers
+		fire_only_once = no
+		days_remove = 180
+		cost = 50
+
+		available = {
+			SOV = {
+				has_completed_focus = SOV_aggressive_foreign_policy
+				has_completed_focus = SOV_defend_national_interests
+			}
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_russian_agressiveness"
+			add_power_balance_value = {
+				id = JAP_article_nine
+				value = 0.05
+			}
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				add = 40
+				JAP_ai_restrained_defence_path = yes
+				power_balance_value = {
+					id = JAP_article_nine
+					value < -0.20
+				}
+			}
+			modifier = {
+				add = 20
+				JAP_ai_restrained_defence_path = yes
+				power_balance_value = {
+					id = JAP_article_nine
+					value < 0.20
+				}
+			}
+			modifier = {
+				factor = 0
+				JAP_ai_restrained_defence_path = yes
+				JAP_ai_rearmament_path = no
+				power_balance_value = {
+					id = JAP_article_nine
+					value > 0.55
+				}
+				JAP_article_nine_hard_threat = no
+			}
+			modifier = {
+				add = 35
+				JAP_ai_restrained_defence_path = yes
+				JAP_article_nine_hard_threat = yes
+			}
+			modifier = {
+				add = 20
+				JAP_ai_restrained_defence_path = yes
+				has_war = yes
+			}
+			modifier = {
+				add = 60
+				JAP_ai_rearmament_path = yes
+			}
+			modifier = {
+				factor = 0
+				has_global_flag = JAP_PACIFIST_FOCUS_PATH
+			}
+		}
+	}
+
+	JAP_defence_russian_asian_ambitions = {
+		icon = GFX_decision_sov_soldiers
+		fire_only_once = no
+		days_remove = 180
+		cost = 50
+		available = { SOV = { has_completed_focus = SOV_zhirinovsky_secure_east_asia } }
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_defence_russian_asian_ambitions"
+			add_power_balance_value = {
+				id = JAP_article_nine
+				value = 0.05
+			}
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				add = 40
+				JAP_ai_restrained_defence_path = yes
+				power_balance_value = {
+					id = JAP_article_nine
+					value < -0.20
+				}
+			}
+			modifier = {
+				add = 20
+				JAP_ai_restrained_defence_path = yes
+				power_balance_value = {
+					id = JAP_article_nine
+					value < 0.20
+				}
+			}
+			modifier = {
+				factor = 0
+				JAP_ai_restrained_defence_path = yes
+				JAP_ai_rearmament_path = no
+				power_balance_value = {
+					id = JAP_article_nine
+					value > 0.55
+				}
+				JAP_article_nine_hard_threat = no
+			}
+			modifier = {
+				add = 35
+				JAP_ai_restrained_defence_path = yes
+				JAP_article_nine_hard_threat = yes
+			}
+			modifier = {
+				add = 20
+				JAP_ai_restrained_defence_path = yes
+				has_war = yes
+			}
+			modifier = {
+				add = 60
+				JAP_ai_rearmament_path = yes
+			}
+			modifier = {
+				factor = 0
+				has_global_flag = JAP_PACIFIST_FOCUS_PATH
+			}
+		}
+	}
+
+	JAP_russian_north_korean_alliance = {
+		icon = GFX_decision_sov_nko_soldiers
+		fire_only_once = no
+		days_remove = 180
+		cost = 50
+		available = { SOV = { has_completed_focus = SOV_allied_nrk } }
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_russian_north_korean_alliance"
+			add_power_balance_value = {
+				id = JAP_article_nine
+				value = 0.05
+			}
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				add = 40
+				JAP_ai_restrained_defence_path = yes
+				power_balance_value = {
+					id = JAP_article_nine
+					value < -0.20
+				}
+			}
+			modifier = {
+				add = 20
+				JAP_ai_restrained_defence_path = yes
+				power_balance_value = {
+					id = JAP_article_nine
+					value < 0.20
+				}
+			}
+			modifier = {
+				factor = 0
+				JAP_ai_restrained_defence_path = yes
+				JAP_ai_rearmament_path = no
+				power_balance_value = {
+					id = JAP_article_nine
+					value > 0.55
+				}
+				JAP_article_nine_hard_threat = no
+			}
+			modifier = {
+				add = 35
+				JAP_ai_restrained_defence_path = yes
+				JAP_article_nine_hard_threat = yes
+			}
+			modifier = {
+				add = 20
+				JAP_ai_restrained_defence_path = yes
+				has_war = yes
+			}
+			modifier = {
+				add = 60
+				JAP_ai_rearmament_path = yes
+			}
+			modifier = {
+				factor = 0
+				has_global_flag = JAP_PACIFIST_FOCUS_PATH
+			}
+		}
+	}
+
+	JAP_russian_pacific_naval_presence = {
+		icon = GFX_decision_sov_ship
+		fire_only_once = no
+		days_remove = 180
+		cost = 50
+		available = { SOV = { has_completed_focus = SOV_expand_pacific_naval_presence } }
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_russian_pacific_naval_presence"
+			add_power_balance_value = {
+				id = JAP_article_nine
+				value = 0.10
+			}
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				add = 40
+				JAP_ai_restrained_defence_path = yes
+				power_balance_value = {
+					id = JAP_article_nine
+					value < -0.20
+				}
+			}
+			modifier = {
+				add = 20
+				JAP_ai_restrained_defence_path = yes
+				power_balance_value = {
+					id = JAP_article_nine
+					value < 0.20
+				}
+			}
+			modifier = {
+				factor = 0
+				JAP_ai_restrained_defence_path = yes
+				JAP_ai_rearmament_path = no
+				power_balance_value = {
+					id = JAP_article_nine
+					value > 0.55
+				}
+				JAP_article_nine_hard_threat = no
+			}
+			modifier = {
+				add = 35
+				JAP_ai_restrained_defence_path = yes
+				JAP_article_nine_hard_threat = yes
+			}
+			modifier = {
+				add = 20
+				JAP_ai_restrained_defence_path = yes
+				has_war = yes
+			}
+			modifier = {
+				add = 60
+				JAP_ai_rearmament_path = yes
+			}
+			modifier = {
+				factor = 0
+				has_global_flag = JAP_PACIFIST_FOCUS_PATH
+			}
+		}
+	}
+}
 JAP_military_decision_category = {
 	JAP_consolidate_national_defense_framework_mission = {
 		icon = GFX_decision_JAP_civic_faction
@@ -1927,5 +4451,3532 @@ JAP_military_decision_category = {
 				}
 			}
 		}
+	}
+}
+
+JAP_japanese_economy_decisions = {
+	JAP_price_target_mission = {
+		icon = GFX_decision_money_dec
+		is_good = no
+		selectable_mission = no
+		days_mission_timeout = 1095
+		activation = { always = no }
+		available = { inflation_rate_higher_than_2 = yes }
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_price_target_mission"
+			add_to_variable = { JAP_demand_recovery_progress = 8 tooltip = JAP_demand_recovery_progress_tt }
+			hidden_effect = { country_event = Japan_economy.17 }
+		}
+
+		timeout_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_price_target_mission"
+			add_to_variable = { JAP_demand_recovery_progress = -5 tooltip = JAP_demand_recovery_progress_tt }
+			hidden_effect = { country_event = Japan_economy.18 }
+		}
+	}
+
+	JAP_overcome_the_slump = {
+		icon = GFX_decision_money_dec
+		visible = { JAP_demand_shortfall_resolved = no }
+
+		available = {
+			if = {
+				limit = { has_idea = JAP_entrenched_demand_shortfall_idea_1 }
+				custom_trigger_tooltip = {
+					tooltip = JAP_demand_recovery_progress_tier_1_TT
+					check_variable = { JAP_demand_recovery_progress > 29 }
+				}
+			}
+			if = {
+				limit = { has_idea = JAP_entrenched_demand_shortfall_idea_2 }
+				custom_trigger_tooltip = {
+					tooltip = JAP_demand_recovery_progress_tier_2_TT
+					check_variable = { JAP_demand_recovery_progress > 59 }
+				}
+			}
+			if = {
+				limit = { has_idea = JAP_entrenched_demand_shortfall_idea_3 }
+				custom_trigger_tooltip = {
+					tooltip = JAP_demand_recovery_progress_complete_TT
+					check_variable = { JAP_demand_recovery_progress > 84 }
+				}
+			}
+		}
+
+		cost = 25
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_overcome_the_slump"
+			if = {
+				limit = { has_idea = JAP_entrenched_demand_shortfall_idea_3 }
+				remove_ideas = JAP_entrenched_demand_shortfall_idea_3
+				increase_economic_growth = yes
+			}
+			else_if = {
+				limit = { has_idea = JAP_entrenched_demand_shortfall_idea_2 }
+				swap_ideas = {
+					remove_idea = JAP_entrenched_demand_shortfall_idea_2
+					add_idea = JAP_entrenched_demand_shortfall_idea_3
+				}
+			}
+			else = {
+				swap_ideas = {
+					remove_idea = JAP_entrenched_demand_shortfall_idea_1
+					add_idea = JAP_entrenched_demand_shortfall_idea_2
+				}
+			}
+		}
+
+		ai_will_do = { base = 100 }
+	}
+
+	JAP_cash_transfers_households_decision = {
+		icon = GFX_decision_money_dec
+		visible = { JAP_demand_shortfall_resolved = no }
+		available = { has_completed_focus = JAP_cash_transfers_households }
+		cost = 75
+		days_remove = 180
+
+		modifier = {
+			social_cost_multiplier_modifier = 0.10
+			production_speed_buildings_factor = 0.05
+		}
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove JAP_cash_transfers_households_decision"
+			add_to_variable = { JAP_demand_recovery_progress = 4 tooltip = JAP_demand_recovery_progress_tt }
+			hidden_effect = { country_event = Japan_economy.19 }
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				add = 10
+				has_idea = JAP_entrenched_demand_shortfall_idea_1
+			}
+			modifier = {
+				add = 5
+				has_idea = JAP_entrenched_demand_shortfall_idea_2
+			}
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	JAP_temporary_consumption_tax_cut = {
+		icon = GFX_decision_money_dec
+		visible = { JAP_demand_shortfall_resolved = no }
+		available = { has_completed_focus = JAP_temporary_tax_cuts }
+		cost = 100
+		days_remove = 365
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_temporary_consumption_tax_cut"
+			set_temp_variable = { pop_change = -5 }
+			modify_population_tax_rate_effect = yes
+		}
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_temporary_consumption_tax_cut"
+			set_temp_variable = { pop_change = 5 }
+			modify_population_tax_rate_effect = yes
+			add_to_variable = { JAP_demand_recovery_progress = 8 tooltip = JAP_demand_recovery_progress_tt }
+			hidden_effect = { country_event = Japan_economy.20 }
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				add = 10
+				has_idea = JAP_entrenched_demand_shortfall_idea_1
+			}
+			modifier = {
+				add = 5
+				has_idea = JAP_entrenched_demand_shortfall_idea_2
+			}
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	JAP_active_public_investment_decision = {
+		icon = GFX_decision_obtain_foreign_investment
+		visible = { JAP_demand_shortfall_resolved = no }
+		available = { has_completed_focus = JAP_active_public_investment }
+		cost = 75
+		days_remove = 120
+		modifier = { civ_facs_worker_requirement_modifier = 0.03 }
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove JAP_active_public_investment_decision"
+			one_random_infrastructure = yes
+			add_to_variable = { JAP_demand_recovery_progress = 4 tooltip = JAP_demand_recovery_progress_tt }
+			hidden_effect = { country_event = Japan_economy.21 }
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				add = 10
+				has_idea = JAP_entrenched_demand_shortfall_idea_1
+			}
+			modifier = {
+				add = 5
+				has_idea = JAP_entrenched_demand_shortfall_idea_2
+			}
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	JAP_stimulating_demand_durable_goods_decision = {
+		icon = GFX_decision_eng_trade_unions_demand
+		visible = { JAP_demand_shortfall_resolved = no }
+		available = { has_completed_focus = JAP_stimulating_demand_durable_goods }
+		cost = 75
+		days_remove = 180
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_stimulating_demand_durable_goods_decision"
+			set_temp_variable = { treasury_change = -8 }
+			modify_treasury_effect = yes
+		}
+
+		modifier = { productivity_growth_modifier = -0.05 }
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_stimulating_demand_durable_goods_decision"
+			add_to_variable = { JAP_demand_recovery_progress = 5 tooltip = JAP_demand_recovery_progress_tt }
+			hidden_effect = { country_event = Japan_economy.22 }
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				add = 10
+				has_idea = JAP_entrenched_demand_shortfall_idea_1
+			}
+			modifier = {
+				add = 5
+				has_idea = JAP_entrenched_demand_shortfall_idea_2
+			}
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	JAP_wage_negotiations = {
+		icon = GFX_decision_generic_political_discourse
+		visible = { JAP_demand_shortfall_resolved = no }
+		available = { has_completed_focus = JAP_expectation_of_being_rewarded }
+		cost = 75
+		days_remove = 180
+		days_re_enable = 2
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_wage_negotiations"
+			country_event = Japan_economy.12
+		}
+
+		modifier = { political_power_factor = -0.05 }
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_wage_negotiations"
+			custom_effect_tooltip = JAP_wage_negotiations_TT
+			hidden_effect = {
+				country_event = Japan_economy.14
+				country_event = Japan_economy.15
+			}
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				add = 10
+				has_idea = JAP_entrenched_demand_shortfall_idea_1
+			}
+			modifier = {
+				add = 5
+				has_idea = JAP_entrenched_demand_shortfall_idea_2
+			}
+		}
+	}
+}
+
+JAP_declining_birthrate_category = {
+	JAP_increase_birth_budget = {
+		icon = GFX_decision_no_more_population_button
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = {
+					localization_key = dynamic_modifier_below_tt
+					VAR_NAME = MODIFIER_GLOBAL_MONTHLY_POPULATION
+					MODIFIER = JAP_demographic_pressure_modifier
+					THRESHOLD = "0.0%"
+				}
+				check_variable = { JAP_demographic_pressure_monthly_population < 0 }
+			}
+			30_percent_government_popularity = yes
+		}
+
+		cost = 60
+		fire_only_once = no
+		days_remove = 30
+		days_re_enable = 365
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_increase_birth_budget"
+			add_to_variable = { JAP_demographic_decisions_enacted = 1 tooltip = JAP_demographic_decisions_enacted_tt }
+			custom_effect_tooltip = {
+				localization_key = modifies_dynamic_modifier_tt
+				MODIFIER = JAP_demographic_pressure_modifier
+			}
+			add_to_variable = { JAP_demographic_pressure_monthly_population = 0.10 tooltip = monthly_population_tt }
+			clamp_variable = { var = JAP_demographic_pressure_monthly_population min = -1 max = 0 }
+			add_to_variable = { JAP_demographic_pressure_social_cost_multiplier_modifier = 0.01 tooltip = social_cost_multiplier_modifier_tt }
+			clamp_variable = { var = JAP_demographic_pressure_social_cost_multiplier_modifier min = 0 max = 1 }
+			newline = yes
+			set_temp_variable = { treasury_change = -6 }
+			modify_treasury_effect = yes
+		}
+
+		modifier = { political_power_factor = 0.10 }
+
+		ai_will_do = {
+			base = 5
+			modifier = {
+				add = 25
+				check_variable = { JAP_demographic_pressure_monthly_population < -0.45 }
+			}
+			modifier = {
+				add = 20
+				check_variable = { JAP_demographic_pressure_monthly_population < -0.30 }
+			}
+			modifier = {
+				add = 15
+				check_variable = { JAP_demographic_pressure_monthly_population < -0.20 }
+			}
+			modifier = {
+				add = 10
+				check_variable = { JAP_demographic_pressure_monthly_population < -0.10 }
+			}
+			modifier = {
+				add = 15
+				check_variable = { JAP_demographic_decisions_enacted < 8 }
+			}
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	JAP_child_care_subsidies = {
+		icon = GFX_decision_ISR_education_button
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = {
+					localization_key = dynamic_modifier_below_tt
+					VAR_NAME = total_workforce_modifier
+					MODIFIER = JAP_demographic_pressure_modifier
+					THRESHOLD = "0.0%"
+				}
+				check_variable = { JAP_demographic_pressure_total_workforce_modifier < 0 }
+			}
+			20_percent_government_popularity = yes
+			num_of_civilian_factories_available_for_projects > 5
+		}
+
+		cost = 75
+		fire_only_once = no
+		days_remove = 30
+		days_re_enable = 180
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_child_care_subsidies"
+			add_to_variable = { JAP_demographic_decisions_enacted = 1 tooltip = JAP_demographic_decisions_enacted_tt }
+			custom_effect_tooltip = {
+				localization_key = modifies_dynamic_modifier_tt
+				MODIFIER = JAP_demographic_pressure_modifier
+			}
+			add_to_variable = { JAP_demographic_pressure_total_workforce_modifier = 0.03 tooltip = total_workforce_modifier_tt }
+			clamp_variable = { var = JAP_demographic_pressure_total_workforce_modifier min = -1 max = 0 }
+			add_to_variable = { JAP_demographic_pressure_monthly_population = 0.05 tooltip = monthly_population_tt }
+			clamp_variable = { var = JAP_demographic_pressure_monthly_population min = -1 max = 0 }
+			newline = yes
+			set_temp_variable = { treasury_change = -3.5 }
+			modify_treasury_effect = yes
+		}
+
+		modifier = { production_speed_buildings_factor = 0.05 }
+
+		ai_will_do = {
+			base = 5
+			modifier = {
+				add = 25
+				check_variable = { JAP_demographic_pressure_monthly_population < -0.45 }
+			}
+			modifier = {
+				add = 20
+				check_variable = { JAP_demographic_pressure_monthly_population < -0.30 }
+			}
+			modifier = {
+				add = 15
+				check_variable = { JAP_demographic_pressure_monthly_population < -0.20 }
+			}
+			modifier = {
+				add = 10
+				check_variable = { JAP_demographic_pressure_monthly_population < -0.10 }
+			}
+			modifier = {
+				add = 15
+				check_variable = { JAP_demographic_decisions_enacted < 8 }
+			}
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	JAP_invest_in_robotics = {
+		icon = GFX_decision_generic_research_new
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = {
+					localization_key = dynamic_modifier_below_tt
+					VAR_NAME = total_workforce_modifier
+					MODIFIER = JAP_demographic_pressure_modifier
+					THRESHOLD = "0.0%"
+				}
+				check_variable = { JAP_demographic_pressure_total_workforce_modifier < 0 }
+			}
+			has_tech = robotics_3
+			num_of_civilian_factories_available_for_projects > 5
+		}
+
+		cost = 50
+		fire_only_once = no
+		days_remove = 30
+		days_re_enable = 180
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_invest_in_robotics"
+			add_to_variable = { JAP_demographic_decisions_enacted = 1 tooltip = JAP_demographic_decisions_enacted_tt }
+			custom_effect_tooltip = {
+				localization_key = modifies_dynamic_modifier_tt
+				MODIFIER = JAP_demographic_pressure_modifier
+			}
+			add_to_variable = { JAP_demographic_pressure_total_workforce_modifier = 0.02 tooltip = total_workforce_modifier_tt }
+			clamp_variable = { var = JAP_demographic_pressure_total_workforce_modifier min = -1 max = 0 }
+			add_to_variable = { JAP_demographic_pressure_high_unemployment_threshold_modifier = -0.003 tooltip = high_unemployment_threshold_modifier_tt }
+			clamp_variable = { var = JAP_demographic_pressure_high_unemployment_threshold_modifier min = -1 max = 0 }
+			newline = yes
+			set_temp_variable = { treasury_change = -5 }
+			modify_treasury_effect = yes
+		}
+
+		modifier = { productivity_growth_modifier = 0.05 }
+
+		ai_will_do = {
+			base = 5
+			modifier = {
+				add = 20
+				check_variable = { JAP_demographic_pressure_total_workforce_modifier < -0.03 }
+			}
+			modifier = {
+				add = 10
+				check_variable = { JAP_demographic_pressure_total_workforce_modifier < 0 }
+			}
+			modifier = {
+				add = 15
+				check_variable = { JAP_demographic_decisions_enacted < 8 }
+			}
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	JAP_fertility_ivf_program = {
+		icon = GFX_decision_ISR_healthcare_button
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = {
+					localization_key = dynamic_modifier_below_tt
+					VAR_NAME = MODIFIER_GLOBAL_MONTHLY_POPULATION
+					MODIFIER = JAP_demographic_pressure_modifier
+					THRESHOLD = "0.0%"
+				}
+				check_variable = { JAP_demographic_pressure_monthly_population < 0 }
+			}
+			has_tech = genetics_2
+		}
+
+		cost = 50
+		fire_only_once = no
+		days_remove = 30
+		days_re_enable = 270
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_fertility_ivf_program"
+			add_to_variable = { JAP_demographic_decisions_enacted = 1 tooltip = JAP_demographic_decisions_enacted_tt }
+			custom_effect_tooltip = {
+				localization_key = modifies_dynamic_modifier_tt
+				MODIFIER = JAP_demographic_pressure_modifier
+			}
+			add_to_variable = { JAP_demographic_pressure_monthly_population = 0.08 tooltip = monthly_population_tt }
+			clamp_variable = { var = JAP_demographic_pressure_monthly_population min = -1 max = 0 }
+			add_to_variable = { JAP_demographic_pressure_health_cost_multiplier_modifier = 0.02 tooltip = health_cost_multiplier_modifier_tt }
+			clamp_variable = { var = JAP_demographic_pressure_health_cost_multiplier_modifier min = 0 max = 1 }
+			newline = yes
+			set_temp_variable = { treasury_change = -4 }
+			modify_treasury_effect = yes
+		}
+
+		modifier = { monthly_population = 0.05 }
+
+		ai_will_do = {
+			base = 5
+			modifier = {
+				add = 25
+				check_variable = { JAP_demographic_pressure_monthly_population < -0.45 }
+			}
+			modifier = {
+				add = 20
+				check_variable = { JAP_demographic_pressure_monthly_population < -0.30 }
+			}
+			modifier = {
+				add = 15
+				check_variable = { JAP_demographic_pressure_monthly_population < -0.20 }
+			}
+			modifier = {
+				add = 10
+				check_variable = { JAP_demographic_pressure_monthly_population < -0.10 }
+			}
+			modifier = {
+				add = 15
+				check_variable = { JAP_demographic_decisions_enacted < 8 }
+			}
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	JAP_family_housing_construction = {
+		icon = GFX_decision_generic_construction
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = {
+					localization_key = dynamic_modifier_below_tt
+					VAR_NAME = MODIFIER_STABILITY_FACTOR
+					MODIFIER = JAP_demographic_pressure_modifier
+					THRESHOLD = "0.0%"
+				}
+				check_variable = { JAP_demographic_pressure_stability_factor < 0 }
+			}
+			has_tech = construction2
+			num_of_civilian_factories_available_for_projects > 10
+		}
+
+		cost = 60
+		fire_only_once = no
+		days_remove = 30
+		days_re_enable = 365
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_family_housing_construction"
+			add_to_variable = { JAP_demographic_decisions_enacted = 1 tooltip = JAP_demographic_decisions_enacted_tt }
+			custom_effect_tooltip = {
+				localization_key = modifies_dynamic_modifier_tt
+				MODIFIER = JAP_demographic_pressure_modifier
+			}
+			add_to_variable = { JAP_demographic_pressure_stability_factor = 0.02 tooltip = stability_factor_tt }
+			clamp_variable = { var = JAP_demographic_pressure_stability_factor min = -1 max = 0 }
+			add_to_variable = { JAP_demographic_pressure_monthly_population = 0.07 tooltip = monthly_population_tt }
+			clamp_variable = { var = JAP_demographic_pressure_monthly_population min = -1 max = 0 }
+			newline = yes
+			set_temp_variable = { treasury_change = -5 }
+			modify_treasury_effect = yes
+		}
+
+		modifier = { production_speed_buildings_factor = 0.10 }
+
+		ai_will_do = {
+			base = 5
+			modifier = {
+				add = 25
+				check_variable = { JAP_demographic_pressure_monthly_population < -0.45 }
+			}
+			modifier = {
+				add = 20
+				check_variable = { JAP_demographic_pressure_monthly_population < -0.30 }
+			}
+			modifier = {
+				add = 15
+				check_variable = { JAP_demographic_pressure_monthly_population < -0.20 }
+			}
+			modifier = {
+				add = 10
+				check_variable = { JAP_demographic_pressure_monthly_population < -0.10 }
+			}
+			modifier = {
+				add = 15
+				check_variable = { JAP_demographic_decisions_enacted < 8 }
+			}
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	JAP_marriage_support_program = {
+		icon = GFX_decision_generic_civil_support
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = {
+					localization_key = dynamic_modifier_below_tt
+					VAR_NAME = MODIFIER_GLOBAL_MONTHLY_POPULATION
+					MODIFIER = JAP_demographic_pressure_modifier
+					THRESHOLD = "0.0%"
+				}
+				check_variable = { JAP_demographic_pressure_monthly_population < 0 }
+			}
+			20_percent_government_popularity = yes
+		}
+
+		cost = 75
+		fire_only_once = no
+		days_remove = 30
+		days_re_enable = 180
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_marriage_support_program"
+			add_to_variable = { JAP_demographic_decisions_enacted = 1 tooltip = JAP_demographic_decisions_enacted_tt }
+			custom_effect_tooltip = {
+				localization_key = modifies_dynamic_modifier_tt
+				MODIFIER = JAP_demographic_pressure_modifier
+			}
+			add_to_variable = { JAP_demographic_pressure_monthly_population = 0.05 tooltip = monthly_population_tt }
+			clamp_variable = { var = JAP_demographic_pressure_monthly_population min = -1 max = 0 }
+			newline = yes
+			set_temp_variable = { treasury_change = -2 }
+			modify_treasury_effect = yes
+		}
+
+		modifier = { monthly_population = 0.03 }
+
+		ai_will_do = {
+			base = 5
+			modifier = {
+				add = 25
+				check_variable = { JAP_demographic_pressure_monthly_population < -0.45 }
+			}
+			modifier = {
+				add = 20
+				check_variable = { JAP_demographic_pressure_monthly_population < -0.30 }
+			}
+			modifier = {
+				add = 15
+				check_variable = { JAP_demographic_pressure_monthly_population < -0.20 }
+			}
+			modifier = {
+				add = 10
+				check_variable = { JAP_demographic_pressure_monthly_population < -0.10 }
+			}
+			modifier = {
+				add = 15
+				check_variable = { JAP_demographic_decisions_enacted < 8 }
+			}
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	JAP_raise_retirement_age = {
+		icon = GFX_decision_generic_political_discourse
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = {
+					localization_key = dynamic_modifier_below_tt
+					VAR_NAME = total_workforce_modifier
+					MODIFIER = JAP_demographic_pressure_modifier
+					THRESHOLD = "0.0%"
+				}
+				check_variable = { JAP_demographic_pressure_total_workforce_modifier < 0 }
+			}
+			50_percent_government_popularity = yes
+		}
+
+		cost = 150
+		fire_only_once = no
+		days_remove = 60
+		days_re_enable = 365
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_raise_retirement_age"
+			add_to_variable = { JAP_demographic_decisions_enacted = 1 tooltip = JAP_demographic_decisions_enacted_tt }
+			custom_effect_tooltip = {
+				localization_key = modifies_dynamic_modifier_tt
+				MODIFIER = JAP_demographic_pressure_modifier
+			}
+			add_to_variable = { JAP_demographic_pressure_total_workforce_modifier = 0.03 tooltip = total_workforce_modifier_tt }
+			clamp_variable = { var = JAP_demographic_pressure_total_workforce_modifier min = -1 max = 0 }
+		}
+
+		modifier = { political_power_factor = -0.10 }
+
+		ai_will_do = {
+			base = 5
+			modifier = {
+				add = 20
+				check_variable = { JAP_demographic_pressure_total_workforce_modifier < -0.03 }
+			}
+			modifier = {
+				add = 10
+				check_variable = { JAP_demographic_pressure_total_workforce_modifier < 0 }
+			}
+			modifier = {
+				add = 15
+				check_variable = { JAP_demographic_decisions_enacted < 8 }
+			}
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	JAP_silver_employment_initiative = {
+		icon = GFX_decision_generic_civil_support
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = {
+					localization_key = dynamic_modifier_below_tt
+					VAR_NAME = high_unemployment_threshold_modifier
+					MODIFIER = JAP_demographic_pressure_modifier
+					THRESHOLD = "0.0%"
+				}
+				check_variable = { JAP_demographic_pressure_high_unemployment_threshold_modifier < 0 }
+			}
+			30_percent_government_popularity = yes
+		}
+
+		cost = 60
+		fire_only_once = no
+		days_remove = 30
+		days_re_enable = 180
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_silver_employment_initiative"
+			add_to_variable = { JAP_demographic_decisions_enacted = 1 tooltip = JAP_demographic_decisions_enacted_tt }
+			custom_effect_tooltip = {
+				localization_key = modifies_dynamic_modifier_tt
+				MODIFIER = JAP_demographic_pressure_modifier
+			}
+			add_to_variable = { JAP_demographic_pressure_high_unemployment_threshold_modifier = 0.003 tooltip = high_unemployment_threshold_modifier_tt }
+			clamp_variable = { var = JAP_demographic_pressure_high_unemployment_threshold_modifier min = -1 max = 0 }
+			add_to_variable = { JAP_demographic_pressure_total_workforce_modifier = 0.01 tooltip = total_workforce_modifier_tt }
+			clamp_variable = { var = JAP_demographic_pressure_total_workforce_modifier min = -1 max = 0 }
+			newline = yes
+			set_temp_variable = { treasury_change = -2 }
+			modify_treasury_effect = yes
+		}
+
+		modifier = { productivity_growth_modifier = 0.03 }
+
+		ai_will_do = {
+			base = 5
+			modifier = {
+				add = 20
+				check_variable = { JAP_demographic_pressure_total_workforce_modifier < -0.03 }
+			}
+			modifier = {
+				add = 10
+				check_variable = { JAP_demographic_pressure_total_workforce_modifier < 0 }
+			}
+			modifier = {
+				add = 15
+				check_variable = { JAP_demographic_decisions_enacted < 8 }
+			}
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	JAP_preventive_health_program = {
+		icon = GFX_decision_cub_health_button
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = {
+					localization_key = dynamic_modifier_above_tt
+					VAR_NAME = health_cost_multiplier_modifier
+					MODIFIER = JAP_demographic_pressure_modifier
+					THRESHOLD = "0.0%"
+				}
+				check_variable = { JAP_demographic_pressure_health_cost_multiplier_modifier > 0 }
+			}
+			has_tech = genetics_1
+		}
+
+		cost = 50
+		fire_only_once = no
+		days_remove = 30
+		days_re_enable = 270
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_preventive_health_program"
+			add_to_variable = { JAP_demographic_decisions_enacted = 1 tooltip = JAP_demographic_decisions_enacted_tt }
+			custom_effect_tooltip = {
+				localization_key = modifies_dynamic_modifier_tt
+				MODIFIER = JAP_demographic_pressure_modifier
+			}
+			add_to_variable = { JAP_demographic_pressure_health_cost_multiplier_modifier = -0.03 tooltip = health_cost_multiplier_modifier_tt }
+			clamp_variable = { var = JAP_demographic_pressure_health_cost_multiplier_modifier min = 0 max = 1 }
+			newline = yes
+			set_temp_variable = { treasury_change = -4 }
+			modify_treasury_effect = yes
+		}
+
+		modifier = { political_power_factor = 0.05 }
+
+		ai_will_do = {
+			base = 5
+			modifier = {
+				add = 20
+				check_variable = { JAP_demographic_pressure_health_cost_multiplier_modifier > 0.03 }
+			}
+			modifier = {
+				add = 20
+				check_variable = { JAP_demographic_pressure_social_cost_multiplier_modifier > 0.03 }
+			}
+			modifier = {
+				add = 15
+				check_variable = { JAP_demographic_decisions_enacted < 8 }
+			}
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	JAP_elderly_care_reform = {
+		icon = GFX_decision_ISR_healthcare_button
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = {
+					localization_key = dynamic_modifier_above_tt
+					VAR_NAME = social_cost_multiplier_modifier
+					MODIFIER = JAP_demographic_pressure_modifier
+					THRESHOLD = "0.0%"
+				}
+				check_variable = { JAP_demographic_pressure_social_cost_multiplier_modifier > 0 }
+			}
+			40_percent_government_popularity = yes
+		}
+
+		cost = 120
+		fire_only_once = no
+		days_remove = 60
+		days_re_enable = 365
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_elderly_care_reform"
+			add_to_variable = { JAP_demographic_decisions_enacted = 1 tooltip = JAP_demographic_decisions_enacted_tt }
+			custom_effect_tooltip = {
+				localization_key = modifies_dynamic_modifier_tt
+				MODIFIER = JAP_demographic_pressure_modifier
+			}
+			add_to_variable = { JAP_demographic_pressure_social_cost_multiplier_modifier = -0.03 tooltip = social_cost_multiplier_modifier_tt }
+			clamp_variable = { var = JAP_demographic_pressure_social_cost_multiplier_modifier min = 0 max = 1 }
+			add_to_variable = { JAP_demographic_pressure_health_cost_multiplier_modifier = -0.02 tooltip = health_cost_multiplier_modifier_tt }
+			clamp_variable = { var = JAP_demographic_pressure_health_cost_multiplier_modifier min = 0 max = 1 }
+			newline = yes
+			set_temp_variable = { treasury_change = -3 }
+			modify_treasury_effect = yes
+		}
+
+		modifier = { bureaucracy_cost_multiplier_modifier = 0.10 }
+
+		ai_will_do = {
+			base = 5
+			modifier = {
+				add = 20
+				check_variable = { JAP_demographic_pressure_health_cost_multiplier_modifier > 0.03 }
+			}
+			modifier = {
+				add = 20
+				check_variable = { JAP_demographic_pressure_social_cost_multiplier_modifier > 0.03 }
+			}
+			modifier = {
+				add = 15
+				check_variable = { JAP_demographic_decisions_enacted < 8 }
+			}
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+}
+
+JAP_rail_category = {
+	JAP_hokuriku_shinkansen_extension = {
+		icon = GFX_decision_hs2
+		cost = 75
+		fire_only_once = yes
+		days_remove = 180
+		visible = { has_completed_focus = JAP_rail_modernization }
+
+		available = {
+			has_completed_focus = JAP_rail_modernization
+			num_of_civilian_factories_available_for_projects > 5
+			613 = { is_owned_by = ROOT }
+		}
+
+		modifier = { civilian_factory_use = 5 }
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_hokuriku_shinkansen_extension"
+			613 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+				add_dynamic_modifier = { modifier = JAP_high_speed_line }
+			}
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	JAP_nishi_kyushu_shinkansen = {
+		icon = GFX_decision_hs2
+		cost = 75
+		fire_only_once = yes
+		days_remove = 180
+		visible = { has_completed_focus = JAP_rail_modernization }
+
+		available = {
+			has_completed_focus = JAP_rail_modernization
+			num_of_civilian_factories_available_for_projects > 5
+			609 = { is_owned_by = ROOT }
+		}
+
+		modifier = { civilian_factory_use = 5 }
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_nishi_kyushu_shinkansen"
+			609 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+				add_dynamic_modifier = { modifier = JAP_high_speed_line }
+			}
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	JAP_sanyo_shinkansen_upgrade = {
+		icon = GFX_decision_hs2
+		cost = 75
+		fire_only_once = yes
+		days_remove = 180
+		visible = { has_completed_focus = JAP_rail_modernization }
+
+		available = {
+			has_completed_focus = JAP_rail_modernization
+			num_of_civilian_factories_available_for_projects > 5
+			611 = { is_owned_by = ROOT }
+		}
+
+		modifier = { civilian_factory_use = 5 }
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_sanyo_shinkansen_upgrade"
+			611 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+				add_dynamic_modifier = { modifier = JAP_high_speed_line }
+			}
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	JAP_tohoku_shinkansen_upgrade = {
+		icon = GFX_decision_hs2
+		cost = 75
+		fire_only_once = yes
+		days_remove = 180
+		visible = { has_completed_focus = JAP_shinkansen_network_expansion }
+
+		available = {
+			has_completed_focus = JAP_shinkansen_network_expansion
+			num_of_civilian_factories_available_for_projects > 5
+			616 = { is_owned_by = ROOT }
+		}
+
+		modifier = { civilian_factory_use = 5 }
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_tohoku_shinkansen_upgrade"
+			616 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+				add_dynamic_modifier = { modifier = JAP_high_speed_line }
+			}
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	JAP_hokkaido_shinkansen_sapporo = {
+		icon = GFX_decision_hs2
+		cost = 75
+		fire_only_once = yes
+		days_remove = 180
+		visible = { has_completed_focus = JAP_shinkansen_network_expansion }
+
+		available = {
+			has_completed_focus = JAP_shinkansen_network_expansion
+			num_of_civilian_factories_available_for_projects > 5
+			617 = { is_owned_by = ROOT }
+		}
+
+		modifier = { civilian_factory_use = 5 }
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_hokkaido_shinkansen_sapporo"
+			617 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+				add_dynamic_modifier = { modifier = JAP_high_speed_line }
+			}
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	JAP_shikoku_shinkansen = {
+		icon = GFX_decision_hs2
+		cost = 75
+		fire_only_once = yes
+		days_remove = 180
+		visible = { has_completed_focus = JAP_shinkansen_network_expansion }
+
+		available = {
+			has_completed_focus = JAP_shinkansen_network_expansion
+			num_of_civilian_factories_available_for_projects > 5
+			610 = { is_owned_by = ROOT }
+		}
+
+		modifier = { civilian_factory_use = 5 }
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_shikoku_shinkansen"
+			610 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+				add_dynamic_modifier = { modifier = JAP_high_speed_line }
+			}
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+}
+
+JAP_zombie_investigation_category = {
+	JAP_zombie_investigation_mission = {
+		icon = GFX_decision_generic_police_action
+		activation = { always = no }
+		selectable_mission = no
+		is_good = no
+		fire_only_once = no
+		days_mission_timeout = 1460
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = JAP_zombie_investigation_mission_TT
+				check_variable = { JAP_zombie_case_files > 9 }
+			}
+		}
+
+		cancel_trigger = { has_country_flag = JAP_zombie_probe_abandoned }
+
+		cancel_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision cancel JAP_zombie_investigation_mission"
+			country_event = { id = Japan_economy.08 days = 1 }
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_zombie_investigation_mission"
+			country_event = { id = Japan_economy.08 days = 1 }
+		}
+
+		timeout_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision timeout JAP_zombie_investigation_mission"
+			country_event = { id = Japan_economy.08 days = 1 }
+		}
+	}
+
+	JAP_keidanren_ultimatum_mission = {
+		icon = GFX_decision_eng_trade_unions_demand
+		activation = { always = no }
+		selectable_mission = no
+		is_good = no
+		fire_only_once = no
+		days_mission_timeout = 180
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = JAP_keidanren_ultimatum_TT
+				check_variable = { JAP_zombie_obstruction < 45 }
+			}
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_keidanren_ultimatum_mission"
+			country_event = { id = Japan_economy.30 days = 1 }
+		}
+
+		timeout_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision timeout JAP_keidanren_ultimatum_mission"
+			add_to_variable = { JAP_keidanren_ultimatum_count = 1 }
+			country_event = { id = Japan_economy.31 days = 1 }
+			if = {
+				limit = { check_variable = { JAP_keidanren_ultimatum_count < 2 } }
+				activate_mission = JAP_keidanren_ultimatum_mission
+			}
+		}
+	}
+
+	JAP_case_ltcb_shinsei = {
+		icon = GFX_decision_syr_burecrats_button
+		cost = 75
+		fire_only_once = yes
+		days_remove = 60
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove JAP_case_ltcb_shinsei"
+			custom_effect_tooltip = JAP_zombie_case_choice_TT
+			country_event = { id = Japan_economy.23 days = 1 }
+		}
+
+		ai_will_do = {
+			base = 5
+			modifier = {
+				add = 30
+				check_variable = { JAP_zombie_case_files < 11 }
+			}
+		}
+	}
+
+	JAP_case_sogo_collapse = {
+		icon = GFX_decision_syr_burecrats_button
+		cost = 75
+		fire_only_once = yes
+		days_remove = 60
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove JAP_case_sogo_collapse"
+			custom_effect_tooltip = JAP_zombie_case_choice_TT
+			country_event = { id = Japan_economy.24 days = 1 }
+		}
+
+		ai_will_do = {
+			base = 5
+			modifier = {
+				add = 30
+				check_variable = { JAP_zombie_case_files < 11 }
+			}
+		}
+	}
+
+	JAP_case_mycal_bankruptcy = {
+		icon = GFX_decision_syr_burecrats_button
+		cost = 75
+		fire_only_once = yes
+		days_remove = 60
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove JAP_case_mycal_bankruptcy"
+			custom_effect_tooltip = JAP_zombie_case_choice_TT
+			country_event = { id = Japan_economy.25 days = 1 }
+		}
+
+		ai_will_do = {
+			base = 5
+			modifier = {
+				add = 30
+				check_variable = { JAP_zombie_case_files < 11 }
+			}
+		}
+	}
+
+	JAP_case_resona_injection = {
+		icon = GFX_decision_syr_burecrats_button
+		available = { has_completed_focus = JAP_injection_public_funds }
+		cost = 75
+		fire_only_once = yes
+		days_remove = 60
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove JAP_case_resona_injection"
+			custom_effect_tooltip = JAP_zombie_case_choice_TT
+			country_event = { id = Japan_economy.26 days = 1 }
+		}
+
+		ai_will_do = {
+			base = 5
+			modifier = {
+				add = 30
+				check_variable = { JAP_zombie_case_files < 11 }
+			}
+		}
+	}
+
+	JAP_case_ashikaga_bank = {
+		icon = GFX_decision_syr_burecrats_button
+		available = { has_completed_focus = JAP_protection_deposits }
+		cost = 75
+		fire_only_once = yes
+		days_remove = 60
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove JAP_case_ashikaga_bank"
+			custom_effect_tooltip = JAP_zombie_case_choice_TT
+			country_event = { id = Japan_economy.27 days = 1 }
+		}
+
+		ai_will_do = {
+			base = 5
+			modifier = {
+				add = 30
+				check_variable = { JAP_zombie_case_files < 11 }
+			}
+		}
+	}
+
+	JAP_case_daiei_ircj = {
+		icon = GFX_decision_syr_burecrats_button
+		available = { has_completed_focus = JAP_financial_revival_program }
+		cost = 75
+		fire_only_once = yes
+		days_remove = 60
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove JAP_case_daiei_ircj"
+			custom_effect_tooltip = JAP_zombie_case_choice_TT
+			country_event = { id = Japan_economy.28 days = 1 }
+		}
+
+		ai_will_do = {
+			base = 5
+			modifier = {
+				add = 30
+				check_variable = { JAP_zombie_case_files < 11 }
+			}
+		}
+	}
+
+	JAP_case_kanebo_accounts = {
+		icon = GFX_decision_political_discourse
+		available = { has_completed_focus = JAP_financial_revival_program }
+		cost = 75
+		fire_only_once = yes
+		days_remove = 60
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove JAP_case_kanebo_accounts"
+			custom_effect_tooltip = JAP_zombie_case_choice_TT
+			country_event = { id = Japan_economy.29 days = 1 }
+		}
+
+		ai_will_do = {
+			base = 5
+			modifier = {
+				add = 30
+				check_variable = { JAP_zombie_case_files < 11 }
+			}
+		}
+	}
+
+	JAP_press_the_prosecutors = {
+		icon = GFX_decision_generic_police_action
+		available = { has_completed_focus = JAP_special_investigation_unit }
+		cost = 100
+		fire_only_once = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_press_the_prosecutors"
+			subtract_from_variable = { JAP_zombie_obstruction = 15 tooltip = JAP_zombie_obstruction_down_15_tt }
+			clamp_variable = { var = JAP_zombie_obstruction min = 0 max = 100 }
+			newline = yes
+			set_temp_variable = { treasury_change = -4 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = {
+			base = 3
+			modifier = {
+				add = 25
+				check_variable = { JAP_zombie_obstruction > 25 }
+			}
+			modifier = {
+				add = 15
+				check_variable = { JAP_zombie_obstruction > 50 }
+			}
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	JAP_whistleblower_immunity_decision = {
+		icon = GFX_decision_generic_political_discourse
+		available = { has_completed_focus = JAP_whistleblower_protection_act }
+		cost = 100
+		fire_only_once = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_whistleblower_immunity_decision"
+			subtract_from_variable = { JAP_zombie_obstruction = 20 tooltip = JAP_zombie_obstruction_down_20_tt }
+			clamp_variable = { var = JAP_zombie_obstruction min = 0 max = 100 }
+			add_to_variable = { JAP_zombie_case_files = 1 tooltip = JAP_zombie_case_files_up_1_tt }
+			clamp_variable = { var = JAP_zombie_case_files min = 0 max = 14 }
+			newline = yes
+			set_temp_variable = { temp_opinion = -6 }
+			change_industrial_conglomerates_opinion = yes
+			set_temp_variable = { temp_opinion = 5 }
+			change_labour_unions_opinion = yes
+		}
+
+		ai_will_do = {
+			base = 3
+			modifier = {
+				add = 25
+				check_variable = { JAP_zombie_obstruction > 25 }
+			}
+			modifier = {
+				add = 15
+				check_variable = { JAP_zombie_obstruction > 50 }
+			}
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	JAP_publish_inspection_manual_decision = {
+		icon = GFX_decision_generic_research_new
+		available = { has_completed_focus = JAP_strict_audits_banks }
+		cost = 100
+		days_re_enable = 240
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_publish_inspection_manual_decision"
+			subtract_from_variable = { JAP_zombie_obstruction = 12 tooltip = JAP_zombie_obstruction_down_12_tt }
+			clamp_variable = { var = JAP_zombie_obstruction min = 0 max = 100 }
+			newline = yes
+			add_stability = -0.02
+		}
+
+		ai_will_do = {
+			base = 3
+			modifier = {
+				add = 25
+				check_variable = { JAP_zombie_obstruction > 25 }
+			}
+			modifier = {
+				add = 15
+				check_variable = { JAP_zombie_obstruction > 50 }
+			}
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	JAP_cooperating_bank_amnesty_decision = {
+		icon = GFX_decision_syr_officials_button
+		available = { has_completed_focus = JAP_injection_public_funds }
+		cost = 100
+		days_re_enable = 240
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_cooperating_bank_amnesty_decision"
+			subtract_from_variable = { JAP_zombie_obstruction = 18 tooltip = JAP_zombie_obstruction_down_18_tt }
+			clamp_variable = { var = JAP_zombie_obstruction min = 0 max = 100 }
+			subtract_from_variable = { JAP_zombie_case_files = 1 tooltip = JAP_zombie_case_files_down_1_tt }
+			clamp_variable = { var = JAP_zombie_case_files min = 0 max = 14 }
+			newline = yes
+			set_temp_variable = { temp_opinion = 5 }
+			change_industrial_conglomerates_opinion = yes
+		}
+
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 0
+				JAP_ai_historical_path = yes
+				check_variable = { JAP_zombie_case_files < 10 }
+			}
+		}
+	}
+}
+
+JAP_corporate_reform_category = {
+	JAP_restructure_next_tranche = {
+		icon = GFX_decision_syr_infra_button
+
+		visible = {
+			OR = {
+				has_idea = JAP_zombie_companies_1
+				has_idea = JAP_zombie_companies_2
+			}
+		}
+
+		available = {
+			if = {
+				limit = { has_idea = JAP_zombie_companies_1 }
+				custom_trigger_tooltip = {
+					tooltip = JAP_restructure_tranche_1_TT
+					check_variable = { JAP_corporate_restructuring_progress > 29 }
+				}
+			}
+			if = {
+				limit = { has_idea = JAP_zombie_companies_2 }
+				custom_trigger_tooltip = {
+					tooltip = JAP_restructure_tranche_2_TT
+					check_variable = { JAP_corporate_restructuring_progress > 59 }
+				}
+			}
+		}
+
+		cost = 25
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_restructure_next_tranche"
+			if = {
+				limit = { has_idea = JAP_zombie_companies_2 }
+				swap_ideas = {
+					remove_idea = JAP_zombie_companies_2
+					add_idea = JAP_zombie_companies_3
+				}
+			}
+			else = {
+				swap_ideas = {
+					remove_idea = JAP_zombie_companies_1
+					add_idea = JAP_zombie_companies_2
+				}
+			}
+		}
+
+		ai_will_do = { base = 100 }
+	}
+
+	JAP_enforce_next_reforms = {
+		icon = GFX_decision_generic_political_rally
+
+		visible = {
+			OR = {
+				has_idea = JAP_karoshi_crisis_1
+				has_idea = JAP_karoshi_crisis_2
+			}
+		}
+
+		available = {
+			if = {
+				limit = { has_idea = JAP_karoshi_crisis_1 }
+				custom_trigger_tooltip = {
+					tooltip = JAP_karoshi_wellbeing_tier_1_TT
+					check_variable = { JAP_karoshi_wellbeing > 29 }
+				}
+			}
+			if = {
+				limit = { has_idea = JAP_karoshi_crisis_2 }
+				custom_trigger_tooltip = {
+					tooltip = JAP_karoshi_wellbeing_tier_2_TT
+					check_variable = { JAP_karoshi_wellbeing > 59 }
+				}
+			}
+		}
+
+		cost = 25
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_enforce_next_reforms"
+			if = {
+				limit = { has_idea = JAP_karoshi_crisis_2 }
+				swap_ideas = {
+					remove_idea = JAP_karoshi_crisis_2
+					add_idea = JAP_karoshi_crisis_3
+				}
+			}
+			else = {
+				swap_ideas = {
+					remove_idea = JAP_karoshi_crisis_1
+					add_idea = JAP_karoshi_crisis_2
+				}
+			}
+		}
+
+		ai_will_do = { base = 100 }
+	}
+
+	JAP_venture_capital_funds_decision = {
+		icon = GFX_decision_generic_fundraising
+		visible = { JAP_zombie_companies_resolved = no }
+		available = { has_completed_focus = JAP_venture_capital_funds }
+		cost = 75
+		fire_only_once = yes
+		days_remove = 365
+		modifier = { research_speed_factor = 0.05 }
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_venture_capital_funds_decision"
+			add_to_variable = { JAP_corporate_restructuring_progress = 6 tooltip = JAP_corporate_restructuring_progress_tt }
+			newline = yes
+			set_temp_variable = { treasury_change = -8 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = {
+			base = 20
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	JAP_infrastructure_investments_decision = {
+		icon = GFX_decision_generic_electricity
+		visible = { JAP_zombie_companies_resolved = no }
+
+		available = {
+			has_completed_focus = JAP_infrastructure_investments
+			num_of_civilian_factories_available_for_projects > 5
+			613 = { is_owned_and_controlled_by = ROOT }
+		}
+
+		cost = 75
+		fire_only_once = yes
+		days_remove = 180
+		modifier = { civilian_factory_use = 5 }
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_infrastructure_investments_decision"
+			add_to_variable = { JAP_corporate_restructuring_progress = 6 tooltip = JAP_corporate_restructuring_progress_tt }
+			newline = yes
+			set_temp_variable = { treasury_change = -10 }
+			modify_treasury_effect = yes
+		}
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove JAP_infrastructure_investments_decision"
+			613 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 20
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	JAP_growth_tax_reform_decision = {
+		icon = GFX_decision_gre_paying_ifc_debt
+		visible = { JAP_zombie_companies_resolved = no }
+		available = { has_completed_focus = JAP_growth_tax_reform }
+		cost = 75
+		fire_only_once = yes
+		days_remove = 365
+		modifier = { consumer_goods_factor = -0.03 }
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_growth_tax_reform_decision"
+			add_to_variable = { JAP_corporate_restructuring_progress = 6 tooltip = JAP_corporate_restructuring_progress_tt }
+			newline = yes
+			set_temp_variable = { treasury_change = -8 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = {
+			base = 20
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	JAP_startup_education_programs_decision = {
+		icon = GFX_decision_SWI_swiss_democratic_tradition_campaign
+		visible = { JAP_zombie_companies_resolved = no }
+		available = { has_completed_focus = JAP_startup_education_programs }
+		cost = 75
+		fire_only_once = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_startup_education_programs_decision"
+			add_to_variable = { JAP_corporate_restructuring_progress = 6 tooltip = JAP_corporate_restructuring_progress_tt }
+			newline = yes
+			add_tech_bonus = {
+				name = JAP_startup_education_programs_decision
+				bonus = 0.5
+				uses = 1
+				category = CAT_industry
+			}
+			newline = yes
+			set_temp_variable = { treasury_change = -5 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = {
+			base = 20
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	JAP_retirement_reform_decision = {
+		icon = GFX_decision_generic_welfare
+		visible = { JAP_zombie_companies_resolved = no }
+		available = { has_completed_focus = JAP_retirement_reform }
+		cost = 75
+		fire_only_once = yes
+		days_remove = 365
+		modifier = { civilian_factories_productivity = 0.05 }
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_retirement_reform_decision"
+			add_to_variable = { JAP_corporate_restructuring_progress = 6 tooltip = JAP_corporate_restructuring_progress_tt }
+			newline = yes
+			set_temp_variable = { treasury_change = -5 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = {
+			base = 20
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	JAP_premium_friday_campaign = {
+		icon = GFX_decision_generic_political_rally
+
+		visible = {
+			has_completed_focus = JAP_premium_friday
+			JAP_karoshi_resolved = no
+		}
+
+		available = { has_completed_focus = JAP_premium_friday }
+		cost = 40
+		days_remove = 90
+		days_re_enable = 150
+		modifier = { consumer_goods_factor = -0.02 }
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_premium_friday_campaign"
+			if = {
+				limit = { has_completed_focus = JAP_a_society_where_women_thrive }
+				set_temp_variable = { treasury_change = -1.5 }
+			}
+			else = { set_temp_variable = { treasury_change = -3 } }
+			modify_treasury_effect = yes
+		}
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove JAP_premium_friday_campaign"
+			if = {
+				limit = { JAP_zombie_companies_resolved = yes }
+				add_to_variable = { JAP_karoshi_wellbeing = 8 tooltip = JAP_karoshi_wellbeing_up_tt }
+			}
+			else = {
+				add_to_variable = { JAP_karoshi_wellbeing = 4 tooltip = JAP_karoshi_wellbeing_up_tt }
+			}
+			clamp_variable = { var = JAP_karoshi_wellbeing min = 0 max = 100 }
+			JAP_labour_reform_popularity_shift = yes
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	JAP_ikumen_campaign = {
+		icon = GFX_decision_generic_welfare
+
+		visible = {
+			has_completed_focus = JAP_ikumen_project
+			JAP_karoshi_resolved = no
+		}
+
+		available = { has_completed_focus = JAP_ikumen_project }
+		cost = 40
+		days_remove = 90
+		days_re_enable = 150
+		modifier = { monthly_population = 0.02 }
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_ikumen_campaign"
+			if = {
+				limit = { has_completed_focus = JAP_a_society_where_women_thrive }
+				set_temp_variable = { treasury_change = -1.5 }
+			}
+			else = { set_temp_variable = { treasury_change = -3 } }
+			modify_treasury_effect = yes
+		}
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove JAP_ikumen_campaign"
+			if = {
+				limit = { JAP_zombie_companies_resolved = yes }
+				add_to_variable = { JAP_karoshi_wellbeing = 8 tooltip = JAP_karoshi_wellbeing_up_tt }
+			}
+			else = {
+				add_to_variable = { JAP_karoshi_wellbeing = 4 tooltip = JAP_karoshi_wellbeing_up_tt }
+			}
+			clamp_variable = { var = JAP_karoshi_wellbeing min = 0 max = 100 }
+			JAP_labour_reform_popularity_shift = yes
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	JAP_mental_health_campaign = {
+		icon = GFX_decision_ISR_healthcare_button
+
+		visible = {
+			has_completed_focus = JAP_stress_check_programme
+			JAP_karoshi_resolved = no
+		}
+
+		available = { has_completed_focus = JAP_stress_check_programme }
+		cost = 40
+		days_remove = 90
+		days_re_enable = 150
+		modifier = { stability_factor = 0.02 }
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_mental_health_campaign"
+			if = {
+				limit = { has_completed_focus = JAP_a_society_where_women_thrive }
+				set_temp_variable = { treasury_change = -1.5 }
+			}
+			else = { set_temp_variable = { treasury_change = -3 } }
+			modify_treasury_effect = yes
+		}
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove JAP_mental_health_campaign"
+			if = {
+				limit = { JAP_zombie_companies_resolved = yes }
+				add_to_variable = { JAP_karoshi_wellbeing = 8 tooltip = JAP_karoshi_wellbeing_up_tt }
+			}
+			else = {
+				add_to_variable = { JAP_karoshi_wellbeing = 4 tooltip = JAP_karoshi_wellbeing_up_tt }
+			}
+			clamp_variable = { var = JAP_karoshi_wellbeing min = 0 max = 100 }
+			JAP_labour_reform_popularity_shift = yes
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	JAP_no_overtime_day_campaign = {
+		icon = GFX_decision_propaganda
+
+		visible = {
+			has_completed_focus = JAP_ending_service_zangyo
+			JAP_karoshi_resolved = no
+		}
+
+		available = { has_completed_focus = JAP_ending_service_zangyo }
+		cost = 40
+		days_remove = 90
+		days_re_enable = 150
+		modifier = { civilian_factories_productivity = 0.02 }
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_no_overtime_day_campaign"
+			if = {
+				limit = { has_completed_focus = JAP_a_society_where_women_thrive }
+				set_temp_variable = { treasury_change = -1.5 }
+			}
+			else = { set_temp_variable = { treasury_change = -3 } }
+			modify_treasury_effect = yes
+		}
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove JAP_no_overtime_day_campaign"
+			if = {
+				limit = { JAP_zombie_companies_resolved = yes }
+				add_to_variable = { JAP_karoshi_wellbeing = 8 tooltip = JAP_karoshi_wellbeing_up_tt }
+			}
+			else = {
+				add_to_variable = { JAP_karoshi_wellbeing = 4 tooltip = JAP_karoshi_wellbeing_up_tt }
+			}
+			clamp_variable = { var = JAP_karoshi_wellbeing min = 0 max = 100 }
+			JAP_labour_reform_popularity_shift = yes
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	JAP_saburoku_audit_campaign = {
+		icon = GFX_decision_generic_police_action
+
+		visible = {
+			has_completed_focus = JAP_overtime_cap
+			JAP_karoshi_resolved = no
+		}
+
+		available = { has_completed_focus = JAP_overtime_cap }
+		cost = 40
+		days_remove = 90
+		days_re_enable = 150
+		modifier = { stability_factor = 0.02 }
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_saburoku_audit_campaign"
+			set_temp_variable = { treasury_change = -3 }
+			modify_treasury_effect = yes
+		}
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove JAP_saburoku_audit_campaign"
+			if = {
+				limit = { JAP_zombie_companies_resolved = yes }
+				add_to_variable = { JAP_karoshi_wellbeing = 8 tooltip = JAP_karoshi_wellbeing_up_tt }
+			}
+			else = {
+				add_to_variable = { JAP_karoshi_wellbeing = 4 tooltip = JAP_karoshi_wellbeing_up_tt }
+			}
+			clamp_variable = { var = JAP_karoshi_wellbeing min = 0 max = 100 }
+			JAP_labour_reform_popularity_shift = yes
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	JAP_paid_leave_enforcement_campaign = {
+		icon = GFX_decision_generic_civil_support
+
+		visible = {
+			has_completed_focus = JAP_mandatory_paid_leave
+			JAP_karoshi_resolved = no
+		}
+
+		available = { has_completed_focus = JAP_mandatory_paid_leave }
+		cost = 40
+		days_remove = 90
+		days_re_enable = 150
+		modifier = { offices_productivity = 0.02 }
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_paid_leave_enforcement_campaign"
+			set_temp_variable = { treasury_change = -3 }
+			modify_treasury_effect = yes
+		}
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove JAP_paid_leave_enforcement_campaign"
+			if = {
+				limit = { JAP_zombie_companies_resolved = yes }
+				add_to_variable = { JAP_karoshi_wellbeing = 8 tooltip = JAP_karoshi_wellbeing_up_tt }
+			}
+			else = {
+				add_to_variable = { JAP_karoshi_wellbeing = 4 tooltip = JAP_karoshi_wellbeing_up_tt }
+			}
+			clamp_variable = { var = JAP_karoshi_wellbeing min = 0 max = 100 }
+			JAP_labour_reform_popularity_shift = yes
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	JAP_equal_pay_audit_campaign = {
+		icon = GFX_decision_generic_factory
+
+		visible = {
+			has_completed_focus = JAP_equal_pay_for_equal_work
+			JAP_karoshi_resolved = no
+		}
+
+		available = { has_completed_focus = JAP_equal_pay_for_equal_work }
+		cost = 40
+		days_remove = 90
+		days_re_enable = 150
+		modifier = { consumer_goods_factor = -0.02 }
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_equal_pay_audit_campaign"
+			set_temp_variable = { treasury_change = -3 }
+			modify_treasury_effect = yes
+		}
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove JAP_equal_pay_audit_campaign"
+			if = {
+				limit = { JAP_zombie_companies_resolved = yes }
+				add_to_variable = { JAP_karoshi_wellbeing = 8 tooltip = JAP_karoshi_wellbeing_up_tt }
+			}
+			else = {
+				add_to_variable = { JAP_karoshi_wellbeing = 4 tooltip = JAP_karoshi_wellbeing_up_tt }
+			}
+			clamp_variable = { var = JAP_karoshi_wellbeing min = 0 max = 100 }
+			JAP_labour_reform_popularity_shift = yes
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	JAP_inspector_sweep_campaign = {
+		icon = GFX_decision_generic_arrest
+
+		visible = {
+			has_completed_focus = JAP_labour_inspection_offices
+			JAP_karoshi_resolved = no
+		}
+
+		available = { has_completed_focus = JAP_labour_inspection_offices }
+		cost = 40
+		days_remove = 90
+		days_re_enable = 150
+		modifier = { civilian_factories_productivity = 0.02 }
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_inspector_sweep_campaign"
+			set_temp_variable = { treasury_change = -3 }
+			modify_treasury_effect = yes
+		}
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove JAP_inspector_sweep_campaign"
+			if = {
+				limit = { JAP_zombie_companies_resolved = yes }
+				add_to_variable = { JAP_karoshi_wellbeing = 8 tooltip = JAP_karoshi_wellbeing_up_tt }
+			}
+			else = {
+				add_to_variable = { JAP_karoshi_wellbeing = 4 tooltip = JAP_karoshi_wellbeing_up_tt }
+			}
+			clamp_variable = { var = JAP_karoshi_wellbeing min = 0 max = 100 }
+			JAP_labour_reform_popularity_shift = yes
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	JAP_keidanren_review_campaign = {
+		icon = GFX_decision_generic_political_discourse
+
+		visible = {
+			has_completed_focus = JAP_keidanren_charter
+			JAP_karoshi_resolved = no
+		}
+
+		available = { has_completed_focus = JAP_keidanren_charter }
+		cost = 40
+		days_remove = 90
+		days_re_enable = 150
+		modifier = { offices_productivity = 0.02 }
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_keidanren_review_campaign"
+			set_temp_variable = { treasury_change = -5 }
+			modify_treasury_effect = yes
+		}
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove JAP_keidanren_review_campaign"
+			if = {
+				limit = { JAP_zombie_companies_resolved = yes }
+				add_to_variable = { JAP_karoshi_wellbeing = 8 tooltip = JAP_karoshi_wellbeing_up_tt }
+			}
+			else = {
+				add_to_variable = { JAP_karoshi_wellbeing = 4 tooltip = JAP_karoshi_wellbeing_up_tt }
+			}
+			clamp_variable = { var = JAP_karoshi_wellbeing min = 0 max = 100 }
+			JAP_labour_reform_popularity_shift = yes
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	JAP_shunto_wage_round_campaign = {
+		icon = GFX_decision_generic_fundraising
+
+		visible = {
+			has_completed_focus = JAP_shunto_offensive
+			JAP_karoshi_resolved = no
+		}
+
+		available = { has_completed_focus = JAP_shunto_offensive }
+		cost = 40
+		days_remove = 90
+		days_re_enable = 150
+		modifier = { consumer_goods_factor = -0.02 }
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_shunto_wage_round_campaign"
+			set_temp_variable = { treasury_change = -5 }
+			modify_treasury_effect = yes
+		}
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove JAP_shunto_wage_round_campaign"
+			if = {
+				limit = { JAP_zombie_companies_resolved = yes }
+				add_to_variable = { JAP_karoshi_wellbeing = 8 tooltip = JAP_karoshi_wellbeing_up_tt }
+			}
+			else = {
+				add_to_variable = { JAP_karoshi_wellbeing = 4 tooltip = JAP_karoshi_wellbeing_up_tt }
+			}
+			clamp_variable = { var = JAP_karoshi_wellbeing min = 0 max = 100 }
+			JAP_labour_reform_popularity_shift = yes
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	JAP_health_stock_listing_campaign = {
+		icon = GFX_decision_ISR_healthcare_button
+
+		visible = {
+			has_completed_focus = JAP_health_management_stocks
+			JAP_karoshi_resolved = no
+		}
+
+		available = { has_completed_focus = JAP_health_management_stocks }
+		cost = 40
+		days_remove = 90
+		days_re_enable = 150
+		modifier = { stability_factor = 0.02 }
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_health_stock_listing_campaign"
+			set_temp_variable = { treasury_change = -5 }
+			modify_treasury_effect = yes
+		}
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove JAP_health_stock_listing_campaign"
+			if = {
+				limit = { JAP_zombie_companies_resolved = yes }
+				add_to_variable = { JAP_karoshi_wellbeing = 8 tooltip = JAP_karoshi_wellbeing_up_tt }
+			}
+			else = {
+				add_to_variable = { JAP_karoshi_wellbeing = 4 tooltip = JAP_karoshi_wellbeing_up_tt }
+			}
+			clamp_variable = { var = JAP_karoshi_wellbeing min = 0 max = 100 }
+			JAP_labour_reform_popularity_shift = yes
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	JAP_shift_rotation_campaign = {
+		icon = GFX_decision_generic_construction
+
+		visible = {
+			has_completed_focus = JAP_morning_shift_system
+			JAP_karoshi_resolved = no
+		}
+
+		available = { has_completed_focus = JAP_morning_shift_system }
+		cost = 40
+		days_remove = 90
+		days_re_enable = 150
+		modifier = { civilian_factories_productivity = 0.02 }
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_shift_rotation_campaign"
+			set_temp_variable = { treasury_change = -5 }
+			modify_treasury_effect = yes
+		}
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove JAP_shift_rotation_campaign"
+			if = {
+				limit = { JAP_zombie_companies_resolved = yes }
+				add_to_variable = { JAP_karoshi_wellbeing = 8 tooltip = JAP_karoshi_wellbeing_up_tt }
+			}
+			else = {
+				add_to_variable = { JAP_karoshi_wellbeing = 4 tooltip = JAP_karoshi_wellbeing_up_tt }
+			}
+			clamp_variable = { var = JAP_karoshi_wellbeing min = 0 max = 100 }
+			JAP_labour_reform_popularity_shift = yes
+		}
+
+		ai_will_do = {
+			base = 8
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+}
+
+JAP_technological_isolation_category = {
+	JAP_galapagos_drift_review_mission = {
+		icon = GFX_decision_generic_research
+		days_mission_timeout = 30
+		fire_only_once = no
+		is_good = no
+		selectable_mission = no
+		activation = { has_idea = JAP_galapagos_syndrome }
+
+		available = {
+			OR = {
+				has_country_flag = JAP_world_integration
+				has_country_flag = JAP_cool_japan_doctrine
+			}
+			custom_trigger_tooltip = {
+				tooltip = JAP_galapagos_cure_condition_TT
+				check_variable = { JAP_galapagos_openness > 84 }
+			}
+		}
+
+		cancel_trigger = { JAP_galapagos_resolved = yes }
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_galapagos_drift_review_mission"
+			custom_effect_tooltip = JAP_galapagos_dissolution_tt
+			remove_ideas = JAP_galapagos_syndrome
+			set_variable = { JAP_galapagos_research_drift = 0 }
+			if = { limit = { has_dynamic_modifier = { modifier = JAP_galapagos_modifier } } remove_dynamic_modifier = { modifier = JAP_galapagos_modifier } }
+		}
+
+		timeout_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision timeout JAP_galapagos_drift_review_mission"
+			set_temp_variable = { jap_galapagos_drift = JAP_galapagos_openness }
+			subtract_from_temp_variable = { jap_galapagos_drift = 100 }
+			multiply_temp_variable = { jap_galapagos_drift = 0.00005 }
+			custom_effect_tooltip = {
+				localization_key = modifies_dynamic_modifier_tt
+				MODIFIER = JAP_galapagos_modifier
+			}
+			add_to_variable = { JAP_galapagos_research_drift = jap_galapagos_drift tooltip = JAP_galapagos_research_drift_down_tt }
+			clamp_variable = { var = JAP_galapagos_research_drift min = -0.15 max = 0 }
+		}
+	}
+
+	JAP_cool_japan_sphere_count_mission = {
+		icon = GFX_decision_jap_pacific_guardian
+		days_mission_timeout = 90
+		fire_only_once = no
+		is_good = yes
+		selectable_mission = no
+		activation = { has_country_flag = JAP_cool_japan_doctrine }
+		available = { hidden_trigger = { always = no } }
+
+		timeout_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision timeout JAP_cool_japan_sphere_count_mission"
+			hidden_effect = {
+				set_variable = { JAP_galapagos_sphere_count = 0 }
+				every_other_country = {
+					limit = {
+						exists = yes
+						influence_higher_20 = yes
+					}
+					ROOT = { add_to_variable = { JAP_galapagos_sphere_count = 1 } }
+				}
+				set_temp_variable = { jap_sphere_yield = JAP_galapagos_sphere_count }
+				multiply_temp_variable = { jap_sphere_yield = 0.01 }
+				if = {
+					limit = { has_country_flag = JAP_galapagos_electronics_anchor }
+					multiply_temp_variable = { jap_sphere_yield = 1.5 }
+				}
+				if = {
+					limit = { has_country_flag = JAP_galapagos_consumer_base }
+					multiply_temp_variable = { jap_sphere_yield = 1.25 }
+				}
+				set_variable = { JAP_galapagos_influence_projection = jap_sphere_yield }
+				clamp_variable = { var = JAP_galapagos_influence_projection min = 0 max = 0.30 }
+				set_variable = { JAP_galapagos_roi = jap_sphere_yield }
+				multiply_variable = { JAP_galapagos_roi = 0.2 }
+				clamp_variable = { var = JAP_galapagos_roi min = 0 max = 0.06 }
+			}
+			custom_effect_tooltip = {
+				localization_key = modifies_dynamic_modifier_tt
+				MODIFIER = JAP_galapagos_sphere_modifier
+			}
+			custom_effect_tooltip = JAP_cool_japan_sphere_count_step_tt
+		}
+	}
+
+	JAP_electronics_export_offensive = {
+		icon = GFX_decision_microchips
+
+		visible = {
+			has_completed_focus = JAP_electronics_revitalization
+			JAP_electronics_resolved = no
+		}
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = JAP_electronics_resilience_below_5_tt
+				check_variable = { JAP_electronics_resilience < 5 }
+			}
+			custom_trigger_tooltip = {
+				tooltip = JAP_electronics_export_opening_tt
+				OR = {
+					check_variable = { JAP_galapagos_openness > 9 }
+					has_country_flag = JAP_cool_japan_doctrine
+				}
+			}
+		}
+
+		days_re_enable = 365
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_electronics_export_offensive"
+			add_to_variable = { JAP_electronics_resilience = 1 tooltip = JAP_electronics_resilience_up_tt }
+			newline = yes
+			set_temp_variable = { treasury_change = -10.0 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				add = 25
+				OR = {
+					has_idea = JAP_model_competition_2
+					has_idea = JAP_model_competition_3
+				}
+			}
+		}
+	}
+
+	JAP_international_standards_adjustment_campaign = {
+		icon = GFX_decision_generic_human_torpedo
+
+		visible = {
+			has_completed_focus = JAP_international_standards_adjustment
+			JAP_galapagos_resolved = no
+		}
+
+		cost = 40
+		days_remove = 90
+		days_re_enable = 150
+		modifier = { trade_opinion_factor = 0.05 }
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_international_standards_adjustment_campaign"
+			set_temp_variable = { treasury_change = -3 }
+			modify_treasury_effect = yes
+		}
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove JAP_international_standards_adjustment_campaign"
+			add_to_variable = { JAP_galapagos_research_drift = 0.005 tooltip = JAP_galapagos_research_drift_recover_tt }
+			hidden_effect = { clamp_variable = { var = JAP_galapagos_research_drift min = -0.15 max = 0 } }
+			add_to_variable = { JAP_galapagos_openness = 2 tooltip = JAP_galapagos_openness_up_tt }
+		}
+
+		ai_will_do = {
+			base = 12
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	JAP_english_business_environment_campaign = {
+		icon = GFX_decision_hol_attract_foreign_investors
+
+		visible = {
+			has_completed_focus = JAP_english_business_environment
+			JAP_galapagos_resolved = no
+		}
+
+		cost = 40
+		days_remove = 90
+		days_re_enable = 150
+		modifier = { offices_productivity = 0.03 }
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_english_business_environment_campaign"
+			set_temp_variable = { treasury_change = -3 }
+			modify_treasury_effect = yes
+		}
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove JAP_english_business_environment_campaign"
+			add_to_variable = { JAP_galapagos_research_drift = 0.003 tooltip = JAP_galapagos_research_drift_recover_tt }
+			hidden_effect = { clamp_variable = { var = JAP_galapagos_research_drift min = -0.15 max = 0 } }
+			add_to_variable = { JAP_galapagos_openness = 5 tooltip = JAP_galapagos_openness_up_tt }
+		}
+
+		ai_will_do = {
+			base = 12
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+}
+
+JAP_reactor_restart_category = {
+	JAP_restart_sendai = {
+		icon = GFX_decision_generic_electricity
+
+		available = {
+			609 = { is_controlled_by = ROOT }
+			has_stability > 0.35
+			num_of_civilian_factories_available_for_projects > 4
+		}
+
+		cost = 40
+		days_remove = 180
+		fire_only_once = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_restart_sendai"
+			set_temp_variable = { treasury_change = -5.50 }
+			modify_treasury_effect = yes
+		}
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove JAP_restart_sendai"
+			609 = {
+				add_building_construction = {
+					type = nuclear_reactor
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_to_variable = { JAP_reactor_sites_online = 1 }
+			newline = yes
+			custom_effect_tooltip = {
+				localization_key = modifies_dynamic_modifier_tt
+				MODIFIER = JAP_economy_modifier
+			}
+			add_to_variable = { JAP_economy_nuclear_energy_generation_modifier = 0.02 tooltip = nuclear_energy_generation_modifier_tt }
+			add_to_variable = { JAP_economy_nuclear_infra_cost_multiplier_modifier = -0.04 tooltip = nuclear_infra_cost_multiplier_modifier_tt }
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				add = 15
+				JAP_ai_conservative_path = yes
+			}
+			modifier = {
+				factor = 0
+				JAP_ai_left_path = yes
+			}
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	JAP_restart_ikata = {
+		icon = GFX_decision_generic_electricity
+
+		available = {
+			610 = { is_controlled_by = ROOT }
+			has_stability > 0.35
+			num_of_civilian_factories_available_for_projects > 4
+		}
+
+		cost = 40
+		days_remove = 180
+		fire_only_once = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_restart_ikata"
+			set_temp_variable = { treasury_change = -5.50 }
+			modify_treasury_effect = yes
+		}
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove JAP_restart_ikata"
+			610 = {
+				add_building_construction = {
+					type = nuclear_reactor
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_to_variable = { JAP_reactor_sites_online = 1 }
+			newline = yes
+			custom_effect_tooltip = {
+				localization_key = modifies_dynamic_modifier_tt
+				MODIFIER = JAP_economy_modifier
+			}
+			add_to_variable = { JAP_economy_nuclear_energy_generation_modifier = 0.02 tooltip = nuclear_energy_generation_modifier_tt }
+			add_to_variable = { JAP_economy_nuclear_infra_cost_multiplier_modifier = -0.04 tooltip = nuclear_infra_cost_multiplier_modifier_tt }
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				add = 15
+				JAP_ai_conservative_path = yes
+			}
+			modifier = {
+				factor = 0
+				JAP_ai_left_path = yes
+			}
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	JAP_restart_takahama_ohi = {
+		icon = GFX_decision_generic_electricity
+
+		available = {
+			612 = { is_controlled_by = ROOT }
+			has_stability > 0.35
+			num_of_civilian_factories_available_for_projects > 5
+		}
+
+		cost = 45
+		days_remove = 210
+		fire_only_once = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_restart_takahama_ohi"
+			set_temp_variable = { treasury_change = -6.00 }
+			modify_treasury_effect = yes
+		}
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove JAP_restart_takahama_ohi"
+			612 = {
+				add_building_construction = {
+					type = nuclear_reactor
+					level = 2
+					instant_build = yes
+				}
+			}
+			add_to_variable = { JAP_reactor_sites_online = 1 }
+			newline = yes
+			custom_effect_tooltip = {
+				localization_key = modifies_dynamic_modifier_tt
+				MODIFIER = JAP_economy_modifier
+			}
+			add_to_variable = { JAP_economy_nuclear_energy_generation_modifier = 0.03 tooltip = nuclear_energy_generation_modifier_tt }
+			add_to_variable = { JAP_economy_nuclear_infra_cost_multiplier_modifier = -0.05 tooltip = nuclear_infra_cost_multiplier_modifier_tt }
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				add = 15
+				JAP_ai_conservative_path = yes
+			}
+			modifier = {
+				factor = 0
+				JAP_ai_left_path = yes
+			}
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	JAP_restart_genkai = {
+		icon = GFX_decision_generic_electricity
+		visible = { has_completed_focus = JAP_nuclear_regulatory_compliance }
+
+		available = {
+			609 = { is_controlled_by = ROOT }
+			has_stability > 0.35
+			num_of_civilian_factories_available_for_projects > 5
+		}
+
+		cost = 50
+		days_remove = 240
+		fire_only_once = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_restart_genkai"
+			set_temp_variable = { treasury_change = -6.50 }
+			modify_treasury_effect = yes
+		}
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove JAP_restart_genkai"
+			609 = {
+				add_building_construction = {
+					type = nuclear_reactor
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_to_variable = { JAP_reactor_sites_online = 1 }
+			newline = yes
+			custom_effect_tooltip = {
+				localization_key = modifies_dynamic_modifier_tt
+				MODIFIER = JAP_economy_modifier
+			}
+			add_to_variable = { JAP_economy_nuclear_energy_generation_modifier = 0.02 tooltip = nuclear_energy_generation_modifier_tt }
+			add_to_variable = { JAP_economy_nuclear_fuel_consumption_modifier = -0.05 tooltip = nuclear_fuel_consumption_modifier_tt }
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				add = 15
+				JAP_ai_conservative_path = yes
+			}
+			modifier = {
+				factor = 0
+				JAP_ai_left_path = yes
+			}
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	JAP_restart_onagawa = {
+		icon = GFX_decision_generic_electricity
+		visible = { has_completed_focus = JAP_nuclear_regulatory_compliance }
+
+		available = {
+			616 = { is_controlled_by = ROOT }
+			has_stability > 0.35
+			num_of_civilian_factories_available_for_projects > 5
+		}
+
+		cost = 50
+		days_remove = 240
+		fire_only_once = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_restart_onagawa"
+			set_temp_variable = { treasury_change = -6.50 }
+			modify_treasury_effect = yes
+		}
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove JAP_restart_onagawa"
+			616 = {
+				add_building_construction = {
+					type = nuclear_reactor
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_to_variable = { JAP_reactor_sites_online = 1 }
+			newline = yes
+			custom_effect_tooltip = {
+				localization_key = modifies_dynamic_modifier_tt
+				MODIFIER = JAP_economy_modifier
+			}
+			add_to_variable = { JAP_economy_nuclear_energy_generation_modifier = 0.02 tooltip = nuclear_energy_generation_modifier_tt }
+			add_to_variable = { JAP_economy_nuclear_infra_cost_multiplier_modifier = -0.05 tooltip = nuclear_infra_cost_multiplier_modifier_tt }
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				add = 15
+				JAP_ai_conservative_path = yes
+			}
+			modifier = {
+				factor = 0
+				JAP_ai_left_path = yes
+			}
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	JAP_restart_shimane = {
+		icon = GFX_decision_generic_electricity
+		visible = { has_completed_focus = JAP_nuclear_regulatory_compliance }
+
+		available = {
+			611 = { is_controlled_by = ROOT }
+			has_stability > 0.35
+			num_of_civilian_factories_available_for_projects > 6
+		}
+
+		cost = 50
+		days_remove = 240
+		fire_only_once = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_restart_shimane"
+			set_temp_variable = { treasury_change = -7.00 }
+			modify_treasury_effect = yes
+		}
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove JAP_restart_shimane"
+			611 = {
+				add_building_construction = {
+					type = nuclear_reactor
+					level = 2
+					instant_build = yes
+				}
+			}
+			add_to_variable = { JAP_reactor_sites_online = 1 }
+			newline = yes
+			custom_effect_tooltip = {
+				localization_key = modifies_dynamic_modifier_tt
+				MODIFIER = JAP_economy_modifier
+			}
+			add_to_variable = { JAP_economy_production_speed_nuclear_reactor_factor = 0.15 tooltip = production_speed_nuclear_reactor_factor_tt }
+			add_to_variable = { JAP_economy_nuclear_infra_cost_multiplier_modifier = -0.04 tooltip = nuclear_infra_cost_multiplier_modifier_tt }
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				add = 15
+				JAP_ai_conservative_path = yes
+			}
+			modifier = {
+				factor = 0
+				JAP_ai_left_path = yes
+			}
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	JAP_restart_tomari = {
+		icon = GFX_decision_generic_electricity
+		visible = { has_completed_focus = JAP_local_consent_accords }
+
+		available = {
+			617 = { is_controlled_by = ROOT }
+			has_stability > 0.40
+			num_of_civilian_factories_available_for_projects > 6
+		}
+
+		cost = 60
+		days_remove = 300
+		fire_only_once = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_restart_tomari"
+			set_temp_variable = { treasury_change = -7.50 }
+			modify_treasury_effect = yes
+		}
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove JAP_restart_tomari"
+			617 = {
+				add_building_construction = {
+					type = nuclear_reactor
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_to_variable = { JAP_reactor_sites_online = 1 }
+			newline = yes
+			custom_effect_tooltip = {
+				localization_key = modifies_dynamic_modifier_tt
+				MODIFIER = JAP_economy_modifier
+			}
+			add_to_variable = { JAP_economy_nuclear_energy_generation_modifier = 0.03 tooltip = nuclear_energy_generation_modifier_tt }
+			add_to_variable = { JAP_economy_nuclear_fuel_consumption_modifier = -0.05 tooltip = nuclear_fuel_consumption_modifier_tt }
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				add = 15
+				JAP_ai_conservative_path = yes
+			}
+			modifier = {
+				factor = 0
+				JAP_ai_left_path = yes
+			}
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	JAP_restart_kashiwazaki_kariwa = {
+		icon = GFX_decision_generic_electricity
+		visible = { has_completed_focus = JAP_local_consent_accords }
+
+		available = {
+			613 = { is_controlled_by = ROOT }
+			has_stability > 0.40
+			num_of_civilian_factories_available_for_projects > 6
+		}
+
+		cost = 60
+		days_remove = 300
+		fire_only_once = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_restart_kashiwazaki_kariwa"
+			set_temp_variable = { treasury_change = -8.00 }
+			modify_treasury_effect = yes
+		}
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove JAP_restart_kashiwazaki_kariwa"
+			613 = {
+				add_building_construction = {
+					type = nuclear_reactor
+					level = 2
+					instant_build = yes
+				}
+			}
+			add_to_variable = { JAP_reactor_sites_online = 1 }
+			newline = yes
+			custom_effect_tooltip = {
+				localization_key = modifies_dynamic_modifier_tt
+				MODIFIER = JAP_economy_modifier
+			}
+			add_to_variable = { JAP_economy_nuclear_energy_generation_modifier = 0.06 tooltip = nuclear_energy_generation_modifier_tt }
+			add_to_variable = { JAP_economy_nuclear_infra_cost_multiplier_modifier = -0.05 tooltip = nuclear_infra_cost_multiplier_modifier_tt }
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				add = 15
+				JAP_ai_conservative_path = yes
+			}
+			modifier = {
+				factor = 0
+				JAP_ai_left_path = yes
+			}
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+}
+
+JAP_gx_transition_category = {
+	JAP_gx_goto_floating_wind = {
+		icon = GFX_decision_generic_windturbine
+
+		available = {
+			609 = {
+				is_controlled_by = ROOT
+				nuclear_reactor > 1
+			}
+			num_of_civilian_factories_available_for_projects > 4
+		}
+
+		cost = 40
+		days_remove = 180
+		fire_only_once = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_gx_goto_floating_wind"
+			set_temp_variable = { treasury_change = -5.50 }
+			modify_treasury_effect = yes
+		}
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove JAP_gx_goto_floating_wind"
+			609 = {
+				if = {
+					limit = { nuclear_reactor > 1 }
+					remove_building = {
+						type = nuclear_reactor
+						level = 2
+					}
+				}
+				add_building_construction = {
+					type = renewable_energy_infra
+					level = 2
+					instant_build = yes
+				}
+			}
+			add_to_variable = { JAP_gx_projects_completed = 1 }
+			newline = yes
+			custom_effect_tooltip = {
+				localization_key = modifies_dynamic_modifier_tt
+				MODIFIER = JAP_economy_modifier
+			}
+			add_to_variable = { JAP_economy_renewable_energy_gain_multiplier = 0.06 tooltip = renewable_energy_gain_multiplier_tt }
+			add_to_variable = { JAP_economy_production_speed_renewable_energy_infra_factor = 0.05 tooltip = production_speed_renewable_energy_infra_factor_tt }
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	JAP_gx_tohoku_geothermal = {
+		icon = GFX_decision_generic_windturbine
+
+		available = {
+			616 = {
+				is_controlled_by = ROOT
+				nuclear_reactor > 1
+			}
+			num_of_civilian_factories_available_for_projects > 4
+		}
+
+		cost = 40
+		days_remove = 180
+		fire_only_once = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_gx_tohoku_geothermal"
+			set_temp_variable = { treasury_change = -5.50 }
+			modify_treasury_effect = yes
+		}
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove JAP_gx_tohoku_geothermal"
+			616 = {
+				if = {
+					limit = { nuclear_reactor > 1 }
+					remove_building = {
+						type = nuclear_reactor
+						level = 2
+					}
+				}
+				add_building_construction = {
+					type = renewable_energy_infra
+					level = 2
+					instant_build = yes
+				}
+			}
+			add_to_variable = { JAP_gx_projects_completed = 1 }
+			newline = yes
+			custom_effect_tooltip = {
+				localization_key = modifies_dynamic_modifier_tt
+				MODIFIER = JAP_economy_modifier
+			}
+			add_to_variable = { JAP_economy_renewable_energy_gain_multiplier = 0.06 tooltip = renewable_energy_gain_multiplier_tt }
+			add_to_variable = { JAP_economy_renewable_infra_cost_multiplier_modifier = -0.05 tooltip = renewable_infra_cost_multiplier_modifier_tt }
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	JAP_gx_kanto_setsuden = {
+		icon = GFX_decision_generic_windturbine
+
+		available = {
+			615 = {
+				is_controlled_by = ROOT
+				nuclear_reactor > 1
+			}
+			num_of_civilian_factories_available_for_projects > 4
+		}
+
+		cost = 45
+		days_remove = 210
+		fire_only_once = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_gx_kanto_setsuden"
+			set_temp_variable = { treasury_change = -5.00 }
+			modify_treasury_effect = yes
+		}
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove JAP_gx_kanto_setsuden"
+			615 = {
+				if = {
+					limit = { nuclear_reactor > 1 }
+					remove_building = {
+						type = nuclear_reactor
+						level = 2
+					}
+				}
+				add_building_construction = {
+					type = renewable_energy_infra
+					level = 2
+					instant_build = yes
+				}
+			}
+			add_to_variable = { JAP_gx_projects_completed = 1 }
+			newline = yes
+			custom_effect_tooltip = {
+				localization_key = modifies_dynamic_modifier_tt
+				MODIFIER = JAP_economy_modifier
+			}
+			add_to_variable = { JAP_economy_pop_energy_use_multiplier = -0.06 tooltip = pop_energy_use_multiplier_tt }
+			add_to_variable = { JAP_economy_energy_use_modifier_civs = -0.05 tooltip = energy_use_modifier_civs_tt }
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	JAP_gx_frequency_converter = {
+		icon = GFX_decision_generic_construction
+		visible = { has_completed_focus = JAP_decommissioning_authority }
+
+		available = {
+			613 = {
+				is_controlled_by = ROOT
+				nuclear_reactor > 1
+			}
+			num_of_civilian_factories_available_for_projects > 5
+		}
+
+		cost = 50
+		days_remove = 240
+		fire_only_once = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_gx_frequency_converter"
+			set_temp_variable = { treasury_change = -6.50 }
+			modify_treasury_effect = yes
+		}
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove JAP_gx_frequency_converter"
+			613 = {
+				if = {
+					limit = { nuclear_reactor > 1 }
+					remove_building = {
+						type = nuclear_reactor
+						level = 2
+					}
+				}
+				add_building_construction = {
+					type = energy_infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_to_variable = { JAP_gx_projects_completed = 1 }
+			newline = yes
+			custom_effect_tooltip = {
+				localization_key = modifies_dynamic_modifier_tt
+				MODIFIER = JAP_economy_modifier
+			}
+			add_to_variable = { JAP_economy_production_speed_energy_infrastructure_factor = 0.05 tooltip = production_speed_energy_infrastructure_factor_tt }
+			add_to_variable = { JAP_economy_renewable_energy_gain_multiplier = 0.04 tooltip = renewable_energy_gain_multiplier_tt }
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	JAP_gx_hokkaido_hvdc = {
+		icon = GFX_decision_generic_windturbine
+		visible = { has_completed_focus = JAP_decommissioning_authority }
+
+		available = {
+			617 = {
+				is_controlled_by = ROOT
+				nuclear_reactor > 1
+			}
+			num_of_civilian_factories_available_for_projects > 5
+		}
+
+		cost = 50
+		days_remove = 240
+		fire_only_once = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_gx_hokkaido_hvdc"
+			set_temp_variable = { treasury_change = -7.00 }
+			modify_treasury_effect = yes
+		}
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove JAP_gx_hokkaido_hvdc"
+			617 = {
+				if = {
+					limit = { nuclear_reactor > 1 }
+					remove_building = {
+						type = nuclear_reactor
+						level = 2
+					}
+				}
+				add_building_construction = {
+					type = renewable_energy_infra
+					level = 2
+					instant_build = yes
+				}
+			}
+			add_to_variable = { JAP_gx_projects_completed = 1 }
+			newline = yes
+			custom_effect_tooltip = {
+				localization_key = modifies_dynamic_modifier_tt
+				MODIFIER = JAP_economy_modifier
+			}
+			add_to_variable = { JAP_economy_renewable_energy_gain_multiplier = 0.06 tooltip = renewable_energy_gain_multiplier_tt }
+			add_to_variable = { JAP_economy_renewable_infra_cost_multiplier_modifier = -0.05 tooltip = renewable_infra_cost_multiplier_modifier_tt }
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	JAP_gx_kobe_hydrogen = {
+		icon = GFX_decision_generic_construction
+		visible = { has_completed_focus = JAP_decommissioning_authority }
+
+		available = {
+			612 = {
+				is_controlled_by = ROOT
+				nuclear_reactor > 1
+			}
+			num_of_civilian_factories_available_for_projects > 5
+		}
+
+		cost = 50
+		days_remove = 240
+		fire_only_once = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_gx_kobe_hydrogen"
+			set_temp_variable = { treasury_change = -6.50 }
+			modify_treasury_effect = yes
+		}
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove JAP_gx_kobe_hydrogen"
+			612 = {
+				if = {
+					limit = { nuclear_reactor > 1 }
+					remove_building = {
+						type = nuclear_reactor
+						level = 2
+					}
+				}
+				add_building_construction = {
+					type = fossil_powerplant
+					level = 2
+					instant_build = yes
+				}
+			}
+			add_to_variable = { JAP_gx_projects_completed = 1 }
+			newline = yes
+			custom_effect_tooltip = {
+				localization_key = modifies_dynamic_modifier_tt
+				MODIFIER = JAP_economy_modifier
+			}
+			add_to_variable = { JAP_economy_pop_energy_use_multiplier = -0.05 tooltip = pop_energy_use_multiplier_tt }
+			add_to_variable = { JAP_economy_energy_use_modifier_mils = -0.05 tooltip = energy_use_modifier_mils_tt }
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	JAP_gx_hekinan_ammonia = {
+		icon = GFX_decision_generic_construction
+		visible = { has_completed_focus = JAP_lng_bridge_supply }
+		available = { num_of_civilian_factories_available_for_projects > 6 }
+		cost = 60
+		days_remove = 300
+		fire_only_once = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_gx_hekinan_ammonia"
+			set_temp_variable = { treasury_change = -7.50 }
+			modify_treasury_effect = yes
+		}
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove JAP_gx_hekinan_ammonia"
+			add_to_variable = { JAP_gx_projects_completed = 1 }
+			newline = yes
+			custom_effect_tooltip = {
+				localization_key = modifies_dynamic_modifier_tt
+				MODIFIER = JAP_economy_modifier
+			}
+			add_to_variable = { JAP_economy_fossil_pp_energy_generation_modifier = 0.10 tooltip = fossil_pp_energy_generation_modifier_tt }
+			add_to_variable = { JAP_economy_fossil_pp_fuel_consumption_modifier = -0.15 tooltip = fossil_pp_fuel_consumption_modifier_tt }
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+
+	JAP_gx_shikoku_solar_storage = {
+		icon = GFX_decision_generic_windturbine
+		visible = { has_completed_focus = JAP_lng_bridge_supply }
+
+		available = {
+			610 = {
+				is_controlled_by = ROOT
+				nuclear_reactor > 1
+			}
+			num_of_civilian_factories_available_for_projects > 6
+		}
+
+		cost = 60
+		days_remove = 300
+		fire_only_once = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_gx_shikoku_solar_storage"
+			set_temp_variable = { treasury_change = -7.50 }
+			modify_treasury_effect = yes
+		}
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove JAP_gx_shikoku_solar_storage"
+			610 = {
+				if = {
+					limit = { nuclear_reactor > 1 }
+					remove_building = {
+						type = nuclear_reactor
+						level = 2
+					}
+				}
+				add_building_construction = {
+					type = renewable_energy_infra
+					level = 2
+					instant_build = yes
+				}
+			}
+			set_temp_variable = { temp_change = 2 }
+			set_temp_variable = { skip_payment = 1 }
+			build_battery_park_effect = yes
+			add_to_variable = { JAP_gx_projects_completed = 1 }
+			newline = yes
+			custom_effect_tooltip = {
+				localization_key = modifies_dynamic_modifier_tt
+				MODIFIER = JAP_economy_modifier
+			}
+			add_to_variable = { JAP_economy_renewable_energy_gain_multiplier = 0.08 tooltip = renewable_energy_gain_multiplier_tt }
+			add_to_variable = { JAP_economy_pop_energy_use_multiplier = -0.05 tooltip = pop_energy_use_multiplier_tt }
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+}
+
+JAP_seismic_retrofit_category = {
+	JAP_seismic_retrofit_decision = {
+		icon = generic_construction
+		state_target = yes
+		on_map_mode = map_and_decisions_view
+		targets = { 609 610 611 613 615 616 617 }
+
+		highlight_states = {
+			highlight_states_trigger = {
+				is_owned_and_controlled_by = ROOT
+				NOT = { has_dynamic_modifier = { modifier = JAP_seismic_retrofit } }
+			}
+			highlight_color_before_active = 3
+			highlight_color_while_active = 2
+		}
+
+		target_trigger = {
+			FROM = {
+				is_owned_and_controlled_by = ROOT
+				NOT = { has_dynamic_modifier = { modifier = JAP_seismic_retrofit } }
+			}
+		}
+
+		available = { num_of_civilian_factories_available_for_projects > 9 }
+
+		custom_cost_trigger = {
+			check_expr = {
+				value = gdp_total
+				multiply = 0.004
+				less_than = { value = treasury }
+			}
+			has_political_power > 74.999
+		}
+
+		custom_cost_text = cost_medium_expenditure_pp75
+		ai_hint_pp_cost = 75
+		days_remove = 365
+		modifier = { civilian_factory_use = 10 }
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_seismic_retrofit_decision in [FROM.GetName] started"
+			hidden_effect = { add_political_power = -75 }
+			medium_expenditure = yes
+		}
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_seismic_retrofit_decision in [FROM.GetName] completed"
+			FROM = { add_dynamic_modifier = { modifier = JAP_seismic_retrofit } }
+		}
+
+		ai_will_do = {
+			base = 5
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+		}
+	}
+}
+
+JAP_ai_path_category = {
+	JAP_imperial_revival_movement = {
+		icon = GFX_decision_JAP_civic_faction
+		cost = 75
+		fire_only_once = yes
+		visible = { has_global_flag = JAP_RETURN_OF_THE_EMPIRE_FOCUS_PATH }
+
+		available = {
+			nationalist_monarchists_are_in_power = no
+			has_idea = medium_far_right_movement
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_imperial_revival_movement"
+			swap_ideas = {
+				remove_idea = medium_far_right_movement
+				add_idea = large_far_right_movement
+			}
+			add_dynamic_modifier = { modifier = JAP_imperial_movement_modifier }
+		}
+
+		ai_will_do = { base = 100 }
+	}
+
+	JAP_build_imperial_movement = {
+		icon = GFX_decision_JAP_civic_faction
+		cost = 25
+		days_re_enable = 30
+		visible = { has_global_flag = JAP_RETURN_OF_THE_EMPIRE_FOCUS_PATH }
+
+		available = {
+			nationalist_monarchists_are_in_power = no
+			check_variable = { party_pop_array^23 < 0.35 }
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_build_imperial_movement"
+			set_temp_variable = { party_index = 23 }
+			set_temp_variable = { party_popularity_increase = 0.04 }
+			set_temp_variable = { temp_outlook_increase = 0.04 }
+			change_relative_party_popularity = yes
+		}
+
+		ai_will_do = { base = 100 }
+	}
+
+	JAP_restore_the_imperial_prerogative = {
+		icon = GFX_decision_JAP_civic_faction
+		cost = 150
+		days_re_enable = 180
+		visible = { has_global_flag = JAP_RETURN_OF_THE_EMPIRE_FOCUS_PATH }
+
+		available = {
+			nationalist_monarchists_are_in_power = no
+			has_civil_war = no
+			check_variable = { party_pop_array^23 > 0.3 }
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_restore_the_imperial_prerogative"
+			set_temp_variable = { rul_party_temp = 23 }
+			set_temp_variable = { disable_elections = 1 }
+			change_ruling_party_effect = yes
+		}
+
+		ai_will_do = { base = 100 }
+	}
+
+	JAP_build_the_democratic_party = {
+		icon = GFX_decision_JAP_civic_faction
+		cost = 25
+		days_re_enable = 30
+		visible = { has_global_flag = JAP_SOCIAL_DEMOCRACY_FOCUS_PATH }
+
+		available = {
+			western_liberals_are_in_power = no
+			check_variable = { party_pop_array^2 < 0.45 }
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_build_the_democratic_party"
+			set_temp_variable = { party_index = 2 }
+			set_temp_variable = { party_popularity_increase = 0.04 }
+			change_relative_party_popularity = yes
+		}
+
+		ai_will_do = { base = 100 }
+	}
+
+	JAP_democrats_take_the_diet = {
+		icon = GFX_decision_JAP_civic_faction
+		cost = 150
+		days_re_enable = 180
+		visible = { has_global_flag = JAP_SOCIAL_DEMOCRACY_FOCUS_PATH }
+
+		available = {
+			western_liberals_are_in_power = no
+			has_civil_war = no
+			check_variable = { party_pop_array^2 > 0.4 }
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_democrats_take_the_diet"
+			set_temp_variable = { rul_party_temp = 2 }
+			change_ruling_party_effect = yes
+		}
+
+		ai_will_do = { base = 100 }
+	}
+
+	JAP_build_the_social_democrats = {
+		icon = GFX_decision_JAP_civic_faction
+		cost = 25
+		days_re_enable = 30
+		visible = { has_global_flag = JAP_PACIFIST_FOCUS_PATH }
+
+		available = {
+			neutrality_neutral_social_are_in_power = no
+			check_variable = { party_pop_array^18 < 0.35 }
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_build_the_social_democrats"
+			set_temp_variable = { party_index = 18 }
+			set_temp_variable = { party_popularity_increase = 0.04 }
+			set_temp_variable = { temp_outlook_increase = 0.04 }
+			change_relative_party_popularity = yes
+		}
+
+		ai_will_do = { base = 100 }
+	}
+
+	JAP_social_democrats_take_the_diet = {
+		icon = GFX_decision_JAP_civic_faction
+		cost = 150
+		days_re_enable = 180
+		visible = { has_global_flag = JAP_PACIFIST_FOCUS_PATH }
+
+		available = {
+			neutrality_neutral_social_are_in_power = no
+			has_civil_war = no
+			check_variable = { party_pop_array^18 > 0.3 }
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision JAP_social_democrats_take_the_diet"
+			set_temp_variable = { rul_party_temp = 18 }
+			change_ruling_party_effect = yes
+		}
+
+		ai_will_do = { base = 100 }
 	}
 }

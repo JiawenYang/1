@@ -4,29 +4,25 @@
 # 设计前提（来自千禧黎明用户设定，非通用二战营）：
 #   - 美ABCT 740人 / 美SBCT 680人 / 俄BTG 920人 / 中重合成 750人
 #   - 人员≠持枪人员：每车乘员2-3人，下车步兵是步枪主体
-#   - 装甲率(hardness)：HOI4 引擎在师级UI上对 hardness 做全营求和，
-#     6营师模板单营 hardness ≈ 目标师级% / 6。
-#
-# 师级目标：重 ~72% / 中 ~48% / 两栖 ~54% / 轻 ~18% / 空突 ~15%
-# 对应单营 hardness：0.12 / 0.08 / 0.09 / 0.03 / 0.025
+#   - 装甲率由装备硬度（底盘+模块）驱动，与 MD 原版营保持完全一致；
+#     本文件不写 sub_unit hardness（原版营亦从不写该字段）。
 # ============================================================================
 
 sub_units = {
 
 	# ==================== 重装合成营（履带） ====================
 	# 参考美 ABCT（2坦克连+1机步连）/ 俄加强 BTG / 中重型合成营
-	# 坦克 28 + 装步 28 + 火力支援 8 = 64 台装甲底盘（0.5×64=32）
+	# 坦克 28 + 步战车 29（含 1 辆营指挥车）+ 火力支援 8 = 65 台装甲底盘
 	# 步枪 250（下车步兵 + 乘员自卫）、其他 107（硬度 0）
-	# util 20（0.25×20=5）→ 加权 ≈ 25%（剩余靠 tech/MIO 加成）
+	# util 20 → 加权 ≈ 25%（剩余靠 tech/MIO 加成）
 	syn_heavy_bat = {
 		abbreviation = "SYH"
-		sprite = MD_medium_armor
+		sprite = MD_light_armor
 		map_icon_category = armored
-		priority = 30
+		priority = 610
 		active = no
 		ai_priority = 3
 		type = {
-			armor
 			mechanized
 		}
 		group = armor
@@ -46,17 +42,15 @@ sub_units = {
 		max_organisation = 42
 		default_morale = 0.11
 		manpower = 740
-		hardness = 0.12
 		entrenchment = 0.05
 		suppression = 2.5
 
 		training_time = 180
 		weight = 3
 
-		transport = medium_tank_chassis
+		transport = medium_tank_flame_chassis
 
 		essential = {
-			medium_tank_chassis
 			medium_tank_flame_chassis
 		}
 
@@ -67,11 +61,12 @@ sub_units = {
 			AA_Equipment = 9
 			cnc_equipment_type = 30
 			medium_tank_chassis = 28
-			medium_tank_flame_chassis = 28
+			medium_tank_flame_chassis = 29 # 含 1 辆营指挥车
 			medium_tank_destroyer_chassis = 8
 			medium_tank_artillery_chassis = 6
 			medium_tank_aa_chassis = 3
 			util_vehicle_type = 20
+			ZZ_neg_armor_heavy = 1
 		}
 		plains = { attack = 0.15 defence = 0.10 }
 		desert = { attack = 0.10 defence = 0.05 }
@@ -87,18 +82,17 @@ sub_units = {
 
 	# ==================== 中型合成营（轮式） ====================
 	# 参考美 SBCT（斯崔克 680 人）/ 中轮式合成营 / BTR 系列
-	# 装输 32 + 火力支援 8 = 40 装甲底盘（0.5×40=20）
+	# 装输 33（含 1 辆营指挥车）+ 火力支援 8 = 41 装甲底盘（0.5×41≈20）
 	# 步枪 220、其他 103、util 18 → 加权 ≈ 20%（靠装备科技拉到 50%）
 	syn_medium_bat = {
 		abbreviation = "SYM"
 		sprite = MD_mechanized
 		map_icon_category = armored
-		priority = 30
+		priority = 610
 		active = no
 		ai_priority = 3
 		type = {
 			mechanized
-			armor
 		}
 		group = armor
 
@@ -116,7 +110,6 @@ sub_units = {
 		max_organisation = 40
 		default_morale = 0.12
 		manpower = 680
-		hardness = 0.08
 		entrenchment = 0.03
 		suppression = 2.5
 
@@ -135,11 +128,12 @@ sub_units = {
 			H_AT_Equipment = 6
 			AA_Equipment = 9
 			cnc_equipment_type = 30
-			medium_tank_amphibious_chassis = 32
+			medium_tank_amphibious_chassis = 33 # 含 1 辆营指挥车
 			medium_tank_destroyer_chassis = 8
 			medium_tank_artillery_chassis = 6
 			medium_tank_aa_chassis = 3
 			util_vehicle_type = 18
+			ZZ_neg_armor_medium = 1
 		}
 		plains = { attack = 0.10 movement = 0.10 }
 		desert = { movement = 0.10 }
@@ -155,12 +149,12 @@ sub_units = {
 	# ==================== 轻型合成营（高机动卡车） ====================
 	# 参考美 IBCT 轻装旅 600 人 / 猛士/Humvee 车队 / 无坦克
 	# 无装甲底盘 → 靠 util + 少量 destroyer（AT 突击炮）提供装甲骨架
-	# destroyer 6 + util 40 → 装甲占比低，硬度靠装备科技
+	# destroyer 6 + util 41（含 1 辆营指挥车）→ 装甲占比低，硬度靠装备科技
 	syn_light_bat = {
 		abbreviation = "SYL"
 		sprite = MD_motorized
 		map_icon_category = infantry
-		priority = 25
+		priority = 610
 		active = no
 		ai_priority = 3
 		type = {
@@ -182,7 +176,6 @@ sub_units = {
 		max_organisation = 44
 		default_morale = 0.13
 		manpower = 600
-		hardness = 0.03
 		entrenchment = 0.10
 		suppression = 3
 
@@ -202,8 +195,9 @@ sub_units = {
 			AA_Equipment = 9
 			cnc_equipment_type = 24
 			medium_tank_destroyer_chassis = 6
-			util_vehicle_type = 40
+			util_vehicle_type = 41 # 含 1 辆营指挥车
 			artillery_equipment = 6
+			ZZ_neg_armor_light = 1
 		}
 		plains = { movement = 0.10 }
 		hills = { attack = 0.05 }
@@ -224,11 +218,10 @@ sub_units = {
 		sprite = MD_light_armor
 		map_icon_category = armored
 		marines = yes
-		priority = 30
+		priority = 610
 		active = no
 		ai_priority = 3
 		type = {
-			armor
 			mechanized
 		}
 		group = armor
@@ -248,7 +241,6 @@ sub_units = {
 		max_organisation = 40
 		default_morale = 0.12
 		manpower = 650
-		hardness = 0.09
 		entrenchment = 0.05
 		suppression = 2.5
 
@@ -271,6 +263,7 @@ sub_units = {
 			medium_tank_destroyer_chassis = 6
 			medium_tank_artillery_chassis = 6
 			util_vehicle_type = 10
+			ZZ_neg_armor_amphibious = 1
 		}
 		plains = { attack = 0.05 }
 		hills = { attack = -0.05 defence = -0.05 }
@@ -283,69 +276,7 @@ sub_units = {
 		amphibious = { attack = 0.40 movement = 0.25 }
 	}
 
-	# ==================== 空中突击营（直升机机降） ====================
-	# 参考美 101 空突 600 人 / 中空中突击营
-	# 无装甲底盘，主要是搭乘直升机的轻装步兵
-	# transport 用 heavy_tank_amphibious_chassis（MD 里直升机挂在这个 chassis 下）
-	syn_air_assault_bat = {
-		abbreviation = "SYV"
-		sprite = MD_infantry_2
-		map_icon_category = infantry
-		special_forces = yes
-		priority = 25
-		active = no
-		ai_priority = 3
-		type = {
-			infantry
-		}
-		group = airborne_infantry
-
-		categories = {
-			category_front_line
-			category_light_infantry
-			category_all_infantry
-			category_army
-			category_special_forces
-			category_non_militia
-		}
-
-		combat_width = 3
-
-		max_strength = 22
-		max_organisation = 48
-		default_morale = 0.14
-		manpower = 600
-		hardness = 0.025
-		entrenchment = 0.05
-		suppression = 2
-
-		training_time = 180
-		weight = 1
-
-		transport = heavy_tank_amphibious_chassis
-
-		essential = {
-			infantry_weapons_type
-			heavy_tank_amphibious_chassis
-		}
-
-		need = {
-			infantry_weapons_type = 390
-			L_AT_Equipment = 18
-			H_AT_Equipment = 2
-			AA_Equipment = 12
-			cnc_equipment_type = 24
-			heavy_tank_amphibious_chassis = 20
-			util_vehicle_type = 8
-		}
-		plains = { movement = 0.05 }
-		desert = { movement = 0.05 }
-		hills = { attack = 0.10 movement = 0.10 }
-		mountain = { attack = 0.10 defence = 0.10 }
-		forest = { attack = 0.05 }
-		jungle = { attack = 0.05 movement = 0.05 }
-		marsh = { attack = 0.05 }
-		urban = { attack = 0.10 defence = 0.05 }
-	}
+	# ==================== 空中突击营（已删除，由特色 AirAssault_Bat_* 承担） ====================
+	# 原 syn_air_assault_bat 与各国特色 AirAssault_Bat_* 职能重复，按定案删除。
 
 }

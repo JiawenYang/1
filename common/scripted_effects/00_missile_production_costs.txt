@@ -1,0 +1,120 @@
+@missile_prod_math_max = 1000000
+@missile_prod_weeks_max = 1000
+@missile_prod_days_per_week = 7
+
+space_auto_weekly_cost = {
+	set_temp_variable = {
+		temp_weekly = {
+			value = temp_cost
+			divide = {
+				value = temp_days
+				divide = @missile_prod_days_per_week
+				clamp = { min = 1 max = @missile_prod_weeks_max }
+			}
+		}
+	}
+}
+
+space_prod_weekly_expense = {
+	set_temp_variable = { temp_accrue = 0 }
+	space_prod_weekly_calc = yes
+}
+
+space_prod_weekly_calc = {
+	set_variable = { space_prod_expense = 0 }
+	if = {
+		limit = { has_active_mission = missile_construction_10 }
+		set_temp_variable = { temp_cost = var_gui_prod_10_price_total }
+		set_temp_variable = { temp_days = var_gui_prod_10_days }
+		space_auto_weekly_cost = yes
+		set_temp_variable = { temp_outstanding = { value = var_gui_prod_10_price_total subtract = var_space_paid_10 } }
+		set_temp_variable = {
+			temp_weekly = {
+				value = temp_weekly
+				min = temp_outstanding
+				clamp = { min = 0 max = @missile_prod_math_max }
+			}
+		}
+		add_to_variable = { space_prod_expense = temp_weekly }
+		if = {
+			limit = { check_variable = { temp_accrue = 1 } }
+			add_to_variable = { var_space_paid_10 = temp_weekly }
+		}
+	}
+	if = {
+		limit = { has_active_mission = missile_construction_11 }
+		set_temp_variable = { temp_cost = var_gui_prod_11_price_total }
+		set_temp_variable = { temp_days = var_gui_prod_11_days }
+		space_auto_weekly_cost = yes
+		set_temp_variable = { temp_outstanding = { value = var_gui_prod_11_price_total subtract = var_space_paid_11 } }
+		set_temp_variable = {
+			temp_weekly = {
+				value = temp_weekly
+				min = temp_outstanding
+				clamp = { min = 0 max = @missile_prod_math_max }
+			}
+		}
+		add_to_variable = { space_prod_expense = temp_weekly }
+		if = {
+			limit = { check_variable = { temp_accrue = 1 } }
+			add_to_variable = { var_space_paid_11 = temp_weekly }
+		}
+	}
+	if = {
+		limit = { has_active_mission = missile_construction_12 }
+		set_temp_variable = { temp_cost = var_gui_prod_12_price_total }
+		set_temp_variable = { temp_days = var_gui_prod_12_days }
+		space_auto_weekly_cost = yes
+		set_temp_variable = { temp_outstanding = { value = var_gui_prod_12_price_total subtract = var_space_paid_12 } }
+		set_temp_variable = {
+			temp_weekly = {
+				value = temp_weekly
+				min = temp_outstanding
+				clamp = { min = 0 max = @missile_prod_math_max }
+			}
+		}
+		add_to_variable = { space_prod_expense = temp_weekly }
+		if = {
+			limit = { check_variable = { temp_accrue = 1 } }
+			add_to_variable = { var_space_paid_12 = temp_weekly }
+		}
+	}
+	if = {
+		limit = { has_active_mission = missile_construction_13 }
+		set_temp_variable = { temp_cost = var_gui_prod_13_price_total }
+		set_temp_variable = { temp_days = var_gui_prod_13_days }
+		space_auto_weekly_cost = yes
+		set_temp_variable = { temp_outstanding = { value = var_gui_prod_13_price_total subtract = var_space_paid_13 } }
+		set_temp_variable = {
+			temp_weekly = {
+				value = temp_weekly
+				min = temp_outstanding
+				clamp = { min = 0 max = @missile_prod_math_max }
+			}
+		}
+		add_to_variable = { space_prod_expense = temp_weekly }
+		if = {
+			limit = { check_variable = { temp_accrue = 1 } }
+			add_to_variable = { var_space_paid_13 = temp_weekly }
+		}
+	}
+	if = {
+		limit = { has_active_mission = missile_construction_14 }
+		set_temp_variable = { temp_cost = var_gui_prod_14_price_total }
+		set_temp_variable = { temp_days = var_gui_prod_14_days }
+		space_auto_weekly_cost = yes
+		set_temp_variable = { temp_outstanding = { value = var_gui_prod_14_price_total subtract = var_space_paid_14 } }
+		set_temp_variable = {
+			temp_weekly = {
+				value = temp_weekly
+				min = temp_outstanding
+				clamp = { min = 0 max = @missile_prod_math_max }
+			}
+		}
+		add_to_variable = { space_prod_expense = temp_weekly }
+		if = {
+			limit = { check_variable = { temp_accrue = 1 } }
+			add_to_variable = { var_space_paid_14 = temp_weekly }
+		}
+	}
+}

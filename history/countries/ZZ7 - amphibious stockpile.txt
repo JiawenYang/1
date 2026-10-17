@@ -1,0 +1,36 @@
+# ============================================================================
+# 开局两栖装甲输送车库存（2000.1.1，2017 开局继承累计）
+# USA: AAVP-7A1 约 300 辆（陆战队营×20 辆，匹配模组内海军陆战队编制）
+# CHI: ZBD-05 约 500 辆（陆战队营×30 辆，匹配模组内海军陆战队编制）
+# 注：ZZ_amphibious_apc_chassis 无 NSB 模块槽（仿 TFR 简易装备），
+#     create_equipment_variant 不可带 modules 块；model 使用 MD 已有实体。
+# ============================================================================
+2000.1.1 = {
+	USA = {
+		create_equipment_variant = {
+			name = "AAVP-7A1"
+			type = ZZ_amphibious_apc_chassis_1
+			icon = "gfx/interface/technologies/ZZ_amphibious_apc_chassis_1.dds"
+			model = "AAVP7_entity"
+			obsolete = yes
+		}
+		add_equipment_to_stockpile = {
+			type = ZZ_amphibious_apc_chassis_1
+			variant_name = "AAVP-7A1"
+			amount = 300
+		}
+	}
+	CHI = {
+		create_equipment_variant = {
+			name = "ZBD-05"
+			type = ZZ_amphibious_apc_chassis_1
+			icon = "gfx/interface/technologies/ZZ_amphibious_apc_chassis_1.dds"
+			model = "CHI_ZBD05_entity"
+		}
+		add_equipment_to_stockpile = {
+			type = ZZ_amphibious_apc_chassis_1
+			variant_name = "ZBD-05"
+			amount = 500
+		}
+	}
+}

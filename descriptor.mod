@@ -7,7 +7,6 @@ tags={
 }
 dependencies={
 	"Millennium Dawn: A Modern Day Mod"
-	"Millennium Dawn 2017 Return"
 }
 picture="thumbnail.png"
 name="Rework Millennium Dawn"

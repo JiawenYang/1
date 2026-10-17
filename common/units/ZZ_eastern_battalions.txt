@@ -12,7 +12,7 @@ sub_units = {
 	E_Tank_Bat = { # 东方坦克营（俄式3连31车）
 		sprite = MD_medium_armor
 		map_icon_category = armored
-		priority = 30
+		priority = 20 # 低于合成营(30/25)，师模型优先显示合成营
 		active = no
 		ai_priority = 3
 		type = {
@@ -43,6 +43,7 @@ sub_units = {
 			L_AT_Equipment = 12
 			AA_Equipment = 8
 			util_vehicle_type = 15
+			ZZ_neg_armor_tank = 1
 		}
 		plains = { attack = 0.20 defence = 0.10 movement = 0.10 }
 		desert = { attack = 0.15 defence = 0.10 movement = 0.10 }
@@ -54,7 +55,7 @@ sub_units = {
 		urban = { attack = -0.15 defence = -0.10 }
 		amphibious = { attack = -0.10 movement = -0.10 }
 
-		manpower = 600
+		manpower = 300
 		max_organisation = 20
 		max_strength = 12
 		default_morale = 0.06
@@ -96,7 +97,7 @@ sub_units = {
 		max_strength = 14
 		max_organisation = 26
 		default_morale = 0.08
-		manpower = 1150
+		manpower = 550
 		entrenchment = -0.3
 		suppression = 2.5
 
@@ -152,7 +153,7 @@ sub_units = {
 		max_strength = 13
 		max_organisation = 30
 		default_morale = 0.09
-		manpower = 1150
+		manpower = 540
 		entrenchment = -0.2
 		suppression = 2
 
@@ -189,7 +190,7 @@ sub_units = {
 		map_icon_category = infantry
 		ai_priority = 5
 		priority = 15
-		active = yes
+		active = no
 
 		type = {
 			motorized
@@ -212,7 +213,7 @@ sub_units = {
 		max_strength = 12
 		max_organisation = 34
 		default_morale = 0.10
-		manpower = 1150
+		manpower = 600
 		entrenchment = -0.1
 		suppression = 2
 
@@ -244,7 +245,7 @@ sub_units = {
 		map_icon_category = infantry
 		ai_priority = 5
 		priority = 10
-		active = yes
+		active = no
 		mountaineers = yes
 		type = { infantry }
 		group = infantry
@@ -265,7 +266,7 @@ sub_units = {
 		max_strength = 14
 		max_organisation = 38
 		default_morale = 0.12
-		manpower = 1050
+		manpower = 650
 		entrenchment = 0
 		suppression = 1
 

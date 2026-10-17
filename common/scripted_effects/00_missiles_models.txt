@@ -1,0 +1,23 @@
+## Display Stats
+### only used for tooltips
+set_missile_display_stats = {
+	if = {
+		limit = { is_debug = yes }
+		log = "[GetDateText]: [THIS.GetName]: on_startup set_missile_display_stats"
+	}
+	resize_array = { global.missile_range_array = 72 }
+	resize_array = { global.missile_accuracy_array = 72 }
+	resize_array = { global.missile_intercept_chance_array = 72 }
+
+	resize_array = { global.OLV_reliability_stat_array = 112 }
+	resize_array = { global.OLV_payload_mass_stat_array = 112 }
+
+	resize_array = { global.ASAT_accuracy_stat_array = 97 }
+
+	resize_array = { global.sat_mass_stat_array = 190 }
+	resize_array = { global.KILLSAT_accuracy_stat_array = 190 }
+
+	resize_array = { global.missile_price_unit_array = 190 }
+	resize_array = { global.missile_CIC_unit_array = 190 }
+	resize_array = { global.missile_duration_unit_array = 190 }
+}

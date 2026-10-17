@@ -1,0 +1,11 @@
+AI_Civil_Bunker = {
+	enable = {
+		OR = {
+			threat > 0.75
+			has_global_flag = age_has_begun_4
+		}
+		num_of_available_civilian_factories > 15
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = { type = building_target id = civil_bunker value = 100 }
+}

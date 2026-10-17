@@ -1,0 +1,273 @@
+set_leader_GNA = {
+
+	if = { limit = { check_variable = { ruling_party = 13 } } 
+		if = { limit = { check_variable = { Neutral_Autocracy_leader = 0 } }
+			set_variable = { Neutral_Autocracy_leader = 1 }
+			kill_country_leader = yes
+
+			create_country_leader = {
+				name = "Mohamed al-Menfi"
+				picture = "Mohamed_al_Menfi.dds"
+				ideology = Neutral_Autocracy
+				traits = {
+					neutrality_Neutral_Autocracy
+				}
+			}
+
+			if = { limit = { has_country_flag = do_not_retire } subtract_from_variable = { Neutral_Autocracy_leader = 1 } }
+			set_temp_variable = { b = 1 }
+		}
+	}
+	else_if = { limit = { check_variable = { ruling_party = 1 } } 
+		if = { limit = { check_variable = { conservatism_leader = 0 } }
+			add_to_variable = { conservatism_leader = 1 }
+			hidden_effect = { kill_country_leader = yes }
+
+			create_country_leader = {
+				name = "Abdulrahman Sewehli"
+				desc = LBA_abdulrahman_sewehli_desc
+				picture = "gfx/leaders/LBA/abdulrahman_sewehli.dds"
+				ideology = conservatism
+				traits = {
+					western_conservatism
+					defender_of_democracy
+				}
+			}
+
+			if = { limit = { has_country_flag = do_not_retire } subtract_from_variable = { conservatism_leader = 1 } }
+			set_temp_variable = { b = 1 }
+		}
+	}
+	else_if = { limit = { check_variable = { ruling_party = 2 } } 
+		if = { limit = { check_variable = { liberalism_leader = 0 } }
+			add_to_variable = { liberalism_leader = 1 }
+			hidden_effect = { kill_country_leader = yes }
+
+			create_country_leader = {
+				name = "Ali Zeidan"
+				desc = LBA_ali_zeidan_desc
+				picture = "gfx/leaders/LBA/ali_zeidan.dds"
+				ideology = liberalism
+				traits = {
+					western_liberalism
+					lawyer
+					stubborn
+					ideological_crusader
+				}
+			}
+
+			if = { limit = { has_country_flag = do_not_retire } subtract_from_variable = { liberalism_leader = 1 } }
+			set_temp_variable = { b = 1 }
+		}
+	}
+	else_if = { limit = { check_variable = { ruling_party = 3 } } 
+		if = { limit = { check_variable = { socialism_leader = 0 } }
+			add_to_variable = { socialism_leader = 1 }
+			hidden_effect = { kill_country_leader = yes }
+
+			create_country_leader = {
+				name = "Ali Tarhouni"
+				desc = LBA_ali_tarhouni_desc
+				picture = "gfx/leaders/LBA/ali_tarhouni.dds"
+				ideology = socialism
+				traits = {
+					western_socialism
+					economist
+				}
+			}
+
+			if = { limit = { has_country_flag = do_not_retire } subtract_from_variable = { socialism_leader = 1 } }
+			set_temp_variable = { b = 1 }
+		}
+		if = { limit = { check_variable = { socialism_leader = 1 } NOT = { check_variable = { b = 1 } } }
+			add_to_variable = { socialism_leader = 1 }
+			hidden_effect = { kill_country_leader = yes }
+
+			create_country_leader = {
+				name = "Mahmoud Shammam"
+				picture = "gfx/leaders/LBA/mahmoud_shamam.dds"
+				ideology = socialism
+				traits = {
+					western_socialism
+					geopolitical_thinker
+					pro_brotherhood
+				}
+			}
+
+			if = { limit = { has_country_flag = do_not_retire } subtract_from_variable = { socialism_leader = 1 } }
+			set_temp_variable = { b = 1 }
+		}
+		if = { limit = { check_variable = { socialism_leader = 2 } NOT = { check_variable = { b = 1 } } }
+			add_to_variable = { socialism_leader = 1 }
+			hidden_effect = { kill_country_leader = yes }
+
+			create_country_leader = {
+				name = "Fathi Al-Baaja"
+				desc = LBA_fathi_al_baaja_desc
+				picture = "gfx/leaders/LBA/fathi_al_baaja.dds"
+				ideology = socialism
+				traits = {
+					western_socialism
+					scientist
+					cautious
+					staunch_constitutionalist
+				}
+			}
+
+			if = { limit = { has_country_flag = do_not_retire } subtract_from_variable = { socialism_leader = 1 } }
+			set_temp_variable = { b = 1 }
+		}
+	}
+	else_if = { limit = { check_variable = { ruling_party = 6 } } 
+		if = { limit = { check_variable = { Conservative_leader = 0 } }
+			add_to_variable = { Conservative_leader = 1 }
+			hidden_effect = { kill_country_leader = yes }
+
+			create_country_leader = {
+				name = "Khweldi Hameidi"
+				desc = LBA_khweldi_hameidi_desc
+				picture = "gfx/leaders/LBA/Khweldi_Hameidi.dds"
+				ideology = Conservative
+				traits = {
+					emerging_Conservative
+					military_career
+					capable
+				}
+			}
+
+			if = { limit = { has_country_flag = do_not_retire } subtract_from_variable = { Conservative_leader = 1 } }
+			set_temp_variable = { b = 1 }
+		}
+		if = { limit = { check_variable = { Conservative_leader = 1 } NOT = { check_variable = { b = 1 } } }
+			add_to_variable = { Conservative_leader = 1 }
+			hidden_effect = { kill_country_leader = yes }
+
+			create_country_leader = {
+				name = "Mustafa al-Zaidi"
+				picture = "gfx/leaders/LBA/mustafa_al_zaidi.dds"
+				ideology = Conservative
+				traits = {
+					emerging_Conservative
+					rash
+				}
+			}
+
+			if = { limit = { has_country_flag = do_not_retire } subtract_from_variable = { Conservative_leader = 1 } }
+			set_temp_variable = { b = 1 }
+		}
+	}
+	else_if = { limit = { has_country_flag = set_Caliphate }
+		if = { limit = { check_variable = { Caliphate_leader = 0 } }
+			add_to_variable = { Caliphate_leader = 1 }
+			hidden_effect = { kill_country_leader = yes }
+
+			create_country_leader = {
+				name = "Abdelhakim Belhaj"
+				picture = "gfx/leaders/LBA/Abdel_Hakim_Belhadj.dds" 
+				ideology = Caliphate
+				traits = {
+					salafist_Caliphate
+					guerrilla_leader
+				}
+			}
+
+			if = { limit = { has_country_flag = do_not_retire } subtract_from_variable = { Caliphate_leader = 1 } }
+			set_temp_variable = { b = 1 }
+		}
+	}
+	else_if = { limit = { check_variable = { ruling_party = 12 } }
+		if = { limit = { check_variable = { Neutral_Muslim_Brotherhood_leader = 0 } }
+			add_to_variable = { Neutral_Muslim_Brotherhood_leader = 1 }
+			hidden_effect = { kill_country_leader = yes }
+
+			create_country_leader = {
+				name = "Abdul Hamid Dbeibeh" 
+				picture = "Abdul_Hamid_Dbeibeh.dds"
+				ideology = Neutral_Muslim_Brotherhood
+				traits = {
+					neutrality_Neutral_Muslim_Brotherhood  
+				}
+			} 
+
+			if = { limit = { has_country_flag = do_not_retire } subtract_from_variable = { Neutral_Muslim_Brotherhood_leader = 1 } }
+			set_temp_variable = { b = 1 }
+		}
+	}
+	else_if = { limit = { check_variable = { ruling_party = 14 } }
+		if = { limit = { check_variable = { Neutral_conservatism_leader = 0 } }
+			add_to_variable = { Neutral_conservatism_leader = 1 }
+			hidden_effect = { kill_country_leader = yes }
+
+			create_country_leader = {
+				name = "Mohammed Magariaf"
+				desc = LBA_mohammed_magariaf_desc
+				picture = "gfx/leaders/LBA/mohammed_magariaf.dds"
+				ideology = Neutral_conservatism
+				traits = {
+					neutrality_Neutral_conservatism
+					economist
+					honest
+					assassination_survivor
+					ideological_crusader
+				}
+			}
+
+			if = { limit = { has_country_flag = do_not_retire } subtract_from_variable = { Neutral_conservatism_leader = 1 } }
+			set_temp_variable = { b = 1 }
+		}
+		if = { limit = { check_variable = { Neutral_conservatism_leader = 1 } NOT = { check_variable = { b = 1 } } }
+			add_to_variable = { Neutral_conservatism_leader = 1 }
+			hidden_effect = { kill_country_leader = yes }
+
+			create_country_leader = {
+				name = "Mustafa A. G. Abushagur"
+				desc = LBA_mustafa_a_g_abushagur_desc
+				picture = "gfx/leaders/LBA/mustafa_a_g_abushagur.dds"
+				ideology = Neutral_conservatism
+				traits = {
+					neutrality_Neutral_conservatism
+					scientist
+				}
+			}
+
+			if = { limit = { has_country_flag = do_not_retire } subtract_from_variable = { Neutral_conservatism_leader = 1 } }
+			set_temp_variable = { b = 1 }
+		}
+	} 
+	else_if = { limit = { check_variable = { ruling_party = 18 } }
+		if = { limit = { check_variable = { neutral_Social_leader = 0 } }
+			add_to_variable = { neutral_Social_leader = 1 }
+			hidden_effect = { kill_country_leader = yes }
+
+			create_country_leader = {
+				name = "Mohammad Alareshiya"
+				picture = "mohammad_alareshiya.dds"
+				ideology = neutral_Social
+				traits = {
+					neutrality_neutral_Social
+				}
+			}
+
+			if = { limit = { has_country_flag = do_not_retire } subtract_from_variable = { neutral_Social_leader = 1 } }
+			set_temp_variable = { b = 1 }
+		} 
+	}
+	else_if = { limit = { check_variable = { ruling_party = 22 } }
+		if = { limit = { check_variable = { Nat_Autocracy_leader = 0 } }
+			add_to_variable = { Nat_Autocracy_leader = 1 }
+			hidden_effect = { kill_country_leader = yes }
+
+			create_country_leader = {
+				name = "Mohammed Ali al-Haddad"
+				picture = "Mohammad_Ali_al_Haddad.dds"
+				ideology = Nat_Autocracy
+				traits = {
+					nationalist_Nat_Autocracy
+				}
+			}
+
+			if = { limit = { has_country_flag = do_not_retire } subtract_from_variable = { Nat_Autocracy_leader = 1 } }
+			set_temp_variable = { b = 1 } 
+		}
+	}
+}

@@ -8,8 +8,8 @@ division_template = {
 		syn_heavy_bat = { x = 0 y = 3 }
 		syn_heavy_bat = { x = 0 y = 4 }
 		syn_heavy_bat = { x = 0 y = 5 }
-		E_Tank_Bat = { x = 1 y = 0 }
-		E_Arm_Inf_Bat = { x = 1 y = 1 }
+		syn_heavy_bat = { x = 1 y = 0 }
+		syn_heavy_bat = { x = 1 y = 1 } # 2017合成化：原 E_Tank_Bat/E_Arm_Inf_Bat 已编入合成营
 	}
 	support = {
 		SP_arty_battery = { x = 0 y = 0 }
@@ -111,7 +111,7 @@ division_template = {
 	regiments = {
 		syn_heavy_bat = { x = 0 y = 0 }
 		syn_heavy_bat = { x = 0 y = 1 }
-		E_Tank_Bat = { x = 0 y = 2 }
+		syn_heavy_bat = { x = 0 y = 2 } # 2017重型合成旅无独立坦克营
 		syn_heavy_bat = { x = 0 y = 3 }
 	}
 	support = {
@@ -243,7 +243,7 @@ division_template = {
 		syn_light_bat = { x = 0 y = 4 }
 		syn_light_bat = { x = 0 y = 5 }
 		syn_light_bat = { x = 0 y = 6 }
-		E_Tank_Bat = { x = 1 y = 0 }
+		syn_light_bat = { x = 1 y = 0 } # 轻型合成师无独立坦克营
 	}
 	support = {
 		E_Arty_Comp = { x = 0 y = 0 }
@@ -258,10 +258,10 @@ division_template = {
 	name = "Tezhong Budui Lu"
 	#Special Operations Brigade
 	regiments = {
-		Special_Forces = { x = 0 y = 0 }
-		Special_Forces = { x = 0 y = 1 }
-		Special_Forces = { x = 0 y = 2 }
-		Special_Forces = { x = 0 y = 3 }
+		SOF_Bat_CHI = { x = 0 y = 0 }
+		SOF_Bat_CHI = { x = 0 y = 1 }
+		SOF_Bat_CHI = { x = 0 y = 2 }
+		SOF_Bat_CHI = { x = 0 y = 3 }
 	}
 
 	support = {
@@ -1688,7 +1688,7 @@ instant_effect = {
 	
 		add_equipment_to_stockpile = {
 			variant_name = "ZBD-03"
-			type = medium_tank_flame_chassis_2 #ZBD-03
+			type = ZZ_airborne_ifv_chassis_2 #ZBD-03
 			producer = CHI
 			amount = 183
 		}
@@ -2006,13 +2006,13 @@ instant_effect = {
 		add_equipment_to_stockpile = {
 			type = infantry_weapons_4 #QBZ-95
 			producer = CHI
-			amount = 60000
+			amount = 500000
 		}
 	
 		add_equipment_to_stockpile = {
 			type = infantry_weapons_5 #QBZ-95-1
 			producer = CHI
-			amount = 40000
+			amount = 400000
 		}
 	
 		#C&C

@@ -37,7 +37,7 @@ sub_units = {
 		max_strength = 14
 		max_organisation = 30
 		default_morale = 0.09
-		manpower = 2400
+		manpower = 950
 		entrenchment = -0.10
 		suppression = 2.5
 
@@ -48,6 +48,7 @@ sub_units = {
 
 		essential = {
 			medium_tank_flame_chassis
+			ZZ_amphibious_apc_chassis
 		}
 
 		need = {
@@ -56,7 +57,8 @@ sub_units = {
 			H_AT_Equipment = 12
 			AA_Equipment = 12
 			cnc_equipment_type = 36
-			medium_tank_flame_chassis = 40
+			medium_tank_flame_chassis = 20 # LAV-25 连×2
+			ZZ_amphibious_apc_chassis = 20 # AAV-7 连×2
 			util_vehicle_type = 35
 		}
 		plains = { attack = 0.10 movement = 0.10 }
@@ -97,7 +99,7 @@ sub_units = {
 		max_strength = 12
 		max_organisation = 30
 		default_morale = 0.10
-		manpower = 1750
+		manpower = 650
 		entrenchment = 0.0
 		suppression = 2
 
@@ -107,7 +109,7 @@ sub_units = {
 		transport = util_vehicle_type
 
 		essential = {
-			medium_tank_flame_chassis
+			util_vehicle_type
 		}
 
 		need = {
@@ -156,7 +158,7 @@ sub_units = {
 		max_strength = 13
 		max_organisation = 28
 		default_morale = 0.08
-		manpower = 1750
+		manpower = 700
 		entrenchment = -0.10
 		suppression = 2.5
 
@@ -166,7 +168,7 @@ sub_units = {
 		transport = medium_tank_amphibious_chassis
 
 		essential = {
-			medium_tank_flame_chassis
+			medium_tank_amphibious_chassis
 		}
 
 		need = {
@@ -215,17 +217,17 @@ sub_units = {
 		max_strength = 12
 		max_organisation = 30
 		default_morale = 0.10
-		manpower = 1500
+		manpower = 650
 		entrenchment = 0.0
 		suppression = 2
 
 		training_time = 180
 		weight = 1.5
 
-		transport = medium_tank_amphibious_chassis
+		transport = ZZ_airborne_ifv_chassis
 
 		essential = {
-			medium_tank_flame_chassis
+			ZZ_airborne_ifv_chassis
 		}
 
 		need = {
@@ -233,7 +235,7 @@ sub_units = {
 			L_AT_Equipment = 30
 			AA_Equipment = 8
 			cnc_equipment_type = 32
-			medium_tank_amphibious_chassis = 30
+			ZZ_airborne_ifv_chassis = 30
 		}
 		plains = { attack = 0.10 movement = 0.10 }
 		desert = { attack = 0.05 movement = 0.05 }
@@ -273,17 +275,17 @@ sub_units = {
 		max_strength = 14
 		max_organisation = 29
 		default_morale = 0.09
-		manpower = 1500
+		manpower = 700
 		entrenchment = -0.10
 		suppression = 2.5
 
 		training_time = 180
 		weight = 2
 
-		transport = medium_tank_amphibious_chassis
+		transport = ZZ_amphibious_apc_chassis
 
 		essential = {
-			medium_tank_flame_chassis
+			ZZ_amphibious_apc_chassis
 		}
 
 		need = {
@@ -291,7 +293,7 @@ sub_units = {
 			L_AT_Equipment = 40
 			AA_Equipment = 12
 			cnc_equipment_type = 36
-			medium_tank_amphibious_chassis = 30
+			ZZ_amphibious_apc_chassis = 30
 			util_vehicle_type = 20
 		}
 		plains = { attack = 0.10 movement = 0.10 }
@@ -332,17 +334,17 @@ sub_units = {
 		max_strength = 12
 		max_organisation = 31
 		default_morale = 0.10
-		manpower = 1500
+		manpower = 650
 		entrenchment = 0.0
 		suppression = 2
 
 		training_time = 180
 		weight = 1.5
 
-		transport = medium_tank_amphibious_chassis
+		transport = ZZ_airborne_ifv_chassis
 
 		essential = {
-			medium_tank_flame_chassis
+			ZZ_airborne_ifv_chassis
 		}
 
 		need = {
@@ -350,7 +352,7 @@ sub_units = {
 			L_AT_Equipment = 40
 			AA_Equipment = 12
 			cnc_equipment_type = 32
-			medium_tank_amphibious_chassis = 30
+			ZZ_airborne_ifv_chassis = 30
 		}
 		plains = { attack = 0.10 movement = 0.10 }
 		desert = { attack = 0.05 movement = 0.05 }
@@ -376,7 +378,7 @@ sub_units = {
 		ai_priority = 5
 		priority = 10
 		active = no
-		type = { infantry }
+		type = { motorized infantry }
 		group = special_forces
 
 		categories = {
@@ -397,7 +399,7 @@ sub_units = {
 		max_strength = 14
 		max_organisation = 36
 		default_morale = 0.14
-		manpower = 1160
+		manpower = 750
 		entrenchment = 0.1
 		suppression = 1
 
@@ -437,7 +439,7 @@ sub_units = {
 		ai_priority = 5
 		priority = 15
 		active = no
-		type = { infantry }
+		type = { motorized infantry }
 		group = special_forces
 
 		categories = {
@@ -456,7 +458,7 @@ sub_units = {
 		max_strength = 14
 		max_organisation = 32
 		default_morale = 0.14
-		manpower = 600
+		manpower = 400
 		entrenchment = 0.1
 		suppression = 1
 
@@ -494,7 +496,7 @@ sub_units = {
 		ai_priority = 5
 		priority = 15
 		active = no
-		type = { infantry }
+		type = { motorized infantry }
 		group = special_forces
 
 		categories = {
@@ -515,7 +517,7 @@ sub_units = {
 		max_strength = 14
 		max_organisation = 32
 		default_morale = 0.14
-		manpower = 500
+		manpower = 300
 		entrenchment = 0.1
 		suppression = 1
 
@@ -547,7 +549,7 @@ sub_units = {
 		ai_priority = 5
 		priority = 10
 		active = no
-		type = { infantry }
+		type = { motorized infantry }
 		group = airmobile
 
 		categories = {
@@ -567,7 +569,7 @@ sub_units = {
 		max_organisation = 36
 		default_morale = 0.14
 		suppression = 2.0
-		manpower = 1800
+		manpower = 700
 		entrenchment = -0.3
 
 		training_time = 200
@@ -605,7 +607,7 @@ sub_units = {
 		ai_priority = 5
 		priority = 15
 		active = no
-		type = { infantry }
+		type = { motorized infantry }
 		group = special_forces
 
 		categories = {
@@ -624,7 +626,7 @@ sub_units = {
 		max_strength = 14
 		max_organisation = 32
 		default_morale = 0.14
-		manpower = 700
+		manpower = 450
 		entrenchment = 0.1
 		suppression = 1
 
@@ -665,7 +667,7 @@ sub_units = {
 		ai_priority = 5
 		priority = 15
 		active = no
-		type = { infantry }
+		type = { motorized infantry }
 		group = special_forces
 
 		categories = {
@@ -684,7 +686,7 @@ sub_units = {
 		max_strength = 14
 		max_organisation = 32
 		default_morale = 0.14
-		manpower = 800
+		manpower = 400
 		entrenchment = 0.1
 		suppression = 1
 
@@ -718,7 +720,7 @@ sub_units = {
 		ai_priority = 5
 		priority = 10
 		active = no
-		type = { infantry }
+		type = { motorized infantry }
 		group = airmobile
 
 		categories = {
@@ -738,7 +740,7 @@ sub_units = {
 		max_organisation = 36
 		default_morale = 0.14
 		suppression = 2.0
-		manpower = 1500
+		manpower = 700
 		entrenchment = -0.3
 
 		training_time = 200
@@ -772,7 +774,7 @@ sub_units = {
 		ai_priority = 5
 		priority = 10
 		active = no
-		type = { infantry }
+		type = { motorized infantry }
 		group = airborne_infantry
 
 		categories = {
@@ -793,7 +795,7 @@ sub_units = {
 		max_organisation = 38
 		default_morale = 0.14
 		suppression = 1
-		manpower = 1750
+		manpower = 650
 		entrenchment = 0
 
 		training_time = 180
@@ -828,7 +830,7 @@ sub_units = {
 		ai_priority = 5
 		priority = 10
 		active = no
-		type = { infantry }
+		type = { motorized infantry }
 		group = special_forces
 
 		categories = {
@@ -849,7 +851,7 @@ sub_units = {
 		max_strength = 14
 		max_organisation = 32
 		default_morale = 0.14
-		manpower = 1750
+		manpower = 700
 		entrenchment = 0.1
 		suppression = 1
 
@@ -887,7 +889,7 @@ sub_units = {
 		ai_priority = 5
 		priority = 15
 		active = no
-		type = { infantry }
+		type = { motorized infantry }
 		group = special_forces
 
 		categories = {
@@ -906,7 +908,7 @@ sub_units = {
 		max_strength = 14
 		max_organisation = 32
 		default_morale = 0.14
-		manpower = 500
+		manpower = 300
 		entrenchment = 0.1
 		suppression = 1
 
@@ -944,7 +946,7 @@ sub_units = {
 		ai_priority = 5
 		priority = 10
 		active = no
-		type = { infantry }
+		type = { motorized infantry }
 		group = airborne_infantry
 
 		categories = {
@@ -965,7 +967,7 @@ sub_units = {
 		max_organisation = 38
 		default_morale = 0.14
 		suppression = 1
-		manpower = 2000
+		manpower = 800
 		entrenchment = 0
 
 		training_time = 180
@@ -1000,7 +1002,7 @@ sub_units = {
 		ai_priority = 5
 		priority = 10
 		active = no
-		type = { infantry }
+		type = { motorized infantry }
 		group = special_forces
 
 		categories = {
@@ -1021,7 +1023,7 @@ sub_units = {
 		max_strength = 14
 		max_organisation = 32
 		default_morale = 0.14
-		manpower = 600
+		manpower = 400
 		entrenchment = 0.1
 		suppression = 1
 
@@ -1073,7 +1075,7 @@ sub_units = {
 		max_strength = 14
 		max_organisation = 30
 		default_morale = 0.09
-		manpower = 1750
+		manpower = 700
 		entrenchment = -0.10
 		suppression = 2.5
 
@@ -1116,7 +1118,7 @@ sub_units = {
 		ai_priority = 5
 		priority = 10
 		active = no
-		type = { infantry }
+		type = { motorized infantry }
 		group = airborne_infantry
 
 		categories = {
@@ -1137,7 +1139,7 @@ sub_units = {
 		max_organisation = 38
 		default_morale = 0.14
 		suppression = 1
-		manpower = 1750
+		manpower = 650
 		entrenchment = 0
 
 		training_time = 180
@@ -1175,7 +1177,7 @@ sub_units = {
 		ai_priority = 5
 		priority = 15
 		active = no
-		type = { infantry }
+		type = { motorized infantry }
 		group = special_forces
 
 		categories = {
@@ -1194,7 +1196,7 @@ sub_units = {
 		max_strength = 14
 		max_organisation = 32
 		default_morale = 0.14
-		manpower = 500
+		manpower = 300
 		entrenchment = 0.1
 		suppression = 1
 
@@ -1230,7 +1232,7 @@ sub_units = {
 		ai_priority = 5
 		priority = 10
 		active = no
-		type = { infantry }
+		type = { motorized infantry }
 		group = infantry
 
 		categories = {
@@ -1248,7 +1250,7 @@ sub_units = {
 		max_strength = 14
 		max_organisation = 40
 		default_morale = 0.14
-		manpower = 1900
+		manpower = 700
 		entrenchment = 0
 		suppression = 1
 
@@ -1284,7 +1286,7 @@ sub_units = {
 		ai_priority = 5
 		priority = 10
 		active = no
-		type = { infantry }
+		type = { motorized infantry }
 		group = airborne_infantry
 
 		categories = {
@@ -1305,7 +1307,7 @@ sub_units = {
 		max_organisation = 38
 		default_morale = 0.14
 		suppression = 1
-		manpower = 1500
+		manpower = 650
 		entrenchment = 0
 
 		training_time = 180
@@ -1357,7 +1359,7 @@ sub_units = {
 		max_strength = 14
 		max_organisation = 30
 		default_morale = 0.09
-		manpower = 1750
+		manpower = 700
 		entrenchment = -0.10
 		suppression = 2.5
 
@@ -1418,7 +1420,7 @@ sub_units = {
 		max_strength = 14
 		max_organisation = 30
 		default_morale = 0.09
-		manpower = 1750
+		manpower = 700
 		entrenchment = -0.10
 		suppression = 2.5
 
@@ -1459,7 +1461,7 @@ sub_units = {
 		ai_priority = 5
 		priority = 15
 		active = no
-		type = { infantry }
+		type = { motorized infantry }
 		group = special_forces
 
 		categories = {
@@ -1478,7 +1480,7 @@ sub_units = {
 		max_strength = 14
 		max_organisation = 32
 		default_morale = 0.14
-		manpower = 500
+		manpower = 300
 		entrenchment = 0.1
 		suppression = 1
 
@@ -1516,7 +1518,7 @@ sub_units = {
 		ai_priority = 5
 		priority = 10
 		active = no
-		type = { infantry }
+		type = { motorized infantry }
 		group = airborne_infantry
 
 		categories = {
@@ -1537,7 +1539,7 @@ sub_units = {
 		max_organisation = 38
 		default_morale = 0.14
 		suppression = 1
-		manpower = 1500
+		manpower = 650
 		entrenchment = 0
 
 		training_time = 180
@@ -1575,7 +1577,7 @@ sub_units = {
 		ai_priority = 5
 		priority = 15
 		active = no
-		type = { infantry }
+		type = { motorized infantry }
 		group = special_forces
 
 		categories = {
@@ -1594,7 +1596,7 @@ sub_units = {
 		max_strength = 14
 		max_organisation = 32
 		default_morale = 0.14
-		manpower = 500
+		manpower = 300
 		entrenchment = 0.1
 		suppression = 1
 
@@ -1632,7 +1634,7 @@ sub_units = {
 		ai_priority = 5
 		priority = 10
 		active = no
-		type = { infantry }
+		type = { motorized infantry }
 		group = airborne_infantry
 
 		categories = {
@@ -1653,7 +1655,7 @@ sub_units = {
 		max_organisation = 38
 		default_morale = 0.14
 		suppression = 1
-		manpower = 1500
+		manpower = 650
 		entrenchment = 0
 
 		training_time = 180
@@ -1687,7 +1689,7 @@ sub_units = {
 		ai_priority = 5
 		priority = 10
 		active = no
-		type = { infantry }
+		type = { motorized infantry }
 		group = infantry
 
 		categories = {
@@ -1705,7 +1707,7 @@ sub_units = {
 		max_strength = 14
 		max_organisation = 40
 		default_morale = 0.14
-		manpower = 2000
+		manpower = 700
 		entrenchment = 0
 		suppression = 1
 
@@ -1741,7 +1743,7 @@ sub_units = {
 		ai_priority = 5
 		priority = 15
 		active = no
-		type = { infantry }
+		type = { motorized infantry }
 		group = special_forces
 
 		categories = {
@@ -1760,7 +1762,7 @@ sub_units = {
 		max_strength = 14
 		max_organisation = 32
 		default_morale = 0.14
-		manpower = 800
+		manpower = 500
 		entrenchment = 0.1
 		suppression = 1
 
@@ -1814,7 +1816,7 @@ sub_units = {
 		max_strength = 14
 		max_organisation = 30
 		default_morale = 0.09
-		manpower = 1500
+		manpower = 650
 		entrenchment = -0.10
 		suppression = 2.5
 
@@ -1857,7 +1859,7 @@ sub_units = {
 		ai_priority = 5
 		priority = 10
 		active = no
-		type = { infantry }
+		type = { motorized infantry }
 		group = airmobile
 
 		categories = {
@@ -1877,7 +1879,7 @@ sub_units = {
 		max_organisation = 36
 		default_morale = 0.14
 		suppression = 2.0
-		manpower = 1500
+		manpower = 650
 		entrenchment = -0.3
 
 		training_time = 200
@@ -1913,7 +1915,7 @@ sub_units = {
 		ai_priority = 5
 		priority = 15
 		active = no
-		type = { infantry }
+		type = { motorized infantry }
 		group = special_forces
 
 		categories = {
@@ -1932,7 +1934,7 @@ sub_units = {
 		max_strength = 14
 		max_organisation = 32
 		default_morale = 0.14
-		manpower = 600
+		manpower = 350
 		entrenchment = 0.1
 		suppression = 1
 
@@ -1970,7 +1972,7 @@ sub_units = {
 		ai_priority = 5
 		priority = 15
 		active = no
-		type = { infantry }
+		type = { motorized infantry }
 		group = special_forces
 
 		categories = {
@@ -1989,7 +1991,7 @@ sub_units = {
 		max_strength = 14
 		max_organisation = 32
 		default_morale = 0.14
-		manpower = 600
+		manpower = 350
 		entrenchment = 0.1
 		suppression = 1
 
@@ -2025,7 +2027,7 @@ sub_units = {
 		ai_priority = 5
 		priority = 10
 		active = no
-		type = { infantry }
+		type = { motorized infantry }
 		group = infantry
 
 		categories = {
@@ -2043,7 +2045,7 @@ sub_units = {
 		max_strength = 14
 		max_organisation = 40
 		default_morale = 0.14
-		manpower = 1500
+		manpower = 650
 		entrenchment = 0
 		suppression = 1
 
@@ -2080,7 +2082,7 @@ sub_units = {
 		ai_priority = 5
 		priority = 15
 		active = no
-		type = { infantry }
+		type = { motorized infantry }
 		group = special_forces
 
 		categories = {
@@ -2099,7 +2101,7 @@ sub_units = {
 		max_strength = 14
 		max_organisation = 32
 		default_morale = 0.14
-		manpower = 700
+		manpower = 450
 		entrenchment = 0.1
 		suppression = 1
 
@@ -2135,7 +2137,7 @@ sub_units = {
 		ai_priority = 5
 		priority = 10
 		active = no
-		type = { infantry }
+		type = { motorized infantry }
 		group = airborne_infantry
 
 		categories = {
@@ -2156,7 +2158,7 @@ sub_units = {
 		max_organisation = 38
 		default_morale = 0.14
 		suppression = 1
-		manpower = 1500
+		manpower = 650
 		entrenchment = 0
 
 		training_time = 180
@@ -2192,7 +2194,7 @@ sub_units = {
 		ai_priority = 5
 		priority = 10
 		active = no
-		type = { infantry }
+		type = { motorized infantry }
 		group = airborne_infantry
 
 		categories = {
@@ -2213,7 +2215,7 @@ sub_units = {
 		max_organisation = 38
 		default_morale = 0.14
 		suppression = 1
-		manpower = 1500
+		manpower = 650
 		entrenchment = 0
 
 		training_time = 180
@@ -2265,7 +2267,7 @@ sub_units = {
 		max_strength = 14
 		max_organisation = 30
 		default_morale = 0.09
-		manpower = 1500
+		manpower = 650
 		entrenchment = -0.10
 		suppression = 2.5
 
@@ -2312,7 +2314,7 @@ sub_units = {
 		ai_priority = 5
 		priority = 15
 		active = no
-		type = { infantry }
+		type = { motorized infantry }
 		group = special_forces
 
 		categories = {
@@ -2331,7 +2333,7 @@ sub_units = {
 		max_strength = 14
 		max_organisation = 32
 		default_morale = 0.14
-		manpower = 500
+		manpower = 300
 		entrenchment = 0.1
 		suppression = 1
 
@@ -2369,7 +2371,7 @@ sub_units = {
 		ai_priority = 5
 		priority = 10
 		active = no
-		type = { infantry }
+		type = { motorized infantry }
 		group = airborne_infantry
 
 		categories = {
@@ -2390,7 +2392,7 @@ sub_units = {
 		max_organisation = 38
 		default_morale = 0.14
 		suppression = 1
-		manpower = 1500
+		manpower = 700
 		entrenchment = 0
 
 		training_time = 180
@@ -2426,7 +2428,7 @@ sub_units = {
 		ai_priority = 5
 		priority = 15
 		active = no
-		type = { infantry }
+		type = { motorized infantry }
 		group = special_forces
 
 		categories = {
@@ -2445,7 +2447,7 @@ sub_units = {
 		max_strength = 14
 		max_organisation = 32
 		default_morale = 0.14
-		manpower = 600
+		manpower = 350
 		entrenchment = 0.1
 		suppression = 1
 
@@ -2486,7 +2488,7 @@ sub_units = {
 		ai_priority = 5
 		priority = 15
 		active = no
-		type = { infantry }
+		type = { motorized infantry }
 		group = special_forces
 
 		categories = {
@@ -2505,7 +2507,7 @@ sub_units = {
 		max_strength = 14
 		max_organisation = 32
 		default_morale = 0.14
-		manpower = 500
+		manpower = 300
 		entrenchment = 0.1
 		suppression = 1
 
@@ -2543,7 +2545,7 @@ sub_units = {
 		ai_priority = 5
 		priority = 10
 		active = no
-		type = { infantry }
+		type = { motorized infantry }
 		group = infantry
 
 		categories = {
@@ -2561,7 +2563,7 @@ sub_units = {
 		max_strength = 14
 		max_organisation = 40
 		default_morale = 0.14
-		manpower = 1500
+		manpower = 650
 		entrenchment = 0
 		suppression = 1
 
@@ -2597,7 +2599,7 @@ sub_units = {
 		ai_priority = 5
 		priority = 15
 		active = no
-		type = { infantry }
+		type = { motorized infantry }
 		group = special_forces
 
 		categories = {
@@ -2616,7 +2618,7 @@ sub_units = {
 		max_strength = 14
 		max_organisation = 32
 		default_morale = 0.14
-		manpower = 800
+		manpower = 400
 		entrenchment = 0.1
 		suppression = 1
 
@@ -2644,18 +2646,78 @@ sub_units = {
 
 	}
 
-	# ======================== 台湾（1新增） ========================
+	# ======================== 台湾（2新增） ========================
 
-	Marine_Bat_TAI = { # 台湾陆战蛙人营（marines+exfiltrate）
+	Marine_Bat_TAI = { # 台湾海军陆战队步兵营（海龙蛙人，AAV-7两栖突击车）
+		sprite = MD_light_armor
+		map_icon_category = armored
+		priority = 30
+		active = no
+		ai_priority = 5
+		marines = yes
+		type = {
+			mechanized
+			armor
+		}
+		group = marine_infantry
+
+		categories = {
+			category_front_line
+			category_all_armor
+			category_apc
+			category_army
+			category_non_militia
+		}
+
+		combat_width = 4
+
+		max_strength = 14
+		max_organisation = 30
+		default_morale = 0.09
+		manpower = 700
+		entrenchment = -0.10
+		suppression = 2.5
+
+		training_time = 180
+		weight = 2
+
+		transport = medium_tank_flame_chassis
+
+		essential = {
+			medium_tank_flame_chassis
+		}
+
+		need = {
+			infantry_weapons_type = 820
+			L_AT_Equipment = 40
+			AA_Equipment = 12
+			cnc_equipment_type = 32
+			medium_tank_flame_chassis = 30
+			util_vehicle_type = 20
+		}
+		plains = { attack = 0.05 movement = 0.05 }
+		desert = { attack = 0.05 movement = 0.05 }
+		hills = { attack = -0.05 }
+		forest = { attack = 0.05 defence = 0.05 }
+		mountain = { attack = -0.15 defence = -0.05 movement = -0.10 }
+		jungle = { attack = 0.10 defence = 0.05 }
+		marsh = { attack = 0.10 movement = 0.10 }
+		urban = { attack = 0.10 defence = 0.10 }
+		amphibious = { attack = 0.20 movement = 0.10 }
+
+	}
+
+	SOF_Bat_TAI = { # 台湾陆军凉山特勤营（航特部特战指挥部，可伞降，城镇山地守土）
 		sprite = MD_infantry_2
 		map_icon_category = infantry
 		special_forces = yes
-		marines = yes
-		can_exfiltrate_from_coast = yes
+		can_be_parachuted = yes
+		rangers = yes
+		mountaineers = yes
 		ai_priority = 5
-		priority = 10
+		priority = 15
 		active = no
-		type = { infantry }
+		type = { motorized infantry }
 		group = special_forces
 
 		categories = {
@@ -2666,17 +2728,15 @@ sub_units = {
 			category_all_infantry
 			category_army
 			category_non_militia
-			category_all_amphibous
-			category_inf_amphib
 			category_foot_inf
 		}
 
-		combat_width = 4
+		combat_width = 5
 
 		max_strength = 14
 		max_organisation = 32
 		default_morale = 0.14
-		manpower = 1250
+		manpower = 400
 		entrenchment = 0.1
 		suppression = 1
 
@@ -2686,19 +2746,21 @@ sub_units = {
 		transport = util_vehicle_type
 
 		need = {
-			infantry_weapons_type = 690
-			L_AT_Equipment = 40
-			AA_Equipment = 12
-			cnc_equipment_type = 32
-			util_vehicle_type = 24
+			infantry_weapons_type = 480
+			L_AT_Equipment = 16
+			AA_Equipment = 8
+			cnc_equipment_type = 24
+			util_vehicle_type = 18
 		}
-		amphibious = { attack = 0.25 defence = 0.10 }
-		marsh = { attack = 0.15 defence = 0.15 movement = 0.10 }
-		forest = { attack = 0.10 defence = 0.10 }
-		hills = { attack = 0.05 defence = 0.10 }
-		urban = { attack = 0.15 defence = 0.10 }
 		plains = { attack = -0.05 }
 		desert = { attack = -0.05 }
+		hills = { attack = 0.10 defence = 0.10 }
+		forest = { attack = 0.10 defence = 0.10 }
+		mountain = { attack = 0.15 defence = 0.15 movement = 0.05 }
+		jungle = { attack = 0.15 defence = 0.10 }
+		marsh = { attack = 0.05 defence = 0.05 }
+		urban = { attack = 0.20 defence = 0.15 }
+		amphibious = { attack = 0.05 }
 
 	}
 
@@ -2712,7 +2774,7 @@ sub_units = {
 		ai_priority = 5
 		priority = 10
 		active = no
-		type = { infantry }
+		type = { motorized infantry }
 		group = airborne_infantry
 
 		categories = {
@@ -2733,7 +2795,7 @@ sub_units = {
 		max_organisation = 38
 		default_morale = 0.14
 		suppression = 1
-		manpower = 1500
+		manpower = 650
 		entrenchment = 0
 
 		training_time = 180
