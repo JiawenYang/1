@@ -1,0 +1,274 @@
+# DSW France / TFR 2020 port. Source: The Fire Rises 1.0.9.1c.
+DSW_FRA_dep_GER_has_bundestag_support_greater_than = {
+	if = {
+		limit = {
+			has_dynamic_modifier = {
+				modifier = GER_bundestag_dynamic
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = GER_has_bundestag_suppport_greater_than_tooltip
+			check_variable = {
+				var = GER_support_bundestag_total_var
+				value = GER_support_bundestag_total_trigger_var_temp
+				compare = greater_than
+			}
+		}
+	}
+}
+DSW_FRA_dep_USA_is_civil_war_faction = {
+	OR = {
+		tag = USC
+		tag = USB
+		tag = MIM
+		tag = FLM
+		tag = TFM
+		tag = CLM
+		tag = WLF
+		tag = BBC
+		tag = HUM
+		tag = PCR
+		tag = ABR
+		tag = NYP
+		tag = LOS
+		tag = PTF
+		tag = GMA
+		tag = SAT
+		tag = HUM
+		tag = BMF
+		tag = HWM
+		tag = NSM
+		tag = BLA
+		tag = ATW
+		tag = LRA
+		tag = TRG
+		tag = ATH
+		tag = BRN
+		tag = SRN
+		tag = RGA
+		tag = SRN
+		tag = APA
+		tag = AYB
+		tag = NRT
+		tag = HLA
+		tag = BGF
+		tag = CAS
+		tag = ATP
+		tag = TEX
+		tag = NEN
+		tag = STC
+		tag = GEO
+		tag = FLA
+		tag = ALA
+		tag = MSS
+		tag = LOU
+		tag = NMX
+		tag = ARZ
+		tag = CAL
+		tag = ORE
+		tag = WAS
+		tag = NNN
+		tag = VMT
+		tag = USN
+		tag = BSK
+		tag = BND
+		tag = AOF
+		tag = FAA
+		tag = MMS
+		tag = ZOE
+		tag = JDL
+		tag = NCY
+		tag = NCA
+		tag = MOS
+		tag = BNF
+		tag = DUG
+		tag = LDS
+		tag = MOG
+		tag = RPP
+		tag = LCN
+		tag = ATF
+		tag = LWK
+		tag = IKA
+		tag = RRR
+		tag = FOL
+		tag = JUA
+		tag = VAG
+		tag = BOA
+		tag = PDX
+		tag = BBC
+		tag = ASL
+		tag = BOA
+		tag = GMC
+		tag = TNM
+		tag = RCA
+		tag = GOP
+	}
+}
+DSW_FRA_dep_has_same_ideology = {
+	custom_trigger_tooltip = {
+		tooltip = has_same_ideology_tt
+		OR = {
+			AND = {
+				check_variable = {
+					ruling_party = 4
+				}
+				ROOT = {
+					check_variable = {
+						ruling_party = 4
+					}
+				}
+			}
+			AND = {
+				check_variable = {
+					ruling_party = 19
+				}
+				ROOT = {
+					check_variable = {
+						ruling_party = 19
+					}
+				}
+			}
+			AND = {
+				check_variable = {
+					ruling_party = 18
+				}
+				ROOT = {
+					check_variable = {
+						ruling_party = 18
+					}
+				}
+			}
+			AND = {
+				check_variable = {
+					ruling_party = 3
+				}
+				ROOT = {
+					check_variable = {
+						ruling_party = 3
+					}
+				}
+			}
+			AND = {
+				check_variable = {
+					ruling_party = 2
+				}
+				ROOT = {
+					check_variable = {
+						ruling_party = 2
+					}
+				}
+			}
+			AND = {
+				check_variable = {
+					ruling_party = 16
+				}
+				ROOT = {
+					check_variable = {
+						ruling_party = 16
+					}
+				}
+			}
+			AND = {
+				check_variable = {
+					ruling_party = 1
+				}
+				ROOT = {
+					check_variable = {
+						ruling_party = 1
+					}
+				}
+			}
+			AND = {
+				check_variable = {
+					ruling_party = 14
+				}
+				ROOT = {
+					check_variable = {
+						ruling_party = 14
+					}
+				}
+			}
+			AND = {
+				check_variable = {
+					ruling_party = 22
+				}
+				ROOT = {
+					check_variable = {
+						ruling_party = 22
+					}
+				}
+			}
+			AND = {
+				check_variable = {
+					ruling_party = 21
+				}
+				ROOT = {
+					check_variable = {
+						ruling_party = 21
+					}
+				}
+			}
+			AND = {
+				check_variable = {
+					ruling_party = 20
+				}
+				ROOT = {
+					check_variable = {
+						ruling_party = 20
+					}
+				}
+			}
+		}
+	}
+}
+DSW_FRA_dep_development = {
+	custom_trigger_tooltip = {
+		tooltip = development_trigger_tooltip
+		has_country_flag = manual_development_change_allowed
+	}
+}
+DSW_FRA_dep_is_completed_by_event = {
+	custom_trigger_tooltip = {
+		tooltip = completed_by_event_tooltip
+		always = no
+	}
+}
+DSW_FRA_dep_has_democratic_form_of_government = {
+	OR = {
+		check_variable = {
+			ruling_party = 3
+		}
+		check_variable = {
+			ruling_party = 2
+		}
+		check_variable = {
+			ruling_party = 16
+		}
+		check_variable = {
+			ruling_party = 1
+		}
+		check_variable = {
+			ruling_party = 14
+		}
+	}
+}
+DSW_FRA_dep_is_able_to_build_energy_farm_in_state = {
+	nuclear_reactor = 0
+	power_plant = 0
+}
+DSW_FRA_dep_has_campaign_slot = {
+	custom_trigger_tooltip = {
+		tooltip = has_campaign_slot_trigger_tooltip
+		check_variable = {
+			var = campaign_slot_var
+			value = 1
+			compare = greater_than_or_equals
+		}
+	}
+}
+DSW_FRA_dep_head_minister_trigger = {
+	custom_trigger_tooltip = {
+		tooltip = head_minister_trigger_tooltip
+		has_country_flag = manual_head_minister_change_allowed
+	}
+}

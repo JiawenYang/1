@@ -1,0 +1,234 @@
+# DSW France: retain TFR party leaders within MD ideology groups
+country_event = {
+	id = eufrance.1
+	title = eufrance.1.t
+	desc = eufrance.1.d
+	picture = GFX_FRA_10k_french_losses
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		FRA = {
+			has_country_flag = DSW_FRA_tfr_active
+		}
+	}
+	immediate = {
+		hidden_effect = {
+
+		}
+	}
+	option = {
+		name = eufrance.1.a
+	}
+}
+country_event = {
+	trigger = {
+		FRA = {
+			has_country_flag = DSW_FRA_tfr_active
+		}
+	}
+	id = eufrance.5
+	title = eufrance.5.t
+	desc = eufrance.5.d
+	picture = GFX_Join_Axis
+	is_triggered_only = yes
+	immediate = {
+
+	}
+	option = {
+		name = eufrance.5.a
+		trigger = {
+			NOT = {
+				OR = {
+					tag = AUS
+					tag = SWI
+					tag = FSP
+				}
+			}
+		}
+		if = {
+			limit = {
+				ROOT = {
+					tag = AUS
+				}
+			}
+			FRA = {
+				country_event = {
+					id = eufrance.6
+					days = 3
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				ROOT = {
+					tag = SWI
+				}
+			}
+			FRA = {
+				country_event = {
+					id = eufrance.7
+					days = 3
+				}
+			}
+		}
+	}
+	option = {
+		name = eufrance.5.b
+		if = {
+			limit = {
+				ROOT = {
+					tag = AUS
+				}
+			}
+			GER = {
+				annex_country = {
+					target = AUS
+					transfer_troops = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				ROOT = {
+					tag = SWI
+				}
+			}
+			FRA = {
+				annex_country = {
+					target = SWI
+					transfer_troops = yes
+				}
+			}
+			GER = {
+				transfer_state = 74
+				transfer_state = 719
+			}
+			if = {
+				limit = {
+					country_exists = ITA
+				}
+				ITA = {
+					transfer_state = 73
+				}
+			}
+			if = {
+				limit = {
+					NOT = {
+						country_exists = ITA
+					}
+				}
+				GER = {
+					transfer_state = 73
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				ROOT = {
+					tag = FSP
+				}
+			}
+			FRA = {
+				annex_country = {
+					target = FSP
+					transfer_troops = yes
+				}
+			}
+		}
+	}
+}
+country_event = {
+	trigger = {
+		FRA = {
+			has_country_flag = DSW_FRA_tfr_active
+		}
+	}
+	id = eufrance.6
+	title = eufrance.6.t
+	desc = eufrance.6.d
+	picture = GFX_Join_Axis
+	is_triggered_only = yes
+	immediate = {
+
+	}
+	option = {
+		name = eufrance.6.a
+		declare_war_on = {
+			target = AUS
+			type = annex_everything
+		}
+	}
+}
+country_event = {
+	trigger = {
+		FRA = {
+			has_country_flag = DSW_FRA_tfr_active
+		}
+	}
+	id = eufrance.7
+	title = eufrance.7.t
+	desc = eufrance.7.d
+	picture = GFX_Join_Axis
+	is_triggered_only = yes
+	immediate = {
+
+	}
+	option = {
+		name = eufrance.7.a
+		declare_war_on = {
+			target = SWI
+			type = annex_everything
+		}
+	}
+}
+country_event = {
+	trigger = {
+		FRA = {
+			has_country_flag = DSW_FRA_tfr_active
+		}
+	}
+	id = eufrance.8
+	title = eufrance.8.t
+	desc = eufrance.8.d
+	picture = GFX_FRA_10k_french_losses
+	is_triggered_only = yes
+	immediate = {
+
+	}
+	option = {
+		name = eufrance.8.a
+		add_political_power = 50
+		set_temp_variable = {
+			party_index = 18
+		}
+		set_temp_variable = {
+			party_popularity_increase = -0.05
+		}
+		change_relative_party_popularity = yes
+		recalculate_party = yes
+		set_temp_variable = {
+			party_index = 1
+		}
+		set_temp_variable = {
+			party_popularity_increase = -0.05
+		}
+		change_relative_party_popularity = yes
+		recalculate_party = yes
+		set_temp_variable = {
+			party_index = 14
+		}
+		set_temp_variable = {
+			party_popularity_increase = -0.05
+		}
+		change_relative_party_popularity = yes
+		recalculate_party = yes
+		set_temp_variable = {
+			party_index = 22
+		}
+		set_temp_variable = {
+			party_popularity_increase = -0.05
+		}
+		change_relative_party_popularity = yes
+		recalculate_party = yes
+	}
+}

@@ -1,0 +1,320 @@
+# DSW France compatibility
+ideas = {
+	theorist_minister = {
+		FRA_Sebastien_Lecornu_IntelM = {
+			picture = FRA_Sebastien_Lecornu
+			allowed = {
+				original_tag = FRA
+			}
+			available = {
+				OR = {
+					check_variable = {
+						ruling_party = 3
+					}
+					check_variable = {
+						ruling_party = 2
+					}
+					check_variable = {
+						ruling_party = 16
+					}
+					has_country_leader = {
+						character = DSW_TFR_FRA_emmanuel_macron_char
+						ruling_only = yes
+					}
+				}
+			}
+			on_add = {
+				set_temp_variable = {
+					party_index = 2
+				}
+				set_temp_variable = {
+					party_popularity_increase = 0.02
+				}
+				change_relative_party_popularity = yes
+				recalculate_party = yes
+			}
+			on_remove = {
+				if = {
+					limit = {
+						NOT = {
+							has_country_flag = remove_ideas_flag
+						}
+					}
+					set_temp_variable = {
+						party_index = 2
+					}
+					set_temp_variable = {
+						party_popularity_increase = -0.02
+					}
+					change_relative_party_popularity = yes
+					recalculate_party = yes
+					add_stability = -0.05
+				}
+			}
+			traits = {
+				FRA_ide_soc_lib
+				int_ideological_enforcer
+			}
+		}
+		FRA_Florence_Parly_IntelM = {
+			picture = FRA_Florence_Parly
+			allowed = {
+				original_tag = FRA
+			}
+			available = {
+				OR = {
+					check_variable = {
+						ruling_party = 3
+					}
+					check_variable = {
+						ruling_party = 2
+					}
+					has_country_leader = {
+						character = DSW_TFR_FRA_emmanuel_macron_char
+						ruling_only = yes
+					}
+				}
+			}
+			on_add = {
+				set_temp_variable = {
+					party_index = 3
+				}
+				set_temp_variable = {
+					party_popularity_increase = 0.02
+				}
+				change_relative_party_popularity = yes
+				recalculate_party = yes
+			}
+			on_remove = {
+				if = {
+					limit = {
+						NOT = {
+							has_country_flag = remove_ideas_flag
+						}
+					}
+					set_temp_variable = {
+						party_index = 3
+					}
+					set_temp_variable = {
+						party_popularity_increase = -0.02
+					}
+					change_relative_party_popularity = yes
+					recalculate_party = yes
+					add_stability = -0.05
+				}
+			}
+			traits = {
+				FRA_ide_soc_lib
+				army_chief_political_protege
+			}
+		}
+		FRA_Alexis_Corbiere_IntelM = {
+			picture = FRA_Alexis_Corbiere
+			allowed = {
+				original_tag = FRA
+			}
+			available = {
+				OR = {
+					check_variable = {
+						ruling_party = 19
+					}
+					check_variable = {
+						ruling_party = 18
+					}
+					check_variable = {
+						ruling_party = 3
+					}
+				}
+			}
+			on_add = {
+				set_temp_variable = {
+					party_index = 18
+				}
+				set_temp_variable = {
+					party_popularity_increase = 0.02
+				}
+				change_relative_party_popularity = yes
+				recalculate_party = yes
+			}
+			on_remove = {
+				if = {
+					limit = {
+						NOT = {
+							has_country_flag = remove_ideas_flag
+						}
+					}
+					set_temp_variable = {
+						party_index = 18
+					}
+					set_temp_variable = {
+						party_popularity_increase = -0.02
+					}
+					change_relative_party_popularity = yes
+					recalculate_party = yes
+					add_stability = -0.05
+				}
+			}
+			traits = {
+				FRA_ide_lib_soc
+				int_ideological_enforcer
+			}
+		}
+		FRA_Bertrand_de_La_Chesnais_IntelM = {
+			picture = FRA_Bertrand_de_La_Chesnais
+			allowed = {
+				original_tag = FRA
+			}
+			available = {
+				OR = {
+					check_variable = {
+						ruling_party = 14
+					}
+					check_variable = {
+						ruling_party = 22
+					}
+					check_variable = {
+						ruling_party = 1
+					}
+				}
+			}
+			on_add = {
+				set_temp_variable = {
+					party_index = 22
+				}
+				set_temp_variable = {
+					party_popularity_increase = 0.02
+				}
+				change_relative_party_popularity = yes
+				recalculate_party = yes
+			}
+			on_remove = {
+				if = {
+					limit = {
+						NOT = {
+							has_country_flag = remove_ideas_flag
+						}
+					}
+					set_temp_variable = {
+						party_index = 22
+					}
+					set_temp_variable = {
+						party_popularity_increase = -0.02
+					}
+					change_relative_party_popularity = yes
+					recalculate_party = yes
+					add_stability = -0.05
+				}
+			}
+			traits = {
+				FRA_ide_despot
+				hog_radical_militarist
+			}
+		}
+		FRA_Gerard_Longuet_IntelM = {
+			picture = FRA_Gerard_Longuet
+			allowed = {
+				original_tag = FRA
+			}
+			available = {
+				OR = {
+					check_variable = {
+						ruling_party = 16
+					}
+					check_variable = {
+						ruling_party = 14
+					}
+					check_variable = {
+						ruling_party = 1
+					}
+				}
+			}
+			on_add = {
+				set_temp_variable = {
+					party_index = 16
+				}
+				set_temp_variable = {
+					party_popularity_increase = 0.02
+				}
+				change_relative_party_popularity = yes
+				recalculate_party = yes
+			}
+			on_remove = {
+				if = {
+					limit = {
+						NOT = {
+							has_country_flag = remove_ideas_flag
+						}
+					}
+					set_temp_variable = {
+						party_index = 16
+					}
+					set_temp_variable = {
+						party_popularity_increase = -0.02
+					}
+					change_relative_party_popularity = yes
+					recalculate_party = yes
+					add_stability = -0.05
+				}
+			}
+			traits = {
+				FRA_ide_mar_lib
+				military_theorist
+			}
+		}
+		FRA_Michele_Alliot_Marie_IntelM = {
+			picture = FRA_Michele_Alliot_Marie
+			allowed = {
+				original_tag = FRA
+			}
+			available = {
+				OR = {
+					check_variable = {
+						ruling_party = 1
+					}
+					check_variable = {
+						ruling_party = 16
+					}
+					check_variable = {
+						ruling_party = 14
+					}
+					has_country_leader = {
+						character = DSW_TFR_FRA_emmanuel_macron_char
+						ruling_only = yes
+					}
+				}
+			}
+			on_add = {
+				set_temp_variable = {
+					party_index = 16
+				}
+				set_temp_variable = {
+					party_popularity_increase = 0.02
+				}
+				change_relative_party_popularity = yes
+				recalculate_party = yes
+			}
+			on_remove = {
+				if = {
+					limit = {
+						NOT = {
+							has_country_flag = remove_ideas_flag
+						}
+					}
+					set_temp_variable = {
+						party_index = 16
+					}
+					set_temp_variable = {
+						party_popularity_increase = -0.02
+					}
+					change_relative_party_popularity = yes
+					recalculate_party = yes
+					add_stability = -0.05
+				}
+			}
+			traits = {
+				FRA_ide_mar_lib
+				hog_happy_amateur
+			}
+		}
+	}
+}

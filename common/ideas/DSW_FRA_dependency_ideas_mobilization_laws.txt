@@ -1,0 +1,434 @@
+# DSW France compatibility
+ideas = {
+	mobilization_laws = {
+		medium_conscription = {
+			available = {
+				OR = {
+					has_idea = war_mobilization
+					has_idea = total_mobilization
+					has_idea = permanent_mobilization
+					AND = {
+						has_war = yes
+						enemies_strength_ratio > 0.5
+					}
+				}
+				NOT = {
+					has_war_support < 0.2
+				}
+				if = {
+					limit = {
+						tag = JAP
+					}
+					has_country_flag = DSW_FRA_pending_focus_JAP_conscription_reform
+				}
+				if = {
+					limit = {
+						has_country_flag = DSW_FRA_pending_focus_SOV_motherland_of_virtue
+					}
+					always = no
+				}
+			}
+			ai_will_do = {
+				base = 1
+				modifier = {
+					factor = 20
+					manpower_per_military_factory < 800
+				}
+				modifier = {
+					factor = 3
+					tag = TAI
+					has_manpower < 200000
+				}
+				modifier = {
+					add = 20
+					tag = CAN
+					OR = {
+						has_global_flag = USA_american_civil_war_global
+						has_global_flag = USA_american_civil_war_over_global
+					}
+				}
+			}
+			cost = 100
+			removal_cost = -1
+			picture = laws_conscription3
+			level = 4
+			modifier = {
+				conscription = 0.02
+				training_time_factor = 0.1
+			}
+			cancel_if_invalid = no
+		}
+		higher_conscription = {
+			available = {
+				has_war = yes
+				OR = {
+					NOT = {
+						has_war_support < 0.7
+					}
+					surrender_progress > 0
+				}
+				enemies_strength_ratio > 0.75
+				if = {
+					limit = {
+						tag = JAP
+					}
+					has_completed_focus = JAP_spiritual_mobilization
+				}
+			}
+			ai_will_do = {
+				base = 1
+				modifier = {
+					factor = 20
+					manpower_per_military_factory < 600
+				}
+				modifier = {
+					factor = 0.5
+					manpower_per_military_factory > 1000
+				}
+				modifier = {
+					factor = 0
+					NOT = {
+						tag = TAI
+					}
+					manpower_per_military_factory > 5000
+				}
+				modifier = {
+					factor = 3
+					tag = TAI
+					has_manpower < 200000
+				}
+				modifier = {
+					factor = 10
+					original_tag = SOV
+					date > 2026.1.1
+					has_manpower < 2000000
+				}
+				modifier = {
+					add = 20
+					tag = CAN
+					OR = {
+						has_global_flag = USA_american_civil_war_global
+						has_global_flag = USA_american_civil_war_over_global
+					}
+				}
+			}
+			cost = 100
+			removal_cost = -1
+			picture = laws_conscription5
+			level = 2
+			modifier = {
+				conscription = 0.08
+				industrial_capacity_factory = -0.3
+				industrial_capacity_dockyard = -0.3
+				production_speed_buildings_factor = -0.3
+				training_time_factor = 0.3
+			}
+			cancel_if_invalid = no
+		}
+		lower_conscription = {
+			cost = 100
+			removal_cost = -1
+			picture = laws_conscription1
+			level = 6
+			available = {
+				OR = {
+					NOT = {
+						has_idea = mass_consumerism
+					}
+					NOT = {
+						original_tag = SOV
+					}
+				}
+			}
+			ai_will_do = {
+				base = 1
+				modifier = {
+					factor = 60
+					has_idea = lowest_conscription
+				}
+			}
+			modifier = {
+				conscription = 0.005
+				industrial_capacity_factory = 0.05
+				industrial_capacity_dockyard = 0.05
+				production_speed_buildings_factor = 0.05
+			}
+			default = yes
+			cancel_if_invalid = no
+		}
+		lowest_conscription = {
+			picture = laws_conscription
+			cost = 100
+			removal_cost = -1
+			level = 7
+			available = {
+				NOT = {
+					original_tag = SOV
+				}
+			}
+			modifier = {
+				conscription = 0.002
+				industrial_capacity_factory = 0.1
+				industrial_capacity_dockyard = 0.1
+				production_speed_buildings_factor = 0.1
+			}
+			allowed_to_remove = {
+				if = {
+					limit = {
+						tag = JAP
+					}
+					NOT = {
+						has_idea = JAP_japanese_pacifism_idea
+					}
+				}
+				if = {
+					limit = {
+						tag = FRA
+					}
+					NOT = {
+						has_completed_focus = FRA_Surrender_the_Military
+					}
+				}
+			}
+			cancel_if_invalid = no
+		}
+		highest_conscription = {
+			available = {
+				has_war = yes
+				OR = {
+					NOT = {
+						has_war_support < 0.85
+					}
+					surrender_progress > 0.25
+				}
+				enemies_strength_ratio > 1
+				if = {
+					limit = {
+						tag = JAP
+					}
+					has_completed_focus = JAP_spiritual_mobilization
+				}
+			}
+			ai_will_do = {
+				base = 1
+				modifier = {
+					factor = 20
+					manpower_per_military_factory < 500
+				}
+				modifier = {
+					factor = 0.5
+					manpower_per_military_factory > 1000
+				}
+				modifier = {
+					factor = 0
+					manpower_per_military_factory > 5000
+				}
+				modifier = {
+					add = 20
+					tag = CAN
+					OR = {
+						has_global_flag = USA_american_civil_war_global
+						has_global_flag = USA_american_civil_war_over_global
+					}
+				}
+			}
+			cost = 100
+			removal_cost = -1
+			picture = laws_conscription6
+			level = 1
+			modifier = {
+				conscription = 0.16
+				industrial_capacity_factory = -0.4
+				industrial_capacity_dockyard = -0.4
+				production_speed_buildings_factor = -0.4
+				training_time_factor = 0.5
+			}
+			cancel_if_invalid = no
+		}
+		high_conscription = {
+			available = {
+				if = {
+					limit = {
+						NOT = {
+							tag = ATW
+						}
+					}
+					AND = {
+						has_war = yes
+						enemies_strength_ratio > 0.6
+					}
+				}
+				OR = {
+					NOT = {
+						has_war_support < 0.5
+					}
+					surrender_progress > 0
+				}
+				if = {
+					limit = {
+						tag = JAP
+					}
+					has_country_flag = DSW_FRA_pending_focus_JAP_conscription_reform
+				}
+				if = {
+					limit = {
+						has_country_flag = DSW_FRA_pending_focus_SOV_motherland_of_virtue
+					}
+					always = no
+				}
+			}
+			ai_will_do = {
+				base = 1
+				modifier = {
+					factor = 20
+					manpower_per_military_factory < 700
+				}
+				modifier = {
+					factor = 0.5
+					manpower_per_military_factory > 1000
+				}
+				modifier = {
+					factor = 0
+					NOT = {
+						tag = TAI
+					}
+					NOT = {
+						tag = SOV
+					}
+					manpower_per_military_factory > 3000
+				}
+				modifier = {
+					factor = 3
+					tag = TAI
+					has_manpower < 200000
+				}
+				modifier = {
+					factor = 10
+					original_tag = GER
+					has_manpower < 2000000
+				}
+				modifier = {
+					factor = 1000
+					original_tag = SOV
+					check_variable = {
+						manpower_k < 3000
+					}
+				}
+				modifier = {
+					add = 20
+					tag = CAN
+					OR = {
+						has_global_flag = USA_american_civil_war_global
+						has_global_flag = USA_american_civil_war_over_global
+					}
+				}
+			}
+			cost = 100
+			removal_cost = -1
+			picture = laws_conscription4
+			level = 3
+			modifier = {
+				conscription = 0.04
+				industrial_capacity_factory = -0.1
+				industrial_capacity_dockyard = -0.1
+				production_speed_buildings_factor = -0.1
+				training_time_factor = 0.2
+			}
+			cancel_if_invalid = no
+		}
+		low_conscription = {
+			cost = 100
+			removal_cost = -1
+			picture = laws_conscription2
+			level = 5
+			available = {
+				NOT = {
+					has_war_support < 0.1
+				}
+				if = {
+					limit = {
+						has_country_flag = DSW_FRA_pending_focus_SOV_motherland_of_virtue
+					}
+					always = no
+				}
+			}
+			modifier = {
+				conscription = 0.01
+			}
+			ai_will_do = {
+				base = 1
+				modifier = {
+					factor = 20
+					manpower_per_military_factory < 1000
+				}
+				modifier = {
+					add = 20
+					tag = CAN
+					OR = {
+						has_global_flag = USA_american_civil_war_global
+						has_global_flag = USA_american_civil_war_over_global
+					}
+				}
+			}
+			cancel_if_invalid = no
+		}
+		FAF_latin_conscription_law = {
+			allowed = {
+				tag = FAF
+			}
+			allowed_to_remove = {
+				always = no
+			}
+			available = {
+				has_completed_focus = FAF_New_Imperial_Army
+			}
+			visible = {
+				has_completed_focus = FAF_New_Imperial_Army
+			}
+			ai_will_do = {
+				base = 10
+			}
+			cost = 100
+			removal_cost = -1
+			picture = laws_conscription_roman_conscription
+			level = 2
+			modifier = {
+				conscription = 0.1
+				non_core_manpower = 0.05
+				industrial_capacity_factory = -0.125
+				industrial_capacity_dockyard = -0.125
+				production_speed_buildings_factor = -0.125
+			}
+			cancel_if_invalid = no
+		}
+		lafayette_conscription = {
+			allowed = {
+				tag = GER
+			}
+			available = {
+				has_completed_focus = FAF_Control_the_Youth
+			}
+			visible = {
+				has_completed_focus = FAF_Control_the_Youth
+			}
+			allowed_to_remove = {
+				always = no
+			}
+			ai_will_do = {
+				base = 10
+			}
+			cost = 100
+			removal_cost = -1
+			picture = laws_conscription_lafayette
+			level = 2
+			modifier = {
+				conscription = 0.12
+				industrial_capacity_factory = -0.2
+				industrial_capacity_dockyard = -0.2
+				production_speed_buildings_factor = -0.2
+				training_time_factor = -0.3
+			}
+			cancel_if_invalid = no
+		}
+	}
+}

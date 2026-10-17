@@ -1,0 +1,43 @@
+add_namespace = dsw_fra
+country_event = {
+    id = dsw_fra.2017
+    title = dsw_fra.2017.t
+    desc = dsw_fra.2017.d
+    picture = GFX_french_flag_generic
+    is_triggered_only = yes
+    hidden = yes
+    trigger = { tag = FRA NOT = { has_country_flag = DSW_FRA_tfr_active } }
+    immediate = { DSW_FRA_elect_macron_2017 = yes }
+    option = { name = dsw_fra.ok }
+}
+country_event = {
+    id = dsw_fra.1
+    title = dsw_fra.1.t
+    desc = dsw_fra.1.d
+    picture = GFX_FRA_covid
+    is_triggered_only = yes
+    trigger = { tag = FRA }
+    immediate = { DSW_FRA_initialize_2020 = yes }
+    option = { name = dsw_fra.1.a custom_effect_tooltip = DSW_FRA_transition_tt }
+}
+country_event = {
+    id = dsw_fra.2
+    title = dsw_fra.2.t
+    desc = dsw_fra.2.d
+    picture = GFX_FRA_2022_election
+    is_triggered_only = yes
+    trigger = { tag = FRA has_country_flag = DSW_FRA_tfr_active NOT = { has_country_flag = FRA_After_2022_Election_flag } }
+    option = { name = dsw_fra.2.a country_event = { id = france.997 } }
+    option = { name = dsw_fra.cancel }
+}
+country_event = {
+    id = dsw_fra.10
+    title = dsw_fra.10.t
+    desc = dsw_fra.10.d
+    picture = GFX_FRA_Military
+    is_triggered_only = yes
+    trigger = { tag = FRA has_country_flag = DSW_FRA_tfr_active }
+    option = { name = dsw_fra.10.a set_country_flag = DSW_FRA_european_war_victory_hook country_event = { id = france.215 } }
+    option = { name = dsw_fra.10.b set_country_flag = DSW_FRA_european_war_defeat_hook country_event = { id = france.203 } }
+    option = { name = dsw_fra.cancel }
+}

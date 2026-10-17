@@ -1,0 +1,214 @@
+# DSW France compatibility
+ideas = {
+	economic_minister = {
+		FRA_Bruno_le_Maire_EM = {
+			picture = FRA_Bruno_le_Maire
+			allowed = {
+				original_tag = FRA
+			}
+			available = {
+				OR = {
+					check_variable = {
+						ruling_party = 16
+					}
+					check_variable = {
+						ruling_party = 2
+					}
+					has_country_leader = {
+						character = DSW_TFR_FRA_emmanuel_macron_char
+						ruling_only = yes
+					}
+				}
+			}
+			on_add = {
+				set_temp_variable = {
+					party_index = 2
+				}
+				set_temp_variable = {
+					party_popularity_increase = 0.02
+				}
+				change_relative_party_popularity = yes
+				recalculate_party = yes
+			}
+			on_remove = {
+				if = {
+					limit = {
+						NOT = {
+							has_country_flag = remove_ideas_flag
+						}
+					}
+					set_temp_variable = {
+						party_index = 2
+					}
+					set_temp_variable = {
+						party_popularity_increase = -0.02
+					}
+					change_relative_party_popularity = yes
+					recalculate_party = yes
+					add_stability = -0.05
+				}
+			}
+			traits = {
+				FRA_ide_soc_lib
+				eco_experienced_capitalist
+			}
+		}
+		FRA_Eric_Coquerel_EM = {
+			picture = FRA_Eric_Coquerel
+			allowed = {
+				original_tag = FRA
+			}
+			available = {
+				OR = {
+					check_variable = {
+						ruling_party = 19
+					}
+					check_variable = {
+						ruling_party = 18
+					}
+					check_variable = {
+						ruling_party = 3
+					}
+				}
+			}
+			on_add = {
+				set_temp_variable = {
+					party_index = 18
+				}
+				set_temp_variable = {
+					party_popularity_increase = 0.02
+				}
+				change_relative_party_popularity = yes
+				recalculate_party = yes
+			}
+			on_remove = {
+				if = {
+					limit = {
+						NOT = {
+							has_country_flag = remove_ideas_flag
+						}
+					}
+					set_temp_variable = {
+						party_index = 18
+					}
+					set_temp_variable = {
+						party_popularity_increase = -0.02
+					}
+					change_relative_party_popularity = yes
+					recalculate_party = yes
+					add_stability = -0.05
+				}
+			}
+			traits = {
+				FRA_ide_lib_soc
+				eco_reformer
+			}
+		}
+		FRA_Guillaume_Peltier_EM = {
+			picture = FRA_Guillaume_Peltier
+			allowed = {
+				original_tag = FRA
+			}
+			available = {
+				OR = {
+					check_variable = {
+						ruling_party = 1
+					}
+					check_variable = {
+						ruling_party = 14
+					}
+					check_variable = {
+						ruling_party = 22
+					}
+				}
+			}
+			on_add = {
+				set_temp_variable = {
+					party_index = 14
+				}
+				set_temp_variable = {
+					party_popularity_increase = 0.02
+				}
+				change_relative_party_popularity = yes
+				recalculate_party = yes
+			}
+			on_remove = {
+				if = {
+					limit = {
+						NOT = {
+							has_country_flag = remove_ideas_flag
+						}
+					}
+					set_temp_variable = {
+						party_index = 14
+					}
+					set_temp_variable = {
+						party_popularity_increase = -0.02
+					}
+					change_relative_party_popularity = yes
+					recalculate_party = yes
+					add_stability = -0.05
+				}
+			}
+			traits = {
+				FRA_ide_aut_dem
+				eco_corrupt_kleptocrat
+			}
+		}
+		FRA_Pierre_Gattaz_EM = {
+			picture = FRA_Pierre_Gattaz
+			allowed = {
+				original_tag = FRA
+			}
+			available = {
+				OR = {
+					check_variable = {
+						ruling_party = 16
+					}
+					check_variable = {
+						ruling_party = 1
+					}
+					check_variable = {
+						ruling_party = 14
+					}
+					has_country_leader = {
+						character = DSW_TFR_FRA_emmanuel_macron_char
+						ruling_only = yes
+					}
+				}
+			}
+			on_add = {
+				set_temp_variable = {
+					party_index = 16
+				}
+				set_temp_variable = {
+					party_popularity_increase = 0.02
+				}
+				change_relative_party_popularity = yes
+				recalculate_party = yes
+			}
+			on_remove = {
+				if = {
+					limit = {
+						NOT = {
+							has_country_flag = remove_ideas_flag
+						}
+					}
+					set_temp_variable = {
+						party_index = 16
+					}
+					set_temp_variable = {
+						party_popularity_increase = -0.02
+					}
+					change_relative_party_popularity = yes
+					recalculate_party = yes
+					add_stability = -0.05
+				}
+			}
+			traits = {
+				FRA_ide_mar_lib
+				eco_administrative_genius
+			}
+		}
+	}
+}

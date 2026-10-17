@@ -1,0 +1,240 @@
+# DSW France compatibility
+ideas = {
+	foreign_minister = {
+		FRA_Catherine_Colonna_FM = {
+			picture = FRA_Catherine_Colonna
+			allowed = {
+				original_tag = FRA
+			}
+			available = {
+				OR = {
+					check_variable = {
+						ruling_party = 18
+					}
+					check_variable = {
+						ruling_party = 3
+					}
+					check_variable = {
+						ruling_party = 2
+					}
+					check_variable = {
+						ruling_party = 16
+					}
+					check_variable = {
+						ruling_party = 1
+					}
+					has_country_leader = {
+						character = DSW_TFR_FRA_emmanuel_macron_char
+						ruling_only = yes
+					}
+				}
+			}
+			on_add = {
+				set_temp_variable = {
+					party_index = 2
+				}
+				set_temp_variable = {
+					party_popularity_increase = 0.02
+				}
+				change_relative_party_popularity = yes
+				recalculate_party = yes
+			}
+			on_remove = {
+				if = {
+					limit = {
+						NOT = {
+							has_country_flag = remove_ideas_flag
+						}
+					}
+					set_temp_variable = {
+						party_index = 2
+					}
+					set_temp_variable = {
+						party_popularity_increase = -0.02
+					}
+					change_relative_party_popularity = yes
+					recalculate_party = yes
+					add_stability = -0.05
+				}
+			}
+			traits = {
+				FRA_ide_soc_lib
+				for_appeaser
+			}
+		}
+		FRA_jean_yves_le_drian_FM = {
+			picture = FRA_jean_yves_le_drian
+			allowed = {
+				original_tag = FRA
+			}
+			available = {
+				OR = {
+					check_variable = {
+						ruling_party = 18
+					}
+					check_variable = {
+						ruling_party = 3
+					}
+					check_variable = {
+						ruling_party = 2
+					}
+					has_country_leader = {
+						character = DSW_TFR_FRA_emmanuel_macron_char
+						ruling_only = yes
+					}
+				}
+			}
+			on_add = {
+				set_temp_variable = {
+					party_index = 3
+				}
+				set_temp_variable = {
+					party_popularity_increase = 0.01
+				}
+				change_relative_party_popularity = yes
+				recalculate_party = yes
+				set_temp_variable = {
+					party_index = 2
+				}
+				set_temp_variable = {
+					party_popularity_increase = 0.01
+				}
+				change_relative_party_popularity = yes
+				recalculate_party = yes
+			}
+			on_remove = {
+				if = {
+					limit = {
+						NOT = {
+							has_country_flag = remove_ideas_flag
+						}
+					}
+					set_temp_variable = {
+						party_index = 3
+					}
+					set_temp_variable = {
+						party_popularity_increase = -0.01
+					}
+					change_relative_party_popularity = yes
+					recalculate_party = yes
+					set_temp_variable = {
+						party_index = 2
+					}
+					set_temp_variable = {
+						party_popularity_increase = -0.01
+					}
+					change_relative_party_popularity = yes
+					recalculate_party = yes
+					add_stability = -0.05
+				}
+			}
+			traits = {
+				FRA_ide_soc_dem
+				for_global_interventionist
+			}
+		}
+		FRA_Francois_Asselineau_FM = {
+			picture = FRA_Francois_Asselineau
+			allowed = {
+				original_tag = FRA
+			}
+			available = {
+				OR = {
+					check_variable = {
+						ruling_party = 1
+					}
+					check_variable = {
+						ruling_party = 14
+					}
+					check_variable = {
+						ruling_party = 22
+					}
+				}
+			}
+			on_add = {
+				set_temp_variable = {
+					party_index = 14
+				}
+				set_temp_variable = {
+					party_popularity_increase = 0.02
+				}
+				change_relative_party_popularity = yes
+				recalculate_party = yes
+			}
+			on_remove = {
+				if = {
+					limit = {
+						NOT = {
+							has_country_flag = remove_ideas_flag
+						}
+					}
+					set_temp_variable = {
+						party_index = 14
+					}
+					set_temp_variable = {
+						party_popularity_increase = -0.02
+					}
+					change_relative_party_popularity = yes
+					recalculate_party = yes
+					add_stability = -0.05
+				}
+			}
+			traits = {
+				FRA_ide_aut_dem
+				for_loyal_nationalist
+			}
+		}
+		FRA_Raphael_Gluckmann_FM = {
+			picture = FRA_Raphael_Gluckmann
+			allowed = {
+				original_tag = FRA
+			}
+			available = {
+				OR = {
+					check_variable = {
+						ruling_party = 18
+					}
+					check_variable = {
+						ruling_party = 3
+					}
+					has_country_leader = {
+						character = DSW_TFR_FRA_emmanuel_macron_char
+						ruling_only = yes
+					}
+				}
+			}
+			on_add = {
+				set_temp_variable = {
+					party_index = 3
+				}
+				set_temp_variable = {
+					party_popularity_increase = 0.02
+				}
+				change_relative_party_popularity = yes
+				recalculate_party = yes
+			}
+			on_remove = {
+				if = {
+					limit = {
+						NOT = {
+							has_country_flag = remove_ideas_flag
+						}
+					}
+					set_temp_variable = {
+						party_index = 3
+					}
+					set_temp_variable = {
+						party_popularity_increase = -0.02
+					}
+					change_relative_party_popularity = yes
+					recalculate_party = yes
+					add_stability = -0.05
+				}
+			}
+			traits = {
+				FRA_ide_soc_dem
+				for_biased_intellectual
+			}
+		}
+	}
+}

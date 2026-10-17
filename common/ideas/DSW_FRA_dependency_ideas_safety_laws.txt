@@ -1,0 +1,139 @@
+# DSW France compatibility
+ideas = {
+	safety_laws = {
+		low_safety = {
+			removal_cost = -1
+			cost = 100
+			level = 4
+			picture = laws_safety1
+			available = {
+				if = {
+					limit = {
+						has_country_flag = DSW_FRA_pending_focus_PRC_free_of_charge
+					}
+					always = no
+				}
+				if = {
+					limit = {
+						has_country_flag = DSW_FRA_pending_focus_SOV_citizenship_for_service
+					}
+					always = no
+				}
+			}
+			modifier = {
+				MONTHLY_POPULATION = -0.05
+				production_factory_efficiency_gain_factor = -0.05
+				production_speed_buildings_factor = 0.025
+				industrial_capacity_factory = 0.025
+				industrial_capacity_dockyard = 0.025
+				industrial_development_monthly = -0.005
+				farming_development_monthly = -0.005
+			}
+		}
+		higher_safety = {
+			removal_cost = -1
+			cost = 100
+			level = 1
+			picture = laws_safety4
+			modifier = {
+				stability_factor = 0.075
+				production_factory_efficiency_gain_factor = 0.1
+				production_speed_buildings_factor = -0.05
+				industrial_capacity_factory = -0.05
+				industrial_capacity_dockyard = -0.05
+				industrial_development_monthly = 0.01
+				farming_development_monthly = 0.01
+			}
+		}
+		high_safety = {
+			removal_cost = -1
+			cost = 100
+			level = 2
+			picture = laws_safety3
+			available = {
+				if = {
+					limit = {
+						has_country_flag = DSW_FRA_pending_focus_PRC_free_of_charge
+					}
+					always = no
+				}
+				if = {
+					limit = {
+						has_country_flag = DSW_FRA_pending_focus_SOV_citizenship_for_service
+					}
+					always = no
+				}
+			}
+			modifier = {
+				stability_factor = 0.05
+				production_factory_efficiency_gain_factor = 0.05
+				production_speed_buildings_factor = -0.025
+				industrial_capacity_factory = -0.025
+				industrial_capacity_dockyard = -0.025
+				industrial_development_monthly = 0.005
+				farming_development_monthly = 0.005
+			}
+		}
+		lower_safety = {
+			removal_cost = -1
+			cost = 100
+			level = 5
+			picture = laws_safety
+			available = {
+				OR = {
+					DSW_FRA_dep_has_democratic_form_of_government = no
+					hidden_trigger = {
+						has_country_flag = lower_safety_enabled_flag
+					}
+				}
+				if = {
+					limit = {
+						has_country_flag = DSW_FRA_pending_focus_PRC_free_of_charge
+					}
+					always = no
+				}
+				if = {
+					limit = {
+						has_country_flag = DSW_FRA_pending_focus_SOV_citizenship_for_service
+					}
+					always = no
+				}
+			}
+			modifier = {
+				MONTHLY_POPULATION = -0.1
+				production_factory_efficiency_gain_factor = -0.1
+				production_speed_buildings_factor = 0.05
+				industrial_capacity_factory = 0.05
+				industrial_capacity_dockyard = 0.05
+				industrial_development_monthly = -0.01
+				farming_development_monthly = -0.01
+			}
+		}
+		medium_safety = {
+			removal_cost = -1
+			cost = 100
+			level = 3
+			default = yes
+			picture = laws_safety2
+			available = {
+				if = {
+					limit = {
+						has_country_flag = DSW_FRA_pending_focus_PRC_free_of_charge
+					}
+					always = no
+				}
+				if = {
+					limit = {
+						has_country_flag = DSW_FRA_pending_focus_SOV_citizenship_for_service
+					}
+					always = no
+				}
+			}
+			modifier = {
+				stability_factor = 0.025
+				industrial_development_monthly = 0.005
+				farming_development_monthly = 0.005
+			}
+		}
+	}
+}
