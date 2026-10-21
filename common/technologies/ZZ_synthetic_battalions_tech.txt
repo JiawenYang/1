@@ -2,8 +2,8 @@
 # 通用合成营解锁科技（第十二轮）
 # ============================================================================
 # 无 folder 字段，不显示在科技树中，仅作为 enable_subunits 挂载点；
-# 开局由 ZZ6 - startup.txt 按国 set_technology 统一授予
-# （USA/SOV/CHI/ISR/GER/FRA/ENG/JAP/KOR/RAJ/NKO 共 11 国），
+# 开局由 ZZ9 - 2017.txt 按国 set_technology 统一授予
+# （USA/SOV/CHI 共 3 国，其余国家已去合成化，改用常规营/特色营），
 # set_technology 可绕过 allow 检查；ai_will_do = 0 防止 AI 浪费科研点。
 # 空降营（运输机）与空中突击营（直升机）分属两套科技门控，互不绑定。
 # ============================================================================
@@ -21,6 +21,60 @@ technologies = {
 			syn_medium_bat
 			syn_light_bat
 			syn_amphibious_bat
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	# ==================== 第十四轮：国别专属合成营解锁 ====================
+	# allow=original_tag 锁定，仅对应国家可研究；开局由 ZZ9 - 2017.txt 按国授予
+
+	usa_synthetic_battalions_tech = {
+		research_cost = 1
+		start_year = 2015
+		allow = {
+			original_tag = USA
+		}
+		enable_subunits = {
+			syn_heavy_bat_USA
+			syn_medium_bat_USA
+			syn_light_bat_USA
+			syn_amphibious_bat_USA
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	sov_synthetic_battalions_tech = {
+		research_cost = 1
+		start_year = 2015
+		allow = {
+			original_tag = SOV
+		}
+		enable_subunits = {
+			syn_heavy_bat_SOV
+			syn_medium_bat_SOV
+			syn_light_bat_SOV
+			syn_amphibious_bat_SOV
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	chi_synthetic_battalions_tech = {
+		research_cost = 1
+		start_year = 2015
+		allow = {
+			original_tag = CHI
+		}
+		enable_subunits = {
+			syn_heavy_bat_CHI
+			syn_medium_bat_CHI
+			syn_light_bat_CHI
+			syn_amphibious_bat_CHI
 		}
 		ai_will_do = {
 			factor = 0

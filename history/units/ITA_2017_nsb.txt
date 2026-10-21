@@ -1,108 +1,178 @@
-﻿division_template = {
-	name = "Comando Operazioni Forze Speciali"
-
-	regiments = {
-		#Army
-		Folgore_Bat_ITA = { x = 0 y = 0 }
-		Special_Forces = { x = 0 y = 1 }
-		Special_Forces = { x = 0 y = 2 }
-		#Airforce
-		Special_Forces = { x = 1 y = 0 }
-		#Navy
-		Special_Forces = { x = 2 y = 0 }
-	}
-	priority = 2
-}
 division_template = {
 	name = "Brigata Corazzata"
 
 	regiments = {
-		L_arm_Bat = { x = 0 y = 0 }
-		armor_Bat = { x = 0 y = 1 }
-		armor_Bat = { x = 0 y = 2 }
-		Arm_Inf_Bat = { x = 0 y = 3 }
-		SP_Arty_Bat = { x = 1 y = 0 }
-		Mech_Inf_Bat = { x = 1 y = 1 }
+		armor_Bat = { x = 0 y = 0 } #1° di Spilimbergo
+		armor_Bat = { x = 0 y = 1 } #3° di Cordenons
+		armor_Bat = { x = 0 y = 2 } #8° di Ozzano dell'Emilia
+		Arm_Inf_Bat = { x = 1 y = 0 } #11° Orcenico Superiore
+		Arm_Inf_Bat = { x = 1 y = 1 } #82° "Torino" di Cormons
+		SP_Arty_Bat = { x = 2 y = 0 } #132° Maniago
+	}
+
+	regimental_support = {
+		armor_Recce_Comp = { x = 0 y = 0 }
+	}
+
+	support = {
+		H_Engi_Comp = { x = 0 y = 0 }
+		SP_AA_Battery = { x = 0 y = 1 }
+		combat_service_support_company = { x = 0 y = 2 }
 	}
 }
 division_template = {
 	name = "Brigata di Cavalleria"
 
 	regiments = {
-		L_arm_Bat = { x = 0 y = 0 }
-		SanMarco_Bat_ITA = { x = 1 y = 0 }
-		Arty_Bat = { x = 2 y = 0 }
-		L_Inf_Bat = { x = 2 y = 1 }
+		Mot_Marine_Bat = { x = 0 y = 0 } #lagunari serenissima
+		Mot_Inf_Bat = { x = 0 y = 1 } #Reggimento "Genova Cavalleria" (4°)
+		Mech_Marine_Bat = { x = 1 y = 0 } #lagunari serenissima
+		Mech_Inf_Bat = { x = 1 y = 1 } #Reggimento "Genova Cavalleria" (4°)
+		Arty_Bat = { x = 2 y = 0 } #Reggimento Artiglieria Terrestre "a Cavallo"
+	}
+
+	regimental_support = {
+		armor_Recce_Comp = { x = 1 y = 0 }
+	}
+
+	support = {
+		H_Engi_Comp = { x = 0 y = 0 }
+		combat_service_support_company = { x = 0 y = 1 }
 	}
 }
 division_template = {
 	name = "Brigata Bersaglieri"
 
 	regiments = {
+		armor_Bat = { x = 0 y = 0 } #4° Reggimento carri
+		Arm_Inf_Bat = { x = 1 y = 0 } #8°
+		Arm_Inf_Bat = { x = 1 y = 1 } #3°
+		Mech_Inf_Bat = { x = 1 y = 2 } #18°
+		SP_Arty_Bat = { x = 2 y = 0 } #8° Reggimento Artiglieria Semovente
+	}
+
+	regimental_support = {
+		armor_Recce_Comp = { x = 0 y = 0 }
+	}
+
+	support = {
+		H_Engi_Comp = { x = 0 y = 0 }
+		SP_AA_Battery = { x = 0 y = 1 }
+		combat_service_support_company = { x = 0 y = 2 }
+	}
+}
+division_template = {
+	name = "Brigata Meccanizzata" #Aosta, Pinerolo and Sassari
+
+	regiments = {
 		L_arm_Bat = { x = 0 y = 0 }
-		armor_Bat = { x = 0 y = 1 }
-		Arm_Inf_Bat = { x = 0 y = 2 }
-		Arm_Inf_Bat = { x = 0 y = 3 }
-		SP_Arty_Bat = { x = 1 y = 0 }
+		Mech_Inf_Bat = { x = 1 y = 0 }
 		Mech_Inf_Bat = { x = 1 y = 1 }
+		Mech_Inf_Bat = { x = 1 y = 2 }
+		SP_Arty_Bat = { x = 2 y = 0 }
+	}
+
+	regimental_support = {
+		armor_Recce_Comp = { x = 0 y = 0 }
+	}
+
+	support = {
+		H_Engi_Comp = { x = 0 y = 0 }
+		combat_service_support_company = { x = 0 y = 1 }
 	}
 }
 division_template = {
-	name = "Brigata Meccanizzata"
+	name = "Brigata Meccanizzata Granatieri"
 
 	regiments = {
-		L_arm_Bat = { x = 0 y = 0 }
-		Mech_Inf_Bat = { x = 0 y = 1 }
-		Mech_Inf_Bat = { x = 0 y = 2 }
-		Mech_Inf_Bat = { x = 0 y = 3 }
+		L_arm_Bat = { x = 0 y = 0 } #8° lancieri
+		Arm_Inf_Bat = { x = 1 y = 0 } #1° bersaglieri
+		Mech_Inf_Bat = { x = 1 y = 1 } #1° granatieri
+		Mech_Inf_Bat = { x = 1 y = 2 } #2° granatieri
+		SP_Arty_Bat = { x = 2 y = 0 } #33° Acqui
+	}
+
+	regimental_support = {
+		armor_Recce_Comp = { x = 0 y = 0 }
+	}
+
+	support = {
+		H_Engi_Comp = { x = 0 y = 0 }
+		combat_service_support_company = { x = 0 y = 1 }
+	}
+}
+division_template = {
+	name = "Brigata Alpina" #julia and taurinense
+
+	regiments = {
+		Special_Forces = { x = 0 y = 0 }
+		Special_Forces = { x = 0 y = 1 }
+		Special_Forces = { x = 0 y = 2 }
 		Arty_Bat = { x = 1 y = 0 }
-		L_Inf_Bat = { x = 1 y = 1 }
 	}
-}
-division_template = {
-	name = "Brigata Meccanizzata 'Granatieri di Sardegna'"
 
-	regiments = {
-		L_arm_Bat = { x = 0 y = 0 }
-		Arm_Inf_Bat = { x = 0 y = 1 }
-		Mot_Inf_Bat = { x = 1 y = 0 }
-	}
-}
-division_template = {
-	name = "Brigata Alpina"
-
-	regiments = {
-		L_arm_Bat = { x = 0 y = 0 }
-		Mot_Inf_Bat = { x = 1 y = 0 }
-		Mot_Inf_Bat = { x = 1 y = 1 }
-		Mot_Inf_Bat = { x = 1 y = 2 }
-		Arty_Bat = { x = 2 y = 0 }
-		L_Inf_Bat = { x = 2 y = 1 }
+	support = {
+		H_Engi_Comp = { x = 0 y = 0 }
+		combat_service_support_company = { x = 0 y = 1 }
+		SP_AA_Battery = { x = 0 y = 2 }
+		L_Ranger_Recce_Comp = { x = 0 y = 3 }
 	}
 }
 division_template = {
 	name = "Brigata Paracadutisti"
 
 	regiments = {
-		L_arm_Bat = { x = 0 y = 0 }
-		Folgore_Bat_ITA = { x = 1 y = 0 }
-		Folgore_Bat_ITA = { x = 1 y = 1 }
-		Folgore_Bat_ITA = { x = 1 y = 2 }
+		Folgore_Bat_ITA = { x = 0 y = 0 } #183° Nembo
+		Folgore_Bat_ITA = { x = 0 y = 1 } #186° Folgore
+		Folgore_Bat_ITA = { x = 0 y = 2 } #187° Folgore
+		A_L_arm_Bat = { x = 1 y = 0 } #3° Savoia Cavalleria
+		Arty_Bat = { x = 2 y = 0 } #185° Folgore
+	}
+
+	regimental_support = {
+		L_Recce_Comp = { x = 0 y = 0 }
+	}
+
+	support = {
+		L_Engi_Comp = { x = 0 y = 0 } #8° Genio Guastatori Paracadutisti
+		combat_service_support_company = { x = 0 y = 1 }
 	}
 }
 division_template = {
 	name = "Brigata Aeromobile"
 
 	regiments = {
-		L_Air_assault_Bat = { x = 0 y = 0 }
+		L_Air_assault_Bat = { x = 0 y = 0 } #66°
+		L_Air_assault_Bat = { x = 0 y = 1 } #5°
+		L_Air_assault_Bat = { x = 0 y = 2 } #7°
+		attack_helo_bat = { x = 1 y = 0 } #5° AVES
+		attack_helo_bat = { x = 1 y = 1 } #7° AVES
+	}
+
+	regimental_support = {
+		air_assault_arty_battery = { x = 0 y = 0 }
+	}
+
+	support = {
+		helicopter_combat_service_support = { x = 0 y = 0 }
 	}
 }
 division_template = {
 	name = "Brigata Marina"
 
 	regiments = {
-		SanMarco_Bat_ITA = { x = 0 y = 0 }
-		SanMarco_Bat_ITA = { x = 0 y = 1 }
+		SanMarco_Bat_ITA = { x = 0 y = 0 } #1° Grado
+		SanMarco_Bat_ITA = { x = 1 y = 0 } #2°
+		Mot_Marine_Bat = { x = 1 y = 1 } #3° Golametto
+	}
+
+	regimental_support = {
+		Mech_Recce_Comp = { x = 0 y = 0 }
+	}
+
+	support = {
+		H_Engi_Comp = { x = 0 y = 0 }
+		helicopter_combat_service_support = { x = 0 y = 1 }
 	}
 }
 
@@ -180,7 +250,7 @@ units = {
 	division = {
 		name = "Brigata Meccanizzata 'Granatieri di Sardegna'"
 		location = 9904
-		division_template = "Brigata Meccanizzata 'Granatieri di Sardegna'"
+		division_template = "Brigata Meccanizzata Granatieri"
 		start_experience_factor = 0.75
 		start_equipment_factor = 0.01
 	}
@@ -191,180 +261,180 @@ units = {
 		start_experience_factor = 0.75
 		start_equipment_factor = 0.01
 	}
-	division = {
-		name = "1 Comando Operazioni Forze Speciali"
-		location = 9904
-		division_template = "Comando Operazioni Forze Speciali"
-		start_experience_factor = 1
-		start_equipment_factor = 0.01
-	}
 }
-
 
 instant_effect = {
 	add_equipment_to_stockpile = {
-		type = util_vehicle_4 #VM90P
-		amount = 1251
+		type = Anti_Air_1
+		amount = 600
 	}
 	add_equipment_to_stockpile = {
-		type = util_vehicle_5 #VM90P
-		amount = 649
+		type = util_vehicle_1 #Lancia ACL/90 + Iveco ACM 80/90
+		amount = 6800
 	}
 	add_equipment_to_stockpile = {
-		type = infantry_weapons4 #Beretta ARX 160
-		amount = 10000
+		type = util_vehicle_2 #AR90
+		amount = 2750
 	}
-
 	add_equipment_to_stockpile = {
-		type = command_control_equipment4 #C4ISTAR
+		type = util_vehicle_3 #VM90T
+		amount = 2000
+	}
+	add_equipment_to_stockpile = {
+		type = util_vehicle_4 #VM90P Lince
+		amount = 1800
+	}
+	add_equipment_to_stockpile = {
+		type = infantry_weapons_3 #AR70/90
+		amount = 35000
+	}
+	add_equipment_to_stockpile = {
+		type = infantry_weapons_4 #SCP70/90
+		amount = 5000
+	}
+	add_equipment_to_stockpile = {
+		type = infantry_weapons_5 #ARX160
+		amount = 30000
+	}
+	add_equipment_to_stockpile = {
+		type = cnc_equipment_3
+		amount = 450
+	}
+	add_equipment_to_stockpile = {
+		type = cnc_equipment_4
 		amount = 1500
 	}
 	add_equipment_to_stockpile = {
-		type = Anti_tank_1 #Panzerfaust 3
+		type = Heavy_Anti_tank_2 #Spike MR/LR
+		amount = 300
+		producer = ISR
+	}
+	add_equipment_to_stockpile = {
+		type = Anti_tank_3 #Panzerfaust3
 		amount = 2000
 		producer = GER
 	}
 	add_equipment_to_stockpile = {
-		type = Heavy_Anti_tank_1 #Milan
-		amount = 800
+		type = Anti_tank_3 #Milan
+		amount = 714
 	}
 	add_equipment_to_stockpile = {
-		type = Anti_Air_2 #Stinger
-		amount = 280
+		type = Anti_Air_1 #Stinger
+		amount = 145
+		producer = USA
 	}
 	add_equipment_to_stockpile = {
-		type = Heavy_Anti_tank_3 #Spike MR/LR
-		amount = 173
+		type = medium_tank_destroyer_chassis_2
+		variant_name = "B1 Centauro"
+		amount = 300
+		producer = ITA
 	}
-
 	add_equipment_to_stockpile = {
-		type = mbt_hull_2
+		type = medium_tank_chassis_2
 		variant_name = "Ariete"
 		amount = 200
 		producer = ITA
 	}
 	add_equipment_to_stockpile = {
-		type = Rec_tank_2 #B1 Centauro
-		amount = 450
+		type = medium_tank_flame_chassis_2
+		variant_name = "Dardo"
+		amount = 200
+		producer = ITA
 	}
 	add_equipment_to_stockpile = {
-		type = APC_2 #VAB-RECO NBC
-		amount = 14
-		producer = FRA
-	}
-	add_equipment_to_stockpile = {
-		type = IFV_5 #VCC-80 Dardo
-		amount = 203 #+3 from Mobile and Specialised Branch
-	}
-	add_equipment_to_stockpile = {
-		type = APC_6 #VBM 8×8 Freccia
+		type = medium_tank_flame_chassis_3
+		variant_name = "Freccia"
 		amount = 249
+		producer = ITA
 	}
 	add_equipment_to_stockpile = {
-		type = APC_2 #Bv-206
-		amount = 70
+		type = medium_tank_amphibious_chassis_1
+		variant_name = "M113"
+		amount = 882
+		producer = USA
+	}
+	add_equipment_to_stockpile = {
+		type = medium_tank_amphibious_chassis_1
+		variant_name = "VCC-2"
+		amount = 1038
+		producer = ITA
+	}
+	add_equipment_to_stockpile = {
+		type = medium_tank_amphibious_chassis_1
+		variant_name = "CM6614"
+		amount = 26
+		producer = ITA
+	}
+	add_equipment_to_stockpile = {
+		type = medium_tank_amphibious_chassis_1
+		variant_name = "Bv 206"
+		amount = 189
 		producer = SWE
 	}
 	add_equipment_to_stockpile = {
-		type = APC_2 #M113
-		amount = 115
+		type = medium_tank_amphibious_chassis_1
+		variant_name = "AAV-7"
+		amount = 35
+		producer = USA
+	}
+	add_equipment_to_stockpile = {
+		type = medium_tank_amphibious_chassis_2
+		variant_name = "Puma"
+		amount = 370
 		producer = ITA
 	}
 	add_equipment_to_stockpile = {
-		type = APC_4 #Puma (AFV)
-		amount = 469
-	}
-	add_equipment_to_stockpile = {
-		type = APC_4 #Puma (AFV)
-		amount = 120
-	}
-	add_equipment_to_stockpile = {
-		type = APC_3 #AAV
-		amount = 34 #+19 from marines
-	}
-	add_equipment_to_stockpile = {
-		type = SP_arty_0 #M109L52
-		amount = 124
+		type = medium_tank_aa_chassis_1
+		variant_name = "SIDAM 25"
+		amount = 70
 		producer = ITA
 	}
 	add_equipment_to_stockpile = {
-		type = SP_arty_2 #PzH 2000
-		amount = 68
+		type = artillery_1 #OTO-Melara Mod 56
+		amount = 340
+	}
+	add_equipment_to_stockpile = {
+		type = artillery_2 #FH-70
+		amount = 90
 		producer = ITA
 	}
 	add_equipment_to_stockpile = {
-		type = artillery_1 #FH-70
-		amount = 163
-	}
-	add_equipment_to_stockpile = {
-		type = SP_R_arty_1 #M270
-		amount = 21
+		type = medium_tank_artillery_chassis_1
+		variant_name = "M109L"
+		amount = 96
 		producer = ITA
 	}
 	add_equipment_to_stockpile = {
-		type = APC_2 #VCC-1
-		amount = 24
+		type = medium_tank_artillery_chassis_2
+		variant_name = "PzH 2000"
+		amount = 70
+		producer = GER
 	}
 	add_equipment_to_stockpile = {
-		type = CV_L_Strike_fighter2 #AV-8B Harrier II
+		type = medium_tank_rocket_chassis_1
+		variant_name = "M270"
+		amount = 22
+		producer = USA
+	}
+	add_equipment_to_stockpile = {
+		type = heavy_tank_chassis_1
+		variant_name = "AW129 Mangusta"
+		amount = 60
+		producer = ITA
+	}
+	add_equipment_to_stockpile = {
+		type = transport_helicopter_1 #AW109 + AB-412
+		amount = 203
+		producer = ITA
+	}
+	add_equipment_to_stockpile = {
+		type = transport_helicopter_2 #NH90
+		amount = 60
+		producer = ITA
+	}
+	add_equipment_to_stockpile = {
+		type = transport_helicopter_2 #CH-47F
 		amount = 16
-		producer = ITA
-	}
-	add_equipment_to_stockpile = {
-		type = attack_helicopter4 #Agusta A129D Mangusta
-		amount = 48
-		producer = ITA
-	}
-	add_equipment_to_stockpile = {
-		type = transport_plane3 #C-130J Super Hercules
-		amount = 19
-		producer = ITA
-	}
-	add_equipment_to_stockpile = {
-		type = transport_plane4 #C-27J Spartan
-		amount = 12
-	}
-	add_equipment_to_stockpile = {
-		type = Air_UAV1 #MQ-1 Predator
-		amount = 7
-		producer = ITA
-	}
-	add_equipment_to_stockpile = {
-		type = Air_UAV2 #MQ-9 Reaper
-		amount = 5
-		producer = ITA
-	}
-	add_equipment_to_stockpile = {
-		type = transport_helicopter1 #AW109
-		amount = 6
-		producer = ITA
-	}
-	add_equipment_to_stockpile = {
-		type = transport_helicopter1 #Bell 206
-		#version_name = "Bell 206"
-		amount = 26
 		producer = USA
-	}
-	add_equipment_to_stockpile = {
-		type = transport_helicopter1 #Sea King HU5
-		#version_name = "Sea King HU5"
-		amount = 2
-		producer = USA
-	}
-	add_equipment_to_stockpile = {
-		type = transport_helicopter2 #CH-47C
-		#version_name = "transport_helicopter2"
-		amount = 13
-		producer = USA
-	}
-	add_equipment_to_stockpile = {
-		type = transport_helicopter3 #CH-47F
-		amount = 6
-		producer = USA
-	}
-	add_equipment_to_stockpile = {
-		type = transport_helicopter4 #NH90
-		amount = 31
-		producer = ITA
 	}
 }

@@ -9,7 +9,7 @@ division_template = {
 		E_L_Inf_Bat = { x = 0 y = 3 }
 	}
 	support = {
-		SP_AA_Battery = { x = 0 y = 0 }
+		E_AA_Comp = { x = 0 y = 0 }
 	}
 }
 
@@ -53,7 +53,7 @@ division_template = {
 
 	support = {
 		L_Engi_Comp = { x = 0 y = 0 }
-		SP_Arty_Battery = { x = 0 y = 1 }
+		SP_arty_battery = { x = 0 y = 1 }
 		SP_AA_Battery = { x = 0 y = 2 }
 	}
 }
@@ -70,7 +70,7 @@ division_template = {
 	}
 
 	support = {
-		Arty_Battery = { x = 0 y = 0 }
+		SP_arty_battery = { x = 0 y = 0 }
 	}
 }
 
@@ -115,7 +115,7 @@ division_template = {
 		E_Arm_Inf_Bat = { x = 1 y = 2 }
 	}
 	support = {
-		SP_Arty_Battery = { x = 0 y = 0 }
+		SP_arty_battery = { x = 0 y = 0 }
 		SP_AA_Battery = { x = 0 y = 1 }
 	}
 }
@@ -133,7 +133,7 @@ division_template = {
 	}
 	support = {
 		L_Engi_Comp = { x = 0 y = 0 }
-		SP_Arty_Battery = { x = 0 y = 1 }
+		SP_arty_battery = { x = 0 y = 1 }
 		SP_AA_Battery = { x = 0 y = 2 }
 	}
 }
@@ -147,43 +147,47 @@ division_template = {
 		Mech_Air_Inf_Bat = { x = 0 y = 2 }
 		Arty_Bat = { x = 1 y = 0 }
 		Arty_Bat = { x = 1 y = 1 }
-		SP_AA_Bat = { x = 1 y = 2 }
-		E_Mech_Inf_Bat = { x = 2 y = 0 }
-		E_L_Inf_Bat = { x = 2 y = 1 }
+		Mech_Air_Inf_Bat = { x = 2 y = 0 }
+	}
+	support = {
+		combat_service_support_company = { x = 0 y = 0 }
+		L_Engi_Comp = { x = 0 y = 1 }
+		L_Recce_Comp = { x = 0 y = 2 }
 	}
 	priority = 2
 }
 
 division_template = {
-	name = "Aeromobilna Bryhada" 
-
+	name = "Aeromobilna Bryhada"
+	#Ukrainian Airmobile Brigade - all units must be air-transportable
 	regiments = {
-		Mot_Air_Inf_Bat = { x = 0 y = 0 }
-		Mot_Air_Inf_Bat = { x = 0 y = 1 }
-		E_Arm_Inf_Bat = { x = 0 y = 2 }
+		AirAssault_Bat_UKR = { x = 0 y = 0 }
+		AirAssault_Bat_UKR = { x = 0 y = 1 }
+		AirAssault_Bat_UKR = { x = 0 y = 2 }
+		AirAssault_Bat_UKR = { x = 0 y = 3 }
 		Arty_Bat = { x = 1 y = 0 }
-		Arty_Bat = { x = 1 y = 1 }
-		E_Arm_Inf_Bat = { x = 1 y = 2 }
 	}
 	support = {
 		L_Engi_Comp = { x = 0 y = 0 }
-		SP_AA_Battery = { x = 0 y = 1 }
+		L_Recce_Comp = { x = 0 y = 1 }
+		combat_service_support_company = { x = 0 y = 2 }
 	}
 }
 
 division_template = {
-	name = "Desantno-Shturmova Bryhada" 
-
+	name = "Desantno-Shturmova Bryhada"
+	#Ukrainian Air Assault Brigade - all units must be air-transportable
 	regiments = {
-		E_Arm_Inf_Bat = { x = 0 y = 0 }
-		E_Arm_Inf_Bat = { x = 0 y = 1 }
-		Mot_Air_Inf_Bat = { x = 0 y = 2 }
-		SP_Arty_Bat = { x = 1 y = 0 }
-		SP_AA_Bat = { x = 1 y = 1 }
-		E_Arm_Inf_Bat = { x = 1 y = 2 }
+		AirAssault_Bat_UKR = { x = 0 y = 0 }
+		AirAssault_Bat_UKR = { x = 0 y = 1 }
+		AirAssault_Bat_UKR = { x = 0 y = 2 }
+		AirAssault_Bat_UKR = { x = 0 y = 3 }
+		Arty_Bat = { x = 1 y = 0 }
 	}
 	support = {
 		L_Engi_Comp = { x = 0 y = 0 }
+		L_Recce_Comp = { x = 0 y = 1 }
+		combat_service_support_company = { x = 0 y = 2 }
 	}
 }
 
@@ -212,7 +216,7 @@ division_template = {
 	}
 	support = {
 		L_Engi_Comp = { x = 0 y = 0 }
-		L_Recce_Comp = { x = 0 y = 0 }
+		Militia_Recce_Comp = { x = 0 y = 0 }
 	}
 }
 

@@ -160,4 +160,57 @@ equipments = {
 		priority = 10
 	}
 
+	# 第十四轮：国别合成营装甲率校准
+	# 俄 BTG 坦克占比更高 → 配重减轻，装甲率高于通用重装营
+	ZZ_neg_armor_heavy_sov = {
+		year = 2000
+
+		active = yes
+		can_license = no
+		is_archetype = yes
+		is_buildable = no
+		type = {
+			armor
+		}
+		group_by = archetype
+
+		interface_category = interface_category_land
+		reliability = 1
+		build_cost_ic = 1
+		hardness = -2.55
+	}
+	ZZ_neg_armor_heavy_sov_1 = {
+		year = 2000
+		archetype = ZZ_neg_armor_heavy_sov
+		active = yes
+		is_buildable = yes
+		priority = 10
+	}
+
+	# 中国两栖战车为铝合金车体 → 配重加重，装甲率低于通用两栖营
+	ZZ_neg_armor_amphibious_chi = {
+		year = 2000
+
+		active = yes
+		can_license = no
+		is_archetype = yes
+		is_buildable = no
+		type = {
+			armor
+		}
+		group_by = archetype
+
+		interface_category = interface_category_land
+		reliability = 1
+		build_cost_ic = 1
+		hardness = -1.75
+	}
+	ZZ_neg_armor_amphibious_chi_1 = {
+		year = 2000
+		archetype = ZZ_neg_armor_amphibious_chi
+		active = yes
+		is_buildable = yes
+		priority = 10
+	}
+
 }
