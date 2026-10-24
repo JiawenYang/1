@@ -1,0 +1,68 @@
+# DSW Russia / repaired source references
+DSW_SOV_campaign = {
+	DSW_SOV_european_war_watch = {
+		icon = generic_shaking_hands
+		activation = {
+			always = no
+		}
+		visible = {
+			has_global_flag = DSW_SOV_european_war_started
+			NOT = {
+				has_global_flag = DSW_SOV_european_war_resolved
+			}
+		}
+		days_mission_timeout = 150
+		is_good = no
+		fire_only_once = no
+		available = {
+			DSW_SOV_european_victory_conditions = yes
+		}
+		cancel_trigger = {
+			OR = {
+				has_global_flag = DSW_SOV_european_war_resolved
+				DSW_SOV_european_defeat_conditions = yes
+			}
+		}
+		complete_effect = {
+            if = {
+                limit = {
+                    has_global_flag = DSW_SOV_european_war_started
+                    NOT = { has_global_flag = DSW_SOV_european_war_resolved }
+                    DSW_SOV_european_victory_conditions = yes
+                }
+                DSW_SOV_resolve_russian_victory = yes
+            }
+        }
+		cancel_effect = {
+            if = {
+                limit = {
+                    has_global_flag = DSW_SOV_european_war_started
+                    NOT = { has_global_flag = DSW_SOV_european_war_resolved }
+                    DSW_SOV_european_defeat_conditions = yes
+                }
+                DSW_SOV_resolve_russian_defeat = yes
+            }
+        }
+		timeout_effect = {
+			add_war_support = -0.05
+			activate_mission = DSW_SOV_european_war_watch
+		}
+	}
+}
+DSW_SOV_route_testing = {
+	DSW_SOV_test_campaign = {
+		icon = generic_political_discourse
+		visible = {
+			is_ai = no
+		}
+		cost = 0
+		ai_will_do = {
+			factor = 0
+		}
+		complete_effect = {
+			country_event = {
+				id = dsw_sov.90
+			}
+		}
+	}
+}

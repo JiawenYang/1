@@ -1,0 +1,171 @@
+DSW_SOV_reached_stalemate_line = {
+	has_country_flag = DSW_SOV_smo_started
+	has_war_with = UKR
+	OR = {
+		AND = {
+			has_country_flag = {
+				flag = DSW_SOV_smo_start_clock
+				days > 21
+			}
+			count_triggers = {
+				amount > 3
+				OR = {
+					SOV = {
+						controls_province = 11700
+					}
+					DPR = {
+						controls_province = 11700
+					}
+					LPR = {
+						controls_province = 11700
+					}
+				}
+				OR = {
+					SOV = {
+						controls_province = 9571
+					}
+					DPR = {
+						controls_province = 9571
+					}
+					LPR = {
+						controls_province = 9571
+					}
+				}
+				OR = {
+					SOV = {
+						controls_province = 3755
+					}
+					DPR = {
+						controls_province = 3755
+					}
+					LPR = {
+						controls_province = 3755
+					}
+				}
+				OR = {
+					SOV = {
+						controls_province = 6420
+					}
+					DPR = {
+						controls_province = 6420
+					}
+					LPR = {
+						controls_province = 6420
+					}
+				}
+				OR = {
+					SOV = {
+						controls_province = 6519
+					}
+					DPR = {
+						controls_province = 6519
+					}
+					LPR = {
+						controls_province = 6519
+					}
+				}
+				OR = {
+					SOV = {
+						controls_province = 11487
+					}
+					DPR = {
+						controls_province = 11487
+					}
+					LPR = {
+						controls_province = 11487
+					}
+				}
+			}
+		}
+		UKR = {
+			surrender_progress > 0.3
+		}
+	}
+}
+DSW_SOV_european_victory_conditions = {
+    OR = {
+        NOT = { country_exists = EST }
+        EST = {
+            OR = {
+                has_capitulated = yes
+                is_subject_of = SOV
+                is_in_faction_with = SOV
+            }
+        }
+    }
+    OR = {
+        NOT = { country_exists = LAT }
+        LAT = {
+            OR = {
+                has_capitulated = yes
+                is_subject_of = SOV
+                is_in_faction_with = SOV
+            }
+        }
+    }
+    OR = {
+        NOT = { country_exists = LIT }
+        LIT = {
+            OR = {
+                has_capitulated = yes
+                is_subject_of = SOV
+                is_in_faction_with = SOV
+            }
+        }
+    }
+    OR = {
+        NOT = { country_exists = POL }
+        POL = {
+            OR = {
+                has_capitulated = yes
+                is_subject_of = SOV
+                is_in_faction_with = SOV
+            }
+        }
+    }
+    OR = {
+        NOT = { country_exists = ROM }
+        ROM = {
+            OR = {
+                has_capitulated = yes
+                is_subject_of = SOV
+                is_in_faction_with = SOV
+            }
+        }
+    }
+    OR = {
+        NOT = { country_exists = HUN }
+        HUN = {
+            OR = {
+                has_capitulated = yes
+                is_subject_of = SOV
+                is_in_faction_with = SOV
+            }
+        }
+    }
+}
+DSW_SOV_european_defeat_conditions = {
+    OR = {
+        652 = {
+            controller = {
+                NOT = { tag = SOV }
+                NOT = { is_in_faction_with = SOV }
+                has_war_with = SOV
+            }
+        }
+        644 = {
+            controller = {
+                NOT = { tag = SOV }
+                NOT = { is_in_faction_with = SOV }
+                has_war_with = SOV
+            }
+        }
+        667 = {
+            controller = {
+                NOT = { tag = SOV }
+                NOT = { is_in_faction_with = SOV }
+                has_war_with = SOV
+            }
+        }
+    }
+}
