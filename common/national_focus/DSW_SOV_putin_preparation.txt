@@ -1,697 +1,672 @@
+# Sequential prerequisite chains: every selected-route focus is required before the final offensive.
 focus_tree = {
 	id = DSW_SOV_putin_preparation
 	country = {
 		factor = 0
 	}
-	continuous_focus_position = { x = 100 y = 2250 }
+	default = no
+	reset_on_civilwar = no
+	continuous_focus_position = {
+		x = 100
+		y = 1800
+	}
 	focus = {
-		id = DSW_SOV_reassess_campaign
-		icon = GFX_focus_SOV_centralize_power
-		x = 12
+		id = DSW_SOV_putin_focus_1
+		icon = putin
+		cost = 2
+		x = 0
 		y = 0
-		cost = 5
-		available_if_capitulated = no
-		cancelable = no
 		ai_will_do = {
-			factor = 10
+			factor = 1
 		}
 		completion_reward = {
-			add_dynamic_modifier = {
-				modifier = DSW_SOV_preparation_bonus
-			}
-			add_political_power = 150
-		}
-	}
-	focus = {
-		id = DSW_SOV_industrial_orders
-		icon = GFX_focus_DSW_putin_industry
-		x = 3
-		y = 1
-		cost = 5
-		available_if_capitulated = no
-		cancelable = no
-		ai_will_do = {
-			factor = 10
-		}
-		prerequisite = {
-			focus = DSW_SOV_reassess_campaign
-		}
-		completion_reward = {
-			add_to_variable = {
-				DSW_SOV_industrial_output = 0.12
-			}
-			add_political_power = 150
-		}
-	}
-	focus = {
-		id = DSW_SOV_tankograd
-		icon = GFX_focus_SOV_merge_tankograd
-		x = 3
-		y = 2
-		cost = 5
-		available_if_capitulated = no
-		cancelable = no
-		ai_will_do = {
-			factor = 10
-		}
-		prerequisite = {
-			focus = DSW_SOV_industrial_orders
-		}
-		completion_reward = {
-			add_to_variable = {
-				DSW_SOV_industrial_output = 0.12
-			}
-			add_to_variable = {
-				DSW_SOV_production_efficiency = 0.10
-			}
-		}
-	}
-	focus = {
-		id = DSW_SOV_shell_contracts
-		icon = GFX_focus_SOV_market_regulations
-		x = 3
-		y = 3
-		cost = 5
-		available_if_capitulated = no
-		cancelable = no
-		ai_will_do = {
-			factor = 10
-		}
-		prerequisite = {
-			focus = DSW_SOV_tankograd
-		}
-		completion_reward = {
-			add_to_variable = {
-				DSW_SOV_industrial_output = 0.12
-			}
-			add_equipment_to_stockpile = {
-				type = infantry_weapons_4
-				amount = 10000
-				producer = SOV
-			}
-		}
-	}
-	focus = {
-		id = DSW_SOV_import_substitution
-		icon = GFX_focus_DSW_putin_economy
-		x = 3
-		y = 4
-		cost = 5
-		available_if_capitulated = no
-		cancelable = no
-		ai_will_do = {
-			factor = 10
-		}
-		prerequisite = {
-			focus = DSW_SOV_shell_contracts
-		}
-		completion_reward = {
-			add_to_variable = {
-				DSW_SOV_research = 0.08
-			}
-			add_to_variable = {
-				DSW_SOV_production_efficiency = 0.10
-			}
-		}
-	}
-	focus = {
-		id = DSW_SOV_repair_centres
-		icon = GFX_focus_SOV_industrial_expansion
-		x = 3
-		y = 5
-		cost = 5
-		available_if_capitulated = no
-		cancelable = no
-		ai_will_do = {
-			factor = 10
-		}
-		prerequisite = {
-			focus = DSW_SOV_import_substitution
-		}
-		completion_reward = {
-			add_to_variable = {
-				DSW_SOV_industrial_output = 0.12
-			}
-			add_to_variable = {
-				DSW_SOV_supply_use = -0.05
-			}
-		}
-	}
-	focus = {
-		id = DSW_SOV_industrial_reserve
-		icon = GFX_focus_SOV_protect_russian_economy
-		x = 3
-		y = 6
-		cost = 5
-		available_if_capitulated = no
-		cancelable = no
-		ai_will_do = {
-			factor = 10
-		}
-		prerequisite = {
-			focus = DSW_SOV_repair_centres
-		}
-		completion_reward = {
-			add_to_variable = {
-				DSW_SOV_industrial_output = 0.12
-			}
-			add_to_variable = {
-				DSW_SOV_production_efficiency = 0.10
-			}
-		}
-	}
-	focus = {
-		id = DSW_SOV_command_audit
-		icon = GFX_focus_SOV_centralize_power
-		x = 9
-		y = 1
-		cost = 5
-		available_if_capitulated = no
-		cancelable = no
-		ai_will_do = {
-			factor = 10
-		}
-		prerequisite = {
-			focus = DSW_SOV_reassess_campaign
-		}
-		completion_reward = {
-			add_to_variable = {
-				DSW_SOV_planning_speed = 0.10
-			}
-			add_command_power = 50
-		}
-	}
-	focus = {
-		id = DSW_SOV_rail_network
-		icon = GFX_focus_SOV_invest_in_donbas
-		x = 9
-		y = 2
-		cost = 5
-		available_if_capitulated = no
-		cancelable = no
-		ai_will_do = {
-			factor = 10
-		}
-		prerequisite = {
-			focus = DSW_SOV_command_audit
-		}
-		completion_reward = {
-			add_to_variable = {
-				DSW_SOV_supply_use = -0.06
-			}
-			667 = {
-				add_building_construction = {
-					type = infrastructure
-					level = 1
-					instant_build = yes
+			hidden_effect = {
+				remove_dynamic_modifier = {
+					modifier = DSW_SOV_preparation_bonus
 				}
 			}
+			add_ideas = DSW_SOV_putin_spirit_01
 		}
-	}
-	focus = {
-		id = DSW_SOV_depots
-		icon = GFX_focus_SOV_invest_resource_refining
-		x = 9
-		y = 3
-		cost = 5
 		available_if_capitulated = no
 		cancelable = no
-		ai_will_do = {
-			factor = 10
-		}
-		prerequisite = {
-			focus = DSW_SOV_rail_network
-		}
-		completion_reward = {
-			add_to_variable = {
-				DSW_SOV_supply_use = -0.06
-			}
-			add_to_variable = {
-				DSW_SOV_army_org = 0.05
-			}
-		}
 	}
 	focus = {
-		id = DSW_SOV_communications
-		icon = GFX_focus_SOV_invest_scientific_sector
-		x = 9
-		y = 4
-		cost = 5
-		available_if_capitulated = no
-		cancelable = no
-		ai_will_do = {
-			factor = 10
-		}
-		prerequisite = {
-			focus = DSW_SOV_depots
-		}
-		completion_reward = {
-			add_to_variable = {
-				DSW_SOV_planning_speed = 0.15
-			}
-			add_to_variable = {
-				DSW_SOV_army_org = 0.05
-			}
-		}
-	}
-	focus = {
-		id = DSW_SOV_medical_evacuation
-		icon = GFX_focus_SOV_subsidize_medical_research
-		x = 9
-		y = 5
-		cost = 5
-		available_if_capitulated = no
-		cancelable = no
-		ai_will_do = {
-			factor = 10
-		}
-		prerequisite = {
-			focus = DSW_SOV_communications
-		}
-		completion_reward = {
-			add_to_variable = {
-				DSW_SOV_army_org = 0.10
-			}
-			add_manpower = 100000
-		}
-	}
-	focus = {
-		id = DSW_SOV_joint_staff
-		icon = GFX_focus_SOV_stir_up_nationalism
-		x = 9
-		y = 6
-		cost = 5
-		available_if_capitulated = no
-		cancelable = no
-		ai_will_do = {
-			factor = 10
-		}
-		prerequisite = {
-			focus = DSW_SOV_medical_evacuation
-		}
-		completion_reward = {
-			add_to_variable = {
-				DSW_SOV_supply_use = -0.08
-			}
-			add_to_variable = {
-				DSW_SOV_planning_speed = 0.15
-			}
-		}
-	}
-	focus = {
-		id = DSW_SOV_reserve_training
-		icon = GFX_focus_SOV_form_pro_russian_brigades
-		x = 15
+		id = DSW_SOV_putin_focus_2
+		icon = GFX_goal_generic_construct_civ_factory
+		cost = 1
+		x = 4
 		y = 1
-		cost = 5
-		available_if_capitulated = no
-		cancelable = no
-		ai_will_do = {
-			factor = 10
-		}
 		prerequisite = {
-			focus = DSW_SOV_reassess_campaign
+			focus = DSW_SOV_putin_focus_1
+		}
+		ai_will_do = {
+			factor = 1
 		}
 		completion_reward = {
-			add_manpower = 350000
-			add_to_variable = {
-				DSW_SOV_reserves = 0.15
+			custom_effect_tooltip = DSW_SOV_industry_focus_2_tt
+			hidden_effect = {
+				DSW_SOV_add_industry_focus_2 = yes
 			}
 		}
-	}
-	focus = {
-		id = DSW_SOV_officer_school
-		icon = GFX_focus_SOV_reorganise_russian_armed_forces
-		x = 15
-		y = 2
-		cost = 5
 		available_if_capitulated = no
 		cancelable = no
-		ai_will_do = {
-			factor = 10
-		}
-		prerequisite = {
-			focus = DSW_SOV_reserve_training
-		}
-		completion_reward = {
-			army_experience = 150
-			add_to_variable = {
-				DSW_SOV_army_org = 0.10
-			}
-		}
 	}
 	focus = {
-		id = DSW_SOV_drones
-		icon = GFX_focus_SOV_fund_military_advancement
-		x = 15
-		y = 3
+		id = DSW_SOV_putin_focus_3
+		icon = army_reform
 		cost = 5
-		available_if_capitulated = no
-		cancelable = no
-		ai_will_do = {
-			factor = 10
-		}
-		prerequisite = {
-			focus = DSW_SOV_officer_school
-		}
-		completion_reward = {
-			add_to_variable = {
-				DSW_SOV_army_attack = 0.10
-			}
-			add_to_variable = {
-				DSW_SOV_breakthrough = 0.10
-			}
-		}
-	}
-	focus = {
-		id = DSW_SOV_recon_fire
-		icon = GFX_focus_SOV_for_a_just_cause
-		x = 15
-		y = 4
-		cost = 5
-		available_if_capitulated = no
-		cancelable = no
-		ai_will_do = {
-			factor = 10
-		}
-		prerequisite = {
-			focus = DSW_SOV_drones
-		}
-		completion_reward = {
-			army_experience = 100
-			add_to_variable = {
-				DSW_SOV_army_attack = 0.10
-			}
-			add_to_variable = {
-				DSW_SOV_breakthrough = 0.10
-			}
-		}
-	}
-	focus = {
-		id = DSW_SOV_combined_arms
-		icon = GFX_focus_SOV_operation_aleksandr
-		x = 15
-		y = 5
-		cost = 5
-		available_if_capitulated = no
-		cancelable = no
-		ai_will_do = {
-			factor = 10
-		}
-		prerequisite = {
-			focus = DSW_SOV_recon_fire
-		}
-		completion_reward = {
-			add_to_variable = {
-				DSW_SOV_army_attack = 0.10
-			}
-			add_to_variable = {
-				DSW_SOV_breakthrough = 0.10
-			}
-		}
-	}
-	focus = {
-		id = DSW_SOV_strategic_reserves
-		icon = GFX_focus_SOV_protect_civilian_lives
-		x = 15
-		y = 6
-		cost = 5
-		available_if_capitulated = no
-		cancelable = no
-		ai_will_do = {
-			factor = 10
-		}
-		prerequisite = {
-			focus = DSW_SOV_combined_arms
-		}
-		completion_reward = {
-			add_manpower = 350000
-			add_to_variable = {
-				DSW_SOV_army_attack = 0.10
-			}
-			add_to_variable = {
-				DSW_SOV_breakthrough = 0.10
-			}
-			add_to_variable = {
-				DSW_SOV_army_org = 0.10
-			}
-		}
-	}
-	focus = {
-		id = DSW_SOV_presidential_council
-		icon = GFX_focus_DSW_putin_council
-		x = 21
+		x = -4
 		y = 1
-		cost = 5
-		available_if_capitulated = no
-		cancelable = no
-		ai_will_do = {
-			factor = 10
-		}
 		prerequisite = {
-			focus = DSW_SOV_reassess_campaign
+			focus = DSW_SOV_putin_focus_1
+		}
+		ai_will_do = {
+			factor = 1
 		}
 		completion_reward = {
-			add_political_power = 200
-			add_stability = 0.10
+			add_ideas = DSW_SOV_putin_spirit_03
 		}
-	}
-	focus = {
-		id = DSW_SOV_budget
-		icon = GFX_focus_SOV_force_petrol_ruble
-		x = 21
-		y = 2
-		cost = 5
 		available_if_capitulated = no
 		cancelable = no
-		ai_will_do = {
-			factor = 10
-		}
-		prerequisite = {
-			focus = DSW_SOV_presidential_council
-		}
-		completion_reward = {
-			add_to_variable = {
-				DSW_SOV_construction = 0.10
-			}
-			add_political_power = 150
-		}
 	}
 	focus = {
-		id = DSW_SOV_regional_projects
-		icon = GFX_focus_SOV_subsidize_super_computer_research
-		x = 21
+		id = DSW_SOV_putin_focus_4
+		icon = army_russia_officer_shool
+		cost = 5
+		x = -8
 		y = 3
-		cost = 5
-		available_if_capitulated = no
-		cancelable = no
-		ai_will_do = {
-			factor = 10
-		}
 		prerequisite = {
-			focus = DSW_SOV_budget
+			focus = DSW_SOV_putin_focus_6
+			focus = DSW_SOV_putin_focus_8
+			focus = DSW_SOV_putin_focus_9
+		}
+		ai_will_do = {
+			factor = 1
 		}
 		completion_reward = {
-			add_to_variable = {
-				DSW_SOV_construction = 0.15
-			}
-			652 = {
-				add_building_construction = {
-					type = industrial_complex
-					level = 3
-					instant_build = yes
-				}
-			}
+			add_ideas = DSW_SOV_putin_spirit_04
 		}
+		available_if_capitulated = no
+		cancelable = no
 	}
 	focus = {
-		id = DSW_SOV_pensions
-		icon = GFX_focus_SOV_money_for_pensioners
-		x = 21
+		id = DSW_SOV_putin_focus_5
+		icon = army_russia_officer_shool
+		cost = 5
+		x = -6
+		y = 3
+		prerequisite = {
+			focus = DSW_SOV_putin_focus_6
+			focus = DSW_SOV_putin_focus_8
+			focus = DSW_SOV_putin_focus_9
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_ideas = DSW_SOV_putin_spirit_05
+		}
+		available_if_capitulated = no
+		cancelable = no
+	}
+	focus = {
+		id = DSW_SOV_putin_focus_7
+		icon = modern_fighter
+		cost = 5
+		x = -2
+		y = 2
+		prerequisite = {
+			focus = DSW_SOV_putin_focus_3
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_ideas = DSW_SOV_putin_spirit_07
+		}
+		available_if_capitulated = no
+		cancelable = no
+	}
+	focus = {
+		id = DSW_SOV_putin_focus_6
+		icon = drone2
+		cost = 5
+		x = -4
+		y = 2
+		prerequisite = {
+			focus = DSW_SOV_putin_focus_3
+		}
+		mutually_exclusive = {
+			focus = DSW_SOV_putin_focus_8
+			focus = DSW_SOV_putin_focus_9
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_ideas = DSW_SOV_putin_spirit_06
+		}
+		available_if_capitulated = no
+		cancelable = no
+	}
+	focus = {
+		id = DSW_SOV_putin_focus_8
+		icon = army_doctrine
+		cost = 5
+		x = -8
+		y = 2
+		prerequisite = {
+			focus = DSW_SOV_putin_focus_3
+		}
+		mutually_exclusive = {
+			focus = DSW_SOV_putin_focus_6
+			focus = DSW_SOV_putin_focus_9
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_ideas = DSW_SOV_putin_spirit_08
+		}
+		available_if_capitulated = no
+		cancelable = no
+	}
+	focus = {
+		id = DSW_SOV_putin_focus_9
+		icon = GFX_superior_firepower_medium
+		cost = 5
+		x = -6
+		y = 2
+		prerequisite = {
+			focus = DSW_SOV_putin_focus_3
+		}
+		mutually_exclusive = {
+			focus = DSW_SOV_putin_focus_6
+			focus = DSW_SOV_putin_focus_8
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_ideas = DSW_SOV_putin_spirit_09
+		}
+		available_if_capitulated = no
+		cancelable = no
+	}
+	focus = {
+		id = DSW_SOV_putin_focus_10
+		icon = sov_drones_rus
+		cost = 5
+		x = -4
 		y = 4
-		cost = 5
-		available_if_capitulated = no
-		cancelable = no
-		ai_will_do = {
-			factor = 10
-		}
 		prerequisite = {
-			focus = DSW_SOV_regional_projects
+			focus = DSW_SOV_putin_focus_12
+		}
+		ai_will_do = {
+			factor = 1
 		}
 		completion_reward = {
-			add_stability = 0.10
-			add_war_support = 0.10
-			add_to_variable = {
-				DSW_SOV_reserves = 0.15
-			}
+			add_ideas = DSW_SOV_putin_spirit_10
 		}
+		available_if_capitulated = no
+		cancelable = no
 	}
 	focus = {
-		id = DSW_SOV_energy_trade
-		icon = GFX_focus_SOV_attract_chinese_investors
-		x = 21
+		id = DSW_SOV_putin_focus_11
+		icon = air_defense
+		cost = 5
+		x = -2
+		y = 3
+		prerequisite = {
+			focus = DSW_SOV_putin_focus_7
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_ideas = DSW_SOV_putin_spirit_11
+		}
+		available_if_capitulated = no
+		cancelable = no
+	}
+	focus = {
+		id = DSW_SOV_putin_focus_12
+		icon = sov_vks_russia
+		cost = 5
+		x = -4
+		y = 3
+		prerequisite = {
+			focus = DSW_SOV_putin_focus_6
+			focus = DSW_SOV_putin_focus_8
+			focus = DSW_SOV_putin_focus_9
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_ideas = DSW_SOV_putin_spirit_12
+		}
+		available_if_capitulated = no
+		cancelable = no
+	}
+	focus = {
+		id = DSW_SOV_putin_focus_13
+		icon = border_conflict_bunker
+		cost = 5
+		x = -4
 		y = 5
-		cost = 5
-		available_if_capitulated = no
-		cancelable = no
-		ai_will_do = {
-			factor = 10
-		}
 		prerequisite = {
-			focus = DSW_SOV_pensions
+			focus = DSW_SOV_putin_focus_10
+		}
+		ai_will_do = {
+			factor = 1
 		}
 		completion_reward = {
-			add_to_variable = {
-				DSW_SOV_construction = 0.15
-			}
-			add_to_variable = {
-				DSW_SOV_research = 0.07
-			}
+			add_ideas = DSW_SOV_putin_spirit_13
 		}
-	}
-	focus = {
-		id = DSW_SOV_domestic_compact
-		icon = GFX_focus_SOV_protect_russian_economy
-		x = 21
-		y = 6
-		cost = 5
 		available_if_capitulated = no
 		cancelable = no
-		ai_will_do = {
-			factor = 10
-		}
-		prerequisite = {
-			focus = DSW_SOV_energy_trade
-		}
-		completion_reward = {
-			add_stability = 0.10
-			add_to_variable = {
-				DSW_SOV_construction = 0.10
-			}
-			add_to_variable = {
-				DSW_SOV_research = 0.05
-			}
-		}
 	}
 	focus = {
-		id = DSW_SOV_readiness_audit
-		icon = GFX_focus_SOV_1000_years_of_putinism
-		x = 12
+		id = DSW_SOV_putin_focus_14
+		icon = army_tank_industry
+		cost = 5
+		x = -6
+		y = 5
+		prerequisite = {
+			focus = DSW_SOV_putin_focus_15
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			custom_effect_tooltip = DSW_SOV_industry_focus_14_tt
+			hidden_effect = {
+				DSW_SOV_add_industry_focus_14 = yes
+			}
+		}
+		available_if_capitulated = no
+		cancelable = no
+	}
+	focus = {
+		id = DSW_SOV_putin_focus_15
+		icon = army_tank_industry
+		cost = 5
+		x = -6
+		y = 4
+		prerequisite = {
+			focus = DSW_SOV_putin_focus_4
+		}
+		prerequisite = {
+			focus = DSW_SOV_putin_focus_5
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_ideas = DSW_SOV_putin_spirit_15
+		}
+		available_if_capitulated = no
+		cancelable = no
+	}
+	focus = {
+		id = DSW_SOV_putin_focus_16
+		icon = russian_armed_forces
+		cost = 5
+		x = -6
 		y = 7
-		cost = 5
-		available_if_capitulated = no
-		cancelable = no
+		prerequisite = {
+			focus = DSW_SOV_putin_focus_18
+		}
+		prerequisite = {
+			focus = DSW_SOV_putin_focus_19
+		}
 		ai_will_do = {
-			factor = 10
-		}
-		prerequisite = {
-			focus = DSW_SOV_industrial_reserve
-		}
-		prerequisite = {
-			focus = DSW_SOV_joint_staff
-		}
-		prerequisite = {
-			focus = DSW_SOV_strategic_reserves
-		}
-		prerequisite = {
-			focus = DSW_SOV_domestic_compact
+			factor = 1
 		}
 		completion_reward = {
-			add_political_power = 200
-			army_experience = 100
+			add_ideas = DSW_SOV_putin_spirit_16
 		}
+		available_if_capitulated = no
+		cancelable = no
 	}
 	focus = {
-		id = DSW_SOV_operational_reserves
-		icon = GFX_focus_SOV_1000_years_of_putinism
-		x = 12
+		id = DSW_SOV_putin_focus_17
+		icon = RUS_navy
+		cost = 5
+		x = -2
+		y = 4
+		prerequisite = {
+			focus = DSW_SOV_putin_focus_11
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_ideas = DSW_SOV_putin_spirit_17
+		}
+		available_if_capitulated = no
+		cancelable = no
+	}
+	focus = {
+		id = DSW_SOV_putin_focus_18
+		icon = generic_air_CAS_russian
+		cost = 5
+		x = -2
+		y = 6
+		prerequisite = {
+			focus = DSW_SOV_putin_focus_13
+		}
+		prerequisite = {
+			focus = DSW_SOV_putin_focus_17
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_ideas = DSW_SOV_putin_spirit_18
+		}
+		available_if_capitulated = no
+		cancelable = no
+	}
+	focus = {
+		id = DSW_SOV_putin_focus_19
+		icon = army_tank_industry
+		cost = 5
+		x = -6
+		y = 6
+		prerequisite = {
+			focus = DSW_SOV_putin_focus_14
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_ideas = DSW_SOV_putin_spirit_19
+		}
+		available_if_capitulated = no
+		cancelable = no
+	}
+	focus = {
+		id = DSW_SOV_putin_focus_20
+		icon = GFX_goal_generic_construct_mil_factory
+		cost = 5
+		x = 4
+		y = 2
+		prerequisite = {
+			focus = DSW_SOV_putin_focus_2
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			custom_effect_tooltip = DSW_SOV_industry_focus_20_tt
+			hidden_effect = {
+				DSW_SOV_add_industry_focus_20 = yes
+			}
+		}
+		available_if_capitulated = no
+		cancelable = no
+	}
+	focus = {
+		id = DSW_SOV_putin_focus_21
+		icon = GFX_goal_generic_construct_civ_factory
+		cost = 5
+		x = 4
+		y = 4
+		prerequisite = {
+			focus = DSW_SOV_putin_focus_26
+		}
+		prerequisite = {
+			focus = DSW_SOV_putin_focus_25
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			custom_effect_tooltip = DSW_SOV_industry_focus_21_tt
+			hidden_effect = {
+				DSW_SOV_add_industry_focus_21 = yes
+			}
+		}
+		available_if_capitulated = no
+		cancelable = no
+	}
+	focus = {
+		id = DSW_SOV_putin_focus_22
+		icon = GFX_goal_generic_consumer_goods
+		cost = 5
+		x = 6
+		y = 2
+		prerequisite = {
+			focus = DSW_SOV_putin_focus_2
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			custom_effect_tooltip = DSW_SOV_industry_focus_22_tt
+			hidden_effect = {
+				DSW_SOV_add_industry_focus_22 = yes
+			}
+		}
+		available_if_capitulated = no
+		cancelable = no
+	}
+	focus = {
+		id = DSW_SOV_putin_focus_23
+		icon = russian_cooperation
+		cost = 5
+		x = 6
+		y = 3
+		prerequisite = {
+			focus = DSW_SOV_putin_focus_22
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			custom_effect_tooltip = DSW_SOV_industry_focus_23_tt
+			hidden_effect = {
+				DSW_SOV_add_industry_focus_23 = yes
+			}
+		}
+		available_if_capitulated = no
+		cancelable = no
+	}
+	focus = {
+		id = DSW_SOV_putin_focus_24
+		icon = GFX_goal_generic_trade
+		cost = 5
+		x = 6
+		y = 4
+		prerequisite = {
+			focus = DSW_SOV_putin_focus_23
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			custom_effect_tooltip = DSW_SOV_industry_focus_24_tt
+			hidden_effect = {
+				DSW_SOV_add_industry_focus_24 = yes
+			}
+		}
+		available_if_capitulated = no
+		cancelable = no
+	}
+	focus = {
+		id = DSW_SOV_putin_focus_25
+		icon = sov_kazaks_mobilize
+		cost = 5
+		x = 2
+		y = 3
+		prerequisite = {
+			focus = DSW_SOV_putin_focus_20
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			custom_effect_tooltip = DSW_SOV_industry_focus_25_tt
+			hidden_effect = {
+				DSW_SOV_add_industry_focus_25 = yes
+			}
+		}
+		available_if_capitulated = no
+		cancelable = no
+	}
+	focus = {
+		id = DSW_SOV_putin_focus_26
+		icon = GFX_goal_generic_construct_mil_factory
+		cost = 5
+		x = 4
+		y = 3
+		prerequisite = {
+			focus = DSW_SOV_putin_focus_20
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			custom_effect_tooltip = DSW_SOV_industry_focus_26_tt
+			hidden_effect = {
+				DSW_SOV_add_industry_focus_26 = yes
+			}
+		}
+		available_if_capitulated = no
+		cancelable = no
+	}
+	focus = {
+		id = DSW_SOV_putin_focus_27
+		icon = GFX_goal_generic_trade
+		cost = 5
+		x = 6
+		y = 5
+		prerequisite = {
+			focus = DSW_SOV_putin_focus_24
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			custom_effect_tooltip = DSW_SOV_industry_focus_27_tt
+			hidden_effect = {
+				DSW_SOV_add_industry_focus_27 = yes
+			}
+		}
+		available_if_capitulated = no
+		cancelable = no
+	}
+	focus = {
+		id = DSW_SOV_putin_focus_28
+		icon = GFX_goal_generic_trade
+		cost = 5
+		x = 6
+		y = 6
+		prerequisite = {
+			focus = DSW_SOV_putin_focus_27
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			custom_effect_tooltip = DSW_SOV_industry_focus_28_tt
+			hidden_effect = {
+				DSW_SOV_add_industry_focus_28 = yes
+			}
+		}
+		available_if_capitulated = no
+		cancelable = no
+	}
+	focus = {
+		id = DSW_SOV_putin_focus_29
+		icon = GFX_goal_generic_construct_mil_factory
+		cost = 5
+		x = 4
+		y = 5
+		prerequisite = {
+			focus = DSW_SOV_putin_focus_21
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			custom_effect_tooltip = DSW_SOV_industry_focus_29_tt
+			hidden_effect = {
+				DSW_SOV_add_industry_focus_29 = yes
+			}
+		}
+		available_if_capitulated = no
+		cancelable = no
+	}
+	focus = {
+		id = DSW_SOV_putin_focus_30
+		icon = russian_investments
+		cost = 5
+		x = 4
+		y = 7
+		prerequisite = {
+			focus = DSW_SOV_putin_focus_28
+		}
+		prerequisite = {
+			focus = DSW_SOV_putin_focus_29
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			custom_effect_tooltip = DSW_SOV_industry_focus_30_tt
+			hidden_effect = {
+				DSW_SOV_add_industry_focus_30 = yes
+			}
+		}
+		available_if_capitulated = no
+		cancelable = no
+	}
+	focus = {
+		id = DSW_SOV_integrate_novorossiya
+		icon = sov_russia_united_land
+		cost = 5
+		x = 0
 		y = 8
-		cost = 5
-		available_if_capitulated = no
-		cancelable = no
-		ai_will_do = {
-			factor = 10
+		prerequisite = {
+			focus = DSW_SOV_putin_focus_16
 		}
 		prerequisite = {
-			focus = DSW_SOV_readiness_audit
+			focus = DSW_SOV_putin_focus_30
+		}
+		ai_will_do = {
+			factor = 1
 		}
 		completion_reward = {
-			add_manpower = 200000
-			add_command_power = 75
+			add_ideas = DSW_SOV_putin_spirit_31
+			custom_effect_tooltip = DSW_SOV_integrate_novorossiya_tt
+			hidden_effect = {
+				DSW_SOV_integrate_novorossiya_effect = yes
+			}
 		}
-	}
-	focus = {
-		id = DSW_SOV_presidential_directive
-		icon = GFX_focus_SOV_1000_years_of_putinism
-		x = 12
-		y = 9
-		cost = 5
 		available_if_capitulated = no
 		cancelable = no
-		ai_will_do = {
-			factor = 10
-		}
-		prerequisite = {
-			focus = DSW_SOV_operational_reserves
-		}
-		completion_reward = {
-			add_war_support = 0.10
-			add_stability = 0.05
-		}
-	}
-	focus = {
-		id = DSW_SOV_final_preparation
-		icon = GFX_focus_SOV_1000_years_of_putinism
-		x = 12
-		y = 11
-		cost = 5
-		available_if_capitulated = no
-		cancelable = no
-		ai_will_do = {
-			factor = 10
-		}
-		prerequisite = {
-			focus = DSW_SOV_joint_rehearsal
-		}
-		completion_reward = {
-			add_political_power = 150
-		}
 	}
 	focus = {
 		id = DSW_SOV_final_offensive
-		icon = GFX_focus_SOV_1000_years_of_putinism
-		x = 12
-		y = 12
+		icon = vladimir_putin
 		cost = 5
-		available_if_capitulated = no
-		cancelable = no
-		ai_will_do = {
-			factor = 10
-		}
+		x = 0
+		y = 9
 		prerequisite = {
-			focus = DSW_SOV_final_preparation
+			focus = DSW_SOV_integrate_novorossiya
+		}
+		ai_will_do = {
+			factor = 1
 		}
 		completion_reward = {
+			add_ideas = DSW_SOV_putin_spirit_32
+			custom_effect_tooltip = DSW_SOV_clear_all_ukraine_tt
 			DSW_SOV_launch_final_offensive = yes
 		}
-	}
-	focus = {
-		id = DSW_SOV_joint_rehearsal
-		icon = GFX_focus_SOV_fund_military_advancement
-		x = 12
-		y = 10
-		cost = 5
 		available_if_capitulated = no
 		cancelable = no
-		ai_will_do = {
-			factor = 10
-		}
-		prerequisite = {
-			focus = DSW_SOV_presidential_directive
-		}
-		completion_reward = {
-			army_experience = 150
-			add_command_power = 50
-		}
 	}
 }

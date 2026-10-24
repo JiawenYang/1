@@ -1,0 +1,497 @@
+DSW_SOV_integrate_novorossiya_effect = {
+	every_state = {
+		limit = {
+			OR = {
+				is_core_of = NOV
+				is_core_of = DPR
+				is_core_of = LPR
+			}
+		}
+		add_core_of = SOV
+	}
+	if = {
+		limit = {
+			country_exists = NOV
+			NOT = {
+				has_war_with = NOV
+			}
+		}
+		annex_country = {
+			target = NOV
+			transfer_troops = yes
+		}
+	}
+	if = {
+		limit = {
+			country_exists = DPR
+			NOT = {
+				has_war_with = DPR
+			}
+		}
+		annex_country = {
+			target = DPR
+			transfer_troops = yes
+		}
+	}
+	if = {
+		limit = {
+			country_exists = LPR
+			NOT = {
+				has_war_with = LPR
+			}
+		}
+		annex_country = {
+			target = LPR
+			transfer_troops = yes
+		}
+	}
+	set_country_flag = DSW_SOV_novorossiya_integrated
+}
+DSW_SOV_initialize_industry_spirit = {
+	set_variable = {
+		DSW_SOV_putin_industry_academic_development_monthly = 0
+	}
+	set_variable = {
+		DSW_SOV_putin_industry_business_value_factor = 0
+	}
+	set_variable = {
+		DSW_SOV_putin_industry_conscription_factor = 0
+	}
+	set_variable = {
+		DSW_SOV_putin_industry_consumer_goods_factor = 0
+	}
+	set_variable = {
+		DSW_SOV_putin_industry_equipment_conversion_speed = 0
+	}
+	set_variable = {
+		DSW_SOV_putin_industry_farming_development_monthly = 0
+	}
+	set_variable = {
+		DSW_SOV_putin_industry_fuel_gain_factor = 0
+	}
+	set_variable = {
+		DSW_SOV_putin_industry_global_building_slots_factor = 0
+	}
+	set_variable = {
+		DSW_SOV_putin_industry_industrial_capacity_factory = 0
+	}
+	set_variable = {
+		DSW_SOV_putin_industry_industrial_development_monthly = 0
+	}
+	set_variable = {
+		DSW_SOV_putin_industry_line_change_production_efficiency_factor = 0
+	}
+	set_variable = {
+		DSW_SOV_putin_industry_military_development_monthly = 0
+	}
+	set_variable = {
+		DSW_SOV_putin_industry_personal_value_factor = 0
+	}
+	set_variable = {
+		DSW_SOV_putin_industry_political_power_factor = 0
+	}
+	set_variable = {
+		DSW_SOV_putin_industry_poverty_development_monthly = 0
+	}
+	set_variable = {
+		DSW_SOV_putin_industry_production_factory_efficiency_gain_factor = 0
+	}
+	set_variable = {
+		DSW_SOV_putin_industry_production_factory_max_efficiency_factor = 0
+	}
+	set_variable = {
+		DSW_SOV_putin_industry_production_factory_start_efficiency_factor = 0
+	}
+	set_variable = {
+		DSW_SOV_putin_industry_production_lack_of_resource_penalty_factor = 0
+	}
+	set_variable = {
+		DSW_SOV_putin_industry_production_speed_arms_factory_factor = 0
+	}
+	set_variable = {
+		DSW_SOV_putin_industry_production_speed_buildings_factor = 0
+	}
+	set_variable = {
+		DSW_SOV_putin_industry_production_speed_fossil_powerplant_factor = 0
+	}
+	set_variable = {
+		DSW_SOV_putin_industry_production_speed_infrastructure_factor = 0
+	}
+	set_variable = {
+		DSW_SOV_putin_industry_recruitable_population_factor = 0
+	}
+	set_variable = {
+		DSW_SOV_putin_industry_research_speed_factor = 0
+	}
+	set_variable = {
+		DSW_SOV_putin_industry_local_resources_factor = 0
+	}
+	set_variable = {
+		DSW_SOV_putin_industry_society_development_monthly = 0
+	}
+	set_variable = {
+		DSW_SOV_putin_industry_stability_factor = 0
+	}
+	set_variable = {
+		DSW_SOV_putin_industry_tax_gain_multiplier_modifier = 0
+	}
+	set_variable = {
+		DSW_SOV_putin_industry_trade_opinion_factor = 0
+	}
+	set_variable = {
+		DSW_SOV_putin_industry_training_time_army_factor = 0
+	}
+	set_variable = {
+		DSW_SOV_putin_industry_war_support_factor = 0
+	}
+	if = {
+		limit = {
+			has_country_flag = DSW_SOV_putin_industry_focus_2_rewarded
+		}
+		add_to_variable = {
+			var = DSW_SOV_putin_industry_industrial_capacity_factory
+			value = 0.05
+		}
+		add_to_variable = {
+			var = DSW_SOV_putin_industry_production_factory_max_efficiency_factor
+			value = 0.05
+		}
+		add_to_variable = {
+			var = DSW_SOV_putin_industry_production_speed_buildings_factor
+			value = 0.05
+		}
+		add_to_variable = {
+			var = DSW_SOV_putin_industry_tax_gain_multiplier_modifier
+			value = 0.05
+		}
+	}
+	if = {
+		limit = {
+			has_country_flag = DSW_SOV_putin_industry_focus_14_rewarded
+		}
+		add_to_variable = {
+			var = DSW_SOV_putin_industry_industrial_capacity_factory
+			value = 0.1
+		}
+		add_to_variable = {
+			var = DSW_SOV_putin_industry_production_factory_max_efficiency_factor
+			value = 0.05
+		}
+		add_to_variable = {
+			var = DSW_SOV_putin_industry_production_speed_arms_factory_factor
+			value = 0.05
+		}
+		add_to_variable = {
+			var = DSW_SOV_putin_industry_equipment_conversion_speed
+			value = 0.2
+		}
+	}
+	if = {
+		limit = {
+			has_country_flag = DSW_SOV_putin_industry_focus_20_rewarded
+		}
+		add_to_variable = {
+			var = DSW_SOV_putin_industry_production_speed_buildings_factor
+			value = 0.05
+		}
+		add_to_variable = {
+			var = DSW_SOV_putin_industry_production_speed_arms_factory_factor
+			value = 0.1
+		}
+	}
+	if = {
+		limit = {
+			has_country_flag = DSW_SOV_putin_industry_focus_21_rewarded
+		}
+		add_to_variable = {
+			var = DSW_SOV_putin_industry_production_factory_efficiency_gain_factor
+			value = 0.05
+		}
+		add_to_variable = {
+			var = DSW_SOV_putin_industry_production_factory_start_efficiency_factor
+			value = 0.1
+		}
+		add_to_variable = {
+			var = DSW_SOV_putin_industry_line_change_production_efficiency_factor
+			value = 0.1
+		}
+		add_to_variable = {
+			var = DSW_SOV_putin_industry_society_development_monthly
+			value = 0.05
+		}
+	}
+	if = {
+		limit = {
+			has_country_flag = DSW_SOV_putin_industry_focus_22_rewarded
+		}
+		add_to_variable = {
+			var = DSW_SOV_putin_industry_stability_factor
+			value = 0.1
+		}
+		add_to_variable = {
+			var = DSW_SOV_putin_industry_consumer_goods_factor
+			value = -0.05
+		}
+		add_to_variable = {
+			var = DSW_SOV_putin_industry_personal_value_factor
+			value = 0.1
+		}
+		add_to_variable = {
+			var = DSW_SOV_putin_industry_poverty_development_monthly
+			value = 0.05
+		}
+		add_to_variable = {
+			var = DSW_SOV_putin_industry_farming_development_monthly
+			value = 0.05
+		}
+	}
+	if = {
+		limit = {
+			has_country_flag = DSW_SOV_putin_industry_focus_23_rewarded
+		}
+		add_to_variable = {
+			var = DSW_SOV_putin_industry_production_factory_max_efficiency_factor
+			value = 0.05
+		}
+		add_to_variable = {
+			var = DSW_SOV_putin_industry_research_speed_factor
+			value = 0.1
+		}
+		add_to_variable = {
+			var = DSW_SOV_putin_industry_academic_development_monthly
+			value = 0.05
+		}
+		add_to_variable = {
+			var = DSW_SOV_putin_industry_trade_opinion_factor
+			value = 0.1
+		}
+	}
+	if = {
+		limit = {
+			has_country_flag = DSW_SOV_putin_industry_focus_24_rewarded
+		}
+		add_to_variable = {
+			var = DSW_SOV_putin_industry_tax_gain_multiplier_modifier
+			value = 0.15
+		}
+		add_to_variable = {
+			var = DSW_SOV_putin_industry_local_resources_factor
+			value = 0.1
+		}
+		add_to_variable = {
+			var = DSW_SOV_putin_industry_fuel_gain_factor
+			value = 0.1
+		}
+		add_to_variable = {
+			var = DSW_SOV_putin_industry_production_speed_infrastructure_factor
+			value = 0.2
+		}
+		add_to_variable = {
+			var = DSW_SOV_putin_industry_production_speed_fossil_powerplant_factor
+			value = 0.2
+		}
+	}
+	if = {
+		limit = {
+			has_country_flag = DSW_SOV_putin_industry_focus_25_rewarded
+		}
+		add_to_variable = {
+			var = DSW_SOV_putin_industry_recruitable_population_factor
+			value = 0.25
+		}
+		add_to_variable = {
+			var = DSW_SOV_putin_industry_conscription_factor
+			value = 0.05
+		}
+		add_to_variable = {
+			var = DSW_SOV_putin_industry_training_time_army_factor
+			value = -0.2
+		}
+		add_to_variable = {
+			var = DSW_SOV_putin_industry_war_support_factor
+			value = 0.15
+		}
+		add_to_variable = {
+			var = DSW_SOV_putin_industry_military_development_monthly
+			value = 0.05
+		}
+	}
+	if = {
+		limit = {
+			has_country_flag = DSW_SOV_putin_industry_focus_26_rewarded
+		}
+		add_to_variable = {
+			var = DSW_SOV_putin_industry_industrial_capacity_factory
+			value = 0.1
+		}
+		add_to_variable = {
+			var = DSW_SOV_putin_industry_production_factory_max_efficiency_factor
+			value = 0.05
+		}
+		add_to_variable = {
+			var = DSW_SOV_putin_industry_production_speed_arms_factory_factor
+			value = 0.05
+		}
+		add_to_variable = {
+			var = DSW_SOV_putin_industry_industrial_development_monthly
+			value = 0.05
+		}
+	}
+	if = {
+		limit = {
+			has_country_flag = DSW_SOV_putin_industry_focus_27_rewarded
+		}
+		add_to_variable = {
+			var = DSW_SOV_putin_industry_production_lack_of_resource_penalty_factor
+			value = -0.2
+		}
+		add_to_variable = {
+			var = DSW_SOV_putin_industry_line_change_production_efficiency_factor
+			value = 0.2
+		}
+		add_to_variable = {
+			var = DSW_SOV_putin_industry_production_factory_start_efficiency_factor
+			value = 0.2
+		}
+		add_to_variable = {
+			var = DSW_SOV_putin_industry_research_speed_factor
+			value = 0.1
+		}
+	}
+	if = {
+		limit = {
+			has_country_flag = DSW_SOV_putin_industry_focus_28_rewarded
+		}
+		add_to_variable = {
+			var = DSW_SOV_putin_industry_tax_gain_multiplier_modifier
+			value = 0.1
+		}
+		add_to_variable = {
+			var = DSW_SOV_putin_industry_business_value_factor
+			value = 0.1
+		}
+		add_to_variable = {
+			var = DSW_SOV_putin_industry_personal_value_factor
+			value = 0.05
+		}
+		add_to_variable = {
+			var = DSW_SOV_putin_industry_political_power_factor
+			value = 0.1
+		}
+	}
+	if = {
+		limit = {
+			has_country_flag = DSW_SOV_putin_industry_focus_29_rewarded
+		}
+		add_to_variable = {
+			var = DSW_SOV_putin_industry_industrial_capacity_factory
+			value = 0.05
+		}
+		add_to_variable = {
+			var = DSW_SOV_putin_industry_production_factory_max_efficiency_factor
+			value = 0.05
+		}
+		add_to_variable = {
+			var = DSW_SOV_putin_industry_production_factory_efficiency_gain_factor
+			value = 0.05
+		}
+		add_to_variable = {
+			var = DSW_SOV_putin_industry_production_speed_buildings_factor
+			value = 0.05
+		}
+	}
+	if = {
+		limit = {
+			has_country_flag = DSW_SOV_putin_industry_focus_30_rewarded
+		}
+		add_to_variable = {
+			var = DSW_SOV_putin_industry_production_speed_buildings_factor
+			value = 0.05
+		}
+		add_to_variable = {
+			var = DSW_SOV_putin_industry_consumer_goods_factor
+			value = -0.05
+		}
+		add_to_variable = {
+			var = DSW_SOV_putin_industry_global_building_slots_factor
+			value = 0.1
+		}
+	}
+	set_country_flag = DSW_SOV_putin_industry_initialized
+	if = {
+		limit = {
+			OR = {
+				has_country_flag = DSW_SOV_putin_industry_focus_2_rewarded
+				has_country_flag = DSW_SOV_putin_industry_focus_14_rewarded
+				has_country_flag = DSW_SOV_putin_industry_focus_20_rewarded
+				has_country_flag = DSW_SOV_putin_industry_focus_21_rewarded
+				has_country_flag = DSW_SOV_putin_industry_focus_22_rewarded
+				has_country_flag = DSW_SOV_putin_industry_focus_23_rewarded
+				has_country_flag = DSW_SOV_putin_industry_focus_24_rewarded
+				has_country_flag = DSW_SOV_putin_industry_focus_25_rewarded
+				has_country_flag = DSW_SOV_putin_industry_focus_26_rewarded
+				has_country_flag = DSW_SOV_putin_industry_focus_27_rewarded
+				has_country_flag = DSW_SOV_putin_industry_focus_28_rewarded
+				has_country_flag = DSW_SOV_putin_industry_focus_29_rewarded
+				has_country_flag = DSW_SOV_putin_industry_focus_30_rewarded
+			}
+		}
+		add_dynamic_modifier = {
+			modifier = DSW_SOV_putin_industry_dynamic
+		}
+	}
+	DSW_SOV_sync_industry_program = yes
+	set_country_flag = DSW_SOV_industry_revision_20261025
+}
+DSW_SOV_add_industry_focus_2 = {
+	set_country_flag = DSW_SOV_putin_industry_focus_2_rewarded
+	DSW_SOV_initialize_industry_spirit = yes
+}
+DSW_SOV_add_industry_focus_14 = {
+	set_country_flag = DSW_SOV_putin_industry_focus_14_rewarded
+	DSW_SOV_initialize_industry_spirit = yes
+}
+DSW_SOV_add_industry_focus_20 = {
+	set_country_flag = DSW_SOV_putin_industry_focus_20_rewarded
+	DSW_SOV_initialize_industry_spirit = yes
+}
+DSW_SOV_add_industry_focus_21 = {
+	set_country_flag = DSW_SOV_putin_industry_focus_21_rewarded
+	DSW_SOV_initialize_industry_spirit = yes
+}
+DSW_SOV_add_industry_focus_22 = {
+	set_country_flag = DSW_SOV_putin_industry_focus_22_rewarded
+	DSW_SOV_initialize_industry_spirit = yes
+}
+DSW_SOV_add_industry_focus_23 = {
+	set_country_flag = DSW_SOV_putin_industry_focus_23_rewarded
+	DSW_SOV_initialize_industry_spirit = yes
+}
+DSW_SOV_add_industry_focus_24 = {
+	set_country_flag = DSW_SOV_putin_industry_focus_24_rewarded
+	DSW_SOV_initialize_industry_spirit = yes
+}
+DSW_SOV_add_industry_focus_25 = {
+	set_country_flag = DSW_SOV_putin_industry_focus_25_rewarded
+	DSW_SOV_initialize_industry_spirit = yes
+}
+DSW_SOV_add_industry_focus_26 = {
+	set_country_flag = DSW_SOV_putin_industry_focus_26_rewarded
+	DSW_SOV_initialize_industry_spirit = yes
+}
+DSW_SOV_add_industry_focus_27 = {
+	set_country_flag = DSW_SOV_putin_industry_focus_27_rewarded
+	DSW_SOV_initialize_industry_spirit = yes
+}
+DSW_SOV_add_industry_focus_28 = {
+	set_country_flag = DSW_SOV_putin_industry_focus_28_rewarded
+	DSW_SOV_initialize_industry_spirit = yes
+}
+DSW_SOV_add_industry_focus_29 = {
+	set_country_flag = DSW_SOV_putin_industry_focus_29_rewarded
+	DSW_SOV_initialize_industry_spirit = yes
+}
+DSW_SOV_add_industry_focus_30 = {
+	set_country_flag = DSW_SOV_putin_industry_focus_30_rewarded
+	DSW_SOV_initialize_industry_spirit = yes
+}
