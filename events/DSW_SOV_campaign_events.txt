@@ -1,0 +1,140 @@
+# DSW Russia / repaired source references
+add_namespace = dsw_sov
+country_event = {
+	id = dsw_sov.1
+	title = dsw_sov.1.t
+	desc = dsw_sov.1.d
+	picture = GFX_Putin_coronavirus
+	is_triggered_only = yes
+	trigger = {
+		tag = SOV
+	}
+	immediate = {
+		DSW_SOV_initialize_2020 = yes
+	}
+	option = {
+		name = dsw_sov.ok
+	}
+}
+country_event = {
+	id = dsw_sov.3
+	title = dsw_sov.3.t
+	desc = dsw_sov.3.d
+	picture = GFX_Putin_coronavirus
+	is_triggered_only = yes
+	trigger = {
+		tag = SOV
+		has_country_flag = DSW_SOV_putin_recovery_selected
+	}
+	immediate = {
+		DSW_SOV_recover_putin = yes
+	}
+	option = {
+		name = dsw_sov.3.a
+	}
+}
+country_event = {
+	id = dsw_sov.10
+	title = dsw_sov.10.t
+	desc = dsw_sov.10.d
+	picture = GFX_SOV_Russian_Camp
+	is_triggered_only = yes
+	option = {
+		name = dsw_sov.ok
+	}
+}
+country_event = {
+	id = dsw_sov.20
+	title = dsw_sov.20.t
+	desc = dsw_sov.20.d
+	picture = GFX_SOV_Russian_Camp
+	is_triggered_only = yes
+	trigger = {
+		tag = SOV
+	}
+	immediate = {
+		load_focus_tree = {
+			tree = DSW_SOV_putin_preparation
+			keep_completed = no
+		}
+	}
+	option = {
+		name = dsw_sov.20.a
+	}
+}
+country_event = {
+	id = dsw_sov.30
+	title = dsw_sov.30.t
+	desc = dsw_sov.30.d
+	picture = GFX_SOV_Russian_Camp
+	is_triggered_only = yes
+	option = {
+		name = dsw_sov.30.a
+	}
+}
+country_event = {
+	id = dsw_sov.40
+	title = dsw_sov.40.t
+	desc = dsw_sov.40.d
+	picture = GFX_Nato_Intervention
+	is_triggered_only = yes
+	option = {
+		name = dsw_sov.ok
+	}
+}
+country_event = {
+	id = dsw_sov.51
+	title = dsw_sov.51.t
+	desc = dsw_sov.51.d
+	picture = GFX_SOV_Russian_Camp
+	is_triggered_only = yes
+	option = {
+		name = dsw_sov.ok
+	}
+}
+country_event = {
+	id = dsw_sov.52
+	title = dsw_sov.52.t
+	desc = dsw_sov.52.d
+	picture = GFX_Nato_Intervention
+	is_triggered_only = yes
+	option = {
+		name = dsw_sov.ok
+	}
+}
+country_event = {
+	id = dsw_sov.90
+	title = dsw_sov.90.t
+	desc = dsw_sov.90.d
+	is_triggered_only = yes
+	trigger = {
+		tag = SOV
+	}
+	option = {
+		name = dsw_sov.test_war
+		DSW_SOV_start_ukrainian_war = yes
+	}
+	option = {
+		name = dsw_sov.test_stalemate
+		DSW_SOV_apply_stalemate = yes
+	}
+	option = {
+		name = dsw_sov.test_final
+		DSW_SOV_launch_final_offensive = yes
+	}
+	option = {
+		name = dsw_sov.test_nato
+		DSW_SOV_begin_european_war = yes
+	}
+	option = {
+		name = dsw_sov.test_victory
+		DSW_SOV_resolve_russian_victory = yes
+	}
+	option = {
+		name = dsw_sov.test_defeat
+		DSW_SOV_resolve_russian_defeat = yes
+	}
+	option = {
+		name = dsw_sov.cancel
+	}
+}

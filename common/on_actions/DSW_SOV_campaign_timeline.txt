@@ -1,0 +1,129 @@
+on_actions = {
+	on_startup = {
+		effect = {
+			SOV = {
+				if = {
+					limit = {
+						date < 2020.1.1
+						NOT = {
+							has_country_flag = DSW_SOV_tfr_active
+						}
+					}
+					DSW_SOV_lock_md_putin = yes
+				}
+			}
+		}
+	}
+	on_daily_SOV = {
+		effect = {
+			if = {
+				limit = {
+					date < 2020.1.1
+					NOT = {
+						has_country_flag = DSW_SOV_tfr_active
+					}
+				}
+				DSW_SOV_lock_md_putin = yes
+			}
+			if = {
+				limit = {
+					date > 2019.12.31
+					NOT = {
+						has_country_flag = DSW_SOV_tfr_active
+					}
+				}
+				country_event = {
+					id = dsw_sov.1
+				}
+			}
+			if = {
+				limit = {
+					has_country_flag = DSW_SOV_tfr_active
+				}
+				DSW_SOV_ensure_putin = yes
+			}
+			if = {
+				limit = {
+					DSW_SOV_reached_stalemate_line = yes
+					NOT = {
+						has_country_flag = DSW_SOV_stalemate
+					}
+					NOT = {
+						has_country_flag = DSW_SOV_final_offensive
+					}
+				}
+				DSW_SOV_apply_stalemate = yes
+			}
+			if = {
+				limit = {
+					has_country_flag = DSW_SOV_final_offensive
+					has_war_with = UKR
+					UKR = {
+						surrender_progress > 0.69
+						has_capitulated = no
+					}
+					NOT = {
+						has_global_flag = DSW_SOV_european_war_started
+					}
+				}
+				DSW_SOV_begin_european_war = yes
+			}
+			if = {
+				limit = {
+					has_global_flag = DSW_SOV_european_war_started
+					NOT = {
+						has_global_flag = DSW_SOV_european_war_resolved
+					}
+				}
+				if = {
+					limit = {
+						DSW_SOV_european_defeat_conditions = yes
+					}
+					DSW_SOV_resolve_russian_defeat = yes
+				}
+				else_if = {
+					limit = {
+						DSW_SOV_european_victory_conditions = yes
+					}
+					DSW_SOV_resolve_russian_victory = yes
+				}
+			}
+		}
+	}
+	on_monthly_SOV = {
+		effect = {
+			if = {
+				limit = {
+					has_country_flag = DSW_SOV_tfr_active
+				}
+				set_temp_variable = {
+					SOV_oligarch_approval_rating_var_temp = modifier@oligarch_influence_monthly
+				}
+				SOV_add_oligarch_approval_rating = yes
+			}
+		}
+	}
+	on_capitulation_immediate = {
+		effect = {
+			if = {
+				limit = {
+					ROOT = {
+						tag = UKR
+					}
+					SOV = {
+						has_country_flag = DSW_SOV_final_offensive
+					}
+					NOT = {
+						has_global_flag = DSW_SOV_european_war_started
+					}
+					NOT = {
+						has_global_flag = DSW_SOV_european_war_resolved
+					}
+				}
+				SOV = {
+					DSW_SOV_begin_european_war = yes
+				}
+			}
+		}
+	}
+}

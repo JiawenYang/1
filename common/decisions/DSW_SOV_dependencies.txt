@@ -1,0 +1,680 @@
+# Legacy foreign mission interfaces, kept in their category scopes.
+UKR_special_military_operation = {
+	UKR_special_military_operation_timer = {
+		priority = 1
+		icon = GFX_SOV_decision_president_election_category
+		days_mission_timeout = 2500
+		fire_only_once = no
+		is_good = no
+		cancel_if_not_visible = yes
+		visible = {
+			NOT = {
+				has_global_flag = SOV_nato_war_begins_global
+			}
+		}
+		available = {
+			hidden_trigger = {
+				always = no
+			}
+		}
+		cancel_trigger = {
+			UKR = {
+				surrender_progress > 0.51
+			}
+		}
+		activation = {
+			always = no
+		}
+		complete_effect = {
+
+		}
+		cancel_effect = {
+			set_country_flag = DSW_SOV_pending_news_237
+			custom_effect_tooltip = DSW_SOV_external_content_pending_tt
+			UKR = {
+				set_country_flag = DSW_SOV_pending_ukraine_5
+				custom_effect_tooltip = DSW_SOV_external_content_pending_tt
+			}
+			GER = {
+				set_country_flag = DSW_SOV_pending_nato_22
+				custom_effect_tooltip = DSW_SOV_external_content_pending_tt
+				set_country_flag = DSW_SOV_pending_germany_23
+				custom_effect_tooltip = DSW_SOV_external_content_pending_tt
+				set_country_flag = DSW_SOV_pending_germany_28
+				custom_effect_tooltip = DSW_SOV_external_content_pending_tt
+				GER_richard_rossmanith = {
+					unit_leader_event = {
+						id = germany.23
+						days = 10
+					}
+				}
+				if = {
+					limit = {
+						check_variable = {
+							GER_die_linke_popularity_var_temp > 15
+						}
+					}
+					set_country_flag = DSW_SOV_pending_germany_93
+					custom_effect_tooltip = DSW_SOV_external_content_pending_tt
+				}
+			}
+			FRA = {
+				set_country_flag = DSW_SOV_pending_nato_22
+				custom_effect_tooltip = DSW_SOV_external_content_pending_tt
+			}
+			set_global_flag = SOV_nato_war_begins_global
+			ITA = {
+				set_country_flag = ITA_first_war_tree_enabled_flag
+				mark_focus_tree_layout_dirty = yes
+				hidden_effect = {
+					set_country_flag = DSW_SOV_pending_italy_ew_events_1
+					custom_effect_tooltip = DSW_SOV_external_content_pending_tt
+				}
+			}
+			SOV = {
+				activate_mission = SOV_nato_war_deadline
+				mark_focus_tree_layout_dirty = yes
+				hidden_effect = {
+					remove_ideas = SOV_special_military_operation
+					remove_ideas = SOV_special_military_operation_1
+					if = {
+						limit = {
+							has_dlc = "No Step Back"
+							has_tech = improved_light_tank_chassis
+						}
+						country_event = {
+							id = dsw_tfr_russia.220
+						}
+					}
+					else_if = {
+						limit = {
+							NOT = {
+								has_dlc = "No Step Back"
+							}
+							has_tech = light_tank4
+						}
+						country_event = {
+							id = dsw_tfr_russia.220
+						}
+					}
+					every_country = {
+						limit = {
+							NOT = {
+								tag = UKR
+							}
+							is_in_faction_with = GER
+						}
+						add_ideas = NATO_european_war
+					}
+					if = {
+						limit = {
+							NOT = {
+								OR = {
+									date > 2024.09.01
+									date > 2025.09.01
+								}
+							}
+							NOT = {
+								OR = {
+									date < 2025.03.01
+									date < 2026.03.01
+								}
+							}
+						}
+						ITA = {
+							set_country_flag = DSW_SOV_pending_nato_12
+							custom_effect_tooltip = DSW_SOV_external_content_pending_tt
+						}
+						GER = {
+							set_country_flag = DSW_SOV_pending_nato_12
+							custom_effect_tooltip = DSW_SOV_external_content_pending_tt
+						}
+						FRA = {
+							set_country_flag = DSW_SOV_pending_nato_12
+							custom_effect_tooltip = DSW_SOV_external_content_pending_tt
+						}
+						POL = {
+							set_country_flag = DSW_SOV_pending_nato_12
+							custom_effect_tooltip = DSW_SOV_external_content_pending_tt
+						}
+						ROM = {
+							set_country_flag = DSW_SOV_pending_nato_12
+							custom_effect_tooltip = DSW_SOV_external_content_pending_tt
+						}
+						UKR = {
+							set_country_flag = DSW_SOV_pending_nato_12
+							custom_effect_tooltip = DSW_SOV_external_content_pending_tt
+						}
+						ENG = {
+							set_country_flag = DSW_SOV_pending_nato_12
+							custom_effect_tooltip = DSW_SOV_external_content_pending_tt
+						}
+						CZE = {
+							set_country_flag = DSW_SOV_pending_nato_12
+							custom_effect_tooltip = DSW_SOV_external_content_pending_tt
+						}
+						SPR = {
+							set_country_flag = DSW_SOV_pending_nato_12
+							custom_effect_tooltip = DSW_SOV_external_content_pending_tt
+						}
+					}
+					if = {
+						limit = {
+							OR = {
+								AND = {
+									date > 2023.03.01
+									date < 2023.06.01
+								}
+								AND = {
+									date > 2024.03.01
+									date < 2024.06.01
+								}
+								AND = {
+									date > 2025.03.01
+									date < 2025.06.01
+								}
+								AND = {
+									date > 2026.03.01
+									date < 2026.06.01
+								}
+								AND = {
+									date > 2027.03.01
+									date < 2027.06.01
+								}
+							}
+						}
+						SOV = {
+							country_event = {
+								id = dsw_tfr_russia.157
+								days = 10
+							}
+						}
+						GER = {
+							country_event = {
+								id = dsw_tfr_russia.157
+								days = 10
+							}
+						}
+						FRA = {
+							country_event = {
+								id = dsw_tfr_russia.157
+								days = 10
+							}
+						}
+					}
+					else_if = {
+						limit = {
+							OR = {
+								AND = {
+									date > 2023.06.01
+									date < 2023.09.01
+								}
+								AND = {
+									date > 2024.06.01
+									date < 2024.09.01
+								}
+								AND = {
+									date > 2025.06.01
+									date < 2025.09.01
+								}
+								AND = {
+									date > 2026.06.01
+									date < 2026.09.01
+								}
+								AND = {
+									date > 2027.06.01
+									date < 2027.09.01
+								}
+							}
+						}
+						SOV = {
+							country_event = {
+								id = dsw_tfr_russia.157
+								days = 270
+							}
+						}
+						GER = {
+							country_event = {
+								id = dsw_tfr_russia.157
+								days = 270
+							}
+						}
+						FRA = {
+							country_event = {
+								id = dsw_tfr_russia.157
+								days = 270
+							}
+						}
+					}
+					POL = {
+						add_country_leader_trait = hos_hates_russians
+					}
+					country_event = {
+						id = dsw_tfr_russia.65
+						days = 230
+					}
+					HUN = {
+						set_country_flag = DSW_SOV_pending_oob_HUN_nato_war
+					}
+					ENG = {
+						if = {
+							limit = {
+								ENG = {
+									is_ai = yes
+								}
+							}
+							set_country_flag = DSW_SOV_pending_oob_ENG_nato_war
+						}
+					}
+					GER = {
+						if = {
+							limit = {
+								GER = {
+									is_ai = yes
+								}
+							}
+							set_country_flag = DSW_SOV_pending_oob_GER_nato_war
+						}
+					}
+					ROM = {
+						set_country_flag = DSW_SOV_pending_oob_ROM_nato_war
+					}
+					POL = {
+						set_country_flag = DSW_SOV_pending_oob_POL_nato_war
+					}
+					if = {
+						limit = {
+							is_ai = yes
+						}
+						add_ideas = SOV_russia_can_win
+					}
+					MLV = {
+						if = {
+							limit = {
+								SOV = {
+									NOT = {
+										has_country_flag = SOV_moldova_pro_russian
+									}
+								}
+							}
+							set_country_flag = DSW_SOV_pending_moldova_2
+							custom_effect_tooltip = DSW_SOV_external_content_pending_tt
+						}
+					}
+					LIT = {
+						set_country_flag = DSW_SOV_pending_oob_LIT_mobilization
+						set_country_flag = DSW_SOV_pending_nato_9
+						custom_effect_tooltip = DSW_SOV_external_content_pending_tt
+					}
+					EST = {
+						set_country_flag = DSW_SOV_pending_oob_EST_mobilization
+						set_country_flag = DSW_SOV_pending_nato_9
+						custom_effect_tooltip = DSW_SOV_external_content_pending_tt
+					}
+					LAT = {
+						set_country_flag = DSW_SOV_pending_oob_LAT_mobilization
+						set_country_flag = DSW_SOV_pending_nato_9
+						custom_effect_tooltip = DSW_SOV_external_content_pending_tt
+					}
+					SYR = {
+						set_country_flag = DSW_SOV_pending_syria_25
+						custom_effect_tooltip = DSW_SOV_external_content_pending_tt
+					}
+					set_country_flag = DSW_SOV_pending_oob_SOV_militia
+				}
+				if = {
+					limit = {
+						OR = {
+							check_variable = {
+								ruling_party = 6
+							}
+							check_variable = {
+								ruling_party = 21
+							}
+						}
+					}
+					add_timed_idea = {
+						idea = SOV_russian_storm
+						days = 120
+					}
+				}
+				else_if = {
+					limit = {
+						OR = {
+							check_variable = {
+								ruling_party = 4
+							}
+							check_variable = {
+								ruling_party = 18
+							}
+						}
+					}
+					add_timed_idea = {
+						idea = SOV_soviet_storm
+						days = 120
+					}
+				}
+				SOV = {
+					set_country_flag = DSW_SOV_pending_nato_14
+					custom_effect_tooltip = DSW_SOV_external_content_pending_tt
+					add_dynamic_modifier = {
+						modifier = SOV_war_exhaustion_dynamic
+					}
+					remove_ideas = SOV_special_military_operation
+					set_variable = {
+						var = SOV_level_of_exhaustion
+						value = 0
+					}
+					set_variable = {
+						var = SOV_war_exhaustion_war_support_factor_dynamic
+						value = 0
+					}
+					set_variable = {
+						var = SOV_war_exhaustion_army_attack_factor_dynamic
+						value = 0
+					}
+					set_variable = {
+						var = SOV_war_exhaustion_army_defence_factor_dynamic
+						value = 0
+					}
+					set_variable = {
+						var = SOV_war_exhaustion_army_org_factor_dynamic
+						value = 0
+					}
+					set_variable = {
+						var = SOV_war_exhaustion_army_morale_factor_dynamic
+						value = 0
+					}
+				}
+			}
+		}
+	}
+}
+second_nato_war_decisions = {
+	second_nato_war_mission = {
+		priority = 1
+		icon = GFX_SOV_decision_nato_war_deadline
+		available = {
+			972 = {
+				controller = {
+					OR = {
+						tag = SOV
+						is_ally_with = SOV
+					}
+				}
+			}
+			44 = {
+				controller = {
+					OR = {
+						tag = SOV
+						is_ally_with = SOV
+					}
+				}
+			}
+			38 = {
+				controller = {
+					OR = {
+						tag = SOV
+						is_ally_with = SOV
+					}
+				}
+			}
+			612 = {
+				controller = {
+					OR = {
+						tag = SOV
+						is_ally_with = SOV
+					}
+				}
+			}
+			56 = {
+				controller = {
+					OR = {
+						tag = SOV
+						is_ally_with = SOV
+					}
+				}
+			}
+			1191 = {
+				controller = {
+					OR = {
+						tag = SOV
+						is_ally_with = SOV
+					}
+				}
+			}
+			961 = {
+				controller = {
+					OR = {
+						tag = SOV
+						is_ally_with = SOV
+					}
+				}
+			}
+			1194 = {
+				controller = {
+					OR = {
+						tag = SOV
+						is_ally_with = SOV
+					}
+				}
+			}
+			787 = {
+				controller = {
+					OR = {
+						tag = SOV
+						is_ally_with = SOV
+					}
+				}
+			}
+			83 = {
+				controller = {
+					OR = {
+						tag = SOV
+						is_ally_with = SOV
+					}
+				}
+			}
+			SOV = {
+				has_war = no
+			}
+		}
+		days_mission_timeout = 999
+		activation = {
+			always = no
+		}
+		visible = {
+
+		}
+		fire_only_once = no
+		cancel_if_not_visible = no
+		is_good = no
+		cancel_trigger = {
+			OR = {
+				SOV = {
+					NOT = {
+						owns_state = 644
+						owns_state = 667
+						owns_state = 1189
+						owns_state = 652
+						owns_state = 644
+						owns_state = 644
+						owns_state = 1188
+						owns_state = 1130
+						owns_state = 672
+						owns_state = 666
+						owns_state = 645
+						owns_state = 660
+						owns_state = 665
+					}
+				}
+				SOV = {
+					NOT = {
+						controls_state = 644
+						controls_state = 667
+						controls_state = 1189
+						controls_state = 652
+						controls_state = 644
+						controls_state = 644
+						controls_state = 1188
+						controls_state = 1130
+						controls_state = 672
+						controls_state = 666
+						controls_state = 645
+						controls_state = 660
+						controls_state = 665
+					}
+				}
+				SOV = {
+					surrender_progress > 0.8
+				}
+			}
+		}
+		cancel_effect = {
+			SOV = {
+				set_country_flag = DSW_SOV_external_tree_pending
+				custom_effect_tooltip = DSW_SOV_external_content_pending_tt
+			}
+			if = {
+				limit = {
+					has_global_flag = SOV_cprf_won
+					NOT = {
+						has_global_flag = nato_nato_won_nato_war
+					}
+				}
+				SOV = {
+					SOV_USSR_defeat_in_2nd_European_War = yes
+				}
+			}
+			if = {
+				limit = {
+					has_global_flag = SOV_ldpr_won
+					NOT = {
+						has_global_flag = nato_nato_won_nato_war
+					}
+				}
+				SOV = {
+					SOV_Zhir_defeat_in_2nd_European_War = yes
+				}
+			}
+			if = {
+				limit = {
+					has_global_flag = SOV_medvedev_won
+					NOT = {
+						has_global_flag = nato_nato_won_nato_war
+					}
+				}
+				SOV = {
+					SOV_Medv_defeat_in_2nd_European_War = yes
+				}
+			}
+			if = {
+				limit = {
+					has_global_flag = nato_nato_won_nato_war
+					has_global_flag = SOV_dugin_russia_flag
+				}
+				SOV = {
+					SOV_second_defeat = yes
+				}
+			}
+			if = {
+				limit = {
+					has_global_flag = nato_nato_won_nato_war
+					has_global_flag = SOV_navalny_russia_flag
+				}
+				SOV = {
+					SOV_second_defeat = yes
+				}
+			}
+			if = {
+				limit = {
+					has_global_flag = nato_nato_won_nato_war
+					has_global_flag = SOV_wagner_russia_flag
+				}
+				SOV = {
+					SOV_second_defeat = yes
+				}
+			}
+		}
+		timeout_effect = {
+			activate_mission = second_nato_war_mission
+		}
+		complete_effect = {
+			if = {
+				limit = {
+					has_global_flag = nato_nato_won_nato_war
+					has_global_flag = SOV_wagner_russia_flag
+				}
+				SOV = {
+					SOV_Wagner_victory_in_2nd_European_War = yes
+				}
+			}
+			if = {
+				limit = {
+					has_global_flag = nato_nato_won_nato_war
+					has_global_flag = SOV_dugin_russia_flag
+				}
+				SOV = {
+					SOV_Dugin_victory_in_2nd_European_War = yes
+				}
+			}
+			if = {
+				limit = {
+					has_global_flag = nato_nato_won_nato_war
+					has_global_flag = SOV_navalny_russia_flag
+				}
+				SOV = {
+					SOV_Navalny_victory_in_2nd_European_War = yes
+				}
+			}
+			if = {
+				limit = {
+					has_global_flag = SOV_cprf_won
+					NOT = {
+						has_global_flag = nato_nato_won_nato_war
+					}
+				}
+				SOV = {
+					SOV_soviet_victory_in_2nd_European_War = yes
+				}
+			}
+			if = {
+				limit = {
+					has_global_flag = SOV_medvedev_won
+					NOT = {
+						has_global_flag = SOV_alikhanov_leader_flag
+					}
+					NOT = {
+						has_global_flag = nato_nato_won_nato_war
+					}
+				}
+				SOV = {
+					SOV_Medv_victory_in_2nd_European_War = yes
+				}
+			}
+			if = {
+				limit = {
+					has_global_flag = SOV_medvedev_won
+					has_global_flag = SOV_alikhanov_leader_flag
+					NOT = {
+						has_global_flag = nato_nato_won_nato_war
+					}
+				}
+				SOV = {
+					SOV_alikhanov_victory_in_2nd_European_War = yes
+				}
+			}
+			if = {
+				limit = {
+					has_global_flag = SOV_ldpr_won
+					NOT = {
+						has_global_flag = nato_nato_won_nato_war
+					}
+				}
+				SOV = {
+					SOV_Zhir_victory_in_2nd_European_War = yes
+				}
+			}
+		}
+	}
+}
