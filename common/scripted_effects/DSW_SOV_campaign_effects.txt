@@ -363,6 +363,7 @@ DSW_SOV_initialize_2020 = {
 			id = dsw_tfr_russia.20
 			days = 95
 		}
+		DSW_SOV_fix_putin_tricolor = yes
 	}
 }
 DSW_SOV_recover_putin = {
@@ -391,6 +392,7 @@ DSW_SOV_recover_putin = {
 	}
 	add_stability = 0.1
 	add_political_power = 150
+	DSW_SOV_fix_putin_tricolor = yes
 }
 DSW_SOV_start_ukrainian_war = {
 	if = {
@@ -658,6 +660,11 @@ DSW_SOV_start_ukrainian_war = {
 			id = dsw_sov.10
 			days = 1
 		}
+		UKR = {
+			country_event = {
+				id = dsw_sov.11
+			}
+		}
 	}
 }
 DSW_SOV_apply_stalemate = {
@@ -698,7 +705,9 @@ DSW_SOV_remove_stalemate = {
 				has_dynamic_modifier = {
 					modifier = DSW_SOV_unplanned_offensive
 				}
-				has_dynamic_modifier = { modifier = unplanned_offensive }
+				has_dynamic_modifier = {
+					modifier = unplanned_offensive
+				}
 			}
 		}
 		remove_dynamic_modifier = {
@@ -731,7 +740,7 @@ DSW_SOV_begin_european_war = {
 			}
 		}
 		set_global_flag = DSW_SOV_european_war_started
-        log = "[GetDateText]: DSW_SOV_european_war_started"
+		log = "[GetDateText]: DSW_SOV_european_war_started"
 		set_global_flag = SOV_nato_war_begins_global
 		if = {
 			limit = {
@@ -746,7 +755,10 @@ DSW_SOV_begin_european_war = {
 				every_country = {
 					limit = {
 						is_faction_leader = yes
-						OR = { tag = USA is_in_faction_with = USA }
+						OR = {
+							tag = USA
+							is_in_faction_with = USA
+						}
 					}
 					add_to_faction = UKR
 				}
@@ -762,7 +774,10 @@ DSW_SOV_begin_european_war = {
 				every_country = {
 					limit = {
 						is_faction_leader = yes
-						OR = { tag = GER is_in_faction_with = GER }
+						OR = {
+							tag = GER
+							is_in_faction_with = GER
+						}
 					}
 					add_to_faction = UKR
 				}
@@ -778,7 +793,10 @@ DSW_SOV_begin_european_war = {
 				every_country = {
 					limit = {
 						is_faction_leader = yes
-						OR = { tag = FRA is_in_faction_with = FRA }
+						OR = {
+							tag = FRA
+							is_in_faction_with = FRA
+						}
 					}
 					add_to_faction = UKR
 				}
@@ -793,7 +811,12 @@ DSW_SOV_begin_european_war = {
 		UKR = {
 			set_country_flag = NATO_member
 			set_country_flag = DSW_SOV_nato_war_participant
+			remove_ideas = CSTO_member
+			remove_from_tech_sharing_group = CSTO_Tech_Share
+			add_ideas = NATO_member
+			add_to_tech_sharing_group = NATO_Tech_Share
 		}
+		DSW_SOV_open_regional_fronts = yes
 		every_country = {
 			limit = {
 				is_in_faction_with = UKR
@@ -842,8 +865,8 @@ DSW_SOV_begin_european_war = {
 			limit = {
 				is_ai = no
 			}
-			set_country_flag = DSW_SOV_european_war_super_event_flag
-			sound_effect = TFR_se_european_war_cprf
+			log = "DSW: first European war player notification"
+			DSW_SOV_show_war_super_event = yes
 			country_event = {
 				id = dsw_sov.40
 				days = 1
@@ -883,6 +906,9 @@ DSW_SOV_conclude_european_war = {
 	SOV = {
 		remove_mission = DSW_SOV_european_war_watch
 	}
+	SOV = {
+		remove_mission = DSW_SOV_caucasus_conflict
+	}
 }
 DSW_SOV_resolve_russian_victory = {
 	if = {
@@ -901,13 +927,12 @@ DSW_SOV_resolve_russian_victory = {
 			set_global_flag = SOV_ur_won
 		}
 		set_global_flag = DSW_SOV_russian_victory
-        log = "[GetDateText]: DSW_SOV_russian_victory"
+		log = "[GetDateText]: DSW_SOV_russian_victory"
 		SOV = {
 			DSW_SOV_mark_eastern_settlement = yes
-            DSW_SOV_conclude_european_war = yes
-            DSW_SOV_eastern_settlement = yes
+			DSW_SOV_conclude_european_war = yes
+			DSW_SOV_eastern_settlement = yes
 			add_ideas = DSW_SOV_victory_settlement
-			
 			load_focus_tree = {
 				tree = DSW_SOV_postwar
 				keep_completed = no
@@ -916,6 +941,7 @@ DSW_SOV_resolve_russian_victory = {
 				id = dsw_sov.51
 				days = 1
 			}
+			DSW_SOV_secure_severodonetsk = yes
 		}
 		FRA = {
 			if = {
@@ -933,6 +959,19 @@ DSW_SOV_resolve_russian_victory = {
 				}
 			}
 		}
+		if = {
+			limit = {
+				NOT = {
+					has_global_flag = SOV_cprf_won
+				}
+			}
+			every_country = {
+				limit = {
+					is_ai = no
+				}
+				DSW_SOV_show_victory_super_event = yes
+			}
+		}
 	}
 }
 DSW_SOV_resolve_russian_defeat = {
@@ -944,7 +983,7 @@ DSW_SOV_resolve_russian_defeat = {
 		}
 		set_global_flag = nato_nato_won_nato_war
 		set_global_flag = DSW_SOV_russian_defeat
-        log = "[GetDateText]: DSW_SOV_russian_defeat"
+		log = "[GetDateText]: DSW_SOV_russian_defeat"
 		SOV = {
 			DSW_SOV_conclude_european_war = yes
 			add_ideas = DSW_SOV_reconstruction_burden
@@ -975,222 +1014,503 @@ DSW_SOV_resolve_russian_defeat = {
 		}
 	}
 }
-
 DSW_SOV_mark_eastern_settlement = {
-    if = {
-        limit = { country_exists = EST }
-        EST = {
-            if = {
-                limit = { NOT = { is_in_faction_with = SOV } NOT = { is_subject_of = SOV } }
-                set_country_flag = DSW_SOV_defeated_in_first_european_war
-            }
-        }
-    }
-    if = {
-        limit = { country_exists = LAT }
-        LAT = {
-            if = {
-                limit = { NOT = { is_in_faction_with = SOV } NOT = { is_subject_of = SOV } }
-                set_country_flag = DSW_SOV_defeated_in_first_european_war
-            }
-        }
-    }
-    if = {
-        limit = { country_exists = LIT }
-        LIT = {
-            if = {
-                limit = { NOT = { is_in_faction_with = SOV } NOT = { is_subject_of = SOV } }
-                set_country_flag = DSW_SOV_defeated_in_first_european_war
-            }
-        }
-    }
-    if = {
-        limit = { country_exists = POL }
-        POL = {
-            if = {
-                limit = { NOT = { is_in_faction_with = SOV } NOT = { is_subject_of = SOV } }
-                set_country_flag = DSW_SOV_defeated_in_first_european_war
-            }
-        }
-    }
-    if = {
-        limit = { country_exists = ROM }
-        ROM = {
-            if = {
-                limit = { NOT = { is_in_faction_with = SOV } NOT = { is_subject_of = SOV } }
-                set_country_flag = DSW_SOV_defeated_in_first_european_war
-            }
-        }
-    }
-    if = {
-        limit = { country_exists = HUN }
-        HUN = {
-            if = {
-                limit = { NOT = { is_in_faction_with = SOV } NOT = { is_subject_of = SOV } }
-                set_country_flag = DSW_SOV_defeated_in_first_european_war
-            }
-        }
-    }
-    if = {
-        limit = { country_exists = UKR }
-        UKR = {
-            if = {
-                limit = { NOT = { is_in_faction_with = SOV } NOT = { is_subject_of = SOV } }
-                set_country_flag = DSW_SOV_defeated_in_first_european_war
-            }
-        }
-    }
-    if = {
-        limit = { country_exists = SLO SLO = { has_capitulated = yes has_country_flag = DSW_SOV_nato_war_participant } }
-        SLO = { set_country_flag = DSW_SOV_defeated_in_first_european_war }
-    }
-    if = {
-        limit = { country_exists = BUL BUL = { has_capitulated = yes has_country_flag = DSW_SOV_nato_war_participant } }
-        BUL = { set_country_flag = DSW_SOV_defeated_in_first_european_war }
-    }
+	if = {
+		limit = {
+			country_exists = EST
+		}
+		EST = {
+			if = {
+				limit = {
+					NOT = {
+						is_in_faction_with = SOV
+					}
+					NOT = {
+						is_subject_of = SOV
+					}
+				}
+				set_country_flag = DSW_SOV_defeated_in_first_european_war
+			}
+		}
+	}
+	if = {
+		limit = {
+			country_exists = LAT
+		}
+		LAT = {
+			if = {
+				limit = {
+					NOT = {
+						is_in_faction_with = SOV
+					}
+					NOT = {
+						is_subject_of = SOV
+					}
+				}
+				set_country_flag = DSW_SOV_defeated_in_first_european_war
+			}
+		}
+	}
+	if = {
+		limit = {
+			country_exists = LIT
+		}
+		LIT = {
+			if = {
+				limit = {
+					NOT = {
+						is_in_faction_with = SOV
+					}
+					NOT = {
+						is_subject_of = SOV
+					}
+				}
+				set_country_flag = DSW_SOV_defeated_in_first_european_war
+			}
+		}
+	}
+	if = {
+		limit = {
+			country_exists = POL
+		}
+		POL = {
+			if = {
+				limit = {
+					NOT = {
+						is_in_faction_with = SOV
+					}
+					NOT = {
+						is_subject_of = SOV
+					}
+				}
+				set_country_flag = DSW_SOV_defeated_in_first_european_war
+			}
+		}
+	}
+	if = {
+		limit = {
+			country_exists = ROM
+		}
+		ROM = {
+			if = {
+				limit = {
+					NOT = {
+						is_in_faction_with = SOV
+					}
+					NOT = {
+						is_subject_of = SOV
+					}
+				}
+				set_country_flag = DSW_SOV_defeated_in_first_european_war
+			}
+		}
+	}
+	if = {
+		limit = {
+			country_exists = HUN
+		}
+		HUN = {
+			if = {
+				limit = {
+					NOT = {
+						is_in_faction_with = SOV
+					}
+					NOT = {
+						is_subject_of = SOV
+					}
+				}
+				set_country_flag = DSW_SOV_defeated_in_first_european_war
+			}
+		}
+	}
+	if = {
+		limit = {
+			country_exists = UKR
+		}
+		UKR = {
+			if = {
+				limit = {
+					NOT = {
+						is_in_faction_with = SOV
+					}
+					NOT = {
+						is_subject_of = SOV
+					}
+				}
+				set_country_flag = DSW_SOV_defeated_in_first_european_war
+			}
+		}
+	}
+	if = {
+		limit = {
+			country_exists = SLO
+			SLO = {
+				has_capitulated = yes
+				has_country_flag = DSW_SOV_nato_war_participant
+			}
+		}
+		SLO = {
+			set_country_flag = DSW_SOV_defeated_in_first_european_war
+		}
+	}
+	if = {
+		limit = {
+			country_exists = BUL
+			BUL = {
+				has_capitulated = yes
+				has_country_flag = DSW_SOV_nato_war_participant
+			}
+		}
+		BUL = {
+			set_country_flag = DSW_SOV_defeated_in_first_european_war
+		}
+	}
+	DSW_SOV_mark_regional_settlement = yes
 }
 DSW_SOV_eastern_settlement = {
-    if = { limit = { is_in_faction = no } create_faction = CSTO }
-    if = {
-        limit = { NOT = { country_exists = EST } any_owned_state = { is_core_of = EST } }
-        release_puppet = EST
-        EST = { set_country_flag = DSW_SOV_defeated_in_first_european_war }
-    }
-    if = {
-        limit = { country_exists = EST EST = { has_country_flag = DSW_SOV_defeated_in_first_european_war } }
-        EST = {
-            NATO_leave = yes
-            leave_faction = yes
-            clr_country_flag = NATO_member
-            set_country_flag = csto_member
-            add_ideas = SOV_devastated_industry_idea
-        }
-        if = { limit = { EST = { NOT = { is_subject_of = SOV } } } puppet = EST }
-        add_to_faction = EST
-        EST = { set_country_flag = DSW_SOV_first_war_settlement_applied }
-    }
-    if = {
-        limit = { NOT = { country_exists = LAT } any_owned_state = { is_core_of = LAT } }
-        release_puppet = LAT
-        LAT = { set_country_flag = DSW_SOV_defeated_in_first_european_war }
-    }
-    if = {
-        limit = { country_exists = LAT LAT = { has_country_flag = DSW_SOV_defeated_in_first_european_war } }
-        LAT = {
-            NATO_leave = yes
-            leave_faction = yes
-            clr_country_flag = NATO_member
-            set_country_flag = csto_member
-            add_ideas = SOV_devastated_industry_idea
-        }
-        if = { limit = { LAT = { NOT = { is_subject_of = SOV } } } puppet = LAT }
-        add_to_faction = LAT
-        LAT = { set_country_flag = DSW_SOV_first_war_settlement_applied }
-    }
-    if = {
-        limit = { NOT = { country_exists = LIT } any_owned_state = { is_core_of = LIT } }
-        release_puppet = LIT
-        LIT = { set_country_flag = DSW_SOV_defeated_in_first_european_war }
-    }
-    if = {
-        limit = { country_exists = LIT LIT = { has_country_flag = DSW_SOV_defeated_in_first_european_war } }
-        LIT = {
-            NATO_leave = yes
-            leave_faction = yes
-            clr_country_flag = NATO_member
-            set_country_flag = csto_member
-            add_ideas = SOV_devastated_industry_idea
-        }
-        if = { limit = { LIT = { NOT = { is_subject_of = SOV } } } puppet = LIT }
-        add_to_faction = LIT
-        LIT = { set_country_flag = DSW_SOV_first_war_settlement_applied }
-    }
-    if = {
-        limit = { NOT = { country_exists = POL } any_owned_state = { is_core_of = POL } }
-        release_puppet = POL
-        POL = { set_country_flag = DSW_SOV_defeated_in_first_european_war }
-    }
-    if = {
-        limit = { country_exists = POL POL = { has_country_flag = DSW_SOV_defeated_in_first_european_war } }
-        POL = {
-            NATO_leave = yes
-            leave_faction = yes
-            clr_country_flag = NATO_member
-            set_country_flag = csto_member
-            add_ideas = SOV_devastated_industry_idea
-        }
-        if = { limit = { POL = { NOT = { is_subject_of = SOV } } } puppet = POL }
-        add_to_faction = POL
-        POL = { set_country_flag = DSW_SOV_first_war_settlement_applied }
-    }
-    if = {
-        limit = { NOT = { country_exists = UKR } any_owned_state = { is_core_of = UKR } }
-        release_puppet = UKR
-        UKR = { set_country_flag = DSW_SOV_defeated_in_first_european_war }
-    }
-    if = {
-        limit = { country_exists = UKR UKR = { has_country_flag = DSW_SOV_defeated_in_first_european_war } }
-        UKR = {
-            NATO_leave = yes
-            leave_faction = yes
-            clr_country_flag = NATO_member
-            set_country_flag = csto_member
-            add_ideas = SOV_devastated_industry_idea
-        }
-        if = { limit = { UKR = { NOT = { is_subject_of = SOV } } } puppet = UKR }
-        add_to_faction = UKR
-        UKR = { set_country_flag = DSW_SOV_first_war_settlement_applied }
-    }
-    if = {
-        limit = { country_exists = ROM ROM = { has_country_flag = DSW_SOV_defeated_in_first_european_war } }
-        ROM = {
-            NATO_leave = yes
-            leave_faction = yes
-            clr_country_flag = NATO_member
-            set_country_flag = csto_member
-            add_ideas = { SOV_unstable_government SOV_devastated_industry_idea }
-            country_event = { id = dsw_tfr_russia.237 days = 1 }
-            set_country_flag = DSW_SOV_first_war_settlement_applied
-        }
-        add_to_faction = ROM
-    }
-    if = {
-        limit = { country_exists = HUN HUN = { has_country_flag = DSW_SOV_defeated_in_first_european_war } }
-        HUN = {
-            NATO_leave = yes
-            leave_faction = yes
-            clr_country_flag = NATO_member
-            set_country_flag = csto_member
-            add_ideas = { SOV_unstable_government SOV_devastated_industry_idea }
-            country_event = { id = dsw_tfr_russia.237 days = 1 }
-            set_country_flag = DSW_SOV_first_war_settlement_applied
-        }
-        add_to_faction = HUN
-    }
-    if = {
-        limit = { country_exists = SLO SLO = { has_country_flag = DSW_SOV_defeated_in_first_european_war } }
-        SLO = {
-            NATO_leave = yes
-            leave_faction = yes
-            clr_country_flag = NATO_member
-            set_country_flag = csto_member
-            add_ideas = { SOV_unstable_government SOV_devastated_industry_idea }
-            country_event = { id = dsw_tfr_russia.237 days = 1 }
-            set_country_flag = DSW_SOV_first_war_settlement_applied
-        }
-        add_to_faction = SLO
-    }
-    if = {
-        limit = { country_exists = BUL BUL = { has_country_flag = DSW_SOV_defeated_in_first_european_war } }
-        BUL = {
-            NATO_leave = yes
-            leave_faction = yes
-            clr_country_flag = NATO_member
-            set_country_flag = csto_member
-            add_ideas = { SOV_unstable_government SOV_devastated_industry_idea }
-            country_event = { id = dsw_tfr_russia.237 days = 1 }
-            set_country_flag = DSW_SOV_first_war_settlement_applied
-        }
-        add_to_faction = BUL
-    }
+	if = {
+		limit = {
+			is_in_faction = no
+		}
+		create_faction = CSTO
+	}
+	if = {
+		limit = {
+			NOT = {
+				country_exists = EST
+			}
+			any_owned_state = {
+				is_core_of = EST
+			}
+		}
+		release_puppet = EST
+		EST = {
+			set_country_flag = DSW_SOV_defeated_in_first_european_war
+		}
+	}
+	if = {
+		limit = {
+			country_exists = EST
+			EST = {
+				has_country_flag = DSW_SOV_defeated_in_first_european_war
+			}
+		}
+		EST = {
+			NATO_leave = yes
+			leave_faction = yes
+			clr_country_flag = NATO_member
+			set_country_flag = csto_member
+			add_ideas = SOV_devastated_industry_idea
+			add_ideas = CSTO_member
+			add_to_tech_sharing_group = CSTO_Tech_Share
+		}
+		if = {
+			limit = {
+				EST = {
+					NOT = {
+						is_subject_of = SOV
+					}
+				}
+			}
+			puppet = EST
+		}
+		add_to_faction = EST
+		EST = {
+			set_country_flag = DSW_SOV_first_war_settlement_applied
+			DSW_SOV_install_authoritarian_government = yes
+		}
+	}
+	if = {
+		limit = {
+			NOT = {
+				country_exists = LAT
+			}
+			any_owned_state = {
+				is_core_of = LAT
+			}
+		}
+		release_puppet = LAT
+		LAT = {
+			set_country_flag = DSW_SOV_defeated_in_first_european_war
+		}
+	}
+	if = {
+		limit = {
+			country_exists = LAT
+			LAT = {
+				has_country_flag = DSW_SOV_defeated_in_first_european_war
+			}
+		}
+		LAT = {
+			NATO_leave = yes
+			leave_faction = yes
+			clr_country_flag = NATO_member
+			set_country_flag = csto_member
+			add_ideas = SOV_devastated_industry_idea
+			add_ideas = CSTO_member
+			add_to_tech_sharing_group = CSTO_Tech_Share
+		}
+		if = {
+			limit = {
+				LAT = {
+					NOT = {
+						is_subject_of = SOV
+					}
+				}
+			}
+			puppet = LAT
+		}
+		add_to_faction = LAT
+		LAT = {
+			set_country_flag = DSW_SOV_first_war_settlement_applied
+			DSW_SOV_install_authoritarian_government = yes
+		}
+	}
+	if = {
+		limit = {
+			NOT = {
+				country_exists = LIT
+			}
+			any_owned_state = {
+				is_core_of = LIT
+			}
+		}
+		release_puppet = LIT
+		LIT = {
+			set_country_flag = DSW_SOV_defeated_in_first_european_war
+		}
+	}
+	if = {
+		limit = {
+			country_exists = LIT
+			LIT = {
+				has_country_flag = DSW_SOV_defeated_in_first_european_war
+			}
+		}
+		LIT = {
+			NATO_leave = yes
+			leave_faction = yes
+			clr_country_flag = NATO_member
+			set_country_flag = csto_member
+			add_ideas = SOV_devastated_industry_idea
+			add_ideas = CSTO_member
+			add_to_tech_sharing_group = CSTO_Tech_Share
+		}
+		if = {
+			limit = {
+				LIT = {
+					NOT = {
+						is_subject_of = SOV
+					}
+				}
+			}
+			puppet = LIT
+		}
+		add_to_faction = LIT
+		LIT = {
+			set_country_flag = DSW_SOV_first_war_settlement_applied
+			DSW_SOV_install_authoritarian_government = yes
+		}
+	}
+	if = {
+		limit = {
+			NOT = {
+				country_exists = POL
+			}
+			any_owned_state = {
+				is_core_of = POL
+			}
+		}
+		release_puppet = POL
+		POL = {
+			set_country_flag = DSW_SOV_defeated_in_first_european_war
+		}
+	}
+	if = {
+		limit = {
+			country_exists = POL
+			POL = {
+				has_country_flag = DSW_SOV_defeated_in_first_european_war
+			}
+		}
+		POL = {
+			NATO_leave = yes
+			leave_faction = yes
+			clr_country_flag = NATO_member
+			set_country_flag = csto_member
+			add_ideas = SOV_devastated_industry_idea
+			add_ideas = CSTO_member
+			add_to_tech_sharing_group = CSTO_Tech_Share
+		}
+		if = {
+			limit = {
+				POL = {
+					NOT = {
+						is_subject_of = SOV
+					}
+				}
+			}
+			puppet = POL
+		}
+		add_to_faction = POL
+		POL = {
+			set_country_flag = DSW_SOV_first_war_settlement_applied
+			DSW_SOV_install_authoritarian_government = yes
+		}
+	}
+	if = {
+		limit = {
+			NOT = {
+				country_exists = UKR
+			}
+			any_owned_state = {
+				is_core_of = UKR
+			}
+		}
+		release_puppet = UKR
+		UKR = {
+			set_country_flag = DSW_SOV_defeated_in_first_european_war
+		}
+	}
+	if = {
+		limit = {
+			country_exists = UKR
+			UKR = {
+				has_country_flag = DSW_SOV_defeated_in_first_european_war
+			}
+		}
+		UKR = {
+			NATO_leave = yes
+			leave_faction = yes
+			clr_country_flag = NATO_member
+			set_country_flag = csto_member
+			add_ideas = SOV_devastated_industry_idea
+			add_ideas = CSTO_member
+			add_to_tech_sharing_group = CSTO_Tech_Share
+		}
+		if = {
+			limit = {
+				UKR = {
+					NOT = {
+						is_subject_of = SOV
+					}
+				}
+			}
+			puppet = UKR
+		}
+		add_to_faction = UKR
+		UKR = {
+			set_country_flag = DSW_SOV_first_war_settlement_applied
+			DSW_SOV_install_authoritarian_government = yes
+		}
+	}
+	if = {
+		limit = {
+			country_exists = ROM
+			ROM = {
+				has_country_flag = DSW_SOV_defeated_in_first_european_war
+			}
+		}
+		ROM = {
+			NATO_leave = yes
+			leave_faction = yes
+			clr_country_flag = NATO_member
+			set_country_flag = csto_member
+			add_ideas = {
+				SOV_unstable_government
+				SOV_devastated_industry_idea
+			}
+			country_event = {
+				id = dsw_tfr_russia.237
+				days = 1
+			}
+			set_country_flag = DSW_SOV_first_war_settlement_applied
+			DSW_SOV_install_authoritarian_government = yes
+			add_ideas = CSTO_member
+			add_to_tech_sharing_group = CSTO_Tech_Share
+		}
+		add_to_faction = ROM
+	}
+	if = {
+		limit = {
+			country_exists = HUN
+			HUN = {
+				has_country_flag = DSW_SOV_defeated_in_first_european_war
+			}
+		}
+		HUN = {
+			NATO_leave = yes
+			leave_faction = yes
+			clr_country_flag = NATO_member
+			set_country_flag = csto_member
+			add_ideas = {
+				SOV_unstable_government
+				SOV_devastated_industry_idea
+			}
+			country_event = {
+				id = dsw_tfr_russia.237
+				days = 1
+			}
+			set_country_flag = DSW_SOV_first_war_settlement_applied
+			DSW_SOV_install_authoritarian_government = yes
+			add_ideas = CSTO_member
+			add_to_tech_sharing_group = CSTO_Tech_Share
+		}
+		add_to_faction = HUN
+	}
+	if = {
+		limit = {
+			country_exists = SLO
+			SLO = {
+				has_country_flag = DSW_SOV_defeated_in_first_european_war
+			}
+		}
+		SLO = {
+			NATO_leave = yes
+			leave_faction = yes
+			clr_country_flag = NATO_member
+			set_country_flag = csto_member
+			add_ideas = {
+				SOV_unstable_government
+				SOV_devastated_industry_idea
+			}
+			country_event = {
+				id = dsw_tfr_russia.237
+				days = 1
+			}
+			set_country_flag = DSW_SOV_first_war_settlement_applied
+			DSW_SOV_install_authoritarian_government = yes
+			add_ideas = CSTO_member
+			add_to_tech_sharing_group = CSTO_Tech_Share
+		}
+		add_to_faction = SLO
+	}
+	if = {
+		limit = {
+			country_exists = BUL
+			BUL = {
+				has_country_flag = DSW_SOV_defeated_in_first_european_war
+			}
+		}
+		BUL = {
+			NATO_leave = yes
+			leave_faction = yes
+			clr_country_flag = NATO_member
+			set_country_flag = csto_member
+			add_ideas = {
+				SOV_unstable_government
+				SOV_devastated_industry_idea
+			}
+			country_event = {
+				id = dsw_tfr_russia.237
+				days = 1
+			}
+			set_country_flag = DSW_SOV_first_war_settlement_applied
+			DSW_SOV_install_authoritarian_government = yes
+			add_ideas = CSTO_member
+			add_to_tech_sharing_group = CSTO_Tech_Share
+		}
+		add_to_faction = BUL
+	}
+	DSW_SOV_apply_regional_settlement = yes
 }

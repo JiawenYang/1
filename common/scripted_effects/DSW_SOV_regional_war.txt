@@ -1,0 +1,607 @@
+DSW_SOV_join_russian_war_side = {
+	NATO_leave = yes
+	if = {
+		limit = {
+			is_in_faction = yes
+			NOT = {
+				is_in_faction_with = SOV
+			}
+		}
+		leave_faction = yes
+	}
+	SOV = {
+		add_to_faction = PREV
+	}
+	add_ideas = CSTO_member
+	add_to_tech_sharing_group = CSTO_Tech_Share
+	set_country_flag = csto_member
+	clr_country_flag = NATO_member
+	set_country_flag = DSW_SOV_csto_war_participant
+	if = {
+		limit = {
+			NOT = {
+				has_war_with = UKR
+			}
+		}
+		add_to_war = {
+			targeted_alliance = SOV
+			enemy = UKR
+			hostility_reason = asked_to_join
+			single_target_only = no
+		}
+	}
+}
+DSW_SOV_join_nato_war_side = {
+	if = {
+		limit = {
+			is_in_faction = yes
+			NOT = {
+				is_in_faction_with = UKR
+			}
+		}
+		leave_faction = yes
+	}
+	every_country = {
+		limit = {
+			is_faction_leader = yes
+			OR = {
+				tag = UKR
+				is_in_faction_with = UKR
+			}
+		}
+		add_to_faction = PREV
+	}
+	remove_ideas = CSTO_member
+	remove_from_tech_sharing_group = CSTO_Tech_Share
+	add_ideas = NATO_member
+	add_to_tech_sharing_group = NATO_Tech_Share
+	set_country_flag = NATO_member
+	clr_country_flag = csto_member
+	set_country_flag = DSW_SOV_nato_war_participant
+	set_country_flag = DSW_SOV_regional_nato_participant
+	if = {
+		limit = {
+			NOT = {
+				has_war_with = SOV
+			}
+		}
+		add_to_war = {
+			targeted_alliance = UKR
+			enemy = SOV
+			hostility_reason = asked_to_join
+			single_target_only = no
+		}
+	}
+}
+DSW_SOV_open_regional_fronts = {
+	if = {
+		limit = {
+			has_global_flag = DSW_SOV_european_war_started
+			NOT = {
+				has_country_flag = DSW_SOV_regional_fronts_initialized
+			}
+		}
+		set_country_flag = DSW_SOV_regional_fronts_initialized
+		if = {
+			limit = {
+				country_exists = GEO
+			}
+			GEO = {
+				if = {
+					limit = {
+						OR = {
+							is_in_faction_with = SOV
+							is_subject_of = SOV
+						}
+					}
+					DSW_SOV_join_russian_war_side = yes
+				}
+				else_if = {
+					limit = {
+						is_in_faction_with = UKR
+					}
+					DSW_SOV_join_nato_war_side = yes
+				}
+				else = {
+					DSW_SOV_join_nato_war_side = yes
+				}
+				if = {
+					limit = {
+						has_country_flag = DSW_SOV_regional_nato_participant
+					}
+					set_country_flag = DSW_SOV_caucasus_nato_participant
+				}
+			}
+		}
+		if = {
+			limit = {
+				country_exists = AZE
+			}
+			AZE = {
+				if = {
+					limit = {
+						OR = {
+							is_in_faction_with = SOV
+							is_subject_of = SOV
+						}
+					}
+					DSW_SOV_join_russian_war_side = yes
+				}
+				else_if = {
+					limit = {
+						is_in_faction_with = UKR
+					}
+					DSW_SOV_join_nato_war_side = yes
+				}
+				else = {
+					DSW_SOV_join_nato_war_side = yes
+				}
+				if = {
+					limit = {
+						has_country_flag = DSW_SOV_regional_nato_participant
+					}
+					set_country_flag = DSW_SOV_caucasus_nato_participant
+				}
+			}
+		}
+		if = {
+			limit = {
+				country_exists = ARM
+			}
+			ARM = {
+				if = {
+					limit = {
+						OR = {
+							is_in_faction_with = SOV
+							is_subject_of = SOV
+						}
+					}
+					DSW_SOV_join_russian_war_side = yes
+				}
+				else_if = {
+					limit = {
+						is_in_faction_with = UKR
+					}
+					DSW_SOV_join_nato_war_side = yes
+				}
+				else = {
+					DSW_SOV_join_russian_war_side = yes
+				}
+				if = {
+					limit = {
+						has_country_flag = DSW_SOV_regional_nato_participant
+					}
+					set_country_flag = DSW_SOV_caucasus_nato_participant
+				}
+			}
+		}
+		if = {
+			limit = {
+				country_exists = ABK
+			}
+			ABK = {
+				if = {
+					limit = {
+						OR = {
+							is_in_faction_with = SOV
+							is_subject_of = SOV
+						}
+					}
+					DSW_SOV_join_russian_war_side = yes
+				}
+				else_if = {
+					limit = {
+						is_in_faction_with = UKR
+					}
+					DSW_SOV_join_nato_war_side = yes
+				}
+				else = {
+					DSW_SOV_join_russian_war_side = yes
+				}
+				if = {
+					limit = {
+						has_country_flag = DSW_SOV_regional_nato_participant
+					}
+					set_country_flag = DSW_SOV_caucasus_nato_participant
+				}
+			}
+		}
+		if = {
+			limit = {
+				country_exists = SOO
+			}
+			SOO = {
+				if = {
+					limit = {
+						OR = {
+							is_in_faction_with = SOV
+							is_subject_of = SOV
+						}
+					}
+					DSW_SOV_join_russian_war_side = yes
+				}
+				else_if = {
+					limit = {
+						is_in_faction_with = UKR
+					}
+					DSW_SOV_join_nato_war_side = yes
+				}
+				else = {
+					DSW_SOV_join_russian_war_side = yes
+				}
+				if = {
+					limit = {
+						has_country_flag = DSW_SOV_regional_nato_participant
+					}
+					set_country_flag = DSW_SOV_caucasus_nato_participant
+				}
+			}
+		}
+		if = {
+			limit = {
+				country_exists = NKR
+			}
+			NKR = {
+				if = {
+					limit = {
+						OR = {
+							is_in_faction_with = SOV
+							is_subject_of = SOV
+						}
+					}
+					DSW_SOV_join_russian_war_side = yes
+				}
+				else_if = {
+					limit = {
+						is_in_faction_with = UKR
+					}
+					DSW_SOV_join_nato_war_side = yes
+				}
+				else = {
+					DSW_SOV_join_russian_war_side = yes
+				}
+				if = {
+					limit = {
+						has_country_flag = DSW_SOV_regional_nato_participant
+					}
+					set_country_flag = DSW_SOV_caucasus_nato_participant
+				}
+			}
+		}
+		if = {
+			limit = {
+				country_exists = PMR
+			}
+			PMR = {
+				if = {
+					limit = {
+						OR = {
+							is_in_faction_with = SOV
+							is_subject_of = SOV
+						}
+					}
+					DSW_SOV_join_russian_war_side = yes
+				}
+				else_if = {
+					limit = {
+						is_in_faction_with = UKR
+					}
+					DSW_SOV_join_nato_war_side = yes
+				}
+				else = {
+					DSW_SOV_join_russian_war_side = yes
+				}
+			}
+		}
+		if = {
+			limit = {
+				country_exists = MLV
+			}
+			MLV = {
+				if = {
+					limit = {
+						OR = {
+							is_in_faction_with = SOV
+							is_subject_of = SOV
+						}
+					}
+					DSW_SOV_join_russian_war_side = yes
+				}
+				else_if = {
+					limit = {
+						is_in_faction_with = UKR
+					}
+					DSW_SOV_join_nato_war_side = yes
+				}
+				else = {
+					DSW_SOV_join_nato_war_side = yes
+				}
+			}
+		}
+		activate_mission = DSW_SOV_caucasus_conflict
+		country_event = {
+			id = dsw_sov.60
+			days = 1
+		}
+	}
+}
+DSW_SOV_secure_severodonetsk = {
+	1076 = {
+		add_core_of = SOV
+	}
+	if = {
+		limit = {
+			has_global_flag = DSW_SOV_russian_victory
+		}
+		transfer_state = 1076
+		set_state_controller = 1076
+	}
+}
+DSW_SOV_mark_regional_settlement = {
+	if = {
+		limit = {
+			country_exists = GEO
+			GEO = {
+				has_country_flag = DSW_SOV_regional_nato_participant
+				has_capitulated = yes
+			}
+		}
+		GEO = {
+			set_country_flag = DSW_SOV_defeated_in_first_european_war
+		}
+	}
+	if = {
+		limit = {
+			country_exists = AZE
+			AZE = {
+				has_country_flag = DSW_SOV_regional_nato_participant
+				has_capitulated = yes
+			}
+		}
+		AZE = {
+			set_country_flag = DSW_SOV_defeated_in_first_european_war
+		}
+	}
+	if = {
+		limit = {
+			country_exists = ARM
+			ARM = {
+				has_country_flag = DSW_SOV_regional_nato_participant
+				has_capitulated = yes
+			}
+		}
+		ARM = {
+			set_country_flag = DSW_SOV_defeated_in_first_european_war
+		}
+	}
+	if = {
+		limit = {
+			country_exists = ABK
+			ABK = {
+				has_country_flag = DSW_SOV_regional_nato_participant
+				has_capitulated = yes
+			}
+		}
+		ABK = {
+			set_country_flag = DSW_SOV_defeated_in_first_european_war
+		}
+	}
+	if = {
+		limit = {
+			country_exists = SOO
+			SOO = {
+				has_country_flag = DSW_SOV_regional_nato_participant
+				has_capitulated = yes
+			}
+		}
+		SOO = {
+			set_country_flag = DSW_SOV_defeated_in_first_european_war
+		}
+	}
+	if = {
+		limit = {
+			country_exists = NKR
+			NKR = {
+				has_country_flag = DSW_SOV_regional_nato_participant
+				has_capitulated = yes
+			}
+		}
+		NKR = {
+			set_country_flag = DSW_SOV_defeated_in_first_european_war
+		}
+	}
+	if = {
+		limit = {
+			country_exists = PMR
+			PMR = {
+				has_country_flag = DSW_SOV_regional_nato_participant
+				has_capitulated = yes
+			}
+		}
+		PMR = {
+			set_country_flag = DSW_SOV_defeated_in_first_european_war
+		}
+	}
+	if = {
+		limit = {
+			country_exists = MLV
+			MLV = {
+				has_country_flag = DSW_SOV_regional_nato_participant
+				has_capitulated = yes
+			}
+		}
+		MLV = {
+			set_country_flag = DSW_SOV_defeated_in_first_european_war
+		}
+	}
+}
+DSW_SOV_apply_regional_settlement = {
+	if = {
+		limit = {
+			country_exists = GEO
+			GEO = {
+				has_country_flag = DSW_SOV_defeated_in_first_european_war
+				has_country_flag = DSW_SOV_regional_nato_participant
+			}
+		}
+		GEO = {
+			NATO_leave = yes
+			leave_faction = yes
+			clr_country_flag = NATO_member
+			set_country_flag = csto_member
+			add_ideas = SOV_devastated_industry_idea
+			DSW_SOV_install_authoritarian_government = yes
+			set_country_flag = DSW_SOV_first_war_settlement_applied
+			add_ideas = CSTO_member
+			add_to_tech_sharing_group = CSTO_Tech_Share
+		}
+		add_to_faction = GEO
+	}
+	if = {
+		limit = {
+			country_exists = AZE
+			AZE = {
+				has_country_flag = DSW_SOV_defeated_in_first_european_war
+				has_country_flag = DSW_SOV_regional_nato_participant
+			}
+		}
+		AZE = {
+			NATO_leave = yes
+			leave_faction = yes
+			clr_country_flag = NATO_member
+			set_country_flag = csto_member
+			add_ideas = SOV_devastated_industry_idea
+			DSW_SOV_install_authoritarian_government = yes
+			set_country_flag = DSW_SOV_first_war_settlement_applied
+			add_ideas = CSTO_member
+			add_to_tech_sharing_group = CSTO_Tech_Share
+		}
+		add_to_faction = AZE
+	}
+	if = {
+		limit = {
+			country_exists = ARM
+			ARM = {
+				has_country_flag = DSW_SOV_defeated_in_first_european_war
+				has_country_flag = DSW_SOV_regional_nato_participant
+			}
+		}
+		ARM = {
+			NATO_leave = yes
+			leave_faction = yes
+			clr_country_flag = NATO_member
+			set_country_flag = csto_member
+			add_ideas = SOV_devastated_industry_idea
+			DSW_SOV_install_authoritarian_government = yes
+			set_country_flag = DSW_SOV_first_war_settlement_applied
+			add_ideas = CSTO_member
+			add_to_tech_sharing_group = CSTO_Tech_Share
+		}
+		add_to_faction = ARM
+	}
+	if = {
+		limit = {
+			country_exists = ABK
+			ABK = {
+				has_country_flag = DSW_SOV_defeated_in_first_european_war
+				has_country_flag = DSW_SOV_regional_nato_participant
+			}
+		}
+		ABK = {
+			NATO_leave = yes
+			leave_faction = yes
+			clr_country_flag = NATO_member
+			set_country_flag = csto_member
+			add_ideas = SOV_devastated_industry_idea
+			DSW_SOV_install_authoritarian_government = yes
+			set_country_flag = DSW_SOV_first_war_settlement_applied
+			add_ideas = CSTO_member
+			add_to_tech_sharing_group = CSTO_Tech_Share
+		}
+		add_to_faction = ABK
+	}
+	if = {
+		limit = {
+			country_exists = SOO
+			SOO = {
+				has_country_flag = DSW_SOV_defeated_in_first_european_war
+				has_country_flag = DSW_SOV_regional_nato_participant
+			}
+		}
+		SOO = {
+			NATO_leave = yes
+			leave_faction = yes
+			clr_country_flag = NATO_member
+			set_country_flag = csto_member
+			add_ideas = SOV_devastated_industry_idea
+			DSW_SOV_install_authoritarian_government = yes
+			set_country_flag = DSW_SOV_first_war_settlement_applied
+			add_ideas = CSTO_member
+			add_to_tech_sharing_group = CSTO_Tech_Share
+		}
+		add_to_faction = SOO
+	}
+	if = {
+		limit = {
+			country_exists = NKR
+			NKR = {
+				has_country_flag = DSW_SOV_defeated_in_first_european_war
+				has_country_flag = DSW_SOV_regional_nato_participant
+			}
+		}
+		NKR = {
+			NATO_leave = yes
+			leave_faction = yes
+			clr_country_flag = NATO_member
+			set_country_flag = csto_member
+			add_ideas = SOV_devastated_industry_idea
+			DSW_SOV_install_authoritarian_government = yes
+			set_country_flag = DSW_SOV_first_war_settlement_applied
+			add_ideas = CSTO_member
+			add_to_tech_sharing_group = CSTO_Tech_Share
+		}
+		add_to_faction = NKR
+	}
+	if = {
+		limit = {
+			country_exists = PMR
+			PMR = {
+				has_country_flag = DSW_SOV_defeated_in_first_european_war
+				has_country_flag = DSW_SOV_regional_nato_participant
+			}
+		}
+		PMR = {
+			NATO_leave = yes
+			leave_faction = yes
+			clr_country_flag = NATO_member
+			set_country_flag = csto_member
+			add_ideas = SOV_devastated_industry_idea
+			DSW_SOV_install_authoritarian_government = yes
+			set_country_flag = DSW_SOV_first_war_settlement_applied
+			add_ideas = CSTO_member
+			add_to_tech_sharing_group = CSTO_Tech_Share
+		}
+		add_to_faction = PMR
+	}
+	if = {
+		limit = {
+			country_exists = MLV
+			MLV = {
+				has_country_flag = DSW_SOV_defeated_in_first_european_war
+				has_country_flag = DSW_SOV_regional_nato_participant
+			}
+		}
+		MLV = {
+			NATO_leave = yes
+			leave_faction = yes
+			clr_country_flag = NATO_member
+			set_country_flag = csto_member
+			add_ideas = SOV_devastated_industry_idea
+			DSW_SOV_install_authoritarian_government = yes
+			set_country_flag = DSW_SOV_first_war_settlement_applied
+			add_ideas = CSTO_member
+			add_to_tech_sharing_group = CSTO_Tech_Share
+		}
+		add_to_faction = MLV
+	}
+}

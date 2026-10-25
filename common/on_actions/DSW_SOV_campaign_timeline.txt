@@ -17,11 +17,33 @@ on_actions = {
 					}
 					DSW_SOV_initialize_industry_spirit = yes
 				}
+				DSW_SOV_fix_putin_tricolor = yes
+				DSW_SOV_migrate_postwar_patch = yes
 			}
 		}
 	}
 	on_daily_SOV = {
 		effect = {
+			if = {
+				limit = {
+					has_country_flag = DSW_SOV_smo_started
+					has_war_with = UKR
+					NOT = {
+						has_global_flag = DSW_SOV_european_war_started
+					}
+					UKR = {
+						has_capitulated = no
+						NOT = {
+							has_country_flag = DSW_UKR_emergency_mobilized
+						}
+					}
+				}
+				UKR = {
+					country_event = {
+						id = dsw_sov.11
+					}
+				}
+			}
 			if = {
 				limit = {
 					has_country_flag = DSW_SOV_putin_industry_initialized
@@ -89,6 +111,18 @@ on_actions = {
 					NOT = {
 						has_global_flag = DSW_SOV_european_war_resolved
 					}
+					NOT = {
+						has_country_flag = DSW_SOV_regional_fronts_initialized
+					}
+				}
+				DSW_SOV_open_regional_fronts = yes
+			}
+			if = {
+				limit = {
+					has_global_flag = DSW_SOV_european_war_started
+					NOT = {
+						has_global_flag = DSW_SOV_european_war_resolved
+					}
 				}
 				if = {
 					limit = {
@@ -104,6 +138,8 @@ on_actions = {
 				}
 			}
 			DSW_SOV_tick_industry_program = yes
+			DSW_SOV_fix_putin_tricolor = yes
+			DSW_SOV_migrate_postwar_patch = yes
 		}
 	}
 	on_monthly_SOV = {
