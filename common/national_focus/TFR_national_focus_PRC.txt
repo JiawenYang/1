@@ -8,13 +8,19 @@ focus_tree = {
 		id = PRC_lockdown_wuhan
 		icon = GFX_focus_PRC_lockdown_wuhan
 		x = 0
-		y = 0
+		y = 10
 		cost = 3
 		available_if_capitulated = yes
 		ai_will_do = {
 			factor = 100
 		}
 		available = {
+		}
+		allow_branch = {
+			OR = {
+				date > 2019.12.31
+				has_global_flag = ZZZ_debug_2020
+			}
 		}
 		completion_reward = {
 			add_days_mission_timeout = {

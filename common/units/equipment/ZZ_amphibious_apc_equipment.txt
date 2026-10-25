@@ -1,70 +1,74 @@
-# ============================================================================
-# ZZ 两栖战车底盘（独立模块化装备线：AAV7 / ZBD-05 一类）
-# ============================================================================
-# 采用与 MD 原版 medium_tank_chassis 完全一致的显式装备定义方式：
-# 母型 ZZ_amphibious_apc_chassis 自带完整的 module_slots / module_count_limit /
-# default_modules，子型号 _0 ~ _4 通过 module_slots = inherit 继承全部槽位，
-# 因此在生产界面点开即可进入完整的“装甲战斗车辆设计器”
-# （主炮 / 炮塔 / 悬挂 / 装甲 / 引擎 / 装填 / 弹药 / 特种槽）。
-# ============================================================================
-
 equipments = {
 
+	# ============================================================================
+	# 两栖战车底盘（ZZ_amphibious_apc_chassis，_0 ~ _4）
+	#
+	# 槽位框架完整照抄 MD 的 medium_tank_chassis，所有 MD 中型坦克模块在本底盘
+	# 上都能正常显示与安装。
+	#
+	# 区分点：special_type_slot_6 额外开放专属类别 ZZ_amphibious_swim_module，
+	# 本模组只有“浮渡系统”属于该类别，其它车辆（含 MD 原有两栖装备）都看不到它。
+	#
+	# type = { armor amphibious } 与 MD 自己的两栖底盘
+	# medium_tank_amphibious_chassis 一致，afv_troop_capacity 等模块可正常使用。
+	# ============================================================================
+
 	ZZ_amphibious_apc_chassis = {
-		year = 1971
+		year = 1965
 		is_archetype = yes
 		is_buildable = no
-		type = { mechanized }
+		type = { armor amphibious }
 
 		picture = archetype_modern_tank_equipment
-		type = armor
 		group_by = archetype
 		interface_category = interface_category_armor
-		priority = 2000
+		priority = 2001
 
 		module_slots = {
 			main_armament_slot = {
 				required = yes
 				allowed_module_categories = {
-					light_afv_apc_main_armament
-					apc_small_autocannon_cat
-					light_afv_assault_armament
-					light_afv_small_autocannon
-					light_afv_big_autocannon
+					missile_launcher_systems
+					art_rocket_module
+					spaa_autocannon_systems
 					tank_small_main_armament
 					tank_small_medium_main_armament
-					spaa_autocannon_systems
+					tank_large_main_armament
+					art_gun_module
+					autocannon_vehicle
+					assault_gun
+					light_afv_apc_main_armament
 				}
 			}
 			secondary_armament_slot = {
 				required = no
 				allowed_module_categories = {
-					light_afv_coax_mg
-					light_afv_coax_gun
 				}
 			}
 			turret_type_slot = {
 				required = yes
 				allowed_module_categories = {
-					light_afv_turret_type
 					tank_turret_type
-					tank_unmanned_turret_type
 				}
 			}
 			suspension_type_slot = {
 				required = yes
 				allowed_module_categories = {
-					light_afv_suspension_type
-					tank_suspension_type
+					tank_suspension_type_wheeled
+					tank_suspension_type_light
+					tank_suspension_type_med
+					tank_suspension_type_heavy
+					afv_hover_suspension_type_category
 				}
 			}
 			armor_type_slot = {
-				required = yes
+				required = no
 				allowed_module_categories = {
 					light_afv_armor_type
-					light_afv_heavy_armor_type
 					tank_armor_type
+					light_afv_heavy_armor_type
 					tank_heavy_armor_type
+					tank_stealth_armor
 				}
 			}
 			engine_type_slot = {
@@ -73,23 +77,24 @@ equipments = {
 					tank_diesel_engine_type
 					tank_turbine_engine_type
 					tank_electric_engine_type
+					tank_nuclear_engine_type
 					afv_gasoline_engine_type
 					czech_diesel_engine_type
 					czech_gasoline_engine_type
 					czech_electric_engine_type
+					tank_exoskeletal_engine_type
 				}
 			}
 			reload_type_slot = {
 				required = yes
 				allowed_module_categories = {
 					tank_reload_module
-					light_tanks_reload_modules
+					tank_reload_external_module
 				}
 			}
 			special_type_slot_1 = {
 				required = no
 				allowed_module_categories = {
-					light_afv_special_module
 					tank_special_module
 					tank_smoke_module
 					tank_aa_module
@@ -98,13 +103,12 @@ equipments = {
 					tank_support_drone_module
 					afv_atgm_module
 					tank_atgm_module
-					tank_defense_module
+					tank_longer_gun_category
 				}
 			}
 			special_type_slot_2 = {
 				required = no
 				allowed_module_categories = {
-					light_afv_special_module
 					tank_special_module
 					tank_smoke_module
 					tank_aa_module
@@ -113,13 +117,12 @@ equipments = {
 					tank_support_drone_module
 					afv_atgm_module
 					tank_atgm_module
-					tank_defense_module
+					tank_longer_gun_category
 				}
 			}
 			special_type_slot_3 = {
 				required = no
 				allowed_module_categories = {
-					light_afv_special_module
 					tank_special_module
 					tank_smoke_module
 					tank_aa_module
@@ -128,20 +131,18 @@ equipments = {
 					tank_support_drone_module
 					afv_atgm_module
 					tank_atgm_module
-					tank_defense_module
+					tank_longer_gun_category
 				}
 			}
 			special_type_slot_4 = {
-				required = yes
+				required = no
 				allowed_module_categories = {
-					afv_battlestation_module
 					tank_battlestation_module
 				}
 			}
 			special_type_slot_5 = {
 				required = no
 				allowed_module_categories = {
-					light_afv_special_module
 					tank_special_module
 				}
 			}
@@ -150,6 +151,7 @@ equipments = {
 				allowed_module_categories = {
 					tank_additional_armor_era
 					tank_additional_armor_spaced
+					ZZ_amphibious_swim_module
 				}
 			}
 			ammunition_load_slot = {
@@ -211,147 +213,163 @@ equipments = {
 			module = afv_mine_protection
 			count < 2
 		}
+		module_count_limit = {
+			category = ZZ_amphibious_swim_module
+			count < 2
+		}
 
 		default_modules = {
-			main_armament_slot = afv_machine_gun
-			secondary_armament_slot = empty
-			turret_type_slot = afv_base_turret
-			suspension_type_slot = afv_tracked_suspension
-			armor_type_slot = afv_steel_armor_gen1
+			main_armament_slot = empty
+			turret_type_slot = tank_base_tank_turret
+			suspension_type_slot = tank_torsion_bar_suspension_medium
+			armor_type_slot = empty
 			engine_type_slot = empty
 			reload_type_slot = manual_loading
-			ammunition_load_slot = empty
+			special_type_slot_6 = ZZ_amphibious_float_system
+		}
+
+		upgrades = {
+			tank_nsb_armor_upgrade
+			tank_nsb_fire_upgrade
+			tank_nsb_engine_upgrade
 		}
 
 		fuel_consumption = 0
 		maximum_speed = 4
-		build_cost_ic = 4
+		build_cost_ic = 0.75
 		reliability = 1.0
-		hardness = 0.55
-		armor_value = 4
-		lend_lease_cost = 4
+		hardness = 0.5
+		armor_value = 10
+		lend_lease_cost = 3
 		resources = {
 			steel = 1
+			aluminium = 1
 		}
 
 		manpower = 3
 	}
 
-	# 1965 车体
 	ZZ_amphibious_apc_chassis_0 = {
 		abbreviation = "amp0"
-		derived_variant_name = zz_amphibious_apc_equipment_0
+		derived_variant_name = ZZ_amphibious_apc_chassis_0
 		visual_level = 0
 		year = 1965
-
 		archetype = ZZ_amphibious_apc_chassis
-		priority = 2000
+		priority = 2001
 		module_slots = inherit
 
-		hardness = 0.55
+		lend_lease_cost = 3
+		fuel_consumption = 0
+		maximum_speed = 4
+		build_cost_ic = 1.1
+		reliability = 1.05
+		hardness = 0.5
+		armor_value = 14
 
 		upgrades = {
-			afv_nsb_armor_upgrade
+			tank_nsb_armor_upgrade
+			tank_nsb_fire_upgrade
+			tank_nsb_engine_upgrade
 		}
 	}
 
-	# 1975
 	ZZ_amphibious_apc_chassis_1 = {
 		abbreviation = "amp1"
-		derived_variant_name = zz_amphibious_apc_equipment_1
+		derived_variant_name = ZZ_amphibious_apc_chassis_1
 		visual_level = 1
 		year = 1975
-
 		archetype = ZZ_amphibious_apc_chassis
 		parent = ZZ_amphibious_apc_chassis_0
-		priority = 2000
+		priority = 2001
 		module_slots = inherit
 
-		maximum_speed = 4
-		build_cost_ic = 4.5
-		reliability = 1.05
-		hardness = 0.55
-		armor_value = 12
-
-		lend_lease_cost = 4
+		lend_lease_cost = 3
+		fuel_consumption = 0
+		maximum_speed = 4.5
+		build_cost_ic = 1.4
+		reliability = 1.1
+		hardness = 0.5
+		armor_value = 18
 
 		upgrades = {
-			afv_nsb_armor_upgrade
+			tank_nsb_armor_upgrade
+			tank_nsb_fire_upgrade
+			tank_nsb_engine_upgrade
 		}
 	}
 
-	# 1995
 	ZZ_amphibious_apc_chassis_2 = {
 		abbreviation = "amp2"
-		derived_variant_name = zz_amphibious_apc_equipment_2
+		derived_variant_name = ZZ_amphibious_apc_chassis_2
 		visual_level = 2
 		year = 1995
-
 		archetype = ZZ_amphibious_apc_chassis
 		parent = ZZ_amphibious_apc_chassis_1
-		priority = 2000
+		priority = 2001
 		module_slots = inherit
 
-		maximum_speed = 4
-		build_cost_ic = 5
-		reliability = 1.1
-		hardness = 0.55
-		armor_value = 16
-
-		lend_lease_cost = 4
+		lend_lease_cost = 3
+		fuel_consumption = 0
+		maximum_speed = 5
+		build_cost_ic = 1.7
+		reliability = 1.15
+		hardness = 0.5
+		armor_value = 24
 
 		upgrades = {
-			afv_nsb_armor_upgrade
+			tank_nsb_armor_upgrade
+			tank_nsb_fire_upgrade
+			tank_nsb_engine_upgrade
 		}
 	}
 
-	# 2015
 	ZZ_amphibious_apc_chassis_3 = {
 		abbreviation = "amp3"
-		derived_variant_name = zz_amphibious_apc_equipment_3
+		derived_variant_name = ZZ_amphibious_apc_chassis_3
 		visual_level = 3
 		year = 2015
-
 		archetype = ZZ_amphibious_apc_chassis
 		parent = ZZ_amphibious_apc_chassis_2
-		priority = 2000
+		priority = 2001
 		module_slots = inherit
 
-		maximum_speed = 4
-		build_cost_ic = 5.5
-		reliability = 1.15
-		hardness = 0.55
-		armor_value = 20
-
-		lend_lease_cost = 4
+		lend_lease_cost = 3
+		fuel_consumption = 0
+		maximum_speed = 5.5
+		build_cost_ic = 2.0
+		reliability = 1.2
+		hardness = 0.5
+		armor_value = 30
 
 		upgrades = {
-			afv_nsb_armor_upgrade
+			tank_nsb_armor_upgrade
+			tank_nsb_fire_upgrade
+			tank_nsb_engine_upgrade
 		}
 	}
 
-	# 2035
 	ZZ_amphibious_apc_chassis_4 = {
 		abbreviation = "amp4"
-		derived_variant_name = zz_amphibious_apc_equipment_4
+		derived_variant_name = ZZ_amphibious_apc_chassis_4
 		visual_level = 4
 		year = 2035
-
 		archetype = ZZ_amphibious_apc_chassis
 		parent = ZZ_amphibious_apc_chassis_3
-		priority = 2000
+		priority = 2001
 		module_slots = inherit
 
-		maximum_speed = 4
-		build_cost_ic = 6
-		reliability = 1.2
-		hardness = 0.55
-		armor_value = 22
-
-		lend_lease_cost = 4
+		lend_lease_cost = 3
+		fuel_consumption = 0
+		maximum_speed = 6
+		build_cost_ic = 2.3
+		reliability = 1.25
+		hardness = 0.5
+		armor_value = 36
 
 		upgrades = {
-			afv_nsb_armor_upgrade
+			tank_nsb_armor_upgrade
+			tank_nsb_fire_upgrade
+			tank_nsb_engine_upgrade
 		}
 	}
 

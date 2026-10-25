@@ -562,4 +562,162 @@ debug_decisions = {
 			base = 0
 		}
 	}
+	ZZZ_debug_SOV_activate_tfr = {
+		icon = generic_industry
+		fire_only_once = no
+		cost = 0
+		available = {
+			is_ai = no
+			country_exists = SOV
+			SOV = {
+				NOT = { has_country_flag = DSW_SOV_tfr_active }
+			}
+		}
+		allowed = {
+			tag = SOV
+		}
+		complete_effect = {
+			custom_effect_tooltip = ZZZ_debug_SOV_activate_tfr_tt
+			hidden_effect = {
+				# 无视日期门控，直接激活烈焰升腾俄罗斯内容（招募全部角色、加载SOV国策树、设定政治/经济变量）
+				SOV = {
+					DSW_SOV_initialize_2020 = yes
+				}
+			}
+		}
+		ai_will_do = {
+			base = 0
+		}
+	}
+	ZZZ_debug_SOV_campaign_menu = {
+		icon = generic_industry
+		fire_only_once = no
+		cost = 0
+		available = {
+			is_ai = no
+			country_exists = SOV
+			SOV = {
+				has_country_flag = DSW_SOV_tfr_active
+			}
+		}
+		allowed = {
+			tag = SOV
+		}
+		complete_effect = {
+			custom_effect_tooltip = ZZZ_debug_SOV_campaign_menu_tt
+			hidden_effect = {
+				# 打开俄罗斯战役测试菜单：可直接触发俄乌战争、僵持、总攻、欧洲战争、胜/负结算
+				SOV = {
+					country_event = { id = dsw_sov.90 }
+				}
+			}
+		}
+		ai_will_do = {
+			base = 0
+		}
+	}
+	ZZZ_debug_SOV_recover_putin = {
+		icon = generic_industry
+		fire_only_once = no
+		cost = 0
+		available = {
+			is_ai = no
+			country_exists = SOV
+			SOV = {
+				has_country_flag = DSW_SOV_tfr_active
+				has_country_flag = SOV_putin_ill_more_flag
+			}
+		}
+		allowed = {
+			tag = SOV
+		}
+		complete_effect = {
+			custom_effect_tooltip = ZZZ_debug_SOV_recover_putin_tt
+			hidden_effect = {
+				# 普京康复：清除病重/辞职/死亡旗，恢复肖像，重新执政
+				SOV = {
+					set_country_flag = DSW_SOV_putin_recovery_selected
+					DSW_SOV_recover_putin = yes
+				}
+			}
+		}
+		ai_will_do = {
+			base = 0
+		}
+	}
+	ZZZ_debug_SOV_medvedev_tree = {
+		icon = generic_industry
+		fire_only_once = no
+		cost = 0
+		available = {
+			is_ai = no
+			country_exists = SOV
+			SOV = {
+				has_country_flag = DSW_SOV_tfr_active
+				NOT = { has_global_flag = SOV_medvedev_won }
+			}
+		}
+		allowed = {
+			tag = SOV
+		}
+		complete_effect = {
+			custom_effect_tooltip = ZZZ_debug_SOV_medvedev_tree_tt
+			hidden_effect = {
+				# 切换至梅德韦杰夫/统俄党国策树：设SOV_medvedev_won全局旗，加载SOV_medvedev树
+				SOV = {
+					set_global_flag = SOV_medvedev_won
+					set_global_flag = SOV_ur_won
+					clr_country_flag = DSW_SOV_putin_protected
+					promote_character = {
+						character = DSW_TFR_SOV_dmitry_medvedev
+						ideology = Conservative
+					}
+					load_focus_tree = {
+						tree = SOV_medvedev
+						keep_completed = no
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 0
+		}
+	}
+	ZZZ_debug_SOV_communist_tree = {
+		icon = generic_industry
+		fire_only_once = no
+		cost = 0
+		available = {
+			is_ai = no
+			country_exists = SOV
+			SOV = {
+				has_country_flag = DSW_SOV_tfr_active
+				NOT = { has_global_flag = SOV_cprf_won }
+			}
+		}
+		allowed = {
+			tag = SOV
+		}
+		complete_effect = {
+			custom_effect_tooltip = ZZZ_debug_SOV_communist_tree_tt
+			hidden_effect = {
+				# 切换至俄共(CPRF)国策树：设SOV_cprf_won全局旗，加载SOV_communist树
+				SOV = {
+					set_global_flag = SOV_cprf_won
+					clr_country_flag = DSW_SOV_putin_protected
+					promote_character = {
+						character = DSW_TFR_SOV_nikolay_kharitonov
+						ideology = communist_state
+					}
+					load_focus_tree = {
+						tree = SOV_communist
+						keep_completed = no
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 0
+		}
+	}
 }
