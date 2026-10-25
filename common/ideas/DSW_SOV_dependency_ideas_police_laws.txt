@@ -1,0 +1,42 @@
+# DSW Russia / repaired source references
+ideas = {
+	police_laws = {
+		SOV_new_oprichnina_law = {
+			removal_cost = -1
+			cost = 100
+			level = 1
+			picture = laws_security_special_new_oprichnina
+			visible = {
+				original_tag = SOV
+				has_country_flag = SOV_new_oprichnina_enabled_flag
+			}
+			available = {
+				has_country_flag = SOV_new_oprichnina_enabled_flag
+			}
+			allowed_to_remove = {
+				NOT = {
+					has_country_flag = SOV_new_oprichnina_enabled_flag
+				}
+			}
+			modifier = {
+				stability_factor = -0.25
+				personal_expense = 0.05
+				resistance_growth = -0.3
+				war_support_factor = 0.1
+				business_value_factor = -0.1
+				compliance_growth = 0.35
+				research_speed_factor = -0.07
+				conscription_factor = 0.1
+				army_intel_to_others = -2.5
+				airforce_intel_to_others = -2.5
+				navy_intel_to_others = -1.5
+				civilian_intel_to_others = -1.5
+				society_development_monthly = -0.005
+				military_development_monthly = 0.015
+			}
+			ai_will_do = {
+				base = 2
+			}
+		}
+	}
+}

@@ -1,0 +1,18 @@
+# DSW Russia / repaired source references
+scripted_gui = {
+	DSW_SOV_european_war_super_event = {
+		context_type = player_context
+		window_name = "DSW_SOV_european_war_super_event"
+		visible = {
+			has_country_flag = DSW_SOV_european_war_super_event_flag
+			NOT = {
+				has_global_flag = super_events_off_flag
+			}
+		}
+		effects = {
+			Super_Event_Close_click = {
+				clr_country_flag = DSW_SOV_european_war_super_event_flag
+			}
+		}
+	}
+}

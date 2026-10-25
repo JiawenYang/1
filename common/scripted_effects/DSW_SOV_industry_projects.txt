@@ -1,0 +1,83 @@
+# Permanent national spirit drives a save-persistent daily construction cycle.
+DSW_SOV_sync_industry_program = {
+    if = {
+        limit = { has_country_flag = DSW_SOV_putin_industry_focus_30_rewarded }
+        remove_ideas = DSW_SOV_industry_program_1
+        remove_ideas = DSW_SOV_industry_program_2
+        add_ideas = DSW_SOV_industry_program_3
+    }
+    else_if = {
+        limit = { has_country_flag = DSW_SOV_putin_industry_focus_26_rewarded }
+        remove_ideas = DSW_SOV_industry_program_1
+        remove_ideas = DSW_SOV_industry_program_3
+        add_ideas = DSW_SOV_industry_program_2
+    }
+    else_if = {
+        limit = { has_country_flag = DSW_SOV_putin_industry_focus_20_rewarded }
+        remove_ideas = DSW_SOV_industry_program_2
+        remove_ideas = DSW_SOV_industry_program_3
+        add_ideas = DSW_SOV_industry_program_1
+    }
+    if = {
+        limit = {
+            OR = { has_idea = DSW_SOV_industry_program_1 has_idea = DSW_SOV_industry_program_2 has_idea = DSW_SOV_industry_program_3 }
+            NOT = { has_country_flag = DSW_SOV_industry_program_initialized }
+        }
+        set_country_flag = DSW_SOV_industry_program_initialized
+        set_variable = { DSW_SOV_industry_days_remaining = 90 }
+        if = {
+            limit = { OR = { has_idea = DSW_SOV_industry_program_2 has_idea = DSW_SOV_industry_program_3 } }
+            set_variable = { DSW_SOV_industry_days_remaining = 60 }
+        }
+        set_variable = { DSW_SOV_industry_pending_military = 0 }
+        set_variable = { DSW_SOV_industry_pending_civilian = 0 }
+        set_variable = { DSW_SOV_industry_built_military = 0 }
+        set_variable = { DSW_SOV_industry_built_civilian = 0 }
+    }
+}
+DSW_SOV_tick_industry_program = {
+    if = {
+        limit = { OR = { has_idea = DSW_SOV_industry_program_1 has_idea = DSW_SOV_industry_program_2 has_idea = DSW_SOV_industry_program_3 } }
+        subtract_from_variable = { var = DSW_SOV_industry_days_remaining value = 1 }
+        if = {
+            limit = { check_variable = { DSW_SOV_industry_days_remaining <= 0 } }
+            add_to_variable = { var = DSW_SOV_industry_pending_military value = 1 }
+            if = {
+                limit = { has_idea = DSW_SOV_industry_program_3 }
+                add_to_variable = { var = DSW_SOV_industry_pending_civilian value = 1 }
+            }
+            set_variable = { DSW_SOV_industry_days_remaining = 90 }
+            if = {
+                limit = { OR = { has_idea = DSW_SOV_industry_program_2 has_idea = DSW_SOV_industry_program_3 } }
+                set_variable = { DSW_SOV_industry_days_remaining = 60 }
+            }
+        }
+        DSW_SOV_deliver_industry_projects = yes
+    }
+}
+DSW_SOV_deliver_industry_projects = {
+    if = {
+        limit = { check_variable = { DSW_SOV_industry_pending_military > 0 } }
+        random_owned_controlled_state = {
+            limit = { is_core_of = SOV is_fully_controlled_by = SOV arms_factory < 35 }
+            add_extra_state_shared_building_slots = 1
+            add_building_construction = { type = arms_factory level = 1 instant_build = yes }
+            SOV = {
+                subtract_from_variable = { var = DSW_SOV_industry_pending_military value = 1 }
+                add_to_variable = { var = DSW_SOV_industry_built_military value = 1 }
+            }
+        }
+    }
+    if = {
+        limit = { check_variable = { DSW_SOV_industry_pending_civilian > 0 } }
+        random_owned_controlled_state = {
+            limit = { is_core_of = SOV is_fully_controlled_by = SOV industrial_complex < 50 }
+            add_extra_state_shared_building_slots = 1
+            add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+            SOV = {
+                subtract_from_variable = { var = DSW_SOV_industry_pending_civilian value = 1 }
+                add_to_variable = { var = DSW_SOV_industry_built_civilian value = 1 }
+            }
+        }
+    }
+}

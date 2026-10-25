@@ -1,0 +1,730 @@
+# DSW Russia / repaired source references
+SOV_has_influence_oligarchs_greater_than_or_equals = {
+	custom_trigger_tooltip = {
+		tooltip = SOV_has_influence_oligarchs_greater_than_or_equals_tooltip
+		check_variable = {
+			var = SOV_oligarch_approval_rating_var
+			value = SOV_oligarch_approval_rating_trigger_temp
+			compare = less_than_or_equals
+		}
+	}
+}
+SOV_has_influence_oligarchs_less_than_or_equals = {
+	custom_trigger_tooltip = {
+		tooltip = SOV_has_influence_oligarchs_less_than_or_equals_tooltip
+		check_variable = {
+			var = SOV_oligarch_approval_rating_var
+			value = SOV_oligarch_approval_rating_trigger_temp
+			compare = greater_than_or_equals
+		}
+	}
+}
+SOV_kazakh_states_quelled = {
+	custom_trigger_tooltip = {
+		tooltip = SOV_has_compliance_tooltip
+		every_owned_state = {
+			limit = {
+				is_core_of = KAZ
+				NOT = {
+					is_core_of = SOV
+				}
+			}
+			compliance > 50
+		}
+	}
+}
+SOV_uzbek_states_quelled = {
+	custom_trigger_tooltip = {
+		tooltip = SOV_has_compliance_tooltip
+		727 = {
+			compliance > 50
+		}
+		726 = {
+			compliance > 50
+		}
+		726 = {
+			compliance > 50
+		}
+		717 = {
+			compliance > 50
+		}
+	}
+}
+SOV_kyrgz_states_quelled = {
+	custom_trigger_tooltip = {
+		tooltip = SOV_has_compliance_tooltip
+		720 = {
+			compliance > 50
+		}
+		720 = {
+			compliance > 50
+		}
+	}
+}
+SOV_turk_states_quelled = {
+	custom_trigger_tooltip = {
+		tooltip = SOV_has_compliance_tooltip
+		729 = {
+			compliance > 50
+		}
+		729 = {
+			compliance > 50
+		}
+		729 = {
+			compliance > 50
+		}
+		728 = {
+			compliance > 50
+		}
+		728 = {
+			compliance > 50
+		}
+	}
+}
+SOV_tajik_states_quelled = {
+	custom_trigger_tooltip = {
+		tooltip = SOV_has_compliance_tooltip
+		722 = {
+			compliance > 50
+		}
+		724 = {
+			compliance > 50
+		}
+	}
+}
+SOV_georg_states_quelled = {
+	custom_trigger_tooltip = {
+		tooltip = SOV_has_compliance_tooltip
+		707 = {
+			compliance > 50
+		}
+	}
+}
+SOV_arm_states_quelled = {
+	custom_trigger_tooltip = {
+		tooltip = SOV_has_compliance_tooltip
+		709 = {
+			compliance > 50
+		}
+		1036 = {
+			compliance > 50
+		}
+		411 = {
+			compliance > 50
+		}
+	}
+}
+SOV_azeri_states_quelled = {
+	custom_trigger_tooltip = {
+		tooltip = SOV_has_compliance_tooltip
+		713 = {
+			compliance > 50
+		}
+		712 = {
+			compliance > 50
+		}
+		1038 = {
+			compliance > 50
+		}
+		711 = {
+			compliance > 50
+		}
+	}
+}
+SOV_ukrain_states_quelled = {
+	custom_trigger_tooltip = {
+		tooltip = SOV_has_compliance_tooltip
+		1091 = {
+			compliance > 60
+		}
+		697 = {
+			compliance > 60
+		}
+		1089 = {
+			compliance > 60
+		}
+		1088 = {
+			compliance > 60
+		}
+		1087 = {
+			compliance > 60
+		}
+		696 = {
+			compliance > 60
+		}
+		1076 = {
+			compliance > 60
+		}
+		574 = {
+			compliance > 60
+		}
+		694 = {
+			compliance > 60
+		}
+		1085 = {
+			compliance > 60
+		}
+	}
+}
+SOV_polish_states_quelled = {
+	custom_trigger_tooltip = {
+		tooltip = SOV_has_compliance_tooltip
+		433 = {
+			compliance > 80
+		}
+		114 = {
+			compliance > 80
+		}
+		1014 = {
+			compliance > 80
+		}
+		112 = {
+			compliance > 80
+		}
+		1098 = {
+			compliance > 80
+		}
+		628 = {
+			compliance > 80
+		}
+		114 = {
+			compliance > 80
+		}
+		114 = {
+			compliance > 80
+		}
+	}
+}
+SOV_is_central_russia = {
+	OR = {
+		state = 649
+		state = 649
+		state = 651
+		state = 650
+		state = 1186
+		state = 1187
+		state = 1189
+		state = 652
+		state = 1181
+		state = 654
+		state = 1174
+		state = 1174
+		state = 1173
+		state = 653
+		state = 1172
+		state = 1172
+		state = 656
+		state = 1180
+		state = 657
+		state = 1188
+		state = 655
+	}
+}
+SOV_is_northwestern_russia = {
+	OR = {
+		state = 1129
+		state = 1129
+		state = 645
+		state = 644
+		state = 644
+		state = 644
+		state = 1128
+		state = 1128
+		state = 646
+		state = 1128
+		state = 643
+		state = 643
+		state = 646
+		state = 647
+		state = 648
+		state = 642
+		state = 683
+	}
+}
+SOV_is_southern_russia = {
+	OR = {
+		state = 667
+		state = 665
+		state = 665
+		state = 666
+		state = 1107
+		state = 667
+		state = 667
+		state = 668
+		state = 669
+		state = 669
+		state = 301
+	}
+}
+SOV_is_north_caucausus = {
+	OR = {
+		state = 670
+		state = 674
+		state = 671
+		state = 1125
+		state = 672
+		state = 671
+	}
+}
+SOV_is_volgan_russia = {
+	OR = {
+		state = 660
+		state = 1132
+		state = 662
+		state = 1130
+		state = 1130
+		state = 1131
+		state = 1135
+		state = 1134
+		state = 659
+		state = 661
+		state = 663
+		state = 661
+		state = 1133
+		state = 658
+		state = 664
+		state = 1118
+	}
+}
+SOV_is_ural = {
+	OR = {
+		state = 679
+		state = 678
+		state = 678
+		state = 676
+		state = 677
+		state = 675
+		state = 1071
+	}
+}
+SOV_is_siberia = {
+	OR = {
+		state = 1067
+		state = 681
+		state = 680
+		state = 1064
+		state = 684
+		state = 1066
+		state = 1065
+		state = 1011
+		state = 682
+		state = 682
+		state = 682
+		state = 685
+		state = 685
+		state = 685
+	}
+}
+SOV_is_far_east = {
+	OR = {
+		state = 686
+		state = 1070
+		state = 1069
+		state = 1069
+		state = 687
+		state = 1068
+		state = 687
+		state = 692
+		state = 691
+		state = 690
+		state = 688
+		state = 688
+		state = 687
+		state = 1136
+		state = 689
+		state = 1137
+	}
+}
+SOV_is_estonia = {
+	OR = {
+		state = 1074
+		state = 106
+		state = 105
+		state = 106
+	}
+}
+SOV_is_latvia = {
+	OR = {
+		state = 1058
+		state = 108
+		state = 1013
+	}
+}
+SOV_is_lithuania = {
+	OR = {
+		state = 109
+		state = 109
+		state = 109
+		state = 110
+	}
+}
+SOV_is_belarus = {
+	OR = {
+		state = 702
+		state = 1093
+		state = 703
+		state = 1094
+		state = 704
+		state = 1092
+		state = 1092
+		state = 704
+	}
+}
+SOV_is_ukraine = {
+	OR = {
+		state = 1110
+		state = 700
+		state = 1247
+		state = 701
+		state = 335
+		state = 1250
+		state = 1249
+		state = 699
+		state = 1090
+		state = 698
+		state = 302
+		state = 1091
+		state = 1089
+		state = 1088
+		state = 697
+	}
+}
+SOV_is_novorossiya = {
+	OR = {
+		state = 333
+		state = 695
+		state = 1086
+		state = 1085
+		state = 1087
+		state = 1087
+		state = 694
+		state = 696
+		state = 1030
+		state = 1030
+		state = 1076
+		state = 1076
+		state = 693
+		state = 1075
+	}
+}
+SOV_is_moldova = {
+	OR = {
+		state = 148
+		state = 720
+	}
+}
+SOV_is_georgia = {
+	OR = {
+		state = 706
+		state = 707
+		state = 705
+	}
+}
+SOV_is_armenia = {
+	OR = {
+		state = 709
+	}
+}
+SOV_is_azerbaijan = {
+	OR = {
+		state = 711
+		state = 1036
+		state = 411
+		state = 712
+		state = 713
+		state = 1038
+	}
+}
+SOV_is_kazakhstan = {
+	OR = {
+		state = 718
+		state = 718
+		state = 718
+		state = 718
+		state = 714
+		state = 717
+		state = 716
+		state = 716
+		state = 719
+		state = 715
+	}
+}
+SOV_is_uzbekistan = {
+	OR = {
+		state = 727
+		state = 726
+		state = 726
+		state = 717
+	}
+}
+SOV_is_kyrgyzstan = {
+	OR = {
+		state = 720
+		state = 720
+	}
+}
+SOV_is_tajikistan = {
+	OR = {
+		state = 724
+		state = 722
+	}
+}
+SOV_is_turkmenistan = {
+	OR = {
+		state = 729
+		state = 729
+		state = 729
+		state = 728
+		state = 728
+	}
+}
+has_international_campaign_slot = {
+	custom_trigger_tooltip = {
+		tooltip = has_international_campaign_slot_trigger_tooltip
+		check_variable = {
+			var = international_campaign_slot_var
+			value = 1
+			compare = greater_than_or_equals
+		}
+	}
+}
+SOV_has_adl_progress_opinion_greater_than_or_equals = {
+	custom_trigger_tooltip = {
+		tooltip = SOV_has_adl_progress_opinion_greater_than_or_equals_tooltip
+		check_variable = {
+			var = SOV_adl_progress_opinion_var
+			value = SOV_adl_progress_opinion_var_trigger_temp
+			compare = greater_than_or_equals
+		}
+	}
+}
+SOV_has_adl_progress_opinion_less_than_or_equals = {
+	custom_trigger_tooltip = {
+		tooltip = SOV_has_adl_progress_opinion_less_than_or_equals_tooltip
+		check_variable = {
+			var = SOV_adl_progress_opinion_var
+			value = SOV_adl_progress_opinion_var_trigger_temp
+			compare = less_than_or_equals
+		}
+	}
+}
+SOV_has_labor_fatherland_opinion_greater_than_or_equals = {
+	custom_trigger_tooltip = {
+		tooltip = SOV_has_labor_fatherland_opinion_greater_than_or_equals_tooltip
+		check_variable = {
+			var = SOV_labor_fatherland_opinion_var
+			value = SOV_labor_fatherland_opinion_var_trigger_temp
+			compare = greater_than_or_equals
+		}
+	}
+}
+SOV_has_labor_fatherland_opinion_less_than_or_equals = {
+	custom_trigger_tooltip = {
+		tooltip = SOV_has_labor_fatherland_opinion_less_than_or_equals_tooltip
+		check_variable = {
+			var = SOV_labor_fatherland_opinion_var
+			value = SOV_labor_fatherland_opinion_var_trigger_temp
+			compare = less_than_or_equals
+		}
+	}
+}
+SOV_has_peoples_front_opinion_greater_than_or_equals = {
+	custom_trigger_tooltip = {
+		tooltip = SOV_has_peoples_front_opinion_greater_than_or_equals_tooltip
+		check_variable = {
+			var = SOV_peoples_front_opinion_var
+			value = SOV_peoples_front_opinion_var_trigger_temp
+			compare = greater_than_or_equals
+		}
+	}
+}
+SOV_has_peoples_front_opinion_less_than_or_equals = {
+	custom_trigger_tooltip = {
+		tooltip = SOV_has_peoples_front_opinion_less_than_or_equals_tooltip
+		check_variable = {
+			var = SOV_peoples_front_opinion_var
+			value = SOV_peoples_front_opinion_var_trigger_temp
+			compare = less_than_or_equals
+		}
+	}
+}
+SOV_has_ldpr_opinion_greater_than_or_equals = {
+	custom_trigger_tooltip = {
+		tooltip = SOV_has_ldpr_opinion_greater_than_or_equals_tooltip
+		check_variable = {
+			var = SOV_ldpr_opinion_var
+			value = SOV_ldpr_opinion_var_trigger_temp
+			compare = greater_than_or_equals
+		}
+	}
+}
+SOV_has_ldpr_opinion_less_than_or_equals = {
+	custom_trigger_tooltip = {
+		tooltip = SOV_has_ldpr_opinion_less_than_or_equals_tooltip
+		check_variable = {
+			var = SOV_ldpr_opinion_var
+			value = SOV_ldpr_opinion_var_trigger_temp
+			compare = less_than_or_equals
+		}
+	}
+}
+SOV_has_patriots_party_opinion_greater_than_or_equals = {
+	custom_trigger_tooltip = {
+		tooltip = SOV_has_patriots_party_opinion_greater_than_or_equals_tooltip
+		check_variable = {
+			var = SOV_patriots_party_opinion_var
+			value = SOV_patriots_party_opinion_var_trigger_temp
+			compare = greater_than_or_equals
+		}
+	}
+}
+SOV_has_patriots_party_opinion_less_than_or_equals = {
+	custom_trigger_tooltip = {
+		tooltip = SOV_has_patriots_party_opinion_less_than_or_equals_tooltip
+		check_variable = {
+			var = SOV_patriots_party_opinion_var
+			value = SOV_patriots_party_opinion_var_trigger_temp
+			compare = less_than_or_equals
+		}
+	}
+}
+SOV_has_adl_progress_influence_greater_than_or_equals = {
+	custom_trigger_tooltip = {
+		tooltip = SOV_has_adl_progress_influence_greater_than_or_equals_tooltip
+		check_variable = {
+			var = SOV_adl_progress_influence_var
+			value = SOV_adl_progress_influence_var_trigger_temp
+			compare = greater_than_or_equals
+		}
+	}
+}
+SOV_has_adl_progress_influence_less_than_or_equals = {
+	custom_trigger_tooltip = {
+		tooltip = SOV_has_adl_progress_influence_less_than_or_equals_tooltip
+		check_variable = {
+			var = SOV_adl_progress_influence_var
+			value = SOV_adl_progress_influence_var_trigger_temp
+			compare = less_than_or_equals
+		}
+	}
+}
+SOV_has_labor_fatherland_influence_greater_than_or_equals = {
+	custom_trigger_tooltip = {
+		tooltip = SOV_has_labor_fatherland_influence_greater_than_or_equals_tooltip
+		check_variable = {
+			var = SOV_labor_fatherland_influence_var
+			value = SOV_labor_fatherland_influence_var_trigger_temp
+			compare = greater_than_or_equals
+		}
+	}
+}
+SOV_has_labor_fatherland_influence_less_than_or_equals = {
+	custom_trigger_tooltip = {
+		tooltip = SOV_has_labor_fatherland_influence_less_than_or_equals_tooltip
+		check_variable = {
+			var = SOV_labor_fatherland_influence_var
+			value = SOV_labor_fatherland_influence_var_trigger_temp
+			compare = less_than_or_equals
+		}
+	}
+}
+SOV_has_peoples_front_influence_greater_than_or_equals = {
+	custom_trigger_tooltip = {
+		tooltip = SOV_has_peoples_front_influence_greater_than_or_equals_tooltip
+		check_variable = {
+			var = SOV_peoples_front_influence_var
+			value = SOV_peoples_front_influence_var_trigger_temp
+			compare = greater_than_or_equals
+		}
+	}
+}
+SOV_has_peoples_front_influence_less_than_or_equals = {
+	custom_trigger_tooltip = {
+		tooltip = SOV_has_peoples_front_influence_less_than_or_equals_tooltip
+		check_variable = {
+			var = SOV_peoples_front_influence_var
+			value = SOV_peoples_front_influence_var_trigger_temp
+			compare = less_than_or_equals
+		}
+	}
+}
+SOV_has_ldpr_influence_greater_than_or_equals = {
+	custom_trigger_tooltip = {
+		tooltip = SOV_has_ldpr_influence_greater_than_or_equals_tooltip
+		check_variable = {
+			var = SOV_ldpr_influence_var
+			value = SOV_ldpr_influence_var_trigger_temp
+			compare = greater_than_or_equals
+		}
+	}
+}
+SOV_has_ldpr_influence_less_than_or_equals = {
+	custom_trigger_tooltip = {
+		tooltip = SOV_has_ldpr_influence_less_than_or_equals_tooltip
+		check_variable = {
+			var = SOV_ldpr_influence_var
+			value = SOV_ldpr_influence_var_trigger_temp
+			compare = less_than_or_equals
+		}
+	}
+}
+SOV_has_patriots_party_influence_greater_than_or_equals = {
+	custom_trigger_tooltip = {
+		tooltip = SOV_has_patriots_party_influence_greater_than_or_equals_tooltip
+		check_variable = {
+			var = SOV_patriots_party_influence_var
+			value = SOV_patriots_party_influence_var_trigger_temp
+			compare = greater_than_or_equals
+		}
+	}
+}
+SOV_has_patriots_party_influence_less_than_or_equals = {
+	custom_trigger_tooltip = {
+		tooltip = SOV_has_patriots_party_influence_less_than_or_equals_tooltip
+		check_variable = {
+			var = SOV_patriots_party_influence_var
+			value = SOV_patriots_party_influence_var_trigger_temp
+			compare = less_than_or_equals
+		}
+	}
+}
+SOV_has_party_legitimacy_greater_than_or_equals = {
+	custom_trigger_tooltip = {
+		tooltip = SOV_has_party_legitimacy_greater_than_or_equals_tooltip
+		check_variable = {
+			var = SOV_party_legitimacy
+			value = SOV_party_legitimacy_var_trigger_temp
+			compare = greater_than_or_equals
+		}
+	}
+}
+SOV_has_party_legitimacy_less_than_or_equals = {
+	custom_trigger_tooltip = {
+		tooltip = SOV_has_party_legitimacy_less_than_or_equals_tooltip
+		check_variable = {
+			var = SOV_party_legitimacy
+			value = SOV_party_legitimacy_var_trigger_temp
+			compare = less_than_or_equals
+		}
+	}
+}
+SOV_has_party_legitimacy_greater_than_or_equals = {
+	custom_trigger_tooltip = {
+		tooltip = SOV_has_party_legitimacy_greater_than_or_equals_tooltip
+		check_variable = {
+			var = SOV_party_legitimacy
+			value = SOV_party_legitimacy_var_trigger_temp
+			compare = greater_than_or_equals
+		}
+	}
+}
+SOV_has_party_unity_less_than_or_equals = {
+	custom_trigger_tooltip = {
+		tooltip = SOV_has_party_unity_less_than_or_equals_tooltip
+		check_variable = {
+			var = SOV_party_unity
+			value = SOV_party_unity_var_trigger_temp
+			compare = less_than_or_equals
+		}
+	}
+}

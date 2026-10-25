@@ -7,6 +7,8 @@
 
 #Main Function
 set_leader = {
+	if = { limit = { NOT = { tag = SOV OR = { has_country_flag = DSW_SOV_tfr_active has_country_flag = DSW_SOV_putin_protected } } }
+
 	if = {
 		limit = { NOT = { has_country_flag = DSW_FRA_tfr_active } }
 
@@ -37,6 +39,8 @@ set_leader = {
 			}
 			set_variable = { current_term = 1 }
 		}
+	}
+
 	}
 
 	}
@@ -633,6 +637,8 @@ set_failsafe_values = {
 #intended for on_action
 
 set_failsafe_change_leader = {
+	if = { limit = { NOT = { tag = SOV OR = { has_country_flag = DSW_SOV_tfr_active has_country_flag = DSW_SOV_putin_protected } } }
+
 	if = {
 		limit = { NOT = { has_country_flag = DSW_FRA_tfr_active } }
 
@@ -897,6 +903,8 @@ set_failsafe_change_leader = {
 		if = { limit = { is_dynamic_country = no }
 			set_leader = yes
 		}
+	}
+
 	}
 
 	}

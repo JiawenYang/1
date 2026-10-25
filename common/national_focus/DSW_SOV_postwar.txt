@@ -1,0 +1,99 @@
+# DSW Russia / repaired source references
+focus_tree = {
+	id = DSW_SOV_postwar
+	country = {
+		factor = 0
+	}
+	continuous_focus_position = { x = 100 y = 1200 }
+	focus = {
+		id = DSW_SOV_postwar_settlement
+		icon = GFX_focus_SOV_enrich_mother_russia
+		x = 5
+		y = 0
+		cost = 5
+		completion_reward = {
+			add_political_power = 150
+			add_stability = 0.05
+		}
+	}
+	focus = {
+		id = DSW_SOV_veterans_return
+		icon = GFX_focus_SOV_enrich_mother_russia
+		x = 5
+		y = 1
+		cost = 5
+		completion_reward = {
+			add_stability = 0.1
+			add_manpower = 150000
+		}
+		prerequisite = {
+			focus = DSW_SOV_postwar_settlement
+		}
+	}
+	focus = {
+		id = DSW_SOV_restore_transport
+		icon = GFX_focus_SOV_enrich_mother_russia
+		x = 5
+		y = 2
+		cost = 5
+		completion_reward = {
+			652 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		prerequisite = {
+			focus = DSW_SOV_veterans_return
+		}
+	}
+	focus = {
+		id = DSW_SOV_restore_industry
+		icon = GFX_focus_SOV_enrich_mother_russia
+		x = 5
+		y = 3
+		cost = 5
+		completion_reward = {
+			652 = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 3
+					instant_build = yes
+				}
+			}
+		}
+		prerequisite = {
+			focus = DSW_SOV_restore_transport
+		}
+	}
+	focus = {
+		id = DSW_SOV_fiscal_recovery
+		icon = GFX_focus_SOV_enrich_mother_russia
+		x = 5
+		y = 4
+		cost = 5
+		completion_reward = {
+			remove_ideas = DSW_SOV_reconstruction_burden
+			add_political_power = 250
+		}
+		prerequisite = {
+			focus = DSW_SOV_restore_industry
+		}
+	}
+	focus = {
+		id = DSW_SOV_peaceful_reconstruction
+		icon = GFX_focus_SOV_enrich_mother_russia
+		x = 5
+		y = 5
+		cost = 5
+		completion_reward = {
+			add_stability = 0.1
+			add_war_support = -0.1
+		}
+		prerequisite = {
+			focus = DSW_SOV_fiscal_recovery
+		}
+	}
+}
