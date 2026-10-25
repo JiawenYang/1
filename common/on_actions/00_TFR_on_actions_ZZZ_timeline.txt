@@ -1,0 +1,398 @@
+on_actions = {
+	# 烈焰升腾全球事件时间线
+	# 原 mod 以 2020.1.1 为起点按相对天数排程，本模组开局为 2017 年，
+	# 因此改为在 2020.1.1 统一启动一次排程，保持与原 mod 一致的事件间隔。
+	# 仅保留推动剧情或对应现实事件的条目；缺失定义的事件已剔除。
+	on_daily = {
+		effect = {
+			if = {
+				limit = {
+					OR = {
+						date > 2020.1.1
+						has_global_flag = ZZZ_debug_2020
+					}
+					NOT = { has_global_flag = TFR_global_timeline_started }
+				}
+				set_global_flag = TFR_global_timeline_started
+				CHI = {
+					country_event = {
+						# 中国开局事件
+						id = prc.43
+						days = 2
+					}
+					country_event = {
+						# 中国开局事件
+						id = prc.12
+						days = 4
+					}
+					country_event = {
+						# 缅甸国事访问
+						id = prc.3
+						days = 17
+					}
+					country_event = {
+						# 李文亮逝世
+						id = prc.299
+						days = 37
+					}
+					country_event = {
+						# 美国局势报告
+						id = prc.311
+						days = 180
+					}
+					country_event = {
+						# 香港国安法颁布
+						id = prc.321
+						days = 181
+					}
+					country_event = {
+						# 钟南山获授共和国勋章
+						id = prc.298
+						days = 223
+					}
+					country_event = {
+						# 原神上线
+						id = prc.257
+						days = 270
+					}
+					country_event = {
+						# 中华人民共和国国庆
+						id = prc.146
+						days = 274
+					}
+					country_event = {
+						# 马云外滩演讲
+						id = prc.319
+						days = 306
+					}
+					country_event = {
+						# 原神版本更新
+						id = prc.293
+						days = 346
+					}
+					country_event = {
+						# 全国脱贫攻坚总结表彰大会
+						id = prc.322
+						days = 423
+					}
+					country_event = {
+						# 大熊猫
+						id = prc.76
+						days = 547
+					}
+					country_event = {
+						# 建党一百周年
+						id = prc.147
+						days = 553
+					}
+					country_event = {
+						# 河南水灾
+						id = prc.320
+						days = 566
+					}
+					country_event = {
+						# 辛亥革命一百一十周年
+						id = prc.323
+						days = 648
+					}
+					country_event = {
+						# 村镇银行危机
+						id = prc.317
+						days = 830
+					}
+					country_event = {
+						# 江泽民逝世
+						id = prc.279
+						days = 1064
+					}
+					country_event = {
+						# 恒大债务危机
+						id = prc.318
+						days = 1322
+					}
+					country_event = {
+						# 后续事件
+						id = prc.326
+						days = 1440
+					}
+					country_event = {
+						# 后续事件
+						id = prc.124
+						days = 1460
+					}
+					country_event = {
+						# 哪吒2热潮
+						id = prc.373
+						days = 1855
+					}
+					country_event = {
+						# 九三阅兵
+						id = prc.22
+						days = 2070
+					}
+				}
+				FRA = {
+					country_event = {
+						# 国旗选择
+						id = france.304
+						days = 181
+					}
+					country_event = {
+						# 巴士底日
+						id = france.82
+						days = 195
+					}
+					country_event = {
+						# 尼斯袭击
+						id = france.223
+						days = 220
+					}
+					country_event = {
+						# 尼斯袭击后续
+						id = france.1
+						days = 277
+					}
+					country_event = {
+						# 国民联盟被禁
+						id = france.90
+						days = 462
+					}
+					country_event = {
+						# 后续事件
+						id = france.199
+						days = 807
+					}
+				}
+				JAP = {
+					country_event = {
+						# 安倍遇刺
+						id = jap.13
+						days = 238
+					}
+				}
+				KOR = {
+					country_event = {
+						# 板门店峰会：朝韩邦联接触（2024.5.1）
+						id = korean_confederation.0
+						days = 1582
+					}
+				}
+				USA = {
+					country_event = {
+						# 美国政治危机
+						id = usa.203
+						days = 313
+					}
+					country_event = {
+						# 2024.7.13 特朗普遇刺
+						id = usacw.5
+						days = 1655
+					}
+					country_event = {
+						# 2024.11.5 共和党崩盘与民主党大胜
+						id = usacw.6
+						days = 1770
+					}
+					country_event = {
+						# 2025.1.20 联邦政府失能
+						id = usacw.7
+						days = 1846
+					}
+					country_event = {
+						# 2025.3.1 新自由主义秩序全面启动
+						id = usacw.8
+						days = 1886
+					}
+					country_event = {
+						# 2025.4.15 全球干预授权：美国的命运与欧亚战场绑定
+						id = usacw.9
+						days = 1931
+					}
+					country_event = {
+						# 2025.7.4 赌上国运：新秩序与欧亚军事行动共存亡
+						id = usacw.10
+						days = 2011
+					}
+				}
+				BRM = {
+					country_event = {
+						# 缅甸军事政变
+						id = bur.1
+						days = 396
+					}
+				}
+				ISR = {
+					country_event = {
+						# 特朗普和平计划提案（2020.1.28）
+						id = isrwar.1
+						days = 27
+					}
+					country_event = {
+						# 联合政府宣告成立（2020.5.17）
+						id = isrwar.4
+						days = 137
+					}
+					country_event = {
+						# 莱哈瓦游行（2020.6.15）
+						id = isrwar.2
+						days = 166
+					}
+					# 第六次中东战争（2020.10）：调试模式下不自动排程，由 ZZZ_debug_MEW_war_start 决议单独触发
+					if = {
+						limit = {
+							NOT = { has_global_flag = ZZZ_debug_2020 }
+							NOT = { has_global_flag = MEW_war_declared }
+						}
+						news_event = {
+							# 第六次中东战争：导火索新闻（2020.10.5）
+							id = mew.1
+							days = 278
+						}
+						country_event = {
+							# 第六次中东战争爆发（2020.10.9），事件内立即宣战
+							id = mew.0
+							days = 282
+						}
+					}
+					country_event = {
+						# 联合政府崩溃（2020.12.23）
+						id = isrwar.5
+						days = 357
+					}
+					country_event = {
+						# 内塔尼亚胡宣布国家紧急状态（2021.4.20）
+						id = isrwar.3
+						days = 475
+					}
+					country_event = {
+						# 希克迈特·塔米米遇害（2021.5.10），后续自动接哈马斯动员与第四次起义
+						id = isrwar.9
+						days = 495
+					}
+					country_event = {
+						# 以色列新总统就职（2021.7.7）
+						id = isrwar.10
+						days = 553
+					}
+					country_event = {
+						# 堕落歌利亚行动（2021.9.1）
+						id = isrwar.6
+						days = 609
+					}
+				}
+				TAL = {
+					country_event = {
+						# 美国与塔利班签署和平协议（2020.2.29），后续自动接控制区扩大
+						id = afghanistan.1
+						days = 59
+					}
+					country_event = {
+						# 塔利班发动春季攻势（2021.5.1）
+						id = afghanistan.2
+						days = 486
+					}
+					country_event = {
+						# 阿富汗伊斯兰酋长国宣告复辟（2021.8.15）
+						id = afghanistan.3
+						days = 592
+					}
+					country_event = {
+						# 东部省份易手（2021.8.20）
+						id = afghanistan.6
+						days = 597
+					}
+					country_event = {
+						# 中部哈扎拉地区归附（2021.9.1）
+						id = afghanistan.7
+						days = 609
+					}
+				}
+				MEX = {
+					country_event = {
+						# 中美洲移民车队抵达危地马拉边境（2020.1.20）
+						id = mexico.3
+						days = 19
+					}
+					country_event = {
+						# 特种部队突袭毒枭据点成功
+						id = mexico.1
+						days = 45
+					}
+					country_event = {
+						# 军官与毒枭武装交火（2020.3.31）
+						id = mexico.4
+						days = 90
+					}
+					country_event = {
+						# 警方扣押美国难民（2020.6.29）
+						id = mexico.5
+						days = 180
+					}
+					country_event = {
+						# 锡那罗亚集团开始夺取地盘（2020.9.27）
+						id = mexico.6
+						days = 270
+					}
+					country_event = {
+						# 蒂拉卡连特集团开始夺取地盘（2020.10.27）
+						id = mexico.8
+						days = 300
+					}
+					country_event = {
+						# 塔毛利帕斯集团开始夺取地盘（2020.11.26）
+						id = mexico.9
+						days = 330
+					}
+					country_event = {
+						# 其他地区秩序崩溃（2020.12.26）
+						id = mexico.10
+						days = 360
+					}
+					country_event = {
+						# 毒枭战争爆发（2021.1.15）
+						id = mexico.11
+						days = 380
+					}
+					country_event = {
+						# 一次失败的突袭（2021.5.16）
+						id = mexico.2
+						days = 500
+					}
+				}
+				PAK = {
+					country_event = {
+						# 印巴战争前夕：克什米尔危机（2023.12.7），内部14天后自动接 PAK.3 正式宣战（合计1450天，对齐烈焰升腾原版排程）
+						id = PAK.2
+						days = 1436
+					}
+				}
+			}
+			# 分支3：台湾与朝鲜半岛均已和平统一——2025年钓鱼岛/尖阁诸岛对峙引爆大亚洲战争
+			if = {
+				limit = {
+					date > 2025.4.20
+					has_global_flag = korean_confederation_formed
+					NOT = { has_global_flag = pan_asian_war_ongoing }
+					NOT = { has_global_flag = PRC_ongoing_taiwan_war }
+					NOT = { has_global_flag = GAW_senkaku_chain_started }
+					CHI = {
+						exists = yes
+						has_completed_focus = CHI_Establish_Taiwan_SAR
+					}
+					JAP = {
+						exists = yes
+						has_country_flag = pdto_member
+					}
+				}
+				set_global_flag = GAW_senkaku_chain_started
+				CHI = {
+					country_event = {
+						# 钓鱼岛对峙
+						id = prc.546
+						days = 5
+					}
+				}
+			}
+		}
+	}
+}

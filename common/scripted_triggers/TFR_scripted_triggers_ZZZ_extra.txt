@@ -1,0 +1,31 @@
+# TFR 移植补充：国策与决策所需的通用触发器
+
+#由事件完成（仅用于国策界面提示，事件本身负责解锁）
+is_completed_by_event = {
+	custom_trigger_tooltip = {
+		tooltip = completed_by_event_tooltip
+		always = no
+	}
+}
+
+#合法性大于等于阈值（配合 legit_var_trigger_temp 使用）
+has_legit_greater_than_or_equals = {
+	custom_trigger_tooltip = {
+		tooltip = has_legit_greater_than_or_equals_tooltip
+		check_variable = {
+			var = legit_var
+			value = legit_var_trigger_temp
+			compare = greater_than_or_equals
+		}
+	}
+}
+
+#MD 的核电、化石与可再生发电建筑之间不存在互斥关系，此处仅保留“可建造”语义，
+#实际建造条件由国策/决策中的 free_building_slots 检查负责。
+is_able_to_build_energy_farm_in_state = {
+	always = yes
+}
+
+is_able_to_build_nuclear_reactor_in_state = {
+	always = yes
+}

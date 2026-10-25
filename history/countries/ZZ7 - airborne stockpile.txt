@@ -1,0 +1,139 @@
+# ============================================================================
+# 开局空降战车变体（2000.1.1，2017 开局继承）
+# SOV: BMD-1 / BMD-1P（_0）、BMD-2（_1）、BMD-3（_2）变体定义，模块照搬
+#      MD 原版 SOV - Russia.txt 的同名设计，仅将类型切换为 ZZ_airborne_ifv_chassis。
+# CHI: ZBD-03（_2）变体定义，模块照搬 MD 原版 CHI - China.txt 的同名设计，
+#      其 parent_version 由 1 改为 0（本文件未给 CHI 创建 _0/_1 代父变体）。
+# BMD-4M（_2）定义见 history/countries/ZZ3 - land equipment.txt 的 SOV 块。
+# ARM/AZE/BLR/CUB/IRQ/MLV/UKR/UZB 等 history/units/*_nsb.txt 对上述
+# version_name 的引用全部依赖本文件创建变体，缺失会导致 Invalid variant
+# name 报错与开局部队装备锁定。
+# ============================================================================
+2000.1.1 = {
+	SOV = {
+		create_equipment_variant = {
+			name = "BMD-1"
+			type = ZZ_airborne_ifv_chassis_0
+			parent_version = 0
+			modules = {
+				main_armament_slot = afv_assault_gun
+				secondary_armament_slot = afv_coax_machine_gun_2
+				reload_type_slot = automatic_loading
+				ammunition_load_slot = mixed_main_ammo_1
+				turret_type_slot = tank_soviet_turret
+				suspension_type_slot = tank_torsion_bar_suspension_light
+				armor_type_slot = afv_alum_armor_gen1
+				engine_type_slot = tank_diesel_engine_gen1
+				special_type_slot_2 = empty
+				special_type_slot_3 = afv_troop_capacity
+				special_type_slot_4 = tank_battlestation_1
+			}
+			upgrades = {
+				tank_nsb_armor_upgrade = 0
+			}
+			obsolete = yes
+			icon = "gfx/interface/technologies/SOV/LAND/BMD-1.dds"
+			model = "SOV_BMP1_entity"
+		}
+		create_equipment_variant = {
+			name = "BMD-1P"
+			type = ZZ_airborne_ifv_chassis_0
+			parent_version = 1
+			modules = {
+				main_armament_slot = afv_assault_gun
+				secondary_armament_slot = afv_coax_machine_gun_2
+				reload_type_slot = automatic_loading
+				ammunition_load_slot = mixed_main_ammo_1
+				turret_type_slot = tank_soviet_turret
+				suspension_type_slot = tank_torsion_bar_suspension_light
+				armor_type_slot = afv_alum_armor_gen1
+				engine_type_slot = tank_diesel_engine_gen1
+				special_type_slot_1 = empty
+				special_type_slot_2 = afv_atgm_gen2
+				special_type_slot_3 = afv_troop_capacity
+				special_type_slot_4 = tank_battlestation_1
+			}
+			upgrades = {
+				tank_nsb_armor_upgrade = 0
+			}
+			obsolete = yes
+			icon = "gfx/interface/technologies/SOV/LAND/BMD-1PM.dds"
+			model = "SOV_BMP1_entity"
+		}
+		create_equipment_variant = {
+			name = "BMD-2"
+			type = ZZ_airborne_ifv_chassis_1
+			parent_version = 0
+			modules = {
+				main_armament_slot = small_autocannon
+				secondary_armament_slot = afv_coax_machine_gun_2
+				reload_type_slot = automatic_loading
+				ammunition_load_slot = mixed_autocannon_ammo_2
+				turret_type_slot = tank_soviet_turret
+				suspension_type_slot = tank_torsion_bar_suspension_light
+				armor_type_slot = afv_alum_armor_gen1
+				engine_type_slot = tank_diesel_engine_gen1
+				special_type_slot_1 = empty
+				special_type_slot_2 = afv_atgm_gen2
+				special_type_slot_3 = afv_troop_capacity
+				special_type_slot_4 = tank_battlestation_1
+			}
+			upgrades = {
+				tank_nsb_armor_upgrade = 1
+			}
+			obsolete = yes
+			icon = "gfx/interface/technologies/SOV/LAND/BMD-2.dds"
+			model = "SOV_BMD2_entity"
+		}
+		create_equipment_variant = {
+			name = "BMD-3"
+			type = ZZ_airborne_ifv_chassis_2
+			parent_version = 0
+			modules = {
+				main_armament_slot = small_autocannon
+				secondary_armament_slot = afv_coax_machine_gun_2
+				reload_type_slot = automatic_loading
+				ammunition_load_slot = mixed_autocannon_ammo_2
+				turret_type_slot = tank_soviet_turret
+				suspension_type_slot = tank_torsion_bar_suspension_light
+				armor_type_slot = afv_alum_armor_gen2
+				engine_type_slot = tank_diesel_engine_gen2
+				special_type_slot_1 = smoke_launchers
+				special_type_slot_2 = afv_atgm_gen2
+				special_type_slot_3 = afv_troop_capacity
+				special_type_slot_4 = tank_battlestation_1
+			}
+			upgrades = {
+				tank_nsb_armor_upgrade = 1
+			}
+			obsolete = yes
+			icon = "gfx/interface/technologies/SOV/LAND/BMD-3A.dds"
+			model = "SOV_BMP3_entity"
+		}
+	}
+	CHI = {
+		create_equipment_variant = {
+			name = "ZBD-03"
+			type = ZZ_airborne_ifv_chassis_2
+			parent_version = 0
+			modules = {
+				main_armament_slot = small_autocannon
+				reload_type_slot = automatic_loading
+				ammunition_load_slot = mixed_autocannon_ammo_1
+				turret_type_slot = tank_soviet_turret
+				suspension_type_slot = tank_torsion_bar_suspension_light
+				armor_type_slot = afv_alum_armor_gen2
+				engine_type_slot = tank_diesel_engine_gen2
+				special_type_slot_1 = afv_atgm_gen2
+				special_type_slot_2 = smoke_launchers
+				special_type_slot_3 = afv_troop_capacity
+				special_type_slot_4 = tank_battlestation_1
+			}
+			upgrades = {
+				tank_nsb_armor_upgrade = 1
+			}
+			icon = "gfx/interface/technologies/CHI/LAND/ZBD-03.dds"
+			model = "SOV_BMP3_entity"
+		}
+	}
+}

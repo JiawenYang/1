@@ -151,3 +151,45 @@ PRC_xiongania_category = {
 	}
 	scripted_gui = PRC_xiongania_bar_gui
 }
+
+PRC_coronavirus_category = {
+	icon = GFX_decision_PRC_covid_19_cat
+	visible_when_empty = yes
+	priority = 2
+
+	allowed = {
+		original_tag = CHI
+	}
+
+	visible = {
+		NOT = {
+			has_global_flag = PRC_china_collapse
+			has_global_flag = PRC_god_emperor_xi_flag
+		}
+		OR = {
+			has_idea = PRC_coronavirus_pandemic_idea
+			has_idea = PRC_coronavirus_pandemic_idea1
+			has_idea = PRC_coronavirus_pandemic_idea2
+			has_idea = PRC_coronavirus_pandemic_idea3
+			has_idea = PRC_coronavirus_pandemic_idea4
+		}
+	}
+}
+
+PRC_oil_crisis_category = {
+	icon = GFX_decision_generic_oil
+	visible_when_empty = yes
+	priority = 3
+
+	allowed = {
+		original_tag = CHI
+	}
+
+	visible = {
+		NOT = {
+			has_global_flag = PRC_china_collapse
+			has_global_flag = PRC_god_emperor_xi_flag
+		}
+		has_completed_focus = PRC_control_the_oil_crisis
+	}
+}

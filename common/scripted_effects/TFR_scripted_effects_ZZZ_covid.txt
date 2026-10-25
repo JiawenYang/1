@@ -1,0 +1,142 @@
+#Corona
+increase_corona = {
+	if = {
+		limit = {
+			has_idea = high_covid_cases
+		}
+		swap_ideas = {
+			remove_idea = high_covid_cases
+			add_idea = higher_covid_cases
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = medium_covid_cases
+		}
+		swap_ideas = {
+			remove_idea = medium_covid_cases
+			add_idea = high_covid_cases
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = low_covid_cases
+		}
+		swap_ideas = {
+			remove_idea = low_covid_cases
+			add_idea = medium_covid_cases
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = lower_covid_cases
+		}
+		swap_ideas = {
+			remove_idea = lower_covid_cases
+			add_idea = low_covid_cases
+		}
+	}
+}
+
+decrease_corona = {
+	if = {
+		limit = {
+			has_idea = lower_covid_cases
+		}
+		remove_ideas = lower_covid_cases
+	}
+	else_if = {
+		limit = {
+			has_idea = low_covid_cases
+		}
+		swap_ideas = {
+			remove_idea = low_covid_cases
+			add_idea = lower_covid_cases
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = medium_covid_cases
+		}
+		swap_ideas = {
+			remove_idea = medium_covid_cases
+			add_idea = low_covid_cases
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = high_covid_cases
+		}
+		swap_ideas = {
+			remove_idea = high_covid_cases
+			add_idea = medium_covid_cases
+		}
+	}
+	else = {
+		swap_ideas = {
+			remove_idea = higher_covid_cases
+			add_idea = high_covid_cases
+		}
+	}
+}
+
+GER_decrease_corona = {
+	if = {
+		limit = {
+			has_idea = higher_covid_cases
+		}
+		swap_ideas = {
+			remove_idea = higher_covid_cases
+			add_idea = high_covid_cases
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = high_covid_cases
+		}
+		swap_ideas = {
+			remove_idea = high_covid_cases
+			add_idea = medium_covid_cases
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = medium_covid_cases
+		}
+		swap_ideas = {
+			remove_idea = medium_covid_cases
+			add_idea = low_covid_cases
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = low_covid_cases
+		}
+		swap_ideas = {
+			remove_idea = low_covid_cases
+			add_idea = lower_covid_cases
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = lower_covid_cases
+		}
+		remove_ideas = lower_covid_cases
+	}
+}
+
+add_mask_supply = {
+	custom_effect_tooltip = add_mask_supply_tooltip
+	add_to_variable = {
+		var = mask_supply_var
+		value = mask_supply_var
+	}
+}
+
+add_mask_daily_gain = {
+	custom_effect_tooltip = add_mask_gain_tooltip
+	add_to_variable = {
+		var = mask_weekly_gain_var
+		value = mask_daily_gain_var
+	}
+}

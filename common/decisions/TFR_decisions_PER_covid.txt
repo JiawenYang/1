@@ -1,0 +1,26 @@
+PER_coronavirus_category = {
+	icon = generic_coronavirus
+	monitor_outbreak_PER = {
+		icon = china
+		available = {
+			has_country_flag = PER_covid_first
+		}
+		custom_cost_trigger = {
+			check_variable = { var = income_var value = 2 }
+		}
+		custom_cost_text = dx_more_than_1B
+		fire_only_once = yes
+		visible = {
+			tag = PER
+			has_country_flag = PER_covid_first
+		}
+		cancel_if_not_visible = yes
+		complete_effect = {
+			custom_effect_tooltip = PRC_spend_1mil
+			subtract_from_variable = { var = income_var value = 1 }
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+}

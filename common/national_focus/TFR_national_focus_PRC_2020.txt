@@ -1,0 +1,1587 @@
+focus_tree = {
+	id = TFR_china_focus
+	country = {
+		factor = 0
+	}
+	#Covid
+	focus = {
+		id = PRC_lockdown_wuhan
+		icon = GFX_focus_PRC_lockdown_wuhan
+		x = 0
+		y = 0
+		cost = 3
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 100
+		}
+		available = {
+		}
+		completion_reward = {
+			add_days_mission_timeout = {
+				mission = PRC_control_the_coronavirus_mission
+				days = 30
+			}
+			add_political_power = 50
+			unlock_decision_tooltip = PRC_visit_wuhan
+		}
+	}
+	focus = {
+		id = PRC_nationwide_lockdown
+		icon = GFX_focus_PRC_Avoid_Nationwide_Panic
+		x = 2
+		y = 1
+		cost = 3
+		relative_position_id = PRC_lockdown_wuhan
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 10
+		}
+		available = {
+		}
+		prerequisite = {
+			focus = PRC_lockdown_wuhan
+		}
+		completion_reward = {
+			add_days_mission_timeout = {
+				mission = PRC_control_the_coronavirus_mission
+				days = 100
+			}
+			add_stability = -0.05
+			add_timed_idea = {
+				idea = PRC_nationwide_lockdown_idea
+				days = 50
+			}
+		}
+	}
+	focus = {
+		id = PRC_implement_emergency_measures
+		icon = GFX_focus_PRC_emergency_measures
+		x = 0
+		y = 1
+		cost = 3
+		relative_position_id = PRC_lockdown_wuhan
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 10
+		}
+		available = {
+		}
+		prerequisite = {
+			focus = PRC_lockdown_wuhan
+		}
+		completion_reward = {
+			unlock_decision_tooltip = PRC_distribute_masks
+			unlock_decision_tooltip = PRC_construct_emergency_hospitals
+			unlock_decision_tooltip = PRC_deploy_the_pla
+		}
+	}
+	focus = {
+		id = PRC_implement_widespread_testing
+		icon = GFX_focus_PRC_implement_widespread_testing
+		x = -2
+		y = 1
+		cost = 3
+		relative_position_id = PRC_lockdown_wuhan
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 10
+		}
+		available = {
+		}
+		prerequisite = {
+			focus = PRC_lockdown_wuhan
+		}
+		completion_reward = {
+			add_days_mission_timeout = {
+				mission = PRC_control_the_coronavirus_mission
+				days = 30
+			}
+		}
+	}
+	focus = {
+		id = PRC_economic_stability_policy
+		icon = GFX_focus_PRC_economic_stability_policy
+		x = -1
+		y = 2
+		cost = 5
+		relative_position_id = PRC_lockdown_wuhan
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 5
+		}
+		available = {
+		}
+		prerequisite = {
+			focus = PRC_nationwide_lockdown
+		}
+		prerequisite = {
+			focus = PRC_implement_widespread_testing
+		}
+		mutually_exclusive = {
+			focus = PRC_zero_covid_policy
+		}
+		completion_reward = {
+			add_days_mission_timeout = {
+				mission = PRC_control_the_coronavirus_mission
+				days = -60
+			}
+			add_timed_idea = {
+				idea = PRC_open_economy_idea
+				days = 100
+			}
+			set_temp_variable = {
+				var = PRC_influence_new_var_temp
+				value = -0.05
+			}
+			PRC_add_influence_new = yes
+		}
+	}
+	focus = {
+		id = PRC_zero_covid_policy
+		icon = GFX_focus_PRC_zero_covid_policy
+		x = 1
+		y = 2
+		cost = 5
+		relative_position_id = PRC_lockdown_wuhan
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 10
+		}
+		available = {
+		}
+		prerequisite = {
+			focus = PRC_nationwide_lockdown
+		}
+		prerequisite = {
+			focus = PRC_implement_widespread_testing
+		}
+		mutually_exclusive = {
+			focus = PRC_economic_stability_policy
+		}
+		completion_reward = {
+			add_political_power = 75
+			add_stability = 0.1
+			add_timed_idea = {
+				idea = PRC_zero_covid_idea
+				days = 100
+			}
+			if = {
+				limit = {
+					has_idea = PRC_nationwide_lockdown_idea
+				}
+				modify_timed_idea = {
+					idea = PRC_nationwide_lockdown_idea
+					days = 60
+				}
+			}
+			hidden_effect = {
+				country_event = {
+					id = prc.303
+					days = 10
+				}
+			}
+		}
+	}
+	focus = {
+		id = PRC_adopt_the_swedish_model
+		icon = GFX_focus_PRC_adopt_the_swedish_model
+		x = -2
+		y = 3
+		cost = 5
+		relative_position_id = PRC_lockdown_wuhan
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 10
+		}
+		available = {
+		}
+		prerequisite = {
+			focus = PRC_economic_stability_policy
+		}
+		completion_reward = {
+			add_stability = 0.05
+			add_days_mission_timeout = {
+				mission = PRC_control_the_coronavirus_mission
+				days = 14
+			}
+			if = {
+				limit = {
+					has_completed_focus = PRC_economic_stability_policy
+				}
+				modify_timed_idea = {
+					idea = PRC_open_economy_idea
+					days = 60
+				}
+			}
+			set_temp_variable = {
+				var = PRC_influence_lib_var_temp
+				value = 0.1
+			}
+			PRC_add_influence_lib = yes
+		}
+	}
+	focus = {
+		id = PRC_kickstart_vaccine_research
+		icon = GFX_focus_PRC_kickstart_the_vaccine_race
+		x = 0
+		y = 3
+		cost = 5
+		relative_position_id = PRC_lockdown_wuhan
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 150
+		}
+		available = {
+		}
+		prerequisite = {
+			focus = PRC_economic_stability_policy
+			focus = PRC_zero_covid_policy
+		}
+		completion_reward = {
+			if = {
+				limit = {
+					is_ai = no
+				}
+				custom_effect_tooltip = PRC_kickstart_vaccine_research_tt
+			}
+			activate_mission = PRC_vaccine_development_mission
+			add_political_power = 30
+			set_temp_variable = {
+				var = PRC_influence_nat_var_temp
+				value = 0.05
+			}
+			PRC_add_influence_nat = yes
+		}
+	}
+	focus = {
+		id = PRC_adopt_strict_lockdown_measures
+		icon = GFX_focus_PRC_enforce_stricter_lockdown_penalties
+		x = 2
+		y = 3
+		cost = 5
+		relative_position_id = PRC_lockdown_wuhan
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 10
+		}
+		available = {
+		}
+		prerequisite = {
+			focus = PRC_zero_covid_policy
+		}
+		completion_reward = {
+			add_political_power = 75
+			unlock_decision_tooltip = PRC_burn_infected_bodies
+			unlock_decision_tooltip = PRC_declare_a_curfew
+			set_temp_variable = {
+				var = PRC_influence_nat_var_temp
+				value = 0.05
+			}
+			PRC_add_influence_nat = yes
+			set_temp_variable = {
+				var = PRC_influence_cen_var_temp
+				value = 0.05
+			}
+			PRC_add_influence_cen = yes
+		}
+	}
+	focus = {
+		id = PRC_focus_on_vaccine_development
+		icon = GFX_focus_PRC_focus_on_vaccine_development
+		x = -2
+		y = 4
+		cost = 5
+		relative_position_id = PRC_lockdown_wuhan
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 10
+		}
+		available = {
+			has_completed_focus = PRC_kickstart_vaccine_research
+		}
+		prerequisite = {
+			focus = PRC_adopt_the_swedish_model
+			focus = PRC_kickstart_vaccine_research
+		}
+		mutually_exclusive = {
+			focus = PRC_focus_on_mask_production
+		}
+		completion_reward = {
+			add_days_mission_timeout = {
+				mission = PRC_vaccine_development_mission
+				days = -60
+			}
+			set_temp_variable = {
+				var = debt_var_temp
+				value = 200
+			}
+			add_debt_with_inflation = yes
+		}
+	}
+	focus = {
+		id = PRC_focus_on_mask_production
+		icon = GFX_focus_PRC_focus_on_mask_production
+		x = -4
+		y = 4
+		cost = 5
+		relative_position_id = PRC_lockdown_wuhan
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 5
+		}
+		available = {
+		}
+		prerequisite = {
+			focus = PRC_adopt_the_swedish_model
+		}
+		mutually_exclusive = {
+			focus = PRC_focus_on_vaccine_development
+		}
+		completion_reward = {
+			add_days_mission_timeout = {
+				mission = PRC_control_the_coronavirus_mission
+				days = 60
+			}
+			modify_timed_idea = {
+				idea = PRC_open_economy_idea
+				days = 30
+			}
+			set_temp_variable = {
+				var = debt_var_temp
+				value = 75
+			}
+			add_debt_with_inflation = yes
+		}
+	}
+	focus = {
+		id = PRC_food_safety_reforms
+		icon = GFX_focus_PRC_enact_food_saftey_reforms
+		x = 0
+		y = 4
+		cost = 5
+		relative_position_id = PRC_lockdown_wuhan
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 5
+		}
+		available = {
+		}
+		prerequisite = {
+			focus = PRC_adopt_the_swedish_model
+			focus = PRC_adopt_strict_lockdown_measures
+			focus = PRC_kickstart_vaccine_research
+		}
+		completion_reward = {
+			add_popularity = {
+				ideology = communism
+				popularity = 0.025
+			}
+			add_ideas = PRC_food_safety_reforms_idea
+			set_temp_variable = {
+				var = PRC_influence_lib_var_temp
+				value = 0.05
+			}
+			PRC_add_influence_lib = yes
+			set_temp_variable = {
+				var = PRC_influence_new_var_temp
+				value = 0.02
+			}
+			PRC_add_influence_new = yes
+			set_temp_variable = {
+				var = society_development_var_temp
+				value = 0.05
+			}
+			add_society_development = yes
+			set_temp_variable = {
+				var = farming_development_var_temp
+				value = 0.075
+			}
+			add_farming_development = yes
+		}
+	}
+	focus = {
+		id = PRC_surveillance_state_contact_tracing
+		icon = GFX_focus_PRC_surveillance_state_contact_tracing
+		x = 4
+		y = 4
+		cost = 5
+		relative_position_id = PRC_lockdown_wuhan
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 5
+		}
+		available = {
+		}
+		prerequisite = {
+			focus = PRC_adopt_strict_lockdown_measures
+		}
+		mutually_exclusive = {
+			focus = PRC_outsource_contact_tracing
+		}
+		completion_reward = {
+			add_days_mission_timeout = {
+				mission = PRC_control_the_coronavirus_mission
+				days = 50
+			}
+			add_stability = 0.05
+			set_temp_variable = {
+				var = PRC_influence_nat_var_temp
+				value = 0.05
+			}
+			PRC_add_influence_nat = yes
+			set_temp_variable = {
+				var = PRC_influence_new_var_temp
+				value = 0.02
+			}
+			PRC_add_influence_new = yes
+		}
+	}
+	focus = {
+		id = PRC_outsource_contact_tracing
+		icon = GFX_focus_PRC_outsource_contact_tracing
+		x = 2
+		y = 4
+		cost = 5
+		relative_position_id = PRC_lockdown_wuhan
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 3
+		}
+		available = {
+		}
+		prerequisite = {
+			focus = PRC_adopt_strict_lockdown_measures
+			focus = PRC_adopt_the_swedish_model
+		}
+		mutually_exclusive = {
+			focus = PRC_surveillance_state_contact_tracing
+		}
+		completion_reward = {
+			add_days_mission_timeout = {
+				mission = PRC_control_the_coronavirus_mission
+				days = 25
+			}
+			add_offsite_building = {
+				type = industrial_complex
+				level = 1
+			}
+			add_political_power = 50
+			set_temp_variable = {
+				var = PRC_influence_lib_var_temp
+				value = 0.02
+			}
+			PRC_add_influence_lib = yes
+		}
+	}
+	focus = {
+		id = PRC_fund_crowd_immunity_studies
+		icon = GFX_focus_PRC_fund_crowd_immunity_studies
+		x = -3
+		y = 5
+		cost = 5
+		relative_position_id = PRC_lockdown_wuhan
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 3
+		}
+		available = {
+		}
+		prerequisite = {
+			focus = PRC_focus_on_mask_production
+			focus = PRC_focus_on_vaccine_development
+		}
+		completion_reward = {
+			add_political_power = 50
+			set_temp_variable = {
+				var = PRC_influence_lib_var_temp
+				value = 0.05
+			}
+			PRC_add_influence_lib = yes
+			add_days_mission_timeout = {
+				mission = PRC_vaccine_development_mission
+				days = -60
+			}
+		}
+	}
+	focus = {
+		id = PRC_blame_the_americans
+		icon = GFX_focus_PRC_blame_the_us
+		x = -1
+		y = 5
+		cost = 5
+		relative_position_id = PRC_lockdown_wuhan
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 3
+		}
+		available = {
+		}
+		prerequisite = {
+			focus = PRC_food_safety_reforms
+		}
+		mutually_exclusive = {
+			focus = PRC_blame_local_officials
+		}
+		completion_reward = {
+			add_war_support = 0.05
+			add_political_power = 50
+			set_temp_variable = {
+				var = PRC_influence_nat_var_temp
+				value = 0.05
+			}
+			PRC_add_influence_nat = yes
+			set_temp_variable = {
+				var = PRC_influence_new_var_temp
+				value = 0.05
+			}
+			PRC_add_influence_new = yes
+		}
+	}
+	focus = {
+		id = PRC_blame_local_officials
+		icon = GFX_focus_PRC_blame_local_officials
+		x = 1
+		y = 5
+		cost = 5
+		relative_position_id = PRC_lockdown_wuhan
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 3
+		}
+		available = {
+		}
+		prerequisite = {
+			focus = PRC_food_safety_reforms
+		}
+		mutually_exclusive = {
+			focus = PRC_blame_the_americans
+		}
+		completion_reward = {
+			add_stability = 0.05
+			add_political_power = 50
+			set_temp_variable = {
+				var = PRC_influence_cen_var_temp
+				value = 0.05
+			}
+			PRC_add_influence_cen = yes
+		}
+	}
+	focus = {
+		id = PRC_expand_the_social_safety_net
+		icon = GFX_focus_PRC_widen_the_social_saftey_net
+		x = 3
+		y = 5
+		cost = 5
+		relative_position_id = PRC_lockdown_wuhan
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 3
+		}
+		available = {
+		}
+		prerequisite = {
+			focus = PRC_surveillance_state_contact_tracing
+			focus = PRC_outsource_contact_tracing
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = medium_welfare
+				add_idea = high_welfare
+			}
+			set_temp_variable = {
+				var = PRC_influence_new_var_temp
+				value = 0.06
+			}
+			PRC_add_influence_new = yes
+			add_stability = 0.03
+			hidden_effect = {
+				country_event = {
+					id = prc.13
+					days = 150
+				}
+			}
+		}
+	}
+	focus = {
+		id = PRC_return_to_normalcy
+		icon = GFX_focus_PRC_return_to_normalcy
+		x = 0
+		y = 6
+		cost = 3
+		relative_position_id = PRC_lockdown_wuhan
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 3
+		}
+		available = {
+			NOT = {
+				OR = {
+					has_idea = PRC_coronavirus_pandemic_idea
+					has_idea = PRC_coronavirus_pandemic_idea1
+					has_idea = PRC_coronavirus_pandemic_idea2
+					has_idea = PRC_coronavirus_pandemic_idea3
+					has_idea = PRC_coronavirus_pandemic_idea4
+				}
+			}
+		}
+		prerequisite = {
+			focus = PRC_expand_the_social_safety_net
+			focus = PRC_fund_crowd_immunity_studies
+		}
+		completion_reward = {
+			add_offsite_building = {
+				type = industrial_complex
+				level = 3
+			}
+			add_stability = 0.05
+			# if = {
+			# 	limit = {
+			# 		has_country_flag = PRC_covid_shutdown_factories
+			# 	}
+			# 	effect_tooltip = {
+			# 		swap_ideas = {
+			# 			remove_idea = PRC_chinese_enviroment_dummy_idea
+			# 			add_idea = PRC_no_covid_shutdown_factories_idea
+			# 		}
+			# 	}
+			# 	set_temp_variable = {
+			# 		var = PRC_enviromental_progress_temp
+			# 		value = -0.075
+			# 	}
+			# 	PRC_add_enviromental_progress = yes
+			# 	set_temp_variable = {
+			# 		var = PRC_approval_rating_var_temp
+			# 		value = 0.07
+			# 	}
+			# 	PRC_add_party_approval = yes
+			# 	hidden_effect = {
+			# 		add_to_variable = {
+			# 			var = PRC_mic_production_speed_buildings_factor_dynamic_var
+			# 			value = 0.5
+			# 		}
+			# 		clr_country_flag = PRC_covid_shutdown_factories
+			# 	}
+			# }
+			custom_effect_tooltip = SOV_no_covid_tt
+		}
+	}
+	#Oil Crisis
+	focus = {
+		id = PRC_control_the_oil_crisis
+		icon = GFX_focus_PRC_stabilize_the_situation
+		x = 11
+		y = 0
+		cost = 1
+		allow_branch = {
+			has_country_flag = PRC_oil_crisis_ongoing
+		}
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 100
+		}
+		available = {
+		}
+		completion_reward = {
+			add_political_power = 100
+			add_stability = 0.05
+			add_popularity = {
+				ideology = communism
+				popularity = 0.035
+			}
+			#set_power_balance = {
+			#	id = PRC_power_balance
+			#	left_side = PRC_nationalization_side 
+			#	right_side = PRC_privitization_side 
+			#	set_value = 0.32
+			#}
+		}
+	}
+	focus = {
+		id = PRC_crack_down_on_left_radicals
+		icon = GFX_focus_PRC_crack_down_on_left_radicals
+		x = -3
+		y = 1
+		cost = 8
+		relative_position_id = PRC_control_the_oil_crisis
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 3
+		}
+		available = {
+		}
+		prerequisite = {
+			focus = PRC_control_the_oil_crisis
+		}
+		mutually_exclusive = {
+			focus = PRC_crack_down_on_reformist_protesters
+		}
+		completion_reward = {
+			add_political_power = 35
+			set_temp_variable = {
+				var = PRC_influence_new_var_temp
+				value = -0.1
+			}
+			PRC_add_influence_new = yes
+			set_temp_variable = {
+				var = PRC_influence_cen_var_temp
+				value = 0.025
+			}
+			PRC_add_influence_cen = yes
+		}
+	}
+	focus = {
+		id = PRC_crack_down_on_reformist_protesters
+		icon = GFX_focus_PRC_crack_down_on_reformist_protesters
+		x = -5
+		y = 1
+		cost = 8
+		relative_position_id = PRC_control_the_oil_crisis
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 3
+		}
+		available = {
+		}
+		prerequisite = {
+			focus = PRC_control_the_oil_crisis
+		}
+		mutually_exclusive = {
+			focus = PRC_crack_down_on_left_radicals
+		}
+		completion_reward = {
+			add_stability = 0.025
+			set_temp_variable = {
+				var = PRC_influence_lib_var_temp
+				value = -0.1
+			}
+			PRC_add_influence_lib = yes
+			set_temp_variable = {
+				var = PRC_influence_nat_var_temp
+				value = 0.025
+			}
+			PRC_add_influence_nat = yes
+		}
+	}
+	focus = {
+		id = PRC_empower_the_50_cent_army
+		icon = GFX_focus_PRC_empower_the_50_cent_army
+		x = 1
+		y = 1
+		cost = 5
+		relative_position_id = PRC_crack_down_on_reformist_protesters
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 5
+		}
+		available = {
+		}
+		prerequisite = {
+			focus = PRC_crack_down_on_reformist_protesters
+			focus = PRC_crack_down_on_left_radicals
+		}
+		completion_reward = {
+			add_stability = 0.025
+			add_popularity = {
+				ideology = communism
+				popularity = 0.035
+			}
+			set_temp_variable = {
+				var = society_development_var_temp
+				value = 0.05
+			}
+			add_society_development = yes
+		}
+	}
+	focus = {
+		id = PRC_concessions_to_corporate_demands
+		icon = GFX_focus_PRC_concessions_to_corporate_demands
+		x = 0
+		y = 2
+		cost = 5
+		relative_position_id = PRC_crack_down_on_left_radicals
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 5
+		}
+		available = {
+		}
+		prerequisite = {
+			focus = PRC_crack_down_on_left_radicals
+		}
+		completion_reward = {
+			every_military_industrial_organization = {
+				add_mio_funds = 1250
+			}
+			set_temp_variable = {
+				var = PRC_influence_cen_var_temp
+				value = 0.05
+			}
+			PRC_add_influence_cen = yes
+			set_temp_variable = {
+				var = income_var_temp
+				value = 50
+			}
+			add_income_with_inflation = yes
+			set_temp_variable = {
+				var = PRC_enviromental_progress_temp
+				value = -0.015
+			}
+			PRC_add_enviromental_progress = yes
+		}
+	}
+	focus = {
+		id = PRC_concessions_to_populist_demands
+		icon = GFX_focus_PRC_concessions_to_populist_demands
+		x = 0
+		y = 2
+		cost = 5
+		relative_position_id = PRC_crack_down_on_reformist_protesters
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 5
+		}
+		available = {
+		}
+		prerequisite = {
+			focus = PRC_crack_down_on_reformist_protesters
+		}
+		completion_reward = {
+			add_war_support = 0.035
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.035
+			}
+			set_temp_variable = {
+				var = PRC_influence_nat_var_temp
+				value = 0.05
+			}
+			PRC_add_influence_nat = yes
+		}
+	}
+	focus = {
+		id = PRC_stabilize_the_political_sphere
+		icon = GFX_focus_PRC_stabilize_the_political_sphere
+		x = 0
+		y = 2
+		cost = 5
+		relative_position_id = PRC_empower_the_50_cent_army
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 5
+		}
+		available = {
+		}
+		prerequisite = {
+			focus = PRC_concessions_to_corporate_demands
+			focus = PRC_concessions_to_populist_demands
+		}
+		prerequisite = {
+			focus = PRC_empower_the_50_cent_army
+		}
+		completion_reward = {
+			country_event = prc.291
+			add_timed_idea = {
+				idea = PRC_political_stabilization_idea
+				days = 140
+			}
+			set_temp_variable = {
+				var = society_development_var_temp
+				value = 0.1
+			}
+			add_society_development = yes
+		}
+	}
+	focus = {
+		id = PRC_contain_the_damage
+		icon = GFX_focus_PRC_contain_the_damage
+		x = 0
+		y = 1
+		cost = 5
+		relative_position_id = PRC_control_the_oil_crisis
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 5
+			# modifier = {
+			# 	factor = 15
+			# 	has_country_flag = PRC_sided_with_cen_flag
+			# }
+			# modifier = {
+			# 	factor = -15
+			# 	has_country_flag = PRC_side_with_left_flag
+			# }
+		}
+		available = {
+		}
+		prerequisite = {
+			focus = PRC_control_the_oil_crisis
+		}
+		mutually_exclusive = {
+			focus = PRC_a_broken_system
+		}
+		completion_reward = {
+			PRC_decrease_oil = yes
+			increase_welfare = yes
+			set_temp_variable = {
+				var = PRC_influence_cen_var_temp
+				value = 0.025
+			}
+			PRC_add_influence_cen = yes
+			set_temp_variable = {
+				var = poverty_development_var_temp
+				value = 0.05
+			}
+			add_poverty_development = yes
+		}
+	}
+	focus = {
+		id = PRC_a_broken_system
+		icon = GFX_focus_PRC_a_broken_system
+		x = 4
+		y = 1
+		cost = 5
+		relative_position_id = PRC_control_the_oil_crisis
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 5
+			# modifier = {
+			# 	factor = 15
+			# 	has_country_flag = PRC_side_with_left_flag
+			# }
+			# modifier = {
+			# 	factor = 5
+			# 	has_country_flag = PRC_sided_with_lib_flag
+			# }
+			# modifier = {
+			# 	factor = -15
+			# 	has_country_flag = PRC_sided_with_cen_flag
+			# }
+		}
+		available = {
+		}
+		prerequisite = {
+			focus = PRC_control_the_oil_crisis
+		}
+		mutually_exclusive = {
+			focus = PRC_contain_the_damage
+		}
+		completion_reward = {
+			add_stability = -0.05
+			decrease_taxes = yes
+			set_temp_variable = {
+				var = PRC_influence_new_var_temp
+				value = 0.025
+			}
+			PRC_add_influence_new = yes
+			set_temp_variable = {
+				var = PRC_influence_lib_var_temp
+				value = 0.025
+			}
+			PRC_add_influence_lib = yes
+			set_temp_variable = {
+				var = society_development_var_temp
+				value = 0.075
+			}
+			add_society_development = yes
+		}
+	}
+	focus = {
+		id = PRC_diversify_the_oil_trade
+		icon = GFX_focus_PRC_diversify_the_oil_trade
+		x = 0
+		y = 1
+		cost = 5
+		relative_position_id = PRC_contain_the_damage
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 5
+			# modifier = {
+			# 	factor = 5
+			# 	has_country_flag = PRC_sided_with_lib_flag
+			# }
+		}
+		available = {
+		}
+		prerequisite = {
+			focus = PRC_contain_the_damage
+			focus = PRC_a_broken_system
+		}
+		mutually_exclusive = {
+			focus = PRC_expand_domestic_oil_production
+		}
+		completion_reward = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_made_in_china_dummy_idea
+					add_idea = PRC_made_in_china_dummy_idea5
+				}
+			}
+			PRC_decrease_oil = yes
+			set_temp_variable = {
+				var = PRC_influence_lib_var_temp
+				value = 0.025
+			}
+			PRC_add_influence_lib = yes
+			set_temp_variable = {
+				var = industrial_development_var_temp
+				value = 0.075
+			}
+			add_industrial_development = yes
+			hidden_effect = {
+				add_to_variable = {
+					var = PRC_mic_industrial_capacity_factory_dynamic_var
+					value = 0.025
+				}
+				add_to_variable = {
+					var = PRC_mic_min_export_dynamic_var
+					value = -0.05
+				}
+			}
+		}
+	}
+	focus = {
+		id = PRC_a_renewable_revolution
+		icon = GFX_focus_PRC_a_renewable_revolution
+		x = 0
+		y = 1
+		cost = 5
+		relative_position_id = PRC_diversify_the_oil_trade
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 5
+		}
+		available = {
+		}
+		prerequisite = {
+			focus = PRC_diversify_the_oil_trade
+		}
+		completion_reward = {
+			set_temp_variable = {
+				var = PRC_enviromental_progress_temp
+				value = 0.025
+			}
+			PRC_add_enviromental_progress = yes
+			add_tech_bonus = {
+				name = PRC_a_renewable_revolution
+				bonus = 0.5
+				uses = 2
+				category = CAT_renewable_energy
+			}
+			every_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					is_able_to_build_energy_farm_in_state = yes
+					state_population > 1000000
+					free_building_slots = {
+						building = renewable_energy_infra
+						size > 0
+						include_locked = yes
+					}
+				}
+				random_select_amount = 6
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = renewable_energy_infra
+					level = 1
+					instant_build = yes
+				}
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_made_in_china_dummy_idea
+					add_idea = PRC_made_in_china_dummy_idea3
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = PRC_mic_production_speed_energy_farm_factor_dynamic_var
+					value = 0.25
+				}
+			}
+		}
+	}
+	focus = {
+		id = PRC_expand_domestic_oil_production
+		icon = GFX_focus_PRC_search_for_domestic_oil_sources
+		x = 0
+		y = 1
+		cost = 5
+		relative_position_id = PRC_a_broken_system
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 5
+			modifier = {
+				factor = 5
+				#has_country_flag = PRC_sided_with_lib_flag
+			}
+		}
+		available = {
+		}
+		prerequisite = {
+			focus = PRC_contain_the_damage
+			focus = PRC_a_broken_system
+		}
+		mutually_exclusive = {
+			focus = PRC_diversify_the_oil_trade
+		}
+		completion_reward = {
+			set_country_flag = PRC_expand_domestic_oil_production_flag
+			add_political_power = 100
+			unlock_decision_tooltip = PRC_kashgar_oil_contract
+			PRC_decrease_oil = yes
+			set_temp_variable = {
+				var = PRC_influence_cen_var_temp
+				value = 0.025
+			}
+			PRC_add_influence_cen = yes
+			set_temp_variable = {
+				var = PRC_influence_new_var_temp
+				value = 0.025
+			}
+			PRC_add_influence_new = yes
+			set_temp_variable = {
+				var = PRC_enviromental_progress_temp
+				value = -0.025
+			}
+			PRC_add_enviromental_progress = yes
+		}
+	}
+	focus = {
+		id = PRC_a_nuclear_revolution
+		icon = GFX_focus_PRC_a_nuclear_revolution
+		x = 0
+		y = 1
+		cost = 5
+		relative_position_id = PRC_expand_domestic_oil_production
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 5
+		}
+		available = {
+		}
+		prerequisite = {
+			focus = PRC_expand_domestic_oil_production
+		}
+		completion_reward = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_made_in_china_dummy_idea
+					add_idea = PRC_made_in_china_dummy_idea2
+				}
+			}
+			add_tech_bonus = {
+				name = PRC_a_nuclear_revolution
+				bonus = 0.5
+				uses = 2
+				category = CAT_nuclear
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					is_able_to_build_nuclear_reactor_in_state = yes
+					state_population > 1000000
+					free_building_slots = {
+						building = infrastructure
+						size < 2
+					}
+					free_building_slots = {
+						building = nuclear_reactor
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = nuclear_reactor
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					state_population > 1000000
+					free_building_slots = {
+						building = infrastructure
+						size < 2
+					}
+					free_building_slots = {
+						building = nuclear_reactor
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = nuclear_reactor
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					is_able_to_build_nuclear_reactor_in_state = yes
+					state_population > 1000000
+					free_building_slots = {
+						building = infrastructure
+						size < 2
+					}
+					free_building_slots = {
+						building = nuclear_reactor
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = nuclear_reactor
+					level = 1
+					instant_build = yes
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = PRC_mic_production_speed_nuclear_reactor_factor_dynamic_var
+					value = 0.25
+				}
+			}
+			set_temp_variable = {
+				var = PRC_enviromental_progress_temp
+				value = -0.025
+			}
+			PRC_add_enviromental_progress = yes
+		}
+	}
+	focus = {
+		id = PRC_stabilize_the_economic_sphere
+		icon = GFX_focus_PRC_stabilize_the_economic_sphere
+		x = 2
+		y = 1
+		cost = 5
+		relative_position_id = PRC_diversify_the_oil_trade
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 5
+		}
+		available = {
+		}
+		prerequisite = {
+			focus = PRC_expand_domestic_oil_production
+			focus = PRC_diversify_the_oil_trade
+		}
+		completion_reward = {
+			country_event = prc.292
+			add_timed_idea = {
+				idea = PRC_economic_stabilization_idea
+				days = 140
+			}
+			set_temp_variable = {
+				var = industrial_development_var_temp
+				value = 0.15
+			}
+			add_industrial_development = yes
+		}
+	}
+	focus = {
+		id = PRC_gambit_in_the_gulf
+		icon = GFX_focus_PRC_gambit_in_the_gulf
+		x = -1
+		y = 2
+		cost = 5
+		relative_position_id = PRC_diversify_the_oil_trade
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 5
+		}
+		available = {
+			has_global_flag = SAU_saudi_civil_war_global
+			country_exists = TAI
+		}
+		bypass = {
+			date > 2021.1.1
+			NOT = {
+				has_global_flag = SAU_saudi_civil_war_global
+				country_exists = TAI
+			}
+		}
+		prerequisite = {
+			focus = PRC_diversify_the_oil_trade
+		}
+		completion_reward = {
+			TAI = {
+				set_temp_variable = {
+					var = military_development_var_temp
+					value = 0.25
+				}
+				add_military_development = yes
+				add_ideas = PRC_chinese_advisors
+				capital_scope = {
+					create_unit = {
+						division = "division_template = \"Liwa Almsha\" start_experience_factor = 0.5 start_equipment_factor = 1.0"
+						owner = TAI
+						count = 3
+					}
+				}
+			}
+			custom_effect_tooltip = PRC_gambit_in_the_gulf_tt
+			effect_tooltip = {
+				country_event = prc.141
+			}
+			hidden_effect = {
+				country_event = {
+					id = prc.338
+					days = 10
+				}
+			}
+		}
+	}
+	focus = {
+		id = PRC_south_china_sea_expansion
+		icon = GFX_focus_PRC_south_china_sea_expansion
+		x = 1
+		y = 2
+		cost = 5
+		relative_position_id = PRC_diversify_the_oil_trade
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 5
+		}
+		available = {
+		}
+		prerequisite = {
+			focus = PRC_diversify_the_oil_trade
+		}
+		completion_reward = {
+			country_event = prc.240
+			PRC_decrease_oil = yes
+		}
+	}
+	focus = {
+		id = PRC_synthetic_oil_investments
+		icon = GFX_focus_PRC_synthetic_oil_investments
+		x = -1
+		y = 2
+		cost = 5
+		relative_position_id = PRC_expand_domestic_oil_production
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 5
+		}
+		available = {
+		}
+		prerequisite = {
+			focus = PRC_expand_domestic_oil_production
+		}
+		completion_reward = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_made_in_china_dummy_idea
+					add_idea = PRC_made_in_china_dummy_idea4
+				}
+			}
+			PRC_decrease_oil = yes
+			modify_building_resources = {
+				building = synthetic_refinery
+				resource = rubber
+				amount = 2
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = PRC_mic_production_speed_synthetic_refinery_factor_dynamic_var
+					value = 0.2
+				}
+				add_to_variable = {
+					var = PRC_mic_fuel_gain_factor_dynamic_var
+					value = 0.1
+				}
+			}
+		}
+	}
+	focus = {
+		id = PRC_drill_for_xinjiang_oil
+		icon = GFX_focus_PRC_drill_for_xinjiang_oil
+		x = 1
+		y = 2
+		cost = 5
+		relative_position_id = PRC_expand_domestic_oil_production
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 5
+		}
+		available = {
+		}
+		prerequisite = {
+			focus = PRC_expand_domestic_oil_production
+		}
+		completion_reward = {
+			set_country_flag = PRC_drill_for_xinjiang_oil_flag
+			PRC_decrease_oil = yes
+			unlock_decision_tooltip = PRC_altai_oil_contract
+			unlock_decision_tooltip = PRC_hoton_oil_contract
+		}
+	}
+	focus = {
+		id = PRC_southeast_asian_bailout_package
+		icon = GFX_focus_PRC_southeast_asian_bailout_package
+		x = 1
+		y = 1
+		cost = 5
+		relative_position_id = PRC_gambit_in_the_gulf
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 5
+		}
+		available = {
+		}
+		prerequisite = {
+			focus = PRC_gambit_in_the_gulf
+			focus = PRC_south_china_sea_expansion
+		}
+		completion_reward = {
+			set_temp_variable = {
+				var = debt_var_temp
+				value = 75
+			}
+			add_debt_with_inflation = yes
+			VIN = {
+				country_event = prc.244
+				event_option_tooltip = prc.244.a
+			}
+			CAM = {
+				country_event = prc.244
+				event_option_tooltip = prc.244.a
+			}
+			LAO = {
+				country_event = prc.244
+				event_option_tooltip = prc.244.a
+			}
+			add_power_balance_value = {
+				id = PRC_power_balance
+				value = -0.05
+			}
+			set_temp_variable = {
+				var = PRC_influence_lib_var_temp
+				value = 0.05
+			}
+			PRC_add_influence_lib = yes
+		}
+	}
+	focus = {
+		id = PRC_chase_the_chinese_dream
+		icon = GFX_focus_PRC_chase_the_chinese_dream
+		x = 1
+		y = 1
+		cost = 5
+		relative_position_id = PRC_synthetic_oil_investments
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 5
+		}
+		available = {
+		}
+		prerequisite = {
+			focus = PRC_drill_for_xinjiang_oil
+			focus = PRC_synthetic_oil_investments
+		}
+		completion_reward = {
+			add_stability = 0.1
+			add_political_power = 150
+			add_power_balance_value = {
+				id = PRC_power_balance
+				value = 0.04
+			}
+			set_temp_variable = {
+				var = PRC_influence_cen_var_temp
+				value = 0.035
+			}
+			PRC_add_influence_cen = yes
+		}
+	}
+	focus = {
+		id = PRC_rejuvinate_the_nation
+		icon = GFX_focus_PRC_rejuvinate_the_nation
+		x = 2
+		y = 1
+		cost = 5
+		relative_position_id = PRC_southeast_asian_bailout_package
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 5
+		}
+		available = {
+		}
+		prerequisite = {
+			focus = PRC_southeast_asian_bailout_package
+			focus = PRC_chase_the_chinese_dream
+		}
+		completion_reward = {
+			PRC_decrease_oil = yes
+			add_political_power = 75
+			PRC_decrease_corrupt_bureaucracy = yes
+			unlock_decision_tooltip = PRC_finalize_recovery_from_the_oil_crisis
+		}
+	}
+	focus = {
+		id = PRC_shake_up_the_politburo
+		icon = GFX_focus_PRC_shake_up_the_politburo
+		x = -6
+		y = 1
+		cost = 5
+		relative_position_id = PRC_rejuvinate_the_nation
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 10
+		}
+		available = {
+			if = {
+				limit = {
+					is_ai = no
+				}
+				NOT = {
+					has_idea = PRC_oil_crash1
+					has_idea = PRC_oil_crash2
+					has_idea = PRC_oil_crash3
+					has_idea = PRC_oil_crash4
+					has_idea = PRC_oil_crash5
+				}
+			}
+		}
+		prerequisite = {
+			focus = PRC_rejuvinate_the_nation
+		}
+		prerequisite = {
+			focus = PRC_return_to_normalcy
+		}
+		prerequisite = {
+			focus = PRC_stabilize_the_political_sphere
+		}
+		completion_reward = {
+			custom_effect_tooltip = PRC_shake_up_the_politburo_tt
+			country_event = {
+				id = prc.15
+				days = 1
+			}
+			clr_country_flag = PRC_oil_crisis_ongoing
+			if = {
+				limit = {
+					is_ai = yes
+				}
+				remove_ideas = {
+					PRC_oil_crash1
+					PRC_oil_crash2
+					PRC_oil_crash3
+					PRC_oil_crash4
+					PRC_oil_crash5
+				}
+			}
+			hidden_effect = {
+				country_event = {
+					id = prc.314
+					days = 60
+				}
+			}
+		}
+	}
+}
+
+#foreign tree КТО ТРОНЕТ В ТОГО ПРИЛЕТИТ РАКЕТА

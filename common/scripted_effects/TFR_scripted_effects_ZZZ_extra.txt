@@ -1,0 +1,102 @@
+# TFR 移植补充：疫情事件与中国/美国国策所需的效果
+# 经济、税收、福利、政党支持度等已由 DSW_FRA_dependencies.txt 完成 MD 适配，此处仅做无前缀封装。
+
+add_debt_with_inflation = {
+	DSW_FRA_dep_add_debt_with_inflation = yes
+}
+
+add_income = {
+	DSW_FRA_dep_add_income = yes
+}
+
+add_conservative_popularity = {
+	DSW_FRA_dep_add_conservative_popularity = yes
+}
+
+add_income_with_inflation = {
+	DSW_FRA_dep_add_income_with_inflation = yes
+}
+
+decrease_taxes = {
+	DSW_FRA_dep_decrease_taxes = yes
+}
+
+increase_welfare = {
+	DSW_FRA_dep_increase_welfare = yes
+}
+
+add_social_liberal_popularity = {
+	DSW_FRA_dep_add_social_liberal_popularity = yes
+}
+
+focus_unlock = {
+	DSW_FRA_dep_focus_unlock = yes
+}
+
+#TFR 合法性效果（美国内战相关）
+add_legit = {
+	custom_effect_tooltip = add_legit_tooltip
+	add_to_variable = {
+		var = legit_var
+		value = legit_var_temp
+	}
+	clamp_variable = {
+		var = legit_var
+		min = -1
+		max = 1
+	}
+	if = {
+		limit = {
+			has_dynamic_modifier = {
+				modifier = USA_legitimacy_dynamic
+			}
+		}
+		multiply_temp_variable = {
+			var = legit_var_temp
+			value = 0.2
+		}
+		add_to_variable = {
+			var = legit_dynamic_var
+			value = legit_var_temp
+		}
+		clamp_variable = {
+			var = legit_dynamic_var
+			min = -0.2
+			max = 0.2
+		}
+	}
+}
+
+#TFR 政党支持度对应的政治点数增益
+map_party_popularity_PP_gain_to_ideology = {
+	#Maps PP gain to the ideology in the variable
+	#Requires before hand set_variable = { political_power_ideology_var = token:ideology }
+	if = {
+		limit = {
+			NOT = {
+				has_dynamic_modifier = {
+					modifier = party_popularity_dynamic_modifier_ideology_mapped
+				}
+			}
+		}
+		hidden_effect = {
+			if = {
+				limit = {
+					has_dynamic_modifier = {
+						modifier = party_popularity_dynamic_modifier
+					}
+				}
+				remove_dynamic_modifier = {
+					modifier = party_popularity_dynamic_modifier
+				}
+			}
+			add_dynamic_modifier = {
+				modifier = party_popularity_dynamic_modifier_ideology_mapped
+			}
+		}
+	}
+	set_temp_variable = {
+		coalition_partner_var_temp = political_power_ideology_var
+	}
+	DSW_FRA_dep_remove_from_coalition = yes
+}

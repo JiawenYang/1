@@ -94,6 +94,26 @@
             zz_generic_special_forces_tech = 1
         }
     }
+
+    # 两栖战车装备线：仅发放给拥有两栖突击车的国家，解锁 ZZ_amphibious_apc_chassis 全系
+    every_country = {
+        limit = {
+            OR = {
+                original_tag = USA
+                original_tag = SOV
+                original_tag = CHI
+                original_tag = FRA
+                original_tag = KOR
+                original_tag = TAI
+                original_tag = JAP
+                original_tag = NKO
+                original_tag = ITA
+            }
+        }
+        set_technology = {
+            ZZ_amphibious_apc_tech = 1
+        }
+    }
 }
 
 2017.1.1 = {

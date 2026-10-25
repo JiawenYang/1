@@ -1,0 +1,43 @@
+add_namespace = iran
+
+# First Corona Case
+country_event = {
+	id = iran.4
+	title = iran.4.t
+	desc = iran.4.d
+	picture = report_event_equipment
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	trigger = {
+		tag = PER
+	}
+
+	option = {
+		name = iran.4.a
+		set_country_flag = PER_covid_first
+		unlock_decision_tooltip = monitor_outbreak_PER
+	}
+}
+
+#Covid Unemployment Protests
+country_event = {
+	id = iran.11
+	title = iran.11.t
+	desc = iran.11.d
+	picture = report_event_equipment
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	trigger = {
+		tag = PER
+	}
+
+	option = {
+		name = iran.11.a
+		add_stability = -0.05
+		add_political_power = -75
+	}
+}

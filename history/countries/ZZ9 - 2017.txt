@@ -1,4 +1,4 @@
-2017.1.1 = {
+﻿2017.1.1 = {
 	ABK = {
         remove_ideas = {
             ABK_outdated_army_idea
@@ -4236,6 +4236,10 @@
 		retire_character = CHE_ibn_al_khattab
 	}
 	CHI = {
+        # GAW指挥层（烈焰升腾移植）
+        recruit_character = PRC_Zhang_Youxia
+        recruit_character = PRC_Li_Qiaoming
+        recruit_character = PRC_Li_Yujie
         add_ideas = {
             common_prosperity_law
             CHI_two_child_policy
@@ -11424,6 +11428,21 @@
 		add_to_array = { ruling_party = 1 }
 
 		startup_politics = yes
+
+		# 政党支持率初始化 (从 party_pop_array 映射)
+		set_variable = { var = JAP_election_approval_rating_ldp_var value = 0.698 }
+		set_variable = { var = JAP_election_approval_rating_kdp_var value = 0.2 }
+		set_variable = { var = JAP_election_approval_rating_jcp_var value = 0.091 }
+		set_variable = { var = JAP_election_approval_rating_sdp_var value = 0.011 }
+		set_variable = { var = JAP_election_approval_rating_rei_var value = 0 }
+		set_variable = { var = JAP_election_approval_rating_dpp_var value = 0 }
+		set_variable = { var = JAP_election_approval_rating_ino_var value = 0 }
+
+		# 自民党派系变量初始化
+		set_variable = { var = JAP_ldp_conservatives_var value = 35 }
+		set_variable = { var = JAP_ldp_centrists_var value = 35 }
+		set_variable = { var = JAP_ldp_liberals_var value = 15 }
+		set_variable = { var = JAP_ldp_nationalists_var value = 15 }
 
 		create_country_leader = {
 			name = "Shinzo Abe"
@@ -24547,6 +24566,10 @@
 		add_to_faction = MNT 
         send_embargo = CUB
         send_embargo = SUD
+
+		# 开局美国保有对以色列的保障；第六次中东战争爆发前夕由 mew.1 事件撤销该保障，
+		# 美国是否介入仍由 mew.3 事件决定，避免北约阵营被连锁拖入对伊朗及阿拉伯国家的战争
+		diplomatic_relation = { country = ISR relation = guarantee active = yes }
 
 		# Additional Treaty memebrs in 2017 vs in 2000 are also included in this bulk
 		diplomatic_relation = { country = AFG relation = military_access active = yes }

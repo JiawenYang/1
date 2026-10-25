@@ -548,405 +548,12 @@ on_actions = {
 				}
 				BLR = { add_to_faction = SOV }
 			}
-			if = { limit = { original_tag = SAU }
-				if = { limit = { PER = { has_completed_focus = PER_musandam_gambit } }
-					425 = { add_core_of = PER }
-				}
-				if = { limit = { PER = { has_completed_focus = PER_agitate_shias_in_bahrain } }
-					423 = { add_core_of = PER }
-				}
-			}
-			if = {
-				limit = {
-					has_country_flag = PER_akhoond_flag
-				}
-				PER = {
-					country_event = iranian_events.236
-				}
-			}
-			if = {
-				limit = {
-					has_country_flag = PER_syrian_civil_war_FSA
-				}
-				PER = {
-					country_event = iranian_focus.68
-				}
-			}
 			if = {
 				limit = {
 					has_country_flag = TAJ_civil_war_time
 				}
 				TAJ = {
 					country_event = tajik_focus.30
-				}
-			}
-			# Iraq civil war capitulation logic — skip entirely for non-Iraq capitulations
-			if = { limit = { has_country_flag = is_IRAQ }
-
-				if = { # IAI Victory
-					limit = {
-						IRQ = { has_war = no }
-						has_country_flag = IRQ_Islamic_Army_in_Iraq
-						NOT = {
-							country_exists = ISI
-							country_exists = GMC
-							country_exists = AWD
-							country_exists = NTR
-							country_exists = ATC
-							country_exists = HII
-						}
-					}
-					news_event = axis_of_resistance_events.42
-					IRQ = {
-						annex_country = { target = ISI transfer_troops = yes }
-						annex_country = { target = GMC transfer_troops = yes }
-						annex_country = { target = AWD transfer_troops = yes }
-						annex_country = { target = NTR transfer_troops = yes }
-						annex_country = { target = ATC transfer_troops = yes }
-						annex_country = { target = HII transfer_troops = yes }
-						drop_cosmetic_tag = yes
-						clear_variable = dynamic_flag_variant
-						clr_country_flag = is_IRAQ
-						clr_country_flag = IRQ_Islamic_Army_in_Iraq
-						set_temp_variable = { rul_party_temp = 10 }
-						change_ruling_party_effect = yes
-						set_political_party = {
-							ideology = fascism
-							popularity = 48
-						}
-						set_cosmetic_tag = IRQ
-						set_temp_variable = { percent_change = 3.50 }
-						set_temp_variable = { tag_index = SAU }
-						set_temp_variable = { influence_target = IRQ }
-						change_influence_percentage = yes
-					}
-				}
-				if = { # Hamas of Iraq
-					limit = {
-						has_country_flag = IRQ_hamas_of_iraq
-						IRQ = { has_war = no }
-						NOT = {
-							country_exists = ISI
-							country_exists = GMC
-							country_exists = AWD
-							country_exists = NTR
-							country_exists = ATC
-							#country_exists = HII
-							country_exists = IAI
-						}
-					}
-					news_event = axis_of_resistance_events.43
-					IRQ = {
-						annex_country = { target = ISI transfer_troops = yes }
-						annex_country = { target = GMC transfer_troops = yes }
-						annex_country = { target = AWD transfer_troops = yes }
-						annex_country = { target = NTR transfer_troops = yes }
-						annex_country = { target = ATC transfer_troops = yes }
-						#annex_country = { target = HII transfer_troops = yes }
-						annex_country = { target = IAI transfer_troops = yes }
-						drop_cosmetic_tag = yes
-						clear_variable = dynamic_flag_variant
-						clr_country_flag = is_IRAQ
-						clr_country_flag = IRQ_hamas_of_iraq
-						set_temp_variable = { rul_party_temp = 12 }
-						change_ruling_party_effect = yes
-						set_political_party = {
-							ideology = neutrality
-							popularity = 48
-						}
-						set_cosmetic_tag = IRQ
-						set_temp_variable = { percent_change = 3.50 }
-						set_temp_variable = { tag_index = EGY }
-						set_temp_variable = { influence_target = IRQ }
-						change_influence_percentage = yes
-					}
-				}
-				if = { # 1920 RB
-					limit = {
-						has_country_flag = IRQ_1920_revolution_brigades
-						NOT = {
-							country_exists = ISI
-							country_exists = IRQ
-							country_exists = GMC
-							country_exists = AWD
-							country_exists = ATC
-							country_exists = HII
-							country_exists = IAI
-						}
-					}
-					news_event = axis_of_resistance_events.44
-					IRQ = {
-						annex_country = { target = ISI transfer_troops = yes }
-						annex_country = { target = GMC transfer_troops = yes }
-						annex_country = { target = AWD transfer_troops = yes }
-						annex_country = { target = ATC transfer_troops = yes }
-						annex_country = { target = HII transfer_troops = yes }
-						annex_country = { target = IAI transfer_troops = yes }
-						drop_cosmetic_tag = yes
-						clear_variable = dynamic_flag_variant
-						clr_country_flag = is_IRAQ
-						clr_country_flag = IRQ_1920_revolution_brigades
-						set_temp_variable = { rul_party_temp = 12 }
-						change_ruling_party_effect = yes
-						set_political_party = {
-							ideology = neutrality
-							popularity = 48
-						}
-						set_cosmetic_tag = IRQ
-						set_temp_variable = { percent_change = 1.50 }
-						set_temp_variable = { tag_index = EGY }
-						set_temp_variable = { influence_target = IRQ }
-						change_influence_percentage = yes
-					}
-				}
-				if = { # GMCIR
-					limit = {
-						has_country_flag = IRQ_GMCIR
-						IRQ = { has_war = no }
-						NOT = {
-							country_exists = ISI
-							country_exists = AWD
-							country_exists = NTR
-							country_exists = ATC
-							country_exists = HII
-							country_exists = IAI
-						}
-					}
-					annex_country = { target = ISI transfer_troops = yes }
-					#annex_country = { target = GMC transfer_troops = yes }
-					annex_country = { target = AWD transfer_troops = yes }
-					annex_country = { target = NTR transfer_troops = yes }
-					annex_country = { target = ATC transfer_troops = yes }
-					annex_country = { target = HII transfer_troops = yes }
-					annex_country = { target = IAI transfer_troops = yes }
-					drop_cosmetic_tag = yes
-					clear_variable = dynamic_flag_variant
-					clr_country_flag = is_IRAQ
-					clr_country_flag = IRQ_GMCIR
-					set_temp_variable = { rul_party_temp = 21 }
-					change_ruling_party_effect = yes
-					set_political_party = {
-						ideology = nationalist
-						popularity = 48
-					}
-					set_temp_variable = { rul_party_temp = 21 }
-					change_ruling_party_effect = yes
-					set_cosmetic_tag = IRQ
-					IRQ = {
-						if = {
-							limit = {
-								PREV = {
-									has_country_leader = {
-										name = "Izzat Ibrahim al-Douri"
-										ruling_only = yes
-									}
-								}
-							}
-							news_event = axis_of_resistance_events.41
-							retire_country_leader = yes
-							create_country_leader = {
-								name = "Izzat Ibrahim al-Douri"
-								picture = "gfx/leaders/IRQ/Izzat_Ibrahim_al-Douri.dds"
-								ideology = Nat_Fascism
-								traits = {
-									nationalist_Nat_Populism
-									military_career
-									anti_zionist
-								}
-							}
-						}
-						else = {
-							retire_country_leader = yes
-							random_list = {
-								50 = {
-									news_event = axis_of_resistance_events.41
-									create_country_leader = {
-										name = "Tariq Aziz"
-										picture = "gfx/leaders/IRQ/IRQ_Tariq_Aziz2.dds"
-										ideology = Nat_Fascism
-										traits = {
-											nationalist_Nat_Populism
-											anti_zionist
-										}
-									}
-								}
-								50 = {
-									news_event = axis_of_resistance_events.41
-									create_country_leader = {
-										name = "Ali Hassan al-Majid"
-										picture = "gfx/leaders/IRQ/Ali_Hassan_al_Majid_polical.dds"
-										ideology = Nat_Fascism
-										traits = {
-											nationalist_Nat_Populism
-											military_career
-											anti_zionist
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-				if = { # Baathist Mods
-					limit = {
-						has_country_flag = IRQ_AlAwda
-						NOT = {
-							country_exists = ISI
-							country_exists = IRQ
-							country_exists = GMC
-							#country_exists = AWD
-							#country_exists = NTR
-							country_exists = ATC
-							country_exists = HII
-							country_exists = IAI
-						}
-					}
-					annex_country = { target = ISI transfer_troops = yes }
-					annex_country = { target = GMC transfer_troops = yes }
-					#annex_country = { target = AWD transfer_troops = yes }
-					#annex_country = { target = NTR transfer_troops = yes }
-					annex_country = { target = ATC transfer_troops = yes }
-					annex_country = { target = HII transfer_troops = yes }
-					annex_country = { target = IAI transfer_troops = yes }
-					drop_cosmetic_tag = yes
-					clear_variable = dynamic_flag_variant
-					clr_country_flag = is_IRAQ
-					clr_country_flag = IRQ_AlAwda
-					set_temp_variable = { rul_party_temp = 7 }
-					change_ruling_party_effect = yes
-					set_political_party = {
-						ideology = communism
-						popularity = 48
-					}
-					set_cosmetic_tag = IRQ
-					IRQ = {
-						retire_country_leader = yes
-						random_list = {
-							65 = {
-								news_event = axis_of_resistance_events.45
-								create_country_leader = {
-									name = "Younis al-Ahmed"
-									picture = "gfx/leaders/IRQ/IRQ_muhammad_yunis_al_ahmad.dds"
-									ideology = Autocracy
-									traits = {
-										emerging_Autocracy
-									}
-								}
-							}
-							35 = {
-								news_event = iraqi_flavor_events.9
-								create_country_leader = {
-									name = "Huda Salih Mahdi Ammash"
-									picture = "gfx/leaders/IRQ/IRQ_Huda_Salih_Mahdi_Ammash.dds"
-									ideology = Autocracy
-									traits = {
-										emerging_Autocracy
-									}
-								}
-							}
-						}
-					}
-				}
-				if = { # Badr Victory
-					limit = {
-						has_country_flag = IRQ_badr_oponent
-						has_war = no
-					}
-					news_event = iraqi_flavor_events.9
-					IRQ = {
-						annex_country = {
-							target = MDA
-							transfer_troops = yes
-						}
-						drop_cosmetic_tag = yes
-						clear_variable = dynamic_flag_variant
-						clr_country_flag = is_IRAQ
-						clr_global_flag = IRQ_has_shia_civil_war
-						set_temp_variable = { add_col_one = 9 }
-						add_coalition_members_effect = yes
-						set_temp_variable = { add_col_two = 6 }
-						add_coalition_members_effect = yes
-						set_temp_variable = { rul_party_temp = 8 }
-						change_ruling_party_effect = yes
-						set_political_party = {
-							ideology = communism
-							popularity = 48
-						}
-						set_cosmetic_tag = IRQ_NEW
-						set_variable = { dynamic_flag_variant = 1 }
-						set_temp_variable = { percent_change = 3.50 }
-						set_temp_variable = { tag_index = PER }
-						set_temp_variable = { influence_target = IRQ }
-						change_influence_percentage = yes
-					}
-				}
-				if = { # Sadrist Victory
-					limit = {
-						has_country_flag = IRQ_sadr_oponent
-					}
-					news_event = iraqi_flavor_events.8
-					IRQ = {
-						drop_cosmetic_tag = yes
-						clear_variable = dynamic_flag_variant
-						clr_country_flag = is_IRAQ
-						clr_global_flag = IRQ_has_shia_civil_war
-					}
-				}
-				if = { # Iraqi Government Victory: no insurgent faction remains
-					limit = {
-						IRQ = { has_war = no }
-						NOT = {
-							OR = {
-								has_country_flag = IRQ_Islamic_Army_in_Iraq
-								has_country_flag = IRQ_hamas_of_iraq
-								has_country_flag = IRQ_1920_revolution_brigades
-								has_country_flag = IRQ_GMCIR
-								has_country_flag = IRQ_AlAwda
-								has_country_flag = IRQ_badr_oponent
-								has_country_flag = IRQ_sadr_oponent
-							}
-						}
-						NOT = {
-							OR = {
-								country_exists = ISI
-								country_exists = GMC
-								country_exists = AWD
-								country_exists = NTR
-								country_exists = ATC
-								country_exists = HII
-								country_exists = IAI
-							}
-						}
-					}
-					news_event = axis_of_resistance_events.33
-					IRQ = {
-						drop_cosmetic_tag = yes
-						clear_variable = dynamic_flag_variant
-						clr_country_flag = is_IRAQ
-					}
-				}
-			}
-			# Iraqi Forces Scatter
-			if = {
-				limit = {
-					has_country_flag = IRQ_war_with_america
-					ROOT = {
-						original_tag = IRQ
-						NOT = { has_country_flag = is_iraq_mnf }
-					}
-					FROM = {
-						OR = {
-							original_tag = USA
-							has_country_flag = is_iraq_mnf
-						}
-					}
-				}
-				IRQ = {
-					if = {
-						limit = { NOT = { has_country_flag = IRQ_iraqi_forces_scatter } }
-						set_country_flag = IRQ_iraqi_forces_scatter
-						country_event = { id = iraq_war.9 days = 1 }
-					}
 				}
 			}
 			if = {
@@ -965,19 +572,6 @@ on_actions = {
 					news_event = { id = country_capitulated.0 days = 1 }
 				}
 
-			if = {
-				limit = {
-					ROOT = { original_tag = ISR }
-					FROM = { original_tag = PER }
-				}
-
-				PER = {
-					country_event = {
-						id = iranian_events.7
-						days = 1
-					}
-				}
-			}
 			if = {
 				limit = {
 					ROOT = { original_tag = HEZ }
@@ -2542,6 +2136,32 @@ on_actions = {
 						}
 					}
 				}
+
+			# Sixth Middle East War - oil crisis hook
+			if = {
+				limit = {
+					has_global_flag = MEW_sixth_war_ongoing
+					FROM = { original_tag = ISR }
+					ROOT = {
+						OR = {
+							original_tag = EGY
+							original_tag = SYR
+							original_tag = HEZ
+							original_tag = PAL
+							original_tag = HAM
+						}
+					}
+				}
+				USA = {
+					if = {
+						limit = {
+							NOT = { has_country_flag = USA_triggered_early_oil_crisis }
+						}
+						set_country_flag = USA_triggered_early_oil_crisis
+						country_event = { id = usa_economic_events.38 days = 65 random_days = 80 }
+					}
+				}
+			}
 
 				# Triggers the Anti Bully War Weariness Effect
 				public_war_weariness_effect = yes

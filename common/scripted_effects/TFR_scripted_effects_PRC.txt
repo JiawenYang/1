@@ -2140,3 +2140,150 @@ TFR_PRC_clear_econ_law_effect = {
 		remove_ideas = common_prosperity_law_left_4
 	}
 }
+
+PRC_decrease_oil = {
+	if = {
+		limit = {
+			has_idea = PRC_oil_crash5
+		}
+		remove_ideas = PRC_oil_crash5
+	}
+	else_if = {
+		limit = {
+			has_idea = PRC_oil_crash4
+		}
+		swap_ideas = {
+			remove_idea = PRC_oil_crash4
+			add_idea = PRC_oil_crash5
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = PRC_oil_crash3
+		}
+		swap_ideas = {
+			remove_idea = PRC_oil_crash3
+			add_idea = PRC_oil_crash4
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = PRC_oil_crash2
+		}
+		swap_ideas = {
+			remove_idea = PRC_oil_crash2
+			add_idea = PRC_oil_crash3
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = PRC_oil_crash1
+		}
+		swap_ideas = {
+			remove_idea = PRC_oil_crash1
+			add_idea = PRC_oil_crash2
+		}
+	}
+	if = {
+		limit = {
+			has_idea = GER_oil_crash5
+		}
+		remove_ideas = GER_oil_crash5
+	}
+	else_if = {
+		limit = {
+			has_idea = GER_oil_crash4
+		}
+		swap_ideas = {
+			remove_idea = GER_oil_crash4
+			add_idea = GER_oil_crash5
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = GER_oil_crash3
+		}
+		swap_ideas = {
+			remove_idea = GER_oil_crash3
+			add_idea = GER_oil_crash4
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = GER_oil_crash2
+		}
+		swap_ideas = {
+			remove_idea = GER_oil_crash2
+			add_idea = GER_oil_crash3
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = GER_oil_crash1
+		}
+		swap_ideas = {
+			remove_idea = GER_oil_crash1
+			add_idea = GER_oil_crash2
+		}
+	}
+	else_if = {
+		limit = {
+			NOT = {
+				has_idea = PRC_oil_crash1
+			}
+		}
+		#Prevents empty effects
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = PRC_oil_crash1
+				add_idea = PRC_oil_crash2
+			}
+		}
+	}
+}
+
+PRC_decrease_corona = {
+	if = {
+		limit = {
+			has_idea = PRC_coronavirus_pandemic_idea4
+		}
+		remove_ideas = PRC_coronavirus_pandemic_idea4
+		set_country_flag = PRC_no_coronavirus
+	}
+	else_if = {
+		limit = {
+			has_idea = PRC_coronavirus_pandemic_idea3
+		}
+		swap_ideas = {
+			remove_idea = PRC_coronavirus_pandemic_idea3
+			add_idea = PRC_coronavirus_pandemic_idea4
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = PRC_coronavirus_pandemic_idea2
+		}
+		swap_ideas = {
+			remove_idea = PRC_coronavirus_pandemic_idea2
+			add_idea = PRC_coronavirus_pandemic_idea3
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = PRC_coronavirus_pandemic_idea1
+		}
+		swap_ideas = {
+			remove_idea = PRC_coronavirus_pandemic_idea1
+			add_idea = PRC_coronavirus_pandemic_idea2
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = PRC_coronavirus_pandemic_idea
+		}
+		swap_ideas = {
+			remove_idea = PRC_coronavirus_pandemic_idea
+			add_idea = PRC_coronavirus_pandemic_idea1
+		}
+	}
+}

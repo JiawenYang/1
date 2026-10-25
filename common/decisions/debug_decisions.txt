@@ -39,122 +39,6 @@ debug_decisions = {
 			base = 0
 		}
 	}
-	PRC_load_jiang_zemin_debug_decision = {
-		icon = generic_industry
-		fire_only_once = no
-		cost = 0
-		available = {
-			is_ai = no
-		}
-		allowed = {
-			tag = CHI
-		}
-		complete_effect = {
-			complete_national_focus = CHI_Chairman_Jiang_Reign
-			create_country_leader = {
-				name = "Jiang Zemin"
-				desc = JIANG_ZEMIN_LEADER_DESC
-				picture = "Jiang_Zemin.dds"
-				expire = "2030.1.1"
-				ideology = communist_state
-				traits = {
-					emerging_communist_state
-					emerging_Socialism_with_Chinese_characteristics
-					CHI_engineer
-					polished
-					narcissist
-					CHI_likeable
-					sly
-					CHI_sense_of_humor
-					The_Pioneer_of_the_Century
-					CHI_elder
-				}
-			}
-			mark_focus_tree_layout_dirty = yes
-		}
-		ai_will_do = {
-			base = 0
-		}
-	}
-	PRC_load_hu_jintao_debug_decision = {
-		icon = generic_industry
-		fire_only_once = no
-		cost = 0
-		available = {
-			is_ai = no
-		}
-		allowed = {
-			tag = CHI
-		}
-		complete_effect = {
-			complete_national_focus = CHI_Hu_Jintao_Agenda
-			create_country_leader = {
-				name = "Hu Jintao"
-				desc = HU_JINTAO_LEADER_DESC
-				picture = "Hu_jintao.dds"
-				expire = "2070.1.1"
-				ideology = communist_state
-				traits = {
-					emerging_communist_state
-					emerging_Socialism_with_Chinese_characteristics
-					CHI_engineer
-					scientist_engineer
-					CHI_likeable
-					humble
-					rational
-					cautious
-					CHI_Elegance
-					CHI_exemplary_conduct_and_nobility_of_character
-					CHI_Silent_doer
-					Dance_of_Shackles
-					tiger_of_lhasa
-				}
-			}
-			mark_focus_tree_layout_dirty = yes
-		}
-		ai_will_do = {
-			base = 0
-		}
-	}
-	PRC_load_xi_jinping_debug_decision = {
-		icon = generic_industry
-		fire_only_once = no
-		cost = 0
-		available = {
-			is_ai = no
-		}
-		allowed = {
-			tag = CHI
-		}
-		complete_effect = {
-			complete_national_focus = CHI_Xi_Jinping_Agenda
-			create_country_leader = {
-				name = "Xi Jinping"
-				desc = XI_JINPING_LEADER_DESC
-				picture = "Xi_Jinping.dds"
-				expire = "2030.1.1"
-				ideology = communist_state
-				traits = {
-					emerging_communist_state
-					emerging_Socialism_with_Chinese_characteristics
-					CHI_paternalism_controlled_democracy
-					career_burocrat
-					iron_hand
-					Reformer
-					CHI_jurisprudence
-					rational
-					polished
-					CHI_dignified
-					CHI_lofty_aspirations
-					CHI_Traditional_culture_enthusiasts
-				}
-			}
-			mark_focus_tree_layout_dirty = yes
-		}
-		ai_will_do = {
-			base = 0
-		}
-	}
 	PRC_load_full_taiwan_tree_debug_decision = {
 		icon = generic_industry
 		fire_only_once = no
@@ -510,6 +394,172 @@ debug_decisions = {
 			add_ideas = JAP_shame_defeat
 			add_ideas = intervention_regional_interventionism
 			custom_effect_tooltip = JAP_reset_debuffs
+		}
+	}
+	ZZZ_debug_2020_master_on = {
+		icon = generic_industry
+		fire_only_once = no
+		cost = 0
+		available = {
+			is_ai = no
+			NOT = { has_global_flag = ZZZ_debug_2020 }
+		}
+		complete_effect = {
+			set_global_flag = ZZZ_debug_2020
+			set_global_flag = ZZZ_debug_taiwan_2020
+			custom_effect_tooltip = ZZZ_debug_2020_master_on_tt
+		}
+		ai_will_do = {
+			base = 0
+		}
+	}
+	ZZZ_debug_2020_master_off = {
+		icon = generic_industry
+		fire_only_once = no
+		cost = 0
+		available = {
+			is_ai = no
+			has_global_flag = ZZZ_debug_2020
+		}
+		complete_effect = {
+			clr_global_flag = ZZZ_debug_2020
+			clr_global_flag = ZZZ_debug_taiwan_2020
+			custom_effect_tooltip = ZZZ_debug_2020_master_off_tt
+		}
+		ai_will_do = {
+			base = 0
+		}
+	}
+	ZZZ_debug_2020_taiwan_kmt_win = {
+		icon = generic_industry
+		fire_only_once = no
+		cost = 0
+		available = {
+			is_ai = no
+			country_exists = CHI
+			TAI = { is_subject = no }
+			NOT = { TAI = { has_country_flag = taiwan_detente_kmt_won } }
+			NOT = { TAI = { has_country_flag = taiwan_detente_dpp_won } }
+		}
+		complete_effect = {
+			set_global_flag = ZZZ_debug_taiwan_2020
+			CHI = {
+				set_variable = { CHI_taiwan_us_support = 0 }
+				country_event = { id = taiwan_detente.0 }
+			}
+		}
+		ai_will_do = {
+			base = 0
+		}
+	}
+	ZZZ_debug_2020_taiwan_dpp_win = {
+		icon = generic_industry
+		fire_only_once = no
+		cost = 0
+		available = {
+			is_ai = no
+			country_exists = CHI
+			TAI = { is_subject = no }
+			NOT = { TAI = { has_country_flag = taiwan_detente_kmt_won } }
+			NOT = { TAI = { has_country_flag = taiwan_detente_dpp_won } }
+		}
+		complete_effect = {
+			set_global_flag = ZZZ_debug_taiwan_2020
+			CHI = {
+				set_variable = { CHI_taiwan_us_support = 100 }
+				news_event = { id = politicstaiwan.6 }
+			}
+		}
+		ai_will_do = {
+			base = 0
+		}
+	}
+	ZZZ_debug_MEW_war_start = {
+		icon = generic_industry
+		fire_only_once = no
+		cost = 0
+		available = {
+			is_ai = no
+			country_exists = ISR
+			NOT = { has_global_flag = MEW_war_declared }
+		}
+		complete_effect = {
+			custom_effect_tooltip = ZZZ_debug_MEW_war_start_tt
+			ISR = {
+				news_event = { id = mew.1 }
+				country_event = { id = mew.0 days = 4 }
+			}
+		}
+		ai_will_do = {
+			base = 0
+		}
+	}
+	ZZZ_debug_gaw_start = {
+		icon = generic_industry
+		fire_only_once = no
+		cost = 0
+		available = {
+			is_ai = no
+			country_exists = CHI
+			country_exists = JAP
+			NOT = { has_global_flag = pan_asian_war_ongoing }
+		}
+		allowed = {
+			OR = {
+				tag = CHI
+				tag = JAP
+			}
+		}
+		complete_effect = {
+			custom_effect_tooltip = ZZZ_debug_gaw_start_tt
+			hidden_effect = {
+				# 解锁GAW决策分类（GAW_soon，PRC_gaw_start执行后会替换为pan_asian_war_ongoing）
+				set_global_flag = GAW_soon
+				# 日本对中国宣战，引爆大亚洲战争
+				JAP = {
+					declare_war_on = {
+						target = CHI
+						type = annex_everything
+					}
+				}
+				# 朝鲜半岛未组建中立邦联则朝鲜南下、韩国加入太约
+				if = {
+					limit = {
+						NOT = { has_global_flag = korean_confederation_formed }
+					}
+					NKO = {
+						country_event = {
+							id = nk.14
+							days = 60
+						}
+					}
+					JAP = {
+						add_to_faction = KOR
+					}
+				}
+				# 美国直接加入太约一方参战
+				USA = {
+					country_event = {
+						id = usacw.14
+						days = 2
+					}
+				}
+				news_event = {
+					id = sino_jap_coldwar.11
+					hours = 1
+				}
+				# 由中国作用域执行GAW全流程初始化：设置全局旗、加载各国OOB、激活战争疲惫任务
+				CHI = {
+					PRC_gaw_start = yes
+					country_event = {
+						id = prc.1008
+						hours = 6
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 0
 		}
 	}
 }

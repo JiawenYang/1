@@ -373,6 +373,375 @@ on_actions = {
 					set_global_flag = skip_default_capitulation
 				}
 			}
+
+			# ===== Sixth Middle East War (MEW) settlements =====
+			# 结算A：以色列战败，巴勒斯坦吞并以色列，犹太人流散
+			if = {
+				limit = {
+					has_global_flag = MEW_sixth_war_ongoing
+					ROOT = { original_tag = ISR }
+					FROM = {
+						OR = {
+							original_tag = EGY
+							original_tag = SYR
+							original_tag = HEZ
+							original_tag = PAL
+							original_tag = HAM
+							original_tag = PER
+							original_tag = IRQ
+							original_tag = ALG
+							original_tag = LBA
+							original_tag = LEB
+						}
+					}
+				}
+				# 参考缅甸结算：所有交战国先白和平再吞并。
+				# 阿拉伯各国对以色列是分别宣战的多场独立战争，必须先全部白和平，
+				# 否则以色列被吞并后剩余战争会继承到巴勒斯坦头上（导致埃及等国转而与巴勒斯坦交战）
+				every_country = {
+					limit = {
+						OR = {
+							original_tag = EGY
+							original_tag = SYR
+							original_tag = HEZ
+							original_tag = PAL
+							original_tag = HAM
+							original_tag = PER
+							original_tag = IRQ
+							original_tag = ALG
+							original_tag = LBA
+							original_tag = LEB
+						}
+						has_war_with = ISR
+					}
+					white_peace = ISR
+				}
+				PAL = {
+					annex_country = {
+						target = ISR
+						transfer_troops = no
+					}
+				}
+				set_global_flag = skip_default_capitulation
+				clr_global_flag = MEW_sixth_war_ongoing
+				set_global_flag = MEW_palestine_victory
+				news_event = { id = mew.10 }
+				EGY = {
+					country_event = { id = mew.11 days = 7 }
+				}
+			}
+			# 结算B-1：以色列吞并巴勒斯坦（约旦河西岸）
+			# 注意：on_capitulation 触发时战争关系可能已经结束，不能再以 has_war_with 作为前提
+			if = {
+				limit = {
+					has_global_flag = MEW_sixth_war_ongoing
+					ROOT = { original_tag = PAL }
+					ROOT = { has_country_flag = MEW_belligerent }
+				}
+				ISR = {
+					if = {
+						limit = { has_war_with = PAL }
+						white_peace = PAL
+					}
+					annex_country = {
+						target = PAL
+						transfer_troops = no
+					}
+				}
+				set_global_flag = skip_default_capitulation
+				set_global_flag = MEW_isr_took_pal
+			}
+			# 结算B-2：以色列吞并哈马斯（加沙）
+			if = {
+				limit = {
+					has_global_flag = MEW_sixth_war_ongoing
+					ROOT = { original_tag = HAM }
+					ROOT = { has_country_flag = MEW_belligerent }
+				}
+				ISR = {
+					if = {
+						limit = { has_war_with = HAM }
+						white_peace = HAM
+					}
+					annex_country = {
+						target = HAM
+						transfer_troops = no
+					}
+				}
+				set_global_flag = skip_default_capitulation
+				set_global_flag = MEW_isr_took_ham
+			}
+			# 结算B-3：以色列吞并真主党（黎巴嫩南部）
+			if = {
+				limit = {
+					has_global_flag = MEW_sixth_war_ongoing
+					ROOT = { original_tag = HEZ }
+					ROOT = { has_country_flag = MEW_belligerent }
+				}
+				ISR = {
+					if = {
+						limit = { has_war_with = HEZ }
+						white_peace = HEZ
+					}
+					annex_country = {
+						target = HEZ
+						transfer_troops = no
+					}
+				}
+				set_global_flag = skip_default_capitulation
+				set_global_flag = MEW_isr_took_hez
+			}
+			# 结算B-4：埃及战败白和，以色列夺取西奈半岛
+			if = {
+				limit = {
+					has_global_flag = MEW_sixth_war_ongoing
+					ROOT = { original_tag = EGY }
+					ROOT = { has_country_flag = MEW_belligerent }
+				}
+				ISR = {
+					if = {
+						limit = { has_war_with = EGY }
+						white_peace = EGY
+					}
+				}
+				if = {
+					limit = { 213 = { is_owned_by = EGY } }
+					213 = {
+						transfer_state_to = ISR
+					}
+				}
+				set_global_flag = skip_default_capitulation
+				set_global_flag = MEW_isr_peaced_egy
+			}
+			# 结算B-5：叙利亚战败白和，以色列割取德拉与苏韦达（南叙利亚安全区）
+			if = {
+				limit = {
+					has_global_flag = MEW_sixth_war_ongoing
+					ROOT = { original_tag = SYR }
+					ROOT = { has_country_flag = MEW_belligerent }
+				}
+				ISR = {
+					if = {
+						limit = { has_war_with = SYR }
+						white_peace = SYR
+					}
+				}
+				if = {
+					limit = { 184 = { is_owned_by = SYR } }
+					184 = {
+						transfer_state_to = ISR
+					}
+				}
+				if = {
+					limit = { 185 = { is_owned_by = SYR } }
+					185 = {
+						transfer_state_to = ISR
+					}
+				}
+				set_global_flag = skip_default_capitulation
+				set_global_flag = MEW_isr_peaced_syr
+			}
+			# 大以色列的最终判定移到 on_daily（文件末尾），
+			# 因为白和退出战争不会触发 on_capitulation，投降事件里的判定会漏掉领土变更
+			# ===== 反伊战争结算：伊朗战败，巴列维王朝复辟 =====
+			if = {
+				limit = {
+					has_global_flag = MEW_iran_war_ongoing
+					ROOT = { original_tag = PER }
+				}
+				every_country = {
+					limit = {
+						OR = {
+							original_tag = ISR
+							original_tag = USA
+							original_tag = SAU
+							original_tag = UAE
+							original_tag = KUW
+							original_tag = QAT
+							original_tag = BHR
+							original_tag = OMA
+						}
+						has_war_with = PER
+					}
+					white_peace = PER
+				}
+				set_global_flag = skip_default_capitulation
+				clr_global_flag = MEW_iran_war_ongoing
+				set_global_flag = MEW_pahlavi_restored
+				PER = {
+					kill_country_leader = yes
+					set_politics = {
+						ruling_party = nationalist
+						elections_allowed = no
+					}
+					start_politics_input = yes
+					# 24 号政党指数为 Monarchist（君主派），令其垄断民意
+					set_variable = { party_pop_array^23 = 1 }
+					set_variable = { ruling_party = 23 }
+					startup_politics = yes
+					create_country_leader = {
+						name = "Reza Pahlavi II"
+						picture = "reza_pahlavi_shah.dds"
+						ideology = Monarchist
+						traits = {
+							nationalist_Monarchist
+							king
+							geopolitical_thinker
+							capable
+						}
+					}
+				}
+				news_event = { id = mew.32 }
+			}
+			# ===== 第四次起义（isrwar 链）结算：以色列战败，接受两国方案 =====
+			if = {
+				limit = {
+					has_global_flag = third_intifada
+					ROOT = { original_tag = ISR }
+				}
+				set_global_flag = skip_default_capitulation
+				ROOT = {
+					country_event = { id = isrwar.15 }
+				}
+			}
+			# ===== 墨西哥毒枭战争结算：毒枭战败，被联邦政府吞并 =====
+			if = {
+				limit = {
+					has_global_flag = MEX_mexican_cartel_war_global
+					ROOT = {
+						OR = {
+							original_tag = SLA
+							original_tag = TRC
+							original_tag = TAM
+						}
+					}
+					FROM = { original_tag = MEX }
+				}
+				FROM = {
+					white_peace = ROOT
+					annex_country = {
+						target = ROOT
+						transfer_troops = no
+					}
+				}
+				set_global_flag = skip_default_capitulation
+				if = {
+					limit = {
+						NOT = { country_exists = SLA }
+						NOT = { country_exists = TRC }
+						NOT = { country_exists = TAM }
+					}
+					MEX = {
+						country_event = { id = mexico.12 }
+					}
+				}
+			}
+			# ===== 墨西哥毒枭战争结算：联邦政府战败，毒枭接管全国 =====
+			if = {
+				limit = {
+					has_global_flag = MEX_mexican_cartel_war_global
+					ROOT = { original_tag = MEX }
+					FROM = {
+						OR = {
+							original_tag = SLA
+							original_tag = TRC
+							original_tag = TAM
+						}
+					}
+				}
+				clr_global_flag = MEX_mexican_cartel_war_global
+				set_global_flag = MEX_mexican_cartel_war_over_global
+				FROM = {
+					country_event = { id = mexico.12 }
+				}
+			}
+		}
+	}
+	# ===== 第六次中东战争最终判定（每日兜底）=====
+	# 白和退出战争不会触发 on_capitulation，若只在投降事件里判定，
+	# 就会出现“以色列宣布大以色列、很多地方却并没有吞”的情况。
+	# 这里在所有参战方退出战争后强制执行领土变更。
+	on_daily = {
+		effect = {
+			if = {
+				limit = {
+					ROOT = { original_tag = ISR }
+					has_global_flag = MEW_sixth_war_ongoing
+					country_exists = ISR
+					ISR = {
+						NOT = { has_war_with = EGY }
+						NOT = { has_war_with = SYR }
+						NOT = { has_war_with = HEZ }
+						NOT = { has_war_with = PAL }
+						NOT = { has_war_with = HAM }
+						NOT = { has_war_with = PER }
+						NOT = { has_war_with = IRQ }
+						NOT = { has_war_with = ALG }
+						NOT = { has_war_with = LBA }
+						NOT = { has_war_with = LEB }
+					}
+				}
+				# 强制执行领土变更：白和退出的参战方一样要割地，残余的巴勒斯坦/真主党实体被吞并
+				if = {
+					limit = {
+						country_exists = PAL
+						PAL = { has_country_flag = MEW_belligerent }
+					}
+					ISR = {
+						annex_country = {
+							target = PAL
+							transfer_troops = no
+						}
+					}
+				}
+				if = {
+					limit = {
+						country_exists = HAM
+						HAM = { has_country_flag = MEW_belligerent }
+					}
+					ISR = {
+						annex_country = {
+							target = HAM
+							transfer_troops = no
+						}
+					}
+				}
+				if = {
+					limit = {
+						country_exists = HEZ
+						HEZ = { has_country_flag = MEW_belligerent }
+					}
+					ISR = {
+						annex_country = {
+							target = HEZ
+							transfer_troops = no
+						}
+					}
+				}
+				if = {
+					limit = { 213 = { is_owned_by = EGY } }
+					213 = {
+						transfer_state_to = ISR
+					}
+				}
+				if = {
+					limit = { 184 = { is_owned_by = SYR } }
+					184 = {
+						transfer_state_to = ISR
+					}
+				}
+				if = {
+					limit = { 185 = { is_owned_by = SYR } }
+					185 = {
+						transfer_state_to = ISR
+					}
+				}
+				set_global_flag = skip_default_capitulation
+				clr_global_flag = MEW_sixth_war_ongoing
+				set_global_flag = MEW_israel_victory
+				news_event = { id = mew.20 }
+				news_event = { id = mew.21 days = 5 }
+			}
 		}
 	}
 }

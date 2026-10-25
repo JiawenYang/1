@@ -1,0 +1,155 @@
+add_namespace = germany
+
+country_event = {
+	#First COVID
+	id = germany.11
+	title = germany.11.t
+	desc = germany.11.d
+	picture = GFX_Generic_COVID1
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		always = yes
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event germany.11 immediate"
+			focus_unlock = yes
+			add_ideas = low_covid_cases
+			set_country_flag = GER_COVID_ongoing
+			activate_mission = GER_coronavirus_timer
+			country_event = {
+				id = germany.33
+				days = 175
+			}
+			every_controlled_state = {
+				limit = {
+					OR = {
+						state = 64
+						state = 809
+						state = 57
+						state = 52
+						state = 51
+					}
+				}
+				add_dynamic_modifier = {
+					modifier = USA_coronavirus_state
+				}
+			}
+		}
+	}
+	option = {
+		name = germany.11.a
+		effect_tooltip = {
+			add_ideas = low_covid_cases
+			set_country_flag = GER_COVID_ongoing
+			activate_mission = GER_coronavirus_timer
+			every_controlled_state = {
+				limit = {
+					OR = {
+						state = 64
+						state = 809
+						state = 57
+						state = 52
+						state = 51
+					}
+				}
+				add_dynamic_modifier = {
+					modifier = USA_coronavirus_state
+				}
+			}
+			focus_unlock = yes
+		}
+	}
+}
+
+#Pfizer Registration Commencing
+country_event = {
+	id = germany.33
+	title = germany.33.t
+	desc = germany.33.d
+	picture = GFX_Generic_COVID1
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event germany.33 immediate"
+		}
+	}
+	option = {
+		name = germany.33.a
+		add_stability = 0.02
+		activate_mission = GER_pfizer_registration
+	}
+}
+
+#Lockdown Protests
+country_event = {
+	id = germany.51
+	title = germany.51.t
+	desc = germany.51.d
+	picture = GFX_Anti_Refugee_Protest
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event germany.51 immediate"
+		}
+	}
+	option = {
+		name = germany.51.a
+		add_days_mission_timeout = {
+			mission = GER_coronavirus_timer
+			days = -10
+		}
+		add_popularity = {
+			ideology = democratic
+			popularity = 0.03
+		}
+		add_political_power = -25
+	}
+	option = {
+		name = germany.51.b
+		add_days_mission_timeout = {
+			mission = GER_coronavirus_timer
+			days = -10
+		}
+		add_popularity = {
+			ideology = democratic
+			popularity = 0.03
+		}
+		add_stability = -0.05
+		add_political_power = 25
+	}
+}
+
+#Covid Subsides
+country_event = {
+	id = germany.164
+	title = germany.164.t
+	desc = germany.164.d
+	picture = GFX_Generic_COVID1
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event germany.164 immediate"
+			country_event = {
+				id = germany.164
+				days = 100
+			}
+		}
+	}
+	trigger = {
+		OR = {
+			has_idea = lower_covid_cases
+			has_idea = low_covid_cases
+			has_idea = medium_covid_cases
+			has_idea = high_covid_cases
+			has_idea = higher_covid_cases
+		}
+	}
+	option = {
+		name = germany.164.a
+		GER_decrease_corona = yes
+	}
+}

@@ -1,0 +1,131 @@
+add_namespace = russia
+
+#First COVID cases
+country_event = {
+	id = russia.18
+	title = russia.18.t
+	desc = russia.18.d
+	picture = GFX_Covid-19_Cases_Increase
+
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		hidden_effect = {
+			add_ideas = SOV_coronavirus_pandemic_idea4
+		}
+	}
+
+	option = {
+		name = russia.18.a
+		effect_tooltip = {
+			add_ideas = SOV_coronavirus_pandemic_idea4
+		}
+		activate_mission = SOV_handle_covid_mission
+	}
+}
+
+#Vladimir Putin is ill
+country_event = {
+	id = russia.20
+	title = russia.20.t
+	desc = russia.20.d
+	picture = GFX_Putin_coronavirus
+
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tag = SOV
+	}
+
+	immediate = {
+	}
+
+	option = {
+		name = russia.20.a
+		add_country_leader_trait = hos_covid_positive
+		country_event = { id = russia.182 days = 25 random_days = 25 }
+	}
+}
+
+#COVID Cases Rise
+country_event = {
+	id = russia.85
+	title = russia.85.t
+	desc = russia.85.d
+	picture = GFX_Chemical_Attack
+
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			swap_ideas = {
+				remove_idea = SOV_coronavirus_pandemic_idea
+				add_idea = SOV_coronavirus_pandemic_idea2
+			}
+		}
+	}
+
+	option = {
+		name = russia.85.a
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = SOV_coronavirus_pandemic_idea
+				add_idea = SOV_coronavirus_pandemic_idea2
+			}
+		}
+	}
+}
+
+#COVID Cases Rise Again
+country_event = {
+	id = russia.86
+	title = russia.86.t
+	desc = russia.86.d
+	picture = GFX_Chemical_Attack
+
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			remove_ideas = SOV_coronavirus_pandemic_idea
+			remove_ideas = SOV_coronavirus_pandemic_idea2
+			remove_ideas = SOV_coronavirus_pandemic_idea3
+			remove_ideas = SOV_coronavirus_pandemic_idea4
+		}
+	}
+
+	option = {
+		name = russia.86.a
+		effect_tooltip = {
+		}
+	}
+}
+
+#Putin is ill more
+country_event = {
+	id = russia.182
+	title = russia.182.t
+	desc = russia.182.d
+	picture = GFX_Putin_coronavirus_2
+
+	is_triggered_only = yes
+
+	option = {
+		name = russia.182.a
+		hidden_effect = {
+			set_country_flag = SOV_putin_resigns_flag
+			country_event = {
+				id = russia.183
+				days = 25
+			}
+		}
+		add_popularity = {
+			ideology = nationalist
+			popularity = 0.1
+		}
+		set_politics = {
+			ruling_party = nationalist
+			elections_allowed = no
+		}
+		add_stability = -0.1
+		focus_unlock = yes
+	}
+}

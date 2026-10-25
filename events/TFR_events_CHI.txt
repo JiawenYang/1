@@ -815,8 +815,68 @@ country_event = {
 	title = taiwan_detente.0.t
 	desc = taiwan_detente.0.d
 	picture = GFX_Taiwan_Election
-	is_triggered_only = yes
 	fire_only_once = yes
+	trigger = {
+		original_tag = CHI
+		country_exists = TAI
+		TAI = { is_subject = no }
+		date > 2020.01.10
+		date < 2020.04.01
+		check_variable = { CHI_taiwan_us_support < 50 }
+		NOT = { TAI = { has_country_flag = taiwan_detente_kmt_won } }
+		NOT = { TAI = { has_country_flag = taiwan_detente_dpp_won } }
+	}
+	mean_time_to_happen = {
+		days = 1
+	}
+	immediate = {
+		hidden_effect = {
+			TAI = {
+				set_country_flag = taiwan_detente_kmt_won
+				set_politics = {
+					ruling_party = democratic
+					last_election = "2020.01.11"
+					election_frequency = 48
+					elections_allowed = yes
+				}
+				set_popularities = {
+					democratic = 91.5
+					communism = 0.0
+					fascism = 0.0
+					neutrality = 8.3
+					nationalist = 0.2
+				}
+				set_variable = { party_pop_array^1 = 0.480 } #conservatism
+				set_variable = { party_pop_array^2 = 0.435 } #liberalism
+				set_variable = { party_pop_array^14 = 0.083 } #Neutral_conservatism
+				set_variable = { party_pop_array^20 = 0.002 } #Nat_Populism
+				clear_array = ruling_party
+				clear_array = gov_coalition_array
+				add_to_array = { ruling_party = 1 }
+				add_to_array = { gov_coalition_array = 1 }
+				add_to_array = { gov_coalition_array = 14 }
+				update_government_coalition_strength = yes
+				update_party_name = yes
+				set_coalition_drift = yes
+				recalculate_party = yes
+				kill_country_leader = yes
+				create_country_leader = {
+					name = "Eric Chu"
+					picture = "eric_chu.dds"
+					ideology = conservatism
+					traits = {
+						western_conservatism
+					}
+				}
+			}
+		}
+		TAI = {
+			country_event = {
+				id = taiwan_detente.1
+				days = 10
+			}
+		}
+	}
 	option = {
 		name = taiwan_detente.0.a
 	}
@@ -831,10 +891,14 @@ country_event = {
 	fire_only_once = yes
 	option = {
 		name = taiwan_detente.1.a
-		remove_ideas = CHI_chinese_blockade
-		TAI = {
+		remove_ideas = {
+			CHI_chinese_blockade
+			CHI_chinese_blockade_2
+		}
+		CHI = {
 			country_event = {
 				id = taiwan_detente.2
+				days = 5
 			}
 		}
 	}
@@ -851,7 +915,7 @@ country_event = {
 		name = taiwan_detente.2.a
 		#set_country_flag = PRC_taiwan_detente_category_unlocked_flag #undercooked stuff
 		#unlock_decision_category_tooltip = PRC_taiwan_detente_cat
-		#TAI = { country_event = { id = taiwan_detente.3 days = 30 } }
+		TAI = { country_event = { id = taiwan_detente.3 days = 30 } }
 	}
 }
 
@@ -864,24 +928,14 @@ country_event = {
 	fire_only_once = yes
 	option = {
 		name = taiwan_detente.3.a
-		TAI = {
-			remove_ideas = CHI_prc_embargo_idea
+		remove_ideas = {
+			CHI_prc_embargo_idea
+			CHI_prc_embargo_idea1
 		}
-		TAI = {
-			break_embargo = TAI
-		}
-		TAI = {
-			break_embargo = CHI
-		}
+		break_embargo = CHI
 		country_event = {
 			id = taiwan_detente.4
-			days = 20
-		}
-		TAI = {
-			country_event = {
-				id = taiwan_detente.4
-				days = 20
-			}
+			days = 45
 		}
 		hidden_effect = {
 			TAI = {
@@ -900,12 +954,22 @@ country_event = {
 	desc = taiwan_detente.4.d
 	picture = GFX_CHI_detente
 	is_triggered_only = yes
-	fire_only_once = no
+	fire_only_once = yes
 	option = {
 		name = taiwan_detente.4.a
-		country_event = {
-			id = taiwan_detente.5
-			days = 20
+		set_country_flag = taiwan_detente_xiamen_done
+		hidden_effect = {
+			if = {
+				limit = {
+					USA = { has_country_flag = USA_government_shutdown_flag }
+				}
+				TAI = {
+					country_event = {
+						id = taiwan_detente.5
+						days = 5
+					}
+				}
+			}
 		}
 	}
 }
@@ -916,12 +980,20 @@ country_event = {
 	desc = taiwan_detente.5.d
 	picture = GFX_CHI_detente
 	is_triggered_only = yes
-	fire_only_once = no
+	fire_only_once = yes
+	trigger = {
+		original_tag = TAI
+		has_country_flag = taiwan_detente_kmt_won
+		has_country_flag = taiwan_detente_xiamen_done
+		USA = { has_country_flag = USA_government_shutdown_flag }
+	}
 	option = {
 		name = taiwan_detente.5.a
-		country_event = {
-			id = taiwan_detente.6
-			days = 20
+		CHI = {
+			country_event = {
+				id = taiwan_detente.6
+				days = 45
+			}
 		}
 	}
 }
@@ -935,6 +1007,15 @@ country_event = {
 	fire_only_once = no
 	option = {
 		name = taiwan_detente.6.a
+		if = {
+			limit = {
+				CHI = { check_variable = { CHI_taiwan_us_support < 50 } }
+			}
+			country_event = {
+				id = taiwan_detente.7
+				days = 60
+			}
+		}
 	}
 }
 
@@ -949,7 +1030,7 @@ country_event = {
 		name = taiwan_detente.7.a
 		country_event = {
 			id = taiwan_detente.8
-			days = 3
+			days = 15
 		}
 	}
 }
@@ -965,7 +1046,19 @@ country_event = {
 		name = taiwan_detente.8.a
 		country_event = {
 			id = taiwan_detente.9
-			days = 3
+			days = 10
+		}
+	}
+	option = {
+		name = taiwan_detente.8.b
+		trigger = {
+			CHI = { check_variable = { CHI_taiwan_us_support < 50 } }
+		}
+		CHI = {
+			country_event = {
+				id = taiwan_detente.11
+				days = 30
+			}
 		}
 	}
 }
@@ -980,14 +1073,9 @@ country_event = {
 	option = {
 		name = taiwan_detente.9.a
 		clr_country_flag = PRC_taiwan_detente_category_unlocked_flag
-		if = {
-			limit = {
-				original_tag = TAI
-			}
-			country_event = {
-				id = taiwan_detente.10
-				days = 5
-			}
+		country_event = {
+			id = taiwan_detente.10
+			days = 30
 		}
 	}
 }
@@ -1001,6 +1089,180 @@ country_event = {
 	fire_only_once = no
 	option = {
 		name = taiwan_detente.10.a
+	}
+}
+
+country_event = {
+	id = taiwan_detente.11
+	title = taiwan_detente.11.t
+	desc = taiwan_detente.11.d
+	picture = GFX_CHI_taiwan_sar
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = taiwan_detente.11.a
+	}
+	immediate = {
+		CHI = {
+			clr_country_flag = CHI_TAI_rejected_peaceful_reunification
+			puppet = TAI
+			set_autonomy = {
+				target = TAI
+				autonomy_state = autonomy_special_administrative_region_TAI
+			}
+		}
+		hidden_effect = {
+			TAI = {
+				set_politics = {
+					ruling_party = democratic
+					elections_allowed = yes
+				}
+				set_popularities = {
+					democratic = 68.0
+					communism = 0.0
+					fascism = 0.0
+					neutrality = 32.0
+					nationalist = 0.0
+				}
+				set_variable = { party_pop_array^1 = 0.390 } #conservatism
+				set_variable = { party_pop_array^2 = 0.290 } #liberalism
+				set_variable = { party_pop_array^14 = 0.300 } #Neutral_conservatism
+				set_variable = { party_pop_array^18 = 0.020 } #neutral_Social
+				set_variable = { party_pop_array^20 = 0 } #Nat_Populism
+				clear_array = ruling_party
+				clear_array = gov_coalition_array
+				add_to_array = { ruling_party = 1 }
+				add_to_array = { gov_coalition_array = 1 }
+				add_to_array = { gov_coalition_array = 14 }
+				update_government_coalition_strength = yes
+				update_party_name = yes
+				set_coalition_drift = yes
+				recalculate_party = yes
+				kill_country_leader = yes
+				create_country_leader = {
+					name = "Eric Chu"
+					picture = "eric_chu.dds"
+					ideology = conservatism
+					traits = {
+						western_conservatism
+					}
+				}
+				set_country_leader_ideology = market_socialism
+			}
+		}
+		TAI = {
+			set_cosmetic_tag = TAI_autonomy_special_administrative_region
+			clr_country_flag = dynamic_flag
+			remove_ideas = { 
+				lacks_international_recognition
+				CHI_republic_of_china_armed_forces_idea
+				CHI_taiwanese_independence_movement_idea
+			}
+			if = {
+				limit = { has_idea = legacy_of_1949 }
+				remove_ideas = legacy_of_1949
+			}
+			else_if = {
+				limit = { has_idea = legacy_of_1949_1 }
+				remove_ideas = legacy_of_1949_1
+			}
+			if = {
+				limit = { has_idea = Major_Non_NATO_Ally }
+				remove_ideas = Major_Non_NATO_Ally
+			}
+	        remove_dynamic_modifier = {
+            	modifier = first_island_chain
+        	}
+			add_ideas = { 
+				volunteer_army
+				volunteer_women
+				Non_State_Actor
+				One_Country_Two_Systems
+			}
+		}
+		hidden_effect = {
+			every_state = { #remove core for former Mainland states
+				limit = {
+					is_greater_china_state = yes
+				}
+				remove_core_of = TAI
+			}
+			every_state = { #remove claim for former Mainland states
+				limit = {
+					is_greater_china_state = yes
+				}
+				remove_claim_by = TAI
+			}
+			496 = { remove_claim_by = TAI }
+			722 = { remove_claim_by = TAI }
+			1011 = { remove_claim_by = TAI }
+			every_state = { #add core for current own
+				limit = {
+					is_taiwan_area_state = yes
+				}
+				add_core_of = TAI
+			}
+			CHI = {
+				remove_state_core = 598
+				remove_state_core = 599
+				remove_state_core = 600
+				remove_state_core = 1155
+				remove_state_core = 1156
+				remove_state_core = 1157
+				remove_state_core = 1158
+				transfer_state = 430
+				transfer_state = 491
+				transfer_state = 1015
+				transfer_state = 1109
+				add_state_core = 491
+				430 = { remove_core_of = TAI }
+				491 = { remove_core_of = TAI }
+				1015 = { remove_core_of = TAI }
+				1109 = { remove_core_of = TAI }
+			}
+			TAI = { #确保台湾不持有中国大陆州
+				every_owned_state = {
+					limit = {
+						NOT = { is_taiwan_area_state = yes }
+					}
+					transfer_state_to = CHI
+				}
+			}
+			TAI = { #裁撤海空军，仅保留部分陆军作为地方守备部队
+				destroy_ships = {
+					type = ship_hull_light
+					count = all
+				}
+				destroy_ships = {
+					type = ship_hull_cruiser
+					count = all
+				}
+				destroy_ships = {
+					type = ship_hull_heavy
+					count = all
+				}
+				destroy_ships = {
+					type = ship_hull_carrier
+					count = all
+				}
+				destroy_ships = {
+					type = ship_hull_submarine
+					count = all
+				}
+				transfer_units_fraction = { #空军机队移交解放军
+					target = CHI
+					size = 1
+					stockpile_ratio = 0
+					army_ratio = 0
+					navy_ratio = 0
+					air_ratio = 1
+				}
+				set_variable = { disband_fraction = 1 }
+				disband_units_fraction = yes
+				clear_variable = disband_fraction
+				load_oob = CHI_PRC_puppet
+			}
+		}
 	}
 }
 

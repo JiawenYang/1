@@ -8,11 +8,17 @@ news_event = {
 	trigger = {
 		country_exists = TAI
 		TAI = { is_subject = no }
-		date > 2020.01.10
+		OR = {
+			date > 2020.01.10
+			has_global_flag = ZZZ_debug_taiwan_2020
+		}
+		NOT = { CHI = { check_variable = { CHI_taiwan_us_support < 50 } } }
+		NOT = { TAI = { has_country_flag = taiwan_detente_kmt_won } }
 	}
 
 	immediate = {
 		TAI = {
+			set_country_flag = taiwan_detente_dpp_won
 			scoped_play_song = "we_are_team_taiwan"
 			set_politics = {
 				ruling_party = democratic

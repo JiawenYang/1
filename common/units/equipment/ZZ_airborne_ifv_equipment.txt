@@ -1,18 +1,361 @@
 # ============================================================================
-# ZZ 绌洪檷鎴樿溅搴曠洏锛圔MD 绯诲垪 / ZBD-03 涓撶敤锛屼粠閫氱敤姝ユ垬杞?medium_tank_flame_chassis 鎷嗗垎锛?# ============================================================================
-# 鎷嗗垎鐩殑锛欱MD-1/2/3/4M銆乑BD-03 涓€绫诲彲绌烘姇杞诲瀷灞ュ甫鎴樿溅涓嶅啀涓庢櫘閫氭鎴樿溅
-# 鍏辩敤搴曠洏銆備粎鑻忚仈/淇勭綏鏂笌涓浗鎷ユ湁璇ヨ澶囩嚎锛堝巻鍙蹭簨瀹烇級锛岄€氳繃闅愯棌绉戞妧
-# ZZ_airborne_ifv_tech 瑙ｉ攣锛堝紑灞€鏂囦欢宸插 SOV/CHI/URA 鎺堜簣锛夈€?# 缁撴瀯浠?MD 瀹樻柟 medium_tank_flame_chassis锛圡D_x_tank_chassis.txt L43-49锛夛細
-#   - archetype = medium_tank_chassis 鈫?鑷姩鐢熸垚 _0~_6 绾э紝缁ф壙鍏ㄩ儴妯″潡妲?#   - type = { armor flame } 鈫?涓庢鎴樿溅涓€鑷达紝afv_* 妯″潡鍏ㄩ儴鍙敤
-#   - 鐢熶骇/璁捐鍣ㄥ浘鏍囩户鎵挎瘝鍨?archetype_modern_tank_equipment锛屾棤闇€ dds
+# ZZ 空降战车底盘（独立模块化装备线：BMD 系列 / ZBD-03 一类）
+# ============================================================================
+# 与两栖战车同样采用显式装备定义方式，母型 ZZ_airborne_ifv_chassis 自带
+# 完整的 module_slots / module_count_limit / default_modules，
+# 子型号 _0 ~ _4 通过 module_slots = inherit 继承全部槽位，
+# 因此在生产界面点开即可进入完整的“装甲战斗车辆设计器”。
+# 仅用于可空投轻型履带战车；技术由隐藏科技 ZZ_airborne_ifv_tech 解锁。
 # ============================================================================
 
 equipments = {
+
 	ZZ_airborne_ifv_chassis = {
-		archetype = medium_tank_chassis
-		type = { armor flame }
-		for_each = {
-			variant_name = { find_and_replace = { "chassis" "equipment" } }
+		year = 1971
+		is_archetype = yes
+		is_buildable = no
+		type = { mechanized }
+
+		picture = archetype_modern_tank_equipment
+		type = armor
+		group_by = archetype
+		interface_category = interface_category_armor
+		priority = 2000
+
+		module_slots = {
+			main_armament_slot = {
+				required = yes
+				allowed_module_categories = {
+					light_afv_assault_armament
+					light_afv_small_autocannon
+					light_afv_big_autocannon
+					light_afv_cannon_armament
+					light_afv_apc_main_armament
+					apc_small_autocannon_cat
+					tank_small_main_armament
+					tank_small_medium_main_armament
+					tank_medium_main_armament
+					tank_large_main_armament
+					spaa_autocannon_systems
+				}
+			}
+			secondary_armament_slot = {
+				required = no
+				allowed_module_categories = {
+					light_afv_coax_mg
+					light_afv_coax_gun
+				}
+			}
+			turret_type_slot = {
+				required = yes
+				allowed_module_categories = {
+					light_afv_turret_type
+					tank_turret_type
+					tank_unmanned_turret_type
+				}
+			}
+			suspension_type_slot = {
+				required = yes
+				allowed_module_categories = {
+					light_afv_suspension_type
+					tank_suspension_type
+				}
+			}
+			armor_type_slot = {
+				required = yes
+				allowed_module_categories = {
+					light_afv_armor_type
+					light_afv_heavy_armor_type
+					tank_armor_type
+					tank_heavy_armor_type
+				}
+			}
+			engine_type_slot = {
+				required = yes
+				allowed_module_categories = {
+					tank_diesel_engine_type
+					tank_turbine_engine_type
+					tank_electric_engine_type
+					afv_gasoline_engine_type
+					czech_diesel_engine_type
+					czech_gasoline_engine_type
+					czech_electric_engine_type
+				}
+			}
+			reload_type_slot = {
+				required = yes
+				allowed_module_categories = {
+					tank_reload_module
+					light_tanks_reload_modules
+				}
+			}
+			special_type_slot_1 = {
+				required = no
+				allowed_module_categories = {
+					light_afv_special_module
+					tank_special_module
+					tank_smoke_module
+					tank_aa_module
+					tank_additional_armor_era
+					tank_additional_armor_spaced
+					tank_support_drone_module
+					afv_atgm_module
+					tank_atgm_module
+					tank_defense_module
+				}
+			}
+			special_type_slot_2 = {
+				required = no
+				allowed_module_categories = {
+					light_afv_special_module
+					tank_special_module
+					tank_smoke_module
+					tank_aa_module
+					tank_additional_armor_era
+					tank_additional_armor_spaced
+					tank_support_drone_module
+					afv_atgm_module
+					tank_atgm_module
+					tank_defense_module
+				}
+			}
+			special_type_slot_3 = {
+				required = no
+				allowed_module_categories = {
+					light_afv_special_module
+					tank_special_module
+					tank_smoke_module
+					tank_aa_module
+					tank_additional_armor_era
+					tank_additional_armor_spaced
+					tank_support_drone_module
+					afv_atgm_module
+					tank_atgm_module
+					tank_defense_module
+				}
+			}
+			special_type_slot_4 = {
+				required = yes
+				allowed_module_categories = {
+					afv_battlestation_module
+					tank_battlestation_module
+				}
+			}
+			special_type_slot_5 = {
+				required = no
+				allowed_module_categories = {
+					light_afv_special_module
+					tank_special_module
+				}
+			}
+			special_type_slot_6 = {
+				required = no
+				allowed_module_categories = {
+					tank_additional_armor_era
+					tank_additional_armor_spaced
+				}
+			}
+			ammunition_load_slot = {
+				required = no
+				allowed_module_categories = {
+				}
+			}
+		}
+
+		module_count_limit = {
+			category = tank_battlestation_module
+			count < 2
+		}
+		module_count_limit = {
+			category = tank_atgm_module
+			count < 2
+		}
+		module_count_limit = {
+			category = afv_atgm_module
+			count < 2
+		}
+		module_count_limit = {
+			category = tank_additional_armor_era
+			count < 2
+		}
+		module_count_limit = {
+			category = tank_additional_armor_spaced
+			count < 2
+		}
+		module_count_limit = {
+			category = tank_aa_module
+			count < 2
+		}
+		module_count_limit = {
+			module = tank_longer_gun
+			count < 2
+		}
+		module_count_limit = {
+			module = tank_drones
+			count < 2
+		}
+		module_count_limit = {
+			module = tank_drones_2
+			count < 2
+		}
+		module_count_limit = {
+			category = tank_smoke_module
+			count < 2
+		}
+		module_count_limit = {
+			module = wet_ammo_storage
+			count < 2
+		}
+		module_count_limit = {
+			module = afv_reverse_doors
+			count < 2
+		}
+		module_count_limit = {
+			module = afv_mine_protection
+			count < 2
+		}
+
+		default_modules = {
+			main_armament_slot = small_autocannon
+			secondary_armament_slot = empty
+			turret_type_slot = afv_base_turret
+			suspension_type_slot = afv_tracked_suspension
+			armor_type_slot = afv_steel_armor_gen1
+			engine_type_slot = empty
+			reload_type_slot = manual_loading
+			ammunition_load_slot = empty
+		}
+
+		fuel_consumption = 0
+		maximum_speed = 4
+		build_cost_ic = 4
+		reliability = 1.0
+		hardness = 0.5
+		armor_value = 4
+		lend_lease_cost = 4
+		resources = {
+			steel = 1
+		}
+
+		manpower = 3
+	}
+
+	# 1965 车体
+	ZZ_airborne_ifv_chassis_0 = {
+		abbreviation = "abn0"
+		derived_variant_name = zz_airborne_ifv_equipment_0
+		visual_level = 0
+		year = 1965
+
+		archetype = ZZ_airborne_ifv_chassis
+		priority = 2000
+		module_slots = inherit
+
+		hardness = 0.6
+
+		upgrades = {
+			afv_nsb_armor_upgrade
 		}
 	}
+
+	# 1975
+	ZZ_airborne_ifv_chassis_1 = {
+		abbreviation = "abn1"
+		derived_variant_name = zz_airborne_ifv_equipment_1
+		visual_level = 1
+		year = 1975
+
+		archetype = ZZ_airborne_ifv_chassis
+		parent = ZZ_airborne_ifv_chassis_0
+		priority = 2000
+		module_slots = inherit
+
+		maximum_speed = 4
+		build_cost_ic = 4.5
+		reliability = 1.05
+		hardness = 0.6
+		armor_value = 12
+
+		lend_lease_cost = 4
+
+		upgrades = {
+			afv_nsb_armor_upgrade
+		}
+	}
+
+	# 1995
+	ZZ_airborne_ifv_chassis_2 = {
+		abbreviation = "abn2"
+		derived_variant_name = zz_airborne_ifv_equipment_2
+		visual_level = 2
+		year = 1995
+
+		archetype = ZZ_airborne_ifv_chassis
+		parent = ZZ_airborne_ifv_chassis_1
+		priority = 2000
+		module_slots = inherit
+
+		maximum_speed = 4
+		build_cost_ic = 5
+		reliability = 1.1
+		hardness = 0.6
+		armor_value = 16
+
+		lend_lease_cost = 4
+
+		upgrades = {
+			afv_nsb_armor_upgrade
+		}
+	}
+
+	# 2015
+	ZZ_airborne_ifv_chassis_3 = {
+		abbreviation = "abn3"
+		derived_variant_name = zz_airborne_ifv_equipment_3
+		visual_level = 3
+		year = 2015
+
+		archetype = ZZ_airborne_ifv_chassis
+		parent = ZZ_airborne_ifv_chassis_2
+		priority = 2000
+		module_slots = inherit
+
+		maximum_speed = 4
+		build_cost_ic = 5.5
+		reliability = 1.15
+		hardness = 0.6
+		armor_value = 20
+
+		lend_lease_cost = 4
+
+		upgrades = {
+			afv_nsb_armor_upgrade
+		}
+	}
+
+	# 2035
+	ZZ_airborne_ifv_chassis_4 = {
+		abbreviation = "abn4"
+		derived_variant_name = zz_airborne_ifv_equipment_4
+		visual_level = 4
+		year = 2035
+
+		archetype = ZZ_airborne_ifv_chassis
+		parent = ZZ_airborne_ifv_chassis_3
+		priority = 2000
+		module_slots = inherit
+
+		maximum_speed = 4
+		build_cost_ic = 6
+		reliability = 1.2
+		hardness = 0.6
+		armor_value = 22
+
+		lend_lease_cost = 4
+
+		upgrades = {
+			afv_nsb_armor_upgrade
+		}
+	}
+
 }
