@@ -1,0 +1,431 @@
+DSW_SOV_set_authoritarian_party = {
+	set_variable = {
+		Neutral_Autocracy_leader = 1
+	}
+	set_variable = {
+		ruling_party = 13
+	}
+	set_variable = {
+		DSW_SOV_tfr_party = 13
+	}
+	set_variable = {
+		disable_elections = 1
+	}
+	set_variable = {
+		DSW_SOV_scripted_elections = 0
+	}
+	clear_array = gov_coalition_array
+	set_variable = {
+		party_pop_array^0 = 0
+	}
+	set_variable = {
+		party_pop_array^1 = 0
+	}
+	set_variable = {
+		party_pop_array^2 = 0.10
+	}
+	set_variable = {
+		party_pop_array^3 = 0
+	}
+	set_variable = {
+		party_pop_array^4 = 0
+	}
+	set_variable = {
+		party_pop_array^5 = 0
+	}
+	set_variable = {
+		party_pop_array^6 = 0.10
+	}
+	set_variable = {
+		party_pop_array^7 = 0.10
+	}
+	set_variable = {
+		party_pop_array^8 = 0
+	}
+	set_variable = {
+		party_pop_array^9 = 0
+	}
+	set_variable = {
+		party_pop_array^10 = 0
+	}
+	set_variable = {
+		party_pop_array^11 = 0
+	}
+	set_variable = {
+		party_pop_array^12 = 0
+	}
+	set_variable = {
+		party_pop_array^13 = 0.55
+	}
+	set_variable = {
+		party_pop_array^14 = 0.15
+	}
+	set_variable = {
+		party_pop_array^15 = 0
+	}
+	set_variable = {
+		party_pop_array^16 = 0
+	}
+	set_variable = {
+		party_pop_array^17 = 0
+	}
+	set_variable = {
+		party_pop_array^18 = 0
+	}
+	set_variable = {
+		party_pop_array^19 = 0
+	}
+	set_variable = {
+		party_pop_array^20 = 0
+	}
+	set_variable = {
+		party_pop_array^21 = 0
+	}
+	set_variable = {
+		party_pop_array^22 = 0
+	}
+	set_variable = {
+		party_pop_array^23 = 0
+	}
+	recalculate_party = yes
+	set_politics = {
+		ruling_party = neutrality
+		elections_allowed = no
+	}
+	add_country_leader_trait = DSW_SOV_authoritarian_democracy
+	add_country_leader_trait = neutrality_Neutral_Autocracy
+	set_country_flag = DSW_SOV_authoritarian_government_fixed
+}
+DSW_SOV_install_authoritarian_government = {
+	if = {
+		limit = {
+			NOT = {
+				has_global_flag = SOV_cprf_won
+			}
+		}
+		create_country_leader = {
+			name = DSW_SOV_reconstruction_committee
+			picture = "gfx/leaders/SOV/SOV_russian_occupational_administration.png"
+			ideology = Neutral_Autocracy
+			traits = {
+				DSW_SOV_authoritarian_democracy
+			}
+		}
+		DSW_SOV_set_authoritarian_party = yes
+		set_party_name = {
+			ideology = neutrality
+			name = DSW_SOV_reconstruction_front
+			long_name = DSW_SOV_reconstruction_front_long
+		}
+	}
+}
+DSW_SOV_fix_putin_tricolor = {
+	if = {
+		limit = {
+			tag = SOV
+			NOT = {
+				has_global_flag = SOV_cprf_won
+			}
+			OR = {
+				has_country_flag = DSW_SOV_putin_recovered
+				has_country_leader = {
+					character = DSW_TFR_SOV_vladimir_putin
+					ruling_only = yes
+				}
+			}
+		}
+		set_cosmetic_tag = DSW_SOV_putin_federation
+	}
+}
+DSW_SOV_migrate_postwar_patch = {
+	if = {
+		limit = {
+			has_global_flag = DSW_SOV_russian_victory
+			NOT = {
+				has_country_flag = DSW_SOV_postwar_patch_applied
+			}
+		}
+		DSW_SOV_secure_severodonetsk = yes
+		if = {
+			limit = {
+				country_exists = EST
+				EST = {
+					has_country_flag = DSW_SOV_first_war_settlement_applied
+					NOT = {
+						has_country_flag = DSW_SOV_authoritarian_government_fixed
+					}
+				}
+			}
+			EST = {
+				add_ideas = CSTO_member
+				add_to_tech_sharing_group = CSTO_Tech_Share
+				DSW_SOV_install_authoritarian_government = yes
+			}
+		}
+		if = {
+			limit = {
+				country_exists = LAT
+				LAT = {
+					has_country_flag = DSW_SOV_first_war_settlement_applied
+					NOT = {
+						has_country_flag = DSW_SOV_authoritarian_government_fixed
+					}
+				}
+			}
+			LAT = {
+				add_ideas = CSTO_member
+				add_to_tech_sharing_group = CSTO_Tech_Share
+				DSW_SOV_install_authoritarian_government = yes
+			}
+		}
+		if = {
+			limit = {
+				country_exists = LIT
+				LIT = {
+					has_country_flag = DSW_SOV_first_war_settlement_applied
+					NOT = {
+						has_country_flag = DSW_SOV_authoritarian_government_fixed
+					}
+				}
+			}
+			LIT = {
+				add_ideas = CSTO_member
+				add_to_tech_sharing_group = CSTO_Tech_Share
+				DSW_SOV_install_authoritarian_government = yes
+			}
+		}
+		if = {
+			limit = {
+				country_exists = POL
+				POL = {
+					has_country_flag = DSW_SOV_first_war_settlement_applied
+					NOT = {
+						has_country_flag = DSW_SOV_authoritarian_government_fixed
+					}
+				}
+			}
+			POL = {
+				add_ideas = CSTO_member
+				add_to_tech_sharing_group = CSTO_Tech_Share
+				DSW_SOV_install_authoritarian_government = yes
+			}
+		}
+		if = {
+			limit = {
+				country_exists = UKR
+				UKR = {
+					has_country_flag = DSW_SOV_first_war_settlement_applied
+					NOT = {
+						has_country_flag = DSW_SOV_authoritarian_government_fixed
+					}
+				}
+			}
+			UKR = {
+				add_ideas = CSTO_member
+				add_to_tech_sharing_group = CSTO_Tech_Share
+				DSW_SOV_install_authoritarian_government = yes
+			}
+		}
+		if = {
+			limit = {
+				country_exists = ROM
+				ROM = {
+					has_country_flag = DSW_SOV_first_war_settlement_applied
+					NOT = {
+						has_country_flag = DSW_SOV_authoritarian_government_fixed
+					}
+				}
+			}
+			ROM = {
+				add_ideas = CSTO_member
+				add_to_tech_sharing_group = CSTO_Tech_Share
+				country_event = {
+					id = dsw_tfr_russia.237
+				}
+			}
+		}
+		if = {
+			limit = {
+				country_exists = HUN
+				HUN = {
+					has_country_flag = DSW_SOV_first_war_settlement_applied
+					NOT = {
+						has_country_flag = DSW_SOV_authoritarian_government_fixed
+					}
+				}
+			}
+			HUN = {
+				add_ideas = CSTO_member
+				add_to_tech_sharing_group = CSTO_Tech_Share
+				country_event = {
+					id = dsw_tfr_russia.237
+				}
+			}
+		}
+		if = {
+			limit = {
+				country_exists = SLO
+				SLO = {
+					has_country_flag = DSW_SOV_first_war_settlement_applied
+					NOT = {
+						has_country_flag = DSW_SOV_authoritarian_government_fixed
+					}
+				}
+			}
+			SLO = {
+				add_ideas = CSTO_member
+				add_to_tech_sharing_group = CSTO_Tech_Share
+				country_event = {
+					id = dsw_tfr_russia.237
+				}
+			}
+		}
+		if = {
+			limit = {
+				country_exists = BUL
+				BUL = {
+					has_country_flag = DSW_SOV_first_war_settlement_applied
+					NOT = {
+						has_country_flag = DSW_SOV_authoritarian_government_fixed
+					}
+				}
+			}
+			BUL = {
+				add_ideas = CSTO_member
+				add_to_tech_sharing_group = CSTO_Tech_Share
+				country_event = {
+					id = dsw_tfr_russia.237
+				}
+			}
+		}
+		if = {
+			limit = {
+				country_exists = GEO
+				GEO = {
+					has_country_flag = DSW_SOV_first_war_settlement_applied
+					NOT = {
+						has_country_flag = DSW_SOV_authoritarian_government_fixed
+					}
+				}
+			}
+			GEO = {
+				add_ideas = CSTO_member
+				add_to_tech_sharing_group = CSTO_Tech_Share
+				DSW_SOV_install_authoritarian_government = yes
+			}
+		}
+		if = {
+			limit = {
+				country_exists = AZE
+				AZE = {
+					has_country_flag = DSW_SOV_first_war_settlement_applied
+					NOT = {
+						has_country_flag = DSW_SOV_authoritarian_government_fixed
+					}
+				}
+			}
+			AZE = {
+				add_ideas = CSTO_member
+				add_to_tech_sharing_group = CSTO_Tech_Share
+				DSW_SOV_install_authoritarian_government = yes
+			}
+		}
+		if = {
+			limit = {
+				country_exists = ARM
+				ARM = {
+					has_country_flag = DSW_SOV_first_war_settlement_applied
+					NOT = {
+						has_country_flag = DSW_SOV_authoritarian_government_fixed
+					}
+				}
+			}
+			ARM = {
+				add_ideas = CSTO_member
+				add_to_tech_sharing_group = CSTO_Tech_Share
+				DSW_SOV_install_authoritarian_government = yes
+			}
+		}
+		if = {
+			limit = {
+				country_exists = ABK
+				ABK = {
+					has_country_flag = DSW_SOV_first_war_settlement_applied
+					NOT = {
+						has_country_flag = DSW_SOV_authoritarian_government_fixed
+					}
+				}
+			}
+			ABK = {
+				add_ideas = CSTO_member
+				add_to_tech_sharing_group = CSTO_Tech_Share
+				DSW_SOV_install_authoritarian_government = yes
+			}
+		}
+		if = {
+			limit = {
+				country_exists = SOO
+				SOO = {
+					has_country_flag = DSW_SOV_first_war_settlement_applied
+					NOT = {
+						has_country_flag = DSW_SOV_authoritarian_government_fixed
+					}
+				}
+			}
+			SOO = {
+				add_ideas = CSTO_member
+				add_to_tech_sharing_group = CSTO_Tech_Share
+				DSW_SOV_install_authoritarian_government = yes
+			}
+		}
+		if = {
+			limit = {
+				country_exists = NKR
+				NKR = {
+					has_country_flag = DSW_SOV_first_war_settlement_applied
+					NOT = {
+						has_country_flag = DSW_SOV_authoritarian_government_fixed
+					}
+				}
+			}
+			NKR = {
+				add_ideas = CSTO_member
+				add_to_tech_sharing_group = CSTO_Tech_Share
+				DSW_SOV_install_authoritarian_government = yes
+			}
+		}
+		if = {
+			limit = {
+				country_exists = PMR
+				PMR = {
+					has_country_flag = DSW_SOV_first_war_settlement_applied
+					NOT = {
+						has_country_flag = DSW_SOV_authoritarian_government_fixed
+					}
+				}
+			}
+			PMR = {
+				add_ideas = CSTO_member
+				add_to_tech_sharing_group = CSTO_Tech_Share
+				DSW_SOV_install_authoritarian_government = yes
+			}
+		}
+		if = {
+			limit = {
+				country_exists = MLV
+				MLV = {
+					has_country_flag = DSW_SOV_first_war_settlement_applied
+					NOT = {
+						has_country_flag = DSW_SOV_authoritarian_government_fixed
+					}
+				}
+			}
+			MLV = {
+				add_ideas = CSTO_member
+				add_to_tech_sharing_group = CSTO_Tech_Share
+				DSW_SOV_install_authoritarian_government = yes
+			}
+		}
+		set_country_flag = DSW_SOV_postwar_patch_applied
+	}
+}

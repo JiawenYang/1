@@ -1,4 +1,3 @@
-# DSW Russia / repaired source references
 DSW_SOV_campaign = {
 	DSW_SOV_european_war_watch = {
 		icon = generic_shaking_hands
@@ -24,28 +23,65 @@ DSW_SOV_campaign = {
 			}
 		}
 		complete_effect = {
-            if = {
-                limit = {
-                    has_global_flag = DSW_SOV_european_war_started
-                    NOT = { has_global_flag = DSW_SOV_european_war_resolved }
-                    DSW_SOV_european_victory_conditions = yes
-                }
-                DSW_SOV_resolve_russian_victory = yes
-            }
-        }
+			if = {
+				limit = {
+					has_global_flag = DSW_SOV_european_war_started
+					NOT = {
+						has_global_flag = DSW_SOV_european_war_resolved
+					}
+					DSW_SOV_european_victory_conditions = yes
+				}
+				DSW_SOV_resolve_russian_victory = yes
+			}
+		}
 		cancel_effect = {
-            if = {
-                limit = {
-                    has_global_flag = DSW_SOV_european_war_started
-                    NOT = { has_global_flag = DSW_SOV_european_war_resolved }
-                    DSW_SOV_european_defeat_conditions = yes
-                }
-                DSW_SOV_resolve_russian_defeat = yes
-            }
-        }
+			if = {
+				limit = {
+					has_global_flag = DSW_SOV_european_war_started
+					NOT = {
+						has_global_flag = DSW_SOV_european_war_resolved
+					}
+					DSW_SOV_european_defeat_conditions = yes
+				}
+				DSW_SOV_resolve_russian_defeat = yes
+			}
+		}
 		timeout_effect = {
 			add_war_support = -0.05
 			activate_mission = DSW_SOV_european_war_watch
+		}
+	}
+	DSW_SOV_caucasus_conflict = {
+		icon = generic_prepare_civil_war
+		activation = {
+			always = no
+		}
+		visible = {
+			has_global_flag = DSW_SOV_european_war_started
+			NOT = {
+				has_global_flag = DSW_SOV_european_war_resolved
+			}
+		}
+		days_mission_timeout = 180
+		is_good = yes
+		available = {
+			DSW_SOV_caucasus_secured = yes
+		}
+		complete_effect = {
+			set_country_flag = DSW_SOV_caucasus_front_secured
+		}
+		cancel_trigger = {
+			has_global_flag = DSW_SOV_european_war_resolved
+		}
+		timeout_effect = {
+			if = {
+				limit = {
+					NOT = {
+						has_global_flag = DSW_SOV_european_war_resolved
+					}
+				}
+				activate_mission = DSW_SOV_caucasus_conflict
+			}
 		}
 	}
 }
