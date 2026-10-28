@@ -1,0 +1,170 @@
+add_namespace = afghanistan
+
+# =====================================================
+# 烈焰升腾 阿富汗内战事件链（移植版）
+# 已适配千禧黎明地图：使用 MD 的阿富汗州 ID，
+# 剔除 TFR 专属国家 TLP、TFR 地图省份、TFR 专属 OOB 与外观标签
+# =====================================================
+
+# 美国和平协议生效
+country_event = {
+	id = afghanistan.1
+	title = afghanistan.1.t
+	desc = afghanistan.1.d
+	picture = GFX_news_arab_conference
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		OR = {
+			tag = AFG
+			tag = TAL
+		}
+	}
+	option = {
+		name = afghanistan.1.a
+		hidden_effect = {
+			TAL = {
+				country_event = {
+					id = afghanistan.4
+					days = 200
+				}
+			}
+		}
+	}
+}
+
+# 塔利班撕毁停火
+country_event = {
+	id = afghanistan.2
+	title = afghanistan.2.t
+	desc = afghanistan.2.d
+	picture = GFX_hezbollah_forces
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = TAL
+	}
+	option = {
+		name = afghanistan.2.a
+		declare_war_on = {
+			target = AFG
+			type = civil_war
+		}
+	}
+}
+
+# 阿富汗伊斯兰酋长国宣告复辟
+country_event = {
+	id = afghanistan.3
+	title = afghanistan.3.t
+	desc = afghanistan.3.d
+	picture = GFX_news_arab_conference
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = TAL
+	}
+	option = {
+		name = afghanistan.3.a
+		news_event = {
+			id = afghanistan.8
+		}
+		add_state_core = 1152
+		add_state_core = 1207
+		add_state_core = 1208
+		add_state_core = 409
+		add_state_core = 410
+		add_state_core = 412
+		add_state_core = 414
+		add_state_core = 415
+	}
+}
+
+# 塔利班扩大控制区
+country_event = {
+	id = afghanistan.4
+	title = afghanistan.4.t
+	desc = afghanistan.4.d
+	picture = GFX_news_arab_riot_police
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = TAL
+	}
+	option = {
+		name = afghanistan.4.a
+		transfer_state = 1153
+		transfer_state = 1154
+		transfer_state = 411
+		hidden_effect = {
+			country_event = {
+				id = afghanistan.5
+				days = 200
+			}
+		}
+	}
+}
+
+# 喀布尔防线崩溃
+country_event = {
+	id = afghanistan.5
+	title = afghanistan.5.t
+	desc = afghanistan.5.d
+	picture = GFX_news_arab_riot_police
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = TAL
+	}
+	option = {
+		name = afghanistan.5.a
+		AFG = {
+			set_variable = {
+				disband_fraction = 0.75
+			}
+			disband_units_fraction = yes
+			clear_variable = disband_fraction
+		}
+	}
+}
+
+# 东部省份易手
+country_event = {
+	id = afghanistan.6
+	title = afghanistan.6.t
+	desc = afghanistan.6.d
+	picture = GFX_news_arab_riot_police
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = afghanistan.6.a
+		transfer_state = 409
+	}
+}
+
+# 中部哈扎拉地区归附
+country_event = {
+	id = afghanistan.7
+	title = afghanistan.7.t
+	desc = afghanistan.7.d
+	picture = GFX_politics_talks
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = afghanistan.7.a
+		transfer_state = 412
+	}
+}
+
+news_event = {
+	id = afghanistan.8
+	title = afghanistan.8.t
+	desc = afghanistan.8.d
+	picture = GFX_Taliban_News
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = afghanistan.8.a
+
+	}
+}

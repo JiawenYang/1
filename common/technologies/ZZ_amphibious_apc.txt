@@ -1,21 +1,46 @@
 # ============================================================================
 # ZZ 两栖战车解锁科技（隐藏，不显示在科技树，仅通过开局 set_technology 授予）
-# 解锁 ZZ_amphibious_apc_chassis 母型及 _0 ~ _4 全部车体
+# 按车系国籍拆分：
+#   ZZ_amphibious_apc_aavp7_tech → LVTP-5 / AAVP-7A1（美国：USA）
+#   ZZ_amphibious_apc_zbd05_tech → ZBD-05（中国：CHI）
+#   ZZ_amphibious_apc_kaav7_tech → KAAV7（韩国：KOR）
 # ============================================================================
 
 technologies = {
-	ZZ_amphibious_apc_tech = {
+	ZZ_amphibious_apc_aavp7_tech = {
 		enable_equipments = {
-			ZZ_amphibious_apc_chassis
-			ZZ_amphibious_apc_chassis_0
-			ZZ_amphibious_apc_chassis_1
-			ZZ_amphibious_apc_chassis_2
-			ZZ_amphibious_apc_chassis_3
-			ZZ_amphibious_apc_chassis_4
+			ZZ_amphibious_apc_chassis_lvtp5
+			ZZ_amphibious_apc_chassis_aavp7a1
 		}
 
 		research_cost = 1
 		start_year = 1971
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	ZZ_amphibious_apc_zbd05_tech = {
+		enable_equipments = {
+			ZZ_amphibious_apc_chassis_zbd05
+		}
+
+		research_cost = 1
+		start_year = 1971
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	ZZ_amphibious_apc_kaav7_tech = {
+		enable_equipments = {
+			ZZ_amphibious_apc_chassis_kaav7
+		}
+
+		research_cost = 1
+		start_year = 1998
 
 		ai_will_do = {
 			factor = 0

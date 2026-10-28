@@ -1,0 +1,14 @@
+# ============================================================================
+# ZZ 两栖车辆搜索过滤
+# 将 ZZ_amphibious_mechanized_equipment 底盘归入 amphibious_tanks 过滤，
+# 使其在生产界面的"两栖坦克"子标签下显示，而非默认落入 light_tanks。
+# 同时保留 MD 原有的 heavy_tank_chassis（若 search_filters 非合并则不丢失原版条目）。
+# ============================================================================
+
+search_filters = {
+	name = amphibious_tanks
+	values = {
+		heavy_tank_chassis
+		ZZ_amphibious_mechanized_equipment
+	}
+}

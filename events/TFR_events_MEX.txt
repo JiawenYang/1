@@ -1,0 +1,421 @@
+add_namespace = mexico
+
+# =====================================================
+# 烈焰升腾 墨西哥毒品战争 / 内战事件链（移植改编版）
+# 叙事框架取自 TFR，军事部分全部复用千禧黎明原版：
+#   毒枭国家 tag：SLA（锡那罗亚集团）、TRC（蒂拉卡连特）、TAM（塔毛利帕斯集团）
+#   毒枭 OOB：cartel_828 ~ cartel_840
+#   宣战逻辑：千禧黎明原版 cartel_event.13
+#   州 ID：千禧黎明墨西哥州 828-840
+# 已剔除：TFR 专属毒枭 tag（SIN/CDJ/GUC/ZAP/LFM/CAS，本模组中为
+#         新加坡/喀斯喀迪亚等无关国家）、TFR 地图州、GTA 系列彩蛋事件
+# =====================================================
+
+# 特种部队突袭毒枭据点成功
+country_event = {
+	id = mexico.1
+	title = mexico.1.t
+	desc = mexico.1.d
+	picture = GFX_Generic_Fight_Jet
+
+	fire_only_once = no
+	is_triggered_only = yes
+
+	trigger = {
+		tag = MEX
+	}
+
+	option = {
+		name = mexico.1.a
+		add_war_support = 0.02
+		add_stability = 0.01
+	}
+}
+
+# 特种部队突袭毒枭据点失败
+country_event = {
+	id = mexico.2
+	title = mexico.2.t
+	desc = mexico.2.d
+	picture = GFX_Generic_Fight_Jet
+
+	fire_only_once = no
+	is_triggered_only = yes
+
+	trigger = {
+		tag = MEX
+	}
+
+	option = {
+		name = mexico.2.a
+		add_war_support = -0.02
+		add_stability = -0.01
+	}
+}
+
+# 中美洲移民车队抵达危地马拉边境
+country_event = {
+	id = mexico.3
+	title = mexico.3.t
+	desc = mexico.3.d
+	picture = GFX_Latin_American_Caravan
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	trigger = {
+		tag = MEX
+	}
+
+	option = { #关闭南部边境
+		name = mexico.3.a
+		add_popularity = {
+			ideology = nationalist
+			popularity = 0.02
+		}
+		add_stability = 0.01
+	}
+	option = { #提供人道主义过境
+		name = mexico.3.b
+		add_stability = -0.01
+		add_political_power = -20
+		add_popularity = {
+			ideology = democratic
+			popularity = 0.01
+		}
+	}
+}
+
+# 军官与毒枭武装交火
+country_event = {
+	id = mexico.4
+	title = mexico.4.t
+	desc = mexico.4.d
+	picture = GFX_Generic_Mexican_Firefight
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	trigger = {
+		tag = MEX
+	}
+
+	option = {
+		name = mexico.4.a
+		add_war_support = 0.03
+		add_stability = -0.01
+	}
+}
+
+# 警方扣押美国难民
+country_event = {
+	id = mexico.5
+	title = mexico.5.t
+	desc = mexico.5.d
+	picture = GFX_Generic_Mexican_Police
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	trigger = {
+		tag = MEX
+	}
+
+	option = {
+		name = mexico.5.a
+		add_stability = -0.02
+		add_popularity = {
+			ideology = nationalist
+			popularity = 0.01
+		}
+	}
+}
+
+# 锡那罗亚集团开始夺取地盘
+country_event = {
+	id = mexico.6
+	title = mexico.6.t
+	desc = mexico.6.d
+	picture = GFX_Generic_Mexican_Police
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	trigger = {
+		tag = MEX
+	}
+
+	option = {
+		name = mexico.6.a
+		828 = {
+			set_demilitarized_zone = yes
+		}
+		829 = {
+			set_demilitarized_zone = yes
+		}
+		830 = {
+			set_demilitarized_zone = yes
+		}
+		831 = {
+			set_demilitarized_zone = yes
+		}
+		add_stability = -0.03
+	}
+}
+
+# 蒂拉卡连特集团开始夺取地盘
+country_event = {
+	id = mexico.8
+	title = mexico.8.t
+	desc = mexico.8.d
+	picture = GFX_Generic_Mexican_Police
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	trigger = {
+		tag = MEX
+	}
+
+	option = {
+		name = mexico.8.a
+		836 = {
+			set_demilitarized_zone = yes
+		}
+		837 = {
+			set_demilitarized_zone = yes
+		}
+		add_stability = -0.03
+	}
+}
+
+# 塔毛利帕斯集团开始夺取地盘
+country_event = {
+	id = mexico.9
+	title = mexico.9.t
+	desc = mexico.9.d
+	picture = GFX_Generic_Mexican_Police
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	trigger = {
+		tag = MEX
+	}
+
+	option = {
+		name = mexico.9.a
+		832 = {
+			set_demilitarized_zone = yes
+		}
+		833 = {
+			set_demilitarized_zone = yes
+		}
+		838 = {
+			set_demilitarized_zone = yes
+		}
+		add_stability = -0.03
+	}
+}
+
+# 其他地区秩序崩溃
+country_event = {
+	id = mexico.10
+	title = mexico.10.t
+	desc = mexico.10.d
+	picture = GFX_Generic_Mexican_Police
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	trigger = {
+		tag = MEX
+	}
+
+	option = {
+		name = mexico.10.a
+		834 = {
+			set_demilitarized_zone = yes
+		}
+		839 = {
+			set_demilitarized_zone = yes
+		}
+		840 = {
+			set_demilitarized_zone = yes
+		}
+		add_stability = -0.03
+	}
+}
+
+# 毒枭战争爆发
+country_event = {
+	id = mexico.11
+	title = mexico.11.t
+	desc = mexico.11.d
+	picture = GFX_Generic_Mexican_Police
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	trigger = {
+		tag = MEX
+		NOT = { has_global_flag = MEX_mexican_cartel_war_global }
+	}
+
+	immediate = {
+		hidden_effect = {
+			set_global_flag = MEX_mexican_cartel_war_global
+			set_global_flag = flag_mexico_cartel_war
+
+			# 锡那罗亚集团控制西北
+			SLA = {
+				transfer_state = 828
+				load_oob = "cartel_828"
+				transfer_state = 829
+				load_oob = "cartel_829"
+				transfer_state = 830
+				load_oob = "cartel_830"
+				transfer_state = 831
+				load_oob = "cartel_831"
+			}
+
+			# 蒂拉卡连特集团控制南部与西部
+			TRC = {
+				transfer_state = 836
+				load_oob = "cartel_836"
+				transfer_state = 837
+				load_oob = "cartel_837"
+				transfer_state = 834
+				load_oob = "cartel_834"
+			}
+
+			# 塔毛利帕斯集团控制东北与墨西哥湾
+			TAM = {
+				transfer_state = 832
+				load_oob = "cartel_832"
+				transfer_state = 833
+				load_oob = "cartel_833"
+				transfer_state = 838
+				load_oob = "cartel_838"
+				transfer_state = 839
+				load_oob = "cartel_839"
+				transfer_state = 840
+				load_oob = "cartel_840"
+			}
+
+			# 联邦政府权威崩溃，军队大规模倒戈（千禧黎明原版兵力分割机制）
+			MEX = {
+				add_ideas = MEX_collapsed_authority_tfx
+				transfer_units_fraction = {
+					target = SLA
+					size = 0.25
+					stockpile_ratio = 0.25
+					army_ratio = 0.25
+					navy_ratio = 0.25
+					air_ratio = 0.25
+				}
+				transfer_units_fraction = {
+					target = TRC
+					size = 0.33
+					stockpile_ratio = 0.33
+					army_ratio = 0.33
+					navy_ratio = 0.33
+					air_ratio = 0.33
+				}
+				transfer_units_fraction = {
+					target = TAM
+					size = 0.50
+					stockpile_ratio = 0.50
+					army_ratio = 0.50
+					navy_ratio = 0.50
+					air_ratio = 0.50
+				}
+			}
+
+			# 复用千禧黎明原版宣战逻辑：三大集团与联邦政府全面开战
+			country_event = {
+				id = cartel_event.13
+				days = 1
+			}
+		}
+	}
+
+	option = {
+		name = mexico.11.a
+		add_war_support = 0.10
+		add_stability = -0.05
+	}
+}
+
+# 毒枭战争结束（由 on_actions_ZZZ_peace.txt 结算触发）
+country_event = {
+	id = mexico.12
+	title = mexico.12.t
+	desc = mexico.12.d
+	picture = GFX_Generic_Mexican_Police
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			tag = MEX
+			tag = SLA
+			tag = TRC
+			tag = TAM
+		}
+	}
+
+	immediate = {
+		hidden_effect = {
+			clr_global_flag = MEX_mexican_cartel_war_global
+			set_global_flag = MEX_mexican_cartel_war_over_global
+			if = {
+				limit = {
+					tag = MEX
+				}
+				set_capital = {
+					state = 835
+					remember_old_capital = no
+				}
+				remove_ideas = MEX_collapsed_authority_tfx
+				add_ideas = MEX_mexican_resconstruction_idea
+				country_event = {
+					id = mexico.13
+					days = 15
+				}
+			}
+		}
+	}
+
+	option = {
+		name = mexico.12.a
+		add_stability = 0.05
+		add_political_power = 50
+	}
+}
+
+# 战后重建与大选
+country_event = {
+	id = mexico.13
+	title = mexico.13.t
+	desc = mexico.13.d
+	picture = GFX_generic_elections
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	trigger = {
+		tag = MEX
+	}
+
+	option = {
+		name = mexico.13.a
+		add_popularity = {
+			ideology = democratic
+			popularity = 0.07
+		}
+		add_stability = 0.03
+		add_political_power = 25
+	}
+}

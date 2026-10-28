@@ -1,4 +1,7 @@
-version="2.0.2"
+replace_path="common/decisions"
+replace_path="common/decisions/categories"
+replace_path="events"
+version="2.0.3"
 tags={
 	"Fixes"
 	"Gameplay"

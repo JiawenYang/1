@@ -1,11 +1,23 @@
 # ============================================================================
-# ZZ 负装甲配重装备（装甲率校准 · 仿 3731867125 机制）
+# ZZ 负装甲配重装备 / 合成营保障分队（装甲率校准 · 仿 3731867125 机制）
 # ============================================================================
 # HOI4(NSB) 营装甲率 = need 中各装备条目硬度之和（每条目计一次，与数量无关），
 # 师装甲率 = 各营平均值。本文件提供负硬度装备条目，用于把合成营/东方坦克营的
 # 装甲率精确拉到设计值（重0.80/中0.70/两栖0.70/轻0.60/空突0.15/坦克0.90）。
 # 数值依据 MD 底盘代际硬度实测：MBT_1-8=0.9 IFV_1-8=0.5 APC_1-8=0.4
 # Rec_tank=0.7 SP_arty=0.9 SP_R_arty=0.3 SPAA(继承)=0.5 util=0.15 直升机=0.15。
+#
+# 本轮修订：
+#   1. 保障分队一律以营的种类为准（重/中/轻/两栖/坦克/空突），删除俄式重型
+#      与中式两栖两个国别变体，并为德国装甲掷弹兵营新增专用条目。
+#   2. 图标统一引用 MD 的 C4ISTAR 技术图（cnc_equipment_5 → CC2015.dds）。
+#   3. 除装甲率外，另提供营级司令部性质的增益：max_organisation（组织度百分比）、
+#      default_morale（士气）、reliability（可靠性）与 manpower（服役人数）。
+#   4. 重/中/轻/两栖四类与装甲掷弹兵营的 _1 型号改为 active = no，由
+#      zz_support_detachment_tech 解锁（仅 USA/SOV/CHI/GER 可获得，
+#      见 ZZ_synthetic_battalions_tech.txt）。
+#      坦克/空突两类保持 active = yes：东方坦克营（16 国）与常规空突营仍在使用，
+#      不属于四国合成化技术门控范围。
 # ============================================================================
 
 equipments = {
@@ -23,14 +35,18 @@ equipments = {
 		group_by = archetype
 
 		interface_category = interface_category_land
-		reliability = 1
+		picture = cnc_equipment_5
+		reliability = 1.04
+		max_organisation = 0.16
+		default_morale = 0.08
+		manpower = 160
 		build_cost_ic = 1
 		hardness = -2.75
 	}
 	ZZ_neg_armor_heavy_1 = {
 		year = 2000
 		archetype = ZZ_neg_armor_heavy
-		active = yes
+		active = no
 		is_buildable = yes
 		priority = 10
 	}
@@ -48,14 +64,18 @@ equipments = {
 		group_by = archetype
 
 		interface_category = interface_category_land
-		reliability = 1
+		picture = cnc_equipment_5
+		reliability = 1.04
+		max_organisation = 0.15
+		default_morale = 0.07
+		manpower = 140
 		build_cost_ic = 1
 		hardness = -2.10
 	}
 	ZZ_neg_armor_medium_1 = {
 		year = 2000
 		archetype = ZZ_neg_armor_medium
-		active = yes
+		active = no
 		is_buildable = yes
 		priority = 10
 	}
@@ -73,14 +93,18 @@ equipments = {
 		group_by = archetype
 
 		interface_category = interface_category_land
-		reliability = 1
+		picture = cnc_equipment_5
+		reliability = 1.03
+		max_organisation = 0.14
+		default_morale = 0.07
+		manpower = 130
 		build_cost_ic = 1
 		hardness = -1.60
 	}
 	ZZ_neg_armor_amphibious_1 = {
 		year = 2000
 		archetype = ZZ_neg_armor_amphibious
-		active = yes
+		active = no
 		is_buildable = yes
 		priority = 10
 	}
@@ -98,14 +122,49 @@ equipments = {
 		group_by = archetype
 
 		interface_category = interface_category_land
-		reliability = 1
+		picture = cnc_equipment_5
+		reliability = 1.02
+		max_organisation = 0.12
+		default_morale = 0.06
+		manpower = 110
 		build_cost_ic = 1
 		hardness = -0.30
 	}
 	ZZ_neg_armor_light_1 = {
 		year = 2000
 		archetype = ZZ_neg_armor_light
+		active = no
+		is_buildable = yes
+		priority = 10
+	}
+
+	# 德国装甲掷弹兵营（44 辆步战车 + 4 辆坦克歼击车）编成独立营种条目，
+	# 配重按该营装甲底盘占比单独标定，使装甲率保持在中型机械化营水平。
+	ZZ_neg_armor_pzgren = {
+		year = 2000
+
 		active = yes
+		can_license = no
+		is_archetype = yes
+		is_buildable = no
+		type = {
+			armor
+		}
+		group_by = archetype
+
+		interface_category = interface_category_land
+		picture = cnc_equipment_5
+		reliability = 1.03
+		max_organisation = 0.14
+		default_morale = 0.07
+		manpower = 130
+		build_cost_ic = 1
+		hardness = -0.55
+	}
+	ZZ_neg_armor_pzgren_1 = {
+		year = 2000
+		archetype = ZZ_neg_armor_pzgren
+		active = no
 		is_buildable = yes
 		priority = 10
 	}
@@ -123,7 +182,11 @@ equipments = {
 		group_by = archetype
 
 		interface_category = interface_category_land
-		reliability = 1
+		picture = cnc_equipment_5
+		reliability = 1.03
+		max_organisation = 0.15
+		default_morale = 0.07
+		manpower = 150
 		build_cost_ic = 1
 		hardness = -0.35
 	}
@@ -148,66 +211,17 @@ equipments = {
 		group_by = archetype
 
 		interface_category = interface_category_land
-		reliability = 1
+		picture = cnc_equipment_5
+		reliability = 1.02
+		max_organisation = 0.12
+		default_morale = 0.06
+		manpower = 100
 		build_cost_ic = 1
 		hardness = -0.15
 	}
 	ZZ_neg_armor_heli_1 = {
 		year = 2000
 		archetype = ZZ_neg_armor_heli
-		active = yes
-		is_buildable = yes
-		priority = 10
-	}
-
-	# 第十四轮：国别合成营装甲率校准
-	# 俄 BTG 坦克占比更高 → 配重减轻，装甲率高于通用重装营
-	ZZ_neg_armor_heavy_sov = {
-		year = 2000
-
-		active = yes
-		can_license = no
-		is_archetype = yes
-		is_buildable = no
-		type = {
-			armor
-		}
-		group_by = archetype
-
-		interface_category = interface_category_land
-		reliability = 1
-		build_cost_ic = 1
-		hardness = -2.55
-	}
-	ZZ_neg_armor_heavy_sov_1 = {
-		year = 2000
-		archetype = ZZ_neg_armor_heavy_sov
-		active = yes
-		is_buildable = yes
-		priority = 10
-	}
-
-	# 中国两栖战车为铝合金车体 → 配重加重，装甲率低于通用两栖营
-	ZZ_neg_armor_amphibious_chi = {
-		year = 2000
-
-		active = yes
-		can_license = no
-		is_archetype = yes
-		is_buildable = no
-		type = {
-			armor
-		}
-		group_by = archetype
-
-		interface_category = interface_category_land
-		reliability = 1
-		build_cost_ic = 1
-		hardness = -1.75
-	}
-	ZZ_neg_armor_amphibious_chi_1 = {
-		year = 2000
-		archetype = ZZ_neg_armor_amphibious_chi
 		active = yes
 		is_buildable = yes
 		priority = 10

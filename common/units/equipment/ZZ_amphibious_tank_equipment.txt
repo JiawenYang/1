@@ -1,0 +1,301 @@
+# ============================================================================
+# 两栖坦克：PT-76 / Type-63 系列——固定属性装备，不开设计器
+#
+# 结构严格仿照 MD 通用卡车（MD_utility_vehicle.txt）：
+#   子装备仅 year/archetype/priority + 数值块，直接挂在已验证可用的
+#   ZZ_amphibious_mechanized_equipment 底盘下（与 AAV-7/ZBD-05/KAAV7 同体系）
+#
+# 关键机制：
+#   1. archetype 的 type = { armor mechanized amphibious }，归入两栖坦克分类
+#   2. parent 链 → 实现过时标记（子装备解锁时父装备标记为过时）
+#   3. additional_collateral_damage / visual_level → 对齐 MD 原版装备字段
+#
+# 数值复刻方式（全部按 MD 2.0.2 的 medium_tank_destroyer_chassis_0 模块叠加）：
+#   PT-76   = 2.0.2 无独立变体，按 PT-76B 同配置去掉 armor/engine 升级推导（配置与 Type-63 等价）
+#   PT-76B  = MD 2.0.2 原版变体（SOV - Russia.txt L2881）：
+#             tank_small_cannon + afv_coax_machine_gun_2 + mixed_main_ammo_1 + tank_soviet_turret
+#             + tank_torsion_bar_suspension_light + tank_diesel_engine_gen1
+#             + tank_steel_armor_gen1 + manual_loading + tank_battlestation_1，armor升级2
+#   PT-85   = MD 2.0.2 原版变体（NKO - North Korea.txt L649）：
+#             tank_small_cannon_2 + afv_coax_machine_gun + mixed_main_ammo_1 + tank_soviet_turret
+#             + tank_torsion_bar_suspension_light + tank_diesel_engine_gen2
+#             + tank_steel_armor_gen1 + manual_loading + tank_battlestation_2，armor升级4
+#   Type-63    = MD 2.0.2 原版变体（CHI - China.txt L1597，medium_tank_destroyer_chassis_0）：
+#                tank_small_cannon + afv_coax_machine_gun + mixed_main_ammo_1 + tank_soviet_turret
+#                + tank_torsion_bar_suspension_light + tank_diesel_engine_gen1
+#                + tank_steel_armor_gen1 + manual_loading + tank_battlestation_1，armor升级0
+#   Type-63-I  = 同型换 diesel_gen2 + additional_mg，armor升级1 + engine升级1
+#   Type-63-II = 同型换 tank_battlestation_2，armor升级2 + engine升级2
+#   Type-63A   = tank_small_cannon_2 + afv_coax_machine_gun_2 + mixed_main_ammo_2
+#                + tank_diesel_engine_gen3 + smoke_launchers_2 + additional_mg
+#                + tank_battlestation_2_thermal，armor升级3 + engine升级3
+# ============================================================================
+
+equipments = {
+
+	# PT-76：2.0.2 无独立变体，按 PT-76B 同配置去掉 armor/engine 升级推导（配置与 Type-63 等价）
+	ZZ_amphibious_tank_chassis_pt76 = {
+		year = 1951
+
+		archetype = ZZ_amphibious_mechanized_equipment
+		priority = 5
+		visual_level = 0
+
+		#Misc Abilities
+		maximum_speed = 12.8125
+		reliability = 0.77
+		fuel_consumption = 2.38
+		supply_consumption = 0.01
+
+		#Offensive Abilities
+		soft_attack = 5.992
+		hard_attack = 1.4338
+		additional_collateral_damage = 0.72
+		ap_attack = 18
+		air_attack = 0
+
+		#Defensive Abilities
+		defense = 5.25
+		breakthrough = 8.25
+		hardness = 0.55
+		armor_value = 7.81375
+
+		#Space taken in convoy
+		lend_lease_cost = 4
+
+		build_cost_ic = 25.67
+		manpower = 3
+		resources = {
+			steel = 3
+		}
+	}
+
+	# PT-76B：MD 2.0.2 原版变体（SOV - Russia.txt L2881，medium_tank_destroyer_chassis_0），armor升级2
+	ZZ_amphibious_tank_chassis_pt76b = {
+		year = 1959
+
+		archetype = ZZ_amphibious_mechanized_equipment
+		parent = ZZ_amphibious_tank_chassis_pt76
+		priority = 5
+		visual_level = 0
+
+		#Misc Abilities
+		maximum_speed = 12.3
+		reliability = 0.72
+		fuel_consumption = 2.38
+		supply_consumption = 0.01
+
+		#Offensive Abilities
+		soft_attack = 6.66075
+		hard_attack = 1.4873
+		additional_collateral_damage = 0.80
+		ap_attack = 18
+		air_attack = 0
+
+		#Defensive Abilities
+		defense = 5.575
+		breakthrough = 8.875
+		hardness = 0.55
+		armor_value = 9.0475
+
+		#Space taken in convoy
+		lend_lease_cost = 4
+
+		build_cost_ic = 26.36
+		manpower = 3
+		resources = {
+			steel = 3
+		}
+	}
+
+	# PT-85：MD 2.0.2 原版变体（NKO - North Korea.txt L649，medium_tank_destroyer_chassis_0），armor升级4
+	ZZ_amphibious_tank_chassis_pt85 = {
+		year = 1981
+
+		archetype = ZZ_amphibious_mechanized_equipment
+		parent = ZZ_amphibious_tank_chassis_pt76b
+		priority = 5
+		visual_level = 0
+
+		#Misc Abilities
+		maximum_speed = 13.5125
+		reliability = 0.7176
+		fuel_consumption = 2.805
+		supply_consumption = 0.01
+
+		#Offensive Abilities
+		soft_attack = 8.305
+		hard_attack = 1.969
+		additional_collateral_damage = 1.00
+		ap_attack = 23.75
+		air_attack = 0
+
+		#Defensive Abilities
+		defense = 6.65
+		breakthrough = 10.25
+		hardness = 0.55
+		armor_value = 10.28125
+
+		#Space taken in convoy
+		lend_lease_cost = 4
+
+		build_cost_ic = 30.23
+		manpower = 3
+		resources = {
+			steel = 3
+		}
+	}
+
+	# Type-63：MD 2.0.2 原版变体（CHI - China.txt L1597，medium_tank_destroyer_chassis_0），armor升级0
+	ZZ_amphibious_tank_chassis_type63 = {
+		year = 1963
+
+		archetype = ZZ_amphibious_mechanized_equipment
+		priority = 5
+		visual_level = 0
+
+		#Misc Abilities
+		maximum_speed = 12.8125
+		reliability = 0.77
+		fuel_consumption = 2.38
+		supply_consumption = 0.01
+
+		#Offensive Abilities
+		soft_attack = 5.992
+		hard_attack = 1.4338
+		additional_collateral_damage = 0.72
+		ap_attack = 18
+		air_attack = 0
+
+		#Defensive Abilities
+		defense = 5.25
+		breakthrough = 8.25
+		hardness = 0.55
+		armor_value = 7.81375
+
+		#Space taken in convoy
+		lend_lease_cost = 4
+
+		build_cost_ic = 25.67
+		manpower = 3
+		resources = {
+			steel = 3
+		}
+	}
+
+	# Type-63-I：MD 2.0.2 原版变体（CHI - China.txt L1622），armor升级1 + engine升级1
+	ZZ_amphibious_tank_chassis_type63_1 = {
+		year = 1966
+
+		archetype = ZZ_amphibious_mechanized_equipment
+		parent = ZZ_amphibious_tank_chassis_type63
+		priority = 5
+		visual_level = 0
+
+		#Misc Abilities
+		maximum_speed = 14.805
+		reliability = 0.74305
+		fuel_consumption = 3.0175
+		supply_consumption = 0.01
+
+		#Offensive Abilities
+		soft_attack = 6.048
+		hard_attack = 1.4338
+		additional_collateral_damage = 0.73
+		ap_attack = 18
+		air_attack = 0
+
+		#Defensive Abilities
+		defense = 5.35
+		breakthrough = 8.5
+		hardness = 0.55
+		armor_value = 8.430625
+
+		#Space taken in convoy
+		lend_lease_cost = 4
+
+		build_cost_ic = 26.97
+		manpower = 3
+		resources = {
+			steel = 3
+		}
+	}
+
+	# Type-63-II：MD 2.0.2 原版变体（CHI - China.txt L1648），armor升级2 + engine升级2
+	ZZ_amphibious_tank_chassis_type63_2 = {
+		year = 1979
+
+		archetype = ZZ_amphibious_mechanized_equipment
+		parent = ZZ_amphibious_tank_chassis_type63_1
+		priority = 5
+		visual_level = 0
+
+		#Misc Abilities
+		maximum_speed = 14.9225
+		reliability = 0.7254
+		fuel_consumption = 3.23
+		supply_consumption = 0.01
+
+		#Offensive Abilities
+		soft_attack = 6.216
+		hard_attack = 1.474
+		additional_collateral_damage = 0.75
+		ap_attack = 18
+		air_attack = 0
+
+		#Defensive Abilities
+		defense = 6.45
+		breakthrough = 9.75
+		hardness = 0.55
+		armor_value = 9.0475
+
+		#Space taken in convoy
+		lend_lease_cost = 4
+
+		build_cost_ic = 28.27
+		manpower = 3
+		resources = {
+			steel = 3
+		}
+	}
+
+	# Type-63A：MD 2.0.2 原版变体（CHI - China.txt L1674），armor升级3 + engine升级3
+	ZZ_amphibious_tank_chassis_type63a = {
+		year = 1997
+
+		archetype = ZZ_amphibious_mechanized_equipment
+		parent = ZZ_amphibious_tank_chassis_type63_2
+		priority = 5
+		visual_level = 0
+
+		#Misc Abilities
+		maximum_speed = 16.96
+		reliability = 0.68915
+		fuel_consumption = 3.9525
+		supply_consumption = 0.01
+
+		#Offensive Abilities
+		soft_attack = 10.73925
+		hard_attack = 3.674
+		additional_collateral_damage = 1.29
+		ap_attack = 30.75
+		air_attack = 0
+
+		#Defensive Abilities
+		defense = 9.10875
+		breakthrough = 11.68125
+		hardness = 0.55
+		armor_value = 9.664375
+
+		#Space taken in convoy
+		lend_lease_cost = 4
+
+		build_cost_ic = 35.35
+		manpower = 3
+		resources = {
+			steel = 3
+			microchips = 1
+		}
+	}
+
+}

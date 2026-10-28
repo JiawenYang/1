@@ -1,0 +1,385 @@
+add_namespace = isrwar
+
+# =====================================================
+# 烈焰升腾 以色列/巴勒斯坦事件链移植版
+# 命名空间改为 isrwar，避免与千禧黎明原版 israel.* 冲突
+# 已剔除：TFR 专属角色、TFR 地图州（810/811/914/915/881）、
+#          add_income 经济变量、未移植新闻事件、TFR 专属 OOB 与师模板
+# =====================================================
+
+country_event = { #特朗普和平计划提案
+	id = isrwar.1
+	title = isrwar.1.t
+	desc = isrwar.1.d
+	picture = GFX_Palestinian_Riot
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = { #进军西岸
+		name = isrwar.1.a
+		country_event = { id = isrwar.8 }
+		add_war_support = 0.10
+		add_popularity = {
+			ideology = nationalist
+			popularity = 0.01
+		}
+		add_popularity = {
+			ideology = fascism
+			popularity = 0.02
+		}
+		add_popularity = {
+			ideology = democratic
+			popularity = 0.01
+		}
+		random_list = {
+			80 = { #行动受挫，华盛顿不满
+				add_political_power = -75
+			}
+			20 = { #行动顺利，华盛顿默许
+				add_political_power = 75
+			}
+		}
+	}
+	option = { #以色列版马歇尔计划
+		name = isrwar.1.b
+		add_stability = 0.10
+		country_event = { id = isrwar.7 }
+		add_popularity = {
+			ideology = democratic
+			popularity = 0.04
+		}
+	}
+}
+
+country_event = { #莱哈瓦游行
+	id = isrwar.2
+	title = isrwar.2.t
+	desc = isrwar.2.d
+	picture = GFX_Palestinian_Riot
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = { #他们在阻碍和平！
+		name = isrwar.2.a
+		add_war_support = -0.08
+		add_popularity = {
+			ideology = fascism
+			popularity = 0.02
+		}
+		random_list = {
+			90 = {
+				country_event = { id = isrwar.7 }
+			}
+			10 = {
+				country_event = { id = isrwar.8 }
+			}
+		}
+	}
+	option = { #一国方案！一国方案！
+		name = isrwar.2.b
+		add_stability = -0.08
+		add_popularity = {
+			ideology = fascism
+			popularity = 0.08
+		}
+		random_list = {
+			50 = {
+				country_event = { id = isrwar.7 }
+			}
+			50 = {
+				country_event = { id = isrwar.8 }
+			}
+		}
+	}
+}
+
+country_event = { #内塔尼亚胡宣布国家紧急状态
+	id = isrwar.3
+	title = isrwar.3.t
+	desc = isrwar.3.d
+	picture = GFX_Palestinian_Riot
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = isrwar.3.a
+		add_popularity = {
+			ideology = democratic
+			popularity = 0.05
+		}
+		add_popularity = {
+			ideology = fascism
+			popularity = 0.01
+		}
+		add_popularity = {
+			ideology = nationalist
+			popularity = 0.02
+		}
+		clr_country_flag = head_of_gov_ui_enabled
+	}
+}
+
+country_event = { #联合政府宣告成立
+	id = isrwar.4
+	title = isrwar.4.t
+	desc = isrwar.4.d
+	picture = GFX_israeli_government_event
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = isrwar.4.a
+		add_popularity = {
+			ideology = democratic
+			popularity = 0.06
+		}
+		add_stability = 0.08
+	}
+}
+
+country_event = { #联合政府崩溃
+	id = isrwar.5
+	title = isrwar.5.t
+	desc = isrwar.5.d
+	picture = GFX_politics_protest
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = isrwar.5.a
+		add_popularity = {
+			ideology = democratic
+			popularity = -0.08
+		}
+		add_political_power = 25
+		add_stability = -0.12
+	}
+}
+
+country_event = { #堕落歌利亚行动
+	id = isrwar.6
+	title = isrwar.6.t
+	desc = isrwar.6.d
+	picture = GFX_rocket_strike_isr_one
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = isrwar.6.a
+		add_war_support = 0.10
+	}
+}
+
+country_event = { #巴勒斯坦方面抗议以色列行动
+	id = isrwar.7
+	title = isrwar.7.t
+	desc = isrwar.7.d
+	picture = GFX_politics_protest
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = isrwar.7.a
+		add_stability = -0.025
+		add_political_power = -25
+		PAL = {
+			add_manpower = 1250
+		}
+	}
+}
+
+country_event = { #巴勒斯坦方面招募志愿者
+	id = isrwar.8
+	title = isrwar.8.t
+	desc = isrwar.8.d
+	picture = GFX_news_arab_riot_police
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = isrwar.8.a
+		add_stability = -0.05
+		add_political_power = -50
+		PAL = {
+			add_manpower = 2500
+		}
+	}
+}
+
+country_event = { #希克迈特·塔米米遇害
+	id = isrwar.9
+	title = isrwar.9.t
+	desc = isrwar.9.d
+	picture = GFX_Tamimi_Killed
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	trigger = {
+		tag = ISR
+	}
+
+	option = {
+		name = isrwar.9.a
+		add_stability = -0.05
+		country_event = { id = isrwar.11 days = 5 }
+		hidden_effect = {
+			country_event = { id = isrwar.12 days = 37 }
+		}
+	}
+}
+
+country_event = { #以色列新总统就职
+	id = isrwar.10
+	title = isrwar.10.t
+	desc = isrwar.10.d
+	picture = GFX_generic_elections
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = isrwar.10.a
+		add_popularity = {
+			ideology = democratic
+			popularity = 0.04
+		}
+		add_popularity = {
+			ideology = nationalist
+			popularity = 0.02
+		}
+		add_popularity = {
+			ideology = democratic
+			popularity = -0.02
+		}
+	}
+}
+
+country_event = { #哈马斯动员
+	id = isrwar.11
+	title = isrwar.11.t
+	desc = isrwar.11.d
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = isrwar.11.a
+		PAL = {
+			set_politics = {
+				ruling_party = nationalist
+				elections_allowed = no
+			}
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.25
+			}
+			country_event = { id = isrwar.12 days = 35 }
+		}
+	}
+}
+
+country_event = { #第四次起义
+	id = isrwar.12
+	title = isrwar.12.t
+	desc = isrwar.12.d
+	picture = GFX_politics_protest
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = { has_global_flag = MEW_sixth_war_ongoing }
+	}
+
+	immediate = {
+		set_global_flag = third_intifada
+	}
+
+	option = {
+		name = isrwar.12.a
+		PAL = {
+			declare_war_on = {
+				target = ISR
+				type = annex_everything
+			}
+		}
+		ISR = {
+			country_event = { id = isrwar.13 days = 2 }
+		}
+	}
+}
+
+country_event = { #以色列总动员
+	id = isrwar.13
+	title = isrwar.13.t
+	desc = isrwar.13.d
+	picture = GFX_israeli_government_event
+
+	is_triggered_only = yes
+
+	option = {
+		name = isrwar.13.a
+		add_war_support = 0.10
+	}
+}
+
+country_event = { #阿以战争：两国方案
+	id = isrwar.15
+	title = isrwar.15.t
+	desc = isrwar.15.d
+	picture = GFX_politics_talks
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	trigger = {
+		tag = ISR
+	}
+
+	immediate = {
+		hidden_effect = {
+			PAL = {
+				transfer_state = 208
+				transfer_state = 209
+				set_capital = {
+					state = 208
+					remember_old_capital = no
+				}
+			}
+			every_state = {
+				limit = {
+					is_core_of = ISR
+					NOT = {
+						is_controlled_by = ISR
+					}
+				}
+				transfer_state_to = PAL
+			}
+			ISR = {
+				white_peace = SYR
+				white_peace = EGY
+				white_peace = PAL
+			}
+			SYR = {
+				dismantle_faction = yes
+			}
+			set_global_flag = MEW_israel_two_states
+			clr_global_flag = third_intifada
+		}
+	}
+
+	option = {
+		name = isrwar.15.a
+		add_war_support = -0.25
+		add_stability = -0.25
+	}
+}

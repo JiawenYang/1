@@ -1,377 +1,290 @@
+# ============================================================================
+# 空降步兵战车（Airborne IFV）——固定属性装备，不开设计器
+#
+# 结构严格仿照 MD 通用卡车（MD_utility_vehicle.txt 的 util_vehicle_equipment）：
+#   archetype 仅 is_archetype/is_buildable=no + type + group_by + interface_category
+#   子装备仅 year/archetype/priority + 数值块（不写 abbreviation/visual_level/
+#   is_buildable/picture 等设计器字段）
+#
+# 数值复刻方式：
+#   BMD-1/2/3 = MD history\countries\SOV - Russia.txt 原版变体
+#   BMD-1P    = BMD-1 配置 + afv_alum_armor_gen2 + afv_additional_machine_guns
+#   BMD-4M    = ifv_hull_2 + afv_assault_gun_2 + afv_coax_autocannon 配置（armor升级2级）
+#   ZBD-03    = MD history\countries\CHI - China.txt 同名变体配置（造价文件值19.74，
+#               经"全产业链能力"-5%后游戏内显示18.75）
+#   资源/补给/镇压均按游戏规则复刻：底盘基础资源 + 各模块 build_cost_resources /
+#   add_stats 之和（MD 2.0.2 中 microchips 为合法资源，见 common/resources/00_resources.txt）
+# ============================================================================
+
 equipments = {
 
-	# ============================================================================
-	# 空降战车底盘（ZZ_airborne_ifv_chassis，_0 ~ _4）
-	#
-	# 槽位框架完整照抄 MD 的 medium_tank_chassis（主炮/副武器/炮塔/悬挂/装甲/
-	# 引擎/装填/弹药/6 个特种槽），因此任何在 MD 中型坦克上可用的模块在空降
-	# 战车上都能正常显示、正常安装，不会出现“未知”。
-	#
-	# 与其它车辆的区分点在 special_type_slot_6：额外开放专属类别
-	# ZZ_airborne_insertion_module，本模组只有“降落伞空投系统”属于该类别，
-	# 该类别同时只被本底盘和两栖战车底盘之外的任何车辆引用，不会影响 MD 原有装备。
-	#
-	# type = { armor flame } 与 MD 自己的步兵战车底盘 medium_tank_flame_chassis
-	# 完全一致，afv_troop_capacity 等按 flame/amphibious 类型放行的模块可以正常使用。
-	# ============================================================================
-
-	ZZ_airborne_ifv_chassis = {
-		year = 1965
+	# ==================== 底盘（archetype，不出现在生产/设计器） ====================
+	airborne_mechanized_equipment = {
 		is_archetype = yes
 		is_buildable = no
-		type = { armor flame }
 
-		picture = archetype_modern_tank_equipment
+		fuel_consumption = 3.5
+
+		type = {
+			mechanized
+		}
+
 		group_by = archetype
+
 		interface_category = interface_category_armor
-		priority = 2000
 
-		module_slots = {
-			main_armament_slot = {
-				required = yes
-				allowed_module_categories = {
-					missile_launcher_systems
-					art_rocket_module
-					spaa_autocannon_systems
-					tank_small_main_armament
-					tank_small_medium_main_armament
-					tank_large_main_armament
-					art_gun_module
-					autocannon_vehicle
-					assault_gun
-					light_afv_apc_main_armament
-				}
-			}
-			secondary_armament_slot = {
-				required = no
-				allowed_module_categories = {
-				}
-			}
-			turret_type_slot = {
-				required = yes
-				allowed_module_categories = {
-					tank_turret_type
-				}
-			}
-			suspension_type_slot = {
-				required = yes
-				allowed_module_categories = {
-					tank_suspension_type_wheeled
-					tank_suspension_type_light
-					tank_suspension_type_med
-					tank_suspension_type_heavy
-					afv_hover_suspension_type_category
-				}
-			}
-			armor_type_slot = {
-				required = no
-				allowed_module_categories = {
-					light_afv_armor_type
-					tank_armor_type
-					light_afv_heavy_armor_type
-					tank_heavy_armor_type
-					tank_stealth_armor
-				}
-			}
-			engine_type_slot = {
-				required = yes
-				allowed_module_categories = {
-					tank_diesel_engine_type
-					tank_turbine_engine_type
-					tank_electric_engine_type
-					tank_nuclear_engine_type
-					afv_gasoline_engine_type
-					czech_diesel_engine_type
-					czech_gasoline_engine_type
-					czech_electric_engine_type
-					tank_exoskeletal_engine_type
-				}
-			}
-			reload_type_slot = {
-				required = yes
-				allowed_module_categories = {
-					tank_reload_module
-					tank_reload_external_module
-				}
-			}
-			special_type_slot_1 = {
-				required = no
-				allowed_module_categories = {
-					tank_special_module
-					tank_smoke_module
-					tank_aa_module
-					tank_additional_armor_era
-					tank_additional_armor_spaced
-					tank_support_drone_module
-					afv_atgm_module
-					tank_atgm_module
-					tank_longer_gun_category
-				}
-			}
-			special_type_slot_2 = {
-				required = no
-				allowed_module_categories = {
-					tank_special_module
-					tank_smoke_module
-					tank_aa_module
-					tank_additional_armor_era
-					tank_additional_armor_spaced
-					tank_support_drone_module
-					afv_atgm_module
-					tank_atgm_module
-					tank_longer_gun_category
-				}
-			}
-			special_type_slot_3 = {
-				required = no
-				allowed_module_categories = {
-					tank_special_module
-					tank_smoke_module
-					tank_aa_module
-					tank_additional_armor_era
-					tank_additional_armor_spaced
-					tank_support_drone_module
-					afv_atgm_module
-					tank_atgm_module
-					tank_longer_gun_category
-				}
-			}
-			special_type_slot_4 = {
-				required = no
-				allowed_module_categories = {
-					tank_battlestation_module
-				}
-			}
-			special_type_slot_5 = {
-				required = no
-				allowed_module_categories = {
-					tank_special_module
-				}
-			}
-			special_type_slot_6 = {
-				required = no
-				allowed_module_categories = {
-					tank_additional_armor_era
-					tank_additional_armor_spaced
-					ZZ_airborne_insertion_module
-				}
-			}
-			ammunition_load_slot = {
-				required = no
-				allowed_module_categories = {
-				}
-			}
-		}
+		#Misc Abilities
+		maximum_speed = 11
+		reliability = 0.85
 
-		module_count_limit = {
-			category = tank_battlestation_module
-			count < 2
-		}
-		module_count_limit = {
-			category = tank_atgm_module
-			count < 2
-		}
-		module_count_limit = {
-			category = afv_atgm_module
-			count < 2
-		}
-		module_count_limit = {
-			category = tank_additional_armor_era
-			count < 2
-		}
-		module_count_limit = {
-			category = tank_additional_armor_spaced
-			count < 2
-		}
-		module_count_limit = {
-			category = tank_aa_module
-			count < 2
-		}
-		module_count_limit = {
-			module = tank_longer_gun
-			count < 2
-		}
-		module_count_limit = {
-			module = tank_drones
-			count < 2
-		}
-		module_count_limit = {
-			module = tank_drones_2
-			count < 2
-		}
-		module_count_limit = {
-			category = tank_smoke_module
-			count < 2
-		}
-		module_count_limit = {
-			module = wet_ammo_storage
-			count < 2
-		}
-		module_count_limit = {
-			module = afv_reverse_doors
-			count < 2
-		}
-		module_count_limit = {
-			module = afv_mine_protection
-			count < 2
-		}
-		module_count_limit = {
-			category = ZZ_airborne_insertion_module
-			count < 2
-		}
+		#Offensive Abilities
+		soft_attack = 10
+		hard_attack = 3
+		ap_attack = 10
+		air_attack = 0
 
-		default_modules = {
-			main_armament_slot = empty
-			turret_type_slot = tank_base_tank_turret
-			suspension_type_slot = tank_torsion_bar_suspension_medium
-			armor_type_slot = empty
-			engine_type_slot = empty
-			reload_type_slot = manual_loading
-			special_type_slot_6 = ZZ_parachute_system
-		}
-
-		upgrades = {
-			tank_nsb_armor_upgrade
-			tank_nsb_fire_upgrade
-			tank_nsb_engine_upgrade
-		}
-
-		fuel_consumption = 0
-		maximum_speed = 4
-		build_cost_ic = 0.75
-		reliability = 1.0
+		#Defensive Abilities
+		defense = 10
+		breakthrough = 6
 		hardness = 0.5
-		armor_value = 8
+		armor_value = 10
+
+		#Space taken in convoy
 		lend_lease_cost = 3
+
+		build_cost_ic = 7
 		resources = {
 			steel = 1
+		}
+	}
+
+	# ==================== 车辆（固定属性，直接生产） ====================
+
+	# BMD-1：MD 原版变体（SOV - Russia.txt），armor升级0级
+	ZZ_airborne_ifv_chassis_bmd1 = {
+		year = 1969
+
+		archetype = airborne_mechanized_equipment
+		priority = 5
+
+		#Misc Abilities
+		maximum_speed = 10.175
+		reliability = 0.8
+		fuel_consumption = 3.5
+		supply_consumption = 0.02
+		suppression = 0.25
+
+		#Offensive Abilities
+		soft_attack = 15
+		hard_attack = 3.93
+		ap_attack = 14
+		air_attack = 0
+
+		#Defensive Abilities
+		defense = 12.305
+		breakthrough = 8.925
+		hardness = 0.5
+		armor_value = 7.2
+
+		#Space taken in convoy
+		lend_lease_cost = 3
+
+		build_cost_ic = 6.9
+		manpower = 3
+		resources = {
+			steel = 2
 			aluminium = 1
 		}
+	}
 
+	# BMD-1P：BMD-1 附加装甲型，armor升级0级
+	ZZ_airborne_ifv_chassis_bmd1p = {
+		year = 1977
+
+		archetype = airborne_mechanized_equipment
+		priority = 5
+
+		#Misc Abilities
+		maximum_speed = 9.075
+		reliability = 0.8
+		fuel_consumption = 3.5
+		supply_consumption = 0.03
+		suppression = 0.25
+
+		#Offensive Abilities
+		soft_attack = 16
+		hard_attack = 3.93
+		ap_attack = 14
+		air_attack = 0.25
+
+		#Defensive Abilities
+		defense = 17.655
+		breakthrough = 11.025
+		hardness = 0.5
+		armor_value = 10.8
+
+		#Space taken in convoy
+		lend_lease_cost = 3
+
+		build_cost_ic = 8.6
 		manpower = 3
-	}
-
-	ZZ_airborne_ifv_chassis_0 = {
-		abbreviation = "abn0"
-		derived_variant_name = ZZ_airborne_ifv_chassis_0
-		visual_level = 0
-		year = 1965
-		archetype = ZZ_airborne_ifv_chassis
-		priority = 2000
-		module_slots = inherit
-
-		lend_lease_cost = 3
-		fuel_consumption = 0
-		maximum_speed = 5
-		build_cost_ic = 1.1
-		reliability = 1.05
-		hardness = 0.5
-		armor_value = 12
-
-		upgrades = {
-			tank_nsb_armor_upgrade
-			tank_nsb_fire_upgrade
-			tank_nsb_engine_upgrade
+		resources = {
+			steel = 2
+			aluminium = 1
+			microchips = 1
 		}
 	}
 
-	ZZ_airborne_ifv_chassis_1 = {
-		abbreviation = "abn1"
-		derived_variant_name = ZZ_airborne_ifv_chassis_1
-		visual_level = 1
-		year = 1975
-		archetype = ZZ_airborne_ifv_chassis
-		parent = ZZ_airborne_ifv_chassis_0
-		priority = 2000
-		module_slots = inherit
+	# BMD-2：MD 原版变体（SOV - Russia.txt），armor升级1级
+	ZZ_airborne_ifv_chassis_bmd2 = {
+		year = 1985
 
-		lend_lease_cost = 3
-		fuel_consumption = 0
-		maximum_speed = 6
-		build_cost_ic = 1.4
-		reliability = 1.1
+		archetype = airborne_mechanized_equipment
+		priority = 5
+
+		#Misc Abilities
+		maximum_speed = 10.48125
+		reliability = 0.7644
+		fuel_consumption = 4.1
+		supply_consumption = 0.03
+		suppression = 0.25
+
+		#Offensive Abilities
+		soft_attack = 11.25
+		hard_attack = 5.73
+		ap_attack = 22
+		air_attack = 0
+
+		#Defensive Abilities
+		defense = 9.8975
+		breakthrough = 6.405
 		hardness = 0.5
-		armor_value = 16
+		armor_value = 8.6
 
-		upgrades = {
-			tank_nsb_armor_upgrade
-			tank_nsb_fire_upgrade
-			tank_nsb_engine_upgrade
+		#Space taken in convoy
+		lend_lease_cost = 3
+
+		build_cost_ic = 7.45
+		manpower = 3
+		resources = {
+			steel = 2
+			aluminium = 1
+			microchips = 1
 		}
 	}
 
-	ZZ_airborne_ifv_chassis_2 = {
-		abbreviation = "abn2"
-		derived_variant_name = ZZ_airborne_ifv_chassis_2
-		visual_level = 2
-		year = 1995
-		archetype = ZZ_airborne_ifv_chassis
-		parent = ZZ_airborne_ifv_chassis_1
-		priority = 2000
-		module_slots = inherit
+	# BMD-3：MD 原版变体（SOV - Russia.txt），armor升级1级
+	ZZ_airborne_ifv_chassis_bmd3 = {
+		year = 1990
 
-		lend_lease_cost = 3
-		fuel_consumption = 0
-		maximum_speed = 7
-		build_cost_ic = 1.7
-		reliability = 1.15
+		archetype = airborne_mechanized_equipment
+		priority = 5
+
+		#Misc Abilities
+		maximum_speed = 10.48125
+		reliability = 0.9604
+		fuel_consumption = 4.1
+		supply_consumption = 0.03
+		suppression = 0.25
+
+		#Offensive Abilities
+		soft_attack = 11.25
+		hard_attack = 5.73
+		ap_attack = 22
+		air_attack = 0
+
+		#Defensive Abilities
+		defense = 14.1775
+		breakthrough = 8.505
 		hardness = 0.5
-		armor_value = 22
+		armor_value = 19.5
 
-		upgrades = {
-			tank_nsb_armor_upgrade
-			tank_nsb_fire_upgrade
-			tank_nsb_engine_upgrade
+		#Space taken in convoy
+		lend_lease_cost = 3
+
+		build_cost_ic = 8.7
+		manpower = 3
+		resources = {
+			steel = 2
+			aluminium = 1
+			microchips = 1
 		}
 	}
 
-	ZZ_airborne_ifv_chassis_3 = {
-		abbreviation = "abn3"
-		derived_variant_name = ZZ_airborne_ifv_chassis_3
-		visual_level = 3
-		year = 2015
-		archetype = ZZ_airborne_ifv_chassis
-		parent = ZZ_airborne_ifv_chassis_2
-		priority = 2000
-		module_slots = inherit
+	# BMD-4M：BMP-3 同级空降型，armor升级2级
+	ZZ_airborne_ifv_chassis_bmd4m = {
+		year = 2004
 
-		lend_lease_cost = 3
-		fuel_consumption = 0
-		maximum_speed = 8
-		build_cost_ic = 2.0
-		reliability = 1.2
+		archetype = airborne_mechanized_equipment
+		priority = 5
+
+		#Misc Abilities
+		maximum_speed = 9.7125
+		reliability = 0.8688
+		fuel_consumption = 4.1
+		supply_consumption = 0.03
+		suppression = 0.25
+
+		#Offensive Abilities
+		soft_attack = 20.9
+		hard_attack = 5.41
+		ap_attack = 20
+		air_attack = 0.25
+
+		#Defensive Abilities
+		defense = 19.795
+		breakthrough = 14.91
 		hardness = 0.5
-		armor_value = 28
+		armor_value = 21
 
-		upgrades = {
-			tank_nsb_armor_upgrade
-			tank_nsb_fire_upgrade
-			tank_nsb_engine_upgrade
+		#Space taken in convoy
+		lend_lease_cost = 3
+
+		build_cost_ic = 10.1
+		manpower = 3
+		resources = {
+			steel = 4
+			aluminium = 1
+			microchips = 3
 		}
 	}
 
-	ZZ_airborne_ifv_chassis_4 = {
-		abbreviation = "abn4"
-		derived_variant_name = ZZ_airborne_ifv_chassis_4
-		visual_level = 4
-		year = 2035
-		archetype = ZZ_airborne_ifv_chassis
-		parent = ZZ_airborne_ifv_chassis_3
-		priority = 2000
-		module_slots = inherit
+	# ZBD-03 中国空降战车：MD 原版 CHI - China.txt 同名变体配置
+	ZZ_airborne_ifv_chassis_zbd03 = {
+		year = 2003
 
+		archetype = airborne_mechanized_equipment
+		priority = 5
+
+		#Misc Abilities
+		maximum_speed = 14.6
+		reliability = 0.901
+		fuel_consumption = 2.8
+		supply_consumption = 0.02
+		suppression = 0.25
+		additional_collateral_damage = 0.1
+
+		#Offensive Abilities
+		soft_attack = 3.2
+		hard_attack = 3.9
+		ap_attack = 21.4
+		air_attack = 0
+
+		#Defensive Abilities
+		defense = 7.7
+		breakthrough = 7.2
+		hardness = 0.3
+		armor_value = 17.5
+
+		#Space taken in convoy
 		lend_lease_cost = 3
-		fuel_consumption = 0
-		maximum_speed = 9
-		build_cost_ic = 2.3
-		reliability = 1.25
-		hardness = 0.5
-		armor_value = 34
 
-		upgrades = {
-			tank_nsb_armor_upgrade
-			tank_nsb_fire_upgrade
-			tank_nsb_engine_upgrade
+		build_cost_ic = 19.74
+		manpower = 3
+		resources = {
+			steel = 2
+			aluminium = 1
+			microchips = 1
 		}
 	}
 

@@ -1,0 +1,287 @@
+add_namespace = usacw
+
+# ===== 美国政治危机与新自由主义秩序（2024年后剧情） =====
+# 原烈焰升腾（TFR）移植的美国内战事件线（2020年选举危机、联邦分裂、公共失序等）已全部移除，
+# 美国不再发生内战与领土分裂；仅保留2024年遇刺→民主党大胜→新自由主义秩序的剧情链，
+# 以及由第二幕欧亚战争结算触发的终局事件（usacw.12 / usacw.13）。
+
+# 2024.7.13 特朗普遇刺
+country_event = {
+	id = usacw.5
+	title = usacw.5.t
+	desc = usacw.5.d
+	picture = GFX_report_Trump_SoE
+	is_triggered_only = yes
+	major = yes
+	fire_only_once = yes
+
+	trigger = {
+		tag = USA
+	}
+
+	option = {
+		name = usacw.5.a
+		add_stability = -0.20
+		add_war_support = 0.10
+		add_political_power = -100
+		hidden_effect = {
+			set_country_flag = USA_republican_collapse_flag
+		}
+	}
+}
+
+# 2024.11.5 共和党崩盘与民主党大胜
+country_event = {
+	id = usacw.6
+	title = usacw.6.t
+	desc = usacw.6.d
+	picture = GFX_report_USA_flag
+	is_triggered_only = yes
+	major = yes
+	fire_only_once = yes
+
+	trigger = {
+		tag = USA
+		has_country_flag = USA_republican_collapse_flag
+	}
+
+	option = {
+		name = usacw.6.a
+		add_stability = 0.05
+		hidden_effect = {
+			set_country_flag = USA_democratic_landslide_flag
+		}
+	}
+}
+
+# 2025.1.20 美国外交停摆（原联邦失能节点重做：无内战，改为外交机器停转）
+country_event = {
+	id = usacw.7
+	title = usacw.7.t
+	desc = usacw.7.d
+	picture = GFX_report_congress_refuses_diplomacy
+	is_triggered_only = yes
+	major = yes
+	fire_only_once = yes
+
+	trigger = {
+		tag = USA
+		has_country_flag = USA_democratic_landslide_flag
+	}
+
+	option = {
+		name = usacw.7.a
+		add_political_power = -75
+		hidden_effect = {
+			set_country_flag = USA_federal_paralysis_flag
+			set_global_flag = USA_federal_paralysis_global
+			# 华盛顿的外交停摆令台北失去最重要的外部保证
+			if = {
+				limit = {
+					country_exists = CHI
+				}
+				CHI = {
+					add_to_variable = { CHI_taiwan_us_support = -40 tooltip = CHI_taiwan_us_support_tt }
+					clamp_variable = { var = CHI_taiwan_us_support min = 0 max = 100 }
+				}
+			}
+		}
+	}
+}
+
+# 2025.3.1 新自由主义秩序全面启动
+country_event = {
+	id = usacw.8
+	title = usacw.8.t
+	desc = usacw.8.d
+	picture = GFX_report_usc_future_of_government
+	is_triggered_only = yes
+	major = yes
+	fire_only_once = yes
+
+	trigger = {
+		tag = USA
+		has_country_flag = USA_federal_paralysis_flag
+	}
+
+	option = {
+		name = usacw.8.a
+		add_stability = 0.05
+		add_war_support = 0.05
+		hidden_effect = {
+			set_country_flag = USA_neoliberal_order_flag
+			set_global_flag = USA_neoliberal_order_global
+		}
+	}
+}
+
+# 2025.4.15 全球干预授权：美国的命运与欧亚战场绑定
+country_event = {
+	id = usacw.9
+	title = usacw.9.t
+	desc = usacw.9.d
+	picture = GFX_usa_disaster
+	is_triggered_only = yes
+	major = yes
+	fire_only_once = yes
+
+	trigger = {
+		tag = USA
+		has_country_flag = USA_neoliberal_order_flag
+	}
+
+	option = {
+		name = usacw.9.a
+		add_war_support = 0.10
+		hidden_effect = {
+			set_country_flag = USA_destiny_bound_flag
+			set_global_flag = USA_destiny_bound_global
+		}
+	}
+}
+
+# 2025.7.4 赌上国运：新秩序与欧亚军事行动共存亡
+country_event = {
+	id = usacw.10
+	title = usacw.10.t
+	desc = usacw.10.d
+	picture = GFX_generic_soldiers
+	is_triggered_only = yes
+	major = yes
+	fire_only_once = yes
+
+	trigger = {
+		tag = USA
+		has_global_flag = USA_destiny_bound_global
+	}
+
+	option = {
+		name = usacw.10.a
+		add_war_support = 0.05
+	}
+}
+
+# 终局·蓝方胜利：民主党长期执政（由欧亚战争结算触发）
+country_event = {
+	id = usacw.12
+	title = usacw.12.t
+	desc = usacw.12.d
+	picture = GFX_report_biden_2020_election_victory
+	is_triggered_only = yes
+	major = yes
+	fire_only_once = yes
+
+	trigger = {
+		tag = USA
+		has_global_flag = USA_endgame_blue_victory
+	}
+
+	option = {
+		name = usacw.12.a
+		add_stability = 0.15
+		add_war_support = -0.15
+		hidden_effect = {
+			remove_ideas = us_public_disorder_five
+			set_country_flag = USA_permanent_majority_flag
+			set_global_flag = USA_democratic_era_global
+			# 蓝方赢得欧亚战争后，美国为以色列背书，后者顺势解决伊朗问题（复辟巴列维王朝）
+			if = {
+				limit = {
+					has_global_flag = MEW_israel_victory
+					country_exists = ISR
+					country_exists = PER
+				}
+				ISR = {
+					country_event = { id = mew.30 days = 90 }
+				}
+			}
+		}
+	}
+}
+
+# 终局·红方胜利：共和党对民主党的彻底清算（由欧亚战争结算触发）
+country_event = {
+	id = usacw.13
+	title = usacw.13.t
+	desc = usacw.13.d
+	picture = GFX_report_Trump_refuses_to_concede
+	is_triggered_only = yes
+	major = yes
+	fire_only_once = yes
+
+	trigger = {
+		tag = USA
+		has_global_flag = USA_endgame_red_victory
+	}
+
+	option = {
+		name = usacw.13.a
+		add_stability = -0.10
+		add_war_support = -0.10
+		hidden_effect = {
+			remove_ideas = us_public_disorder_five
+			set_country_flag = USA_reckoning_flag
+			set_global_flag = USA_reckoning_global
+		}
+	}
+}
+
+# 太平洋动员令：大亚洲战争爆发，美国直接加入太约一方对华作战
+country_event = {
+	id = usacw.14
+	title = usacw.14.t
+	desc = usacw.14.d
+	picture = GFX_CHI_american_fleet_secured
+	is_triggered_only = yes
+	major = yes
+	fire_only_once = yes
+
+	trigger = {
+		tag = USA
+	}
+
+	immediate = {
+		hidden_effect = {
+			if = {
+				limit = {
+					NOT = { is_in_faction_with = JAP }
+				}
+				JAP = {
+					add_to_faction = USA
+				}
+				set_country_flag = pdto_member
+			}
+			if = {
+				limit = {
+					NOT = { has_war_with = CHI }
+				}
+				declare_war_on = {
+					target = CHI
+					type = annex_everything
+				}
+			}
+			add_named_threat = {
+				threat = 10
+				name = USA_pacific_mobilization_threat
+			}
+		}
+	}
+
+	option = {
+		name = usacw.14.a
+		effect_tooltip = {
+			if = {
+				limit = {
+					NOT = { is_in_faction_with = JAP }
+				}
+				JAP = {
+					add_to_faction = USA
+				}
+			}
+			declare_war_on = {
+				target = CHI
+				type = annex_everything
+			}
+		}
+	}
+}

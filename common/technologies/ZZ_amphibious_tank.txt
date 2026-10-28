@@ -1,0 +1,52 @@
+# ============================================================================
+# ZZ 两栖坦克解锁科技（隐藏，不显示在科技树，仅通过开局 set_technology 授予）
+# 按车系国籍拆分：
+#   ZZ_amphibious_tank_pt76_tech   → PT-76 / PT-76B（苏联：SOV）
+#   ZZ_amphibious_tank_pt85_tech   → PT-85（朝鲜：NKO）
+#   ZZ_amphibious_tank_type63_tech → 63式 / 63-I / 63-II / 63A（中国：CHI）
+# ============================================================================
+
+technologies = {
+	ZZ_amphibious_tank_pt76_tech = {
+		enable_equipments = {
+			ZZ_amphibious_tank_chassis_pt76
+			ZZ_amphibious_tank_chassis_pt76b
+		}
+
+		research_cost = 1
+		start_year = 1951
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	ZZ_amphibious_tank_pt85_tech = {
+		enable_equipments = {
+			ZZ_amphibious_tank_chassis_pt85
+		}
+
+		research_cost = 1
+		start_year = 1981
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	ZZ_amphibious_tank_type63_tech = {
+		enable_equipments = {
+			ZZ_amphibious_tank_chassis_type63
+			ZZ_amphibious_tank_chassis_type63_1
+			ZZ_amphibious_tank_chassis_type63_2
+			ZZ_amphibious_tank_chassis_type63a
+		}
+
+		research_cost = 1
+		start_year = 1963
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+}

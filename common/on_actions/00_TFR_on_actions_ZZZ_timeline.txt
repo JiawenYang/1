@@ -5,6 +5,22 @@ on_actions = {
 	# 仅保留推动剧情或对应现实事件的条目；缺失定义的事件已剔除。
 	on_daily = {
 		effect = {
+			CHI = {
+				country_event = {
+					# 中国开局事件
+					id = prc.43
+					days = 2
+				}
+				country_event = {
+					# 中国开局事件
+					id = prc.12
+					days = 4
+				}
+			}
+		}
+	}
+	on_daily = {
+		effect = {
 			if = {
 				limit = {
 					OR = {
@@ -15,16 +31,6 @@ on_actions = {
 				}
 				set_global_flag = TFR_global_timeline_started
 				CHI = {
-					country_event = {
-						# 中国开局事件
-						id = prc.43
-						days = 2
-					}
-					country_event = {
-						# 中国开局事件
-						id = prc.12
-						days = 4
-					}
 					country_event = {
 						# 缅甸国事访问
 						id = prc.3

@@ -16351,10 +16351,11 @@ GER_war_on_authoritarianism = {
 			#set_country_flag = GER_democracy
 		}
 		remove_effect = {
-			declare_war_on = {
-				target = PER
-				type = annex_everything
-			}
+			# 第二幕欧陆战争内容，当前阶段禁用对伊朗宣战（待第二幕实装时恢复）
+			#declare_war_on = {
+			#	target = PER
+			#	type = annex_everything
+			#}
 		}
 	}
 	GER_operation_shining_hope = {
@@ -16392,10 +16393,11 @@ GER_war_on_authoritarianism = {
 			#set_country_flag = GER_democracy
 		}
 		remove_effect = {
-			declare_war_on = {
-				target = EGY
-				type = annex_everything
-			}
+			# 第二幕欧陆战争内容，当前阶段禁用对埃及宣战（待第二幕实装时恢复）
+			#declare_war_on = {
+			#	target = EGY
+			#	type = annex_everything
+			#}
 		}
 	}
 	GER_operation_solomon = {
@@ -16433,24 +16435,25 @@ GER_war_on_authoritarianism = {
 			#set_country_flag = GER_democracy
 		}
 		remove_effect = {
-			if = {
-				limit = {
-					SYR = {
-						has_war_with = ISR
-					}
-				}
-				add_to_faction = ISR
-			}
-			else = {
-				declare_war_on = {
-					target = SYR
-					type = annex_everything
-				}
-				declare_war_on = {
-					target = HEZ
-					type = annex_everything
-				}
-			}
+			# 第二幕欧陆战争内容，当前阶段禁用对叙利亚/真主党宣战及加入以色列阵营（待第二幕实装时恢复）
+			#if = {
+			#	limit = {
+			#		SYR = {
+			#			has_war_with = ISR
+			#		}
+			#	}
+			#	add_to_faction = ISR
+			#}
+			#else = {
+			#	declare_war_on = {
+			#		target = SYR
+			#		type = annex_everything
+			#	}
+			#	declare_war_on = {
+			#		target = HEZ
+			#		type = annex_everything
+			#	}
+			#}
 		}
 	}
 	GER_operation_crescent_moon = {
@@ -16720,14 +16723,6 @@ GER_war_on_authoritarianism = {
 			hidden_effect = {
 				HRL = {
 					load_oob = "HRL_nato_war"
-					country_event = {
-						id = libya.26
-						days = 35
-					}
-					country_event = {
-						id = libya.27
-						days = 65
-					}
 				}
 			}
 		}
@@ -26784,10 +26779,11 @@ GER_gunthers_twitter_cat = {
 		complete_effect = {
 		}
 		remove_effect = {
-			declare_war_on = {
-				target = PER
-				type = annex_everything
-			}
+			# 第二幕欧陆战争内容，当前阶段禁用对伊朗宣战（待第二幕实装时恢复）
+			#declare_war_on = {
+			#	target = PER
+			#	type = annex_everything
+			#}
 		}
 	}
 }
@@ -27795,17 +27791,6 @@ PROXY_maghreb_war_cat = {
 					}
 				}
 			}
-			if = {
-				limit = {
-					has_global_flag = HRL_gaddafi_won_global
-				}
-				HRL = {
-					country_event = { 
-						id = libya.14 
-						days = 100 
-					}
-				}
-			}
 		}
 		complete_effect = { #Morrocan Victory
 			clr_global_flag = ALG_maghreb_war_global
@@ -27904,17 +27889,6 @@ PROXY_maghreb_war_cat = {
 					days = 30
 				}
 			}
-			if = {
-				limit = {
-					has_global_flag = HRL_gaddafi_won_global
-				}
-				HRL = {
-					country_event = { 
-						id = libya.14 
-						days = 100 
-					}
-				}
-			}
 		}
 		timeout_effect = { #Stalemate
 			clr_global_flag = ALG_maghreb_war_global
@@ -27934,17 +27908,6 @@ PROXY_maghreb_war_cat = {
 					transfer_troops = no
 				}
 				dismantle_faction = yes
-			}
-			if = {
-				limit = {
-					has_global_flag = HRL_gaddafi_won_global
-				}
-				HRL = {
-					country_event = { 
-						id = libya.14 
-						days = 100 
-					}
-				}
 			}
 		}
 	}

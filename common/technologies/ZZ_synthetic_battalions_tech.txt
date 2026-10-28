@@ -81,4 +81,33 @@ technologies = {
 		}
 	}
 
+	# ==================== 合成营保障分队解锁 ====================
+	# 仅中美俄德四国拥有；无 folder，不显示在科技树中，
+	# 开局由 ZZ9 - 2017.txt 按国 set_technology 授予（可绕过 allow 检查）。
+	# 门控装备：重/中/轻/两栖四类保障分队与德国装甲掷弹兵营保障分队（_1 型号 active = no）。
+	# 坦克/空突两类保障分队供东方坦克营与常规空突营通用，不在此门控范围内。
+
+	zz_support_detachment_tech = {
+		research_cost = 1
+		start_year = 2015
+		allow = {
+			OR = {
+				original_tag = USA
+				original_tag = SOV
+				original_tag = CHI
+				original_tag = GER
+			}
+		}
+		enable_equipments = {
+			ZZ_neg_armor_heavy_1
+			ZZ_neg_armor_medium_1
+			ZZ_neg_armor_light_1
+			ZZ_neg_armor_amphibious_1
+			ZZ_neg_armor_pzgren_1
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
 }

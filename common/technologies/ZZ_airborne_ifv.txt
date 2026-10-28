@@ -1,17 +1,31 @@
 # ============================================================================
 # ZZ 空降战车解锁科技（隐藏，不显示在科技树，仅通过开局 set_technology 授予）
-# 解锁 ZZ_airborne_ifv_chassis 母型及 _0~_4 各代车体
+# 按车系国籍拆分：
+#   ZZ_airborne_ifv_bmd_tech   → BMD-1/1P/2/3/4M（苏系：SOV URA）
+#   ZZ_airborne_ifv_zbd03_tech → ZBD-03（中国：CHI）
 # ============================================================================
 
 technologies = {
-	ZZ_airborne_ifv_tech = {
+	ZZ_airborne_ifv_bmd_tech = {
 		enable_equipments = {
-			ZZ_airborne_ifv_chassis
-			ZZ_airborne_ifv_chassis_0
-			ZZ_airborne_ifv_chassis_1
-			ZZ_airborne_ifv_chassis_2
-			ZZ_airborne_ifv_chassis_3
-			ZZ_airborne_ifv_chassis_4
+			ZZ_airborne_ifv_chassis_bmd1
+			ZZ_airborne_ifv_chassis_bmd1p
+			ZZ_airborne_ifv_chassis_bmd2
+			ZZ_airborne_ifv_chassis_bmd3
+			ZZ_airborne_ifv_chassis_bmd4m
+		}
+
+		research_cost = 1
+		start_year = 1965
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	ZZ_airborne_ifv_zbd03_tech = {
+		enable_equipments = {
+			ZZ_airborne_ifv_chassis_zbd03
 		}
 
 		research_cost = 1

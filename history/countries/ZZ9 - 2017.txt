@@ -4259,6 +4259,8 @@
             ql_prc_air_spirit_37
         }
         remove_ideas = {
+			CHI_semiconductor_backwardness
+			CHI_water_shortage
             CHI_PLA_Business_Ventures
             chastity_paifang
             censored_nation_01
@@ -4269,11 +4271,8 @@
             semi_consumption_economy
             officer_advanced_training
         }
-        set_power_balance = {
-            id = PRC_power_balance
-            left_side = PRC_nationalization_side
-            right_side = PRC_privitization_side
-            set_value = 0.15
+        remove_power_balance = {
+            id = CHI_factional_balance
         }
         set_country_flag = PRC_internal_factions_enabled_flag
         set_country_flag = PRC_chinas_liberalization_enabled_flag
@@ -4326,6 +4325,14 @@
             PRC_bureaucracy_industrial_capacity_dockyard_dynamic_var = -0.15
         }
 
+        remove_dynamic_modifier = {
+            modifier = CHI_political_system
+        }
+
+        remove_dynamic_modifier = {
+            modifier = CHI_economy_modifier
+        }
+
         add_dynamic_modifier = {
             modifier = PRC_pla_dynamic
         }
@@ -4343,23 +4350,53 @@
         set_variable = { CHI_land_cas_efficiency = -0.2 }
 
         add_dynamic_modifier = { #中国经济政策
-            modifier = CHI_fiscal
+            modifier = PRC_made_in_china_dynamic
         }
-        set_variable = { CHI_fiscal_global_building_slots_factor = 0.2 }
-        set_variable = { CHI_fiscal_communism_drift = 0.03 }
-        set_variable = { CHI_fiscal_consumer_goods = 0.08 }
-        set_variable = { CHI_fiscal_construction_speed = -0.1 }
-        set_variable = { CHI_fiscal_civ_construction_speed = 0.1 }
-        set_variable = { CHI_fiscal_mil_construction_speed = -0.2 }
-        set_variable = { CHI_fiscal_population_tax_collection_efficiency = 0.15 }
-        set_variable = { CHI_fiscal_bureaucracy_cost = 0.1 }
-        set_variable = { CHI_fiscal_police_cost = 0.1 }
-        set_variable = { CHI_fiscal_education_cost = 0.05 }
-        set_variable = { CHI_fiscal_healthcare_cost = -0.05 }
-        set_variable = { CHI_fiscal_welfare_cost = -0.15 }
-        set_variable = { CHI_fiscal_export_money_return = 0.05 }
-        set_variable = { CHI_fiscal_receiving_investment_duration_modifier = -0.05 }
-        set_variable = { CHI_fiscal_receiving_investment_cost_modifier = -0.05 }
+
+		set_variable = {
+			var = PRC_mic_recruitable_population_factor_dynamic_var
+			value = -0.20
+		}
+
+		set_variable = {
+			var = PRC_mic_poverty_development_monthly_dynamic_var
+			value = 0.01
+		}
+
+		set_variable = { 
+			var = PRC_mic_business_value_dynamic_var 
+			value = -0.10 
+		}
+
+		set_variable = { 
+			var = PRC_mic_faction_trade_opinion_factor_dynamic_var 
+			value = 0.15
+		}
+
+		set_variable = { 
+			var = PRC_mic_production_factory_efficiency_gain_factor_dynamic_var 
+			value = -0.10
+		}
+
+		set_variable = { 
+			var = PRC_mic_production_factory_max_efficiency_factor_dynamic_var 
+			value = -0.05
+		}
+
+		set_variable = {
+			var = PRC_mic_production_factory_start_efficiency_factor_dynamic_var
+			value = 0.10
+		}
+
+		set_variable = {
+			var = PRC_mic_consumer_goods_factor_dynamic_var
+			value = 0.05
+		}
+
+		set_variable = {
+			var = PRC_mic_research_speed_factor_dynamic_var
+			value = -0.07
+		}
 
         add_dynamic_modifier = {
             modifier = PRC_chinese_enviroment_dynamic
@@ -4575,6 +4612,7 @@
         }
         set_technology = {
             zz_synthetic_battalion_tech = 1
+            zz_support_detachment_tech = 1
             chi_synthetic_battalions_tech = 1
             chi_special_battalions_tech = 1
             e_tank_bat_tech = 1
@@ -8470,6 +8508,7 @@
 			hsupa = 1
 			internet_4 = 1	#4G
 			lte = 1  
+            zz_support_detachment_tech = 1
             ger_special_battalions_tech = 1
 		} 
 		if = {
@@ -20987,6 +21026,7 @@
 			internet_4 = 1	#4G
 			lte = 1
             zz_synthetic_battalion_tech = 1
+            zz_support_detachment_tech = 1
             sov_synthetic_battalions_tech = 1
             sov_special_battalions_tech = 1
             e_tank_bat_tech = 1
@@ -24602,6 +24642,7 @@
 			internet_4 = 1	#4G
 			lte = 1 
             zz_synthetic_battalion_tech = 1
+            zz_support_detachment_tech = 1
             usa_synthetic_battalions_tech = 1
             usa_special_battalions_tech = 1
 		}

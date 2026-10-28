@@ -95,28 +95,58 @@
         }
     }
 
-    # 两栖战车装备线：仅发放给拥有两栖突击车的国家，解锁 ZZ_amphibious_apc_chassis 全系
+    # 空降/两栖战车装备线：以装备原产国为准发放
+    # BMD 系列 + PT-76/PT-76B → SOV；PT-85 → NKO；ZBD-03 + ZBD-05 + 63式系列 → CHI
+    # LVTP-5 + AAVP-7A1 → USA；KAAV7 → KOR
     every_country = {
         limit = {
-            OR = {
-                original_tag = USA
-                original_tag = SOV
-                original_tag = CHI
-                original_tag = FRA
-                original_tag = KOR
-                original_tag = TAI
-                original_tag = JAP
-                original_tag = NKO
-                original_tag = ITA
-            }
+            original_tag = SOV
         }
         set_technology = {
-            ZZ_amphibious_apc_tech = 1
+            ZZ_airborne_ifv_bmd_tech = 1
+            ZZ_amphibious_tank_pt76_tech = 1
         }
     }
+    every_country = {
+        limit = { original_tag = NKO }
+        set_technology = {
+            ZZ_amphibious_tank_pt85_tech = 1
+        }
+    }
+    every_country = {
+        limit = { original_tag = CHI }
+        set_technology = {
+            ZZ_airborne_ifv_zbd03_tech = 1
+            ZZ_amphibious_apc_zbd05_tech = 1
+            ZZ_amphibious_tank_type63_tech = 1
+        }
+    }
+    every_country = {
+        limit = {
+            original_tag = USA
+        }
+        set_technology = {
+            ZZ_amphibious_apc_aavp7_tech = 1
+        }
+    }
+    every_country = {
+        limit = { original_tag = KOR }
+        set_technology = {
+            ZZ_amphibious_apc_kaav7_tech = 1
+        }
+    }
+
 }
 
 2017.1.1 = {
+    every_country = {
+        remove_ideas = {
+            at_member
+            antarctica_small_treaty_admin_cost_1
+            antarctica_small_treaty_admin_cost_2
+            wto_member
+        }
+    }
         554 = {
             set_temp_variable = { electric_addition = 1.653 }
             set_temp_variable = { storage_addition = 0.6 }

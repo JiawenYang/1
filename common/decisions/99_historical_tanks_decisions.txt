@@ -1980,31 +1980,11 @@ historical_tanks_category = {
 		complete_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision type24_airborne_decision"
 			army_experience = -25
-			create_equipment_variant = {
-				name = "24式伞兵战车"
-				type = ZZ_airborne_ifv_chassis_3
-				modules = {
-					main_armament_slot = afv_assault_gun_3
-					secondary_armament_slot = afv_coax_autocannon_3
-					ammunition_load_slot = anti_infantry_main_ammo_3
-					turret_type_slot = tank_unmanned_turret
-					suspension_type_slot = tank_torsion_bar_suspension_medium
-					armor_type_slot = afv_composite_armor_gen3
-					engine_type_slot = tank_diesel_engine_gen4
-					reload_type_slot = automatic_loading
-					special_type_slot_1 = afv_atgm_gen4
-					special_type_slot_2 = smoke_launchers_3
-					special_type_slot_3 = afv_troop_capacity
-					special_type_slot_4 = tank_battlestation_4
-					special_type_slot_5 = afv_mine_protection
-					special_type_slot_6 = empty
-				}
-				upgrades = {
-					tank_nsb_armor_upgrade = 3
-				}
-				icon = "gfx/interface/technologies/CHI/LAND/IFV4.dds"
-				model = "CHI_ZBD04_entity"
-				design_team = mio:CHI_norinco_manufacturer
+			# 空降战车已改为固定属性装备（无 archetype），不再 create_equipment_variant，
+			# 直接发放 ZBD-03 装备库存。
+			add_equipment_to_stockpile = {
+				type = ZZ_airborne_ifv_chassis_zbd03
+				amount = 100
 			}
 		}
 

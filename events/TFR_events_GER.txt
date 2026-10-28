@@ -1,0 +1,251 @@
+add_namespace = germany
+
+country_event = {
+	#First COVID
+	id = germany.11
+	title = germany.11.t
+	desc = germany.11.d
+	picture = GFX_Generic_COVID1
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		always = yes
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event germany.11 immediate"
+			focus_unlock = yes
+			add_ideas = low_covid_cases
+			set_country_flag = GER_COVID_ongoing
+			activate_mission = GER_coronavirus_timer
+			country_event = {
+				id = germany.33
+				days = 175
+			}
+			every_controlled_state = {
+				limit = {
+					OR = {
+						state = 64
+						state = 809
+						state = 57
+						state = 52
+						state = 51
+					}
+				}
+				add_dynamic_modifier = {
+					modifier = USA_coronavirus_state
+				}
+			}
+		}
+	}
+	option = {
+		name = germany.11.a
+		effect_tooltip = {
+			add_ideas = low_covid_cases
+			set_country_flag = GER_COVID_ongoing
+			activate_mission = GER_coronavirus_timer
+			every_controlled_state = {
+				limit = {
+					OR = {
+						state = 64
+						state = 809
+						state = 57
+						state = 52
+						state = 51
+					}
+				}
+				add_dynamic_modifier = {
+					modifier = USA_coronavirus_state
+				}
+			}
+			focus_unlock = yes
+		}
+	}
+}
+
+# Germans Raise Oil Prices - 第六次中东战争引发全球石油危机
+country_event = {
+	id = germany.16
+	title = germany.16.t
+	desc = germany.16.d
+	picture = GFX_generic_gazprom
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event germany.16 immediate"
+			add_ideas = GER_oil_crash1
+			set_country_flag = GER_finalize_oil_crash_recovery_flag
+			# 25天后爆发天然气抗议
+			country_event = { id = germany.17 days = 25 }
+			# 开启自动恢复循环：100天后 germany.116 首次触发
+			country_event = { id = germany.116 days = 100 }
+		}
+	}
+	option = {
+		name = germany.16.a
+		effect_tooltip = {
+			add_ideas = GER_oil_crash1
+		}
+	}
+}
+
+# Gas Protests - 天然气抗议
+country_event = {
+	id = germany.17
+	title = germany.17.t
+	desc = germany.17.d
+	picture = GFX_GER_generic_protests
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event germany.17 immediate"
+			add_stability = -0.05
+			add_war_support = -0.05
+		}
+	}
+	option = {
+		name = germany.17.a
+		effect_tooltip = {
+			add_stability = -0.05
+			add_war_support = -0.05
+		}
+	}
+}
+
+#Pfizer Registration Commencing
+country_event = {
+	id = germany.33
+	title = germany.33.t
+	desc = germany.33.d
+	picture = GFX_Generic_COVID1
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event germany.33 immediate"
+		}
+	}
+	option = {
+		name = germany.33.a
+		add_stability = 0.02
+		activate_mission = GER_pfizer_registration
+	}
+}
+
+#Lockdown Protests
+country_event = {
+	id = germany.51
+	title = germany.51.t
+	desc = germany.51.d
+	picture = GFX_Anti_Refugee_Protest
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event germany.51 immediate"
+		}
+	}
+	option = {
+		name = germany.51.a
+		add_days_mission_timeout = {
+			mission = GER_coronavirus_timer
+			days = -10
+		}
+		add_popularity = {
+			ideology = democratic
+			popularity = 0.03
+		}
+		add_political_power = -25
+	}
+	option = {
+		name = germany.51.b
+		add_days_mission_timeout = {
+			mission = GER_coronavirus_timer
+			days = -10
+		}
+		add_popularity = {
+			ideology = democratic
+			popularity = 0.03
+		}
+		add_stability = -0.05
+		add_political_power = 25
+	}
+}
+
+# Oil Shortage Subsides - 石油短缺消退（循环恢复：每100天自动降级一次石油危机idea）
+country_event = {
+	id = germany.116
+	title = germany.116.t
+	desc = germany.116.d
+	picture = GFX_GER_fuel_price
+	is_triggered_only = yes
+	trigger = {
+		OR = {
+			has_idea = GER_oil_crash1
+			has_idea = GER_oil_crash2
+			has_idea = GER_oil_crash3
+			has_idea = GER_oil_crash4
+			has_idea = GER_oil_crash5
+		}
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event germany.116 immediate"
+			PRC_decrease_oil = yes
+			set_country_flag = GER_finalize_oil_crash_recovery_flag
+			# 只要还有石油危机idea，就100天后再触发一次（循环直到彻底恢复）
+			if = {
+				limit = {
+					OR = {
+						has_idea = GER_oil_crash1
+						has_idea = GER_oil_crash2
+						has_idea = GER_oil_crash3
+						has_idea = GER_oil_crash4
+						has_idea = GER_oil_crash5
+					}
+				}
+				country_event = { id = germany.116 days = 100 }
+			}
+		}
+	}
+	option = {
+		name = germany.116.a
+		unlock_decision_tooltip = GER_finalize_recovery_from_the_oil_crisis
+		effect_tooltip = {
+			PRC_decrease_oil = yes
+		}
+	}
+}
+
+#Covid Subsides
+country_event = {
+	id = germany.164
+	title = germany.164.t
+	desc = germany.164.d
+	picture = GFX_Generic_COVID1
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event germany.164 immediate"
+			country_event = {
+				id = germany.164
+				days = 100
+			}
+		}
+	}
+	trigger = {
+		OR = {
+			has_idea = lower_covid_cases
+			has_idea = low_covid_cases
+			has_idea = medium_covid_cases
+			has_idea = high_covid_cases
+			has_idea = higher_covid_cases
+		}
+	}
+	option = {
+		name = germany.164.a
+		GER_decrease_corona = yes
+	}
+}

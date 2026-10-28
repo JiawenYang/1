@@ -1,0 +1,664 @@
+add_namespace = mew
+
+# 第六次中东战争：第一阶段，以色列对加沙发动全面进攻（由时间线排程或调试模式触发）
+country_event = {
+	id = mew.0
+	title = mew.0.t
+	desc = mew.0.d
+	picture = GFX_rocket_strike_isr_one
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	trigger = {
+		tag = ISR
+		NOT = { has_global_flag = MEW_war_declared }
+	}
+
+	option = {
+		name = mew.0.a
+		hidden_effect = {
+			set_global_flag = MEW_war_omen
+			set_global_flag = MEW_war_declared
+			set_global_flag = MEW_sixth_war_ongoing
+			set_global_flag = MEW_oil_crisis_news
+			# 第一阶段：以色列国防军进入加沙，清剿哈马斯
+			if = {
+				limit = {
+					country_exists = HAM
+					NOT = { has_war_with = HAM }
+				}
+				declare_war_on = {
+					target = HAM
+					type = annex_everything
+				}
+			}
+			news_event = { id = mew.5 hours = 1 }
+			# 三天后阿拉伯联军与抵抗之弧介入
+			country_event = { id = mew.6 days = 3 }
+			USA = {
+				country_event = { id = mew.3 days = 3 }
+			}
+			news_event = { id = mew.4 days = 14 }
+			# 烈焰升腾原版战时倒计时：700 天后以色列被迫接受两国方案
+			ISR = {
+				activate_mission = ISR_arab_war_countdown
+			}
+			# 第六次中东战争引发全球石油危机（替代原沙特触发链）
+			USA = {
+				country_event = { id = usa.7 days = 1 }
+			}
+			CHI = {
+				country_event = { id = prc.4 days = 1 }
+			}
+			JAP = {
+				country_event = { id = jap.182 days = 1 }
+			}
+			GER = {
+				country_event = { id = germany.16 days = 1 }
+				country_event = { id = germany.17 days = 25 }
+			}
+		}
+	}
+}
+
+# 第六次中东战争：第一阶段新闻，加沙战争爆发
+news_event = {
+	id = mew.5
+	title = mew.5.t
+	desc = mew.5.d
+	picture = GFX_fucked_up_israeli_tank
+	is_triggered_only = yes
+	major = yes
+	trigger = {
+	}
+	option = {
+		name = mew.5.a
+	}
+}
+
+# 第六次中东战争：第二阶段，阿拉伯联军与抵抗之弧介入
+country_event = {
+	id = mew.6
+	title = mew.6.t
+	desc = mew.6.d
+	picture = GFX_united_arab_republic
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	trigger = {
+		tag = ISR
+		has_global_flag = MEW_sixth_war_ongoing
+		NOT = { has_global_flag = MEW_coalition_joined }
+	}
+
+	option = {
+		name = mew.6.a
+		hidden_effect = {
+			set_global_flag = MEW_coalition_joined
+			# 阿拉伯阵营参战：埃及、叙利亚、阿尔及利亚、利比亚、黎巴嫩政府
+			EGY = {
+				if = {
+					limit = { NOT = { has_war_with = ISR } }
+					declare_war_on = {
+						target = ISR
+						type = liberate_wargoal
+					}
+				}
+			}
+			if = {
+				limit = { country_exists = SYR }
+				SYR = {
+					if = {
+						limit = { NOT = { has_war_with = ISR } }
+						declare_war_on = {
+							target = ISR
+							type = liberate_wargoal
+						}
+					}
+				}
+			}
+			if = {
+				limit = { country_exists = ALG }
+				ALG = {
+					if = {
+						limit = { NOT = { has_war_with = ISR } }
+						declare_war_on = {
+							target = ISR
+							type = liberate_wargoal
+						}
+					}
+				}
+			}
+			if = {
+				limit = { country_exists = LBA }
+				LBA = {
+					if = {
+						limit = { NOT = { has_war_with = ISR } }
+						declare_war_on = {
+							target = ISR
+							type = liberate_wargoal
+						}
+					}
+				}
+			}
+			if = {
+				limit = { country_exists = LEB }
+				LEB = {
+					if = {
+						limit = { NOT = { has_war_with = ISR } }
+						declare_war_on = {
+							target = ISR
+							type = liberate_wargoal
+						}
+					}
+				}
+			}
+			# 抵抗之弧独立成阵营：伊朗牵头，真主党、巴勒斯坦、哈马斯、伊拉克加入
+			PER = {
+				if = {
+					limit = { is_in_faction = no }
+					create_faction_from_template = faction_template_aor
+					set_country_flag = MEW_aor_leader
+				}
+				if = {
+					limit = {
+						has_country_flag = MEW_aor_leader
+						country_exists = HEZ
+						HEZ = { is_in_faction = no }
+					}
+					add_to_faction = HEZ
+				}
+				if = {
+					limit = {
+						has_country_flag = MEW_aor_leader
+						country_exists = PAL
+						PAL = { is_in_faction = no }
+					}
+					add_to_faction = PAL
+				}
+				if = {
+					limit = {
+						has_country_flag = MEW_aor_leader
+						country_exists = HAM
+						HAM = { is_in_faction = no }
+					}
+					add_to_faction = HAM
+				}
+				if = {
+					limit = {
+						has_country_flag = MEW_aor_leader
+						country_exists = IRQ
+						IRQ = { is_in_faction = no }
+					}
+					add_to_faction = IRQ
+				}
+			}
+			# 伊朗经伊拉克与叙利亚的陆路通道：两国向伊朗开放军事通行
+			IRQ = {
+				if = {
+					limit = { country_exists = PER }
+					diplomatic_relation = {
+						country = PER
+						relation = military_access
+						active = yes
+					}
+				}
+			}
+			if = {
+				limit = { country_exists = SYR }
+				SYR = {
+					if = {
+						limit = { country_exists = PER }
+						diplomatic_relation = {
+							country = PER
+							relation = military_access
+							active = yes
+						}
+					}
+				}
+			}
+			# 抵抗之弧对以色列宣战
+			PER = {
+				if = {
+					limit = { NOT = { has_war_with = ISR } }
+					declare_war_on = {
+						target = ISR
+						type = liberate_wargoal
+					}
+				}
+			}
+			if = {
+				limit = { country_exists = HEZ }
+				HEZ = {
+					if = {
+						limit = { NOT = { has_war_with = ISR } }
+						declare_war_on = {
+							target = ISR
+							type = liberate_wargoal
+						}
+					}
+				}
+			}
+			if = {
+				limit = { country_exists = PAL }
+				PAL = {
+					if = {
+						limit = { NOT = { has_war_with = ISR } }
+						declare_war_on = {
+							target = ISR
+							type = liberate_wargoal
+						}
+					}
+				}
+			}
+			if = {
+				limit = { country_exists = IRQ }
+				IRQ = {
+					if = {
+						limit = { NOT = { has_war_with = ISR } }
+						declare_war_on = {
+							target = ISR
+							type = liberate_wargoal
+						}
+					}
+				}
+			}
+			# 记录所有实际参战方，供战后结算判断谁需要割地或被吞并
+			every_country = {
+				limit = {
+					OR = {
+						original_tag = EGY
+						original_tag = SYR
+						original_tag = ALG
+						original_tag = LBA
+						original_tag = LEB
+						original_tag = PER
+						original_tag = HEZ
+						original_tag = PAL
+						original_tag = HAM
+						original_tag = IRQ
+					}
+					has_war_with = ISR
+				}
+				set_country_flag = MEW_belligerent
+			}
+			news_event = { id = mew.2 hours = 2 }
+		}
+	}
+}
+
+# 第六次中东战争：导火索与战前布局（2020年10月上旬）
+news_event = {
+	id = mew.1
+	title = mew.1.t
+	desc = mew.1.d
+	picture = GFX_rocket_strike_isr_one
+	is_triggered_only = yes
+	major = yes
+	trigger = {
+	}
+	immediate = {
+		hidden_effect = {
+			# 战前撤销美国对以色列的保障：承诺先在纸面上失效，美国是否出兵仍由 mew.3 决定
+			USA = {
+				if = {
+					limit = { country_exists = ISR }
+					diplomatic_relation = {
+						country = ISR
+						relation = guarantee
+						active = no
+					}
+				}
+			}
+			# 阿拉伯阵营组建耶路撒冷防卫条约：埃及牵头，叙利亚、阿尔及利亚、利比亚、黎巴嫩政府加入
+			# 约旦不参与（被视为阿拉伯世界的叛徒），伊朗及其抵抗之弧不加入本条约
+			EGY = {
+				if = {
+					limit = { is_in_faction = no }
+					create_faction_from_template = faction_template_jerusalem_defence_pact
+					set_country_flag = MEW_arab_pact_leader
+				}
+			}
+			if = {
+				limit = { country_exists = SYR }
+				SYR = {
+					if = {
+						limit = { is_in_faction = no NOT = { has_war_with = ISR } }
+						EGY = { add_to_faction = SYR }
+					}
+				}
+			}
+			if = {
+				limit = { country_exists = ALG }
+				ALG = {
+					if = {
+						limit = { is_in_faction = no NOT = { has_war_with = ISR } }
+						EGY = { add_to_faction = ALG }
+					}
+				}
+			}
+			if = {
+				limit = { country_exists = LBA }
+				LBA = {
+					if = {
+						limit = { is_in_faction = no NOT = { has_war_with = ISR } }
+						EGY = { add_to_faction = LBA }
+					}
+				}
+			}
+			if = {
+				limit = { country_exists = LEB }
+				LEB = {
+					if = {
+						limit = { is_in_faction = no NOT = { has_war_with = ISR } }
+						EGY = { add_to_faction = LEB }
+					}
+				}
+			}
+			set_global_flag = MEW_arab_pact_formed
+		}
+	}
+	option = {
+		name = mew.1.a
+	}
+}
+
+# 第六次中东战争：阿拉伯联军对以色列宣战
+news_event = {
+	id = mew.2
+	title = mew.2.t
+	desc = mew.2.d
+	picture = GFX_fucked_up_israeli_tank
+	is_triggered_only = yes
+	major = yes
+	trigger = {
+	}
+	option = {
+		name = mew.2.a
+	}
+}
+
+# 美国的抉择（疫情与大选背景下，AI高概率隔岸观火）
+country_event = {
+	id = mew.3
+	title = mew.3.t
+	desc = mew.3.d
+	picture = GFX_politics_talks
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = mew.3.a
+		ai_chance = {
+			factor = 85
+		}
+		add_political_power = -25
+	}
+	option = {
+		name = mew.3.b
+		ai_chance = {
+			factor = 15
+		}
+		add_political_power = -100
+		ISR = {
+			add_equipment_to_stockpile = {
+				type = infantry_weapons_6
+				amount = 3000
+			}
+		}
+	}
+}
+
+# 石油危机席卷全球
+news_event = {
+	id = mew.4
+	title = mew.4.t
+	desc = mew.4.d
+	picture = GFX_aramco_fire_night
+	is_triggered_only = yes
+	major = yes
+	trigger = {
+	}
+	option = {
+		name = mew.4.a
+	}
+}
+
+# 结算A：阿拉伯阵营胜利，巴勒斯坦复国，犹太人流散
+news_event = {
+	id = mew.10
+	title = mew.10.t
+	desc = mew.10.d
+	picture = GFX_united_arab_republic
+	is_triggered_only = yes
+	major = yes
+	trigger = {
+	}
+	option = {
+		name = mew.10.a
+	}
+}
+
+# 结算A后续：埃及主导建立阿拉伯军事同盟
+country_event = {
+	id = mew.11
+	title = mew.11.t
+	desc = mew.11.d
+	picture = GFX_news_arab_conference
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = mew.11.a
+		hidden_effect = {
+			# 战时协调机制升级为常设军事同盟，埃及为盟主
+			if = {
+				limit = { is_in_faction = no }
+				create_faction = MEW_arab_military_alliance
+			}
+			# 退出此前的抵抗轴心阵营，统一归入开罗同盟
+			if = {
+				limit = { country_exists = SYR }
+				SYR = {
+					if = {
+						limit = {
+							is_in_faction = yes
+							NOT = { is_in_faction_with = EGY }
+						}
+						leave_faction = yes
+					}
+				}
+			}
+			if = {
+				limit = { country_exists = PAL }
+				PAL = {
+					if = {
+						limit = {
+							is_in_faction = yes
+							NOT = { is_in_faction_with = EGY }
+						}
+						leave_faction = yes
+					}
+				}
+			}
+			if = {
+				limit = { country_exists = HEZ }
+				HEZ = {
+					if = {
+						limit = {
+							is_in_faction = yes
+							NOT = { is_in_faction_with = EGY }
+						}
+						leave_faction = yes
+					}
+				}
+			}
+			if = {
+				limit = { country_exists = LBA }
+				LBA = {
+					if = {
+						limit = {
+							is_in_faction = yes
+							NOT = { is_in_faction_with = EGY }
+						}
+						leave_faction = yes
+					}
+				}
+			}
+			if = {
+				limit = {
+					country_exists = SYR
+					SYR = { is_in_faction = no }
+				}
+				add_to_faction = SYR
+			}
+			if = {
+				limit = {
+					country_exists = PAL
+					PAL = { is_in_faction = no }
+				}
+				add_to_faction = PAL
+			}
+			if = {
+				limit = {
+					country_exists = HEZ
+					HEZ = { is_in_faction = no }
+				}
+				add_to_faction = HEZ
+			}
+			if = {
+				limit = {
+					country_exists = LBA
+					LBA = { is_in_faction = no }
+				}
+				add_to_faction = LBA
+			}
+		}
+	}
+}
+
+# 结算B：以色列胜利，建立大以色列
+news_event = {
+	id = mew.20
+	title = mew.20.t
+	desc = mew.20.d
+	picture = GFX_israeli_government_event
+	is_triggered_only = yes
+	major = yes
+	trigger = {
+	}
+	option = {
+		name = mew.20.a
+	}
+}
+
+# 结算B后续：阿拉伯世界震动
+news_event = {
+	id = mew.21
+	title = mew.21.t
+	desc = mew.21.d
+	picture = GFX_news_arab_riot_police
+	is_triggered_only = yes
+	major = yes
+	trigger = {
+	}
+	option = {
+		name = mew.21.a
+	}
+}
+
+# ===== 第三阶段：反伊战争，复辟巴列维王朝 =====
+# 绑定第二幕蓝方胜利（usacw.12）后由美国背书，以色列联合美国与海湾国家对伊朗开战
+country_event = {
+	id = mew.30
+	title = mew.30.t
+	desc = mew.30.d
+	picture = GFX_NATO_Iran
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	trigger = {
+		tag = ISR
+		has_global_flag = MEW_israel_victory
+		has_global_flag = USA_democratic_era_global
+		NOT = { has_global_flag = MEW_iran_war_declared }
+		country_exists = PER
+	}
+
+	option = {
+		name = mew.30.a
+		hidden_effect = {
+			set_global_flag = MEW_iran_war_declared
+			set_global_flag = MEW_iran_war_ongoing
+			# 以色列率先发难
+			if = {
+				limit = { NOT = { has_war_with = PER } }
+				declare_war_on = {
+					target = PER
+					type = annex_everything
+				}
+			}
+			# 美国履行对以色列的安全承诺
+			USA = {
+				if = {
+					limit = {
+						country_exists = PER
+						NOT = { has_war_with = PER }
+					}
+					declare_war_on = {
+						target = PER
+						type = annex_everything
+					}
+				}
+			}
+			# 海湾国家：沙特、阿联酋、科威特、卡塔尔、巴林、阿曼
+			every_country = {
+				limit = {
+					OR = {
+						original_tag = SAU
+						original_tag = UAE
+						original_tag = KUW
+						original_tag = QAT
+						original_tag = BHR
+						original_tag = OMA
+					}
+					country_exists = PER
+					NOT = { has_war_with = PER }
+				}
+				declare_war_on = {
+					target = PER
+					type = annex_everything
+				}
+			}
+			news_event = { id = mew.31 hours = 2 }
+		}
+	}
+}
+
+# 反伊战争爆发新闻
+news_event = {
+	id = mew.31
+	title = mew.31.t
+	desc = mew.31.d
+	picture = GFX_iranian_american_flag
+	is_triggered_only = yes
+	major = yes
+	trigger = {
+	}
+	option = {
+		name = mew.31.a
+	}
+}
+
+# 反伊战争结算：巴列维王朝复辟
+news_event = {
+	id = mew.32
+	title = mew.32.t
+	desc = mew.32.d
+	picture = GFX_iran_pahlavi_stuff
+	is_triggered_only = yes
+	major = yes
+	trigger = {
+	}
+	option = {
+		name = mew.32.a
+	}
+}
