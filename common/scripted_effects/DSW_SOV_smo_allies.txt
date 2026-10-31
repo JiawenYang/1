@@ -1,0 +1,59 @@
+DSW_SOV_join_belarus_after_nato = {
+	if = {
+		limit = {
+			has_global_flag = DSW_SOV_european_war_started
+			NOT = {
+				has_global_flag = DSW_SOV_european_war_resolved
+			}
+			country_exists = BLR
+			BLR = {
+				NOT = {
+					has_war_with = SOV
+				}
+				NOT = {
+					has_country_flag = DSW_SOV_belarus_european_war_joined
+				}
+			}
+		}
+		BLR = {
+			if = {
+				limit = {
+					NOT = {
+						is_in_faction_with = SOV
+					}
+				}
+				NATO_leave = yes
+				if = {
+					limit = {
+						is_in_faction = yes
+					}
+					leave_faction = yes
+				}
+			}
+		}
+		SOV = {
+			add_to_faction = BLR
+		}
+		BLR = {
+			add_ideas = CSTO_member
+			add_to_tech_sharing_group = CSTO_Tech_Share
+			set_country_flag = csto_member
+			clr_country_flag = NATO_member
+			set_country_flag = DSW_SOV_csto_war_participant
+			if = {
+				limit = {
+					NOT = {
+						has_war_with = UKR
+					}
+				}
+				add_to_war = {
+					targeted_alliance = SOV
+					enemy = UKR
+					hostility_reason = asked_to_join
+					single_target_only = no
+				}
+			}
+			set_country_flag = DSW_SOV_belarus_european_war_joined
+		}
+	}
+}
