@@ -541,21 +541,7 @@ DSW_SOV_start_ukrainian_war = {
 				add_to_faction = DPR
 			}
 			DPR = {
-				set_country_flag = DSW_SOV_csto_war_participant
 				set_country_flag = csto_member
-				if = {
-					limit = {
-						NOT = {
-							has_war_with = UKR
-						}
-					}
-					add_to_war = {
-						targeted_alliance = SOV
-						enemy = UKR
-						hostility_reason = asked_to_join
-						single_target_only = yes
-					}
-				}
 			}
 		}
 		if = {
@@ -577,21 +563,7 @@ DSW_SOV_start_ukrainian_war = {
 				add_to_faction = LPR
 			}
 			LPR = {
-				set_country_flag = DSW_SOV_csto_war_participant
 				set_country_flag = csto_member
-				if = {
-					limit = {
-						NOT = {
-							has_war_with = UKR
-						}
-					}
-					add_to_war = {
-						targeted_alliance = SOV
-						enemy = UKR
-						hostility_reason = asked_to_join
-						single_target_only = yes
-					}
-				}
 			}
 		}
 		if = {
@@ -613,43 +585,7 @@ DSW_SOV_start_ukrainian_war = {
 				add_to_faction = NOV
 			}
 			NOV = {
-				set_country_flag = DSW_SOV_csto_war_participant
 				set_country_flag = csto_member
-				if = {
-					limit = {
-						NOT = {
-							has_war_with = UKR
-						}
-					}
-					add_to_war = {
-						targeted_alliance = SOV
-						enemy = UKR
-						hostility_reason = asked_to_join
-						single_target_only = yes
-					}
-				}
-			}
-		}
-		every_country = {
-			limit = {
-				is_in_faction_with = SOV
-				NOT = {
-					tag = SOV
-				}
-			}
-			set_country_flag = DSW_SOV_csto_war_participant
-			if = {
-				limit = {
-					NOT = {
-						has_war_with = UKR
-					}
-				}
-				add_to_war = {
-					targeted_alliance = SOV
-					enemy = UKR
-					hostility_reason = asked_to_join
-					single_target_only = yes
-				}
 			}
 		}
 		UKR = {
@@ -691,6 +627,7 @@ DSW_SOV_apply_stalemate = {
 				modifier = DSW_SOV_unplanned_offensive
 			}
 		}
+		DSW_SOV_begin_command_reforms = yes
 		country_event = {
 			id = dsw_sov.20
 		}
@@ -719,12 +656,9 @@ DSW_SOV_remove_stalemate = {
 	}
 }
 DSW_SOV_launch_final_offensive = {
+	DSW_SOV_remove_preparation_bonuses = yes
 	set_country_flag = DSW_SOV_final_offensive
 	DSW_SOV_remove_stalemate = yes
-	add_timed_idea = {
-		idea = DSW_SOV_final_offensive_spirit
-		days = 240
-	}
 	country_event = {
 		id = dsw_sov.30
 	}
@@ -816,6 +750,7 @@ DSW_SOV_begin_european_war = {
 			add_ideas = NATO_member
 			add_to_tech_sharing_group = NATO_Tech_Share
 		}
+		DSW_SOV_join_belarus_after_nato = yes
 		DSW_SOV_open_regional_fronts = yes
 		every_country = {
 			limit = {

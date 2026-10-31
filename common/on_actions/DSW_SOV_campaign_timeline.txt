@@ -2,6 +2,7 @@ on_actions = {
 	on_startup = {
 		effect = {
 			SOV = {
+				DSW_SOV_remove_preparation_bonuses = yes
 				if = {
 					limit = {
 						date < 2020.1.1
@@ -11,19 +12,16 @@ on_actions = {
 					}
 					DSW_SOV_lock_md_putin = yes
 				}
-				if = {
-					limit = {
-						has_country_flag = DSW_SOV_putin_industry_initialized
-					}
-					DSW_SOV_initialize_industry_spirit = yes
-				}
 				DSW_SOV_fix_putin_tricolor = yes
 				DSW_SOV_migrate_postwar_patch = yes
+				DSW_SOV_restore_command_reforms = yes
+				DSW_SOV_join_belarus_after_nato = yes
 			}
 		}
 	}
 	on_daily_SOV = {
 		effect = {
+			DSW_SOV_remove_preparation_bonuses = yes
 			if = {
 				limit = {
 					has_country_flag = DSW_SOV_smo_started
@@ -43,15 +41,6 @@ on_actions = {
 						id = dsw_sov.11
 					}
 				}
-			}
-			if = {
-				limit = {
-					has_country_flag = DSW_SOV_putin_industry_initialized
-					NOT = {
-						has_country_flag = DSW_SOV_industry_revision_20261025
-					}
-				}
-				DSW_SOV_initialize_industry_spirit = yes
 			}
 			if = {
 				limit = {
@@ -90,6 +79,20 @@ on_actions = {
 					}
 				}
 				DSW_SOV_apply_stalemate = yes
+			}
+			if = {
+				limit = {
+					has_country_flag = DSW_SOV_smo_started
+					has_war_with = UKR
+					DSW_SOV_ukraine_joined_nato = yes
+					NOT = {
+						has_global_flag = DSW_SOV_european_war_started
+					}
+					NOT = {
+						has_global_flag = DSW_SOV_european_war_resolved
+					}
+				}
+				DSW_SOV_begin_european_war = yes
 			}
 			if = {
 				limit = {
@@ -137,9 +140,10 @@ on_actions = {
 					DSW_SOV_resolve_russian_victory = yes
 				}
 			}
-			DSW_SOV_tick_industry_program = yes
 			DSW_SOV_fix_putin_tricolor = yes
 			DSW_SOV_migrate_postwar_patch = yes
+			DSW_SOV_restore_command_reforms = yes
+			DSW_SOV_join_belarus_after_nato = yes
 		}
 	}
 	on_monthly_SOV = {
