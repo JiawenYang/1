@@ -52,12 +52,16 @@ country_event = {
 		tag = SOV
 	}
 	immediate = {
-		remove_dynamic_modifier = {
-			modifier = DSW_SOV_preparation_bonus
-		}
-		load_focus_tree = {
-			tree = DSW_SOV_putin_preparation
-			keep_completed = no
+		hidden_effect = {
+			DSW_SOV_remove_preparation_bonuses = yes
+			remove_dynamic_modifier = {
+				modifier = DSW_SOV_preparation_bonus
+			}
+			load_focus_tree = {
+				tree = DSW_SOV_putin_preparation
+				keep_completed = no
+			}
+			DSW_SOV_begin_command_reforms = yes
 		}
 	}
 	option = {
