@@ -1,4 +1,5 @@
 add_namespace = usacw
+add_namespace = usa
 
 # ===== 美国政治危机与新自由主义秩序（2024年后剧情） =====
 # 原烈焰升腾（TFR）移植的美国内战事件线（2020年选举危机、联邦分裂、公共失序等）已全部移除，
@@ -281,6 +282,153 @@ country_event = {
 			declare_war_on = {
 				target = CHI
 				type = annex_everything
+			}
+		}
+	}
+}
+
+#American Oil Crisis（美国石油危机：石油协议破裂引发，适配移除原版内战路线触发器）
+country_event = {
+	id = usa.7
+	title = usa.7.t
+	desc = usa.7.d
+	picture = GFX_Oil_Crash
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USA
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event usa.7 immediate"
+			add_ideas = USA_oil_crisis_idea
+			country_event = {
+				id = usa.217
+				days = 14
+			}
+			country_event = {
+				id = usa.202
+				days = 25
+			}
+			country_event = {
+				id = usa.170
+				days = 20
+			}
+		}
+	}
+	option = {
+		name = usa.7.a
+		effect_tooltip = {
+			add_ideas = USA_oil_crisis_idea
+		}
+	}
+}
+
+#From Riches to Rags（由奢入俭：意识形态适配为千禧黎明合法值）
+country_event = {
+	id = usa.170
+	title = usa.170.t
+	desc = usa.170.d
+	picture = GFX_greenlinegodown
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USA
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event usa.170 immediate"
+			add_stability = -0.05
+			add_popularity = {
+				ideology = communism
+				popularity = 0.02
+			}
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.04
+			}
+		}
+	}
+	option = {
+		name = usa.170.a
+		effect_tooltip = {
+			add_stability = -0.05
+			add_popularity = {
+				ideology = communism
+				popularity = 0.02
+			}
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.04
+			}
+		}
+	}
+}
+
+#Poverty Rates go Up（贫困率上升：本模组无原版前置贫困链，改为直接施加中等贫困）
+country_event = {
+	id = usa.202
+	title = usa.202.t
+	desc = usa.202.d
+	picture = GFX_oil_line
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USA
+	}
+	option = {
+		name = usa.202.a
+		if = {
+			limit = {
+				has_idea = high_poverty
+			}
+			swap_ideas = {
+				remove_idea = high_poverty
+				add_idea = medium_poverty
+			}
+		}
+		else = {
+			add_ideas = medium_poverty
+		}
+	}
+}
+
+#Unemployment（失业潮：意识形态适配为千禧黎明合法值，移除内战路线触发器）
+country_event = {
+	id = usa.217
+	title = usa.217.t
+	desc = usa.217.d
+	picture = GFX_Oil_Crash
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = USA
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event usa.217 immediate"
+			add_stability = -0.05
+			add_popularity = {
+				ideology = communism
+				popularity = 0.03
+			}
+			add_popularity = {
+				ideology = fascism
+				popularity = 0.02
+			}
+		}
+	}
+	option = {
+		name = usa.217.a
+		effect_tooltip = {
+			add_stability = -0.05
+			add_popularity = {
+				ideology = communism
+				popularity = 0.03
+			}
+			add_popularity = {
+				ideology = fascism
+				popularity = 0.02
 			}
 		}
 	}

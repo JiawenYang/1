@@ -6,7 +6,7 @@
 #   ZZ_amphibious_mechanized_equipment 底盘下（与 AAV-7/ZBD-05/KAAV7 同体系）
 #
 # 关键机制：
-#   1. archetype 的 type = { armor mechanized amphibious }，归入两栖坦克分类
+#   1. archetype 的 type = { armor amphibious }，归入两栖坦克分类（不再被识别为轻型坦克）
 #   2. parent 链 → 实现过时标记（子装备解锁时父装备标记为过时）
 #   3. additional_collateral_damage / visual_level → 对齐 MD 原版装备字段
 #
@@ -109,11 +109,11 @@ equipments = {
 	}
 
 	# PT-85：MD 2.0.2 原版变体（NKO - North Korea.txt L649，medium_tank_destroyer_chassis_0），armor升级4
+	# 朝鲜仅解锁本型号，无 PT-76B，不设 parent（跨国家 parent 会导致父装备未解锁时无法生产）
 	ZZ_amphibious_tank_chassis_pt85 = {
 		year = 1981
 
 		archetype = ZZ_amphibious_mechanized_equipment
-		parent = ZZ_amphibious_tank_chassis_pt76b
 		priority = 5
 		visual_level = 0
 

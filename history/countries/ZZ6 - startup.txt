@@ -95,9 +95,9 @@
         }
     }
 
-    # 空降/两栖战车装备线：以装备原产国为准发放
-    # BMD 系列 + PT-76/PT-76B → SOV；PT-85 → NKO；ZBD-03 + ZBD-05 + 63式系列 → CHI
-    # LVTP-5 + AAVP-7A1 → USA；KAAV7 → KOR
+    # 空降/两栖战车装备线：以装备原产国为准发放（第一代，子代见 2000.1.2~2000.1.4）
+    # BMD 系列 + PT-76 → SOV；PT-85 → NKO；ZBD-03 + ZBD-05 + 63式 → CHI
+    # LVTP-5 → USA；KAAV7 → KOR
     every_country = {
         limit = {
             original_tag = SOV
@@ -126,7 +126,7 @@
             original_tag = USA
         }
         set_technology = {
-            ZZ_amphibious_apc_aavp7_tech = 1
+            ZZ_amphibious_apc_lvtp5_tech = 1
         }
     }
     every_country = {
@@ -136,6 +136,49 @@
         }
     }
 
+}
+
+# ==================== 两栖/空降装备代际错峰解锁（修复旧型号过时显示）====================
+# 每一代装备各由一个科技解锁。后一代在独立日期解锁，引擎在此刻把 parent 链上
+# 的前一代型号标记为"过时(obsolete)"，生产界面即可正确显示 63式 / 63-I / 63-II /
+# PT-76 / LVTP-5 等为过时。2000 与 2017 开局均按日期顺序执行这些块。
+2000.1.2 = {
+    every_country = {
+        limit = { original_tag = SOV }
+        set_technology = {
+            ZZ_amphibious_tank_pt76b_tech = 1
+        }
+    }
+    every_country = {
+        limit = { original_tag = USA }
+        set_technology = {
+            ZZ_amphibious_apc_aavp7a1_tech = 1
+        }
+    }
+    every_country = {
+        limit = { original_tag = CHI }
+        set_technology = {
+            ZZ_amphibious_tank_type63_1_tech = 1
+        }
+    }
+}
+
+2000.1.3 = {
+    every_country = {
+        limit = { original_tag = CHI }
+        set_technology = {
+            ZZ_amphibious_tank_type63_2_tech = 1
+        }
+    }
+}
+
+2000.1.4 = {
+    every_country = {
+        limit = { original_tag = CHI }
+        set_technology = {
+            ZZ_amphibious_tank_type63a_tech = 1
+        }
+    }
 }
 
 2017.1.1 = {

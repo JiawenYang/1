@@ -64,27 +64,6 @@ on_actions = {
 				}
 				set_global_flag = war_won
 				if = {
-					# SOV kill CHE
-					limit = {
-						FROM = {
-							original_tag = SOV
-						}
-						ROOT = {
-							original_tag = CHE
-						}
-					}
-					FROM = {
-						white_peace = ROOT
-						annex_country = {
-							target = ROOT
-							transfer_troops = no
-						}
-					}
-					set_global_flag = skip_default_capitulation
-					672 = { add_core_of = SOV }
-					672 = { add_dynamic_modifier = { modifier = SOV_chechen_republic } }
-				}
-				if = {
 					# BRM kill Minorities
 					limit = {
 						FROM = {
@@ -421,6 +400,10 @@ on_actions = {
 						target = ISR
 						transfer_troops = no
 					}
+					annex_country = {
+						target = HAM
+						transfer_troops = yes
+					}
 				}
 				set_global_flag = skip_default_capitulation
 				clr_global_flag = MEW_sixth_war_ongoing
@@ -718,20 +701,33 @@ on_actions = {
 						}
 					}
 				}
+				# 武力吞并约旦：约旦未参战也难逃大以色列版图
 				if = {
-					limit = { 213 = { is_owned_by = EGY } }
+					limit = {
+						country_exists = JOR
+					}
+					ISR = {
+						annex_country = {
+							target = JOR
+							transfer_troops = no
+						}
+					}
+				}
+				# 割取西奈、德拉、苏韦达：无论被埃及/叙利亚还是叛军实体占领，只要不在以色列手里就转移
+				if = {
+					limit = { 213 = { NOT = { is_owned_by = ISR } } }
 					213 = {
 						transfer_state_to = ISR
 					}
 				}
 				if = {
-					limit = { 184 = { is_owned_by = SYR } }
+					limit = { 184 = { NOT = { is_owned_by = ISR } } }
 					184 = {
 						transfer_state_to = ISR
 					}
 				}
 				if = {
-					limit = { 185 = { is_owned_by = SYR } }
+					limit = { 185 = { NOT = { is_owned_by = ISR } } }
 					185 = {
 						transfer_state_to = ISR
 					}
@@ -741,6 +737,10 @@ on_actions = {
 				set_global_flag = MEW_israel_victory
 				news_event = { id = mew.20 }
 				news_event = { id = mew.21 days = 5 }
+				# 以色列胜利后进入东进阶段：撕毁停火，进军大马士革与幼发拉底河
+				ISR = {
+					country_event = { id = mew.22 days = 7 }
+				}
 			}
 		}
 	}

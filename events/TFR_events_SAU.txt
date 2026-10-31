@@ -1,4 +1,4 @@
-add_namespace = saudi
+﻿add_namespace = saudi
 
 # Salman Infected
 country_event = {
@@ -20,6 +20,62 @@ country_event = {
 		name = saudi.1.a
 		effect_tooltip = {
 			add_country_leader_trait = hos_covid_positive
+		}
+	}
+}
+
+# Oil Deal Fails（石油协议破裂：第六次中东战争引发的石油危机全链触发源）
+country_event = {
+	id = saudi.12
+	title = saudi.12.t
+	desc = saudi.12.d
+	picture = GFX_Oil_War
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = SAU
+	}
+	immediate = {
+		hidden_effect = {
+			USA = {
+				country_event = {
+					id = usa.7
+					days = 1
+				}
+			}
+			CHI = {
+				country_event = {
+					id = prc.1401
+					days = 1
+				}
+			}
+			JAP = {
+				country_event = {
+					id = jap.182
+					days = 1
+				}
+			}
+			GER = {
+				country_event = {
+					id = germany.16
+					days = 1
+				}
+				country_event = {
+					id = germany.17
+					days = 25
+				}
+			}
+			remove_ideas = SAU_petro_dollar
+		}
+	}
+	option = {
+		name = saudi.12.a
+		news_event = {
+			id = news.121
+			days = 1
+		}
+		effect_tooltip = {
+			remove_ideas = SAU_petro_dollar
 		}
 	}
 }

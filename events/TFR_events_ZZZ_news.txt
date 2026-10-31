@@ -1,3 +1,5 @@
+add_namespace = news
+
 #The Invasion Of Taiwan
 news_event = {
 	id = news.139
@@ -89,5 +91,29 @@ news_event = {
 	}
 	option = {
 		name = news.421.a
+	}
+}
+
+#Oil Prices fall（油价暴跌：石油协议破裂的世界新闻）
+news_event = {
+	id = news.121
+	title = news.121.t
+	desc = news.121.d
+	picture = GFX_Oil_War_News
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = news.121.a
+		trigger = {
+			NOT = {
+				tag = SOV
+			}
+		}
+	}
+	option = {
+		name = news.121.b
+		trigger = {
+			tag = SOV
+		}
 	}
 }

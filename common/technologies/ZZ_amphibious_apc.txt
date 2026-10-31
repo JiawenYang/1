@@ -1,20 +1,37 @@
 # ============================================================================
 # ZZ 两栖战车解锁科技（隐藏，不显示在科技树，仅通过开局 set_technology 授予）
-# 按车系国籍拆分：
-#   ZZ_amphibious_apc_aavp7_tech → LVTP-5 / AAVP-7A1（美国：USA）
-#   ZZ_amphibious_apc_zbd05_tech → ZBD-05（中国：CHI）
-#   ZZ_amphibious_apc_kaav7_tech → KAAV7（韩国：KOR）
+#
+# 按"代际"拆分为独立科技（对齐原版/MD 的"每一代装备各由一个科技解锁"模式）：
+# 后一代解锁时，引擎将 parent 链上的前一代标记为"过时(obsolete)"，
+# 从而在生产界面正确显示 LVTP-5 等旧型号为过时。
+#
+#   ZZ_amphibious_apc_lvtp5_tech  → LVTP-5（美国：USA）
+#   ZZ_amphibious_apc_aavp7a1_tech→ AAVP-7A1（美国：USA）
+#   ZZ_amphibious_apc_zbd05_tech  → ZBD-05（中国：CHI）
+#   ZZ_amphibious_apc_kaav7_tech  → KAAV7（韩国：KOR）
 # ============================================================================
 
 technologies = {
-	ZZ_amphibious_apc_aavp7_tech = {
+	ZZ_amphibious_apc_lvtp5_tech = {
 		enable_equipments = {
 			ZZ_amphibious_apc_chassis_lvtp5
+		}
+
+		research_cost = 1
+		start_year = 1956
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	ZZ_amphibious_apc_aavp7a1_tech = {
+		enable_equipments = {
 			ZZ_amphibious_apc_chassis_aavp7a1
 		}
 
 		research_cost = 1
-		start_year = 1971
+		start_year = 1972
 
 		ai_will_do = {
 			factor = 0
@@ -27,7 +44,7 @@ technologies = {
 		}
 
 		research_cost = 1
-		start_year = 1971
+		start_year = 2005
 
 		ai_will_do = {
 			factor = 0

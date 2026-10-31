@@ -1,14 +1,13 @@
 # ============================================================================
 # ZZ 两栖车辆搜索过滤
-# 将 ZZ_amphibious_mechanized_equipment 底盘归入 amphibious_tanks 过滤，
-# 使其在生产界面的"两栖坦克"子标签下显示，而非默认落入 light_tanks。
-# 同时保留 MD 原有的 heavy_tank_chassis（若 search_filters 非合并则不丢失原版条目）。
+# 生产/市场界面的装备筛选用 search_filters 分类（见 MD tank_filters.txt）。
+# 仅追加定义 amphibious_tanks：在 MD 原有的 heavy_tank_chassis 之外，
+# 加入 ZZ_amphibious_mechanized_equipment，使 PT-76/63式/AAV/ZBD 等
+# 两栖车辆归入"两栖坦克"筛选，而不再落入默认/轻型分类。
+# 其余 light/medium/heavy/modern 过滤器沿用 MD 原版定义，不在此重复。
 # ============================================================================
 
 search_filters = {
 	name = amphibious_tanks
-	values = {
-		heavy_tank_chassis
-		ZZ_amphibious_mechanized_equipment
-	}
+	values = { heavy_tank_chassis ZZ_amphibious_mechanized_equipment }
 }

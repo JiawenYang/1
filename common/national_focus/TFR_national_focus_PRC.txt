@@ -676,7 +676,7 @@ focus_tree = {
 		id = PRC_control_the_oil_crisis
 		icon = GFX_focus_PRC_stabilize_the_situation
 		x = 11
-		y = 0
+		y = 10
 		cost = 1
 		allow_branch = {
 			has_country_flag = PRC_oil_crisis_ongoing
@@ -1289,59 +1289,6 @@ focus_tree = {
 		}
 	}
 	focus = {
-		id = PRC_gambit_in_the_gulf
-		icon = GFX_focus_PRC_gambit_in_the_gulf
-		x = -1
-		y = 2
-		cost = 5
-		relative_position_id = PRC_diversify_the_oil_trade
-		available_if_capitulated = yes
-		ai_will_do = {
-			factor = 5
-		}
-		available = {
-			has_global_flag = SAU_saudi_civil_war_global
-			country_exists = TAI
-		}
-		bypass = {
-			date > 2021.1.1
-			NOT = {
-				has_global_flag = SAU_saudi_civil_war_global
-				country_exists = TAI
-			}
-		}
-		prerequisite = {
-			focus = PRC_diversify_the_oil_trade
-		}
-		completion_reward = {
-			TAI = {
-				set_temp_variable = {
-					var = military_development_var_temp
-					value = 0.25
-				}
-				add_military_development = yes
-				add_ideas = PRC_chinese_advisors
-				capital_scope = {
-					create_unit = {
-						division = "division_template = \"Liwa Almsha\" start_experience_factor = 0.5 start_equipment_factor = 1.0"
-						owner = TAI
-						count = 3
-					}
-				}
-			}
-			custom_effect_tooltip = PRC_gambit_in_the_gulf_tt
-			effect_tooltip = {
-				country_event = prc.141
-			}
-			hidden_effect = {
-				country_event = {
-					id = prc.338
-					days = 10
-				}
-			}
-		}
-	}
-	focus = {
 		id = PRC_south_china_sea_expansion
 		icon = GFX_focus_PRC_south_china_sea_expansion
 		x = 1
@@ -1429,10 +1376,10 @@ focus_tree = {
 	focus = {
 		id = PRC_southeast_asian_bailout_package
 		icon = GFX_focus_PRC_southeast_asian_bailout_package
-		x = 1
+		x = -1
 		y = 1
 		cost = 5
-		relative_position_id = PRC_gambit_in_the_gulf
+		relative_position_id = PRC_south_china_sea_expansion
 		available_if_capitulated = yes
 		ai_will_do = {
 			factor = 5
@@ -1440,7 +1387,6 @@ focus_tree = {
 		available = {
 		}
 		prerequisite = {
-			focus = PRC_gambit_in_the_gulf
 			focus = PRC_south_china_sea_expansion
 		}
 		completion_reward = {

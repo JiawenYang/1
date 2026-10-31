@@ -418,6 +418,17 @@ news_event = {
 	major = yes
 	trigger = {
 	}
+	immediate = {
+		hidden_effect = {
+			# 战火冲击波斯湾油路，利雅得被迫坐上谈判桌又谈崩——石油危机全链由此引爆
+			SAU = {
+				country_event = {
+					id = saudi.12
+					days = 1
+				}
+			}
+		}
+	}
 	option = {
 		name = mew.4.a
 	}
@@ -660,5 +671,423 @@ news_event = {
 	}
 	option = {
 		name = mew.32.a
+	}
+}
+
+# 东进决策：从河到海——以色列撕毁停火，进军大马士革与幼发拉底河
+country_event = {
+	id = mew.22
+	title = mew.22.t
+	desc = mew.22.d
+	picture = GFX_fucked_up_israeli_tank
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	trigger = {
+		tag = ISR
+		has_global_flag = MEW_israel_victory
+		NOT = { has_global_flag = MEW_eastward_march }
+	}
+
+	option = {
+		name = mew.22.a
+		ai_chance = {
+			factor = 90
+		}
+		hidden_effect = {
+			set_global_flag = MEW_eastward_march
+			# 叙利亚政权退出所有阵营后单独挨打，避免把阿拉伯同盟或抵抗之弧拖进战争
+			if = {
+				limit = { country_exists = SYR }
+				SYR = {
+					if = {
+						limit = { is_in_faction = yes }
+						leave_faction = yes
+					}
+				}
+				SYR = {
+					if = {
+						limit = { NOT = { has_war_with = PREV } }
+						declare_war_on = {
+							target = PREV
+							type = annex_everything
+						}
+					}
+				}
+			}
+			if = {
+				limit = { country_exists = FSA }
+				FSA = {
+					if = {
+						limit = { is_in_faction = yes }
+						leave_faction = yes
+					}
+				}
+				FSA = {
+					if = {
+						limit = { NOT = { has_war_with = PREV } }
+						declare_war_on = {
+							target = PREV
+							type = annex_everything
+						}
+					}
+				}
+			}
+			country_event = { id = mew.23 days = 10 }
+			country_event = { id = mew.25 days = 25 }
+			country_event = { id = mew.26 days = 40 }
+			country_event = { id = mew.28 days = 55 }
+		}
+	}
+}
+
+# 东进第一波：大马士革、霍姆斯、哈马、拉塔基亚
+country_event = {
+	id = mew.23
+	title = mew.23.t
+	desc = mew.23.d
+	picture = GFX_fucked_up_israeli_tank
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		hidden_effect = {
+			186 = {
+				if = {
+					limit = {
+						OR = {
+							is_owned_by = SYR
+							is_owned_by = FSA
+						}
+					}
+					transfer_state_to = ISR
+				}
+			}
+			571 = {
+				if = {
+					limit = {
+						OR = {
+							is_owned_by = SYR
+							is_owned_by = FSA
+						}
+					}
+					transfer_state_to = ISR
+				}
+			}
+			188 = {
+				if = {
+					limit = {
+						OR = {
+							is_owned_by = SYR
+							is_owned_by = FSA
+						}
+					}
+					transfer_state_to = ISR
+				}
+			}
+			189 = {
+				if = {
+					limit = {
+						OR = {
+							is_owned_by = SYR
+							is_owned_by = FSA
+						}
+					}
+					transfer_state_to = ISR
+				}
+			}
+			news_event = { id = mew.24 hours = 2 }
+		}
+	}
+	option = {
+		name = mew.23.a
+	}
+}
+
+# 新闻：大马士革陷落
+news_event = {
+	id = mew.24
+	title = mew.24.t
+	desc = mew.24.d
+	picture = GFX_fucked_up_israeli_tank
+	is_triggered_only = yes
+	major = yes
+	trigger = {
+	}
+	option = {
+		name = mew.24.a
+	}
+}
+
+# 东进第二波：伊德利卜、阿勒颇、阿扎兹
+country_event = {
+	id = mew.25
+	title = mew.25.t
+	desc = mew.25.d
+	picture = GFX_fucked_up_israeli_tank
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		hidden_effect = {
+			190 = {
+				if = {
+					limit = {
+						OR = {
+							is_owned_by = SYR
+							is_owned_by = FSA
+						}
+					}
+					transfer_state_to = ISR
+				}
+			}
+			566 = {
+				if = {
+					limit = {
+						OR = {
+							is_owned_by = SYR
+							is_owned_by = FSA
+						}
+					}
+					transfer_state_to = ISR
+				}
+			}
+			575 = {
+				if = {
+					limit = {
+						OR = {
+							is_owned_by = SYR
+							is_owned_by = FSA
+						}
+					}
+					transfer_state_to = ISR
+				}
+			}
+		}
+	}
+	option = {
+		name = mew.25.a
+	}
+}
+
+# 东进第三波：饮马幼发拉底——叙利亚本土终局与库尔德划界
+country_event = {
+	id = mew.26
+	title = mew.26.t
+	desc = mew.26.d
+	picture = GFX_fucked_up_israeli_tank
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		hidden_effect = {
+			# 幼发拉底河以西全部归以色列
+			561 = {
+				if = {
+					limit = {
+						OR = {
+							is_owned_by = SYR
+							is_owned_by = FSA
+						}
+					}
+					transfer_state_to = ISR
+				}
+			}
+			191 = {
+				if = {
+					limit = {
+						OR = {
+							is_owned_by = SYR
+							is_owned_by = FSA
+						}
+					}
+					transfer_state_to = ISR
+				}
+			}
+			994 = {
+				if = {
+					limit = {
+						OR = {
+							is_owned_by = SYR
+							is_owned_by = FSA
+						}
+					}
+					transfer_state_to = ISR
+				}
+			}
+			192 = {
+				if = {
+					limit = {
+						OR = {
+							is_owned_by = SYR
+							is_owned_by = FSA
+						}
+					}
+					transfer_state_to = ISR
+				}
+			}
+			# 河东的哈塞克与北代尔祖尔不归以色列：库尔德斯坦存在则划给库尔德斯坦，否则交给伊拉克
+			if = {
+				limit = { country_exists = KUR }
+				193 = {
+					if = {
+						limit = {
+							OR = {
+								is_owned_by = SYR
+								is_owned_by = FSA
+							}
+						}
+						transfer_state_to = KUR
+					}
+				}
+				995 = {
+					if = {
+						limit = {
+							OR = {
+								is_owned_by = SYR
+								is_owned_by = FSA
+							}
+						}
+						transfer_state_to = KUR
+					}
+				}
+			}
+			else = {
+				193 = {
+					if = {
+						limit = {
+							OR = {
+								is_owned_by = SYR
+								is_owned_by = FSA
+							}
+						}
+						transfer_state_to = IRQ
+					}
+				}
+				995 = {
+					if = {
+						limit = {
+							OR = {
+								is_owned_by = SYR
+								is_owned_by = FSA
+							}
+						}
+						transfer_state_to = IRQ
+					}
+				}
+			}
+			# 灭亡叙利亚与自由军残部（含流亡政权）
+			if = {
+				limit = { country_exists = SYR }
+				annex_country = {
+					target = SYR
+					transfer_troops = no
+				}
+			}
+			if = {
+				limit = { country_exists = FSA }
+				annex_country = {
+					target = FSA
+					transfer_troops = no
+				}
+			}
+			news_event = { id = mew.27 hours = 2 }
+		}
+	}
+	option = {
+		name = mew.26.a
+	}
+}
+
+# 新闻：以色列装甲纵队抵达幼发拉底河
+news_event = {
+	id = mew.27
+	title = mew.27.t
+	desc = mew.27.d
+	picture = GFX_fucked_up_israeli_tank
+	is_triggered_only = yes
+	major = yes
+	trigger = {
+	}
+	option = {
+		name = mew.27.a
+	}
+}
+
+# 越河西进：伊拉克失去幼发拉底河谷与南部沙漠，仅存底格里斯走廊
+country_event = {
+	id = mew.28
+	title = mew.28.t
+	desc = mew.28.d
+	picture = GFX_fucked_up_israeli_tank
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		hidden_effect = {
+			641 = {
+				if = {
+					limit = { is_owned_by = IRQ }
+					transfer_state_to = ISR
+				}
+			}
+			168 = {
+				if = {
+					limit = { is_owned_by = IRQ }
+					transfer_state_to = ISR
+				}
+			}
+			1143 = {
+				if = {
+					limit = { is_owned_by = IRQ }
+					transfer_state_to = ISR
+				}
+			}
+			169 = {
+				if = {
+					limit = { is_owned_by = IRQ }
+					transfer_state_to = ISR
+				}
+			}
+			557 = {
+				if = {
+					limit = { is_owned_by = IRQ }
+					transfer_state_to = ISR
+				}
+			}
+			1122 = {
+				if = {
+					limit = { is_owned_by = IRQ }
+					transfer_state_to = ISR
+				}
+			}
+			1123 = {
+				if = {
+					limit = { is_owned_by = IRQ }
+					transfer_state_to = ISR
+				}
+			}
+			1124 = {
+				if = {
+					limit = { is_owned_by = IRQ }
+					transfer_state_to = ISR
+				}
+			}
+			news_event = { id = mew.29 hours = 2 }
+		}
+	}
+	option = {
+		name = mew.28.a
+	}
+}
+
+# 新闻：新边界——自幼发拉底河到埃及河
+news_event = {
+	id = mew.29
+	title = mew.29.t
+	desc = mew.29.d
+	picture = GFX_fucked_up_israeli_tank
+	is_triggered_only = yes
+	major = yes
+	trigger = {
+	}
+	option = {
+		name = mew.29.a
 	}
 }

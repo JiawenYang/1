@@ -919,6 +919,9 @@
 		} 
 	}
 	ARM = {
+        remove_power_balance = {
+            id = ARM_soc_pac_bop
+        }
 		# Starting tech
 		set_technology = { 
 			body_armor_1 = 1
@@ -1414,57 +1417,6 @@
 				polished 
 			}
 		}
-
-		unlock_national_focus = AZE_aze_the_state
-		unlock_national_focus = AZE_aze_the_man
-		unlock_national_focus = AZE_aze_pers_cult
-		unlock_national_focus = AZE_aze_the_economy
-		unlock_national_focus = AZE_aze_oppos_broadcasts
-		unlock_national_focus = AZE_aze_absolute_loyalty
-		unlock_national_focus = AZE_aze_enemies_of_state
-		unlock_national_focus = AZE_aze_fore_agents
-		unlock_national_focus = AZE_aze_int_enemies
-		unlock_national_focus = AZE_aze_submit_students
-		unlock_national_focus = AZE_aze_close_unis
-		unlock_national_focus = AZE_aze_hist_new
-		unlock_national_focus = AZE_aze_loyal_science
-		unlock_national_focus = AZE_aze_family_matters 
-		unlock_national_focus = AZE_aze_repres_done_right
-		unlock_national_focus = AZE_aze_economy_forum
-		unlock_national_focus = AZE_aze_money_stimulum
-		unlock_national_focus = AZE_aze_rev_sov_oil_plants
-		complete_national_focus = AZE_aze_turgeo_agreem
-		complete_national_focus = AZE_aze_inve_ref
-		unlock_national_focus = AZE_aze_constr_focus
-		unlock_national_focus = AZE_aze_reb_oil_plants
-		unlock_national_focus = AZE_aze_poverty_relief
-		unlock_national_focus = AZE_aze_fly_with_mark
-		unlock_national_focus = AZE_aze_prepare_for_worst
-		unlock_national_focus = AZE_aze_the_sword
-		unlock_national_focus = AZE_aze_rightful_hand
-		unlock_national_focus = AZE_aze_get_sword_ready
-		unlock_national_focus = AZE_aze_infiltr_stuff
-		unlock_national_focus = AZE_aze_eternal_escal
-		complete_national_focus = AZE_aze_fortify_region
-		unlock_national_focus = AZE_aze_dab_on_armen
-		unlock_national_focus = AZE_aze_denote_dipld
-		unlock_national_focus = AZE_aze_chal_bro_dip
-		unlock_national_focus = AZE_aze_to_be_or_not 
-		unlock_national_focus = AZE_aze_anew_aliev 
-		unlock_national_focus = AZE_aze_suppress_protests
-		unlock_national_focus = AZE_The_dust_settles 
-		unlock_national_focus = AZE_aze_cult_of_father
-		unlock_national_focus = AZE_aze_combat_for_inf
-		unlock_national_focus = AZE_aze_state_visit
-		unlock_national_focus = AZE_aze_more_media_control
-		unlock_national_focus = AZE_aze_arrest_leaders
-		unlock_national_focus = AZE_aze_review_ind_assets
-		unlock_national_focus = AZE_aze_reassign_milpos
-		unlock_national_focus = AZE_aze_consol_mil_ocntrol
-		unlock_national_focus = AZE_aze_army_loyalty
-		unlock_national_focus = AZE_prevent_junta
-		unlock_national_focus = AZE_necess_evil
-		unlock_national_focus = AZE_proclaim_win 
 	}
 	BAL = {
 		oob = "BAL_2017"   
@@ -1962,11 +1914,6 @@
 		remove_ideas = shia_resistance_04
 	 
 		set_country_flag = wahabi_ulem
-
-		#Nat focus
-		complete_national_focus = GCC_political_affairs
-		complete_national_focus = GCC_constitutional_monarchy
-		complete_national_focus = GCC_universal_suffrage
 
 		#CT
 		clr_country_flag = threat_level_negligible
@@ -2666,21 +2613,6 @@
 		set_country_flag = mosadi_seboko_kgosi
 		set_country_flag = BOT_Motswaledi_dead
 
-		unlock_national_focus = BOT_military_reevaluation
-		unlock_national_focus = BOT_american_military_cooperation
-		unlock_national_focus = BOT_enlist_women
-		unlock_national_focus = BOT_found_NBB
-		unlock_national_focus = BOT_support_ditec
-		unlock_national_focus = BOT_support_deaftronics
-		unlock_national_focus = BOT_found_UBSOM
-		unlock_national_focus = BOT_found_BIUST
-		unlock_national_focus = BOT_political_effort
-		unlock_national_focus = BOT_assert_independence
-		unlock_national_focus = BOT_found_indian_embassy
-		unlock_national_focus = BOT_indian_diamond_institute
-		unlock_national_focus = BOT_three_digkosi_nko
-		unlock_national_focus = BOT_introduce_school_fees
-
 		#Kalahari
 		set_variable = { kalahari_expands = 60 }
 		set_variable = { kalahari_steady = 30 }
@@ -3042,16 +2974,6 @@
             e_mot_inf_bat_tech = 1
             e_l_inf_bat_tech = 1
         }
-
-		# Sets The Democracy Path
-		unlock_national_focus = BRM_address_the_democracy_question
-		unlock_national_focus = BRM_pave_the_way_for_civilian_rule
-		unlock_national_focus = BRM_propose_the_2008_constitution
-		unlock_national_focus = BRM_relax_media_censorship
-		unlock_national_focus = BRM_release_opposition_figures
-		unlock_national_focus = BRM_allow_labour_strikes_and_unions
-		unlock_national_focus = BRM_cede_power_to_the_nld
-		unlock_national_focus = BRM_focus_on_the_tatmadaw
 		
 		#Influence system
 		init_influence = yes
@@ -4292,8 +4214,8 @@
         add_dynamic_modifier = {
             modifier = PRC_communist_party_of_china_dynamic
         }
-        set_variable = { PRC_cpc_democratic_drift_dynamic_var = 2.7 }
-        set_variable = { PRC_cpc_communism_drift_dynamic_var = 6.5 }
+        set_variable = { PRC_cpc_democratic_drift_dynamic_var = 2.2 }
+        set_variable = { PRC_cpc_communism_drift_dynamic_var = 7 }
         set_variable = { PRC_cpc_neutrality_drift_dynamic_var = 0.6 }
         set_variable = { PRC_cpc_political_power_gain_dynamic_var = 0.2 }
         set_variable = { PRC_cpc_foreign_influence_defense_modifier_dynamic_var = 0.1 }
@@ -4334,7 +4256,16 @@
         }
 
         add_dynamic_modifier = {
-            modifier = PRC_pla_dynamic
+            modifier = CHI_landforce_modifier
+        }
+        add_dynamic_modifier = {
+            modifier = CHI_navy_modifier
+        }
+        add_dynamic_modifier = {
+            modifier = CHI_airforce_modifier
+        }
+        add_dynamic_modifier = {
+            modifier = CHI_defense_industry
         }
         set_variable = { CHI_land_army_attack_factor = -0.2 }
         set_variable = { CHI_land_army_defence_factor = -0.1 }
@@ -4346,8 +4277,13 @@
         set_variable = { CHI_land_breakthrough_factor = -0.1 }
         set_variable = { CHI_land_army_speed_factor = 0.05 }
         set_variable = { CHI_land_army_artillery_attack_factor = 0.05 }
-        set_variable = { CHI_air_supply_consumption_factor = 0.05 }
         set_variable = { CHI_land_cas_efficiency = -0.2 }
+        set_variable = { CHI_air_supply_consumption_factor = 0.05 }
+		set_variable = { CHI_air_air_superiority_efficiency = 0.05 }
+		set_variable = { CHI_air_naval_strike_targetting_factor = -0.1 }
+		set_variable = { CHI_navy_screening_without_screens = 0.05 }
+		set_variable = { CHI_navy_naval_coordination = -0.05 }
+		set_variable = { CHI_navy_navy_submarine_detection_factor = -0.1 }
 
         add_dynamic_modifier = { #中国经济政策
             modifier = PRC_made_in_china_dynamic
@@ -15741,13 +15677,6 @@
 		set_variable = { var = corporate_tax_rate value = 30 }
 		set_variable = { var = population_tax_rate value = 10 }
 
-		#Nat focus/Auto Sets the ANPP in power in 2017 May just bypass based on start date instead of complete so you dont get a ton of bonuses
-		complete_national_focus = NIG_federal_government_of_nigeria
-		complete_national_focus = NIG_constiution_reforms
-		complete_national_focus = NIG_the_nigerian_model
-		complete_national_focus = NIG_efficent_government_spending
-		complete_national_focus = NIG_the_anpp
-
 		# Starting tech
 		set_technology = { 
 			util_vehicle_2 = 1
@@ -17492,53 +17421,6 @@
 		reverse_add_opinion_modifier = { target = ROM modifier = EU_member_opinion } 
 	 
 		#Nat Focus
-		unlock_national_focus = POL_revitalize_government
-		unlock_national_focus = POL_stay_on_track
-		unlock_national_focus = POL_reassure_elections
-		unlock_national_focus = POL_poland_our_home
-		unlock_national_focus = POL_continue_transition
-		unlock_national_focus = POL_finish_social_program
-		unlock_national_focus = POL_socialists_win
-		unlock_national_focus = POL_united_we_stand
-		unlock_national_focus = POL_support_war_on_terror
-		unlock_national_focus = POL_polish_volunteer_corps
-		unlock_national_focus = POL_study_allied_reports
-		unlock_national_focus = POL_security_summit
-		unlock_national_focus = POL_focus_on_social_projects
-		unlock_national_focus = POL_support_traditional_industry
-		unlock_national_focus = POL_secure_unions_support
-		unlock_national_focus = POL_continue_eu_intergration
-		unlock_national_focus = POL_eu_funding
-		unlock_national_focus = POL_connections_to_eu_members
-		unlock_national_focus = POL_focus_on_economic_deals
-		unlock_national_focus = POL_new_ideals
-		unlock_national_focus = POL_shifting_politics
-		unlock_national_focus = POL_platforma_obivatelska
-		unlock_national_focus = POL_railways_for_poland
-		unlock_national_focus = POL_bio_fuel
-		unlock_national_focus = POL_improve_civil_administration
-		unlock_national_focus = POL_construction_tax_cuts
-		unlock_national_focus = POL_promote_eu_values
-		unlock_national_focus = POL_no_more_expeditions
-		unlock_national_focus = POL_speak_against_russia
-		unlock_national_focus = POL_friends_from_afar
-		unlock_national_focus = POL_american_bases
-		unlock_national_focus = POL_pravda_i_spravedlivost
-		unlock_national_focus = POL_promote_industrial_quality
-		unlock_national_focus = POL_continue_anti_corrpution
-		unlock_national_focus = POL_honor_lost_army
-		unlock_national_focus = POL_perpetuating_democratic_values
-		unlock_national_focus = POL_ban_communist_symbols
-		unlock_national_focus = POL_empower_the_law
-		unlock_national_focus = POL_sily_zbrojne_rzeczypospolitej_polskiej
-		unlock_national_focus = POL_passing_the_homeland_defense_act
-		unlock_national_focus = POL_wojska_ladowe
-		unlock_national_focus = POL_sily_powietrzne
-		unlock_national_focus = POL_creation_of_the_territorial_defense_forces
-		unlock_national_focus = POL_modernization_of_armored_forces
-		complete_national_focus = POL_31_and_32_baza_lotnictwa_taktycznego
-		complete_national_focus = POL_marynarka_wojenna_rzeczypospolitej
-		complete_national_focus = POL_expansion_of_the_naval_port_in_gdynia
 
 		set_technology = { 
 			infantry_weapons_5 = 1 
@@ -17877,13 +17759,6 @@
 		set_variable = { fossil_fuel_industry_opinion = 80 }
 
 		#Nat focus
-		complete_national_focus = GCC_foreign_affairs
-		complete_national_focus = GCC_influence_muslim_europe
-		complete_national_focus = GCC_befriend_the_turks
-		complete_national_focus = GCC_turkish_bases
-		complete_national_focus = GCC_strategic_hedging
-		complete_national_focus = GCC_improve_relations_with_iran
-		complete_national_focus = GCC_the_arab_street
 
 		#GCC
 		set_country_flag = supports_membership_JOR
@@ -18957,6 +18832,9 @@
 		} 
 	}
 	SAU = {
+        remove_power_balance = {
+            id = SAU_modernisation_balance_of_power_category
+        }
         set_global_flag = GCC_a_robust_alliance_completed
         create_faction_from_template = faction_template_gcc
         add_to_faction = KUW
@@ -18976,10 +18854,6 @@
 		} 
 		 
 		#Nat focus
-		complete_national_focus = GCC_the_gcc
-		complete_national_focus = GCC_military_union
-		complete_national_focus = GCC_joint_defense_agreement
-		complete_national_focus = GCC_limited_unified_command 
 
 		set_country_flag = Major_Importer_US_Arms #Trends-in-international-arms-transfers-2016.pdf 
 		set_variable = { saudi_royal_family_opinion = 50 }
@@ -20935,7 +20809,180 @@
             SOV_yukos_idea
             SOV_rao_ues
             SUB_moscow_lujkov
+            SOV_outdated_army_idea
+            SOV_russian_airforce_idea_1
+            SOV_the_plundered_russian_navy1
+            SOV_idea_semi_presidential_republic
         }
+        remove_dynamic_modifier = { modifier = SOV_economy_modifier }
+        remove_dynamic_modifier = { modifier = SOV_capitalisation_modifier }
+        remove_power_balance = {
+            id = SOV_west_east_bop
+        }
+		division_template = {
+			name = "Rosgvardia"
+			is_locked = yes
+			regiments = {
+				Militia_Bat = { x = 0 y = 0 }
+				Militia_Bat = { x = 0 y = 1 }
+				Militia_Bat = { x = 0 y = 2 }
+				Militia_Bat = { x = 1 y = 0 }
+				Militia_Bat = { x = 1 y = 1 }
+				Militia_Bat = { x = 1 y = 2 }
+				Arty_Bat = { x = 2 y = 0 }
+				Arty_Bat = { x = 2 y = 1 }
+				Arty_Bat = { x = 2 y = 2 }
+			}
+			support = {
+				Mot_Recce_Comp = { x = 0 y = 0 }
+				L_Engi_Comp = { x = 0 y = 1 }
+			}
+		}
+		for_each_scope_loop = {
+			array = global.CSTO_member
+			add_opinion_modifier = { target = ROOT modifier = military_cooperation }
+			reverse_add_opinion_modifier = { target = ROOT modifier = military_cooperation }
+		}
+		add_equipment_bonus = {
+			name = SOV_kbp
+			bonus = {
+				L_AT_Equipment = { build_cost_ic = -0.07 }
+				H_AT_Equipment = { build_cost_ic = -0.07 }
+				AA_Equipment = { build_cost_ic = -0.07 }
+				medium_tank_aa_chassis = { build_cost_ic = -0.07 }
+				artillery_equipment = { build_cost_ic = -0.07 }
+				medium_tank_artillery_chassis = { build_cost_ic = -0.07 }
+			}
+		}
+		add_equipment_bonus = {
+			name = SOV_rosoboronprom
+			bonus = {
+				heavy_tank_chassis = { build_cost_ic = -0.07 instant = yes }
+				heavy_tank_amphibious_chassis = { build_cost_ic = -0.07 instant = yes }
+				fighter = { build_cost_ic = -0.07 instant = yes }
+				tactical_bomber = { build_cost_ic = -0.07 instant = yes }
+				naval_bomber = { build_cost_ic = -0.07 instant = yes }
+			}
+		}
+		add_equipment_bonus = {
+			name = SOV_expand_kalashnikov_concern
+			bonus = {
+				infantry_weapons_type = { build_cost_ic = -0.07 instant = yes }
+				artillery_equipment = { build_cost_ic = -0.07 instant = yes }
+			}
+		}
+		add_to_variable = { SOV_intel_root_out_resistance_effectiveness_factor = -0.15 tooltip = root_out_resistance_effectiveness_factor_tt }
+		add_to_variable = { SOV_intel_foreign_subversive_activites = 0.15 tooltip = foreign_subversive_activites_tt }
+		add_to_variable = { SOV_intel_police_cost_multiplier_modifier = -0.02 tooltip = police_cost_multiplier_modifier_tt }
+		add_to_variable = { SOV_intel_root_out_resistance_effectiveness_factor = 0.25 tooltip = root_out_resistance_effectiveness_factor_tt }
+		add_to_variable = { SOV_intel_foreign_subversive_activites = -0.25 tooltip = foreign_subversive_activites_tt }
+		add_to_variable = { SOV_intel_police_cost_multiplier_modifier = 0.04 tooltip = police_cost_multiplier_modifier_tt }
+		add_to_variable = { SOV_intel_fascism_drift = -0.01 tooltip = fascism_drift_tt }
+		add_to_variable = { SOV_intel_war_support_factor = 0.01 tooltip = war_support_factor_tt }
+		add_to_variable = { SOV_land_army_core_defence_factor = 0.03 tooltip = army_core_defence_factor_tt }
+		add_to_variable = { SOV_intel_root_out_resistance_effectiveness_factor = 0.05 tooltip = root_out_resistance_effectiveness_factor_tt }
+		add_to_variable = { SOV_intel_foreign_subversive_activites = -0.05 tooltip = foreign_subversive_activites_tt }
+		add_to_variable = { SOV_intel_foreign_influence_defense_modifier = 0.05 tooltip = foreign_influence_defense_modifier_tt }
+		add_to_variable = { SOV_intel_corruption_cost_factor = -0.01 tooltip = corruption_cost_factor_tt }
+		add_to_variable = { SOV_intel_stability_factor = 0.01 tooltip = stability_factor_tt }
+		add_to_variable = { SOV_intel_decryption_factor = 0.05 tooltip = decryption_factor_tt }
+		add_to_variable = { SOV_intel_police_cost_multiplier_modifier = 0.04 tooltip = police_cost_multiplier_modifier_tt }
+		add_to_variable = { SOV_land_send_volunteers_tension = -0.05 tooltip = send_volunteers_tension_tt }
+		add_to_variable = { SOV_intel_decryption_factor = 0.02 tooltip = decryption_factor_tt }
+		add_to_variable = { SOV_intel_police_cost_multiplier_modifier = 0.02 tooltip = police_cost_multiplier_modifier_tt }
+		add_to_variable = { SOV_land_send_volunteers_tension = -0.03 tooltip = send_volunteers_tension_tt }
+		add_to_variable = { SOV_land_special_forces_training_time_factor = -0.05 tooltip = special_forces_training_time_factor_tt }
+		add_to_variable = { SOV_intel_intel_network_gain_factor = 0.15 tooltip = intel_network_gain_factor_tt }
+		add_to_variable = { SOV_intel_root_out_resistance_effectiveness_factor = 0.10 tooltip = root_out_resistance_effectiveness_factor_tt }
+		add_to_variable = { SOV_intel_civilian_intel_factor = 0.10 tooltip = civilian_intel_factor_tt }
+		add_to_variable = { SOV_intel_root_out_resistance_effectiveness_factor = 0.15 tooltip = root_out_resistance_effectiveness_factor_tt }
+		add_to_variable = { SOV_intel_foreign_subversive_activites = -0.15 tooltip = foreign_subversive_activites_tt }
+		add_to_variable = { SOV_intel_police_cost_multiplier_modifier = 0.02 tooltip = police_cost_multiplier_modifier_tt }
+		add_to_variable = { SOV_intel_root_out_resistance_effectiveness_factor = 0.05 tooltip = root_out_resistance_effectiveness_factor_tt }
+		add_to_variable = { SOV_intel_foreign_subversive_activites = -0.05 tooltip = foreign_subversive_activites_tt }
+		add_to_variable = { SOV_intel_foreign_influence_defense_modifier = 0.03 tooltip = foreign_influence_defense_modifier_tt }
+		add_to_variable = { SOV_intel_corruption_cost_factor = -0.05 tooltip = corruption_cost_factor_tt }
+		add_to_variable = { SOV_intel_stability_factor = 0.01 tooltip = stability_factor_tt }
+		add_to_variable = { SOV_intel_encryption_factor = 0.05 tooltip = encryption_factor_tt }
+		add_to_variable = { SOV_intel_stability_factor = 0.03 tooltip = stability_factor_tt }
+		add_to_variable = { SOV_intel_fascism_drift = -0.02 tooltip = fascism_drift_tt }
+		add_to_variable = { SOV_intel_police_cost_multiplier_modifier = -0.01 tooltip = police_cost_multiplier_modifier_tt }
+		add_to_variable = { SOV_intel_corruption_cost_factor = -0.02 tooltip = corruption_cost_factor_tt }
+		add_to_variable = { SOV_intel_intelligence_agency_defense = 0.20 tooltip = intelligence_agency_defense_tt }
+		add_to_variable = { SOV_intel_encryption_factor = 0.15 tooltip = encryption_factor_tt }
+		add_to_variable = { SOV_intel_foreign_influence_defense_modifier = 0.10 tooltip = foreign_influence_defense_modifier_tt }
+		add_to_variable = { SOV_intel_enemy_operative_capture_chance_factor = 0.05 tooltip = enemy_operative_capture_chance_factor_tt }
+		add_to_variable = { SOV_intel_resistance_damage_to_garrison = -0.05 tooltip = resistance_damage_to_garrison_tt }
+		add_to_variable = { SOV_intel_enemy_operative_capture_chance_factor = 0.03 tooltip = enemy_operative_capture_chance_factor_tt }
+		add_to_variable = { SOV_intel_resistance_damage_to_garrison = -0.03 tooltip = resistance_damage_to_garrison_tt }
+		add_to_variable = { SOV_intel_foreign_influence_defense_modifier = 0.02 tooltip = foreign_influence_defense_modifier_tt }
+		add_to_variable = { SOV_land_army_core_defence_factor = 0.02 tooltip = army_core_defence_factor_tt }
+		add_to_variable = { SOV_intel_intelligence_agency_defense = 0.10 tooltip = intelligence_agency_defense_tt }
+		add_to_variable = { SOV_intel_encryption_factor = 0.10 tooltip = encryption_factor_tt }
+		add_to_variable = { SOV_intel_foreign_influence_defense_modifier = 0.10 tooltip = foreign_influence_defense_modifier_tt }
+		add_to_variable = { SOV_air_air_training_xp_gain_factor = 0.03 tooltip = air_training_xp_gain_factor_tt }
+		add_to_variable = { SOV_air_air_mission_xp_gain_factor = 0.03 tooltip = air_mission_xp_gain_factor_tt }
+		add_to_variable = { SOV_land_send_volunteer_size = 1 tooltip = send_volunteer_size_tt }
+		add_to_variable = { SOV_land_expected_mil_modifier = 0.5 tooltip = expected_mil_modifier_tt }
+		add_to_variable = { SOV_land_army_defence_factor = 0.05 tooltip = army_defence_factor_tt }
+		add_to_variable = { SOV_land_army_infantry_attack_factor = 0.05 tooltip = army_infantry_attack_factor_tt }
+		add_to_variable = { SOV_land_army_org_factor = 0.03 tooltip = army_org_factor_tt }
+		add_to_variable = { SOV_land_acclimatization_cold_climate_gain_factor = 0.20 tooltip = acclimatization_cold_climate_gain_factor_tt }
+		add_to_variable = { SOV_land_acclimatization_hot_climate_gain_factor = 0.20 tooltip = acclimatization_hot_climate_gain_factor_tt }
+		add_to_variable = { SOV_land_personnel_cost_multiplier_modifier = 0.09 tooltip = personnel_cost_multiplier_modifier_tt }
+		add_to_variable = { SOV_land_static_anti_air_damage_factor = 0.15 tooltip = static_anti_air_damage_factor_tt }
+		add_to_variable = { SOV_land_static_anti_air_hit_chance_factor = 0.15 tooltip = static_anti_air_hit_chance_factor_tt }
+		add_to_variable = { SOV_navy_navy_anti_air_attack_factor = 0.10 tooltip = navy_anti_air_attack_factor_tt }
+		add_to_variable = { SOV_land_army_speed_factor = 0.05 tooltip = army_speed_factor_tt }
+		add_to_variable = { SOV_land_army_core_defence_factor = 0.05 tooltip = army_core_defence_factor_tt }
+		add_to_variable = { SOV_land_influence_coup_modifier = 0.20 tooltip = influence_coup_modifier_tt }
+		add_to_variable = { SOV_land_foreign_influence_continent_modifier = 0.20 tooltip = foreign_influence_continent_modifier_tt }
+		add_to_variable = { SOV_navy_naval_accidents_chance = -0.02 tooltip = naval_accidents_chance_tt }
+		add_to_variable = { SOV_navy_naval_mine_hit_chance = -0.02 tooltip = naval_mine_hit_chance_tt }
+		add_to_variable = { SOV_navy_positioning = 0.05 tooltip = positioning_tt }
+		add_to_variable = { SOV_navy_industrial_capacity_dockyard = 0.08 tooltip = industrial_capacity_dockyard_tt }
+		add_to_variable = { SOV_navy_naval_speed_factor = 0.08 tooltip = naval_speed_factor_tt }
+		add_to_variable = { SOV_navy_navy_max_range_factor = 0.08 tooltip = navy_max_range_factor_tt }
+		add_to_variable = { SOV_navy_navy_anti_air_attack_factor = 0.08 tooltip = navy_anti_air_attack_factor_tt }
+		add_to_variable = { SOV_navy_amphibious_invasion = 0.08 tooltip = amphibious_invasion_tt }
+		add_to_variable = { SOV_navy_naval_accidents_chance = -0.01 tooltip = naval_accidents_chance_tt }
+		add_to_variable = { SOV_navy_naval_mine_hit_chance = -0.01 tooltip = naval_mine_hit_chance_tt }
+		add_to_variable = { SOV_navy_positioning = 0.03 tooltip = positioning_tt }
+		add_to_variable = { SOV_navy_industrial_capacity_dockyard = 0.04 tooltip = industrial_capacity_dockyard_tt }
+		add_to_variable = { SOV_navy_naval_speed_factor = 0.04 tooltip = naval_speed_factor_tt }
+		add_to_variable = { SOV_navy_navy_max_range_factor = 0.04 tooltip = navy_max_range_factor_tt }
+		add_to_variable = { SOV_navy_navy_anti_air_attack_factor = 0.05 tooltip = navy_anti_air_attack_factor_tt }
+		add_to_variable = { SOV_navy_amphibious_invasion = 0.05 tooltip = amphibious_invasion_tt }
+		add_to_variable = { SOV_land_special_forces_attack_factor = 0.05 tooltip = special_forces_attack_factor_tt }
+		add_to_variable = { SOV_land_special_forces_defence_factor = 0.05 tooltip = special_forces_defence_factor_tt }
+		add_to_variable = { SOV_land_special_forces_training_time_factor = -0.20 tooltip = special_forces_training_time_factor_tt }
+		add_to_variable = { SOV_land_initiative_factor = 0.05 tooltip = initiative_factor_tt }
+		add_to_variable = { SOV_land_supply_consumption_factor = -0.07 tooltip = supply_consumption_factor_tt }
+		add_to_variable = { SOV_air_air_defence_factor = 0.15 tooltip = air_defence_factor_tt }
+		add_to_variable = { SOV_land_repair_speed_rail_way_factor = 0.10 tooltip = repair_speed_rail_way_factor_tt }
+		add_to_variable = { SOV_air_air_volunteer_cap = 35 tooltip = air_volunteer_cap_tt }
+		add_to_variable = { SOV_air_air_training_xp_gain_factor = 0.02 tooltip = air_training_xp_gain_factor_tt }
+		add_to_variable = { SOV_air_air_mission_xp_gain_factor = 0.02 tooltip = air_mission_xp_gain_factor_tt }
+		add_to_variable = { SOV_air_air_volunteer_cap = 20 tooltip = air_volunteer_cap_tt }
+		add_to_variable = { SOV_land_send_volunteer_size = 1 tooltip = send_volunteer_size_tt }
+		add_to_variable = { SOV_land_send_volunteer_divisions_required = -0.15 tooltip = send_volunteer_divisions_required_tt }
+		add_to_variable = { SOV_air_air_defence_factor = 0.10 tooltip = air_defence_factor_tt }
+		add_to_variable = { SOV_land_rocket_attack_factor = 0.05 tooltip = rocket_attack_factor_tt }
+		add_to_variable = { SOV_air_air_training_xp_gain_factor = 0.10 tooltip = air_training_xp_gain_factor_tt }
+		add_to_variable = { SOV_air_air_mission_xp_gain_factor = 0.10 tooltip = air_mission_xp_gain_factor_tt }
+		add_to_variable = { SOV_air_air_accidents_factor = -0.02 tooltip = air_accidents_factor_tt }
+		add_to_variable = { SOV_air_airforce_personnel_cost_multiplier_modifier = -0.10 tooltip = airforce_personnel_cost_multiplier_modifier_tt }
+		add_to_variable = { SOV_land_supply_combat_penalties_on_core_factor = -0.07 tooltip = supply_combat_penalties_on_core_factor_tt }
+		add_to_variable = { SOV_land_army_core_attack_factor = 0.05 tooltip = army_core_attack_factor_tt }
+		add_to_variable = { SOV_land_army_core_defence_factor = 0.10 tooltip = army_core_defence_factor_tt }
+		add_to_variable = { SOV_land_army_intel_factor = 0.10 tooltip = army_intel_factor_tt }
+		add_to_variable = { SOV_air_airforce_intel_factor = 0.10 tooltip = airforce_intel_factor_tt }
+		add_to_variable = { SOV_land_max_planning_factor = 0.05 tooltip = max_planning_factor_tt }
+		add_to_variable = { SOV_land_recon_factor = 0.05 tooltip = recon_factor_tt }
+		add_to_variable = { SOV_navy_naval_coordination = 0.05 tooltip = naval_coordination_tt }
+		add_to_variable = { SOV_navy_positioning = 0.05 tooltip = positioning_tt }
+		add_to_variable = { SOV_land_conscription_factor = 0.02 tooltip = conscription_factor_tt }
+		unlock_military_industrial_organization_tooltip = mio:SOV_nevskoye_design_bureau_naval_manufacturer
         unlock_national_focus = CHI_SOV_treaty_good_neighbourliness
         unlock_national_focus = CHI_SOV_sco_framework
         unlock_national_focus = CHI_SOV_brics_coordination
@@ -20946,6 +20993,69 @@
         unlock_national_focus = CHI_SOV_peace_mission
         unlock_national_focus = CHI_SOV_advanced_arms_sales
         unlock_national_focus = CHI_SOV_pacific_fleet_coord
+        unlock_national_focus = SOV_safe_russia
+        unlock_national_focus = SOV_rosgvardia
+        unlock_national_focus = SOV_rosguard_start_org
+        unlock_national_focus = SOV_rosguard_military
+        unlock_national_focus = SOV_rosguard_occup
+        unlock_national_focus = SOV_outer
+        unlock_national_focus = SOV_gru
+        unlock_national_focus = SOV_gru_spetznaz
+        unlock_national_focus = SOV_svr
+        unlock_national_focus = SOV_zaslon
+        unlock_national_focus = SOV_inner_army
+        unlock_national_focus = SOV_omon
+        unlock_national_focus = SOV_upravlenie_k
+        unlock_national_focus = SOV_centr_t
+        unlock_national_focus = SOV_gusb
+        unlock_national_focus = SOV_FSB_expansion
+        unlock_national_focus = SOV_alpha_omon_exp
+        unlock_national_focus = SOV_vimpel_omon_exp
+        unlock_national_focus = SOV_pogranci_fsb
+        unlock_national_focus = SOV_second_slujba
+        unlock_national_focus = SOV_groznyy_offensive
+        unlock_national_focus = SOV_finish_1998_reforms
+        unlock_national_focus = SOV_kosmo_voiska
+        unlock_national_focus = SOV_2001_military_reforms
+        unlock_national_focus = SOV_csto_training_exercises
+        unlock_national_focus = SOV_kbp
+        unlock_national_focus = SOV_black_gussard
+        unlock_national_focus = SOV_rosoboronprom
+        unlock_national_focus = SOV_2008_military_reforms
+        unlock_national_focus = SOV_reserve_officer_training_system
+        unlock_national_focus = SOV_ratnik_program
+        unlock_national_focus = SOV_armyreform_anti_air
+        unlock_national_focus = SOV_armyreform_engineer
+        unlock_national_focus = SOV_armyreform_ipso
+        unlock_national_focus = SOV_reorganize_airforce
+        unlock_national_focus = SOV_airforce_structure_change
+        unlock_national_focus = SOV_form_the_uac
+        unlock_national_focus = SOV_start_fleet_reforms
+        unlock_national_focus = SOV_cancel_unnecessary_projects
+        unlock_national_focus = SOV_Updated_naval_doctrine
+        unlock_national_focus = SOV_begin_modernization_of_our_fleet
+        unlock_national_focus = SOV_Optimize_our_fleet
+        unlock_national_focus = SOV_The_high_seas_fleet
+        unlock_national_focus = SOV_armyreform_spec
+        unlock_national_focus = SOV_increased_arms_exports_2
+        unlock_national_focus = SOV_expand_kalashnikov_concern
+        unlock_national_focus = SOV_mto
+        unlock_national_focus = SOV_radioelectronic_warfare
+        unlock_national_focus = SOV_railway_troops
+        unlock_national_focus = SOV_airforce_far_aviation
+        unlock_national_focus = SOV_airforce_space_forces_upgrade
+        unlock_national_focus = SOV_airforce_transport_aviation
+        unlock_national_focus = SOV_air_rocket_defence
+        unlock_national_focus = SOV_pakfa
+        unlock_national_focus = SOV_pakda
+        unlock_national_focus = SOV_russian_airspace_forces
+        unlock_national_focus = SOV_missile_defense_investments
+        unlock_national_focus = SOV_radio_defense_investments
+        unlock_national_focus = SOV_roscosmos_intel
+        unlock_national_focus = SOV_armata_universal_combat_platform
+        unlock_national_focus = SOV_mechanized_infantry_renovations
+        unlock_national_focus = SOV_form_yunarmiya
+        set_country_flag = SOV_united_russia
         add_dynamic_modifier = { modifier = CHI_SOV_shared_modifier }
         add_to_variable = { CHI_SOV_terror_threat_detection_modifier = 0.10 tooltip = terror_threat_detection_modifier_tt }
         add_to_variable = { CHI_SOV_resistance_growth = -0.05 tooltip = resistance_growth_tt }
@@ -22144,6 +22254,9 @@
 		set_variable = { literacy_rate = 0.884 } 
 	}
 	SWE = {
+        remove_power_balance = {
+            id = SWE_balance_of_power
+        }
 		set_variable = { var = debt value = 167 }
 		set_variable = { var = treasury value = 59 }
 		set_variable = { var = int_investments value = 537 }
@@ -24542,6 +24655,8 @@
         }
         remove_ideas = {
             USA_fifth_generation_fighter_woes_1
+			us_war_on_drugs
+			us_mass_media_problems
         }
         add_dynamic_modifier = {
             modifier = five_eyes
@@ -24555,6 +24670,243 @@
         set_variable = { fvey_foreign_subversive_activies_upkeep_var = -0.1 }
         set_variable = { fvey_foreign_subversive_activies_var = -0.1 }
         set_variable = { fvey_foreign_influence_modifier = 0.075 }
+        unlock_national_focus = USA_focus_the_2000_joint_exercises
+        unlock_national_focus = USA_focus_the_pentagon_wars
+        ###2017 Completed National Focuses###
+        ###Economic & Political Tree###
+        unlock_national_focus = USA_focus_ending_clintonomics
+        unlock_national_focus = USA_focus_enjoy_surplus
+        unlock_national_focus = USA_focus_rise_internet
+        unlock_national_focus = USA_focus_limited_indust_expansion
+        unlock_national_focus = USA_focus_late_renew_investments
+        unlock_national_focus = USA_focus_43rd_administration
+        unlock_national_focus = USA_focus_pushing_the_anti_smoking_initiative
+        unlock_national_focus = USA_focus_dealing_with_anti_globalist_protest
+        unlock_national_focus = USA_focus_state_visit_to_vietnam
+        unlock_national_focus = USA_focus_2000_republicans
+        unlock_national_focus = USA_focus_2000_limited_deregulation
+        unlock_national_focus = USA_focus_2000_reform_financial
+        unlock_national_focus = USA_focus_early_admin_dereg
+        unlock_national_focus = USA_focus_2001_tax_cuts
+        unlock_national_focus = USA_focus_2000_increase_military
+        unlock_national_focus = USA_focus_2000_education_reforms
+        unlock_national_focus = USA_focus_2004_republicans
+        unlock_national_focus = USA_focus_2000_central_free_trade
+        unlock_national_focus = USA_focus_2004_military_contracts
+        unlock_national_focus = USA_focus_2004_economic_deregulation
+        unlock_national_focus = USA_focus_2004_investments
+        unlock_national_focus = USA_focus_2007_tax_cuts
+        unlock_national_focus = USA_focus_2004_urbanization
+        unlock_national_focus = USA_focus_2004_healthcare
+        unlock_national_focus = USA_focus_2004_less_red_Tape
+        unlock_national_focus = USA_focus_2004_budget_balancing
+        unlock_national_focus = USA_focus_2008_democrats
+        unlock_national_focus = USA_focus_2009_tax_reforms
+        unlock_national_focus = USA_focus_2008_environmental_safeguards
+        unlock_national_focus = USA_focus_2008_inter_economic_deals
+        unlock_national_focus = USA_focus_2008_social_security
+        unlock_national_focus = USA_focus_2008_healthcare
+        unlock_national_focus = USA_focus_2008_police
+        unlock_national_focus = USA_focus_2008_urbanization
+        unlock_national_focus = USA_focus_ending_2011_fiscal_year
+        unlock_national_focus = USA_focus_2012_democrats
+        unlock_national_focus = USA_focus_riding_green_wave
+        unlock_national_focus = USA_focus_2012_renewable_invest
+        unlock_national_focus = USA_focus_2012_renewable_refitting
+        unlock_national_focus = USA_focus_2012_renewable_research
+        unlock_national_focus = USA_focus_2014_infrastructure
+        unlock_national_focus = USA_focus_2012_blue_chip
+        unlock_national_focus = USA_focus_2012_digital_classroom
+        unlock_national_focus = USA_focus_urbanization_ii
+        unlock_national_focus = USA_focus_2016_republican_victory
+        ###Media & Foreign Policy Tree###
+        unlock_national_focus = USA_scars_from_the_forever_war
+        unlock_national_focus = USA_cutting_failed_programs
+        unlock_national_focus = USA_repurposing_budgets
+        unlock_national_focus = USA_holding_our_ground
+        unlock_national_focus = USA_healing_the_wounds
+        unlock_national_focus = USA_new_millennia_new_media
+        unlock_national_focus = USA_more_opinion_pieces
+        unlock_national_focus = USA_redefining_news_channel
+        unlock_national_focus = USA_appealing_to_the_masses
+        unlock_national_focus = USA_party_lines_and_view_times
+        unlock_national_focus = USA_breaking_the_mold
+        ###Army Tree###
+        unlock_national_focus = USA_focus_united_states_army
+        unlock_national_focus = USA_focus_five_star_folly
+        unlock_national_focus = USA_focus_infantry_doctrine_debate
+        unlock_national_focus = USA_focus_armored_infantry_ascendance
+        unlock_national_focus = USA_focus_tank_force_dilemma
+        unlock_national_focus = USA_focus_repurposing_armored_programs
+        unlock_national_focus = USA_focus_logistical_dominance
+        unlock_national_focus = USA_focus_fire_support_supremacy
+        unlock_national_focus = USA_focus_army_special_forces_question
+        unlock_national_focus = USA_focus_specialized_frontline_defense_support
+        unlock_national_focus = USA_focus_the_information_game
+        unlock_national_focus = USA_focus_this_is_the_army_mr_jones
+        ###Navy Tree###
+        unlock_national_focus = USA_focus_united_states_navy
+        unlock_national_focus = USA_focus_project_new_waves
+        unlock_national_focus = USA_focus_the_submarine_debate
+        unlock_national_focus = USA_focus_the_attack_fleet
+        unlock_national_focus = USA_focus_carrier_direction_dilemma
+        unlock_national_focus = USA_focus_project_gunships
+        unlock_national_focus = USA_focus_strengthing_naval_training_efforts
+        unlock_national_focus = USA_focus_role_of_the_usmc
+        unlock_national_focus = USA_focus_marine_lessons_in_army_clothes
+        unlock_national_focus = USA_focus_repair_teams
+        unlock_national_focus = USA_focus_a_modern_navy
+        ###Air Force Tree###
+        unlock_national_focus = USA_focus_united_states_air_force
+        unlock_national_focus = USA_focus_a_limitless_sky
+        unlock_national_focus = USA_focus_perpetual_air_dominance
+        unlock_national_focus = USA_focus_american_institute_for_avionics
+        unlock_national_focus = USA_focus_phase_one_innovations
+        unlock_national_focus = USA_focus_phase_two_innovations
+        unlock_national_focus = USA_focus_phase_three_innovations
+        unlock_national_focus = USA_focus_paratrooper_corps
+        unlock_national_focus = USA_focus_every_soldier_a_trooper
+        unlock_national_focus = USA_focus_joint_branch_coordination_training
+        unlock_national_focus = USA_focus_to_infinite_and_beyond
+
+        ###2017 Dynamic Modifier Starting Values###
+        ###American Economic Policy###
+        set_variable = { econ_production_efficiency_cap = 0.23 }
+        set_variable = { econ_starting_factory_efficiency = 0.29 }
+        set_variable = { econ_factory_output = 0.07 }
+        set_variable = { econ_dockyard_output = 0.36 }
+        set_variable = { econ_productivity = 0.24 }
+        set_variable = { econ_civ_factory_workforce = -0.16 }
+        set_variable = { econ_mil_factory_workforce = 0.11 }
+        set_variable = { econ_office_workforce = 0.11 }
+        set_variable = { econ_consumer_goods = 0 }
+        ###US Department of the Interior###
+        set_variable = { doti_construction_speed = 0.68 }
+        set_variable = { doti_civ_construction_speed = -0.05 }
+        set_variable = { doti_mil_construction_speed = 0.33 }
+        set_variable = { doti_dockyard_construction_speed = 0.28 }
+        set_variable = { doti_office_construction_speed = 0.5 }
+        set_variable = { doti_nuclear_reactor_construction_speed = -0.32 }
+        set_variable = { doti_resource_extraction = 0.82 }
+        ###US Department of Energy###
+        set_variable = { doe_energy_production = 0.03 }
+        set_variable = { doe_energy_consumption = 0.14 }
+        set_variable = { doe_population_energy_consumption = 0.14 }
+        set_variable = { doe_fossil_fuel_energy_production = 0.1 }
+        set_variable = { doe_nuclear_energy_production = -0.1 }
+        set_variable = { doe_renewable_energy_production = 0 }
+        ###US Domestic Policies###
+        set_variable = { domestic_political_power_gain = 0.74 }
+        set_variable = { domestic_monthly_pop = 0.37 }
+        set_variable = { domestic_research_speed = 0.37 }
+        set_variable = { domestic_encryption_factor = 0.15 }
+        set_variable = { domestic_decryption_factor = 0.05 }
+        set_variable = { domestic_drift_defense = 0.97 }
+        set_variable = { domestic_civ_intel = 0.12 }
+        set_variable = { domestic_foreign_influence_defense = -0.22 }
+        set_variable = { domestic_offensive_foreign_influence = -0.02 }
+        set_variable = { domestic_unemployment_tolerance = 0.09 }
+        set_variable = { domestic_democratic_drift = 0.2 }
+        set_variable = { domestic_communist_drift = 0.01 }
+        set_variable = { domestic_neutrality_drift = 0.03 }
+        set_variable = { domestic_nationalist_drift = 0.03 }
+        ###Federal Budgets###
+        set_variable = { federal_budget_market_resources = 0.05 }
+        set_variable = { federal_budget_personnel_cost = 1.11 }
+        set_variable = { federal_budget_bureaucracy_cost = 0.96 }
+        set_variable = { federal_budget_police_cost = 0.57 }
+        set_variable = { federal_budget_education_cost = 0.84 }
+        set_variable = { federal_budget_healthcare_cost = 0.08 }
+        set_variable = { federal_budget_welfare_cost = 0.07 }
+        set_variable = { federal_budget_export_money_return = 0.16 }
+        set_variable = { federal_budget_investment_return = 0.08 }
+        ###American Tax Code###
+        set_variable = { tax_code_tax_collection_efficiency = 0.16 }
+        set_variable = { tax_code_interest_rate = -1.84 }
+        set_variable = { tax_code_population_tax_collection_efficiency = 0.16 }
+        set_variable = { tax_code_office_park_tax_collection_efficiency = -0.27 }
+        set_variable = { tax_code_dockyard_tax_collection_efficiency = -0.03 }
+        set_variable = { tax_code_military_tax_collection_efficiency = -0.08 }
+        set_variable = { tax_code_civilian_tax_collection_efficiency = 0.02 }
+        set_variable = { tax_code_corporate_tax_collection_efficiency = 0 }
+        ###US General Staff###
+        set_variable = { genstaff_leader_xp_gain = 0.53 }
+        set_variable = { genstaff_daily_army_xp = 0.26 }
+        set_variable = { genstaff_daily_navy_xp = 0.37 }
+        set_variable = { genstaff_daily_air_xp = 0.33 }
+        set_variable = { genstaff_recruitable_population = -0.01 }
+        set_variable = { genstaff_conscription = 0.004 }
+        set_variable = { genstaff_supply_consumption_factor = 0.3 }
+        set_variable = { genstaff_max_planning_factor = 0.27 }
+        ###US Army###
+        set_variable = { us_army_army_unit_xp_gain = 0.13 }
+        set_variable = { us_army_army_training_time = -0.09 }
+        set_variable = { us_army_army_org = 0.09 }
+        set_variable = { us_army_recon_factor = 0.24 }
+        set_variable = { us_army_army_org_regain = 0.05 }
+        set_variable = { us_army_army_attack = -0.1 }
+        set_variable = { us_army_army_defence = 0.08 }
+        set_variable = { us_army_breakthrough_factor = 0.12 }
+        set_variable = { us_army_coordination = 0.04 }
+        ###US Army - Transcribed National Spirit Bonuses###
+        set_variable = { us_army_mech_inf_attack = 0.15 }
+        set_variable = { us_army_mech_inf_defence = 0.2 }
+        set_variable = { us_army_arm_inf_attack = 0.15 }
+        set_variable = { us_army_arm_inf_defence = 0.2 }
+        set_variable = { us_army_armor_bat_attack = -0.05 }
+        set_variable = { us_army_armor_bat_defence = -0.1 }
+        set_variable = { us_army_sf_attack = -0.1 }
+        set_variable = { us_army_sf_defence = 0.25 }
+        set_variable = { us_army_l_inf_attack = 0.1 }
+        set_variable = { us_army_l_inf_defence = 0.1 }
+        set_variable = { us_army_pocket_penalty = -0.16 }
+        set_variable = { us_army_speed_factor = 0.16 }
+        set_variable = { us_army_planning_speed = 0.07 }
+        set_variable = { us_army_attrition = -0.11 }
+        set_variable = { us_army_reinforce_rate = 0.05 }
+        set_variable = { us_army_combat_width_factor = 0 }
+        set_variable = { us_army_fortification_collateral_chance = 0.07 }
+        set_variable = { us_army_artillery_attack = 0.15 }
+        set_variable = { us_army_artillery_defence = 0.15 }
+        set_variable = { us_army_terrain_trait_xp_gain = 0.1 }
+        set_variable = { us_army_sf_no_supply_grace = 72 }
+        set_variable = { us_army_sf_cap = 0.1 }
+        set_variable = { us_army_river_crossing = 0.1 }
+        set_variable = { us_army_terrain_penalty_reduction = 0.15 }
+        set_variable = { us_army_land_night_attack = 0.1 }
+        set_variable = { us_army_max_dig_in = 0.07 }
+        set_variable = { us_army_dig_in_speed = 0.05 }
+        set_variable = { us_army_org_loss_when_moving = -0.07 }
+        ###US Navy###
+        set_variable = { us_navy_naval_speed = 0.03 }
+        set_variable = { us_navy_naval_morale_factor = 0.44 }
+        set_variable = { us_navy_naval_damage = 0.34 }
+        set_variable = { us_navy_naval_defense = 0.22 }
+        set_variable = { us_navy_repair_speed_factor = 0.64 }
+        ###US Navy - Transcribed National Spirit Bonuses###
+        set_variable = { us_navy_mines_planting = 0.15 }
+        set_variable = { us_navy_mines_sweeping = 0.2 }
+        set_variable = { us_navy_torpedo_hit_chance = 0.1 }
+        set_variable = { us_navy_torpedo_cooldown = -0.07 }
+        set_variable = { us_navy_heavy_gun_hit_chance = 0.07 }
+        set_variable = { us_navy_enemy_retreat_chance = 0.1 }
+        set_variable = { us_navy_spotting_chance = 0.1 }
+        set_variable = { us_navy_naval_coordination = 0.05 }
+        set_variable = { us_navy_anti_air_attack = 0.15 }
+        ###US Air Force###
+        set_variable = { us_airforce_air_mission_efficiency = 0.56 }
+        set_variable = { us_airforce_air_attack = 0.23 }
+        set_variable = { us_airforce_air_defence = 0.22 }
+        set_variable = { us_airforce_air_agility = 0.3 }
+        ###US Air Force - Transcribed National Spirit Bonuses###
+        set_variable = { us_airforce_air_weather_penalty = -0.3 }
+        set_variable = { us_airforce_air_night_penalty = -0.32 }
+        set_variable = { us_airforce_air_fuel_consumption = -0.19 }
+        set_variable = { us_airforce_air_cas_efficiency = 0.13 }
+        set_variable = { us_airforce_cas_org_damage = 0.17 }
+        set_variable = { us_airforce_air_bombing_targetting = 0.07 }
+        set_variable = { us_airforce_air_range_factor = 0.05 }
+        set_variable = { us_airforce_strat_bomber_bombing = 0.1 }
 		if = { limit = { has_dlc = "No Step Back" }
 			set_oob = "USA_2017_nsb"
 			else = {
