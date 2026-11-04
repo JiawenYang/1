@@ -1,0 +1,571 @@
+division_template = {
+	name = "Respublikaliq Ulani"		#Republican Guard
+
+	regiments = {
+		Mot_Inf_Bat = { x = 0 y = 0 }
+		Mot_Inf_Bat = { x = 0 y = 1 }
+		Mot_Inf_Bat = { x = 0 y = 2 }
+
+		Arty_Bat = { x = 0 y = 0 }
+		Arty_Bat = { x = 0 y = 1 }
+	}
+
+	priority = 2
+}
+
+division_template = {
+	name = "Motoatqishtar Brïgada"		#Motor rifle brigade
+
+	regiments = {
+		armor_Bat = { x = 0 y = 0 }
+		Mech_Inf_Bat = { x = 0 y = 1 }
+		Mech_Inf_Bat = { x = 0 y = 2 }
+		Arm_Inf_Bat = { x = 0 y = 3 }
+
+		SP_Arty_Bat = { x = 1 y = 0 }
+		SP_Arty_Bat = { x = 1 y = 1 }
+	}
+	support = {
+		SP_AA_Battery = { x = 0 y = 0 }
+		H_Engi_Comp = { x = 0 y = 1 }
+		armor_Recce_Comp = { x = 0 y = 2 }
+	}
+}
+
+division_template = {
+	name = "Tank Brïgada"		#Motor rifle brigade
+
+	regiments = {
+		armor_Bat = { x = 0 y = 0 }
+		armor_Bat = { x = 0 y = 1 }
+		armor_Bat = { x = 0 y = 2 }
+		Arm_Inf_Bat = { x = 0 y = 3 }
+
+		SP_Arty_Bat = { x = 1 y = 0 }
+		SP_Arty_Bat = { x = 1 y = 1 }
+	}
+	support = {
+		SP_AA_Battery = { x = 0 y = 0 }
+		H_Engi_Comp = { x = 0 y = 1 }
+		armor_Recce_Comp = { x = 0 y = 2 }
+	}
+}
+
+division_template = {
+	name = "Taw Bataloni"		#mountain battalion
+
+	regiments = {
+		L_Inf_Bat = { x = 0 y = 0 }
+	}
+}
+
+division_template = {
+	name = "Äwe Shabwildawshi Brïgada"		#air assault brigade
+
+	regiments = {
+		L_Air_assault_Bat = { x = 0 y = 0 }
+		L_Air_assault_Bat = { x = 0 y = 1 }
+		L_Air_assault_Bat = { x = 0 y = 2 }
+		Arty_Bat = { x = 0 y = 3 }
+	}
+}
+
+units = {
+	division = {
+		name = "1-shi Respublikaliq Ulani Brigada"
+		location = 10308 	#Astana
+		division_template = "Respublikaliq Ulani"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "2-shi Respublikaliq Ulani Brigada"
+		location = 10308 		#Astana
+		division_template = "Respublikaliq Ulani"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.01
+	}
+
+	#Astana regional command
+	division = {
+		name = "7-shi Jeke Motoatqishtar Brïgadasi"
+		location = 4333 		#Karagandy
+		division_template = "Motoatqishtar Brïgada"
+		start_experience_factor = 0.4
+		start_equipment_factor = 0.01
+	}
+
+	#East regional command
+	division = {
+		name = "3-shi Jeke Motoatqishtar Brïgadasi"
+		location = 1864 		#Usharal
+		division_template = "Motoatqishtar Brïgada"
+		start_experience_factor = 0.4
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "4-shi Jeke Motoatqishtar Brïgadasi"
+		location = 1864 		#Ust-Kamenogorsk
+		division_template = "Motoatqishtar Brïgada"
+		start_experience_factor = 0.4
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "11-shi Kabanbai Batyr Tank Brïgada"
+		location = 7784 		#Ayaguz
+		division_template = "Tank Brïgada"
+		start_experience_factor = 0.4
+		start_equipment_factor = 0.01
+	}
+
+	#West regional command
+	division = {
+		name = "8-shi Jeke Motoatqishtar Brïgadasi"
+		location = 11537 		#
+		division_template = "Motoatqishtar Brïgada"
+		start_experience_factor = 0.4
+		start_equipment_factor = 0.01
+	}
+
+	#South regional command
+	division = {
+		name = "5-shi Jeke Motoatqishtar Brïgadasi"
+		location = 10603 		#Taraz
+		division_template = "Motoatqishtar Brïgada"
+		start_experience_factor = 0.4
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "6-shi Jeke Motoatqishtar Brïgadasi"
+		location = 10148 		#Shymkent
+		division_template = "Motoatqishtar Brïgada"
+		start_experience_factor = 0.4
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "Taw Bataloni"
+		location = 10148 		#Shymkent
+		division_template = "Taw Bataloni"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.01
+	}
+
+	#Airmobile forces
+	division = {
+		name = "35-shi Äwe Shabwildawshi Brïgada"
+		location = 10547 		#Kapshagai
+		division_template = "Äwe Shabwildawshi Brïgada"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "36-shi Äwe Shabwildawshi Brïgada"
+		location = 10308 		#Astana
+		division_template = "Äwe Shabwildawshi Brïgada"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "37-shi Äwe Shabwildawshi Brïgada"
+		location = 10619 		#Taldykorgan
+		division_template = "Äwe Shabwildawshi Brïgada"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "38-shi Äwe Shabwildawshi Brïgada"
+		location = 13210 		#Almaty
+		division_template = "Äwe Shabwildawshi Brïgada"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.01
+	}
+}
+
+instant_effect = {
+	add_equipment_to_stockpile = {
+		variant_name = "L-39"
+		type = small_plane_strike_airframe_1		#L-39
+		amount = 17
+		producer = CZE
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "AK74"
+		type = infantry_weapons_2		#AK74
+		amount = 6000
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "ARX160"
+		type = infantry_weapons_5		#ARX160
+		amount = 1000
+		producer = ITA
+	}
+
+	add_equipment_to_stockpile = {
+		type = cnc_equipment_1
+		amount = 1000
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		type = Heavy_Anti_tank_2
+		amount = 200
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		type = Anti_tank_2
+		amount = 400
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		type = Anti_Air_0
+		amount = 400
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		type = medium_tank_chassis_1
+		variant_name = "T-72B"
+		amount = 300
+		producer = SOV
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "BMPT"
+		type = medium_tank_flame_chassis_2		#BMPT
+		#version_name = "BMPT"
+		amount = 10
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BMP-2"
+		type = medium_tank_flame_chassis_1		#BMP-2
+		amount = 500
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BTR-80"
+		type = medium_tank_amphibious_chassis_1		#BTR-80
+		amount = 107
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "MT-LB"
+		type = medium_tank_amphibious_chassis_0		#MT-LB
+		amount = 180
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BRDM-2"
+		type = medium_tank_destroyer_chassis_0		#BRDM-2
+		amount = 60
+		producer = UKR
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BTR-82"
+		type = medium_tank_amphibious_chassis_2		#BTR-82
+		#version_name = "BTR-82"
+		amount = 70
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BTR-4"
+		type = medium_tank_amphibious_chassis_2		#BTR-4
+		amount = 100
+		producer = UKR
+	}
+
+	add_equipment_to_stockpile = {
+		type = heavy_util_vehicle_6		#Marauder
+		#version_name = "Marauder"
+		amount = 20
+		producer = SAF
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "GAZ Tigr"
+		type = util_vehicle_4		#GAZ Tigr
+		amount = 130
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BPM-97"
+		type = util_vehicle_5		#BPM-97
+		amount = 18
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Otokar Cobra"
+		type = util_vehicle_4		#Otokar Cobra
+		amount = 17
+		producer = TUR
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Humvee"
+		type = util_vehicle_3		#Humvee
+		amount = 54
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "TOS-1"
+		type = medium_tank_rocket_chassis_1		#TOS-1
+		#version_name = "TOS-1"
+		amount = 3
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BM-30 Smerch"
+		type = medium_tank_rocket_chassis_1		#BM-30 Smerch
+		#version_name = "BM-30 Smerch"
+		amount = 6
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BM-27 uragan"
+		type = medium_tank_rocket_chassis_1		#BM-27 uragan
+		amount = 180
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BM-21 Grad"
+		type = medium_tank_rocket_chassis_0		#BM-21 Grad
+		amount = 190
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "2s3 Akatsiya"
+		type = medium_tank_artillery_chassis_1		#2s3 Akatsiya
+		amount = 89
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "2s1 gvozdika"
+		type = medium_tank_artillery_chassis_0		#2s1 gvozdika
+		#version_name = "2S1 Gvozdika"
+		amount = 74
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "2s9 nona"
+		type = medium_tank_artillery_chassis_0		#2s9 nona
+		#version_name = "2S9 Nona"
+		amount = 26
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Semser"
+		type = medium_tank_artillery_chassis_2		#Semser
+		amount = 10
+		producer = KAZ
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "D-30"
+		type = artillery_1		#D-30
+		amount = 300
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "SA-6"
+		type = medium_tank_aa_chassis_0		#SA-6
+		#version_name = "2K12 Kub"
+		amount = 20
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "S-125"
+		type = medium_tank_aa_chassis_0		#S-125
+		#version_name = "S-125 Pechora"
+		amount = 20
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "MiG-23"
+		type = medium_plane_airframe_1		#MiG-23
+		amount = 3
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "MiG-27"
+		type = medium_plane_cas_airframe_1		#MiG-27
+		#version_name = "MiG-27 Flogger"
+		amount = 12
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "MiG-29"
+		type = small_plane_airframe_2		#MiG-29
+		amount = 16
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "MiG-31"
+		type = medium_plane_fighter_airframe_2		#MiG-31
+		amount = 25
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "SU-25"
+		type = small_plane_cas_airframe_2		#SU-25
+		amount = 14
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "SU-30"
+		type = medium_plane_airframe_2		#SU-30
+		#version_name = "Su-30 Flanker-C"
+		amount = 6
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "mi-8/17"
+		type = transport_helicopter_1		#mi-8/17
+		amount = 380
+		producer = SOV
+	}
+
+	### Sealed Storage 封存 ###
+	add_equipment_to_stockpile = {
+		variant_name = "L-39"
+		type = small_plane_strike_airframe_1 #L-39（封存）
+		producer = CZE
+		amount = 6
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "MiG-27"
+		type = medium_plane_cas_airframe_1 #MiG-27（封存）
+		producer = SOV
+		amount = 5
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "T-72B"
+		type = medium_tank_chassis_1 #T-72B（封存）
+		producer = SOV
+		amount = 120
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "BMP-2"
+		type = medium_tank_flame_chassis_1 #BMP-2（封存）
+		producer = SOV
+		amount = 200
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "BTR-80"
+		type = medium_tank_amphibious_chassis_1 #BTR-80（封存）
+		producer = SOV
+		amount = 42
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "MT-LB"
+		type = medium_tank_amphibious_chassis_0 #MT-LB（封存）
+		producer = SOV
+		amount = 72
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "BRDM-2"
+		type = medium_tank_destroyer_chassis_0 #BRDM-2（封存）
+		producer = UKR
+		amount = 24
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "BM-27 uragan"
+		type = medium_tank_rocket_chassis_1 #BM-27 uragan（封存）
+		producer = SOV
+		amount = 72
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "BM-21 Grad"
+		type = medium_tank_rocket_chassis_0 #BM-21 Grad（封存）
+		producer = SOV
+		amount = 76
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "2s3 Akatsiya"
+		type = medium_tank_artillery_chassis_1 #2s3 Akatsiya（封存）
+		producer = SOV
+		amount = 35
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "2s1 gvozdika"
+		type = medium_tank_artillery_chassis_0 #2s1 gvozdika（封存）
+		producer = SOV
+		amount = 29
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "2s9 nona"
+		type = medium_tank_artillery_chassis_0 #2s9 nona（封存）
+		producer = SOV
+		amount = 10
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "SA-6"
+		type = medium_tank_aa_chassis_0 #SA-6（封存）
+		producer = SOV
+		amount = 8
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "S-125"
+		type = medium_tank_aa_chassis_0 #S-125（封存）
+		producer = SOV
+		amount = 8
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "AK74"
+		type = infantry_weapons_2 #AK74（封存）
+		producer = SOV
+		amount = 2400
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "GAZ Tigr"
+		type = util_vehicle_4 #GAZ Tigr（封存）
+		producer = SOV
+		amount = 52
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "BPM-97"
+		type = util_vehicle_5 #BPM-97（封存）
+		producer = SOV
+		amount = 7
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Otokar Cobra"
+		type = util_vehicle_4 #Otokar Cobra（封存）
+		producer = TUR
+		amount = 6
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Humvee"
+		type = util_vehicle_3 #Humvee（封存）
+		producer = USA
+		amount = 21
+	}
+}

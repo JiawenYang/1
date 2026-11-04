@@ -3,6 +3,8 @@ focus_tree = {
 	country = {
 		factor = 0
 	}
+	#Military shared focus branch (ported from The Fire Rises)
+	shared_focus = PRC_chinas_spot_in_the_sun
 	#Covid
 	focus = {
 		id = PRC_lockdown_wuhan
@@ -1070,7 +1072,7 @@ focus_tree = {
 				name = PRC_a_renewable_revolution
 				bonus = 0.5
 				uses = 2
-				category = CAT_renewable_energy
+				category = CAT_renewable
 			}
 			every_controlled_state = {
 				limit = {
@@ -1558,17 +1560,17 @@ shared_focus = {
 				has_global_flag = PRC_taiwan_war_won
 			}
 			country_event = {
-				id = china.1014
+				id = prc.1014
 				days = 2
 			}
 			hidden_effect = {
 				country_event = {
-					id = china.1017
+					id = prc.1017
 					days = 70
 					random_days = 20
 				}
 				country_event = {
-					id = china.1026
+					id = prc.1026
 					days = 170
 					random_days = 70
 				}
@@ -1582,7 +1584,7 @@ shared_focus = {
 				}
 			}
 			country_event = {
-				id = china.1016
+				id = prc.1016
 				days = 2
 			}
 		}
@@ -1591,13 +1593,13 @@ shared_focus = {
 				has_country_flag = PRC_loji_overlord_flag
 			}
 			country_event = {
-				id = china.1027
+				id = prc.1027
 				days = 2
 			}
 		}
 		hidden_effect = {
 			country_event = {
-				id = china.1018
+				id = prc.1018
 				days = 40
 				random_days = 5
 			}
@@ -1670,7 +1672,7 @@ shared_focus = {
 		}
 		hidden_effect = {
 			country_event = {
-				id = china.1029
+				id = prc.1029
 				days = 1
 			}
 		}
@@ -1712,7 +1714,7 @@ shared_focus = {
 				has_capitulated = yes
 			}
 			JAP = {
-				is_ally_with = PRC
+				is_ally_with = CHI
 			}
 		}
 	}
@@ -1730,15 +1732,15 @@ shared_focus = {
 		}
 		hidden_effect = {
 			country_event = {
-				id = china.1503
+				id = prc.1503
 				days = 7
 			}
 			country_event = {
-				id = china.1504
+				id = prc.1504
 				days = 12
 			}
 			country_event = {
-				id = china.1505
+				id = prc.1505
 				days = 240
 			}
 		}
@@ -1773,9 +1775,9 @@ shared_focus = {
 		}
 		OR = {
 			NOT = {
-				country_exists = PRK
+				country_exists = NKO
 			}
-			PRK = {
+			NKO = {
 				has_war_with = KOR
 			}
 		}
@@ -1833,7 +1835,7 @@ shared_focus = {
 	}
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: focus PRC_revenge_for_nanking completion_reward"
-		PRK = {
+		NKO = {
 			unlock_decision_tooltip = prk_proclaim_reunification_of_korea
 		}
 		add_stability = 0.025
@@ -1926,7 +1928,7 @@ shared_focus = {
 	#mutually_exclusive = { focus = PRC_all_chinese_mobilization }
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: focus PRC_suspend_the_consumer_economy completion_reward"
-		country_event = china.1013
+		country_event = prc.1013
 		add_stability = -0.1
 		add_timed_idea = {
 			idea = PRC_emergency_measures_idea
@@ -1965,7 +1967,7 @@ shared_focus = {
 	#mutually_exclusive = { focus = PRC_martial_law }
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: focus PRC_all_chinese_mobilization completion_reward"
-		country_event = china.1015
+		country_event = prc.1015
 		if = {
 			limit = {
 				NOT = {
@@ -2067,7 +2069,7 @@ shared_focus = {
 			if = {
 				limit = {
 					1394 = {
-						is_fully_controlled_by = PRC
+						is_fully_controlled_by = CHI
 					}
 				}
 				1394 = {
@@ -2094,7 +2096,7 @@ shared_focus = {
 			if = {
 				limit = {
 					609 = {
-						is_fully_controlled_by = PRC
+						is_fully_controlled_by = CHI
 					}
 				}
 				609 = {
@@ -2121,7 +2123,7 @@ shared_focus = {
 			if = {
 				limit = {
 					1157 = {
-						is_fully_controlled_by = PRC
+						is_fully_controlled_by = CHI
 					}
 				}
 				1157 = {
@@ -2148,7 +2150,7 @@ shared_focus = {
 			if = {
 				limit = {
 					1232 = {
-						is_fully_controlled_by = PRC
+						is_fully_controlled_by = CHI
 					}
 				}
 				1232 = {
@@ -2175,7 +2177,7 @@ shared_focus = {
 			if = {
 				limit = {
 					1393 = {
-						is_fully_controlled_by = PRC
+						is_fully_controlled_by = CHI
 					}
 				}
 				1393 = {
@@ -2202,7 +2204,7 @@ shared_focus = {
 			if = {
 				limit = {
 					1229 = {
-						is_fully_controlled_by = PRC
+						is_fully_controlled_by = CHI
 					}
 				}
 				1229 = {
@@ -2229,7 +2231,7 @@ shared_focus = {
 			if = {
 				limit = {
 					1420 = {
-						is_fully_controlled_by = PRC
+						is_fully_controlled_by = CHI
 					}
 				}
 				1420 = {
@@ -2256,7 +2258,7 @@ shared_focus = {
 			if = {
 				limit = {
 					613 = {
-						is_fully_controlled_by = PRC
+						is_fully_controlled_by = CHI
 					}
 				}
 				613 = {
@@ -2283,7 +2285,7 @@ shared_focus = {
 			if = {
 				limit = {
 					1220 = {
-						is_fully_controlled_by = PRC
+						is_fully_controlled_by = CHI
 					}
 				}
 				1220 = {
@@ -2310,7 +2312,7 @@ shared_focus = {
 			if = {
 				limit = {
 					1215 = {
-						is_fully_controlled_by = PRC
+						is_fully_controlled_by = CHI
 					}
 				}
 				1215 = {
@@ -2337,7 +2339,7 @@ shared_focus = {
 			if = {
 				limit = {
 					596 = {
-						is_fully_controlled_by = PRC
+						is_fully_controlled_by = CHI
 					}
 				}
 				596 = {
@@ -2364,7 +2366,7 @@ shared_focus = {
 			if = {
 				limit = {
 					1219 = {
-						is_fully_controlled_by = PRC
+						is_fully_controlled_by = CHI
 					}
 				}
 				1219 = {
@@ -2391,7 +2393,7 @@ shared_focus = {
 			if = {
 				limit = {
 					595 = {
-						is_fully_controlled_by = PRC
+						is_fully_controlled_by = CHI
 					}
 				}
 				595 = {
@@ -2418,7 +2420,7 @@ shared_focus = {
 			if = {
 				limit = {
 					1216 = {
-						is_fully_controlled_by = PRC
+						is_fully_controlled_by = CHI
 					}
 				}
 				1216 = {
@@ -2445,7 +2447,7 @@ shared_focus = {
 			if = {
 				limit = {
 					1206 = {
-						is_fully_controlled_by = PRC
+						is_fully_controlled_by = CHI
 					}
 				}
 				1206 = {
@@ -2472,7 +2474,7 @@ shared_focus = {
 			if = {
 				limit = {
 					326 = {
-						is_fully_controlled_by = PRC
+						is_fully_controlled_by = CHI
 					}
 				}
 				326 = {
@@ -2499,7 +2501,7 @@ shared_focus = {
 			if = {
 				limit = {
 					1395 = {
-						is_fully_controlled_by = PRC
+						is_fully_controlled_by = CHI
 					}
 				}
 				1395 = {
@@ -2526,7 +2528,7 @@ shared_focus = {
 			if = {
 				limit = {
 					592 = {
-						is_fully_controlled_by = PRC
+						is_fully_controlled_by = CHI
 					}
 				}
 				592 = {
@@ -2555,7 +2557,7 @@ shared_focus = {
 			if = {
 				limit = {
 					729 = {
-						is_fully_controlled_by = PRC
+						is_fully_controlled_by = CHI
 					}
 				}
 				729 = {
@@ -2582,7 +2584,7 @@ shared_focus = {
 			if = {
 				limit = {
 					728 = {
-						is_fully_controlled_by = PRC
+						is_fully_controlled_by = CHI
 					}
 				}
 				728 = {
@@ -2609,7 +2611,7 @@ shared_focus = {
 			if = {
 				limit = {
 					593 = {
-						is_fully_controlled_by = PRC
+						is_fully_controlled_by = CHI
 					}
 				}
 				593 = {
@@ -2636,7 +2638,7 @@ shared_focus = {
 			if = {
 				limit = {
 					591 = {
-						is_fully_controlled_by = PRC
+						is_fully_controlled_by = CHI
 					}
 				}
 				591 = {
@@ -2711,7 +2713,7 @@ shared_focus = {
 		add_research_slot = 1
 		if = {
 			limit = {
-				has_tech = body_armor6
+				has_tech = body_armor_2030
 			}
 			set_technology = {
 				body_armor8 = 1
@@ -2721,25 +2723,25 @@ shared_focus = {
 				add_equipment_to_stockpile = {
 					type = exoskeleton_equipment_1
 					amount = 750
-					producer = PRC
+					producer = CHI
 				}
 			}
 		}
 		if = {
 			limit = {
 				NOT = {
-					has_tech = body_armor6
+					has_tech = body_armor_2030
 				}
 			}
 			set_technology = {
-				body_armor6 = 1
+				body_armor_2030 = 1
 			}
 			custom_effect_tooltip = JAP_wide_application_of_exoskeletons_tt
 			hidden_effect = {
 				add_equipment_to_stockpile = {
 					type = exoskeleton_equipment_1
 					amount = 350
-					producer = PRC
+					producer = CHI
 				}
 			}
 		}
@@ -2747,19 +2749,19 @@ shared_focus = {
 			name = PRC_embrace_the_future
 			cost_reduction = 0.75
 			uses = 1
-			category = cat_old_land_doctrine
+			category = land_doctrine
 		}
 		add_doctrine_cost_reduction = {
 			name = PRC_embrace_the_future
 			cost_reduction = 0.75
 			uses = 1
-			category = cat_old_air_doctrine
+			category = air_doctrine
 		}
 		add_doctrine_cost_reduction = {
 			name = PRC_embrace_the_future
 			cost_reduction = 0.75
 			uses = 1
-			category = cat_old_naval_doctrine
+			category = naval_doctrine
 		}
 	}
 }
@@ -2785,7 +2787,7 @@ shared_focus = {
 	bypass = {
 		NOT = {
 			PAK = {
-				is_ally_with = PRC
+				is_ally_with = CHI
 			}
 		}
 	}
@@ -2830,13 +2832,13 @@ shared_focus = {
 			custom_effect_tooltip = PRC_kashmir_road_unavailable_tt
 			TAL = {
 				country_event = {
-					id = china.280
+					id = prc.280
 					days = 1
 				}
 			}
 			SOV = {
 				country_event = {
-					id = china.282
+					id = prc.282
 					days = 3
 				}
 			}
@@ -3024,3 +3026,2608 @@ shared_focus = {
 		show_ideas_tooltip = PRC_operation_coronet_idea
 	}
 }
+
+###MILITARY
+#A Triumphant Return
+shared_focus = {
+	id = PRC_chinas_spot_in_the_sun
+	icon = GFX_focus_PRC_chinas_spot_in_the_sun
+	x = -12
+	y = 0
+	allow_branch = {
+		has_country_flag = PRC_military_tree_available
+	}
+	offset = {
+		x = -26
+		trigger = {
+			has_country_flag = PRC_nationalist_win
+		}
+	}
+	cost = 2.9
+	available_if_capitulated = yes
+	ai_will_do = {
+		factor = 50
+	}
+	prerequisite = {
+	}
+	available = {
+		#OR = {
+		#	has_completed_focus = PRC_approve_pla_loaylity
+		#	has_completed_focus = PRC_chinas_most_dire_hour
+		#	has_completed_focus = PRC_the_chinese_spring
+		#	has_completed_focus = PRC_the_red_phoenix
+		#}
+		has_country_flag = PRC_military_tree_available
+	}
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: focus PRC_chinas_spot_in_the_sun completion_reward"
+		set_country_flag = PRC_army_reform_start
+		country_event = {
+			id = prc.258
+			days = 1
+		}
+		add_war_support = 0.05
+		custom_effect_tooltip = tooltip_white_line
+		effect_tooltip = {
+			add_ideas = PRC_pla_idea
+		}
+		custom_effect_tooltip = tooltip_white_line
+		unlock_decision_category_tooltip = PRC_pla_reformation
+		unlock_decision_tooltip = PRC_conduct_army_exercises
+		unlock_decision_tooltip = PRC_conduct_air_exercises
+		unlock_decision_tooltip = PRC_conduct_naval_exercises
+		custom_effect_tooltip = tooltip_white_line
+		unlock_decision_tooltip = PRC_award_the_generals_heroes_of_the_taiwan_war
+		custom_effect_tooltip = tooltip_white_line
+		unlock_decision_tooltip = PRC_serve_the_people_prop
+		hidden_effect = {
+			#add_stability = -0.1
+			add_dynamic_modifier = {
+				modifier = PRC_pla_dynamic
+			}
+			add_to_variable = {
+				var = PRC_pla_army_core_attack_factor_dynamic_var
+				value = 0.1
+			}
+			add_to_variable = {
+				var = PRC_pla_army_defence_factor_dynamic_var
+				value = 0.1
+			}
+			add_to_variable = {
+				var = PRC_pla_max_planning_factor_dynamic_var
+				value = -0.35
+			}
+			add_to_variable = {
+				var = PRC_pla_planning_speed_dynamic_var
+				value = -0.25
+			}
+			add_to_variable = {
+				var = PRC_pla_initiative_factor_dynamic_var
+				value = -0.1
+			}
+		}
+		#if = {
+		#	limit = {
+		#		has_country_flag = PRC_nationalist_win
+		#	}
+		#	add_power_balance_value = {
+		#		id = PRC_nationalist_bop
+		#		value = -0.04
+		#	}
+		#}
+	}
+}
+
+shared_focus = {
+	id = PRC_prepare_for_the_next_war
+	icon = GFX_focus_PRC_prepare_for_the_next_war
+	x = -1
+	y = 1
+	cost = 2.9
+	available_if_capitulated = yes
+	relative_position_id = PRC_chinas_spot_in_the_sun
+	ai_will_do = {
+		factor = 50
+	}
+	prerequisite = {
+		focus = PRC_chinas_spot_in_the_sun
+	}
+	available = {
+	}
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: focus PRC_prepare_for_the_next_war completion_reward"
+		air_experience = 25
+		navy_experience = 25
+		army_experience = 25
+		custom_effect_tooltip = tooltip_white_line
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = PRC_pla_dummy_idea
+				add_idea = PRC_prepare_for_the_next_war_idea
+			}
+		}
+		set_temp_variable = {
+			var = PRC_army_reform_progress_temp
+			value = 0.05
+		}
+		PRC_add_army_reform_progress = yes
+		hidden_effect = {
+			add_to_variable = {
+				var = PRC_pla_military_development_monthly_dynamic_var
+				value = 0.01
+			}
+			add_to_variable = {
+				var = PRC_pla_experience_gain_army_factor_dynamic_var
+				value = 0.15
+			}
+		}
+	}
+}
+
+shared_focus = {
+	id = PRC_lessons_from_the_taiwan_war
+	icon = GFX_focus_PRC_lessons_from_the_taiwan_war
+	x = 1
+	y = 1
+	cost = 2.9
+	available_if_capitulated = yes
+	relative_position_id = PRC_chinas_spot_in_the_sun
+	ai_will_do = {
+		factor = 250
+	}
+	prerequisite = {
+		focus = PRC_chinas_spot_in_the_sun
+	}
+	available = {
+	}
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: focus PRC_lessons_from_the_taiwan_war completion_reward"
+		custom_effect_tooltip = PRC_army_hq_tt
+		custom_effect_tooltip = tooltip_white_line
+		if = {
+			limit = {
+				has_dlc = "No Step Back"
+			}
+			swap_ideas = {
+				remove_idea = PRC_complacent_officers_spirit
+				add_idea = PRC_complacent_officers_spirit2
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = {
+					has_dlc = "No Step Back"
+				}
+			}
+			army_experience = 75
+		}
+		if = {
+			limit = {
+				OR = {
+					has_idea = PRC_insufficient_understanding_of_modern_warfare_idea
+					has_idea = PRC_insufficient_understanding_of_modern_warfare_idea2
+					has_idea = PRC_insufficient_understanding_of_modern_warfare_idea3
+					has_idea = PRC_insufficient_understanding_of_modern_warfare_idea4
+					has_idea = PRC_insufficient_understanding_of_modern_warfare_idea5
+				}
+			}
+			effect_tooltip = {
+				remove_ideas = PRC_insufficient_understanding_of_modern_warfare_idea
+			}
+		}
+		hidden_effect = {
+			capital_scope = {
+				create_unit = {
+					division = "division_template = \"Zhanqu Siling Bu\" start_experience_factor = 0.8 start_equipment_factor = 1.0"
+					owner = ROOT
+					count = 5
+				}
+			}
+			remove_ideas = {
+				PRC_insufficient_understanding_of_modern_warfare_idea
+				PRC_insufficient_understanding_of_modern_warfare_idea2
+				PRC_insufficient_understanding_of_modern_warfare_idea3
+				PRC_insufficient_understanding_of_modern_warfare_idea4
+				PRC_insufficient_understanding_of_modern_warfare_idea5
+			}
+		}
+	}
+}
+
+shared_focus = {
+	id = PRC_next_generation_airforce
+	icon = GFX_focus_PRC_next_generation_airforce
+	x = -9
+	y = 1
+	cost = 5
+	available_if_capitulated = yes
+	relative_position_id = PRC_prepare_for_the_next_war
+	ai_will_do = {
+		factor = 50
+	}
+	prerequisite = {
+		focus = PRC_prepare_for_the_next_war
+	}
+	available = {
+	}
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: focus PRC_next_generation_airforce completion_reward"
+		air_experience = 50
+		effect_tooltip = {
+			add_ideas = PRC_plaaf_idea
+		}
+		custom_effect_tooltip = tooltip_white_line
+		add_tech_bonus = {
+			name = PRC_next_generation_airforce
+			bonus = 0.5
+			uses = 2
+			category = CAT_air_eqp
+		}
+		add_doctrine_cost_reduction = {
+			name = PRC_next_generation_airforce
+			cost_reduction = 0.5
+			uses = 3
+			category = air_doctrine
+		}
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = available_military_high_command
+		show_ideas_tooltip = PRC_Chang_Dingqiu_high_command
+		custom_effect_tooltip = tooltip_white_line
+		unlock_decision_tooltip = PRC_project_song_wencong_dec
+		hidden_effect = {
+			add_dynamic_modifier = {
+				modifier = PRC_plaaf_dynamic
+			}
+			set_variable = {
+				var = PRC_plaaf_air_attack_factor_dynamic_var
+				value = 0.05
+			}
+			set_variable = {
+				var = PRC_plaaf_air_defence_factor_dynamic_var
+				value = 0.05
+			}
+		}
+	}
+}
+
+shared_focus = {
+	id = PRC_dominate_the_skies
+	icon = GFX_focus_PRC_dominate_the_skies
+	x = 1
+	y = 1
+	cost = 4.3
+	available_if_capitulated = yes
+	relative_position_id = PRC_next_generation_airforce
+	ai_will_do = {
+		factor = 50
+	}
+	prerequisite = {
+		focus = PRC_next_generation_airforce
+	}
+	available = {
+	}
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: focus PRC_dominate_the_skies completion_reward"
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = PRC_pla_dummy_idea
+				add_idea = PRC_dominate_the_skies_idea
+			}
+		}
+		every_state = {
+			limit = {
+				is_core_of = ROOT
+				is_coastal = yes
+				free_building_slots = {
+					building = air_base
+					size > 1
+				}
+			}
+			random_select_amount = 4
+			add_building_construction = {
+				type = air_base
+				level = 2
+				instant_build = yes
+			}
+		}
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = PRC_expand_the_j20_program_tt
+		custom_effect_tooltip = tooltip_white_line
+		set_temp_variable = {
+			var = PRC_army_reform_progress_temp
+			value = 0.035
+		}
+		PRC_add_army_reform_progress = yes
+		hidden_effect = {
+			add_to_variable = {
+				var = PRC_pla_air_superiority_efficiency_dynamic_var
+				value = 0.1
+			}
+			add_to_variable = {
+				var = PRC_pla_air_intercept_efficiency_dynamic_var
+				value = 0.1
+			}
+			if = {
+				limit = {
+					has_dlc = "By Blood Alone"
+				}
+				add_equipment_to_stockpile = {
+					type = medium_plane_airframe_3
+					variant_name = "Chengdu J-20A"
+					amount = 150
+					producer = CHI
+				}
+			}
+		}
+	}
+}
+
+shared_focus = {
+	id = PRC_flying_fortresses
+	icon = GFX_focus_PRC_flying_fortresses
+	x = -4
+	y = 1
+	cost = 5
+	available_if_capitulated = yes
+	relative_position_id = PRC_next_generation_airforce
+	ai_will_do = {
+		factor = 50
+	}
+	prerequisite = {
+		focus = PRC_next_generation_airforce
+	}
+	available = {
+	}
+	completion_reward = {
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = PRC_flying_fortresses_tt
+		custom_effect_tooltip = tooltip_white_line
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = PRC_plaaf_dummy_1
+				add_idea = PRC_flying_fortresses_idea
+			}
+		}
+		add_doctrine_cost_reduction = {
+			name = PRC_flying_fortresses
+			cost_reduction = 0.5
+			uses = 2
+			category = air_doctrine
+		}
+		unlock_decision_tooltip = PRC_strategic_bomber_fleet_expansion_program
+		hidden_effect = {
+			add_to_variable = {
+				var = PRC_plaaf_air_bombing_targetting_dynamic_var
+				value = 0.1
+			}
+			add_to_variable = {
+				var = PRC_plaaf_air_range_factor_dynamic_var
+				value = 0.15
+			}
+			add_to_variable = {
+				var = PRC_plaaf_air_strategic_bomber_bombing_factor_dynamic_var
+				value = 0.1
+			}
+		}
+	}
+}
+
+shared_focus = {
+	id = PRC_strikes_on_any_place_of_the_earth
+	icon = GFX_focus_PRC_strikes_on_any_place_of_the_earth
+	x = 0
+	y = 2
+	cost = 4.3
+	available_if_capitulated = yes
+	relative_position_id = PRC_flying_fortresses
+	ai_will_do = {
+		factor = 50
+	}
+	prerequisite = {
+		focus = PRC_next_generation_airforce
+	}
+	prerequisite = {
+		focus = PRC_modernize_the_missile_corps
+	}
+	available = {
+		has_tech = suicide_drone_1
+	}
+	completion_reward = {
+		add_ideas = PRC_advanced_strategic_strikes_capabilities
+		custom_effect_tooltip = tooltip_white_line
+		every_owned_state = {
+			limit = {
+				OR = {
+					is_coastal = yes
+				}
+			}
+			random_select_amount = 5
+			add_building_construction = {
+				type = rocket_site
+				level = 1
+				instant_build = yes
+			}
+		}
+		custom_effect_tooltip = tooltip_white_line
+		add_tech_bonus = {
+			name = PRC_strikes_on_any_place_of_the_earth
+			bonus = 0.5
+			uses = 2
+			category = CAT_missile
+		}
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = PRC_strikes_on_any_place_of_the_earth_tt
+	}
+}
+
+#Drone Age Warfare
+shared_focus = {
+	id = PRC_trust_in_the_pilot
+	icon = GFX_focus_PRC_trust_in_the_pilot
+	x = -1
+	y = 1
+	cost = 5
+	available_if_capitulated = yes
+	relative_position_id = PRC_next_generation_airforce
+	ai_will_do = {
+		factor = 50
+	}
+	prerequisite = {
+		focus = PRC_next_generation_airforce
+	}
+	available = {
+	}
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: focus PRC_trust_in_the_pilot completion_reward"
+		add_tech_bonus = {
+			name = PRC_trust_in_the_pilot
+			bonus = 0.35
+			uses = 1
+			category = CAT_air_wpn
+		}
+		add_tech_bonus = {
+			name = PRC_trust_in_the_pilot
+			bonus = 1
+			uses = 1
+			category = CAT_s_fighter
+		}
+		custom_effect_tooltip = tooltip_white_line
+		every_army_leader = {
+			limit = {
+				skill > 3
+			}
+			add_trait = {
+				trait = trait_drone_operator
+			}
+		}
+		set_temp_variable = {
+			var = PRC_army_reform_progress_temp
+			value = 0.05
+		}
+		PRC_add_army_reform_progress = yes
+		unlock_decision_tooltip = PRC_project_dark_sword_dec
+	}
+}
+
+shared_focus = {
+	id = PRC_the_exterminating_swarm
+	icon = GFX_focus_PRC_the_exterminating_swarm
+	x = 0
+	y = 1
+	cost = 5
+	available_if_capitulated = yes
+	relative_position_id = PRC_trust_in_the_pilot
+	ai_will_do = {
+		factor = 50
+	}
+	prerequisite = {
+		focus = PRC_trust_in_the_pilot
+	}
+	prerequisite = {
+		focus = PRC_dominate_the_skies
+	}
+	mutually_exclusive = {
+		focus = PRC_non_stop_heavy_air_support
+	}
+	available = {
+		has_army_experience > 50
+		has_air_experience > 50
+	}
+	completion_reward = {
+		army_experience = -50
+		air_experience = -50
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = PRC_drone_swarm_tt
+		custom_effect_tooltip = tooltip_white_line
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = PRC_plaaf_dummy_1
+				add_idea = PRC_the_exterminating_swarm_idea
+			}
+		}
+		hidden_effect = {
+			add_to_variable = {
+				var = PRC_plaaf_expense_growth_factor_dynamic_var
+				value = 0.035
+			}
+		}
+	}
+}
+
+shared_focus = {
+	id = PRC_non_stop_heavy_air_support
+	icon = GFX_focus_PRC_non_stop_heavy_air_support
+	x = 1
+	y = 1
+	cost = 4.3
+	available_if_capitulated = yes
+	relative_position_id = PRC_dominate_the_skies
+	ai_will_do = {
+		factor = 50
+	}
+	prerequisite = {
+		focus = PRC_dominate_the_skies
+	}
+	mutually_exclusive = {
+		focus = PRC_the_exterminating_swarm
+	}
+	available = {
+	}
+	completion_reward = {
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = PRC_plaaf_dummy_1
+				add_idea = PRC_non_stop_heavy_air_support_idea
+			}
+		}
+		add_doctrine_cost_reduction = {
+			name = PRC_non_stop_heavy_air_support
+			cost_reduction = 0.5
+			uses = 3
+			category = air_doctrine
+		}
+		set_temp_variable = {
+			var = PRC_army_reform_progress_temp
+			value = 0.025
+		}
+		PRC_add_army_reform_progress = yes
+		hidden_effect = {
+			add_to_variable = {
+				var = PRC_plaaf_air_cas_present_factor_dynamic_var
+				value = 0.1
+			}
+			add_to_variable = {
+				var = PRC_plaaf_ground_attack_factor_dynamic_var
+				value = 0.1
+			}
+			add_to_variable = {
+				var = PRC_plaaf_air_cas_efficiency_dynamic_var
+				value = 0.1
+			}
+			add_to_variable = {
+				var = PRC_plaaf_air_fuel_consumption_factor_dynamic_var
+				value = 0.15
+			}
+			add_to_variable = {
+				var = PRC_plaaf_air_accidents_factor_dynamic_var
+				value = 0.05
+			}
+		}
+	}
+}
+
+shared_focus = {
+	id = PRC_deus_ex_machina_nat
+	icon = GFX_focus_PRC_deus_ex_machina
+	x = -1
+	y = 3
+	cost = 5
+	available_if_capitulated = yes
+	relative_position_id = PRC_dominate_the_skies
+	ai_will_do = {
+		factor = 50
+	}
+	prerequisite = {
+		focus = PRC_trust_in_the_pilot
+	}
+	prerequisite = {
+		focus = PRC_dominate_the_skies
+	}
+	available = {
+	}
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: focus PRC_deus_ex_machina_nat completion_reward"
+		air_experience = 50
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = PRC_plaaf_dummy_1
+				add_idea = PRC_deus_ex_machina_idea
+			}
+		}
+		add_tech_bonus = {
+			name = PRC_deus_ex_machina_nat
+			bonus = 1
+			ahead_reduction = 2
+			uses = 1
+			category = CAT_ai
+		}
+		add_tech_bonus = {
+			name = PRC_deus_ex_machina_nat
+			bonus = 0.75
+			uses = 2
+			category = CAT_air_spc
+		}
+		hidden_effect = {
+			add_to_variable = {
+				var = PRC_plaaf_air_attack_factor_dynamic_var
+				value = 0.05
+			}
+			add_to_variable = {
+				var = PRC_plaaf_air_defence_factor_dynamic_var
+				value = 0.05
+			}
+			add_to_variable = {
+				var = PRC_plaaf_research_speed_factor_dynamic_var
+				value = 0.05
+			}
+		}
+	}
+}
+
+shared_focus = {
+	id = PRC_streamline_aircraft_production
+	icon = GFX_focus_PRC_streamline_aircraft_production
+	x = 0
+	y = 2
+	cost = 5
+	available_if_capitulated = yes
+	relative_position_id = PRC_dominate_the_skies
+	ai_will_do = {
+		factor = 50
+	}
+	prerequisite = {
+		focus = PRC_trust_in_the_pilot
+	}
+	prerequisite = {
+		focus = PRC_dominate_the_skies
+	}
+	prerequisite = {
+		focus = PRC_the_exterminating_swarm
+		focus = PRC_non_stop_heavy_air_support
+	}
+	available = {
+		NOT = {
+			has_idea = PRC_strategic_bomber_fleet_expansion_program_idea
+		}
+	}
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: focus PRC_streamline_aircraft_production completion_reward"
+		add_timed_idea = {
+			idea = PRC_mass_aircraft_production
+			days = 250
+		}
+		custom_effect_tooltip = tooltip_white_line
+		every_state = {
+			limit = {
+				is_core_of = ROOT
+				state_population > 5000000
+				free_building_slots = {
+					building = arms_factory
+					size > 1
+				}
+			}
+			random_select_amount = 4
+			add_building_construction = {
+				type = arms_factory
+				level = 2
+				instant_build = yes
+			}
+		}
+		custom_effect_tooltip = tooltip_white_line
+		set_temp_variable = {
+			var = PRC_enviromental_progress_temp
+			value = -0.025
+		}
+		PRC_add_enviromental_progress = yes
+		set_temp_variable = {
+			var = debt_var_temp
+			value = 100
+		}
+		add_debt_with_inflation = yes
+	}
+}
+
+shared_focus = {
+	id = PRC_modernize_the_missile_corps
+	icon = GFX_focus_PRC_modernize_the_missile_corps
+	x = -4
+	y = 1
+	cost = 4.3
+	available_if_capitulated = yes
+	relative_position_id = PRC_dominate_the_skies
+	ai_will_do = {
+		factor = 50
+	}
+	prerequisite = {
+		focus = PRC_dominate_the_skies
+	}
+	available = {
+	}
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: focus PRC_modernize_the_missile_corps completion_reward"
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = PRC_plaaf_dummy_1
+				add_idea = PRC_modernize_the_missile_corps_idea
+			}
+		}
+		add_tech_bonus = {
+			name = PRC_modernize_the_missile_corps
+			bonus = 0.75
+			uses = 2
+			category = CAT_aa
+		}
+		add_tech_bonus = {
+			name = PRC_modernize_the_missile_corps
+			bonus = 0.75
+			uses = 1
+			category = CAT_air_to_air_weapons
+		}
+		custom_effect_tooltip = tooltip_white_line
+		set_temp_variable = {
+			var = PRC_army_reform_progress_temp
+			value = 0.05
+		}
+		PRC_add_army_reform_progress = yes
+		unlock_decision_tooltip = PRC_strengthen_the_air_defense_of_cities
+		hidden_effect = {
+			add_to_variable = {
+				var = PRC_plaaf_air_attack_factor_dynamic_var
+				value = 0.07
+			}
+			add_to_variable = {
+				var = PRC_plaaf_navy_anti_air_attack_factor_dynamic_var
+				value = 0.1
+			}
+			add_to_variable = {
+				var = PRC_plaaf_static_anti_air_damage_factor_dynamic_var
+				value = 0.1
+			}
+			add_to_variable = {
+				var = PRC_plaaf_static_anti_air_hit_chance_factor_dynamic_var
+				value = 0.05
+			}
+		}
+	}
+}
+
+#PRC_the_naval_power_of_asia
+shared_focus = {
+	id = PRC_a_blue_water_navy
+	icon = GFX_focus_PRC_a_blue_water_navy
+	x = 1
+	y = 1
+	cost = 5
+	available_if_capitulated = yes
+	relative_position_id = PRC_prepare_for_the_next_war
+	ai_will_do = {
+		factor = 50
+	}
+	prerequisite = {
+		focus = PRC_prepare_for_the_next_war
+		focus = PRC_lessons_from_the_taiwan_war
+	}
+	available = {
+	}
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: focus PRC_a_blue_water_navy completion_reward"
+		navy_experience = 50
+		effect_tooltip = {
+			add_ideas = PRC_plan_dummy_1
+		}
+		custom_effect_tooltip = tooltip_white_line
+		random_owned_controlled_state = {
+			limit = {
+				is_core_of = ROOT
+				state_population > 1000000
+				free_building_slots = {
+					building = dockyard
+					size > 1
+					include_locked = yes
+				}
+			}
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = dockyard
+				level = 2
+				instant_build = yes
+			}
+		}
+		random_owned_controlled_state = {
+			limit = {
+				is_core_of = ROOT
+				state_population > 1000000
+				free_building_slots = {
+					building = dockyard
+					size > 1
+					include_locked = yes
+				}
+			}
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = dockyard
+				level = 2
+				instant_build = yes
+			}
+		}
+		hidden_effect = {
+			country_event = {
+				id = prc.142
+				days = 10
+			}
+			
+
+			if = {
+				limit = {
+					has_country_flag = PRC_sunk_taiwan_pride_of_fleet
+					has_country_flag = PRC_centrist_win
+				}
+				country_event = {
+					id = prc.287
+					days = 30
+				}
+			}
+			add_dynamic_modifier = {
+				modifier = PRC_plan_dynamic
+			}
+			set_variable = {
+				var = PRC_plan_naval_invasion_prep_speed_dynamic_var
+				value = 0.05
+			}
+			set_variable = {
+				var = PRC_plan_naval_invasion_division_cap_dynamic_var
+				value = 0
+			}
+			set_variable = {
+				var = PRC_plan_naval_invasion_penalty_dynamic_var
+				value = 0
+			}
+			set_variable = {
+				var = PRC_plan_amphibious_invasion_dynamic_var
+				value = 0.05
+			}
+			set_variable = {
+				var = PRC_plan_naval_accidents_chance_dynamic_var
+				value = 0
+			}
+			set_variable = {
+				var = PRC_plan_naval_coordination_dynamic_var
+				value = 0
+			}
+			set_variable = {
+				var = PRC_plan_naval_damage_factor_dynamic_var
+				value = 0
+			}
+			set_variable = {
+				var = PRC_plan_naval_defense_factor_dynamic_var
+				value = 0
+			}
+			set_variable = {
+				var = PRC_plan_navy_capital_ship_attack_factor_dynamic_var
+				value = 0
+			}
+			set_variable = {
+				var = PRC_plan_navy_capital_ship_defence_factor_dynamic_var
+				value = 0
+			}
+			set_variable = {
+				var = PRC_plan_navy_submarine_detection_factor_dynamic_var
+				value = 0
+			}
+			set_variable = {
+				var = PRC_plan_ships_at_battle_start_dynamic_var
+				value = 0
+			}
+			set_variable = {
+				var = PRC_plan_navy_submarine_attack_factor_dynamic_var
+				value = 0
+			}
+			set_variable = {
+				var = PRC_plan_sortie_efficiency_dynamic_var
+				value = -0.05
+			}
+			set_variable = {
+				var = PRC_plan_carrier_night_traffic_dynamic_var
+				value = 0
+			}
+			set_variable = {
+				var = PRC_plan_extra_marine_supply_grace_dynamic_var
+				value = 72
+			}
+			set_variable = {
+				var = PRC_experience_gain_navy_factor_dynamic_var
+				value = 0.15
+			}
+			set_variable = {
+				var = PRC_navy_carrier_air_agility_factor_dynamic_var
+				value = 0
+			}
+			set_variable = {
+				var = PRC_spotting_chance_dynamic_var
+				value = 0
+			}
+			set_variable = {
+				var = PRC_navy_screen_attack_factor_dynamic_var
+				value = 0
+			}
+			set_variable = {
+				var = PRC_screening_efficiency_dynamic_var
+				value = 0
+			}
+			set_variable = {
+				var = PRC_positioning_dynamic_var
+				value = 0
+			}
+			set_variable = {
+				var = PRC_navy_screen_defence_factor_dynamic_var
+				value = 0
+			}
+		}
+	}
+}
+
+shared_focus = {
+	id = PRC_increase_naval_production
+	icon = GFX_focus_PRC_increase_naval_production
+	x = -2
+	y = 1
+	cost = 7.2
+	available_if_capitulated = yes
+	relative_position_id = PRC_a_blue_water_navy
+	ai_will_do = {
+		factor = 50
+	}
+	prerequisite = {
+		focus = PRC_a_blue_water_navy
+	}
+	available = {
+	}
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: focus PRC_increase_naval_production completion_reward"
+		add_timed_idea = {
+			idea = PRC_mass_naval_production_idea
+			days = 250
+		}
+		custom_effect_tooltip = tooltip_white_line
+		else_if = {
+			limit = {
+				NOT = {
+					has_dlc = "Man the Guns"
+				}
+			}
+		}
+		custom_effect_tooltip = tooltip_white_line
+		set_temp_variable = {
+			var = debt_var_temp
+			value = 150
+		}
+		add_debt_with_inflation = yes
+		set_temp_variable = {
+			var = PRC_enviromental_progress_temp
+			value = -0.025
+		}
+		PRC_add_enviromental_progress = yes
+		custom_effect_tooltip = tooltip_white_line
+		unlock_decision_tooltip = PRC_commission_the_aircraft_carrier_fujian
+		unlock_decision_tooltip = PRC_project_impulse_dec
+	}
+}
+
+#PRC_elite_marine_corps
+shared_focus = {
+	id = PRC_rain_fire_from_above
+	icon = GFX_focus_PRC_elite_marine_corps
+	x = 2
+	y = 1
+	cost = 5
+	available_if_capitulated = yes
+	relative_position_id = PRC_a_blue_water_navy
+	ai_will_do = {
+		factor = 50
+	}
+	prerequisite = {
+		focus = PRC_a_blue_water_navy
+	}
+	available = {
+	}
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: focus PRC_rain_fire_from_above completion_reward"
+		custom_effect_tooltip = PRC_marine_division
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = PRC_rain_fire_from_above_tt
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = PRC_plan_dummy
+				add_idea = PRC_rain_fire_from_above
+			}
+		}
+		add_tech_bonus = {
+			name = PRC_rain_fire_from_above
+			bonus = 0.75
+			uses = 2
+			category = CAT_air_eqp
+		}
+		custom_effect_tooltip = tooltip_white_line
+		set_temp_variable = {
+			var = debt_var_temp
+			value = 10
+		}
+		add_debt_with_inflation = yes
+		set_temp_variable = {
+			var = PRC_army_reform_progress_temp
+			value = 0.035
+		}
+		PRC_add_army_reform_progress = yes
+		custom_effect_tooltip = tooltip_white_line
+		unlock_decision_tooltip = PRC_intensify_marine_training
+		unlock_decision_tooltip = PRC_project_swimmer_dec
+		hidden_effect = {
+			load_oob = "PRC_marines"
+			add_to_variable = {
+				var = PRC_plan_naval_invasion_penalty_dynamic_var
+				value = -0.05
+			}
+			add_to_variable = {
+				var = PRC_plan_naval_invasion_division_cap_dynamic_var
+				value = 5
+			}
+			add_to_variable = {
+				var = PRC_plan_extra_marine_supply_grace_dynamic_var
+				value = 72
+			}
+		}
+	}
+}
+
+shared_focus = {
+	id = PRC_dominate_south_china_sea
+	icon = GFX_focus_PRC_dominate_south_china_sea
+	x = 1
+	y = 2
+	cost = 2.9
+	available_if_capitulated = yes
+	relative_position_id = PRC_rain_fire_from_above
+	ai_will_do = {
+		factor = 50
+	}
+	prerequisite = {
+		focus = PRC_rain_fire_from_above
+	}
+	prerequisite = {
+		focus = PRC_creation_of_full_scale_missile_cruisers
+		focus = PRC_carrier_primacy
+	}
+	available = {
+	}
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: focus PRC_dominate_south_china_sea completion_reward"
+		add_political_power = 75
+		add_war_support = 0.035
+		custom_effect_tooltip = tooltip_white_line
+		813 = {
+			add_building_construction = {
+				type = coastal_bunker
+				level = 4
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = naval_base
+				level = 3
+				instant_build = yes
+			}
+		}
+		801 = {
+			add_building_construction = {
+				type = coastal_bunker
+				level = 2
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = coastal_bunker
+				level = 2
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = naval_base
+				level = 1
+				instant_build = yes
+			}
+		}
+		if = {
+			limit = {
+				owns_state = 816
+			}
+			816 = {
+				add_building_construction = {
+					type = coastal_bunker
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = naval_base
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		custom_effect_tooltip = tooltip_white_line
+		if = {
+			limit = {
+				VIN = {
+					is_in_faction = no
+				}
+			}
+			set_temp_variable = {
+				var = global.PRC_influence_VIN_var_temp
+				value = 0.1
+			}
+			PRC_add_VIN_influence = yes
+		}
+		if = {
+			limit = {
+				CAM = {
+					is_in_faction = no
+				}
+			}
+			set_temp_variable = {
+				var = global.PRC_influence_CAM_var_temp
+				value = 0.1
+			}
+			PRC_add_CAM_influence = yes
+		}
+		if = {
+			limit = {
+				PHI = {
+					is_in_faction = no
+				}
+			}
+			set_temp_variable = {
+				var = global.PRC_influence_PHI_var_temp
+				value = 0.05
+			}
+			PRC_add_PHI_influence = yes
+		}
+		if = {
+			limit = {
+				MAY = {
+					is_in_faction = no
+				}
+			}
+			set_temp_variable = {
+				var = global.PRC_influence_MAL_var_temp
+				value = 0.05
+			}
+			PRC_add_MAL_influence = yes
+		}
+		if = {
+			limit = {
+				SIN = {
+					is_in_faction = no
+				}
+			}
+			set_temp_variable = {
+				var = global.PRC_influence_SIG_var_temp
+				value = 0.05
+			}
+			PRC_add_SIG_influence = yes
+		}
+	}
+}
+
+shared_focus = {
+	id = PRC_expand_the_fleet_of_nuclear_submarines
+	icon = GFX_focus_PRC_expand_the_fleet_of_nuclear_submarines
+	x = 0
+	y = 1
+	cost = 5
+	available_if_capitulated = yes
+	relative_position_id = PRC_a_blue_water_navy
+	ai_will_do = {
+		factor = 50
+	}
+	prerequisite = {
+		focus = PRC_a_blue_water_navy
+	}
+	available = {
+	}
+	completion_reward = {
+		hidden_effect = { PRC_sun_jianguo = { PRC_recruit_character_effect = yes } }	
+		PRC_sun_jianguo = { custom_effect_tooltip = character_becomes_a_naval_commander }
+		
+		#show_unit_leaders_tooltip = PRC_sun_jianguo 
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = {
+			activate_advisor = PRC_sun_jianguo_high_command
+		}
+		custom_effect_tooltip = available_highcommand_tt
+		show_ideas_tooltip = PRC_sun_jianguo_high_command
+
+		custom_effect_tooltip = tooltip_white_line
+        
+		country_event = { id = prc.700 }
+
+		custom_effect_tooltip = tooltip_white_line
+
+		add_timed_idea = {
+			idea = PRC_nuclear_submarines_accelerated_production_idea
+			days = 250
+		}
+		custom_effect_tooltip = tooltip_white_line
+		else_if = {
+			limit = {
+				NOT = {
+					has_dlc = "Man the Guns"
+				}
+			}
+		}
+		custom_effect_tooltip = tooltip_white_line
+		set_temp_variable = {
+			var = debt_var_temp
+			value = 20
+		}
+		add_debt_with_inflation = yes
+	}
+}
+
+shared_focus = {
+	id = PRC_carrier_primacy
+	icon = GFX_focus_PRC_carrier_primacy
+	x = 0
+	y = 1
+	cost = 5
+	available_if_capitulated = yes
+	relative_position_id = PRC_increase_naval_production
+	ai_will_do = {
+		factor = 50
+	}
+	prerequisite = {
+		focus = PRC_increase_naval_production
+	}
+	mutually_exclusive = {
+		focus = PRC_creation_of_full_scale_missile_cruisers
+	}
+	available = {
+		has_country_flag = PRC_commission_the_aircraft_carrier_fujian_flag
+	}
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: focus PRC_carrier_primacy completion_reward"
+		remove_ideas = PRC_aircraft_carrier_programme_idea
+		custom_effect_tooltip = tooltip_white_line
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = PRC_plan_dummy
+				add_idea = PRC_carrier_primacy_idea
+			}
+		}
+		add_doctrine_cost_reduction = {
+			name = PRC_carrier_primacy
+			cost_reduction = 0.75
+			uses = 3
+			category = naval_doctrine
+		}
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = available_military_high_command
+		show_ideas_tooltip = PRC_wang_hai_high_command
+		#if = {
+		#	limit = {
+		#		has_dlc = "Man the Guns"
+		#	}
+		#	create_equipment_variant = {
+		#		#Carrier 2020
+		#		name = "Xiangyang"
+		#		type = ship_hull_carrier_1
+		#		parent_version = 0
+		#		modules = {
+		#			fixed_ship_deck_slot_1 = ship_deck_space
+		#			fixed_ship_deck_slot_2 = ship_deck_space
+		#			fixed_ship_anti_air_slot = ship_anti_air_2
+		#			fixed_ship_radar_slot = ship_radar_1
+		#			fixed_ship_engine_slot = carrier_ship_engine_3
+		#			fixed_ship_secondaries_slot = ship_secondaries_1
+		#			front_1_custom_slot = ship_deck_space
+		#			mid_1_custom_slot = ship_deck_space
+		#			mid_2_custom_slot = ship_deck_space
+		#		}
+		#	}
+		#	add_equipment_production = {
+		#		equipment = {
+		#			type = ship_hull_carrier_1
+		#			creator = "PRC"
+		#			version_name = "Xiangyang"
+		#		}
+		#		name = "Xiangyang"
+		#		requested_factories = 5
+		#		progress = 0.5
+		#		amount = 1
+		#	}
+		#	add_equipment_production = {
+		#		equipment = {
+		#			type = ship_hull_carrier_1
+		#			creator = "PRC"
+		#			version_name = "Xiangyang"
+		#		}
+		#		name = "Heluo"
+		#		requested_factories = 5
+		#		progress = 0.35
+		#		amount = 1
+		#	}
+		#}
+		#else_if = {
+		#	limit = {
+		#		NOT = {
+		#			has_dlc = "Man the Guns"
+		#		}
+		#	}
+		#	add_equipment_production = {
+		#		equipment = {
+		#			type = carrier_2
+		#			creator = "PRC"
+		#		}
+		#		name = "Xiangyang"
+		#		requested_factories = 5
+		#		progress = 0.5
+		#		amount = 1
+		#	}
+		#}
+		custom_effect_tooltip = tooltip_white_line
+		set_temp_variable = {
+			var = debt_var_temp
+			value = 20
+		}
+		add_debt_with_inflation = yes
+		unlock_decision_tooltip = PRC_complete_guangdong_aircraft_carrier_construction
+		hidden_effect = {
+			add_to_variable = {
+				var = PRC_plan_navy_carrier_air_attack_factor_dynamic_var
+				value = 0.1
+			}
+			add_to_variable = {
+				var = PRC_plan_navy_carrier_air_targetting_factor_dynamic_var
+				value = 0.1
+			}
+		}
+	}
+}
+
+shared_focus = {
+	id = PRC_creation_of_full_scale_missile_cruisers
+	icon = GFX_focus_PRC_creation_of_full_scale_missile_cruisers
+	x = 3
+	y = 1
+	cost = 5
+	available_if_capitulated = yes
+	relative_position_id = PRC_increase_naval_production
+	ai_will_do = {
+		factor = 50
+	}
+	prerequisite = {
+		focus = PRC_increase_naval_production
+	}
+	mutually_exclusive = {
+		focus = PRC_carrier_primacy
+	}
+	available = {
+		has_navy_experience > 50
+	}
+	completion_reward = {
+		navy_experience = -50
+		add_timed_idea = {
+			idea = PRC_creation_of_full_scale_missile_cruisers_idea
+			days = 250
+		}
+		custom_effect_tooltip = tooltip_white_line
+		else_if = {
+			limit = {
+				NOT = {
+					has_dlc = "Man the Guns"
+				}
+			}
+		}
+		custom_effect_tooltip = tooltip_white_line
+		swap_ideas = {
+			remove_idea = PRC_aircraft_carrier_programme_idea
+			add_idea = PRC_aircraft_carrier_programme_idea2
+		}
+		add_doctrine_cost_reduction = {
+			name = PRC_creation_of_full_scale_missile_cruisers
+			cost_reduction = 0.75
+			uses = 3
+			category = naval_doctrine
+		}
+		custom_effect_tooltip = tooltip_white_line
+		set_temp_variable = {
+			var = debt_var_temp
+			value = 30
+		}
+		add_debt_with_inflation = yes
+	}
+}
+
+shared_focus = {
+	id = PRC_supremacy_above_and_below_waters
+	icon = GFX_focus_PRC_supremacy_above_and_below_waters
+	x = -3
+	y = 1
+	cost = 4.3
+	available_if_capitulated = yes
+	relative_position_id = PRC_increase_naval_production
+	ai_will_do = {
+		factor = 50
+	}
+	prerequisite = {
+		focus = PRC_increase_naval_production
+	}
+	prerequisite = {
+		focus = PRC_dominate_the_skies
+	}
+	available = {
+	}
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: focus PRC_supremacy_above_and_below_waters completion_reward"
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = PRC_plan_dummy
+				add_idea = PRC_supremacy_above_and_below_waters_idea
+			}
+		}
+		add_tech_bonus = {
+			name = PRC_supremacy_above_and_below_waters
+			bonus = 0.5
+			uses = 3
+			category = CAT_naval_eqp
+		}
+		add_doctrine_cost_reduction = {
+			name = PRC_supremacy_above_and_below_waters
+			cost_reduction = 0.5
+			uses = 2
+			category = naval_doctrine
+		}
+		custom_effect_tooltip = tooltip_white_line
+		set_temp_variable = {
+			var = PRC_army_reform_progress_temp
+			value = 0.05
+		}
+		PRC_add_army_reform_progress = yes
+		hidden_effect = {
+			add_to_variable = {
+				var = PRC_plan_naval_coordination_dynamic_var
+				value = 0.15
+			}
+			add_to_variable = {
+				var = PRC_plan_naval_speed_factor_dynamic_var
+				value = 0.1
+			}
+			add_to_variable = {
+				var = PRC_plan_naval_hit_chance_dynamic_var
+				value = 0.15
+			}
+			add_to_variable = {
+				var = PRC_plan_navy_submarine_attack_factor_dynamic_var
+				value = 0.1
+			}
+			add_to_variable = {
+				var = PRC_navy_screen_attack_factor_dynamic_var
+				value = 0.1
+			}
+		}
+	}
+}
+
+shared_focus = {
+	id = PRC_redefine_naval_warfare
+	icon = GFX_focus_PRC_redefine_naval_warfare
+	x = 1
+	y = 1
+	cost = 4.3
+	available_if_capitulated = yes
+	relative_position_id = PRC_carrier_primacy
+	ai_will_do = {
+		factor = 50
+	}
+	prerequisite = {
+		focus = PRC_carrier_primacy
+		focus = PRC_supremacy_above_and_below_waters
+	}
+	available = {
+	}
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: focus PRC_redefine_naval_warfare completion_reward"
+		navy_experience = 100
+		add_doctrine_cost_reduction = {
+			name = PRC_redefine_naval_warfare
+			cost_reduction = 0.75
+			uses = 3
+			category = naval_doctrine
+		}
+		custom_effect_tooltip = tooltip_white_line
+		set_temp_variable = {
+			var = PRC_army_reform_progress_temp
+			value = 0.025
+		}
+		PRC_add_army_reform_progress = yes
+	}
+}
+
+shared_focus = {
+	id = PRC_resurrect_the_battleship
+	icon = GFX_focus_PRC_resurrect_the_battleship
+	x = 2
+	y = 1
+	cost = 5
+	available_if_capitulated = yes
+	relative_position_id = PRC_redefine_naval_warfare
+	ai_will_do = {
+		factor = 50
+	}
+	prerequisite = {
+		focus = PRC_redefine_naval_warfare
+	}
+	prerequisite = {
+		focus = PRC_creation_of_full_scale_missile_cruisers
+	}
+	available = {
+		has_navy_size = {
+			size > 19
+			type = capital_ship
+		}
+	}
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: focus PRC_resurrect_the_battleship completion_reward"
+		add_war_support = 0.015
+		navy_experience = 35
+		add_timed_idea = {
+			idea = PRC_battle_cruiser_idea
+			days = 550
+		}
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = tooltip_white_line
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = PRC_plan_dummy
+				add_idea = PRC_resurrect_the_battleship_idea
+			}
+		}
+		hidden_effect = {
+			add_to_variable = {
+				var = PRC_plan_navy_capital_ship_defence_factor_dynamic_var
+				value = 0.15
+			}
+			add_to_variable = {
+				var = PRC_plan_navy_capital_ship_attack_factor_dynamic_var
+				value = 0.15
+			}
+		}
+	}
+}
+
+shared_focus = {
+	id = PRC_air_navy_coordination
+	icon = GFX_focus_PRC_air_navy_coordination
+	x = 1
+	y = 1
+	cost = 5
+	available_if_capitulated = yes
+	relative_position_id = PRC_supremacy_above_and_below_waters
+	ai_will_do = {
+		factor = 50
+	}
+	prerequisite = {
+		focus = PRC_supremacy_above_and_below_waters
+	}
+	prerequisite = {
+		focus = PRC_carrier_primacy
+	}
+	available = {
+	}
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: focus PRC_air_navy_coordination completion_reward"
+		navy_experience = 30
+		air_experience = 30
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = PRC_plan_dummy
+				add_idea = PRC_air_navy_coordination_idea
+			}
+		}
+		custom_effect_tooltip = PRC_air_navy_coordination_tt
+		custom_effect_tooltip = tooltip_white_line
+		set_temp_variable = {
+			var = PRC_army_reform_progress_temp
+			value = 0.035
+		}
+		PRC_add_army_reform_progress = yes
+		hidden_effect = {
+			add_to_variable = {
+				var = PRC_spotting_chance_dynamic_var
+				value = 0.15
+			}
+			add_to_variable = {
+				var = PRC_plan_naval_detection_dynamic_var
+				value = 0.15
+			}
+			add_to_variable = {
+				var = PRC_navy_carrier_air_agility_factor_dynamic_var
+				value = 0.1
+			}
+			add_to_variable = {
+				var = PRC_plan_sortie_efficiency_dynamic_var
+				value = 0.1
+			}
+		}
+	}
+}
+
+shared_focus = {
+	id = PRC_sharpen_the_southern_blade
+	icon = GFX_focus_PRC_sharpen_the_southern_blade
+	x = 1
+	y = 1
+	cost = 5
+	available_if_capitulated = yes
+	relative_position_id = PRC_modern_special_forces
+	ai_will_do = {
+		factor = 50
+	}
+	prerequisite = {
+		focus = PRC_modern_special_forces
+	}
+	available = {
+	}
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: focus PRC_sharpen_the_southern_blade completion_reward"
+		custom_effect_tooltip = PRC_sharpen_the_southern_blade_tt
+		custom_effect_tooltip = tooltip_white_line
+		add_tech_bonus = {
+			name = PRC_sharpen_the_southern_blade
+			bonus = 0.35
+			uses = 1
+			category = CAT_special_forces
+		}
+		custom_effect_tooltip = tooltip_white_line
+		set_temp_variable = {
+			var = PRC_army_reform_progress_temp
+			value = 0.025
+		}
+		PRC_add_army_reform_progress = yes
+		hidden_effect = {
+			division_template = {
+				name = "Elite Unit "Southern Blade""
+				priority = 1
+				regiments = {
+					special_forces = {
+						x = 0
+						y = 0
+					}
+					special_forces = {
+						x = 0
+						y = 1
+					}
+					special_forces = {
+						x = 0
+						y = 2
+					}
+					special_forces = {
+						x = 0
+						y = 3
+					}
+					special_forces = {
+						x = 1
+						y = 0
+					}
+					special_forces = {
+						x = 1
+						y = 1
+					}
+					special_forces = {
+						x = 1
+						y = 2
+					}
+					special_forces = {
+						x = 1
+						y = 3
+					}
+					SP_Arty_Bat = {
+						x = 2
+						y = 0
+					}
+					SP_Arty_Bat = {
+						x = 2
+						y = 1
+					}
+					SP_Arty_Bat = {
+						x = 2
+						y = 2
+					}
+				}
+				support = {
+					L_Engi_Comp = {
+						x = 0
+						y = 0
+					}
+					SP_AA_Battery = {
+						x = 0
+						y = 1
+					}
+					combat_service_support_company = {
+						x = 0
+						y = 2
+					}
+					communications_company = {
+						x = 0
+						y = 3
+					}
+					combat_maintenance_company = {
+						x = 0
+						y = 4
+					}
+				}
+			}
+			capital_scope = {
+				create_unit = {
+					division = "division_template = \"Elite Unit "Southern Blade"\" start_experience_factor = 0.6 start_equipment_factor = 1.0"
+					owner = ROOT
+					count = 4
+				}
+			}
+		}
+	}
+}
+
+shared_focus = {
+	id = PRC_expand_the_thunder_gods
+	icon = GFX_focus_PRC_expand_the_thunder_gods
+	x = -2
+	y = 1
+	cost = 5
+	available_if_capitulated = yes
+	relative_position_id = PRC_modern_special_forces
+	ai_will_do = {
+		factor = 50
+	}
+	prerequisite = {
+		focus = PRC_modern_special_forces
+	}
+	prerequisite = {
+		focus = PRC_fresh_personnel_in_the_strategic_command
+	}
+	available = {
+	}
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: focus PRC_expand_the_thunder_gods completion_reward"
+		add_tech_bonus = {
+			name = PRC_expand_the_thunder_gods
+			bonus = 0.5
+			uses = 1
+			category = CAT_special_forces
+		}
+		add_tech_bonus = {
+			name = PRC_expand_the_thunder_gods
+			bonus = 0.5
+			uses = 1
+			category = CAT_inf
+		}
+		custom_effect_tooltip = tooltip_white_line
+		unlock_decision_tooltip = PRC_thunder_god_program_mountain
+		unlock_decision_tooltip = PRC_thunder_god_program_jungle
+		custom_effect_tooltip = tooltip_white_line
+		set_temp_variable = {
+			var = PRC_army_reform_progress_temp
+			value = 0.025
+		}
+		PRC_add_army_reform_progress = yes
+		set_country_flag = PRC_thunder_gods_expanded
+	}
+}
+
+shared_focus = {
+	id = PRC_dawn_of_the_chinese_tactical_thought
+	icon = GFX_focus_PRC_dawn_of_the_chinese_tactical_thought
+	x = 0
+	y = 3
+	cost = 5
+	available_if_capitulated = yes
+	relative_position_id = PRC_improve_officer_training
+	ai_will_do = {
+		factor = 50
+	}
+	prerequisite = {
+		focus = PRC_improve_officer_training
+	}
+	prerequisite = {
+		focus = PRC_sharpen_the_southern_blade
+		focus = PRC_expand_the_thunder_gods
+	}
+	available = {
+		set_temp_variable = {
+			var = PRC_army_reform_progress_trigger_var_temp
+			value = 0.75
+		}
+		custom_trigger_tooltip = {
+			tooltip = PRC_army_reform_progress_check1_tooltip
+			check_variable = {
+				var = PRC_army_reform_progress
+				value = PRC_army_reform_progress_trigger_var_temp
+				compare = greater_than_or_equals
+			}
+		}
+	}
+	completion_reward = {
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = PRC_pla_dummy_idea
+				add_idea = PRC_dawn_of_the_chinese_tactical_thought_idea
+			}
+		}
+		unlock_decision_tooltip = PRC_skill_training_attack_skills
+		unlock_decision_tooltip = PRC_skill_training_defense_skills
+		unlock_decision_tooltip = PRC_skill_training_planning_skills
+		unlock_decision_tooltip = PRC_skill_training_logistics_skills
+		hidden_effect = {
+			add_to_variable = {
+				var = PRC_pla_max_planning_factor_dynamic_var
+				value = 0.075
+			}
+			add_to_variable = {
+				var = PRC_pla_planning_speed_dynamic_var
+				value = 0.075
+			}
+			add_to_variable = {
+				var = PRC_pla_max_commander_army_size_dynamic_var
+				value = 4
+			}
+			add_to_variable = {
+				var = PRC_pla_max_marshal_army_group_size_dynamic_var
+				value = 1
+			}
+		}
+	}
+}
+
+#Army of Tommorow
+shared_focus = {
+	id = PRC_next_generation_army
+	icon = GFX_focus_PRC_next_generation_army
+	x = 9
+	y = 1
+	cost = 5
+	available_if_capitulated = yes
+	relative_position_id = PRC_lessons_from_the_taiwan_war
+	ai_will_do = {
+		factor = 50
+	}
+	prerequisite = {
+		focus = PRC_lessons_from_the_taiwan_war
+	}
+	available = {
+	}
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: focus PRC_next_generation_army completion_reward"
+		set_temp_variable = {
+			var = military_development_var_temp
+			value = 0.1
+		}
+		add_military_development = yes
+		set_temp_variable = {
+			var = PRC_army_reform_progress_temp
+			value = 0.05
+		}
+		PRC_add_army_reform_progress = yes
+		custom_effect_tooltip = tooltip_white_line
+		unlock_decision_tooltip = PRC_accelerated_soldier_training_programs
+		unlock_decision_tooltip = PRC_project_ghost_dec
+		unlock_decision_tooltip = PRC_project_nib_dec
+		unlock_decision_tooltip = PRC_project_flash_dec
+	}
+}
+
+shared_focus = {
+	id = PRC_fresh_personnel_in_the_strategic_command
+	icon = GFX_focus_PRC_fresh_personnel_in_the_strategic_command
+	x = 3
+	y = 1
+	cost = 5
+	available_if_capitulated = yes
+	relative_position_id = PRC_next_generation_army
+	ai_will_do = {
+		factor = 50
+	}
+	prerequisite = {
+		focus = PRC_next_generation_army
+	}
+	available = {
+	}
+	completion_reward = {
+		effect_tooltip = {
+			add_command_power = 50
+			swap_ideas = {
+				remove_idea = PRC_pla_dummy_idea
+				add_idea = PRC_fresh_personnel_in_the_strategic_command_idea
+			}
+		}
+		every_army_leader = {
+			limit = {
+				skill > 2
+			}
+			add_unit_leader_trait = old_guard
+		}
+		custom_effect_tooltip = tooltip_white_line
+		set_temp_variable = {
+			var = PRC_army_reform_progress_temp
+			value = 0.025
+		}
+		PRC_add_army_reform_progress = yes
+		hidden_effect = {
+			add_to_variable = {
+				var = PRC_pla_experience_gain_army_factor_dynamic_var
+				value = -0.15
+			}
+			add_to_variable = {
+				var = PRC_pla_max_planning_factor_dynamic_var
+				value = 0.1
+			}
+			add_to_variable = {
+				var = PRC_pla_planning_speed_dynamic_var
+				value = 0.15
+			}
+			add_to_variable = {
+				var = PRC_pla_experience_gain_factor_dynamic_var
+				value = 0.1
+			}
+			add_to_variable = {
+				var = PRC_pla_max_command_power_mult_dynamic_var
+				value = 0.1
+			}
+			add_command_power = 50
+		}
+	}
+}
+
+shared_focus = {
+	id = PRC_improve_officer_training
+	icon = GFX_focus_PRC_improve_officer_training
+	x = 6
+	y = 1
+	cost = 5
+	available_if_capitulated = yes
+	relative_position_id = PRC_next_generation_army
+	ai_will_do = {
+		factor = 50
+	}
+	prerequisite = {
+		focus = PRC_next_generation_army
+	}
+	available = {
+	}
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: focus PRC_improve_officer_training completion_reward"
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = PRC_pla_dummy_idea
+				add_idea = PRC_improve_officer_training_idea
+			}
+		}
+		every_army_leader = {
+			add_max_trait = 1
+		}
+		custom_effect_tooltip = tooltip_white_line
+		set_temp_variable = {
+			var = PRC_army_reform_progress_temp
+			value = 0.025
+		}
+		PRC_add_army_reform_progress = yes
+		unlock_decision_tooltip = PRC_accelerated_officer_training_programs
+		hidden_effect = {
+			add_to_variable = {
+				var = PRC_pla_experience_gain_factor_dynamic_var
+				value = 0.15
+			}
+			add_to_variable = {
+				var = PRC_pla_planning_speed_dynamic_var
+				value = 0.1
+			}
+			add_to_variable = {
+				var = PRC_pla_max_planning_factor_dynamic_var
+				value = 0.1
+			}
+		}
+	}
+}
+
+#Speed and Maneuverability
+shared_focus = {
+	id = PRC_mobile_warfare_nat
+	icon = GFX_focus_PRC_mobile_warfare
+	x =-1
+	y = 1
+	cost = 4.3
+	available_if_capitulated = yes
+	relative_position_id = PRC_tank_primacy_nat
+	ai_will_do = {
+		factor = 50
+	}
+	prerequisite = {
+		focus = PRC_tank_primacy_nat
+	}
+	available = {
+	}
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: focus PRC_mobile_warfare_nat completion_reward"
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = PRC_pla_dummy_idea
+				add_idea = PRC_mobile_warfare_nat_idea
+			}
+		}
+		add_doctrine_cost_reduction = {
+			name = PRC_mobile_warfare_nat
+			cost_reduction = 0.5
+			uses = 3
+			category = land_doctrine
+		}
+		custom_effect_tooltip = tooltip_white_line
+		set_temp_variable = {
+			var = PRC_army_reform_progress_temp
+			value = 0.025
+		}
+		PRC_add_army_reform_progress = yes
+		hidden_effect = {
+			add_to_variable = {
+				var = PRC_pla_army_speed_factor_dynamic_var
+				value = 0.05
+			}
+			add_to_variable = {
+				var = PRC_pla_org_loss_when_moving_dynamic_var
+				value = -0.1
+			}
+		}
+	}
+}
+
+shared_focus = {
+	id = PRC_modern_special_forces
+	icon = GFX_focus_PRC_modern_special_forces
+	x = 4
+	y = 2
+	cost = 5
+	available_if_capitulated = yes
+	relative_position_id = PRC_next_generation_army
+	ai_will_do = {
+		factor = 50
+	}
+	prerequisite = {
+		focus = PRC_next_generation_army
+	}
+	available = {
+		has_army_experience > 50
+	}
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: focus PRC_modern_special_forces completion_reward"
+		army_experience = -50
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = PRC_pla_dummy_idea
+				add_idea = PRC_modern_special_forces_idea
+			}
+		}
+		add_tech_bonus = {
+			name = PRC_modern_special_forces
+			bonus = 0.5
+			uses = 3
+			category = CAT_special_forces
+		}
+		custom_effect_tooltip = tooltip_white_line
+		set_temp_variable = {
+			var = PRC_army_reform_progress_temp
+			value = 0.025
+		}
+		PRC_add_army_reform_progress = yes
+		hidden_effect = {
+			add_to_variable = {
+				var = PRC_pla_special_forces_cap_dynamic_var
+				value = 0.1
+			}
+			add_to_variable = {
+				var = PRC_pla_special_forces_attack_factor_dynamic_var
+				value = 0.075
+			}
+			add_to_variable = {
+				var = PRC_pla_special_forces_defence_factor_dynamic_var
+				value = 0.075
+			}
+		}
+	}
+}
+
+shared_focus = {
+	id = PRC_national_fanaticism
+	icon = GFX_focus_PRC_national_fanaticism
+	x = 1
+	y = 1
+	cost = 5
+	available_if_capitulated = yes
+	relative_position_id = PRC_improve_officer_training
+	ai_will_do = {
+		factor = 50
+	}
+	prerequisite = {
+		focus = PRC_improve_officer_training
+	}
+	available = {
+		OR = {
+			has_country_flag = PRC_nationalist_win
+			has_country_flag = PRC_centrist_win
+		}
+	}
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: focus PRC_national_fanaticism completion_reward"
+		add_war_support = 0.075
+		set_temp_variable = {
+			value = 2
+			var = campaign_slot_total_var_temp
+		}
+		add_total_campaign_slot = yes
+		unlock_decision_tooltip = PRC_proudly_serve_your_nation
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = PRC_the_wave_of_patriotism_1_tooltip
+	}
+}
+
+#The Spiritual War
+shared_focus = {
+	id = PRC_infantry_primacy_nat
+	icon = GFX_focus_PRC_infantry_primacy
+	x = 1
+	y = 1
+	cost = 4.3
+	available_if_capitulated = yes
+	relative_position_id = PRC_tidal_wave_of_bodies
+	ai_will_do = {
+		factor = 50
+	}
+	prerequisite = {
+		focus = PRC_tidal_wave_of_bodies
+	}
+	available = {
+	}
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: focus PRC_infantry_primacy_nat completion_reward"
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = PRC_pla_dummy_idea
+				add_idea = PRC_infantry_primacy_nat_idea
+			}
+		}
+		add_doctrine_cost_reduction = {
+			name = PRC_tidal_wave_of_bodies
+			cost_reduction = 0.5
+			uses = 1
+			category = land_doctrine
+		}
+		add_tech_bonus = {
+			name = PRC_infantry_primacy_nat
+			bonus = 0.75
+			uses = 2
+			category = CAT_inf_wep
+		}
+		custom_effect_tooltip = tooltip_white_line
+		set_temp_variable = {
+			var = PRC_army_reform_progress_temp
+			value = 0.025
+		}
+		PRC_add_army_reform_progress = yes
+		hidden_effect = {
+			add_to_variable = {
+				var = PRC_pla_breakthrough_factor_dynamic_var
+				value = 0.05
+			}
+			add_to_variable = {
+				var = PRC_pla_initiative_factor_dynamic_var
+				value = 0.05
+			}
+			add_to_variable = {
+				var = PRC_pla_army_org_factor_dynamic_var
+				value = 0.05
+			}
+			add_to_variable = {
+				var = PRC_pla_training_time_factor_dynamic_var
+				value = 0.1
+			}
+			add_to_variable = {
+				var = PRC_pla_military_development_monthly_dynamic_var
+				value = 0.005
+			}
+		}
+	}
+}
+
+shared_focus = {
+	id = PRC_millions_march_in_unison
+	icon = GFX_focus_PRC_millions_march_in_unison
+	x = 0
+	y = 3
+	cost = 4.3
+	available_if_capitulated = yes
+	relative_position_id = PRC_tidal_wave_of_bodies
+	ai_will_do = {
+		factor = 50
+	}
+	prerequisite = {
+		focus = PRC_tidal_wave_of_bodies
+	}
+	available = {
+	}
+	completion_reward = {
+		add_war_support = 0.03
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = PRC_pla_dummy_idea
+				add_idea = PRC_millions_march_in_unison_idea
+			}
+		}
+		add_doctrine_cost_reduction = {
+			name = PRC_millions_march_in_unison
+			cost_reduction = 0.5
+			uses = 1
+			category = land_doctrine
+		}
+		hidden_effect = {
+			add_to_variable = {
+				var = PRC_pla_conscription_factor_dynamic_var
+				value = 0.06
+			}
+			add_to_variable = {
+				var = PRC_pla_initiative_factor_dynamic_var
+				value = 0.05
+			}
+			add_to_variable = {
+				var = PRC_pla_army_org_factor_dynamic_var
+				value = 0.05
+			}
+		}
+	}
+}
+
+#Wall of Fire and Steel
+shared_focus = {
+	id = PRC_tank_primacy_nat
+	icon = GFX_focus_PRC_tank_primacy_nat
+	x = -4
+	y = 1
+	cost = 5
+	available_if_capitulated = yes
+	relative_position_id = PRC_next_generation_army
+	ai_will_do = {
+		factor = 50
+	}
+	prerequisite = {
+		focus = PRC_next_generation_army
+	}
+	mutually_exclusive = {
+		focus = PRC_tidal_wave_of_bodies
+	}
+	available = {
+	}
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: focus PRC_tank_primacy_nat completion_reward"
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = PRC_pla_dummy_idea
+				add_idea = PRC_wall_of_fire_and_steel_idea
+			}
+		}
+		add_tech_bonus = {
+			bonus = 1
+			uses = 2
+			name = PRC_tank_primacy_nat
+			category = CAT_tanks
+		}
+		set_temp_variable = {
+			var = PRC_army_reform_progress_temp
+			value = 0.025
+		}
+		PRC_add_army_reform_progress = yes
+		if = {
+			limit = {
+				OR = {
+					has_country_flag = PRC_centrist_win
+					has_country_flag = PRC_nationalist_win
+				}
+			}
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = available_military_high_command
+			show_ideas_tooltip = PRC_wu_yanan_high_command
+		}
+		custom_effect_tooltip = tooltip_white_line
+		unlock_decision_tooltip = PRC_expand_baotou_tank_plant
+		hidden_effect = {
+			add_to_variable = {
+				var = PRC_pla_breakthrough_factor_dynamic_var
+				value = 0.05
+			}
+			add_to_variable = {
+				var = PRC_army_armor_attack_factor_dynamic_var
+				value = 0.075
+			}
+			add_to_variable = {
+				var = PRC_army_armor_defence_factor_dynamic_var
+				value = 0.075
+			}
+			add_to_variable = {
+				var = PRC_pla_army_artillery_attack_factor_dynamic_var
+				value = 0.05
+			}
+			add_to_variable = {
+				var = PRC_pla_army_artillery_defence_factor_dynamic_var
+				value = 0.05
+			}
+		}
+	}
+}
+
+shared_focus = {
+	id = PRC_the_cleansing_fire
+	icon = GFX_focus_PRC_the_cleansing_fire
+	x = 0
+	y = 2
+	cost = 4.3
+	available_if_capitulated = yes
+	relative_position_id = PRC_tank_primacy_nat
+	ai_will_do = {
+		factor = 50
+	}
+	prerequisite = {
+		focus = PRC_tank_primacy_nat
+	}
+	available = {
+	}
+	completion_reward = {
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = PRC_pla_dummy_idea
+				add_idea = PRC_the_cleansing_fire_idea
+			}
+		}
+		add_tech_bonus = {
+			bonus = 1
+			uses = 2
+			name = PRC_the_cleansing_fire
+			category = CAT_artillery
+		}
+		custom_effect_tooltip = tooltip_white_line
+		unlock_decision_tooltip = PRC_expand_heilongjiang_artillery_plants
+		hidden_effect = {
+			add_to_variable = {
+				var = PRC_pla_fortification_collateral_chance_dynamic_var
+				value = 0.3
+			}
+			add_to_variable = {
+				var = PRC_pla_army_artillery_attack_factor_dynamic_var
+				value = 0.05
+			}
+			add_to_variable = {
+				var = PRC_pla_army_artillery_defence_factor_dynamic_var
+				value = 0.05
+			}
+			add_to_variable = {
+				var = PRC_pla_breakthrough_factor_dynamic_var
+				value = 0.04
+			}
+			add_to_variable = {
+				var = PRC_pla_supply_consumption_factor_dynamic_var
+				value = 0.04
+			}
+		}
+	}
+}
+
+shared_focus = {
+	id = PRC_tidal_wave_of_bodies
+	icon = GFX_focus_PRC_tidal_wave_of_bodies
+	x = 0
+	y = 1
+	cost = 5
+	available_if_capitulated = yes
+	relative_position_id = PRC_next_generation_army
+	ai_will_do = {
+		factor = 50
+	}
+	prerequisite = {
+		focus = PRC_next_generation_army
+	}
+	mutually_exclusive = {
+		focus = PRC_tank_primacy_nat
+	}
+	available = {
+	}
+	completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: focus PRC_tidal_wave_of_bodies completion_reward"
+		custom_effect_tooltip = GER_force_attack_tt
+		set_country_flag = super_force_attack_flag
+		custom_effect_tooltip = tooltip_white_line
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = PRC_pla_dummy_idea
+				add_idea = PRC_tidal_wave_of_bodies_idea
+			}
+		}
+		add_doctrine_cost_reduction = {
+			name = PRC_tidal_wave_of_bodies
+			cost_reduction = 0.75
+			uses = 2
+			category = land_doctrine
+		}
+		custom_effect_tooltip = tooltip_white_line
+		hidden_effect = {
+			add_to_variable = {
+				var = PRC_pla_land_reinforce_rate_dynamic_var
+				value = 0.06
+			}
+			add_to_variable = {
+				var = PRC_battalion_upkeep_factor_dynamic_var
+				value = -0.15
+			}
+		}
+		set_temp_variable = {
+			var = PRC_army_reform_progress_temp
+			value = 0.025
+		}
+		PRC_add_army_reform_progress = yes
+		unlock_decision_tooltip = PRC_invest_in_china_south_industries_group
+	}
+}
+
+shared_focus = {
+	id = PRC_achieving_network_centric_warfare
+	icon = GFX_focus_PRC_achieving_network_centric_warfare
+	x = -2
+	y = 2
+	cost = 4.3
+	available_if_capitulated = yes
+	relative_position_id = PRC_next_generation_army
+	ai_will_do = {
+		factor = 50
+	}
+	prerequisite = {
+		focus = PRC_tank_primacy_nat
+		focus = PRC_tidal_wave_of_bodies
+	}
+	available = {
+	}
+	completion_reward = {
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = PRC_pla_dummy_idea
+				add_idea = PRC_achieving_network_centric_warfare_idea
+			}
+		}
+		add_tech_bonus = {
+			name = PRC_achieving_network_centric_warfare
+			bonus = 0.5
+			uses = 3
+			category = CAT_inf_wep
+		}
+		custom_effect_tooltip = tooltip_white_line
+		unlock_decision_tooltip = PRC_network_centric_warfare_smart_air_land_integration
+		unlock_decision_tooltip = PRC_network_centric_warfare_advanced_artillery_support
+		unlock_decision_tooltip = PRC_network_centric_warfare_smart_infantry_equipment
+		hidden_effect = {
+			add_to_variable = {
+				var = PRC_pla_army_org_factor_dynamic_var
+				value = 0.04
+			}
+			add_to_variable = {
+				var = PRC_pla_command_power_gain_mult_dynamic_var
+				value = 0.15
+			}
+		}
+	}
+}
+
+shared_focus = {
+	id = PRC_a_continuous_offensive
+	icon = GFX_focus_PRC_a_continuous_offensive
+	x = 1
+	y = 1
+	cost = 5
+	available_if_capitulated = yes
+	relative_position_id = PRC_achieving_network_centric_warfare
+	ai_will_do = {
+		factor = 50
+	}
+	prerequisite = {
+		focus = PRC_achieving_network_centric_warfare
+	}
+	prerequisite = {
+		focus = PRC_mobile_warfare_nat
+		focus = PRC_infantry_primacy_nat
+	}
+	available = {
+	}
+	completion_reward = {
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = PRC_pla_dummy_idea
+				add_idea = PRC_a_continuous_offensive_idea
+			}
+		}
+		effect_tooltip = {
+			custom_effect_tooltip = PRC_a_continuous_offensive_1_tooltip
+			add_doctrine_cost_reduction = {
+				name = PRC_a_continuous_offensive
+				cost_reduction = 0.75
+				uses = 2
+				category = land_doctrine
+			}
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = PRC_a_continuous_offensive_2_tooltip
+			add_doctrine_cost_reduction = {
+				name = PRC_a_continuous_offensive
+				cost_reduction = 0.75
+				uses = 2
+				category = land_doctrine
+			}
+		}
+		custom_effect_tooltip = tooltip_white_line
+		hidden_effect = {
+			add_to_variable = {
+				var = PRC_pla_conscription_factor_dynamic_var
+				value = 0.04
+			}
+			add_to_variable = {
+				var = PRC_pla_army_attack_factor_dynamic_var
+				value = 0.035
+			}
+			add_to_variable = {
+				var = PRC_pla_army_morale_factor_dynamic_var
+				value = 0.05
+			}
+			add_to_variable = {
+				var = PRC_pla_army_org_regain_dynamic_var
+				value = 0.05
+			}
+			add_to_variable = {
+				var = PRC_pla_experience_loss_factor_dynamic_var
+				value = 0.05
+			}
+			if = {
+				limit = {
+					has_completed_focus = PRC_mobile_warfare_nat
+				}
+				add_doctrine_cost_reduction = {
+					name = PRC_a_continuous_offensive
+					cost_reduction = 0.75
+					uses = 2
+					category = land_doctrine
+				}
+			}
+			if = {
+				limit = {
+					has_completed_focus = PRC_tidal_wave_of_bodies
+				}
+				add_doctrine_cost_reduction = {
+					name = PRC_a_continuous_offensive
+					cost_reduction = 0.75
+					uses = 2
+					category = land_doctrine
+				}
+			}
+		}
+	}
+}
+
+###GAW

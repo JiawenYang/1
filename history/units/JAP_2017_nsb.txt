@@ -159,6 +159,12 @@ division_template = {
 		Special_Forces = { x = 0 y = 0 }
 
 	}
+	support = {
+		L_Recce_Comp = { x = 0 y = 0 }
+		L_Engi_Comp = { x = 0 y = 1 }
+		combat_service_support_company = { x = 0 y = 2 }
+	}
+	priority = 2
 }
 
 division_template = {
@@ -170,6 +176,11 @@ division_template = {
 		Airborne_Bat_JAP = { x = 0 y = 2 }
 		Airborne_Bat_JAP = { x = 0 y = 3 }
 		Arty_Bat = { x = 1 y = 0 }
+	}
+	support = {
+		L_Recce_Comp = { x = 0 y = 0 }
+		L_Engi_Comp = { x = 0 y = 1 }
+		combat_service_support_company = { x = 0 y = 2 }
 	}
 	priority = 2
 }
@@ -365,6 +376,7 @@ instant_effect = {
 
 	#封存坦克
 	add_equipment_to_stockpile = {
+		variant_name = "Type 90"
 		type = medium_tank_chassis_1 #Type 74（封存）
 		producer = JAP
 		amount = 80
@@ -372,18 +384,21 @@ instant_effect = {
 
 	#封存装甲车
 	add_equipment_to_stockpile = {
-		type = medium_tank_amphibious_chassis_0 #Type 60装甲车（封存）
+		variant_name = "Type 60"
+		type = medium_tank_amphibious_chassis_1 #Type 60（封存）
 		producer = JAP
 		amount = 60
 	}
 
 	add_equipment_to_stockpile = {
-		type = medium_tank_flame_chassis_0 #Type 60履带装甲车（封存）
+		variant_name = "Type 89"
+		type = medium_tank_flame_chassis_1 #Type 89（封存）
 		producer = JAP
 		amount = 60
 	}
 
 	add_equipment_to_stockpile = {
+		variant_name = "Type 73"
 		type = medium_tank_amphibious_chassis_1 #Type 73装甲车（封存）
 		producer = JAP
 		amount = 100
@@ -391,6 +406,7 @@ instant_effect = {
 
 	#封存侦察车
 	add_equipment_to_stockpile = {
+		variant_name = "Type 87"
 		type = medium_tank_destroyer_chassis_1 #Type 87侦察车（封存）
 		producer = JAP
 		amount = 40
@@ -398,12 +414,14 @@ instant_effect = {
 
 	#封存牵引火炮
 	add_equipment_to_stockpile = {
+		variant_name = "FH-70"
 		type = artillery_1 #FH-70（封存）
 		producer = ENG
 		amount = 60
 	}
 
 	add_equipment_to_stockpile = {
+		variant_name = "各型迫击炮"
 		type = artillery_1 #各型迫击炮（封存）
 		producer = JAP
 		amount = 200
@@ -411,6 +429,7 @@ instant_effect = {
 
 	#封存自行火炮
 	add_equipment_to_stockpile = {
+		variant_name = "M110A2"
 		type = medium_tank_artillery_chassis_0 #Type 74 105自行炮（封存）
 		producer = JAP
 		amount = 40
@@ -418,12 +437,14 @@ instant_effect = {
 
 	#封存火箭炮
 	add_equipment_to_stockpile = {
+		variant_name = "Type 75"
 		type = medium_tank_rocket_chassis_0 #Type 75火箭炮（封存）
 		producer = JAP
 		amount = 30
 	}
 
 	add_equipment_to_stockpile = {
+		variant_name = "M270"
 		type = medium_tank_rocket_chassis_1 #Type 75火箭炮（封存追加）
 		producer = JAP
 		amount = 15
@@ -431,12 +452,14 @@ instant_effect = {
 
 	#封存自行防空炮
 	add_equipment_to_stockpile = {
+		variant_name = "Type 87 SPAAG"
 		type = medium_tank_aa_chassis_0 #Type 60自行高炮（封存）
 		producer = JAP
 		amount = 30
 	}
 
 	add_equipment_to_stockpile = {
+		variant_name = "Type 93"
 		type = medium_tank_aa_chassis_1 #Type 87自行高炮（封存）
 		producer = JAP
 		amount = 30
@@ -444,6 +467,7 @@ instant_effect = {
 
 	#封存反坦克导弹
 	add_equipment_to_stockpile = {
+		variant_name = "64式马特反坦克导弹"
 		type = Anti_tank_1 #64式马特反坦克导弹（封存）
 		producer = JAP
 		amount = 120
@@ -451,17 +475,20 @@ instant_effect = {
 
 	#封存卡车
 	add_equipment_to_stockpile = {
+		variant_name = "老型卡车"
 		type = util_vehicle_2 #老型卡车（封存）
 		producer = JAP
 		amount = 800
 	}
 
 	add_equipment_to_stockpile = {
-		type = infantry_weapons_4 #Type 89
+		variant_name = "Type 89 Rifle"
+		type = infantry_weapons_4 #Type 89 Rifle (Howa Type 89, 5.56mm)
 		producer = JAP
 		amount = 140000
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "Type 64"
 		type = infantry_weapons_2 #Type 64（封存）
 		producer = JAP
 		amount = 40000
@@ -542,16 +569,19 @@ instant_effect = {
 		amount = 357
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "Bushmaster"
 		type = util_vehicle_5 #Bushmaster
 		amount = 4
 		producer = AST
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "Komatsu LAV"
 		type = util_vehicle_5 #Komatsu LAV
 		producer = JAP
 		amount = 1800
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "Toyota HMV"
 		type = util_vehicle_4 #Toyota HMV
 		producer = JAP
 		amount = 400
@@ -570,6 +600,7 @@ instant_effect = {
 		amount = 67
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "FH-70"
 		type = artillery_1 #FH-70
 		amount = 422
 		producer = ENG
@@ -617,36 +648,67 @@ instant_effect = {
 		amount = 47
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "Type 87 SPAAG"
 		type = medium_tank_aa_chassis_0
 		amount = 126
 		producer = JAP
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "UH-1H Huey"
 		type = transport_helicopter_1 #CH-47
 		#version_name = "Boeing CH-47 Chinook"
 		amount = 27
 		producer = USA
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "UH-1H Huey"
 		type = transport_helicopter_1 #UH-1
 		amount = 50
 		producer = USA
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "Eurocopter AS332 Super Puma"
 		type = transport_helicopter_1 #Eurocopter AS332 Super Puma
 		#version_name = "Eurocopter AS332 Super Puma"
 		amount = 3
 		producer = FRA
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "MH-60L Black Hawk"
 		type = transport_helicopter_2 #Blackhawk
 		amount = 36
 		producer = USA
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "MH-60L Black Hawk"
 		type = transport_helicopter_2 #CH-47D
 		#version_name = "Boeing CH-47D Chinook"
 		amount = 27
 		producer = USA
+	}
+	# Generation upgrade (2017 stock)
+	add_equipment_to_stockpile = {
+		type = artillery_2
+		amount = 0
+		producer = JAP
+	}
+	# Orphan variant attachment (2017 real-world holdings)
+	add_equipment_to_stockpile = {
+		type = large_plane_maritime_patrol_airframe_1
+		variant_name = "Kawasaki P-1"
+		amount = 10
+		producer = JAP
+	}
+	add_equipment_to_stockpile = {
+		type = large_plane_air_transport_airframe_2
+		variant_name = "Kawasaki C-2"
+		amount = 10
+		producer = JAP
+	}
+	add_equipment_to_stockpile = {
+		type = large_plane_air_transport_airframe_2
+		variant_name = "KC-767J"
+		amount = 4
+		producer = JAP
 	}
 }

@@ -178,7 +178,7 @@ units = {
 	division = {
 		name = "7th Inf Brigade"
 		location = 6237
-		division_template = "Inf Brigade with Recon"
+		division_template = "Small Inf Brigade with Recon"
 		start_experience_factor = 0.75
 		start_equipment_factor = 0.01
 	}
@@ -206,7 +206,7 @@ units = {
 	division = {
 		name = "51st Inf Brigade"
 		location = 9392
-		division_template = "Inf Brigade with Recon"
+		division_template = "Small Inf Brigade with Recon"
 		start_experience_factor = 0.75
 		start_equipment_factor = 0.01
 	}
@@ -301,13 +301,12 @@ instant_effect = {
 		amount = 200000
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "C4ISTAR"
 		type = cnc_equipment_5 #C4ISTAR
 		producer = ENG
 		amount = 1558
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "M72 LAW"
+		variant_name = "LAW"
 		type = Anti_tank_2 #LAW
 		producer = USA
 		amount = 699
@@ -327,12 +326,13 @@ instant_effect = {
 
 	#Vehicles
 	add_equipment_to_stockpile = {
+		variant_name = "Challenger 2"
 		type = medium_tank_chassis_2
 		producer = ENG
 		amount = 227
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "Jackal 2"
+		variant_name = "Jackal 2 & Jackal 2A"
 		type = util_vehicle_6 #Jackal 2 & Jackal 2A
 		producer = ENG
 		amount = 330
@@ -350,14 +350,12 @@ instant_effect = {
 		amount = 200
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "Mastiff"
-		type = util_vehicle_5 #mastiff
+		type = heavy_util_vehicle_6 #mastiff
 		producer = ENG
 		amount = 420
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "Ridgback - variant of mastiff"
-		type = util_vehicle_5 #Ridgback - variant of mastiff
+		type = heavy_util_vehicle_6 #Ridgback - variant of mastiff
 		producer = ENG
 		amount = 170
 	}
@@ -425,7 +423,7 @@ instant_effect = {
 	#Aircraft
 	add_equipment_to_stockpile = {
 		variant_name = "AH-64D"
-		type = heavy_tank_chassis_2 #AH-64D
+		type = attack_helicopter_2 #AH-64D
 		amount = 67
 		producer = USA
 	}
@@ -443,14 +441,14 @@ instant_effect = {
 		amount = 34
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "SA-330 Puma"
+		variant_name = "Aerospatiale SA-330 Puma"
 		type = transport_helicopter_1 #Aerospatiale SA-330 Puma
 		producer = FRA
 		amount = 24
 		#version_name = "Aerospatiale SA-330 Puma"
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "UH-1 Iroquois"
+		variant_name = "Bell UH-1 Iroquois"
 		type = transport_helicopter_1 #Bell UH-1 Iroquois
 		producer = USA
 		amount = 8
@@ -479,19 +477,19 @@ instant_effect = {
 	}
 	add_equipment_to_stockpile = {
 		variant_name = "AW159 Wildcat"
-		type = heavy_tank_chassis_1 #AW159 Wildcat
+		type = attack_helicopter_1 #AW159 Wildcat
 		producer = ENG
 		amount = 31
 	}
 	add_equipment_to_stockpile = {
 		variant_name = "Eurocopter AS565 Panther"
-		type = heavy_tank_chassis_1 #Eurocopter AS565 Panther
+		type = attack_helicopter_2 #Eurocopter AS565 Panther
 		amount = 5
 		producer = FRA
 	}
 	add_equipment_to_stockpile = {
 		variant_name = "Lynx AH9A"
-		type = heavy_tank_chassis_1 #Lynx AH9A
+		type = attack_helicopter_1 #Lynx AH9A
 		producer = ENG
 		amount = 21
 	}
@@ -513,6 +511,7 @@ instant_effect = {
 
 	#封存装甲车/侦察车
 	add_equipment_to_stockpile = {
+		variant_name = "CVR(T)蝎式/弯刀"
 		type = medium_tank_destroyer_chassis_0 #CVR(T)蝎式/弯刀（封存）
 		amount = 120
 		producer = ENG
@@ -520,12 +519,13 @@ instant_effect = {
 
 	#封存牵引火炮
 	add_equipment_to_stockpile = {
+		variant_name = "L118 105轻炮"
 		type = artillery_1 #L118 105轻炮（封存）
 		amount = 50
 		producer = ENG
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "FH-70"
+		variant_name = "FH-70 155牵引炮"
 		type = artillery_1 #FH-70 155牵引炮（封存）
 		producer = ENG
 		amount = 40
@@ -533,13 +533,13 @@ instant_effect = {
 
 	#封存自行火炮
 	add_equipment_to_stockpile = {
-		variant_name = "Abbot"
+		variant_name = "Abbot 105自行炮"
 		type = medium_tank_artillery_chassis_0 #Abbot 105自行炮（封存）
 		amount = 60
 		producer = ENG
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "M109"
+		variant_name = "M109老型自行炮"
 		type = medium_tank_artillery_chassis_0 #M109老型自行炮（封存）
 		producer = USA
 		amount = 40
@@ -547,7 +547,7 @@ instant_effect = {
 
 	#封存防空
 	add_equipment_to_stockpile = {
-		variant_name = "Tracked Rapier"
+		variant_name = "Tracked Rapier防空车"
 		type = medium_tank_aa_chassis_0 #Tracked Rapier防空车（封存）
 		amount = 40
 		producer = ENG
@@ -555,12 +555,13 @@ instant_effect = {
 
 	#封存反坦克导弹
 	add_equipment_to_stockpile = {
+		variant_name = "Swingfire老型反坦克导弹"
 		type = Anti_tank_1 #Swingfire老型反坦克导弹（封存）
 		amount = 60
 		producer = ENG
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "MILAN"
+		variant_name = "Milan老型反坦克导弹"
 		type = Anti_tank_1 #Milan老型反坦克导弹（封存）
 		producer = FRA
 		amount = 80
@@ -568,6 +569,7 @@ instant_effect = {
 
 	#封存运输车辆
 	add_equipment_to_stockpile = {
+		variant_name = "老式卡车"
 		type = util_vehicle_2 #老式卡车（封存）
 		amount = 400
 		producer = ENG
@@ -597,5 +599,55 @@ instant_effect = {
 		type = medium_tank_amphibious_chassis_1 #Saxon（封存）
 		producer = ENG
 		amount = 250
+	}
+
+	#反地雷伏击车（MRAP，2015型）
+	add_equipment_to_stockpile = {
+		type = heavy_util_vehicle_6 #Wolfhound TSV
+		producer = ENG
+		amount = 100
+	}
+	# Generation upgrade (2017 stock)
+	add_equipment_to_stockpile = {
+		type = artillery_2
+		amount = 0
+		producer = ENG
+	}
+	# Orphan variant attachment (2017 real-world holdings)
+	add_equipment_to_stockpile = {
+		type = heavy_tank_chassis_1
+		variant_name = "Wildcat AH1"
+		amount = 34
+		producer = ENG
+	}
+	add_equipment_to_stockpile = {
+		type = transport_helicopter_2
+		variant_name = "Merlin HC3"
+		amount = 25
+		producer = ENG
+	}
+	add_equipment_to_stockpile = {
+		type = large_plane_air_transport_airframe_2
+		variant_name = "A400M Atlas"
+		amount = 10
+		producer = ENG
+	}
+	add_equipment_to_stockpile = {
+		type = small_plane_suicide_airframe_1
+		variant_name = "Watchkeeper WK450"
+		amount = 30
+		producer = ENG
+	}
+	add_equipment_to_stockpile = {
+		type = large_plane_awacs_airframe_2
+		variant_name = "RC-135W Airseeker"
+		amount = 3
+		producer = ENG
+	}
+	add_equipment_to_stockpile = {
+		type = small_plane_suicide_airframe_2
+		variant_name = "MQ-9 Reaper"
+		amount = 20
+		producer = ENG
 	}
 }

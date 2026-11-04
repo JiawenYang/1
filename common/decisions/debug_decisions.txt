@@ -478,16 +478,22 @@ debug_decisions = {
 		icon = generic_industry
 		fire_only_once = no
 		cost = 0
+		visible = {
+			NOT = { has_global_flag = MEW_debug_war_started }
+		}
 		available = {
 			is_ai = no
 			country_exists = ISR
 			NOT = { has_global_flag = MEW_war_declared }
 		}
 		complete_effect = {
+			# 调试入口自清标记：点完立刻从决策列表消失
+			set_global_flag = MEW_debug_war_started
 			custom_effect_tooltip = ZZZ_debug_MEW_war_start_tt
 			ISR = {
 				news_event = { id = mew.1 }
-				country_event = { id = mew.0 days = 4 }
+				# 调试入口：立即派发 mew.0，不必等 4 天
+				country_event = { id = mew.0 days = 0 }
 			}
 		}
 		ai_will_do = {
@@ -724,81 +730,41 @@ debug_decisions = {
 		icon = generic_industry
 		fire_only_once = no
 		cost = 0
+		visible = {
+			NOT = { has_global_flag = MEW_debug_arab_boost }
+		}
 		available = {
 			is_ai = no
 			country_exists = ISR
-			country_exists = PAL
+			NOT = { has_global_flag = MEW_debug_israel_boost }
 		}
 		complete_effect = {
 			custom_effect_tooltip = ZZZ_debug_MEW_arab_victory_tt
 			hidden_effect = {
-				# 先给所有潜在参战方挂 MEW_belligerent，确保结算时全部生效
-				every_country = {
-					limit = {
-						OR = {
-							original_tag = EGY
-							original_tag = SYR
-							original_tag = ALG
-							original_tag = LBA
-							original_tag = LEB
-							original_tag = PER
-							original_tag = HEZ
-							original_tag = PAL
-							original_tag = HAM
-							original_tag = IRQ
-						}
-					}
-					set_country_flag = MEW_belligerent
-				}
-				set_global_flag = MEW_sixth_war_ongoing
-				# ===== 复刻 on_capitulation 里的阿拉伯胜利结算 effect 块 =====
-				# 1) 所有阿拉伯参战国先白和平，避免战后剩余战争继承到巴勒斯坦头上
-				every_country = {
-					limit = {
-						OR = {
-							original_tag = EGY
-							original_tag = SYR
-							original_tag = HEZ
-							original_tag = PAL
-							original_tag = HAM
-							original_tag = PER
-							original_tag = IRQ
-							original_tag = ALG
-							original_tag = LBA
-							original_tag = LEB
-						}
-					}
-					white_peace = ISR
-				}
-				# 2) 巴勒斯坦吞并以色列与哈马斯（参考缅甸结算：白和后立即吞并）
+				# 一次性、可清除的 debug 标记（ZZZ_debug_MEW_reset 负责清理）
+				set_global_flag = MEW_debug_arab_boost
+				# 第六次中东战争还没开场时，先用既有脚本真正开战（mew.0 自己会置上下文旗标），
+				# 调试决策不代跑任何转州 / 白和 / 吞并
 				if = {
-					limit = { country_exists = ISR }
-					PAL = {
-						annex_country = {
-							target = ISR
-							transfer_troops = no
-						}
+					limit = { NOT = { has_global_flag = MEW_war_declared } }
+					ISR = {
+						country_event = { id = mew.0 days = 0 }
 					}
 				}
-				if = {
-					limit = { country_exists = HAM }
-					PAL = {
-						annex_country = {
-							target = HAM
-							transfer_troops = yes
-						}
-					}
-				}
-				# 3) 结算标记 + 新闻 + 开罗同盟（埃及牵头）
-				clr_global_flag = MEW_sixth_war_ongoing
-				set_global_flag = MEW_palestine_victory
-				news_event = { id = mew.10 }
-				if = {
-					limit = { country_exists = EGY }
-					EGY = {
-						country_event = { id = mew.11 days = 7 }
-					}
-				}
+				# 阿拉伯一侧：全部加强
+				if = { limit = { country_exists = EGY } EGY = { ZZZ_debug_apply_boost = yes } }
+				if = { limit = { country_exists = SYR } SYR = { ZZZ_debug_apply_boost = yes } }
+				if = { limit = { country_exists = FSA } FSA = { ZZZ_debug_apply_boost = yes } }
+				if = { limit = { country_exists = PAL } PAL = { ZZZ_debug_apply_boost = yes } }
+				if = { limit = { country_exists = HAM } HAM = { ZZZ_debug_apply_boost = yes } }
+				if = { limit = { country_exists = HEZ } HEZ = { ZZZ_debug_apply_boost = yes } }
+				if = { limit = { country_exists = IRQ } IRQ = { ZZZ_debug_apply_boost = yes } }
+				if = { limit = { country_exists = ALG } ALG = { ZZZ_debug_apply_boost = yes } }
+				if = { limit = { country_exists = LBA } LBA = { ZZZ_debug_apply_boost = yes } }
+				if = { limit = { country_exists = LEB } LEB = { ZZZ_debug_apply_boost = yes } }
+				if = { limit = { country_exists = PER } PER = { ZZZ_debug_apply_boost = yes } }
+				# 以色列一侧：全面压制
+				if = { limit = { country_exists = ISR } ISR = { ZZZ_debug_apply_debuff = yes } }
 			}
 		}
 		ai_will_do = {
@@ -809,111 +775,40 @@ debug_decisions = {
 		icon = generic_industry
 		fire_only_once = no
 		cost = 0
+		visible = {
+			NOT = { has_global_flag = MEW_debug_israel_boost }
+		}
 		available = {
 			is_ai = no
 			country_exists = ISR
+			NOT = { has_global_flag = MEW_debug_arab_boost }
 		}
 		complete_effect = {
 			custom_effect_tooltip = ZZZ_debug_MEW_israel_victory_tt
 			hidden_effect = {
-				# 先给所有潜在参战方挂 MEW_belligerent，确保 on_daily 里的 belligerent 检查全部通过
-				every_country = {
-					limit = {
-						OR = {
-							original_tag = EGY
-							original_tag = SYR
-							original_tag = ALG
-							original_tag = LBA
-							original_tag = LEB
-							original_tag = PER
-							original_tag = HEZ
-							original_tag = PAL
-							original_tag = HAM
-							original_tag = IRQ
-						}
-					}
-					set_country_flag = MEW_belligerent
-				}
-				set_global_flag = MEW_sixth_war_ongoing
-				# ===== 复刻 on_daily 里的以色列胜利 effect 块 =====
-				# 1) 吞并巴勒斯坦（约旦河西岸）
+				# 一次性、可清除的 debug 标记（ZZZ_debug_MEW_reset 负责清理）
+				set_global_flag = MEW_debug_israel_boost
+				# 战争尚未开场时走既有开战脚本，其余全部交回正常 on_capitulation / on_daily 结算
 				if = {
-					limit = {
-						country_exists = PAL
-						PAL = { has_country_flag = MEW_belligerent }
-					}
+					limit = { NOT = { has_global_flag = MEW_war_declared } }
 					ISR = {
-						annex_country = {
-							target = PAL
-							transfer_troops = no
-						}
+						country_event = { id = mew.0 days = 0 }
 					}
 				}
-				# 2) 吞并哈马斯（加沙）
-				if = {
-					limit = {
-						country_exists = HAM
-						HAM = { has_country_flag = MEW_belligerent }
-					}
-					ISR = {
-						annex_country = {
-							target = HAM
-							transfer_troops = no
-						}
-					}
-				}
-				# 3) 吞并真主党（黎巴嫩南部）
-				if = {
-					limit = {
-						country_exists = HEZ
-						HEZ = { has_country_flag = MEW_belligerent }
-					}
-					ISR = {
-						annex_country = {
-							target = HEZ
-							transfer_troops = no
-						}
-					}
-				}
-				# 4) 武力吞并约旦（约旦未参战也难逃大以色列版图）
-				if = {
-					limit = { country_exists = JOR }
-					ISR = {
-						annex_country = {
-							target = JOR
-							transfer_troops = no
-						}
-					}
-				}
-				# 5) 西奈半岛（无论被埃及/叛军占领与否，都转给以色列）
-				if = {
-					limit = { 213 = { NOT = { is_owned_by = ISR } } }
-					213 = {
-						transfer_state_to = ISR
-					}
-				}
-				# 6) 德拉省（南叙利亚安全区）
-				if = {
-					limit = { 184 = { NOT = { is_owned_by = ISR } } }
-					184 = {
-						transfer_state_to = ISR
-					}
-				}
-				# 7) 苏韦达省
-				if = {
-					limit = { 185 = { NOT = { is_owned_by = ISR } } }
-					185 = {
-						transfer_state_to = ISR
-					}
-				}
-				# 8) 结算标记 + 新闻 + 东进整条链（mew.22 → mew.23-29 自动排程）
-				clr_global_flag = MEW_sixth_war_ongoing
-				set_global_flag = MEW_israel_victory
-				news_event = { id = mew.20 }
-				news_event = { id = mew.21 days = 5 }
-				ISR = {
-					country_event = { id = mew.22 days = 7 }
-				}
+				# 以色列一侧：全部加强
+				if = { limit = { country_exists = ISR } ISR = { ZZZ_debug_apply_boost = yes } }
+				# 阿拉伯一侧：全面压制
+				if = { limit = { country_exists = EGY } EGY = { ZZZ_debug_apply_debuff = yes } }
+				if = { limit = { country_exists = SYR } SYR = { ZZZ_debug_apply_debuff = yes } }
+				if = { limit = { country_exists = FSA } FSA = { ZZZ_debug_apply_debuff = yes } }
+				if = { limit = { country_exists = PAL } PAL = { ZZZ_debug_apply_debuff = yes } }
+				if = { limit = { country_exists = HAM } HAM = { ZZZ_debug_apply_debuff = yes } }
+				if = { limit = { country_exists = HEZ } HEZ = { ZZZ_debug_apply_debuff = yes } }
+				if = { limit = { country_exists = IRQ } IRQ = { ZZZ_debug_apply_debuff = yes } }
+				if = { limit = { country_exists = ALG } ALG = { ZZZ_debug_apply_debuff = yes } }
+				if = { limit = { country_exists = LBA } LBA = { ZZZ_debug_apply_debuff = yes } }
+				if = { limit = { country_exists = LEB } LEB = { ZZZ_debug_apply_debuff = yes } }
+				if = { limit = { country_exists = PER } PER = { ZZZ_debug_apply_debuff = yes } }
 			}
 		}
 		ai_will_do = {
@@ -924,6 +819,9 @@ debug_decisions = {
 		icon = generic_industry
 		fire_only_once = no
 		cost = 0
+		visible = {
+			NOT = { has_global_flag = MEW_debug_iran_war_started }
+		}
 		available = {
 			is_ai = no
 			country_exists = ISR
@@ -934,6 +832,7 @@ debug_decisions = {
 		complete_effect = {
 			custom_effect_tooltip = ZZZ_debug_MEW_iran_war_tt
 			hidden_effect = {
+				set_global_flag = MEW_debug_iran_war_started
 				# ===== 复刻 mew.30 effect 块：以色列+美国+海湾国家对伊朗开战 =====
 				set_global_flag = MEW_iran_war_declared
 				set_global_flag = MEW_iran_war_ongoing
@@ -987,6 +886,9 @@ debug_decisions = {
 		icon = generic_industry
 		fire_only_once = no
 		cost = 0
+		visible = {
+			NOT = { has_global_flag = MEW_debug_iran_settled }
+		}
 		available = {
 			is_ai = no
 			country_exists = PER
@@ -994,6 +896,7 @@ debug_decisions = {
 		complete_effect = {
 			custom_effect_tooltip = ZZZ_debug_MEW_iran_victory_tt
 			hidden_effect = {
+				set_global_flag = MEW_debug_iran_settled
 				set_global_flag = MEW_iran_war_ongoing
 				# ===== 复刻 on_capitulation 里的反伊战争结算 effect 块：巴列维王朝复辟 =====
 				every_country = {
@@ -1070,10 +973,142 @@ debug_decisions = {
 				clr_global_flag = MEW_iran_war_declared
 				clr_global_flag = MEW_iran_war_ongoing
 				clr_global_flag = MEW_pahlavi_restored
+				# 清除调试入口的自清标记，让调试决策重新出现
+				clr_global_flag = MEW_debug_war_started
+				clr_global_flag = MEW_debug_iran_war_started
+				clr_global_flag = MEW_debug_iran_settled
+				# 清除两处胜负加成标记，保证 debug 可以反复跑
+				clr_global_flag = MEW_debug_arab_boost
+				clr_global_flag = MEW_debug_israel_boost
 				every_country = {
 					clr_country_flag = MEW_belligerent
 					clr_country_flag = MEW_aor_leader
 					clr_country_flag = MEW_arab_pact_leader
+					clr_country_flag = ISR_settled_EGY
+					clr_country_flag = ISR_settled_SYR
+					clr_country_flag = ISR_settled_FSA
+					clr_country_flag = ISR_settled_JOR
+					clr_country_flag = ISR_settled_by_isr
+					clr_country_flag = ISR_war_on_JOR_started
+					# 移除调试加成 / 压制动态修正
+					remove_dynamic_modifier = { modifier = ZZZ_debug_boost_major }
+					remove_dynamic_modifier = { modifier = ZZZ_debug_debuff_major }
+				}
+			}
+		}
+		ai_will_do = {
+			base = 0
+		}
+	}
+	ZZZ_debug_gaw_china_boost = {
+		icon = generic_industry
+		fire_only_once = no
+		cost = 0
+		visible = {
+			NOT = { has_global_flag = GAW_debug_china_boost }
+		}
+		available = {
+			is_ai = no
+			country_exists = CHI
+			country_exists = JAP
+			has_global_flag = pan_asian_war_ongoing
+			NOT = { has_global_flag = GAW_debug_japan_boost }
+		}
+		complete_effect = {
+			custom_effect_tooltip = ZZZ_debug_gaw_china_boost_tt
+			hidden_effect = {
+				# 一次性、可清除的 debug 标记（ZZZ_debug_gaw_reset 负责清理）
+				set_global_flag = GAW_debug_china_boost
+				# 中国侧固定成员：CHI、PAK + CBD/IND（印度尼西亚）/LAO/BRM/VIE（均需确实与日本交战）
+				if = { limit = { country_exists = CHI CHI = { has_war_with = JAP } } CHI = { ZZZ_debug_apply_boost = yes } }
+				if = { limit = { country_exists = PAK PAK = { has_war_with = JAP } } PAK = { ZZZ_debug_apply_boost = yes } }
+				if = { limit = { country_exists = CBD CBD = { has_war_with = JAP } } CBD = { ZZZ_debug_apply_boost = yes } }
+				if = { limit = { country_exists = IND IND = { has_war_with = JAP } } IND = { ZZZ_debug_apply_boost = yes } }
+				if = { limit = { country_exists = LAO LAO = { has_war_with = JAP } } LAO = { ZZZ_debug_apply_boost = yes } }
+				if = { limit = { country_exists = BRM BRM = { has_war_with = JAP } } BRM = { ZZZ_debug_apply_boost = yes } }
+				if = { limit = { country_exists = VIE VIE = { has_war_with = JAP } } VIE = { ZZZ_debug_apply_boost = yes } }
+				# 日本侧固定成员：JAP、AST + MAY/PHI/SIN/SIA，以及条件性 KOR/TAI（仅限确实与中国交战的成员）
+				if = { limit = { country_exists = JAP JAP = { has_war_with = CHI } } JAP = { ZZZ_debug_apply_debuff = yes } }
+				if = { limit = { country_exists = AST AST = { has_war_with = CHI } } AST = { ZZZ_debug_apply_debuff = yes } }
+				if = { limit = { country_exists = MAY MAY = { has_war_with = CHI } } MAY = { ZZZ_debug_apply_debuff = yes } }
+				if = { limit = { country_exists = PHI PHI = { has_war_with = CHI } } PHI = { ZZZ_debug_apply_debuff = yes } }
+				if = { limit = { country_exists = SIN SIN = { has_war_with = CHI } } SIN = { ZZZ_debug_apply_debuff = yes } }
+				if = { limit = { country_exists = SIA SIA = { has_war_with = CHI } } SIA = { ZZZ_debug_apply_debuff = yes } }
+				if = { limit = { country_exists = KOR KOR = { has_war_with = CHI } } KOR = { ZZZ_debug_apply_debuff = yes } }
+				if = { limit = { country_exists = TAI TAI = { has_war_with = CHI } } TAI = { ZZZ_debug_apply_debuff = yes } }
+			}
+		}
+		ai_will_do = {
+			base = 0
+		}
+	}
+	ZZZ_debug_gaw_japan_boost = {
+		icon = generic_industry
+		fire_only_once = no
+		cost = 0
+		visible = {
+			NOT = { has_global_flag = GAW_debug_japan_boost }
+		}
+		available = {
+			is_ai = no
+			country_exists = CHI
+			country_exists = JAP
+			has_global_flag = pan_asian_war_ongoing
+			NOT = { has_global_flag = GAW_debug_china_boost }
+		}
+		complete_effect = {
+			custom_effect_tooltip = ZZZ_debug_gaw_japan_boost_tt
+			hidden_effect = {
+				# 一次性、可清除的 debug 标记（ZZZ_debug_gaw_reset 负责清理）
+				set_global_flag = GAW_debug_japan_boost
+				# 日本侧固定成员：JAP、AST + MAY/PHI/SIN/SIA，以及条件性 KOR/TAI（均需确实与中国交战）
+				if = { limit = { country_exists = JAP JAP = { has_war_with = CHI } } JAP = { ZZZ_debug_apply_boost = yes } }
+				if = { limit = { country_exists = AST AST = { has_war_with = CHI } } AST = { ZZZ_debug_apply_boost = yes } }
+				if = { limit = { country_exists = MAY MAY = { has_war_with = CHI } } MAY = { ZZZ_debug_apply_boost = yes } }
+				if = { limit = { country_exists = PHI PHI = { has_war_with = CHI } } PHI = { ZZZ_debug_apply_boost = yes } }
+				if = { limit = { country_exists = SIN SIN = { has_war_with = CHI } } SIN = { ZZZ_debug_apply_boost = yes } }
+				if = { limit = { country_exists = SIA SIA = { has_war_with = CHI } } SIA = { ZZZ_debug_apply_boost = yes } }
+				if = { limit = { country_exists = KOR KOR = { has_war_with = CHI } } KOR = { ZZZ_debug_apply_boost = yes } }
+				if = { limit = { country_exists = TAI TAI = { has_war_with = CHI } } TAI = { ZZZ_debug_apply_boost = yes } }
+				# 中国侧固定成员：CHI、PAK + CBD/IND（印度尼西亚）/LAO/BRM/VIE（仅限确实与日本交战的成员）
+				if = { limit = { country_exists = CHI CHI = { has_war_with = JAP } } CHI = { ZZZ_debug_apply_debuff = yes } }
+				if = { limit = { country_exists = PAK PAK = { has_war_with = JAP } } PAK = { ZZZ_debug_apply_debuff = yes } }
+				if = { limit = { country_exists = CBD CBD = { has_war_with = JAP } } CBD = { ZZZ_debug_apply_debuff = yes } }
+				if = { limit = { country_exists = IND IND = { has_war_with = JAP } } IND = { ZZZ_debug_apply_debuff = yes } }
+				if = { limit = { country_exists = LAO LAO = { has_war_with = JAP } } LAO = { ZZZ_debug_apply_debuff = yes } }
+				if = { limit = { country_exists = BRM BRM = { has_war_with = JAP } } BRM = { ZZZ_debug_apply_debuff = yes } }
+				if = { limit = { country_exists = VIE VIE = { has_war_with = JAP } } VIE = { ZZZ_debug_apply_debuff = yes } }
+			}
+		}
+		ai_will_do = {
+			base = 0
+		}
+	}
+	ZZZ_debug_gaw_reset = {
+		icon = generic_industry
+		fire_only_once = no
+		cost = 0
+		available = {
+			is_ai = no
+		}
+		complete_effect = {
+			custom_effect_tooltip = ZZZ_debug_gaw_reset_tt
+			hidden_effect = {
+				clr_global_flag = pan_asian_war_ongoing
+				clr_global_flag = GAW_soon
+				clr_global_flag = GAW_debug_china_boost
+				clr_global_flag = GAW_debug_japan_boost
+				clr_global_flag = PRC_chinese_gaw_victory_global
+				clr_global_flag = PRC_japanese_gaw_victory_global
+				clr_global_flag = PRC_china_victory
+				clr_global_flag = PRC_china_collapse
+				# jap.1002 写的是国家旗（与 TFR 原版一致，供日本国策读取），这里一并清掉
+				if = { limit = { country_exists = JAP } JAP = { clr_country_flag = pan_asian_war_ongoing } }
+				# 移除调试加成 / 压制动态修正，并把厌战变量归零，保证 GAW 可以反复跑
+				every_country = {
+					remove_dynamic_modifier = { modifier = ZZZ_debug_boost_major }
+					remove_dynamic_modifier = { modifier = ZZZ_debug_debuff_major }
+					ZZZ_clear_gaw_war_exhaustion = yes
 				}
 			}
 		}

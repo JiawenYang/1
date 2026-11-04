@@ -1,0 +1,483 @@
+division_template = {
+	name = "Brigada Acorazada"
+	regiments = {
+		Mech_Inf_Bat = { x = 0 y = 0 }
+		armor_Bat = { x = 0 y = 1 }
+		SP_Arty_Bat = { x = 0 y = 2 }
+	}
+
+	support = {
+		L_Engi_Comp = { x = 0 y = 0 }
+	}
+}
+
+division_template = {
+	name = "Brigada Motorizada"
+	regiments = {
+		Mot_Inf_Bat = { x = 0 y = 0 }
+		Arty_Bat = { x = 0 y = 1 }
+		L_Inf_Bat = { x = 0 y = 2 }
+	}
+}
+
+division_template = {
+	name = "Regimiento de Infantería"
+	regiments = {
+		Mot_Inf_Bat = { x = 0 y = 0 }
+		Mot_Inf_Bat = { x = 0 y = 1 }
+		Mot_Inf_Bat = { x = 0 y = 2 }
+	}
+}
+
+division_template = {
+	name = "Regimiento de Caballería"
+	regiments = {
+		Arm_Inf_Bat = { x = 0 y = 0 }
+		Arm_Inf_Bat = { x = 0 y = 1 }
+		Arty_Bat = { x = 1 y = 0 }
+	}
+}
+
+division_template = {
+	name = "Regimiento de Infantería Mecanizada"
+	regiments = {
+		Mech_Inf_Bat = { x = 0 y = 0 }
+	}
+}
+
+division_template = {
+	name = "Regimiento de Infantería de Montaña"
+	regiments = {
+		L_Inf_Bat = { x = 0 y = 0 }
+		L_Inf_Bat = { x = 0 y = 1 }
+	}
+
+	support = {
+		Arty_Battery = { x = 0 y = 0 }
+		L_Engi_Comp = { x = 0 y = 1 }
+	}
+}
+
+division_template = {
+	name = "Brigada de Operaciones Especiales"
+	regiments = {
+		L_Air_Inf_Bat = { x = 0 y = 0 }
+		Special_Forces = { x = 0 y = 1 }
+		Special_Forces = { x = 0 y = 2 }
+	}
+
+	support = {
+		Arty_Battery = { x = 0 y = 0 }
+		L_Engi_Comp = { x = 0 y = 1 }
+	}
+	priority = 2
+}
+
+units = {
+	#1st Division
+	division = {
+		name = "Brigada Acorazada Nº3 'La Concepción'"
+		location = 12994		#Antofagasta
+		division_template = "Brigada Acorazada"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "Brigada Motorizada Nº1 'Calama'"
+		location = 4841		#Calama
+		division_template = "Brigada Motorizada"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "23º Regimiento de Infantería 'Copiapó'"
+		location = 5228		#Copiapo
+		division_template = "Regimiento de Infantería"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.01
+	}
+
+	#2nd Division
+	division = {
+		name = "Regimiento de Infantería Nº 1 'Buin'"
+		location = 650		#Santiago
+		division_template = "Regimiento de Infantería Mecanizada"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "Regimiento de Infantería Nº2 'Maipo'"
+		location = 4493		#Valparaiso
+		division_template = "Regimiento de Infantería"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "Brigada Motorizada Nº6 'Maule'"
+		location = 12984		#Concepcion
+		division_template = "Brigada Motorizada"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.01
+	}
+
+	#3rd Division
+	division = {
+		name = "Regimiento Reforzado Nº3 'Yungay'"
+		location = 8222		#Los Andes
+		division_template = "Regimiento de Infantería de Montaña"
+		start_experience_factor = 0.6
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "Regimiento de Infantería Nº3 'Tucapel'"
+		location = 5121		#Temuco
+		division_template = "Regimiento de Infantería de Montaña"
+		start_experience_factor = 0.6
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "Regimiento Reforzado Nº9 'Arauco'"
+		location = 4396		#Osorno
+		division_template = "Regimiento de Infantería de Montaña"
+		start_experience_factor = 0.6
+		start_equipment_factor = 0.01
+	}
+
+	#4th Division
+	division = {
+		name = "Regimiento Reforzado Nº14 'Aysén'"
+		location = 2161		#Coyhaique
+		division_template = "Brigada Motorizada"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.01
+	}
+
+	#5th Division
+	division = {
+		name = "Brigada Acorazada Nº4 'Chorrillos'"
+		location = 5201		#Punta Arenas
+		division_template = "Brigada Acorazada"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "Regimiento de Caballería Nº5 'Lanceros'"
+		location = 8218		#Puerto Natales
+		division_template = "Regimiento de Caballería"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "Regimiento Reforzado Nº11 'Caupolicán'"
+		location = 5209		#Porvenir
+		division_template = "Brigada Motorizada"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.01
+	}
+
+	#6th Division
+	division = {
+		name = "Brigada Acorazada Nº 1 'Coraceros'"
+		location = 5135		#Arica
+		division_template = "Brigada Acorazada"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "Brigada Acorazada Nº2 'Cazadores'"
+		location = 4847		#Pozo Almonte
+		division_template = "Brigada Acorazada"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "Brigada Motorizada Nº4 'Rancagua'"
+		location = 5135		#Arica
+		division_template = "Brigada Motorizada"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "Regimiento Reforzado Nº24 'Huamachuco'"
+		location = 5135		#Putre
+		division_template = "Brigada Motorizada"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "Brigada de Operaciones Especiales 'Lautaro'"
+		location = 650		#Peldehue
+		division_template = "Brigada de Operaciones Especiales"
+		start_experience_factor = 0.7
+		start_equipment_factor = 0.01
+	}
+}
+
+instant_effect = {
+	add_equipment_to_stockpile = {
+		variant_name = "SG 540"
+		type = infantry_weapons_2	 #SG 540
+		amount = 2500
+		producer = SWI
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "M4 Carbine"
+		type = infantry_weapons_5	 #M4 Carbine
+		amount = 1000
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "IWI ACE"
+		type = infantry_weapons_4 #IWI ACE
+		amount = 2000
+		producer = ISR
+	}
+
+	add_equipment_to_stockpile = {
+		type = cnc_equipment_3
+		amount = 650
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Spike LR"
+		type = Heavy_Anti_tank_3			#Spike LR
+		amount = 700
+		producer = ISR
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Spike MR"
+		type = Anti_tank_3			#Spike MR
+		amount = 2000
+		producer = ISR
+	}
+
+	add_equipment_to_stockpile = {
+		type = Anti_Air_1
+		amount = 500
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		type = medium_tank_chassis_0
+		variant_name = "Leopard 1A5"
+		amount = 100
+		producer = GER
+	}
+
+	add_equipment_to_stockpile = {
+		type = medium_tank_chassis_1
+		variant_name = "Leopard 2A4"
+		amount = 200
+		producer = GER
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Marder 1A3"
+		type = medium_tank_flame_chassis_1			#Marder 1 A3
+		amount = 280
+		producer = GER
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "AIFV"
+		type = medium_tank_flame_chassis_1			#AIFV
+		#version_name = "AIFV"
+		amount = 319
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "M113A2"
+		type = medium_tank_amphibious_chassis_1			#M113A2
+		#version_name = "M113A2"
+		amount = 427
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Mowag Piranha"
+		type = medium_tank_amphibious_chassis_1			#Mowag Piranha
+		amount = 404
+		producer = SWI
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Humvee"
+		type = util_vehicle_3			#Humvee
+		amount = 500
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Land Rover Defender"
+		type = util_vehicle_3			#Land Rover Defender
+		amount = 180
+		producer = ENG
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "M-240 Storm"
+		type = util_vehicle_3			#M-240 Storm
+		amount = 400
+		producer = ISR
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "LAR-160"
+		type = medium_tank_rocket_chassis_0			#LAR-160
+		amount = 8
+		producer = ISR
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "M109A5"
+		type = medium_tank_artillery_chassis_1			#M109A5
+		#version_name = "M109A5"
+		amount = 48
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "M101"
+		type = artillery_1			#M101
+		#version_name = "M101"
+		amount = 74
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "OTO Melara Mod 56"
+		type = artillery_1			#OTO Melara Mod 56
+		amount = 54
+		producer = ITA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Soltam M-71"
+		type = artillery_2			#Soltam M-71
+		amount = 36
+		producer = ISR
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "UH-1"
+		type = transport_helicopter_1			#UH-1
+		amount = 15
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "SA330"
+		type = transport_helicopter_1			#SA330
+		amount = 4
+		producer = FRA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "SA350"
+		type = transport_helicopter_1			#SA350
+		#version_name = "AS350B Ecureuil"
+		amount = 5
+		producer = FRA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "SA532"
+		type = transport_helicopter_2			#SA532
+		amount = 12
+		producer = FRA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "F-5"
+		type = small_plane_airframe_1		#F-5
+		amount = 9
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "F-16A"
+		type = small_plane_strike_airframe_2			#F-16A
+		amount = 46
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "C-130"
+		type = large_plane_air_transport_airframe_1			#C-130
+		amount = 4
+		producer = USA
+	}
+
+	### Sealed Storage 封存 ###
+	add_equipment_to_stockpile = {
+		variant_name = "Leopard 1A5"
+		type = medium_tank_chassis_0 #Leopard 1A5（封存）
+		producer = GER
+		amount = 40
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Leopard 2A4"
+		type = medium_tank_chassis_1 #Leopard 2A4（封存）
+		producer = GER
+		amount = 80
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "AIFV"
+		type = medium_tank_flame_chassis_1 #AIFV（封存）
+		producer = USA
+		amount = 127
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "M113A2"
+		type = medium_tank_amphibious_chassis_1 #M113A2（封存）
+		producer = USA
+		amount = 170
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Mowag Piranha"
+		type = medium_tank_amphibious_chassis_1 #Mowag Piranha（封存）
+		producer = SWI
+		amount = 161
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "M109A5"
+		type = medium_tank_artillery_chassis_1 #M109A5（封存）
+		producer = USA
+		amount = 19
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "SG 540"
+		type = infantry_weapons_2 #SG 540（封存）
+		producer = SWI
+		amount = 1000
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "IWI ACE"
+		type = infantry_weapons_4 #IWI ACE（封存）
+		producer = ISR
+		amount = 800
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "M101"
+		type = artillery_1 #M101（封存）
+		producer = USA
+		amount = 29
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "OTO Melara Mod 56"
+		type = artillery_1 #OTO Melara Mod 56（封存）
+		producer = ITA
+		amount = 21
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "UH-1"
+		type = transport_helicopter_1 #UH-1（封存）
+		producer = USA
+		amount = 6
+	}
+}

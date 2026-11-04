@@ -2351,7 +2351,14 @@ country_event = {
 	option = {
 		name = CHI_foreign.024.a
 		log = "[GetDateText]: [This.GetName]: CHI_foreign.024.a executed"
-		add_popularity = { ideology = democratic popularity = 0.05 }
+		set_temp_variable = { party_index = 0 }
+		if = {
+			limit = { has_government = democratic }
+			set_temp_variable = { party_index = ruling_party }
+		}
+		set_temp_variable = { party_popularity_increase = 0.05 }
+		set_temp_variable = { temp_outlook_increase = 0.05 }
+		change_relative_party_popularity = yes
 		add_stability = -0.03
 	}
 }
@@ -10635,7 +10642,7 @@ country_event = {
 					name = CHI_political_events.8.t
 					bonus = 0.3
 					uses = 1
-					category = CAT_infantryormation_technology
+					category = CAT_information_technology
 				}
 			}
 		}
@@ -10931,7 +10938,7 @@ country_event = {
 			name = CHI_semiconductor_events.303.t
 			bonus = 0.15
 			uses = 1
-			category = CAT_infantryormation_technology
+			category = CAT_information_technology
 		}
 		set_country_flag = CHI_huawei_entity_list_defiance
 		ai_chance = {
@@ -11104,7 +11111,7 @@ country_event = {
 			name = CHI_semiconductor_events.310.t
 			bonus = 0.15
 			uses = 1
-			category = CAT_infantryormation_technology
+			category = CAT_information_technology
 		}
 		set_country_flag = CHI_lenovo_ibm_pc_acquired
 		ai_chance = {
@@ -11163,7 +11170,7 @@ country_event = {
 			name = CHI_semiconductor_events.311.t
 			bonus = 0.10
 			uses = 1
-			category = CAT_infantryormation_technology
+			category = CAT_information_technology
 		}
 		set_country_flag = CHI_lenovo_security_undertakings
 		ai_chance = {
@@ -11246,7 +11253,7 @@ country_event = {
 			name = CHI_semiconductor_events.312.t
 			bonus = 0.10
 			uses = 1
-			category = CAT_infantryormation_technology
+			category = CAT_information_technology
 		}
 		set_country_flag = CHI_lenovo_inherited_brand
 		ai_chance = {
@@ -11301,7 +11308,7 @@ country_event = {
 			name = CHI_semiconductor_events.313.t
 			bonus = 0.15
 			uses = 1
-			category = CAT_infantryormation_technology
+			category = CAT_information_technology
 		}
 		set_country_flag = CHI_lenovo_direct_expansion
 		ai_chance = {
@@ -11340,7 +11347,7 @@ country_event = {
 			name = CHI_semiconductor_events.314.t
 			bonus = 0.15
 			uses = 1
-			category = CAT_infantryormation_technology
+			category = CAT_information_technology
 		}
 		set_country_flag = CHI_lenovo_server_acquired
 		ai_chance = {
@@ -11479,7 +11486,7 @@ country_event = {
 			name = CHI_semiconductor_events.320.t
 			bonus = 0.10
 			uses = 1
-			category = CAT_infantryormation_technology
+			category = CAT_information_technology
 		}
 		set_country_flag = CHI_tencent_domestic_capital
 		ai_chance = {
@@ -11593,7 +11600,7 @@ country_event = {
 			name = CHI_semiconductor_events.322.t
 			bonus = 0.10
 			uses = 1
-			category = CAT_infantryormation_technology
+			category = CAT_information_technology
 		}
 		set_country_flag = CHI_tencent_messenger_defence
 		ai_chance = {
@@ -11939,7 +11946,7 @@ country_event = {
 			name = CHI_semiconductor_events.332.t
 			bonus = 0.10
 			uses = 1
-			category = CAT_infantryormation_technology
+			category = CAT_information_technology
 		}
 		set_country_flag = CHI_alibaba_closed_register
 		ai_chance = {

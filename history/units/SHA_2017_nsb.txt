@@ -1,0 +1,190 @@
+division_template = {
+	name = "Katiba Moudar'a" 	#Armoured Battalion
+
+	regiments = {
+		armor_Bat = { x = 0 y = 0 }
+	}
+	support = {
+		armor_Recce_Comp = { x = 0 y = 0 }
+	}
+}
+
+division_template = {
+	name = "Fawj Mushat" 	#Infantry Regiment
+
+	regiments = {
+		Mot_Inf_Bat = { x = 0 y = 0 }
+		Mot_Inf_Bat = { x = 0 y = 0 }
+	}
+	support = {
+		Arty_Battery = { x = 0 y = 0 }
+		armor_Recce_Comp = { x = 0 y = 1 }
+	}
+}
+
+division_template = {
+	name = "Fawj Mushat Mechaniqui" 	#Mechanised Infantry Regiment
+
+	regiments = {
+		Mech_Inf_Bat = { x = 0 y = 0 }
+		Arm_Inf_Bat = { x = 0 y = 0 }
+	}
+	support = {
+		SP_Arty_Battery = { x = 0 y = 0 }
+		armor_Recce_Comp = { x = 0 y = 1 }
+	}
+}
+
+units = {
+	division = {
+		name = "Katiba Moudar'a"
+		location = 7979 #?
+		division_template = "Katiba Moudar'a"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "1. Fawj Mushat"
+		location = 13232 #?
+		division_template = "Fawj Mushat"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "2. Fawj Mushat"
+		location = 13233 #?
+		division_template = "Fawj Mushat"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "3. Fawj Mushat"
+		location = 13235 #?
+		division_template = "Fawj Mushat"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "1. Fawj Mechaniqui"
+		location = 13234 #?
+		division_template = "Fawj Mushat Mechaniqui"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.01
+	}
+
+}
+
+instant_effect = {
+
+	add_equipment_to_stockpile = {
+		type = cnc_equipment_1
+		amount = 200
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		type = infantry_weapons_1
+		amount = 1000
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		type = Anti_Air_0
+		amount = 50
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		type = Heavy_Anti_tank_1
+		amount = 50
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		type = Anti_tank_1
+		amount = 50
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BTR-60"
+		type = medium_tank_amphibious_chassis_0		#BTR-60
+		amount = 20
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BMP-1"
+		type = medium_tank_flame_chassis_0		#BMP-1
+		amount = 30
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Ratel-20"
+		type = medium_tank_flame_chassis_1		#Ratel 20
+		amount = 30
+		producer = SAF
+	}
+
+	add_equipment_to_stockpile = {
+		type = medium_tank_chassis_1
+		variant_name = "T-55"
+		amount = 40
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BM-21 Grad"
+		type = medium_tank_rocket_chassis_0		#BM-21 Grad
+		amount = 20
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		type = artillery_1
+		amount = 20
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BRMD-2"
+		type = Rec_tank_0		#BRMD-2
+		#version_name = "BRMD-2"
+		amount = 20
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Panhard AML"
+		type = Rec_tank_0		#Panhard AML
+		#version_name = "Panhard AML"
+		amount = 20
+		producer = FRA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Eland Mk7"
+		type = medium_tank_destroyer_chassis_0		#Eland Mk7
+		amount = 20
+		producer = SAF
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "EE-9 Cascavel"
+		type = medium_tank_destroyer_chassis_1		#EE-9 Cascavel
+		amount = 20
+		producer = BRA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Land Rover Defender"
+		type = util_vehicle_3		#Land Rover Defender
+		amount = 200
+		producer = ENG
+	}
+}

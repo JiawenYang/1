@@ -1127,8 +1127,10 @@ USA_deal_with_the_movement = {
 			always = no
 		}
 		highlight_color_while_active = 1
-		highlight_state_targets = {
-			state = FROM
+		highlight_states = {
+			highlight_state_targets = {
+				state = FROM
+			}
 		}
 		on_map_mode = map_and_decisions_view
 		days_mission_timeout = USA_movement_organization_time_var
@@ -1287,8 +1289,10 @@ USA_deal_with_the_movement = {
 		state_target = yes
 		on_map_mode = map_only
 		target_array = controlled_states
-		highlight_state_targets = {
-			state = FROM
+		highlight_states = {
+			highlight_state_targets = {
+				state = FROM
+			}
 		}
 		target_trigger = {
 			has_completed_focus = USA_crush_the_rioters
@@ -1355,8 +1359,10 @@ USA_deal_with_the_movement = {
 		fire_only_once = yes
 		cancel_if_not_visible = yes
 		on_map_mode = map_and_decisions_view
-		highlight_state_targets = {
-			state = 1037
+		highlight_states = {
+			highlight_state_targets = {
+				state = 1037
+			}
 		}
 		days_remove = 7
 		modifier = {
@@ -1673,10 +1679,14 @@ USA_counting_heads_category = {
 				value = 0.025
 			}
 			add_legit = yes
-			add_popularity = {
-				ideology = democratic
-				popularity = -0.01
+			set_temp_variable = { party_index = 0 }
+			if = {
+				limit = { has_government = democratic }
+				set_temp_variable = { party_index = ruling_party }
 			}
+			set_temp_variable = { party_popularity_increase = -0.01 }
+			set_temp_variable = { temp_outlook_increase = -0.01 }
+			change_relative_party_popularity = yes
 			add_days_mission_timeout = {
 				mission = USA_civil_war_mission
 				days = 14
@@ -1779,10 +1789,14 @@ USA_counting_heads_category = {
 				value = 0.025
 			}
 			add_legit = yes
-			add_popularity = {
-				ideology = democratic
-				popularity = -0.01
+			set_temp_variable = { party_index = 0 }
+			if = {
+				limit = { has_government = democratic }
+				set_temp_variable = { party_index = ruling_party }
 			}
+			set_temp_variable = { party_popularity_increase = -0.01 }
+			set_temp_variable = { temp_outlook_increase = -0.01 }
+			change_relative_party_popularity = yes
 			add_power_balance_value = {
 				id = USA_trust_bop
 				value = 0.02
@@ -1930,10 +1944,14 @@ USA_counting_heads_category = {
 			add_legit = yes
 		}
 		remove_effect = {
-			add_popularity = {
-				ideology = democratic
-				popularity = 0.02
+			set_temp_variable = { party_index = 0 }
+			if = {
+				limit = { has_government = democratic }
+				set_temp_variable = { party_index = ruling_party }
 			}
+			set_temp_variable = { party_popularity_increase = 0.02 }
+			set_temp_variable = { temp_outlook_increase = 0.02 }
+			change_relative_party_popularity = yes
 			add_power_balance_value = {
 				id = USA_trust_bop
 				value = 0.02
@@ -1988,10 +2006,14 @@ USA_counting_heads_category = {
 			add_legit = yes
 		}
 		remove_effect = {
-			add_popularity = {
-				ideology = democratic
-				popularity = 0.02
+			set_temp_variable = { party_index = 0 }
+			if = {
+				limit = { has_government = democratic }
+				set_temp_variable = { party_index = ruling_party }
 			}
+			set_temp_variable = { party_popularity_increase = 0.02 }
+			set_temp_variable = { temp_outlook_increase = 0.02 }
+			change_relative_party_popularity = yes
 			add_power_balance_value = {
 				id = USA_trust_bop
 				value = 0.02

@@ -1,4 +1,4 @@
-﻿division_template = {
+division_template = {
 	name = "Infantry Division"
 
 	regiments = {
@@ -62,6 +62,11 @@ division_template = {
 		Special_Forces = { x = 2 y = 3 }
 	}
 	priority = 2
+	support = {
+		L_Recce_Comp = { x = 0 y = 0 }
+		L_Engi_Comp = { x = 0 y = 1 }
+		combat_service_support_company = { x = 0 y = 2 }
+	}
 }
 
 division_template = {
@@ -244,6 +249,7 @@ instant_effect = {
 		producer = USA
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "TOW"
 		type = Heavy_Anti_tank_1	#TOW
 		amount = 500
 		producer = USA
@@ -278,6 +284,7 @@ instant_effect = {
 		producer = SIA
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "M48 Patton"
 		type = medium_tank_chassis_0
 		amount = 178
 		producer = USA
@@ -309,7 +316,7 @@ instant_effect = {
 	}
 	add_equipment_to_stockpile = {
 		variant_name = "S52 Mk 3"
-		type = medium_tank_destroyer_chassis_0 #S52 Mk 3
+		type = Rec_tank_0 #S52 Mk 3
 		amount = 32
 		producer = SIA
 		#version_name = "S52 Mk 3"
@@ -328,7 +335,7 @@ instant_effect = {
 	}
 	add_equipment_to_stockpile = {
 		variant_name = "Type 85"
-		type = medium_tank_amphibious_chassis_1 #Type 85
+		type = APC_3 #Type 85
 		amount = 450
 		producer = CHI
 	}
@@ -340,14 +347,13 @@ instant_effect = {
 	}
 	add_equipment_to_stockpile = {
 		variant_name = "LAV-600"
-		type = medium_tank_destroyer_chassis_1 #LAV-600
+		type = medium_tank_destroyer_chassis_2 #LAV-600
 		amount = 142
 		producer = USA
 		#version_name = "LAV-600"
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "Mamba APC"
-		type = util_vehicle_4 #Mamba APC
+		type = heavy_util_vehicle_5 #Mamba APC
 		amount = 100
 		producer = SAF
 	}
@@ -358,14 +364,14 @@ instant_effect = {
 		amount = 2000
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "Humvee"
+		variant_name = "Humwee"
 		type = util_vehicle_3 #Humwee
 		amount = 3000
 		producer = USA
 	}
 	add_equipment_to_stockpile = {
 		variant_name = "ATMOS 2000"
-		type = medium_tank_artillery_chassis_1 #ATMOS 2000
+		type = medium_tank_artillery_chassis_2 #ATMOS 2000
 		amount = 6
 		producer = SIA
 	}
@@ -402,7 +408,7 @@ instant_effect = {
 	}
 	add_equipment_to_stockpile = {
 		variant_name = "L119 Light Gun"
-		type = artillery_1 #L119 Light Gun
+		type = artillery_2 #L119 Light Gun
 		amount = 60
 		producer = ENG
 		#version_name = "L119 Light Gun"
@@ -414,7 +420,7 @@ instant_effect = {
 		producer = SIA
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "M198"
+		variant_name = "M198 howitzer"
 		type = artillery_2 #"M198 howitzer
 		amount = 118
 		producer = USA
@@ -422,13 +428,13 @@ instant_effect = {
 	}
 	add_equipment_to_stockpile = {
 		variant_name = "Soltam M-71"
-		type = artillery_1 #Soltam M-71
+		type = artillery_2 #Soltam M-71
 		amount = 21
 		producer = ISR
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "Type 85"
-		type = medium_tank_artillery_chassis_1 #Type-85
+		variant_name = "Type-85"
+		type = medium_tank_amphibious_chassis_1 #Type-85
 		amount = 60
 		producer = CHI
 		#version_name = "Type-85"
@@ -454,7 +460,7 @@ instant_effect = {
 	}
 	add_equipment_to_stockpile = {
 		variant_name = "LAV-600"
-		type = medium_tank_destroyer_chassis_1 #LAV-600
+		type = medium_tank_destroyer_chassis_2 #LAV-600
 		amount = 24
 		producer = USA
 		#version_name = "LAV-600"
@@ -473,8 +479,8 @@ instant_effect = {
 		#version_name = "Sikorsky S-92"
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "UH-1 Iroquois"
-		type = transport_helicopter_2 #Bell UH-1 Iroquois
+		variant_name = "Bell UH-1 Iroquois"
+		type = transport_helicopter_1 #Bell UH-1 Iroquois
 		amount = 17
 		producer = USA
 	}
@@ -492,7 +498,7 @@ instant_effect = {
 		producer = ITA
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "Mi-17"
+		variant_name = "Mil Mi-17"
 		type = transport_helicopter_1 #Mil Mi-17
 		amount = 3
 		producer = SOV
@@ -504,7 +510,7 @@ instant_effect = {
 		producer = USA
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "UH-1 Iroquois"
+		variant_name = "Bell UH-1 Iroquois"
 		type = transport_helicopter_1 #Bell UH-1 Iroquois
 		amount = 13
 		producer = USA
@@ -519,14 +525,21 @@ instant_effect = {
 	}
 
 	add_equipment_to_stockpile = {
+		variant_name = "M41 Walker Bulldog"
 		type = medium_tank_destroyer_chassis_0
 		amount = 150
 		producer = SIA
 	}
 
 	add_equipment_to_stockpile = {
+		variant_name = "M48 Patton"
 		type = medium_tank_chassis_0
 		amount = 100
 		producer = SIA
+	}
+	add_equipment_to_stockpile = {
+		type = Anti_tank_1
+		producer = SIA
+		amount = 1650
 	}
 }

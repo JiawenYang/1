@@ -604,10 +604,10 @@ ideas = {
 				has_country_flag = SOV_moderate_priest
 			}
 			on_add = {
-				add_popularity = {
-					ideology = authoritarian_democrat
-					popularity = 0.05
-				}
+				set_temp_variable = { party_index = 0 }
+				set_temp_variable = { party_popularity_increase = 0.05 }
+				set_temp_variable = { temp_outlook_increase = 0.05 }
+				change_relative_party_popularity = yes
 			}
 			on_remove = {
 				if = {
@@ -616,10 +616,10 @@ ideas = {
 							has_country_flag = remove_ideas_flag
 						}
 					}
-					add_popularity = {
-						ideology = authoritarian_democrat
-						popularity = -0.05
-					}
+					set_temp_variable = { party_index = 0 }
+					set_temp_variable = { party_popularity_increase = -0.05 }
+					set_temp_variable = { temp_outlook_increase = -0.05 }
+					change_relative_party_popularity = yes
 				}
 			}
 			traits = {
@@ -895,10 +895,10 @@ ideas = {
 				has_country_flag = SOV_radical_priest
 			}
 			on_add = {
-				add_popularity = {
-					ideology = fascist
-					popularity = 0.05
-				}
+				set_temp_variable = { party_index = 10 }
+				set_temp_variable = { party_popularity_increase = 0.05 }
+				set_temp_variable = { temp_outlook_increase = 0.05 }
+				change_relative_party_popularity = yes
 			}
 			on_remove = {
 				if = {
@@ -907,10 +907,10 @@ ideas = {
 							has_country_flag = remove_ideas_flag
 						}
 					}
-					add_popularity = {
-						ideology = fascist
-						popularity = -0.05
-					}
+					set_temp_variable = { party_index = 10 }
+					set_temp_variable = { party_popularity_increase = -0.05 }
+					set_temp_variable = { temp_outlook_increase = -0.05 }
+					change_relative_party_popularity = yes
 				}
 			}
 			traits = {
@@ -1690,14 +1690,14 @@ ideas = {
 				eco_economic_populist
 			}
 			on_add = {
-				add_popularity = {
-					ideology = social_democrat
-					popularity = 0.02
-				}
-				add_popularity = {
-					ideology = libertarian_socialist
-					popularity = 0.01
-				}
+				set_temp_variable = { party_index = 3 }
+				set_temp_variable = { party_popularity_increase = 0.02 }
+				set_temp_variable = { temp_outlook_increase = 0.02 }
+				change_relative_party_popularity = yes
+				set_temp_variable = { party_index = 5 }
+				set_temp_variable = { party_popularity_increase = 0.01 }
+				set_temp_variable = { temp_outlook_increase = 0.01 }
+				change_relative_party_popularity = yes
 			}
 			on_remove = {
 				if = {
@@ -1706,14 +1706,14 @@ ideas = {
 							has_country_flag = remove_ideas_flag
 						}
 					}
-					add_popularity = {
-						ideology = social_democrat
-						popularity = -0.02
-					}
-					add_popularity = {
-						ideology = libertarian_socialist
-						popularity = -0.01
-					}
+					set_temp_variable = { party_index = 3 }
+					set_temp_variable = { party_popularity_increase = -0.02 }
+					set_temp_variable = { temp_outlook_increase = -0.02 }
+					change_relative_party_popularity = yes
+					set_temp_variable = { party_index = 5 }
+					set_temp_variable = { party_popularity_increase = -0.01 }
+					set_temp_variable = { temp_outlook_increase = -0.01 }
+					change_relative_party_popularity = yes
 				}
 			}
 		}
@@ -3691,11 +3691,10 @@ ideas = {
 				always = no
 			}
 			modifier = {
-				income_growth_factor = -0.0425
+				productivity_growth_modifier = -0.0425
 				personal_value_factor = -0.08
 				personal_expense_factor = -0.57
-				military_factory_upkeep_factor = -0.23
-				dockyard_upkeep_factor = -0.2
+				military_spending_cost_factor = -0.43
 			}
 		}
 	}

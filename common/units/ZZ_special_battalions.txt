@@ -6,7 +6,7 @@
 
 sub_units = {
 
-	Marine_Bat_USA = { # 美军陆战队（LAV-25 + AAV-7）
+	Marine_Bat_USA = { # 美军陆战队步兵营（AAVP-7A1 两栖突击车 + LAV-25 装甲排）
 		sprite = Marine_Bat_USA
 		map_icon_category = armored
 		priority = 10
@@ -32,29 +32,27 @@ sub_units = {
 		max_strength = 14
 		max_organisation = 30
 		default_morale = 0.09
-		manpower = 965
+		manpower = 900
 		entrenchment = -0.10
 		suppression = 2.5
 
 		training_time = 150
 		weight = 1
 
-		transport = medium_tank_flame_chassis
+		transport = medium_tank_amphibious_chassis
 
 		essential = {
-			medium_tank_flame_chassis
-			ZZ_amphibious_mechanized_equipment
+			medium_tank_amphibious_chassis
 		}
 
 		need = {
-			infantry_weapons_type = 1320
-			L_AT_Equipment = 40
-			H_AT_Equipment = 12
-			AA_Equipment = 16
-			cnc_equipment_type = 36
-			medium_tank_flame_chassis = 20
-			ZZ_amphibious_mechanized_equipment = 15
-			util_vehicle_type = 35
+			infantry_weapons_type = 520		# 步枪/班用机枪/榴弹发射器（全营 900 人）
+			L_AT_Equipment = 48			# Mk153 SMAW 火箭筒
+			H_AT_Equipment = 12			# FGM-148 标枪反坦克导弹
+			AA_Equipment = 8			# FIM-92 毒刺便携防空导弹
+			cnc_equipment_type = 30
+			medium_tank_amphibious_chassis = 30	# AAVP-7A1 两栖突击车（3 个突击连，含营指挥车）
+			util_vehicle_type = 22
 		}
 
 		plains = { attack = 0.10 movement = 0.10 }
@@ -65,11 +63,11 @@ sub_units = {
 		jungle = { attack = -0.10 movement = -0.05 }
 		marsh = { attack = 0.05 movement = 0.05 }
 		urban = { attack = 0.05 }
-		amphibious = { attack = 0.15 movement = 0.05 }
+		amphibious = { attack = 0.35 movement = 0.25 }
 
 	}
 
-	Marine_Bat_SOV = { # 俄军海军步兵（BTR-80两栖）
+	Marine_Bat_SOV = { # 俄军海军步兵营（BTR-82A 轮式装甲车，无两栖突击车）
 		sprite = Marine_Bat_SOV
 		map_icon_category = armored
 		priority = 10
@@ -94,22 +92,27 @@ sub_units = {
 		max_strength = 13
 		max_organisation = 28
 		default_morale = 0.08
-		manpower = 700
+		manpower = 650
 		entrenchment = -0.10
 		suppression = 2.5
 
 		training_time = 150
 		weight = 1
 
-		transport = ZZ_amphibious_mechanized_equipment
+		transport = medium_tank_amphibious_chassis
+
+		essential = {
+			medium_tank_amphibious_chassis
+		}
 
 		need = {
-			infantry_weapons_type = 960
-			L_AT_Equipment = 50
-			AA_Equipment = 16
-			cnc_equipment_type = 36
-			ZZ_amphibious_mechanized_equipment = 40
-			util_vehicle_type = 15
+			infantry_weapons_type = 470		# 步枪/班用机枪/AGS-17（全营 650 人）
+			L_AT_Equipment = 45			# RPG-7 火箭筒
+			H_AT_Equipment = 12			# 9M133 短号反坦克导弹
+			AA_Equipment = 16			# 9K38 针式便携防空导弹
+			cnc_equipment_type = 32
+			medium_tank_amphibious_chassis = 31	# BTR-82A ×30 + 营指挥车 ×1
+			util_vehicle_type = 14			# MT-LB / 卡玛斯运输车
 		}
 
 		plains = { attack = 0.10 movement = 0.10 }
@@ -120,7 +123,7 @@ sub_units = {
 		jungle = { attack = -0.10 movement = -0.05 }
 		marsh = { attack = 0.05 movement = 0.05 }
 		urban = { attack = 0.05 }
-		amphibious = { attack = 0.15 movement = 0.05 }
+		amphibious = { attack = 0.10 }
 
 	}
 
@@ -158,28 +161,93 @@ sub_units = {
 
 		transport = ZZ_amphibious_mechanized_equipment
 
-		need = {
-			infantry_weapons_type = 820
-			L_AT_Equipment = 40
-			AA_Equipment = 16
-			cnc_equipment_type = 36
-			ZZ_amphibious_mechanized_equipment = 30
-			util_vehicle_type = 20
+		essential = {
+			ZZ_amphibious_mechanized_equipment
 		}
 
-		plains = { attack = 0.10 movement = 0.10 }
-		desert = { attack = 0.10 movement = 0.10 }
-		hills = { attack = -0.05 movement = -0.05 }
-		forest = { attack = -0.10 movement = -0.10 }
-		mountain = { attack = -0.25 defence = -0.10 movement = -0.15 }
-		jungle = { attack = -0.10 movement = -0.05 }
-		marsh = { attack = 0.05 movement = 0.05 }
+		need = {
+			infantry_weapons_type = 380		# 步枪/班用机枪/自动榴弹发射器（全营 700 人）
+			L_AT_Equipment = 42			# PF-89 / 红箭-73 火箭筒
+			H_AT_Equipment = 8			# 红箭-8 反坦克导弹
+			AA_Equipment = 9			# 前卫-2 便携防空导弹
+			cnc_equipment_type = 30
+			ZZ_amphibious_mechanized_equipment = 32	# ZBD-05 ×31 + 营指挥车 ×1
+			util_vehicle_type = 10
+		}
+
+		plains = { attack = 0.05 }
+		desert = { attack = 0.05 }
+		hills = { attack = -0.05 defence = -0.05 }
+		forest = { attack = -0.10 }
+		mountain = { attack = -0.15 }
+		jungle = { attack = 0.10 }
+		marsh = { attack = 0.30 movement = 0.25 }
 		urban = { attack = 0.05 }
-		amphibious = { attack = 0.15 movement = 0.05 }
+		river = { attack = 0.35 movement = 0.30 }
+		amphibious = { attack = 0.45 movement = 0.30 }
 
 	}
 
-	Marine_Bat_FRA = { # 法国海军步兵（9e BIMa）
+	Marine_Tank_Bat_CHI = { # 中国海军陆战队两栖突击车营（ZTD-05 / 63A，独立于两栖步战营）
+		sprite = MD_light_armor
+		map_icon_category = armored
+		priority = 10
+		active = no
+		ai_priority = 5
+		marines = yes
+		type = {
+			armor
+		}
+		group = marine_infantry
+
+		categories = {
+			category_front_line
+			category_all_armor
+			category_army
+			category_non_militia
+		}
+
+		combat_width = 4
+
+		max_strength = 12
+		max_organisation = 26
+		default_morale = 0.08
+		manpower = 400
+		entrenchment = -0.10
+		suppression = 1.5
+
+		training_time = 150
+		weight = 1
+
+		transport = medium_tank_destroyer_chassis
+
+		essential = {
+			medium_tank_destroyer_chassis
+		}
+
+		need = {
+			infantry_weapons_type = 120		# 车载自卫武器（全营 400 人）
+			L_AT_Equipment = 12
+			H_AT_Equipment = 4
+			AA_Equipment = 3
+			cnc_equipment_type = 16
+			medium_tank_destroyer_chassis = 31	# ZTD-05 ×30 + 营指挥车 ×1
+			util_vehicle_type = 6
+		}
+
+		plains = { attack = 0.05 }
+		hills = { attack = -0.05 defence = -0.05 }
+		forest = { attack = -0.10 }
+		mountain = { attack = -0.15 }
+		jungle = { attack = 0.10 }
+		marsh = { attack = 0.25 movement = 0.20 }
+		urban = { attack = 0.05 }
+		river = { attack = 0.30 movement = 0.25 }
+		amphibious = { attack = 0.40 movement = 0.25 }
+
+	}
+
+	Marine_Bat_FRA = { # 法国海军步兵营（VAB 轮式装甲车，第 9 陆战旅）
 		sprite = Marine_Bat_FRA
 		map_icon_category = armored
 		priority = 10
@@ -211,15 +279,20 @@ sub_units = {
 		training_time = 150
 		weight = 1
 
-		transport = ZZ_amphibious_mechanized_equipment
+		transport = medium_tank_amphibious_chassis
+
+		essential = {
+			medium_tank_amphibious_chassis
+		}
 
 		need = {
-			infantry_weapons_type = 960
-			L_AT_Equipment = 40
-			AA_Equipment = 16
-			cnc_equipment_type = 36
-			ZZ_amphibious_mechanized_equipment = 30
-			util_vehicle_type = 20
+			infantry_weapons_type = 480		# 步枪/班用机枪（全营 700 人）
+			L_AT_Equipment = 42			# ERYX 近程反坦克导弹
+			H_AT_Equipment = 12			# MILAN 反坦克导弹
+			AA_Equipment = 12			# 西北风便携防空导弹
+			cnc_equipment_type = 30
+			medium_tank_amphibious_chassis = 31	# VAB ×30 + 营指挥车 ×1
+			util_vehicle_type = 12
 		}
 
 		plains = { attack = 0.10 movement = 0.10 }
@@ -230,11 +303,11 @@ sub_units = {
 		jungle = { attack = -0.10 movement = -0.05 }
 		marsh = { attack = 0.05 movement = 0.05 }
 		urban = { attack = 0.05 }
-		amphibious = { attack = 0.15 movement = 0.05 }
+		amphibious = { attack = 0.10 }
 
 	}
 
-	Marine_Bat_KOR = { # 韩国海军陆战队
+	Marine_Bat_KOR = { # 韩国海军陆战队营（KAAV7 两栖突击车）
 		sprite = Marine_Bat_KOR
 		map_icon_category = armored
 		priority = 10
@@ -266,15 +339,20 @@ sub_units = {
 		training_time = 150
 		weight = 1
 
-		transport = ZZ_amphibious_mechanized_equipment
+		transport = medium_tank_amphibious_chassis
+
+		essential = {
+			medium_tank_amphibious_chassis
+		}
 
 		need = {
-			infantry_weapons_type = 820
-			L_AT_Equipment = 40
-			AA_Equipment = 16
-			cnc_equipment_type = 36
-			ZZ_amphibious_mechanized_equipment = 30
-			util_vehicle_type = 20
+			infantry_weapons_type = 480		# 步枪/班用机枪（全营 800 人）
+			L_AT_Equipment = 40			# K1 火箭筒
+			H_AT_Equipment = 8			# 标枪反坦克导弹
+			AA_Equipment = 8			# 便携防空导弹
+			cnc_equipment_type = 30
+			medium_tank_amphibious_chassis = 26	# KAAV7 ×25 + 营指挥车 ×1
+			util_vehicle_type = 12
 		}
 
 		plains = { attack = 0.10 movement = 0.10 }
@@ -283,13 +361,14 @@ sub_units = {
 		forest = { attack = -0.10 movement = -0.10 }
 		mountain = { attack = -0.25 defence = -0.10 movement = -0.15 }
 		jungle = { attack = -0.10 movement = -0.05 }
-		marsh = { attack = 0.05 movement = 0.05 }
+		marsh = { attack = 0.25 movement = 0.15 }
 		urban = { attack = 0.05 }
-		amphibious = { attack = 0.15 movement = 0.05 }
+		river = { attack = 0.30 movement = 0.25 }
+		amphibious = { attack = 0.35 movement = 0.25 }
 
 	}
 
-	Marine_Bat_TAI = { # 台湾海军陆战队（AAV-7）
+	Marine_Bat_TAI = { # 台湾海军陆战营（AAV-7 两栖突击车）
 		sprite = Marine_Bat_TAI
 		map_icon_category = armored
 		priority = 10
@@ -321,15 +400,20 @@ sub_units = {
 		training_time = 150
 		weight = 1
 
-		transport = ZZ_amphibious_mechanized_equipment
+		transport = medium_tank_amphibious_chassis
+
+		essential = {
+			medium_tank_amphibious_chassis
+		}
 
 		need = {
-			infantry_weapons_type = 820
-			L_AT_Equipment = 40
-			AA_Equipment = 16
-			cnc_equipment_type = 36
-			ZZ_amphibious_mechanized_equipment = 30
-			util_vehicle_type = 20
+			infantry_weapons_type = 400		# 步枪/班用机枪（全营 550 人）
+			L_AT_Equipment = 36			# 红隼火箭筒
+			H_AT_Equipment = 8			# 标枪反坦克导弹
+			AA_Equipment = 8			# 便携防空导弹
+			cnc_equipment_type = 28
+			medium_tank_amphibious_chassis = 24	# AAV-7 ×23 + 营指挥车 ×1
+			util_vehicle_type = 10
 		}
 
 		plains = { attack = 0.10 movement = 0.10 }
@@ -338,13 +422,14 @@ sub_units = {
 		forest = { attack = -0.10 movement = -0.10 }
 		mountain = { attack = -0.25 defence = -0.10 movement = -0.15 }
 		jungle = { attack = -0.10 movement = -0.05 }
-		marsh = { attack = 0.05 movement = 0.05 }
+		marsh = { attack = 0.25 movement = 0.15 }
 		urban = { attack = 0.05 }
-		amphibious = { attack = 0.15 movement = 0.05 }
+		river = { attack = 0.30 movement = 0.25 }
+		amphibious = { attack = 0.35 movement = 0.25 }
 
 	}
 
-	ARDB_Bat_JAP = { # 日本水陆机动团（AAV-7）
+	ARDB_Bat_JAP = { # 日本水陆机动团营（AAV-7 两栖突击车）
 		sprite = ARDB_Bat_JAP
 		map_icon_category = armored
 		priority = 10
@@ -376,15 +461,20 @@ sub_units = {
 		training_time = 150
 		weight = 1
 
-		transport = ZZ_amphibious_mechanized_equipment
+		transport = medium_tank_amphibious_chassis
+
+		essential = {
+			medium_tank_amphibious_chassis
+		}
 
 		need = {
-			infantry_weapons_type = 820
-			L_AT_Equipment = 40
-			AA_Equipment = 16
-			cnc_equipment_type = 36
-			ZZ_amphibious_mechanized_equipment = 30
-			util_vehicle_type = 20
+			infantry_weapons_type = 420		# 89 式步枪/班用机枪（全营 700 人）
+			L_AT_Equipment = 36			# 110mm 个人携行反坦克火箭筒
+			H_AT_Equipment = 8			# 01 式反坦克导弹
+			AA_Equipment = 8			# 91 式便携防空导弹
+			cnc_equipment_type = 28
+			medium_tank_amphibious_chassis = 26	# 73 式/96 式装甲车 ×25 + 营指挥车 ×1
+			util_vehicle_type = 10
 		}
 
 		plains = { attack = 0.10 movement = 0.10 }
@@ -393,13 +483,14 @@ sub_units = {
 		forest = { attack = -0.10 movement = -0.10 }
 		mountain = { attack = -0.25 defence = -0.10 movement = -0.15 }
 		jungle = { attack = -0.10 movement = -0.05 }
-		marsh = { attack = 0.05 movement = 0.05 }
+		marsh = { attack = 0.25 movement = 0.15 }
 		urban = { attack = 0.05 }
-		amphibious = { attack = 0.15 movement = 0.05 }
+		river = { attack = 0.30 movement = 0.25 }
+		amphibious = { attack = 0.35 movement = 0.25 }
 
 	}
 
-	Amph_Bat_NKO = { # 朝鲜两栖突击营
+	Amph_Bat_NKO = { # 朝鲜两栖突击营（PT-85 两栖坦克 + 登陆艇/气垫船投送）
 		sprite = Amph_Bat_NKO
 		map_icon_category = armored
 		priority = 10
@@ -431,15 +522,20 @@ sub_units = {
 		training_time = 150
 		weight = 1
 
-		transport = ZZ_amphibious_mechanized_equipment
+		transport = medium_tank_destroyer_chassis
+
+		essential = {
+			medium_tank_destroyer_chassis
+		}
 
 		need = {
-			infantry_weapons_type = 640
-			L_AT_Equipment = 45
-			AA_Equipment = 12
-			cnc_equipment_type = 28
-			ZZ_amphibious_mechanized_equipment = 24
-			util_vehicle_type = 15
+			infantry_weapons_type = 300		# 88 式步枪/班用机枪（全营 400 人）
+			L_AT_Equipment = 32			# 69 式火箭筒
+			H_AT_Equipment = 4			# 仿制反坦克导弹
+			AA_Equipment = 8			# 便携防空导弹
+			cnc_equipment_type = 24
+			medium_tank_destroyer_chassis = 24	# PT-85 两栖坦克 ×23 + 营指挥车 ×1
+			util_vehicle_type = 10
 		}
 
 		plains = { attack = 0.10 movement = 0.10 }
@@ -448,13 +544,14 @@ sub_units = {
 		forest = { attack = -0.10 movement = -0.10 }
 		mountain = { attack = -0.25 defence = -0.10 movement = -0.15 }
 		jungle = { attack = -0.10 movement = -0.05 }
-		marsh = { attack = 0.05 movement = 0.05 }
+		marsh = { attack = 0.15 movement = 0.10 }
 		urban = { attack = 0.05 }
-		amphibious = { attack = 0.15 movement = 0.05 }
+		river = { attack = 0.20 movement = 0.15 }
+		amphibious = { attack = 0.20 }
 
 	}
 
-	SanMarco_Bat_ITA = { # 意大利圣马可团陆战队
+	SanMarco_Bat_ITA = { # 意大利圣马可陆战营（VBM Freccia 8×8 装甲车）
 		sprite = SanMarco_Bat_ITA
 		map_icon_category = armored
 		priority = 10
@@ -486,15 +583,20 @@ sub_units = {
 		training_time = 150
 		weight = 1
 
-		transport = ZZ_amphibious_mechanized_equipment
+		transport = medium_tank_amphibious_chassis
+
+		essential = {
+			medium_tank_amphibious_chassis
+		}
 
 		need = {
-			infantry_weapons_type = 820
-			L_AT_Equipment = 40
-			AA_Equipment = 16
-			cnc_equipment_type = 36
-			ZZ_amphibious_mechanized_equipment = 30
-			util_vehicle_type = 20
+			infantry_weapons_type = 460		# 步枪/班用机枪（全营 700 人）
+			L_AT_Equipment = 40			# 火箭筒
+			H_AT_Equipment = 8			# 长钉反坦克导弹
+			AA_Equipment = 8			# 便携防空导弹
+			cnc_equipment_type = 30
+			medium_tank_amphibious_chassis = 31	# VBM Freccia 8×8 ×30 + 营指挥车 ×1
+			util_vehicle_type = 12
 		}
 
 		plains = { attack = 0.10 movement = 0.10 }
@@ -505,7 +607,7 @@ sub_units = {
 		jungle = { attack = -0.10 movement = -0.05 }
 		marsh = { attack = 0.05 movement = 0.05 }
 		urban = { attack = 0.05 }
-		amphibious = { attack = 0.15 movement = 0.05 }
+		amphibious = { attack = 0.10 }
 
 	}
 
@@ -598,7 +700,7 @@ sub_units = {
 		max_strength = 12
 		max_organisation = 30
 		default_morale = 0.10
-		manpower = 400
+		manpower = 600
 		suppression = 2
 
 		training_time = 180
@@ -607,11 +709,12 @@ sub_units = {
 		transport = airborne_mechanized_equipment
 
 		need = {
-			infantry_weapons_type = 620
+			infantry_weapons_type = 520
 			L_AT_Equipment = 55
 			AA_Equipment = 8
 			cnc_equipment_type = 32
-			airborne_mechanized_equipment = 39
+			airborne_mechanized_equipment = 31
+			util_vehicle_type = 10
 		}
 
 		plains = { attack = 0.10 movement = 0.10 }
@@ -654,7 +757,7 @@ sub_units = {
 		max_strength = 14
 		max_organisation = 36
 		default_morale = 0.14
-		manpower = 600
+		manpower = 700
 		entrenchment = -0.3
 		suppression = 2.0
 
@@ -662,7 +765,7 @@ sub_units = {
 		weight = 0.5
 
 		need = {
-			infantry_weapons_type = 770
+			infantry_weapons_type = 620
 			L_AT_Equipment = 50
 			AA_Equipment = 8
 			cnc_equipment_type = 36
@@ -1357,7 +1460,7 @@ sub_units = {
 		weight = 0.5
 
 		need = {
-			infantry_weapons_type = 770
+			infantry_weapons_type = 620
 			L_AT_Equipment = 55
 			AA_Equipment = 8
 			cnc_equipment_type = 36
@@ -1411,7 +1514,7 @@ sub_units = {
 		weight = 0.5
 
 		need = {
-			infantry_weapons_type = 770
+			infantry_weapons_type = 620
 			L_AT_Equipment = 50
 			AA_Equipment = 8
 			cnc_equipment_type = 36

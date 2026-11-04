@@ -30,6 +30,11 @@ division_template = {
 		Mot_Inf_Bat = { x = 1 y = 1 }
 		L_Inf_Bat = { x = 1 y = 2 }
 	}
+	support = {
+		L_Recce_Comp = { x = 0 y = 0 }
+		L_Engi_Comp = { x = 0 y = 1 }
+		combat_service_support_company = { x = 0 y = 2 }
+	}
 }
 
 division_template = {
@@ -205,12 +210,13 @@ instant_effect = {
 
 	add_equipment_to_stockpile = {
 		variant_name = "ASLAV"
-		type = medium_tank_flame_chassis_1		#ASLAV
+		type = medium_tank_flame_chassis_2		#ASLAV
 		amount = 257
 		producer = AST
 	}
 
 	add_equipment_to_stockpile = {
+		variant_name = "M1A1 AIM SA"
 		type = medium_tank_chassis_2
 		producer = AST
 		amount = 59
@@ -266,7 +272,7 @@ instant_effect = {
 	}
 
 	add_equipment_to_stockpile = {
-		variant_name = "RBS-70"
+		variant_name = "RBS 70"
 		type = Anti_Air_1			#RBS 70
 		amount = 350
 		producer = SWE
@@ -319,5 +325,24 @@ instant_effect = {
 		type = transport_helicopter_2			#MRH-90 Taipan
 		producer = AST
 		amount = 47
+	}
+	# Orphan variant attachment (2017 real-world holdings)
+	add_equipment_to_stockpile = {
+		type = large_plane_awacs_airframe_2
+		variant_name = "E-7A Wedgetail"
+		amount = 6
+		producer = AST
+	}
+	add_equipment_to_stockpile = {
+		type = large_plane_air_transport_airframe_2
+		variant_name = "KC-30A"
+		amount = 5
+		producer = AST
+	}
+	add_equipment_to_stockpile = {
+		type = large_plane_maritime_patrol_airframe_1
+		variant_name = "P-8A Poseidon"
+		amount = 8
+		producer = AST
 	}
 }

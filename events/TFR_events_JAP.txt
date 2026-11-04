@@ -1057,10 +1057,10 @@ country_event = {
 		name = jap.92.a
 		add_political_power = -50
 		remove_ideas = JAP_nobuo_kishi_defence
-		add_popularity = {
-			ideology = authoritarian_democrat
-			popularity = -0.025
-		}
+		set_temp_variable = { party_index = 0 }
+		set_temp_variable = { party_popularity_increase = -0.025 }
+		set_temp_variable = { temp_outlook_increase = -0.025 }
+		change_relative_party_popularity = yes
 		set_country_flag = JAP_church_remove
 	}
 	option = {
@@ -2275,7 +2275,7 @@ country_event = {
 	option = {
 		name = jap.174.a
 		effect_tooltip = {
-			PRC = {
+			CHI = {
 				add_timed_idea = {
 					idea = KOR_recent_cyberattack
 					days = 35
@@ -2593,10 +2593,10 @@ country_event = {
 		name = jap.189.b
 		add_stability = -0.1
 		add_political_power = -50
-		add_popularity = {
-			ideology = authoritarian_democrat
-			popularity = -0.075
-		}
+		set_temp_variable = { party_index = 0 }
+		set_temp_variable = { party_popularity_increase = -0.075 }
+		set_temp_variable = { temp_outlook_increase = -0.075 }
+		change_relative_party_popularity = yes
 		custom_effect_tooltip = tooltip_white_line
 		custom_effect_tooltip = JAP_ishiba_event_tt
 		custom_effect_tooltip = tooltip_white_line
@@ -2693,10 +2693,10 @@ country_event = {
 		set_cosmetic_tag = JAP_empire_fools
 		custom_effect_tooltip = JAP_mitsubishi
 		hidden_effect = { 
-			add_popularity = {
-				ideology = authoritarian_democrat
-				popularity = 0.45
-			}
+			set_temp_variable = { party_index = 0 }
+			set_temp_variable = { party_popularity_increase = 0.45 }
+			set_temp_variable = { temp_outlook_increase = 0.45 }
+			change_relative_party_popularity = yes
 			set_party_name = {
 				ideology = authoritarian_democrat
 				long_name = JAP_jpj_long

@@ -1,0 +1,334 @@
+division_template = {
+	name = "Brigada Mecanizada"
+
+	regiments = {
+		armor_Bat = { x = 0 y = 0 }
+		Arm_Inf_Bat = { x = 1 y = 0 }
+		Arm_Inf_Bat = { x = 1 y = 1 }
+		SP_Arty_Bat = { x = 1 y = 2 }
+	}
+	support = {
+		armor_Recce_Comp = { x = 0 y = 0 }
+		SP_AA_Battery = { x = 0 y = 1 }
+		H_Engi_Comp = { x = 0 y = 2 }
+	}
+}
+
+division_template = {
+	name = "Brigada de Intervenção"
+
+	regiments = {
+		Mot_Inf_Bat = { x = 0 y = 0 }
+		Mech_Inf_Bat = { x = 1 y = 0 }
+		Mech_Inf_Bat = { x = 1 y = 1 }
+		Arty_Bat = { x = 1 y = 2 }
+	}
+	support = {
+		Mot_Recce_Comp = { x = 0 y = 0 }
+		L_Engi_Comp = { x = 0 y = 1 }
+	}
+}
+
+division_template = {
+	name = "Zona Militar"
+
+	regiments = {
+		L_Inf_Bat = { x = 0 y = 0 }
+	}
+}
+
+division_template = {
+	name = "Brigada de Reacção Rápida"
+
+	regiments = {
+		Special_Forces = { x = 0 y = 0 }
+		L_Air_Inf_Bat = { x = 0 y = 1 }
+		L_Air_Inf_Bat = { x = 0 y = 2 }
+	}
+	support = {
+		Arty_Battery = { x = 0 y = 0 }
+		L_Recce_Comp = { x = 0 y = 1 }
+		L_Engi_Comp = { x = 0 y = 2 }
+	}
+}
+
+units = {
+	division = {
+		name = "Brigada Mecanizada"
+		location = 11805		#Santa Margarida
+		division_template = "Brigada Mecanizada"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "Brigada de Intervenção"
+		location = 9787		#Coimbra
+		division_template = "Brigada de Intervenção"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "Brigada de Reacção Rápida"
+		location = 924		#Tancos
+		division_template = "Brigada de Reacção Rápida"
+		start_experience_factor = 0.9
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "Zona Militar dos Açores"
+		location = 1751		#Azores
+		division_template = "Zona Militar"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "Zona Militar da Madeira"
+		location = 3118		#Madeira
+		division_template = "Zona Militar"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.01
+	}
+}
+
+instant_effect = {
+	add_equipment_to_stockpile = {
+		variant_name = "G3"
+		type = infantry_weapons_1 		#G3
+		amount = 2000
+		producer = POR
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "G36"
+		type = infantry_weapons_4 		#G36
+		amount = 200
+		producer = GER
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "IMI Galil"
+		type = infantry_weapons_2 		#IMI Galil
+		amount = 500
+		producer = ISR
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "SIG SG 543"
+		type = infantry_weapons_2 		#SIG SG 543
+		amount = 2000
+		producer = SWI
+	}
+
+	add_equipment_to_stockpile = {
+		type = medium_tank_chassis_1
+		variant_name = "Leopard 2A6"
+		amount = 37
+		producer = GER
+	}
+
+	add_equipment_to_stockpile = {
+		type = medium_tank_chassis_0
+		variant_name = "M60A3"
+		amount = 101
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "M113"
+		type = medium_tank_amphibious_chassis_1		#M113
+		amount = 277
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Pandur II"
+		type = medium_tank_amphibious_chassis_1		#Pandur II
+		amount = 240
+		producer = AUS
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Bravia Chaimite"
+		type = medium_tank_amphibious_chassis_1		#Bravia Chaimite
+		amount = 88
+		producer = POR
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Commando V150"
+		type = Rec_tank_0		#Commando V150
+		amount = 15
+		producer = POR
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Panhard M-11"
+		type = util_vehicle_4		#Panhard M-11
+		amount = 38
+		producer = FRA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Humvee"
+		type = util_vehicle_3		#Humvee
+		amount = 37
+		producer = USA
+	}
+
+
+	add_equipment_to_stockpile = {
+		variant_name = "Land Rover Defender"
+		type = util_vehicle_3		#Land Rover Defender
+		amount = 50
+		producer = ENG
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "L118"
+		type = artillery_2		#L118
+		amount = 21
+		producer = ENG
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "M109A5"
+		type = medium_tank_artillery_chassis_1		#M109A5
+		#version_name = "M109A5"
+		amount = 20
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Stinger"
+		type = Anti_Air_1			#Stinger
+		amount = 100
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "MIM-72 Chaparral"
+		type = medium_tank_aa_chassis_0		#MIM-72 Chaparral
+		#version_name = "MIM-72 Chaparral"
+		amount = 30
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "MILAN"
+		type = Anti_tank_2			#MILAN
+		amount = 68
+		producer = FRA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "TOW"
+		type = Heavy_Anti_tank_1			#TOW
+		amount = 28
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		type = cnc_equipment_1
+		amount = 300
+		producer = POR
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "F-16 Fighting falcon"
+		type = small_plane_strike_airframe_2		#F-16 Fighting falcon
+		amount = 33
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "C-130"
+		type = large_plane_air_transport_airframe_1		#C-130
+		amount = 4
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Agusta Westland 101"
+		type = transport_helicopter_2		#Agusta Westland 101
+		amount = 12
+		producer = ENG
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Aérospatiale SA-316 Alouette III"
+		type = transport_helicopter_1 #Aérospatiale SA-316 Alouette III
+		amount = 6
+		producer = FRA
+	}
+
+	### Sealed Storage 封存 ###
+	add_equipment_to_stockpile = {
+		variant_name = "M60A3"
+		type = medium_tank_chassis_0 #M60A3（封存）
+		producer = USA
+		amount = 40
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "M113"
+		type = medium_tank_amphibious_chassis_1 #M113（封存）
+		producer = USA
+		amount = 110
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Bravia Chaimite"
+		type = medium_tank_amphibious_chassis_1 #Bravia Chaimite（封存）
+		producer = POR
+		amount = 35
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "M109A5"
+		type = medium_tank_artillery_chassis_1 #M109A5（封存）
+		producer = USA
+		amount = 8
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "MIM-72 Chaparral"
+		type = medium_tank_aa_chassis_0 #MIM-72 Chaparral（封存）
+		producer = USA
+		amount = 12
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "TOW"
+		type = Heavy_Anti_tank_1 #TOW（封存）
+		producer = USA
+		amount = 11
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "G3"
+		type = infantry_weapons_1 #G3（封存）
+		producer = POR
+		amount = 800
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "IMI Galil"
+		type = infantry_weapons_2 #IMI Galil（封存）
+		producer = ISR
+		amount = 200
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "SIG SG 543"
+		type = infantry_weapons_2 #SIG SG 543（封存）
+		producer = SWI
+		amount = 800
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Humvee"
+		type = util_vehicle_3 #Humvee（封存）
+		producer = USA
+		amount = 14
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Land Rover Defender"
+		type = util_vehicle_3 #Land Rover Defender（封存）
+		producer = ENG
+		amount = 20
+	}
+}

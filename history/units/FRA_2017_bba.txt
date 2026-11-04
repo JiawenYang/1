@@ -1,0 +1,274 @@
+instant_effect = {
+	#Armee de l'Air / Aeronavale aircraft inventory (total = deployed + reserve)
+	#Rafale total 135, Mirage 2000-5F 20 + Mirage 2000D/N 81 (Mirage 2000C retired 2016), Atlantique 2 total 12
+	add_equipment_to_stockpile = {
+		variant_name = "Rafale B"
+		type = medium_plane_airframe_2
+		amount = 2
+		producer = FRA
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Rafale C"
+		type = medium_plane_fighter_airframe_2
+		amount = 2
+		producer = FRA
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Rafale M"
+		type = cv_medium_plane_airframe_2
+		amount = 1
+		producer = FRA
+	}
+}
+
+air_wings = {
+	60 = { #Saint-Dizier - Robinson Air Base
+	#Strategic Air Forces
+		medium_plane_airframe_2 = { owner = "FRA" amount = 24 version_name = "Rafale B" }
+		name = "Escadron de Chasse 1/4 'Gascogne'"
+		start_experience_factor = 0.65
+		medium_plane_airframe_2 = { owner = "FRA" amount = 24 version_name = "Rafale B" }
+		name = "Escadron de Chasse 2/4 'La Fayette'"
+		start_experience_factor = 0.65
+	}
+	58 = { #Orange-Caritat Air Base
+	#Air Defense
+		medium_plane_fighter_airframe_2 = { owner = "FRA" amount = 22 version_name = "Rafale C" }
+		name = "Escadron de Chasse 1/7 'Provence'"
+		start_experience_factor = 0.65
+		medium_plane_fighter_airframe_2 = { owner = "FRA" amount = 22 version_name = "Rafale C" }
+		name = "Escadron de Chasse 2/30 'Normandie-Niemen'"
+		start_experience_factor = 0.65
+		small_plane_airframe_2 = { owner = "FRA" amount = 20 version_name = "Mirage 2000-5F" }
+		name = "Escadron de Chasse 1/2 'Cigognes'"
+		start_experience_factor = 0.55
+	}
+	305 = { #Nancy - Ochey Air Base
+	#Conventional Strike
+		small_plane_cas_airframe_2 = { owner = "FRA" amount = 20 version_name = "Mirage 2000D" }
+		name = "Escadron de Chasse 1/3 'Navarre'"
+		start_experience_factor = 0.6
+		small_plane_cas_airframe_2 = { owner = "FRA" amount = 20 version_name = "Mirage 2000D" }
+		name = "Escadron de Chasse 2/3 'Champagne'"
+		start_experience_factor = 0.6
+		small_plane_cas_airframe_2 = { owner = "FRA" amount = 18 version_name = "Mirage 2000D" }
+		name = "Escadron de Chasse 3/3 'Ardennes'"
+		start_experience_factor = 0.6
+	}
+	963 = { #Istres - Le Tube Air Base
+	#Nuclear Strike
+		small_plane_cas_airframe_2 = { owner = "FRA" amount = 12 version_name = "Mirage 2000N" }
+		name = "Escadron de Chasse 1/4 'Dauphine'"
+		start_experience_factor = 0.6
+		small_plane_cas_airframe_2 = { owner = "FRA" amount = 11 version_name = "Mirage 2000N" }
+		name = "Escadron de Chasse 2/4 'Normandie-Niemen'"
+		start_experience_factor = 0.6
+	}
+	64 = { #Landivisiau Naval Air Base
+	#Aeronavale
+		cv_medium_plane_airframe_2 = { owner = "FRA" amount = 19 version_name = "Rafale M" }
+		name = "Flottille 12F 'Les Lascars'"
+		start_experience_factor = 0.65
+		cv_medium_plane_airframe_2 = { owner = "FRA" amount = 19 version_name = "Rafale M" }
+		name = "Flottille 11F 'La Furieuse'"
+		start_experience_factor = 0.65
+		large_plane_maritime_patrol_airframe_1 = { owner = "FRA" amount = 6 version_name = "Atlantique 2" }
+		name = "Flottille 21F"
+		start_experience_factor = 0.5
+	}
+	63 = { #Lorient - Lann-Bihoue Naval Air Base
+	#Maritime Patrol
+		large_plane_maritime_patrol_airframe_1 = { owner = "FRA" amount = 6 version_name = "Atlantique 2" }
+		name = "Flottille 23F 'Quand je trouve, je pique'"
+		start_experience_factor = 0.5
+	}
+	962 = { #Avord Air Base
+	#Airborne Early Warning
+		large_plane_awacs_airframe_2 = { owner = "FRA" creator = "USA" amount = 4 version_name = "E-3 Sentry" }
+		name = "36e Escadron de Detection et de Controle Aeroportes 'Berry'"
+		start_experience_factor = 0.6
+	}
+	59 = { #Evreux-Fauville Air Base
+	#Transport
+		large_plane_air_transport_airframe_1 = { owner = "FRA" amount = 6 version_name = "Transall C-160" }
+		name = "Escadron de Transport 1/62 'Vercors'"
+		start_experience_factor = 0.5
+		large_plane_air_transport_airframe_1 = { owner = "FRA" amount = 5 version_name = "Transall C-160" }
+		name = "Escadron de Transport 3/61 'Poitou'"
+		start_experience_factor = 0.5
+		large_plane_air_transport_airframe_1 = { owner = "FRA" creator = "USA" amount = 8 version_name = "C-130 Hercules" }
+		name = "Escadron de Transport 2/61 'Franche-Comte'"
+		start_experience_factor = 0.5
+		large_plane_air_transport_airframe_1 = { owner = "FRA" creator = "USA" amount = 6 version_name = "C-130 Hercules" }
+		name = "Escadron de Transport 1/61 'Touraine'"
+		start_experience_factor = 0.5
+		large_plane_air_transport_airframe_2 = { owner = "FRA" amount = 10 version_name = "A400M Atlas" }
+		name = "Escadron de Transport 1/64 'Bearn'"
+		start_experience_factor = 0.55
+		large_plane_air_transport_airframe_2 = { owner = "FRA" creator = "GER" amount = 4 version_name = "A310 MRTT" }
+		name = "Escadron de Ravitaillement en Vol 2/91 'Bretagne'"
+		start_experience_factor = 0.55
+		small_plane_suicide_airframe_2 = { owner = "FRA" creator = "USA" amount = 5 version_name = "MQ-9 Reaper" }
+		name = "Escadron de Drones 1/33 'Belfort'"
+		start_experience_factor = 0.5
+	}
+}
+
+instant_effect = {
+	add_equipment_to_stockpile = {
+		variant_name = "HK-416"
+		type = infantry_weapons_6 #HK-416
+		amount = 1700
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "M4 SOPMOD Block I"
+		type = infantry_weapons_4 #Famas
+		amount = 5340
+	}
+	add_equipment_to_stockpile = {
+		type = cnc_equipment_5 #C4ISTAR
+		amount = 1200
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "AT-4"
+		type = Anti_tank_1 #AT-4
+		amount = 270
+	}
+		add_equipment_to_stockpile = {
+		variant_name = "ERYX"
+		type = Anti_tank_2 #ERYX
+		amount = 66
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Mistral"
+		type = Anti_Air_1 #Mistral
+		amount = 585
+	}
+
+	#Vehicles
+	add_equipment_to_stockpile = {
+		type = medium_tank_chassis_2
+		amount = 200
+		producer = FRA
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Panhard ERC 90"
+		type = medium_tank_destroyer_chassis_1 #AMX-10 RC
+		amount = 248
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "BRM-1K"
+		producer = SOV
+		type = medium_tank_destroyer_chassis_0 #ERC-90F4 Sagaie
+		amount = 100
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Aravis"
+		type = util_vehicle_5 #Aravis
+		amount = 14
+	}
+	add_equipment_to_stockpile = {
+		type = heavy_util_vehicle_5 # & buffalo
+		amount = 4
+		producer = USA
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "VBL M-ll"
+		type = util_vehicle_4 #VBL M-ll
+		amount = 1480
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "VBI - original 630"
+		type = medium_tank_flame_chassis_3 # VBI - original 630
+		amount = 230
+	}
+	add_equipment_to_stockpile = {
+		type = medium_tank_flame_chassis_3
+		amount = 200
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "VBI - had to remove from original to meet unit requirments"
+		type = medium_tank_flame_chassis_3 # VBI - had to remove from original to meet unit requirments
+		amount = 100
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BvS 10"
+		type = medium_tank_amphibious_chassis_3 #BvS 10
+		amount = 53
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "VAB Milan"
+		type = medium_tank_amphibious_chassis_1 #VAB
+		amount = 2586
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "AMX-30 AuF1"
+		type = medium_tank_artillery_chassis_1 #GCT 155mm
+		amount = 37
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "CAESAR"
+		type = medium_tank_artillery_chassis_2 #CEASER
+		amount = 77
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "PL-66"
+		producer = CHI
+		type = artillery_1 #TRF1
+		amount = 43
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "M270"
+		type = medium_tank_rocket_chassis_1 #M270
+		amount = 13
+		producer = USA
+	}
+	#Aircraft
+	add_equipment_to_stockpile = {
+		variant_name = "Tigre HAP"
+		type = heavy_tank_chassis_2 #Eurocopter
+		amount = 51
+	} 
+
+	### Sealed Storage 封存 ###
+	add_equipment_to_stockpile = {
+		variant_name = "AMX-30B2"
+		type = medium_tank_chassis_0 #AMX-30B2（封存）
+		producer = FRA
+		amount = 100
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Mirage F1"
+		type = small_plane_airframe_1 #Mirage F1（封存）
+		producer = FRA
+		amount = 40
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Super Etendard"
+		type = cv_medium_plane_airframe_1 #Super Etendard（封存）
+		producer = FRA
+		amount = 12
+	}
+
+	#反地雷伏击车（MRAP，2015型）
+	add_equipment_to_stockpile = {
+		type = heavy_util_vehicle_6 #Arquus Bastion
+		producer = FRA
+		amount = 60
+	}
+	# SAM missile equipment (Gotterdammerung DLC)
+	if = {
+		limit = { has_dlc = "Gotterdammerung" }
+		add_equipment_to_stockpile = {
+			type = sam_missile_equipment_3
+			amount = 0
+			producer = FRA
+		}
+		add_equipment_to_stockpile = {
+			type = sam_missile_equipment_4
+			amount = 32
+			producer = FRA
+		}
+	}
+}

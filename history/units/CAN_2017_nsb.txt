@@ -14,6 +14,11 @@ division_template = {
 		Arm_Inf_Bat = { x = 2 y = 0 }
 		Mech_Inf_Bat = { x = 2 y = 1 }
 	}
+	support = {
+		Mot_Recce_Comp = { x = 0 y = 0 }
+		L_Engi_Comp = { x = 0 y = 1 }
+		combat_service_support_company = { x = 0 y = 2 }
+	}
 }
 
 division_template = {
@@ -21,6 +26,11 @@ division_template = {
 
 	regiments = {
 		CSOR_Bat_CAN = { x = 0 y = 0 }
+	}
+	support = {
+		L_Recce_Comp = { x = 0 y = 0 }
+		L_Engi_Comp = { x = 0 y = 1 }
+		combat_service_support_company = { x = 0 y = 2 }
 	}
 	priority = 2
 }
@@ -186,160 +196,215 @@ units = {
 }
 
 instant_effect = {
+	### 步兵装备 ###
 	add_equipment_to_stockpile = {
-		type = infantry_weapons2 #C7
+		variant_name = "C7A1"
+		type = infantry_weapons_4 #C7 突击步枪
+		producer = CAN
 		amount = 12000
-		producer = CAN
 	}
 	add_equipment_to_stockpile = {
-		type = command_control_equipment4 #C2 Equipment
-		amount = 2200
+		variant_name = "C8"
+		type = infantry_weapons_4 #C8 卡宾枪
 		producer = CAN
-	}
-	add_equipment_to_stockpile = {
-		type = infantry_weapons2 #C8
 		amount = 4000
-		producer = CAN
 	}
 	add_equipment_to_stockpile = {
-		type = infantry_weapons #C3A1
+		variant_name = "C3A1"
+		type = infantry_weapons_1 #C3A1 狙击步枪
+		producer = CAN
 		amount = 50
+	}
+	add_equipment_to_stockpile = {
+		type = cnc_equipment_2 #C2 指挥控制系统
 		producer = CAN
-	}
-	add_equipment_to_stockpile = {
-		type = Anti_tank_1 #ERYX
-		amount = 1500
-		producer = CAN
-	}
-	add_equipment_to_stockpile = {
-		type = Heavy_Anti_tank_0 #BGM-71 TOW
-		amount = 200
-		producer = USA
-	}
-	add_equipment_to_stockpile = {
-		type = SP_Anti_Air_1 #ADATS
-		amount = 35
-		producer = SWI
-	}
-	add_equipment_to_stockpile = {
-		type = Anti_Air_1 #ADATS
-		amount = 700
-		producer = USA
-	}
-	add_equipment_to_stockpile = {
-		type = util_vehicle_2 #G-Wagen
-		amount = 1159
-		producer = GER
-	}
-	add_equipment_to_stockpile = {
-		type = util_vehicle_2 #LSVW
-		amount = 2879
-		producer = CAN
-	}
-	add_equipment_to_stockpile = {
-		type = APC_2 	#Bv206
-		amount = 78
-		producer = SWE
-	}
-	add_equipment_to_stockpile = {
-		type = mbt_hull_1
-		variant_name = "Leopard 2A4"
-		amount = 110
-		producer = GER
-	}
-	add_equipment_to_stockpile = {
-		type = mbt_hull_1
-		variant_name = "Leopard 2A6"
-		amount = 16
-		producer = GER
-	}
-	add_equipment_to_stockpile = {
-		type = Rec_tank_2 #Coyote Recon Vehicle
-		amount = 255
-		producer = CAN
-	}
-	add_equipment_to_stockpile = {
-		type = APC_2 #Grizzly AVGP
-		amount = 100
-		producer = CAN
-	}
-	add_equipment_to_stockpile = {
-		type = APC_2 #M113A3/MTVL
-		#version_name = "M113A2"
-		amount = 100
-		producer = USA
-	}
-	add_equipment_to_stockpile = {
-		type = APC_4 #Bison
-		amount = 100
-		producer = CAN
-	}
-	add_equipment_to_stockpile = {
-		type = IFV_4 #LAV III
-		amount = 480
-		producer = CAN
-	}
-	add_equipment_to_stockpile = {
-		type = util_vehicle_4 #Nyala
-		amount = 76
-		producer = SAF
-	}
-	add_equipment_to_stockpile = {
-		type = artillery_0 #C3 Close Support Gun
-		#version_name = "M101"
-		amount = 244
-		producer = USA
-	}
-	add_equipment_to_stockpile = {
-		type = artillery_2 #LG1 Mark II
-		amount = 70
-		producer = FRA
-	}
-	add_equipment_to_stockpile = {
-		type = artillery_2 #M777
-		amount = 100
-		producer = ENG
+		amount = 4700
 	}
 
+	### 反坦克与防空 ###
 	add_equipment_to_stockpile = {
-		type = CV_MR_Fighter2 #CF-18
-		amount = 95
-		producer = USA
+		variant_name = "ERYX"
+		type = Anti_tank_2 #ERYX 反坦克导弹
+		producer = CAN
+		amount = 1500
 	}
 	add_equipment_to_stockpile = {
-		type = transport_plane3
-		amount = 5
+		variant_name = "BGM-71 TOW"
+		type = Heavy_Anti_tank_1 #BGM-71 TOW
 		producer = USA
+		amount = 272
 	}
 	add_equipment_to_stockpile = {
-		type = transport_plane3
-		amount = 5
-		producer = USA
+		variant_name = "ADATS"
+		type = medium_tank_aa_chassis_1 #ADATS 防空系统
+		producer = CAN
+		amount = 35
+	}
+
+	### 装甲车辆 ###
+	add_equipment_to_stockpile = {
+		variant_name = "Leopard 2A4"
+		type = medium_tank_chassis_1 #豹2A4
+		producer = GER
+		amount = 110
 	}
 	add_equipment_to_stockpile = {
-		type = transport_plane1
-		amount = 8
-		producer = USA
+		variant_name = "Leopard 2A6M CAN"
+		type = medium_tank_chassis_2 #豹2A6M
+		producer = GER
+		amount = 16
 	}
 	add_equipment_to_stockpile = {
-		type = transport_plane3 #C-130J
-		amount = 17
-		producer = USA
+		variant_name = "Coyote"
+		type = medium_tank_destroyer_chassis_2 #Coyote 侦察车
+		producer = CAN
+		amount = 255
 	}
 	add_equipment_to_stockpile = {
-		type = transport_helicopter3
+		variant_name = "AVGP Grizzly"
+		type = medium_tank_amphibious_chassis_1 #Grizzly AVGP
+		producer = CAN
+		amount = 100
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Bv 206"
+		type = medium_tank_amphibious_chassis_1 #Bv206 全地形车
+		producer = SWE
+		amount = 78
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "M113A3"
+		type = medium_tank_amphibious_chassis_1 #M113A3 / MTVL
+		producer = USA
+		amount = 100
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Bison APC"
+		type = medium_tank_amphibious_chassis_2 #Bison
+		producer = CAN
+		amount = 100
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "LAV III"
+		type = medium_tank_flame_chassis_2 #LAV III
+		producer = CAN
+		amount = 480
+	}
+
+	### 火炮 ###
+	add_equipment_to_stockpile = {
+		variant_name = "C3 Howitzer"
+		type = artillery_2 #C3 105mm 榴弹炮
+		producer = USA
+		amount = 84
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "LG1 Mark II"
+		type = artillery_2 #LG1 Mark II 105mm
+		producer = FRA
+		amount = 70
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "M777"
+		type = artillery_3 #M777 155mm
+		producer = ENG
+		amount = 37
+	}
+
+	### 车辆 ###
+	add_equipment_to_stockpile = {
+		variant_name = "G-Wagen"
+		type = util_vehicle_2 #G-Wagen
+		producer = GER
+		amount = 1159
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "LSVW"
+		type = util_vehicle_3 #LSVW 轻型后勤车
+		producer = CAN
+		amount = 2879
+	}
+	add_equipment_to_stockpile = {
+		type = heavy_util_vehicle_5 #Nyala 防雷车
+		producer = SAF
+		amount = 76
+	}
+
+	### 直升机与飞机 ###
+	add_equipment_to_stockpile = {
+		variant_name = "CH-147F Chinook"
+		type = transport_helicopter_2 #CH-147F 契努克
+		producer = USA
 		amount = 15
-		producer = USA
 	}
 	add_equipment_to_stockpile = {
-		type = transport_helicopter3 #AW101
+		variant_name = "CH-146 Griffon"
+		type = transport_helicopter_1 #CH-146 格里芬
+		producer = CAN
+		amount = 85
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "AW101 Merlin"
+		type = transport_helicopter_3 #AW101 灰背隼 / CH-149 鸬鹚
+		producer = ENG
 		amount = 14
-		#producer = ENG
 	}
 	add_equipment_to_stockpile = {
-		type = naval_plane2
+		variant_name = "CH-148 Cyclone"
+		type = transport_helicopter_4 #CH-148 旋风
+		producer = USA
+		amount = 5
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "CF-18 Hornet"
+		type = medium_plane_airframe_2 #CF-18 大黄蜂
+		producer = USA
+		amount = 95
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "C-130J Hercules"
+		type = large_plane_air_transport_airframe_1 #C-130J 大力神
+		producer = USA
+		amount = 17
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "C-130H Hercules"
+		type = large_plane_air_transport_airframe_1 #C-130H 大力神
+		producer = USA
+		amount = 5
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "CC-150 Polaris"
+		type = large_plane_air_transport_airframe_2 #CC-150 北极星
+		producer = FRA
+		amount = 5
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "CP-140 Aurora"
+		type = large_plane_maritime_patrol_airframe_1 #CP-140 极光
+		producer = CAN
 		amount = 18
+	}
+
+	### Sealed Storage 封存 ###
+	add_equipment_to_stockpile = {
+		variant_name = "Leopard C1"
+		type = medium_tank_chassis_0 #Leopard C1（封存）
+		producer = GER
+		amount = 40
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "M113A2"
+		type = medium_tank_amphibious_chassis_1 #M113A2（封存）
+		producer = USA
+		amount = 300
+	}
+
+	# Orphan variant attachment (2017 real-world holdings)
+	add_equipment_to_stockpile = {
+		type = medium_tank_amphibious_chassis_2
+		variant_name = "LAV 6.0"
+		amount = 300
 		producer = CAN
 	}
 }
-

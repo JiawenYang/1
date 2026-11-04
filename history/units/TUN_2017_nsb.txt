@@ -1,0 +1,228 @@
+division_template = {
+	name = "Mechanized Brigade"
+
+	regiments = {
+		Mech_Inf_Bat = { x = 0 y = 0 }
+		Mech_Inf_Bat = { x = 0 y = 1 }
+		armor_Bat = { x = 0 y = 2 }
+		Arty_Bat = { x = 1 y = 0 }
+
+	}
+	support = {
+		armor_Recce_Comp = { x = 0 y = 0 }
+	}
+}
+division_template = {
+	name = "Saharan territorial group"
+
+	regiments = {
+		Mech_Inf_Bat = { x = 0 y = 0 }
+		Mech_Inf_Bat = { x = 0 y = 1 }
+
+	}
+	priority = 2
+}
+division_template = {
+	name = "Special Forces"
+
+	regiments = {
+		Special_Forces = { x = 0 y = 0 }
+		Special_Forces = { x = 0 y = 1 }
+
+	}
+	priority = 2
+}
+
+units = {
+	division = {
+		name = "3rd Mechanised Brigade"
+		location = 7077
+		division_template = "Mechanized Brigade"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "1st Mechanised Brigade"
+		location = 7005
+		division_template = "Mechanized Brigade"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "2nd Mechanised Brigade"
+		location = 4163
+		division_template = "Mechanized Brigade"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "Saharan territorial group"
+		location = 4992
+		division_template = "Saharan territorial group"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "Special Forces"
+		location = 11969
+		division_template = "Special Forces"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.01
+	}
+}
+
+
+instant_effect = {
+	add_equipment_to_stockpile = {
+		variant_name = "L-59"
+		type = small_plane_strike_airframe_1	#L-59
+		#version_name = "L-59 Super Albatros"
+		amount = 48
+		producer = CZE
+	}
+	add_equipment_to_stockpile = {
+		type = infantry_weapons_3
+		amount = 1600
+		producer = AUS
+	}
+	add_equipment_to_stockpile = {
+		type = cnc_equipment_1
+		amount = 290
+		producer = USA
+	}
+	add_equipment_to_stockpile = {
+		type = Anti_tank_2
+		amount = 70
+		producer = USA
+	}
+	add_equipment_to_stockpile = {
+		type = Heavy_Anti_tank_2
+		amount = 60
+		producer = USA
+	}
+	add_equipment_to_stockpile = {
+		type = Anti_Air_1
+		amount = 90
+		producer = USA
+	}
+	add_equipment_to_stockpile = {
+		type = medium_tank_chassis_0
+		variant_name = "M60A3"
+		amount = 84
+		producer = USA
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "SK-105 Kürassier"
+		type = Rec_tank_0 #SK-105 Kürassier
+		amount = 48
+		producer = AUS
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Panhard AML"
+		type = Rec_tank_0 #Panhard AML
+		amount = 40
+		producer = FRA
+		#version_name = "Panhard AML"
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Alvis Saladin"
+		type = medium_tank_destroyer_chassis_0 #Alvis Saladin
+		amount = 20
+		producer = ENG
+		#version_name = "Alvis Saladin"
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "M113 APC"
+		type = medium_tank_amphibious_chassis_1 #M113 APC
+		amount = 140
+		producer = USA
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Type 6614"
+		type = medium_tank_amphibious_chassis_1 #Type 6614
+		amount = 110
+		producer = ITA
+	}
+	add_equipment_to_stockpile = {
+		type = heavy_util_vehicle_6 #BMC Kirpi
+		amount = 30
+		producer = TUR
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "M101"
+		type = artillery_1 #M101
+		amount = 48
+		producer = USA
+		#version_name = "M101"
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "M119"
+		type = artillery_2 #M119
+		amount = 55
+		producer = ENG
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "MIM-72 Chaparral"
+		type = medium_tank_aa_chassis_0 #MIM-72 Chaparral
+		amount = 26
+		producer = USA
+		#version_name = "MIM-72 Chaparral"
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "F-5 Freedom Fighter"
+		type = small_plane_airframe_1 #F-5 Freedom Fighter
+		amount = 12
+		producer = USA
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Embraer EMB-326"
+		type = small_plane_strike_airframe_1 #Embraer EMB-326
+		amount = 3
+		producer = BRA
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "C-130"
+		type = large_plane_air_transport_airframe_1 #C-130
+		amount = 6
+		producer = USA
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "C-130J"
+		type = large_plane_air_transport_airframe_1 #C-130J
+		amount = 2
+		producer = USA
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Aeritalia G.222"
+		type = large_plane_air_transport_airframe_1 #Aeritalia G.222
+		amount = 5
+		producer = ITA
+	}
+
+	### Sealed Storage 封存 ###
+	add_equipment_to_stockpile = {
+		variant_name = "M101"
+		type = artillery_1 #M101（封存）
+		producer = USA
+		amount = 19
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "M60A3"
+		type = medium_tank_chassis_0 #M60A3（封存）
+		producer = USA
+		amount = 33
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Alvis Saladin"
+		type = medium_tank_destroyer_chassis_0 #Alvis Saladin（封存）
+		producer = ENG
+		amount = 8
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "MIM-72 Chaparral"
+		type = medium_tank_aa_chassis_0 #MIM-72 Chaparral（封存）
+		producer = USA
+		amount = 10
+	}
+}

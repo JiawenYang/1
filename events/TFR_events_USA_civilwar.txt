@@ -1,6 +1,6 @@
 add_namespace = usacw
 add_namespace = usa
-
+add_namespace = tfr_usa
 # ===== 美国政治危机与新自由主义秩序（2024年后剧情） =====
 # 原烈焰升腾（TFR）移植的美国内战事件线（2020年选举危机、联邦分裂、公共失序等）已全部移除，
 # 美国不再发生内战与领土分裂；仅保留2024年遇刺→民主党大胜→新自由主义秩序的剧情链，
@@ -289,9 +289,9 @@ country_event = {
 
 #American Oil Crisis（美国石油危机：石油协议破裂引发，适配移除原版内战路线触发器）
 country_event = {
-	id = usa.7
-	title = usa.7.t
-	desc = usa.7.d
+	id = tfr_usa.7
+	title = tfr_usa.7.t
+	desc = tfr_usa.7.d
 	picture = GFX_Oil_Crash
 	fire_only_once = yes
 	is_triggered_only = yes
@@ -300,14 +300,14 @@ country_event = {
 	}
 	immediate = {
 		hidden_effect = {
-			log = "[GetDateText]: [Root.GetName]: event usa.7 immediate"
+			log = "[GetDateText]: [Root.GetName]: event tfr_usa.7 immediate"
 			add_ideas = USA_oil_crisis_idea
 			country_event = {
 				id = usa.217
 				days = 14
 			}
 			country_event = {
-				id = usa.202
+				id = tfr_usa.202
 				days = 25
 			}
 			country_event = {
@@ -317,7 +317,7 @@ country_event = {
 		}
 	}
 	option = {
-		name = usa.7.a
+		name = tfr_usa.7.a
 		effect_tooltip = {
 			add_ideas = USA_oil_crisis_idea
 		}
@@ -339,14 +339,22 @@ country_event = {
 		hidden_effect = {
 			log = "[GetDateText]: [Root.GetName]: event usa.170 immediate"
 			add_stability = -0.05
-			add_popularity = {
-				ideology = communism
-				popularity = 0.02
+			set_temp_variable = { party_index = 4 }
+			if = {
+				limit = { has_government = communism }
+				set_temp_variable = { party_index = ruling_party }
 			}
-			add_popularity = {
-				ideology = democratic
-				popularity = 0.04
+			set_temp_variable = { party_popularity_increase = 0.02 }
+			set_temp_variable = { temp_outlook_increase = 0.02 }
+			change_relative_party_popularity = yes
+			set_temp_variable = { party_index = 0 }
+			if = {
+				limit = { has_government = democratic }
+				set_temp_variable = { party_index = ruling_party }
 			}
+			set_temp_variable = { party_popularity_increase = 0.04 }
+			set_temp_variable = { temp_outlook_increase = 0.04 }
+			change_relative_party_popularity = yes
 		}
 	}
 	option = {
@@ -367,9 +375,9 @@ country_event = {
 
 #Poverty Rates go Up（贫困率上升：本模组无原版前置贫困链，改为直接施加中等贫困）
 country_event = {
-	id = usa.202
-	title = usa.202.t
-	desc = usa.202.d
+	id = tfr_usa.202
+	title = tfr_usa.202.t
+	desc = tfr_usa.202.d
 	picture = GFX_oil_line
 	fire_only_once = yes
 	is_triggered_only = yes
@@ -377,7 +385,7 @@ country_event = {
 		tag = USA
 	}
 	option = {
-		name = usa.202.a
+		name = tfr_usa.202.a
 		if = {
 			limit = {
 				has_idea = high_poverty
@@ -408,28 +416,44 @@ country_event = {
 		hidden_effect = {
 			log = "[GetDateText]: [Root.GetName]: event usa.217 immediate"
 			add_stability = -0.05
-			add_popularity = {
-				ideology = communism
-				popularity = 0.03
+			set_temp_variable = { party_index = 4 }
+			if = {
+				limit = { has_government = communism }
+				set_temp_variable = { party_index = ruling_party }
 			}
-			add_popularity = {
-				ideology = fascism
-				popularity = 0.02
+			set_temp_variable = { party_popularity_increase = 0.03 }
+			set_temp_variable = { temp_outlook_increase = 0.03 }
+			change_relative_party_popularity = yes
+			set_temp_variable = { party_index = 10 }
+			if = {
+				limit = { has_government = fascism }
+				set_temp_variable = { party_index = ruling_party }
 			}
+			set_temp_variable = { party_popularity_increase = 0.02 }
+			set_temp_variable = { temp_outlook_increase = 0.02 }
+			change_relative_party_popularity = yes
 		}
 	}
 	option = {
 		name = usa.217.a
 		effect_tooltip = {
 			add_stability = -0.05
-			add_popularity = {
-				ideology = communism
-				popularity = 0.03
+			set_temp_variable = { party_index = 4 }
+			if = {
+				limit = { has_government = communism }
+				set_temp_variable = { party_index = ruling_party }
 			}
-			add_popularity = {
-				ideology = fascism
-				popularity = 0.02
+			set_temp_variable = { party_popularity_increase = 0.03 }
+			set_temp_variable = { temp_outlook_increase = 0.03 }
+			change_relative_party_popularity = yes
+			set_temp_variable = { party_index = 10 }
+			if = {
+				limit = { has_government = fascism }
+				set_temp_variable = { party_index = ruling_party }
 			}
+			set_temp_variable = { party_popularity_increase = 0.02 }
+			set_temp_variable = { temp_outlook_increase = 0.02 }
+			change_relative_party_popularity = yes
 		}
 	}
 }

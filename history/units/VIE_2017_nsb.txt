@@ -107,6 +107,12 @@ division_template = {
 	L_arm_Bat = { x = 2 y = 0 }
 	SP_Arty_Bat = { x = 3 y = 0 }
 	}
+	support = {
+		SP_AA_Battery = { x = 0 y = 0 }
+		Mech_Recce_Comp = { x = 0 y = 1 }
+		H_Engi_Comp = { x = 0 y = 2 }
+		combat_service_support_company = { x = 0 y = 3 }
+	}
 }
 
 division_template = {
@@ -472,7 +478,7 @@ instant_effect = {
 	### Aircraft
 	add_equipment_to_stockpile = {
 		variant_name = "Mi-24"
-		type = heavy_tank_chassis_0 #Mi-24
+		type = attack_helicopter_1 #Mi-24
 		amount = 28
 		producer = SOV
 	}
@@ -483,14 +489,14 @@ instant_effect = {
 		producer = SOV
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "Mi-17"
+		variant_name = "Mil Mi-17"
 		type = transport_helicopter_1 #Mil Mi-17
 		amount = 3
 		producer = SOV
 		#version_name = "Mil Mi-17"
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "UH-1 Iroquois"
+		variant_name = "Bell UH-1 Iroquois"
 		type = transport_helicopter_1 #Bell UH-1 Iroquois
 		amount = 11
 		producer = USA
@@ -537,7 +543,7 @@ instant_effect = {
 		type = medium_tank_destroyer_chassis_0 #Type 62 China
 		producer = CHI
 		amount = 320
-		#version_name = "Type 62"
+		#version_name = "Type-62"
 	}
 	add_equipment_to_stockpile = {
 		variant_name = "BRDM-2"
@@ -566,7 +572,7 @@ instant_effect = {
 	}
 	add_equipment_to_stockpile = {
 		variant_name = "Type-63"
-		type = medium_tank_amphibious_chassis_0 #Type 63
+		type = medium_tank_destroyer_chassis_0 #Type 63
 		amount = 80
 		producer = CHI
 	}
@@ -589,8 +595,8 @@ instant_effect = {
 		producer = USA
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "Type-63"
-		type = medium_tank_rocket_chassis_0 #Type 63 Rocket
+		variant_name = "Type 63 Rocket"
+		type = medium_tank_artillery_chassis_0 #Type 63 Rocket
 		amount = 22
 		producer = CHI
 	}
@@ -620,7 +626,7 @@ instant_effect = {
 		#version_name = "M114"
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "AK-47"
+		variant_name = "Ak-47"
 		type = infantry_weapons_1  #Ak-47
 		amount = 65000
 		producer = SOV
@@ -632,19 +638,19 @@ instant_effect = {
 		producer = SOV
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "Type-56"
+		variant_name = "Type 56"
 		type = infantry_weapons_1  #Type 56
 		amount = 5000
 		producer = CHI
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "AKM"
+		variant_name = "AKM/AKMS"
 		type = infantry_weapons_2  #AKM/AKMS
 		amount = 5000
 		producer = SOV
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "Galil ACE"
+		variant_name = "Galil ACE 31/32"
 		type = infantry_weapons_3  #Galil ACE 31/32
 		producer = VIE
 		amount = 1200
@@ -668,13 +674,13 @@ instant_effect = {
 		producer = BEL
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "CAR-15"
+		variant_name = "CAR-15 XM177E2"
 		type = infantry_weapons_2  #CAR-15 XM177E2
 		amount = 400
 		producer = VIE
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "SA-18 Igla"
+		variant_name = "Igla"
 		type = Anti_Air_1  #Igla
 		amount = 2265
 		producer = SOV
@@ -686,6 +692,7 @@ instant_effect = {
 		producer = SOV
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "SU-100/122"
 		type = Heavy_Anti_tank_1  #SU-100/122
 		amount = 189
 		producer = VIE
@@ -707,6 +714,7 @@ instant_effect = {
 		producer = SOV
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "2K12 Kub"
 		type = medium_tank_aa_chassis_0
 		amount = 72
 		producer = VIE
@@ -715,5 +723,10 @@ instant_effect = {
 		type = Heavy_Anti_tank_1
 		amount = 1500
 		producer = VIE
+	}
+	add_equipment_to_stockpile = {
+		type = Anti_tank_1
+		producer = VIE
+		amount = 300
 	}
 }

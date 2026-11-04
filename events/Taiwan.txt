@@ -18,7 +18,14 @@ country_event = {
 	option = {
 		name = taiwan.1.a
 		log = "[GetDateText]: [This.GetName]: taiwan.1.a executed"
-		add_popularity = { ideology = democratic popularity = 0.03 }
+		set_temp_variable = { party_index = 0 }
+		if = {
+			limit = { has_government = democratic }
+			set_temp_variable = { party_index = ruling_party }
+		}
+		set_temp_variable = { party_popularity_increase = 0.03 }
+		set_temp_variable = { temp_outlook_increase = 0.03 }
+		change_relative_party_popularity = yes
 	}
 
 }
@@ -669,7 +676,7 @@ country_event = {
 			name = taiwan.311.t
 			bonus = 0.15
 			uses = 1
-			category = CAT_infantryormation_technology
+			category = CAT_information_technology
 		}
 		set_country_flag = TAI_tsmc_open_innovation
 		ai_chance = {
@@ -869,7 +876,7 @@ country_event = {
 			name = taiwan.314.t
 			bonus = 0.10
 			uses = 1
-			category = CAT_infantryormation_technology
+			category = CAT_information_technology
 		}
 		set_country_flag = TAI_tsmc_commercial_allocation
 		ai_chance = {
@@ -1046,7 +1053,7 @@ country_event = {
 			name = taiwan.320.t
 			bonus = 0.10
 			uses = 1
-			category = CAT_infantryormation_technology
+			category = CAT_information_technology
 		}
 		set_country_flag = TAI_pc_integrated_manufacturer
 		ai_chance = {
@@ -1081,7 +1088,7 @@ country_event = {
 			name = taiwan.321.t
 			bonus = 0.15
 			uses = 1
-			category = CAT_infantryormation_technology
+			category = CAT_information_technology
 		}
 		set_country_flag = TAI_pc_x86_licence_settled
 		ai_chance = {
@@ -1140,7 +1147,7 @@ country_event = {
 			name = taiwan.322.t
 			bonus = 0.15
 			uses = 1
-			category = CAT_infantryormation_technology
+			category = CAT_information_technology
 		}
 		set_country_flag = TAI_pc_branded_premium
 		ai_chance = {
@@ -1223,7 +1230,7 @@ country_event = {
 			name = taiwan.323.t
 			bonus = 0.10
 			uses = 1
-			category = CAT_infantryormation_technology
+			category = CAT_information_technology
 		}
 		set_country_flag = TAI_pc_integrated_brand
 		ai_chance = {
@@ -1282,7 +1289,7 @@ country_event = {
 			name = taiwan.324.t
 			bonus = 0.10
 			uses = 1
-			category = CAT_infantryormation_technology
+			category = CAT_information_technology
 		}
 		set_country_flag = TAI_pc_desktop_defence
 		ai_chance = {
@@ -1340,7 +1347,7 @@ country_event = {
 			name = taiwan.325.t
 			bonus = 0.10
 			uses = 1
-			category = CAT_infantryormation_technology
+			category = CAT_information_technology
 		}
 		set_country_flag = TAI_pc_market_consolidation
 		ai_chance = {

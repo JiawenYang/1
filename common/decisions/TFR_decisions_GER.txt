@@ -241,7 +241,7 @@ GER_trust_category = {
 			base = 1
 		}
 		modifier = {
-			production_speed_energy_farm_factor = 0.3
+			production_speed_renewable_energy_infra_factor = 0.3
 		}
 		complete_effect = {
 			set_temp_variable = {
@@ -595,8 +595,8 @@ GER_trust_category = {
 			stability_weekly = 0.002
 			authoritarian_democrat_drift = -0.04
 			nationalist_drift = -0.04
-			fascist_drift = -0.04
-			communist_drift = -0.04
+			fascism_drift = -0.04
+			communism_drift = -0.04
 			totalitarian_socialist_drift = -0.04
 		}
 		complete_effect = {
@@ -755,8 +755,7 @@ GER_trust_category = {
 			}
 		}
 		modifier = {
-			low_stability_weekly = 0.001
-			stability_weekly = 0.003
+			stability_weekly$10.004
 		}
 		complete_effect = {
 			if = {
@@ -832,7 +831,7 @@ GER_trust_category = {
 			}
 		}
 		modifier = {
-			tax_business_rate = -0.05
+			corporate_tax_income_multiplier_modifier = -0.05
 			tax_personal_rate = -0.05
 			production_speed_industrial_complex_factor = 0.15
 			production_speed_arms_factory_factor = 0.15
@@ -1084,7 +1083,7 @@ GER_trust_category = {
 		}
 		modifier = {
 			political_power_gain = -0.15
-			tax_business_rate = 0.05
+			corporate_tax_income_multiplier_modifier = 0.05
 		}
 		remove_effect = {
 			set_temp_variable = {
@@ -1120,10 +1119,10 @@ GER_trust_category = {
 		}
 		modifier = {
 			political_power_gain = -0.15
-			tax_business_rate = -0.05
+			corporate_tax_income_multiplier_modifier = -0.05
 			business_value_factor = 0.2
 			production_speed_industrial_complex_factor = 0.2
-			production_speed_office_park_factor = 0.2
+			production_speed_offices_factor = 0.2
 		}
 		remove_effect = {
 			set_temp_variable = {
@@ -3031,9 +3030,9 @@ GER_parties_category = {
 		complete_effect = {
 		}
 		modifier = {
-			low_stability_weekly = 0.002
+			stability_weekly = 0.002
 			poverty_development_monthly = 0.01
-			inflation_monthly = 0.002
+			inflation_cost_multiplier_modifier = 0.002
 		}
 		remove_effect = {
 			set_temp_variable = {
@@ -3183,7 +3182,7 @@ GER_parties_category = {
 			tag = GER
 		}
 		visible = {
-			MLI = {
+			MAL = {
 				has_civil_war = yes
 			}
 		}
@@ -3199,7 +3198,7 @@ GER_parties_category = {
 			add_war_support = -0.02
 		}
 		remove_effect = {
-			MLI = {
+			MAL = {
 				add_equipment_to_stockpile = {
 					type = infantry_equipment_1
 					amount = 1000
@@ -3474,7 +3473,11 @@ GER_parties_category = {
 			has_completed_focus = GER_ensure_continued_democracy
 		}
 		available = {
-			has_campaign_slot = yes
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
 			has_government = conservative
 		}
 		ai_will_do = {
@@ -3483,7 +3486,9 @@ GER_parties_category = {
 		modifier = {
 		}
 		complete_effect = {
-			remove_campaign_slot = yes
+			hidden_effect = {
+				subtract_from_variable = { var = campaign_slot_var value = 1 }
+			}
 			effect_tooltip = {
 				swap_ideas = {
 					remove_idea = GER_bundestag_dummy_idea
@@ -3518,7 +3523,9 @@ GER_parties_category = {
 					value = 0.03
 				}
 			}
-			add_campaign_slot = yes
+			hidden_effect = {
+				add_to_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 	}
 	GER_mobilizer_of_patriots_campaign_decision = {
@@ -3533,7 +3540,11 @@ GER_parties_category = {
 			has_completed_focus = GER_germany_above_all
 		}
 		available = {
-			has_campaign_slot = yes
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
 			has_government = authoritarian_democrat
 		}
 		ai_will_do = {
@@ -3542,7 +3553,9 @@ GER_parties_category = {
 		modifier = {
 		}
 		complete_effect = {
-			remove_campaign_slot = yes
+			hidden_effect = {
+				subtract_from_variable = { var = campaign_slot_var value = 1 }
+			}
 			effect_tooltip = {
 				swap_ideas = {
 					remove_idea = GER_bundestag_dummy_idea
@@ -3578,7 +3591,9 @@ GER_parties_category = {
 					value = -0.03
 				}
 			}
-			add_campaign_slot = yes
+			hidden_effect = {
+				add_to_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 	}
 }
@@ -4049,7 +4064,11 @@ GER_peoples_economy_category = {
 			has_completed_focus = GER_energy_autarky
 		}
 		available = {
-			has_campaign_slot = yes
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
 		}
 		ai_will_do = {
 			base = 10
@@ -4057,7 +4076,9 @@ GER_peoples_economy_category = {
 		modifier = {
 		}
 		complete_effect = {
-			remove_campaign_slot = yes
+			hidden_effect = {
+				subtract_from_variable = { var = campaign_slot_var value = 1 }
+			}
 			effect_tooltip = {
 				swap_ideas = {
 					remove_idea = GER_peoples_economy_dummy_idea
@@ -4084,7 +4105,9 @@ GER_peoples_economy_category = {
 					value = 0.15
 				}
 			}
-			add_campaign_slot = yes
+			hidden_effect = {
+				add_to_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 	}
 	GER_master_negotiators_campaign_decision = {
@@ -4099,7 +4122,11 @@ GER_peoples_economy_category = {
 			has_completed_focus = GER_look_for_alternative_partners
 		}
 		available = {
-			has_campaign_slot = yes
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
 		}
 		ai_will_do = {
 			base = 1
@@ -4107,7 +4134,9 @@ GER_peoples_economy_category = {
 		modifier = {
 		}
 		complete_effect = {
-			remove_campaign_slot = yes
+			hidden_effect = {
+				subtract_from_variable = { var = campaign_slot_var value = 1 }
+			}
 			effect_tooltip = {
 				swap_ideas = {
 					remove_idea = GER_peoples_economy_dummy_idea
@@ -4134,7 +4163,9 @@ GER_peoples_economy_category = {
 					value = -0.1
 				}
 			}
-			add_campaign_slot = yes
+			hidden_effect = {
+				add_to_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 	}
 	GER_rearm_europe_divider = {
@@ -5122,7 +5153,7 @@ GER_peoples_economy_category = {
 		}
 		modifier = {
 			civilian_factory_use = 4
-			production_speed_energy_farm_factor = -0.2
+			production_speed_renewable_energy_infra_factor = -0.2
 		}
 		remove_effect = {
 			every_state = {
@@ -5801,7 +5832,7 @@ GER_peoples_economy_category = {
 		}
 		modifier = {
 			social_liberal_drift = 0.01
-			tax_business_rate = 0.05
+			corporate_tax_income_multiplier_modifier = 0.05
 		}
 		remove_effect = {
 			add_political_power = 25
@@ -5918,7 +5949,7 @@ GER_peoples_economy_category = {
 		}
 		modifier = {
 			civilian_factory_use = 3
-			production_speed_energy_farm_factor = -0.25
+			production_speed_renewable_energy_infra_factor = -0.25
 		}
 		remove_effect = {
 			61 = {
@@ -6028,7 +6059,7 @@ GER_peoples_economy_category = {
 			has_completed_focus = GER_the_green_alternative
 		}
 		available = {
-			PRC = {
+			CHI = {
 				exists = yes
 				NOT = {
 					OR = {
@@ -6060,7 +6091,7 @@ GER_peoples_economy_category = {
 		}
 		remove_effect = {
 			add_opinion_modifier = {
-    			target = PRC
+    			target = CHI
     			modifier = european_economic_partner
 			}
 			set_temp_variable = {
@@ -6081,7 +6112,7 @@ GER_peoples_economy_category = {
 					instant_build = yes
 				}					
 			}
-			PRC = {
+			CHI = {
 				add_opinion_modifier = {
     				target = GER
     				modifier = european_economic_partner
@@ -7570,7 +7601,7 @@ GER_peoples_economy_category = {
 		}
 		modifier = {
 			market_liberal_drift = 0.01
-			production_speed_office_park_factor = 0.05
+			production_speed_offices_factor = 0.05
 			production_speed_industrial_complex_factor = 0.05
 			business_value_factor = 0.1
 		}
@@ -7692,7 +7723,7 @@ GER_peoples_economy_category = {
 		}
 		modifier = {
 			libertarian_socialist_drift = 0.01
-			tax_business_rate = 0.1
+			corporate_tax_income_multiplier_modifier = 0.1
 			political_power_gain = 0.15
 		}
 		remove_effect = {
@@ -7762,7 +7793,7 @@ GER_peoples_economy_category = {
 				add_income_with_inflation = yes
 		}
 		modifier = {
-			production_speed_office_park_factor = -0.25
+			production_speed_offices_factor = -0.25
 			civilian_factory_use = 4
 		}
 		remove_effect = {
@@ -10050,7 +10081,11 @@ GER_bundeswehr_category = {
 			has_completed_focus = GER_rethinking_german_militarism
 		}
 		available = {
-			has_campaign_slot = yes
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
 			has_war_support < 0.5
 			set_temp_variable = {
 				var = GER_support_bundestag_total_trigger_var_temp
@@ -10064,7 +10099,9 @@ GER_bundeswehr_category = {
 		modifier = {
 		}
 		complete_effect = {
-			remove_campaign_slot = yes
+			hidden_effect = {
+				subtract_from_variable = { var = campaign_slot_var value = 1 }
+			}
 			effect_tooltip = {
 				swap_ideas = {
 					remove_idea = GER_bundeswehr_dummy_idea
@@ -10091,7 +10128,9 @@ GER_bundeswehr_category = {
 					value = -0.002
 				}
 			}
-			add_campaign_slot = yes
+			hidden_effect = {
+				add_to_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 	}
 	GER_guide_the_army_campaign_decision = {
@@ -10105,7 +10144,11 @@ GER_bundeswehr_category = {
 			}
 		}
 		available = {
-			has_campaign_slot = yes
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
 		}
 		ai_will_do = {
 			base = 1
@@ -10113,7 +10156,9 @@ GER_bundeswehr_category = {
 		modifier = {
 		}
 		complete_effect = {
-			remove_campaign_slot = yes
+			hidden_effect = {
+				subtract_from_variable = { var = campaign_slot_var value = 1 }
+			}
 			effect_tooltip = {
 				swap_ideas = {
 					remove_idea = GER_bundeswehr_dummy_idea
@@ -10156,7 +10201,9 @@ GER_bundeswehr_category = {
 					value = -0.03
 				}
 			}
-			add_campaign_slot = yes
+			hidden_effect = {
+				add_to_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 	}
 	GER_bundeswehr_recruitment_drive_campaign_decision = {
@@ -10168,13 +10215,19 @@ GER_bundeswehr_category = {
 			has_completed_focus = GER_national_recruitment_drive
 		}
 		available = {
-			has_campaign_slot = yes
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
 		}
 		ai_will_do = {
 			base = 1
 		}
 		complete_effect = {
-			remove_campaign_slot = yes
+			hidden_effect = {
+				subtract_from_variable = { var = campaign_slot_var value = 1 }
+			}
 			effect_tooltip = {
 				swap_ideas = {
 					remove_idea = GER_bundeswehr_dummy_idea
@@ -10209,7 +10262,9 @@ GER_bundeswehr_category = {
 					value = 0.2
 				}
 			}
-			add_campaign_slot = yes
+			hidden_effect = {
+				add_to_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 	}
 	GER_panzer_sturm_campaign_decision = {
@@ -10226,13 +10281,19 @@ GER_bundeswehr_category = {
 			has_completed_focus = GER_national_recruitment_drive
 		}
 		available = {
-			has_campaign_slot = yes
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
 		}
 		ai_will_do = {
 			base = 1
 		}
 		complete_effect = {
-			remove_campaign_slot = yes
+			hidden_effect = {
+				subtract_from_variable = { var = campaign_slot_var value = 1 }
+			}
 			effect_tooltip = {
 				swap_ideas = {
 					remove_idea = GER_bundeswehr_dummy_idea
@@ -10276,7 +10337,9 @@ GER_bundeswehr_category = {
 					value = 40
 				}
 			}
-			add_campaign_slot = yes
+			hidden_effect = {
+				add_to_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 	}
 	GER_defenders_of_democracy_campaign_decision = {
@@ -10296,7 +10359,11 @@ GER_bundeswehr_category = {
 		}
 		available = {
 			has_war = yes
-			has_campaign_slot = yes
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
 		}
 		ai_will_do = {
 			base = 50
@@ -10322,7 +10389,9 @@ GER_bundeswehr_category = {
 		modifier = {
 		}
 		complete_effect = {
-			remove_campaign_slot = yes
+			hidden_effect = {
+				subtract_from_variable = { var = campaign_slot_var value = 1 }
+			}
 			effect_tooltip = {
 				swap_ideas = {
 					remove_idea = GER_bundeswehr_dummy_idea
@@ -10358,7 +10427,9 @@ GER_bundeswehr_category = {
 					value = 20
 				}
 			}
-			add_campaign_slot = yes
+			hidden_effect = {
+				add_to_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 	}
 	GER_hold_the_line_campaign_decision = {
@@ -10378,7 +10449,11 @@ GER_bundeswehr_category = {
 		}
 		available = {
 			has_war = yes
-			has_campaign_slot = yes
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
 		}
 		ai_will_do = {
 			base = 50
@@ -10404,7 +10479,9 @@ GER_bundeswehr_category = {
 		modifier = {
 		}
 		complete_effect = {
-			remove_campaign_slot = yes
+			hidden_effect = {
+				subtract_from_variable = { var = campaign_slot_var value = 1 }
+			}
 			effect_tooltip = {
 				swap_ideas = {
 					remove_idea = GER_bundeswehr_dummy_idea
@@ -10448,7 +10525,9 @@ GER_bundeswehr_category = {
 					value = 20
 				}
 			}
-			add_campaign_slot = yes
+			hidden_effect = {
+				add_to_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 	}
 	GER_defend_your_family_campaign_decision = {
@@ -10468,7 +10547,11 @@ GER_bundeswehr_category = {
 		}
 		available = {
 			has_war = yes
-			has_campaign_slot = yes
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
 		}
 		ai_will_do = {
 			base = 30
@@ -10480,7 +10563,9 @@ GER_bundeswehr_category = {
 		modifier = {
 		}
 		complete_effect = {
-			remove_campaign_slot = yes
+			hidden_effect = {
+				subtract_from_variable = { var = campaign_slot_var value = 1 }
+			}
 			effect_tooltip = {
 				swap_ideas = {
 					remove_idea = GER_bundeswehr_dummy_idea
@@ -10525,7 +10610,9 @@ GER_bundeswehr_category = {
 					value = 20
 				}
 			}
-			add_campaign_slot = yes
+			hidden_effect = {
+				add_to_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 	}
 	GER_plan_of_attack_campaign_decision = {
@@ -10545,7 +10632,11 @@ GER_bundeswehr_category = {
 		}
 		available = {
 			has_war = yes
-			has_campaign_slot = yes
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
 		}
 		ai_will_do = {
 			base = 40
@@ -10553,7 +10644,9 @@ GER_bundeswehr_category = {
 		modifier = {
 		}
 		complete_effect = {
-			remove_campaign_slot = yes
+			hidden_effect = {
+				subtract_from_variable = { var = campaign_slot_var value = 1 }
+			}
 			effect_tooltip = {
 				swap_ideas = {
 					remove_idea = GER_bundeswehr_dummy_idea
@@ -10597,7 +10690,9 @@ GER_bundeswehr_category = {
 					value = 20
 				}
 			}
-			add_campaign_slot = yes
+			hidden_effect = {
+				add_to_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 	}
 	GER_army_education_campaign_decision = {
@@ -10616,7 +10711,11 @@ GER_bundeswehr_category = {
 			}
 		}
 		available = {
-			has_campaign_slot = yes
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
 		}
 		ai_will_do = {
 			base = 50
@@ -10624,7 +10723,9 @@ GER_bundeswehr_category = {
 		modifier = {
 		}
 		complete_effect = {
-			remove_campaign_slot = yes
+			hidden_effect = {
+				subtract_from_variable = { var = campaign_slot_var value = 1 }
+			}
 			effect_tooltip = {
 				swap_ideas = {
 					remove_idea = GER_bundeswehr_dummy_idea
@@ -10668,7 +10769,9 @@ GER_bundeswehr_category = {
 					value = 20
 				}
 			}
-			add_campaign_slot = yes
+			hidden_effect = {
+				add_to_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 	}
 	GER_victory_at_hand_campaign_decision = {
@@ -10688,7 +10791,11 @@ GER_bundeswehr_category = {
 		}
 		available = {
 			has_war = yes
-			has_campaign_slot = yes
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
 			surrender_progress < 0.01
 		}
 		ai_will_do = {
@@ -10697,7 +10804,9 @@ GER_bundeswehr_category = {
 		modifier = {
 		}
 		complete_effect = {
-			remove_campaign_slot = yes
+			hidden_effect = {
+				subtract_from_variable = { var = campaign_slot_var value = 1 }
+			}
 			effect_tooltip = {
 				swap_ideas = {
 					remove_idea = GER_bundeswehr_dummy_idea
@@ -10733,7 +10842,9 @@ GER_bundeswehr_category = {
 					value = 20
 				}
 			}
-			add_campaign_slot = yes
+			hidden_effect = {
+				add_to_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 	}
 	GER_active_army_campaign_decision = {
@@ -10753,7 +10864,11 @@ GER_bundeswehr_category = {
 		}
 		available = {
 			has_war = yes
-			has_campaign_slot = yes
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
 		}
 		ai_will_do = {
 			base = 30
@@ -10767,7 +10882,9 @@ GER_bundeswehr_category = {
 		modifier = {
 		}
 		complete_effect = {
-			remove_campaign_slot = yes
+			hidden_effect = {
+				subtract_from_variable = { var = campaign_slot_var value = 1 }
+			}
 			effect_tooltip = {
 				swap_ideas = {
 					remove_idea = GER_bundeswehr_dummy_idea
@@ -10803,7 +10920,9 @@ GER_bundeswehr_category = {
 					value = 20
 				}
 			}
-			add_campaign_slot = yes
+			hidden_effect = {
+				add_to_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 	}
 	GER_air_land_cooperation_campaign_decision = {
@@ -10830,7 +10949,11 @@ GER_bundeswehr_category = {
 		}
 		available = {
 			has_war = yes
-			has_campaign_slot = yes
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
 		}
 		ai_will_do = {
 			base = 40
@@ -10844,7 +10967,9 @@ GER_bundeswehr_category = {
 		modifier = {
 		}
 		complete_effect = {
-			remove_campaign_slot = yes
+			hidden_effect = {
+				subtract_from_variable = { var = campaign_slot_var value = 1 }
+			}
 			effect_tooltip = {
 				swap_ideas = {
 					remove_idea = GER_bundeswehr_dummy_idea
@@ -10880,7 +11005,9 @@ GER_bundeswehr_category = {
 					value = 20
 				}
 			}
-			add_campaign_slot = yes
+			hidden_effect = {
+				add_to_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 	}
 	GER_stoic_survival_campaign_decision = {
@@ -10904,7 +11031,11 @@ GER_bundeswehr_category = {
 		}
 		available = {
 			has_war = yes
-			has_campaign_slot = yes
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
 		}
 		ai_will_do = {
 			base = 40
@@ -10918,7 +11049,9 @@ GER_bundeswehr_category = {
 		modifier = {
 		}
 		complete_effect = {
-			remove_campaign_slot = yes
+			hidden_effect = {
+				subtract_from_variable = { var = campaign_slot_var value = 1 }
+			}
 			effect_tooltip = {
 				swap_ideas = {
 					remove_idea = GER_bundeswehr_dummy_idea
@@ -10954,7 +11087,9 @@ GER_bundeswehr_category = {
 					value = 20
 				}
 			}
-			add_campaign_slot = yes
+			hidden_effect = {
+				add_to_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 	}
 	GER_reinforced_army_campaign_decision = {
@@ -10981,7 +11116,11 @@ GER_bundeswehr_category = {
 		}
 		available = {
 			has_war = yes
-			has_campaign_slot = yes
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
 		}
 		ai_will_do = {
 			base = 30
@@ -10995,7 +11134,9 @@ GER_bundeswehr_category = {
 		modifier = {
 		}
 		complete_effect = {
-			remove_campaign_slot = yes
+			hidden_effect = {
+				subtract_from_variable = { var = campaign_slot_var value = 1 }
+			}
 			effect_tooltip = {
 				swap_ideas = {
 					remove_idea = GER_bundeswehr_dummy_idea
@@ -11031,7 +11172,9 @@ GER_bundeswehr_category = {
 					value = 20
 				}
 			}
-			add_campaign_slot = yes
+			hidden_effect = {
+				add_to_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 	}
 	GER_patriotic_duty_campaign_descision = {
@@ -11055,7 +11198,11 @@ GER_bundeswehr_category = {
 		}
 		available = {
 			has_war = yes
-			has_campaign_slot = yes
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
 		}
 		ai_will_do = {
 			base = 40
@@ -11069,7 +11216,9 @@ GER_bundeswehr_category = {
 		modifier = {
 		}
 		complete_effect = {
-			remove_campaign_slot = yes
+			hidden_effect = {
+				subtract_from_variable = { var = campaign_slot_var value = 1 }
+			}
 			effect_tooltip = {
 				swap_ideas = {
 					remove_idea = GER_bundeswehr_dummy_idea
@@ -11105,7 +11254,9 @@ GER_bundeswehr_category = {
 					value = 20
 				}
 			}
-			add_campaign_slot = yes
+			hidden_effect = {
+				add_to_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 	}
 	GER_unity_and_strength_campaign_descision = {
@@ -11129,7 +11280,11 @@ GER_bundeswehr_category = {
 		}
 		available = {
 			has_war = yes
-			has_campaign_slot = yes
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
 		}
 		ai_will_do = {
 			base = 40
@@ -11143,7 +11298,9 @@ GER_bundeswehr_category = {
 		modifier = {
 		}
 		complete_effect = {
-			remove_campaign_slot = yes
+			hidden_effect = {
+				subtract_from_variable = { var = campaign_slot_var value = 1 }
+			}
 			effect_tooltip = {
 				swap_ideas = {
 					remove_idea = GER_bundeswehr_dummy_idea
@@ -11179,7 +11336,9 @@ GER_bundeswehr_category = {
 					value = 20
 				}
 			}
-			add_campaign_slot = yes
+			hidden_effect = {
+				add_to_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 	}
 }
@@ -11562,21 +11721,29 @@ GER_socialist_market_economics_cat = {
 			has_completed_focus = GER_revitalize_the_german_consumer_market
 		}
 		available = {
-			has_campaign_slot = yes
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
 		}
 		fire_only_once = no
 		days_remove = 100
 		days_re_enable = 150
 		cost = 75
 		modifier = {
-			low_stability_weekly = 0.03
+			stability_weekly = 0.03
 			war_support_weekly = 0.005
 		}
 		complete_effect = {
-			remove_campaign_slot = yes
+			hidden_effect = {
+				subtract_from_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 		remove_effect = {
-			add_campaign_slot = yes
+			hidden_effect = {
+				add_to_variable = { var = campaign_slot_var value = 1 }
+			}
 			set_temp_variable = {
 				var = poverty_development_var_temp
 				value = 0.2
@@ -11593,7 +11760,11 @@ GER_socialist_market_economics_cat = {
 			has_completed_focus = GER_revitalize_the_german_consumer_market
 		}
 		available = {
-			has_campaign_slot = yes
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
 		}
 		fire_only_once = no
 		days_remove = 100
@@ -11605,10 +11776,14 @@ GER_socialist_market_economics_cat = {
 			poverty_development_monthly = 0.05
 		}
 		complete_effect = {
-			remove_campaign_slot = yes
+			hidden_effect = {
+				subtract_from_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 		remove_effect = {
-			add_campaign_slot = yes
+			hidden_effect = {
+				add_to_variable = { var = campaign_slot_var value = 1 }
+			}
 			set_temp_variable = {
 				var = industrial_development_var_temp
 				value = 0.2
@@ -11625,7 +11800,11 @@ GER_socialist_market_economics_cat = {
 			has_completed_focus = GER_revitalize_the_german_consumer_market
 		}
 		available = {
-			has_campaign_slot = yes
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
 		}
 		fire_only_once = no
 		days_remove = 100
@@ -11635,10 +11814,14 @@ GER_socialist_market_economics_cat = {
 			research_speed_factor = 0.2
 		}
 		complete_effect = {
-			remove_campaign_slot = yes
+			hidden_effect = {
+				subtract_from_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 		remove_effect = {
-			add_campaign_slot = yes
+			hidden_effect = {
+				add_to_variable = { var = campaign_slot_var value = 1 }
+			}
 			set_temp_variable = {
 				var = academic_development_var_temp
 				value = 0.2
@@ -11748,7 +11931,11 @@ GER_five_year_plan_cat = {
 			has_completed_focus = GER_revitalize_german_industry
 		}
 		available = {
-			has_campaign_slot = yes
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
 		}
 		fire_only_once = no
 		days_remove = 100
@@ -11758,7 +11945,9 @@ GER_five_year_plan_cat = {
 			production_speed_buildings_factor = 0.2
 		}
 		complete_effect = {
-			remove_campaign_slot = yes
+			hidden_effect = {
+				subtract_from_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 		remove_effect = {
 			set_temp_variable = {
@@ -11766,7 +11955,9 @@ GER_five_year_plan_cat = {
 				value = 0.05
 			}
 			add_industrial_development = yes
-			add_campaign_slot = yes
+			hidden_effect = {
+				add_to_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 	}
 	GER_military_buildup = {
@@ -11778,7 +11969,11 @@ GER_five_year_plan_cat = {
 			has_completed_focus = GER_revitalize_german_industry
 		}
 		available = {
-			has_campaign_slot = yes
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
 		}
 		fire_only_once = no
 		days_remove = 100
@@ -11789,10 +11984,14 @@ GER_five_year_plan_cat = {
 			industrial_capacity_factory = 0.1
 		}
 		complete_effect = {
-			remove_campaign_slot = yes
+			hidden_effect = {
+				subtract_from_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 		remove_effect = {
-			add_campaign_slot = yes
+			hidden_effect = {
+				add_to_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 	}
 	GER_eliminate_unemployment = {
@@ -11804,7 +12003,11 @@ GER_five_year_plan_cat = {
 			has_completed_focus = GER_revitalize_german_industry
 		}
 		available = {
-			has_campaign_slot = yes
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
 		}
 		fire_only_once = no
 		days_remove = 100
@@ -11814,10 +12017,14 @@ GER_five_year_plan_cat = {
 			consumer_goods_factor = -0.08
 		}
 		complete_effect = {
-			remove_campaign_slot = yes
+			hidden_effect = {
+				subtract_from_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 		remove_effect = {
-			add_campaign_slot = yes
+			hidden_effect = {
+				add_to_variable = { var = campaign_slot_var value = 1 }
+			}
 			set_temp_variable = {
 				var = poverty_development_var_temp
 				value = 0.1
@@ -12396,12 +12603,17 @@ GER_spread_the_revolution_category = {
 						elections_allowed = no
 					}
 					set_popularities = {
-						social_democrat = 20
-						market_liberal = 3
-						communist = 25
-						social_liberal = 7
-						libertarian_socialist = 45
+						democratic = 30
+						communism = 70
+						fascism = 0
+						neutrality = 0
+						nationalist = 0
 					}
+					set_variable = { party_pop_array^2 = 0.1 }
+					set_variable = { party_pop_array^3 = 0.2 }
+					set_variable = { party_pop_array^4 = 0.25 }
+					set_variable = { party_pop_array^5 = 0.45 }
+					recalculate_party = yes
 					retire_character = DEN_margrethe_ii_char
 					retire_character = DEN_frederick_x_char
 				}
@@ -13079,7 +13291,11 @@ GER_auferstanden_aus_ruinen_cat = {
 			has_completed_focus = GER_liquidate_the_capitalist_class
 		}
 		available = {
-			has_campaign_slot = yes
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
 		}
 		ai_will_do = {
 			base = 25
@@ -13095,7 +13311,9 @@ GER_auferstanden_aus_ruinen_cat = {
 			farming_development_monthly = 0.02
 		}
 		complete_effect = {
-			remove_campaign_slot = yes
+			hidden_effect = {
+				subtract_from_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 		remove_effect = {
 			set_temp_variable = {
@@ -13103,7 +13321,9 @@ GER_auferstanden_aus_ruinen_cat = {
 				value = 0.05
 			}
 			GER_add_peoples_chamber_rating = yes
-			add_campaign_slot = yes
+			hidden_effect = {
+				add_to_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 	}
 	GER_radicalize_the_moderates = {
@@ -13122,7 +13342,7 @@ GER_auferstanden_aus_ruinen_cat = {
 			base = 25
 		}
 		modifier = {
-			communist_drift = 0.015
+			communism_drift = 0.015
 			libertarian_socialist_drift = 0.015
 			social_liberal_drift = -0.015
 		}
@@ -13159,10 +13379,10 @@ GER_auferstanden_aus_ruinen_cat = {
 				value = 0.03
 			}
 			GER_add_peoples_chamber_rating = yes
-			add_popularity = {
-				ideology = communist
-				popularity = 0.03
-			}
+			set_temp_variable = { party_index = 4 }
+			set_temp_variable = { party_popularity_increase = 0.03 }
+			set_temp_variable = { temp_outlook_increase = 0.03 }
+			change_relative_party_popularity = yes
 		}
 	}
 	GER_organize_left_wing_paramilitaries = {
@@ -13203,10 +13423,10 @@ GER_auferstanden_aus_ruinen_cat = {
 				value = -0.02
 			}
 			GER_add_peoples_chamber_rating = yes
-			add_popularity = {
-				ideology = libertarian_socialist
-				popularity = 0.05
-			}
+			set_temp_variable = { party_index = 5 }
+			set_temp_variable = { party_popularity_increase = 0.05 }
+			set_temp_variable = { temp_outlook_increase = 0.05 }
+			change_relative_party_popularity = yes
 			add_stability = -0.05
 		}
 	}
@@ -13234,10 +13454,10 @@ GER_auferstanden_aus_ruinen_cat = {
 				value = 0.03
 			}
 			GER_add_peoples_chamber_rating = yes
-			add_popularity = {
-				ideology = libertarian_socialist
-				popularity = 0.025
-			}
+			set_temp_variable = { party_index = 5 }
+			set_temp_variable = { party_popularity_increase = 0.025 }
+			set_temp_variable = { temp_outlook_increase = 0.025 }
+			change_relative_party_popularity = yes
 		}
 	}
 	GER_radicalize_the_unions = {
@@ -13260,22 +13480,22 @@ GER_auferstanden_aus_ruinen_cat = {
 			production_factory_efficiency_gain_factor = -0.1
 		}
 		remove_effect = {
-			add_popularity = {
-				ideology = communist
-				popularity = 0.03
-			}
-			add_popularity = {
-				ideology = libertarian_socialist
-				popularity = 0.03
-			}
-			add_popularity = {
-				ideology = totalitarian_socialist
-				popularity = 0.03
-			}
-			add_popularity = {
-				ideology = social_democrat
-				popularity = 0.01
-			}
+			set_temp_variable = { party_index = 4 }
+			set_temp_variable = { party_popularity_increase = 0.03 }
+			set_temp_variable = { temp_outlook_increase = 0.03 }
+			change_relative_party_popularity = yes
+			set_temp_variable = { party_index = 5 }
+			set_temp_variable = { party_popularity_increase = 0.03 }
+			set_temp_variable = { temp_outlook_increase = 0.03 }
+			change_relative_party_popularity = yes
+			set_temp_variable = { party_index = 4 }
+			set_temp_variable = { party_popularity_increase = 0.03 }
+			set_temp_variable = { temp_outlook_increase = 0.03 }
+			change_relative_party_popularity = yes
+			set_temp_variable = { party_index = 3 }
+			set_temp_variable = { party_popularity_increase = 0.01 }
+			set_temp_variable = { temp_outlook_increase = 0.01 }
+			change_relative_party_popularity = yes
 		}
 	}
 	GER_restore_order_in_saxony = {
@@ -15676,12 +15896,18 @@ GER_war_on_authoritarianism = {
 						election_frequency = 48
 					}
 					set_popularities = {
-						communist = 6
-						social_democrat = 20
-						social_liberal = 46
-						conservative = 18
-						authoritarian_democrat = 10
+						democratic = 94
+						communism = 6
+						fascism = 0
+						neutrality = 0
+						nationalist = 0
 					}
+					set_variable = { party_pop_array^0 = 0.1 }
+					set_variable = { party_pop_array^1 = 0.18 }
+					set_variable = { party_pop_array^2 = 0.46 }
+					set_variable = { party_pop_array^3 = 0.2 }
+					set_variable = { party_pop_array^4 = 0.06 }
+					recalculate_party = yes
 				}
 			}
 		}
@@ -15831,12 +16057,18 @@ GER_war_on_authoritarianism = {
 						election_frequency = 48
 					}
 					set_popularities = {
-						communist = 6
-						social_democrat = 20
-						social_liberal = 46
-						conservative = 18
-						authoritarian_democrat = 10
+						democratic = 94
+						communism = 6
+						fascism = 0
+						neutrality = 0
+						nationalist = 0
 					}
+					set_variable = { party_pop_array^0 = 0.1 }
+					set_variable = { party_pop_array^1 = 0.18 }
+					set_variable = { party_pop_array^2 = 0.46 }
+					set_variable = { party_pop_array^3 = 0.2 }
+					set_variable = { party_pop_array^4 = 0.06 }
+					recalculate_party = yes
 					create_country_leader = {
 						name = PER_maryam_rajavi
 						picture = "Maryam_Rajav.dds"
@@ -15991,12 +16223,18 @@ GER_war_on_authoritarianism = {
 						election_frequency = 48
 					}
 					set_popularities = {
-						communist = 6
-						social_democrat = 36
-						social_liberal = 30
-						conservative = 18
+						democratic = 84
+						communism = 6
+						fascism = 0
+						neutrality = 0
 						nationalist = 10
 					}
+					set_variable = { party_pop_array^1 = 0.18 }
+					set_variable = { party_pop_array^2 = 0.3 }
+					set_variable = { party_pop_array^3 = 0.36 }
+					set_variable = { party_pop_array^4 = 0.06 }
+					set_variable = { party_pop_array^20 = 0.1 }
+					recalculate_party = yes
 					create_country_leader = {
 						name = LBA_fayez_sarraj_char
 						picture = "Fayez al-sarraj.dds"
@@ -16171,9 +16409,9 @@ GER_war_on_authoritarianism = {
 			hidden_trigger = {
 				tag = GER
 				has_completed_focus = GER_uphold_democracy
-				NGA = {
+				NIG = {
 					has_war = yes
-					NOT = { is_ally_with = MLI }
+					NOT = { is_ally_with = MAL }
 				}
 			}
 		}
@@ -16192,17 +16430,17 @@ GER_war_on_authoritarianism = {
 		complete_effect = {
 			add_ai_strategy = {
 				type = support
-				id = "NGA"
+				id = "NIG"
 				value = 900
 			}
 			add_ai_strategy = {
 				type = send_volunteers_desire
-				id = "NGA"
+				id = "NIG"
 				value = 900
 			}
 		}
 		remove_effect = {
-			NGA = {
+			NIG = {
 				add_ideas = GER_nato_intervention_idea
 				add_equipment_to_stockpile = {
 					type = infantry_equipment_2
@@ -16741,7 +16979,11 @@ GER_european_armed_forces_category = {
 		visible = {
 		}
 		available = {
-			has_campaign_slot = yes
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
 		}
 		ai_will_do = {
 			base = 1
@@ -16752,11 +16994,15 @@ GER_european_armed_forces_category = {
 			training_time_factor = -0.15
 		}
 		complete_effect = {
-			remove_campaign_slot = yes
+			hidden_effect = {
+				subtract_from_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 		remove_effect = {
 			army_experience = 50
-			add_campaign_slot = yes
+			hidden_effect = {
+				add_to_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 	}
 	GER_weapons_of_democracy = {
@@ -16769,7 +17015,11 @@ GER_european_armed_forces_category = {
 			original_tag = GER
 		}
 		available = {
-			has_campaign_slot = yes
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
 		}
 		ai_will_do = {
 			base = 1
@@ -16780,14 +17030,18 @@ GER_european_armed_forces_category = {
 			industrial_capacity_factory = 0.05
 		}
 		complete_effect = {
-			remove_campaign_slot = yes
+			hidden_effect = {
+				subtract_from_variable = { var = campaign_slot_var value = 1 }
+			}
 			add_timed_idea = {
 				idea = GER_mass_mechanization
 				days = 175
 			}
 		}
 		remove_effect = {
-			add_campaign_slot = yes
+			hidden_effect = {
+				add_to_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 	}
 	GER_europe_must_defend_itself = {
@@ -16802,7 +17056,11 @@ GER_european_armed_forces_category = {
 			}
 		}
 		available = {
-			has_campaign_slot = yes
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
 		}
 		ai_will_do = {
 			base = 1
@@ -16817,10 +17075,14 @@ GER_european_armed_forces_category = {
 			industrial_capacity_factory = 0.1
 		}
 		complete_effect = {
-			remove_campaign_slot = yes
+			hidden_effect = {
+				subtract_from_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 		remove_effect = {
-			add_campaign_slot = yes
+			hidden_effect = {
+				add_to_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 	}
 	GER_fortress_europa_program = {
@@ -16900,7 +17162,11 @@ GER_european_armed_forces_category = {
 			}
 		}
 		available = {
-			has_campaign_slot = yes
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
 		}
 		ai_will_do = {
 			base = 1
@@ -16918,10 +17184,14 @@ GER_european_armed_forces_category = {
 			air_cas_present_factor = 0.1
 		}
 		complete_effect = {
-			remove_campaign_slot = yes
+			hidden_effect = {
+				subtract_from_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 		remove_effect = {
-			add_campaign_slot = yes
+			hidden_effect = {
+				add_to_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 	}
 }
@@ -17990,7 +18260,11 @@ european_union_category = {
 			}
 		}
 		available = {
-			has_campaign_slot = yes
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
 		}
 		ai_will_do = {
 			base = 1
@@ -18005,10 +18279,14 @@ european_union_category = {
 			weekly_bombing_war_support = 0.1
 		}
 		complete_effect = {
-			remove_campaign_slot = yes
+			hidden_effect = {
+				subtract_from_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 		remove_effect = {
-			add_campaign_slot = yes
+			hidden_effect = {
+				add_to_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 	}
 	GER_think_of_your_future = {
@@ -18023,7 +18301,11 @@ european_union_category = {
 			}
 		}
 		available = {
-			has_campaign_slot = yes
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
 		}
 		ai_will_do = {
 			base = 1
@@ -18040,10 +18322,14 @@ european_union_category = {
 			society_development_monthly = -0.05
 		}
 		complete_effect = {
-			remove_campaign_slot = yes
+			hidden_effect = {
+				subtract_from_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 		remove_effect = {
-			add_campaign_slot = yes
+			hidden_effect = {
+				add_to_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 	}
 	GER_anti_modernist_revolution_pr = {
@@ -18058,7 +18344,11 @@ european_union_category = {
 			}
 		}
 		available = {
-			has_campaign_slot = yes
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
 		}
 		ai_will_do = {
 			base = 1
@@ -18076,10 +18366,14 @@ european_union_category = {
 			society_development_monthly = 0.05
 		}
 		complete_effect = {
-			remove_campaign_slot = yes
+			hidden_effect = {
+				subtract_from_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 		remove_effect = {
-			add_campaign_slot = yes
+			hidden_effect = {
+				add_to_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 	}
 	GER_our_beautiful_liberty = {
@@ -18094,7 +18388,11 @@ european_union_category = {
 			}
 		}
 		available = {
-			has_campaign_slot = yes
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
 		}
 		ai_will_do = {
 			base = 1
@@ -18114,10 +18412,14 @@ european_union_category = {
 			society_development_monthly = 0.05
 		}
 		complete_effect = {
-			remove_campaign_slot = yes
+			hidden_effect = {
+				subtract_from_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 		remove_effect = {
-			add_campaign_slot = yes
+			hidden_effect = {
+				add_to_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 	}
 	GER_intervene_in_spain_eu = {
@@ -19633,7 +19935,11 @@ european_union_category = {
 			}
 		}
 		available = {
-			has_campaign_slot = yes
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
 		}
 		ai_will_do = {
 			base = 30
@@ -19643,7 +19949,9 @@ european_union_category = {
 			academic_development_monthly = 0.01
 		}
 		complete_effect = {
-			remove_campaign_slot = yes
+			hidden_effect = {
+				subtract_from_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 		remove_effect = {
 			set_temp_variable = {
@@ -19651,7 +19959,9 @@ european_union_category = {
 				value = 0.05
 			}
 			GER_add_eu_fed = yes
-			add_campaign_slot = yes
+			hidden_effect = {
+				add_to_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 	}
 	GER_sponsor_volt_europa_decision = {
@@ -19758,10 +20068,10 @@ european_union_category = {
 		remove_effect = {
 			clr_country_flag = GER_supporting_volt_europa
 			FROM = {
-				add_popularity = {
-					ideology = social_liberal
-					popularity = 0.1
-				}
+				set_temp_variable = { party_index = 2 }
+				set_temp_variable = { party_popularity_increase = 0.1 }
+				set_temp_variable = { temp_outlook_increase = 0.1 }
+				change_relative_party_popularity = yes
 			}
 		}
 	}
@@ -20076,7 +20386,7 @@ european_union_category = {
 			has_completed_focus = GER_eu_economic_expansion
 		}
 		available = {
-			MOL = {
+			MLV = {
 				has_opinion = {
 					target = GER
 					value > 65
@@ -20089,7 +20399,7 @@ european_union_category = {
 		complete_effect = {
 		}
 		remove_effect = {
-			MOL = {
+			MLV = {
 				effect_tooltip = {
 					add_ideas = EU_euro_idea1
 				}
@@ -20130,10 +20440,10 @@ GER_turkish_gamble_category = {
 			random_list = {
 				25 = {
 					TUR = {
-						add_popularity = {
-							ideology = authoritarian_democrat
-							popularity = 0.01
-						}
+						set_temp_variable = { party_index = 0 }
+						set_temp_variable = { party_popularity_increase = 0.01 }
+						set_temp_variable = { temp_outlook_increase = 0.01 }
+						change_relative_party_popularity = yes
 					}
 					set_temp_variable = {
 						GER_Turkish_Influence_Temp = -5
@@ -20142,10 +20452,10 @@ GER_turkish_gamble_category = {
 				}
 				25 = {
 					TUR = {
-						add_popularity = {
-							ideology = authoritarian_democrat
-							popularity = 0.02
-						}
+						set_temp_variable = { party_index = 0 }
+						set_temp_variable = { party_popularity_increase = 0.02 }
+						set_temp_variable = { temp_outlook_increase = 0.02 }
+						change_relative_party_popularity = yes
 					}
 					set_temp_variable = {
 						GER_Turkish_Influence_Temp = -10
@@ -20154,10 +20464,10 @@ GER_turkish_gamble_category = {
 				}
 				25 = {
 					TUR = {
-						add_popularity = {
-							ideology = authoritarian_democrat
-							popularity = 0.03
-						}
+						set_temp_variable = { party_index = 0 }
+						set_temp_variable = { party_popularity_increase = 0.03 }
+						set_temp_variable = { temp_outlook_increase = 0.03 }
+						change_relative_party_popularity = yes
 					}
 					set_temp_variable = {
 						GER_Turkish_Influence_Temp = -15
@@ -20166,10 +20476,10 @@ GER_turkish_gamble_category = {
 				}
 				25 = {
 					TUR = {
-						add_popularity = {
-							ideology = authoritarian_democrat
-							popularity = 0.04
-						}
+						set_temp_variable = { party_index = 0 }
+						set_temp_variable = { party_popularity_increase = 0.04 }
+						set_temp_variable = { temp_outlook_increase = 0.04 }
+						change_relative_party_popularity = yes
 					}
 					set_temp_variable = {
 						GER_Turkish_Influence_Temp = -20
@@ -20216,10 +20526,10 @@ GER_turkish_gamble_category = {
 			}
 			GER_add_german_influence = yes
 			TUR = {
-				add_popularity = {
-					ideology = authoritarian_democrat
-					popularity = -0.04
-				}
+				set_temp_variable = { party_index = 0 }
+				set_temp_variable = { party_popularity_increase = -0.04 }
+				set_temp_variable = { temp_outlook_increase = -0.04 }
+				change_relative_party_popularity = yes
 			}
 		}
 	}
@@ -20250,14 +20560,14 @@ GER_turkish_gamble_category = {
 			GER_add_german_influence = yes
 			TUR = {
 				add_stability = -0.02
-				add_popularity = {
-					ideology = social_democrat
-					popularity = 0.02
-				}
-				add_popularity = {
-					ideology = social_liberal
-					popularity = 0.02
-				}
+				set_temp_variable = { party_index = 3 }
+				set_temp_variable = { party_popularity_increase = 0.02 }
+				set_temp_variable = { temp_outlook_increase = 0.02 }
+				change_relative_party_popularity = yes
+				set_temp_variable = { party_index = 2 }
+				set_temp_variable = { party_popularity_increase = 0.02 }
+				set_temp_variable = { temp_outlook_increase = 0.02 }
+				change_relative_party_popularity = yes
 			}
 		}
 	}
@@ -20278,10 +20588,10 @@ GER_turkish_gamble_category = {
 			}
 			GER_add_german_influence = yes
 			TUR = {
-				add_popularity = {
-					ideology = social_democrat
-					popularity = 0.03
-				}
+				set_temp_variable = { party_index = 3 }
+				set_temp_variable = { party_popularity_increase = 0.03 }
+				set_temp_variable = { temp_outlook_increase = 0.03 }
+				change_relative_party_popularity = yes
 			}
 		}
 	}
@@ -20488,7 +20798,11 @@ GER_new_political_sphere_category = {
 			}
 		}
 		available = {
-			has_campaign_slot = yes
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
 		}
 		ai_will_do = {
 			base = 0
@@ -20504,10 +20818,14 @@ GER_new_political_sphere_category = {
 			nationalist_drift = 0.1
 		}
 		complete_effect = {
-			remove_campaign_slot = yes
+			hidden_effect = {
+				subtract_from_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 		remove_effect = {
-			add_campaign_slot = yes
+			hidden_effect = {
+				add_to_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 	}
 	GER_praise_workers_spirit = {
@@ -20522,7 +20840,11 @@ GER_new_political_sphere_category = {
 			}
 		}
 		available = {
-			has_campaign_slot = yes
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
 		}
 		ai_will_do = {
 			base = 1
@@ -20537,10 +20859,14 @@ GER_new_political_sphere_category = {
 			production_factory_efficiency_gain_factor = 0.05
 		}
 		complete_effect = {
-			remove_campaign_slot = yes
+			hidden_effect = {
+				subtract_from_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 		remove_effect = {
-			add_campaign_slot = yes
+			hidden_effect = {
+				add_to_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 	}
 	GER_glorify_hitler_reign = {
@@ -20555,7 +20881,11 @@ GER_new_political_sphere_category = {
 			}
 		}
 		available = {
-			has_campaign_slot = yes
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
 		}
 		ai_will_do = {
 			base = 1
@@ -20570,10 +20900,14 @@ GER_new_political_sphere_category = {
 			production_factory_efficiency_gain_factor = 0.05
 		}
 		complete_effect = {
-			remove_campaign_slot = yes
+			hidden_effect = {
+				subtract_from_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 		remove_effect = {
-			add_campaign_slot = yes
+			hidden_effect = {
+				add_to_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 	}
 	GER_onwards_to_greatness = {
@@ -20588,7 +20922,11 @@ GER_new_political_sphere_category = {
 			}
 		}
 		available = {
-			has_campaign_slot = yes
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
 		}
 		ai_will_do = {
 			base = 1
@@ -20604,10 +20942,14 @@ GER_new_political_sphere_category = {
 			stability_weekly = -0.005
 		}
 		complete_effect = {
-			remove_campaign_slot = yes
+			hidden_effect = {
+				subtract_from_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 		remove_effect = {
-			add_campaign_slot = yes
+			hidden_effect = {
+				add_to_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 	}
 	GER_tolerance_was_their_undoing = {
@@ -20622,7 +20964,11 @@ GER_new_political_sphere_category = {
 			}
 		}
 		available = {
-			has_campaign_slot = yes
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
 		}
 		ai_will_do = {
 			base = 1
@@ -20637,10 +20983,14 @@ GER_new_political_sphere_category = {
 			society_development_monthly = 0.025
 		}
 		complete_effect = {
-			remove_campaign_slot = yes
+			hidden_effect = {
+				subtract_from_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 		remove_effect = {
-			add_campaign_slot = yes
+			hidden_effect = {
+				add_to_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 	}
 	GER_why_they_fought = {
@@ -20655,7 +21005,11 @@ GER_new_political_sphere_category = {
 			}
 		}
 		available = {
-			has_campaign_slot = yes
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
 		}
 		ai_will_do = {
 			base = 1
@@ -20670,10 +21024,14 @@ GER_new_political_sphere_category = {
 			stability_weekly = 0.005
 		}
 		complete_effect = {
-			remove_campaign_slot = yes
+			hidden_effect = {
+				subtract_from_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 		remove_effect = {
-			add_campaign_slot = yes
+			hidden_effect = {
+				add_to_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 	}
 	GER_are_we_next = {
@@ -20688,7 +21046,11 @@ GER_new_political_sphere_category = {
 			}
 		}
 		available = {
-			has_campaign_slot = yes
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
 		}
 		ai_will_do = {
 			base = 1
@@ -20703,10 +21065,14 @@ GER_new_political_sphere_category = {
 			society_development_monthly = 0.025
 		}
 		complete_effect = {
-			remove_campaign_slot = yes
+			hidden_effect = {
+				subtract_from_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 		remove_effect = {
-			add_campaign_slot = yes
+			hidden_effect = {
+				add_to_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 	}
 	GER_allow_heinrich_field_command = {
@@ -21172,7 +21538,7 @@ GER_new_political_sphere_category = {
 		days_remove = 15
 		cost = 10
 		modifier = {
-			fascist_drift = 0.25
+			fascism_drift = 0.25
 		}
 		complete_effect = {
 			add_days_mission_timeout = {
@@ -21197,7 +21563,7 @@ GER_new_political_sphere_category = {
 		fire_only_once = yes
 		cost = 25
 		#modifier = {
-		#	fascist_drift = 0.25
+		#	fascism_drift = 0.25
 		#}
 		complete_effect = {
 			country_event = {
@@ -21389,7 +21755,7 @@ GER_new_political_sphere_category = {
 		fire_only_once = no
 		cost = 25
 		modifier = {
-			fascist_drift = 0.01
+			fascism_drift = 0.01
 		}
 		remove_effect = {
 			add_war_support = 0.02
@@ -21418,7 +21784,7 @@ GER_new_political_sphere_category = {
 		fire_only_once = yes
 		cost = 25
 		modifier = {
-			fascist_drift = 0.01
+			fascism_drift = 0.01
 			national_socialist_drift = 0.01
 		}
 		remove_effect = {
@@ -21451,9 +21817,9 @@ GER_new_political_sphere_category = {
 		fire_only_once = yes
 		cost = 100
 		modifier = {
-			tax_business_rate_factor = 0.5
+			corporate_tax_income_multiplier_modifier = 0.5
 			tax_gain_multiplier_modifier = 0.25
-			interest_rate_factor = -0.15
+			interest_rate_multiplier_modifier = -0.15
 			misc_income = 0.1
 			stability_weekly = -0.001
 		}
@@ -21481,7 +21847,7 @@ GER_new_political_sphere_category = {
 		fire_only_once = yes
 		cost = 50
 		modifier = {
-			fascist_drift = 0.015
+			fascism_drift = 0.015
 		}
 		remove_effect = {
 			add_country_leader_trait = trait_dictator
@@ -21503,7 +21869,7 @@ GER_new_political_sphere_category = {
 		fire_only_once = yes
 		cost = 100
 		modifier = {
-			fascist_drift = 0.02
+			fascism_drift = 0.02
 		}
 		remove_effect = {
 			add_ideas = GER_centralized_state_idea
@@ -21527,7 +21893,7 @@ GER_new_political_sphere_category = {
 		modifier = {
 			weekly_manpower = 200
 			conscription_factor = 0.025
-			fascist_drift = 0.01
+			fascism_drift = 0.01
 		}
 		remove_effect = {
 			add_ideas = GER_junge_nationalisten_idea
@@ -21556,7 +21922,7 @@ GER_new_political_sphere_category = {
 		}
 		modifier = {
 			weekly_manpower = -300
-			fascist_drift = 0.01
+			fascism_drift = 0.01
 			stability_weekly = 0.002
 		}
 		complete_effect = {
@@ -21595,10 +21961,10 @@ GER_new_political_sphere_category = {
 			set_country_flag = GER_afd_radicals_flag
 			custom_effect_tooltip = unlock_for_minister_tooltip
 			show_ideas_tooltip = GER_bjorn_hocke_for
-			add_popularity = {
-				ideology = fascist
-				popularity = 0.045
-			}
+			set_temp_variable = { party_index = 10 }
+			set_temp_variable = { party_popularity_increase = 0.045 }
+			set_temp_variable = { temp_outlook_increase = 0.045 }
+			change_relative_party_popularity = yes
 		}
 		days_remove = 30
 	}
@@ -21617,7 +21983,7 @@ GER_new_political_sphere_category = {
 		fire_only_once = yes
 		cost = 100
 		modifier = {
-			fascist_drift = 0.025
+			fascism_drift = 0.025
 			national_socialist_drift = 0.02
 			weekly_manpower = -100
 		}
@@ -21666,7 +22032,11 @@ GER_ministry_of_propaganda = {
 			}
 		}
 		available = {
-			has_campaign_slot = yes
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
 		}
 		ai_will_do = {
 			base = 1
@@ -21683,10 +22053,14 @@ GER_ministry_of_propaganda = {
 			military_development_monthly = 0.01
 		}
 		complete_effect = {
-			remove_campaign_slot = yes
+			hidden_effect = {
+				subtract_from_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 		remove_effect = {
-			add_campaign_slot = yes
+			hidden_effect = {
+				add_to_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 	}
 	GER_destroy_their_conspiracy = {
@@ -21701,7 +22075,11 @@ GER_ministry_of_propaganda = {
 			}
 		}
 		available = {
-			has_campaign_slot = yes
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
 		}
 		ai_will_do = {
 			base = 1
@@ -21716,10 +22094,14 @@ GER_ministry_of_propaganda = {
 			society_development_monthly = 0.01
 		}
 		complete_effect = {
-			remove_campaign_slot = yes
+			hidden_effect = {
+				subtract_from_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 		remove_effect = {
-			add_campaign_slot = yes
+			hidden_effect = {
+				add_to_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 	}
 	GER_towards_ideal_man = {
@@ -21734,7 +22116,11 @@ GER_ministry_of_propaganda = {
 			}
 		}
 		available = {
-			has_campaign_slot = yes
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
 		}
 		ai_will_do = {
 			base = 1
@@ -21750,10 +22136,14 @@ GER_ministry_of_propaganda = {
 			military_development_monthly = 0.01
 		}
 		complete_effect = {
-			remove_campaign_slot = yes
+			hidden_effect = {
+				subtract_from_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 		remove_effect = {
-			add_campaign_slot = yes
+			hidden_effect = {
+				add_to_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 	}
 	GER_the_great_inheritor = {
@@ -21768,7 +22158,11 @@ GER_ministry_of_propaganda = {
 			}
 		}
 		available = {
-			has_campaign_slot = yes
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
 		}
 		ai_will_do = {
 			base = 1
@@ -21783,10 +22177,14 @@ GER_ministry_of_propaganda = {
 			war_support_factor = 0.1
 		}
 		complete_effect = {
-			remove_campaign_slot = yes
+			hidden_effect = {
+				subtract_from_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 		remove_effect = {
-			add_campaign_slot = yes
+			hidden_effect = {
+				add_to_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 	}
 }
@@ -21801,7 +22199,11 @@ GER_national_economy_category = {
 			has_completed_focus = GER_award_the_workers
 		}
 		available = {
-			has_campaign_slot = yes
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
 		}
 		ai_will_do = {
 			base = 50
@@ -21817,10 +22219,14 @@ GER_national_economy_category = {
 			base = 1
 		}
 		complete_effect = {
-			remove_campaign_slot = yes
+			hidden_effect = {
+				subtract_from_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 		remove_effect = {
-			add_campaign_slot = yes
+			hidden_effect = {
+				add_to_variable = { var = campaign_slot_var value = 1 }
+			}
 			if = {
 				limit = {
 					NOT = {
@@ -21841,7 +22247,11 @@ GER_national_economy_category = {
 			has_completed_focus = GER_award_the_workers
 		}
 		available = {
-			has_campaign_slot = yes
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
 		}
 		ai_will_do = {
 			base = 50
@@ -21868,7 +22278,11 @@ GER_national_economy_category = {
 			has_completed_focus = GER_award_the_workers
 		}
 		available = {
-			has_campaign_slot = yes
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
 		}
 		ai_will_do = {
 			base = 50
@@ -21883,8 +22297,8 @@ GER_national_economy_category = {
 		custom_cost_text = dx_more_than_35B
 		modifier = {
 			misc_expense = 45
-			inflation_monthly_factor = 1
-			interest_rate_factor = -0.15
+			inflation_cost_multiplier_modifier = 0
+			interest_rate_multiplier_modifier = -0.15
 			production_factory_efficiency_gain_factor = 0.1
 			production_factory_max_efficiency_factor = 0.1
 			industrial_capacity_factory = 0.15
@@ -21912,7 +22326,11 @@ GER_national_economy_category = {
 			has_completed_focus = GER_suffocate_russia
 		}
 		available = {
-			has_campaign_slot = yes
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
 			any_state = {
 				is_core_of = SOV
 				NOT = {
@@ -22513,10 +22931,14 @@ GER_second_NATO_war_category = {
 			factor = 5
 		}
 		complete_effect = {
-			remove_campaign_slot = yes
+			hidden_effect = {
+				subtract_from_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 		remove_effect = {
-			add_campaign_slot = yes
+			hidden_effect = {
+				add_to_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 	}
 	GER_women_in_the_workforce = {
@@ -22922,7 +23344,11 @@ GER_second_NATO_war_category = {
 			has_completed_focus = GER_scratch_a_liberal
 		}
 		available = {
-			has_campaign_slot = yes
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
 		}
 		fire_only_once = no
 		days_remove = 70
@@ -22932,10 +23358,14 @@ GER_second_NATO_war_category = {
 			industrial_capacity_factory = 0.35
 		}
 		complete_effect = {
-			remove_campaign_slot = yes
+			hidden_effect = {
+				subtract_from_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 		remove_effect = {
-			add_campaign_slot = yes
+			hidden_effect = {
+				add_to_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 	}
 	GER_unsere_panzer_division = {
@@ -22947,7 +23377,11 @@ GER_second_NATO_war_category = {
 			has_completed_focus = GER_scratch_a_liberal
 		}
 		available = {
-			has_campaign_slot = yes
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
 		}
 		fire_only_once = no
 		days_remove = 30
@@ -22957,10 +23391,14 @@ GER_second_NATO_war_category = {
 			land_reinforce_rate = 0.2
 		}
 		complete_effect = {
-			remove_campaign_slot = yes
+			hidden_effect = {
+				subtract_from_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 		remove_effect = {
-			add_campaign_slot = yes
+			hidden_effect = {
+				add_to_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 	}
 	GER_cult_of_speed_decision = {
@@ -22975,7 +23413,11 @@ GER_second_NATO_war_category = {
 			}
 		}
 		available = {
-			has_campaign_slot = yes
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
 		}
 		ai_will_do = {
 			base = 1
@@ -22988,10 +23430,14 @@ GER_second_NATO_war_category = {
 			army_speed_factor = 0.1
 		}
 		complete_effect = {
-			remove_campaign_slot = yes
+			hidden_effect = {
+				subtract_from_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 		remove_effect = {
-			add_campaign_slot = yes
+			hidden_effect = {
+				add_to_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 	}
 	GER_launch_strike_power_grids = {
@@ -23171,45 +23617,45 @@ GER_second_NATO_war_category = {
 						division_names_group = GER_INF_02
 						override_model = GER_day_x_militia_entity
 						regiments = {
-							motorized = {
+							Mot_Inf_Bat = {
 								x = 0
 								y = 0
 							}
-							motorized = {
+							Mot_Inf_Bat = {
 								x = 0
 								y = 1
 							}
-							motorized = {
+							Mot_Inf_Bat = {
 								x = 1
 								y = 0
 							}
-							motorized = {
+							Mot_Inf_Bat = {
 								x = 1
 								y = 1
 							}
-							motorized = {
+							Mot_Inf_Bat = {
 								x = 2
 								y = 0
 							}
-							motorized = {
+							Mot_Inf_Bat = {
 								x = 2
 								y = 1
 							}
-							artillery_brigade = {
+							Arty_Bat = {
 								x = 3
 								y = 0
 							}
-							artillery_brigade = {
+							Arty_Bat = {
 								x = 3
 								y = 1
 							}
 						}
 						support = {
-							engineer = {
+							L_Engi_Comp = {
 								x = 0
 								y = 0
 							}
-							artillery = {
+							Arty_Bat = {
 								x = 0
 								y = 1
 							}
@@ -23237,45 +23683,45 @@ GER_second_NATO_war_category = {
 						division_names_group = GER_INF_02
 						override_model = DDR_militia_2_entity
 						regiments = {
-							motorized = {
+							Mot_Inf_Bat = {
 								x = 0
 								y = 0
 							}
-							motorized = {
+							Mot_Inf_Bat = {
 								x = 0
 								y = 1
 							}
-							motorized = {
+							Mot_Inf_Bat = {
 								x = 1
 								y = 0
 							}
-							motorized = {
+							Mot_Inf_Bat = {
 								x = 1
 								y = 1
 							}
-							motorized = {
+							Mot_Inf_Bat = {
 								x = 2
 								y = 0
 							}
-							motorized = {
+							Mot_Inf_Bat = {
 								x = 2
 								y = 1
 							}
-							artillery_brigade = {
+							Arty_Bat = {
 								x = 3
 								y = 0
 							}
-							artillery_brigade = {
+							Arty_Bat = {
 								x = 3
 								y = 1
 							}
 						}
 						support = {
-							engineer = {
+							L_Engi_Comp = {
 								x = 0
 								y = 0
 							}
-							artillery = {
+							Arty_Bat = {
 								x = 0
 								y = 1
 							}
@@ -23451,7 +23897,11 @@ GER_second_NATO_war_category = {
 			}
 		}
 		available = {
-			has_campaign_slot = yes
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
 		}
 		ai_will_do = {
 			base = 1
@@ -24252,7 +24702,11 @@ GER_lacc_cat = {
 		visible = {
 		}
 		available = {
-			has_campaign_slot = yes
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
 		}
 		ai_will_do = {
 			base = 10
@@ -24265,10 +24719,14 @@ GER_lacc_cat = {
 			research_speed_factor = 0.1
 		}
 		complete_effect = {
-			remove_campaign_slot = yes
+			hidden_effect = {
+				subtract_from_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 		remove_effect = {
-			add_campaign_slot = yes
+			hidden_effect = {
+				add_to_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 	}
 	GER_rehabilitate_society_campaign_decision = {
@@ -24283,7 +24741,11 @@ GER_lacc_cat = {
 			has_completed_focus = GER_exiting_the_vampire_castle
 		}
 		available = {
-			has_campaign_slot = yes
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
 		}
 		ai_will_do = {
 			base = 10
@@ -24294,13 +24756,17 @@ GER_lacc_cat = {
 			personal_value_factor = 0.2
 			production_factory_efficiency_gain_factor = 0.15
 			production_speed_nuclear_reactor_factor = 0.2
-			production_speed_office_park_factor = 0.2
+			production_speed_offices_factor = 0.2
 		}
 		complete_effect = {
-			remove_campaign_slot = yes
+			hidden_effect = {
+				subtract_from_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 		remove_effect = {
-			add_campaign_slot = yes
+			hidden_effect = {
+				add_to_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 	}
 	GER_accelerate_into_a_brighter_future_campaign_decision = {
@@ -24315,7 +24781,11 @@ GER_lacc_cat = {
 			has_completed_focus = GER_accelerate_into_a_brighter_future
 		}
 		available = {
-			has_campaign_slot = yes
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
 		}
 		ai_will_do = {
 			base = 10
@@ -24329,10 +24799,14 @@ GER_lacc_cat = {
 			academic_development_monthly = 0.05
 		}
 		complete_effect = {
-			remove_campaign_slot = yes
+			hidden_effect = {
+				subtract_from_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 		remove_effect = {
-			add_campaign_slot = yes
+			hidden_effect = {
+				add_to_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 	}
 	
@@ -24490,7 +24964,11 @@ GER_spartanist_cat = {
 		visible = {
 		}
 		available = {
-			has_campaign_slot = yes
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
 		}
 		ai_will_do = {
 			base = 25
@@ -24505,10 +24983,14 @@ GER_spartanist_cat = {
 		}
 		complete_effect = {
 			GER_strengthen_juche = yes
-			remove_campaign_slot = yes
+			hidden_effect = {
+				subtract_from_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 		remove_effect = {
-			add_campaign_slot = yes
+			hidden_effect = {
+				add_to_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 	}
 	GER_spartanist_unity_of_history_campaign_decision = {
@@ -24522,7 +25004,11 @@ GER_spartanist_cat = {
 		visible = {
 		}
 		available = {
-			has_campaign_slot = yes
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
 		}
 		ai_will_do = {
 			base = 25
@@ -24535,15 +25021,19 @@ GER_spartanist_cat = {
 			academic_development_monthly = 0.01
 			totalitarian_socialist_drift = 0.05
 			nationalist_drift = 0.05
-			fascist_drift = 0.05
+			fascism_drift = 0.05
 			national_socialist_drift = 0.1
 		}
 		complete_effect = {
 			GER_strengthen_querfront = yes
-			remove_campaign_slot = yes
+			hidden_effect = {
+				subtract_from_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 		remove_effect = {
-			add_campaign_slot = yes
+			hidden_effect = {
+				add_to_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 	}
 	GER_spartanist_pride_campaign_decision = {
@@ -24558,7 +25048,11 @@ GER_spartanist_cat = {
 			has_completed_focus = GER_old_guard_new_revolution
 		}
 		available = {
-			has_campaign_slot = yes
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
 		}
 		ai_will_do = {
 			base = 10
@@ -24569,14 +25063,18 @@ GER_spartanist_cat = {
 			army_org_factor = 0.1
 			army_speed_factor = 0.1
 			nationalist_drift = 0.03
-			fascist_drift = 0.05
+			fascism_drift = 0.05
 			national_socialist_drift = 0.08
 		}
 		complete_effect = {
-			remove_campaign_slot = yes
+			hidden_effect = {
+				subtract_from_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 		remove_effect = {
-			add_campaign_slot = yes
+			hidden_effect = {
+				add_to_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 	}
 	GER_strengthen_raf_romanticism = {
@@ -25232,7 +25730,11 @@ GER_agenda_2040_cat = {
 			hidden_trigger = { has_completed_focus = GER_architecture_of_post_modernity }
 		}
 		available = {
-			has_campaign_slot = yes
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
 		}
 		ai_will_do = {
 			base = 10
@@ -25240,17 +25742,21 @@ GER_agenda_2040_cat = {
 		modifier = {
 			authoritarian_democrat_drift = 0.1
 			political_power_cost = -0.15
-			production_speed_energy_farm_factor = 0.15
+			production_speed_renewable_energy_infra_factor = 0.15
 			production_speed_buildings_factor = 0.15
 			industrial_development_monthly = 0.03
 			war_support_factor = 0.1
 		}
 		complete_effect = {
-			remove_campaign_slot = yes
+			hidden_effect = {
+				subtract_from_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 		remove_effect = {
 			add_war_support = 0.05
-			add_campaign_slot = yes
+			hidden_effect = {
+				add_to_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 	}
 	GER_consume_ze_product_campaign_decision = {
@@ -25265,7 +25771,11 @@ GER_agenda_2040_cat = {
 			hidden_trigger = { has_completed_focus = GER_the_new_surplus_value }
 		}
 		available = {
-			has_campaign_slot = yes
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
 		}
 		ai_will_do = {
 			base = 10
@@ -25274,15 +25784,19 @@ GER_agenda_2040_cat = {
 			authoritarian_democrat_drift = 0.1
 			tax_gain_multiplier_modifier = 0.2
 			business_value_factor = 0.2
-			production_speed_office_park_factor = 0.25
+			production_speed_offices_factor = 0.25
 			production_speed_industrial_complex_factor = 0.25
 			stability_factor = 0.1
 		}
 		complete_effect = {
-			remove_campaign_slot = yes
+			hidden_effect = {
+				subtract_from_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 		remove_effect = {
-			add_campaign_slot = yes
+			hidden_effect = {
+				add_to_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 	}
 	GER_new_human_concept_campaign_decision = {
@@ -25297,7 +25811,11 @@ GER_agenda_2040_cat = {
 			hidden_trigger = { has_completed_focus = GER_new_human_concept }
 		}
 		available = {
-			has_campaign_slot = yes
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
 		}
 		ai_will_do = {
 			base = 10
@@ -25309,12 +25827,16 @@ GER_agenda_2040_cat = {
 			society_development_monthly = 0.03
 		}
 		complete_effect = {
-			remove_campaign_slot = yes
+			hidden_effect = {
+				subtract_from_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 		remove_effect = {
 			increase_female = yes
 			increase_race = yes
-			add_campaign_slot = yes
+			hidden_effect = {
+				add_to_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 	}
 	GER_erase_benelux_identity = {
@@ -25679,7 +26201,7 @@ GER_agenda_2040_cat = {
 						is_core_of = EST
 						is_core_of = BLR
 						is_core_of = UKR
-						is_core_of = MOL
+						is_core_of = MLV
 						is_core_of = TRA
 						is_core_of = PLD
 						is_core_of = SLO
@@ -25691,7 +26213,7 @@ GER_agenda_2040_cat = {
 				remove_core_of = EST
 				remove_core_of = BLR
 				remove_core_of = UKR
-				remove_core_of = MOL
+				remove_core_of = MLV
 				remove_core_of = TRA
 				remove_core_of = PLD
 				remove_core_of = SLO
@@ -25748,14 +26270,14 @@ GER_gunthers_twitter_cat = {
 				}
 				every_country = {
 					limit = {
-						has_war_with = PRC
+						has_war_with = CHI
 					}
 					dismantle_faction = yes
 					leave_faction = yes
 					GER = {
 						add_to_faction = PREV
 						declare_war_on = {
-							target = PRC
+							target = CHI
 							type = annex_everything
 						}
 					}
@@ -25767,7 +26289,7 @@ GER_gunthers_twitter_cat = {
 				}
 				GER = {
 					declare_war_on = {
-						target = PRC
+						target = CHI
 						type = annex_everything
 					}
 				}
@@ -25786,7 +26308,11 @@ GER_gunthers_twitter_cat = {
 			hidden_trigger = { has_completed_focus = GER_spread_our_message }
 		}
 		available = {
-			has_campaign_slot = yes
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
 		}
 		ai_will_do = {
 			base = 10
@@ -25798,10 +26324,14 @@ GER_gunthers_twitter_cat = {
 			experience_gain_army_factor = 0.15
 		}
 		complete_effect = {
-			remove_campaign_slot = yes
+			hidden_effect = {
+				subtract_from_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 		remove_effect = {
-			add_campaign_slot = yes
+			hidden_effect = {
+				add_to_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 	}
 	GER_the_message_of_freedom_campaign_decision = {
@@ -25816,7 +26346,11 @@ GER_gunthers_twitter_cat = {
 			hidden_trigger = { has_completed_focus = GER_spread_our_message }
 		}
 		available = {
-			has_campaign_slot = yes
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
 		}
 		ai_will_do = {
 			base = 10
@@ -25829,10 +26363,14 @@ GER_gunthers_twitter_cat = {
 			society_development_monthly = 0.04
 		}
 		complete_effect = {
-			remove_campaign_slot = yes
+			hidden_effect = {
+				subtract_from_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 		remove_effect = {
-			add_campaign_slot = yes
+			hidden_effect = {
+				add_to_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 	}
 	GER_take_down_the_bear_campaign_decision = {
@@ -25847,7 +26385,11 @@ GER_gunthers_twitter_cat = {
 			hidden_trigger = { has_completed_focus = GER_focus_on_the_home_front }
 		}
 		available = {
-			has_campaign_slot = yes
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
 		}
 		ai_will_do = {
 			base = 10
@@ -25859,10 +26401,14 @@ GER_gunthers_twitter_cat = {
 			org_loss_when_moving = -0.15
 		}
 		complete_effect = {
-			remove_campaign_slot = yes
+			hidden_effect = {
+				subtract_from_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 		remove_effect = {
-			add_campaign_slot = yes
+			hidden_effect = {
+				add_to_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 	}
 	GER_mobilize_european_forces_campaign_decision = {
@@ -25877,7 +26423,11 @@ GER_gunthers_twitter_cat = {
 			hidden_trigger = { has_completed_focus = GER_focus_on_the_home_front }
 		}
 		available = {
-			has_campaign_slot = yes
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
 		}
 		ai_will_do = {
 			base = 10
@@ -25889,10 +26439,14 @@ GER_gunthers_twitter_cat = {
 			conscription_factor = 0.15
 		}
 		complete_effect = {
-			remove_campaign_slot = yes
+			hidden_effect = {
+				subtract_from_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 		remove_effect = {
-			add_campaign_slot = yes
+			hidden_effect = {
+				add_to_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 	}
 	GER_social_media_takeover_decision = {
@@ -25907,7 +26461,11 @@ GER_gunthers_twitter_cat = {
 			hidden_trigger = { has_completed_focus = GER_all_out_information_assault }
 		}
 		available = {
-			has_campaign_slot = yes
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
 		}
 		ai_will_do = {
 			base = 10
@@ -25920,10 +26478,14 @@ GER_gunthers_twitter_cat = {
 			weekly_casualties_war_support = 0.005
 		}
 		complete_effect = {
-			remove_campaign_slot = yes
+			hidden_effect = {
+				subtract_from_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 		remove_effect = {
-			add_campaign_slot = yes
+			hidden_effect = {
+				add_to_variable = { var = campaign_slot_var value = 1 }
+			}
 		}
 	}
 	GER_expand_the_fehlinger_initiative = {
@@ -25946,7 +26508,7 @@ GER_gunthers_twitter_cat = {
 			FROM = {
 				OR = {
 					is_ally_with = SOV
-					is_ally_with = PRC
+					is_ally_with = CHI
 				}
 			}
 		}
@@ -25960,10 +26522,10 @@ GER_gunthers_twitter_cat = {
 					idea = GER_fehlinger_initiative_abroad_idea
 					days = 365
 				}
-				add_popularity = {
-					ideology = social_liberal
-					popularity = 0.05
-				}
+				set_temp_variable = { party_index = 2 }
+				set_temp_variable = { party_popularity_increase = 0.05 }
+				set_temp_variable = { temp_outlook_increase = 0.05 }
+				change_relative_party_popularity = yes
 				add_stability = -0.05
 				add_war_support = -0.05
 			}
@@ -27698,9 +28260,15 @@ PROXY_maghreb_war_cat = {
 						elections_allowed = yes
 					}
 					set_popularities = {
-						authoritarian_democrat = 65
+						democratic = 65
+						communism = 0
+						fascism = 0
+						neutrality = 0
 						nationalist = 35
 					}
+					set_variable = { party_pop_array^0 = 0.65 }
+					set_variable = { party_pop_array^20 = 0.35 }
+					recalculate_party = yes
 					create_country_leader = {
 						name = TUN_Mohamed_El_Ghoul_char
 						picture = "gfx/leaders/MOR/Mohamed El Ghoul.png"
@@ -27736,10 +28304,16 @@ PROXY_maghreb_war_cat = {
 					elections_allowed = yes
 				}
 				set_popularities = {
-					social_democrat = 51
-					authoritarian_democrat = 35
+					democratic = 86
+					communism = 0
+					fascism = 0
+					neutrality = 0
 					nationalist = 14
 				}
+				set_variable = { party_pop_array^0 = 0.35 }
+				set_variable = { party_pop_array^3 = 0.51 }
+				set_variable = { party_pop_array^20 = 0.14 }
+				recalculate_party = yes
 				create_country_leader = {
 					name = RIF_nasser_zezfaki
 					picture = "gfx/leaders/ALG/RIF_nasser_zezfaki.png"
@@ -27766,10 +28340,16 @@ PROXY_maghreb_war_cat = {
 						elections_allowed = yes
 					}
 					set_popularities = {
-						authoritarian_democrat = 40
-						social_democrat = 30
+						democratic = 70
+						communism = 0
+						fascism = 0
+						neutrality = 0
 						nationalist = 30
 					}
+					set_variable = { party_pop_array^0 = 0.4 }
+					set_variable = { party_pop_array^3 = 0.3 }
+					set_variable = { party_pop_array^20 = 0.3 }
+					recalculate_party = yes
 					create_country_leader = {
 						name = MOR_ahmed_assid
 						picture = "gfx/leaders/MOR/MOR_ahmed_assid.png"
@@ -27827,9 +28407,15 @@ PROXY_maghreb_war_cat = {
 						elections_allowed = no
 					}
 					set_popularities = {
+						democratic = 15
+						communism = 0
+						fascism = 0
+						neutrality = 0
 						nationalist = 85
-						authoritarian_democrat = 15
 					}
+					set_variable = { party_pop_array^0 = 0.15 }
+					set_variable = { party_pop_array^20 = 0.85 }
+					recalculate_party = yes
 					create_country_leader = {
 						name = MOR_Mohammed_Berrid
 						picture = "gfx/leaders/MOR/MOR_mohamed_berrid.png"
@@ -27847,9 +28433,15 @@ PROXY_maghreb_war_cat = {
 					elections_allowed = no
 				}
 				set_popularities = {
+					democratic = 30
+					communism = 0
+					fascism = 0
+					neutrality = 0
 					nationalist = 70
-					authoritarian_democrat = 30
 				}
+				set_variable = { party_pop_array^0 = 0.3 }
+				set_variable = { party_pop_array^20 = 0.7 }
+				recalculate_party = yes
 				create_country_leader = {
 					name = KAB_ferhat_mehenni
 					picture = "gfx/leaders/MOR/KAB_ferhat_mehenni.png"
@@ -28270,7 +28862,7 @@ debug_decisions = {
 		}
 		complete_effect = {
 			country_event = {
-				id = germany.11
+				id = tfr_germany.11
 			}
 			country_event = {
 				id = germany.206

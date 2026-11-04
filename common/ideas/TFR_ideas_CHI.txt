@@ -1020,5 +1020,27 @@
 
 				}
 			}
+			# 烈焰升腾原版 PRC_kim_jong_un：原为 interior_minister 内阁槽 + traits 体系
+			# 千禧黎明无 interior_minister 类别（error.log 报 unknown category）且 idea 无 traits 字段，
+			# 故等价改造为 country 国家精神，traits 的两个修饰合并为一个 modifier
+			PRC_kim_jong_un = {
+				picture = Kim_Jong_Un
+
+				allowed = {
+					original_tag = CHI
+				}
+
+				visible = {
+					has_country_flag = PRC_kim_survived
+				}
+
+				modifier = {
+					political_power_gain = -0.23
+					local_resources_factor = 0.16
+					stability_factor = 0.04
+					production_speed_arms_factory_factor = 0.08
+					production_speed_dockyard_factor = 0.08
+				}
+			}
 		}
 	}

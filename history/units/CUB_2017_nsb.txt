@@ -1,0 +1,432 @@
+division_template = {
+	name = "Armored Division"
+
+	regiments = {
+		armor_Bat = { x = 0 y = 0 }
+		Mech_Inf_Bat = { x = 0 y = 1 }
+		Arm_Inf_Bat = { x = 0 y = 2 }
+
+		armor_Bat = { x = 1 y = 0 }
+		Mech_Inf_Bat = { x = 1 y = 1 }
+		Arm_Inf_Bat = { x = 1 y = 2 }
+
+		armor_Bat = { x = 2 y = 0 }
+		Arm_Inf_Bat = { x = 2 y = 1 }
+
+	}
+	support = {
+		L_Engi_Comp = { x = 0 y = 0 }
+		Arty_Battery = { x = 0 y = 1 }
+	}
+}
+division_template = {
+	name = "Mechanized Infantry Division"
+
+	regiments = {
+		armor_Bat = { x = 0 y = 0 }
+		Mech_Inf_Bat = { x = 0 y = 1 }
+
+		Arty_Bat = { x = 1 y = 0 }
+		Mech_Inf_Bat = { x = 1 y = 1 }
+
+		SP_AA_Bat = { x = 2 y = 0 }
+		Mech_Inf_Bat = { x = 2 y = 1 }
+
+	}
+	support = {
+		L_Engi_Comp = { x = 0 y = 0 }
+		Arty_Battery = { x = 0 y = 1 }
+	}
+}
+division_template = {
+	name = "Airborne Division"
+
+	regiments = {
+		L_Air_Inf_Bat = { x = 0 y = 0 }
+		L_Air_Inf_Bat = { x = 0 y = 1 }
+
+		L_Air_Inf_Bat = { x = 1 y = 0 }
+		L_Air_Inf_Bat = { x = 1 y = 1 }
+
+		L_Air_Inf_Bat = { x = 2 y = 0 }
+		L_Air_Inf_Bat = { x = 2 y = 1 }
+
+	}
+	support = {
+		L_Engi_Comp = { x = 0 y = 0 }
+		Arty_Battery = { x = 0 y = 1 }
+	}
+}
+
+units = {
+	division = {
+		name = "1st Armored Training Division"
+		location = 7622	#
+		division_template = "Armored Division"
+		start_experience_factor = 0.4
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "1st Mechanised Division"
+		location = 7622	#
+		division_template = "Mechanized Infantry Division"
+		start_experience_factor = 0.4
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "1st Airborne Division"
+		location = 7622	#
+		division_template = "Airborne Division"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "2nd Mechanised Division"
+		location = 4600	#
+		division_template = "Mechanized Infantry Division"
+		start_experience_factor = 0.4
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "3rd Mechanised Division"
+		location = 10498	#
+		division_template = "Mechanized Infantry Division"
+		start_experience_factor = 0.4
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "4th Mechanised Division"
+		location = 7451	#
+		division_template = "Mechanized Infantry Division"
+		start_experience_factor = 0.4
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "5th Mechanised Division"
+		location = 10374	#
+		division_template = "Mechanized Infantry Division"
+		start_experience_factor = 0.4
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "6th Mechanised Division"
+		location = 4476	#
+		division_template = "Mechanized Infantry Division"
+		start_experience_factor = 0.4
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "7th Mechanised Division"
+		location = 7546	#
+		division_template = "Mechanized Infantry Division"
+		start_experience_factor = 0.4
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "8th Mechanised Division"
+		location = 12347	#
+		division_template = "Mechanized Infantry Division"
+		start_experience_factor = 0.4
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "9th Mechanised Division"
+		location = 1550	#
+		division_template = "Mechanized Infantry Division"
+		start_experience_factor = 0.4
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "2nd Armored Training Division"
+		location = 4600	#
+		division_template = "Armored Division"
+		start_experience_factor = 0.4
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "3rd Armored Training Division"
+		location = 1550   #
+		division_template = "Armored Division"
+		start_experience_factor = 0.4
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "4th Armored Training Division"
+		location = 7590	#
+		division_template = "Armored Division"
+		start_experience_factor = 0.4
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "5th Armored Training Division"
+		location = 7590	#
+		division_template = "Armored Division"
+		start_experience_factor = 0.4
+		start_equipment_factor = 0.01
+	}
+}
+
+instant_effect = {
+	add_equipment_to_stockpile = {
+		type = infantry_weapons_1		#
+		amount = 10000
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		type = cnc_equipment_1		#
+		amount = 1800
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "MiG-21"
+		type = small_plane_strike_airframe_1		#MiG-21
+		amount = 12
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "MiG-29"
+		type = small_plane_airframe_2		#MiG-29
+		amount = 3
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "MiG-23"
+		type = medium_plane_airframe_1			#MiG-23
+		amount = 24
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Mi-8"
+		type = transport_helicopter_1			#Mi-8
+		amount = 10
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Mi-8"
+		type = transport_helicopter_1			#Mi-8
+		amount = 15
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Mi-24"
+		type = attack_helicopter_1			#Mi-24
+		amount = 4
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "L-39"
+		type = small_plane_strike_airframe_1	#L-39
+		amount = 30
+		producer = CZE
+	}
+
+	add_equipment_to_stockpile = {
+		type = medium_tank_chassis_0
+		variant_name = "T-62"
+		amount = 900
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BRDM-2"
+		type = medium_tank_destroyer_chassis_0		#BRDM-2
+		#version_name = "BRDM-2"
+		amount = 100
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BMP-1"
+		type = medium_tank_flame_chassis_0			#BMP-1
+		amount = 50
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BTR-60"
+		type = medium_tank_amphibious_chassis_0			#BTR-60
+		amount = 500
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "D-30"
+		type = artillery_1	#D-30
+		amount = 1000
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Malyutka"
+		type = Anti_tank_1			#Malyutka
+		amount = 600
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Fagot"
+		type = Anti_tank_2			#Fagot
+		amount = 600
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		type = Heavy_Anti_tank_1
+		amount = 300
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Ural-4320"
+		type = util_vehicle_2	#Ural-4320
+		amount = 1000
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		type = util_vehicle_3
+		amount = 200
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Shilka"
+		type = medium_tank_aa_chassis_0		#Shilka
+		#version_name = "ZSU-23-4 Shilka"
+		amount = 45
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "SA-7"
+		type = Anti_Air_0			#SA-7
+		amount = 250
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "SA-16 Gimlet"
+		type = Anti_Air_1			#SA-16 Gimlet
+		amount = 250
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "SA-8 Osa"
+		type = medium_tank_aa_chassis_0			#SA-8 Osa
+		amount = 15
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "SA-9 Gaskin"
+		type = medium_tank_aa_chassis_0			#SA-9 Gaskin
+		#version_name = "SA-9 Strela-1"
+		amount = 20
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "SA-13 Gopher"
+		type = medium_tank_aa_chassis_1			#SA-13 Gopher
+		#version_name = "9K35 Strela-10"
+		amount = 10
+		producer = SOV
+	}
+
+	### Sealed Storage 封存 ###
+	add_equipment_to_stockpile = {
+		variant_name = "MiG-21"
+		type = small_plane_strike_airframe_1 #MiG-21（封存）
+		producer = SOV
+		amount = 5
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "MiG-23"
+		type = medium_plane_airframe_1 #MiG-23（封存）
+		producer = SOV
+		amount = 9
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "L-39"
+		type = small_plane_strike_airframe_1 #L-39（封存）
+		producer = CZE
+		amount = 12
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "SA-7"
+		type = Anti_Air_0 #SA-7（封存）
+		producer = SOV
+		amount = 100
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "T-62"
+		type = medium_tank_chassis_0 #T-62（封存）
+		producer = SOV
+		amount = 300
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "BRDM-2"
+		type = medium_tank_destroyer_chassis_0 #BRDM-2（封存）
+		producer = SOV
+		amount = 40
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "BMP-1"
+		type = medium_tank_flame_chassis_0 #BMP-1（封存）
+		producer = SOV
+		amount = 20
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "BTR-60"
+		type = medium_tank_amphibious_chassis_0 #BTR-60（封存）
+		producer = SOV
+		amount = 200
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Shilka"
+		type = medium_tank_aa_chassis_0 #Shilka（封存）
+		producer = SOV
+		amount = 18
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "SA-8 Osa"
+		type = medium_tank_aa_chassis_0 #SA-8 Osa（封存）
+		producer = SOV
+		amount = 6
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "SA-9 Gaskin"
+		type = medium_tank_aa_chassis_0 #SA-9 Gaskin（封存）
+		producer = SOV
+		amount = 8
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Malyutka"
+		type = Anti_tank_1 #Malyutka（封存）
+		producer = SOV
+		amount = 240
+	}
+}

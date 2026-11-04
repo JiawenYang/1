@@ -117,3 +117,119 @@ news_event = {
 		}
 	}
 }
+
+#EADI Victory（大亚洲战争：中国胜利）
+news_event = {
+	id = news.413
+	title = news.413.t
+	desc = news.413.d
+	picture = GFX_PRC_gaw_victory_news
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = news.413.a
+		hidden_effect = {
+			if = {
+				limit = {
+					is_ai = no
+				}
+				set_country_flag = PRC_eadi_victory_super_event_flag
+				scoped_sound_effect = TFR_se_eadi_victory
+				scoped_play_song = "one_minute_of_silence"
+			}
+		}
+	}
+}
+
+#PDTO Victory（大亚洲战争：日本胜利）
+news_event = {
+	id = news.414
+	title = news.414.t
+	desc = news.414.d
+	picture = GFX_JAP_gaw_victory_news
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = news.414.a
+		hidden_effect = {
+			if = {
+				limit = {
+					is_ai = no
+				}
+				set_country_flag = JAP_pdto_victory_super_event_flag
+				scoped_sound_effect = TFR_se_pdto_victory
+				scoped_play_song = "one_minute_of_silence"
+			}
+		}
+	}
+}
+
+#big war in asia（大亚洲战争爆发）
+news_event = {
+	id = news.415
+	title = {
+		text = news.415.t
+		trigger = {
+			NOT = {
+				has_global_flag = PRC_wu_qi_operation_mission_success_flag
+			}
+		}
+	}
+	title = {
+		text = news.415.t.1
+		trigger = {
+			has_global_flag = PRC_wu_qi_operation_mission_success_flag
+		}
+	}
+	desc = {
+		text = news.415.d
+		trigger = {
+			NOT = {
+				has_global_flag = PRC_wu_qi_operation_mission_success_flag
+			}
+		}
+	}
+	desc = {
+		text = news.415.d.1
+		trigger = {
+			has_global_flag = PRC_wu_qi_operation_mission_success_flag
+		}
+	}
+	picture = GFX_PRC_gaw_start_news
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = news.415.a
+		trigger = {
+			NOT = {
+				has_global_flag = PRC_wu_qi_operation_mission_success_flag
+			}
+		}
+		hidden_effect = {
+			if = {
+				limit = {
+					is_ai = no
+				}
+				set_country_flag = PRC_great_asian_war_super_event_flag
+				scoped_sound_effect = TFR_se_gaw
+				scoped_play_song = "one_minute_of_silence"
+			}
+		}
+	}
+	option = {
+		name = news.415.a.1
+		trigger = {
+			has_global_flag = PRC_wu_qi_operation_mission_success_flag
+		}
+		hidden_effect = {
+			if = {
+				limit = {
+					is_ai = no
+				}
+				set_country_flag = PRC_great_asian_war_super_event_flag
+				scoped_sound_effect = TFR_se_gaw
+				scoped_play_song = "one_minute_of_silence"
+			}
+		}
+	}
+}

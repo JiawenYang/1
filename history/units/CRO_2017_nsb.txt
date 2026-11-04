@@ -1,0 +1,299 @@
+division_template = {
+	name = "Gardijska Oklopno-Mehanizirana Brigada"
+
+	regiments = {
+		armor_Bat = { x = 0 y = 0 }
+		SP_Arty_Bat = { x = 0 y = 1 }
+		SP_AA_Bat = { x = 0 y = 2 }
+		Arm_Inf_Bat = { x = 1 y = 0 }
+		Arm_Inf_Bat = { x = 1 y = 1 }
+		Arm_Inf_Bat = { x = 1 y = 2 }
+		Mech_Inf_Bat = { x = 2 y = 0 }
+	}
+	support = {
+		Mot_Recce_Comp = { x = 0 y = 0 }
+	}
+}
+
+division_template = {
+	name = "Gardijska Motorizirana Brigada"
+
+	regiments = {
+		Mech_Inf_Bat = { x = 0 y = 0 }
+		Mech_Inf_Bat = { x = 0 y = 1 }
+		SP_Arty_Bat = { x = 0 y = 2 }
+		Mot_Inf_Bat = { x = 1 y = 0 }
+		Mot_Inf_Bat = { x = 1 y = 1 }
+		Arty_Bat = { x = 1 y = 2 }
+		L_Inf_Bat = { x = 1 y = 3 }
+	}
+	support = {
+		Mot_Recce_Comp = { x = 0 y = 0 }
+	}
+}
+
+
+units = {
+	division = {
+		name = "Gardijska Oklopno-Mehanizirana Brigada"
+		location = 6647		#Vinkovici
+		division_template = "Gardijska Oklopno-Mehanizirana Brigada"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "Gardijska Motorizirana Brigada"
+		location = 3974		#Knin
+		division_template = "Gardijska Motorizirana Brigada"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.01
+	}
+}
+
+instant_effect = {
+	add_equipment_to_stockpile = {
+		variant_name = "Zastava M70"
+		type = infantry_weapons_2		#Zastava M70
+		amount = 3300
+		producer = SER
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "VHS-1"
+		type = infantry_weapons_5		#VHS-1
+		amount = 1500
+		producer = CRO
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "G36"
+		type = infantry_weapons_4		#G36
+		amount = 250
+		producer = GER
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "M4"
+		type = infantry_weapons_5		#M4
+		amount = 100
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "H&K HK416"
+		type = infantry_weapons_6		#H&K HK416
+		amount = 100
+		producer = GER
+	}
+
+	add_equipment_to_stockpile = {
+		type = medium_tank_chassis_2
+		variant_name = "M-84A4 Snijper"
+		amount = 56
+		producer = CRO
+	}
+
+	add_equipment_to_stockpile = {
+		type = medium_tank_chassis_2
+		variant_name = "M-84D"
+		amount = 16
+		producer = CRO
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BVP M-80"
+		type = medium_tank_flame_chassis_0		#BVP M-80
+		amount = 104
+		producer = SER
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Patria AMV"
+		type = medium_tank_amphibious_chassis_2		#Patria AMV
+		amount = 126
+		producer = FIN
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Iveco LMV"
+		type = util_vehicle_5		#Iveco LMV
+		amount = 14
+		producer = ITA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "M1113 Humvee"
+		type = util_vehicle_4		#M1113 Humvee
+		amount = 93
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		type = heavy_util_vehicle_6		#Oshkosh M-ATV
+		amount = 172
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		type = heavy_util_vehicle_6		#RG-33
+		#version_name = "RG-33"
+		amount = 20
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		type = heavy_util_vehicle_6		#MaxxPro
+		amount = 40
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Strijela-10CROA1"
+		type = medium_tank_aa_chassis_1		#Strijela-10CROA1
+		amount = 9
+		producer = CRO
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BOV-3"
+		type = medium_tank_aa_chassis_1		#BOV-3
+		amount = 44
+		producer = SER
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Igla"
+		type = Anti_Air_1		#Igla
+		amount = 67
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Strela"
+		type = Anti_Air_0		#Strela
+		amount = 141
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Metis"
+		type = Anti_tank_2		#Metis
+		#version_name = "AT-7 Metis"
+		amount = 54
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Faogt"
+		type = Anti_tank_2		#Faogt
+		amount = 119
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Malyutka"
+		type = Anti_tank_1		#Malyutka
+		amount = 216
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Konkurs"
+		type = Heavy_Anti_tank_2		#Konkurs
+		amount = 42
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "M101"
+		type = artillery_1		#M101
+		#version_name = "M101"
+		amount = 48
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "D-30 RH M94"
+		type = artillery_1		#D-30 RH M94
+		amount = 54
+		producer = CRO
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "M1954"
+		type = artillery_1		#M1954
+		amount = 72
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "CITER L33"
+		type = artillery_1		#CITER L33
+		amount = 18
+		producer = ARG
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "2S1 Gvozdika"
+		type = medium_tank_artillery_chassis_0		#2S1 Gvozdika
+		#version_name = "2S1 Gvozdika"
+		amount = 9
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "PzH 2000"
+		type = medium_tank_artillery_chassis_2		#PzH 2000
+		amount = 15
+		producer = GER
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "M-63 Plamen"
+		type = medium_tank_rocket_chassis_0		#M-63 Plamen
+		amount = 68
+		producer = CRO
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "APR-40"
+		type = medium_tank_rocket_chassis_0		#APR-40
+		amount = 36
+		producer = ROM
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Mercedes Benz G-Class"
+		type = util_vehicle_3		#Mercedes Benz G-Class
+		amount = 324
+		producer = GER
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Land Rover Defender"
+		type = util_vehicle_3		#Land Rover Defender
+		amount = 32
+		producer = ENG
+	}
+
+	add_equipment_to_stockpile = {
+		type = cnc_equipment_3
+		amount = 200
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "MiG-21"
+		type = small_plane_strike_airframe_1		#MiG-21
+		amount = 12
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Mi-17"
+		type = transport_helicopter_1		#Mi-17
+		amount = 23
+		producer = SOV
+	}
+}

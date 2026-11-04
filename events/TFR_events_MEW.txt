@@ -45,7 +45,7 @@ country_event = {
 			}
 			# 第六次中东战争引发全球石油危机（替代原沙特触发链）
 			USA = {
-				country_event = { id = usa.7 days = 1 }
+				country_event = { id = tfr_usa.7 days = 1 }
 			}
 			CHI = {
 				country_event = { id = prc.4 days = 1 }
@@ -54,8 +54,8 @@ country_event = {
 				country_event = { id = jap.182 days = 1 }
 			}
 			GER = {
-				country_event = { id = germany.16 days = 1 }
-				country_event = { id = germany.17 days = 25 }
+				country_event = { id = tfr_germany.16 days = 1 }
+				country_event = { id = tfr_germany.17 days = 25 }
 			}
 		}
 	}
@@ -96,12 +96,15 @@ country_event = {
 		hidden_effect = {
 			set_global_flag = MEW_coalition_joined
 			# 阿拉伯阵营参战：埃及、叙利亚、阿尔及利亚、利比亚、黎巴嫩政府
-			EGY = {
-				if = {
-					limit = { NOT = { has_war_with = ISR } }
-					declare_war_on = {
-						target = ISR
-						type = liberate_wargoal
+			if = {
+				limit = { country_exists = EGY }
+				EGY = {
+					if = {
+						limit = { NOT = { has_war_with = ISR } }
+						declare_war_on = {
+							target = ISR
+							type = liberate_wargoal
+						}
 					}
 				}
 			}
@@ -194,13 +197,16 @@ country_event = {
 				}
 			}
 			# 伊朗经伊拉克与叙利亚的陆路通道：两国向伊朗开放军事通行
-			IRQ = {
-				if = {
-					limit = { country_exists = PER }
-					diplomatic_relation = {
-						country = PER
-						relation = military_access
-						active = yes
+			if = {
+				limit = { country_exists = IRQ }
+				IRQ = {
+					if = {
+						limit = { country_exists = PER }
+						diplomatic_relation = {
+							country = PER
+							relation = military_access
+							active = yes
+						}
 					}
 				}
 			}

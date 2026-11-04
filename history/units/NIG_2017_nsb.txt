@@ -55,6 +55,12 @@ division_template = {
 		L_Inf_Bat = { x = 3 y = 1 }
 		Mot_Inf_Bat = { x = 3 y = 2 }
 	}
+	support = {
+		SP_AA_Battery = { x = 0 y = 0 }
+		Mot_Recce_Comp = { x = 0 y = 1 }
+		L_Engi_Comp = { x = 0 y = 2 }
+		combat_service_support_company = { x = 0 y = 3 }
+	}
 }
 
 division_template = {
@@ -134,6 +140,11 @@ division_template = {
 	}
 
 	priority = 2
+	support = {
+		L_Recce_Comp = { x = 0 y = 0 }
+		L_Engi_Comp = { x = 0 y = 1 }
+		combat_service_support_company = { x = 0 y = 2 }
+	}
 }
 
 division_template = {
@@ -303,7 +314,7 @@ instant_effect = {
 
 	add_equipment_to_stockpile = {
 		variant_name = "AKM"
-		type = infantry_weapons_2			#AKM
+		type = infantry_weapons_1			#AKM
 		amount = 3000
 		producer = SOV
 	}
@@ -336,12 +347,14 @@ instant_effect = {
 	}
 
 	add_equipment_to_stockpile = {
+		variant_name = "M40"
 		type = Anti_tank_1			#
 		amount = 500
 		producer = NIG
 	}
 
 	add_equipment_to_stockpile = {
+		variant_name = "T-72A"
 		type = medium_tank_chassis_1
 		amount = 50
 		producer = SOV
@@ -354,12 +367,14 @@ instant_effect = {
 	}
 
 	add_equipment_to_stockpile = {
+		variant_name = "Vickers MBT Mk 3"
 		type = medium_tank_chassis_0
 		amount = 108
 		producer = ENG
 	}
 
 	add_equipment_to_stockpile = {
+		variant_name = "AMX-30B2"
 		type = medium_tank_chassis_0
 		amount = 16
 		producer = FRA
@@ -420,7 +435,7 @@ instant_effect = {
 
 	add_equipment_to_stockpile = {
 		variant_name = "EE-9 Cascavel"
-		type = medium_tank_destroyer_chassis_0			#EE-9 Cascavel
+		type = medium_tank_destroyer_chassis_1			#EE-9 Cascavel
 		amount = 70
 		producer = NIG
 	}
@@ -447,8 +462,7 @@ instant_effect = {
 	}
 
 	add_equipment_to_stockpile = {
-		variant_name = "MaxxPro"
-		type = util_vehicle_6			#MaxxPro
+		type = heavy_util_vehicle_6			#MaxxPro
 		amount = 20
 		producer = USA
 	}
@@ -475,7 +489,7 @@ instant_effect = {
 	}
 
 	add_equipment_to_stockpile = {
-		variant_name = "Spartan"
+		variant_name = "Spartan APC"
 		type = util_vehicle_5			#Spartan APC
 		amount = 20
 		producer = NIG
@@ -511,14 +525,14 @@ instant_effect = {
 
 	add_equipment_to_stockpile = {
 		variant_name = "Saurer 4K 4FA"
-		type = medium_tank_flame_chassis_0			#Saurer 4K 4FA
+		type = medium_tank_amphibious_chassis_1			#Saurer 4K 4FA
 		amount = 250
 		producer = NIG
 	}
 
 	add_equipment_to_stockpile = {
 		variant_name = "MT-LB"
-		type = medium_tank_amphibious_chassis_1			#MT-LB
+		type = medium_tank_amphibious_chassis_0			#MT-LB
 		amount = 67
 		producer = SOV
 	}
@@ -575,21 +589,21 @@ instant_effect = {
 
 	add_equipment_to_stockpile = {
 		variant_name = "Palmaria"
-		type = medium_tank_artillery_chassis_1			#Palmaria
+		type = medium_tank_artillery_chassis_0			#Palmaria
 		amount = 25
 		producer = NIG
 	}
 
 	add_equipment_to_stockpile = {
 		variant_name = "APR-40"
-		type = medium_tank_artillery_chassis_0			#APR-40
+		type = medium_tank_rocket_chassis_0			#APR-40
 		amount = 30
 		producer = NIG
 	}
 
 	add_equipment_to_stockpile = {
 		variant_name = "RM-70"
-		type = medium_tank_artillery_chassis_1			#RM-70
+		type = medium_tank_rocket_chassis_1			#RM-70
 		amount = 6
 		producer = NIG
 	} 
@@ -601,6 +615,7 @@ instant_effect = {
 	}
 
 	add_equipment_to_stockpile = {
+		variant_name = "OTO Melara mod 56"
 		type = artillery_1			#OTO Melara mod 56
 		amount = 124
 		producer = NIG
@@ -629,7 +644,7 @@ instant_effect = {
 	}
 
 	add_equipment_to_stockpile = {
-		variant_name = "Strela-2"
+		variant_name = "Strela"
 		type = Anti_Air_0				#Strela
 		amount = 600
 		producer = SOV
@@ -651,7 +666,7 @@ instant_effect = {
 
 	add_equipment_to_stockpile = {
 		variant_name = "Mi-24"
-		type = heavy_tank_chassis_0				#Mi-24
+		type = attack_helicopter_1				#Mi-24
 		amount = 9
 		producer = SOV
 	}

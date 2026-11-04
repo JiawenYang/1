@@ -1,0 +1,467 @@
+division_template = {
+	name = "K'veit'i Brigada"
+
+	regiments = {
+		Mot_Inf_Bat = { x = 0 y = 0 }
+		Mot_Inf_Bat = { x = 0 y = 1 }
+		Mot_Inf_Bat = { x = 0 y = 2 }
+
+		Mech_Inf_Bat = { x = 1 y = 0 }
+
+		SP_Arty_Bat = { x = 2 y = 0 }
+	}
+
+	support = {
+		armor_Comp = { x = 0 y = 0 }
+		Arty_Battery = { x = 0 y = 1 }
+		L_Engi_Comp = { x = 0 y = 2 }
+		SP_AA_Battery = { x = 0 y = 3 }
+	}
+}
+
+division_template = {
+	name = "Mek'anizebuli Brigada"
+
+	regiments = {
+		Arm_Inf_Bat = { x = 0 y = 0 }
+		Arm_Inf_Bat = { x = 0 y = 1 }
+		Mech_Inf_Bat = { x = 0 y = 2 }
+		SP_Arty_Bat = { x = 0 y = 3 }
+	}
+
+	support = {
+		armor_Comp = { x = 0 y = 0 }
+		L_Engi_Comp = { x = 0 y = 1 }
+		SP_AA_Battery = { x = 0 y = 2 }
+	}
+}
+
+division_template = {
+	name = "Msubuk'i K'veit'i Batalioni"
+
+	regiments = {
+		L_Inf_Bat = { x = 0 y = 0 }
+	}
+}
+
+division_template = {
+	name = "Spets'ialuri Operats'iebis Jgup'i"
+
+	regiments = {
+		Special_Forces = { x = 0 y = 0 }
+	}
+	priority = 2
+}
+
+units = {
+	#Operational Command East
+	division = {
+		name = "1 K'veit'i Brigada"
+		location = 1599		#Tbilisi
+		division_template = "K'veit'i Brigada"
+		start_experience_factor = 0.4
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "4 Mek'anizebuli Brigada"
+		location = 1164		#Vaziani
+		division_template = "Mek'anizebuli Brigada"
+		start_experience_factor = 0.4
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "5 K'veit'i Brigada"
+		location = 4534		#?
+		division_template = "K'veit'i Brigada"
+		start_experience_factor = 0.4
+		start_equipment_factor = 0.01
+	}
+
+	#Operational Command West
+	division = {
+		name = "2 K'veit'i Brigada"
+		location = 772		#Senaki
+		division_template = "K'veit'i Brigada"
+		start_experience_factor = 0.4
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "3 K'veit'i Brigada 'Mamlekebi'"
+		location = 3658		#Kutaisi
+		division_template = "K'veit'i Brigada"
+		start_experience_factor = 0.4
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "Ts'alkeuli  Msubuk'i K'veit'i Batalioni"
+		location = 3653		#Batumi
+		division_template = "Msubuk'i K'veit'i Batalioni"
+		start_experience_factor = 0.4
+		start_equipment_factor = 0.01
+	}
+
+	#Special forces
+	division = {
+		name = "1 Spets'ialuri Operats'iebis Jgup'i"
+		location = 1599		#Tbilisi
+		division_template = "Spets'ialuri Operats'iebis Jgup'i"
+		start_experience_factor = 0.7
+		start_equipment_factor = 0.01
+	}
+}
+
+instant_effect = {
+	add_equipment_to_stockpile = {
+		variant_name = "AK-74"
+		type = infantry_weapons_2			#AK-74
+		amount = 2000
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "AK-74M"
+		type = infantry_weapons_4			#AK-74M
+		amount = 2000
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "PM md. 63"
+		type = infantry_weapons_1			#PM md. 63
+		amount = 500
+		producer = ROM
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "M4 Carbine"
+		type = infantry_weapons_5			#M4 Carbine
+		amount = 500
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "H&K HK33"
+		type = infantry_weapons_1			#H&K HK33
+		amount = 500
+		producer = GER
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "AMD-65"
+		type = infantry_weapons_1			#AMD-65
+		amount = 400
+		producer = HUN
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Skif"
+		type = Anti_tank_2			#Skif
+		amount = 50
+		producer = UKR
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Metis"
+		type = Anti_tank_3			#Metis
+		amount = 50
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Fagot"
+		type = Anti_tank_2			#Fagot
+		amount = 50
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Konkurs"
+		type = Heavy_Anti_tank_2			#Konkurs
+		amount = 50
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		type = medium_tank_chassis_1
+		variant_name = "T-55"
+		amount = 23
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		type = MBT_2
+		variant_name = "T-72 SIM-1"
+		amount = 120
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BMP-1"
+		type = medium_tank_flame_chassis_0			#BMP-1
+		amount = 29
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BMP-2"
+		type = medium_tank_flame_chassis_1			#BMP-2
+		amount = 47
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Didgori"
+		type = util_vehicle_5			#Didgori
+		amount = 200
+		producer = GEO
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Nurol Ejder"
+		type = medium_tank_amphibious_chassis_2			#Nurol Ejder
+		amount = 90
+		producer = TUR
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BTR-80"
+		type = medium_tank_amphibious_chassis_1			#BTR-80
+		amount = 20
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BTR-70"
+		type = medium_tank_amphibious_chassis_1			#BTR-70
+		amount = 25
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "MT-LB"
+		type = medium_tank_amphibious_chassis_0			#MT-LB
+		amount = 114
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Wolf Armoured Vehicle"
+		type = util_vehicle_5			#Wolf Armoured Vehicle
+		#version_name = "Wolf Armoured Vehicle"
+		amount = 50
+		producer = ISR
+	}
+
+	add_equipment_to_stockpile = {
+		type = heavy_util_vehicle_5			#Cougar
+		#version_name = "Cougar"
+		amount = 20
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Humvee"
+		type = util_vehicle_3			#Humvee
+		amount = 110
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "VBL"
+		type = util_vehicle_4			#VBL
+		amount = 20
+		producer = FRA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Otokar Cobra and Akrep"
+		type = util_vehicle_4			#Otokar Cobra and Akrep
+		amount = 550
+		producer = TUR
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "LAR-160"
+		type = medium_tank_rocket_chassis_0			#LAR-160
+		amount = 47
+		producer = ISR
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "RS-122"
+		type = medium_tank_rocket_chassis_0			#RS-122
+		amount = 8
+		producer = GEO
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "M63 Plamen"
+		type = medium_tank_rocket_chassis_0			#M63 Plamen
+		amount = 12
+		producer = SER
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "RM-70"
+		type = medium_tank_rocket_chassis_1			#RM-70
+		amount = 48
+		producer = CZE
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BM-21 Grad"
+		type = medium_tank_rocket_chassis_0			#BM-21 Grad
+		amount = 120
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "2S19 Msta"
+		type = medium_tank_artillery_chassis_1			#2S19 Msta
+		amount = 3
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "SPGH Dana"
+		type = medium_tank_artillery_chassis_1			#SPGH Dana
+		amount = 47
+		producer = CZE
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "2S3 Akatsiya"
+		type = medium_tank_artillery_chassis_1			#2S3 Akatsiya
+		amount = 26
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "2S1 Gvozdika"
+		type = medium_tank_artillery_chassis_0			#2S1 Gvozdika
+		#version_name = "2S1 Gvozdika"
+		amount = 30
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "2S7 Pion"
+		type = medium_tank_artillery_chassis_1			#2S7 Pion
+		#version_name = "2S7 Pion"
+		amount = 1
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "D-30"
+		type = artillery_1			#D-30
+		amount = 120
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Strela"
+		type = Anti_Air_0			#Strela
+		amount = 50
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Igla"
+		type = Anti_Air_1			#Igla
+		amount = 50
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Grom"
+		type = Anti_Air_1			#Grom
+		amount = 50
+		producer = POL
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Spyder SAM"
+		type = medium_tank_aa_chassis_2			#Spyder SAM
+		amount = 10
+		producer = ISR
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "SA-13 Strela-10"
+		type = medium_tank_aa_chassis_1			#SA-13 Strela-10
+		#version_name = "9K35 Strela-10"
+		amount = 12
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Buk M1"
+		type = medium_tank_aa_chassis_1			#Buk M1
+		amount = 15
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "SA-8 Osa"
+		type = medium_tank_aa_chassis_0			#SA-8 Osa
+		amount = 18
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Shilka"
+		type = medium_tank_aa_chassis_0			#Shilka
+		#version_name = "ZSU-23-4 Shilka"
+		amount = 35
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		type = cnc_equipment_3
+		amount = 400
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "SU-25KM Scorpion"
+		type = small_plane_cas_airframe_2			#SU-25KM Scorpion
+		amount = 12
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "L-39"
+		type = small_plane_strike_airframe_1			#L-39
+		amount = 4
+		producer = CZE
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Mi-24"
+		type = attack_helicopter_1			#Mi-24
+		amount = 8
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Super Puma"
+		type = transport_helicopter_1			#Super Puma
+		amount = 4
+		producer = FRA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Mi-8"
+		type = transport_helicopter_1			#Mi-8
+		amount = 17
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "UH-1"
+		type = transport_helicopter_1			#UH-1
+		amount = 13
+		producer = USA
+	}
+}

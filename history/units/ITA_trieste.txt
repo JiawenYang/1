@@ -1,0 +1,16 @@
+# 单舰 OOB：ITS Trieste (L9890)
+# 开工 2018-02-20 / 下水 2019-05-25 / 服役 2024-12-07
+# 2017-01-01 状态：尚未开工（2018 年才在 Castellammare di Stabia 铺设龙骨），因此不在 2017 开局 OOB 中。
+# 由 common/on_actions/99_NAVAL_carrier_spawn_on_actions.txt 在 2024-12-07 用 load_oob 加入。
+# 该舰为可运作 F-35B 的两栖攻击舰，变体保留 module_light_flight_deck_3（20 架容量）。
+units = {
+	fleet = {
+		name = "Comando del Secondo Gruppo Navale"
+		naval_base = 11837
+		task_force = {
+			name = "Gruppo Navale Trieste"
+			location = 11837
+			ship = { name = "ITS Trieste (L9890)" definition = helicopter_operator start_experience_factor = 0.1 equipment = { helicopter_operator_hull_2 = { amount = 1 owner = ITA version_name = "Trieste Class" } } }
+		}
+	}
+}

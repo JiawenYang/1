@@ -42,7 +42,7 @@ ideas = {
 			}
 		}
 		closed_cash_flow = {
-			cost = 150
+			cost = 300
 			removal_cost = -1
 			level = 3
 			allowed_civil_war = { always = yes }
@@ -76,11 +76,11 @@ ideas = {
 				set_temp_variable = { temp_opinion = 10 }
 				change_labour_unions_opinion = yes
 				change_communist_cadres_opinion = yes
-				set_temp_variable = { protest_strength_change = -10 }
-				modify_protest_effect = yes
+				if = { limit = { NOT = { has_variable = protest_strength } } set_variable = { protest_strength = 0 } }
+				add_to_variable = { protest_strength = -10 }
 				set_variable = { Minimal_Salary = 6 }
 			}
-			cost = 150
+			cost = 300
 			removal_cost = -1
 			level = 6
 			available = {
@@ -137,8 +137,8 @@ ideas = {
 				set_temp_variable = { temp_opinion = 5 }
 				change_labour_unions_opinion = yes
 				change_communist_cadres_opinion = yes
-				set_temp_variable = { protest_strength_change = -5 }
-				modify_protest_effect = yes
+				if = { limit = { NOT = { has_variable = protest_strength } } set_variable = { protest_strength = 0 } }
+				add_to_variable = { protest_strength = -5 }
 				set_variable = { Minimal_Salary = 5 }
 			}
 			cost = 150
@@ -206,7 +206,8 @@ ideas = {
 				log = "[GetDateText]: [Root.GetName]: add idea salary_03"
 				set_variable = { Minimal_Salary = 4 }
 			}
-			cost = 150
+			cost = 0
+			default = yes
 			removal_cost = -1
 			level = 4
 			available = {
@@ -274,8 +275,8 @@ ideas = {
 				change_industrial_conglomerates_opinion = yes
 				set_temp_variable = { temp_opinion = -5 }
 				change_communist_cadres_opinion = yes
-				set_temp_variable = { protest_strength_change = 5 }
-				modify_protest_effect = yes
+				if = { limit = { NOT = { has_variable = protest_strength } } set_variable = { protest_strength = 0 } }
+				add_to_variable = { protest_strength = 5 }
 				set_variable = { Minimal_Salary = 3 }
 			}
 			cost = 150
@@ -346,12 +347,11 @@ ideas = {
 				change_industrial_conglomerates_opinion = yes
 				set_temp_variable = { temp_opinion = -10 }
 				change_communist_cadres_opinion = yes
-				set_temp_variable = { protest_strength_change = 10 }
-				modify_protest_effect = yes
+				if = { limit = { NOT = { has_variable = protest_strength } } set_variable = { protest_strength = 0 } }
+				add_to_variable = { protest_strength = 10 }
 				set_variable = { Minimal_Salary = 2 }
 			}
-			default = yes
-			cost = 150
+			cost = 300
 			removal_cost = -1
 			level = 2
 			available = {
@@ -407,7 +407,7 @@ ideas = {
 				log = "[GetDateText]: [Root.GetName]: add idea salary_06"
 				set_variable = { Minimal_Salary = 1 }
 			}
-			cost = 150
+			cost = 450
 			removal_cost = -1
 			level = 1
 			available = {
@@ -447,14 +447,18 @@ ideas = {
         censorship_01 = {
 			on_add = {
 				log = "[GetDateText]: [Root.GetName]: add idea censorship_01"
-				add_popularity = {
-					ideology = democratic
-					popularity = 0.1
+				set_temp_variable = { party_index = 0 }
+				if = {
+					limit = { has_government = democratic }
+					set_temp_variable = { party_index = ruling_party }
 				}
+				set_temp_variable = { party_popularity_increase = 0.1 }
+				set_temp_variable = { temp_outlook_increase = 0.1 }
+				change_relative_party_popularity = yes
 				set_party_index_to_ruling_party = yes 
 				set_temp_variable = { party_popularity_increase = 0.10 }
 				set_temp_variable = { temp_outlook_increase = 0.10 }
-				add_relative_party_popularity = yes
+				change_relative_party_popularity = yes
 				set_temp_variable = { percent_change = -0.1 }
 				change_domestic_influence_percentage = yes
 				set_temp_variable = { temp_opinion = -5 }
@@ -531,14 +535,18 @@ ideas = {
 		censorship_03 = {
 			on_add = {
 				log = "[GetDateText]: [Root.GetName]: add idea censorship_03"
-				add_popularity = {
-					ideology = democratic
-					popularity = -0.05
+				set_temp_variable = { party_index = 0 }
+				if = {
+					limit = { has_government = democratic }
+					set_temp_variable = { party_index = ruling_party }
 				}
+				set_temp_variable = { party_popularity_increase = -0.05 }
+				set_temp_variable = { temp_outlook_increase = -0.05 }
+				change_relative_party_popularity = yes
 				set_party_index_to_ruling_party = yes 
 				set_temp_variable = { party_popularity_increase = -0.05 }
 				set_temp_variable = { temp_outlook_increase = -0.05 }
-				add_relative_party_popularity = yes
+				change_relative_party_popularity = yes
 				set_temp_variable = { percent_change = 0.07 }
 				change_domestic_influence_percentage = yes
 				set_temp_variable = { temp_opinion = 5 }
@@ -590,14 +598,18 @@ ideas = {
 		censorship_04 = {
 			on_add = {
 				log = "[GetDateText]: [Root.GetName]: add idea censorship_04"
-				add_popularity = {
-					ideology = democratic
-					popularity = -0.1
+				set_temp_variable = { party_index = 0 }
+				if = {
+					limit = { has_government = democratic }
+					set_temp_variable = { party_index = ruling_party }
 				}
+				set_temp_variable = { party_popularity_increase = -0.1 }
+				set_temp_variable = { temp_outlook_increase = -0.1 }
+				change_relative_party_popularity = yes
 				set_party_index_to_ruling_party = yes 
 				set_temp_variable = { party_popularity_increase = 0.1 }
 				set_temp_variable = { temp_outlook_increase = 0.1 }
-				add_relative_party_popularity = yes
+				change_relative_party_popularity = yes
 				set_temp_variable = { percent_change = 0.12 }
 				change_domestic_influence_percentage = yes
 				set_temp_variable = { temp_opinion = 10 }
@@ -712,14 +724,18 @@ ideas = {
 		freedom_religion_02 = {
 			on_add = {
 				log = "[GetDateText]: [Root.GetName]: add idea freedom_religion_02"
-				add_popularity = {
-					ideology = democratic
-					popularity = 0.1
+				set_temp_variable = { party_index = 0 }
+				if = {
+					limit = { has_government = democratic }
+					set_temp_variable = { party_index = ruling_party }
 				}
+				set_temp_variable = { party_popularity_increase = 0.1 }
+				set_temp_variable = { temp_outlook_increase = 0.1 }
+				change_relative_party_popularity = yes
 				set_party_index_to_ruling_party = yes
 				set_temp_variable = { party_popularity_increase = 0.05 }
 				set_temp_variable = { temp_outlook_increase = 0.05 }
-				add_relative_party_popularity = yes
+				change_relative_party_popularity = yes
 			}
 			cost = 1500
 			removal_cost = -1
@@ -749,10 +765,14 @@ ideas = {
 		freedom_religion_03 = {
 			on_add = {
 				log = "[GetDateText]: [Root.GetName]: add idea freedom_religion_03"
-				add_popularity = {
-					ideology = nationalist
-					popularity = 0.1
+				set_temp_variable = { party_index = 20 }
+				if = {
+					limit = { has_government = nationalist }
+					set_temp_variable = { party_index = ruling_party }
 				}
+				set_temp_variable = { party_popularity_increase = 0.1 }
+				set_temp_variable = { temp_outlook_increase = 0.1 }
+				change_relative_party_popularity = yes
 				set_temp_variable = { percent_change = 0.07 }
 				change_domestic_influence_percentage = yes
 				set_temp_variable = { temp_opinion = 10 }
@@ -963,7 +983,7 @@ ideas = {
 				set_party_index_to_ruling_party = yes 
 				set_temp_variable = { party_popularity_increase = -0.03 }
 				set_temp_variable = { temp_outlook_increase = -0.03 }
-				add_relative_party_popularity = yes
+				change_relative_party_popularity = yes
 				set_temp_variable = { temp_opinion = -50 }
 				change_labour_unions_opinion = yes
 			}

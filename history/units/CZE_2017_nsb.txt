@@ -1,4 +1,4 @@
-﻿division_template = {
+division_template = {
 	name = "Brigáda Rychleho Nasazeni"
 
 	regiments = {
@@ -58,7 +58,7 @@ units = {
 instant_effect = {
 
 	add_equipment_to_stockpile = {
-		variant_name = "T-72M4CZ"
+		variant_name = "T-72M4"
 		type = medium_tank_chassis_1 #T-72M4CZ
 		amount = 30
 		producer = SOV
@@ -72,7 +72,7 @@ instant_effect = {
 	}
 
 	add_equipment_to_stockpile = {
-		variant_name = "T-55"
+		variant_name = "T-55AM2B"
 		type = medium_tank_chassis_0			#T-55（封存）
 		producer = SOV
 		amount = 200
@@ -87,12 +87,13 @@ instant_effect = {
 
 	add_equipment_to_stockpile = {
 		variant_name = "Pandur II"
-		type = medium_tank_flame_chassis_3 					#Pandur II
+		type = medium_tank_amphibious_chassis_1 					#Pandur II
 		producer = CZE
 		amount = 107
 	}
 
 	add_equipment_to_stockpile = {
+		variant_name = "PzPK Sněžka"
 		type = medium_tank_flame_chassis_2 					#PzPK Sněžka
 		producer = CZE
 		amount = 8
@@ -170,8 +171,7 @@ instant_effect = {
 
 
 	add_equipment_to_stockpile = {
-		variant_name = "Dingo II"
-		type = util_vehicle_6 			#Dingo II
+		type = heavy_util_vehicle_5 			#Dingo II
 		producer = GER
 		amount = 21
 	}
@@ -185,29 +185,29 @@ instant_effect = {
 
 	add_equipment_to_stockpile = {
 		variant_name = "BRDM-2"
-		type = medium_tank_amphibious_chassis_0 					#BRDM-2
+		type = medium_tank_destroyer_chassis_0 					#BRDM-2
 		#version_name = "BRDM-2"
 		producer = SOV
 		amount = 37
 	}
 
 	add_equipment_to_stockpile = {
-		variant_name = "Strela-10"
-		type = medium_tank_aa_chassis_1 			#Strela-10
+		variant_name = "9K35 Strela-10"
+		type = SP_Anti_Air_1 			#Strela-10
 		#version_name = "9K35 Strela-10"
 		producer = SOV
 		amount = 16
 	}
 
 	add_equipment_to_stockpile = {
-		variant_name = "RBS-70"
+		variant_name = "RBS 70"
 		type = Anti_Air_1 				#RBS 70
 		producer = SWE
 		amount = 100
 	}
 
 	add_equipment_to_stockpile = {
-		variant_name = "2K12 Kub"
+		variant_name = "KUB"
 		type = medium_tank_aa_chassis_1 			#KUB
 		producer = CZE
 		amount = 16
@@ -235,20 +235,21 @@ instant_effect = {
 	}
 
 	add_equipment_to_stockpile = {
-		variant_name = "CZ 805 BREN"
+		variant_name = "CZ 805 BREN 2"
 		type = infantry_weapons_6 		#CZ 805 BREN 2
 		producer = CZE
 		amount = 2600
 	}
 
 	add_equipment_to_stockpile = {
-		variant_name = "M4"
+		variant_name = "M4 Carabine"
 		type = infantry_weapons_5		#M4 Carabine
 		producer = USA
 		amount = 100
 	}
 
 	add_equipment_to_stockpile = {
+		variant_name = "Malyutka"
 		type = Heavy_Anti_tank_1 		#Malyutka
 		producer = SOV
 		amount = 185
@@ -263,7 +264,7 @@ instant_effect = {
 
 
 	add_equipment_to_stockpile = {
-		variant_name = "Spike LR"
+		variant_name = "Spike-LR"
 		type = Heavy_Anti_tank_2 		#Spike-LR
 		producer = ISR
 		amount = 500
@@ -277,6 +278,7 @@ instant_effect = {
 	}
 
 	add_equipment_to_stockpile = {
+		variant_name = "Karl Gustav"
 		type = Anti_tank_1 				#Karl Gustav
 		producer = SWE
 		amount = 30
@@ -291,21 +293,21 @@ instant_effect = {
 	#AIR FORCE
 
 	add_equipment_to_stockpile = {
-		variant_name = "Mi-24"
-		type = heavy_tank_chassis_0 		#Mil Mi-24
+		variant_name = "Mil Mi-24"
+		type = attack_helicopter_1 		#Mil Mi-24
 		producer = SOV
 		amount = 17
 	}
 
 	add_equipment_to_stockpile = {
 		variant_name = "Mi-171Š"
-		type = heavy_tank_chassis_1 		#Mi-171Š
+		type = transport_helicopter_2 		#Mi-171Š
 		producer = SOV
 		amount = 16
 	}
 
 	add_equipment_to_stockpile = {
-			variant_name = "Mi-8"
+			variant_name = "Mil Mi-8"
 			type = transport_helicopter_1 	#Mil Mi-8
 			producer = SOV
 			amount = 14
@@ -316,5 +318,12 @@ instant_effect = {
 		type = transport_helicopter_1 	#PZL W-3 Sokół
 		producer = POL
 		amount = 10
+	}
+	# Orphan variant attachment (2017 real-world holdings)
+	add_equipment_to_stockpile = {
+		type = medium_tank_artillery_chassis_2
+		variant_name = "Dana M2"
+		amount = 30
+		producer = CZE
 	}
 }

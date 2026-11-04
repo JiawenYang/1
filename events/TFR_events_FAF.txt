@@ -1933,7 +1933,15 @@ country_event = {
 			base = 10
 		}
 		custom_effect_tooltip = FAF_Warning_interior_tt
-		add_ideas = FAF_Charles_Prince_Napoleon_IM
+		set_temp_variable = { party_index = 0 }
+		if = {
+			limit = { has_government = democratic }
+			set_temp_variable = { party_index = ruling_party }
+		}
+		set_temp_variable = { party_popularity_increase = 0.10 }
+		set_temp_variable = { temp_outlook_increase = 0.10 }
+		change_relative_party_popularity = yes
+		add_stability = -0.1
 		hidden_effect = {
 			country_event = {
 				id = Nationalist_France.24
@@ -1947,7 +1955,28 @@ country_event = {
 			base = 10
 		}
 		custom_effect_tooltip = FAF_Warning_interior_tt
-		add_ideas = FAF_Laurent_Marcangeli_IM
+		set_temp_variable = { party_index = 20 }
+		if = {
+			limit = { has_government = nationalist }
+			set_temp_variable = { party_index = ruling_party }
+		}
+		set_temp_variable = { party_popularity_increase = 0.05 }
+		set_temp_variable = { temp_outlook_increase = 0.05 }
+		change_relative_party_popularity = yes
+		add_stability = -0.05
+		hidden_effect = {
+			if = {
+				limit = {
+					NOT = {
+						has_country_flag = FAF_royal_pretenders_flag
+					}
+				}
+				country_event = {
+					id = Nationalist_France.24
+					days = 5
+				}
+			}
+		}
 	}
 	option = {
 		name = Nationalist_France.241.c
@@ -1955,7 +1984,15 @@ country_event = {
 			base = 10
 		}
 		custom_effect_tooltip = FAF_Warning_wife_interior_tt
-		add_ideas = FAF_Marie_Marguerite_of_Bourbon_IM
+		set_temp_variable = { party_index = 20 }
+		if = {
+			limit = { has_government = nationalist }
+			set_temp_variable = { party_index = ruling_party }
+		}
+		set_temp_variable = { party_popularity_increase = 0.025 }
+		set_temp_variable = { temp_outlook_increase = 0.025 }
+		change_relative_party_popularity = yes
+		add_stability = -0.075
 		hidden_effect = {
 			country_event = {
 				id = Nationalist_France.24
@@ -3531,11 +3568,11 @@ country_event = {
 			name = "Milice Citoyenne"
 			is_locked = yes
 			regiments = {
-				militia = {
+				Militia_Bat = {
 					x = 0
 					y = 0
 				}
-				militia = {
+				Militia_Bat = {
 					x = 1
 					y = 0
 				}

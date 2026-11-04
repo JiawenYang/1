@@ -115,7 +115,7 @@ ideas = {
 				army_strength_factor = 0.075
 				recon_factor = 0.1
 				military_development_monthly = 0.01
-				battalion_upkeep_factor = 0.15
+				army_personnel_cost_multiplier_modifier = 0.15
 			}
 		}
 		COL_colombian_armed_forces = {
@@ -251,10 +251,10 @@ ideas = {
 									last_election = "2021.11.28"
 									election_frequency = 60
 								}
-								add_popularity = {
-									ideology = communist
-									popularity = -0.4
-								}
+								set_temp_variable = { party_index = 4 }
+								set_temp_variable = { party_popularity_increase = -0.4 }
+								set_temp_variable = { temp_outlook_increase = -0.4 }
+								change_relative_party_popularity = yes
 							}
 							20 = {
 								set_politics = {
@@ -283,7 +283,7 @@ ideas = {
 				political_power_factor = 0.05
 				tax_gain_multiplier_modifier = 0.25
 				libertarian_socialist_drift = 0.02
-				communist_drift = 0.01
+				communism_drift = 0.01
 				society_development_monthly = 0.02
 			}
 		}

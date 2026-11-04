@@ -1,0 +1,443 @@
+division_template = {
+	name = "Bataillon Blinde"
+
+	regiments = {
+	   armor_Bat = { x = 0 y = 0 }
+	}
+
+	support = {
+		armor_Recce_Comp = { x = 0 y = 0 }
+		SP_Arty_Battery = { x = 0 y = 1 }
+		SP_AA_Battery = { x = 0 y = 2 }
+	}
+
+}
+
+division_template = {
+	name = "Bataillon d'Infanterie"
+
+	regiments = {
+	   Mot_Inf_Bat = { x = 0 y = 0 }
+	}
+
+	support = {
+		Arty_Battery = { x = 0 y = 0 }
+		L_Engi_Comp = { x = 0 y = 1 }
+	}
+
+}
+
+division_template = {
+	name = "Bataillon d'Infanterie Mécanisé"
+
+	regiments = {
+	   Mech_Inf_Bat = { x = 0 y = 0 }
+	}
+
+	support = {
+		Arty_Battery = { x = 0 y = 0 }
+		L_Engi_Comp = { x = 0 y = 1 }
+	}
+
+}
+
+division_template = {
+	name = "Bataillon d'Infanterie Blindé"
+
+	regiments = {
+	   Arm_Inf_Bat = { x = 0 y = 0 }
+	}
+
+	support = {
+		Arty_Battery = { x = 0 y = 0 }
+		L_Engi_Comp = { x = 0 y = 1 }
+	}
+
+}
+
+units = {
+
+	division = {
+		name = "Bataillon Blinde"
+		location = 2081		#
+		division_template = "Bataillon Blinde"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "1 Bataillon d'Infanterie"
+		location = 9152		#
+		division_template = "Bataillon d'Infanterie"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "2 Bataillon d'Infanterie"
+		location = 1993		#
+		division_template = "Bataillon d'Infanterie"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "3 Bataillon d'Infanterie"
+		location = 1473		#
+		division_template = "Bataillon d'Infanterie"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "4 Bataillon d'Infanterie"
+		location = 4978		#
+		division_template = "Bataillon d'Infanterie"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "5 Bataillon d'Infanterie"
+		location = 3123		#
+		division_template = "Bataillon d'Infanterie Blindé"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "6 Bataillon d'Infanterie"
+		location = 4902		#
+		division_template = "Bataillon d'Infanterie Blindé"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "7 Bataillon d'Infanterie"
+		location = 5136		#
+		division_template = "Bataillon d'Infanterie Mécanisé"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.01
+	}
+
+}
+
+instant_effect = {
+
+	add_equipment_to_stockpile = {
+		variant_name = "AKM"
+		type = infantry_weapons_1 		#AKM
+		amount = 250
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Type 56"
+		type = infantry_weapons_1 		#Type 56
+		amount = 250
+		producer = CHI
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Zastava M70"
+		type = infantry_weapons_2			#Zastava M70
+		amount = 250
+		producer = SER
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "FAMAS"
+		type = infantry_weapons_2			#FAMAS
+		amount = 250
+		producer = FRA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "G3"
+		type = infantry_weapons_1			#G3
+		amount = 250
+		producer = GER
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "FN FAL"
+		type = infantry_weapons_1			#FN FAL
+		amount = 250
+		producer = BEL
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "M16"
+		type = infantry_weapons_2			#M16
+		amount = 250
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		type = cnc_equipment_1
+		amount = 200
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "ERYX"
+		type = Anti_tank_2 		#ERYX
+		amount = 50
+		producer = CAN
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "MILAN"
+		type = Anti_tank_2 		#MILAN
+		amount = 50
+		producer = FRA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "TOW"
+		type = Heavy_Anti_tank_1 		#TOW
+		amount = 50
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "SA-6 Gainful"
+		type = medium_tank_aa_chassis_0 		#SA-6 Gainful
+		#version_name = "2K12 Kub"
+		amount = 12
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Shilka"
+		type = medium_tank_aa_chassis_0 		#Shilka
+		#version_name = "ZSU-23-4 Shilka"
+		amount = 4
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Panhard AML 60-20"
+		type = medium_tank_aa_chassis_0 		#Panhard AML 60-20
+		amount = 6
+		producer = FRA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "SA-13 Gopher"
+		type = medium_tank_aa_chassis_1 		#SA-13 Gopher
+		#version_name = "9K35 Strela-10"
+		amount = 4
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Strela"
+		type = Anti_Air_0 		#Strela
+		amount = 8
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Redeye"
+		type = Anti_Air_0 		#Redeye
+		amount = 130
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Stinger"
+		type = Anti_Air_1 		#Stinger
+		amount = 30
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BM-21"
+		type = medium_tank_rocket_chassis_0 		#BM-21
+		amount = 4
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "2S1 Gvozdika"
+		type = medium_tank_artillery_chassis_0 			#2S1 Gvozdika
+		#version_name = "2S1 Gvozdika"
+		amount = 10
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "M101"
+		type = artillery_1 			#M101
+		#version_name = "M101"
+		amount = 5
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "D-30"
+		type = artillery_1 			#D-30
+		amount = 22
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		type = medium_tank_chassis_1
+		variant_name = "T-55"
+		amount = 40
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BMP-1"
+		type = medium_tank_flame_chassis_0 			#BMP-1
+		amount = 122
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BTR-3"
+		type = medium_tank_amphibious_chassis_2 			#BTR-3
+		amount = 8
+		producer = UKR
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BTR-80"
+		type = medium_tank_amphibious_chassis_1 			#BTR-80
+		amount = 24
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BTR-60"
+		type = medium_tank_amphibious_chassis_0			#BTR-60
+		amount = 20
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "WZ-523"
+		type = APC_3			#WZ-523
+		#version_name = "ZSL92"
+		amount = 10
+		producer = CHI
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "VAB"
+		type = medium_tank_amphibious_chassis_1			#VAB
+		amount = 25
+		producer = FRA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Panhard M3"
+		type = medium_tank_amphibious_chassis_0			#Panhard M3
+		amount = 10
+		producer = FRA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BRDM-2"
+		type = medium_tank_destroyer_chassis_0			#BRDM-2
+		#version_name = "BRDM-2"
+		amount = 100
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "ZFB 05"
+		type = util_vehicle_5			#ZFB 05
+		amount = 20
+		producer = CHI
+	}
+
+	add_equipment_to_stockpile = {
+		type = heavy_util_vehicle_6			#Bastion PATSAS
+		amount = 22
+		producer = FRA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Some shitty technicals"
+		type = util_vehicle_1			#Some shitty technicals
+		amount = 200
+		producer = CHA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "ERC 90 Lynx"
+		type = Rec_tank_0			#ERC 90 Lynx
+		#version_name = "ERC 90 F1 Lynx"
+		amount = 7
+		producer = FRA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "ERC 90 Sagaie"
+		type = Rec_tank_0			#ERC 90 Sagaie
+		#version_name = "ERC 90 F4 Sagaie"
+		amount = 4
+		producer = FRA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Panhard AML"
+		type = Rec_tank_0			#Panhard AML
+		#version_name = "Panhard AML"
+		amount = 132
+		producer = FRA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Cascavel"
+		type = Rec_tank_0			#Cascavel
+		amount = 20
+		producer = BRA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "MiG-29"
+		type = small_plane_airframe_2			#MiG-29
+		amount = 1
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "SU-25"
+		type = small_plane_cas_airframe_2			#SU-25
+		amount = 8
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "C-27J Spartan"
+		type = large_plane_air_transport_airframe_1			#C-27J Spartan
+		amount = 2
+		producer = ITA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Hercules"
+		type = large_plane_air_transport_airframe_1			#Hercules
+		amount = 1
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Mi-17"
+		type = transport_helicopter_1			#Mi-17
+		amount = 6
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Mi-24"
+		type = attack_helicopter_1			#Mi-24
+		amount = 5
+		producer = SOV
+	}
+}

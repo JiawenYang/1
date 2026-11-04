@@ -1,0 +1,319 @@
+division_template = {
+	name = "Armoured Brigade"
+
+	regiments = {
+		armor_Bat = { x = 0 y = 0 }
+		armor_Bat = { x = 0 y = 1 }
+		L_arm_Bat = { x = 0 y = 2 }
+	}
+	support = {
+		H_Engi_Comp = { x = 0 y = 0 }
+		armor_Recce_Comp = { x = 0 y = 1 }
+		SP_Arty_Battery = { x = 0 y = 2 }
+	}
+}
+
+division_template = {
+	name = "Infantry Brigade"
+
+	regiments = {
+		Mech_Inf_Bat = { x = 0 y = 0 }
+		Mech_Inf_Bat = { x = 0 y = 1 }
+		Mech_Inf_Bat = { x = 0 y = 2 }
+	}
+	support = {
+		L_Engi_Comp = { x = 0 y = 0 }
+		SP_Arty_Battery = { x = 0 y = 1 }
+	}
+}
+
+division_template = {
+	name = "Reduced Infantry Brigade"
+
+	regiments = {
+		Mot_Inf_Bat = { x = 0 y = 0 }
+		Mot_Inf_Bat = { x = 0 y = 1 }
+	}
+	support = {
+		L_Engi_Comp = { x = 0 y = 0 }
+		Arty_Battery = { x = 0 y = 1 }
+	}
+}
+
+division_template = {
+	name = "Independent Infantry Battalion"
+
+	regiments = {
+		Mot_Inf_Bat = { x = 0 y = 0 }
+	}
+	support = {
+		Arty_Battery = { x = 0 y = 0 }
+	}
+
+	priority = 0
+}
+
+division_template = {
+	name = "Special Forces Battalion"
+
+	regiments = {
+		Special_Forces = { x = 0 y = 0 }
+	}
+
+	priority = 2
+}
+
+
+division_template = {
+	name = "Air Cavalry Battalion"
+
+	regiments = {
+		L_Air_assault_Bat = { x = 0 y = 0 }
+	}
+}
+
+
+division_template = {
+	name = "Airborne Battalion"
+
+	regiments = {
+		Mot_Air_Inf_Bat = { x = 0 y = 0 }
+	}
+}
+
+units = {
+	division = {
+		name = "14th Armoured Brigade"
+		location = 5079
+		division_template = "Armoured Brigade"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "12th Infantry Brigade"
+		location = 5210
+		division_template = "Infantry Brigade"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "8th Infantry Brigade"
+		location = 9082
+		division_template = "Reduced Infantry Brigade"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "10th Independent Infantry Battalion"
+		location = 11145
+		division_template = "Independent Infantry Battalion"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "Special Operations Battalion"
+		location = 1939
+		division_template = "Special Forces Battalion"
+		start_experience_factor = 0.4
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "Ranger Battalion"
+		location = 1939
+		division_template = "Special Forces Battalion"
+		start_experience_factor = 0.4
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "Air Cavalry Battalion"
+		location = 6796
+		division_template = "Air Cavalry Battalion"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "Airborne Battalion"
+		location = 6020
+		division_template = "Airborne Battalion"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.01
+	}
+}
+
+instant_effect = {
+	add_equipment_to_stockpile = {
+		variant_name = "G3"
+		type = infantry_weapons_1		#G3
+		amount = 600
+		producer = GER
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "AKM"
+		type = infantry_weapons_1		#AKM
+		amount = 600
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Galil"
+		type = infantry_weapons_2		#Galil
+		amount = 300
+		producer = ISR
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "M4 Carbine"
+		type = infantry_weapons_5		#M4 Carbine
+		amount = 150
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "FN SCAR"
+		type = infantry_weapons_6		#FN SCAR
+		amount = 150
+		producer = BEL
+	}
+
+	add_equipment_to_stockpile = {
+		type = cnc_equipment_1
+		amount = 300
+		producer = ENG
+	}
+
+	add_equipment_to_stockpile = {
+		type = medium_tank_chassis_0
+		variant_name = "Vickers MBT Mk 3"
+		amount = 78
+		producer = ENG
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Panhard AML"
+		type = Rec_tank_0			#Panhard AML
+		#version_name = "Panhard AML"
+		amount = 72
+		producer = FRA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Ferret"
+		type = medium_tank_destroyer_chassis_0			#Ferret
+		amount = 12
+		producer = ENG
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "S52"
+		type = Rec_tank_0			#S52
+		#version_name = "S52 Mk 3"
+		amount = 8
+		producer = ENG
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "UR-416"
+		type = medium_tank_amphibious_chassis_0			#UR-416
+		#version_name = "Henschel UR-416"
+		amount = 84
+		producer = GER
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "ZSL92"
+		type = medium_tank_flame_chassis_1			#ZSL-92
+		amount = 32
+		producer = CHI
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Panhard M3"
+		type = medium_tank_amphibious_chassis_0			#Panhard M3
+		amount = 10
+		producer = FRA
+	}
+
+	add_equipment_to_stockpile = {
+		type = heavy_util_vehicle_6			#PUMA M26-15
+		#version_name = "PUMA M26-15"
+		amount = 105
+		producer = SAF
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Mod 56"
+		type = artillery_1			#Mod 56
+		amount = 8
+		producer = ITA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "L118"
+		type = artillery_2			#L118
+		amount = 40
+		producer = ENG
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "MILAN"
+		type = Anti_tank_2			#MILAN
+		amount = 100
+		producer = FRA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "TOW"
+		type = Heavy_Anti_tank_1			#TOW
+		amount = 40
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		type = Anti_Air_1			#
+		amount = 100
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Nora B-52"
+		type = medium_tank_artillery_chassis_2			#Nora B-52
+		amount = 30
+		producer = SER
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Harbin WZ-9"
+		type = attack_helicopter_1		#Harbin WZ-9
+		amount = 4
+		producer = CHI
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Mi-17"
+		type = transport_helicopter_1		#Mi-17
+		amount = 2
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "SA-330 Puma"
+		type = transport_helicopter_1		#SA-330 Puma
+		amount = 14
+		producer = FRA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "F-5"
+		type = small_plane_airframe_1		#F-5
+		amount = 17
+		producer = USA
+	}
+}

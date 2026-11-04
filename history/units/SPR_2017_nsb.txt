@@ -10,6 +10,12 @@ division_template = {
 		SP_Arty_Bat = { x = 3 y = 0 }
 		Mech_Inf_Bat = { x = 3 y = 1 }
 	}
+	support = {
+		armor_Recce_Comp = { x = 0 y = 0 }
+		H_Engi_Comp = { x = 0 y = 1 }
+		SP_AA_Battery = { x = 0 y = 2 }
+		combat_service_support_company = { x = 0 y = 3 }
+	}
 }
 division_template = {
 	name = "Recon Brigade"
@@ -21,6 +27,11 @@ division_template = {
 		Mot_Inf_Bat = { x = 2 y = 0 }
 		Arty_Bat = { x = 3 y = 0 }
 		L_Inf_Bat = { x = 3 y = 1 }
+	}
+	support = {
+		Mot_Recce_Comp = { x = 0 y = 0 }
+		L_Engi_Comp = { x = 0 y = 1 }
+		combat_service_support_company = { x = 0 y = 2 }
 	}
 }
 division_template = {
@@ -79,6 +90,11 @@ division_template = {
 
 	regiments = {
 		Special_Forces = { x = 0 y = 0 }
+	}
+	support = {
+		L_Recce_Comp = { x = 0 y = 0 }
+		L_Engi_Comp = { x = 0 y = 1 }
+		combat_service_support_company = { x = 0 y = 2 }
 	}
 	priority = 2
 }
@@ -234,193 +250,258 @@ units = {
 }
 
 instant_effect = {
+	### 步兵装备 ###
 	add_equipment_to_stockpile = {
-		type = infantry_weapons3
+		variant_name = "CETME L"
+		type = infantry_weapons_2 #CETME L
+		producer = SPR
 		amount = 6650
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "HK G36E"
+		type = infantry_weapons_4 #HK G36E
 		producer = GER
+		amount = 16000
 	}
-		add_equipment_to_stockpile = {
-		type = command_control_equipment2
-		amount = 920
+	add_equipment_to_stockpile = {
+		type = cnc_equipment_3 #C4ISR 指管通情系统
+		producer = SPR
+		amount = 2720
 	}
-		add_equipment_to_stockpile = {
-		type = Anti_tank_1 #C90-CR
+
+	### 反坦克与防空 ###
+	add_equipment_to_stockpile = {
+		variant_name = "C90-CR"
+		type = Anti_tank_2 #C90-CR 火箭筒
+		producer = SPR
 		amount = 280
 	}
 	add_equipment_to_stockpile = {
-		type = Heavy_Anti_tank_1 #TOW-2
-		amount = 110
+		variant_name = "BGM-71 TOW-2"
+		type = Heavy_Anti_tank_2 #BGM-71 TOW-2
 		producer = USA
+		amount = 110
 	}
 	add_equipment_to_stockpile = {
-		type = Anti_Air_1
-		amount = 310
+		variant_name = "Mistral"
+		type = Anti_Air_1 #西北风防空导弹
 		producer = FRA
+		amount = 310
 	}
 	add_equipment_to_stockpile = {
-		type = mbt_hull_1
+		variant_name = "MIM-23 HAWK"
+		type = medium_tank_aa_chassis_0 #MIM-23 霍克
+		producer = USA
+		amount = 42
+	}
+
+	### 装甲车辆 ###
+	add_equipment_to_stockpile = {
 		variant_name = "Leopard 2A4"
+		type = medium_tank_chassis_1 #豹2A4
+		producer = GER
 		amount = 108
-		producer = GER
 	}
 	add_equipment_to_stockpile = {
-		type = mbt_hull_1
-		variant_name = "Leopard 2A5"
-		amount = 223
+		variant_name = "Leopard 2E"
+		type = medium_tank_chassis_2 #豹2E
 		producer = GER
+		amount = 219
 	}
 	add_equipment_to_stockpile = {
-		type = Rec_tank_2 #B1 Centauro
-		amount = 84
+		variant_name = "M60A3"
+		type = medium_tank_chassis_0 #M60A3
+		producer = USA
+		amount = 16
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Centauro"
+		type = medium_tank_destroyer_chassis_1 #B1 半人马座
 		producer = ITA
+		amount = 84
 	}
 	add_equipment_to_stockpile = {
-		type = Rec_tank_1 #VEC-M1
+		variant_name = "Pegaso VEC-M1"
+		type = medium_tank_destroyer_chassis_2 #VEC-M1 骑兵侦察车
+		producer = SPR
 		amount = 187
 	}
 	add_equipment_to_stockpile = {
-		type = IFV_5 #ASCOD Pizarro
-		amount = 515 #+ 371 for balance
+		variant_name = "Pizarro ICV"
+		type = medium_tank_flame_chassis_2 #ASCOD 皮萨罗
+		producer = SPR
+		amount = 515
 	}
 	add_equipment_to_stockpile = {
-		type = APC_2
-		amount = 453
+		variant_name = "M113"
+		type = medium_tank_amphibious_chassis_1 #M113
 		producer = USA
+		amount = 575
 	}
 	add_equipment_to_stockpile = {
-		type = APC_2 #Pegaso BMR
-		amount = 347 #+ 35 for balance
+		variant_name = "Pegaso BMR"
+		type = medium_tank_amphibious_chassis_1 #Pegaso BMR
+		producer = SPR
+		amount = 347
 	}
 	add_equipment_to_stockpile = {
-		type = APC_2
-		amount = 122 #added for balance
-	}
-	add_equipment_to_stockpile = {
-		type = util_vehicle_4 #RG-31
-		amount = 120 #10 for balance
-		producer = FRA
-	}
-	add_equipment_to_stockpile = {
-		type = SP_arty_2 #M109A5
-		amount = 96
-		producer = USA
-	}
-	add_equipment_to_stockpile = {
-		type = SP_arty_2 #M109A2
-		amount = 6
-		producer = USA
-	}
-	add_equipment_to_stockpile = {
-		type = artillery_1 #L118
-		amount = 56
-		producer = ENG
-	}
-	add_equipment_to_stockpile = {
-		type = artillery_0 #OTO-Melara Mod 56
-		amount = 179 #+12 from marines
-		producer = ITA
-	}
-	add_equipment_to_stockpile = {
-		type = artillery_2 #SBT 155/52 SIAC
-		amount = 64
-	}
-	add_equipment_to_stockpile = {
-		type = attack_helicopter3 #Eurocopter Tiger
-		amount = 9
-	}
-	add_equipment_to_stockpile = {
-		type = SP_Anti_Air_0 #MIM-23 Hawk
-		amount = 42
-		producer = USA
-	}
-	add_equipment_to_stockpile = {
-		type = CV_MR_Fighter2 #BAE Sea Harrier
-		amount = 12
-		producer = ENG
-	}
-	add_equipment_to_stockpile = {
-		type = mbt_hull_0
-		variant_name = "M60A3"
-		amount = 16
-		producer = USA
-	}
-	add_equipment_to_stockpile = {
-		type = APC_4 #LAV-III
-		amount = 33
+		variant_name = "LAV III"
+		type = medium_tank_flame_chassis_2 #LAV-III
 		producer = CAN
+		amount = 33
 	}
 	add_equipment_to_stockpile = {
-		type = APC_3 #AAV
+		variant_name = "AAV-7"
+		type = medium_tank_amphibious_chassis_1 #AAV-7 两栖突击车
+		producer = USA
 		amount = 16
-	}
-	add_equipment_to_stockpile = {
-		type = AS_Fighter3 #EF-2000 Typhoon
-		amount = 63
-	}
-	add_equipment_to_stockpile = {
-		type = MR_Fighter1 #F-5
-		amount = 19
-		producer = USA
-	}
-	add_equipment_to_stockpile = {
-		type = CV_MR_Fighter2 # Harrier
-		amount = 20
-		producer = ENG
-	}
-	add_equipment_to_stockpile = {
-		type = CV_MR_Fighter3 #F/A-18 Hornet
-		amount = 66
-		producer = USA
-	}
-	add_equipment_to_stockpile = {
-		type = naval_plane1 #p-3 Orion
-		amount = 5
-		producer = USA
 	}
 
+	### 火炮 ###
 	add_equipment_to_stockpile = {
-		type = transport_plane1 #C-130H
-		amount = 7
+		variant_name = "M109A5"
+		type = medium_tank_artillery_chassis_1 #M109A5 自行榴弹炮
 		producer = USA
+		amount = 96
 	}
 	add_equipment_to_stockpile = {
-		type = transport_helicopter2 #Boeing CH-47D Chinook
+		variant_name = "M109A2"
+		type = medium_tank_artillery_chassis_1 #M109A2 自行榴弹炮
+		producer = USA
+		amount = 6
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "L118"
+		type = artillery_1 #L118 轻型榴弹炮
+		producer = ENG
+		amount = 56
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "OTO Melara Mod 56"
+		type = artillery_1 #OTO Melara Mod 56
+		producer = ITA
+		amount = 179
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "SBT 155/52 SIAC"
+		type = artillery_2 #SBT 155/52 SIAC
+		producer = SPR
+		amount = 64
+	}
+
+	### 车辆 ###
+	add_equipment_to_stockpile = {
+		type = heavy_util_vehicle_5 #RG-31 防雷车
+		producer = FRA
+		amount = 120
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Santana Anibal"
+		type = util_vehicle_3 #Santana Anibal
+		producer = SPR
+		amount = 460
+	}
+
+	### 直升机 ###
+	add_equipment_to_stockpile = {
+		variant_name = "Tigre HAD"
+		type = heavy_tank_chassis_2 #EC665 虎式
+		producer = FRA
+		amount = 18
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "MBB Bo 105"
+		type = heavy_tank_chassis_0 #MBB Bo 105
+		producer = GER
 		amount = 17
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "CH-47D"
+		type = transport_helicopter_1 #CH-47D 契努克
 		producer = USA
+		amount = 17
 	}
 	add_equipment_to_stockpile = {
-		type = transport_helicopter1 #Eurocopter AS332 Super Puma
-		amount = 34 #+9+4+4+2
+		variant_name = "AS332 Super Puma"
+		type = transport_helicopter_1 #AS332 超美洲狮
 		producer = FRA
+		amount = 34
 	}
 	add_equipment_to_stockpile = {
-		type = transport_helicopter2 #Eurocopter AS532 Cougar
-		amount = 20 #+2
+		variant_name = "AS532 Cougar"
+		type = transport_helicopter_2 #AS532 美洲狮
 		producer = FRA
+		amount = 20
 	}
 	add_equipment_to_stockpile = {
-		type = transport_helicopter4 #NHIndustries NH-90
+		variant_name = "NH-90"
+		type = transport_helicopter_3 #NH-90
+		producer = FRA
 		amount = 1
-		producer = FRA
+	}
+
+	### 飞机 ###
+	add_equipment_to_stockpile = {
+		variant_name = "EF-2000 Typhoon"
+		type = medium_plane_airframe_2 #EF-2000 台风
+		producer = SPR
+		amount = 80
 	}
 	add_equipment_to_stockpile = {
-		type = L_Strike_fighter1 #CASA C-101
+		variant_name = "AV-8B Harrier II"
+		type = cv_small_plane_strike_airframe_2 #AV-8B 海鹞
+		producer = USA
+		amount = 32
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "F/A-18 Hornet"
+		type = cv_medium_plane_airframe_2 #F/A-18 大黄蜂
+		producer = USA
 		amount = 66
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "CASA C-101"
+		type = small_plane_strike_airframe_1 #CASA C-101
+		producer = SPR
+		amount = 66
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "P-3 Orion"
+		type = large_plane_maritime_patrol_airframe_1 #P-3 猎户座
+		producer = USA
+		amount = 5
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "C-130H"
+		type = large_plane_air_transport_airframe_1 #C-130H
+		producer = USA
+		amount = 7
+	}
+
+	### Sealed Storage 封存 ###
+	add_equipment_to_stockpile = {
+		variant_name = "F-5"
+		type = small_plane_airframe_1 #F-5A/B（封存）
+		producer = USA
+		amount = 19
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Mirage F1"
+		type = small_plane_airframe_1 #Mirage F1（封存）
+		producer = FRA
+		amount = 30
+	}
+	# Orphan variant attachment (2017 real-world holdings)
+	add_equipment_to_stockpile = {
+		type = medium_plane_airframe_2
+		variant_name = "EF2000 Tranche 3"
+		amount = 20
 		producer = SPR
 	}
 	add_equipment_to_stockpile = {
-		type = attack_helicopter3 #Eurocopter Tiger
-		amount = 9
+		type = large_plane_air_transport_airframe_2
+		variant_name = "A400M Atlas"
+		amount = 5
 		producer = SPR
-	}
-	add_equipment_to_stockpile = {
-		type = attack_helicopter1 #MBB Bo 105
-		amount = 17
-		producer = GER
-	}
-	add_equipment_to_stockpile = {
-		type = AS_Fighter3 #EF-2000 Typhoon
-		amount = 17
-		producer = GER
 	}
 }

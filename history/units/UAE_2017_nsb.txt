@@ -1,0 +1,464 @@
+division_template = {
+	name = "Liwa Mechaniqui"
+
+	regiments = {
+		armor_Bat = { x = 0 y = 0 }
+		Mech_Inf_Bat = { x = 0 y = 1 }
+		Mech_Inf_Bat = { x = 0 y = 2 }
+		Mech_Inf_Bat = { x = 1 y = 0 }
+		Mech_Inf_Bat = { x = 1 y = 1 }
+		SP_Arty_Bat = { x = 1 y = 2 }
+
+	}
+	support = {
+		H_Engi_Comp = { x = 0 y = 0 }
+		armor_Recce_Comp = { x = 0 y = 1 }
+	}
+}
+division_template = {
+	name = "Liwa Moudar'a"
+
+	regiments = {
+		armor_Bat = { x = 0 y = 0 }
+		Arm_Inf_Bat = { x = 0 y = 1 }
+		Arm_Inf_Bat = { x = 0 y = 2 }
+		Arm_Inf_Bat = { x = 1 y = 0 }
+		Arm_Inf_Bat = { x = 1 y = 1 }
+		SP_Arty_Bat = { x = 1 y = 2 }
+
+	}
+	support = {
+		H_Engi_Comp = { x = 0 y = 0 }
+		armor_Recce_Comp = { x = 0 y = 1 }
+	}
+}
+division_template = {
+	name = "Liwa Mushat"
+
+	regiments = {
+		armor_Bat = { x = 0 y = 0 }
+		Mot_Inf_Bat = { x = 0 y = 1 }
+		Mot_Inf_Bat = { x = 0 y = 2 }
+		Mot_Inf_Bat = { x = 1 y = 0 }
+		SP_Arty_Bat = { x = 1 y = 1 }
+
+	}
+	support = {
+		H_Engi_Comp = { x = 0 y = 0 }
+		armor_Recce_Comp = { x = 0 y = 1 }
+
+	}
+}
+
+division_template = {
+	name = "Presidential Guard"
+
+	regiments = {
+		armor_Bat = { x = 0 y = 0 }
+		Mech_Inf_Bat = { x = 0 y = 1 }
+		Mech_Inf_Bat = { x = 0 y = 2 }
+		Mech_Inf_Bat = { x = 1 y = 0 }
+		Mech_Inf_Bat = { x = 1 y = 1 }
+		L_Marine_Bat = { x = 2 y = 0 }
+		L_Inf_Bat = { x = 2 y = 1 }
+	}
+
+	support = {
+		L_Engi_Comp = { x = 0 y = 0 }
+	}
+
+	priority = 2
+}
+
+division_template = {
+	name = "Special Operations Command"
+
+	regiments = {
+		Special_Forces = { x = 0 y = 0 }
+	}
+
+	priority = 2
+}
+
+
+units = {
+
+	division = {
+		name = "1. Liwa Mechaniqui"
+		location = 3725
+		division_template = "Liwa Mechaniqui"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "2. Liwa Mechaniqui"
+		location = 3689
+		division_template = "Liwa Mechaniqui"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "1. Liwa Moudar'a"
+		location = 3689
+		division_template = "Liwa Moudar'a"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "2. Liwa Moudar'a"
+		location = 3585
+		division_template = "Liwa Moudar'a"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "1. Liwa Mushat"
+		location = 7960
+		division_template = "Liwa Mushat"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "Presidential Guard"
+		location = 3689
+		division_template = "Presidential Guard"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "Special Operations Command"
+		location = 3689
+		division_template = "Special Operations Command"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.01
+	}
+}
+
+instant_effect = {
+
+	add_equipment_to_stockpile = {
+		type = infantry_weapons_5
+		amount = 5000
+		producer = UAE
+	}
+
+	add_equipment_to_stockpile = {
+		type = infantry_weapons_4
+		amount = 3250
+		producer = USA
+	}
+		add_equipment_to_stockpile = {
+		type = cnc_equipment_3
+		amount = 500
+		producer = USA
+	}
+		add_equipment_to_stockpile = {
+		type = Anti_tank_2
+		amount = 140
+		producer = USA
+	}
+	add_equipment_to_stockpile = {
+		type = Heavy_Anti_tank_3
+		amount = 70
+		producer = USA
+	}
+	add_equipment_to_stockpile = {
+		type = Anti_Air_1
+		amount = 170
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Leclerc"
+		type = medium_tank_chassis_2 #Leclerc
+		variant_name = "AMX-56 Leclerc"
+		amount = 390
+		producer = FRA
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "OF-40"
+		type = medium_tank_chassis_1 #OF-40
+		variant_name = "OF-40 Mk.2"
+		amount = 36
+		producer = ITA
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "AMX-30"
+		type = medium_tank_chassis_0 #AMX-30
+		variant_name = "AMX-30B2"
+		amount = 45
+		producer = FRA
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "FV101 Scorpion"
+		type = medium_tank_destroyer_chassis_1 #FV101 Scorpion
+		amount = 76
+		producer = ENG
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Panhard AML/ AML-90"
+		type = Rec_tank_0 #Panhard AML/ AML-90
+		amount = 49
+		producer = FRA
+		#version_name = "Panhard AML"
+	}
+	add_equipment_to_stockpile = {
+		type = util_vehicle_4
+		amount = 24
+		producer = FRA
+	}
+	add_equipment_to_stockpile = {
+		type = medium_tank_amphibious_chassis_1
+		amount = 32
+		producer = GER
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "AMX-10"
+		type = medium_tank_flame_chassis_1 #AMX-10
+		amount = 15
+		producer = FRA
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "BMP-3"
+		type = medium_tank_flame_chassis_2 #BMP-3
+		amount = 590
+		producer = SOV
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "EE-11"
+		type = medium_tank_amphibious_chassis_1 #EE-11
+		amount = 120
+		producer = BRA
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "M3 Panhard"
+		type = medium_tank_amphibious_chassis_0 #M3 Panhard
+		amount = 370
+		producer = FRA
+	}
+	add_equipment_to_stockpile = {
+		type = medium_tank_amphibious_chassis_1
+		amount = 80
+		producer = FRA
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "VAB"
+		type = medium_tank_amphibious_chassis_1 #VAB
+		amount = 20
+		producer = FRA
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "BTR-3"
+		type = medium_tank_amphibious_chassis_2			#BTR-3
+		amount = 90
+		producer = UKR
+	}
+	add_equipment_to_stockpile = {
+		type = heavy_util_vehicle_6 #M-ATV
+		amount = 750
+		producer = USA
+	}
+	add_equipment_to_stockpile = {
+		type = util_vehicle_5
+		amount = 76
+		producer = SAF
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "G6 SP Arty"
+		type = medium_tank_artillery_chassis_0 #G6 SP Arty
+		amount = 78
+		producer = SAF
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "M109A3"
+		type = medium_tank_artillery_chassis_1 #M109A3
+		amount = 85
+		producer = USA
+		#version_name = M109A3
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Mk F3 155mm"
+		type = medium_tank_artillery_chassis_0 #Mk F3 155mm
+		amount = 19
+		producer = FRA
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Type-59-I"
+		type = medium_tank_chassis_0
+		amount = 20
+		producer = CHI
+		#version_name = "Type-59-I"
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "FIROS-25/30"
+		type = medium_tank_rocket_chassis_1 #FIROS-25/30
+		amount = 48
+		producer = ITA
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "HIMARS"
+		type = SP_R_arty_2 #HIMARS
+		amount = 20
+		producer = USA
+		#version_name = "HIMARS"
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "9A52"
+		type = medium_tank_rocket_chassis_2 #9A52
+		amount = 6
+		producer = SOV
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "F-16E Block 60"
+		type = small_plane_strike_airframe_2 #F-16E Block 60
+		amount = 78
+		producer = USA
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Mirage 2000"
+		type = small_plane_airframe_2 #Mirage 2000
+		amount = 44
+		producer = FRA
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "C17"
+		type = large_plane_air_transport_airframe_2 #C17
+		amount = 6
+		producer = USA
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "C130-H"
+		type = large_plane_air_transport_airframe_1 #C130-H
+		amount = 5
+		producer = USA
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "SA-22 Pantsir"
+		type = SP_Anti_Air_2 #SA-22 Pantsir
+		amount = 50
+		producer = SOV
+		#version_name = "SA-22 Pantsir"
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "IOMAX Archangel"
+		type = small_plane_strike_airframe_3 #IOMAX Archangel
+		amount = 3
+		producer = FRA
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "AH-64D"
+		type = attack_helicopter_2 #AH-64D
+		amount = 30
+		producer = USA
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Boeing CH-47F Chinook"
+		type = transport_helicopter_3 #Boeing CH-47F Chinook
+		amount = 22
+		producer = USA
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Sikorsky UH-60 Black Hawk"
+		type = transport_helicopter_2 #Sikorsky UH-60 Black Hawk
+		amount = 41
+		producer = USA
+	}
+
+	### Sealed Storage 封存 ###
+	add_equipment_to_stockpile = {
+		variant_name = "AH-64D"
+		type = attack_helicopter_2 #AH-64D（封存）
+		producer = USA
+		amount = 12
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Sikorsky UH-60 Black Hawk"
+		type = transport_helicopter_2 #Sikorsky UH-60 Black Hawk（封存）
+		producer = USA
+		amount = 16
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "F-16E Block 60"
+		type = small_plane_strike_airframe_2 #F-16E Block 60（封存）
+		producer = USA
+		amount = 31
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Mirage 2000"
+		type = small_plane_airframe_2 #Mirage 2000（封存）
+		producer = FRA
+		amount = 17
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "OF-40 Mk.2"
+		type = medium_tank_chassis_1 #OF-40 Mk.2（封存）
+		producer = ITA
+		amount = 14
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "AMX-30B2"
+		type = medium_tank_chassis_0 #AMX-30B2（封存）
+		producer = FRA
+		amount = 18
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "FV101 Scorpion"
+		type = medium_tank_destroyer_chassis_1 #FV101 Scorpion（封存）
+		producer = ENG
+		amount = 30
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "AMX-10"
+		type = medium_tank_flame_chassis_1 #AMX-10（封存）
+		producer = FRA
+		amount = 6
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "EE-11"
+		type = medium_tank_amphibious_chassis_1 #EE-11（封存）
+		producer = BRA
+		amount = 48
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "M3 Panhard"
+		type = medium_tank_amphibious_chassis_0 #M3 Panhard（封存）
+		producer = FRA
+		amount = 148
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "VAB"
+		type = medium_tank_amphibious_chassis_1 #VAB（封存）
+		producer = FRA
+		amount = 8
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "G6 SP Arty"
+		type = medium_tank_artillery_chassis_0 #G6 SP Arty（封存）
+		producer = SAF
+		amount = 31
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "M109A3"
+		type = medium_tank_artillery_chassis_1 #M109A3（封存）
+		producer = USA
+		amount = 34
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Mk F3 155mm"
+		type = medium_tank_artillery_chassis_0 #Mk F3 155mm（封存）
+		producer = FRA
+		amount = 7
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Type-59-I"
+		type = medium_tank_chassis_0 #Type-59-I（封存）
+		producer = CHI
+		amount = 8
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "FIROS-25/30"
+		type = medium_tank_rocket_chassis_1 #FIROS-25/30（封存）
+		producer = ITA
+		amount = 19
+	}
+}

@@ -176,13 +176,7 @@ on_actions = {
 						days = 238
 					}
 				}
-				KOR = {
-					country_event = {
-						# 板门店峰会：朝韩邦联接触（2024.5.1）
-						id = korean_confederation.0
-						days = 1582
-					}
-				}
+				
 				USA = {
 					country_event = {
 						# 美国政治危机
@@ -373,29 +367,127 @@ on_actions = {
 					}
 				}
 			}
-			# 分支3：台湾与朝鲜半岛均已和平统一——2025年钓鱼岛/尖阁诸岛对峙引爆大亚洲战争
+			# 台海线入口：派发 prc.2 → 开启本工程台海国策线（走完国策末端开战 → GAW）
 			if = {
 				limit = {
 					date > 2025.4.20
-					has_global_flag = korean_confederation_formed
+					has_global_flag = USA_american_civil_war_global
 					NOT = { has_global_flag = pan_asian_war_ongoing }
+					NOT = { has_global_flag = GAW_soon }
 					NOT = { has_global_flag = PRC_ongoing_taiwan_war }
-					NOT = { has_global_flag = GAW_senkaku_chain_started }
+					NOT = { has_global_flag = PRC_taiwan_war_won }
+					NOT = { has_global_flag = PRC_taiwan_war_lost }
 					CHI = {
 						exists = yes
-						has_completed_focus = CHI_Establish_Taiwan_SAR
+						NOT = { has_country_flag = PRC_taiwan_war_start }
+						NOT = { has_country_flag = PRC_taiwan_war_forced_start }
 					}
 					JAP = {
 						exists = yes
-						has_country_flag = pdto_member
 					}
 				}
-				set_global_flag = GAW_senkaku_chain_started
 				CHI = {
+					# 与朝鲜半岛两支互斥：先占位，A/B 分支读到该旗后不再派发
+					set_country_flag = PRC_taiwan_war_start
 					country_event = {
-						# 钓鱼岛对峙
-						id = prc.546
-						days = 5
+						id = prc.2
+						days = 3
+					}
+				}
+			}
+			# 分支3：朝鲜半岛爆点（2025 年后）——按 korean_confederation_formed 分成两支
+			if = {
+				limit = {
+					date > 2025.4.20
+					NOT = { has_global_flag = pan_asian_war_ongoing }
+				}
+				# B：已有朝韩邦联——复用既有“复仇派”链（钓鱼岛对峙 → 日本主动开打 → prc.546 内调 PRC_gaw_start）
+				if = {
+					limit = {
+						has_global_flag = korean_confederation_formed
+						NOT = { has_global_flag = PRC_ongoing_taiwan_war }
+						NOT = { has_global_flag = GAW_senkaku_chain_started }
+						# 与 A 路径互斥：A 已派发吴起行动链时不再走本链
+						NOT = { has_global_flag = GAW_soon }
+						CHI = {
+							exists = yes
+							# 工程适配：CHI_Establish_Taiwan_SAR 在本工程无定义（全库无该焦点），
+							# 以“台海线未开启/未开战”作为和平解决判据
+							NOT = { has_country_flag = PRC_taiwan_war_start }
+						}
+						JAP = {
+							exists = yes
+							has_country_flag = pdto_member
+						}
+					}
+					set_global_flag = GAW_senkaku_chain_started
+					CHI = {
+						country_event = {
+							# 钓鱼岛对峙
+							id = prc.546
+							days = 5
+						}
+					}
+				}
+				# A：没有朝韩邦联——照烈焰升腾原版恢复“吴起行动”整链（131 选项内接 216 → 217 → 218）
+				else = {
+					if = {
+						limit = {
+							NOT = { has_global_flag = GAW_soon }
+							NOT = { has_global_flag = GAW_senkaku_chain_started }
+							NOT = { has_global_flag = PRC_ongoing_taiwan_war }
+							CHI = {
+								exists = yes
+								NOT = { has_country_flag = PRC_taiwan_war_start }
+							}
+							JAP = {
+								exists = yes
+								has_country_flag = pdto_member
+							}
+						}
+						# 对应原版 PRC_operation_wu_qi 的 select_effect 排程：325/129/130/131
+						set_global_flag = GAW_soon
+						CHI = {
+							country_event = {
+								id = prc.325
+								days = 20
+							}
+							country_event = {
+								id = prc.129
+								days = 5
+							}
+							country_event = {
+								id = prc.130
+								days = 8
+							}
+							country_event = {
+								id = prc.131
+								days = 12
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	# 朝韩统一谈判：美国联邦政府失能后启动（以“美国脑死亡”全局旗标为前置）
+	on_daily = {
+		effect = {
+			if = {
+				limit = {
+					has_global_flag = USA_federal_paralysis_global
+					date > 2025.3.1
+					NOT = { has_global_flag = korean_confederation_formed }
+					NOT = { has_global_flag = korean_unification_talks_failed }
+					NOT = { has_global_flag = korean_confederation_talks_started }
+					country_exists = KOR
+					country_exists = NKO
+				}
+				set_global_flag = korean_confederation_talks_started
+				KOR = {
+					country_event = {
+						id = korean_confederation.0
+						days = 1
 					}
 				}
 			}

@@ -1,4 +1,4 @@
-﻿2017.1.1 = {
+2017.1.1 = {
 	ABK = {
         remove_ideas = {
             ABK_outdated_army_idea
@@ -210,8 +210,15 @@
 		}
 	}
 	AFG = {
-		capital = 414
+		set_capital = { state = 414 }
 		set_cosmetic_tag = AFG
+		if = {
+			limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "AFG_2017_bba"
+			else = {
+				set_air_oob = "AFG_2017_nonbba"
+			}
+		}
 		if = { limit = { has_dlc = "No Step Back" } 
 			set_oob = "AFG_2017_nsb"
 			else = {
@@ -462,9 +469,9 @@
 		startup_politics = yes 
 	}
 	AIA = {
-		oob = "AIA_2017" 
+		set_oob = "AIA_2017"
 		set_cosmetic_tag = AIA_JNI 
-		capital = 366
+		set_capital = { state = 366 }
 		declare_war_on = { target = MAL type = annex_everything }     
 		declare_war_on = { target = TUA type = annex_everything }     
 		
@@ -679,6 +686,8 @@
 		set_variable = { var = population_tax_rate value = 35 }
 	 
 		# Starting tech
+		set_naval_oob = "ALG_2017_naval_mtg"
+
 		set_technology = {  
 			util_vehicle_2 = 1
 			util_vehicle_3 = 1 
@@ -792,7 +801,7 @@
 		}
 	}
 	AQY = {
-		oob="AQY_2017"  
+		set_oob = "AQY_2017"
 	 	declare_war_on = {
 	 		target = HOU
 	 		type = annex_everything
@@ -844,6 +853,8 @@
 		set_variable = { var = population_tax_rate value = 35 } 
 
 		# Starting tech
+		set_naval_oob = "ARG_2017_naval_mtg"
+
 		set_technology = {  
 			body_armor_2 = 1 
 			microprocessors = 1
@@ -1037,7 +1048,7 @@
 		set_variable = { party_pop_array^21 = 0 } #Nat_Fascism
 		set_variable = { party_pop_array^22 = 0 } #Nat_Autocracy
 		set_variable = { party_pop_array^23 = 0 } #Monarchist
-		add_to_array = { ruling_party = 6 }
+		set_variable = { ruling_party = 6 }
 		startup_politics = yes
 
 		create_country_leader = {
@@ -1058,6 +1069,12 @@
 				set_oob = "AST_2000_nonnsb"
 			}
 		} 
+		if = { limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "AST_2017_bba"
+			else = {
+				set_air_oob = "AST_2017_nonbba"
+			}
+		}
         add_dynamic_modifier = {
             modifier = first_island_chain
         }
@@ -1080,6 +1097,8 @@
         set_variable = { fvey_communism_drift_dynamic_var = 0.10 }
         set_variable = { fvey_neutrality_drift_dynamic_var = 0.20 }
         set_variable = { fvey_nationalist_drift_dynamic_var = -0.10 }
+		set_naval_oob = "AST_2017_naval_mtg"
+
         set_technology = {
             ast_special_battalions_tech = 1
         }
@@ -1303,7 +1322,7 @@
 		set_variable = { party_pop_array^21 = 0 } #Nat_Fascism
 		set_variable = { party_pop_array^22 = 0 } #Nat_Autocracy
 		set_variable = { party_pop_array^23 = 0.03 } #Monarchist
-		add_to_array = { ruling_party = 17 }
+		set_variable = { ruling_party = 17 }
 		startup_politics = yes
 	 
 		create_country_leader = {
@@ -1317,6 +1336,13 @@
 	}
 	AZE = {
 		if = { limit = { has_dlc = "No Step Back" }
+		if = {
+			limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "AZE_2017_bba"
+			else = {
+				set_air_oob = "AZE_2017_nonbba"
+			}
+		}
 			set_oob = "AZE_2017_nsb"
 			else = {
 				set_oob = "AZE_2000_nonnsb"
@@ -1419,7 +1445,7 @@
 		}
 	}
 	BAL = {
-		oob = "BAL_2017"   
+		set_oob = "BAL_2017"
 		declare_war_on = { target = CAR type = civil_war }
 		declare_war_on = { target = LGN type = annex_everything }
 		set_popularities = {
@@ -1491,6 +1517,8 @@
         add_ideas = BAN_politics_fix
 
 		# Starting tech
+		set_naval_oob = "BAN_2017_naval_mtg"
+
 		set_technology = { 
 			body_armor_1 = 1
 			internet_2 = 1 	#2G
@@ -1575,6 +1603,15 @@
 				set_oob = "BEL_2000_nonnsb"
 			}
 		} 
+		set_naval_oob = "BEL_2017_naval_mtg"
+
+		if = { limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "BEL_2017_bba"
+			else = {
+				set_air_oob = "BEL_2017_nonbba"
+			}
+		}
+
 		set_technology = { 
 			support_weapons3 = 1 
 			body_armor_2 = 1 
@@ -1788,7 +1825,7 @@
 		set_variable = { party_pop_array^21 = 0 } #Nat_Fascism
 		set_variable = { party_pop_array^22 = 0 } #Nat_Autocracy
 		set_variable = { party_pop_array^23 = 0 } #Monarchist
-		add_to_array = { ruling_party = 18 }
+		set_variable = { ruling_party = 18 }
 		startup_politics = yes
 
 		create_country_leader = {
@@ -1809,7 +1846,7 @@
 		set_variable = { literacy_rate = 0.424 }
 	}
 	BFA = {
-		oob = "BFA_2017"  
+		set_oob = "BFA_2017"
 
 		#CT
 		clr_country_flag = threat_level_negligible
@@ -1904,6 +1941,13 @@
 		}
 	}
 	BHR = {
+		if = {
+			limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "BHR_2017_bba"
+			else = {
+				set_air_oob = "BHR_2017_nonbba"
+			}
+		}
 		if = { limit = { has_dlc = "No Step Back" } 
 			set_oob = "BHR_2017_nsb"
 			else = {
@@ -2104,7 +2148,7 @@
 		set_variable = { party_pop_array^23 = 0 } #Monarchist
 
 		### Ruling Party
-		add_to_array = { ruling_party = 0 }
+		set_variable = { ruling_party = 0 }
 
 		startup_politics = yes
 	}
@@ -2383,6 +2427,13 @@
 		}
 	}
 	BOL = {
+		if = {
+			limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "BOL_2017_bba"
+			else = {
+				set_air_oob = "BOL_2017_nonbba"
+			}
+		}
         remove_ideas = {
             BOL_cochabamba_crisis
         }
@@ -2491,12 +2542,25 @@
 		set_country_flag = Bosnia_a_Serb_is_in_power
 		set_country_flag = Bosnia_SDS
 		set_country_flag = Bosnia_SNSD
+		set_country_flag = BOS_sda
+		set_country_flag = BOS_sds
+		set_country_flag = BOS_snsd
+		set_country_flag = BOS_sbih
+		set_country_flag = BOS_pdp
+		set_country_flag = BOS_df
 		set_country_flag = {
 			flag = BOS_Roatation_of_leaders1
 			days = 287
 			value = 1
 		} 
 		if = { limit = { has_dlc = "No Step Back" } 
+		if = {
+			limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "BOS_2017_bba"
+			else = {
+				set_air_oob = "BOS_2017_nonbba"
+			}
+		}
 			set_oob = "BOS_2017_nsb"
 			else = {
 				set_oob = "BOS_2000_nonnsb"
@@ -2586,7 +2650,7 @@
 		set_variable = { party_pop_array^23 = 0 } #Monarchist
 
 		### Ruling Party
-		add_to_array = { ruling_party = 1 }
+		set_variable = { ruling_party = 1 }
 
 		startup_politics = yes
 
@@ -2747,6 +2811,14 @@
 		set_variable = { current_term = 2 } 
 	}
 	BRA = {
+		if = {
+			limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "BRA_2017_bba"
+			else = {
+				set_air_oob = "BRA_2017_nonbba"
+			}
+		}
+		set_country_flag = BRA_democrats_party_formed
 		add_ideas = {
         	BRA_mass_homicide_idea
         	BRA_agricultural_society_idea
@@ -2762,6 +2834,8 @@
 		reverse_add_opinion_modifier = { target = KOR modifier = large_commercial_relations }
 		add_opinion_modifier = { target = RAJ modifier = large_commercial_relations }
 		reverse_add_opinion_modifier = { target = RAJ modifier = large_commercial_relations } 
+
+		set_naval_oob = "BRA_2017_naval_mtg"
 
 		set_technology = {  
 			night_vision_2 = 1 
@@ -2902,7 +2976,7 @@
 		set_variable = { party_pop_array^23 = 0 } #Monarchist
 
 		### Ruling Party
-		add_to_array = { ruling_party = 5 }
+		set_variable = { ruling_party = 5 }
 
 		startup_politics = yes
 
@@ -2917,7 +2991,7 @@
 		set_variable = { current_term = 1 } 
 	}
 	BRM = {
-		capital = 505
+		set_capital = { state = 505 }
 		if = { limit = { has_dlc = "No Step Back" }
 			set_oob = "BRM_2017_nsb"
 			else = {
@@ -2967,6 +3041,8 @@
 		} 
         set_cosmetic_tag = BRM_burma
         clr_country_flag = dynamic_flag
+		set_naval_oob = "BRM_2017_naval_mtg"
+
         set_technology = {
             e_tank_bat_tech = 1
             e_arm_inf_bat_tech = 1
@@ -3232,6 +3308,13 @@
 		startup_politics = yes
 	}
 	BUL = {
+		if = {
+			limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "BUL_2017_bba"
+			else = {
+				set_air_oob = "BUL_2017_nonbba"
+			}
+		}
 		if = { limit = { has_dlc = "No Step Back" } 
 			set_oob = "BUL_2017_nsb"
 			else = {
@@ -3249,6 +3332,8 @@
 
 		set_country_flag = military_advisors_AFG
 		AFG = { add_to_variable = { foreign_advisors = 1 } } 
+
+		set_naval_oob = "BUL_2017_naval_mtg"
 
 		set_technology = { 
 			night_vision_2 = 1   
@@ -3539,6 +3624,13 @@
 		set_variable = { literacy_rate = 0.684 }
 	}
 	CAM = {
+		if = {
+			limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "CAM_2017_bba"
+			else = {
+				set_air_oob = "CAM_2017_nonbba"
+			}
+		}
 		set_variable = { international_bankers_opinion = 60 }
 		set_variable = { farmers_opinion = 40 }
 
@@ -3617,6 +3709,15 @@
 		set_variable = { literacy_rate = 0.771 } 
 	}
 	CAN = {
+		set_naval_oob = "CAN_2017_naval_mtg"
+
+		if = { limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "CAN_2017_bba"
+			else = {
+				set_air_oob = "CAN_2017_nonbba"
+			}
+		}
+
 		set_technology = { 
 			corvette_hull_1 = 1
 			corvette_hull_2 = 1
@@ -3766,7 +3867,8 @@
 		} 
 	}
 	CAR = {
-		oob = "CAR_2017"    
+		set_country_flag = CAR_liberalism_2013_formed
+		set_oob = "CAR_2017"
 		set_technology = { 
 			infantry_weapons_2 = 1  
 			util_vehicle_1 = 1  
@@ -3943,7 +4045,7 @@
 		set_variable = { party_pop_array^21 = 0.007 } #Nat_Fascism
 		set_variable = { party_pop_array^22 = 0 } #Nat_Autocracy
 		set_variable = { party_pop_array^23 = 0 } #Monarchist
-		add_to_array = { ruling_party = 7 }
+		set_variable = { ruling_party = 7 }
 		startup_politics = yes 
 	}
 	CDI = {
@@ -4158,7 +4260,7 @@
 		retire_character = CHE_ibn_al_khattab
 	}
 	CHI = {
-        # GAW指挥层（烈焰升腾移植）
+        # GAW鎸囨尌灞傦紙鐑堢劙鍗囪吘绉绘锛?
         recruit_character = PRC_Zhang_Youxia
         recruit_character = PRC_Li_Qiaoming
         recruit_character = PRC_Li_Yujie
@@ -4546,6 +4648,8 @@
                 unlock_mio_trait_tooltip = CHI_sov_flanker_expertise
             }
         }
+		set_naval_oob = "CHI_2017_naval_mtg"
+
         set_technology = {
             zz_synthetic_battalion_tech = 1
             zz_support_detachment_tech = 1
@@ -4563,6 +4667,12 @@
 				set_oob = "CHI_2000_nonnsb"
 			}
 		}  
+		if = { limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "CHI_2017_bba"
+			else = {
+				set_air_oob = "CHI_2017_nonbba"
+			}
+		}
 	 
 		#Influence system
 		init_influence = yes
@@ -4864,6 +4974,8 @@
 		set_variable = { var = corporate_tax_rate value = 32 }
 
 		# Starting tech
+		set_naval_oob = "CHL_2017_naval_mtg"
+
 		set_technology = {  
 			night_vision_1 = 1
 			night_vision_2 = 1 
@@ -4947,7 +5059,7 @@
 		set_variable = { party_pop_array^21 = 0 } #Nat_Fascism
 		set_variable = { party_pop_array^22 = 0 } #Nat_Autocracy
 		set_variable = { party_pop_array^23 = 0 } #Monarchist
-		add_to_array = { ruling_party = 18 } #socialism
+		set_variable = { ruling_party = 18 } #socialism
 		add_to_array = { gov_coalition_array = 14 } #Neutral_conservatism
 		add_to_array = { gov_coalition_array = 3 } #neutral_Social
 		add_to_array = { gov_coalition_array = 5 } #anarchist_communism
@@ -4999,6 +5111,13 @@
 		} 
 	}
 	COL = {
+		if = {
+			limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "COL_2017_bba"
+			else = {
+				set_air_oob = "COL_2017_nonbba"
+			}
+		}
         add_ideas = {
             COL_never_ending_war
             COL_vultures_of_colombia_profunda
@@ -5014,6 +5133,8 @@
 		set_variable = { var = population_tax_rate value = 36 }
 
 		# Starting tech
+		set_naval_oob = "COL_2017_naval_mtg"
+
 		set_technology = { 
 			microprocessors = 1
 			computing_2 = 1 
@@ -5508,6 +5629,8 @@
 		set_variable = { var = population_tax_rate value = 37 }
 	 
 		# Starting tech
+		set_naval_oob = "CUB_2017_naval_mtg"
+
 		set_technology = {    
 			microprocessors = 1
 			computing_2 = 1 
@@ -5717,6 +5840,12 @@
 			else = {
 				set_oob = "CZE_2017_nonnsb"
 			}
+		}
+		if = { limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "CZE_2017_bba"
+			else = {
+				set_air_oob = "CZE_2017_nonbba"
+			}
 		}  
 		add_ideas = { 
 			pluralist
@@ -5913,6 +6042,15 @@
 		AFG = { add_to_variable = { foreign_advisors = 1 } }
 
 		add_opinion_modifier = { target = CHI modifier = large_commercial_relations } 
+
+		set_naval_oob = "DEN_2017_naval_mtg"
+
+		if = { limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "DEN_2017_bba"
+			else = {
+				set_air_oob = "DEN_2017_nonbba"
+			}
+		}
 
 		set_technology = {
 			cnc_equipment_4 = 1
@@ -6276,7 +6414,7 @@
 		set_variable = { current_term = 2 } 
 	}
 	DPR = {
-		oob = "DPR_2017_nsb"  
+		set_oob = "DPR_2017_nsb"
 		give_military_access = LPR  
 		
 		set_politics = {
@@ -6411,6 +6549,8 @@
 		set_variable = { var = population_tax_rate value = 29 }
 
 		# Starting tech
+		set_naval_oob = "ECU_2017_naval_mtg"
+
 		set_technology = {      
 			microprocessors = 1
 			computing_2 = 1 
@@ -6498,7 +6638,7 @@
 		set_variable = { current_term = 2 } 
 	}
 	EGU = {
-		oob = "EGU_2017"  
+		set_oob = "EGU_2017"
 		set_variable = { fossil_fuel_industry_opinion = 80 }
 		set_variable = { maritime_industry_opinion = 40 }
 		set_variable = { farmers_opinion = 40 }
@@ -6510,6 +6650,8 @@
 		set_variable = { var = population_tax_rate value = 22 }
 
 		# Starting tech
+		set_naval_oob = "EGU_2017_naval_mtg"
+
 		set_technology = {
 			microprocessors = 1
 			computing_2 = 1 
@@ -6579,6 +6721,7 @@
 		startup_politics = yes
 	}
 	EGY = {
+		set_country_flag = EGY_sisi_pisi
         add_ideas = egypt_military
         remove_ideas = {
             EGY_broken_economy_idea
@@ -6589,6 +6732,13 @@
             EGY_guards_of_secularism
             EGY_military_anger1
         }
+		if = {
+			limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "EGY_2017_bba"
+			else = {
+				set_air_oob = "EGY_2017_nonbba"
+			}
+		}
 		if = { limit = { has_dlc = "No Step Back" }
 			set_oob = "EGY_2017_nsb"
 			else = {
@@ -6632,6 +6782,8 @@
 		set_variable = { var = population_tax_rate value = 18 } 
 
 		# Starting tech
+		set_naval_oob = "EGY_2017_naval_mtg"
+
 		set_technology = { 
 			microprocessors = 1
 			computing_2 = 1 
@@ -6802,7 +6954,7 @@
 		set_variable = { party_pop_array^21 = 0 } #Nat_Fascism
 		set_variable = { party_pop_array^22 = 0 } #Nat_Autocracy
 		set_variable = { party_pop_array^23 = 0 } #Monarchist
-		add_to_array = { ruling_party = 5 }
+		set_variable = { ruling_party = 5 }
 		startup_politics = yes
 
 		create_country_leader = {
@@ -6836,6 +6988,8 @@
         set_variable = { fvey_communism_drift_dynamic_var = -0.10 }
         set_variable = { fvey_neutrality_drift_dynamic_var = 0.05 }
         set_variable = { fvey_nationalist_drift_dynamic_var = 0.05 }
+		set_naval_oob = "ENG_2017_naval_mtg"
+
         set_technology = {
             eng_special_battalions_tech = 1
         }
@@ -6845,6 +6999,12 @@
 				set_oob = "ENG_2000_nonnsb"
 			}
 		}   
+		if = { limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "ENG_2017_bba"
+			else = {
+				set_air_oob = "ENG_2017_nonbba"
+			}
+		}
 		set_variable = { defense_industry_opinion = 60 }
 		set_variable = { international_bankers_opinion = 80 }
 		set_country_flag = Major_Importer_US_Arms #Trends-in-international-arms-transfers-2016.pdf  
@@ -7026,6 +7186,15 @@
 		give_military_access = UAE 
 	}
 	EST = {
+		if = {
+			limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "EST_2017_bba"
+			else = {
+				set_air_oob = "EST_2017_nonbba"
+			}
+		}
+		set_country_flag = EST_ekre_has_formed
+		set_country_flag = EST_estonian_united_left_forms
 		set_technology = {
 			body_armor_2 = 1 
 			computing_3 = 1 
@@ -7288,11 +7457,11 @@
 		set_variable = { party_pop_array^17 = 0 } #Neutral_green
 		set_variable = { party_pop_array^18 = 0.082 } #neutral_Social
 		set_variable = { party_pop_array^19 = 0 } #Neutral_Communism
-		set_variable = { party_pop_array^20 = 0.05 } #Nat_Populism
+		set_variable = { party_pop_array^20 = 0.03 } #Nat_Populism
 		set_variable = { party_pop_array^21 = 0 } #Nat_Fascism
 		set_variable = { party_pop_array^22 = 0 } #Nat_Autocracy
 		set_variable = { party_pop_array^23 = 0 } #Monarchist
-		add_to_array = { ruling_party = 5 }
+		set_variable = { ruling_party = 5 }
 		add_to_array = { gov_coalition_array = 18 } 
 		startup_politics = yes
 
@@ -7478,6 +7647,15 @@
 
 		add_opinion_modifier = { target = CHI modifier = large_commercial_relations }
 
+		set_naval_oob = "FIN_2017_naval_mtg"
+
+		if = { limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "FIN_2017_bba"
+			else = {
+				set_air_oob = "FIN_2017_nonbba"
+			}
+		}
+
 		set_technology = {  
 			land_drone_equipment_type = 1
 			land_drone_equipment_1 = 1  
@@ -7612,6 +7790,12 @@
 				set_oob = "FRA_2000_nonnsb"
 			}
 		} 
+		if = { limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "FRA_2017_bba"
+			else = {
+				set_air_oob = "FRA_2017_nonbba"
+			}
+		}
 		# Military Access
 		diplomatic_relation = { country = UAE relation = military_access active = yes } 
 
@@ -7634,6 +7818,8 @@
 		set_country_flag = military_advisors_SEN
 		SEN = { add_to_variable = { foreign_advisors = 1 } }  
 	 
+		set_naval_oob = "FRA_2017_naval_mtg"
+
 		set_technology = {
 			railway_system_04 = 1
 			railway_system_06 = 1
@@ -7981,7 +8167,7 @@
 		set_variable = { party_pop_array^21 = 0 } #Nat_Fascism
 		set_variable = { party_pop_array^22 = 0 } #Nat_Autocracy
 		set_variable = { party_pop_array^23 = 0 } #Monarchist
-		add_to_array = { ruling_party = 20 }
+		set_variable = { ruling_party = 20 }
 		startup_politics = yes
 
 		create_country_leader = {
@@ -8376,6 +8562,7 @@
         set_country_flag = GER_fdp_enable_flag
         set_country_flag = GER_cdu_enable_flag
         set_country_flag = GER_afd_enable_flag
+        set_country_flag = GER_afd_formed
         set_country_flag = GER_anti_extremism_agenda_flag
         set_country_flag = generic_consumer_advocacy_agenda_flag
         set_country_flag = generic_political_unity_agenda_flag
@@ -8383,6 +8570,12 @@
 			set_oob = "GER_2017_nsb"
 			else = {
 				set_oob = "GER_2000_nonnsb"
+			}
+		}
+		if = { limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "GER_2017_bba"
+			else = {
+				set_air_oob = "GER_2017_nonbba"
 			}
 		}
 		
@@ -8421,6 +8614,8 @@
 		set_variable = { var = corporate_tax_rate value = 18 }
 		set_variable = { var = population_tax_rate value = 44 }
 	 
+		set_naval_oob = "GER_2017_naval_mtg"
+
 		set_technology = {
 			railway_system_04 = 1
 			railway_system_06 = 1
@@ -8530,7 +8725,7 @@
 		} 
 	}
 	GNA = {
-		oob = "GNA_2017"
+		set_oob = "GNA_2017"
 
 		# Starting tech
 		set_technology = { 
@@ -8768,6 +8963,8 @@
 		set_variable = { var = corporate_tax_rate value = 22 }
 		set_variable = { var = population_tax_rate value = 30 } 
 
+		set_naval_oob = "GRE_2017_naval_mtg"
+
 		set_technology = {    
 			support_weapons2 = 1
 			tandem_charge_warheads = 1
@@ -8860,7 +9057,7 @@
 		set_variable = { party_pop_array^23 = 0 } #Monarchist
 
 		### Ruling Party
-		add_to_array = { ruling_party = 5 } 
+		set_variable = { ruling_party = 5 } 
 
 		startup_politics = yes
 
@@ -9019,7 +9216,7 @@
 		set_variable = { party_pop_array^23 = 0 } #Monarchist
 
 		### Ruling Party
-		add_to_array = { ruling_party = 20 } 
+		set_variable = { ruling_party = 20 } 
 
 		startup_politics = yes
 
@@ -9444,6 +9641,25 @@
 		}
 	}
 	HEZ = {
+		create_country_leader = {
+			name = "Hassan Nasrallah"
+			picture = "hassan_nasrallah.dds"
+			ideology = Vilayat_e_Faqih
+			traits = {
+				cleric
+				emerging_Vilayat_e_Faqih
+				pro_iranian
+				political_dancer
+				geopolitical_thinker
+				tech_savy
+				honest
+				stubborn
+				sly
+				rational
+				anti_zionist
+			}
+		}
+
 		if = { limit = { has_dlc = "No Step Back" } 
 			set_oob = "HEZ_2017_nsb"
 			else = {
@@ -9669,7 +9885,7 @@
 		}
 	}
 	HLS = {
-		oob = "HLS_2017" 
+		set_oob = "HLS_2017"
 		set_technology = {
 			computing_3 = 1 
 			computing_4 = 1 
@@ -9771,6 +9987,7 @@
 		}  
 		set_country_flag = Major_Importer_US_Arms 
 		set_country_flag = military_advisors_IRQ
+		set_country_flag = HOL_wilders_party_created
 		IRQ = { add_to_variable = { foreign_advisors = 1 } }
 		set_country_flag = military_advisors_AFG
 		AFG = { add_to_variable = { foreign_advisors = 1 } }
@@ -9781,6 +9998,15 @@
 		set_variable = { var = corporate_tax_rate value = 22 }
 		set_variable = { var = population_tax_rate value = 37 }  
 	 
+		set_naval_oob = "HOL_2017_naval_mtg"
+
+		if = { limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "HOL_2017_bba"
+			else = {
+				set_air_oob = "HOL_2017_nonbba"
+			}
+		}
+
 		set_technology = {
 			cnc_equipment_5 = 1
 			util_vehicle_5 = 1
@@ -9897,7 +10123,7 @@
             HON_Juventud_sin_futuro
             HON_violencia_endemica
         }
-		oob = "HON_2017" 
+		set_oob = "HON_2017"
 
 		set_variable = { international_bankers_opinion = 60 }
 		set_variable = { landowners_opinion = 40 }
@@ -9983,6 +10209,16 @@
 		}
 	}
 	HOR = {
+		# 2017 骞村浘鍗滈瞾鏍间紬璁櫌棰嗗浜?
+		create_country_leader = {
+			name = "Aguila Saleh Issa"
+			picture = "Aguila_Saleh_Issa.dds"
+			ideology = Nat_Autocracy
+			traits = {
+				rational
+			}
+		}
+
         add_ideas = {
             HRL_slave_trade
             HRL_war_exhaustion
@@ -10025,6 +10261,8 @@
 		add_to_variable = { var = HOR.Granted_Recognition value = 3 } 
 
 		# Starting tech
+		set_naval_oob = "HOR_2017_naval_mtg"
+
 		set_technology = { 
 			infantry_mass_assault = 1
 			#For templates
@@ -10089,6 +10327,79 @@
 		give_military_access = UAE 
 	}
 	HOU = {
+		# 2017 骞存斂娌讳笌棰嗗灞?
+		set_popularities = {
+			democratic = 0.0
+			communism = 100.0
+			fascism = 0.0
+			neutrality = 0.0
+			nationalist = 0.0
+		}
+		set_politics = {
+			ruling_party = communism
+			last_election = "1999.9.23"
+			election_frequency = 60
+			elections_allowed = no
+		}
+
+		start_politics_input = yes
+
+		### Party Popularities
+		set_variable = { party_pop_array^0 = 0 } #Western_Autocracy
+		set_variable = { party_pop_array^1 = 0 } #conservatism
+		set_variable = { party_pop_array^2 = 0 } #liberalism
+		set_variable = { party_pop_array^3 = 0 } #socialism
+		set_variable = { party_pop_array^4 = 0 } #Communist-State
+		set_variable = { party_pop_array^5 = 0 } #anarchist_communism
+		set_variable = { party_pop_array^6 = 0.10 } #Conservative
+		set_variable = { party_pop_array^7 = 0.05 } #Autocracy
+		set_variable = { party_pop_array^8 = 0.15 } #Mod_Vilayat_e_Faqih
+		set_variable = { party_pop_array^9 = 0.7 } #Vilayat_e_Faqih
+		set_variable = { party_pop_array^10 = 0 } #Kingdom
+		set_variable = { party_pop_array^11 = 0 } #Caliphate
+		set_variable = { party_pop_array^12 = 0 } #Neutral_Muslim_Brotherhood
+		set_variable = { party_pop_array^13 = 0 } #Neutral_Autocracy
+		set_variable = { party_pop_array^14 = 0 } #Neutral_conservatism
+		set_variable = { party_pop_array^15 = 0 } #oligarchism
+		set_variable = { party_pop_array^16 = 0 } #Neutral_Libertarian
+		set_variable = { party_pop_array^17 = 0 } #Neutral_green
+		set_variable = { party_pop_array^18 = 0 } #neutral_Social
+		set_variable = { party_pop_array^19 = 0 } #Neutral_Communism
+		set_variable = { party_pop_array^20 = 0 } #Nat_Populism
+		set_variable = { party_pop_array^21 = 0 } #Nat_Fascism
+		set_variable = { party_pop_array^22 = 0 } #Nat_Autocracy
+		set_variable = { party_pop_array^23 = 0 } #Monarchist
+
+		### Ruling Party
+		add_to_array = { ruling_party = 9 }
+
+		startup_politics = yes
+
+		create_country_leader = {
+			name = "Abdul-Malik Badreddin al-Houthi"
+			picture = "gfx/leaders/YEM/abdul_malik_al_houthi.dds"
+			ideology = Vilayat_e_Faqih
+			traits = {
+				emerging_Vilayat_e_Faqih
+			}
+		}
+
+		recruit_character = HOU_abu_ali_abdullah_al_hakem_al_houthi
+		recruit_character = HOU_abdul_karim_al_houthi
+		recruit_character = HOU_abdullah_al_ruzami
+		recruit_character = HOU_ahmed_ali_abdullah_saleh
+
+		# 2017 骞寸鎶€
+		set_technology = {
+			internet_2 = 1 	#2G
+			gprs = 1
+			internet_access_1 = 1
+			internet_3 = 1	#3G
+			umts = 1
+			hsupa = 1
+			computing_3 = 1
+		}
+
 		set_cosmetic_tag = HOU_AUTH_SS_communism
 		if = {
 			limit = { has_dlc = "No Step Back" }
@@ -10101,6 +10412,13 @@
 		declare_war_on = { target = YEM type = civil_war }  
 	}
 	HUN = {
+		if = {
+			limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "HUN_2017_bba"
+			else = {
+				set_air_oob = "HUN_2017_nonbba"
+			}
+		}
 		if = { limit = { has_dlc = "No Step Back" }
 			set_oob = "HUN_2017_nsb"
 			else = {
@@ -10357,6 +10675,8 @@
 		add_opinion_modifier = { target = JAP modifier = asean_plus_three_relations }
 		reverse_add_opinion_modifier = { target = JAP modifier = asean_plus_three_relations }
 
+		set_naval_oob = "IND_2017_naval_mtg"
+
 		set_technology = {
 			infantry_weapons_3 = 1 
 			support_weapons2 = 1
@@ -10430,7 +10750,7 @@
 		set_variable = { party_pop_array^23 = 0 } #Monarchist
 
 		### Ruling Party
-		add_to_array = { ruling_party = 5 }
+		set_variable = { ruling_party = 5 }
 
 		startup_politics = yes
 
@@ -10446,6 +10766,13 @@
 		} 
 	}
 	IRE = {
+		if = {
+			limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "IRE_2017_bba"
+			else = {
+				set_air_oob = "IRE_2017_nonbba"
+			}
+		}
 		set_variable = { small_medium_business_owners = 75 }
 		set_variable = { maritime_industry_opinion = 60 }
 
@@ -10544,6 +10871,13 @@
 	}
 	IRQ = {
 		if = {
+		if = {
+			limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "IRQ_2017_bba"
+			else = {
+				set_air_oob = "IRQ_2017_nonbba"
+			}
+		}
 			limit = { has_dlc = "No Step Back" } 
 			set_oob = "IRQ_2017_nsb"
 			else = { set_oob = "IRQ_2017_nonnsb" }
@@ -10680,7 +11014,7 @@
 		set_variable = { party_pop_array^23 = 0 } #Monarchist
 
 		### Ruling Party
-		add_to_array = { ruling_party = 14 }
+		set_variable = { ruling_party = 14 }
 
 		startup_politics = yes
 
@@ -10702,6 +11036,21 @@
 		retire_character = IRQ_mahmoud_atai 
 	}
 	ISI = {
+		create_country_leader = {
+			name = "Abu Bakr al-Baghdadi"
+			picture = "Abu_Bakr_al-Baghdadi.dds"
+			expire = "2050.1.1"
+			ideology = Caliphate
+			traits = {
+				guerrilla_leader
+				salafist_Caliphate
+				qureshi
+				zealous
+				ruthless
+				war_criminal
+			}
+		}
+
 		if = {
 			limit = { has_dlc = "No Step Back" } 
 			set_oob = "ISI_2017_nsb"
@@ -10751,6 +11100,8 @@
 		set_country_flag = allowed_foreign_recruitment 
 	}
 	ISR = {
+		set_country_flag = ISR_bibi_power
+		set_country_flag = ISR_yeshatid
         remove_ideas = {
             law_of_return
             security_belt
@@ -10768,6 +11119,13 @@
             israel_military
             idea_ISR_american_funding
         }
+		if = {
+			limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "ISR_2017_bba"
+			else = {
+				set_air_oob = "ISR_2017_nonbba"
+			}
+		}
 		if = { 	limit = { has_dlc = "No Step Back" }
 			set_oob = "ISR_2017_nsb"
 			else = {
@@ -10786,6 +11144,8 @@
 		}   
 
 		# Starting tech
+		set_naval_oob = "ISR_2017_naval_mtg"
+
 		set_technology = {  
 			computing_3 = 1 
 			computing_4 = 1 
@@ -10889,12 +11249,21 @@
 		}
 	}
 	ITA = {
+		if = {
+			limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "ITA_2017_bba"
+			else = {
+				set_air_oob = "ITA_2017_nonbba"
+			}
+		}
 		set_country_flag = military_advisors_SOM
 		SOM = { add_to_variable = { foreign_advisors = 1 } }
 		set_country_flag = military_advisors_AFG
 		AFG = { add_to_variable = { foreign_advisors = 1 } }
 		set_country_flag = ITA_salvini_took_over_lega
 		set_country_flag = ITA_five_star_movement_founded
+
+		set_naval_oob = "ITA_2017_naval_mtg"
 
 		set_technology = { 
 			cnc_equipment_4 = 1    
@@ -11166,6 +11535,8 @@
 		} 
 	}
 	JAP = {
+		set_country_flag = JAP_liberal_party_flag
+		set_country_flag = JAP_innovation_party_flag
         remove_power_balance = {
             id = JAP_article_nine
         }
@@ -11245,6 +11616,12 @@
 				set_oob = "JAP_2000_nonnsb"
 			}
 		} 
+		if = { limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "JAP_2017_bba"
+			else = {
+				set_air_oob = "JAP_2017_nonbba"
+			}
+		}
 
 		set_country_flag = TPP_Signatory
 		set_country_flag = Major_Non_NATO_Ally
@@ -11263,6 +11640,8 @@
 			relation = military_access
 			active = yes
 		}
+
+		set_naval_oob = "JAP_2017_naval_mtg"
 
 		set_technology = {
 			railway_system_04 = 1
@@ -11404,7 +11783,7 @@
 
 		startup_politics = yes
 
-		# 政党支持率初始化 (从 party_pop_array 映射)
+		# 鏀垮厷鏀寔鐜囧垵濮嬪寲 (浠?party_pop_array 鏄犲皠)
 		set_variable = { var = JAP_election_approval_rating_ldp_var value = 0.698 }
 		set_variable = { var = JAP_election_approval_rating_kdp_var value = 0.2 }
 		set_variable = { var = JAP_election_approval_rating_jcp_var value = 0.091 }
@@ -11413,7 +11792,7 @@
 		set_variable = { var = JAP_election_approval_rating_dpp_var value = 0 }
 		set_variable = { var = JAP_election_approval_rating_ino_var value = 0 }
 
-		# 自民党派系变量初始化
+		# 鑷皯鍏氭淳绯诲彉閲忓垵濮嬪寲
 		set_variable = { var = JAP_ldp_conservatives_var value = 35 }
 		set_variable = { var = JAP_ldp_centrists_var value = 35 }
 		set_variable = { var = JAP_ldp_liberals_var value = 15 }
@@ -11735,6 +12114,12 @@
 				set_oob = "KOR_2000_nonnsb"
 			}
 		} 
+		if = { limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "KOR_2017_bba"
+			else = {
+				set_air_oob = "KOR_2017_nonbba"
+			}
+		}
 		set_variable = { chaebols_opinion = 60 }
 		set_variable = { intelligence_community_opinion = 60 } 
 
@@ -11777,6 +12162,8 @@
 		set_variable = { var = population_tax_rate value = 31 }
 
 		# Starting tech
+		set_naval_oob = "KOR_2017_naval_mtg"
+
 		set_technology = {
 			railway_system_04 = 1
 			railway_system_06 = 1
@@ -12110,6 +12497,13 @@
 		} 
 	}
 	KUW = {
+		if = {
+			limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "KUW_2017_bba"
+			else = {
+				set_air_oob = "KUW_2017_nonbba"
+			}
+		}
 		if = { limit = { has_dlc = "No Step Back" }
 			set_oob = "KUW_2017_nsb"
 			else = {
@@ -12245,6 +12639,13 @@
 	}
 	KYR = {
 		if = { limit = { has_dlc = "No Step Back" } 
+		if = {
+			limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "KYR_2017_bba"
+			else = {
+				set_air_oob = "KYR_2017_nonbba"
+			}
+		}
 			set_oob = "KYR_2017_nsb"
 			else = {
 				set_oob = "KYR_2017_nonnsb"
@@ -12436,6 +12837,13 @@
 		}
 	}
 	LAT = {
+		if = {
+			limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "LAT_2017_bba"
+			else = {
+				set_air_oob = "LAT_2017_nonbba"
+			}
+		}
 		set_technology = {
 			body_armor_2 = 1
 			microprocessors = 1
@@ -12635,6 +13043,10 @@
 		}
 	}
 	LBA = {
+		set_country_flag = LBA_fall_of_gaddafi
+		set_country_flag = LBA_democratic_reform
+		set_country_flag = LBA_new_lifg
+		set_country_flag = libya_LNA_formed
 		#Libya is Fucking Dead!!!!!
 
 		retire_character = LBA_abu_bakr_yunis_jabr
@@ -12817,7 +13229,7 @@
 		startup_politics = yes 
 	}
 	LGN = {
-		oob = "LGN_2017"  
+		set_oob = "LGN_2017"
 		add_ideas = { 
 			sunni
 			defence_09
@@ -13055,6 +13467,13 @@
 		}
 	}
 	LIT = {
+		if = {
+			limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "LIT_2017_bba"
+			else = {
+				set_air_oob = "LIT_2017_nonbba"
+			}
+		}
 		set_technology = {
 			body_armor_2 = 1
 			microprocessors = 1
@@ -13254,7 +13673,7 @@
 		set_variable = { current_term = 2 } 
 	}
 	LPR = {
-		oob = "LPR_2017_nsb" 
+		set_oob = "LPR_2017_nsb"
 		give_military_access = DPR 
 		set_politics = {
 			ruling_party = communism
@@ -13547,6 +13966,13 @@
 		set_variable = { literacy_rate = 0.748 }
 	}
 	MAL = {
+		if = {
+			limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "MAL_2017_bba"
+			else = {
+				set_air_oob = "MAL_2017_nonbba"
+			}
+		}
 		if = { limit = { has_dlc = "No Step Back" }
 			set_oob = "MAL_2017_nsb"
 			else = {
@@ -13816,6 +14242,13 @@
 		}
 	}
 	MAY = {
+		if = {
+			limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "MAY_2017_bba"
+			else = {
+				set_air_oob = "MAY_2017_nonbba"
+			}
+		}
 		if = { limit = { has_dlc = "No Step Back" } 
 			set_oob = "MAY_2017_nsb"
 			else = {
@@ -13854,6 +14287,8 @@
 		reverse_add_opinion_modifier = { target = KOR modifier = asean_plus_three_relations }
 		add_opinion_modifier = { target = JAP modifier = asean_plus_three_relations }
 		reverse_add_opinion_modifier = { target = JAP modifier = asean_plus_three_relations }
+
+		set_naval_oob = "MAY_2017_naval_mtg"
 
 		set_technology = { 
 			util_vehicle_3 = 1 
@@ -13939,7 +14374,7 @@
 		set_variable = { party_pop_array^23 = 0 } #Monarchist
 
 		### Ruling Party
-		add_to_array = { ruling_party = 20 }
+		set_variable = { ruling_party = 20 }
 
 		startup_politics = yes
 
@@ -13957,6 +14392,13 @@
 		} 
 	}
 	MEX = {
+		if = {
+			limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "MEX_2017_bba"
+			else = {
+				set_air_oob = "MEX_2017_nonbba"
+			}
+		}
         add_ideas = {
             MEX_north_american_free_trade_agreement_idea
             MEX_ghost_of_the_perfect_dictatorship_idea 
@@ -13980,6 +14422,8 @@
         set_variable = { MEX_militarization_resistance_growth_on_our_occupied_states = -0.05 }
         set_variable = { MEX_militarization_conversion_cost_civ_to_mil_factor = 0.03 }
 		# Starting tech
+		set_naval_oob = "MEX_2017_naval_mtg"
+
 		set_technology = {  
 			infantry_weapons_5 = 1
 			support_weapons = 1
@@ -14132,7 +14576,7 @@
 			nationalist = 0.0
 		}
 		set_politics = {
-			ruling_party = neutrality
+			ruling_party = democratic
 			last_election = "2015.1.1"
 			election_frequency = 48
 			elections_allowed = no
@@ -14143,7 +14587,7 @@
 		### Party Popularities
 		set_variable = { party_pop_array^0 = 0 } #Western_Autocracy
 		set_variable = { party_pop_array^1 = 0 } #conservatism
-		set_variable = { party_pop_array^2 = 0 } #liberalism
+		set_variable = { party_pop_array^2 = 1.0 } #liberalism
 		set_variable = { party_pop_array^3 = 0 } #socialism
 		set_variable = { party_pop_array^4 = 0 } #communist_state
 		set_variable = { party_pop_array^5 = 0 } #anarchist_communism
@@ -14157,7 +14601,7 @@
 		set_variable = { party_pop_array^13 = 0 } #Neutral_Autocracy
 		set_variable = { party_pop_array^14 = 0 } #Neutral_conservatism
 		set_variable = { party_pop_array^15 = 0 } #oligarchism
-		set_variable = { party_pop_array^16 = 1.0 } #Neutral_Libertarian
+		set_variable = { party_pop_array^16 = 0 } #Neutral_Libertarian
 		set_variable = { party_pop_array^17 = 0 } #Neutral_green
 		set_variable = { party_pop_array^18 = 0 } #neutral_Social
 		set_variable = { party_pop_array^19 = 0 } #Neutral_Communism
@@ -14167,7 +14611,7 @@
 		set_variable = { party_pop_array^23 = 0 } #Monarchist
 
 		### Ruling Party
-		add_to_array = { ruling_party = 16 }
+		set_variable = { ruling_party = 2 }
 
 		startup_politics = yes
 
@@ -14685,7 +15129,7 @@
 		}
 	}
 	MNT = {
-		oob = "MNT_2017"  
+		set_oob = "MNT_2017"
 		set_cosmetic_tag = MNT
 		set_country_flag = dynamic_flag
 		SER = {
@@ -14753,10 +15197,10 @@
 		set_variable = { party_pop_array^0 = 0 } #Western_Autocracy
 		set_variable = { party_pop_array^1 = 0.111 } #conservatism
 		set_variable = { party_pop_array^2 = 0 } #liberalism
-		set_variable = { party_pop_array^3 = 0.414 } #socialism
+		set_variable = { party_pop_array^3 = 0.393 } #socialism
 		set_variable = { party_pop_array^4 = 0.059 } #communist_state
 		set_variable = { party_pop_array^5 = 0 } #anarchist_communism
-		set_variable = { party_pop_array^6 = 0.1 } #Conservative
+		set_variable = { party_pop_array^6 = 0.141 } #Conservative
 		set_variable = { party_pop_array^7 = 0 } #Autocracy
 		set_variable = { party_pop_array^8 = 0 } #Mod_Vilayat_e_Faqih
 		set_variable = { party_pop_array^9 = 0 } #Vilayat_e_Faqih
@@ -14768,13 +15212,13 @@
 		set_variable = { party_pop_array^15 = 0.061 } #oligarchism
 		set_variable = { party_pop_array^16 = 0 } #Neutral_Libertarian
 		set_variable = { party_pop_array^17 = 0 } #Neutral_green
-		set_variable = { party_pop_array^18 = 0.052 } #neutral_Social
+		set_variable = { party_pop_array^18 = 0.042 } #neutral_Social
 		set_variable = { party_pop_array^19 = 0 } #Neutral_Communism
-		set_variable = { party_pop_array^20 = 0.203 } #Nat_Populism
+		set_variable = { party_pop_array^20 = 0.193 } #Nat_Populism
 		set_variable = { party_pop_array^21 = 0 } #Nat_Fascism
 		set_variable = { party_pop_array^22 = 0 } #Nat_Autocracy
 		set_variable = { party_pop_array^23 = 0 } #Monarchist
-		add_to_array = { ruling_party = 15 }
+		set_variable = { ruling_party = 15 }
 		startup_politics = yes
 
 		create_country_leader = {
@@ -14892,6 +15336,8 @@
 		set_variable = { var = population_tax_rate value = 32 }
 
 		# Starting tech
+		set_naval_oob = "MOR_2017_naval_mtg"
+
 		set_technology = {     
 			microprocessors = 1
 			computing_2 = 1 
@@ -15379,7 +15825,14 @@
 		}
 	}
 	NEP = {
-		oob = "NEP_2017"
+		if = {
+			limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "NEP_2017_bba"
+			else = {
+				set_air_oob = "NEP_2017_nonbba"
+			}
+		}
+		set_oob = "NEP_2017"
 		set_cosmetic_tag = NEP  
 
 		#Influence system
@@ -15480,7 +15933,7 @@
 		}
 	}
 	NGR = {
-		oob = "NGR_2017"  
+		set_oob = "NGR_2017"
 
 		set_technology = {
 			internet_1 = 1
@@ -15678,6 +16131,8 @@
 		set_variable = { var = population_tax_rate value = 10 }
 
 		# Starting tech
+		set_naval_oob = "NIG_2017_naval_mtg"
+
 		set_technology = { 
 			util_vehicle_2 = 1
 			util_vehicle_3 = 1
@@ -15817,9 +16272,6 @@
         remove_dynamic_modifier = {
             modifier = arduous_march_modifiers
         }
-        add_hidden_idea = {
-            modifier = PRK_military_preparedness_modifier
-        }
         set_variable = { PRK_economic_sovereignty_level_var = 0.67 }
         set_variable = { PRK_economic_sovereignty_factory_var = 0.075 }
         set_variable = { PRK_economic_sovereignty_dockyard_var = 0.01 }
@@ -15843,6 +16295,8 @@
         # Korea special administrative divisions (ported from TFR Korea Plus)
         602 = { add_dynamic_modifier = { modifier = PRK_pyongyang_city } }
 		# Starting tech
+		set_naval_oob = "NKO_2017_naval_mtg"
+
 		set_technology = {
 			internet_2 = 1 	#2G
 			gprs = 1
@@ -16022,6 +16476,7 @@
 		}
 	}
 	NRY = {
+		set_country_flag = alliansen
 		add_ideas = {
 			stagnation 
 		} 
@@ -16147,6 +16602,13 @@
 		} 
 	}
 	NZL = {
+		if = {
+			limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "NZL_2017_bba"
+			else = {
+				set_air_oob = "NZL_2017_nonbba"
+			}
+		}
         add_dynamic_modifier = {
             modifier = five_eyes
         }
@@ -16164,6 +16626,8 @@
         set_variable = { fvey_neutrality_drift_dynamic_var = 0.15 }
         set_variable = { fvey_nationalist_drift_dynamic_var = 0.05 }
 		# Starting tech
+		set_naval_oob = "NZL_2017_naval_mtg"
+
 		set_technology = {  
 			cnc_equipment_4 = 1 #2005 
 			body_armor_2 = 1 
@@ -16295,6 +16759,8 @@
 		#Nat focus
 
 		# Starting tech
+		set_naval_oob = "OMA_2017_naval_mtg"
+
 		set_technology = {  
 			microprocessors = 1
 			computing_2 = 1 
@@ -16379,6 +16845,13 @@
         	PAK_fervent_nationalism
         	PAK_military_incharge
         }
+		if = {
+			limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "PAK_2017_bba"
+			else = {
+				set_air_oob = "PAK_2017_nonbba"
+			}
+		}
 		if = { limit = { has_dlc = "No Step Back" }
 			set_oob = "PAK_2017_nsb"
 			else = {
@@ -16393,6 +16866,8 @@
 		set_variable = { intelligence_community_opinion = 60 }
 
 		# Starting tech
+		set_naval_oob = "PAK_2017_naval_mtg"
+
 		set_technology = {
 			land_drone_equipment_type = 1
 			land_drone_equipment_1 = 1 
@@ -16759,6 +17234,13 @@
 		} 
 	}
 	PAR = {
+		if = {
+			limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "PAR_2017_bba"
+			else = {
+				set_air_oob = "PAR_2017_nonbba"
+			}
+		}
         add_ideas = {
             PAR_colorado_hegemony
             PAR_the_silver_medal_of_corruption
@@ -16812,12 +17294,12 @@
 
 		### Party Popularities
 		set_variable = { party_pop_array^0 = 0 } #Western_Autocracy
-		set_variable = { party_pop_array^1 = 0 } #conservatism
-		set_variable = { party_pop_array^2 = 0.42 } #liberalism
+		set_variable = { party_pop_array^1 = 0.10 } #conservatism
+		set_variable = { party_pop_array^2 = 0.27 } #liberalism
 		set_variable = { party_pop_array^3 = 0.06 } #socialism
-		set_variable = { party_pop_array^4 = 0.0 } #communist_state
-		set_variable = { party_pop_array^5 = 0.0 } #anarchist_communism
-		set_variable = { party_pop_array^6 = 0.04 } #Conservative
+		set_variable = { party_pop_array^4 = 0.05 } #communist_state
+		set_variable = { party_pop_array^5 = 0.10 } #anarchist_communism
+		set_variable = { party_pop_array^6 = 0.20 } #Conservative
 		set_variable = { party_pop_array^7 = 0 } #Autocracy
 		set_variable = { party_pop_array^8 = 0 } #Mod_Vilayat_e_Faqih
 		set_variable = { party_pop_array^9 = 0 } #Vilayat_e_Faqih
@@ -16825,15 +17307,18 @@
 		set_variable = { party_pop_array^11 = 0 } #Caliphate
 		set_variable = { party_pop_array^12 = 0 } #Neutral_Muslim_Brotherhood
 		set_variable = { party_pop_array^13 = 0 } #Neutral_Autocracy
-		set_variable = { party_pop_array^14 = 0.48 } #Neutral_conservatism
+		set_variable = { party_pop_array^14 = 0.15 } #Neutral_conservatism
 		set_variable = { party_pop_array^15 = 0 } #oligarchism
 		set_variable = { party_pop_array^16 = 0 } #Neutral_Libertarian
 		set_variable = { party_pop_array^17 = 0 } #Neutral_green
 		set_variable = { party_pop_array^18 = 0 } #neutral_Social
 		set_variable = { party_pop_array^19 = 0 } #Neutral_Communism
-		set_variable = { party_pop_array^22 = 0 } #Nat_Autocracy
+		set_variable = { party_pop_array^20 = 0.04 } #Nat_Populism
+		set_variable = { party_pop_array^21 = 0.01 } #Nat_Fascism
+		set_variable = { party_pop_array^22 = 0.02 } #Nat_Autocracy
+		set_variable = { party_pop_array^23 = 0 } #Monarchist
 		### Ruling Party
-		add_to_array = { ruling_party = 14 }
+		set_variable = { ruling_party = 14 }
 
 		startup_politics = yes
 
@@ -16931,6 +17416,13 @@
 		}
 	}
 	PER = {
+		if = {
+			limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "PER_2017_bba"
+			else = {
+				set_air_oob = "PER_2017_nonbba"
+			}
+		}
 		if = { limit = { has_dlc = "No Step Back" }
 			set_oob = "PER_2017_nsb"
 			else = {
@@ -16978,6 +17470,8 @@
         set_variable = { PER_IRGC_special_forces_cap = 0.10 }
 
 		# Starting tech
+		set_naval_oob = "PER_2017_naval_mtg"
+
 		set_technology = {  
 			AT_upgrade_2 = 1
 			Anti_tank_2 = 1
@@ -17130,6 +17624,13 @@
 		startup_politics = yes  
 	}
 	PHI = {
+		if = {
+			limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "PHI_2017_bba"
+			else = {
+				set_air_oob = "PHI_2017_nonbba"
+			}
+		}
         set_capital = { state = 1230 }
         add_ideas = {
             PHI_mutual_defence_treaty_idea
@@ -17159,6 +17660,8 @@
 		reverse_add_opinion_modifier = { target = JAP modifier = asean_plus_three_relations }
 
 		# Starting tech
+		set_naval_oob = "PHI_2017_naval_mtg"
+
 		set_technology = { 
 			infantry_weapons_2 = 1
 			infantry_weapons_3 = 1 
@@ -17422,6 +17925,15 @@
 	 
 		#Nat Focus
 
+		set_naval_oob = "POL_2017_naval_mtg"
+
+		if = { limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "POL_2017_bba"
+			else = {
+				set_air_oob = "POL_2017_nonbba"
+			}
+		}
+
 		set_technology = { 
 			infantry_weapons_5 = 1 
 			land_drone_equipment_1 = 1 
@@ -17528,6 +18040,8 @@
 		set_variable = { var = corporate_tax_rate value = 21 }
 		set_variable = { var = population_tax_rate value = 48 } 
 
+		set_naval_oob = "POR_2017_naval_mtg"
+
 		set_technology = {
 			body_armor_2 = 1 
 			computing_3 = 1 
@@ -17632,6 +18146,13 @@
 	}
 	PRU = {
 		if = { limit = { has_dlc = "No Step Back" } 
+		if = {
+			limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "PRU_2017_bba"
+			else = {
+				set_air_oob = "PRU_2017_nonbba"
+			}
+		}
 			set_oob = "PRU_2017_nsb"
 			else = {
 				set_oob = "PRU_2017_nonnsb"
@@ -17658,6 +18179,8 @@
 		set_variable = { var = population_tax_rate value = 30 }
 
 		# Starting tech
+		set_naval_oob = "PRU_2017_naval_mtg"
+
 		set_technology = {   
 			infantry_weapons_2 = 1
 			infantry_weapons_3 = 1
@@ -17749,6 +18272,13 @@
 		}
 	}
 	QAT = {
+		if = {
+			limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "QAT_2017_bba"
+			else = {
+				set_air_oob = "QAT_2017_nonbba"
+			}
+		}
 		if = { limit = { has_dlc = "No Step Back" } 
 			set_oob = "QAT_2017_nsb"
 			else = {
@@ -17908,6 +18438,12 @@
 				set_oob = "RAJ_2000_nonnsb"
 			}
 		} 
+		if = { limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "RAJ_2017_bba"
+			else = {
+				set_air_oob = "RAJ_2017_nonbba"
+			}
+		}
 
 		add_opinion_modifier = { target = CHI modifier = large_commercial_relations } 
 	    
@@ -17924,6 +18460,8 @@
 		set_variable = { var = population_tax_rate value = 18 }
 
 		# Starting tech
+		set_naval_oob = "RAJ_2017_naval_mtg"
+
 		set_technology = {   
 			util_vehicle_3 = 1
 			util_vehicle_4 = 1
@@ -18062,7 +18600,7 @@
 		} 
 	}
 	ROJ = {
-		oob = "ROJ_2017" 
+		set_oob = "ROJ_2017"
 
 		diplomatic_relation = {
 			country = IRQ
@@ -18177,6 +18715,13 @@
 		}
 	}
 	ROM = {
+		if = {
+			limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "ROM_2017_bba"
+			else = {
+				set_air_oob = "ROM_2017_nonbba"
+			}
+		}
 		if = { limit = { has_dlc = "No Step Back" }
 			set_oob = "ROM_2017_nsb"
 			else = {
@@ -18184,6 +18729,8 @@
 			}
 		}
 		 
+		set_naval_oob = "ROM_2017_naval_mtg"
+
 		set_technology = { 
 			microprocessors = 1
 			computing_2 = 1 
@@ -18481,6 +19028,13 @@
 	}
 	SAF = {
 		if = { limit = { has_dlc = "No Step Back" } 
+		if = {
+			limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "SAF_2017_bba"
+			else = {
+				set_air_oob = "SAF_2017_nonbba"
+			}
+		}
 			set_oob = "SAF_2017_nsb"
 			else = {
 				set_oob = "SAF_2000_nonnsb"
@@ -18506,6 +19060,8 @@
 		set_variable = { small_medium_business_owners = 75 } 
 
 		# Starting tech
+		set_naval_oob = "SAF_2017_naval_mtg"
+
 		set_technology = {     
 			land_drone_equipment_1 = 1  
 			AT_upgrade_2 = 1 
@@ -18872,6 +19428,8 @@
 			add_ideas = SAU_crown_prince_mbn
 		} 
 
+		set_naval_oob = "SAU_2017_naval_mtg"
+
 		set_technology = {
 			night_vision_3 = 1  
 			util_vehicle_2 = 1
@@ -19000,7 +19558,19 @@
 		} 
 	}
 	SEL = {
-		oob = "SEL_2017"  
+		create_country_leader = {
+			name = "Gen. Ali Darassa"
+			picture = "SEL_ali_darassa.dds"
+			ideology = Neutral_Autocracy
+			traits = {
+				neutrality_Neutral_Autocracy
+			}
+		}
+
+		recruit_character = SEL_damane_zakaria
+		recruit_character = SEL_air_chief
+
+		set_oob = "SEL_2017"
 		declare_war_on = { target = CAR type = civil_war } 
 		declare_war_on = { target = BAL type = civil_war } 
 		declare_war_on = { target = LGN type = annex_everything }   
@@ -19147,14 +19717,22 @@
 	SER = {
 		set_cosmetic_tag = SER
 		set_country_flag = dynamic_flag
+		set_country_flag = SER_radical_divided
 		set_country_flag = dynamic_rebel_flag 
+		if = {
+			limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "SER_2017_bba"
+			else = {
+				set_air_oob = "SER_2017_nonbba"
+			}
+		}
 		if = { limit = { has_dlc = "No Step Back" }
 			set_oob = "SER_2017_nsb"
 			else = {
 				set_oob = "SER_2000_nonnsb"
 			}
 		}
-		set_naval_oob = "SER_2017_naval_mtg"
+		# set_naval_oob = "SER_2017_naval_mtg"  (Serbia is landlocked, no navy OOB file)
 		 
 		set_technology = {   
 			support_weapons3 = 1 
@@ -19520,7 +20098,7 @@
 	}
 	SHB = {
 		set_capital = { state = 239 }
-		oob = "SHB_2017"
+		set_oob = "SHB_2017"
 		set_cosmetic_tag = SHB
 
 		add_ideas = { 
@@ -19577,6 +20155,16 @@
 		retire_character = SHB_Sharif_Sheikh_Ahmed 
 	}
 	SIA = {
+		set_country_flag = SIA_peoples_power_founded
+		set_country_flag = SIA_pheu_thai_founded
+		set_country_flag = SIA_bhumjaithai_founded
+		if = {
+			limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "SIA_2017_bba"
+			else = {
+				set_air_oob = "SIA_2017_nonbba"
+			}
+		}
 		if = { limit = { has_dlc = "No Step Back" }
 			set_oob = "SIA_2017_nsb"
 			else = {
@@ -19609,6 +20197,8 @@
 		reverse_add_opinion_modifier = { target = JAP modifier = asean_plus_three_relations }
 
 		# Starting tech
+		set_naval_oob = "SIA_2017_naval_mtg"
+
 		set_technology = { 
 			util_vehicle_4 = 1 
 			microprocessors = 1
@@ -19800,6 +20390,14 @@
 		set_variable = { current_term = 2 }  
 	}
 	SIN = {
+		set_country_flag = formation_of_reform_party
+		if = {
+			limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "SIN_2017_bba"
+			else = {
+				set_air_oob = "SIN_2017_nonbba"
+			}
+		}
 		if = { limit = { has_dlc = "No Step Back" }
 			set_oob = "SIN_2017_nsb"
 			else = {
@@ -19819,6 +20417,8 @@
         add_ideas = SIG_fortified_island_idea 
 
 		# Starting tech
+		set_naval_oob = "SIN_2017_naval_mtg"
+
 		set_technology = { 
 			night_vision_3 = 1   
 			util_vehicle_4 = 1
@@ -20167,6 +20767,10 @@
 		} 
 	}
 	SLV = {
+		set_country_flag = SLV_Positive_Slovenia
+		set_country_flag = SLV_Modern_Centre_Party
+		set_country_flag = SLV_Initiative_for_Democratic_Socialism
+		set_country_flag = SLV_Neutral_green_party
 		set_technology = {
 			body_armor_2 = 1 
 			land_drone_equipment_type = 1 
@@ -20599,7 +21203,7 @@
 		set_variable = { party_pop_array^23 = 0 } #Monarchist
 
 		### Ruling Party
-		add_to_array = { ruling_party = 14 }
+		set_variable = { ruling_party = 14 }
 
 		startup_politics = yes
 
@@ -20613,7 +21217,7 @@
 		}
 	}
 	SOM = {
-		oob = "SOM_2017" 
+		set_oob = "SOM_2017"
 
 		#CT
 		set_country_flag = threat_level_substantial
@@ -21070,6 +21674,12 @@
 				set_oob = "SOV_2000_nonnsb"
 			}
 		}    
+		if = { limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "SOV_2017_bba"
+			else = {
+				set_air_oob = "SOV_2017_nonbba"
+			}
+		}
 		give_guarantee = DPR
 		give_guarantee = LPR 
 
@@ -21111,6 +21721,8 @@
 			relation = military_access
 			active = yes
 		}  
+
+		set_naval_oob = "SOV_2017_naval_mtg"
 
 		set_technology = {  
 			infantry_weapons_5 = 1  
@@ -21289,12 +21901,22 @@
 		set_country_flag = party12_banned  
 	}
 	SPR = {
+		if = {
+			limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "SPR_2017_bba"
+			else = {
+				set_air_oob = "SPR_2017_nonbba"
+			}
+		}
 		clr_country_flag = generic_election_killswitch
 		clr_country_flag = SPR_initial_election_flag   
 
 		# Political Parties
 		set_country_flag = SPR_vox_forms
 		set_country_flag = SPR_cidudanos_forms
+		set_country_flag = SPR_espana_2000_forms
+		set_country_flag = SPR_alternativa_espana_forms
+		set_country_flag = SPR_unidos_podemos_forms
 		set_country_flag = SPR_death_of_charles_hugo
 		set_country_flag = SPR_abdication_of_juan_carlos
 
@@ -21307,6 +21929,8 @@
 		set_country_flag = military_advisors_MAL
 		MAL = { add_to_variable = { foreign_advisors = 1 } }
 	 
+		set_naval_oob = "SPR_2017_naval_mtg"
+
 		set_technology = {  
 			body_armor_2 = 1 
 			computing_3 = 1 
@@ -21527,7 +22151,7 @@
 		set_variable = { party_pop_array^23 = 0 } #Monarchist
 
 		### Ruling Party
-		add_to_array = { ruling_party = 18 }
+		set_variable = { ruling_party = 18 }
 
 		startup_politics = yes
 
@@ -21979,6 +22603,13 @@
 	SUD = {
 		if = {
 			limit = { has_dlc = "No Step Back" } 
+		if = {
+			limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "SUD_2017_bba"
+			else = {
+				set_air_oob = "SUD_2017_nonbba"
+			}
+		}
 			set_oob = "SUD_2017_nsb" 
 			else = {
 				set_oob = "SUD_2000_nonnsb"
@@ -22145,7 +22776,7 @@
 		set_variable = { party_pop_array^23 = 0 } #Monarchist
 
 		### Ruling Party
-		add_to_array = { ruling_party = 18 }
+		set_variable = { ruling_party = 18 }
 
 		startup_politics = yes
 
@@ -22262,6 +22893,15 @@
 		set_variable = { var = int_investments value = 537 }
 		set_variable = { var = corporate_tax_rate value = 23 }
 		set_variable = { var = population_tax_rate value = 50 } 
+
+		set_naval_oob = "SWE_2017_naval_mtg"
+
+		if = { limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "SWE_2017_bba"
+			else = {
+				set_air_oob = "SWE_2017_nonbba"
+			}
+		}
 
 		set_technology = {
 			AT_upgrade_2 = 1
@@ -22468,6 +23108,13 @@
 	}
 	SYR = {
 		if = {
+		if = {
+			limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "SYR_2017_bba"
+			else = {
+				set_air_oob = "SYR_2017_nonbba"
+			}
+		}
 			limit = { has_dlc = "No Step Back" }
 
 			set_oob = "SYR_2017_nsb" 
@@ -22794,7 +23441,15 @@
 		remove_opinion_modifier = { target = GRA modifier = recognize_taiwan }
 		remove_opinion_modifier = { target = FYR modifier = recognize_taiwan }
 
-		# Starting tech
+			# Starting tech
+		if = { limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "TAI_2017_bba"
+			else = {
+				set_air_oob = "TAI_2017_nonbba"
+			}
+		}
+		set_naval_oob = "TAI_2017_naval_mtg"
+
 		set_technology = {
 			infantry_weapons_4 = 1
 			infantry_weapons_5 = 1 
@@ -22954,7 +23609,7 @@
 			anti_taliban_guerrillas    
 			SAL_closed_nation
 		}  
-		oob = "TAL_2017" 
+		set_oob = "TAL_2017"
 
 		#Recognition 
 		PAK = { clr_country_flag = Recognised_@FROM }
@@ -23547,7 +24202,7 @@
 		}
 	}
 	TTP = {
-		oob = "TTP_2017"   
+		set_oob = "TTP_2017"
 
 		set_popularities = {
 			democratic = 0.0
@@ -23606,7 +24261,7 @@
 		} 
 	}
 	TUA = {
-		oob = "TUA_2017"
+		set_oob = "TUA_2017"
 		set_capital = { state = 1163 }
 		add_ideas = {  
 			defence_08
@@ -23868,6 +24523,12 @@
 				set_oob = "TUR_2000_nonnsb"
 			}
 		}  
+		if = { limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "TUR_2017_bba"
+			else = {
+				set_air_oob = "TUR_2017_nonbba"
+			}
+		}
 		 
 		remove_ideas = liberal_society
 		add_ideas = { 
@@ -23930,6 +24591,8 @@
 
 		add_opinion_modifier = { target = KUR modifier = TUR_Dont_Support_Kurdish_Independence }
 		add_opinion_modifier = { target = ROJ modifier = TUR_Dont_Support_Kurdish_Independence }
+
+		set_naval_oob = "TUR_2017_naval_mtg"
 
 		set_technology = {     
 			support_weapons2 = 1
@@ -24154,6 +24817,8 @@
 		SAU = { give_guarantee = UAE } 
 
 		# Starting tech
+		set_naval_oob = "UAE_2017_naval_mtg"
+
 		set_technology = {    
 			infantry_weapons_2 = 1
 			infantry_weapons_3 = 1
@@ -24360,7 +25025,7 @@
 		if = { limit = { has_dlc = "By Blood Alone" } 
 			set_air_oob = "UKR_2017_bba" 
 			else = {
-				set_oob = "UKR_2017_nonbba"
+				set_air_oob = "UKR_2017_nonbba"
 			}
 		}
 		 
@@ -24485,11 +25150,11 @@
 
 		start_politics_input = yes
 		set_variable = { party_pop_array^0 = 0 } #Western_Autocracy
-		set_variable = { party_pop_array^1 = 0.175 } #conservatism
+		set_variable = { party_pop_array^1 = 0.13 } #conservatism
 		set_variable = { party_pop_array^2 = 0.13 } #liberalism
 		set_variable = { party_pop_array^3 = 0.05 } #socialism
 		set_variable = { party_pop_array^4 = 0 } #communist_state
-		set_variable = { party_pop_array^5 = 0.09 } #anarchist_communism
+		set_variable = { party_pop_array^5 = 0.11 } #anarchist_communism
 		set_variable = { party_pop_array^6 = 0.11 } #Conservative
 		set_variable = { party_pop_array^7 = 0 } #Autocracy
 		set_variable = { party_pop_array^8 = 0 } #Mod_Vilayat_e_Faqih
@@ -24509,7 +25174,7 @@
 		set_variable = { party_pop_array^22 = 0 } #Nat_Autocracy
 		set_variable = { party_pop_array^23 = 0 } #Monarchist
 
-		add_to_array = { ruling_party = 2 }
+		set_variable = { ruling_party = 2 }
 
 		startup_politics = yes
 
@@ -24553,6 +25218,8 @@
 		set_variable = { var = population_tax_rate value = 36 }
 
 		# Starting tech
+		set_naval_oob = "URG_2017_naval_mtg"
+
 		set_technology = {   
 			microprocessors = 1
 			computing_2 = 1
@@ -24913,6 +25580,12 @@
 				set_oob = "USA_2000_nonnsb"
 			}
 		}  
+		if = { limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "USA_2017_bba"
+			else = {
+				set_air_oob = "USA_2017_nonbba"
+			}
+		}
 
 		set_country_flag = military_advisors_IRQ
 		IRQ = { add_to_variable = { foreign_advisors = 1 } }
@@ -24959,8 +25632,8 @@
         send_embargo = CUB
         send_embargo = SUD
 
-		# 开局美国保有对以色列的保障；第六次中东战争爆发前夕由 mew.1 事件撤销该保障，
-		# 美国是否介入仍由 mew.3 事件决定，避免北约阵营被连锁拖入对伊朗及阿拉伯国家的战争
+		# 寮€灞€缇庡浗淇濇湁瀵逛互鑹插垪鐨勪繚闅滐紱绗叚娆′腑涓滄垬浜夌垎鍙戝墠澶曠敱 mew.1 浜嬩欢鎾ら攢璇ヤ繚闅滐紝
+		# 缇庡浗鏄惁浠嬪叆浠嶇敱 mew.3 浜嬩欢鍐冲畾锛岄伩鍏嶅寳绾﹂樀钀ヨ杩為攣鎷栧叆瀵逛紛鏈楀強闃挎媺浼浗瀹剁殑鎴樹簤
 		diplomatic_relation = { country = ISR relation = guarantee active = yes }
 
 		# Additional Treaty memebrs in 2017 vs in 2000 are also included in this bulk
@@ -24973,6 +25646,8 @@
 		diplomatic_relation = { country = KOS relation = military_access active = yes }
 
 		# Starting tech
+		set_naval_oob = "USA_2017_naval_mtg"
+
 		set_technology = {  
 			support_weapons4 = 1
 			support_weapons5 = 1   
@@ -25058,7 +25733,20 @@
 		}
 
 		start_politics_input = yes  
-		add_to_array = { ruling_party = 1 } #republican
+		set_variable = { party_pop_array^1 = 0.25 } #republican
+		set_variable = { party_pop_array^14 = 0.06 } #republican constitutionists
+		set_variable = { party_pop_array^20 = 0.06 } #republican right populists
+		set_variable = { party_pop_array^21 = 0.03 } #neo-fascist & fringe republicans
+		set_variable = { party_pop_array^22 = 0.06 } #militarist & pentagon lobbiest
+		set_variable = { party_pop_array^2 = 0.21 } #democrat
+		set_variable = { party_pop_array^3 = 0.04 } #democrat progressives
+		set_variable = { party_pop_array^18 = 0.02 } #democratic socialist fringes
+		set_variable = { party_pop_array^4 = 0.01 } #CPUSA
+		set_variable = { party_pop_array^5 = 0.02 } #PSL
+		set_variable = { party_pop_array^6 = 0.02 } #AFP
+		set_variable = { party_pop_array^16 = 0.18 } #libertarians
+		set_variable = { party_pop_array^17 = 0.04 } #Greens
+		set_variable = { ruling_party = 1 } #republican
 		add_to_array = { gov_coalition_array = 14 } #republican constitutionists
 		add_to_array = { gov_coalition_array = 20 } #republican right populists
 		startup_politics = yes
@@ -25087,6 +25775,13 @@
             CES_outdated_army_idea
             ces_neutral_idea
         }
+		if = {
+			limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "UZB_2017_bba"
+			else = {
+				set_air_oob = "UZB_2017_nonbba"
+			}
+		}
 		if = { limit = { has_dlc = "No Step Back" } 
 			set_oob = "UZB_2017_nsb"
 			else = {
@@ -25276,6 +25971,8 @@
         }
 
 		# Starting tech
+		set_naval_oob = "VEN_2017_naval_mtg"
+
 		set_technology = {
 			util_vehicle_2 = 1 
 			util_vehicle_3 = 1 #Tiuna 
@@ -25459,6 +26156,13 @@
 		}
 	}
 	VIE = {
+		if = {
+			limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "VIE_2017_bba"
+			else = {
+				set_air_oob = "VIE_2017_nonbba"
+			}
+		}
 		if = { limit = { has_dlc = "No Step Back" } 
 			set_oob = "VIE_2017_nsb"
 			else = {
@@ -25473,6 +26177,8 @@
         }
 
 		# Starting tech
+		set_naval_oob = "VIE_2017_naval_mtg"
+
 		set_technology = { 
 			infantry_weapons_4 = 1 
 			support_weapons = 1
@@ -25604,6 +26310,13 @@
 	YEM = {
 		set_capital = { state = 198 }   
 		if = { limit = { has_dlc = "No Step Back" } 
+		if = {
+			limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "YEM_2017_bba"
+			else = {
+				set_air_oob = "YEM_2017_nonbba"
+			}
+		}
 			set_oob = "YEM_2017_nsb"
 		}
 		remove_ideas = {
@@ -25905,5 +26618,790 @@
 		add_to_array = { agri_crop_price = 25 } # Cash = 1
 
 		set_variable = { literacy_rate = 0.887 }
+	}
+
+	# ===== 2017 琛ュ叏锛?017 骞存嫢鏈夐鍦熶絾鍘熸湰鏃?2017 閰嶇疆鐨勫浗瀹?=====
+
+	# 宸村搱椹細2017 骞?PLP 鏀垮簻锛屼僵閲屄峰厠閲屾柉钂備换鎬荤悊
+	BAH = {
+		set_technology = {
+			night_vision_2 = 1
+			microprocessors = 1
+			computing_2 = 1
+			computing_3 = 1
+			internet_2 = 1 	#2G
+			gprs = 1
+			internet_access_1 = 1
+			internet_3 = 1	#3G
+			umts = 1
+			hsupa = 1
+			internet_4 = 1	#4G
+			lte = 1
+		}
+		if = {
+			limit = { NOT = { has_dlc = "La Resistance" } }
+			set_technology = {
+				decryption_2 = 1
+				decryption_3 = 1
+				encryption_2 = 1
+				encryption_3 = 1
+			}
+		}
+
+		set_popularities = {
+			democratic = 100.0
+			communism = 0.0
+			fascism = 0.0
+			neutrality = 0.0
+			nationalist = 0.0
+		}
+		set_politics = {
+			ruling_party = democratic
+			last_election = "2012.5.7"
+			election_frequency = 60
+			elections_allowed = yes
+		}
+
+		start_politics_input = yes
+
+		set_variable = { party_pop_array^1 = 0.44 } #conservatism
+		set_variable = { party_pop_array^2 = 0.56 } #liberalism
+		set_variable = { ruling_party = 2 }
+
+		startup_politics = yes
+
+		create_country_leader = {
+			name = "Perry Christie"
+			ideology = liberalism
+			traits = {
+				likeable
+			}
+		}
+	}
+
+	# 宸村反澶氭柉锛?017 骞?DLP 鏀垮簻锛屽紬缃楀洜寰峰皵路鏂浘灏旂壒浠绘€荤悊
+	BAR = {
+		set_technology = {
+			night_vision_2 = 1
+			microprocessors = 1
+			computing_2 = 1
+			computing_3 = 1
+			internet_2 = 1 	#2G
+			gprs = 1
+			internet_access_1 = 1
+			internet_3 = 1	#3G
+			umts = 1
+			hsupa = 1
+			internet_4 = 1	#4G
+			lte = 1
+		}
+		if = {
+			limit = { NOT = { has_dlc = "La Resistance" } }
+			set_technology = {
+				decryption_2 = 1
+				decryption_3 = 1
+				encryption_2 = 1
+				encryption_3 = 1
+			}
+		}
+
+		set_popularities = {
+			democratic = 100.0
+			communism = 0.0
+			fascism = 0.0
+			neutrality = 0.0
+			nationalist = 0.0
+		}
+		set_politics = {
+			ruling_party = democratic
+			last_election = "2013.2.21"
+			election_frequency = 60
+			elections_allowed = yes
+		}
+
+		start_politics_input = yes
+
+		set_variable = { party_pop_array^2 = 0.35 } #liberalism
+		set_variable = { party_pop_array^3 = 0.65 } #socialism
+		set_variable = { ruling_party = 3 }
+
+		startup_politics = yes
+
+		create_country_leader = {
+			name = "Freundel Stuart"
+			ideology = socialism
+			traits = {
+				likeable
+			}
+		}
+	}
+
+	# 鍏嬮挦锛?017 骞?KIO 浠嶆帶鍒跺厠閽﹂偊鍖楅儴
+	KAC = {
+		set_technology = {
+			microprocessors = 1
+			computing_2 = 1
+			internet_2 = 1 	#2G
+			gprs = 1
+			internet_access_1 = 1
+			internet_3 = 1	#3G
+		}
+		if = {
+			limit = { NOT = { has_dlc = "La Resistance" } }
+			set_technology = {
+				decryption_2 = 1
+				decryption_3 = 1
+				encryption_2 = 1
+				encryption_3 = 1
+			}
+		}
+	}
+
+	# 鍏嬩鸡锛?017 骞?KNU 涓诲腑鑻忕﹩鍥炬尝
+	KAR = {
+		set_technology = {
+			microprocessors = 1
+			computing_2 = 1
+			internet_2 = 1 	#2G
+			gprs = 1
+			internet_access_1 = 1
+			internet_3 = 1	#3G
+		}
+		if = {
+			limit = { NOT = { has_dlc = "La Resistance" } }
+			set_technology = {
+				decryption_2 = 1
+				decryption_3 = 1
+				encryption_2 = 1
+				encryption_3 = 1
+			}
+		}
+
+		create_country_leader = {
+			name = "Saw Mutu Say Poe"
+			picture = "Mutusay_Poe.dds"
+			ideology = Neutral_Autocracy
+			traits = {
+				emerging_Neutral_Autocracy
+			}
+		}
+	}
+
+	# 鍩洪噷宸存柉锛?017 骞村鍐呰拏路椹┈涔屼换鎬荤粺
+	KIR = {
+		set_technology = {
+			microprocessors = 1
+			computing_2 = 1
+			internet_2 = 1 	#2G
+			gprs = 1
+			internet_access_1 = 1
+			internet_3 = 1	#3G
+			umts = 1
+		}
+		if = {
+			limit = { NOT = { has_dlc = "La Resistance" } }
+			set_technology = {
+				decryption_2 = 1
+				decryption_3 = 1
+				encryption_2 = 1
+				encryption_3 = 1
+			}
+		}
+
+		set_politics = {
+			ruling_party = communism
+			last_election = "2016.3.9"
+			election_frequency = 48
+			elections_allowed = yes
+		}
+
+		start_politics_input = yes
+
+		set_variable = { party_pop_array^2 = 0.45 } #liberalism
+		set_variable = { party_pop_array^6 = 0.55 } #Conservative
+
+		startup_politics = yes
+
+		create_country_leader = {
+			name = "Taneti Maamau"
+			picture = "Taneti_Maamau.dds"
+			ideology = Conservative
+			traits = {
+				emerging_Conservative
+			}
+		}
+	}
+
+	# 搴撳皵寰锋柉鍧︼細2017 骞村反灏旀墡灏间粛浠讳富甯紝搴撳尯璁細 2013 骞撮€変妇
+	KUR = {
+		set_technology = {
+			body_armor_1 = 1
+			night_vision_2 = 1
+			microprocessors = 1
+			computing_2 = 1
+			computing_3 = 1
+			internet_2 = 1 	#2G
+			gprs = 1
+			internet_access_1 = 1
+			internet_3 = 1	#3G
+			umts = 1
+			hsupa = 1
+		}
+		if = {
+			limit = { NOT = { has_dlc = "La Resistance" } }
+			set_technology = {
+				decryption_2 = 1
+				decryption_3 = 1
+				encryption_2 = 1
+				encryption_3 = 1
+			}
+		}
+
+		set_politics = {
+			ruling_party = democratic
+			last_election = "2013.9.21"
+			election_frequency = 60
+			elections_allowed = no
+		}
+	}
+
+	# 灏兼硦灏旀瘺娲撅細2017 骞存櫘鎷夋槍杈句粛涓烘瘺娲鹃琚?
+	NPM = {
+		set_technology = {
+			microprocessors = 1
+			computing_2 = 1
+			internet_2 = 1 	#2G
+			gprs = 1
+			internet_access_1 = 1
+			internet_3 = 1	#3G
+		}
+		if = {
+			limit = { NOT = { has_dlc = "La Resistance" } }
+			set_technology = {
+				decryption_2 = 1
+				decryption_3 = 1
+				encryption_2 = 1
+				encryption_3 = 1
+			}
+		}
+	}
+
+	# 搴撳皵寰锋柉鍧︾埍鍥借仈鐩燂細2017 骞村鎷夊反灏间粛浠绘€讳功璁?
+	PUK = {
+		set_technology = {
+			body_armor_1 = 1
+			night_vision_2 = 1
+			microprocessors = 1
+			computing_2 = 1
+			computing_3 = 1
+			internet_2 = 1 	#2G
+			gprs = 1
+			internet_access_1 = 1
+			internet_3 = 1	#3G
+			umts = 1
+		}
+		if = {
+			limit = { NOT = { has_dlc = "La Resistance" } }
+			set_technology = {
+				decryption_2 = 1
+				decryption_3 = 1
+				encryption_2 = 1
+				encryption_3 = 1
+			}
+		}
+
+		set_politics = {
+			ruling_party = neutrality
+			last_election = "2013.9.21"
+			election_frequency = 60
+			elections_allowed = no
+		}
+	}
+
+	# 鍗楁幐閭︼細2017 骞?RCSS 涓诲腑绾﹀痉鍐?
+	SHN = {
+		set_technology = {
+			microprocessors = 1
+			computing_2 = 1
+			internet_2 = 1 	#2G
+			gprs = 1
+			internet_access_1 = 1
+			internet_3 = 1	#3G
+		}
+		if = {
+			limit = { NOT = { has_dlc = "La Resistance" } }
+			set_technology = {
+				decryption_2 = 1
+				decryption_3 = 1
+				encryption_2 = 1
+				encryption_3 = 1
+			}
+		}
+	}
+
+	# 鍔柉鎷夐樀绾匡細2017 骞翠紛寰峰埄鍗滐紝闃垮竷路绌嗙綍榛樺痉路鏈辨媺灏?
+	NUS = {
+		set_technology = {
+			computing_2 = 1
+			computing_3 = 1
+			internet_2 = 1 	#2G
+			gprs = 1
+			internet_access_1 = 1
+			internet_3 = 1	#3G
+		}
+		if = {
+			limit = { NOT = { has_dlc = "La Resistance" } }
+			set_technology = {
+				decryption_2 = 1
+				decryption_3 = 1
+				encryption_2 = 1
+				encryption_3 = 1
+			}
+		}
+
+		recruit_character = NUS_abu_abdalla_alshami
+		recruit_character = NUS_issam_albuwaydani
+	}
+
+	# 鍒╂瘮浜氭晳鍥芥斂搴滐細2017 骞?1 鏈堢殑榛庢尝閲?
+	GNC = {
+		set_technology = {
+			computing_2 = 1
+			internet_2 = 1 	#2G
+			gprs = 1
+			internet_access_1 = 1
+			internet_3 = 1	#3G
+		}
+		if = {
+			limit = { NOT = { has_dlc = "La Resistance" } }
+			set_technology = {
+				decryption_2 = 1
+				encryption_2 = 1
+			}
+		}
+
+		set_popularities = {
+			democratic = 0.0
+			communism = 0.0
+			fascism = 0.0
+			neutrality = 100.0
+			nationalist = 0.0
+		}
+		set_politics = {
+			ruling_party = neutrality
+			elections_allowed = no
+		}
+
+		start_politics_input = yes
+
+		set_variable = { party_pop_array^12 = 1.0 } #Neutral_Muslim_Brotherhood
+		set_variable = { ruling_party = 12 }
+
+		startup_politics = yes
+
+		create_country_leader = {
+			name = "Khalifa al-Ghawil"
+			ideology = Neutral_Muslim_Brotherhood
+			traits = {
+				neutrality_Neutral_Muslim_Brotherhood
+			}
+		}
+
+		recruit_character = GNC_shaaban_hadia
+	}
+
+	# 浣ら偊锛?017 骞撮矋鏈夌ゥ浠嶄换浣ら偊鑱斿悎鍐涢瀵间汉
+	WAA = {
+		set_technology = {
+			microprocessors = 1
+			computing_2 = 1
+			computing_3 = 1
+			internet_2 = 1 	#2G
+			gprs = 1
+			internet_access_1 = 1
+			internet_3 = 1	#3G
+			umts = 1
+		}
+		if = {
+			limit = { NOT = { has_dlc = "La Resistance" } }
+			set_technology = {
+				decryption_2 = 1
+				decryption_3 = 1
+				encryption_2 = 1
+				encryption_3 = 1
+			}
+		}
+	}
+
+	# ===== 2017 land OOB (ported) =====
+	ABK = {
+		set_oob = "ABK_2017_nsb"
+	}
+	ALB = {
+		set_oob = "ALB_2017_nsb"
+	}
+	ARG = {
+		set_oob = "ARG_2017_nsb"
+		if = {
+			limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "ARG_2017_bba"
+			else = {
+				set_air_oob = "ARG_2017_nonbba"
+			}
+		}
+	}
+	ARM = {
+		set_oob = "ARM_2017_nsb"
+	}
+	AUS = {
+		if = {
+			limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "AUS_2017_bba"
+			else = {
+				set_air_oob = "AUS_2017_nonbba"
+			}
+		}
+		set_oob = "AUS_2017_nsb"
+	}
+	BAN = {
+		if = {
+			limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "BAN_2017_bba"
+			else = {
+				set_air_oob = "BAN_2017_nonbba"
+			}
+		}
+		set_oob = "BAN_2017_nsb"
+	}
+	BLR = {
+		set_oob = "BLR_2017_nsb"
+		if = {
+			limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "BLR_2017_bba"
+			else = {
+				set_air_oob = "BLR_2017_nonbba"
+			}
+		}
+	}
+	CBD = {
+		set_oob = "CBD_2017_nsb"
+	}
+	CDI = {
+		set_oob = "CDI_2017_nsb"
+	}
+	CHA = {
+		set_oob = "CHA_2017_nsb"
+	}
+	CHL = {
+		set_oob = "CHL_2017_nsb"
+		if = {
+			limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "CHL_2017_bba"
+			else = {
+				set_air_oob = "CHL_2017_nonbba"
+			}
+		}
+	}
+	CNG = {
+		set_oob = "CNG_2017_nsb"
+	}
+	CRO = {
+		set_oob = "CRO_2017_nsb"
+		if = {
+			limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "CRO_2017_bba"
+			else = {
+				set_air_oob = "CRO_2017_nonbba"
+			}
+		}
+	}
+	CUB = {
+		set_oob = "CUB_2017_nsb"
+		if = {
+			limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "CUB_2017_bba"
+			else = {
+				set_air_oob = "CUB_2017_nonbba"
+			}
+		}
+	}
+	CYP = {
+		set_oob = "CYP_2017_nsb"
+	}
+	DEN = {
+		set_oob = "DEN_2017_nsb"
+	}
+	DRC = {
+		set_oob = "DRC_2017_nsb"
+	}
+	ECU = {
+		set_oob = "ECU_2017_nsb"
+		if = {
+			limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "ECU_2017_bba"
+			else = {
+				set_air_oob = "ECU_2017_nonbba"
+			}
+		}
+	}
+	ERI = {
+		set_oob = "ERI_2017_nsb"
+	}
+	ETH = {
+		set_oob = "ETH_2017_nsb"
+	}
+	FIN = {
+		set_oob = "FIN_2017_nsb"
+	}
+	FYR = {
+		set_oob = "FYR_2017_nsb"
+	}
+	GEO = {
+		if = {
+			limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "GEO_2017_bba"
+			else = {
+				set_air_oob = "GEO_2017_nonbba"
+			}
+		}
+		set_oob = "GEO_2017_nsb"
+	}
+	GRE = {
+		set_oob = "GRE_2017_nsb"
+		if = {
+			limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "GRE_2017_bba"
+			else = {
+				set_air_oob = "GRE_2017_nonbba"
+			}
+		}
+	}
+	GUB = {
+		set_oob = "GUB_2017_nsb"
+	}
+	GUI = {
+		set_oob = "GUI_2017_nsb"
+	}
+	IND = {
+		set_oob = "IND_2017_nsb"
+		if = {
+			limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "IND_2017_bba"
+			else = {
+				set_air_oob = "IND_2017_nonbba"
+			}
+		}
+	}
+	JOR = {
+		set_oob = "JOR_2017_nsb"
+		if = {
+			limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "JOR_2017_bba"
+			else = {
+				set_air_oob = "JOR_2017_nonbba"
+			}
+		}
+	}
+	KAZ = {
+		set_oob = "KAZ_2017_nsb"
+		if = {
+			limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "KAZ_2017_bba"
+			else = {
+				set_air_oob = "KAZ_2017_nonbba"
+			}
+		}
+	}
+	KEN = {
+		set_oob = "KEN_2017_nsb"
+	}
+	KUR = {
+		set_oob = "KUR_2017_nsb"
+	}
+	LAO = {
+		set_oob = "LAO_2017_nsb"
+	}
+	LEB = {
+		set_oob = "LEB_2017_nsb"
+	}
+	LES = {
+		set_oob = "LES_2017_nsb"
+	}
+	MLV = {
+		if = {
+			limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "MLV_2017_bba"
+			else = {
+				set_air_oob = "MLV_2017_nonbba"
+			}
+		}
+		set_oob = "MLV_2017_nsb"
+	}
+	MON = {
+		if = {
+			limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "MON_2017_bba"
+			else = {
+				set_air_oob = "MON_2017_nonbba"
+			}
+		}
+		set_oob = "MON_2017_nsb"
+	}
+	MOR = {
+		if = {
+			limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "MOR_2017_bba"
+			else = {
+				set_air_oob = "MOR_2017_nonbba"
+			}
+		}
+		set_oob = "MOR_2017_nsb"
+	}
+	MOZ = {
+		set_oob = "MOZ_2017_nsb"
+	}
+	NIC = {
+		set_oob = "NIC_2017_nsb"
+	}
+	NKR = {
+		set_oob = "NKR_2017_nsb"
+	}
+	NRY = {
+		set_oob = "NRY_2017_nsb"
+		if = { limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "NRY_2017_bba"
+			else = {
+				set_air_oob = "NRY_2017_nonbba"
+			}
+		}
+	}
+	NOV = {
+		set_oob = "NOV_2017_nsb"
+	}
+	NUS = {
+		set_oob = "NUS_2017_nsb"
+	}
+	OMA = {
+		set_oob = "OMA_2017_nsb"
+		if = {
+			limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "OMA_2017_bba"
+			else = {
+				set_air_oob = "OMA_2017_nonbba"
+			}
+		}
+	}
+	PMR = {
+		set_oob = "PMR_2017_nsb"
+	}
+	POR = {
+		set_oob = "POR_2017_nsb"
+		if = {
+			limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "POR_2017_bba"
+			else = {
+				set_air_oob = "POR_2017_nonbba"
+			}
+		}
+	}
+	SAU = {
+		set_oob = "SAU_2017_nsb"
+		if = {
+			limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "SAU_2017_bba"
+			else = {
+				set_air_oob = "SAU_2017_nonbba"
+			}
+		}
+	}
+	SHA = {
+		set_oob = "SHA_2017_nsb"
+	}
+	SLV = {
+		set_oob = "SLV_2017_nsb"
+	}
+	SML = {
+		set_oob = "SML_2017_nsb"
+	}
+	SOO = {
+		set_oob = "SOO_2017_nsb"
+	}
+	SRI = {
+		if = {
+			limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "SRI_2017_bba"
+			else = {
+				set_air_oob = "SRI_2017_nonbba"
+			}
+		}
+		set_oob = "SRI_2017_nsb"
+	}
+	SWE = {
+		set_oob = "SWE_2017_nsb"
+	}
+	SWI = {
+		set_oob = "SWI_2017_nsb"
+	}
+	TNZ = {
+		set_oob = "TNZ_2017_nsb"
+	}
+	TOG = {
+		set_oob = "TOG_2017_nsb"
+	}
+	TUN = {
+		if = {
+			limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "TUN_2017_bba"
+			else = {
+				set_air_oob = "TUN_2017_nonbba"
+			}
+		}
+		set_oob = "TUN_2017_nsb"
+	}
+	UAE = {
+		set_oob = "UAE_2017_nsb"
+		if = {
+			limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "UAE_2017_bba"
+			else = {
+				set_air_oob = "UAE_2017_nonbba"
+			}
+		}
+	}
+	UGA = {
+		set_oob = "UGA_2017_nsb"
+	}
+	URG = {
+		if = {
+			limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "URG_2017_bba"
+			else = {
+				set_air_oob = "URG_2017_nonbba"
+			}
+		}
+		set_oob = "URG_2017_nsb"
+	}
+	VEN = {
+		set_oob = "VEN_2017_nsb"
+		if = {
+			limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "VEN_2017_bba"
+			else = {
+				set_air_oob = "VEN_2017_nonbba"
+			}
+		}
+	}
+	ZAM = {
+		if = {
+			limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "ZAM_2017_bba"
+			else = {
+				set_air_oob = "ZAM_2017_nonbba"
+			}
+		}
+		set_oob = "ZAM_2017_nsb"
+	}
+	ZIM = {
+		set_oob = "ZIM_2017_nsb"
 	}
 }

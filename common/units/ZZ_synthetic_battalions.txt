@@ -725,7 +725,9 @@ sub_units = {
 		amphibious = { attack = -0.05 }
 	}
 
-	# ==================== 俄罗斯 · 两栖合成营（海军步兵） ====================
+	# ==================== 俄罗斯 · 海军步兵合成营（BTR-82A） ====================
+	# 2017 年俄海军步兵无两栖突击车/两栖坦克编制：以 BTR-82A 轮式装甲车浮渡，
+	# 配合 2S19/2S12 火力与短号反坦克导弹，故按轮式中型合成营编成
 	syn_amphibious_bat_SOV = {
 		abbreviation = "SYA"
 		sprite = MD_light_armor
@@ -767,26 +769,27 @@ sub_units = {
 		}
 
 		need = {
-			infantry_weapons_type = 250
-			L_AT_Equipment = 48
-			H_AT_Equipment = 8
-			AA_Equipment = 12
+			infantry_weapons_type = 300		# 下车步兵 + 乘员自卫（全营 650 人）
+			L_AT_Equipment = 48			# RPG-7 火箭筒
+			H_AT_Equipment = 12			# 9M133 短号反坦克导弹
+			AA_Equipment = 12			# 9K38 针式便携防空导弹
 			cnc_equipment_type = 30
-			medium_tank_amphibious_chassis = 34
+			medium_tank_amphibious_chassis = 35	# BTR-82A ×34 + 营指挥车 ×1
 			medium_tank_destroyer_chassis = 6
 			medium_tank_artillery_chassis = 6
 			util_vehicle_type = 10
 			ZZ_neg_armor_amphibious = 1
 		}
-		plains = { attack = 0.05 }
-		hills = { attack = -0.05 defence = -0.05 }
-		forest = { attack = -0.10 }
-		mountain = { attack = -0.15 }
-		jungle = { attack = 0.05 }
-		marsh = { attack = 0.30 movement = 0.20 }
-		urban = { attack = 0.05 }
-		river = { attack = 0.30 movement = 0.25 }
-		amphibious = { attack = 0.35 movement = 0.25 }
+		plains = { attack = 0.10 movement = 0.10 }
+		desert = { movement = 0.10 }
+		hills = { attack = 0.05 movement = 0.05 }
+		forest = { attack = -0.10 movement = -0.05 }
+		mountain = { attack = -0.20 defence = -0.10 movement = -0.10 }
+		jungle = { attack = -0.15 movement = -0.10 }
+		marsh = { attack = 0.10 movement = 0.10 }
+		urban = { attack = 0.05 defence = 0.05 }
+		river = { attack = 0.25 movement = 0.20 }
+		amphibious = { attack = 0.10 }
 	}
 
 	# ==================== 中国 · 重型合成营 ====================

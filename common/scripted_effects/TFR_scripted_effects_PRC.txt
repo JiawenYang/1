@@ -1304,85 +1304,87 @@ PRC_decrease_new_religious_policy_idea = { #worse
 	PRC_gaw_start = {
 		every_state = {
 			limit = {
+				# 工程适配：以下州号/地区号已按 MD（千禧黎明）实际 history/states 与 map/strategicregions 重新映射。
+				# 烈焰升腾州号在 MD 中含义完全不同（例：TFR 441=克什米尔，MD 441=圣皮埃尔；TFR 716=辽宁，MD 716=哈萨克中部），
+				# 禁止照抄，详见交付报告中的「TFR → MD → 州名」对照表。
 				OR = {
-					state = 787
-					state = 1132
-					state = 440
-					state = 1380
-					state = 442
-					state = 443
-					state = 445
-					state = 1324
-					state = 441
-					state = 1131
-					state = 1373
-					state = 439
-					state = 1381
-					state = 437
-					state = 1397
-					state = 1398
-					state = 1370
-					state = 789
-					state = 432
-					state = 1367
-					state = 434
-					state = 1366
-					state = 1368
-					state = 1369
-					state = 430
-					state = 431
-					state = 424
-					state = 1418
-					state = 1413
-					state = 1417
-					state = 1414
-					state = 1415
-					state = 1416
+					# ---- 南亚：克什米尔 / 巴基斯坦 ----
+					state = 414
+					state = 418
+					state = 420
 					state = 422
-					region = 146
-					region = 189
-					region = 142
-					region = 188
-					region = 160
-					region = 159
-					region = 187
-					region = 158
-					region = 93
-					region = 167
-					region = 193
-					region = 194
-					region = 195
-					region = 156
-					region = 76
-					region = 154
-					region = 165
-					region = 164
-					region = 143
-					region = 145
-					region = 220
-					region = 216
-					region = 219
-					region = 152
-					state = 428
-					state = 433
-					state = 1379
-					state = 438
-					state = 436
-					state = 1400
-					state = 1399
-					state = 435
-					state = 1371
 					state = 426
-					state = 1372
 					state = 427
-					state = 425
-					state = 423
-					state = 320
-					state = 429
-					state = 716
-					state = 1394
-					state = 328
-					state = 717
+					state = 428
+					state = 563
+					state = 993
+					# ---- 南亚：印度本土 ----
+					state = 431
+					state = 436
+					state = 438
+					state = 440
+					state = 444
+					state = 445
+					state = 447
+					state = 451
+					state = 452
+					state = 455
+					state = 456
+					state = 458
+					state = 459
+					state = 460
+					state = 461
+					state = 462
+					state = 464
+					state = 467
+					state = 471
+					state = 473
+					state = 475
+					state = 476
+					state = 477
+					state = 478
+					state = 482
+					state = 483
+					state = 490
+					state = 492
+					state = 493
+					state = 494
+					state = 981
+					state = 982
+					state = 984
+					state = 985
+					state = 986
+					state = 987
+					state = 988
+					state = 989
+					state = 990
+					state = 991
+					# ---- 中国东北（原版 716/717/328/1413-1417/1394）----
+					state = 552
+					state = 554
+					state = 555
+					state = 1096
+					# ---- 地区（按 MD strategicregions 的实际地理范围对应，非按编号对应）----
+					region = 136
+					region = 137
+					region = 142
+					region = 143
+					region = 144
+					region = 145
+					region = 146
+					region = 147
+					region = 152
+					region = 154
+					region = 155
+					region = 156
+					region = 158
+					region = 159
+					region = 160
+					region = 164
+					region = 165
+					region = 167
+					region = 211
+					region = 76
 				}
 			}
 			add_dynamic_modifier = {
@@ -1399,293 +1401,54 @@ PRC_decrease_new_religious_policy_idea = { #worse
 		#		modifier = PRC_non_combat_area
 		#	}
 		#}
+		# ===== GAW 阵营：按 TAG 硬编码（用户设计，优先级高于烈焰升腾原版的影响力机制）=====
+		# 中国侧固定成员：CBD（柬埔寨） / IND（印度尼西亚） / LAO / BRM / VIE
+		if = { limit = { country_exists = CBD CBD = { is_in_faction = no } } CHI = { add_to_faction = CBD } }
+		if = { limit = { country_exists = IND IND = { is_in_faction = no } } CHI = { add_to_faction = IND } }
+		if = { limit = { country_exists = LAO LAO = { is_in_faction = no } } CHI = { add_to_faction = LAO } }
+		if = { limit = { country_exists = BRM BRM = { is_in_faction = no } } CHI = { add_to_faction = BRM } }
+		if = { limit = { country_exists = VIE VIE = { is_in_faction = no } } CHI = { add_to_faction = VIE } }
+		# 日本侧固定成员：MAY / PHI / SIN / SIA
+		if = { limit = { country_exists = MAY MAY = { is_in_faction = no } } JAP = { add_to_faction = MAY } }
+		if = { limit = { country_exists = PHI PHI = { is_in_faction = no } } JAP = { add_to_faction = PHI } }
+		if = { limit = { country_exists = SIN SIN = { is_in_faction = no } } JAP = { add_to_faction = SIN } }
+		if = { limit = { country_exists = SIA SIA = { is_in_faction = no } } JAP = { add_to_faction = SIA } }
+		# 条件性成员：判据全部取自工程内既有旗标 / 国策，不自创
+		# 韩国：未成立朝韩邦联则随日本侧（依据 prc.183 / prc.218 既有写法）
 		if = {
 			limit = {
-				CBD = {
+				country_exists = KOR
+				NOT = { has_global_flag = korean_confederation_formed }
+				KOR = {
 					is_in_faction = no
+					NOT = { has_war_with = CHI }
 				}
 			}
-			if = {
-				limit = {
-					check_variable = { global.PRC_influence_CAM_var > global.JAP_influence_CAM_var }
-				}
-				CHI = { add_to_faction = CBD }
-			}
-			else_if = {
-				limit = {
-					check_variable = { global.PRC_influence_CAM_var < global.JAP_influence_CAM_var }
-				}
-				JAP = { add_to_faction = CBD }
-			}
-			else_if = {
-				limit = {
-					check_variable = { global.PRC_influence_CAM_var = global.JAP_influence_CAM_var }
-				}
-				random_list = {
-					50 = {
-						CHI = { add_to_faction = CBD }
-					}
-					50 = {
-						JAP = { add_to_faction = CBD }
-					}
-				}
-			}
+			JAP = { add_to_faction = KOR }
 		}
+		# 朝鲜：半岛未统一则随中国侧（依据 prc.219 既有写法）
 		if = {
 			limit = {
-				IND = {
+				country_exists = NKO
+				NOT = { has_global_flag = korean_confederation_formed }
+				NKO = {
 					is_in_faction = no
+					NOT = { has_war_with = CHI }
 				}
 			}
-			if = {
-				limit = {
-					check_variable = { global.PRC_influence_CAM_var > global.JAP_influence_CAM_var }
-				}
-				CHI = { add_to_faction = IND }
-			}
-			else_if = {
-				limit = {
-					check_variable = { global.PRC_influence_CAM_var < global.JAP_influence_CAM_var }
-				}
-				JAP = { add_to_faction = IND }
-			}
-			else_if = {
-				limit = {
-					check_variable = { global.PRC_influence_CAM_var = global.JAP_influence_CAM_var }
-				}
-				random_list = {
-					50 = {
-						CHI = { add_to_faction = IND }
-					}
-					50 = {
-						JAP = { add_to_faction = IND }
-					}
-				}
-			}
+			CHI = { add_to_faction = NKO }
 		}
+		# 台湾：未被统一为特别行政区则随日本侧（依据 jap.5 / jap.168 与 CHI_Establish_Taiwan_SAR）
 		if = {
 			limit = {
-				LAO = {
+				country_exists = TAI
+				CHI = { NOT = { has_completed_focus = CHI_Establish_Taiwan_SAR } }
+				TAI = {
 					is_in_faction = no
+					NOT = { has_war_with = CHI }
 				}
 			}
-			if = {
-				limit = {
-					check_variable = { global.PRC_influence_CAM_var > global.JAP_influence_CAM_var }
-				}
-				CHI = { add_to_faction = LAO }
-			}
-			else_if = {
-				limit = {
-					check_variable = { global.PRC_influence_CAM_var < global.JAP_influence_CAM_var }
-				}
-				JAP = { add_to_faction = LAO }
-			}
-			else_if = {
-				limit = {
-					check_variable = { global.PRC_influence_CAM_var = global.JAP_influence_CAM_var }
-				}
-				random_list = {
-					50 = {
-						CHI = { add_to_faction = LAO }
-					}
-					50 = {
-						JAP = { add_to_faction = LAO }
-					}
-				}
-			}
-		}
-		if = {
-			limit = {
-				MAY = {
-					is_in_faction = no
-				}
-			}
-			if = {
-				limit = {
-					check_variable = { global.PRC_influence_CAM_var > global.JAP_influence_CAM_var }
-				}
-				CHI = { add_to_faction = MAY }
-			}
-			else_if = {
-				limit = {
-					check_variable = { global.PRC_influence_CAM_var < global.JAP_influence_CAM_var }
-				}
-				JAP = { add_to_faction = MAY }
-			}
-			else_if = {
-				limit = {
-					check_variable = { global.PRC_influence_CAM_var = global.JAP_influence_CAM_var }
-				}
-				random_list = {
-					50 = {
-						CHI = { add_to_faction = MAY }
-					}
-					50 = {
-						JAP = { add_to_faction = MAY }
-					}
-				}
-			}
-		}
-		if = {
-			limit = {
-				BRM = {
-					is_in_faction = no
-				}
-			}
-			if = {
-				limit = {
-					check_variable = { global.PRC_influence_CAM_var > global.JAP_influence_CAM_var }
-				}
-				CHI = { add_to_faction = BRM }
-			}
-			else_if = {
-				limit = {
-					check_variable = { global.PRC_influence_CAM_var < global.JAP_influence_CAM_var }
-				}
-				JAP = { add_to_faction = BRM }
-			}
-			else_if = {
-				limit = {
-					check_variable = { global.PRC_influence_CAM_var = global.JAP_influence_CAM_var }
-				}
-				random_list = {
-					50 = {
-						CHI = { add_to_faction = BRM }
-					}
-					50 = {
-						JAP = { add_to_faction = BRM }
-					}
-				}
-			}
-		}
-		if = {
-			limit = {
-				PHI = {
-					is_in_faction = no
-				}
-			}
-			if = {
-				limit = {
-					check_variable = { global.PRC_influence_CAM_var > global.JAP_influence_CAM_var }
-				}
-				CHI = { add_to_faction = PHI }
-			}
-			else_if = {
-				limit = {
-					check_variable = { global.PRC_influence_CAM_var < global.JAP_influence_CAM_var }
-				}
-				JAP = { add_to_faction = PHI }
-			}
-			else_if = {
-				limit = {
-					check_variable = { global.PRC_influence_CAM_var = global.JAP_influence_CAM_var }
-				}
-				random_list = {
-					50 = {
-						CHI = { add_to_faction = PHI }
-					}
-					50 = {
-						JAP = { add_to_faction = PHI }
-					}
-				}
-			}
-		}
-		if = {
-			limit = {
-				SIN = {
-					is_in_faction = no
-				}
-			}
-			if = {
-				limit = {
-					check_variable = { global.PRC_influence_CAM_var > global.JAP_influence_CAM_var }
-				}
-				CHI = { add_to_faction = SIN }
-			}
-			else_if = {
-				limit = {
-					check_variable = { global.PRC_influence_CAM_var < global.JAP_influence_CAM_var }
-				}
-				JAP = { add_to_faction = SIN }
-			}
-			else_if = {
-				limit = {
-					check_variable = { global.PRC_influence_CAM_var = global.JAP_influence_CAM_var }
-				}
-				random_list = {
-					50 = {
-						CHI = { add_to_faction = SIN }
-					}
-					50 = {
-						JAP = { add_to_faction = SIN }
-					}
-				}
-			}
-		}
-		if = {
-			limit = {
-				SIA = {
-					is_in_faction = no
-				}
-			}
-			if = {
-				limit = {
-					check_variable = { global.PRC_influence_CAM_var > global.JAP_influence_CAM_var }
-				}
-				CHI = { add_to_faction = SIA }
-			}
-			else_if = {
-				limit = {
-					check_variable = { global.PRC_influence_CAM_var < global.JAP_influence_CAM_var }
-				}
-				JAP = { add_to_faction = SIA }
-			}
-			else_if = {
-				limit = {
-					check_variable = { global.PRC_influence_CAM_var = global.JAP_influence_CAM_var }
-				}
-				random_list = {
-					50 = {
-						CHI = { add_to_faction = SIA }
-					}
-					50 = {
-						JAP = { add_to_faction = SIA }
-					}
-				}
-			}
-		}
-		if = {
-			limit = {
-				VIE = {
-					is_in_faction = no
-				}
-			}
-			if = {
-				limit = {
-					check_variable = { global.PRC_influence_CAM_var > global.JAP_influence_CAM_var }
-				}
-				CHI = { add_to_faction = VIE }
-			}
-			else_if = {
-				limit = {
-					check_variable = { global.PRC_influence_CAM_var < global.JAP_influence_CAM_var }
-				}
-				JAP = { add_to_faction = VIE }
-			}
-			else_if = {
-				limit = {
-					check_variable = { global.PRC_influence_CAM_var = global.JAP_influence_CAM_var }
-				}
-				random_list = {
-					50 = {
-						CHI = { add_to_faction = VIE }
-					}
-					50 = {
-						JAP = { add_to_faction = VIE }
-					}
-				}
-			}
+			JAP = { add_to_faction = TAI }
 		}
 		JAP = {
 			country_event = {
@@ -1698,16 +1461,7 @@ PRC_decrease_new_religious_policy_idea = { #worse
 				modifier = PRC_war_exhaustion_dynamic
 			}
 			load_oob = GAW_reserves_jap1
-		}
-		if = {
-			limit = {
-				JAP = {
-					is_ai = yes
-				}
-			}
-			JAP = {
-				load_oob = GAW_reserves_jap1_ai
-			}
+			add_manpower = -10600
 		}
 		news_event = news.415
 		set_global_flag = pan_asian_war_ongoing
@@ -1727,52 +1481,54 @@ PRC_decrease_new_religious_policy_idea = { #worse
 			add_dynamic_modifier = {
 				modifier = PRC_war_exhaustion_dynamic
 			}
-			load_oob = GAW_reserves_ast1_ai
-			if = {
-				limit = { has_dlc = "Man the Guns" }
-					load_oob = "AST_2000_naval_mtg"
-					load_oob = "AST_2000_naval_mtg"
-					load_oob = "AST_2000_naval_mtg"
-				else = {
-					load_oob = "AST_2000_naval_legacy"
-					load_oob = "AST_2000_naval_legacy"
-					load_oob = "AST_2000_naval_legacy"
+		}
+		# 印度（RAJ）：用户设计「印度不参战 GAW」，仅在确实已与中日开战时才挂厌战 / 派事件
+		if = {
+			limit = {
+				country_exists = RAJ
+				RAJ = {
+					OR = {
+						has_war_with = CHI
+						has_war_with = JAP
+					}
 				}
 			}
+			RAJ = {
+				country_event = {
+					id = RAJ.19
+					hours = 6
+				}
+				activate_mission = JAP_GAW_war_exhaustion
+				PRC_GAW_check_faction_members = yes
+				add_dynamic_modifier = {
+					modifier = PRC_war_exhaustion_dynamic
+				}
+				load_oob = GAW_militia_raj1
+				add_manpower = -133500
+			}
 		}
-		RAJ = {
-			country_event = {
-				id = RAJ.19
-				hours = 6
-			}
-			activate_mission = JAP_GAW_war_exhaustion
-			PRC_GAW_check_faction_members = yes
-			add_dynamic_modifier = {
-				modifier = PRC_war_exhaustion_dynamic
-			}
-			load_oob = GAW_militia_raj1
-			load_oob = GAW_templates_for_ai
-			if = {
-				limit = { has_dlc = "Man the Guns" }
-					load_oob = "RAJ_2000_naval_mtg"
-				else = {
-					load_oob = "RAJ_2000_naval_legacy"
+		# 台湾（TAI）：条件性成员，只有确实参战时才挂厌战 / 派事件
+		if = {
+			limit = {
+				country_exists = TAI
+				TAI = {
+					OR = {
+						has_war_with = CHI
+						has_war_with = JAP
+					}
 				}
 			}
-		}
-		TAI = {
-			country_event = {
-				id = roc.500
-				hours = 6
+			TAI = {
+				country_event = {
+					id = roc.500
+					hours = 6
+				}
+				activate_mission = JAP_GAW_war_exhaustion
+				PRC_GAW_check_faction_members = yes
+				add_dynamic_modifier = {
+					modifier = PRC_war_exhaustion_dynamic
+				}
 			}
-			activate_mission = JAP_GAW_war_exhaustion
-			PRC_GAW_check_faction_members = yes
-			add_dynamic_modifier = {
-				modifier = PRC_war_exhaustion_dynamic
-			}
-		}
-		CUB = {
-			activate_mission = great_asian_war_mission
 		}
 		if = {
 			limit = {
@@ -1782,6 +1538,7 @@ PRC_decrease_new_religious_policy_idea = { #worse
 			}
 			IND = {
 				load_oob = GAW_militia_ins2
+				add_manpower = -12720
 			}
 		}
 		if = {
@@ -1792,6 +1549,7 @@ PRC_decrease_new_religious_policy_idea = { #worse
 			}
 			IND = {
 				load_oob = GAW_militia_ins1
+				add_manpower = -26500
 			}
 		}
 		if = {
@@ -1802,6 +1560,7 @@ PRC_decrease_new_religious_policy_idea = { #worse
 			}
 			PAK = {
 				load_oob = GAW_militia_pak1
+				add_manpower = -44920
 			}
 		}
 		if = {
@@ -1817,8 +1576,11 @@ PRC_decrease_new_religious_policy_idea = { #worse
 				limit = {
 					OR = {
 						tag = AST
-						tag = RAJ
 						tag = JAP
+						AND = {
+							tag = RAJ
+							has_war_with = CHI
+						}
 					}
 				}
 				add_ideas = JAP_AST_RAJ_ai_buff_against_prc_player_gaw
@@ -1855,15 +1617,16 @@ PRC_decrease_new_religious_policy_idea = { #worse
 					tag = BAN
 				}
 			}
-			load_oob = GAW_templates_for_ai
+			load_oob = GAW_templates
+			add_manpower = -13800
 			capital_scope = {
 				create_unit = {
-					division = "division_template = \"GAW Militia\" start_experience_factor = 0.2 start_equipment_factor = 1.0"
+					division = "division_template = \"GAW Militia\" start_experience_factor = 0.2 start_equipment_factor = 0.01"
 					owner = PREV
 					count = 6
 				}
 				create_unit = {
-					division = "division_template = \"GAW Regular Infantry\" start_experience_factor = 0.2 start_equipment_factor = 1.0"
+					division = "division_template = \"GAW Regular Infantry\" start_experience_factor = 0.2 start_equipment_factor = 0.01"
 					owner = PREV
 					count = 4
 				}
@@ -1957,14 +1720,15 @@ PRC_decrease_new_religious_policy_idea = { #worse
 				}
 				add_offsite_building = { type = arms_factory level = 5 }
 				add_manpower = 100000
+				add_manpower = -19640
 				capital_scope = {
 					create_unit = {
-						division = "division_template = \"GAW Militia\" start_experience_factor = 0.2 start_equipment_factor = 1.0"
+						division = "division_template = \"GAW Militia\" start_experience_factor = 0.2 start_equipment_factor = 0.01"
 						owner = PREV
 						count = 8
 					}
 					create_unit = {
-						division = "division_template = \"GAW Regular Infantry\" start_experience_factor = 0.2 start_equipment_factor = 1.0"
+						division = "division_template = \"GAW Regular Infantry\" start_experience_factor = 0.2 start_equipment_factor = 0.01"
 						owner = PREV
 						count = 6
 					}
@@ -1975,85 +1739,36 @@ PRC_decrease_new_religious_policy_idea = { #worse
 
 PRC_GAW_check_faction_members = {
 	hidden_effect = {
-		if = {
+		# 工程口径：GAW 阵营已按 TAG 硬编码，这里按硬编码名单判断；
+		# 不再读取影响力变量，也不再逐个 is_ally_with 试探（避免名单改了而下游仍看旧结果）
+		every_country = {
 			limit = {
-				is_ally_with = VIE
+				is_ally_with = ROOT
+				OR = {
+					tag = CBD
+					tag = IND
+					tag = LAO
+					tag = BRM
+					tag = VIE
+					tag = MAY
+					tag = PHI
+					tag = SIN
+					tag = SIA
+					AND = {
+						tag = KOR
+						has_war_with = CHI
+					}
+					AND = {
+						tag = TAI
+						has_war_with = CHI
+					}
+				}
 			}
-			add_days_mission_timeout = {
-				mission = PRC_GAW_war_exhaustion
-				days = 20
-			}
-		}
-		if = {
-			limit = {
-				is_ally_with = LAO
-			}
-			add_days_mission_timeout = {
-				mission = PRC_GAW_war_exhaustion
-				days = 20
-			}
-		}
-		if = {
-			limit = {
-				is_ally_with = CBD
-			}
-			add_days_mission_timeout = {
-				mission = PRC_GAW_war_exhaustion
-				days = 20
-			}
-		}
-		if = {
-			limit = {
-				is_ally_with = SIA
-			}
-			add_days_mission_timeout = {
-				mission = PRC_GAW_war_exhaustion
-				days = 20
-			}
-		}
-		if = {
-			limit = {
-				is_ally_with = BRM
-			}
-			add_days_mission_timeout = {
-				mission = PRC_GAW_war_exhaustion
-				days = 20
-			}
-		}
-		if = {
-			limit = {
-				is_ally_with = MAY
-			}
-			add_days_mission_timeout = {
-				mission = PRC_GAW_war_exhaustion
-				days = 20
-			}
-		}
-		if = {
-			limit = {
-				is_ally_with = SIN
-			}
-			add_days_mission_timeout = {
-				mission = PRC_GAW_war_exhaustion
-				days = 20
-			}
-		}
-		if = {
-			limit = {
-				is_ally_with = IND
-			}
-			add_days_mission_timeout = {
-				mission = PRC_GAW_war_exhaustion
-				days = 20
-			}
-		}
-		if = {
-			limit = {
-				is_ally_with = PHI
-			}
-			add_days_mission_timeout = {
-				mission = PRC_GAW_war_exhaustion
-				days = 20
+			ROOT = {
+				add_days_mission_timeout = {
+					mission = PRC_GAW_war_exhaustion
+					days = 20
+				}
 			}
 		}
 	}
@@ -2286,4 +2001,124 @@ PRC_decrease_corona = {
 			add_idea = PRC_coronavirus_pandemic_idea1
 		}
 	}
+}
+
+# ===== 调试加成 / 压制（仅由 debug_decisions.txt 手动点击，AI 不可用）=====
+ZZZ_debug_apply_boost = {
+	if = {
+		limit = {
+			NOT = { has_dynamic_modifier = { modifier = ZZZ_debug_boost_major } }
+		}
+		add_dynamic_modifier = { modifier = ZZZ_debug_boost_major }
+	}
+	remove_dynamic_modifier = { modifier = ZZZ_debug_debuff_major }
+}
+
+ZZZ_debug_apply_debuff = {
+	if = {
+		limit = {
+			NOT = { has_dynamic_modifier = { modifier = ZZZ_debug_debuff_major } }
+		}
+		add_dynamic_modifier = { modifier = ZZZ_debug_debuff_major }
+	}
+	remove_dynamic_modifier = { modifier = ZZZ_debug_boost_major }
+}
+
+# ===== GAW（泛亚战争）固定成员结算 =====
+# 固定成员读自 PRC_gaw_start 的 TAG 硬编码分派：
+# 中国侧 = CHI、PAK + CBD/IND（印度尼西亚）/LAO/BRM/VIE（+ 条件性 NKO/KOR/TAI）
+# 日本侧 = JAP、AST + MAY/PHI/SIN/SIA（+ 条件性 KOR/TAI）
+# 印度（RAJ）按用户设计不参战，仅在已与中日开战时才进入结算
+ZZZ_clear_gaw_war_exhaustion = {
+	remove_dynamic_modifier = { modifier = PRC_war_exhaustion_dynamic }
+	set_variable = { var = PRC_war_exhaustion_war_support_factor_dynamic value = 0 }
+	set_variable = { var = PRC_war_exhaustion_army_attack_factor_dynamic value = 0 }
+	set_variable = { var = PRC_war_exhaustion_army_defence_factor_dynamic value = 0 }
+	set_variable = { var = PRC_war_exhaustion_army_org_factor_dynamic value = 0 }
+	set_variable = { var = PRC_war_exhaustion_army_morale_factor_dynamic value = 0 }
+	set_variable = { var = PRC_war_exhaustion_surrender_limit_dynamic value = 0 }
+	remove_ideas = {
+		PRC_war_exhaustion
+		PRC_war_exhaustion2
+	}
+}
+
+ZZZ_gaw_clear_war_exhaustion_all = {
+	if = { limit = { country_exists = CHI } CHI = { ZZZ_clear_gaw_war_exhaustion = yes } }
+	if = { limit = { country_exists = JAP } JAP = { ZZZ_clear_gaw_war_exhaustion = yes } }
+	if = { limit = { country_exists = AST } AST = { ZZZ_clear_gaw_war_exhaustion = yes } }
+	if = { limit = { country_exists = RAJ } RAJ = { ZZZ_clear_gaw_war_exhaustion = yes } }
+	if = { limit = { country_exists = TAI } TAI = { ZZZ_clear_gaw_war_exhaustion = yes } }
+	if = { limit = { country_exists = KOR } KOR = { ZZZ_clear_gaw_war_exhaustion = yes } }
+	if = { limit = { country_exists = PAK } PAK = { ZZZ_clear_gaw_war_exhaustion = yes } }
+	if = { limit = { country_exists = CBD } CBD = { ZZZ_clear_gaw_war_exhaustion = yes } }
+	if = { limit = { country_exists = IND } IND = { ZZZ_clear_gaw_war_exhaustion = yes } }
+	if = { limit = { country_exists = LAO } LAO = { ZZZ_clear_gaw_war_exhaustion = yes } }
+	if = { limit = { country_exists = MAY } MAY = { ZZZ_clear_gaw_war_exhaustion = yes } }
+	if = { limit = { country_exists = BRM } BRM = { ZZZ_clear_gaw_war_exhaustion = yes } }
+	if = { limit = { country_exists = PHI } PHI = { ZZZ_clear_gaw_war_exhaustion = yes } }
+	if = { limit = { country_exists = SIN } SIN = { ZZZ_clear_gaw_war_exhaustion = yes } }
+	if = { limit = { country_exists = SIA } SIA = { ZZZ_clear_gaw_war_exhaustion = yes } }
+	if = { limit = { country_exists = VIE } VIE = { ZZZ_clear_gaw_war_exhaustion = yes } }
+	if = { limit = { country_exists = NKO } NKO = { ZZZ_clear_gaw_war_exhaustion = yes } }
+}
+
+ZZZ_gaw_white_peace_to_china = {
+	if = { limit = { country_exists = JAP JAP = { has_war_with = CHI } } JAP = { white_peace = CHI } }
+	if = { limit = { country_exists = AST AST = { has_war_with = CHI } } AST = { white_peace = CHI } }
+	if = { limit = { country_exists = RAJ RAJ = { has_war_with = CHI } } RAJ = { white_peace = CHI } }
+	if = { limit = { country_exists = TAI TAI = { has_war_with = CHI } } TAI = { white_peace = CHI } }
+	if = { limit = { country_exists = KOR KOR = { has_war_with = CHI } } KOR = { white_peace = CHI } }
+	if = { limit = { country_exists = PAK PAK = { has_war_with = CHI } } PAK = { white_peace = CHI } }
+	if = { limit = { country_exists = CBD CBD = { has_war_with = CHI } } CBD = { white_peace = CHI } }
+	if = { limit = { country_exists = IND IND = { has_war_with = CHI } } IND = { white_peace = CHI } }
+	if = { limit = { country_exists = LAO LAO = { has_war_with = CHI } } LAO = { white_peace = CHI } }
+	if = { limit = { country_exists = MAY MAY = { has_war_with = CHI } } MAY = { white_peace = CHI } }
+	if = { limit = { country_exists = BRM BRM = { has_war_with = CHI } } BRM = { white_peace = CHI } }
+	if = { limit = { country_exists = PHI PHI = { has_war_with = CHI } } PHI = { white_peace = CHI } }
+	if = { limit = { country_exists = SIN SIN = { has_war_with = CHI } } SIN = { white_peace = CHI } }
+	if = { limit = { country_exists = SIA SIA = { has_war_with = CHI } } SIA = { white_peace = CHI } }
+	if = { limit = { country_exists = VIE VIE = { has_war_with = CHI } } VIE = { white_peace = CHI } }
+	if = { limit = { country_exists = NKO NKO = { has_war_with = CHI } } NKO = { white_peace = CHI } }
+}
+
+ZZZ_gaw_white_peace_to_japan = {
+	if = { limit = { country_exists = CHI CHI = { has_war_with = JAP } } CHI = { white_peace = JAP } }
+	if = { limit = { country_exists = AST AST = { has_war_with = JAP } } AST = { white_peace = JAP } }
+	if = { limit = { country_exists = RAJ RAJ = { has_war_with = JAP } } RAJ = { white_peace = JAP } }
+	if = { limit = { country_exists = TAI TAI = { has_war_with = JAP } } TAI = { white_peace = JAP } }
+	if = { limit = { country_exists = KOR KOR = { has_war_with = JAP } } KOR = { white_peace = JAP } }
+	if = { limit = { country_exists = PAK PAK = { has_war_with = JAP } } PAK = { white_peace = JAP } }
+	if = { limit = { country_exists = CBD CBD = { has_war_with = JAP } } CBD = { white_peace = JAP } }
+	if = { limit = { country_exists = IND IND = { has_war_with = JAP } } IND = { white_peace = JAP } }
+	if = { limit = { country_exists = LAO LAO = { has_war_with = JAP } } LAO = { white_peace = JAP } }
+	if = { limit = { country_exists = MAY MAY = { has_war_with = JAP } } MAY = { white_peace = JAP } }
+	if = { limit = { country_exists = BRM BRM = { has_war_with = JAP } } BRM = { white_peace = JAP } }
+	if = { limit = { country_exists = PHI PHI = { has_war_with = JAP } } PHI = { white_peace = JAP } }
+	if = { limit = { country_exists = SIN SIN = { has_war_with = JAP } } SIN = { white_peace = JAP } }
+	if = { limit = { country_exists = SIA SIA = { has_war_with = JAP } } SIA = { white_peace = JAP } }
+	if = { limit = { country_exists = VIE VIE = { has_war_with = JAP } } VIE = { white_peace = JAP } }
+	if = { limit = { country_exists = NKO NKO = { has_war_with = JAP } } NKO = { white_peace = JAP } }
+}
+
+ZZZ_gaw_settle_china_victory = {
+	ZZZ_gaw_white_peace_to_china = yes
+	if = {
+		limit = {
+			country_exists = JAP
+		}
+		JAP = { dismantle_faction = yes }
+	}
+	ZZZ_gaw_clear_war_exhaustion_all = yes
+}
+
+ZZZ_gaw_settle_japan_victory = {
+	ZZZ_gaw_white_peace_to_japan = yes
+	if = {
+		limit = {
+			country_exists = CHI
+		}
+		CHI = { dismantle_faction = yes }
+	}
+	ZZZ_gaw_clear_war_exhaustion_all = yes
 }

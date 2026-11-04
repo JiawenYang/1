@@ -1,0 +1,431 @@
+division_template = {
+	name = "Stormpanserbataljon"
+
+	division_names_group = NRY_MEC_01
+
+	regiments = {
+		Arm_Inf_Bat = { x = 0 y = 0 }
+	}
+	support = {
+		armor_Comp = { x = 0 y = 0 }
+		Arm_Recce_Comp = { x = 0 y = 1 }
+		SP_Arty_Battery = { x = 0 y = 2 }
+		SP_AA_Battery = { x = 0 y = 3 }
+		H_Engi_Comp = { x = 0 y = 4 }
+	}
+}
+
+division_template = {
+	name = "Infanteribataljon"
+
+	division_names_group = NRY_INF_01
+
+	regiments = {
+		Mech_Inf_Bat = { x = 0 y = 0 }
+	}
+	support = {
+		Mech_Recce_Comp = { x = 0 y = 0 }
+		SP_Arty_Battery = { x = 0 y = 1 }
+		SP_AA_Battery = { x = 0 y = 2 }
+		L_Engi_Comp = { x = 0 y = 3 }
+	}
+}
+
+division_template = {
+	name = "Lett Motorisert Bataljon"
+
+	division_names_group = NRY_INF_02
+
+	regiments = {
+		Mot_Inf_Bat = { x = 0 y = 0 }
+	}
+}
+
+division_template = {
+	name = "Spesialkommandogruppe"
+
+	division_names_group = NRY_SPEC_01
+
+	regiments = {
+		Special_Forces = { x = 0 y = 0 }
+	}
+	priority = 2
+}
+
+division_template = {
+	name = "Lett Infanteribataljon"
+
+	division_names_group = NRY_INF_02
+
+	regiments = {
+		L_Inf_Bat = { x = 0 y = 0 }
+	}
+	support = {
+		L_Recce_Comp = { x = 0 y = 0 }
+	}
+}
+
+division_template = {
+	name = "Infanteribrigade" #for the AI and player to build
+
+	division_names_group = NRY_INF_03
+
+	regiments = {
+		Mot_Inf_Bat = { x = 0 y = 0 }
+		Mech_Inf_Bat = { x = 0 y = 1 }
+		Mech_Inf_Bat = { x = 0 y = 2 }
+		Arm_Inf_Bat = { x = 1 y = 0 }
+		Mech_Inf_Bat = { x = 1 y = 1 }
+		SP_Arty_Bat = { x = 1 y = 2 }
+	}
+	support = {
+		SP_AA_Battery = { x = 0 y = 0 }
+		armor_Comp = { x = 0 y = 1 }
+	}
+}
+
+units = {
+####### Norwegian Army #######
+
+	division = {
+		#name = "2. Bataljon"
+		division_name = {
+			is_name_ordered = yes
+			name_order = 2
+		}
+		location = 6130 #Skjold
+		division_template = "Infanteribataljon"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.01
+	}
+	division = {
+		#name = "Panserbataljonen"
+		division_name = {
+			is_name_ordered = yes
+			name_order = 1
+		}
+		location = 6130 #Setermoen
+		division_template = "Stormpanserbataljon"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.01
+	}
+	division = {
+		#name = "Telemark Bataljon"
+		division_name = {
+			is_name_ordered = yes
+			name_order = 1
+		}
+		location = 3136 #Rena
+		division_template = "Stormpanserbataljon"
+		start_experience_factor = 0.7
+		start_equipment_factor = 0.01
+	}
+	division = {
+		#name = "Forsvarets Spesialkommando"
+		division_name = {
+			is_name_ordered = yes
+			name_order = 1
+		}
+		location = 3136 #Rena
+		division_template = "Spesialkommandogruppe"
+		start_experience_factor = 0.9
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		#name = "Garrisonen i Sør-Varanger"
+		division_name = {
+			is_name_ordered = yes
+			name_order = 2
+		}
+		location = 9116
+		division_template = "Lett Infanteribataljon"
+		start_experience_factor = 0.4
+		start_equipment_factor = 0.01
+	}
+	division = {
+		#name = "H.M. Kongens Garde"
+		division_name = {
+			is_name_ordered = yes
+			name_order = 1
+		}
+		location = 6115 #Oslo
+		division_template = "Lett Motorisert Bataljon"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.01
+	}
+
+###### Navy ########
+}
+
+instant_effect = {
+	#### Aircraft ####
+	add_equipment_to_stockpile = {
+		variant_name = "F-35"
+		type = medium_plane_airframe_3 #F-35
+		amount = 6
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "F-16A"
+		type = small_plane_strike_airframe_2 #F-16A
+		amount = 57
+		producer = USA
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Saab MFI-15 Safari"
+		type = small_plane_strike_airframe_1 #Saab MFI-15 Safari
+		amount = 16
+		producer = SWE
+		#version_name = "Saab MFI-15 Safari"
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "P-3C Orion"
+		type = large_plane_maritime_patrol_airframe_1 #P-3C Orion
+		amount = 6
+		producer = USA
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "NHIndustries NH-90"
+		type = transport_helicopter_4 #NHIndustries NH-90
+		amount = 3
+		producer = FRA
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Sea King HU5"
+		type = transport_helicopter_1 #Sea King HU5
+		amount = 3
+		producer = USA
+		#version_name = "Sea King HU5"
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "C-130J Super Hercules"
+		type = large_plane_air_transport_airframe_1 #C-130J Super Hercules
+		amount = 4
+		producer = USA
+	}
+
+	### Vehicles ###
+	add_equipment_to_stockpile = {
+		type = medium_tank_chassis_1
+		variant_name = "Leopard 2A4"
+		amount = 52
+		producer = GER
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "CV-90 Upg vers"
+		type = medium_tank_flame_chassis_2 #CV-90 Upg vers
+		amount = 41
+		producer = SWE
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "CV-90 Mk1"
+		type = medium_tank_flame_chassis_2 #CV-90 Mk1
+		amount = 104
+		producer = SWE
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "M113"
+		type = medium_tank_amphibious_chassis_1 #M113
+		amount = 109
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Bandvagn 206"
+		type = util_vehicle_4 #Bandvagn 206
+		amount = 500
+		producer = SWE
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "NOR rebuilt M113's"
+		type = medium_tank_amphibious_chassis_1 #NOR rebuilt M113's
+		amount = 24
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "XA-180"
+		type = medium_tank_amphibious_chassis_1 #XA-180
+		amount = 43
+		producer = FIN
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "XA-200"
+		type = medium_tank_amphibious_chassis_1 #XA-200
+		amount = 32
+		producer = FIN
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "M-B G-Class"
+		type = util_vehicle_3 #M-B G-Class
+		amount = 80
+		producer = GER
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Iveco LMV"
+		type = util_vehicle_5 #Iveco LMV
+		amount = 169
+		producer = ITA
+	}
+
+	add_equipment_to_stockpile = {
+		type = heavy_util_vehicle_5 #Dingo
+		amount = 20
+		producer = GER
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "M109A3"
+		type = medium_tank_artillery_chassis_1 #M109A3
+		amount = 18
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "M270"
+		type = medium_tank_rocket_chassis_1 #M270
+		amount = 12
+		producer = USA
+	}
+
+	### Inf Equip
+	add_equipment_to_stockpile = {
+		variant_name = "2005"
+		type = infantry_weapons_5 #2005
+		amount = 2900
+		producer = GER
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "1965"
+		type = infantry_weapons_1 #1965
+		amount = 6000
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Eryx"
+		type = Anti_tank_2 #Eryx
+		amount = 45
+		producer = CAN
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Javelin"
+		type = Anti_tank_3 #Javelin
+		amount = 60
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "TOW-2"
+		type = Anti_tank_2 #TOW-2
+		amount = 50
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "NASAMS-II"
+		type = medium_tank_aa_chassis_2 #NASAMS-II
+		amount = 24
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "RBS 70"
+		type = Anti_Air_1 #RBS 70
+		amount = 40
+		producer = SWE
+	}
+
+	add_equipment_to_stockpile = {
+		type = cnc_equipment_5 #C4ISTAR
+		amount = 340
+	}
+
+	### Sealed Storage 封存 ###
+	add_equipment_to_stockpile = {
+		variant_name = "F-16A"
+		type = small_plane_strike_airframe_2 #F-16A（封存）
+		producer = USA
+		amount = 22
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Saab MFI-15 Safari"
+		type = small_plane_strike_airframe_1 #Saab MFI-15 Safari（封存）
+		producer = SWE
+		amount = 6
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Leopard 2A4"
+		type = medium_tank_chassis_1 #Leopard 2A4（封存）
+		producer = GER
+		amount = 20
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "M113"
+		type = medium_tank_amphibious_chassis_1 #M113（封存）
+		producer = USA
+		amount = 43
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "NOR rebuilt M113's"
+		type = medium_tank_amphibious_chassis_1 #NOR rebuilt M113's（封存）
+		producer = NRY
+		amount = 9
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "XA-180"
+		type = medium_tank_amphibious_chassis_1 #XA-180（封存）
+		producer = FIN
+		amount = 17
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "M109A3"
+		type = medium_tank_artillery_chassis_1 #M109A3（封存）
+		producer = USA
+		amount = 7
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "M270"
+		type = medium_tank_rocket_chassis_1 #M270（封存）
+		producer = USA
+		amount = 5
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Eryx"
+		type = Anti_tank_2 #Eryx（封存）
+		producer = CAN
+		amount = 18
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "TOW-2"
+		type = Anti_tank_2 #TOW-2（封存）
+		producer = USA
+		amount = 20
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "1965"
+		type = infantry_weapons_1 #1965（封存）
+		producer = NRY
+		amount = 2400
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Bandvagn 206"
+		type = util_vehicle_4 #Bandvagn 206（封存）
+		producer = SWE
+		amount = 200
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "M-B G-Class"
+		type = util_vehicle_3 #M-B G-Class（封存）
+		producer = GER
+		amount = 32
+	}
+}

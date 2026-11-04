@@ -8,6 +8,11 @@ division_template = {
 	}
 
 	priority = 2
+	support = {
+		L_Recce_Comp = { x = 0 y = 0 }
+		L_Engi_Comp = { x = 0 y = 1 }
+		combat_service_support_company = { x = 0 y = 2 }
+	}
 }
 
 division_template = {
@@ -19,6 +24,11 @@ division_template = {
 		Mot_Inf_Bat = { x = 0 y = 1 }
 	}
 
+	support = {
+		Mot_Recce_Comp = { x = 0 y = 0 }
+		L_Engi_Comp = { x = 0 y = 1 }
+		combat_service_support_company = { x = 0 y = 2 }
+	}
 }
 
 division_template = {
@@ -205,18 +215,21 @@ units = {
 instant_effect = {
 
 	add_equipment_to_stockpile = {
+		variant_name = "AK系步枪"
 		type = infantry_weapons_2			#AK系步枪
 		amount = 8000
 		producer = SOV
 	}
 
 	add_equipment_to_stockpile = {
+		variant_name = "ZIL-131"
 		type = util_vehicle_1
 		amount = 1000
 		producer = SOV
 	}
 
 	add_equipment_to_stockpile = {
+		variant_name = "RPG-7V"
 		type = Anti_tank_1
 		amount = 300
 		producer = SOV
@@ -229,6 +242,7 @@ instant_effect = {
 	}
 
 	add_equipment_to_stockpile = {
+		variant_name = "ZU-23-2"
 		type = Anti_Air_0
 		amount = 300
 		producer = SOV
@@ -242,15 +256,16 @@ instant_effect = {
 
 	#### Sealed Storage（封存）####
 	add_equipment_to_stockpile = {
+		variant_name = "AK-47"
 		type = infantry_weapons_2			#AK-47（缴获封存）
 		amount = 30000
 		producer = SOV
 	}
 
 	add_equipment_to_stockpile = {
+		variant_name = "T-55"
 		type = medium_tank_chassis_0		#T-55（缴获封存，SOV变体）
 		producer = SOV
-		variant_name = "T-55"
 		amount = 40
 	}
 }

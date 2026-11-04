@@ -1,0 +1,145 @@
+division_template = {
+	name = "Regimento Mecanizado"
+
+	regiments = {
+		Mech_Inf_Bat = { x = 0 y = 0 }
+	}
+	support = {
+		armor_Comp = { x = 0 y = 0 }
+		armor_Recce_Comp = { x = 0 y = 1 }
+		SP_Arty_Battery = { x = 0 y = 2 }
+		SP_AA_Battery = { x = 0 y = 3 }
+	}
+}
+
+division_template = {
+	name = "Regimento de Infantaria"
+
+	regiments = {
+		L_Inf_Bat = { x = 0 y = 0 }
+		L_Inf_Bat = { x = 0 y = 1 }
+	}
+	support = {
+		Arty_Battery = { x = 0 y = 0 }
+	}
+}
+
+units = {
+	division = {
+		name = "1. Regimento de Infantaria"
+		location = 12891 		#
+		division_template = "Regimento Mecanizado"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "2. Regimento de Infantaria"
+		location = 12747 		#
+		division_template = "Regimento de Infantaria"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "3. Regimento de Infantaria"
+		location = 6894 		#
+		division_template = "Regimento de Infantaria"
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.01
+	}
+}
+
+instant_effect = {
+	add_equipment_to_stockpile = {
+		variant_name = "AKM"
+		type = infantry_weapons_1 		#AKM
+		amount = 500
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "FN FAL"
+		type = infantry_weapons_1 		#FN FAL
+		amount = 500
+		producer = BEL
+	}
+
+	add_equipment_to_stockpile = {
+		type = cnc_equipment_1
+		amount = 150
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		type = medium_tank_chassis_1
+		variant_name = "T-55"
+		amount = 10
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "PT-76"
+		type = Rec_tank_0 		#PT-76
+		amount = 10
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BRDM-2"
+		type = medium_tank_destroyer_chassis_0 		#BRDM-2
+		#version_name = "BRDM-2"
+		amount = 10
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BTR-60"
+		type = medium_tank_amphibious_chassis_0 		#BTR-60
+		amount = 35
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "AT-3"
+		type = small_plane_strike_airframe_1 		#AT-3
+		amount = 10
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "AT-3"
+		type = small_plane_strike_airframe_1 		#AT-3
+		amount = 50
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BM-21 grad"
+		type = medium_tank_rocket_chassis_0 		#BM-21 grad
+		amount = 9
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "D-30"
+		type = artillery_1 		#D-30
+		amount = 26
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "SA-7"
+		type = Anti_Air_0 		#SA-7
+		amount = 50
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Shilka"
+		type = medium_tank_aa_chassis_0 		#Shilka
+		#version_name = "ZSU-23-4 Shilka"
+		amount = 16
+		producer = SOV
+	}
+}

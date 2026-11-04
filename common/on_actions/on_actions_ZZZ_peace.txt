@@ -400,9 +400,12 @@ on_actions = {
 						target = ISR
 						transfer_troops = no
 					}
-					annex_country = {
-						target = HAM
-						transfer_troops = yes
+					if = {
+						limit = { country_exists = HAM }
+						annex_country = {
+							target = HAM
+							transfer_troops = yes
+						}
 					}
 				}
 				set_global_flag = skip_default_capitulation
@@ -413,13 +416,40 @@ on_actions = {
 					country_event = { id = mew.11 days = 7 }
 				}
 			}
+			# ===== MEW 专用守卫：参战方投降时先由脚本白和，阻止引擎和谈/自动傀儡接管 =====
+			if = {
+				limit = {
+					OR = {
+						has_global_flag = MEW_sixth_war_ongoing
+						has_global_flag = MEW_israel_victory
+					}
+					FROM = { original_tag = ISR }
+					ROOT = {
+						OR = {
+							original_tag = PAL
+							original_tag = HAM
+							original_tag = HEZ
+							original_tag = EGY
+							original_tag = SYR
+							original_tag = FSA
+							original_tag = JOR
+							original_tag = IRQ
+							original_tag = ALG
+							original_tag = LBA
+							original_tag = LEB
+						}
+					}
+				}
+				white_peace = FROM
+			}
 			# 结算B-1：以色列吞并巴勒斯坦（约旦河西岸）
 			# 注意：on_capitulation 触发时战争关系可能已经结束，不能再以 has_war_with 作为前提
+			# 胜者判定：on_capitulation 的 FROM = 胜者，必须是以色列赢下这场战争才结算
 			if = {
 				limit = {
 					has_global_flag = MEW_sixth_war_ongoing
+					FROM = { original_tag = ISR }
 					ROOT = { original_tag = PAL }
-					ROOT = { has_country_flag = MEW_belligerent }
 				}
 				ISR = {
 					if = {
@@ -435,11 +465,12 @@ on_actions = {
 				set_global_flag = MEW_isr_took_pal
 			}
 			# 结算B-2：以色列吞并哈马斯（加沙）
+			# 胜者判定：FROM = 胜者，必须是以色列赢下这场战争才结算
 			if = {
 				limit = {
 					has_global_flag = MEW_sixth_war_ongoing
+					FROM = { original_tag = ISR }
 					ROOT = { original_tag = HAM }
-					ROOT = { has_country_flag = MEW_belligerent }
 				}
 				ISR = {
 					if = {
@@ -455,11 +486,12 @@ on_actions = {
 				set_global_flag = MEW_isr_took_ham
 			}
 			# 结算B-3：以色列吞并真主党（黎巴嫩南部）
+			# 胜者判定：FROM = 胜者，必须是以色列赢下这场战争才结算
 			if = {
 				limit = {
 					has_global_flag = MEW_sixth_war_ongoing
+					FROM = { original_tag = ISR }
 					ROOT = { original_tag = HEZ }
-					ROOT = { has_country_flag = MEW_belligerent }
 				}
 				ISR = {
 					if = {
@@ -474,12 +506,15 @@ on_actions = {
 				set_global_flag = skip_default_capitulation
 				set_global_flag = MEW_isr_took_hez
 			}
-			# 结算B-4：埃及战败白和，以色列夺取西奈半岛
+			# 结算B-4：埃及战败，只割诉求地西奈（213），拿完立即白和，不吞全境
+			# 胜者判定：FROM = 胜者，必须是以色列赢下这场战争才结算
+			# 单国结算：结算后给埃及挂 ISR_settled_EGY，防止重复割地／重复白和
 			if = {
 				limit = {
 					has_global_flag = MEW_sixth_war_ongoing
+					FROM = { original_tag = ISR }
 					ROOT = { original_tag = EGY }
-					ROOT = { has_country_flag = MEW_belligerent }
+					ROOT = { NOT = { has_country_flag = ISR_settled_EGY } }
 				}
 				ISR = {
 					if = {
@@ -493,15 +528,59 @@ on_actions = {
 						transfer_state_to = ISR
 					}
 				}
+				ROOT = { set_country_flag = ISR_settled_EGY }
 				set_global_flag = skip_default_capitulation
 				set_global_flag = MEW_isr_peaced_egy
 			}
-			# 结算B-5：叙利亚战败白和，以色列割取德拉与苏韦达（南叙利亚安全区）
+			# 结算B-4b：约旦战败，只割诉求地阿曼／扎尔卡／南约旦（210/211/212），拿完立即白和
+			# 约旦开局不参战，由 on_daily 在其他阿拉伯对手全部结算后由以色列主动宣战（见文件末尾），
+			# 投降即走本块；此后约旦只剩无地残余，由大以色列收尾段统一清理
 			if = {
 				limit = {
 					has_global_flag = MEW_sixth_war_ongoing
+					FROM = { original_tag = ISR }
+					ROOT = { original_tag = JOR }
+					ROOT = { NOT = { has_country_flag = ISR_settled_JOR } }
+				}
+				ISR = {
+					if = {
+						limit = { has_war_with = JOR }
+						white_peace = JOR
+					}
+				}
+				if = {
+					limit = { 210 = { is_owned_by = JOR } }
+					210 = {
+						transfer_state_to = ISR
+					}
+				}
+				if = {
+					limit = { 211 = { is_owned_by = JOR } }
+					211 = {
+						transfer_state_to = ISR
+					}
+				}
+				if = {
+					limit = { 212 = { is_owned_by = JOR } }
+					212 = {
+						transfer_state_to = ISR
+					}
+				}
+				ROOT = { set_country_flag = ISR_settled_JOR }
+				set_global_flag = skip_default_capitulation
+			}
+			# 结算B-5：叙利亚战败白和，以色列割取幼发拉底河以西的叙利亚领土
+			# 州清单沿用 mew.23/25/26：184、185、186、571、188、189、190、566、575、561、191、994、192
+			# 胜者判定：FROM = 胜者，必须是以色列赢下这场战争才结算
+			if = {
+				limit = {
+					OR = {
+						has_global_flag = MEW_sixth_war_ongoing
+						has_global_flag = MEW_israel_victory
+					}
+					FROM = { original_tag = ISR }
 					ROOT = { original_tag = SYR }
-					ROOT = { has_country_flag = MEW_belligerent }
+					ROOT = { NOT = { has_country_flag = ISR_settled_SYR } }
 				}
 				ISR = {
 					if = {
@@ -521,8 +600,174 @@ on_actions = {
 						transfer_state_to = ISR
 					}
 				}
+				if = {
+					limit = { 186 = { is_owned_by = SYR } }
+					186 = {
+						transfer_state_to = ISR
+					}
+				}
+				if = {
+					limit = { 571 = { is_owned_by = SYR } }
+					571 = {
+						transfer_state_to = ISR
+					}
+				}
+				if = {
+					limit = { 188 = { is_owned_by = SYR } }
+					188 = {
+						transfer_state_to = ISR
+					}
+				}
+				if = {
+					limit = { 189 = { is_owned_by = SYR } }
+					189 = {
+						transfer_state_to = ISR
+					}
+				}
+				if = {
+					limit = { 190 = { is_owned_by = SYR } }
+					190 = {
+						transfer_state_to = ISR
+					}
+				}
+				if = {
+					limit = { 566 = { is_owned_by = SYR } }
+					566 = {
+						transfer_state_to = ISR
+					}
+				}
+				if = {
+					limit = { 575 = { is_owned_by = SYR } }
+					575 = {
+						transfer_state_to = ISR
+					}
+				}
+				if = {
+					limit = { 561 = { is_owned_by = SYR } }
+					561 = {
+						transfer_state_to = ISR
+					}
+				}
+				if = {
+					limit = { 191 = { is_owned_by = SYR } }
+					191 = {
+						transfer_state_to = ISR
+					}
+				}
+				if = {
+					limit = { 994 = { is_owned_by = SYR } }
+					994 = {
+						transfer_state_to = ISR
+					}
+				}
+				if = {
+					limit = { 192 = { is_owned_by = SYR } }
+					192 = {
+						transfer_state_to = ISR
+					}
+				}
+				ROOT = { set_country_flag = ISR_settled_SYR }
 				set_global_flag = skip_default_capitulation
 				set_global_flag = MEW_isr_peaced_syr
+			}
+			# 结算B-5b：叙利亚反对派战败白和，其在幼发拉底河以西的控制区归以色列
+			# 胜者判定：FROM = 胜者，必须是以色列赢下这场战争才结算
+			if = {
+				limit = {
+					OR = {
+						has_global_flag = MEW_sixth_war_ongoing
+						has_global_flag = MEW_israel_victory
+					}
+					FROM = { original_tag = ISR }
+					ROOT = { original_tag = FSA }
+					ROOT = { NOT = { has_country_flag = ISR_settled_FSA } }
+				}
+				ISR = {
+					if = {
+						limit = { has_war_with = FSA }
+						white_peace = FSA
+					}
+				}
+				if = {
+					limit = { 184 = { is_owned_by = FSA } }
+					184 = {
+						transfer_state_to = ISR
+					}
+				}
+				if = {
+					limit = { 185 = { is_owned_by = FSA } }
+					185 = {
+						transfer_state_to = ISR
+					}
+				}
+				if = {
+					limit = { 186 = { is_owned_by = FSA } }
+					186 = {
+						transfer_state_to = ISR
+					}
+				}
+				if = {
+					limit = { 571 = { is_owned_by = FSA } }
+					571 = {
+						transfer_state_to = ISR
+					}
+				}
+				if = {
+					limit = { 188 = { is_owned_by = FSA } }
+					188 = {
+						transfer_state_to = ISR
+					}
+				}
+				if = {
+					limit = { 189 = { is_owned_by = FSA } }
+					189 = {
+						transfer_state_to = ISR
+					}
+				}
+				if = {
+					limit = { 190 = { is_owned_by = FSA } }
+					190 = {
+						transfer_state_to = ISR
+					}
+				}
+				if = {
+					limit = { 566 = { is_owned_by = FSA } }
+					566 = {
+						transfer_state_to = ISR
+					}
+				}
+				if = {
+					limit = { 575 = { is_owned_by = FSA } }
+					575 = {
+						transfer_state_to = ISR
+					}
+				}
+				if = {
+					limit = { 561 = { is_owned_by = FSA } }
+					561 = {
+						transfer_state_to = ISR
+					}
+				}
+				if = {
+					limit = { 191 = { is_owned_by = FSA } }
+					191 = {
+						transfer_state_to = ISR
+					}
+				}
+				if = {
+					limit = { 994 = { is_owned_by = FSA } }
+					994 = {
+						transfer_state_to = ISR
+					}
+				}
+				if = {
+					limit = { 192 = { is_owned_by = FSA } }
+					192 = {
+						transfer_state_to = ISR
+					}
+				}
+				ROOT = { set_country_flag = ISR_settled_FSA }
+				set_global_flag = skip_default_capitulation
 			}
 			# 大以色列的最终判定移到 on_daily（文件末尾），
 			# 因为白和退出战争不会触发 on_capitulation，投降事件里的判定会漏掉领土变更
@@ -575,6 +820,37 @@ on_actions = {
 					}
 				}
 				news_event = { id = mew.32 }
+			}
+			# 结算B-6：其余阿拉伯/抵抗之弧参战方（阿尔及利亚、利比亚、黎巴嫩政府、伊拉克、伊朗）
+			# 这五国没有割地设计，只退出战争；必须打上 skip_default_capitulation，
+			# 否则会走默认投降流程（和平会议/条件性和约的 AI 全额傀儡），出现“以色列赢了自己却变傀儡”的结果
+			if = {
+				limit = {
+					has_global_flag = MEW_sixth_war_ongoing
+					country_exists = ISR
+					ROOT = {
+						OR = {
+							original_tag = ALG
+							original_tag = LBA
+							original_tag = LEB
+							original_tag = IRQ
+							original_tag = PER
+						}
+					}
+					OR = {
+						FROM = { original_tag = ISR }
+						ISR = { has_war_with = ROOT }
+					}
+					ROOT = { NOT = { has_country_flag = ISR_settled_by_isr } }
+				}
+				ISR = {
+					if = {
+						limit = { has_war_with = ROOT }
+						white_peace = ROOT
+					}
+				}
+				ROOT = { set_country_flag = ISR_settled_by_isr }
+				set_global_flag = skip_default_capitulation
 			}
 			# ===== 第四次起义（isrwar 链）结算：以色列战败，接受两国方案 =====
 			if = {
@@ -646,25 +922,79 @@ on_actions = {
 	# 这里在所有参战方退出战争后强制执行领土变更。
 	on_daily = {
 		effect = {
+			# ===== 约旦：其余阿拉伯对手全部结算后，以色列主动宣战 =====
+			# 判据：埃及、叙利亚／叙利亚反对派已结算，巴勒斯坦／哈马斯／真主党已被吞并，
+			# 且大以色列尚未宣布 → 以色列对约旦宣战；投降后走 on_capitulation 的 B-4b 结算
 			if = {
 				limit = {
 					ROOT = { original_tag = ISR }
 					has_global_flag = MEW_sixth_war_ongoing
+					has_global_flag = MEW_war_declared
+					has_global_flag = MEW_coalition_joined
+					NOT = { has_global_flag = MEW_israel_victory }
+					NOT = { has_country_flag = ISR_war_on_JOR_started }
+					country_exists = JOR
+					NOT = { has_war_with = JOR }
+					EGY = { has_country_flag = ISR_settled_EGY }
+					OR = {
+						SYR = { has_country_flag = ISR_settled_SYR }
+						FSA = { has_country_flag = ISR_settled_FSA }
+					}
+					NOT = { country_exists = PAL }
+					NOT = { country_exists = HAM }
+					NOT = { country_exists = HEZ }
+				}
+				set_country_flag = ISR_war_on_JOR_started
+				declare_war_on = {
+					target = JOR
+					type = annex_everything
+				}
+				JOR = {
+					set_country_flag = MEW_belligerent
+				}
+			}
+			if = {
+				limit = {
+					ROOT = { original_tag = ISR }
+					has_global_flag = MEW_sixth_war_ongoing
+					# 门槛：必须确实开过战（mew.0 宣战 + mew.6 阿拉伯联军介入），
+					# 防止第 0 天（mew.6 尚未触发）或战败后误触大以色列结算
+					has_global_flag = MEW_war_declared
+					has_global_flag = MEW_coalition_joined
+					NOT = { has_global_flag = MEW_israel_victory }
 					country_exists = ISR
+					# 大以色列判定：以色列实际控制“全部诉求州”，不再用“与全部参战方无战争”口径
+					# 先要求 ISR 已对约旦宣战（保证“先宣战、后判定”的顺序，否则 210/211/212 永远拿不到）
+					has_country_flag = ISR_war_on_JOR_started
+					# 加沙 209 / 约旦河西岸 208 / 西奈 213
+					# 约旦 210 阿曼、211 扎尔卡、212 南约旦
+					# 幼发拉底河以西 13 州：184、185、186、571、188、189、190、566、575、561、191、994、192
 					ISR = {
-						NOT = { has_war_with = EGY }
-						NOT = { has_war_with = SYR }
-						NOT = { has_war_with = HEZ }
-						NOT = { has_war_with = PAL }
-						NOT = { has_war_with = HAM }
-						NOT = { has_war_with = PER }
-						NOT = { has_war_with = IRQ }
-						NOT = { has_war_with = ALG }
-						NOT = { has_war_with = LBA }
-						NOT = { has_war_with = LEB }
+						controls_state = 209
+						controls_state = 208
+						controls_state = 213
+						controls_state = 210
+						controls_state = 211
+						controls_state = 212
+						controls_state = 184
+						controls_state = 185
+						controls_state = 186
+						controls_state = 571
+						controls_state = 188
+						controls_state = 189
+						controls_state = 190
+						controls_state = 566
+						controls_state = 575
+						controls_state = 561
+						controls_state = 191
+						controls_state = 994
+						controls_state = 192
 					}
 				}
-				# 强制执行领土变更：白和退出的参战方一样要割地，残余的巴勒斯坦/真主党实体被吞并
+				# 诉求州全部被以色列控制：进入大以色列收尾
+				# 单国结算（on_capitulation B 系列）已经割地并白和；这里只兜住
+				# “没投降但诉求州已被占领”的残余情况
+				# 强制执行领土变更：残余的巴勒斯坦/真主党实体被吞并
 				if = {
 					limit = {
 						country_exists = PAL
@@ -701,7 +1031,7 @@ on_actions = {
 						}
 					}
 				}
-				# 武力吞并约旦：约旦未参战也难逃大以色列版图
+				# 清理约旦残余：约旦已在 B-4b 割地白和，这里只收掉无地残骸，避免留下没有首都的无地国家
 				if = {
 					limit = {
 						country_exists = JOR
@@ -732,11 +1062,84 @@ on_actions = {
 						transfer_state_to = ISR
 					}
 				}
+				# 幼发拉底河以西的其余叙利亚州（与 B-5 清单一致）
+				if = {
+					limit = { 186 = { NOT = { is_owned_by = ISR } } }
+					186 = {
+						transfer_state_to = ISR
+					}
+				}
+				if = {
+					limit = { 571 = { NOT = { is_owned_by = ISR } } }
+					571 = {
+						transfer_state_to = ISR
+					}
+				}
+				if = {
+					limit = { 188 = { NOT = { is_owned_by = ISR } } }
+					188 = {
+						transfer_state_to = ISR
+					}
+				}
+				if = {
+					limit = { 189 = { NOT = { is_owned_by = ISR } } }
+					189 = {
+						transfer_state_to = ISR
+					}
+				}
+				if = {
+					limit = { 190 = { NOT = { is_owned_by = ISR } } }
+					190 = {
+						transfer_state_to = ISR
+					}
+				}
+				if = {
+					limit = { 566 = { NOT = { is_owned_by = ISR } } }
+					566 = {
+						transfer_state_to = ISR
+					}
+				}
+				if = {
+					limit = { 575 = { NOT = { is_owned_by = ISR } } }
+					575 = {
+						transfer_state_to = ISR
+					}
+				}
+				if = {
+					limit = { 561 = { NOT = { is_owned_by = ISR } } }
+					561 = {
+						transfer_state_to = ISR
+					}
+				}
+				if = {
+					limit = { 191 = { NOT = { is_owned_by = ISR } } }
+					191 = {
+						transfer_state_to = ISR
+					}
+				}
+				if = {
+					limit = { 994 = { NOT = { is_owned_by = ISR } } }
+					994 = {
+						transfer_state_to = ISR
+					}
+				}
+				if = {
+					limit = { 192 = { NOT = { is_owned_by = ISR } } }
+					192 = {
+						transfer_state_to = ISR
+					}
+				}
 				set_global_flag = skip_default_capitulation
 				clr_global_flag = MEW_sixth_war_ongoing
 				set_global_flag = MEW_israel_victory
 				news_event = { id = mew.20 }
 				news_event = { id = mew.21 days = 5 }
+				# 大以色列达成：与当时仍与以色列交战的所有国家白和（含阵营成员）
+				# 先收束第六次中东战争的残余战争，再由 mew.22 重新对叙利亚/反对派开战进入东进阶段
+				every_country = {
+					limit = { has_war_with = ISR }
+					white_peace = ISR
+				}
 				# 以色列胜利后进入东进阶段：撕毁停火，进军大马士革与幼发拉底河
 				ISR = {
 					country_event = { id = mew.22 days = 7 }

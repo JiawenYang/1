@@ -1,0 +1,104 @@
+air_wings = {
+	599 = { #Northern Taiwan
+		small_plane_strike_airframe_2 = { owner = "TAI" creator = "USA" amount = 24 version_name = "F-16A Blk 20" }
+		name = "21st Tactical Fighter Squadron"
+		start_experience_factor = 0.5
+		small_plane_strike_airframe_2 = { owner = "TAI" creator = "USA" amount = 24 version_name = "F-16A Blk 20" }
+		name = "22nd Tactical Fighter Squadron"
+		start_experience_factor = 0.5
+		small_plane_airframe_2 = { owner = "TAI" creator = "FRA" amount = 9 version_name = "Mirage 2000-5F" }
+		name = "41st Tactical Fighter Squadron"
+		start_experience_factor = 0.5
+		cv_medium_plane_scout_airframe_2 = { owner = "TAI" creator = "USA" amount = 6 version_name = "E-2 Hawkeye" }
+		name = "Early Warning Airborne Squadron"
+		start_experience_factor = 0.5
+		small_plane_strike_airframe_1 = { owner = "TAI" amount = 25 version_name = "AT-3" }
+		name = "Air Combat Training Squadron"
+		start_experience_factor = 0.4
+	}
+	600 = { #Central Taiwan
+		small_plane_strike_airframe_2 = { owner = "TAI" creator = "USA" amount = 24 version_name = "F-16A Blk 20" }
+		name = "23rd Tactical Fighter Squadron"
+		start_experience_factor = 0.5
+		small_plane_strike_airframe_2 = { owner = "TAI" creator = "USA" amount = 24 version_name = "F-16A Blk 20" }
+		name = "44th Tactical Fighter Squadron"
+		start_experience_factor = 0.5
+		small_plane_strike_airframe_2 = { owner = "TAI" amount = 24 version_name = "F-CK-1 Ching-kuo" }
+		name = "1st Tactical Fighter Squadron"
+		start_experience_factor = 0.5
+		small_plane_strike_airframe_2 = { owner = "TAI" amount = 24 version_name = "F-CK-1 Ching-kuo" }
+		name = "2nd Tactical Fighter Squadron"
+		start_experience_factor = 0.5
+		small_plane_strike_airframe_1 = { owner = "TAI" amount = 30 version_name = "AT-3" }
+		name = "Air Training Wing"
+		start_experience_factor = 0.4
+	}
+	1155 = { #Southern Taiwan
+		small_plane_strike_airframe_2 = { owner = "TAI" creator = "USA" amount = 24 version_name = "F-16A Blk 20" }
+		name = "45th Tactical Fighter Squadron"
+		start_experience_factor = 0.5
+		small_plane_strike_airframe_2 = { owner = "TAI" creator = "USA" amount = 24 version_name = "F-16A Blk 20" }
+		name = "46th Tactical Fighter Squadron"
+		start_experience_factor = 0.5
+		small_plane_strike_airframe_2 = { owner = "TAI" amount = 24 version_name = "F-CK-1 Ching-kuo" }
+		name = "3rd Tactical Fighter Squadron"
+		start_experience_factor = 0.5
+		small_plane_strike_airframe_2 = { owner = "TAI" amount = 31 version_name = "F-CK-1 Ching-kuo" }
+		name = "9th Tactical Fighter Squadron"
+		start_experience_factor = 0.5
+	}
+	1156 = { #Eastern Taiwan
+		small_plane_strike_airframe_2 = { owner = "TAI" amount = 24 version_name = "F-CK-1 Ching-kuo" }
+		name = "5th Tactical Fighter Squadron"
+		start_experience_factor = 0.5
+		small_plane_airframe_2 = { owner = "TAI" creator = "FRA" amount = 24 version_name = "Mirage 2000-5F" }
+		name = "11th Tactical Fighter Squadron"
+		start_experience_factor = 0.5
+	}
+	1157 = { #Taipei
+		small_plane_airframe_2 = { owner = "TAI" creator = "FRA" amount = 24 version_name = "Mirage 2000-5F" }
+		name = "12th Tactical Fighter Squadron"
+		start_experience_factor = 0.5
+		small_plane_airframe_1 = { owner = "TAI" amount = 24 version_name = "F-5E Chung Cheng" }
+		name = "15th Tactical Fighter Squadron"
+		start_experience_factor = 0.45
+		small_plane_airframe_1 = { owner = "TAI" amount = 18 version_name = "F-5E Chung Cheng" }
+		name = "16th Tactical Fighter Squadron"
+		start_experience_factor = 0.45
+		small_plane_airframe_1 = { owner = "TAI" amount = 18 version_name = "F-5E Chung Cheng" }
+		name = "17th Tactical Fighter Squadron"
+		start_experience_factor = 0.45
+		large_plane_air_transport_airframe_1 = { owner = "TAI" creator = "USA" amount = 19 version_name = "C-130 Hercules" }
+		name = "Air Transport Wing"
+		start_experience_factor = 0.4
+		large_plane_maritime_patrol_airframe_1 = { owner = "TAI" creator = "USA" amount = 12 version_name = "P-3 Orion" }
+		name = "Maritime Patrol Squadron"
+		start_experience_factor = 0.45
+	}
+}
+instant_effect = {
+	# SAM missile equipment (Gotterdammerung DLC)
+	if = {
+		limit = { has_dlc = "Gotterdammerung" }
+		add_equipment_to_stockpile = {
+			type = sam_missile_equipment_1
+			amount = 0
+			producer = TAI
+		}
+		add_equipment_to_stockpile = {
+			type = sam_missile_equipment_2
+			amount = 0
+			producer = TAI
+		}
+		add_equipment_to_stockpile = {
+			type = sam_missile_equipment_3
+			amount = 60
+			producer = TAI
+		}
+		add_equipment_to_stockpile = {
+			type = sam_missile_equipment_4
+			amount = 60
+			producer = TAI
+		}
+	}
+}

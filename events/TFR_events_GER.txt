@@ -1,10 +1,10 @@
 add_namespace = germany
-
+add_namespace = tfr_germany
 country_event = {
 	#First COVID
-	id = germany.11
-	title = germany.11.t
-	desc = germany.11.d
+	id = tfr_germany.11
+	title = tfr_germany.11.t
+	desc = tfr_germany.11.d
 	picture = GFX_Generic_COVID1
 	fire_only_once = yes
 	is_triggered_only = yes
@@ -13,13 +13,13 @@ country_event = {
 	}
 	immediate = {
 		hidden_effect = {
-			log = "[GetDateText]: [Root.GetName]: event germany.11 immediate"
+			log = "[GetDateText]: [Root.GetName]: event tfr_germany.11 immediate"
 			focus_unlock = yes
 			add_ideas = low_covid_cases
 			set_country_flag = GER_COVID_ongoing
 			activate_mission = GER_coronavirus_timer
 			country_event = {
-				id = germany.33
+				id = tfr_germany.33
 				days = 175
 			}
 			every_controlled_state = {
@@ -39,7 +39,7 @@ country_event = {
 		}
 	}
 	option = {
-		name = germany.11.a
+		name = tfr_germany.11.a
 		effect_tooltip = {
 			add_ideas = low_covid_cases
 			set_country_flag = GER_COVID_ongoing
@@ -65,25 +65,25 @@ country_event = {
 
 # Germans Raise Oil Prices - 第六次中东战争引发全球石油危机
 country_event = {
-	id = germany.16
-	title = germany.16.t
-	desc = germany.16.d
+	id = tfr_germany.16
+	title = tfr_germany.16.t
+	desc = tfr_germany.16.d
 	picture = GFX_generic_gazprom
 	fire_only_once = yes
 	is_triggered_only = yes
 	immediate = {
 		hidden_effect = {
-			log = "[GetDateText]: [Root.GetName]: event germany.16 immediate"
+			log = "[GetDateText]: [Root.GetName]: event tfr_germany.16 immediate"
 			add_ideas = GER_oil_crash1
 			set_country_flag = GER_finalize_oil_crash_recovery_flag
 			# 25天后爆发天然气抗议
-			country_event = { id = germany.17 days = 25 }
+			country_event = { id = tfr_germany.17 days = 25 }
 			# 开启自动恢复循环：100天后 germany.116 首次触发
 			country_event = { id = germany.116 days = 100 }
 		}
 	}
 	option = {
-		name = germany.16.a
+		name = tfr_germany.16.a
 		effect_tooltip = {
 			add_ideas = GER_oil_crash1
 		}
@@ -92,21 +92,21 @@ country_event = {
 
 # Gas Protests - 天然气抗议
 country_event = {
-	id = germany.17
-	title = germany.17.t
-	desc = germany.17.d
+	id = tfr_germany.17
+	title = tfr_germany.17.t
+	desc = tfr_germany.17.d
 	picture = GFX_GER_generic_protests
 	fire_only_once = yes
 	is_triggered_only = yes
 	immediate = {
 		hidden_effect = {
-			log = "[GetDateText]: [Root.GetName]: event germany.17 immediate"
+			log = "[GetDateText]: [Root.GetName]: event tfr_germany.17 immediate"
 			add_stability = -0.05
 			add_war_support = -0.05
 		}
 	}
 	option = {
-		name = germany.17.a
+		name = tfr_germany.17.a
 		effect_tooltip = {
 			add_stability = -0.05
 			add_war_support = -0.05
@@ -116,19 +116,19 @@ country_event = {
 
 #Pfizer Registration Commencing
 country_event = {
-	id = germany.33
-	title = germany.33.t
-	desc = germany.33.d
+	id = tfr_germany.33
+	title = tfr_germany.33.t
+	desc = tfr_germany.33.d
 	picture = GFX_Generic_COVID1
 	fire_only_once = yes
 	is_triggered_only = yes
 	immediate = {
 		hidden_effect = {
-			log = "[GetDateText]: [Root.GetName]: event germany.33 immediate"
+			log = "[GetDateText]: [Root.GetName]: event tfr_germany.33 immediate"
 		}
 	}
 	option = {
-		name = germany.33.a
+		name = tfr_germany.33.a
 		add_stability = 0.02
 		activate_mission = GER_pfizer_registration
 	}
@@ -136,39 +136,47 @@ country_event = {
 
 #Lockdown Protests
 country_event = {
-	id = germany.51
-	title = germany.51.t
-	desc = germany.51.d
+	id = tfr_germany.51
+	title = tfr_germany.51.t
+	desc = tfr_germany.51.d
 	picture = GFX_Anti_Refugee_Protest
 	fire_only_once = yes
 	is_triggered_only = yes
 	immediate = {
 		hidden_effect = {
-			log = "[GetDateText]: [Root.GetName]: event germany.51 immediate"
+			log = "[GetDateText]: [Root.GetName]: event tfr_germany.51 immediate"
 		}
 	}
 	option = {
-		name = germany.51.a
+		name = tfr_germany.51.a
 		add_days_mission_timeout = {
 			mission = GER_coronavirus_timer
 			days = -10
 		}
-		add_popularity = {
-			ideology = democratic
-			popularity = 0.03
+		set_temp_variable = { party_index = 0 }
+		if = {
+			limit = { has_government = democratic }
+			set_temp_variable = { party_index = ruling_party }
 		}
+		set_temp_variable = { party_popularity_increase = 0.03 }
+		set_temp_variable = { temp_outlook_increase = 0.03 }
+		change_relative_party_popularity = yes
 		add_political_power = -25
 	}
 	option = {
-		name = germany.51.b
+		name = tfr_germany.51.b
 		add_days_mission_timeout = {
 			mission = GER_coronavirus_timer
 			days = -10
 		}
-		add_popularity = {
-			ideology = democratic
-			popularity = 0.03
+		set_temp_variable = { party_index = 0 }
+		if = {
+			limit = { has_government = democratic }
+			set_temp_variable = { party_index = ruling_party }
 		}
+		set_temp_variable = { party_popularity_increase = 0.03 }
+		set_temp_variable = { temp_outlook_increase = 0.03 }
+		change_relative_party_popularity = yes
 		add_stability = -0.05
 		add_political_power = 25
 	}
@@ -250,42 +258,4 @@ country_event = {
 	}
 }
 
-#Russians Raise Oil Prices（俄国人抬高油价：石油危机波及德国）
-country_event = {
-	id = germany.16
-	title = germany.16.t
-	desc = germany.16.d
-	picture = GFX_generic_gazprom
-	fire_only_once = yes
-	is_triggered_only = yes
-	immediate = {
-		hidden_effect = {
-			log = "[GetDateText]: [Root.GetName]: event germany.16 immediate"
-		}
-	}
-	option = {
-		name = germany.16.a
-	}
-}
 
-#Gas Protests（燃气抗议：能源账单引爆街头，图换用有效精灵GFX_generic_gazprom）
-country_event = {
-	id = germany.17
-	title = germany.17.t
-	desc = germany.17.d
-	picture = GFX_generic_gazprom
-	fire_only_once = yes
-	is_triggered_only = yes
-	immediate = {
-		hidden_effect = {
-			log = "[GetDateText]: [Root.GetName]: event germany.17 immediate"
-			add_stability = -0.05
-		}
-	}
-	option = {
-		name = germany.17.a
-		effect_tooltip = {
-			add_stability = -0.05
-		}
-	}
-}

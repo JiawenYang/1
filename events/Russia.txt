@@ -689,17 +689,25 @@ country_event = {
 		set_country_flag = demsov_supp_arm
 		ARM = {
 			add_stability = 0.05
-			add_popularity = {
-				ideology = democratic
-				popularity = 0.10
+			set_temp_variable = { party_index = 0 }
+			if = {
+				limit = { has_government = democratic }
+				set_temp_variable = { party_index = ruling_party }
 			}
+			set_temp_variable = { party_popularity_increase = 0.10 }
+			set_temp_variable = { temp_outlook_increase = 0.10 }
+			change_relative_party_popularity = yes
 		}
 		NKR = {
 			add_stability = 0.05
-			add_popularity = {
-				ideology = democratic
-				popularity = 0.10
+			set_temp_variable = { party_index = 0 }
+			if = {
+				limit = { has_government = democratic }
+				set_temp_variable = { party_index = ruling_party }
 			}
+			set_temp_variable = { party_popularity_increase = 0.10 }
+			set_temp_variable = { temp_outlook_increase = 0.10 }
+			change_relative_party_popularity = yes
 		}
 	}
 
@@ -709,10 +717,14 @@ country_event = {
 		set_country_flag = demsov_supp_aze
 		AZE = {
 			add_stability = 0.05
-			add_popularity = {
-				ideology = democratic
-				popularity = 0.10
+			set_temp_variable = { party_index = 0 }
+			if = {
+				limit = { has_government = democratic }
+				set_temp_variable = { party_index = ruling_party }
 			}
+			set_temp_variable = { party_popularity_increase = 0.10 }
+			set_temp_variable = { temp_outlook_increase = 0.10 }
+			change_relative_party_popularity = yes
 		}
 	}
 }
@@ -1649,7 +1661,14 @@ country_event = {
 	option = {
 		name = russia.104.o1
 		log = "[GetDateText]: [This.GetName]: russia.104.o1 executed"
-		add_popularity = { ideology = democratic popularity = 0.05 }
+		set_temp_variable = { party_index = 0 }
+		if = {
+			limit = { has_government = democratic }
+			set_temp_variable = { party_index = ruling_party }
+		}
+		set_temp_variable = { party_popularity_increase = 0.05 }
+		set_temp_variable = { temp_outlook_increase = 0.05 }
+		change_relative_party_popularity = yes
 		recalculate_party = yes
 		add_stability = 0.05
 		ai_chance = { base = 0 }
@@ -1678,7 +1697,14 @@ country_event = {
 			update_party_name = yes
 		}
 		custom_effect_tooltip = SOV_the_party_TT
-		add_popularity = { ideology = communism popularity = 0.05 }
+		set_temp_variable = { party_index = 4 }
+		if = {
+			limit = { has_government = communism }
+			set_temp_variable = { party_index = ruling_party }
+		}
+		set_temp_variable = { party_popularity_increase = 0.05 }
+		set_temp_variable = { temp_outlook_increase = 0.05 }
+		change_relative_party_popularity = yes
 		recalculate_party = yes
 		add_political_power = 100
 	}
@@ -3337,10 +3363,14 @@ country_event = {
 			set_temp_variable = { party_index = 20 }
 			set_temp_variable = { party_popularity_increase = 0.05 }
 			change_relative_party_popularity = yes
-			add_popularity = {
-				ideology = democratic
-				popularity = 0.05
+			set_temp_variable = { party_index = 0 }
+			if = {
+				limit = { has_government = democratic }
+				set_temp_variable = { party_index = ruling_party }
 			}
+			set_temp_variable = { party_popularity_increase = 0.05 }
+			set_temp_variable = { temp_outlook_increase = 0.05 }
+			change_relative_party_popularity = yes
 			set_temp_variable = { party_index = 4 }
 			set_temp_variable = { party_popularity_increase = 0.05 }
 			change_relative_party_popularity = yes
@@ -3375,10 +3405,14 @@ country_event = {
 			set_temp_variable = { party_index = 20 }
 			set_temp_variable = { party_popularity_increase = 0.05 }
 			change_relative_party_popularity = yes
-			add_popularity = {
-				ideology = democratic
-				popularity = 0.05
+			set_temp_variable = { party_index = 0 }
+			if = {
+				limit = { has_government = democratic }
+				set_temp_variable = { party_index = ruling_party }
 			}
+			set_temp_variable = { party_popularity_increase = 0.05 }
+			set_temp_variable = { temp_outlook_increase = 0.05 }
+			change_relative_party_popularity = yes
 			set_temp_variable = { party_index = 4 }
 			set_temp_variable = { party_popularity_increase = 0.05 }
 			change_relative_party_popularity = yes
@@ -5301,10 +5335,14 @@ country_event = {
 		name = sov_nationalists.31.a
 		log = "[GetDateText]: [This.GetName]: sov_nationalists.31.a executed"
 		add_political_power = 25
-		add_popularity = {
-			ideology = nationalist
-			popularity = 0.05
+		set_temp_variable = { party_index = 20 }
+		if = {
+			limit = { has_government = nationalist }
+			set_temp_variable = { party_index = ruling_party }
 		}
+		set_temp_variable = { party_popularity_increase = 0.05 }
+		set_temp_variable = { temp_outlook_increase = 0.05 }
+		change_relative_party_popularity = yes
 	}
 }
 
@@ -5854,10 +5892,14 @@ country_event = {
 	option = {
 		name = sov_nationalists.54.o1
 		log = "[GetDateText]: [This.GetName]: sov_nationalists.54.o1 executed"
-		add_popularity = {
-			ideology = nationalist
-			popularity = 0.10
+		set_temp_variable = { party_index = 20 }
+		if = {
+			limit = { has_government = nationalist }
+			set_temp_variable = { party_index = ruling_party }
 		}
+		set_temp_variable = { party_popularity_increase = 0.10 }
+		set_temp_variable = { temp_outlook_increase = 0.10 }
+		change_relative_party_popularity = yes
 		set_province_name = {
 			id = 9833
 			name = SOV_Constantinople
@@ -5913,10 +5955,14 @@ country_event = {
 		log = "[GetDateText]: [This.GetName]: sov_nationalists.57.o1 executed"
 		SOV = { 934 = { add_core_of = SOV } }
 		add_political_power = -100
-		add_popularity = {
-			ideology = nationalist
-			popularity = 0.10
+		set_temp_variable = { party_index = 20 }
+		if = {
+			limit = { has_government = nationalist }
+			set_temp_variable = { party_index = ruling_party }
 		}
+		set_temp_variable = { party_popularity_increase = 0.10 }
+		set_temp_variable = { temp_outlook_increase = 0.10 }
+		change_relative_party_popularity = yes
 	}
 }
 
@@ -7102,10 +7148,14 @@ country_event = {
 			modifier = did_not_support_us
 			target = USA
 		}
-		add_popularity = {
-			ideology = democratic
-			popularity = -0.05
+		set_temp_variable = { party_index = 0 }
+		if = {
+			limit = { has_government = democratic }
+			set_temp_variable = { party_index = ruling_party }
 		}
+		set_temp_variable = { party_popularity_increase = -0.05 }
+		set_temp_variable = { temp_outlook_increase = -0.05 }
+		change_relative_party_popularity = yes
 		ai_chance = { base = 50 }
 	}
 }
@@ -7966,10 +8016,14 @@ country_event = {
 			remove_ideas = SOV_yukos_idea
 		}
 		add_stability = 0.02
-		add_popularity = {
-			ideology = democratic
-			popularity = 0.15
+		set_temp_variable = { party_index = 0 }
+		if = {
+			limit = { has_government = democratic }
+			set_temp_variable = { party_index = ruling_party }
 		}
+		set_temp_variable = { party_popularity_increase = 0.15 }
+		set_temp_variable = { temp_outlook_increase = 0.15 }
+		change_relative_party_popularity = yes
 		set_temp_variable = { temp_opinion = 10 }
 		change_oligarchs_opinion = yes
 		set_temp_variable = { temp_opinion = 10 }
@@ -8020,10 +8074,14 @@ country_event = {
 		name = sov_economic.2.b
 		log = "[GetDateText]: [This.GetName]: sov_economic.2.b executed"
 		add_stability = -0.05
-		add_popularity = {
-			ideology = democratic
-			popularity = 0.05
+		set_temp_variable = { party_index = 0 }
+		if = {
+			limit = { has_government = democratic }
+			set_temp_variable = { party_index = ruling_party }
 		}
+		set_temp_variable = { party_popularity_increase = 0.05 }
+		set_temp_variable = { temp_outlook_increase = 0.05 }
+		change_relative_party_popularity = yes
 		set_temp_variable = { party_popularity_increase = -0.10 }
 		change_relative_party_popularity = yes
 		set_temp_variable = { temp_opinion = 3 }
@@ -8079,10 +8137,14 @@ country_event = {
 		add_stability = -0.05
 		set_temp_variable = { temp_opinion = 10 }
 		change_oligarchs_opinion = yes
-		add_popularity = {
-			ideology = democratic
-			popularity = 0.15
+		set_temp_variable = { party_index = 0 }
+		if = {
+			limit = { has_government = democratic }
+			set_temp_variable = { party_index = ruling_party }
 		}
+		set_temp_variable = { party_popularity_increase = 0.15 }
+		set_temp_variable = { temp_outlook_increase = 0.15 }
+		change_relative_party_popularity = yes
 		set_country_flag = SOV_private_media_free
 		add_ideas = SOV_independent_media_idea
 		add_to_variable = { SOV_oligarch_verdicts = 1 }
@@ -8156,10 +8218,14 @@ country_event = {
 		change_oligarchs_opinion = yes
 		set_temp_variable = { temp_opinion = -7 }
 		change_fossil_fuel_industry_opinion = yes
-		add_popularity = {
-			ideology = democratic
-			popularity = 0.05
+		set_temp_variable = { party_index = 0 }
+		if = {
+			limit = { has_government = democratic }
+			set_temp_variable = { party_index = ruling_party }
 		}
+		set_temp_variable = { party_popularity_increase = 0.05 }
+		set_temp_variable = { temp_outlook_increase = 0.05 }
+		change_relative_party_popularity = yes
 		add_to_variable = { SOV_oligarch_verdicts = 1 }
 		custom_effect_tooltip = SOV_verdict_scorecard_TT
 		ai_chance = {
@@ -8210,10 +8276,14 @@ country_event = {
 		change_oligarchs_opinion = yes
 		set_temp_variable = { temp_opinion = -10 }
 		change_fossil_fuel_industry_opinion = yes
-		add_popularity = {
-			ideology = democratic
-			popularity = 0.05
+		set_temp_variable = { party_index = 0 }
+		if = {
+			limit = { has_government = democratic }
+			set_temp_variable = { party_index = ruling_party }
 		}
+		set_temp_variable = { party_popularity_increase = 0.05 }
+		set_temp_variable = { temp_outlook_increase = 0.05 }
+		change_relative_party_popularity = yes
 		add_to_variable = { SOV_oligarch_verdicts = 1 }
 		custom_effect_tooltip = SOV_verdict_scorecard_TT
 		ai_chance = {
@@ -10261,10 +10331,14 @@ country_event = {
 		log = "[GetDateText]: [This.GetName]: sov_liberals.29.a executed"
 		hidden_effect = {
 			add_political_power = 50
-			add_popularity = {
-				ideology = democratic
-				popularity = -0.05
+			set_temp_variable = { party_index = 0 }
+			if = {
+				limit = { has_government = democratic }
+				set_temp_variable = { party_index = ruling_party }
 			}
+			set_temp_variable = { party_popularity_increase = -0.05 }
+			set_temp_variable = { temp_outlook_increase = -0.05 }
+			change_relative_party_popularity = yes
 			set_country_flag = nemtsov_dead
 		}
 	}
@@ -10932,7 +11006,7 @@ country_event = {
 			name = sov_economic.300.t
 			bonus = 0.15
 			uses = 1
-			category = CAT_infantryormation_technology
+			category = CAT_information_technology
 		}
 		set_country_flag = SOV_cs_elbrus_domestic_bet
 		ai_chance = {
@@ -10955,7 +11029,7 @@ country_event = {
 			name = sov_economic.300.t
 			bonus = 0.10
 			uses = 1
-			category = CAT_infantryormation_technology
+			category = CAT_information_technology
 		}
 		set_country_flag = SOV_cs_foreign_architecture
 		ai_chance = {
@@ -11069,7 +11143,7 @@ country_event = {
 			name = sov_economic.302.t
 			bonus = 0.10
 			uses = 1
-			category = CAT_infantryormation_technology
+			category = CAT_information_technology
 		}
 		set_country_flag = SOV_cs_open_procurement
 		ai_chance = {
@@ -11184,7 +11258,7 @@ country_event = {
 			name = sov_economic.304.t
 			bonus = 0.10
 			uses = 1
-			category = CAT_infantryormation_technology
+			category = CAT_information_technology
 		}
 		set_country_flag = SOV_cs_chinese_foundry_turn
 		ai_chance = {
@@ -11321,10 +11395,14 @@ country_event = {
 		name = sov_economic.306.b
 		log = "[GetDateText]: [This.GetName]: sov_economic.306.b executed"
 		add_stability = -0.05
-		add_popularity = {
-			ideology = democratic
-			popularity = 0.05
+		set_temp_variable = { party_index = 0 }
+		if = {
+			limit = { has_government = democratic }
+			set_temp_variable = { party_index = ruling_party }
 		}
+		set_temp_variable = { party_popularity_increase = 0.05 }
+		set_temp_variable = { temp_outlook_increase = 0.05 }
+		change_relative_party_popularity = yes
 		set_temp_variable = { party_popularity_increase = -0.10 }
 		change_relative_party_popularity = yes
 		set_temp_variable = { temp_opinion = 3 }

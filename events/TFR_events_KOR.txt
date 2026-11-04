@@ -1,0 +1,107 @@
+add_namespace = korean_confederation
+
+# 板门店峰会：韩国方面的抉择
+# 前置：美国联邦政府失能（usacw.7 设置的 USA_federal_paralysis_global）之后启动；
+# 由 00_TFR_on_actions_ZZZ_timeline.txt 的 on_daily 在 2025.3.1 后派发。
+country_event = {
+	id = korean_confederation.0
+	title = korean_confederation.0.t
+	desc = korean_confederation.0.d
+	picture = GFX_Korean_War
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		has_global_flag = USA_federal_paralysis_global
+		NOT = { has_global_flag = korean_confederation_formed }
+		NOT = { has_global_flag = korean_unification_talks_failed }
+		country_exists = NKO
+	}
+	option = {
+		# 同意接触，向平壤发出邦联提案
+		name = korean_confederation.0.a
+		if = {
+			limit = { country_exists = NKO }
+			NKO = {
+				country_event = {
+					id = korean_confederation.1
+					days = 30
+				}
+			}
+		}
+	}
+	option = {
+		# 拒绝，谈判终止
+		name = korean_confederation.0.b
+		set_global_flag = korean_unification_talks_failed
+	}
+}
+
+# 平壤的回应：朝鲜方面的抉择
+country_event = {
+	id = korean_confederation.1
+	title = korean_confederation.1.t
+	desc = korean_confederation.1.d
+	picture = GFX_Korean_War
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		# 同意组建邦联
+		name = korean_confederation.1.a
+		country_event = {
+			id = korean_confederation.2
+			days = 14
+		}
+		if = {
+			limit = { country_exists = KOR }
+			KOR = {
+				country_event = {
+					id = korean_confederation.2
+					days = 14
+				}
+			}
+		}
+	}
+	option = {
+		# 拒绝，统一只能以朝鲜的方式完成
+		name = korean_confederation.1.b
+		set_global_flag = korean_unification_talks_failed
+	}
+}
+
+# 朝韩宣布组建高丽民主联邦共和国（结盟 + 邦联框架，不合并国家、不改政体）
+country_event = {
+	id = korean_confederation.2
+	title = korean_confederation.2.t
+	desc = korean_confederation.2.d
+	picture = GFX_Korean_War
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = korean_confederation.2.a
+		hidden_effect = {
+			set_global_flag = korean_confederation_formed
+			if = {
+				limit = {
+					NOT = { has_global_flag = korean_confederation_alliance_formed }
+				}
+				if = {
+					limit = { country_exists = KOR }
+					KOR = {
+						create_faction = Korean_Confederation
+					}
+				}
+				if = {
+					limit = {
+						country_exists = KOR
+						country_exists = NKO
+					}
+					NKO = {
+						add_to_faction = KOR
+					}
+				}
+				set_global_flag = korean_confederation_alliance_formed
+			}
+		}
+		custom_effect_tooltip = korean_confederation.2.tt_alliance
+	}
+}

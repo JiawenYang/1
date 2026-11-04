@@ -67,6 +67,13 @@ division_template = {
 		Arm_Inf_Bat = { x = 0 y = 3 }
 		Arty_Bat = { x = 0 y = 4 }
 	}
+	support = {
+		SP_arty_battery = { x = 0 y = 0 }
+		SP_AA_Battery = { x = 0 y = 1 }
+		armor_Recce_Comp = { x = 0 y = 2 }
+		H_Engi_Comp = { x = 0 y = 3 }
+		combat_service_support_company = { x = 0 y = 4 }
+	}
 }
 
 division_template = {
@@ -78,6 +85,13 @@ division_template = {
 		armor_Bat = { x = 0 y = 2 }
 		Arm_Inf_Bat = { x = 0 y = 3 }
 		Arty_Bat = { x = 0 y = 4 }
+	}
+	support = {
+		SP_arty_battery = { x = 0 y = 0 }
+		SP_AA_Battery = { x = 0 y = 1 }
+		armor_Recce_Comp = { x = 0 y = 2 }
+		H_Engi_Comp = { x = 0 y = 3 }
+		combat_service_support_company = { x = 0 y = 4 }
 	}
 }
 
@@ -91,6 +105,13 @@ division_template = {
 		Mot_Inf_Bat = { x = 1 y = 0 }
 		Mot_Inf_Bat = { x = 1 y = 1 }
 		Arty_Bat = { x = 1 y = 2 }
+	}
+	support = {
+		SP_arty_battery = { x = 0 y = 0 }
+		SP_AA_Battery = { x = 0 y = 1 }
+		Mech_Recce_Comp = { x = 0 y = 2 }
+		H_Engi_Comp = { x = 0 y = 3 }
+		combat_service_support_company = { x = 0 y = 4 }
 	}
 }
 
@@ -408,7 +429,7 @@ units = {
 instant_effect = {
 
 	add_equipment_to_stockpile = {
-		variant_name = "Maadi"
+		variant_name = "Maadi (AKM/AKMS copy)"
 		type = infantry_weapons_3		 #Maadi (AKM/AKMS copy)
 		amount = 21000
 		producer = EGY
@@ -476,7 +497,7 @@ instant_effect = {
 	}
 	add_equipment_to_stockpile = {
 		variant_name = "MILAN"
-		type = Anti_tank_1	 	#MILAN
+		type = Anti_tank_2	 	#MILAN
 		amount = 220
 		producer = FRA
 	}
@@ -503,7 +524,7 @@ instant_effect = {
 	}
 
 	add_equipment_to_stockpile = {
-		variant_name = "TOW"
+		variant_name = "TOW-II"
 		type = Heavy_Anti_tank_1	 	#TOW-II
 		amount = 1385
 		producer = USA
@@ -531,79 +552,83 @@ instant_effect = {
 	}
 
 	add_equipment_to_stockpile = {
-		variant_name = "FIM-92 Stinger"
+		variant_name = "Stinger"
 		type = Anti_Air_1	 	#Stinger
 		amount = 1800
 		producer = USA
 	}
 
 	add_equipment_to_stockpile = {
-		variant_name = "SA-18 Igla"
+		variant_name = "Igla"
 		type = Anti_Air_1	 	#Igla
 		amount = 600
 		producer = SOV
 	}
 
 	add_equipment_to_stockpile = {
+		variant_name = "M1A1 Abrams"
 		type = medium_tank_chassis_1
 		amount = 1130
 		producer = USA
 	}
 
 	add_equipment_to_stockpile = {
+		variant_name = "Ramses II"
 		type = medium_tank_chassis_0
 		amount = 1716
 		producer = USA
 	}
 
 	add_equipment_to_stockpile = {
+		variant_name = "Ramses II"
 		type = medium_tank_chassis_0
 		amount = 700
 		producer = USA
 	}
 
 	add_equipment_to_stockpile = {
+		variant_name = "Ramses II"
 		type = medium_tank_chassis_0
 		amount = 840
 		producer = SOV
 	}
 
 	add_equipment_to_stockpile = {
+		variant_name = "Ramses II"
 		type = medium_tank_chassis_0
 		amount = 700
 		producer = SOV
 	}
 
 	add_equipment_to_stockpile = {
+		variant_name = "Ramses II"
 		type = medium_tank_chassis_0
 		amount = 260
 		producer = EGY
 	}
 
 	add_equipment_to_stockpile = {
+		variant_name = "Ramses II"
 		type = medium_tank_chassis_0
 		amount = 500
 		producer = SOV
 	}
 
 	add_equipment_to_stockpile = {
-		variant_name = "Caiman"
-		type = util_vehicle_6	 	#Caiman (almost identical to MaxxPro)
+		type = heavy_util_vehicle_6	 	#Caiman (almost identical to MaxxPro)
 		amount = 480
 		producer = USA
 	}
 
 	add_equipment_to_stockpile = {
-		variant_name = "RG-33"
-		type = util_vehicle_5	 	#RG-33
+		type = heavy_util_vehicle_6	 	#RG-33
 		#version_name = "RG-33"
 		amount = 450
 		producer = EGY
 	}
 
 	add_equipment_to_stockpile = {
-		variant_name = "RG-32"
-		type = util_vehicle_5	 	#RG-32
+		type = heavy_util_vehicle_5	 	#RG-32
 		#version_name = "RG-32"
 		amount = 180
 		producer = SWE
@@ -624,7 +649,7 @@ instant_effect = {
 	}
 
 	add_equipment_to_stockpile = {
-		variant_name = "Humvee"
+		variant_name = "Humvee ECV"
 		type = util_vehicle_4	 	#Humvee ECV
 		amount = 1040
 		producer = USA
@@ -689,7 +714,7 @@ instant_effect = {
 
 	add_equipment_to_stockpile = {
 		variant_name = "OT-64"
-		type = medium_tank_amphibious_chassis_0	 		#OT-64
+		type = medium_tank_amphibious_chassis_1	 		#OT-64
 		amount = 250
 		producer = EGY
 	}
@@ -702,7 +727,7 @@ instant_effect = {
 	}
 
 	add_equipment_to_stockpile = {
-		variant_name = "Fahd 240"
+		variant_name = "Fahd"
 		type = medium_tank_amphibious_chassis_1	 		#Fahd 240
 		#version_name = "Fahd 240"
 		amount = 600
@@ -710,7 +735,6 @@ instant_effect = {
 	}
 
 	add_equipment_to_stockpile = {
-		variant_name = "Fahd 240"
 		type = medium_tank_amphibious_chassis_1
 		amount = 600
 		producer = EGY
@@ -808,26 +832,31 @@ instant_effect = {
 
 	add_equipment_to_stockpile = {
 		variant_name = "AH-64D"
-		type = heavy_tank_chassis_2			#AH-64D
+		type = attack_helicopter_2			#AH-64D
 		amount = 46
 		producer = USA
 	}
 	add_equipment_to_stockpile = {
 		variant_name = "SA342"
-		type = heavy_tank_chassis_1			#SA342
+		type = attack_helicopter_1			#SA342 Gazelle
 		amount = 70
 		producer = EGY
 	}
 	add_equipment_to_stockpile = {
 		variant_name = "Chinook"
-		type = transport_helicopter_1			#Chinook
+		type = transport_helicopter_2			#CH-47D Chinook
 		amount = 19
 		producer = EGY
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "Mi-8"
+		variant_name = "Mil Mi-8"
 		type = transport_helicopter_1			#Mil Mi-8
 		amount = 60
 		producer = SOV
+	}
+	add_equipment_to_stockpile = {
+		type = medium_tank_aa_chassis_0
+		producer = EGY
+		amount = 76
 	}
 }

@@ -36,6 +36,11 @@ division_template = {
 		Mot_Air_Inf_Bat = { x = 1 y = 0 }
 		L_Air_Inf_Bat = { x = 1 y = 1 }
 	}
+	support = {
+		L_Recce_Comp = { x = 0 y = 0 }
+		L_Engi_Comp = { x = 0 y = 1 }
+		combat_service_support_company = { x = 0 y = 2 }
+	}
 }
 
 division_template = {
@@ -109,7 +114,7 @@ instant_effect = {
 
 	add_equipment_to_stockpile = {
 		variant_name = "BTR-80"
-		type = medium_tank_amphibious_chassis_2 #BTR-80
+		type = medium_tank_amphibious_chassis_1 #BTR-80
 		amount = 70
 		producer = SOV
 	}
@@ -129,24 +134,28 @@ instant_effect = {
 	}
 
 	add_equipment_to_stockpile = {
+		variant_name = "T-62"
 		type = medium_tank_chassis_0
 		amount = 83
 		producer = SOV
 	}
 
 	add_equipment_to_stockpile = {
+		variant_name = "T-72B"
 		type = medium_tank_chassis_1
 		amount = 170
 		producer = SOV
 	}
 
 	add_equipment_to_stockpile = {
+		variant_name = "D-30"
 		type = artillery_1
 		amount = 90
 		producer = TAJ
 	}
 
 	add_equipment_to_stockpile = {
+		variant_name = "BM-21 Grad"
 		type = medium_tank_rocket_chassis_0
 		amount = 128
 		producer = TAJ
@@ -154,7 +163,7 @@ instant_effect = {
 
 	add_equipment_to_stockpile = {
 		variant_name = "AKM"
-		type = infantry_weapons_2			#AKM
+		type = infantry_weapons_1			#AKM
 		amount = 2750
 		producer = SOV
 	}
@@ -207,7 +216,7 @@ instant_effect = {
 
 	add_equipment_to_stockpile = {
 		variant_name = "Mi-24"
-		type = heavy_tank_chassis_0 		#Mi-24
+		type = attack_helicopter_1 		#Mi-24
 		amount = 6
 		producer = SOV
 	}
@@ -219,4 +228,9 @@ instant_effect = {
 		producer = SOV
 	}
  
+	add_equipment_to_stockpile = {
+		type = medium_tank_artillery_chassis_0
+		producer = TAJ
+		amount = 3
+	}
 }

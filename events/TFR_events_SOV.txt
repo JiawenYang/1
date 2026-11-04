@@ -145,45 +145,45 @@ country_event = {
 			value = 0.03
 		}
 		SOV_add_election_approval_rating_nav = yes
-	}
-	if = {
-		limit = {
-			has_game_rule = {
-				rule = SOV_ai_behavior
-				option = CPRF
+		if = {
+			limit = {
+				has_game_rule = {
+					rule = SOV_ai_behavior
+					option = CPRF
+				}
 			}
-		}
-		set_temp_variable = {
-			var = SOV_election_approval_rating_cprf_var_temp
-			value = 1
-		}
-		SOV_add_election_approval_rating_cprf = yes
-	}
-	if = {
-		limit = {
-			has_game_rule = {
-				rule = SOV_ai_behavior
-				option = LDPR
+			set_temp_variable = {
+				var = SOV_election_approval_rating_cprf_var_temp
+				value = 1
 			}
+			SOV_add_election_approval_rating_cprf = yes
 		}
-		set_temp_variable = {
-			var = SOV_election_approval_rating_ldpr_var_temp
-			value = 1
-		}
-		SOV_add_election_approval_rating_ldpr = yes
-	}
-	if = {
-		limit = {
-			has_game_rule = {
-				rule = SOV_ai_behavior
-				option = UNITED_RUSSIA
+		if = {
+			limit = {
+				has_game_rule = {
+					rule = SOV_ai_behavior
+					option = LDPR
+				}
 			}
+			set_temp_variable = {
+				var = SOV_election_approval_rating_ldpr_var_temp
+				value = 1
+			}
+			SOV_add_election_approval_rating_ldpr = yes
 		}
-		set_temp_variable = {
-			var = SOV_election_approval_rating_ur_var_temp
-			value = 1
+		if = {
+			limit = {
+				has_game_rule = {
+					rule = SOV_ai_behavior
+					option = UNITED_RUSSIA
+				}
+			}
+			set_temp_variable = {
+				var = SOV_election_approval_rating_ur_var_temp
+				value = 1
+			}
+			SOV_add_election_approval_rating_ur = yes
 		}
-		SOV_add_election_approval_rating_ur = yes
 	}
 }
 country_event = {
@@ -1290,6 +1290,7 @@ country_event = {
 					}
 				}
 				set_global_flag = SOV_cprf_won
+				ZZZ_SOV_switch_to_soviet_line_intros = yes
 				if = {
 					limit = {
 						NOT = {
@@ -41838,29 +41839,29 @@ country_event = {
 		division_template = {
 			name = "Motostrelkovaya Brigada"
 			regiments = {
-				motorized = {
+				Mot_Inf_Bat = {
 					x = 0
 					y = 0
 				}
-				motorized = {
+				Mot_Inf_Bat = {
 					x = 0
 					y = 1
 				}
-				motorized = {
+				Mot_Inf_Bat = {
 					x = 0
 					y = 2
 				}
-				light_mechanized = {
+				Light_Mech_Inf_Bat = {
 					x = 0
 					y = 3
 				}
-				mechanized = {
+				Mech_Inf_Bat = {
 					x = 0
 					y = 4
 				}
 			}
 			support = {
-				signal_company = {
+				communications_company = {
 					x = 0
 					y = 0
 				}
@@ -47449,19 +47450,19 @@ country_event = {
 					priority = 0
 					template_counter = 0
 					regiments = {
-						motorized = {
+						Mot_Inf_Bat = {
 							x = 0
 							y = 0
 						}
-						motorized = {
+						Mot_Inf_Bat = {
 							x = 0
 							y = 1
 						}
-						motorized = {
+						Mot_Inf_Bat = {
 							x = 0
 							y = 2
 						}
-						mechanized = {
+						Mech_Inf_Bat = {
 							x = 1
 							y = 0
 						}
@@ -47469,7 +47470,7 @@ country_event = {
 							x = 1
 							y = 1
 						}
-						artillery_brigade = {
+						Arty_Bat = {
 							x = 2
 							y = 0
 						}

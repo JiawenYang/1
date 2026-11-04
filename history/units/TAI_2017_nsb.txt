@@ -93,6 +93,11 @@ division_template = {
 		L_Inf_Bat = { x = 1 y = 1 }
 		Arty_Bat = { x = 1 y = 2 }
 	}
+	support = {
+		L_Recce_Comp = { x = 0 y = 0 }
+		L_Engi_Comp = { x = 0 y = 1 }
+		combat_service_support_company = { x = 0 y = 2 }
+	}
 }
 division_template = {
 	name = "Infantry Brigade 2"
@@ -104,6 +109,11 @@ division_template = {
 
 		L_Inf_Bat = { x = 1 y = 0 }
 		Arty_Bat = { x = 1 y = 1 }
+	}
+	support = {
+		L_Recce_Comp = { x = 0 y = 0 }
+		L_Engi_Comp = { x = 0 y = 1 }
+		combat_service_support_company = { x = 0 y = 2 }
 	}
 }
 division_template = {
@@ -130,6 +140,11 @@ division_template = {
 		SOF_Bat_TAI = { x = 0 y = 2 }
 		SOF_Bat_TAI = { x = 0 y = 3 }
 		SOF_Bat_TAI = { x = 0 y = 4 }
+	}
+	support = {
+		L_Recce_Comp = { x = 0 y = 0 }
+		L_Engi_Comp = { x = 0 y = 1 }
+		combat_service_support_company = { x = 0 y = 2 }
 	}
 	priority = 2
 }
@@ -319,195 +334,263 @@ units = {
 
 
 instant_effect = {
+	### 步兵装备 ###
 	add_equipment_to_stockpile = {
-		type = infantry_weapons4
-		amount = 9800
-	}
-	add_equipment_to_stockpile = {
-		type = command_control_equipment2
-		amount = 1450
-		producer = USA
-	}
-	add_equipment_to_stockpile = {
-		type = Anti_tank_1
-		amount = 550
-		producer = SWE
-	}
-	add_equipment_to_stockpile = {
-		type = Heavy_Anti_tank_1
-		amount = 105
-		producer = USA
-	}
-	add_equipment_to_stockpile = {
-		type = Anti_Air_1
-		amount = 480
-		producer = USA
-	}
-
-	add_equipment_to_stockpile = {
-		type = mbt_hull_0
-		variant_name = "M60A3"
-		amount = 200
-		producer = USA
-	}
-	add_equipment_to_stockpile = {
-		type = mbt_hull_0
-		variant_name = "M48A5"
-		amount = 100
-		producer = USA
-	}
-	add_equipment_to_stockpile = {
-		type = mbt_hull_0
-		variant_name = "CM-11"
-		amount = 265
+		variant_name = "T65"
+		type = infantry_weapons_2 #T65 / M16A1 步枪
 		producer = TAI
+		amount = 82000
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "T91"
+		type = infantry_weapons_4 #T91 战斗步枪
+		producer = TAI
+		amount = 20000
+	}
+	add_equipment_to_stockpile = {
+		type = cnc_equipment_3 #C4ISR 指管通情系统
+		producer = TAI
+		amount = 5950
 	}
 
+	### 反坦克与防空 ###
 	add_equipment_to_stockpile = {
-		type = Rec_tank_0 #Type 64
-		amount = 625
-	}
-	add_equipment_to_stockpile = {
-		type = IFV_2 #CM-25
-		amount = 225
-	}
-	add_equipment_to_stockpile = {
-		type = APC_2 #M113 APC
-		amount = 650
+		variant_name = "M40A1"
+		type = Anti_tank_1 #M40A1 106mm 无后坐力炮
 		producer = USA
+		amount = 550
 	}
 	add_equipment_to_stockpile = {
-		type = IFV_4 #CM-32 Yunpao
-		amount = 270
-	}
-	add_equipment_to_stockpile = {
-		type = Rec_tank_0 #150 commando
-		amount = 300
+		variant_name = "BGM-71 TOW-2"
+		type = Heavy_Anti_tank_2 #BGM-71 TOW-2 反坦克导弹
 		producer = USA
+		amount = 900
 	}
 	add_equipment_to_stockpile = {
-		type = SP_arty_0 #M108
+		variant_name = "FGM-148 Javelin"
+		type = Heavy_Anti_tank_2 #FGM-148 标枪
+		producer = USA
+		amount = 105
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "FIM-92 Stinger"
+		type = Anti_Air_1 #FIM-92 毒刺
+		producer = USA
+		amount = 480
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "AN/TWQ-1 Avenger"
+		type = medium_tank_aa_chassis_1 #AN/TWQ-1 复仇者
+		producer = USA
+		amount = 74
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "MIM-72 Chaparral"
+		type = medium_tank_aa_chassis_0 #MIM-72 檞树
+		producer = USA
+		amount = 2
+	}
+
+	### 装甲车辆 ###
+	add_equipment_to_stockpile = {
+		variant_name = "M60A3"
+		type = medium_tank_chassis_0 #M60A3 巴顿
+		producer = USA
+		amount = 450
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "CM-11"
+		type = medium_tank_chassis_0 #CM-11 勇虎
+		producer = TAI
+		amount = 450
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "CM-12"
+		type = medium_tank_chassis_0 #CM-12
+		producer = TAI
 		amount = 100
-		producer = USA
-		#version_name = "M108"
 	}
 	add_equipment_to_stockpile = {
-		type = SP_arty_1 #M109A2
-		amount = 112
+		variant_name = "M41D"
+		type = medium_tank_destroyer_chassis_0 #M41D 华克猛犬
 		producer = USA
+		amount = 50
 	}
 	add_equipment_to_stockpile = {
-		type = SP_arty_1 #M109A5
-		amount = 113
-		producer = USA
-		#version_name = "M109A5"
-	}
-	add_equipment_to_stockpile = {
-		type = SP_arty_0 #M110
-		amount = 70
-		producer = USA
-	}
-	add_equipment_to_stockpile = {
-		type = artillery_0 #M101/T-64
+		variant_name = "CM-21"
+		type = medium_tank_amphibious_chassis_1 #CM-21 装甲步兵战车
+		producer = TAI
 		amount = 650
 	}
 	add_equipment_to_stockpile = {
-		type = artillery_0 #M114/ T-65
-		amount = 250
+		variant_name = "CM-32 Yunpao"
+		type = medium_tank_flame_chassis_2 #CM-32 云豹
+		producer = TAI
+		amount = 300
 	}
 	add_equipment_to_stockpile = {
-		type = SP_R_arty_1 #Kung Feng VI
-		amount = 120
+		variant_name = "M113A2"
+		type = medium_tank_amphibious_chassis_1 #M113A2
+		producer = USA
+		amount = 650
 	}
 	add_equipment_to_stockpile = {
-		type = SP_R_arty_0 #Kung Feng IV
+		variant_name = "AAV-7A1"
+		type = medium_tank_amphibious_chassis_1 #AAV-7A1 两栖突击车
+		producer = USA
+		amount = 52
+	}
+
+	### 火炮 ###
+	add_equipment_to_stockpile = {
+		variant_name = "M108"
+		type = medium_tank_artillery_chassis_0 #M108 105mm 自行榴弹炮
+		producer = USA
+		amount = 100
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "M109A2"
+		type = medium_tank_artillery_chassis_1 #M109A2 155mm 自行榴弹炮
+		producer = USA
+		amount = 172
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "M109A5"
+		type = medium_tank_artillery_chassis_1 #M109A5 155mm 自行榴弹炮
+		producer = USA
+		amount = 28
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "M110A2"
+		type = medium_tank_artillery_chassis_0 #M110A2 203mm 自行榴弹炮
+		producer = USA
 		amount = 60
 	}
 	add_equipment_to_stockpile = {
-		type = SP_R_arty_2 #Thunderbolt-2000
-		amount = 150
+		variant_name = "M101"
+		type = artillery_1 #T-64 / M101 105mm 牵引榴弹炮
+		producer = TAI
+		amount = 650
 	}
 	add_equipment_to_stockpile = {
-		type = attack_helicopter1 #AH-1 Cobra
-		amount = 67
+		variant_name = "M114"
+		type = artillery_1 #M114 155mm 牵引榴弹炮
 		producer = USA
+		amount = 250
 	}
 	add_equipment_to_stockpile = {
-		type = attack_helicopter4 #AH-64E Apache Guardian
-		amount = 29
-		producer = USA
+		variant_name = "Kung Feng VI"
+		type = medium_tank_rocket_chassis_1 #工蜂六型多管火箭
+		producer = TAI
+		amount = 120
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Kung Feng"
+		type = medium_tank_rocket_chassis_0 #工蜂四型多管火箭
+		producer = TAI
+		amount = 60
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Thunderbolt-2000"
+		type = medium_tank_rocket_chassis_2 #雷霆2000 多管火箭
+		producer = TAI
+		amount = 57
 	}
 
+	### 直升机 ###
 	add_equipment_to_stockpile = {
-		type = SP_Anti_Air_1 #AN/TWQ-1 Avenger
-		amount = 74
+		variant_name = "AH-1W SuperCobra"
+		type = attack_helicopter_2 #AH-1W 超级眼镜蛇
 		producer = USA
+		amount = 67
 	}
 	add_equipment_to_stockpile = {
-		type = SP_Anti_Air_0 #MIM-72 Chaparral
-		amount = 2
+		variant_name = "AH-64E Apache"
+		type = attack_helicopter_3 #AH-64E 阿帕奇卫士
 		producer = USA
-		#version_name = "MIM-72 Chaparral"
+		amount = 29
 	}
 	add_equipment_to_stockpile = {
-		type = APC_3 #AAV-P7
-		amount = 52
+		variant_name = "OH-58D Kiowa"
+		type = heavy_tank_chassis_1 #OH-58D 基奥瓦勇士
 		producer = USA
+		amount = 38
 	}
 	add_equipment_to_stockpile = {
-		type = MR_Fighter1 #F-5 Freedom Fighter
-		amount = 87
+		variant_name = "CH-47SD"
+		type = transport_helicopter_2 #CH-47SD 契努克
 		producer = USA
-	}
-	add_equipment_to_stockpile = {
-		type = MR_Fighter2 #F-16A Fighting Falcon
-		amount = 145
-		producer = USA
-	}
-	add_equipment_to_stockpile = {
-		type = MR_Fighter2 #Mirage 2000
-		amount = 47
-		producer = FRA
-	}
-	add_equipment_to_stockpile = {
-		type = Strike_fighter2 #Mirage 2000D
 		amount = 9
-		producer = FRA
 	}
 	add_equipment_to_stockpile = {
-		type = MR_Fighter2 #AIDC F-CK-1 Ching-kuo
+		variant_name = "UH-60M"
+		type = transport_helicopter_3 #UH-60M 黑鹰
+		producer = USA
+		amount = 60
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "S-70C"
+		type = transport_helicopter_1 #S-70C 海鹰
+		producer = USA
+		amount = 20
+	}
+
+	### 飞机 ###
+	add_equipment_to_stockpile = {
+		variant_name = "F-5E Chung Cheng"
+		type = small_plane_airframe_1 #F-5E/F 虎式
+		producer = USA
+		amount = 87
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "F-16A/B Block 20"
+		type = small_plane_strike_airframe_2 #F-16A/B Block 20
+		producer = USA
+		amount = 145
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Mirage 2000-5EI"
+		type = small_plane_airframe_2 #幻象 2000-5
+		producer = FRA
+		amount = 56
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "F-CK-1 Ching-kuo"
+		type = small_plane_strike_airframe_2 #F-CK-1 经国号
+		producer = TAI
 		amount = 128
 	}
 	add_equipment_to_stockpile = {
-		type = attack_helicopter2 #OH-58D Kiowa Warrior
-		amount = 38
+		variant_name = "C-130H Hercules"
+		type = large_plane_air_transport_airframe_1 #C-130H 大力神
 		producer = USA
-		#version_name = "OH-58D Kiowa Warrior"
-	}
-	add_equipment_to_stockpile = {
-		type = transport_helicopter2 #Boeing CH-47D Chinook
-		amount = 8
-		producer = USA
-		#version_name = "Boeing CH-47D Chinook"
-	}
-	add_equipment_to_stockpile = {
-		type = transport_helicopter2 #Sikorsky UH-60 Black Hawk
-		amount = 8
-		producer = USA
-	}
-	add_equipment_to_stockpile = {
-		type = transport_plane3 #C-130J Super Hercules
 		amount = 20
+	}
+
+	### 车辆 ###
+	add_equipment_to_stockpile = {
+		variant_name = "HMMWV"
+		type = util_vehicle_2 #悍马
+		producer = TAI
+		amount = 3600
+	}
+
+	### Sealed Storage 封存 ###
+	add_equipment_to_stockpile = {
+		variant_name = "M41A3"
+		type = medium_tank_destroyer_chassis_0 #M41A3（封存）
 		producer = USA
+		amount = 100
+	}
+	# Generation upgrade (2017 stock)
+	add_equipment_to_stockpile = {
+		type = Anti_tank_2
+		amount = 0
+		producer = TAI
 	}
 	add_equipment_to_stockpile = {
-		type = transport_helicopter1 #Aérospatiale SA-330 Puma
-		amount = 3
-		producer = FRA
-	}
-	add_equipment_to_stockpile = {
-		type = transport_helicopter2 #Sikorsky UH-60 Black Hawk
-		amount = 16
-		producer = USA
+		type = util_vehicle_3
+		amount = 0
+		producer = TAI
 	}
 }

@@ -1,0 +1,497 @@
+division_template = {
+	name = "Motastralkovaya Brigada"				#Motorised Rifle Brigade
+
+	regiments = {
+		Arm_Inf_Bat = { x = 0 y = 0 }
+		Arm_Inf_Bat = { x = 0 y = 1 }
+		Mech_Inf_Bat = { x = 0 y = 2 }
+		armor_Bat = { x = 1 y = 0 }
+		SP_Arty_Bat = { x = 1 y = 1 }
+	}
+
+	support = {
+		Arm_Recce_Comp = { x = 0 y = 0 }
+		L_Engi_Comp = { x = 0 y = 1 }
+		SP_Arty_Battery = { x = 0 y = 2 }
+	}
+}
+
+division_template = {
+	name = "Asobny Mekhanizavany Batalyon"				#Motorised Rifle Batallion
+
+	regiments = {
+		Arm_Inf_Bat = { x = 0 y = 0 }
+	}
+}
+
+division_template = {
+	name = "Mabilnaya Brigada"					#Mobile Brigade
+
+	regiments = {
+		Arm_Air_Inf_Bat = { x = 0 y = 0 }
+		Arm_Air_Inf_Bat = { x = 0 y = 1 }
+		Mech_Air_Inf_Bat = { x = 0 y = 2 }
+	}
+
+	support = {
+		Arty_Battery = { x = 0 y = 0 }
+		L_Engi_Comp = { x = 0 y = 1 }
+	}
+}
+
+division_template = {
+	name = "Brigada Spetsnaza"					#Spetsnaz Brigade
+
+	regiments = {
+		Special_Forces = { x = 0 y = 0 }
+		Special_Forces = { x = 0 y = 1 }
+		Special_Forces = { x = 0 y = 2 }
+	}
+
+	priority = 2
+}
+
+units = {
+	division = {
+		name = "120-ya Ragachouskaya Asobnaya Mekhanizavanaya Brigada"
+		location = 11370		#Minsk
+		division_template = "Motastralkovaya Brigada"
+		start_experience_factor = 0.4
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "6-ya Kiyeuska-Berlinskaya Asobnaya Mekhanizavanaya Brigada"
+		location = 3393			#Grodno
+		division_template = "Motastralkovaya Brigada"
+		start_experience_factor = 0.4
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "11-ya Asobnaya Mekhanizavanaya Brigada"
+		location = 6359			#Slonim
+		division_template = "Motastralkovaya Brigada"
+		start_experience_factor = 0.4
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "38-ya Asobnaya Mabilnaya Brigada"
+		location = 3392		#Brest
+		division_template = "Mabilnaya Brigada"
+		start_experience_factor = 0.4
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "103-ya Asobnaya Mabilnaya Brigada"
+		location = 6371		#Polotsk
+		division_template = "Mabilnaya Brigada"
+		start_experience_factor = 0.4
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "5-ya Brigada Spetsnaza"
+		location = 11370		#Maryina Horka
+		division_template = "Brigada Spetsnaza"
+		start_experience_factor = 0.7
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "19-ya Asobny Mekhanizavany Batalyon"
+		location = 3331		#Zaslonova
+		division_template = "Asobny Mekhanizavany Batalyon"
+		start_experience_factor = 0.4
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "37-ya Asobny Mekhanizavany Batalyon"
+		location = 3293		#
+		division_template = "Asobny Mekhanizavany Batalyon"
+		start_experience_factor = 0.4
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "50-ya Asobny Mekhanizavany Batalyon"
+		location = 9304		#Baranovichi
+		division_template = "Asobny Mekhanizavany Batalyon"
+		start_experience_factor = 0.4
+		start_equipment_factor = 0.01
+	}
+}
+
+instant_effect = {
+	add_equipment_to_stockpile = {
+		variant_name = "L-39"
+		type = small_plane_strike_airframe_1		#L-39
+		amount = 10
+		producer = CZE
+	}
+
+	add_equipment_to_stockpile = {
+		type = medium_tank_chassis_1
+		variant_name = "T-72B"
+		amount = 446
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		type = medium_tank_chassis_1
+		variant_name = "T-80"
+		amount = 69
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BMP-2"
+		type = medium_tank_flame_chassis_1			#BMP-2
+		amount = 875
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BMP-1"
+		type = medium_tank_flame_chassis_0			#BMP-1
+		amount = 136
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		type = medium_tank_flame_chassis_0
+		amount = 100
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BTR-80"
+		type = medium_tank_amphibious_chassis_1			#BTR-80
+		amount = 153
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BTR-70"
+		type = medium_tank_amphibious_chassis_1			#BTR-70
+		amount = 39
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "MT-LB"
+		type = medium_tank_amphibious_chassis_0			#MT-LB
+		amount = 72
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BM-30 Smerch"
+		type = medium_tank_rocket_chassis_1	#BM-30 Smerch
+		#version_name = "BM-30 Smerch"
+		amount = 36
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BM-21 Grad"
+		type = medium_tank_rocket_chassis_0	#BM-21 Grad
+		amount = 126
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BM-27 Uragan"
+		type = medium_tank_rocket_chassis_1	#BM-27 Uragan
+		amount = 72
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Polonez"
+		type = medium_tank_rocket_chassis_2	#Polonez
+		amount = 4
+		producer = BLR
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "2S19 Msta"
+		type = medium_tank_artillery_chassis_1		#2S19 Msta
+		amount = 12
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "2S3 Akatsiya"
+		type = medium_tank_artillery_chassis_1		#2S3 Akatsiya
+		amount = 108
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "2S1 Gvozdika"
+		type = medium_tank_artillery_chassis_0		#2S1 Gvozdika
+		#version_name = "2S1 Gvozdika"
+		amount = 198
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "2S5 Giatsint-S"
+		type = medium_tank_artillery_chassis_1		#2S5 Giatsint-S
+		#version_name = "2S5 Giatsint-S"
+		amount = 116
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "2S9 Nona"
+		type = medium_tank_artillery_chassis_0		#2S9 Nona
+		#version_name = "2S9 Nona"
+		amount = 48
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Various Soviet artillery pieces"
+		type = artillery_1	#Various Soviet artillery pieces
+		amount = 228
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Tunguska"
+		type = medium_tank_aa_chassis_2		#Tunguska
+		amount = 40
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "SA-8 Osa"
+		type = medium_tank_aa_chassis_0		#SA-8 Osa
+		amount = 350
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "SA-13 Strela 10"
+		type = medium_tank_aa_chassis_1		#SA-13 Strela 10
+		#version_name = "9K35 Strela-10"
+		amount = 40
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "SA-15 Tor"
+		type = medium_tank_aa_chassis_1		#SA-15 Tor
+		#version_name = "SA-15 Tor-M"
+		amount = 8
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		type = cnc_equipment_1
+		amount = 600
+		producer = BLR
+	}
+
+	add_equipment_to_stockpile = {
+		type = Anti_Air_0
+		amount = 200
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		type = Anti_tank_1
+		amount = 300
+		producer = SOV
+	}
+
+
+	add_equipment_to_stockpile = {
+		type = Heavy_Anti_tank_1
+		amount = 50
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		type = infantry_weapons_1
+		amount = 5000
+		producer = SOV
+	}
+
+	#Aircraft
+	add_equipment_to_stockpile = {
+		variant_name = "MiG-29"
+		type = small_plane_airframe_2		#MiG-29
+		amount = 37
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Su-25"
+		type = small_plane_cas_airframe_2				#Su-25
+		amount = 68
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Mi-24"
+		type = attack_helicopter_1		#Mi-24
+		amount = 20
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Mi-8"
+		type = transport_helicopter_1		#Mi-8
+		amount = 25
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Mi-26"
+		type = transport_helicopter_2		#Mi-26
+		amount = 5
+		producer = SOV
+	}
+
+
+	### Sealed Storage 封存 ###
+	add_equipment_to_stockpile = {
+		variant_name = "Mi-24"
+		type = attack_helicopter_1 #Mi-24（封存）
+		producer = SOV
+		amount = 8
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Mi-8"
+		type = transport_helicopter_1 #Mi-8（封存）
+		producer = SOV
+		amount = 10
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "L-39"
+		type = small_plane_strike_airframe_1 #L-39（封存）
+		producer = CZE
+		amount = 5
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "T-72B"
+		type = medium_tank_chassis_1 #T-72B（封存）
+		producer = SOV
+		amount = 178
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "T-80"
+		type = medium_tank_chassis_1 #T-80（封存）
+		producer = SOV
+		amount = 27
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "BMP-2"
+		type = medium_tank_flame_chassis_1 #BMP-2（封存）
+		producer = SOV
+		amount = 300
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "BMP-1"
+		type = medium_tank_flame_chassis_0 #BMP-1（封存）
+		producer = SOV
+		amount = 54
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "BTR-80"
+		type = medium_tank_amphibious_chassis_1 #BTR-80（封存）
+		producer = SOV
+		amount = 61
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "BTR-70"
+		type = medium_tank_amphibious_chassis_1 #BTR-70（封存）
+		producer = SOV
+		amount = 15
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "MT-LB"
+		type = medium_tank_amphibious_chassis_0 #MT-LB（封存）
+		producer = SOV
+		amount = 28
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "BM-30 Smerch"
+		type = medium_tank_rocket_chassis_1 #BM-30 Smerch（封存）
+		producer = SOV
+		amount = 14
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "BM-21 Grad"
+		type = medium_tank_rocket_chassis_0 #BM-21 Grad（封存）
+		producer = SOV
+		amount = 50
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "BM-27 Uragan"
+		type = medium_tank_rocket_chassis_1 #BM-27 Uragan（封存）
+		producer = SOV
+		amount = 28
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "2S19 Msta"
+		type = medium_tank_artillery_chassis_1 #2S19 Msta（封存）
+		producer = SOV
+		amount = 5
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "2S3 Akatsiya"
+		type = medium_tank_artillery_chassis_1 #2S3 Akatsiya（封存）
+		producer = SOV
+		amount = 43
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "2S1 Gvozdika"
+		type = medium_tank_artillery_chassis_0 #2S1 Gvozdika（封存）
+		producer = SOV
+		amount = 79
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "2S5 Giatsint-S"
+		type = medium_tank_artillery_chassis_1 #2S5 Giatsint-S（封存）
+		producer = SOV
+		amount = 46
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "2S9 Nona"
+		type = medium_tank_artillery_chassis_0 #2S9 Nona（封存）
+		producer = SOV
+		amount = 19
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "SA-8 Osa"
+		type = medium_tank_aa_chassis_0 #SA-8 Osa（封存）
+		producer = SOV
+		amount = 140
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "SA-13 Strela 10"
+		type = medium_tank_aa_chassis_1 #SA-13 Strela 10（封存）
+		producer = SOV
+		amount = 16
+	}
+	# Orphan variant attachment (2017 real-world holdings)
+	add_equipment_to_stockpile = {
+		type = medium_tank_rocket_chassis_0
+		variant_name = "BM-21 BelGrad"
+		amount = 50
+		producer = BLR
+	}
+	add_equipment_to_stockpile = {
+		type = medium_tank_rocket_chassis_1
+		variant_name = "B-200 芦Polonez禄"
+		amount = 10
+		producer = BLR
+	}
+}

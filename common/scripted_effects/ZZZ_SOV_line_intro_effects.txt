@@ -1,0 +1,55 @@
+ZZZ_SOV_switch_to_soviet_line_intros = {
+	if = {
+		limit = {
+			NOT = { has_country_flag = ZZZ_SOV_soviet_intros_active }
+		}
+		remove_dynamic_modifier = { modifier = SOV_landforce_modifier }
+		remove_dynamic_modifier = { modifier = SOV_navy_modifier }
+		remove_dynamic_modifier = { modifier = SOV_airforce_modifier }
+		remove_dynamic_modifier = { modifier = SOV_intelligence_modifier }
+		add_dynamic_modifier = { modifier = SOV_soviet_army_modifier }
+		add_dynamic_modifier = { modifier = SOV_soviet_navy_modifier }
+		add_dynamic_modifier = { modifier = SOV_soviet_air_modifier }
+		add_dynamic_modifier = { modifier = SOV_soviet_security_modifier }
+		set_country_flag = ZZZ_SOV_soviet_intros_active
+		clr_country_flag = ZZZ_SOV_russia_intros_active
+	}
+}
+
+ZZZ_SOV_switch_to_russia_line_intros = {
+	if = {
+		limit = {
+			has_country_flag = ZZZ_SOV_soviet_intros_active
+		}
+		remove_dynamic_modifier = { modifier = SOV_soviet_army_modifier }
+		remove_dynamic_modifier = { modifier = SOV_soviet_navy_modifier }
+		remove_dynamic_modifier = { modifier = SOV_soviet_air_modifier }
+		remove_dynamic_modifier = { modifier = SOV_soviet_security_modifier }
+		add_dynamic_modifier = { modifier = SOV_landforce_modifier }
+		add_dynamic_modifier = { modifier = SOV_navy_modifier }
+		add_dynamic_modifier = { modifier = SOV_airforce_modifier }
+		add_dynamic_modifier = { modifier = SOV_intelligence_modifier }
+		set_country_flag = ZZZ_SOV_russia_intros_active
+		clr_country_flag = ZZZ_SOV_soviet_intros_active
+	}
+}
+
+ZZZ_SOV_check_soviet_line_intros = {
+	if = {
+		limit = {
+			OR = {
+				has_cosmetic_tag = SOV_stalinist
+				has_cosmetic_tag = SOV_socialist_republic
+				has_cosmetic_tag = SOV_red_empire
+				has_cosmetic_tag = SOV_udaltsov_ussr
+			}
+		}
+		ZZZ_SOV_switch_to_soviet_line_intros = yes
+	}
+	else_if = {
+		limit = {
+			has_country_flag = ZZZ_SOV_soviet_intros_active
+		}
+		ZZZ_SOV_switch_to_russia_line_intros = yes
+	}
+}

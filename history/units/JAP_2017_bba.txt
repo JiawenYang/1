@@ -1,0 +1,472 @@
+instant_effect = {
+	#JASDF/JMSDF aircraft inventory (total = deployed + reserve)
+	#F-15J total 200, F-4EJ Kai total 55, F-2 total 91, P-3C total 40, P-1 total 10
+	add_equipment_to_stockpile = {
+		variant_name = "F-15J-MSIP Eagle"
+		type = medium_plane_fighter_airframe_2
+		amount = 32
+		producer = JAP
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "F-4EJ Kai Phantom"
+		type = medium_plane_fighter_airframe_1
+		amount = 7
+		producer = JAP
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "F-2 Viper Zero"
+		type = small_plane_strike_airframe_2
+		amount = 19
+		producer = JAP
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "P-3C Orion"
+		type = large_plane_maritime_patrol_airframe_1
+		amount = 4
+		producer = JAP
+	}
+}
+
+air_wings = {
+	617 = { #Chitose Air Base
+	#2nd Air Wing
+		medium_plane_fighter_airframe_2 = { owner = "JAP" amount = 24 version_name = "F-15J-MSIP Eagle" }
+		name = "201st Tactical Fighter Squadron"
+		start_experience_factor = 0.6
+		medium_plane_fighter_airframe_2 = { owner = "JAP" amount = 24 version_name = "F-15J-MSIP Eagle" }
+		name = "203rd Tactical Fighter Squadron"
+		start_experience_factor = 0.6
+		small_plane_strike_airframe_2 = { owner = "JAP" amount = 24 version_name = "F-2 Viper Zero" }
+		name = "8th Tactical Fighter Squadron"
+		start_experience_factor = 0.55
+	}
+	615 = { #Tsuiki Air Base
+	#8th Air Wing
+		medium_plane_fighter_airframe_2 = { owner = "JAP" amount = 24 version_name = "F-15J-MSIP Eagle" }
+		name = "204th Tactical Fighter Squadron"
+		start_experience_factor = 0.6
+		medium_plane_fighter_airframe_2 = { owner = "JAP" amount = 24 version_name = "F-15J-MSIP Eagle" }
+		name = "305th Tactical Fighter Squadron"
+		start_experience_factor = 0.6
+		large_plane_awacs_airframe_2 = { owner = "JAP" creator = "USA" amount = 4 version_name = "E-3 Sentry" }
+		name = "602nd Airborne Early Warning Squadron"
+		start_experience_factor = 0.6
+		large_plane_maritime_patrol_airframe_1 = { owner = "JAP" amount = 14 version_name = "P-3C Orion" }
+		name = "Fleet Air Wing 4"
+		start_experience_factor = 0.5
+	}
+	613 = { #Komatsu Air Base
+	#6th Air Wing
+		medium_plane_fighter_airframe_2 = { owner = "JAP" amount = 24 version_name = "F-15J-MSIP Eagle" }
+		name = "303rd Tactical Fighter Squadron"
+		start_experience_factor = 0.6
+		medium_plane_fighter_airframe_2 = { owner = "JAP" amount = 24 version_name = "F-15J-MSIP Eagle" }
+		name = "306th Tactical Fighter Squadron"
+		start_experience_factor = 0.6
+	}
+	609 = { #Tsuiki Air Base
+	#3rd Air Wing
+		medium_plane_fighter_airframe_2 = { owner = "JAP" amount = 24 version_name = "F-15J-MSIP Eagle" }
+		name = "304th Tactical Fighter Squadron"
+		start_experience_factor = 0.6
+		small_plane_strike_airframe_2 = { owner = "JAP" amount = 24 version_name = "F-2 Viper Zero" }
+		name = "6th Tactical Fighter Squadron"
+		start_experience_factor = 0.55
+	}
+	618 = { #Hyakuri Air Base
+	#7th Air Wing
+		medium_plane_fighter_airframe_1 = { owner = "JAP" amount = 24 version_name = "F-4EJ Kai Phantom" }
+		name = "301st Tactical Fighter Squadron"
+		start_experience_factor = 0.5
+		medium_plane_fighter_airframe_1 = { owner = "JAP" amount = 24 version_name = "F-4EJ Kai Phantom" }
+		name = "302nd Tactical Fighter Squadron"
+		start_experience_factor = 0.5
+		cv_medium_plane_scout_airframe_2 = { owner = "JAP" creator = "USA" amount = 7 version_name = "E-2 Hawkeye" }
+		name = "603rd Airborne Early Warning Squadron"
+		start_experience_factor = 0.55
+	}
+	616 = { #Misawa Air Base
+	#3rd Air Wing detachment
+		cv_medium_plane_scout_airframe_2 = { owner = "JAP" creator = "USA" amount = 7 version_name = "E-2 Hawkeye" }
+		name = "601st Airborne Early Warning Squadron"
+		start_experience_factor = 0.55
+		large_plane_maritime_patrol_airframe_1 = { owner = "JAP" amount = 10 version_name = "P-3C Orion" }
+		name = "Fleet Air Wing 2"
+		start_experience_factor = 0.5
+		small_plane_strike_airframe_2 = { owner = "JAP" amount = 24 version_name = "F-2 Viper Zero" }
+		name = "3rd Tactical Fighter Squadron"
+		start_experience_factor = 0.55
+		small_plane_strike_airframe_3 = { owner = "JAP" creator = "USA" amount = 6 version_name = "F-35A Lightning II" }
+		name = "302nd Tactical Fighter Squadron"
+		start_experience_factor = 0.55
+	}
+	611 = { #Atsugi Naval Air Facility
+	#Fleet Air Wing 31
+		large_plane_maritime_patrol_airframe_1 = { owner = "JAP" amount = 12 version_name = "P-3C Orion" }
+		name = "Fleet Air Wing 31"
+		start_experience_factor = 0.5
+		large_plane_maritime_patrol_airframe_1 = { owner = "JAP" amount = 10 version_name = "Kawasaki P-1" }
+		name = "Fleet Air Wing 31 P-1 Flight"
+		start_experience_factor = 0.55
+	}
+	612 = { #Gifu Air Field
+	#1st Tactical Airlift Wing
+		large_plane_air_transport_airframe_1 = { owner = "JAP" creator = "USA" amount = 8 version_name = "C-130 Hercules" }
+		name = "401st Tactical Airlift Squadron"
+		start_experience_factor = 0.5
+		large_plane_air_transport_airframe_1 = { owner = "JAP" creator = "USA" amount = 7 version_name = "C-130 Hercules" }
+		name = "402nd Tactical Airlift Squadron"
+		start_experience_factor = 0.5
+		large_plane_air_transport_airframe_1 = { owner = "JAP" creator = "USA" amount = 4 version_name = "C-130 Hercules" }
+		name = "403rd Tactical Airlift Squadron (C-130R)"
+		start_experience_factor = 0.45
+		large_plane_air_transport_airframe_2 = { owner = "JAP" amount = 3 version_name = "Kawasaki C-2" }
+		name = "403rd Tactical Airlift Squadron (C-2)"
+		start_experience_factor = 0.55
+		large_plane_air_transport_airframe_2 = { owner = "JAP" amount = 4 version_name = "KC-767J" }
+		name = "404th Tactical Airlift Tanker Squadron"
+		start_experience_factor = 0.55
+	}
+}
+
+instant_effect = {
+
+	### Sealed Storage（封存）###
+
+	#封存坦克
+	add_equipment_to_stockpile = {
+		variant_name = "Type 90"
+		type = medium_tank_chassis_1 #Type 74（封存）
+		producer = JAP
+		amount = 80
+	}
+
+	#封存装甲车
+	add_equipment_to_stockpile = {
+		variant_name = "Type 60"
+		type = medium_tank_amphibious_chassis_1 #Type 60（封存）
+		producer = JAP
+		amount = 60
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Type 89"
+		type = medium_tank_flame_chassis_1 #Type 89（封存）
+		producer = JAP
+		amount = 60
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Type 73"
+		type = medium_tank_amphibious_chassis_1 #Type 73装甲车（封存）
+		producer = JAP
+		amount = 100
+	}
+
+	#封存侦察车
+	add_equipment_to_stockpile = {
+		variant_name = "Type 87"
+		type = medium_tank_destroyer_chassis_1 #Type 87侦察车（封存）
+		producer = JAP
+		amount = 40
+	}
+
+	#封存牵引火炮
+	add_equipment_to_stockpile = {
+		variant_name = "FH-70"
+		type = artillery_1 #FH-70（封存）
+		producer = ENG
+		amount = 60
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "各型迫击炮"
+		type = artillery_1 #各型迫击炮（封存）
+		producer = JAP
+		amount = 200
+	}
+
+	#封存自行火炮
+	add_equipment_to_stockpile = {
+		variant_name = "M110A2"
+		type = medium_tank_artillery_chassis_0 #Type 74 105自行炮（封存）
+		producer = JAP
+		amount = 40
+	}
+
+	#封存火箭炮
+	add_equipment_to_stockpile = {
+		variant_name = "Type 75"
+		type = medium_tank_rocket_chassis_0 #Type 75火箭炮（封存）
+		producer = JAP
+		amount = 30
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "M270"
+		type = medium_tank_rocket_chassis_1 #Type 75火箭炮（封存追加）
+		producer = JAP
+		amount = 15
+	}
+
+	#封存自行防空炮
+	add_equipment_to_stockpile = {
+		variant_name = "Type 87 SPAAG"
+		type = medium_tank_aa_chassis_0 #Type 60自行高炮（封存）
+		producer = JAP
+		amount = 30
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Type 93"
+		type = medium_tank_aa_chassis_1 #Type 87自行高炮（封存）
+		producer = JAP
+		amount = 30
+	}
+
+	#封存反坦克导弹
+	add_equipment_to_stockpile = {
+		variant_name = "64式马特反坦克导弹"
+		type = Anti_tank_1 #64式马特反坦克导弹（封存）
+		producer = JAP
+		amount = 120
+	}
+
+	#封存卡车
+	add_equipment_to_stockpile = {
+		variant_name = "老型卡车"
+		type = util_vehicle_2 #老型卡车（封存）
+		producer = JAP
+		amount = 800
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Type 89 Rifle"
+		type = infantry_weapons_4 #Type 89 Rifle (Howa Type 89, 5.56mm)
+		producer = JAP
+		amount = 140000
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Type 64"
+		type = infantry_weapons_2 #Type 64（封存）
+		producer = JAP
+		amount = 40000
+	}
+	add_equipment_to_stockpile = {
+		type = cnc_equipment_5
+		producer = JAP
+		amount = 1200
+	}
+	add_equipment_to_stockpile = {
+		type = Anti_tank_2
+		producer = JAP
+		amount = 640
+	}
+	add_equipment_to_stockpile = {
+		type = Heavy_Anti_tank_2
+		amount = 250
+		producer = JAP
+	}
+	add_equipment_to_stockpile = {
+		type = Anti_Air_1
+		producer = JAP
+		amount = 472
+	}
+
+	add_equipment_to_stockpile = {
+		type = medium_tank_chassis_2
+		variant_name = "Type 10"
+		producer = JAP
+		amount = 53
+	}
+	add_equipment_to_stockpile = {
+		type = medium_tank_chassis_0
+		variant_name = "Type 74G"
+		producer = JAP
+		amount = 293
+	}
+	add_equipment_to_stockpile = {
+		type = medium_tank_chassis_1
+		variant_name = "Type 90"
+		producer = JAP
+		amount = 341
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Type 87"
+		type = medium_tank_destroyer_chassis_1
+		producer = JAP
+		amount = 162
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Type 89"
+		type = medium_tank_flame_chassis_1
+		producer = JAP
+		amount = 68
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Type 16 MCV"
+		type = medium_tank_destroyer_chassis_2 #Type 16 MCV（2016年首批16辆）
+		producer = JAP
+		amount = 16
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Type 73"
+		type = medium_tank_amphibious_chassis_1
+		producer = JAP
+		amount = 226
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Type 82"
+		type = medium_tank_amphibious_chassis_1
+		producer = JAP
+		amount = 205
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Type 96"
+		type = medium_tank_amphibious_chassis_2
+		producer = JAP
+		amount = 357
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Bushmaster"
+		type = util_vehicle_5 #Bushmaster
+		amount = 4
+		producer = AST
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Komatsu LAV"
+		type = util_vehicle_5 #Komatsu LAV
+		producer = JAP
+		amount = 1800
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Toyota HMV"
+		type = util_vehicle_4 #Toyota HMV
+		producer = JAP
+		amount = 400
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Type 99"
+		type = medium_tank_artillery_chassis_2
+		producer = JAP
+		amount = 99
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "M110A2"
+		type = medium_tank_artillery_chassis_0
+		producer = USA
+		amount = 67
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "FH-70"
+		type = artillery_1 #FH-70
+		amount = 422
+		producer = ENG
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "M270"
+		type = medium_tank_rocket_chassis_1
+		amount = 99
+		producer = USA
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "AH-1S Cobra"
+		type = heavy_tank_chassis_0
+		producer = USA
+		amount = 60
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "AH-64DJP Apache"
+		type = heavy_tank_chassis_2
+		producer = USA
+		amount = 11
+	}
+	add_equipment_to_stockpile = {
+		type = heavy_tank_chassis_1
+		variant_name = "OH-1 Ninja"
+		producer = JAP
+		amount = 37
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Type 03 Chu-SAM"
+		type = medium_tank_aa_chassis_2
+		producer = JAP
+		amount = 40
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Type 93"
+		type = medium_tank_aa_chassis_1
+		producer = JAP
+		amount = 96
+	}
+	add_equipment_to_stockpile = {
+		type = medium_tank_aa_chassis_1
+		variant_name = "Type 81"
+		producer = JAP
+		amount = 47
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Type 87 SPAAG"
+		type = medium_tank_aa_chassis_0
+		amount = 126
+		producer = JAP
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "UH-1H Huey"
+		type = transport_helicopter_1 #CH-47
+		#version_name = "Boeing CH-47 Chinook"
+		amount = 27
+		producer = USA
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "UH-1H Huey"
+		type = transport_helicopter_1 #UH-1
+		amount = 50
+		producer = USA
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Eurocopter AS332 Super Puma"
+		type = transport_helicopter_1 #Eurocopter AS332 Super Puma
+		#version_name = "Eurocopter AS332 Super Puma"
+		amount = 3
+		producer = FRA
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "MH-60L Black Hawk"
+		type = transport_helicopter_2 #Blackhawk
+		amount = 36
+		producer = USA
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "MH-60L Black Hawk"
+		type = transport_helicopter_2 #CH-47D
+		#version_name = "Boeing CH-47D Chinook"
+		amount = 27
+		producer = USA
+	}
+	# SAM missile equipment (Gotterdammerung DLC)
+	if = {
+		limit = { has_dlc = "Gotterdammerung" }
+		add_equipment_to_stockpile = {
+			type = sam_missile_equipment_1
+			amount = 0
+			producer = JAP
+		}
+		add_equipment_to_stockpile = {
+			type = sam_missile_equipment_2
+			amount = 0
+			producer = JAP
+		}
+		add_equipment_to_stockpile = {
+			type = sam_missile_equipment_3
+			amount = 0
+			producer = JAP
+		}
+		add_equipment_to_stockpile = {
+			type = sam_missile_equipment_4
+			amount = 100
+			producer = JAP
+		}
+	}
+}
