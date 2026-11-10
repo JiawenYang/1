@@ -52,7 +52,7 @@ news_event = {
 		hidden_effect = {
 			ARK = {
 				create_country_leader = {
-					name = "Aung San Suu Kyi"
+					name = BRM_aung_san_suu_kyi
 					picture = "aung_san_suu_kyi.dds"
 					ideology = Neutral_Libertarian
 					traits = {
@@ -231,5 +231,74 @@ news_event = {
 				scoped_play_song = "one_minute_of_silence"
 			}
 		}
+	}
+}
+
+#乌克兰 2024 年大选 · 泽连斯基连任（搬运自 TFR ukraine.13 依赖；原图片未在本工程定义，改用 GFX_2021_Russian_Election）
+news_event = {
+	id = news.313
+	title = news.313.t
+	desc = news.313.d
+	picture = GFX_2021_Russian_Election
+	is_triggered_only = yes
+	major = yes
+	trigger = {
+	}
+	option = {
+		name = news.313.a
+		trigger = {
+			original_tag = SOV
+		}
+	}
+	option = {
+		name = news.313.b
+		trigger = {
+			NOT = {
+				original_tag = SOV
+			}
+		}
+	}
+}
+
+#乌克兰 2024 年大选 · 波罗申科回归（搬运自 TFR ukraine.13 依赖；原图片未在本工程定义，改用 GFX_2021_Russian_Election）
+news_event = {
+	id = news.314
+	title = news.314.t
+	desc = news.314.d
+	picture = GFX_2021_Russian_Election
+	is_triggered_only = yes
+	major = yes
+	trigger = {
+	}
+	option = {
+		name = news.314.a
+		trigger = {
+			original_tag = SOV
+		}
+	}
+	option = {
+		name = news.314.b
+		trigger = {
+			NOT = {
+				original_tag = SOV
+			}
+		}
+	}
+}
+
+# 印度退出上合：印巴战争爆发当日（由 ZZZ_sco_india_exit 触发，同一退出动作只弹一次）
+# 配图复用基座印巴战争新闻图 GFX_India_Pakistan_War（TFR_events_PAK.txt 的 PAK.7 / PAK.13 已在用）
+news_event = {
+	id = news.426
+	title = news.426.t
+	desc = news.426.d
+	picture = GFX_India_Pakistan_War
+	is_triggered_only = yes
+	fire_only_once = yes
+	major = yes
+	trigger = {
+	}
+	option = {
+		name = news.426.a
 	}
 }

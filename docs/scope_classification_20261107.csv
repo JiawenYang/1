@@ -1,0 +1,12 @@
+﻿类别,判定规则,证据,数量,处理
+事件 events,descriptor 内 replace_path=events 后基座事件目录不加载；工程为全量自研,工程 68 个 txt / 基座 191 个 txt,68 文件,全量跳过（我方重写）
+国策 common/national_focus,replace_path=common/national_focus,工程 60 / 基座 114,60 文件,全量跳过
+决议 common/decisions,replace_path=common/decisions,工程 82 / 基座 256,82 文件,全量跳过
+决议分类 common/decisions/categories,replace_path=common/decisions/categories,工程 38 / 基座 119,38 文件,全量跳过
+AI 战略 common/ai_strategy_plans,replace_path=common/ai_strategy_plans,工程 2 / 基座 40,2 文件,全量跳过
+国家历史 history/countries,同名同路径文件覆盖基座；无同名者沿用基座,工程 448 / 基座 393,P1-B 已处理 78 个基座文件,已改（领袖名键化）
+人物 common/characters,同名文件覆盖；未覆盖者沿用基座,工程 167 / 基座 305,工程 1009 字面行 + 基座未覆盖 773 字面行,待 P1 续做
+本地化-国名键（英文与基座逐字符一致）,英文源＝基座，属沿用原千禧,9,076 条 BASE + 2 条 SAME,9,078 条,已改（本次 1,570 条）
+本地化-国名键（英文值被改写）,英文源与基座不同，属我方重写,17 条,17 条,跳过
+本地化-国名键（仅工程存在）,基座无此键，属自研,170 条,170 条,跳过
+本地化-键 ID 前缀 zzz_/ZZZ_,自建段命名,ZZZ_zh_* 系列文件,若干,跳过

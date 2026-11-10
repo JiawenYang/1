@@ -163,7 +163,7 @@
 			add_tech_bonus = {
 				bonus = 0.15
 				uses = 1
-				category = CAT_infantry_wep
+				category = CAT_infantry_weapons
 			}
 			add_tech_bonus = {
 				bonus = 0.25
@@ -173,7 +173,7 @@
 			add_doctrine_cost_reduction = {
 				cost_reduction = 0.25
 				uses = 2
-				category = CAT_land_doctrine
+				category = land_doctrine
 			}
 		}
 	}
@@ -511,13 +511,10 @@
 	shared_focus = {
 		id = CHI_unite_the_island
 		icon = {
-		trigger = {
-			western_liberals_are_in_power = yes
-		}
-		value = GFX_focus_CHI_unite_the_island_dpp
-		}
-		icon = {
-			value = GFX_focus_CHI_unite_the_island
+			GFX_focus_CHI_unite_the_island_dpp = {
+				western_liberals_are_in_power = yes
+			}
+			GFX_focus_CHI_unite_the_island = yes
 		}
 		x = 2
 		y = 1
@@ -550,7 +547,7 @@
 				}
 			}
 			add_equipment_to_stockpile = {
-				type = infantry_weapons2
+				type = Inf_equipment
 				amount = 1250
 				producer = TAI
 			}
@@ -640,7 +637,6 @@
 			USA = {
 				send_equipment = {
 					type = small_plane_strike_airframe_2
-					variant_name = "F-16A Blk 20"
 					amount = 30
 					target = TAI
 				}
@@ -649,7 +645,7 @@
 			add_doctrine_cost_reduction = {
 				cost_reduction = 0.25
 				uses = 1
-				category = CAT_air_doctrine
+				category = air_doctrine
 			}
 		}
 	}

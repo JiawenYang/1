@@ -1,4 +1,4 @@
-﻿PRC_taiwan_war_cat = {
+PRC_taiwan_war_cat = {
 	PRC_operation_crimson_sky = {
 		icon = GFX_PRC_crimson_sky
 		allowed = {
@@ -416,7 +416,6 @@ PRC_national_peoples_congress_cat = {
 			every_country = {
 				limit = {
 					OR = {
-						tag = KNC
 						tag = SHN
 						tag = KAR
 						tag = ARK
@@ -482,7 +481,7 @@ PRC_foreign_policy_category = {
 			set_temp_variable = { percent_change = 2 }
 			set_temp_variable = { tag_index = CHI }
 			set_temp_variable = { influence_target = FROM }
-			change_influence_percentage = yes
+			if = { limit = { NOT = { has_global_flag = cml_md_influence_disabled } } change_influence_percentage = yes }
 			FROM = {
 				every_owned_state = {
 					add_building_construction = {
@@ -750,7 +749,6 @@ PRC_foreign_policy_category = {
 		}
 	}
 	PRC_invite_pakistan_to_eadi = {
-		#какой долбаеб это делал потом переделаю #ну как, какой... известно, какой -IAVL #переделал
 		available = {
 			PAK = {
 				OR = {
@@ -832,27 +830,27 @@ PRC_foreign_policy_category = {
 					}
 				}
 				add_equipment_to_stockpile = {
-					type = infantry_equipment_1
+					type = Inf_equipment
 					amount = 1500
 					producer = CHI
 				}
 				add_equipment_to_stockpile = {
-					type = anti_tank_equipment_1
+					type = L_AT_Equipment
 					amount = 300
 					producer = CHI
 				}
 				add_equipment_to_stockpile = {
-					type = anti_air_equipment_1
+					type = AA_Equipment
 					amount = 300
 					producer = CHI
 				}
 				add_equipment_to_stockpile = {
-					type = support_equipment
+					type = Inf_equipment
 					amount = 500
 					producer = CHI
 				}
 				add_equipment_to_stockpile = {
-					type = motorized_equipment
+					type = util_vehicle_equipment
 					amount = 500
 					producer = CHI
 				}
@@ -1015,7 +1013,7 @@ PRC_foreign_policy_category = {
 			}
 			modify_treasury_effect = yes
 			send_equipment = {
-				equipment = infantry_weapons
+				equipment = Inf_equipment
 				amount = 90600
 				target = BRM
 			}
@@ -1209,12 +1207,12 @@ PRC_foreign_policy_category = {
 		days_remove = 70
 		remove_effect = {
 			send_equipment = {
-				equipment = infantry_weapons
+				equipment = Inf_equipment
 				amount = 7500
 				target = NKO
 			}
 			send_equipment = {
-				equipment = command_control_equipment
+				equipment = cnc_equipment
 				amount = 750
 				target = NKO
 			}
@@ -1425,6 +1423,149 @@ PRC_foreign_policy_category = {
 			base = 100
 		}
 	}
+
+	PRC_balkan_federation_support = {
+		icon = GFX_decision_generic_form_nation
+		allowed = {
+			tag = CHI
+		}
+		visible = {
+			has_global_flag = USA_federal_paralysis_global
+			has_global_flag = balkan_withdraw_batch1_done
+			NOT = { has_global_flag = PRC_balkan_federation_supported }
+			NOT = { has_global_flag = balkan_federation_branch_failed }
+		}
+		available = {
+			has_global_flag = balkan_withdraw_batch2_done
+			NOT = { has_global_flag = PRC_balkan_federation_supported }
+			NOT = { has_global_flag = balkan_federation_branch_failed }
+		}
+		custom_cost_text = PRC_balkan_federation_support_cost_tt
+		custom_cost_trigger = {
+			has_political_power > 149
+			command_power > 59
+			NOT = { check_variable = { treasury < 12 } }
+		}
+		cost = 0
+		fire_only_once = yes
+		days_remove = 90
+		complete_effect = {
+			add_political_power = -150
+			add_command_power = -60
+			set_temp_variable = { treasury_change = -12 }
+			modify_treasury_effect = yes
+		}
+		remove_effect = {
+			add_ideas = PRC_balkan_federation_partnership
+			set_global_flag = PRC_balkan_federation_supported
+			BUL = { ZZZ_balkan_china_federation_invest_effect = yes }
+			ROM = { ZZZ_balkan_china_federation_invest_effect = yes }
+			GRE = { ZZZ_balkan_china_federation_invest_effect = yes }
+			ALB = { ZZZ_balkan_china_federation_invest_effect = yes }
+			CRO = { ZZZ_balkan_china_federation_invest_effect = yes }
+			SLV = { ZZZ_balkan_china_federation_invest_effect = yes }
+			MNT = { ZZZ_balkan_china_federation_invest_effect = yes }
+			#   common/decisions/categories/99_SER_decision_categories.txt:88
+			#   common/decisions/Serbia.txt:1331
+			#   common/autonomous_states/MD_serbian_autonomies.txt:116
+			if = {
+				limit = { country_exists = SER }
+				SER = {
+					add_political_power = 100
+				}
+				BUL = { set_country_flag = balkan_subject_agree }
+				ROM = { set_country_flag = balkan_subject_agree }
+				GRE = { set_country_flag = balkan_subject_agree }
+				ALB = { set_country_flag = balkan_subject_agree }
+				CRO = { set_country_flag = balkan_subject_agree }
+				SLV = { set_country_flag = balkan_subject_agree }
+				MNT = { set_country_flag = balkan_subject_agree }
+			}
+			country_event = { id = zzz_balkan.30 }
+		}
+		ai_will_do = {
+			base = 10
+			modifier = {
+				add = 40
+				has_global_flag = gaw_china_victory_settled
+			}
+			modifier = {
+				add = 20
+				has_global_flag = DSW_SOV_russian_victory
+			}
+			modifier = {
+				factor = 0
+				NOT = { check_variable = { treasury > 11 } }
+			}
+			modifier = {
+				factor = 0
+				command_power < 60
+			}
+			modifier = {
+				factor = 0
+				has_political_power < 150
+			}
+		}
+	}
+
+	PRC_balkan_war_on_turkey = {
+		icon = GFX_PRC_rocket_strike
+		allowed = {
+			tag = CHI
+		}
+		visible = {
+			has_global_flag = PRC_balkan_federation_supported
+			has_global_flag = gaw_china_victory_settled
+			has_global_flag = DSW_SOV_russian_victory
+			NOT = { has_global_flag = balkan_federation_branch_failed }
+		}
+		available = {
+			TUR = { has_country_flag = BALKAN_left_NATO }
+			NOT = { has_war_with = TUR }
+			NOT = { is_in_faction_with = TUR }
+			NOT = { has_global_flag = balkan_federation_branch_failed }
+		}
+		cost = 75
+		fire_only_once = yes
+		complete_effect = {
+			declare_war_on = {
+				target = TUR
+				type = annex_everything
+			}
+		}
+		ai_will_do = {
+			base = 10
+			modifier = {
+				add = 90
+				has_global_flag = PRC_balkan_federation_supported
+			}
+		}
+	}
+
+	PRC_balkan_federation_collapse = {
+		icon = GFX_decision_generic_form_nation
+		allowed = {
+			tag = CHI
+		}
+		visible = {
+			has_global_flag = PRC_balkan_federation_supported
+			OR = {
+				has_global_flag = DSW_SOV_russian_defeat
+				has_global_flag = nato_nato_won_nato_war
+			}
+		}
+		available = {
+			has_global_flag = PRC_balkan_federation_supported
+		}
+		cost = 0
+		fire_only_once = yes
+		complete_effect = {
+			ZZZ_balkan_federation_rollback_effect = yes
+		}
+		ai_will_do = {
+			base = 1000
+		}
+	}
 }
 
 PRC_balance_of_power_category = {
@@ -1559,7 +1700,11 @@ PRC_balance_of_power_category = {
 				var = PRC_approval_rating_trigger_temp
 				value = 0.75
 			}
-			PRC_has_approval_rating_greater_than_or_equals = yes
+			check_variable = {
+				var = PRC_approval_rating_var
+				value = PRC_approval_rating_trigger_temp
+				compare = greater_than_or_equals
+			}
 		}
 		fire_only_once = yes
 		cost = 100
@@ -1692,10 +1837,6 @@ PRC_indo_pakistan_war = {
 		}
 		cancel_effect = {
 			hidden_effect = {
-				# 印度战败：只撤销克什米尔相关割让（420 阿扎德克什米尔 / 421 吉尔吉特-巴尔蒂斯坦 / 427 查谟克什米尔）
-				# 烈焰升腾原版此段走 SAJ 傀儡方案（RAJ 转 443/1380 给 SAJ 并 puppet SAJ），
-				# 但 MD 没有 SAJ 这个 tag（common/country_tags 与 history/countries 均无），无法激活，
-				# 因此退回“只割克什米尔”，不再吞并信德/旁遮普（426/563/573）
 				RAJ = {
 					white_peace = PAK
 					remove_ideas = RAJ_clash_of_the_millions
@@ -1777,9 +1918,6 @@ PRC_indo_pakistan_war = {
 		complete_effect = {
 			hidden_effect = {
 				PAK = {
-					# 胜利旗标（国家旗标，挂在 PAK 上）：下游 4 条中国对巴决策
-					# （PRC_invest_pakistan_military / _industry / _invite_pakistan_to_eadi / _train_pakistan_army）
-					# 与日本 JAP_invite_india_pdto 均以 PAK = { has_country_flag = ... } 读取
 					set_country_flag = PAK_won_indo_pakistan_war
 					white_peace = RAJ
 					add_state_core = 428
@@ -1856,12 +1994,12 @@ PRC_indo_pakistan_war = {
 		remove_effect = {
 			PAK = {
 				add_equipment_to_stockpile = {
-					type = infantry_weapons1
+					type = Inf_equipment
 					amount = 2500
 					producer = CHI
 				}
 				add_equipment_to_stockpile = {
-					type = command_control_equipment1
+					type = cnc_equipment
 					amount = 750
 					producer = CHI
 				}
@@ -1976,8 +2114,6 @@ PRC_indo_pakistan_war = {
 			base = 100
 		}
 	}
-	# 中国出面调解印巴战争（烈焰升腾原版 PRC_host_non_nuclear_negotiations 的 MD 适配）
-	# 只在印巴实际交战时对玩家中国可见；complete 里立刻置旗，visible 带 NOT，决策点完即从列表消失
 	PRC_host_non_nuclear_negotiations = {
 		icon = GFX_decision_generic_political_discourse
 		cost = 75
@@ -2896,7 +3032,7 @@ PRC_the_chinese_century_category = {
 			586 = {
 				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
-					type = energy_farm
+					type = renewable_energy_infra
 					level = 2
 					instant_build = yes
 				}
@@ -3856,7 +3992,6 @@ PRC_xiongania_category = {
 						free_building_slots = {
 							building = nuclear_reactor
 							size > 0
-							include_locked = yes
 						}
 					}
 					add_building_construction = {
@@ -3993,7 +4128,11 @@ PRC_pla_reformation = {
 			has_country_flag = PRC_army_reform_start
 		}
 		available = {
-			has_campaign_slot = yes
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
 		}
 		ai_will_do = {
 			base = 5
@@ -4918,7 +5057,7 @@ PRC_pla_reformation = {
 					is_core_of = ROOT
 					OR = {
 						has_state_category = megalopolis
-						has_state_category = conurbation
+						has_state_category = state_03
 					}
 					free_building_slots = {
 						building = anti_air_building
@@ -5421,7 +5560,11 @@ PRC_pla_reformation = {
 			has_completed_focus = PRC_national_fanaticism
 		}
 		available = {
-			has_campaign_slot = yes
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
 		}
 		ai_will_do = {
 			base = 1
@@ -5596,10 +5739,6 @@ PRC_pla_reformation = {
 	#}
 }
 
-# 大亚洲战争：厌战度任务
-# 移植自烈焰升腾原版 PRC_great_asian_war / PRC_GAW_war_exhaustion（TFR_decisions_PRC.txt:24419-24494）
-# 工程适配：PRC -> CHI；china.1001/1002 -> prc.1001/1002；去掉原版未定义的 PRC_kill_em_all_flag 门控，
-# 改用与原版 JAP_GAW_war_exhaustion 一致的“太约三方均已被击溃”作为任务完成条件
 PRC_great_asian_war = {
 	PRC_GAW_war_exhaustion = {
 		priority = 99
@@ -5623,8 +5762,6 @@ PRC_great_asian_war = {
 					}
 				}
 			}
-			# 工程适配：印度不参战（用户设计）。原版 PRC_kill_em_all_flag 门控在工程中无设置者，
-			# 改用“日/澳已崩”作为收束条件；RAJ 只要不存在或未与中国交战，就不阻塞收束
 			OR = {
 				NOT = { country_exists = RAJ }
 				RAJ = {
@@ -5657,27 +5794,26 @@ PRC_great_asian_war = {
 		}
 		cancel_effect = {
 			hidden_effect = {
-				set_global_flag = PRC_japanese_gaw_victory_global
-				set_global_flag = PRC_china_collapse
+				# cancel_if_not_visible 的取消与 cancel_trigger 共用本块：
+				# 中国胜结算已置 PRC_chinese_gaw_victory_global 时不得再打上日本胜旗标，否则胜负双结算
 				if = {
-					limit = { country_exists = JAP }
-					JAP = {
-						country_event = prc.1002
+					limit = {
+						NOT = {
+							OR = {
+								has_global_flag = PRC_chinese_gaw_victory_global
+								has_global_flag = PRC_japanese_gaw_victory_global
+							}
+						}
 					}
-				}
-				if = {
-					limit = { country_exists = CHI }
-					CHI = {
-						country_event = {
-							id = prc.1003
-							days = 20
+					set_global_flag = PRC_japanese_gaw_victory_global
+					set_global_flag = PRC_china_collapse
+					if = {
+						limit = { country_exists = JAP }
+						JAP = {
+							country_event = prc.1002
 						}
 					}
 				}
-			}
-			news_event = {
-				id = news.414
-				days = 1
 			}
 		}
 		timeout_effect = {
@@ -5689,64 +5825,8 @@ PRC_great_asian_war = {
 				set_global_flag = PRC_chinese_gaw_victory_global
 				country_event = prc.1001
 			}
-			news_event = {
-				id = news.413
-				days = 1
-			}
 		}
 	}
 
-	# 大亚洲战争战后处理：朝鲜半岛联合政府
-	# 前置：GAW 已分出胜负 + 朝韩统一谈判成功（korean_confederation_formed）
-	# 中国胜：北方以联合政府形式吞并南方（puppet，政体不变），首都迁至首尔（京畿道 state 604），国名改为“朝鲜人民共和国”
-	# 日本胜：南方吞并北方（普通 annex）
-	PRC_gaw_postwar_korea_settlement = {
-		priority = 90
-		icon = GFX_SOV_decision_nato_war_deadline
-		fire_only_once = yes
-		available = {
-			OR = {
-				has_global_flag = PRC_chinese_gaw_victory_global
-				has_global_flag = PRC_japanese_gaw_victory_global
-			}
-			has_global_flag = korean_confederation_formed
-			NOT = { has_global_flag = korean_postwar_settled }
-			country_exists = KOR
-			country_exists = NKO
-		}
-		visible = {
-			has_global_flag = korean_confederation_formed
-		}
-		complete_effect = {
-			if = {
-				limit = {
-					has_global_flag = PRC_chinese_gaw_victory_global
-				}
-				604 = {
-					transfer_state_to = NKO
-				}
-				NKO = {
-					puppet = KOR
-					set_capital = {
-						state = 604
-					}
-					set_cosmetic_tag = NKO_korean_peoples_republic
-				}
-			}
-			if = {
-				limit = {
-					has_global_flag = PRC_japanese_gaw_victory_global
-				}
-				KOR = {
-					annex_country = {
-						target = NKO
-					}
-				}
-			}
-			set_global_flag = korean_postwar_settled
-		}
-		ai_will_do = {
-			factor = 1
-		}
-	}
+	# ZZZ_korea_postwar
 }

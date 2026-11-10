@@ -95,10 +95,10 @@ division_template = {
 	name = "Deutsch-Französische Brigade"
 
 	regiments = {
-		Mech_Inf_Bat = { x = 0 y = 0 }
-		Mech_Inf_Bat = { x = 0 y = 1 }
+		PzGren_Bat_GER = { x = 0 y = 0 }
+		PzGren_Bat_GER = { x = 0 y = 1 }
 		SP_Arty_Bat = { x = 0 y = 2 }
-		Mech_Inf_Bat = { x = 0 y = 3 }
+		PzGren_Bat_GER = { x = 0 y = 3 }
 	}
 
 	support = {
@@ -196,7 +196,7 @@ units = {
 instant_effect = {
 
 	add_equipment_to_stockpile = {
-		variant_name = "Heckler & Koch G36"
+		variant_name = "G36"
 		type = infantry_weapons_4 #Heckler & Koch G36
 		producer = GER
 		amount = 176000
@@ -213,13 +213,31 @@ instant_effect = {
 		amount = 250
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "Milan"
+		variant_name = "Milan 2"
 		type = Anti_tank_2 #Milan
 		producer = FRA
 		amount = 100
 	}
+		
+		add_equipment_to_stockpile = {
+			type = Anti_tank_3 #MELLS Spike-LR
+			producer = GER
+			amount = 1500
+		}
+		
+		add_equipment_to_stockpile = {
+			type = Heavy_Anti_tank_2 #Wiesel 1A2 TOW
+			producer = GER
+			amount = 400
+		}
+		
+		add_equipment_to_stockpile = {
+			type = Heavy_Anti_tank_3 #Fennek MELLS
+			producer = GER
+			amount = 500
+		}
 	add_equipment_to_stockpile = {
-		variant_name = "Stinger"
+		variant_name = "FIM-92E Stinger RMP Block I"
 		type = Anti_Air_1 #Stinger
 		amount = 250
 		producer = USA
@@ -227,7 +245,7 @@ instant_effect = {
 	add_equipment_to_stockpile = {
 		variant_name = "Eurocopter Tiger"
 		type = heavy_tank_chassis_2 #Eurocopter Tiger UHT
-		producer = FRA
+		producer = GER
 		amount = 37
 	}
 	add_equipment_to_stockpile = {
@@ -319,16 +337,16 @@ instant_effect = {
 		producer = USA
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "NH90"
-		type = heavy_tank_chassis_2 #NH90
+		variant_name = "NH-90"
+		type = transport_helicopter_3
 		amount = 47
-		producer = FRA
+		producer = HOL
 	}
 	add_equipment_to_stockpile = {
 		variant_name = "UH-1D"
 		type = transport_helicopter_1 #UH-1
 		amount = 115
-		producer = USA
+		producer = GER
 	}
 
 	### Sealed Storage（封存）###
@@ -341,7 +359,7 @@ instant_effect = {
 		producer = GER
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "TPz Fuchs老型"
+		variant_name = "Tpz-1 Fuchs"
 		type = medium_tank_amphibious_chassis_1 #TPz Fuchs老型（封存）
 		amount = 60
 		producer = GER
@@ -377,7 +395,7 @@ instant_effect = {
 
 	#封存火箭炮
 	add_equipment_to_stockpile = {
-		variant_name = "LARS 2火箭炮"
+		variant_name = "LARS 110"
 		type = medium_tank_rocket_chassis_0 #LARS 2火箭炮（封存）
 		amount = 30
 		producer = GER
@@ -385,7 +403,7 @@ instant_effect = {
 
 	#封存高炮/防空
 	add_equipment_to_stockpile = {
-		variant_name = "Gepard高炮"
+		variant_name = "FlakPz Gepard 1A2"
 		type = medium_tank_aa_chassis_0 #Gepard高炮（封存）
 		amount = 80
 		producer = GER
@@ -405,23 +423,23 @@ instant_effect = {
 		producer = SAF
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "Milan老型重型反坦克导弹"
-		type = Heavy_Anti_tank_1 #Milan老型重型反坦克导弹（封存）
+		variant_name = "Milan 2"
+		type = Anti_tank_2 #Milan老型重型反坦克导弹（封存）
 		amount = 100
 		producer = FRA
 	}
 
 	#封存运输车辆
 	add_equipment_to_stockpile = {
-		variant_name = "老式卡车"
-		type = util_vehicle_2 #老式卡车（封存）
+		variant_name = "Magirus-Deutz Jupiter"
+		type = util_vehicle_1 #老式卡车（封存）
 		amount = 500
 		producer = GER
 	}
 
 	#Reserve Stockpiles (Sealed)
 	add_equipment_to_stockpile = {
-		variant_name = "G3"
+		variant_name = "G3A3"
 		type = infantry_weapons_2 #G3（封存）
 		producer = GER
 		amount = 100000

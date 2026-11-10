@@ -351,6 +351,12 @@ country_event = {
 				id = cartel_event.13
 				days = 1
 			}
+
+			# 本工程新增：开战 30 天后各集团头目更替（见 events/ZZZ_mex_civilwar.txt）
+			country_event = {
+				id = zzz_mex.1
+				days = 30
+			}
 		}
 	}
 
@@ -397,6 +403,23 @@ country_event = {
 				country_event = {
 					id = mexico.13
 					days = 15
+				}
+			}
+			else = {
+				# 卡特尔一方获胜：迁都墨西哥城、清除联邦政府核心宣称、成立新政权
+				set_capital = {
+					state = 835
+					remember_old_capital = no
+				}
+				add_ideas = MEX_mexican_resconstruction_idea
+				every_owned_state = {
+					limit = {
+						is_core_of = MEX
+					}
+					remove_core_of = MEX
+				}
+				country_event = {
+					id = zzz_mex.2
 				}
 			}
 		}

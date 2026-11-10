@@ -15,6 +15,10 @@ focus_tree = {
 			factor = 10
 		}
 		allow_branch = {
+			OR = {
+				date > 2019.12.31
+				has_global_flag = ZZZ_debug_2020
+			}
 			NOT = {
 				has_global_flag = PRC_taiwan_war_lost
 			}
@@ -33,6 +37,12 @@ focus_tree = {
 	}
 	focus = {
 		id = PRC_prepare_landing_craft
+		allow_branch = {
+			OR = {
+				date > 2019.12.31
+				has_global_flag = ZZZ_debug_2020
+			}
+		}
 		icon = GFX_focus_PRC_preparelandingcraft
 		available = {
 			#has_global_flag = USA_american_civil_war_global
@@ -99,7 +109,7 @@ focus_tree = {
 				}
 			}
 			add_equipment_to_stockpile = {
-				type = amphibious_mechanized_equipment_1
+				type = ifv_hull
 				amount = 500
 				producer = CHI
 			}
@@ -107,6 +117,12 @@ focus_tree = {
 	}
 	focus = {
 		id = PRC_modern_combined_arms
+		allow_branch = {
+			OR = {
+				date > 2019.12.31
+				has_global_flag = ZZZ_debug_2020
+			}
+		}
 		icon = GFX_focus_PRC_moderncombinedarms
 		available = {
 			#has_global_flag = USA_american_civil_war_global
@@ -129,18 +145,24 @@ focus_tree = {
 				name = land_doc_bonus
 				cost_reduction = 0.75
 				uses = 2
-				category = cat_old_land_doctrine
+				category = land_doctrine
 			}
 			add_doctrine_cost_reduction = {
 				name = air_doc_bonus
 				cost_reduction = 0.75
 				uses = 2
-				category = cat_old_air_doctrine
+				category = air_doctrine
 			}
 		}
 	}
 	focus = {
 		id = PRC_blockade_taiwan
+		allow_branch = {
+			OR = {
+				date > 2019.12.31
+				has_global_flag = ZZZ_debug_2020
+			}
+		}
 		icon = GFX_focus_PRC_blockadetaiwan
 		available = {
 			#has_global_flag = USA_american_civil_war_global
@@ -172,6 +194,12 @@ focus_tree = {
 	}
 	focus = {
 		id = PRC_conduct_final_training
+		allow_branch = {
+			OR = {
+				date > 2019.12.31
+				has_global_flag = ZZZ_debug_2020
+			}
+		}
 		icon = GFX_focus_PRC_finaltraining
 		available = {
 			#has_global_flag = USA_american_civil_war_global
@@ -197,6 +225,12 @@ focus_tree = {
 	}
 	focus = {
 		id = PRC_expand_the_j20_program
+		allow_branch = {
+			OR = {
+				date > 2019.12.31
+				has_global_flag = ZZZ_debug_2020
+			}
+		}
 		icon = GFX_focus_PRC_j20programme
 		available = {
 			#has_global_flag = USA_american_civil_war_global
@@ -230,7 +264,7 @@ focus_tree = {
 				}
 				else = {
 					add_equipment_to_stockpile = {
-						type = fighter_equipment_2
+						type = AS_Fighter_equipment
 						amount = 150
 						producer = CHI
 					}
@@ -241,6 +275,12 @@ focus_tree = {
 	}
 	focus = {
 		id = PRC_operation_silent_dawn
+		allow_branch = {
+			OR = {
+				date > 2019.12.31
+				has_global_flag = ZZZ_debug_2020
+			}
+		}
 		icon = GFX_focus_PRC_operationsilentdawn
 		available = {
 			#has_global_flag = USA_american_civil_war_global
@@ -293,6 +333,12 @@ focus_tree = {
 	}
 	focus = {
 		id = PRC_sieze_kinmen
+		allow_branch = {
+			OR = {
+				date > 2019.12.31
+				has_global_flag = ZZZ_debug_2020
+			}
+		}
 		icon = GFX_focus_PRC_seizekinmen
 		available = {
 			#has_global_flag = USA_american_civil_war_global
@@ -313,7 +359,7 @@ focus_tree = {
 				days = 1
 			}
 			add_war_support = 0.1
-			648 = {
+			430 = {
 				transfer_state_to = CHI
 			}
 			add_named_threat = {
@@ -329,6 +375,12 @@ focus_tree = {
 	}
 	focus = {
 		id = PRC_plan_on_high_alert
+		allow_branch = {
+			OR = {
+				date > 2019.12.31
+				has_global_flag = ZZZ_debug_2020
+			}
+		}
 		icon = GFX_focus_PRC_planready
 		available = {
 			#has_global_flag = USA_american_civil_war_global
@@ -356,7 +408,7 @@ focus_tree = {
 			hidden_effect = {
 				create_equipment_variant = {
 			       name = "Type 075 LHD"
-			       type = ship_hull_carrier_conversion_ca
+			       type = carrier
 			       parent_version = 0
 			       modules = {
     				    fixed_ship_deck_slot_1 = ship_deck_space
@@ -369,8 +421,8 @@ focus_tree = {
 			        }
 				    icon = "GFX_PRC_helicopter_carrier_1_medium"
 		        }
-			    create_ship = { type = ship_hull_carrier_conversion_ca equipment_variant = "Type 075 LHD" creator = FROM name = "LHD-31 CNS Hainan"}
-			    create_ship = { type = ship_hull_carrier_conversion_ca equipment_variant = "Type 075 LHD" creator = FROM name = "LHD-32 CNS Guangxi"}
+			    create_ship = { type = carrier equipment_variant = "Type 075 LHD" creator = FROM name = "LHD-31 CNS Hainan"}
+			    create_ship = { type = carrier equipment_variant = "Type 075 LHD" creator = FROM name = "LHD-32 CNS Guangxi"}
 			}
 
 			custom_effect_tooltip = tooltip_white_line
@@ -381,6 +433,12 @@ focus_tree = {
 	}
 	focus = {
 		id = PRC_finish_what_mao_started
+		allow_branch = {
+			OR = {
+				date > 2019.12.31
+				has_global_flag = ZZZ_debug_2020
+			}
+		}
 		icon = GFX_focus_PRC_finishwhatmaostarted
 		available = {
 			#has_global_flag = USA_american_civil_war_global
@@ -436,8 +494,8 @@ focus_tree = {
 					limit = {
 						is_owned_by = JAP
 						NOT = {
-							state = 526
-							state = 876
+							state = 618
+							state = 939
 						}
 					}
 					add_dynamic_modifier = {
@@ -461,9 +519,9 @@ focus_tree = {
 						is_owned_by = CHI
 						is_coastal = yes
 						NOT = {
-							state = 326
-							state = 648
-							state = 1395
+							state = 595
+							state = 430
+							state = 532
 						}
 					}
 					add_dynamic_modifier = {
@@ -517,18 +575,7 @@ focus_tree = {
 					id = prc.236
 					days = 4
 				}
-				if = {
-					limit = {
-						has_game_rule = {
-							rule = april_fools_content
-							option = APRIL_FOOLS_ENABLED
-						}
-					}
-					country_event = {
-						id = china_aprilfools25.1
-						days = 10
-					}
-				}
+				# 工程适配：china_aprilfools25.1 在本工程不存在，移除该派发（含 april_fools 游戏规则判定）
 				country_event = {
 					id = prc.442
 					days = 137
@@ -578,37 +625,37 @@ focus_tree = {
 							name = "Okinawa Defense Brigade"
 							priority = 1
 							regiments = {
-								infantry = {
+								L_Inf_Bat = {
 									x = 0
 									y = 0
 								}
-								infantry = {
+								L_Inf_Bat = {
 									x = 0
 									y = 1
 								}
-								infantry = {
+								L_Inf_Bat = {
 									x = 0
 									y = 2
 								}
-								infantry = {
+								L_Inf_Bat = {
 									x = 1
 									y = 0
 								}
-								infantry = {
+								L_Inf_Bat = {
 									x = 1
 									y = 1
 								}
-								infantry = {
+								L_Inf_Bat = {
 									x = 1
 									y = 2
 								}
 							}
 							support = {
-								recon = {
+								L_Recce_Comp = {
 									x = 0
 									y = 0
 								}
-								engineer = {
+								L_Engi_Comp = {
 									x = 0
 									y = 1
 								}
@@ -670,6 +717,10 @@ focus_tree = {
 			has_global_flag = PRC_ongoing_taiwan_war
 		}
 		allow_branch = {
+			OR = {
+				date > 2019.12.31
+				has_global_flag = ZZZ_debug_2020
+			}
 			has_country_flag = PRC_analyze_first_days_unlocked_flag
 			#has_global_flag = PRC_ongoing_taiwan_war
 			NOT = {
@@ -692,6 +743,12 @@ focus_tree = {
 	}
 	focus = {
 		id = PRC_fast_finalization
+		allow_branch = {
+			OR = {
+				date > 2019.12.31
+				has_global_flag = ZZZ_debug_2020
+			}
+		}
 		icon = GFX_focus_PRC_fast_finalization
 		available = {
 			has_country_flag = PRC_fast_finalization_flag
@@ -748,6 +805,12 @@ focus_tree = {
 	}
 	focus = {
 		id = PRC_slowly_but_surely
+		allow_branch = {
+			OR = {
+				date > 2019.12.31
+				has_global_flag = ZZZ_debug_2020
+			}
+		}
 		icon = GFX_focus_PRC_slowly_but_surely
 		available = {
 			has_country_flag = PRC_slowly_but_surely_flag
@@ -804,6 +867,12 @@ focus_tree = {
 	}
 	focus = {
 		id = PRC_air_deconservation
+		allow_branch = {
+			OR = {
+				date > 2019.12.31
+				has_global_flag = ZZZ_debug_2020
+			}
+		}
 		icon = GFX_focus_PRC_air_deconservation
 		prerequisite = {
 			focus = PRC_fast_finalization
@@ -850,7 +919,7 @@ focus_tree = {
 				}
 				else = {
 					add_equipment_to_stockpile = {
-						type = fighter_equipment
+						type = AS_Fighter_equipment
 						amount = 500
 						producer = CHI
 					}
@@ -865,6 +934,12 @@ focus_tree = {
 	}
 	focus = {
 		id = PRC_adapt_to_current_realities_of_battles
+		allow_branch = {
+			OR = {
+				date > 2019.12.31
+				has_global_flag = ZZZ_debug_2020
+			}
+		}
 		icon = GFX_focus_PRC_adapt_to_current_realities_of_battles
 		prerequisite = {
 			focus = PRC_air_deconservation
@@ -881,13 +956,16 @@ focus_tree = {
 				remove_idea = PRC_insufficient_understanding_of_modern_warfare_idea
 				add_idea = PRC_insufficient_understanding_of_modern_warfare_idea2
 			}
-			unlock_decision_tooltip = PRC_adapt_to_modern_defense
-			unlock_decision_tooltip = PRC_adapt_to_modern_offensives
-			unlock_decision_tooltip = PRC_adapt_to_modern_airbattles
 		}
 	}
 	focus = {
 		id = PRC_crackdown_on_separatists
+		allow_branch = {
+			OR = {
+				date > 2019.12.31
+				has_global_flag = ZZZ_debug_2020
+			}
+		}
 		icon = GFX_focus_PRC_crackdown_on_separatists
 		prerequisite = {
 			focus = PRC_fast_finalization
@@ -936,6 +1014,12 @@ focus_tree = {
 	}
 	focus = {
 		id = PRC_indiscriminate_missile_strikes
+		allow_branch = {
+			OR = {
+				date > 2019.12.31
+				has_global_flag = ZZZ_debug_2020
+			}
+		}
 		icon = GFX_focus_PRC_indiscriminate_missile_mtrikes
 		prerequisite = {
 			focus = PRC_fast_finalization
@@ -952,7 +1036,6 @@ focus_tree = {
 			unlock_decision_tooltip = PRC_destroy_taiwan_infr
 			unlock_decision_tooltip = PRC_destroy_taiwan_civ_industry
 			unlock_decision_tooltip = PRC_destroy_taiwan_war_industry
-			unlock_decision_tooltip = PRC_strike_senkaku
 			unlock_decision_tooltip = PRC_strike_okinawa
 			unlock_decision_tooltip = PRC_taiwan_bombing_raid
 			add_days_mission_timeout = {
@@ -982,6 +1065,12 @@ focus_tree = {
 	}
 	focus = {
 		id = PRC_taiwanese_affairs_dont_concern_mainland
+		allow_branch = {
+			OR = {
+				date > 2019.12.31
+				has_global_flag = ZZZ_debug_2020
+			}
+		}
 		icon = GFX_focus_PRC_taiwanese_affairs_dont_concern
 		prerequisite = {
 			focus = PRC_fast_finalization
@@ -1003,6 +1092,12 @@ focus_tree = {
 	}
 	focus = {
 		id = PRC_final_offensive
+		allow_branch = {
+			OR = {
+				date > 2019.12.31
+				has_global_flag = ZZZ_debug_2020
+			}
+		}
 		icon = GFX_focus_PRC_the_final_offensive
 		prerequisite = {
 			focus = PRC_adapt_to_current_realities_of_battles
@@ -1055,6 +1150,12 @@ focus_tree = {
 	}
 	focus = {
 		id = PRC_unite_people
+		allow_branch = {
+			OR = {
+				date > 2019.12.31
+				has_global_flag = ZZZ_debug_2020
+			}
+		}
 		icon = GFX_focus_PRC_unite_the_people
 		prerequisite = {
 			focus = PRC_slowly_but_surely
@@ -1103,6 +1204,12 @@ focus_tree = {
 	}
 	focus = {
 		id = PRC_minimize_civilian_casualties
+		allow_branch = {
+			OR = {
+				date > 2019.12.31
+				has_global_flag = ZZZ_debug_2020
+			}
+		}
 		icon = GFX_focus_PRC_minimize_casualties
 		prerequisite = {
 			focus = PRC_slowly_but_surely
@@ -1154,6 +1261,12 @@ focus_tree = {
 	}
 	focus = {
 		id = PRC_economic_conversion_to_military_needs
+		allow_branch = {
+			OR = {
+				date > 2019.12.31
+				has_global_flag = ZZZ_debug_2020
+			}
+		}
 		icon = GFX_focus_PRC_economic_conversion
 		prerequisite = {
 			focus = PRC_slowly_but_surely
@@ -1275,6 +1388,12 @@ focus_tree = {
 	}
 	focus = {
 		id = PRC_no_hurry
+		allow_branch = {
+			OR = {
+				date > 2019.12.31
+				has_global_flag = ZZZ_debug_2020
+			}
+		}
 		icon = GFX_focus_PRC_no_hurry
 		prerequisite = {
 			focus = PRC_adapt_to_current_realities_of_battles

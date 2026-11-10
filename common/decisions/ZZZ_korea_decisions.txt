@@ -1,0 +1,291 @@
+# ============================================================================
+# 朝鲜半岛战后安排 —— 决议（本工程原创）
+#
+# 定稿口径（按 GAW 胜方分两条路线）：
+#   ① 邦联 = 军事同盟（common/factions/templates/00_ZZZ_korea.txt）。
+#      KOR 与 NKO 是两个主权国家、互不隶属，不 puppet、不 set_autonomy。
+#   ② 中国胜（gaw_china_victory_settled）：NKO 统一半岛 —— KOR 并入 NKO
+#      （NKO 取得 KOR 全部州与核心），迁都 604（京畿道/首尔），恢复
+#      「朝鲜人民共和国」（NKO_korean_peoples_republic），由 KSDP（^5）组阁。
+#   ③ 日本胜（gaw_japan_victory_settled）：KOR 统一半岛 —— NKO 并入 KOR，
+#      随后 KOR 加入日本主导的「太约」（faction_template_pdto，词条 PDTO）。
+#   ④ 两条决议都是 fire_only_once，任一条置位 korean_postwar_settled 后另一条失效。
+#
+# 政治数组说明：
+#   annex_country 只转移州与部队，不改 NKO 的支持率与执政党，故本决议显式重写。
+#   NKO 24 党映射（ZZ9 - 2017.txt:20437-20460）：^4 = Communist-State（WPK 朝鲜劳动党）、
+#   ^5 = anarchist_communism（KSDP 朝鲜社会民主党，MD 中文本地化
+#   MD_subideology_parties_l_simp_chinese.yml:4109）、^22 = Nat_Autocracy（朝鲜人民军）。
+#   统一后由 KSDP（^5）组阁：共产组 99.9 仍为最大组（^5 0.95 + ^4 0.049 = 0.999），
+#   民族主义 0.1（^22 0.001），24 行绝对值合计恒为 1.0000。
+#   执政党只写入 ruling_party，不重复写入 gov_coalition_array（与 MD 的
+#   AI_setup_government 一致，00_subideology_scripted_effects.txt:2378-2426）。
+#
+# 前置旗标 gaw_china_victory_settled / gaw_japan_victory_settled 由
+# events/TFR_events_PRC.txt 的 GAW 结算事件置位；
+# korean_postwar_settled 由本决议置位，防止重复结算。
+# ============================================================================
+ZZZ_korea_postwar = {
+
+	PRC_gaw_postwar_korea_settlement = {
+		icon = generic_political_actions
+		priority = 95
+		cost = 0
+		fire_only_once = yes
+		allowed = {
+			tag = NKO
+		}
+		visible = {
+			has_global_flag = gaw_china_victory_settled
+			country_exists = KOR
+			NOT = { has_global_flag = korean_postwar_settled }
+		}
+		available = {
+			has_global_flag = gaw_china_victory_settled
+			country_exists = KOR
+			is_subject = no
+			NOT = { has_global_flag = korean_postwar_settled }
+		}
+		complete_effect = {
+			# KOR 并入 NKO，取得 KOR 全部州与核心
+			annex_country = {
+				target = KOR
+				transfer_troops = yes
+			}
+			# 首都迁至京畿道（state 604）；仅在已拥有该州时迁都，避免无效调用
+			if = {
+				limit = {
+					owns_state = 604
+				}
+				set_capital = {
+					state = 604
+				}
+			}
+			set_cosmetic_tag = NKO_korean_peoples_republic
+			# 统一后由朝鲜社会民主党（KSDP，^5）组阁；共产组 99.9 仍为最大组
+			# 统一后开放选举：election_frequency = 48 取自千禧基座
+			# history/countries/NKO - North Korea.txt:742-744（NKO 自带 48 个月周期）
+			# NKO 全剧本 elections_allowed = no，last_election 停在 2000.1.1；
+			# 直接开放会判定「选举超期」并立刻触发原生选举，故把选举日锚到 2024.1.1
+			# （与 zzz_kor.8 同一锚点，对应战线的 date > 2024.1.1 门槛）
+			set_politics = {
+				ruling_party = communism
+				elections_allowed = yes
+				last_election = "2024.1.1"
+				election_frequency = 48
+			}
+			set_popularities = {
+				democratic = 0.0
+				communism = 99.9
+				fascism = 0.0
+				neutrality = 0.0
+				nationalist = 0.1
+			}
+			set_variable = { party_pop_array^0 = 0 } #Western_Autocracy
+			set_variable = { party_pop_array^1 = 0 } #conservatism
+			set_variable = { party_pop_array^2 = 0 } #liberalism
+			set_variable = { party_pop_array^3 = 0 } #socialism
+			set_variable = { party_pop_array^4 = 0.049 } #communist_state（WPK 朝鲜劳动党）
+			set_variable = { party_pop_array^5 = 0.95 } #anarchist_communism（KSDP 朝鲜社会民主党，执政）
+			set_variable = { party_pop_array^6 = 0 } #Conservative
+			set_variable = { party_pop_array^7 = 0 } #Autocracy
+			set_variable = { party_pop_array^8 = 0 } #Mod_Vilayat_e_Faqih
+			set_variable = { party_pop_array^9 = 0 } #Vilayat_e_Faqih
+			set_variable = { party_pop_array^10 = 0 } #Kingdom
+			set_variable = { party_pop_array^11 = 0 } #Caliphate
+			set_variable = { party_pop_array^12 = 0 } #Neutral_Muslim_Brotherhood
+			set_variable = { party_pop_array^13 = 0 } #Neutral_Autocracy
+			set_variable = { party_pop_array^14 = 0 } #Neutral_conservatism
+			set_variable = { party_pop_array^15 = 0 } #oligarchism
+			set_variable = { party_pop_array^16 = 0 } #Neutral_Libertarian
+			set_variable = { party_pop_array^17 = 0 } #Neutral_green
+			set_variable = { party_pop_array^18 = 0 } #neutral_Social
+			set_variable = { party_pop_array^19 = 0 } #Neutral_Communism
+			set_variable = { party_pop_array^20 = 0 } #Nat_Populism
+			set_variable = { party_pop_array^21 = 0 } #Nat_Fascism
+			set_variable = { party_pop_array^22 = 0.001 } #Nat_Autocracy（朝鲜人民军）
+			set_variable = { party_pop_array^23 = 0 } #Monarchist
+			clear_array = gov_coalition_array
+			set_variable = { ruling_party = 5 }
+			update_set_politics = yes
+			add_own_ideology_drift = yes
+			add_to_array = { gov_coalition_array = 4 }
+			update_government_coalition_strength = yes
+			update_party_name = yes
+			set_coalition_drift = yes
+			ZZZ_party_leader_NKO_sim_sang_jung = yes
+			# 统一后留在 NKO 既有同盟；若无 faction，才按现有机制建邦联同盟
+			if = {
+				limit = {
+					is_in_faction = no
+				}
+				create_faction_from_template = faction_template_juche
+			}
+			set_global_flag = korean_postwar_settled
+			# 统一后启动全半岛选举链：
+			#   zzz_kor.6（events/ZZZ_korea_events.txt）= 朝鲜人民共和国成立，置 zzz_kpr_proclaimed
+			#   → 140 天后 zzz_kor.8 = 全半岛首次大选（沈相奵当选），之后交原生选举按 48 个月周期跑
+			country_event = { id = zzz_kor.6 days = 1 }
+		}
+		ai_will_do = {
+			base = 1000
+		}
+	}
+
+	# 日本胜路线：由南韩（KOR）吞并北朝鲜（NKO），随后加入日本主导的「太约」
+	ZZZ_korea_unify_under_kor = {
+		icon = generic_political_actions
+		priority = 95
+		cost = 0
+		fire_only_once = yes
+		allowed = {
+			tag = JAP
+		}
+		visible = {
+			has_global_flag = gaw_japan_victory_settled
+			country_exists = NKO
+			country_exists = KOR
+			NOT = { has_global_flag = korean_postwar_settled }
+		}
+		available = {
+			has_global_flag = gaw_japan_victory_settled
+			country_exists = NKO
+			country_exists = KOR
+			NOT = { has_global_flag = korean_postwar_settled }
+		}
+		complete_effect = {
+			KOR = {
+				# NKO 并入 KOR（南韩统一口径）
+				annex_country = {
+					target = NKO
+					transfer_troops = yes
+				}
+				# 统一后由保守派（^1，KOR 基线执政党）继续执政；民主组 86.2 为最大组
+				# 统一后开放选举：election_frequency = 60 取自千禧基座
+				# history/countries/KOR - Korea.txt:905-909（KOR 自带 60 个月周期）
+				set_politics = {
+					ruling_party = democratic
+					elections_allowed = yes
+					election_frequency = 60
+				}
+				set_popularities = {
+					democratic = 86.2
+					communism = 0.4
+					fascism = 0.0
+					neutrality = 11.0
+					nationalist = 2.4
+				}
+				set_variable = { party_pop_array^0 = 0 } #Western_Autocracy
+				set_variable = { party_pop_array^1 = 0.40 } #conservatism（执政）
+				set_variable = { party_pop_array^2 = 0.20 } #liberalism
+				set_variable = { party_pop_array^3 = 0.262 } #socialism
+				set_variable = { party_pop_array^4 = 0.001 } #communist_state
+				set_variable = { party_pop_array^5 = 0.003 } #anarchist_communism
+				set_variable = { party_pop_array^6 = 0 } #Conservative
+				set_variable = { party_pop_array^7 = 0 } #Autocracy
+				set_variable = { party_pop_array^8 = 0 } #Mod_Vilayat_e_Faqih
+				set_variable = { party_pop_array^9 = 0 } #Vilayat_e_Faqih
+				set_variable = { party_pop_array^10 = 0 } #Kingdom
+				set_variable = { party_pop_array^11 = 0 } #Caliphate
+				set_variable = { party_pop_array^12 = 0 } #Neutral_Muslim_Brotherhood
+				set_variable = { party_pop_array^13 = 0 } #Neutral_Autocracy
+				set_variable = { party_pop_array^14 = 0.045 } #Neutral_conservatism
+				set_variable = { party_pop_array^15 = 0 } #oligarchism
+				set_variable = { party_pop_array^16 = 0 } #Neutral_Libertarian
+				set_variable = { party_pop_array^17 = 0.006 } #Neutral_green
+				set_variable = { party_pop_array^18 = 0.059 } #neutral_Social
+				set_variable = { party_pop_array^19 = 0 } #Neutral_Communism
+				set_variable = { party_pop_array^20 = 0.024 } #Nat_Populism
+				set_variable = { party_pop_array^21 = 0 } #Nat_Fascism
+				set_variable = { party_pop_array^22 = 0 } #Nat_Autocracy
+				set_variable = { party_pop_array^23 = 0 } #Monarchist
+				clear_array = gov_coalition_array
+				set_variable = { ruling_party = 1 }
+				update_set_politics = yes
+				add_own_ideology_drift = yes
+				update_government_coalition_strength = yes
+				update_party_name = yes
+				set_coalition_drift = yes
+				# 全半岛首次大选：140 天后由 zzz_kor.10 派发
+				# 元首按选举结果由基座 set_leader_KOR 产生，本决议不写死任何人名
+				country_event = { id = zzz_kor.10 days = 140 }
+			}
+			# 「太约」= faction_template_pdto（common/factions/templates/00_TFR.txt:35，
+			# name = PDTO；jap.5 亦用该模板）。日本无阵营时先按既有模板建好
+			if = {
+				limit = {
+					JAP = {
+						is_in_faction = no
+					}
+				}
+				JAP = {
+					create_faction_from_template = faction_template_pdto
+					set_faction_leader = yes
+					set_country_flag = pdto_member
+				}
+			}
+			KOR = {
+				add_to_faction = JAP
+				set_country_flag = pdto_member
+			}
+			set_global_flag = korean_postwar_settled
+		}
+		ai_will_do = {
+			base = 1000
+		}
+	}
+}
+
+# ============================================================================
+# 北吞南：朝鲜在军事上压倒韩国后直接吞并半岛南部（本工程原创）
+#
+# 入口沿用既有战争链的判定点：
+#   has_war_with = KOR（ZZZ_korea_war 的朝韩战争）
+#   KOR = { has_army_size = { size < 1 } }（Korea.txt:8 已用于判定 KOR 军队崩溃）
+#   KOR = { has_capitulated = yes }（投降兜底）
+# 互斥：
+#   korean_confederation_formed 成立 → 本决议不可用（和平邦联分支已走）
+#   本决议置位 zzz_korea_north_annexed + korean_postwar_settled → 和平分支全部锁死
+# ============================================================================
+ZZZ_korea_north_march = {
+
+	ZZZ_NKO_march_to_seoul = {
+		icon = GFX_decision_nko_unite_korea_button
+		priority = 100
+		cost = 0
+		fire_only_once = yes
+		allowed = {
+			tag = NKO
+		}
+		visible = {
+			country_exists = KOR
+			has_war_with = KOR
+			NOT = { has_global_flag = korean_postwar_settled }
+			NOT = { has_global_flag = korean_confederation_formed }
+			NOT = { has_country_flag = korea_peninsula_reunited }
+		}
+		available = {
+			country_exists = KOR
+			has_war_with = KOR
+			OR = {
+				KOR = {
+					has_capitulated = yes
+				}
+				KOR = {
+					has_army_size = {
+						size < 1
+					}
+				}
+			}
+		}
+		complete_effect = {
+			log = "[GetDateText]: [This.GetName]: ZZZ_NKO_march_to_seoul entry fired (branch=north_annex)"
+			country_event = {
+				id = zzz_kor.4
+			}
+		}
+		ai_will_do = {
+			base = 1000
+		}
+	}
+}

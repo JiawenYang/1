@@ -1,0 +1,183 @@
+## ============================================================================
+##  ZZZ_spare_spirits —— 备用国家精神的旗标挂载
+##
+##  每月扫描一次，只在对应全局旗标 / 外观标签成立时补挂精神；
+##  只加不撤，且先判断 has_idea，避免重复挂载与世界紧张度无关的反复写入。
+##  2017 开局上述旗标均不存在，因此一个都不会亮。
+## ============================================================================
+
+on_actions = {
+	on_monthly = {
+		effect = {
+
+			# 朝韩邦联：两个政府都还在，共用一套常设机构
+			every_country = {
+				limit = {
+					OR = {
+						original_tag = KOR
+						original_tag = NKO
+					}
+					has_global_flag = korean_confederation_formed
+					NOT = { has_idea = ZZZ_spirit_korea_confederation }
+				}
+				add_ideas = ZZZ_spirit_korea_confederation
+			}
+
+			# 阿拉伯联合共和国
+			every_country = {
+				limit = {
+					original_tag = EGY
+					has_global_flag = ZZZ_UAR_victory
+					NOT = { has_idea = ZZZ_spirit_uar_unity }
+				}
+				add_ideas = ZZZ_spirit_uar_unity
+			}
+
+			# 巴尔干联邦（塞尔维亚为联邦核心）
+			every_country = {
+				limit = {
+					original_tag = SER
+					has_global_flag = PRC_balkan_federation_supported
+					NOT = { has_idea = ZZZ_spirit_balkan_federation }
+				}
+				add_ideas = ZZZ_spirit_balkan_federation
+			}
+
+			# 欧亚联盟国（SOV_declare_eurasian_state_decision 置外观标签）
+			every_country = {
+				limit = {
+					has_cosmetic_tag = SOV_eurasian
+					NOT = { has_idea = ZZZ_spirit_eurasian_state }
+				}
+				add_ideas = ZZZ_spirit_eurasian_state
+			}
+
+			# 欧洲联邦（法国战后国策置全局旗标）
+			every_country = {
+				limit = {
+					original_tag = FRA
+					has_global_flag = FRA_EU_federalized_global
+					NOT = { has_idea = ZZZ_spirit_eu_federation }
+				}
+				add_ideas = ZZZ_spirit_eu_federation
+			}
+
+			# 东亚共荣圈（大亚洲战争日本胜利）
+			every_country = {
+				limit = {
+					original_tag = JAP
+					has_global_flag = gaw_japan_victory_settled
+					NOT = { has_idea = ZZZ_spirit_east_asia_sphere }
+				}
+				add_ideas = ZZZ_spirit_east_asia_sphere
+			}
+
+			# 大印度斯坦（大亚洲战争日本胜利分支）
+			every_country = {
+				limit = {
+					original_tag = RAJ
+					has_global_flag = gaw_japan_victory_settled
+					NOT = { has_idea = ZZZ_spirit_greater_india }
+				}
+				add_ideas = ZZZ_spirit_greater_india
+			}
+
+			# 统一的中国（台海武力统一，不含亚洲战争胜利）
+			every_country = {
+				limit = {
+					original_tag = CHI
+					has_global_flag = PRC_taiwan_war_won
+					NOT = { has_idea = ZZZ_spirit_china_reunification }
+				}
+				add_ideas = ZZZ_spirit_china_reunification
+			}
+
+			# 大中华（大亚洲战争中国胜利后主导亚洲秩序）
+			every_country = {
+				limit = {
+					original_tag = CHI
+					has_global_flag = gaw_china_victory_settled
+					NOT = { has_idea = ZZZ_spirit_greater_china }
+				}
+				add_ideas = ZZZ_spirit_greater_china
+			}
+
+			# 印度支那联邦（大亚洲战争中国胜利后越南整合老挝与柬埔寨）
+			every_country = {
+				limit = {
+					original_tag = VIE
+					has_global_flag = gaw_china_victory_settled
+					NOT = { has_idea = ZZZ_spirit_indochina_federation }
+				}
+				add_ideas = ZZZ_spirit_indochina_federation
+			}
+
+			# 南斯拉夫复兴（塞尔维亚战争链 serbia.17 之后）
+			every_country = {
+				limit = {
+					original_tag = SER
+					has_global_flag = SER_destroy_albanian_n
+					NOT = { has_idea = ZZZ_spirit_yugoslavia_revival }
+				}
+				add_ideas = ZZZ_spirit_yugoslavia_revival
+			}
+
+			# 奥斯曼复兴（完成 TUR_ottoman_politics 国策）
+			every_country = {
+				limit = {
+					original_tag = TUR
+					has_completed_focus = TUR_ottoman_politics
+					NOT = { has_idea = ZZZ_spirit_ottoman_restoration }
+				}
+				add_ideas = ZZZ_spirit_ottoman_restoration
+			}
+
+			# CANZUK（整合决议置国家旗标 is_CANZUK）
+			every_country = {
+				limit = {
+					has_country_flag = is_CANZUK
+					NOT = { has_idea = ZZZ_spirit_canzuk }
+				}
+				add_ideas = ZZZ_spirit_canzuk
+			}
+
+			# 马菲林多（整合决议置国家旗标 is_MAPHI）
+			every_country = {
+				limit = {
+					has_country_flag = is_MAPHI
+					NOT = { has_idea = ZZZ_spirit_maphilindo }
+				}
+				add_ideas = ZZZ_spirit_maphilindo
+			}
+
+			# 北欧联盟（斯堪的纳维亚整合决议置国家旗标 is_SCA）
+			every_country = {
+				limit = {
+					has_country_flag = is_SCA
+					NOT = { has_idea = ZZZ_spirit_nordic_union }
+				}
+				add_ideas = ZZZ_spirit_nordic_union
+			}
+
+			# 中美洲联盟（NIC.4 尼加拉瓜合并分支置全局旗标 CAM_union_formed）
+			every_country = {
+				limit = {
+					original_tag = NIC
+					has_global_flag = CAM_union_formed
+					NOT = { has_idea = ZZZ_spirit_cam_union }
+				}
+				add_ideas = ZZZ_spirit_cam_union
+			}
+
+			# 中美洲共和国（NIC.4 萨尔瓦多合并分支置全局旗标 CAM_republic_formed）
+			every_country = {
+				limit = {
+					original_tag = ELS
+					has_global_flag = CAM_republic_formed
+					NOT = { has_idea = ZZZ_spirit_cam_republic }
+				}
+				add_ideas = ZZZ_spirit_cam_republic
+			}
+		}
+	}
+}

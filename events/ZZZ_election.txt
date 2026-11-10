@@ -1,0 +1,185 @@
+add_namespace = ZZZ_election
+
+# ============================================================
+# 通用选举模板事件链
+#   0 竞选（有选项，玩家可花政治点数影响结果）
+#   1 计票（隐藏）
+#   2 结果与组阁/就职
+#   3 第二轮排期（隐藏）
+#   4 第二轮结果
+# 参数见 common/scripted_effects/ZZZ_elect_effects.txt 顶部注释
+# ============================================================
+
+# 竞选阶段
+country_event = {
+	id = ZZZ_election.0
+	title = ZZZ_election.0.t
+	desc = ZZZ_election.0.d
+	picture = GFX_election_day
+
+	is_triggered_only = yes
+
+	immediate = {
+		log = "[GetDateText]: [This.GetName]: ZZZ election campaign chain=ZZZ_template term=[?ZZZ_term] mode=[?ZZZ_sched_mode] two_round=[?ZZZ_two_round]"
+		set_country_flag = ZZZ_election_running
+		country_event = { id = ZZZ_election.1 days = 14 }
+	}
+
+	option = {
+		name = ZZZ_election.0.a
+		trigger = { has_variable = ruling_party }
+		log = "[GetDateText]: [This.GetName]: ZZZ campaign funds the ruling party"
+		add_political_power = -50
+		ZZZ_elect_campaign_boost_ruling = yes
+		custom_effect_tooltip = ZZZ_election_chain_tt
+	}
+
+	option = {
+		name = ZZZ_election.0.b
+		trigger = { has_variable = max_index_1 }
+		log = "[GetDateText]: [This.GetName]: ZZZ campaign funds the largest opposition party"
+		add_political_power = -75
+		ZZZ_elect_campaign_boost_opposition = yes
+		custom_effect_tooltip = ZZZ_election_chain_tt
+	}
+
+	option = {
+		name = ZZZ_election.0.c
+		log = "[GetDateText]: [This.GetName]: ZZZ campaign stays neutral"
+		custom_effect_tooltip = ZZZ_election_chain_tt
+	}
+}
+
+# 计票
+country_event = {
+	id = ZZZ_election.1
+	hidden = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			# 集选区/现任者加成：只在本次计票生效，计票后扣回
+			if = {
+				limit = {
+					check_variable = { ZZZ_grc_bonus > 0 }
+					has_variable = ruling_party
+				}
+				add_to_variable = { party_pop_array^ruling_party = ZZZ_grc_bonus }
+			}
+
+			hold_elections = yes
+
+			set_variable = { ZZZ_win_index = max_index_1 }
+			set_variable = { ZZZ_coal_second = -1 }
+
+			if = {
+				limit = { check_variable = { party_pop_array^max_index_1 > majority_threshold } }
+				country_event = ZZZ_election.2
+			}
+			else_if = {
+				limit = { check_variable = { ZZZ_two_round = 1 } }
+				country_event = { id = ZZZ_election.3 days = 2 }
+			}
+			else_if = {
+				limit = {
+					check_variable = { ZZZ_coalition_ok = 1 }
+					has_variable = max_index_2
+				}
+				set_variable = { ZZZ_coal_second = max_index_2 }
+				country_event = ZZZ_election.2
+			}
+			else = {
+				country_event = ZZZ_election.2
+			}
+
+			# 扣回集选区加成
+			if = {
+				limit = {
+					check_variable = { ZZZ_grc_bonus > 0 }
+					has_variable = ruling_party
+				}
+				subtract_from_variable = { party_pop_array^ruling_party = ZZZ_grc_bonus }
+			}
+		}
+	}
+}
+
+# 结果与组阁/就职
+country_event = {
+	id = ZZZ_election.2
+	title = ZZZ_election.2.t
+
+	desc = {
+		text = ZZZ_election.2.d_majority
+		trigger = { check_variable = { party_pop_array^max_index_1 > majority_threshold } }
+	}
+	desc = {
+		text = ZZZ_election.2.d_coalition
+		trigger = {
+			has_variable = ZZZ_coal_second
+			check_variable = { ZZZ_coal_second > 0 }
+		}
+	}
+	desc = {
+		text = ZZZ_election.2.d_minority
+		trigger = {
+			NOT = { check_variable = { party_pop_array^max_index_1 > majority_threshold } }
+			NOT = { check_variable = { ZZZ_coal_second > 0 } }
+		}
+	}
+
+	picture = GFX_election_rally
+
+	is_triggered_only = yes
+
+	option = {
+		name = ZZZ_election.2.a
+		log = "[GetDateText]: [This.GetName]: ZZZ election result chain=ZZZ_template winner=[?ZZZ_win_index] coalition_second=[?ZZZ_coal_second]"
+		add_political_power = 100
+		ZZZ_elect_apply_result = yes
+		custom_effect_tooltip = ZZZ_election_chain_tt
+	}
+}
+
+# 第二轮排期
+country_event = {
+	id = ZZZ_election.3
+	hidden = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		log = "[GetDateText]: [This.GetName]: ZZZ election runoff required chain=ZZZ_template top1=[?max_index_1] top2=[?max_index_2]"
+		country_event = { id = ZZZ_election.4 days = 14 }
+	}
+}
+
+# 第二轮结果
+country_event = {
+	id = ZZZ_election.4
+	title = ZZZ_election.4.t
+	desc = ZZZ_election.4.d
+	picture = GFX_election_rally
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			set_variable = { ZZZ_win_index = max_index_1 }
+			set_variable = { ZZZ_coal_second = -1 }
+			if = {
+				limit = { check_variable = { party_pop_elect_array^max_index_2 > party_pop_elect_array^max_index_1 } }
+				set_variable = { ZZZ_win_index = max_index_2 }
+			}
+		}
+	}
+
+	option = {
+		name = ZZZ_election.4.a
+		log = "[GetDateText]: [This.GetName]: ZZZ runoff result chain=ZZZ_template winner=[?ZZZ_win_index]"
+		add_political_power = 75
+		ZZZ_elect_apply_result = yes
+		custom_effect_tooltip = ZZZ_election_chain_tt
+	}
+}

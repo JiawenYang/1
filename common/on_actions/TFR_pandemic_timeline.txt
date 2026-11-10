@@ -171,6 +171,15 @@ on_actions = {
 	# 日本：2020 年新冠疫情时间线
 	on_daily_JAP = {
 		effect = {
+			# 2020 年解锁移植的日本国策：allow_branch 只在国策树加载时判定，需刷新一次布局
+			if = {
+				limit = {
+					date > 2019.12.31
+					NOT = { has_country_flag = TFR_japan_2020_focus_unlocked }
+				}
+				set_country_flag = TFR_japan_2020_focus_unlocked
+				mark_focus_tree_layout_dirty = yes
+			}
 			if = {
 				limit = {
 					date > 2020.1.16

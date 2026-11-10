@@ -1,0 +1,271 @@
+# ============================================================================
+# ZZZ 君主更替 · 运行期效果
+#
+# 由 events/ZZZ_monarchy_succession.txt 调用，事件根作用域为国家。
+# 统一流程：
+#   1) retire_character 卸任君主（退位/驾崩都用移除，不 kill 现任领袖）
+#   2) set_country_flag 记录当前在位者，供 ZZZ_crown_<TAG> 选择
+#   3) ZZZ_crown_<TAG> 复用现有加冕逻辑，按 5 个意识形态大组各 promote 1 条
+#      （同组只保留该国实际执政/最贴近的子意识形态）
+#
+# 君主制已废除（ZZZ_active_monarchy 不成立）时整条更替不做任何事。
+# ============================================================================
+
+# 伊丽莎白二世 → 查尔斯三世（英联邦 15 国；BAR 在 2021 已改制，不在此列）
+ZZZ_succession_commonwealth_charles = {
+	if = {
+		limit = { ZZZ_active_monarchy = yes }
+		if = {
+			limit = { tag = ENG }
+			if = {
+				limit = { has_character = ZZZ_monarch_ENG_elizabeth_ii }
+				retire_character = ZZZ_monarch_ENG_elizabeth_ii
+			}
+			set_country_flag = ZZZ_monarch_eng_charles_iii
+			ZZZ_crown_ENG = yes
+		}
+		else_if = {
+			limit = { tag = CAN }
+			if = {
+				limit = { has_character = ZZZ_monarch_CAN_elizabeth_ii }
+				retire_character = ZZZ_monarch_CAN_elizabeth_ii
+			}
+			set_country_flag = ZZZ_monarch_can_charles_iii
+			ZZZ_crown_CAN = yes
+		}
+		else_if = {
+			limit = { tag = AST }
+			if = {
+				limit = { has_character = ZZZ_monarch_AST_elizabeth_ii }
+				retire_character = ZZZ_monarch_AST_elizabeth_ii
+			}
+			set_country_flag = ZZZ_monarch_ast_charles_iii
+			ZZZ_crown_AST = yes
+		}
+		else_if = {
+			limit = { tag = NZL }
+			if = {
+				limit = { has_character = ZZZ_monarch_NZL_elizabeth_ii }
+				retire_character = ZZZ_monarch_NZL_elizabeth_ii
+			}
+			set_country_flag = ZZZ_monarch_nzl_charles_iii
+			ZZZ_crown_NZL = yes
+		}
+		else_if = {
+			limit = { tag = ANT }
+			if = {
+				limit = { has_character = ZZZ_monarch_ANT_elizabeth_ii }
+				retire_character = ZZZ_monarch_ANT_elizabeth_ii
+			}
+			set_country_flag = ZZZ_monarch_ant_charles_iii
+			ZZZ_crown_ANT = yes
+		}
+		else_if = {
+			limit = { tag = BAH }
+			if = {
+				limit = { has_character = ZZZ_monarch_BAH_elizabeth_ii }
+				retire_character = ZZZ_monarch_BAH_elizabeth_ii
+			}
+			set_country_flag = ZZZ_monarch_bah_charles_iii
+			ZZZ_crown_BAH = yes
+		}
+		else_if = {
+			limit = { tag = BLZ }
+			if = {
+				limit = { has_character = ZZZ_monarch_BLZ_elizabeth_ii }
+				retire_character = ZZZ_monarch_BLZ_elizabeth_ii
+			}
+			set_country_flag = ZZZ_monarch_blz_charles_iii
+			ZZZ_crown_BLZ = yes
+		}
+		else_if = {
+			limit = { tag = GRA }
+			if = {
+				limit = { has_character = ZZZ_monarch_GRA_elizabeth_ii }
+				retire_character = ZZZ_monarch_GRA_elizabeth_ii
+			}
+			set_country_flag = ZZZ_monarch_gra_charles_iii
+			ZZZ_crown_GRA = yes
+		}
+		else_if = {
+			limit = { tag = JAM }
+			if = {
+				limit = { has_character = ZZZ_monarch_JAM_elizabeth_ii }
+				retire_character = ZZZ_monarch_JAM_elizabeth_ii
+			}
+			set_country_flag = ZZZ_monarch_jam_charles_iii
+			ZZZ_crown_JAM = yes
+		}
+		else_if = {
+			limit = { tag = PAP }
+			if = {
+				limit = { has_character = ZZZ_monarch_PAP_elizabeth_ii }
+				retire_character = ZZZ_monarch_PAP_elizabeth_ii
+			}
+			set_country_flag = ZZZ_monarch_pap_charles_iii
+			ZZZ_crown_PAP = yes
+		}
+		else_if = {
+			limit = { tag = SOL }
+			if = {
+				limit = { has_character = ZZZ_monarch_SOL_elizabeth_ii }
+				retire_character = ZZZ_monarch_SOL_elizabeth_ii
+			}
+			set_country_flag = ZZZ_monarch_sol_charles_iii
+			ZZZ_crown_SOL = yes
+		}
+		else_if = {
+			limit = { tag = STK }
+			if = {
+				limit = { has_character = ZZZ_monarch_STK_elizabeth_ii }
+				retire_character = ZZZ_monarch_STK_elizabeth_ii
+			}
+			set_country_flag = ZZZ_monarch_stk_charles_iii
+			ZZZ_crown_STK = yes
+		}
+		else_if = {
+			limit = { tag = STL }
+			if = {
+				limit = { has_character = ZZZ_monarch_STL_elizabeth_ii }
+				retire_character = ZZZ_monarch_STL_elizabeth_ii
+			}
+			set_country_flag = ZZZ_monarch_stl_charles_iii
+			ZZZ_crown_STL = yes
+		}
+		else_if = {
+			limit = { tag = STV }
+			if = {
+				limit = { has_character = ZZZ_monarch_STV_elizabeth_ii }
+				retire_character = ZZZ_monarch_STV_elizabeth_ii
+			}
+			set_country_flag = ZZZ_monarch_stv_charles_iii
+			ZZZ_crown_STV = yes
+		}
+		else_if = {
+			limit = { tag = TUL }
+			if = {
+				limit = { has_character = ZZZ_monarch_TUL_elizabeth_ii }
+				retire_character = ZZZ_monarch_TUL_elizabeth_ii
+			}
+			set_country_flag = ZZZ_monarch_tul_charles_iii
+			ZZZ_crown_TUL = yes
+		}
+	}
+}
+
+# 明仁 → 德仁（2019.4.30 退位）
+ZZZ_succession_japan_naruhito = {
+	if = {
+		limit = { ZZZ_active_monarchy = yes }
+		if = {
+			limit = { has_character = ZZZ_monarch_JAP_akihito }
+			retire_character = ZZZ_monarch_JAP_akihito
+		}
+		set_country_flag = ZZZ_monarch_jap_naruhito
+		ZZZ_crown_JAP = yes
+	}
+}
+
+# 玛格丽特二世 → 腓特烈十世（2024.1.14 退位）
+ZZZ_succession_denmark_frederik_x = {
+	if = {
+		limit = { ZZZ_active_monarchy = yes }
+		if = {
+			limit = { has_character = ZZZ_monarch_DEN_margrethe_ii }
+			retire_character = ZZZ_monarch_DEN_margrethe_ii
+		}
+		set_country_flag = ZZZ_monarch_den_frederik_x
+		ZZZ_crown_DEN = yes
+	}
+}
+
+# 亨利 → 纪尧姆（2025.10.3 退位）
+ZZZ_succession_luxembourg_guillaume = {
+	if = {
+		limit = { ZZZ_active_monarchy = yes }
+		if = {
+			limit = { has_character = ZZZ_monarch_LUX_henri }
+			retire_character = ZZZ_monarch_LUX_henri
+		}
+		set_country_flag = ZZZ_monarch_lux_guillaume
+		ZZZ_crown_LUX = yes
+	}
+}
+
+# 穆罕默德五世 → 阿卜杜拉（2019.1.6 退位）
+ZZZ_succession_malaysia_abdullah = {
+	if = {
+		limit = { ZZZ_active_monarchy = yes }
+		if = {
+			limit = { has_character = ZZZ_monarch_MAY_muhammad_v }
+			retire_character = ZZZ_monarch_MAY_muhammad_v
+		}
+		set_country_flag = ZZZ_monarch_may_abdullah
+		ZZZ_crown_MAY = yes
+	}
+}
+
+# 阿卜杜拉 → 易卜拉欣（2024.1.31 登基）
+ZZZ_succession_malaysia_ibrahim = {
+	if = {
+		limit = { ZZZ_active_monarchy = yes }
+		if = {
+			limit = { has_character = ZZZ_monarch_MAY_abdullah }
+			retire_character = ZZZ_monarch_MAY_abdullah
+		}
+		set_country_flag = ZZZ_monarch_may_ibrahim
+		ZZZ_crown_MAY = yes
+	}
+}
+
+# 萨巴赫 → 纳瓦夫（2020.9.29 逝世）
+ZZZ_succession_kuwait_nawaf = {
+	if = {
+		limit = { ZZZ_active_monarchy = yes }
+		if = {
+			limit = { has_character = ZZZ_monarch_KUW_sabah }
+			retire_character = ZZZ_monarch_KUW_sabah
+		}
+		set_country_flag = ZZZ_monarch_kuw_nawaf
+		ZZZ_crown_KUW = yes
+	}
+}
+
+# 纳瓦夫 → 米沙勒（2023.12.16 逝世）
+ZZZ_succession_kuwait_mishal = {
+	if = {
+		limit = { ZZZ_active_monarchy = yes }
+		if = {
+			limit = { has_character = ZZZ_monarch_KUW_nawaf }
+			retire_character = ZZZ_monarch_KUW_nawaf
+		}
+		set_country_flag = ZZZ_monarch_kuw_mishal
+		ZZZ_crown_KUW = yes
+	}
+}
+
+# 卡布斯 → 海赛姆（2020.1.10 逝世）
+ZZZ_succession_oman_haitham = {
+	if = {
+		limit = { ZZZ_active_monarchy = yes }
+		if = {
+			limit = { has_character = ZZZ_monarch_OMA_qaboos }
+			retire_character = ZZZ_monarch_OMA_qaboos
+		}
+		set_country_flag = ZZZ_monarch_oma_haitham
+		ZZZ_crown_OMA = yes
+	}
+}
+
+# 巴巴多斯改制共和国（2021.11.30）：废除君主制，不再参与共主更替
+ZZZ_succession_barbados_republic = {
+	if = {
+		limit = { ZZZ_active_monarchy = yes }
+		if = {
+			limit = { has_character = ZZZ_monarch_BAR_elizabeth_ii }
+			retire_character = ZZZ_monarch_BAR_elizabeth_ii
+		}
+		ZZZ_abolish_monarchy = yes
+		set_leader = yes
+	}
+}

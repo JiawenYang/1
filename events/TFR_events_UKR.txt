@@ -1,0 +1,554 @@
+add_namespace = ukraine
+#Ukraine Violates Minsk Protocol
+country_event = {
+	id = ukraine.1
+	title = ukraine.1.t
+	desc = ukraine.1.d
+	picture = GFX_TFR_news_russian_army
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = SOV
+	}
+	option = {
+		name = ukraine.1.o1
+	}
+}
+
+#Ukraine Airlines Flight 752 Shot Down
+country_event = {
+	id = ukraine.2
+	title = ukraine.2.t
+	desc = ukraine.2.d
+	picture = GFX_TFR_news_russian_army
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = UKR
+	}
+	option = {
+		name = ukraine.2.o1
+	}
+}
+
+#Russia Condemns Ukranian Neonazism
+country_event = {
+	id = ukraine.3
+	title = ukraine.3.t
+	desc = ukraine.3.d
+	picture = GFX_TFR_news_russian_army
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = UKR
+	}
+	option = {
+		name = ukraine.3.a
+	}
+}
+
+#Russia's coming prepare for war
+country_event = {
+	id = ukraine.4
+	title = ukraine.4.t
+	desc = ukraine.4.d
+	picture = GFX_TFR_news_russian_army
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = UKR
+	}
+	option = {
+		name = ukraine.4.a
+		army_experience = 200
+		226 = {
+			add_building_construction = {
+				type = bunker
+				level = 2
+				province = 9419
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = bunker
+				level = 2
+				province = 11422
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = bunker
+				level = 2
+				province = 11437
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = bunker
+				level = 2
+				province = 9433
+				instant_build = yes
+			}
+		}
+		203 = {
+			add_building_construction = {
+				type = bunker
+				level = 2
+				province = 6478
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = bunker
+				level = 2
+				province = 3468
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = bunker
+				level = 2
+				province = 488
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = bunker
+				level = 2
+				province = 11454
+				instant_build = yes
+			}
+		}
+		202 = {
+			add_building_construction = {
+				type = bunker
+				level = 2
+				province = 3494
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = bunker
+				level = 4
+				province = 525
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = bunker
+				level = 2
+				province = 3543
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = bunker
+				level = 2
+				province = 958
+				instant_build = yes
+			}
+		}
+		random_owned_controlled_state = {
+			add_building_construction = {
+				type = arms_factory
+				level = 2
+				instant_build = yes
+			}
+		}
+		random_owned_controlled_state = {
+			add_building_construction = {
+				type = arms_factory
+				level = 2
+				instant_build = yes
+			}
+		}
+		random_owned_controlled_state = {
+			add_building_construction = {
+				type = arms_factory
+				level = 2
+				instant_build = yes
+			}
+		}
+		random_owned_controlled_state = {
+			add_building_construction = {
+				type = arms_factory
+				level = 3
+				instant_build = yes
+			}
+		}
+		load_oob = "UKR_territorial_defense"
+		PLD = {
+			army_experience = 50
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = arms_factory
+					level = 3
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = arms_factory
+					level = 3
+					instant_build = yes
+				}
+			}
+		}
+		ROM = {
+			army_experience = 50
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+}
+
+#Entry into NATO
+country_event = {
+	id = ukraine.5
+	title = ukraine.5.t
+	desc = ukraine.5.d
+	picture = GFX_TFR_news_russian_army
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = UKR
+	}
+	option = {
+		name = ukraine.5.a
+		every_country = {
+			limit = {
+				has_country_flag = NATO_current_leader
+			}
+			add_to_faction = UKR
+			add_to_faction = MOL
+		}
+		SOV = {
+			#activate_mission = SOV_nato_war_deadline
+			country_event = {
+				id = dsw_tfr_russia.91
+				days = 15
+			}
+		}
+		GER = {
+			country_event = {
+				id = germany.243
+				days = 15
+			}
+		}
+		FRA = {
+			country_event = {
+				id = germany.243
+				days = 15
+			}
+		}
+		#if = {
+		#	limit = {
+		#		has_government = social_liberal
+		#	}
+		#	recruit_character = UKR_volodymyr_zelenskyy
+		#}
+		#recruit_character = UKR_mariana_bezuglaya
+		load_oob = "UKR_foreign_volunteers"
+	}
+}
+
+#Belgorod Occupation Zone Established
+country_event = {
+	id = ukraine.6
+	title = ukraine.6.t
+	desc = ukraine.6.d
+	picture = GFX_TFR_news_russian_army
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = UKR
+	}
+	option = {
+		name = ukraine.6.a
+		hidden_effect = {
+			SOV = {
+				country_event = {
+					id = dsw_tfr_russia.109
+					days = 50
+				}
+			}
+			country_event = {
+				id = ukraine.7
+				days = 50
+			}
+			1283 = {
+				add_dynamic_modifier = {
+					modifier = UKR_russian_ghetto
+				}
+			}
+			853 = {
+				add_dynamic_modifier = {
+					modifier = UKR_russian_ghetto
+				}
+			}
+			1059 = {
+				add_dynamic_modifier = {
+					modifier = UKR_russian_ghetto
+				}
+			}
+		}
+	}
+}
+
+#Belgorod Terrorist Attack
+country_event = {
+	id = ukraine.7
+	title = ukraine.7.t
+	desc = ukraine.7.d
+	picture = GFX_TFR_news_russian_army
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = UKR
+	}
+	option = {
+		name = ukraine.7.a
+		hidden_effect = {
+			country_event = {
+				id = ukraine.8
+				days = 50
+			}
+		}
+	}
+}
+
+#Belgorod Uprising
+country_event = {
+	id = ukraine.8
+	title = ukraine.8.t
+	desc = ukraine.8.d
+	picture = GFX_TFR_news_russian_army
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = UKR
+	}
+	option = {
+		name = ukraine.8.a
+		hidden_effect = {
+			UKR = {
+				end_puppet = KBK
+			}
+			NEN = {
+				add_state_core = 1283
+				add_state_core = 240
+				transfer_state = 1283
+				load_oob = "NEN_2020"
+				declare_war_on = {
+					target = KBK
+					type = annex_everything
+				}
+				add_ideas = SOV_new_russian_spring
+			}
+			sound_effect = enemy_declare_war
+		}
+	}
+}
+
+#Rostov Uprising Uprising
+country_event = {
+	id = ukraine.9
+	title = ukraine.9.t
+	desc = ukraine.9.d
+	picture = GFX_TFR_news_russian_army
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = UKR
+	}
+	option = {
+		name = ukraine.9.a
+		hidden_effect = {
+			UKR = {
+				end_puppet = SHL
+			}
+			SHL = {
+				load_oob = "SHL_2020"
+			}
+			MEL = {
+				add_state_core = 218
+				add_state_core = 853
+				transfer_state = 853
+				load_oob = "MEL_2020"
+				declare_war_on = {
+					target = SHL
+					type = annex_everything
+				}
+				add_ideas = SOV_new_russian_spring
+			}
+			sound_effect = enemy_declare_war
+		}
+	}
+}
+
+#Sevastopol Uprising Uprising
+country_event = {
+	id = ukraine.10
+	title = ukraine.10.t
+	desc = ukraine.10.d
+	picture = GFX_TFR_news_russian_army
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = UKR
+	}
+	option = {
+		name = ukraine.10.a
+		hidden_effect = {
+			UKR = {
+				end_puppet = BYA
+			}
+			BYA = {
+				load_oob = "BYA_2020"
+			}
+			WLN = {
+				add_state_core = 137
+				add_state_core = 1059
+				transfer_state = 1059
+				load_oob = "WLN_2020"
+				declare_war_on = {
+					target = BYA
+					type = annex_everything
+				}
+				add_ideas = SOV_new_russian_spring
+			}
+			sound_effect = enemy_declare_war
+		}
+	}
+}
+
+#debug event
+country_event = {
+	id = ukraine.11
+	title = ukraine.11.t
+	desc = ukraine.11.d
+	picture = GFX_TFR_news_russian_army
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = UKR
+	}
+	option = {
+		name = ukraine.11.a
+		activate_mission = UKR_special_military_operation_timer
+	}
+}
+
+#Ukraine Gaurentees Kuban
+country_event = {
+	id = ukraine.12
+	title = ukraine.12.t
+	desc = ukraine.12.d
+	picture = GFX_TFR_news_russian_army
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = SOV
+	}
+	option = {
+		name = ukraine.12.a
+	}
+}
+
+#2024 Elections
+country_event = {
+	id = ukraine.13
+	title = ukraine.13.t
+	desc = ukraine.13.d
+	picture = GFX_2021_Russian_Election
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = UKR
+	}
+	option = {
+		name = ukraine.13.a
+		set_global_flag = UKR_zelensky_victory_global
+		add_popularity = {
+			ideology = democratic
+			popularity = 0.15
+		}
+		remove_ideas = UKR_zelensky_growing_authoritarism
+		add_ideas = UKR_zelensky_growing_authoritarism2
+		news_event = {
+			id = news.313
+			hours = 4
+		}
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 10
+				SOV = {
+					OR = {
+						has_completed_focus = SOV_putinism_with_human_face
+						has_government = libertarian_socialist
+					}
+				}
+			}
+			modifier = {
+				factor = 5
+				country_exists = BLR
+			}
+			modifier = {
+				factor = 0
+				has_game_rule = {
+					rule = UKR_election_24
+					option = UKR_election_RUS_24
+					}
+			}
+		}
+	}
+	option = {
+		name = ukraine.13.b
+		set_global_flag = UKR_poroshenko_victory_global
+		set_politics = {
+			ruling_party = conservative
+			elections_allowed = no
+			last_election = "2012.12.17"
+			election_frequency = 48
+		}
+		add_popularity = {
+			ideology = communism
+			popularity = 0.25
+		}
+		remove_ideas = UKR_zelensky_growing_authoritarism
+		add_ideas = UKR_poroshenko_plutocracy
+		news_event = {
+			id = news.314
+			hours = 4
+		}
+		ai_chance = {
+			base = 35
+			modifier = {
+				factor = 10
+				SOV = {
+					has_completed_focus = SOV_push_back_the_west
+				}
+			}
+			modifier = {
+				factor = 5
+				SOV = {
+					divisions_in_state = {
+						size > 6
+						state = 240
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				has_game_rule = {
+					rule = UKR_election_24
+					option = UKR_election_UKR_24
+					}
+			}
+		}
+	}
+}

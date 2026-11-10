@@ -1,0 +1,44 @@
+# ============================================================================
+# 朝鲜半岛邦联 —— faction 模板（本工程原创）
+# 定义 faction_template_juche：Korea.txt 的 korea.9 / korea.23 / korea.27 与
+# ZZZ_debug_decisions.txt 的 ZZZ_dbg_korea_confed 均引用它。
+# 本文件之前缺失，导致 create_faction_from_template 静默失败、邦联结不成。
+#
+# 口径：邦联 = 军事同盟。KOR 与 NKO 保持两个主权国家、互不隶属，
+# 只放进同一个 faction；不 puppet、不 set_autonomy、不 annex。
+# 不预设主导方：谁触发 create_faction_from_template，谁就是同盟主席国。
+# ============================================================================
+faction_template_juche = {
+	name = faction_korean_confederation
+	icon = GFX_faction_logo_generic
+	manifest = faction_manifest_strength_in_unity
+
+	# 允许被既有 GAW 阵营逻辑并入（未成立邦联时，NKO 仍可随中国侧参战）；
+	# 成立邦联后，GAW 初始化按 korean_confederation_formed 直接跳过朝韩，不会被强行拆散
+	can_leader_join_other_factions = yes
+
+	goals = {
+		# Short term goals
+		faction_goal_military_infrastructure
+		faction_goal_growing_the_faction
+		# Medium term goals
+		faction_goal_a_large_faction
+		# Long term goals
+		faction_goal_resource_control
+	}
+
+	default_rules = {
+		# Join Rules
+		joining_rule_special
+		# War Declaration
+		war_declaration_rule_faction_leader_only
+		# Peace Conference
+		faction_peace_take_claimed_focus
+		# Call To War
+		call_to_war_rule_defensive_only
+		# Expulsion Rule
+		dismissal_rule_nobody
+		# Leadership stays with the founding state, no internal power struggle
+		change_leader_rule_never
+	}
+}

@@ -100,10 +100,7 @@ focus_tree = {
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = {
-						rule = The_Move_Against_the_Fifth_Column
-						option = The_Move_Against_the_Fifth_Column_1
-					}
+					always = no
 				}
 			}
 		}
@@ -145,10 +142,7 @@ focus_tree = {
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = {
-						rule = The_Move_Against_the_Fifth_Column
-						option = The_Move_Against_the_Fifth_Column_2
-					}
+					always = no
 				}
 			}
 		}
@@ -721,7 +715,6 @@ focus_tree = {
 			focus = SOV_the_russian_dream
 		}
 		completion_reward = {
-			unlock_decision_tooltip = shut_down_ldpr_social_media
 			add_political_power = 100
 			add_war_support = -0.015
 			hidden_effect = {
@@ -814,7 +807,6 @@ focus_tree = {
 		}
 		prerequisite = {
 			focus = SOV_bribe_corrupt_cprf_officials
-			focus = SOV_bribe_corrupt_ldpr_officials
 		}
 		completion_reward = {
 			country_event = {
@@ -823,43 +815,6 @@ focus_tree = {
 			add_stability = 0.02
 			add_political_power = 25
 			set_country_flag = SOV_towers_of_kremlin_completed_flag
-		}
-	}
-	focus = {
-		id = SOV_fight_ldpr_influence
-		icon = GFX_focus_SOV_fight_ldpr_influence
-		relative_position_id = SOV_fight_against_the_right
-		x = 1
-		y = 1
-		cost = 4
-		available = {
-			has_country_leader = {
-				character = DSW_TFR_SOV_vladimir_putin
-				ruling_only = yes
-			}
-		}
-		prerequisite = {
-			focus = SOV_fight_against_the_right
-		}
-		completion_reward = {
-			unlock_decision_tooltip = prevent_ldpr_rally
-			unlock_decision_tooltip = arrest_ldpr_politician
-			add_political_power = 25
-			set_temp_variable = {
-				var = SOV_election_approval_rating_ldpr_var_temp
-				value = -0.03
-			}
-			SOV_add_election_approval_rating_ldpr = yes
-			hidden_effect = {
-				set_temp_variable = {
-					party_index = 21
-				}
-				set_temp_variable = {
-					party_popularity_increase = -0.03
-				}
-				change_relative_party_popularity = yes
-				recalculate_party = yes
-			}
 		}
 	}
 	focus = {
@@ -882,11 +837,6 @@ focus_tree = {
 		completion_reward = {
 			SOV_decrease_putinism_faltering = yes
 			unlock_decision_tooltip = arrest_communist_politician
-			set_temp_variable = {
-				var = SOV_election_approval_rating_ldpr_var_temp
-				value = 0.025
-			}
-			SOV_add_election_approval_rating_ldpr = yes
 			hidden_effect = {
 				set_temp_variable = {
 					party_index = 2
@@ -941,34 +891,9 @@ focus_tree = {
 		}
 	}
 	focus = {
-		id = SOV_bribe_corrupt_ldpr_officials
-		icon = GFX_focus_SOV_bribe_corrupt_ldpr_officials
-		relative_position_id = SOV_fight_communist_nostolgia
-		x = 3
-		y = 1
-		cost = 4
-		available = {
-			has_country_leader = {
-				character = DSW_TFR_SOV_vladimir_putin
-				ruling_only = yes
-			}
-		}
-		prerequisite = {
-			focus = SOV_fight_ldpr_influence
-		}
-		completion_reward = {
-			add_political_power = 100
-			set_temp_variable = {
-				var = SOV_election_approval_rating_ldpr_var_temp
-				value = -0.02
-			}
-			SOV_add_election_approval_rating_ldpr = yes
-		}
-	}
-	focus = {
 		id = SOV_stimulate_srzp
 		icon = GFX_focus_SOV_stimulate_srzp
-		relative_position_id = SOV_bribe_corrupt_ldpr_officials
+		relative_position_id = SOV_purge_problematic_oligarchs
 		x = 0
 		y = 2
 		cost = 4
@@ -1002,12 +927,6 @@ focus_tree = {
 				}
 				unlock_decision_tooltip = SOV_use_srzp_to_hinder_cprf
 			}
-			if = {
-				limit = {
-					has_completed_focus = SOV_fight_ldpr_influence
-				}
-				unlock_decision_tooltip = SOV_use_srzp_to_hinder_ldpr
-			}
 		}
 	}
 	focus = {
@@ -1024,7 +943,6 @@ focus_tree = {
 			}
 		}
 		prerequisite = {
-			focus = SOV_fight_ldpr_influence
 			focus = SOV_focus_on_corruption
 		}
 		completion_reward = {
@@ -1084,11 +1002,6 @@ focus_tree = {
 				value = -0.03
 			}
 			SOV_add_election_approval_rating_cprf = yes
-			set_temp_variable = {
-				var = SOV_election_approval_rating_ldpr_var_temp
-				value = 0.03
-			}
-			SOV_add_election_approval_rating_ldpr = yes
 		}
 	}
 	focus = {
@@ -1105,7 +1018,7 @@ focus_tree = {
 			}
 		}
 		prerequisite = {
-			focus = SOV_fight_ldpr_influence
+			focus = SOV_bribe_corrupt_cprf_officials
 		}
 		completion_reward = {
 			set_temp_variable = {
@@ -1126,11 +1039,6 @@ focus_tree = {
 			recalculate_party = yes
 			add_stability = 0.02
 			add_political_power = 20
-			set_temp_variable = {
-				var = SOV_election_approval_rating_ldpr_var_temp
-				value = -0.03
-			}
-			SOV_add_election_approval_rating_ldpr = yes
 			set_temp_variable = {
 				var = SOV_election_approval_rating_cprf_var_temp
 				value = 0.03
@@ -1158,11 +1066,6 @@ focus_tree = {
 			unlock_decision_tooltip = stir_up_nationalism
 			add_war_support = 0.025
 			add_political_power = 25
-			set_temp_variable = {
-				var = SOV_election_approval_rating_ldpr_var_temp
-				value = 0.025
-			}
-			SOV_add_election_approval_rating_ldpr = yes
 			hidden_effect = {
 				set_temp_variable = {
 					party_index = 21
@@ -1286,7 +1189,6 @@ focus_tree = {
 			SOV_add_election_approval_rating_ur = yes
 			swap_ruler_traits = {
 				remove = hos_puppet_master
-				add = hos_puppet_master_2
 			}
 			hidden_effect = {
 				set_temp_variable = {
@@ -1308,25 +1210,28 @@ focus_tree = {
 		y = 1
 		cost = 5
 		cancelable = no
+		# 2022.2.24 闂佸憡甯楁竟鍡涘磻閿濆纭€闁告劖褰冪拋鏌ユ煟閹邦喗顏熺紒杈ㄧ箖缁嬪顓奸崼顐㈡櫗缂佺虎鍙庨崜娆愭櫠閻樼數纾炬い鏃囥€€閸?
+		# 闂?SOV_pass_the_new_constitution / SOV_back_to_normal / SOV_1000_years_of_putinism
 		available = {
-			date > 2022.2.23
-			has_country_flag = DSW_SOV_putin_recovered
+			date > 2022.2.24
 			has_country_leader = {
 				character = DSW_TFR_SOV_vladimir_putin
 				ruling_only = yes
 			}
-		}
-		prerequisite = {
-			focus = SOV_pass_the_new_constitution
-		}
-		prerequisite = {
-			focus = SOV_back_to_normal
-		}
-		prerequisite = {
-			focus = SOV_1000_years_of_putinism
+			NOT = {
+				has_country_flag = DSW_SOV_smo_started
+			}
+			country_exists = UKR
 		}
 		completion_reward = {
-			DSW_SOV_start_ukrainian_war = yes
+			DSW_SOV_declare_war_on_ukraine = yes
+		}
+		ai_will_do = {
+			base = 100
+			modifier = {
+				factor = 10
+				date > 2022.2.24
+			}
 		}
 	}
 	focus = {
@@ -1381,10 +1286,7 @@ focus_tree = {
 			hidden_effect = {
 				if = {
 					limit = {
-						has_game_rule = {
-							rule = The_First_Union_Presidential_Election
-							option = The_First_Union_Presidential_Election_5
-						}
+						always = no
 					}
 					set_temp_variable = {
 						var = SOV_oligarch_approval_rating_var_temp
@@ -1407,10 +1309,7 @@ focus_tree = {
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = {
-						rule = The_First_Union_Presidential_Election
-						option = The_First_Union_Presidential_Election_5
-					}
+					always = no
 				}
 			}
 		}
@@ -1460,10 +1359,7 @@ focus_tree = {
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = {
-						rule = The_First_Union_Presidential_Election
-						option = The_First_Union_Presidential_Election_6
-					}
+					always = no
 				}
 			}
 		}
@@ -1604,25 +1500,25 @@ focus_tree = {
 				name = SOV_fund_military_advancement
 				bonus = 0.5
 				uses = 2
-				category = infantry_tech
+				category = CAT_infantry
 			}
 			add_tech_bonus = {
 				name = SOV_fund_military_advancement
 				bonus = 0.5
 				uses = 1
-				category = support_tech
+				category = CAT_support_weapons
 			}
 			add_tech_bonus = {
 				name = SOV_fund_military_advancement
 				bonus = 0.2
 				uses = 1
-				category = artillery
+				category = CAT_artillery
 			}
 			add_tech_bonus = {
 				name = SOV_fund_military_advancement
 				bonus = 0.2
 				uses = 1
-				category = armor
+				category = CAT_armor
 			}
 			army_experience = 25
 			set_temp_variable = {
@@ -1759,16 +1655,6 @@ focus_tree = {
 				mission = SOV_handle_covid_mission
 				days = 200
 			}
-			hidden_effect = {
-				random = {
-					chance = 20
-					country_event = {
-						id = dsw_tfr_russia.481
-						days = 20
-						random_days = 5
-					}
-				}
-			}
 		}
 	}
 	focus = {
@@ -1801,11 +1687,6 @@ focus_tree = {
 				value = 0.02
 			}
 			SOV_add_election_approval_rating_ur = yes
-			set_temp_variable = {
-				var = SOV_election_approval_rating_ldpr_var_temp
-				value = 0.02
-			}
-			SOV_add_election_approval_rating_ldpr = yes
 			custom_effect_tooltip = SOV_no_covid_tt
 		}
 	}
@@ -2071,10 +1952,7 @@ focus_tree = {
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = {
-						rule = The_Pre_Election_Congress_of_CPRF
-						option = The_Pre_Election_Congress_of_CPRF_4
-					}
+					always = no
 				}
 			}
 		}
@@ -2102,7 +1980,6 @@ focus_tree = {
 				value = 0.025
 			}
 			SOV_add_election_approval_rating_cprf = yes
-			unlock_decision_tooltip = conduct_ldpr_smear_campaign
 			unlock_decision_tooltip = conduct_ur_smear_campaign
 			unlock_decision_tooltip = conduct_liberal_smear_campaign
 			hidden_effect = {
@@ -2125,18 +2002,9 @@ focus_tree = {
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = {
-						rule = The_Pre_Election_Congress_of_CPRF
-						option = The_Pre_Election_Congress_of_CPRF_1
-					}
-					has_game_rule = {
-						rule = The_Pre_Election_Congress_of_CPRF
-						option = The_Pre_Election_Congress_of_CPRF_2
-					}
-					has_game_rule = {
-						rule = The_Pre_Election_Congress_of_CPRF
-						option = The_Pre_Election_Congress_of_CPRF_3
-					}
+					always = no
+					always = no
+					always = no
 				}
 			}
 		}
@@ -2164,7 +2032,6 @@ focus_tree = {
 				value = 0.025
 			}
 			SOV_add_election_approval_rating_ur = yes
-			unlock_decision_tooltip = conduct_ldpr_smear_campaign
 			unlock_decision_tooltip = conduct_communist_smear_campaign
 			unlock_decision_tooltip = conduct_liberal_smear_campaign
 		}
@@ -2181,18 +2048,9 @@ focus_tree = {
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = {
-						rule = The_Pre_Election_Congress_of_CPRF
-						option = The_Pre_Election_Congress_of_CPRF_1
-					}
-					has_game_rule = {
-						rule = The_Pre_Election_Congress_of_CPRF
-						option = The_Pre_Election_Congress_of_CPRF_2
-					}
-					has_game_rule = {
-						rule = The_Pre_Election_Congress_of_CPRF
-						option = The_Pre_Election_Congress_of_CPRF_3
-					}
+					always = no
+					always = no
+					always = no
 				}
 			}
 		}
@@ -2211,15 +2069,6 @@ focus_tree = {
 			focus = SOV_what_now
 		}
 		completion_reward = {
-			add_timed_idea = {
-				idea = SOV_tell_zhirinovsky_the_truth_idea
-				days = 45
-			}
-			set_temp_variable = {
-				var = SOV_election_approval_rating_ldpr_var_temp
-				value = 0.025
-			}
-			SOV_add_election_approval_rating_ldpr = yes
 			unlock_decision_tooltip = conduct_communist_smear_campaign
 			unlock_decision_tooltip = conduct_ur_smear_campaign
 			unlock_decision_tooltip = conduct_liberal_smear_campaign
@@ -2466,7 +2315,6 @@ focus_tree = {
 			is_completed_by_event = yes
 		}
 		completion_reward = {
-			unlock_decision_tooltip = conduct_ldpr_smear_campaign
 			unlock_decision_tooltip = conduct_ur_smear_campaign
 			unlock_decision_tooltip = conduct_liberal_smear_campaign
 		}
@@ -2631,12 +2479,6 @@ focus_tree = {
 			focus = SOV_russian_destiny
 		}
 		completion_reward = {
-			unlock_decision_tooltip = SOV_ldpr_always_only_truth
-			set_temp_variable = {
-				var = SOV_election_approval_rating_ldpr_var_temp
-				value = 0.025
-			}
-			SOV_add_election_approval_rating_ldpr = yes
 		}
 	}
 	focus = {
@@ -2654,11 +2496,6 @@ focus_tree = {
 		}
 		completion_reward = {
 			custom_effect_tooltip = SOV_russophilic_propaganda_tt
-			set_temp_variable = {
-				var = SOV_election_approval_rating_ldpr_var_temp
-				value = 0.025
-			}
-			SOV_add_election_approval_rating_ldpr = yes
 		}
 	}
 	focus = {
@@ -2675,7 +2512,6 @@ focus_tree = {
 			focus = SOV_russian_destiny
 		}
 		completion_reward = {
-			unlock_decision_tooltip = SOV_ldpr_always_for_the_people
 			set_temp_variable = {
 				var = SOV_election_approval_rating_cprf_var_temp
 				value = -0.01
@@ -2691,7 +2527,7 @@ focus_tree = {
 	}
 	focus = {
 		id = SOV_attack_the_polls
-		icon = GFX_focus_SOV_send_ldpr_agittrains
+		icon = GFX_decision_generic_political_reform
 		relative_position_id = SOV_russian_destiny
 		x = 0
 		y = 3
@@ -2703,12 +2539,6 @@ focus_tree = {
 			focus = SOV_promises_of_land
 		}
 		completion_reward = {
-			unlock_decision_tooltip = SOV_ldpr_zhirinovsky_will_listen
-			set_temp_variable = {
-				var = SOV_election_approval_rating_ldpr_var_temp
-				value = 0.02
-			}
-			SOV_add_election_approval_rating_ldpr = yes
 		}
 	}
 	focus = {
@@ -2759,11 +2589,6 @@ focus_tree = {
 				value = 0.02
 			}
 			SOV_add_election_approval_rating_ur = yes
-			set_temp_variable = {
-				var = SOV_election_approval_rating_ldpr_var_temp
-				value = 0.02
-			}
-			SOV_add_election_approval_rating_ldpr = yes
 			add_political_power = 50
 		}
 	}
@@ -2860,11 +2685,6 @@ focus_tree = {
 				value = 0.02
 			}
 			SOV_add_election_approval_rating_ur = yes
-			set_temp_variable = {
-				var = SOV_election_approval_rating_ldpr_var_temp
-				value = -0.02
-			}
-			SOV_add_election_approval_rating_ldpr = yes
 			add_war_support = 0.05
 			custom_effect_tooltip = tooltip_white_line
 			custom_effect_tooltip = SOV_heir_to_strongman_tt
@@ -2913,9 +2733,6 @@ shared_focus = {
 				has_global_flag = SOV_srzp_won
 			}
 		}
-		GFX_focus_SOV_rollback_serdykovs_reforms_LDPR = {
-			has_global_flag = SOV_ldpr_won
-		}
 		GFX_focus_SOV_rollback_serdykovs_reforms_CPRF = {
 			has_global_flag = SOV_cprf_won
 		}
@@ -2941,7 +2758,7 @@ shared_focus = {
 	allow_branch = {
 		OR = {
 			has_global_flag = SOV_cprf_won
-			has_global_flag = SOV_ldpr_won
+			always = no
 			has_global_flag = SOV_medvedev_won
 			has_global_flag = SOV_srzp_won
 		}
@@ -3033,7 +2850,7 @@ shared_focus = {
 		}
 		if = {
 			limit = {
-				has_global_flag = SOV_ldpr_won
+				always = no
 			}
 			effect_tooltip = {
 				swap_ideas = {
@@ -3096,9 +2913,6 @@ shared_focus = {
 				has_global_flag = SOV_srzp_won
 			}
 		}
-		GFX_focus_SOV_expand_ratnik_programme_LDPR = {
-			has_global_flag = SOV_ldpr_won
-		}
 		GFX_focus_SOV_expand_ratnik_programme_CPRF = {
 			has_global_flag = SOV_cprf_won
 		}
@@ -3123,7 +2937,7 @@ shared_focus = {
 			name = SOV_expand_ratnik_programme
 			bonus = 0.5
 			uses = 4
-			category = infantry_tech
+			category = CAT_infantry
 		}
 		army_experience = 10
 	}
@@ -3136,9 +2950,6 @@ shared_focus = {
 				has_global_flag = SOV_medvedev_won
 				has_global_flag = SOV_srzp_won
 			}
-		}
-		GFX_focus_SOV_improve_deep_battle_theory_LDPR = {
-			has_global_flag = SOV_ldpr_won
 		}
 		GFX_focus_SOV_improve_deep_battle_theory_CPRF = {
 			has_global_flag = SOV_cprf_won
@@ -3163,7 +2974,7 @@ shared_focus = {
 			name = SOV_improve_deep_battle_theory
 			cost_reduction = 0.5
 			uses = 2
-			category = cat_mass_assault
+			category = land_doctrine
 		}
 		if = {
 			limit = {
@@ -3194,7 +3005,7 @@ shared_focus = {
 		}
 		if = {
 			limit = {
-				has_global_flag = SOV_ldpr_won
+				always = no
 			}
 			effect_tooltip = {
 				swap_ideas = {
@@ -3241,9 +3052,6 @@ shared_focus = {
 				has_global_flag = SOV_srzp_won
 			}
 		}
-		GFX_focus_SOV_improve_gerasimov_doctrine_LDPR = {
-			has_global_flag = SOV_ldpr_won
-		}
 		GFX_focus_SOV_improve_gerasimov_doctrine_CPRF = {
 			has_global_flag = SOV_cprf_won
 		}
@@ -3265,7 +3073,7 @@ shared_focus = {
 	available = {
 		if = {
 			limit = {
-				has_global_flag = SOV_ldpr_won
+				always = no
 			}
 			NOT = {
 				has_country_flag = SOV_disable_gerasimov_doctrine_flag
@@ -3277,7 +3085,7 @@ shared_focus = {
 			name = SOV_improve_gerasimovs_doctrine
 			cost_reduction = 0.5
 			uses = 2
-			category = cat_mobile_warfare
+			category = land_doctrine
 		}
 		if = {
 			limit = {
@@ -3306,7 +3114,7 @@ shared_focus = {
 		}
 		if = {
 			limit = {
-				has_global_flag = SOV_ldpr_won
+				always = no
 			}
 			effect_tooltip = {
 				swap_ideas = {
@@ -3354,9 +3162,6 @@ shared_focus = {
 				has_global_flag = SOV_srzp_won
 			}
 		}
-		GFX_focus_SOV_reform_the_officer_corps_LDPR = {
-			has_global_flag = SOV_ldpr_won
-		}
 		GFX_focus_SOV_reform_the_officer_corps_CPRF = {
 			has_global_flag = SOV_cprf_won
 		}
@@ -3403,7 +3208,7 @@ shared_focus = {
 		}
 		if = {
 			limit = {
-				has_global_flag = SOV_ldpr_won
+				always = no
 			}
 			effect_tooltip = {
 				swap_ideas = {
@@ -3437,9 +3242,6 @@ shared_focus = {
 				has_global_flag = SOV_medvedev_won
 				has_global_flag = SOV_srzp_won
 			}
-		}
-		GFX_focus_SOV_centralized_command_structures_LDPR = {
-			has_global_flag = SOV_ldpr_won
 		}
 		GFX_focus_SOV_centralized_command_structures_CPRF = {
 			has_global_flag = SOV_cprf_won
@@ -3490,7 +3292,7 @@ shared_focus = {
 		}
 		if = {
 			limit = {
-				has_global_flag = SOV_ldpr_won
+				always = no
 			}
 			effect_tooltip = {
 				swap_ideas = {
@@ -3525,9 +3327,6 @@ shared_focus = {
 				has_global_flag = SOV_medvedev_won
 				has_global_flag = SOV_srzp_won
 			}
-		}
-		GFX_focus_SOV_unify_command_structure_LDPR = {
-			has_global_flag = SOV_ldpr_won
 		}
 		GFX_focus_SOV_unify_command_structure_CPRF = {
 			has_global_flag = SOV_cprf_won
@@ -3598,9 +3397,6 @@ shared_focus = {
 				has_global_flag = SOV_srzp_won
 			}
 		}
-		GFX_focus_SOV_give_way_to_youth_LDPR = {
-			has_global_flag = SOV_ldpr_won
-		}
 		GFX_focus_SOV_give_way_to_youth_CPRF = {
 			has_global_flag = SOV_cprf_won
 		}
@@ -3645,7 +3441,7 @@ shared_focus = {
 		}
 		if = {
 			limit = {
-				has_global_flag = SOV_ldpr_won
+				always = no
 			}
 			effect_tooltip = {
 				swap_ideas = {
@@ -3682,9 +3478,6 @@ shared_focus = {
 				has_global_flag = SOV_medvedev_won
 				has_global_flag = SOV_srzp_won
 			}
-		}
-		GFX_focus_SOV_promote_reliable_cadres_LDPR = {
-			has_global_flag = SOV_ldpr_won
 		}
 		GFX_focus_SOV_retain_trained_officers = {
 			has_global_flag = SOV_cprf_won
@@ -3728,7 +3521,7 @@ shared_focus = {
 		}
 		if = {
 			limit = {
-				has_global_flag = SOV_ldpr_won
+				always = no
 			}
 			effect_tooltip = {
 				swap_ideas = {
@@ -3768,7 +3561,7 @@ shared_focus = {
 			}
 		}
 		GFX_focus_SOV_revanchist_fervor = {
-			has_global_flag = SOV_ldpr_won
+			always = no
 		}
 		GFX_focus_SOV_idological_fanaticism = {
 			has_global_flag = SOV_cprf_won
@@ -3823,7 +3616,7 @@ shared_focus = {
 			}
 			if = {
 				limit = {
-					has_global_flag = SOV_ldpr_won
+					always = no
 				}
 				effect_tooltip = {
 					swap_ideas = {
@@ -3860,7 +3653,7 @@ shared_focus = {
 			}
 			if = {
 				limit = {
-					has_global_flag = SOV_ldpr_won
+					always = no
 				}
 				effect_tooltip = {
 					swap_ideas = {
@@ -3901,7 +3694,7 @@ shared_focus = {
 			}
 			if = {
 				limit = {
-					has_global_flag = SOV_ldpr_won
+					always = no
 				}
 				effect_tooltip = {
 					swap_ideas = {
@@ -3939,7 +3732,7 @@ shared_focus = {
 			}
 			if = {
 				limit = {
-					has_global_flag = SOV_ldpr_won
+					always = no
 				}
 				effect_tooltip = {
 					swap_ideas = {
@@ -3988,9 +3781,6 @@ shared_focus = {
 				has_global_flag = SOV_srzp_won
 			}
 		}
-		GFX_focus_SOV_science_in_the_service_of_the_army_LDPR = {
-			has_global_flag = SOV_ldpr_won
-		}
 		GFX_focus_SOV_science_in_the_service_of_the_army_CPRF = {
 			has_global_flag = SOV_cprf_won
 		}
@@ -4015,13 +3805,13 @@ shared_focus = {
 		add_tech_bonus = {
 			bonus = 0.5
 			uses = 1
-			category = industry
+			category = CAT_industry
 			name = SOV_science_in_the_service_of_the_army
 		}
 		add_tech_bonus = {
 			bonus = 0.5
 			uses = 1
-			category = electronics
+			category = CAT_electronics
 			name = SOV_science_in_the_service_of_the_army
 		}
 		unlock_decision_tooltip = SOV_expand_drone_production
@@ -4041,9 +3831,6 @@ shared_focus = {
 				has_global_flag = SOV_medvedev_won
 				has_global_flag = SOV_srzp_won
 			}
-		}
-		GFX_focus_SOV_modernization_of_aircraft_and_ships_LDPR = {
-			has_global_flag = SOV_ldpr_won
 		}
 		GFX_focus_SOV_modernization_of_aircraft_and_ships_CPRF = {
 			has_global_flag = SOV_cprf_won
@@ -4065,13 +3852,13 @@ shared_focus = {
 		add_tech_bonus = {
 			bonus = 0.5
 			uses = 2
-			category = air_equipment
+			category = CAT_aircraft
 			name = SOV_modernization_of_aircraft_and_ships
 		}
 		add_tech_bonus = {
 			bonus = 0.5
 			uses = 2
-			category = naval_equipment
+			category = CAT_naval
 			name = SOV_modernization_of_aircraft_and_ships
 		}
 	}
@@ -4084,9 +3871,6 @@ shared_focus = {
 				has_global_flag = SOV_medvedev_won
 				has_global_flag = SOV_srzp_won
 			}
-		}
-		GFX_focus_SOV_build_up_air_and_sea_fleets_LDPR = {
-			has_global_flag = SOV_ldpr_won
 		}
 		GFX_focus_SOV_build_up_air_and_sea_fleets_CPRF = {
 			has_global_flag = SOV_cprf_won
@@ -4131,9 +3915,6 @@ shared_focus = {
 				has_global_flag = SOV_srzp_won
 			}
 		}
-		GFX_focus_SOV_emphasizing_vocational_training_LDPR = {
-			has_global_flag = SOV_ldpr_won
-		}
 		GFX_focus_SOV_emphasizing_vocational_training_CPRF = {
 			has_global_flag = SOV_cprf_won
 		}
@@ -4155,13 +3936,13 @@ shared_focus = {
 		add_doctrine_cost_reduction = {
 			cost_reduction = 0.5
 			uses = 2
-			category = cat_old_air_doctrine
+			category = air_doctrine
 			name = SOV_emphasizing_vocational_training
 		}
 		add_doctrine_cost_reduction = {
 			cost_reduction = 0.5
 			uses = 2
-			category = cat_old_naval_doctrine
+			category = naval_doctrine
 			name = SOV_emphasizing_vocational_training
 		}
 		unlock_decision_tooltip = SOV_conduct_air_warfare_exercises
@@ -4176,9 +3957,6 @@ shared_focus = {
 				has_global_flag = SOV_medvedev_won
 				has_global_flag = SOV_srzp_won
 			}
-		}
-		GFX_focus_SOV_start_armata_production_LDPR = {
-			has_global_flag = SOV_ldpr_won
 		}
 		GFX_focus_SOV_start_armata_production_CPRF = {
 			has_global_flag = SOV_cprf_won
@@ -4251,7 +4029,6 @@ shared_focus = {
 							tank_reliability_upgrade = 3
 							tank_engine_upgrade = 5
 							tank_armor_upgrade = 2
-							tank_art_upgrade = 2
 						}
 					}
 					add_equipment_production = {
@@ -4316,9 +4093,6 @@ shared_focus = {
 				has_global_flag = SOV_srzp_won
 			}
 		}
-		GFX_focus_SOV_expand_t90_production_LDPR = {
-			has_global_flag = SOV_ldpr_won
-		}
 		GFX_focus_SOV_expand_t90_production_CPRF = {
 			has_global_flag = SOV_cprf_won
 		}
@@ -4374,7 +4148,6 @@ shared_focus = {
 						tank_reliability_upgrade = 2
 						tank_engine_upgrade = 5
 						tank_armor_upgrade = 2
-						tank_art_upgrade = 2
 					}
 					icon = "gfx/interface/technologies/armor/MBT_2018_T-90MS.png"
 				}
@@ -4422,9 +4195,6 @@ shared_focus = {
 				has_global_flag = SOV_medvedev_won
 				has_global_flag = SOV_srzp_won
 			}
-		}
-		GFX_focus_SOV_reorganized_russian_armed_forces_LDPR = {
-			has_global_flag = SOV_ldpr_won
 		}
 		GFX_focus_SOV_the_might_of_soviet_army = {
 			has_global_flag = SOV_cprf_won
@@ -4485,7 +4255,7 @@ shared_focus = {
 			}
 			if = {
 				limit = {
-					has_global_flag = SOV_ldpr_won
+					always = no
 				}
 				effect_tooltip = {
 					swap_ideas = {
@@ -4522,7 +4292,7 @@ shared_focus = {
 			}
 			if = {
 				limit = {
-					has_global_flag = SOV_ldpr_won
+					always = no
 				}
 				effect_tooltip = {
 					swap_ideas = {
@@ -4563,7 +4333,7 @@ shared_focus = {
 			}
 			if = {
 				limit = {
-					has_global_flag = SOV_ldpr_won
+					always = no
 				}
 				effect_tooltip = {
 					swap_ideas = {
@@ -4601,7 +4371,7 @@ shared_focus = {
 			}
 			if = {
 				limit = {
-					has_global_flag = SOV_ldpr_won
+					always = no
 				}
 				effect_tooltip = {
 					swap_ideas = {

@@ -20,8 +20,6 @@ ideas = {
 				attack_bonus_against = 0.25
 			}
 			modifier = {
-				mountain_terrain_attack_factor = 0.25
-				plains_terrain_attack_factor = 0.25
 			}
 			targeted_modifier = {
 				tag = COL
@@ -39,8 +37,6 @@ ideas = {
 				attack_bonus_against = 0.25
 			}
 			modifier = {
-				mountain_terrain_attack_factor = 0.25
-				jungle_terrain_attack_factor = 0.25
 			}
 		}
 		VEN_operation_piar_idea = {
@@ -53,7 +49,6 @@ ideas = {
 				attack_bonus_against = 0.25
 			}
 			modifier = {
-				jungle_terrain_attack_factor = 0.3
 			}
 		}
 
@@ -101,7 +96,7 @@ ideas = {
 				original_tag = VEN 
 			}
 			modifier = {
-				personal_expense = 0.1
+				personal_expense_factor = 0.1
 				business_value_factor = -0.20
 				personal_value_factor = -0.15
 				inflation_cost_multiplier_modifier = 0.005
@@ -343,7 +338,7 @@ ideas = {
 				political_power_gain = 0.15
 				stability_factor = 0.1
 				communism_drift = 0.01
-				libertarian_socialist_drift = 0.01
+				neutrality_drift = 0.01
 			}
 		}
 		# Mass Propaganda
@@ -381,7 +376,7 @@ ideas = {
 				academic_development_monthly = 0.025
 				research_speed_factor = 0.1
 				communism_drift = 0.01
-				libertarian_socialist_drift = 0.01
+				neutrality_drift = 0.01
 			}
 		}
 		# The Poor Man's Government
@@ -480,8 +475,8 @@ ideas = {
 			}
 			modifier = {
 				communism_drift = 0.01
-				libertarian_socialist_drift = 0.01
-				social_democrat_drift = 0.01
+				neutrality_drift = 0.01
+				democratic_drift = 0.01
 			}
 		}
 
@@ -506,7 +501,6 @@ ideas = {
 				stability_factor = -0.05
 				war_support_factor = 0.1
 				communism_drift = 0.01
-				totalitarian_socialist_drift = 0.01
 			}
 		}
 
@@ -519,8 +513,6 @@ ideas = {
 			modifier = {
 				conscription_factor = 0.1
 				training_time_factor = -0.1
-				modifier_army_sub_unit_militia_attack_factor = 0.1
-				modifier_army_sub_unit_militia_defence_factor = 0.1
 			}
 		}
 
@@ -581,8 +573,7 @@ ideas = {
 				political_power_gain = 0.05
 				stability_factor = -0.1
 				party_popularity_stability_factor = 0.3
-				communism_drift = 0.02
-				totalitarian_socialist_drift = 0.01
+				communism_drift = 0.01
 			}
 		}
 
@@ -609,9 +600,9 @@ ideas = {
 				resistance_target = -0.1
 				resistance_decay = 0.1
 				resistance_activity = -0.1
-				authoritarian_democrat_drift = -0.01
+				democratic_drift = -0.01
 				fascism_drift = -0.01
-				national_socialist_drift = -0.01
+				nationalist_drift = -0.01
 			}
 		}
 
@@ -624,9 +615,7 @@ ideas = {
 			modifier = {
 				drift_defence_factor = 0.25
 				compliance_growth = 0.1
-				social_liberal_drift = -0.01
-				market_liberal_drift = -0.01
-				conservative_drift = -0.01
+				democratic_drift = -0.01
 			}
 		}
 
@@ -673,9 +662,8 @@ ideas = {
 				tax_gain_multiplier_modifier = -0.05
 			}
 			targeted_modifier = {
-				VEN = {
-					overlord_trade_cost_factor = -0.25 #should give 10
-				}
+				tag = VEN
+				overlord_trade_cost_factor = -0.25 #should give 10
 			}
 		}
 
@@ -688,9 +676,8 @@ ideas = {
 				tax_gain_multiplier_modifier = -0.03
 			}
 			targeted_modifier = {
-				VEN = {
-					trade_opinion_factor = 0.1
-				}
+				tag = VEN
+				trade_opinion_factor = 0.1
 			}
 		}
 
@@ -713,7 +700,7 @@ ideas = {
 			}
 			modifier = {
 				# Modified from "Consequences of the 2019 Crisis"
-				personal_expense = 0.1
+				personal_expense_factor = 0.1
 				business_value_factor = -0.1
 				personal_value_factor = -0.1
 				inflation_cost_multiplier_modifier = 0.003
@@ -873,7 +860,6 @@ ideas = {
 				# TODO: Pair this to the dynamic modifier effects
 
 				# Economy
-				personal_expense = 0.1
 				personal_expense_factor = 0.15
 				business_value_factor = 0.25
 				personal_value_factor = 0.25
@@ -987,8 +973,6 @@ ideas = {
 				always = no
 			}
 			modifier = {
-				modifier_army_sub_unit_militia_attack_factor = 0.15
-				modifier_army_sub_unit_militia_defence_factor = 0.15
 			}
 		}
 
@@ -1289,7 +1273,7 @@ ideas = {
 			}
 		}
 	}
-	hidden_idea = {
+	hidden_ideas = {
 		VEN_underground_activities_idea = {  }
 	}
 }

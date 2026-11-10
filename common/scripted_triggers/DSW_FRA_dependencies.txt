@@ -253,8 +253,8 @@ DSW_FRA_dep_has_democratic_form_of_government = {
 	}
 }
 DSW_FRA_dep_is_able_to_build_energy_farm_in_state = {
-	nuclear_reactor = 0
-	power_plant = 0
+	NOT = { nuclear_reactor > 0 }
+	NOT = { fossil_powerplant > 0 }
 }
 DSW_FRA_dep_has_campaign_slot = {
 	custom_trigger_tooltip = {

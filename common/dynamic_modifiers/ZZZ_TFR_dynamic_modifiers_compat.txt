@@ -1,0 +1,87 @@
+# 本工程原创兼容层：从烈焰升腾(TFR)移植缺失的 dynamic_modifiers 定义。
+# 来源逐块标注，逻辑与数值原样保留。
+
+# ---- FAF_civil_war_rebuilding_dynamic  <- TFR TFR_dynamic_modifiers_FRA.txt:135
+FAF_civil_war_rebuilding_dynamic = {
+	icon = GFX_idea_FRA_Brick_By_Brick
+	production_speed_buildings_factor = FAF_rebuilding_production_speed_buildings_factor_dynamic
+	political_power_gain = FAF_rebuilding_political_power_gain_dynamic_var
+	stability_factor = FAF_rebuilding_stability_factor_dynamic_var
+	industrial_capacity_factory = FAF_rebuilding_industrial_capacity_factory_dynamic_var
+	industrial_capacity_dockyard = FAF_rebuilding_industrial_capacity_dockyard_dynamic_var
+	resistance_activity = FAF_rebuilding_resistance_activity_dynamic_var
+	democratic_drift = FAF_rebuilding_social_liberal_drift_dynamic_var
+	production_factory_efficiency_gain_factor = FAF_rebuilding_production_factory_efficiency_gain_factor_dynamic_var
+	income_growth_factor = FAF_rebuilding_income_growth_factor_dynamic
+	production_factory_max_efficiency_factor = FAF_rebuilding_production_factory_max_efficiency_factor_dynamic_var
+	production_factory_start_efficiency_factor = FAF_rebuilding_production_factory_start_efficiency_factor_dynamic_var
+}
+
+# ---- FPR_civil_war_rebuilding_dynamic  <- TFR TFR_dynamic_modifiers_FRA.txt:150
+FPR_civil_war_rebuilding_dynamic = {
+	icon = GFX_idea_FRA_Brick_By_Brick
+	production_speed_buildings_factor = FPR_rebuilding_production_speed_buildings_factor_dynamic
+	political_power_gain = FPR_rebuilding_political_power_gain_dynamic_var
+	stability_factor = FPR_rebuilding_stability_factor_dynamic_var
+	industrial_capacity_factory = FPR_rebuilding_industrial_capacity_factory_dynamic_var
+	industrial_capacity_dockyard = FPR_rebuilding_industrial_capacity_dockyard_dynamic_var
+	resistance_activity = FPR_rebuilding_resistance_activity_dynamic_var
+	democratic_drift = FPR_rebuilding_social_liberal_drift_dynamic_var
+	nationalist_drift= FPR_rebuilding_nationalist_drift_dynamic_var
+}
+
+# ---- FRA_civil_war_rebuilding_dynamic  <- TFR TFR_dynamic_modifiers_FRA.txt:123
+FRA_civil_war_rebuilding_dynamic = {
+	icon = GFX_idea_FRA_Brick_By_Brick
+	production_speed_buildings_factor = FRA_rebuilding_production_speed_buildings_factor_dynamic
+	political_power_gain = FRA_rebuilding_political_power_gain_dynamic_var
+	stability_factor = FRA_rebuilding_stability_factor_dynamic_var
+	industrial_capacity_factory = FRA_rebuilding_industrial_capacity_factory_dynamic_var
+	industrial_capacity_dockyard = FRA_rebuilding_industrial_capacity_dockyard_dynamic_var
+	resistance_activity = FRA_rebuilding_resistance_activity_dynamic_var
+	nationalist_drift = FRA_rebuilding_nationalist_dynamic_var
+}
+
+# ---- FRA_civil_war_state  <- TFR TFR_dynamic_modifiers_FRA.txt:83
+FRA_civil_war_state = {
+	icon = GFX_idea_FRA_civil_war_idea
+
+	air_cas_present_factor = -0.75
+	army_attack_factor = -0.95
+	army_speed_factor = -0.95
+	ground_attack_factor = -0.75
+	attrition = -0.65
+	army_defence_factor = 0.5
+	army_org_factor = 0.05
+}
+
+# ---- gdp_debt_dynamic  <- TFR TFR_dynamic_modifiers_ZZZ_economic.txt:1
+gdp_debt_dynamic = {
+	enable = { 
+		always = yes 
+	}
+	production_speed_buildings_factor = debt_dynamic_var #Negative
+	industrial_capacity_factory = debt_dynamic_var
+	industrial_capacity_dockyard = debt_dynamic_var
+	research_speed_factor = debt_negative_research_factor_dynamic_var
+	fuel_gain_factor = debt_negative_research_factor_dynamic_var
+	military_development_monthly = debt_negative_development_factor_dynamic_var
+	stability_factor = debt_stability_factor_dynamic_var #Positive
+	production_factory_efficiency_gain_factor = debt_production_factor_dynamic_var
+	production_factory_max_efficiency_factor = debt_production_factor_dynamic_var
+	line_change_production_efficiency_factor = debt_production_factor_dynamic_var
+	income_growth_factor = debt_production_factor_dynamic_var
+	industrial_development_monthly = debt_development_factor_dynamic_var
+	academic_development_monthly = debt_development_factor_dynamic_var
+}
+
+# ---- inflation_dynamic  <- TFR TFR_dynamic_modifiers_ZZZ_economic.txt:20
+inflation_dynamic = {
+	enable = { 
+		always = yes 
+	}
+	consumer_goods_factor = inflation_consumer_goods_factor_dynamic_var
+	production_factory_max_efficiency_factor = inflation_production_factory_max_efficiency_factor_dynamic_var
+	stability_factor = inflation_stability_factor_dynamic_var
+	production_speed_buildings_factor = inflation_production_speed_buildings_factor_dynamic_var
+}

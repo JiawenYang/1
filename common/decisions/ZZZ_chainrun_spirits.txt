@@ -1,0 +1,365 @@
+# ============================================================================
+#  ZZZ_chainrun —— 备用国家精神调试入口
+#
+#  每条决议只做一件事：给当前国家挂上对应备用精神，便于直接验证图标、
+#  文本与修正是否正常。正常流程由 ZZZ_spare_spirits_on_actions.txt 按旗标
+#  自动挂载，不依赖本文件。
+#
+#  allowed 收窄到精神归属国（朝鲜半岛为 KOR / NKO），visible / available
+#  恒真，其余国家看得见但点不了。
+# ============================================================================
+
+ZZZ_chainrun = {
+
+	# ------------------------------------------------------------------
+	#  朝鲜半岛邦联（KOR / NKO）
+	# ------------------------------------------------------------------
+	ZZZ_cr_spirit_korea_confederation = {
+		icon = generic_political_actions
+		cost = 0
+		fire_only_once = no
+
+		allowed = {
+			OR = {
+				original_tag = KOR
+				original_tag = NKO
+			}
+		}
+		visible = { always = yes }
+		available = { always = yes }
+
+		complete_effect = {
+			add_ideas = ZZZ_spirit_korea_confederation
+		}
+
+		ai_will_do = { base = 0 }
+	}
+
+	# ------------------------------------------------------------------
+	#  阿拉伯联合共和国（EGY）
+	# ------------------------------------------------------------------
+	ZZZ_cr_spirit_uar_unity = {
+		icon = generic_political_actions
+		cost = 0
+		fire_only_once = no
+
+		allowed = { original_tag = EGY }
+		visible = { always = yes }
+		available = { always = yes }
+
+		complete_effect = {
+			add_ideas = ZZZ_spirit_uar_unity
+		}
+
+		ai_will_do = { base = 0 }
+	}
+
+	# ------------------------------------------------------------------
+	#  巴尔干联邦（SER）
+	# ------------------------------------------------------------------
+	ZZZ_cr_spirit_balkan_federation = {
+		icon = generic_political_actions
+		cost = 0
+		fire_only_once = no
+
+		allowed = { original_tag = SER }
+		visible = { always = yes }
+		available = { always = yes }
+
+		complete_effect = {
+			add_ideas = ZZZ_spirit_balkan_federation
+		}
+
+		ai_will_do = { base = 0 }
+	}
+
+	# ------------------------------------------------------------------
+	#  欧亚联盟国（SOV）
+	# ------------------------------------------------------------------
+	ZZZ_cr_spirit_eurasian_state = {
+		icon = generic_political_actions
+		cost = 0
+		fire_only_once = no
+
+		allowed = { original_tag = SOV }
+		visible = { always = yes }
+		available = { always = yes }
+
+		complete_effect = {
+			add_ideas = ZZZ_spirit_eurasian_state
+		}
+
+		ai_will_do = { base = 0 }
+	}
+
+	# ------------------------------------------------------------------
+	#  欧洲联邦（FRA）
+	# ------------------------------------------------------------------
+	ZZZ_cr_spirit_eu_federation = {
+		icon = generic_political_actions
+		cost = 0
+		fire_only_once = no
+
+		allowed = { original_tag = FRA }
+		visible = { always = yes }
+		available = { always = yes }
+
+		complete_effect = {
+			add_ideas = ZZZ_spirit_eu_federation
+		}
+
+		ai_will_do = { base = 0 }
+	}
+
+	# ------------------------------------------------------------------
+	#  东亚共荣圈（JAP）
+	# ------------------------------------------------------------------
+	ZZZ_cr_spirit_east_asia_sphere = {
+		icon = generic_political_actions
+		cost = 0
+		fire_only_once = no
+
+		allowed = { original_tag = JAP }
+		visible = { always = yes }
+		available = { always = yes }
+
+		complete_effect = {
+			add_ideas = ZZZ_spirit_east_asia_sphere
+		}
+
+		ai_will_do = { base = 0 }
+	}
+
+	# ------------------------------------------------------------------
+	#  大印度斯坦（RAJ）
+	# ------------------------------------------------------------------
+	ZZZ_cr_spirit_greater_india = {
+		icon = generic_political_actions
+		cost = 0
+		fire_only_once = no
+
+		allowed = { original_tag = RAJ }
+		visible = { always = yes }
+		available = { always = yes }
+
+		complete_effect = {
+			add_ideas = ZZZ_spirit_greater_india
+		}
+
+		ai_will_do = { base = 0 }
+	}
+
+	# ------------------------------------------------------------------
+	#  统一的中国（CHI）
+	# ------------------------------------------------------------------
+	ZZZ_cr_spirit_china_reunification = {
+		icon = generic_political_actions
+		cost = 0
+		fire_only_once = no
+
+		allowed = { original_tag = CHI }
+		visible = { always = yes }
+		available = { always = yes }
+
+		complete_effect = {
+			add_ideas = ZZZ_spirit_china_reunification
+		}
+
+		ai_will_do = { base = 0 }
+	}
+
+	# ------------------------------------------------------------------
+	#  大中华（CHI）
+	# ------------------------------------------------------------------
+	ZZZ_cr_spirit_greater_china = {
+		icon = generic_political_actions
+		cost = 0
+		fire_only_once = no
+
+		allowed = { original_tag = CHI }
+		visible = { always = yes }
+		available = { always = yes }
+
+		complete_effect = {
+			add_ideas = ZZZ_spirit_greater_china
+		}
+
+		ai_will_do = { base = 0 }
+	}
+
+	# ------------------------------------------------------------------
+	#  印度支那联邦（VIE）
+	# ------------------------------------------------------------------
+	ZZZ_cr_spirit_indochina_federation = {
+		icon = generic_political_actions
+		cost = 0
+		fire_only_once = no
+
+		allowed = { original_tag = VIE }
+		visible = { always = yes }
+		available = { always = yes }
+
+		complete_effect = {
+			add_ideas = ZZZ_spirit_indochina_federation
+		}
+
+		ai_will_do = { base = 0 }
+	}
+
+	# ------------------------------------------------------------------
+	#  南斯拉夫复兴（SER）
+	# ------------------------------------------------------------------
+	ZZZ_cr_spirit_yugoslavia_revival = {
+		icon = generic_political_actions
+		cost = 0
+		fire_only_once = no
+
+		allowed = { original_tag = SER }
+		visible = { always = yes }
+		available = { always = yes }
+
+		complete_effect = {
+			add_ideas = ZZZ_spirit_yugoslavia_revival
+		}
+
+		ai_will_do = { base = 0 }
+	}
+
+	# ------------------------------------------------------------------
+	#  奥斯曼复兴（TUR）
+	# ------------------------------------------------------------------
+	ZZZ_cr_spirit_ottoman_restoration = {
+		icon = generic_political_actions
+		cost = 0
+		fire_only_once = no
+
+		allowed = { original_tag = TUR }
+		visible = { always = yes }
+		available = { always = yes }
+
+		complete_effect = {
+			add_ideas = ZZZ_spirit_ottoman_restoration
+		}
+
+		ai_will_do = { base = 0 }
+	}
+
+	# ------------------------------------------------------------------
+	#  CANZUK（CAN/AST/NZL/ENG）
+	# ------------------------------------------------------------------
+	ZZZ_cr_spirit_canzuk = {
+		icon = generic_political_actions
+		cost = 0
+		fire_only_once = no
+
+		allowed = {
+			OR = {
+				original_tag = CAN
+				original_tag = AST
+				original_tag = NZL
+				original_tag = ENG
+			}
+		}
+		visible = { always = yes }
+		available = { always = yes }
+
+		complete_effect = {
+			add_ideas = ZZZ_spirit_canzuk
+		}
+
+		ai_will_do = { base = 0 }
+	}
+
+	# ------------------------------------------------------------------
+	#  马菲林多（IND/PHI/MAY/BRU/SIN/ACE）
+	# ------------------------------------------------------------------
+	ZZZ_cr_spirit_maphilindo = {
+		icon = generic_political_actions
+		cost = 0
+		fire_only_once = no
+
+		allowed = {
+			OR = {
+				original_tag = IND
+				original_tag = PHI
+				original_tag = MAY
+				original_tag = BRU
+				original_tag = SIN
+				original_tag = ACE
+			}
+		}
+		visible = { always = yes }
+		available = { always = yes }
+
+		complete_effect = {
+			add_ideas = ZZZ_spirit_maphilindo
+		}
+
+		ai_will_do = { base = 0 }
+	}
+
+	# ------------------------------------------------------------------
+	#  北欧联盟（SWE/NOR/DEN/FIN/ICE）
+	# ------------------------------------------------------------------
+	ZZZ_cr_spirit_nordic_union = {
+		icon = generic_political_actions
+		cost = 0
+		fire_only_once = no
+
+		allowed = {
+			OR = {
+				original_tag = SWE
+				original_tag = NRY
+				original_tag = DEN
+				original_tag = FIN
+				original_tag = ICE
+			}
+		}
+		visible = { always = yes }
+		available = { always = yes }
+
+		complete_effect = {
+			add_ideas = ZZZ_spirit_nordic_union
+		}
+
+		ai_will_do = { base = 0 }
+	}
+
+	# ------------------------------------------------------------------
+	#  中美洲联盟（NIC）
+	# ------------------------------------------------------------------
+	ZZZ_cr_spirit_cam_union = {
+		icon = generic_political_actions
+		cost = 0
+		fire_only_once = no
+
+		allowed = { original_tag = NIC }
+		visible = { always = yes }
+		available = { always = yes }
+
+		complete_effect = {
+			add_ideas = ZZZ_spirit_cam_union
+		}
+
+		ai_will_do = { base = 0 }
+	}
+
+	# ------------------------------------------------------------------
+	#  中美洲共和国（ELS）
+	# ------------------------------------------------------------------
+	ZZZ_cr_spirit_cam_republic = {
+		icon = generic_political_actions
+		cost = 0
+		fire_only_once = no
+
+		allowed = { original_tag = ELS }
+		visible = { always = yes }
+		available = { always = yes }
+
+		complete_effect = {
+			add_ideas = ZZZ_spirit_cam_republic
+		}
+
+		ai_will_do = { base = 0 }
+	}
+}

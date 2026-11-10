@@ -519,11 +519,6 @@ scripted_gui = {
 					tag = ARG
 				}
 			}
-			party_SOV_ldpr_icon_visible = {
-				var:SOV_party_v = {
-					tag = GER
-				}
-			}
 			party_SOV_patriots_party_icon_visible = {
 				var:SOV_party_v = {
 					tag = FRA
@@ -561,7 +556,7 @@ scripted_gui = {
 			}
 			Oligarch_BG_3_visible = {
 				OR = {
-					has_country_flag = DSW_SOV_pending_focus_SOV_triumph_of_zhirinovsky
+					always = no
 				}
 			}
 			Oligarch_BG_2_visible = {
@@ -572,7 +567,7 @@ scripted_gui = {
 			Oligarch_BG_visible = {
 				NOT = {
 					has_completed_focus = SOV_election_victory
-					has_country_flag = DSW_SOV_pending_focus_SOV_triumph_of_zhirinovsky
+					always = no
 					has_country_flag = SOV_medve_oligarchs_disabled
 				}
 			}

@@ -1,0 +1,410 @@
+add_namespace = tai_kor_flavor
+
+# ===== 台湾和平统一路线 · 生活化风味事件 =====
+# 口径：仅当台湾已成为中国特别行政区（CHI 的自治领）后触发；
+# 只做舆论与小幅 buff，不写入任何主线判据旗标（不碰 PRC_taiwan_war_start / taiwan_detente_* / 朝韩邦联旗标）。
+# 每条事件 fire_only_once，按不同 MTTH 错峰，避免开局即刷。
+
+# 渔民：厦金渔汛重启
+country_event = {
+	id = tai_kor_flavor.1
+	title = tai_kor_flavor.1.t
+	desc = tai_kor_flavor.1.d
+	picture = GFX_Taiwan_Election
+	fire_only_once = yes
+
+	trigger = {
+		original_tag = TAI
+		is_puppet_of = CHI
+		date > 2022.1.1
+	}
+
+	mean_time_to_happen = {
+		months = 4
+	}
+
+	option = {
+		name = tai_kor_flavor.1.a
+		add_stability = 0.02
+		add_political_power = 15
+	}
+}
+
+# 台商：重返长三角
+country_event = {
+	id = tai_kor_flavor.2
+	title = tai_kor_flavor.2.t
+	desc = tai_kor_flavor.2.d
+	picture = GFX_CHI_detente
+	fire_only_once = yes
+
+	trigger = {
+		original_tag = TAI
+		is_puppet_of = CHI
+		date > 2022.2.1
+	}
+
+	mean_time_to_happen = {
+		months = 5
+	}
+
+	option = {
+		name = tai_kor_flavor.2.a
+		add_stability = 0.02
+		add_political_power = 15
+	}
+}
+
+# 眷村：老兵返乡探亲
+country_event = {
+	id = tai_kor_flavor.3
+	title = tai_kor_flavor.3.t
+	desc = tai_kor_flavor.3.d
+	picture = GFX_Taiwan_Flag
+	fire_only_once = yes
+
+	trigger = {
+		original_tag = TAI
+		is_puppet_of = CHI
+		date > 2022.3.1
+	}
+
+	mean_time_to_happen = {
+		months = 6
+	}
+
+	option = {
+		name = tai_kor_flavor.3.a
+		add_stability = 0.03
+		add_political_power = 20
+	}
+}
+
+# 跨海婚姻：两岸家庭团聚
+country_event = {
+	id = tai_kor_flavor.4
+	title = tai_kor_flavor.4.t
+	desc = tai_kor_flavor.4.d
+	picture = GFX_CHI_KMT_seek_detente
+	fire_only_once = yes
+
+	trigger = {
+		original_tag = TAI
+		is_puppet_of = CHI
+		date > 2022.4.1
+	}
+
+	mean_time_to_happen = {
+		months = 7
+	}
+
+	option = {
+		name = tai_kor_flavor.4.a
+		add_stability = 0.02
+		add_political_power = 15
+	}
+}
+
+# 学生交流营
+country_event = {
+	id = tai_kor_flavor.5
+	title = tai_kor_flavor.5.t
+	desc = tai_kor_flavor.5.d
+	picture = GFX_CHI_detente
+	fire_only_once = yes
+
+	trigger = {
+		original_tag = TAI
+		is_puppet_of = CHI
+		date > 2022.5.1
+	}
+
+	mean_time_to_happen = {
+		months = 8
+	}
+
+	option = {
+		name = tai_kor_flavor.5.a
+		add_stability = 0.02
+		add_political_power = 15
+	}
+}
+
+# 艺人巡演
+country_event = {
+	id = tai_kor_flavor.6
+	title = tai_kor_flavor.6.t
+	desc = tai_kor_flavor.6.d
+	picture = GFX_CHI_KMT_seek_detente
+	fire_only_once = yes
+
+	trigger = {
+		original_tag = TAI
+		is_puppet_of = CHI
+		date > 2022.6.1
+	}
+
+	mean_time_to_happen = {
+		months = 9
+	}
+
+	option = {
+		name = tai_kor_flavor.6.a
+		add_stability = 0.02
+		add_political_power = 15
+	}
+}
+
+# 两岸职棒交流赛
+country_event = {
+	id = tai_kor_flavor.7
+	title = tai_kor_flavor.7.t
+	desc = tai_kor_flavor.7.d
+	picture = GFX_Taiwan_Flag
+	fire_only_once = yes
+
+	trigger = {
+		original_tag = TAI
+		is_puppet_of = CHI
+		date > 2022.7.1
+	}
+
+	mean_time_to_happen = {
+		months = 10
+	}
+
+	option = {
+		name = tai_kor_flavor.7.a
+		add_stability = 0.02
+		add_political_power = 10
+	}
+}
+
+# 妈祖进香团
+country_event = {
+	id = tai_kor_flavor.8
+	title = tai_kor_flavor.8.t
+	desc = tai_kor_flavor.8.d
+	picture = GFX_Taiwan_Election
+	fire_only_once = yes
+
+	trigger = {
+		original_tag = TAI
+		is_puppet_of = CHI
+		date > 2022.8.1
+	}
+
+	mean_time_to_happen = {
+		months = 12
+	}
+
+	option = {
+		name = tai_kor_flavor.8.a
+		add_stability = 0.03
+		add_political_power = 20
+	}
+}
+
+# ===== 朝韩邦联路线 · 生活化风味事件 =====
+# 口径：仅在 korean_confederation_formed（朝韩邦联成立）后触发；
+# 只做舆论与小幅 buff，不写入任何邦联判据旗标。
+
+# 开城工业园复工
+country_event = {
+	id = tai_kor_flavor.9
+	title = tai_kor_flavor.9.t
+	desc = tai_kor_flavor.9.d
+	picture = GFX_Korean_War
+	fire_only_once = yes
+
+	trigger = {
+		original_tag = KOR
+		has_global_flag = korean_confederation_formed
+		date > 2025.4.1
+	}
+
+	mean_time_to_happen = {
+		months = 3
+	}
+
+	option = {
+		name = tai_kor_flavor.9.a
+		add_stability = 0.02
+		add_political_power = 15
+	}
+}
+
+# 离散家属团聚
+country_event = {
+	id = tai_kor_flavor.10
+	title = tai_kor_flavor.10.t
+	desc = tai_kor_flavor.10.d
+	picture = GFX_Korean_War
+	fire_only_once = yes
+
+	trigger = {
+		original_tag = KOR
+		has_global_flag = korean_confederation_formed
+		date > 2025.4.1
+	}
+
+	mean_time_to_happen = {
+		months = 4
+	}
+
+	option = {
+		name = tai_kor_flavor.10.a
+		add_stability = 0.03
+		add_political_power = 20
+	}
+}
+
+# 板门店小店主
+country_event = {
+	id = tai_kor_flavor.11
+	title = tai_kor_flavor.11.t
+	desc = tai_kor_flavor.11.d
+	picture = GFX_Korean_War
+	fire_only_once = yes
+
+	trigger = {
+		original_tag = KOR
+		has_global_flag = korean_confederation_formed
+		date > 2025.5.1
+	}
+
+	mean_time_to_happen = {
+		months = 5
+	}
+
+	option = {
+		name = tai_kor_flavor.11.a
+		add_stability = 0.02
+		add_political_power = 10
+	}
+}
+
+# 南北足球友谊赛
+country_event = {
+	id = tai_kor_flavor.12
+	title = tai_kor_flavor.12.t
+	desc = tai_kor_flavor.12.d
+	picture = GFX_Korean_War
+	fire_only_once = yes
+
+	trigger = {
+		original_tag = KOR
+		has_global_flag = korean_confederation_formed
+		date > 2025.6.1
+	}
+
+	mean_time_to_happen = {
+		months = 6
+	}
+
+	option = {
+		name = tai_kor_flavor.12.a
+		add_stability = 0.02
+		add_political_power = 10
+	}
+}
+
+# 金刚山旅游重启
+country_event = {
+	id = tai_kor_flavor.13
+	title = tai_kor_flavor.13.t
+	desc = tai_kor_flavor.13.d
+	picture = GFX_Korean_War
+	fire_only_once = yes
+
+	trigger = {
+		original_tag = KOR
+		has_global_flag = korean_confederation_formed
+		date > 2025.7.1
+	}
+
+	mean_time_to_happen = {
+		months = 7
+	}
+
+	option = {
+		name = tai_kor_flavor.13.a
+		add_stability = 0.02
+		add_political_power = 15
+	}
+}
+
+# 南北歌手同台
+country_event = {
+	id = tai_kor_flavor.14
+	title = tai_kor_flavor.14.t
+	desc = tai_kor_flavor.14.d
+	picture = GFX_Korean_War
+	fire_only_once = yes
+
+	trigger = {
+		original_tag = KOR
+		has_global_flag = korean_confederation_formed
+		date > 2025.8.1
+	}
+
+	mean_time_to_happen = {
+		months = 8
+	}
+
+	option = {
+		name = tai_kor_flavor.14.a
+		add_stability = 0.02
+		add_political_power = 15
+	}
+}
+
+# 跨境铁路试运行
+country_event = {
+	id = tai_kor_flavor.15
+	title = tai_kor_flavor.15.t
+	desc = tai_kor_flavor.15.d
+	picture = GFX_Korean_War
+	fire_only_once = yes
+
+	trigger = {
+		original_tag = KOR
+		has_global_flag = korean_confederation_formed
+		date > 2025.9.1
+	}
+
+	mean_time_to_happen = {
+		months = 9
+	}
+
+	option = {
+		name = tai_kor_flavor.15.a
+		add_stability = 0.02
+		add_political_power = 20
+	}
+}
+
+# 中秋共同节庆
+country_event = {
+	id = tai_kor_flavor.16
+	title = tai_kor_flavor.16.t
+	desc = tai_kor_flavor.16.d
+	picture = GFX_Korean_War
+	fire_only_once = yes
+
+	trigger = {
+		original_tag = KOR
+		has_global_flag = korean_confederation_formed
+		date > 2025.10.1
+	}
+
+	mean_time_to_happen = {
+		months = 10
+	}
+
+	option = {
+		name = tai_kor_flavor.16.a
+		add_stability = 0.03
+		add_political_power = 20
+	}
+}

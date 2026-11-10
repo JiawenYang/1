@@ -1,0 +1,214 @@
+### Russian arms dependency: re-evaluate tier from CHI_military_self_sufficiency. Idempotent, downgrade-only. ###
+CHI_evaluate_arms_dependency = {
+	clamp_variable = { var = CHI_military_self_sufficiency min = 0 max = 100 }
+
+	if = {
+		limit = { check_variable = { CHI_military_self_sufficiency > 99 } }
+		if = { limit = { has_idea = CHI_russian_arms_dependency } remove_ideas = CHI_russian_arms_dependency }
+		if = { limit = { has_idea = CHI_russian_arms_dependency_2 } remove_ideas = CHI_russian_arms_dependency_2 }
+		if = { limit = { has_idea = CHI_russian_arms_dependency_3 } remove_ideas = CHI_russian_arms_dependency_3 }
+		if = { limit = { has_idea = CHI_russian_arms_dependency_4 } remove_ideas = CHI_russian_arms_dependency_4 }
+	}
+	else_if = {
+		limit = { check_variable = { CHI_military_self_sufficiency > 74 } }
+		if = { limit = { has_idea = CHI_russian_arms_dependency } swap_ideas = { remove_idea = CHI_russian_arms_dependency add_idea = CHI_russian_arms_dependency_4 } }
+		else_if = { limit = { has_idea = CHI_russian_arms_dependency_2 } swap_ideas = { remove_idea = CHI_russian_arms_dependency_2 add_idea = CHI_russian_arms_dependency_4 } }
+		else_if = { limit = { has_idea = CHI_russian_arms_dependency_3 } swap_ideas = { remove_idea = CHI_russian_arms_dependency_3 add_idea = CHI_russian_arms_dependency_4 } }
+		else_if = { limit = { NOT = { has_idea = CHI_russian_arms_dependency_4 } } add_ideas = CHI_russian_arms_dependency_4 }
+	}
+	else_if = {
+		limit = { check_variable = { CHI_military_self_sufficiency > 49 } }
+		if = { limit = { has_idea = CHI_russian_arms_dependency } swap_ideas = { remove_idea = CHI_russian_arms_dependency add_idea = CHI_russian_arms_dependency_3 } }
+		else_if = { limit = { has_idea = CHI_russian_arms_dependency_2 } swap_ideas = { remove_idea = CHI_russian_arms_dependency_2 add_idea = CHI_russian_arms_dependency_3 } }
+		else_if = { limit = { NOT = { has_idea = CHI_russian_arms_dependency_3 } } add_ideas = CHI_russian_arms_dependency_3 }
+	}
+	else_if = {
+		limit = { check_variable = { CHI_military_self_sufficiency > 24 } }
+		if = { limit = { has_idea = CHI_russian_arms_dependency } swap_ideas = { remove_idea = CHI_russian_arms_dependency add_idea = CHI_russian_arms_dependency_2 } }
+		else_if = { limit = { NOT = { has_idea = CHI_russian_arms_dependency_2 } } add_ideas = CHI_russian_arms_dependency_2 }
+	}
+}
+
+CHI_add_arms_self_sufficiency = {
+	add_to_variable = { CHI_military_self_sufficiency = arms_ss_gain tooltip = CHI_military_self_sufficiency_tt }
+	CHI_evaluate_arms_dependency = yes
+}
+
+### Local government debt: pressure 0-100 rises while civs + offices exceed the fiscal tolerance. Tier can move both ways. ###
+CHI_evaluate_local_debt = {
+	clamp_variable = { var = CHI_local_debt_pressure min = 0 max = 100 }
+	clamp_variable = { var = CHI_local_debt_tolerance min = 100 }
+
+	if = { limit = { check_variable = { CHI_local_debt_pressure > 89 } } set_temp_variable = { local_debt_target = 4 } }
+	else_if = { limit = { check_variable = { CHI_local_debt_pressure > 69 } } set_temp_variable = { local_debt_target = 3 } }
+	else_if = { limit = { check_variable = { CHI_local_debt_pressure > 44 } } set_temp_variable = { local_debt_target = 2 } }
+	else_if = { limit = { check_variable = { CHI_local_debt_pressure > 19 } } set_temp_variable = { local_debt_target = 1 } }
+	else = { set_temp_variable = { local_debt_target = 0 } }
+
+	if = {
+		limit = { NOT = { check_variable = { CHI_local_debt_tier = local_debt_target } } }
+		if = { limit = { has_idea = CHI_local_government_debt_4 } remove_ideas = CHI_local_government_debt_4 }
+		else_if = { limit = { has_idea = CHI_local_government_debt_3 } remove_ideas = CHI_local_government_debt_3 }
+		else_if = { limit = { has_idea = CHI_local_government_debt_2 } remove_ideas = CHI_local_government_debt_2 }
+		else_if = { limit = { has_idea = CHI_local_government_debt } remove_ideas = CHI_local_government_debt }
+
+		if = { limit = { check_variable = { local_debt_target = 1 } } add_ideas = CHI_local_government_debt_4 }
+		else_if = { limit = { check_variable = { local_debt_target = 2 } } add_ideas = CHI_local_government_debt_3 }
+		else_if = { limit = { check_variable = { local_debt_target = 3 } } add_ideas = CHI_local_government_debt_2 }
+		else_if = { limit = { check_variable = { local_debt_target = 4 } } add_ideas = CHI_local_government_debt }
+
+		set_variable = { CHI_local_debt_tier = local_debt_target }
+	}
+}
+
+# Callers set local_debt_change (pressure) or local_debt_tolerance_change (tolerance) as temp variables first.
+CHI_change_local_debt = {
+	if = {
+		limit = { NOT = { has_country_flag = CHI_local_debt_resolved } }
+		add_to_variable = { CHI_local_debt_pressure = local_debt_change tooltip = CHI_local_debt_pressure_tt }
+		CHI_evaluate_local_debt = yes
+	}
+}
+CHI_change_local_debt_tolerance = {
+	if = {
+		limit = { NOT = { has_country_flag = CHI_local_debt_resolved } }
+		add_to_variable = { CHI_local_debt_tolerance = local_debt_tolerance_change tooltip = CHI_local_debt_tolerance_tt }
+		CHI_evaluate_local_debt = yes
+	}
+}
+
+CHI_update_local_debt_buildings = {
+	set_variable = {
+		CHI_local_debt_buildings = {
+			value = industrial_complex_total
+			add = office_park_total
+		}
+	}
+}
+
+CHI_local_debt_monthly_tick = {
+	add_to_variable = { CHI_local_debt_tolerance = 0.25 }
+	CHI_update_local_debt_buildings = yes
+	set_temp_variable = {
+		local_debt_excess = {
+			value = CHI_local_debt_buildings
+			subtract = CHI_local_debt_tolerance
+		}
+	}
+	if = {
+		limit = { check_variable = { local_debt_excess > 0 } }
+		set_temp_variable = { local_debt_change = local_debt_excess }
+	}
+	else = {
+		set_temp_variable = { local_debt_change = -0.5 }
+	}
+	add_to_variable = { CHI_local_debt_pressure = local_debt_change }
+	CHI_evaluate_local_debt = yes
+	if = {
+		limit = {
+			check_variable = { CHI_local_debt_pressure < 1 }
+			NOT = { has_active_mission = CHI_local_debt_resolution_mission }
+		}
+		activate_mission = CHI_local_debt_resolution_mission
+	}
+}
+# Re-scans the sitting US president and applies their one-time Taiwan-support delta.
+CHI_update_us_president_support = {
+	set_temp_variable = { CHI_us_president_index = 0 }
+	set_temp_variable = { CHI_us_president_delta = 0 }
+	if = {
+		limit = { USA = { has_country_leader = { name = USA_john_mccain } } }
+		set_temp_variable = { CHI_us_president_index = 1 }
+		set_temp_variable = { CHI_us_president_delta = 10 }
+	}
+	else_if = {
+		limit = { USA = { has_country_leader = { name = USA_joe_biden } } }
+		set_temp_variable = { CHI_us_president_index = 2 }
+		set_temp_variable = { CHI_us_president_delta = 8 }
+	}
+	else_if = {
+		limit = { USA = { has_country_leader = { name = USA_hillary_clinton } } }
+		set_temp_variable = { CHI_us_president_index = 3 }
+		set_temp_variable = { CHI_us_president_delta = 6 }
+	}
+	else_if = {
+		limit = { USA = { has_country_leader = { name = USA_george_w_bush } } }
+		set_temp_variable = { CHI_us_president_index = 5 }
+		set_temp_variable = { CHI_us_president_delta = 5 }
+	}
+	else_if = {
+		limit = { USA = { has_country_leader = { name = USA_barack_obama } } }
+		set_temp_variable = { CHI_us_president_index = 6 }
+		set_temp_variable = { CHI_us_president_delta = 5 }
+	}
+	else_if = {
+		limit = { USA = { has_country_leader = { name = USA_mitt_romney } } }
+		set_temp_variable = { CHI_us_president_index = 7 }
+		set_temp_variable = { CHI_us_president_delta = 4 }
+	}
+	else_if = {
+		limit = { USA = { has_country_leader = { name = USA_al_gore } } }
+		set_temp_variable = { CHI_us_president_index = 8 }
+		set_temp_variable = { CHI_us_president_delta = 3 }
+	}
+	else_if = {
+		limit = { USA = { has_country_leader = { name = USA_john_kerry } } }
+		set_temp_variable = { CHI_us_president_index = 9 }
+		set_temp_variable = { CHI_us_president_delta = -2 }
+	}
+	else_if = {
+		limit = { USA = { has_country_leader = { name = USA_donald_trump } } }
+		set_temp_variable = { CHI_us_president_index = 10 }
+		set_temp_variable = { CHI_us_president_delta = -10 }
+	}
+
+	if = {
+		limit = {
+			check_variable = { CHI_us_president_index > 0 }
+			NOT = { check_variable = { CHI_us_president_applied = CHI_us_president_index } }
+		}
+		clr_country_flag = CHI_trump_is_president
+		add_to_variable = { var = CHI_taiwan_us_support value = CHI_us_president_delta tooltip = CHI_taiwan_us_support_tt }
+		clamp_variable = { var = CHI_taiwan_us_support min = 0 max = 100 }
+		if = {
+			limit = { check_variable = { CHI_us_president_index = 10 } }
+			set_country_flag = CHI_trump_is_president
+		}
+		set_variable = { CHI_us_president_applied = CHI_us_president_index }
+		country_event = { id = china_sar.026 days = 3 }
+	}
+}
+
+CHI_TAI_recompute_isolation = {
+	# iso_index: +15 = fully isolated (0 recognisers), -15 = broadly recognised (30+)
+	set_temp_variable = { CHI_TAI_iso_index = 15 }
+	subtract_from_temp_variable = { CHI_TAI_iso_index = Granted_Recognition }
+	clamp_temp_variable = { var = CHI_TAI_iso_index min = -15 max = 15 }
+
+	set_variable = { CHI_TAI_isolation_trade = CHI_TAI_iso_index }
+	multiply_variable = { CHI_TAI_isolation_trade = -0.02 }
+
+	set_variable = { CHI_TAI_isolation_influence = CHI_TAI_iso_index }
+	multiply_variable = { CHI_TAI_isolation_influence = -0.015 }
+
+	set_variable = { CHI_TAI_isolation_relations = CHI_TAI_iso_index }
+	multiply_variable = { CHI_TAI_isolation_relations = 0.03 }
+}
+
+CHI_TAI_apply_isolation = {
+	if = {
+		limit = { NOT = { has_dynamic_modifier = { modifier = CHI_TAI_intl_isolation_modifier } } }
+		hidden_effect = { add_dynamic_modifier = { modifier = CHI_TAI_intl_isolation_modifier } }
+	}
+	hidden_effect = { CHI_TAI_recompute_isolation = yes }
+	custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_TAI_intl_isolation_modifier }
+}
+
+# Keep temporary exceptions and their consumer in one history effect invocation.
+CHI_initialize_party_bans = {
+	add_to_temp_array = { ban_except_array = 4 }
+	add_to_temp_array = { ban_except_array = 5 }
+	add_to_temp_array = { ban_except_array = 7 }
+	add_to_temp_array = { ban_except_array = 18 }
+	ban_all_parties_except_array = yes
+}

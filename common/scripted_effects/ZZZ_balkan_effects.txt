@@ -1,0 +1,160 @@
+# ============================================================
+# ZZZ 巴尔干：北约部分解体 / 退约 / 联邦支点
+# 仅本工程使用，不写入工坊基座 2777392649
+#
+# 复用的既有路径：
+#   NATO_leave       基座 common/scripted_effects/01_NATO_effects.txt:166-231
+#                    （要求 has_idea = NATO_member，内部清理 NATO 阵营与成员修正）
+#   EU_leave_effect  工程 common/scripted_effects/00_TFR_scripted_effects_ZZZ_eu.txt:168
+#                    （清理 EU_member_dynamic 等欧盟动态修正）
+#   EU_member idea   基座 common/ideas；移除时 on_remove -> leaving_EU
+#                    （基座 common/scripted_effects/99_eu_scripted_effects.txt:343，
+#                      清空 global.EU_members 数组、欧盟意见修正）
+#
+# 旗标约定（国家旗标，逐国独立）：
+#   BALKAN_anti_western_government  反北约/倾向中俄政府已上台
+#   BALKAN_left_NATO                已退出北约
+#   BALKAN_left_EU                  已退出欧盟
+# 进度记录（全局）：
+#   balkan_withdraw_batch1_done     第一批（BUL ROM GRE TUR）全部退约
+#   balkan_withdraw_batch2_done     第二批（ALB CRO SLV MNT）全部退约
+#   global.balkan_withdraw_progress 0/1/2
+# ============================================================
+
+# 退约代价：稳定度、政治点、战争支持度与一年期经济冲击
+ZZZ_balkan_withdrawal_cost_effect = {
+	add_stability = -0.06
+	add_political_power = -40
+	add_war_support = -0.02
+	add_timed_idea = {
+		idea = BALKAN_withdrawal_economic_shock
+		days = 365
+	}
+}
+
+# 正式退约：北约走 NATO_leave，欧盟走 EU_leave_effect + 移除 EU_member
+ZZZ_balkan_leave_nato_and_eu_effect = {
+	# 北约
+	if = {
+		limit = { has_idea = NATO_member }
+		NATO_leave = yes
+		set_country_flag = BALKAN_left_NATO
+	}
+	# 欧盟（土耳其不是欧盟成员，此段自动跳过）
+	if = {
+		limit = { has_idea = EU_member }
+		EU_leave_effect = yes
+		remove_ideas = EU_member
+		set_country_flag = BALKAN_left_EU
+	}
+
+	# 外交倾向重定向：清掉原阵营加成后，对美转冷、对俄转暖、对华靠拢
+	add_opinion_modifier = { target = USA modifier = usa_fp_major_diplomatic_fallout }
+	reverse_add_opinion_modifier = { target = USA modifier = usa_fp_major_diplomatic_fallout }
+	add_opinion_modifier = { target = SOV modifier = russian_trade }
+	reverse_add_opinion_modifier = { target = SOV modifier = russian_trade }
+	add_opinion_modifier = { target = CHI modifier = pro_chinese_stance }
+	reverse_add_opinion_modifier = { target = CHI modifier = pro_chinese_stance }
+
+	# 影响力再平衡：美国、俄罗斯在此国收缩，中国小幅进入
+	set_temp_variable = { percent_change = -12 }
+	set_temp_variable = { tag_index = USA.id }
+	if = { limit = { NOT = { has_global_flag = cml_md_influence_disabled } } change_influence_percentage = yes }
+	set_temp_variable = { percent_change = -8 }
+	set_temp_variable = { tag_index = SOV.id }
+	if = { limit = { NOT = { has_global_flag = cml_md_influence_disabled } } change_influence_percentage = yes }
+	set_temp_variable = { percent_change = 4 }
+	set_temp_variable = { tag_index = CHI.id }
+	if = { limit = { NOT = { has_global_flag = cml_md_influence_disabled } } change_influence_percentage = yes }
+
+	ZZZ_balkan_withdrawal_cost_effect = yes
+	ZZZ_balkan_sync_batch_progress_effect = yes
+}
+
+# 汇总"第几批已退"的进度记录，供巴尔干联邦决议读取
+ZZZ_balkan_sync_batch_progress_effect = {
+	if = {
+		limit = {
+			BUL = { has_country_flag = BALKAN_left_NATO }
+			ROM = { has_country_flag = BALKAN_left_NATO }
+			GRE = { has_country_flag = BALKAN_left_NATO }
+			TUR = { has_country_flag = BALKAN_left_NATO }
+		}
+		if = {
+			limit = { NOT = { has_global_flag = balkan_withdraw_batch1_done } }
+			set_global_flag = balkan_withdraw_batch1_done
+			set_variable = { global.balkan_withdraw_progress = 1 }
+		}
+	}
+	if = {
+		limit = {
+			ALB = { has_country_flag = BALKAN_left_NATO }
+			CRO = { has_country_flag = BALKAN_left_NATO }
+			SLV = { has_country_flag = BALKAN_left_NATO }
+			MNT = { has_country_flag = BALKAN_left_NATO }
+		}
+		if = {
+			limit = { NOT = { has_global_flag = balkan_withdraw_batch2_done } }
+			set_global_flag = balkan_withdraw_batch2_done
+			set_variable = { global.balkan_withdraw_progress = 2 }
+		}
+	}
+}
+
+# 中国支持巴尔干联邦：影响力置换（美俄退出、塞尔维亚主导、中国进入）
+ZZZ_balkan_china_federation_invest_effect = {
+	set_temp_variable = { percent_change = -6 }
+	set_temp_variable = { tag_index = CHI.id }
+	if = { limit = { NOT = { has_global_flag = cml_md_influence_disabled } } change_influence_percentage = yes }
+	set_temp_variable = { percent_change = -15 }
+	set_temp_variable = { tag_index = USA.id }
+	if = { limit = { NOT = { has_global_flag = cml_md_influence_disabled } } change_influence_percentage = yes }
+	set_temp_variable = { percent_change = -10 }
+	set_temp_variable = { tag_index = SOV.id }
+	if = { limit = { NOT = { has_global_flag = cml_md_influence_disabled } } change_influence_percentage = yes }
+	# 抬升塞尔维亚影响力，使其既有邀请决议满足 influence_higher_20 条件
+	if = {
+		limit = { country_exists = SER }
+		set_temp_variable = { percent_change = 12 }
+		set_temp_variable = { tag_index = SER.id }
+		if = { limit = { NOT = { has_global_flag = cml_md_influence_disabled } } change_influence_percentage = yes }
+	}
+	add_opinion_modifier = { target = CHI modifier = pro_chinese_stance }
+	add_opinion_modifier = { target = USA modifier = usa_fp_major_diplomatic_fallout }
+	add_opinion_modifier = { target = SOV modifier = russian_trade }
+}
+
+# 中俄战争失败后的整链回滚
+ZZZ_balkan_federation_influence_rollback_effect = {
+	set_temp_variable = { percent_change = 8 }
+	set_temp_variable = { tag_index = USA.id }
+	if = { limit = { NOT = { has_global_flag = cml_md_influence_disabled } } change_influence_percentage = yes }
+	set_temp_variable = { percent_change = 6 }
+	set_temp_variable = { tag_index = SOV.id }
+	if = { limit = { NOT = { has_global_flag = cml_md_influence_disabled } } change_influence_percentage = yes }
+	set_temp_variable = { percent_change = -10 }
+	set_temp_variable = { tag_index = CHI.id }
+	if = { limit = { NOT = { has_global_flag = cml_md_influence_disabled } } change_influence_percentage = yes }
+	if = {
+		limit = { has_country_flag = balkan_subject_agree }
+		clr_country_flag = balkan_subject_agree
+	}
+}
+
+ZZZ_balkan_federation_rollback_effect = {
+	if = {
+		limit = { has_idea = PRC_balkan_federation_partnership }
+		remove_ideas = PRC_balkan_federation_partnership
+	}
+	clr_global_flag = PRC_balkan_federation_supported
+	set_global_flag = balkan_federation_branch_failed
+	every_country = {
+		limit = {
+			OR = {
+				has_country_flag = BALKAN_left_NATO
+				has_country_flag = balkan_subject_agree
+			}
+		}
+		ZZZ_balkan_federation_influence_rollback_effect = yes
+	}
+}

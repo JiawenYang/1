@@ -93,7 +93,7 @@ SOV_liberal_opposition_dynamic = {
 		NOT = {
 			OR = {
 				has_completed_focus = SOV_convene_the_duma
-				has_country_flag = DSW_SOV_pending_focus_SOV_triumph_of_zhirinovsky
+				always = no
 				has_completed_focus = SOV_election_victory
 				has_country_flag = SOV_duma_category_disabled
 			}
@@ -582,7 +582,7 @@ SOV_soviet_army_dynamic = {
 	training_time_factor = SOV_voenny_training_time_factor_dynamic
 	military_leader_cost_factor = SOV_voenny_military_leader_cost_factor_dynamic
 	grant_medal_cost_factor = SOV_voenny_grant_medal_cost_factor_dynamic
-	cat_old_land_doctrine_cost_factor = SOV_voenny_land_doctrine_cost_factor_dynamic
+	land_doctrine_cost_factor = SOV_voenny_land_doctrine_cost_factor_dynamic
 	max_command_power = SOV_voenny_max_command_power_dynamic
 	experience_gain_army_factor = SOV_voenny_experience_gain_army_factor_dynamic
 	unit_upkeep_attrition_factor = SOV_voenny_unit_upkeep_attrition_factor_dynamic
@@ -614,7 +614,7 @@ SOV_Permanent_Defense_Readiness_dynamic = {
 	training_time_factor = SOV_voenny_training_time_factor_dynamic
 	military_leader_cost_factor = SOV_voenny_military_leader_cost_factor_dynamic
 	grant_medal_cost_factor = SOV_voenny_grant_medal_cost_factor_dynamic
-	cat_old_land_doctrine_cost_factor = SOV_voenny_land_doctrine_cost_factor_dynamic
+	land_doctrine_cost_factor = SOV_voenny_land_doctrine_cost_factor_dynamic
 	max_command_power = SOV_voenny_max_command_power_dynamic
 	experience_gain_army_factor = SOV_voenny_experience_gain_army_factor_dynamic
 	unit_upkeep_attrition_factor = SOV_voenny_unit_upkeep_attrition_factor_dynamic
@@ -646,7 +646,7 @@ SOV_thousand_of_banners_dynamic = {
 	training_time_factor = SOV_voenny_training_time_factor_dynamic
 	military_leader_cost_factor = SOV_voenny_military_leader_cost_factor_dynamic
 	grant_medal_cost_factor = SOV_voenny_grant_medal_cost_factor_dynamic
-	cat_old_land_doctrine_cost_factor = SOV_voenny_land_doctrine_cost_factor_dynamic
+	land_doctrine_cost_factor = SOV_voenny_land_doctrine_cost_factor_dynamic
 	max_command_power = SOV_voenny_max_command_power_dynamic
 	experience_gain_army_factor = SOV_voenny_experience_gain_army_factor_dynamic
 	unit_upkeep_attrition_factor = SOV_voenny_unit_upkeep_attrition_factor_dynamic
@@ -686,7 +686,7 @@ SOV_russian_self_defense_forces_dynamic = {
 	training_time_factor = SOV_navalny_training_time_factor_dynamic
 	military_leader_cost_factor = SOV_navalny_military_leader_cost_factor_dynamic
 	grant_medal_cost_factor = SOV_navalny_grant_medal_cost_factor_dynamic
-	cat_old_land_doctrine_cost_factor = SOV_navalny_land_doctrine_cost_factor_dynamic
+	land_doctrine_cost_factor = SOV_navalny_land_doctrine_cost_factor_dynamic
 	max_command_power = SOV_navalny_max_command_power_dynamic
 	max_dig_in_factor = SOV_navalny_max_dig_in_factor_dynamic
 	experience_gain_army_unit_factor = SOV_navalny_experience_gain_army_unit_factor_dynamic
@@ -732,7 +732,7 @@ SOV_greatest_army_in_eurasia_dynamic = {
 	training_time_factor = SOV_navalny_training_time_factor_dynamic
 	military_leader_cost_factor = SOV_navalny_military_leader_cost_factor_dynamic
 	grant_medal_cost_factor = SOV_navalny_grant_medal_cost_factor_dynamic
-	cat_old_land_doctrine_cost_factor = SOV_navalny_land_doctrine_cost_factor_dynamic
+	land_doctrine_cost_factor = SOV_navalny_land_doctrine_cost_factor_dynamic
 	max_command_power = SOV_navalny_max_command_power_dynamic
 	max_dig_in_factor = SOV_navalny_max_dig_in_factor_dynamic
 	experience_gain_army_unit_factor = SOV_navalny_experience_gain_army_unit_factor_dynamic
@@ -780,7 +780,7 @@ SOV_eurasian_armed_forces_dynamic = {
 	training_time_factor = SOV_dugin_training_time_factor_dynamic
 	military_leader_cost_factor = SOV_dugin_military_leader_cost_factor_dynamic
 	grant_medal_cost_factor = SOV_dugin_grant_medal_cost_factor_dynamic
-	cat_old_land_doctrine_cost_factor = SOV_dugin_land_doctrine_cost_factor_dynamic
+	land_doctrine_cost_factor = SOV_dugin_land_doctrine_cost_factor_dynamic
 	max_command_power = SOV_dugin_max_command_power_dynamic
 	max_dig_in_factor = SOV_dugin_max_dig_in_factor_dynamic
 	experience_loss_factor = SOV_dugin_experience_loss_factor_dynamic
@@ -1172,23 +1172,8 @@ SOV_city_of_moscow_nav = {
 	local_supplies = 0.045
 	state_production_speed_offices_factor = 0.05
 }
-SOV_city_of_moscow_ldpr = {
-	icon = GFX_modifiers_city_of_moscow_ldpr
-	enable = {
-		always = yes
-	}
-	remove_trigger = {
-
-	}
-	local_manpower = 0.1
-	recruitable_population_factor = 0.05
-	local_building_slots = 5
-	local_building_slots_factor = 0.15
-	local_supplies = 0.05
-	state_production_speed_buildings_factor = 0.1
-}
 SOV_special_administrative_territory = {
-	icon = GFX_modifiers_city_of_moscow_ldpr
+	icon = GFX_decision_generic_political_reform
 	enable = {
 		always = yes
 	}
@@ -1203,7 +1188,7 @@ SOV_special_administrative_territory = {
 	local_supplies = 0.1
 }
 SOV_model_derzhavnik_city = {
-	icon = GFX_modifiers_city_of_moscow_ldpr
+	icon = GFX_decision_generic_political_reform
 	enable = {
 		always = yes
 	}
@@ -1218,7 +1203,7 @@ SOV_model_derzhavnik_city = {
 	local_supplies = 0.05
 }
 SOV_metropolitanate = {
-	icon = GFX_modifiers_city_of_moscow_ldpr
+	icon = GFX_decision_generic_political_reform
 	enable = {
 		always = yes
 	}
@@ -1293,17 +1278,6 @@ BLR_LDPB_rule = {
 	}
 	state_resources_factor = -0.1
 	recruitable_population_factor = 0.02
-}
-BLR_LDPR_rule = {
-	icon = GFX_modifiers_LDPR_Rule
-	enable = {
-		always = yes
-	}
-	remove_trigger = {
-		has_global_flag = nato_nato_won_nato_war
-	}
-	local_manpower = -0.2
-	state_production_speed_buildings_factor = 0.1
 }
 ROM_Szeklerland = {
 	icon = GFX_modifiers_ROM_szeklerland
@@ -1672,16 +1646,6 @@ SOV_regional_belarusian_federal_district = {
 	state_production_speed_buildings_factor = 0.015
 	recruitable_population_factor = 0.1
 	local_manpower = 0.1
-}
-SOV_ldpr_sez = {
-	icon = GFX_modifiers_soviet_sez
-	enable = {
-		always = yes
-	}
-	local_building_slots = 2
-	state_production_speed_buildings_factor = 0.10
-	recruitable_population_factor = -0.20
-	local_manpower = 0.3
 }
 SOV_ur_sez = {
 	icon = GFX_modifiers_soviet_sez

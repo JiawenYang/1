@@ -1,6 +1,12 @@
 #foreign tree КТО ТРОНЕТ В ТОГО ПРИЛЕТИТ РАКЕТА
 shared_focus = {
 	id = PRC_establish_eadi
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_establish_eadi
 	x = 0
 	y = 1
@@ -26,7 +32,6 @@ shared_focus = {
 			add_faction_goal = faction_goal_placeholder_long_term
 			remove_faction_goal = faction_goal_a_military_base
 			add_faction_goal = faction_goal_placeholder_medium_term
-			add_faction_goal = faction_goal_placeholder_short_term
 		}
 		add_threat = 1
 		add_political_power = 150
@@ -43,7 +48,6 @@ shared_focus = {
 	y = 3
 	cost = 5
 	available_if_capitulated = yes
-	relative_position_id = CHI_The_Korean_Peninsula
 	prerequisite = {
 		focus = CHI_The_Korean_Peninsula
 	}
@@ -53,6 +57,10 @@ shared_focus = {
 	available = {
 	}
 	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
 		has_country_flag = PRC_for_policy_tree_available
 	}
 	completion_reward = {
@@ -95,6 +103,12 @@ shared_focus = {
 
 shared_focus = {
 	id = PRC_push_for_thaw
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_push_for_thaw
 	x = -1
 	y = 1
@@ -141,6 +155,12 @@ shared_focus = {
 
 shared_focus = {
 	id = PRC_support_the_korean_way
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_support_the_korean_way
 	x = 1
 	y = 1
@@ -178,6 +198,12 @@ shared_focus = {
 
 shared_focus = {
 	id = PRC_joint_military_exercises
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_joint_military_exercises
 	x = 2
 	y = 2
@@ -236,6 +262,12 @@ shared_focus = {
 
 shared_focus = {
 	id = PRC_korean_economic_assistence
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_korean_economic_assistence
 	x = -2
 	y = 2
@@ -299,6 +331,12 @@ shared_focus = {
 
 shared_focus = {
 	id = PRC_finilize_korean_revolution
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_finilize_korean_revolution
 	x = 0
 	y = 2
@@ -370,6 +408,10 @@ shared_focus = {
 		focus = PRC_finilize_korean_revolution
 	}
 	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
 		has_completed_focus = PRC_finilize_korean_revolution
 	}
 	ai_will_do = {
@@ -392,6 +434,12 @@ shared_focus = {
 
 shared_focus = {
 	id = PRC_operation_peng_dehuai
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_operation_peng_dehuai
 	x = -2
 	y = 1
@@ -410,12 +458,12 @@ shared_focus = {
 		army_experience = 35
 		NKO = {
 			send_equipment = {
-				type = infantry_equipment
+				type = Inf_equipment
 				amount = 15000
 				target = NKO
 			}
 			send_equipment = {
-				type = support_equipment
+				type = Inf_equipment
 				amount = 1000
 				target = NKO
 			}
@@ -425,12 +473,12 @@ shared_focus = {
 				target = NKO
 			}
 			send_equipment = {
-				type = motorized_equipment
+				type = util_vehicle_equipment
 				amount = 1000
 				target = NKO
 			}
 			send_equipment = {
-				type = motorized_equipment
+				type = util_vehicle_equipment
 				amount = 1000
 				target = NKO
 			}
@@ -443,7 +491,7 @@ shared_focus = {
 				}
 				create_equipment_variant = {
 					name = "ZTZ-99A" #ZTZ-99A/Phase-III
-					type = mbt_hull_2
+					type = mbt_hull
 					parent_version = 5
 					modules = {
 						main_armament_slot = tank_medium_cannon_3
@@ -466,31 +514,28 @@ shared_focus = {
 					model = "CHI_ZTZ99_entity"
 				}
 				send_equipment = {
-					type = mbt_hull_2
-					variant_name = "ZTZ-99A"
+					type = mbt_hull
 					amount = 500
 					target = NKO
 				}
 			}
 			else = {
 				set_technology = {
-					mbt_hull_2 = 1
+					mbt_hull = 1
 				}
 				create_equipment_variant = {
 					name = "ZTZ-99A"
-					type = mbt_hull_2
+					type = mbt_hull
 					parent_version = 0
 					upgrades = {
 						tank_reliability_upgrade = 2
 						tank_engine_upgrade = 5
 						tank_armor_upgrade = 2
-						tank_art_upgrade = 2
 					}
 					icon = "gfx/interface/technologies/armor/PRC_modern_tank7.png"
 				}
 				send_equipment = {
-					type = mbt_hull_2
-					variant_name = "ZTZ-99A"
+					type = mbt_hull
 					amount = 500
 					target = NKO
 				}
@@ -510,6 +555,12 @@ shared_focus = {
 
 shared_focus = {
 	id = PRC_operation_chosin_reservoir
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_operation_chosin_reservoir
 	x = 2
 	y = 1
@@ -534,7 +585,7 @@ shared_focus = {
 		}
 		NKO = {
 			add_equipment_to_stockpile = {
-				type = attack_helicopter_equipment_1
+				type = attack_helicopter_hull
 				amount = 150
 				producer = CHI
 			}
@@ -551,7 +602,6 @@ shared_focus = {
 					}
 					add_equipment_to_stockpile = {
 						type = small_plane_airframe_2
-						variant_name = "Chengdu J-20"
 						amount = 150
 						producer = CHI
 					}
@@ -561,7 +611,7 @@ shared_focus = {
 						fighter2 = 1
 					}
 					add_equipment_to_stockpile = {
-						type = fighter_equipment_2
+						type = AS_Fighter_equipment
 						amount = 150
 						producer = CHI
 					}
@@ -578,6 +628,12 @@ shared_focus = {
 
 shared_focus = {
 	id = PRC_operation_triangle_hill
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_operation_triangle_hill
 	x = 0
 	y = 1
@@ -614,6 +670,12 @@ shared_focus = {
 
 shared_focus = {
 	id = PRC_down_to_earth
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_down_to_earth
 	x = 0
 	y = 2
@@ -640,10 +702,6 @@ shared_focus = {
 		if = {
 			limit = {
 				#has_active_mission = PRC_korean_war_joining
-			}
-			add_days_mission_timeout = {
-				mission = PRC_korean_war_joining
-				days = -35
 			}
 		}
 		every_state = {
@@ -675,6 +733,12 @@ shared_focus = {
 
 shared_focus = {
 	id = PRC_counter_indian_aggression
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_counter_indian_aggression
 	x = -1
 	y = 1
@@ -697,6 +761,12 @@ shared_focus = {
 
 shared_focus = {
 	id = PRC_anti_japanese_covert_operations
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_anti_japanese_covert_operations
 	x = 1
 	y = 1
@@ -725,6 +795,12 @@ shared_focus = {
 
 shared_focus = {
 	id = PRC_build_up_fortifications
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_build_up_fortifications
 	x = -1
 	y = 1
@@ -837,6 +913,12 @@ shared_focus = {
 
 shared_focus = {
 	id = PRC_expand_border_training
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_expand_border_training
 	x = 1
 	y = 1
@@ -882,6 +964,10 @@ shared_focus = {
 	available = {
 	}
 	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
 		has_country_flag = PRC_for_policy_tree_available
 	}
 	completion_reward = {
@@ -894,6 +980,12 @@ shared_focus = {
 
 shared_focus = {
 	id = PRC_himalayan_frontier
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_himalayan_frontier
 	x = 2
 	y = 2
@@ -918,6 +1010,12 @@ shared_focus = {
 
 shared_focus = {
 	id = PRC_south_asian_brothers
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_south_asian_brothers
 	x = -4
 	y = 1
@@ -936,13 +1034,18 @@ shared_focus = {
 		unlock_decision_tooltip = PRC_invite_vietnam_to_eadi
 		unlock_decision_tooltip = PRC_invite_laos_eadi
 		unlock_decision_tooltip = PRC_invite_cambodia_eadi
-		unlock_decision_tooltip = PRC_invite_thailand_eadi
 		unlock_decision_tooltip = PRC_invite_indonesia_eadi
 	}
 }
 
 shared_focus = {
 	id = PRC_revolution_in_myanmar
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_revolution_in_myanmar
 	x = 0
 	y = 1
@@ -1019,6 +1122,12 @@ shared_focus = {
 
 shared_focus = {
 	id = PRC_coordinate_eadi_militaries
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_coordinate_eadi_militaries
 	x = 0
 	y = 2
@@ -1043,6 +1152,12 @@ shared_focus = {
 
 shared_focus = {
 	id = PRC_economic_war_with_the_pdto
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_economic_war_with_the_pdto
 	x = 0
 	y = 3

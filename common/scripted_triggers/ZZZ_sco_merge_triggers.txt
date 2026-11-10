@@ -1,0 +1,74 @@
+# ============================================================================
+#  上合合体判定（A 形态：不碰阵营归属）
+#
+#  ★ 阈值集中在本文件，改判定条件只改这里，不要动 on_actions / 效果库。
+#
+#  欧洲线：列宁格勒 644 / 莫斯科 652 / 罗斯托夫 667（与 DSW 俄方战败线同一组三城）
+#          “丢两城”= 上述三州中任意两州被“非集安方”控制
+#  亚洲线：北京 547 失守 + （上海 540 或 南京 536）任一失守
+#  控制口径：state 的 controller（HOI4 中占领即控制，controller 为准）
+# ============================================================================
+
+# 州作用域：该州是否已不在集安一方手里
+ZZZ_sco_state_lost_to_csto = {
+	NOT = {
+		controller = {
+			OR = {
+				original_tag = SOV
+				has_country_flag = ZZZ_eur_csto_participant
+				is_in_faction_with = SOV
+			}
+		}
+	}
+}
+
+# 州作用域：该州是否已不在中国一方手里
+ZZZ_sco_state_lost_to_china = {
+	NOT = {
+		controller = {
+			OR = {
+				original_tag = CHI
+				is_in_faction_with = CHI
+				has_country_flag = ZZZ_sco_merged_identity
+			}
+		}
+	}
+}
+
+# 欧洲线：三城中丢两城
+ZZZ_sco_merge_europe_line = {
+	OR = {
+		AND = {
+			644 = { ZZZ_sco_state_lost_to_csto = yes }
+			652 = { ZZZ_sco_state_lost_to_csto = yes }
+		}
+		AND = {
+			644 = { ZZZ_sco_state_lost_to_csto = yes }
+			667 = { ZZZ_sco_state_lost_to_csto = yes }
+		}
+		AND = {
+			652 = { ZZZ_sco_state_lost_to_csto = yes }
+			667 = { ZZZ_sco_state_lost_to_csto = yes }
+		}
+	}
+}
+
+# 亚洲线：北京失守 + 上海或南京任一失守
+ZZZ_sco_merge_asia_line = {
+	547 = { ZZZ_sco_state_lost_to_china = yes }
+	OR = {
+		540 = { ZZZ_sco_state_lost_to_china = yes }
+		536 = { ZZZ_sco_state_lost_to_china = yes }
+	}
+}
+
+# 总判定
+ZZZ_sco_merge_ready = {
+	country_exists = CHI
+	country_exists = SOV
+	SOV = { NOT = { has_war_with = CHI } }
+	OR = {
+		ZZZ_sco_merge_europe_line = yes
+		ZZZ_sco_merge_asia_line = yes
+	}
+}

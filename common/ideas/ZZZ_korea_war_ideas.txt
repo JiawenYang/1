@@ -1,0 +1,20 @@
+# ============================================================================
+# 朝鲜半岛战争线 —— 最小化 idea（本工程原创，仅 1 条）
+# 戒严状态用既有 national modifier 表现，不新建 tag / 国策树 / cosmetic tag
+# 图标复用工程已有 sprite：GFX_idea_FRA_martiallaw（interface 内已定义）
+# ============================================================================
+
+ideas = {
+	country = {
+		ZZZ_KW_martial_law_2024 = {
+			picture = FRA_martiallaw
+			allowed = { always = yes }
+			allowed_civil_war = { always = yes }
+			modifier = {
+				stability_factor = -0.15
+				war_support_factor = 0.10
+				political_power_gain = -0.10
+			}
+		}
+	}
+}

@@ -1,0 +1,2947 @@
+# Restored event blocks for on_action references (verbatim from Millennium Dawn 2.0.3)
+# Scope: events referenced by common/on_actions but whose source files are not shipped in this mod
+# (events/ is replace_path, so missing source files mean missing namespaces)
+# Generated: 2026-11-08
+
+add_namespace = ethiopia
+add_namespace = AGRI
+add_namespace = econvent
+add_namespace = corruption
+add_namespace = Botswana_pulse
+add_namespace = sov_economic
+add_namespace = migrant_event
+add_namespace = nigeria_delta
+
+# --- restored from events/Botswana.txt line 366 ---
+country_event = {
+	id = Botswana_pulse.10
+	title = Botswana_pulse.10.t
+	desc = Botswana_pulse.10.desc
+	picture = GFX_african_demonstration
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	mean_time_to_happen = {
+		modifier = {
+			factor = 2
+			has_idea = BOT_ancestral_land_conflict_escalated
+		}
+	}
+
+	trigger = {
+		OR = {
+			has_idea = BOT_ancestral_land_conflict
+			has_idea = BOT_ancestral_land_conflict_escalated
+		}
+	}
+
+	option = {
+		log = "[GetDateText]: [This.GetName]: Botswana_pulse.10.a executed"
+		name = Botswana_pulse.10.a
+		add_political_power = -50
+		set_temp_variable = { arg_popularity = -0.025 }
+		add_ruling_outlook_popularity = yes
+	}
+}
+
+# --- restored from events/Botswana.txt line 423 ---
+country_event = {
+	id = Botswana_pulse.12
+	title = Botswana_pulse.12.t
+	desc = Botswana_pulse.12.desc
+	picture = GFX_african_demonstration
+	is_triggered_only = yes
+
+	mean_time_to_happen = {
+		modifier = {
+			factor = 4
+			has_completed_focus = BOT_prioritise_industrial_courts
+		}
+		modifier = {
+			factor = 0.25
+			has_completed_focus = BOT_secure_workers_rights
+		}
+	}
+
+	option = {
+		log = "[GetDateText]: [This.GetName]: Botswana_pulse.12.a executed"
+		name = Botswana_pulse.12.a
+		ai_chance = {
+			base = 80
+			modifier = {
+				factor = 0
+				has_global_flag = BOT_POLITICAL_RAINBOW_FOCUS_PATH
+			}
+			modifier = {
+				factor = 0.125
+				OR = {
+					has_government = communism
+					check_variable = { ruling_party = 19 }
+				}
+			}
+		}
+		set_temp_variable = { temp_opinion = 5 }
+		change_fossil_fuel_industry_opinion = yes
+		change_industrial_conglomerates_opinion = yes
+		change_small_medium_business_owners_opinion = yes
+		set_temp_variable = { temp_opinion = -5 }
+		change_farmers_opinion = yes
+		change_labour_unions_opinion = yes
+		BOT_boost_BDP_A = yes
+	}
+
+	option = {
+		log = "[GetDateText]: [This.GetName]: Botswana_pulse.12.b executed"
+		name = Botswana_pulse.12.b
+		ai_chance = {
+			base = 20
+			modifier = {
+				factor = 0
+				OR = {
+					has_global_flag = BOT_HISTORICAL_FOCUS_PATH
+					is_historical_focus_on = yes
+				}
+			}
+			modifier = {
+				factor = 4.5
+				OR = {
+					has_government = communism
+					check_variable = { ruling_party = 19 }
+				}
+			}
+		}
+		set_temp_variable = { temp_opinion = -5 }
+		change_fossil_fuel_industry_opinion = yes
+		change_industrial_conglomerates_opinion = yes
+		change_small_medium_business_owners_opinion = yes
+		set_temp_variable = { temp_opinion = 5 }
+		change_farmers_opinion = yes
+		change_labour_unions_opinion = yes
+		BOT_boost_ISBO = yes
+	}
+}
+
+# --- restored from events/Botswana.txt line 500 ---
+country_event = {
+	id = Botswana_pulse.13
+	title = Botswana_pulse.13.t
+	desc = Botswana_pulse.13.desc
+	picture = GFX_african_demonstration
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	trigger = { original_tag = BOT }
+
+	option = {
+		log = "[GetDateText]: [This.GetName]: Botswana_pulse.13.a executed"
+		name = Botswana_pulse.13.a
+		set_temp_variable = { party_index = 18 }
+		set_temp_variable = { party_popularity_increase = -0.05 }
+		set_temp_variable = { temp_outlook_increase = -0.05 }
+		change_relative_party_popularity = yes
+	}
+}
+
+# --- restored from events/Botswana.txt line 554 ---
+country_event = {
+	id = Botswana_pulse.15
+	title = Botswana_pulse.15.t
+	desc = Botswana_pulse.15.desc
+	picture = GFX_plane_crash
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	trigger = { original_tag = BOT }
+
+	option = {
+		log = "[GetDateText]: [This.GetName]: Botswana_pulse.15.a executed"
+		name = Botswana_pulse.15.a
+		ai_chance = {
+			base = 90
+		}
+		decrease_economic_growth = yes
+	}
+
+	option = {
+		log = "[GetDateText]: [This.GetName]: Botswana_pulse.15.b executed"
+		name = Botswana_pulse.15.b
+		ai_chance = {
+			base = 10
+			modifier = {
+				factor = 0
+				OR = {
+					is_historical_focus_on = yes
+					has_global_flag = BOT_HISTORICAL_FOCUS_PATH
+				}
+			}
+		}
+		set_temp_variable = { arg_popularity = -0.025 }
+		add_ruling_outlook_popularity = yes
+		set_country_flag = BOT_air_crash_ignored
+	}
+}
+
+# --- restored from events/Botswana.txt line 593 ---
+country_event = {
+	id = Botswana_pulse.16
+	title = Botswana_pulse.16.t
+	desc = Botswana_pulse.16.desc
+	picture = GFX_plane_crash
+	is_triggered_only = yes
+
+	trigger = { has_country_flag = BOT_air_crash_ignored }
+
+	option = {
+		log = "[GetDateText]: [This.GetName]: Botswana_pulse.16.a executed"
+		name = Botswana_pulse.16.a
+		ai_chance = {
+			base = 90
+		}
+		decrease_economic_growth = yes
+		clr_country_flag = BOT_air_crash_ignored
+	}
+
+	option = {
+		log = "[GetDateText]: [This.GetName]: Botswana_pulse.16.b executed"
+		name = Botswana_pulse.16.b
+		ai_chance = {
+			base = 10
+		}
+		set_temp_variable = { arg_popularity = -0.025 }
+		add_ruling_outlook_popularity = yes
+	}
+}
+
+# --- restored from events/Botswana.txt line 624 ---
+country_event = {
+	id = Botswana_pulse.17
+	title = Botswana_pulse.17.t
+	desc = Botswana_pulse.17.desc
+	picture = GFX_court
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	trigger = { original_tag = BOT }
+
+	option = {
+		log = "[GetDateText]: [This.GetName]: Botswana_pulse.17.a executed"
+		name = Botswana_pulse.17.a
+		ai_chance = {
+			base = 80
+			modifier = {
+				factor = 0
+				has_global_flag = BOT_KGOSIKGOLO_FOCUS_PATH
+			}
+		}
+		BOT_boost_BDP_B = yes
+		BOT_boost_BNF = yes
+	}
+
+	option = {
+		log = "[GetDateText]: [This.GetName]: Botswana_pulse.17.b executed"
+		name = Botswana_pulse.17.b
+		ai_chance = {
+			base = 20
+			modifier = {
+				factor = 0
+				has_global_flag = BOT_POLITICAL_RAINBOW_FOCUS_PATH
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					is_historical_focus_on = yes
+					has_global_flag = BOT_HISTORICAL_FOCUS_PATH
+				}
+				NOT = { has_global_flag = BOT_KGOSIKGOLO_FOCUS_PATH }
+			}
+		}
+		BOT_boost_BDP_A = yes
+		BOT_boost_digkosi = yes
+	}
+}
+
+# --- restored from events/Botswana.txt line 672 ---
+country_event = {
+	id = Botswana_pulse.18
+	title = Botswana_pulse.18.t
+	desc = {
+		text = Botswana_pulse.18.desc.1
+		trigger = {
+			NOT = { has_country_flag = BDP_split }
+		}
+	}
+	desc = {
+		text = Botswana_pulse.18.desc.2
+		trigger = {
+			has_country_flag = BDP_split
+		}
+	}
+	picture = GFX_car_crash
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	trigger = {
+		original_tag = BOT
+		NOT = { check_variable = { Neutral_Libertarian_leader < 2 } }
+	}
+
+	option = {
+		log = "[GetDateText]: [This.GetName]: Botswana_pulse.18.a executed"
+		name = Botswana_pulse.18.a
+		set_country_flag = BOT_Motswaledi_dead
+		set_temp_variable = { party_index = 16 }
+		set_temp_variable = { party_popularity_increase = -0.02 }
+		change_relative_party_popularity = yes
+	}
+}
+
+# --- restored from events/Botswana.txt line 707 ---
+country_event = {
+	id = Botswana_pulse.19
+	title = Botswana_pulse.19.t
+	desc = Botswana_pulse.19.desc
+	picture = GFX_BOT_lesedi_la_rona
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	trigger = { original_tag = BOT }
+
+	option = {
+		log = "[GetDateText]: [This.GetName]: Botswana_pulse.19.a executed"
+		name = Botswana_pulse.19.a
+		add_political_power = 50
+		set_country_flag = BOT_lesedi_la_rona_found
+	}
+}
+
+# --- restored from events/Botswana.txt line 726 ---
+country_event = {
+	id = Botswana_pulse.20
+	title = Botswana_pulse.20.t
+	desc = Botswana_pulse.20.desc
+	picture = GFX_BOT_sewelo
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	trigger = { has_country_flag = BOT_lesedi_la_rona_found }
+
+	option = {
+		log = "[GetDateText]: [This.GetName]: Botswana_pulse.20.a executed"
+		name = Botswana_pulse.20.a
+		add_political_power = 50
+	}
+}
+
+# --- restored from events/Botswana.txt line 744 ---
+country_event = {
+	id = Botswana_pulse.21
+	title = Botswana_pulse.21.t
+	desc = Botswana_pulse.21.desc
+	picture = GFX_generic_factory
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = { has_idea = BOT_coal_focused_energy_self_sufficient }
+		NOT = { has_idea = BOT_coal_focused_energy_small_profit }
+		NOT = { has_idea = BOT_coal_focused_energy_rich }
+		NOT = { has_idea = BOT_renewable_focused_energy_self_sufficient }
+		NOT = { has_idea = BOT_renewable_focused_energy_small_profit }
+		NOT = { has_idea = BOT_renewable_focused_energy_rich }
+	}
+
+	option = {
+		log = "[GetDateText]: [This.GetName]: Botswana_pulse.21.a executed"
+		name = Botswana_pulse.21.a
+		decrease_economic_growth = yes
+	}
+}
+
+# --- restored from events/Botswana.txt line 768 ---
+country_event = {
+	id = Botswana_pulse.22
+	title = Botswana_pulse.22.t
+	desc = Botswana_pulse.22.desc
+	picture = GFX_generic_factory
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	mean_time_to_happen = {
+		modifier = {
+			factor = 3
+			has_idea = depression
+		}
+		modifier = {
+			factor = 2
+			has_idea = recession
+		}
+		modifier = {
+			factor = 1.5
+			has_idea = stagnation
+		}
+		modifier = {
+			factor = 0.5
+			has_idea = fast_growth
+		}
+		modifier = {
+			factor = 0.1
+			has_idea = economic_boom
+		}
+	}
+
+	trigger = { original_tag = BOT }
+
+	option = {
+		log = "[GetDateText]: [This.GetName]: Botswana_pulse.22.a executed"
+		name = Botswana_pulse.22.a
+		ai_chance = {
+			base = 20
+			modifier = {
+				factor = 4.5
+				OR = {
+					has_government = communism
+					check_variable = { ruling_party = 19 }
+				}
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					is_historical_focus_on = yes
+					has_global_flag = BOT_HISTORICAL_FOCUS_PATH
+				}
+			}
+		}
+		set_temp_variable = { treasury_change = -1 }
+		modify_treasury_effect = yes
+		BOT_boost_BDP_B = yes
+		BOT_boost_ISBO = yes
+	}
+
+	option = {
+		log = "[GetDateText]: [This.GetName]: Botswana_pulse.22.b executed"
+		name = Botswana_pulse.22.b
+		ai_chance = {
+			base = 80
+			modifier = {
+				factor = 0
+				has_global_flag = BOT_POLITICAL_RAINBOW_FOCUS_PATH
+			}
+			modifier = {
+				factor = 0.125
+				OR = {
+					has_government = communism
+					check_variable = { ruling_party = 19 }
+				}
+			}
+		}
+		add_political_power = -50
+		BOT_boost_BDP_A = yes
+	}
+}
+
+# --- restored from events/Botswana.txt line 850 ---
+country_event = {
+	id = Botswana_pulse.23
+	title = Botswana_pulse.23.t
+	desc = Botswana_pulse.23.desc
+	picture = GFX_african_demonstration
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	mean_time_to_happen = {
+		modifier = {
+			factor = 2
+			has_idea = BOT_house_of_chiefs_militarised
+		}
+	}
+
+	trigger = {
+		NOT = { has_idea = BOT_house_of_chiefs_empowered }
+		NOT = { has_idea = BOT_house_of_chiefs_empowered_and_militarised }
+	}
+
+	option = {
+		log = "[GetDateText]: [This.GetName]: Botswana_pulse.23.a executed"
+		name = Botswana_pulse.23.a
+		ai_chance = {
+			base = 80
+			modifier = {
+				factor = 0
+				OR = {
+					has_global_flag = BOT_KGOSIKGOLO_FOCUS_PATH
+					check_variable = { ruling_party = 23 }
+				}
+			}
+		}
+		set_temp_variable = { temp_opinion = -5 }
+		change_landowners_opinion = yes
+		BOT_boost_BDP_B = yes
+		BOT_boost_BPP = yes
+	}
+
+	option = {
+		log = "[GetDateText]: [This.GetName]: Botswana_pulse.23.b executed"
+		name = Botswana_pulse.23.b
+		ai_chance = {
+			base = 20
+			modifier = {
+				factor = 0
+				has_global_flag = BOT_POLITICAL_RAINBOW_FOCUS_PATH
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					is_historical_focus_on = yes
+					has_global_flag = BOT_HISTORICAL_FOCUS_PATH
+				}
+				NOT = { has_global_flag = BOT_KGOSIKGOLO_FOCUS_PATH }
+			}
+		}
+		set_temp_variable = { temp_opinion = 5 }
+		change_landowners_opinion = yes
+		BOT_boost_digkosi = yes
+	}
+}
+
+# --- restored from events/Nigeria_Niger_Delta.txt line 93 ---
+country_event = {
+	id = nigeria_delta.2
+	title = nigeria_delta.2.t
+	desc = nigeria_delta.2.d
+	picture = GFX_lagos_pipeline
+	is_triggered_only = yes
+
+	trigger = {
+		original_tag = NIG
+		has_full_control_of_state = 332
+		OR = {
+			has_idea = NIG_niger_delta_crisis_1
+			has_idea = NIG_niger_delta_crisis_2
+			has_idea = NIG_niger_delta_crisis_3
+			has_idea = NIG_niger_delta_avengers_idea
+		}
+	}
+
+	# Increase Security at Oil Facilities
+	option = {
+		name = nigeria_delta.2.a
+		log = "[GetDateText]: [This.GetName]: nigeria_delta.2.a executed"
+		set_temp_variable = { treasury_change = -2 }
+		modify_treasury_effect = yes
+		add_political_power = -25
+		332 = {
+			if = {
+				limit = { infrastructure > 0 }
+				damage_building = {
+					type = infrastructure
+					damage = 0.15
+				}
+			}
+		}
+		ai_chance = {
+			base = 60
+		}
+	}
+
+	# Let the Companies Handle It
+	option = {
+		name = nigeria_delta.2.b
+		log = "[GetDateText]: [This.GetName]: nigeria_delta.2.b executed"
+		add_stability = -0.03
+		332 = {
+			if = {
+				limit = { infrastructure > 0 }
+				damage_building = {
+					type = infrastructure
+					damage = 0.25
+				}
+			}
+		}
+		# Escalate crisis
+		if = {
+			limit = { has_idea = NIG_niger_delta_crisis_1 }
+			swap_ideas = {
+				remove_idea = NIG_niger_delta_crisis_1
+				add_idea = NIG_niger_delta_crisis_2
+			}
+		}
+		ai_chance = {
+			base = 40
+		}
+	}
+}
+
+# --- restored from events/Nigeria_Niger_Delta.txt line 161 ---
+country_event = {
+	id = nigeria_delta.3
+	title = nigeria_delta.3.t
+	desc = nigeria_delta.3.d
+	picture = GFX_terrorist_attack
+	is_triggered_only = yes
+
+	trigger = {
+		original_tag = NIG
+		has_full_control_of_state = 332
+		OR = {
+			has_idea = NIG_niger_delta_crisis_1
+			has_idea = NIG_niger_delta_crisis_2
+			has_idea = NIG_niger_delta_crisis_3
+		}
+	}
+
+	# Pay Ransom
+	option = {
+		name = nigeria_delta.3.a
+		log = "[GetDateText]: [This.GetName]: nigeria_delta.3.a executed"
+		set_temp_variable = { treasury_change = -5 }
+		modify_treasury_effect = yes
+		add_stability = 0.01
+		ai_chance = {
+			base = 30
+		}
+	}
+
+	# Rescue Operation
+	option = {
+		name = nigeria_delta.3.b
+		log = "[GetDateText]: [This.GetName]: nigeria_delta.3.b executed"
+		add_political_power = -50
+		random_list = {
+			60 = {
+				add_stability = 0.02
+				add_war_support = 0.02
+			}
+			40 = {
+				add_stability = -0.05
+				add_war_support = -0.03
+				# Escalate crisis
+				if = {
+					limit = { has_idea = NIG_niger_delta_crisis_1 }
+					swap_ideas = {
+						remove_idea = NIG_niger_delta_crisis_1
+						add_idea = NIG_niger_delta_crisis_2
+					}
+				}
+			}
+		}
+		ai_chance = {
+			base = 40
+			modifier = {
+				add = 20
+				has_country_flag = NIG_niger_delta_military_response
+			}
+		}
+	}
+
+	# Negotiate Release
+	option = {
+		name = nigeria_delta.3.c
+		log = "[GetDateText]: [This.GetName]: nigeria_delta.3.c executed"
+		set_temp_variable = { treasury_change = -2 }
+		modify_treasury_effect = yes
+		add_political_power = -25
+		ai_chance = {
+			base = 30
+			modifier = {
+				add = 20
+				has_country_flag = NIG_niger_delta_negotiation_path
+			}
+		}
+	}
+}
+
+# --- restored from events/Nigeria_Niger_Delta.txt line 240 ---
+country_event = {
+	id = nigeria_delta.4
+	title = nigeria_delta.4.t
+	desc = nigeria_delta.4.d
+	picture = GFX_lagos_pipeline
+	is_triggered_only = yes
+
+	trigger = {
+		original_tag = NIG
+		has_full_control_of_state = 332
+		OR = {
+			has_idea = NIG_niger_delta_crisis_1
+			has_idea = NIG_niger_delta_crisis_2
+			has_idea = NIG_niger_delta_crisis_3
+			has_idea = NIG_niger_delta_avengers_idea
+		}
+	}
+
+	# Deploy Military to Protect Pipelines
+	option = {
+		name = nigeria_delta.4.a
+		log = "[GetDateText]: [This.GetName]: nigeria_delta.4.a executed"
+		add_political_power = -75
+		332 = {
+			if = {
+				limit = { infrastructure > 0 }
+				damage_building = {
+					type = infrastructure
+					damage = 0.20
+				}
+			}
+		}
+		ai_chance = {
+			base = 60
+		}
+	}
+
+	# Focus on Repairs
+	option = {
+		name = nigeria_delta.4.b
+		log = "[GetDateText]: [This.GetName]: nigeria_delta.4.b executed"
+		set_temp_variable = { treasury_change = -3 }
+		modify_treasury_effect = yes
+		332 = {
+			if = {
+				limit = { infrastructure > 0 }
+				damage_building = {
+					type = infrastructure
+					damage = 0.30
+				}
+			}
+		}
+		# Escalate crisis
+		if = {
+			limit = { has_idea = NIG_niger_delta_crisis_2 }
+			swap_ideas = {
+				remove_idea = NIG_niger_delta_crisis_2
+				add_idea = NIG_niger_delta_crisis_3
+			}
+		}
+		else_if = {
+			limit = { has_idea = NIG_niger_delta_crisis_1 }
+			swap_ideas = {
+				remove_idea = NIG_niger_delta_crisis_1
+				add_idea = NIG_niger_delta_crisis_2
+			}
+		}
+		ai_chance = {
+			base = 40
+		}
+	}
+}
+
+# --- restored from events/Russia.txt line 8896 ---
+country_event = {
+	id = sov_economic.28
+	title = sov_economic.28.t
+	desc = sov_economic.28.d
+	picture = GFX_sov_gazprom_cap
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	mean_time_to_happen = {
+		modifier = {
+			factor = 1.5
+			check_variable = { SOV_capitalisation_gazprom > 3 }
+			NOT = { check_variable = { SOV_capitalisation_gazprom > 12 } }
+		}
+		modifier = {
+			factor = 1.80
+			check_variable = { SOV_capitalisation_gazprom > 12 }
+			NOT = { check_variable = { SOV_capitalisation_gazprom > 25 } }
+		}
+		modifier = {
+			factor = 2.5
+			check_variable = { SOV_capitalisation_gazprom > 25 }
+		}
+	}
+
+	trigger = {
+		original_tag = SOV
+		has_completed_focus = SOV_economic_reform_gazprom
+		NOT = {
+			OR = {
+				emerging_communist_state_are_in_power = yes
+				neutrality_neutral_communism_are_in_power = yes
+			}
+		}
+	}
+
+	option = {
+		name = sov_economic.28.a
+		log = "[GetDateText]: [This.GetName]: sov_economic.28.a executed"
+		SOV = {
+			set_temp_variable = { SOV_modify_capitalisation_gazprom = -0.380 }
+			SOV_modify_capitalisation_gazprom_support = yes
+		}
+	}
+}
+
+# --- restored from events/Russia.txt line 8690 ---
+country_event = {
+	id = sov_economic.24
+	title = sov_economic.24.t
+	desc = sov_economic.24.d
+	picture = GFX_sov_rosneft_cap
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	mean_time_to_happen = {
+		modifier = {
+			factor = 1.5
+			check_variable = { SOV_capitalisation_rosneft > 3 }
+			NOT = { check_variable = { SOV_capitalisation_rosneft > 15 } }
+		}
+		modifier = {
+			factor = 1.80
+			check_variable = { SOV_capitalisation_rosneft > 15 }
+			NOT = { check_variable = { SOV_capitalisation_rosneft > 25 } }
+		}
+		modifier = {
+			factor = 2.5
+			check_variable = { SOV_capitalisation_rosneft > 25 }
+		}
+	}
+
+	trigger = {
+		original_tag = SOV
+		has_completed_focus = SOV_economic_reform_rosneft
+		NOT = {
+			OR = {
+				emerging_communist_state_are_in_power = yes
+				neutrality_neutral_communism_are_in_power = yes
+			}
+		}
+	}
+
+	option = {
+		name = sov_economic.24.a
+		log = "[GetDateText]: [This.GetName]: sov_economic.24.a executed"
+		SOV = {
+			set_temp_variable = { SOV_modify_capitalisation_rosneft = -0.190 }
+			SOV_modify_capitalisation_rosneft_support = yes
+		}
+	}
+}
+
+# --- restored from events/Russia.txt line 8643 ---
+country_event = {
+	id = sov_economic.23
+	title = sov_economic.23.t
+	desc = sov_economic.23.d
+	picture = GFX_sov_sberbank_cap
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	mean_time_to_happen = {
+		modifier = {
+			factor = 1.5
+			check_variable = { SOV_capitalisation_sberbank > 3 }
+			NOT = { check_variable = { SOV_capitalisation_sberbank > 15 } }
+		}
+		modifier = {
+			factor = 1.80
+			check_variable = { SOV_capitalisation_sberbank > 15 }
+			NOT = { check_variable = { SOV_capitalisation_sberbank > 25 } }
+		}
+		modifier = {
+			factor = 2.5
+			check_variable = { SOV_capitalisation_sberbank > 25 }
+		}
+	}
+
+	trigger = {
+		original_tag = SOV
+		has_completed_focus = SOV_economic_destiny_sber
+		NOT = {
+			OR = {
+				emerging_communist_state_are_in_power = yes
+				neutrality_neutral_communism_are_in_power = yes
+			}
+		}
+	}
+
+	option = {
+		name = sov_economic.23.a
+		log = "[GetDateText]: [This.GetName]: sov_economic.23.a executed"
+		SOV = {
+			set_temp_variable = { SOV_modify_capitalisation_sberbank = -0.100 }
+			SOV_modify_capitalisation_sberbank_support = yes
+		}
+	}
+}
+
+# --- restored from events/Russia.txt line 8597 ---
+country_event = {
+	id = sov_economic.22
+	title = sov_economic.22.t
+	desc = sov_economic.22.d
+	picture = GFX_sov_gazprom_cap
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	mean_time_to_happen = {
+		modifier = {
+			factor = 1.5
+			check_variable = { SOV_capitalisation_gazprom > 3 }
+			NOT = { check_variable = { SOV_capitalisation_gazprom > 12 } }
+		}
+		modifier = {
+			factor = 1.80
+			check_variable = { SOV_capitalisation_gazprom > 12 }
+			NOT = { check_variable = { SOV_capitalisation_gazprom > 25 } }
+		}
+		modifier = {
+			factor = 2.5
+			check_variable = { SOV_capitalisation_gazprom > 25 }
+		}
+	}
+
+	trigger = {
+		original_tag = SOV
+		has_completed_focus = SOV_economic_reform_gazprom
+		NOT = {
+			OR = {
+				emerging_communist_state_are_in_power = yes
+				neutrality_neutral_communism_are_in_power = yes
+			}
+		}
+	}
+
+	option = {
+		name = sov_economic.22.a
+		log = "[GetDateText]: [This.GetName]: sov_economic.22.a executed"
+		SOV = {
+			set_temp_variable = { SOV_modify_capitalisation_gazprom = -0.250 }
+			SOV_modify_capitalisation_gazprom_support = yes
+		}
+	}
+}
+
+# --- restored from events/Russia.txt line 8850 ---
+country_event = {
+	id = sov_economic.27
+	title = sov_economic.27.t
+	desc = sov_economic.27.d
+	picture = GFX_sov_rosneft_cap
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	mean_time_to_happen = {
+		modifier = {
+			factor = 1.5
+			check_variable = { SOV_capitalisation_rosneft > 3 }
+			NOT = { check_variable = { SOV_capitalisation_rosneft > 15 } }
+		}
+		modifier = {
+			factor = 1.80
+			check_variable = { SOV_capitalisation_rosneft > 15 }
+			NOT = { check_variable = { SOV_capitalisation_rosneft > 25 } }
+		}
+		modifier = {
+			factor = 2.5
+			check_variable = { SOV_capitalisation_rosneft > 25 }
+		}
+	}
+
+	trigger = {
+		original_tag = SOV
+		has_completed_focus = SOV_economic_reform_rosneft
+		NOT = {
+			OR = {
+				emerging_communist_state_are_in_power = yes
+				neutrality_neutral_communism_are_in_power = yes
+			}
+		}
+	}
+
+	option = {
+		name = sov_economic.27.a
+		log = "[GetDateText]: [This.GetName]: sov_economic.27.a executed"
+		SOV = {
+			set_temp_variable = { SOV_modify_capitalisation_rosneft = -0.275 }
+			SOV_modify_capitalisation_rosneft_support = yes
+		}
+	}
+}
+
+# --- restored from events/Econ_events.txt line 23 ---
+country_event = {
+	id = econvent.1
+	title = econvent.1.t
+	desc = econvent.1.d
+	picture = GFX_house
+	is_triggered_only = yes
+
+	mean_time_to_happen = {
+		modifier = {
+			factor = 1.40
+			has_idea = economic_boom
+		}
+		modifier = {
+			factor = 1.25
+			has_idea = fast_growth
+		}
+		modifier = {
+			factor = 0
+			OR = {
+				has_idea = depression
+				has_idea = recession
+				has_idea = stagnation
+				has_country_flag = possible_housing_bubble
+				has_country_flag = housing_crash
+			}
+		}
+	}
+
+	#Take steps to avoid crisis
+	option = {
+		name = econvent.1.a
+		log = "[GetDateText]: [This.GetName]: econvent.1.a executed"
+		small_expenditure = yes
+		random_list = {
+			40 = {
+				modifier = {
+					factor = 0.80
+					has_idea = recession
+				}
+				modifier = {
+					factor = 0.75
+					has_idea = depression
+				}
+				decrease_economic_growth = yes
+			}
+			60 = { }
+		}
+		set_temp_variable = { temp_opinion = -10 }
+		change_wall_street_opinion = yes
+		change_international_bankers_opinion = yes
+		set_temp_variable = { temp_opinion = 5 }
+		change_small_medium_business_owners_opinion = yes
+		change_the_donju_opinion = yes
+		change_chaebols_opinion = yes
+		ai_chance = { base = 1 }
+	}
+
+	#Crisis?! What crisis!?
+	option = {
+		name = econvent.1.b
+		log = "[GetDateText]: [This.GetName]: econvent.1.b executed"
+		custom_effect_tooltip = econvent.1.b_tt
+		set_country_flag = possible_housing_bubble
+		set_temp_variable = { temp_opinion = 5 }
+		change_wall_street_opinion = yes
+		change_international_bankers_opinion = yes
+		set_temp_variable = { temp_opinion = -10 }
+		change_small_medium_business_owners_opinion = yes
+		change_the_donju_opinion = yes
+		change_chaebols_opinion = yes
+		ai_chance = { base = 0 }
+	}
+}
+
+# --- restored from events/Econ_events.txt line 98 ---
+country_event = {
+	id = econvent.2
+	title = econvent.2.t
+	desc = econvent.2.d
+	picture = GFX_banking_crisis
+	is_triggered_only = yes
+
+	mean_time_to_happen = {
+		modifier = {
+			factor = 1.25
+			has_idea = economic_boom
+		}
+		modifier = {
+			factor = 1.1
+			has_idea = fast_growth
+		}
+		modifier = {
+			factor = 0.5
+			has_country_flag = consumption_slowdown
+		}
+		modifier = {
+			factor = 2.0
+			has_country_flag = possible_housing_bubble
+		}
+		modifier = {
+			factor = 0.5
+			OR = {
+				has_idea = recession
+				has_idea = stagnation
+			}
+		}
+	}
+
+	trigger = {
+		NOT = {
+			OR = {
+				has_country_flag = bank_crisis
+				has_country_flag = stock_market_crash
+			}
+		}
+		NOT = { has_idea = depression }
+	}
+
+	#Lower interest-rates and demand banks increase lending
+	option = {
+		name = econvent.2.a
+		log = "[GetDateText]: [This.GetName]: econvent.2.a executed"
+		set_country_flag = { flag = housing_crash value = 1 days = 180 }
+		if = { limit = { OR = { has_idea = economic_boom has_idea = fast_growth has_idea = stable_growth } }
+			random_list = {
+				70 = { decrease_economic_growth = yes }
+				30 = {
+					modifier = {
+						factor = 1.5
+						has_country_flag = possible_housing_bubble
+					}
+					modifier = {
+						factor = 1.5
+						has_country_flag = voodoo_economics
+					}
+					modifier = {
+						factor = 1.5
+						has_country_flag = consumption_slowdown
+					}
+					decrease_two_level_economic_growth = yes
+				}
+			}
+		}
+		else_if = { limit = { has_idea = stagnation }
+			random_list = {
+				50 = { custom_effect_tooltip = NO_EFFECT_TT }
+				40 = { decrease_economic_growth = yes }
+				10 = { decrease_two_level_economic_growth = yes }
+			}
+		}
+		else_if = { limit = { has_idea = recession }
+			random_list = {
+				60 = { custom_effect_tooltip = NO_EFFECT_TT }
+				40 = { decrease_economic_growth = yes }
+			}
+		}
+		clr_country_flag = possible_housing_bubble
+		set_country_flag = { flag = voodoo_economics value = 1 days = 365 }
+		custom_effect_tooltip = econvent.voodoo_economics_tt
+		set_temp_variable = { temp_opinion = -5 }
+		change_small_medium_business_owners_opinion = yes
+		change_industrial_conglomerates_opinion = yes
+		change_international_bankers_opinion = yes
+		change_the_donju_opinion = yes
+		change_chaebols_opinion = yes
+		change_wall_street_opinion = yes
+		ai_chance = {
+			base = 0
+			modifier = {
+				add = 5
+				has_liberal_government_or_in_coalition = yes
+			}
+			modifier = {
+				add = 10
+				has_conservative_government_or_in_coalition = yes
+			}
+			modifier = {
+				add = 5
+				check_variable = { var = interest_rate value > 5 }
+			}
+			modifier = {
+				add = 5
+				check_variable = { var = interest_rate value > 10 }
+			}
+		}
+	}
+
+	#This adjustment is painful, but necessary
+	#Crash Effects
+	option = {
+		name = econvent.2.b
+		log = "[GetDateText]: [This.GetName]: econvent.2.b executed"
+		set_country_flag = { flag = housing_crash value = 2 days = 365 }
+		if = { limit = { OR = { has_idea = economic_boom has_idea = fast_growth has_idea = stable_growth } }
+			random_list = {
+				50 = { decrease_economic_growth = yes }
+				50 = {
+					modifier = {
+						factor = 1.5
+						has_country_flag = voodoo_economics
+					}
+					modifier = {
+						factor = 1.5
+						has_country_flag = possible_housing_bubble
+					}
+					decrease_two_level_economic_growth = yes
+				}
+			}
+		}
+		else_if = { limit = { has_idea = stagnation }
+			random_list = {
+				70 = { decrease_economic_growth = yes }
+				30 = { decrease_two_level_economic_growth = yes }
+			}
+		}
+		else_if = { limit = { has_idea = recession }
+			decrease_economic_growth = yes
+		}
+		clr_country_flag = possible_housing_bubble
+		custom_effect_tooltip = econvent.2.b_tt
+		set_temp_variable = { temp_opinion = -10 }
+		change_small_medium_business_owners_opinion = yes
+		change_industrial_conglomerates_opinion = yes
+		change_international_bankers_opinion = yes
+		change_the_donju_opinion = yes
+		change_chaebols_opinion = yes
+		change_wall_street_opinion = yes
+		change_farmers_opinion = yes
+		change_landowners_opinion = yes
+		ai_chance = { base = 100 }
+	}
+}
+
+# --- restored from events/Econ_events.txt line 257 ---
+country_event = {
+	id = econvent.3
+	title = econvent.3.t
+	desc = econvent.3.d
+	picture = GFX_economy_crisis
+	is_triggered_only = yes
+
+	mean_time_to_happen = {
+		modifier = {
+			factor = 1.40
+			has_idea = economic_boom
+		}
+		modifier = {
+			factor = 1.25
+			has_idea = fast_growth
+		}
+		modifier = {
+			factor = 0.85
+			OR = {
+				has_country_flag = consumption_slowdown
+				has_country_flag = stock_market_boom
+				has_country_flag = voodoo_economics
+			}
+		}
+		modifier = {
+			factor = 1.15
+			has_country_flag = temp_increase_major_hike_in_corp_taxes
+		}
+		modifier = {
+			factor = 1.25
+			has_country_flag = stock_market_boom_accelerate
+		}
+		modifier = {
+			factor = 0
+			OR = {
+				has_idea = recession
+				has_idea = depression
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				OR = {
+					has_country_flag = housing_crash
+					has_country_flag = stock_market_boom_accelerate
+					has_country_flag = stock_market_boom
+				}
+			}
+		}
+		modifier = {
+			add = -1
+			has_idea = FRA_regulation
+		}
+	}
+
+	trigger = {
+		NOT = {
+			OR = {
+				has_country_flag = bank_crisis
+				has_country_flag = housing_crash
+			}
+		}
+	}
+
+	# Crash Effects
+	option = {
+		name = econvent.3.a
+		log = "[GetDateText]: [This.GetName]: econvent.3.a executed"
+		set_country_flag = { flag = stock_market_crash value = 1 days = 365 }
+		if = { limit = { has_idea = economic_boom }
+			random_list = {
+				70 = { decrease_economic_growth = yes }
+				30 = { decrease_two_level_economic_growth = yes }
+			}
+		}
+		else_if = { limit = { has_idea = fast_growth }
+			random_list = {
+				75 = { decrease_economic_growth = yes }
+				25 = { decrease_two_level_economic_growth = yes }
+			}
+		}
+		else_if = { limit = { has_idea = stable_growth }
+			random_list = {
+				80 = { decrease_economic_growth = yes }
+				20 = { decrease_two_level_economic_growth = yes }
+			}
+		}
+		else_if = { limit = { has_idea = stagnation }
+			random_list = {
+				90 = { decrease_economic_growth = yes }
+				10 = { decrease_two_level_economic_growth = yes }
+			}
+		}
+		else_if = { limit = { has_idea = recession }
+			decrease_economic_growth = yes
+		}
+		set_temp_variable = { temp_opinion = -15 }
+		change_small_medium_business_owners_opinion = yes
+		change_the_donju_opinion = yes
+		change_chaebols_opinion = yes
+		change_wall_street_opinion = yes
+		change_international_bankers_opinion = yes
+		change_industrial_conglomerates_opinion = yes
+		change_farmers_opinion = yes
+		change_landowners_opinion = yes
+		change_oligarchs_opinion = yes
+		change_fossil_fuel_industry_opinion = yes
+		change_labour_unions_opinion = yes
+		ai_chance = { base = 2.0 }
+	}
+
+	# Issue Bailouts
+	option = {
+		name = econvent.3.b
+		log = "[GetDateText]: [This.GetName]: econvent.3.b executed"
+		set_country_flag = { flag = stock_market_crash value = 1 days = 180 }
+		medium_expenditure = yes
+		decrease_economic_growth = yes
+		set_temp_variable = { temp_opinion = -10 }
+		change_small_medium_business_owners_opinion = yes
+		change_the_donju_opinion = yes
+		change_chaebols_opinion = yes
+		change_wall_street_opinion = yes
+		change_international_bankers_opinion = yes
+		change_industrial_conglomerates_opinion = yes
+		change_farmers_opinion = yes
+		change_landowners_opinion = yes
+		change_oligarchs_opinion = yes
+		change_fossil_fuel_industry_opinion = yes
+		change_labour_unions_opinion = yes
+		ai_chance = { base = 0.25 }
+	}
+}
+
+# --- restored from events/Econ_events.txt line 392 ---
+country_event = {
+	id = econvent.4
+	title = econvent.4.t
+	desc = econvent.4.d
+	picture = GFX_banking_crisis
+	is_triggered_only = yes
+
+	mean_time_to_happen = {
+		modifier = {
+			factor = 1.25
+			has_idea = economic_boom
+		}
+		modifier = {
+			factor = 1.10
+			has_idea = fast_growth
+		}
+		modifier = {
+			factor = 0.5
+			has_country_flag = voodoo_economics
+		}
+		modifier = {
+			factor = 0.5
+			has_country_flag = consumption_slowdown
+		}
+		modifier = {
+			factor = 1.15
+			has_country_flag = temp_increase_major_hike_in_corp_taxes
+		}
+	}
+
+	trigger = {
+		NOT = {
+			OR = {
+				has_country_flag = housing_crash
+				has_country_flag = stock_market_crash
+			}
+		}
+	}
+
+	#Bail them out!
+	option = {
+		name = econvent.4.a
+		log = "[GetDateText]: [This.GetName]: econvent.4.a executed"
+		set_country_flag = { flag = bank_crisis value = 1 days = 365 }
+		small_expenditure = yes
+		if = { limit = { has_idea = economic_boom }
+			random_list = {
+				60 = { custom_effect_tooltip = NO_EFFECT_TT }
+				40 = { decrease_economic_growth = yes }
+			}
+		}
+		else_if = { limit = { has_idea = fast_growth }
+			random_list = {
+				60 = { custom_effect_tooltip = NO_EFFECT_TT }
+				40 = { decrease_economic_growth = yes }
+			}
+		}
+		else_if = { limit = { has_idea = stable_growth }
+			random_list = {
+				70 = { custom_effect_tooltip = NO_EFFECT_TT }
+				30 = { decrease_economic_growth = yes }
+			}
+		}
+		else_if = { limit = { has_idea = stagnation }
+			random_list = {
+				80 = { custom_effect_tooltip = NO_EFFECT_TT }
+				20 = { decrease_economic_growth = yes }
+			}
+		}
+		else_if = { limit = { has_idea = recession }
+			random_list = {
+				90 = { custom_effect_tooltip = NO_EFFECT_TT }
+				10 = { decrease_economic_growth = yes }
+			}
+		}
+		set_temp_variable = { temp_opinion = 5 }
+		change_small_medium_business_owners_opinion = yes
+		change_the_donju_opinion = yes
+		change_chaebols_opinion = yes
+		change_wall_street_opinion = yes
+		change_international_bankers_opinion = yes
+		ai_chance = { base = 0 }
+	}
+
+	#Avoid bailouts, but help savers if banks go bankrupt
+	option = {
+		name = econvent.4.b
+		log = "[GetDateText]: [This.GetName]: econvent.4.b executed"
+		set_country_flag = { flag = bank_crisis value = 2 days = 365 }
+		add_political_power = -75
+		if = { limit = { has_idea = economic_boom }
+			random_list = {
+				80 = { decrease_economic_growth = yes }
+				20 = { decrease_two_level_economic_growth = yes }
+			}
+		}
+		else_if = { limit = { has_idea = fast_growth }
+			random_list = {
+				85 = { decrease_economic_growth = yes }
+				15 = { decrease_two_level_economic_growth = yes }
+			}
+		}
+		else_if = { limit = { has_idea = stable_growth }
+			random_list = {
+				90 = { decrease_economic_growth = yes }
+				10 = { decrease_two_level_economic_growth = yes }
+			}
+		}
+		else_if = { limit = { has_idea = stagnation }
+			random_list = {
+				20 = { custom_effect_tooltip = NO_EFFECT_TT }
+				70 = { decrease_economic_growth = yes }
+				10 = { decrease_two_level_economic_growth = yes }
+			}
+		}
+		else_if = { limit = { has_idea = recession }
+			random_list = {
+				30 = { custom_effect_tooltip = NO_EFFECT_TT }
+				70 = { decrease_economic_growth = yes }
+			}
+		}
+		set_temp_variable = { temp_opinion = 5 }
+		change_small_medium_business_owners_opinion = yes
+		change_the_donju_opinion = yes
+		change_chaebols_opinion = yes
+		set_temp_variable = { temp_opinion = -10 }
+		change_wall_street_opinion = yes
+		change_international_bankers_opinion = yes
+		ai_chance = { base = 0 }
+	}
+
+	#Survival of the fittest is what makes capitalism beautiful
+	option = {
+		name = econvent.4.c
+		log = "[GetDateText]: [This.GetName]: econvent.4.c executed"
+		set_country_flag = { flag = bank_crisis value = 2 days = 365 }
+		if = { limit = { has_idea = economic_boom }
+			random_list = {
+				60 = { decrease_economic_growth = yes }
+				40 = { decrease_two_level_economic_growth = yes }
+			}
+		}
+		else_if = { limit = { has_idea = fast_growth }
+			random_list = {
+				65 = { decrease_economic_growth = yes }
+				35 = { decrease_two_level_economic_growth = yes }
+			}
+		}
+		else_if = { limit = { has_idea = stable_growth }
+			random_list = {
+				70 = { decrease_economic_growth = yes }
+				30 = { decrease_two_level_economic_growth = yes }
+			}
+		}
+		else_if = { limit = { has_idea = stagnation }
+			random_list = {
+				80 = { decrease_economic_growth = yes }
+				20 = { decrease_two_level_economic_growth = yes }
+			}
+		}
+		else_if = { limit = { has_idea = recession }
+			decrease_economic_growth = yes
+			ingame_update_setup = yes
+		}
+		set_temp_variable = { temp_opinion = -10 }
+		change_small_medium_business_owners_opinion = yes
+		change_the_donju_opinion = yes
+		change_chaebols_opinion = yes
+		change_wall_street_opinion = yes
+		change_international_bankers_opinion = yes
+		ai_chance = { base = 1 }
+	}
+}
+
+# --- restored from events/Econ_events.txt line 568 ---
+country_event = {
+	id = econvent.5
+	title = econvent.5.t
+	desc = econvent.5.d
+	picture = GFX_economy_crisis
+	is_triggered_only = yes
+
+	mean_time_to_happen = {
+		modifier = {
+			factor = 0.3
+			has_idea = economic_boom
+		}
+		modifier = {
+			factor = 0.6
+			has_idea = fast_growth
+		}
+		modifier = {
+			factor = 1.3
+			has_idea = recession
+		}
+		modifier = {
+			factor = 0.5
+			has_country_flag = voodoo_economics
+		}
+		modifier = {
+			factor = 0.5
+			has_country_flag = stock_market_crash
+		}
+		modifier = {
+			factor = 0.5
+			has_country_flag = housing_crash
+		}
+		modifier = {
+			factor = 1.15
+			has_country_flag = temp_increase_major_hike_in_corp_taxes
+		}
+		modifier = {
+			factor = 1.15
+			has_country_flag = temp_increase_major_hike_in_pop_taxes
+		}
+		modifier = {
+			factor = 1.25
+			check_variable = { population_tax_rate > 34 }
+		}
+		modifier = {
+			factor = 1.15
+			check_variable = { corporate_tax_rate > 29 }
+		}
+	}
+
+	#Transfer some shopping money
+	option = {
+		name = econvent.5.a
+		log = "[GetDateText]: [This.GetName]: econvent.5.a executed"
+		set_country_flag = { flag = consumption_slowdown value = 1 days = 365 }
+		if = { limit = { NOT = { has_idea = depression } }
+			random_list = {
+				60 = { custom_effect_tooltip = NO_EFFECT_TT }
+				40 = { decrease_economic_growth = yes }
+			}
+		}
+		set_temp_variable = { temp_opinion = 5 }
+		change_small_medium_business_owners_opinion = yes
+		change_the_donju_opinion = yes
+		change_chaebols_opinion = yes
+	}
+
+	#Do nothing
+	option = {
+		name = econvent.5.b
+		log = "[GetDateText]: [This.GetName]: econvent.5.b executed"
+		set_country_flag = { flag = consumption_slowdown value = 1 days = 365 }
+		if = { limit = { has_idea = economic_boom }
+			random_list = {
+				80 = { decrease_economic_growth = yes }
+				20 = { decrease_two_level_economic_growth = yes }
+			}
+		}
+		else_if = { limit = { has_idea = fast_growth }
+			random_list = {
+				85 = { decrease_economic_growth = yes }
+				15 = { decrease_two_level_economic_growth = yes }
+			}
+		}
+		else_if = { limit = { has_idea = stable_growth }
+			random_list = {
+				90 = { decrease_economic_growth = yes }
+				10 = { decrease_two_level_economic_growth = yes }
+			}
+		}
+		else_if = { limit = { has_idea = stagnation }
+			random_list = {
+				10 = { custom_effect_tooltip = NO_EFFECT_TT }
+				80 = { decrease_economic_growth = yes }
+				10 = { decrease_two_level_economic_growth = yes }
+			}
+		}
+		else_if = { limit = { has_idea = recession }
+			random_list = {
+				20 = { custom_effect_tooltip = NO_EFFECT_TT }
+				80 = { decrease_economic_growth = yes }
+			}
+		}
+		set_temp_variable = { temp_opinion = -5 }
+		change_small_medium_business_owners_opinion = yes
+		change_the_donju_opinion = yes
+		change_chaebols_opinion = yes
+	}
+}
+
+# --- restored from events/Econ_events.txt line 679 ---
+country_event = {
+	id = econvent.6
+	title = econvent.6.t
+	desc = econvent.6.d
+	picture = GFX_marketplace
+	is_triggered_only = yes
+
+	mean_time_to_happen = {
+		modifier = {
+			factor = 0.6
+			has_idea = economic_boom
+		}
+		modifier = {
+			factor = 0.8
+			has_idea = fast_growth
+		}
+		modifier = {
+			factor = 2.5
+			has_idea = recession
+		}
+		modifier = {
+			factor = 1.5
+			has_idea = export_economy
+		}
+		modifier = {
+			factor = 2.25
+			has_idea = globalized_trade_economy
+		}
+		modifier = {
+			factor = 1.5
+			OR = {
+				check_variable = { resource_exported@oil > 0 }
+				check_variable = { resource_exported@steel > 0 }
+				check_variable = { resource_exported@aluminium > 0 }
+				check_variable = { resource_exported@tungsten > 0 }
+				check_variable = { resource_exported@chromium > 0 }
+				check_variable = { resource_exported@rubber > 0 }
+			}
+		}
+	}
+
+	#Not much to do about this
+	option = {
+		name = econvent.6.a
+		log = "[GetDateText]: [This.GetName]: econvent.6.a executed"
+		if = { limit = { has_idea = economic_boom }
+			random_list = {
+				20 = { custom_effect_tooltip = NO_EFFECT_TT }
+				70 = { decrease_economic_growth = yes }
+				10 = { decrease_two_level_economic_growth = yes }
+			}
+		}
+		else_if = { limit = { has_idea = fast_growth }
+			random_list = {
+				20 = { custom_effect_tooltip = NO_EFFECT_TT }
+				75 = { decrease_economic_growth = yes }
+				5 = { decrease_two_level_economic_growth = yes }
+			}
+		}
+		else_if = { limit = { has_idea = stable_growth }
+			random_list = {
+				20 = { custom_effect_tooltip = NO_EFFECT_TT }
+				80 = { decrease_economic_growth = yes }
+			}
+		}
+		else_if = { limit = { has_idea = stagnation }
+			random_list = {
+				25 = { custom_effect_tooltip = NO_EFFECT_TT }
+				75 = { decrease_economic_growth = yes }
+			}
+		}
+		else_if = { limit = { has_idea = recession }
+			random_list = {
+				50 = { custom_effect_tooltip = NO_EFFECT_TT }
+				50 = { decrease_economic_growth = yes }
+			}
+		}
+	}
+}
+
+# --- restored from events/Econ_events.txt line 763 ---
+country_event = {
+	id = econvent.7
+	title = econvent.7.t
+	desc = econvent.7.d
+	picture = GFX_broken_infrastructure
+	is_triggered_only = yes
+
+	mean_time_to_happen = {
+		modifier = {
+			factor = 1.4
+			is_in_array = { global.is_african_nation = THIS.id }
+		}
+		modifier = {
+			factor = 1.2
+			check_variable = { gdp_per_capita < 2.00 }
+		}
+		modifier = {
+			factor = 1.10
+			check_variable = { gdp_per_capita > 1.999 }
+			check_variable = { gdp_per_capita < 4.000 }
+		}
+		modifier = {
+			factor = 0.8
+			check_variable = { gdp_per_capita > 3.999 }
+		}
+	}
+
+	trigger = {
+		has_country_flag = arid_nation_flag
+		NOT = { has_country_flag = drought }
+	}
+
+	#Not much to do about this
+	option = {
+		name = econvent.7.a
+		log = "[GetDateText]: [This.GetName]: econvent.7.a executed"
+		set_country_flag = { flag = drought value = 1 days = 120 }
+		if = { limit = { has_idea = economic_boom }
+			random_list = {
+				20 = { custom_effect_tooltip = NO_EFFECT_TT }
+				70 = { decrease_economic_growth = yes }
+				10 = { decrease_two_level_economic_growth = yes }
+			}
+		}
+		else_if = { limit = { has_idea = fast_growth }
+			random_list = {
+				20 = { custom_effect_tooltip = NO_EFFECT_TT }
+				75 = { decrease_economic_growth = yes }
+				5 = { decrease_two_level_economic_growth = yes }
+			}
+		}
+		else_if = { limit = { has_idea = stable_growth }
+			random_list = {
+				20 = { custom_effect_tooltip = NO_EFFECT_TT }
+				80 = { decrease_economic_growth = yes }
+			}
+		}
+		else_if = { limit = { has_idea = stagnation }
+			random_list = {
+				25 = { custom_effect_tooltip = NO_EFFECT_TT }
+				75 = { decrease_economic_growth = yes }
+			}
+		}
+		else_if = { limit = { has_idea = recession }
+			random_list = {
+				50 = { custom_effect_tooltip = NO_EFFECT_TT }
+				50 = { decrease_economic_growth = yes }
+			}
+		}
+	}
+}
+
+# --- restored from events/Econ_events.txt line 836 ---
+country_event = {
+	id = econvent.8
+	title = econvent.8.t
+	desc = econvent.8.d
+	picture = GFX_generic_grain_silo
+	is_triggered_only = yes
+
+	mean_time_to_happen = {
+		modifier = {
+			factor = 1.3
+			check_variable = { gdp_per_capita < 2.00 }
+		}
+		modifier = {
+			factor = 1.10
+			check_variable = { gdp_per_capita > 1.999 }
+			check_variable = { gdp_per_capita < 4.000 }
+		}
+		modifier = {
+			factor = 0.8
+			check_variable = { gdp_per_capita > 3.999 }
+		}
+	}
+
+	trigger = {
+		has_country_flag = drought
+		NOT = { has_idea = depression }
+	}
+
+	#Not much to do about this
+	option = {
+		name = econvent.8.a
+		log = "[GetDateText]: [This.GetName]: econvent.8.a executed"
+		set_country_flag = { flag = famine value = 1 days = 200 }
+		if = { limit = { has_idea = economic_boom }
+			random_list = {
+				20 = { custom_effect_tooltip = NO_EFFECT_TT }
+				70 = { decrease_economic_growth = yes }
+				10 = { decrease_two_level_economic_growth = yes }
+			}
+		}
+		else_if = { limit = { has_idea = fast_growth }
+			random_list = {
+				20 = { custom_effect_tooltip = NO_EFFECT_TT }
+				75 = { decrease_economic_growth = yes }
+				5 = { decrease_two_level_economic_growth = yes }
+			}
+		}
+		else_if = { limit = { has_idea = stable_growth }
+			random_list = {
+				20 = { custom_effect_tooltip = NO_EFFECT_TT }
+				80 = { decrease_economic_growth = yes }
+			}
+		}
+		else_if = { limit = { has_idea = stagnation }
+			random_list = {
+				25 = { custom_effect_tooltip = NO_EFFECT_TT }
+				75 = { decrease_economic_growth = yes }
+			}
+		}
+		else_if = { limit = { has_idea = recession }
+			random_list = {
+				50 = { custom_effect_tooltip = NO_EFFECT_TT }
+				50 = { decrease_economic_growth = yes }
+			}
+		}
+		set_temp_variable = { temp_opinion = -15 }
+		change_farmers_opinion = yes
+	}
+}
+
+# --- restored from events/Econ_events.txt line 908 ---
+country_event = {
+	id = econvent.9
+	title = econvent.9.t
+	desc = econvent.9.d
+	picture = GFX_stock_market
+	is_triggered_only = yes
+
+	mean_time_to_happen = {
+		# Economically Liberal trying to spurn economic growth
+		modifier = {
+			factor = 1.5
+			has_economically_liberal_government_or_in_coalition = yes
+		}
+		modifier = {
+			factor = 2
+			check_variable = { last_quarter_gdp_growth_rate > 0.10 }
+		}
+		modifier = {
+			factor = 1.75
+			check_variable = { last_quarter_gdp_growth_rate > 0.08 }
+		}
+		modifier = {
+			factor = 1.50
+			check_variable = { last_quarter_gdp_growth_rate > 0.04 }
+		}
+		modifier = {
+			factor = 1.25
+			check_variable = { last_quarter_gdp_growth_rate > 0.02 }
+		}
+		modifier = {
+			factor = 4
+			has_idea = depression
+		}
+		modifier = {
+			factor = 3
+			has_idea = recession
+		}
+		modifier = {
+			factor = 2
+			has_idea = stagnation
+		}
+		modifier = {
+			factor = 1.5
+			has_idea = stable_growth
+		}
+		modifier = {
+			factor = 1.5
+			check_variable = { population_tax_rate < 10 }
+		}
+	}
+
+	trigger = {
+		NOT = {
+			OR = {
+				has_country_flag = increased_consumer_confidence
+				has_idea = economic_boom
+				has_active_mission = debt_default_main_mission
+				#JAP
+				has_idea = JAP_entrenched_demand_shortfall_idea_1
+				has_idea = JAP_entrenched_demand_shortfall_idea_2
+				has_idea = JAP_entrenched_demand_shortfall_idea_3
+			}
+		}
+	}
+
+	option = {
+		name = econvent.9.a
+		log = "[GetDateText]: [Root.GetName]: event econvent.9.a"
+		increase_economic_growth = yes
+		ingame_update_setup = yes
+		set_temp_variable = { temp_opinion = 5 }
+		change_labour_unions_opinion = yes
+		change_farmers_opinion = yes
+		change_small_medium_business_owners_opinion = yes
+		change_industrial_conglomerates_opinion = yes
+		change_communist_cadres_opinion = yes
+		change_landowners_opinion = yes
+		change_defense_industry_opinion = yes
+		change_fossil_fuel_industry_opinion = yes
+		change_international_bankers_opinion = yes
+		change_wall_street_opinion = yes
+		change_maritime_industry_opinion = yes
+		set_country_flag = { flag = increased_consumer_confidence value = 1 days = 180 }
+	}
+}
+
+# --- restored from events/Econ_events.txt line 995 ---
+country_event = {
+	id = econvent.10
+	title = econvent.10.t
+	desc = econvent.10.d
+	picture = GFX_stock_market
+	is_triggered_only = yes
+
+	mean_time_to_happen = {
+		modifier = {
+			factor = 2
+			has_idea = international_bankers
+			check_variable = { international_bankers_opinion > 75 }
+		}
+		modifier = {
+			factor = 2
+			has_idea = wall_street
+			check_variable = { wall_street_opinion > 75 }
+		}
+		modifier = {
+			factor = 2
+			has_idea = small_medium_business_owners
+			check_variable = { small_medium_business_owners_opinion > 75 }
+		}
+		modifier = {
+			factor = 2
+			check_variable = { last_quarter_gdp_growth_rate > 0.10 }
+		}
+		modifier = {
+			factor = 1.75
+			check_variable = { last_quarter_gdp_growth_rate > 0.05 }
+		}
+		modifier = {
+			factor = 1.5
+			check_variable = { last_quarter_gdp_growth_rate > 0.02 }
+		}
+		modifier = {
+			has_idea = stagnation
+			factor = 1.25
+		}
+		modifier = {
+			has_idea = fast_growth
+			factor = 1.45
+		}
+		modifier = {
+			has_idea = stable_growth
+			factor = 1.75
+		}
+		modifier = {
+			factor = 1.5
+			check_variable = { corporate_tax_rate < 25 }
+		}
+	}
+
+	trigger = {
+		NOT = {
+			OR = {
+				has_idea = economic_boom
+				has_active_mission = debt_default_main_mission
+				has_country_flag = stock_market_boom_accelerate
+				has_country_flag = stock_market_boom_slowed
+				has_country_flag = stock_market_boom
+				#JAP
+				has_idea = JAP_entrenched_demand_shortfall_idea_1
+				has_idea = JAP_entrenched_demand_shortfall_idea_2
+				has_idea = JAP_entrenched_demand_shortfall_idea_3
+				# Communists cannot get stock market boom...
+				has_communist_government_or_in_coalition = yes
+			}
+		}
+	}
+
+	option = {
+		name = econvent.10.a
+		log = "[GetDateText]: [Root.GetName]: event econvent.10.a"
+		increase_economic_growth = yes
+		custom_effect_tooltip = econvent.10.a_tt
+		small_expenditure = yes
+		set_temp_variable = { temp_opinion = 8 }
+		change_international_bankers_opinion = yes
+		change_small_medium_business_owners_opinion = yes
+		set_country_flag = { flag = stock_market_boom_accelerate value = 1 days = 200 }
+		ai_chance = { base = 0 }
+	}
+
+	option = {
+		name = econvent.10.b
+		log = "[GetDateText]: [Root.GetName]: event econvent.10.b"
+		increase_economic_growth = yes
+		custom_effect_tooltip = econvent.10.b_tt
+		set_temp_variable = { temp_opinion = 4 }
+		change_international_bankers_opinion = yes
+		change_small_medium_business_owners_opinion = yes
+		set_country_flag = { flag = stock_market_boom value = 1 days = 200 }
+		ai_chance = { base = 1 }
+	}
+
+	option = {
+		name = econvent.10.c
+		log = "[GetDateText]: [Root.GetName]: event econvent.10.c"
+		set_temp_variable = { temp_opinion = -15 }
+		change_international_bankers_opinion = yes
+		change_small_medium_business_owners_opinion = yes
+		custom_effect_tooltip = econvent.10.c_tt
+		set_country_flag = { flag = stock_market_boom_slowed value = 1 days = 200 }
+		ai_chance = { base = 0 }
+	}
+}
+
+# --- restored from events/Econ_events.txt line 1104 ---
+country_event = {
+	id = econvent.11
+	title = econvent.11.t
+	desc = econvent.11.d
+	picture = GFX_banking_crisis
+	is_triggered_only = yes
+
+	mean_time_to_happen = {
+		# Communists Lower Chances -- Sim more market economy control
+		modifier = {
+			factor = 0.50
+			has_communist_government_or_in_coalition = yes
+		}
+		# Socialism more regulation
+		modifier = {
+			factor = 0.95
+			has_socialist_government_or_in_coalition = yes
+		}
+		modifier = {
+			factor = 1.50
+			has_idea = economic_boom
+		}
+		modifier = {
+			factor = 1.35
+			has_idea = fast_growth
+		}
+		modifier = {
+			factor = 1.15
+			has_idea = stable_growth
+		}
+	}
+
+	trigger = {
+		NOT = { has_country_flag = ECON_recent_financial_institution_crash }
+		OR = {
+			has_idea = economic_boom
+			has_idea = fast_growth
+			has_idea = stable_growth
+		}
+	}
+
+	# Too Big to Fail
+	option = {
+		name = econvent.11.a
+		log = "[GetDateText]: [Root.GetName]: event econvent.11.a"
+		set_temp_variable = { treasury_change = gdp_total }
+		multiply_temp_variable = { treasury_change = -0.05 }
+		modify_treasury_effect = yes
+		set_temp_variable = { temp_opinion = -5 }
+		change_international_bankers_opinion = yes
+		change_wall_street_opinion = yes
+		set_temp_variable = { temp_opinion = -3 }
+		change_small_medium_business_owners_opinion = yes
+		change_industrial_conglomerates_opinion = yes
+		change_chaebols_opinion = yes
+		change_fossil_fuel_industry_opinion = yes
+		change_farmers_opinion = yes
+		change_landowners_opinion = yes
+		change_oligarchs_opinion = yes
+		change_defense_industry_opinion = yes
+		change_maritime_industry_opinion = yes
+		set_temp_variable = { party_popularity_increase = -0.03 }
+		set_temp_variable = { temp_outlook_increase = -0.03 }
+		change_relative_party_popularity = yes
+		# Reduce only one level
+		decrease_economic_growth = yes
+		every_country = {
+			limit = {
+				influence_higher_10 = yes
+			}
+			if = {
+				limit = { is_subject_of = ROOT }
+				if = {
+					limit = {
+						OR = {
+							is_in_faction_with = ROOT
+							is_neighbor_of = ROOT
+						}
+					}
+					random = {
+						chance = 100
+						country_event = { id = econvent.12 random_days = 100 }
+					}
+				}
+				else = {
+					random = {
+						chance = 50
+						country_event = { id = econvent.12 random_days = 100 }
+					}
+				}
+			}
+			else_if = {
+				limit = { is_in_faction_with = ROOT }
+				if = {
+					limit = { is_neighbor_of = ROOT }
+					random = {
+						chance = 60
+						country_event = { id = econvent.12 random_days = 100 }
+					}
+				}
+				else = {
+					random = {
+						chance = 30
+						country_event = { id = econvent.12 random_days = 100 }
+					}
+				}
+			}
+			else_if = {
+				limit = { is_neighbor_of = ROOT }
+				random = {
+					chance = 20
+					country_event = { id = econvent.12 random_days = 100 }
+				}
+			}
+			else = {
+				random = {
+					chance = 10
+					country_event = { id = econvent.12 random_days = 100 }
+				}
+			}
+		}
+		set_country_flag = { flag = ECON_recent_financial_institution_crash days = 365 value = 1 }
+		ai_chance = {
+			base = 1
+		}
+	}
+
+	# Let it fail..
+	option = {
+		name = econvent.11.b
+		log = "[GetDateText]: [Root.GetName]: event econvent.11.b"
+		set_temp_variable = { temp_opinion = -15 }
+		change_international_bankers_opinion = yes
+		change_wall_street_opinion = yes
+		set_temp_variable = { temp_opinion = -10 }
+		change_small_medium_business_owners_opinion = yes
+		change_industrial_conglomerates_opinion = yes
+		change_chaebols_opinion = yes
+		change_fossil_fuel_industry_opinion = yes
+		change_farmers_opinion = yes
+		change_landowners_opinion = yes
+		change_oligarchs_opinion = yes
+		change_defense_industry_opinion = yes
+		change_maritime_industry_opinion = yes
+		set_temp_variable = { party_popularity_increase = -0.05 }
+		set_temp_variable = { temp_outlook_increase = -0.05 }
+		change_relative_party_popularity = yes
+		hidden_effect = {
+			remove_ideas = {
+				economic_boom
+				fast_growth
+				stable_growth
+			}
+		}
+		set_country_flag = disable_cycle_costs
+		random_list = {
+			40 = { add_ideas = stagnation }
+			40 = { add_ideas = recession }
+			20 = { add_ideas = depression }
+		}
+		if = {
+			limit = { is_subject_of = ROOT }
+			if = {
+				limit = { is_in_faction_with = ROOT }
+				random = {
+					chance = 100
+					country_event = { id = econvent.12 random_days = 100 }
+				}
+			}
+			else = {
+				random = {
+					chance = 50
+					country_event = { id = econvent.12 random_days = 100 }
+				}
+			}
+		}
+		else_if = {
+			limit = { is_in_faction_with = ROOT }
+			random = {
+				chance = 30
+				country_event = { id = econvent.12 random_days = 100 }
+			}
+		}
+		else = {
+			random = {
+				chance = 10
+				country_event = { id = econvent.12 random_days = 100 }
+			}
+		}
+		clr_country_flag = disable_cycle_costs
+		set_country_flag = { flag = ECON_recent_financial_institution_crash days = 365 value = 1 }
+		ai_chance = { base = 0 }
+	}
+}
+
+# --- restored from events/Econ_events.txt line 1463 ---
+country_event = {
+	id = econvent.14
+	title = econvent.14.t
+	desc = econvent.14.d
+	picture = GFX_stock_market
+	is_triggered_only = yes
+
+	mean_time_to_happen = {
+		modifier = {
+			factor = 2
+			has_idea = international_bankers
+			check_variable = { international_bankers_opinion > 75 }
+		}
+		modifier = {
+			factor = 2
+			has_idea = wall_street
+			check_variable = { wall_street_opinion > 75 }
+		}
+		modifier = {
+			factor = 2
+			check_variable = { last_quarter_gdp_growth_rate > 0.10 }
+		}
+		modifier = {
+			factor = 1.75
+			check_variable = { last_quarter_gdp_growth_rate > 0.05 }
+		}
+		modifier = {
+			factor = 1.5
+			check_variable = { last_quarter_gdp_growth_rate > 0.02 }
+		}
+		modifier = {
+			factor = 2.00
+			has_idea = economic_boom
+		}
+		modifier = {
+			factor = 1.75
+			has_idea = fast_growth
+		}
+		modifier = {
+			factor = 1.5
+			has_idea = stable_growth
+		}
+		modifier = {
+			factor = 0.5
+			has_idea = stagnation
+		}
+		modifier = {
+			factor = 0.25
+			has_idea = recession
+		}
+		modifier = {
+			factor = 0.10
+			has_idea = depression
+		}
+	}
+
+	trigger = {
+		NOT = { has_idea = non_state_actor }
+		NOT = { has_country_flag = private_investor_civilian_industry }
+		any_owned_state = {
+			is_controlled_by = OWNER
+			free_building_slots = {
+				building = industrial_complex
+				size > 0
+				include_locked = no
+			}
+		}
+	}
+
+	option = {
+		name = econvent.14.a
+		log = "[GetDateText]: [This.GetName]: econvent.14.a executed"
+		set_temp_variable = { party_popularity_increase = 0.03 }
+		set_temp_variable = { temp_outlook_increase = 0.03 }
+		change_relative_party_popularity = yes
+		random_owned_controlled_state = {
+			limit = {
+				free_building_slots = {
+					building = industrial_complex
+					size > 0
+					include_locked = no
+				}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+		}
+		set_country_flag = { flag = private_investor_civilian_industry value = 1 days = 365 }
+	}
+}
+
+# --- restored from events/Migration Events.txt line 5 ---
+country_event = {
+	id = migrant_event.1
+	title = migrant_event.1.t
+	desc = migrant_event.1.d
+	picture = GFX_shanty_town
+	is_triggered_only = yes
+
+	mean_time_to_happen = {
+		modifier = {
+			factor = 1.15
+			has_idea = heavily_regulated_immigration
+		}
+		modifier = {
+			factor = 1.25
+			has_idea = regulated_immigration
+		}
+		modifier = {
+			factor = 1.5
+			has_idea = slightly_regulated_immigration
+		}
+		modifier = {
+			factor = 1.75
+			has_idea = open_borders
+		}
+		modifier = {
+			factor = months_at_open_borders
+			always = yes
+		}
+	}
+
+	trigger = {
+		NOT = { has_country_flag = recently_had_migrant_slums_event }
+		NOT = { has_idea = closed_borders }
+		check_variable = { net_immigration_rate > 0 }
+	}
+
+	immediate = {
+		hidden_effect = {
+			set_country_flag = { flag = recently_had_migrant_slums_event value = 1 days = 180 }
+		}
+	}
+
+	# Breakup the Slums
+	option = {
+		name = migrant_event.1.a
+		log = "[GetDateText]: [ROOT.GetName]: event migrant_event.1.a executed"
+		set_temp_variable = { party_index = 21 }
+		set_temp_variable = { party_popularity_increase = 0.02 }
+		set_temp_variable = { temp_outlook_increase = 0.02 }
+		change_relative_party_popularity = yes
+		add_stability = -0.04
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 0
+				OR = {
+					has_liberal_government = yes
+					has_environmentalist_government = yes
+					has_socialist_government = yes
+				}
+			}
+			modifier = {
+				factor = 1.25
+				has_autocratic_government = yes
+			}
+		}
+	}
+
+	# Provide Assistance
+	option = {
+		name = migrant_event.1.b
+		log = "[GetDateText]: [ROOT.GetName]: event migrant_event.1.b executed"
+		add_political_power = -75
+		set_temp_variable = { party_popularity_increase = 0.02 }
+		set_temp_variable = { temp_outlook_increase = 0.02 }
+		change_relative_party_popularity = yes
+		set_temp_variable = { party_index = 21 }
+		set_temp_variable = { party_popularity_increase = -0.03 }
+		set_temp_variable = { temp_outlook_increase = -0.03 }
+		change_relative_party_popularity = yes
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 1.25
+				OR = {
+					has_liberal_government = yes
+					has_environmentalist_government = yes
+					has_socialist_government = yes
+				}
+			}
+			modifier = {
+				factor = 0
+				has_autocratic_government = yes
+			}
+		}
+	}
+
+	# Reduce Migration Targets
+	option = {
+		name = migrant_event.1.c
+		log = "[GetDateText]: [ROOT.GetName]: event migrant_event.1.c executed"
+		add_political_power = -75
+		set_temp_variable = { party_popularity_increase = 0.02 }
+		set_temp_variable = { temp_outlook_increase = 0.02 }
+		change_relative_party_popularity = yes
+		increase_migration_law = yes
+		block_migration_law_decrease = yes
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 1.25
+				has_totalitarian_government = yes
+			}
+		}
+	}
+}
+
+# --- restored from events/Migration Events.txt line 123 ---
+country_event = {
+	id = migrant_event.2
+	title = migrant_event.2.t
+	desc = migrant_event.2.d
+	picture = GFX_migrant_protest
+	is_triggered_only = yes
+
+	mean_time_to_happen = {
+		modifier = {
+			factor = 0.45
+			has_idea = heavily_regulated_immigration
+		}
+		modifier = {
+			factor = 0.75
+			has_idea = regulated_immigration
+		}
+		modifier = {
+			factor = 1.15
+			has_idea = slightly_regulated_immigration
+		}
+		modifier = {
+			factor = 1.5
+			has_idea = open_borders
+		}
+		modifier = {
+			factor = 1.05
+			check_variable = { net_immigration_rate > 0.05 }
+		}
+		modifier = {
+			factor = 1.15
+			check_variable = { net_immigration_rate > 0.10 }
+		}
+		modifier = {
+			factor = 1.25
+			check_variable = { net_immigration_rate > 0.15 }
+		}
+		modifier = {
+			factor = 1.35
+			check_variable = { net_immigration_rate > 0.20 }
+		}
+		modifier = {
+			factor = 1.5
+			check_variable = { net_immigration_rate > 0.25 }
+		}
+		modifier = {
+			factor = 1.2
+			nationalist > 0.1
+		}
+		modifier = {
+			factor = 1.2
+			nationalist > 0.2
+		}
+		modifier = {
+			factor = months_at_open_borders
+			always = yes
+		}
+	}
+
+	trigger = {
+		NOT = { has_country_flag = recently_had_right_wing_protest }
+		NOT = { has_idea = closed_borders }
+		NOT = { has_government = nationalist }
+		check_variable = { net_immigration_rate > 0 }
+	}
+
+	immediate = {
+		hidden_effect = {
+			set_country_flag = { flag = recently_had_right_wing_protest value = 1 days = 180 }
+		}
+	}
+
+	# Allow the Demonstration
+	option = {
+		name = migrant_event.2.a
+		log = "[GetDateText]: [ROOT.GetName]: event migrant_event.2.a executed"
+		set_temp_variable = { party_index = 21 }
+		set_temp_variable = { party_popularity_increase = 0.02 }
+		set_temp_variable = { temp_outlook_increase = 0.02 }
+		change_relative_party_popularity = yes
+		add_timed_idea = { idea = MD_nationalist_migrant_protests days = 180 }
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 0
+				OR = {
+					has_liberal_government = yes
+					has_environmentalist_government = yes
+					has_socialist_government = yes
+				}
+			}
+			modifier = {
+				factor = 1.25
+				has_autocratic_government = yes
+			}
+		}
+	}
+
+	# Breakup the Protest
+	option = {
+		name = migrant_event.2.b
+		log = "[GetDateText]: [ROOT.GetName]: event migrant_event.2.b executed"
+		add_political_power = -50
+		add_timed_idea = { idea = MD_nationalist_migrant_protests days = 180 }
+		set_temp_variable = { party_popularity_increase = -0.02 }
+		set_temp_variable = { temp_outlook_increase = -0.02 }
+		change_relative_party_popularity = yes
+		set_temp_variable = { party_index = 21 }
+		set_temp_variable = { party_popularity_increase = -0.02 }
+		set_temp_variable = { temp_outlook_increase = -0.02 }
+		change_relative_party_popularity = yes
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 1.25
+				OR = {
+					has_liberal_government = yes
+					has_environmentalist_government = yes
+					has_socialist_government = yes
+				}
+			}
+			modifier = {
+				factor = 0
+				has_autocratic_government = yes
+			}
+		}
+	}
+}
+
+# --- restored from events/Migration Events.txt line 252 ---
+country_event = {
+	id = migrant_event.3
+	title = migrant_event.3.t
+	desc = migrant_event.3.d
+	picture = GFX_migrant_crime_report
+	is_triggered_only = yes
+
+	mean_time_to_happen = {
+		modifier = {
+			factor = 0.5
+			has_idea = police_05
+		}
+		modifier = {
+			factor = 0.75
+			has_idea = police_04
+		}
+		modifier = {
+			factor = 1.15
+			has_idea = police_03
+		}
+		modifier = {
+			factor = 1.25
+			has_idea = police_02
+		}
+		modifier = {
+			factor = 1.50
+			has_idea = police_01
+		}
+		modifier = {
+			factor = 1.25
+			has_idea = open_borders
+		}
+		modifier = {
+			factor = 1.15
+			has_idea = slightly_regulated_immigration
+		}
+		modifier = {
+			factor = months_at_open_borders
+			always = yes
+		}
+	}
+
+	trigger = {
+		NOT = { has_country_flag = recently_had_migrant_crime }
+		NOT = { has_idea = closed_borders }
+		check_variable = { net_immigration_rate > 0 }
+	}
+
+	immediate = {
+		hidden_effect = {
+			set_country_flag = { flag = recently_had_migrant_crime value = 1 days = 180 }
+		}
+	}
+
+	# They told us so!
+	option = {
+		name = migrant_event.3.a
+		log = "[GetDateText]: [ROOT.GetName]: event migrant_event.3.a executed"
+		set_temp_variable = { party_index = 21 }
+		set_temp_variable = { party_popularity_increase = 0.04 }
+		set_temp_variable = { temp_outlook_increase = 0.04 }
+		change_relative_party_popularity = yes
+		add_stability = -0.01
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 0
+				OR = {
+					has_liberal_government = yes
+					has_environmentalist_government = yes
+					has_socialist_government = yes
+				}
+			}
+			modifier = {
+				factor = 1.25
+				has_autocratic_government = yes
+			}
+		}
+	}
+
+	# Increasing police funding may be the way to go...
+	option = {
+		name = migrant_event.3.b
+		log = "[GetDateText]: [ROOT.GetName]: event migrant_event.3.b executed"
+		increase_policing_budget = yes
+		block_police_decrease = yes
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 1.25
+				OR = {
+					has_liberal_government = yes
+					has_environmentalist_government = yes
+					has_socialist_government = yes
+				}
+			}
+			modifier = {
+				factor = 0
+				has_autocratic_government = yes
+			}
+		}
+	}
+}
+
+# --- restored from events/Ethiopia.txt line 561 ---
+country_event = { #Famine!
+	id = ethiopia.20
+	title = ethiopia.20.t
+	desc = ethiopia.20.d
+	picture = GFX_eth_famine_strikes
+	trigger = {
+		has_idea = ETH_looming_famine
+		has_stability < 0.55
+		date > 2000.2.1
+		date < 2002.12.31
+		NOT = { has_country_flag = ETH_2000s_famine }
+	}
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	mean_time_to_happen = {
+		modifier = {
+			has_war_with = ERI
+			factor = 0.5
+		}
+		modifier = {
+			NOT = { has_war_with = ERI }
+			factor = 1.30
+		}
+	}
+
+	option = { #Famine Strikes!
+		name = ethiopia.20.a
+		log = "[GetDateText]: [This.GetName]: ethiopia.20.a executed"
+		swap_ideas = {
+			remove_idea = ETH_looming_famine
+			add_idea = ETH_idea_famine_strikes
+		}
+		set_country_flag = ETH_2000s_famine
+	}
+}
+
+# --- restored from events/agricultural_events.txt line 9 ---
+country_event = {
+	id = AGRI.1
+	title = AGRI.1.t
+	desc = AGRI.1.d
+	picture = GFX_generic_grain_silo
+	is_triggered_only = yes
+
+		mean_time_to_happen = {
+			modifier = {
+				factor = 0.2
+				check_variable = { agri_crop_allocation^1 > 0.1 }
+			}
+			modifier = {
+				factor = 0.4
+				check_variable = { agri_crop_allocation^1 > 0.25 }
+			}
+			modifier = {
+				factor = 0.6
+				check_variable = { agri_crop_allocation^1 < 0.4 }
+			}
+			modifier = {
+				factor = 0.8
+				check_variable = { agri_crop_allocation^1 > 0.55 }
+			}
+			modifier = {
+				factor = 1
+				check_variable = { agri_crop_allocation^1 > 0.7 }
+			}
+		}
+
+		trigger = {
+			is_agrarian_economy = yes
+			NOT = { has_country_flag = AGRI_event_chain_in_progress }
+			AGRI_not_experiencing_drought = yes
+		}
+
+		immediate = { set_country_flag = AGRI_event_chain_in_progress }
+
+		option = {
+			name = AGRI.1.A
+			log = "[GetDateText]: [This.GetName]: AGRI.1.a executed"
+			hidden_effect = {
+				random_list = {
+					65 = { # NO DROUGHT | 65-12%
+						modifier = { # 59
+							add = -6
+							check_variable = { agri_crop_allocation^1 > 0.5 }
+						}
+						modifier = { # 53
+							add = -6
+							check_variable = { agri_crop_allocation^1 > 0.6 }
+						}
+						modifier = { # 47
+							add = -6
+							check_variable = { agri_crop_allocation^1 > 0.7 }
+						}
+						modifier = { # 41
+							add = -6
+							check_variable = { agri_crop_allocation^1 > 0.8 }
+						}
+						modifier = { # 35
+							add = -6
+							check_variable = { agri_crop_allocation^1 > 0.9 }
+						}
+						modifier = { # 29
+							add = -6
+							check_variable = { agri_crop_allocation^1 = 1 }
+						}
+						set_variable = { AGRI_drought_severity = 0 }
+					}
+					24 = { # MINOR DROUGHT | 24-42%
+						modifier = { # 27
+							add = 3
+							check_variable = { agri_crop_allocation^1 > 0.5 }
+						}
+						modifier = { # 30
+							add = 3
+							check_variable = { agri_crop_allocation^1 > 0.6 }
+						}
+						modifier = { # 33
+							add = 3
+							check_variable = { agri_crop_allocation^1 > 0.7 }
+						}
+						modifier = { # 36
+							add = 3
+							check_variable = { agri_crop_allocation^1 > 0.8 }
+						}
+						modifier = { # 39
+							add = 3
+							check_variable = { agri_crop_allocation^1 > 0.9 }
+						}
+						modifier = { # 42
+							add = 3
+							check_variable = { agri_crop_allocation^1 = 1 }
+						}
+						set_variable = { AGRI_drought_severity = 1 }
+					}
+					10 = { # MAJOR DROUGHT | 10-22%
+						modifier = { # 12
+							add = 2
+							check_variable = { agri_crop_allocation^1 > 0.5 }
+						}
+						modifier = { # 14
+							add = 2
+							check_variable = { agri_crop_allocation^1 > 0.6 }
+						}
+						modifier = { # 16
+							add = 2
+							check_variable = { agri_crop_allocation^1 > 0.7 }
+						}
+						modifier = { # 18
+							add = 2
+							check_variable = { agri_crop_allocation^1 > 0.8 }
+						}
+						modifier = { # 20
+							add = 2
+							check_variable = { agri_crop_allocation^1 > 0.9 }
+						}
+						modifier = { # 22
+							add = 2
+							check_variable = { agri_crop_allocation^1 = 1 }
+						}
+						set_variable = { AGRI_drought_severity = 2 }
+					}
+					1 = { # EXTREME DROUGHT | 1-7%
+						modifier = { # 2
+							add = 1
+							check_variable = { agri_crop_allocation^1 > 0.5 }
+						}
+						modifier = { # 3
+							add = 1
+							check_variable = { agri_crop_allocation^1 > 0.6 }
+						}
+						modifier = { # 4
+							add = 1
+							check_variable = { agri_crop_allocation^1 > 0.7 }
+						}
+						modifier = { # 5
+							add = 1
+							check_variable = { agri_crop_allocation^1 > 0.8 }
+						}
+						modifier = { # 6
+							add = 1
+							check_variable = { agri_crop_allocation^1 > 0.9 }
+						}
+						modifier = { # 7
+							add = 1
+							check_variable = { agri_crop_allocation^1 = 1 }
+						}
+						set_variable = { AGRI_drought_severity = 3 }
+					}
+				}
+				country_event = {
+					id = AGRI.2
+					days = 28
+				}
+			}
+		}
+}
+
+
+# --- restored from events/corruption.txt line 5 ---
+country_event = {
+	id = corruption.0
+	hidden = yes
+	is_triggered_only = yes
+	trigger = {
+		NOT = {
+			OR = {
+				has_country_flag = auto_decline_corruption
+				has_country_flag = recently_rolled_corruption_event
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		modifier = {
+			factor = 6.5
+			has_idea = corruption_level_10
+		}
+		modifier = {
+			factor = 6
+			has_idea = corruption_level_09
+		}
+		modifier = {
+			factor = 4.5
+			has_idea = corruption_level_08
+		}
+		modifier = {
+			factor = 3.5
+			has_idea = corruption_level_07
+		}
+		modifier = {
+			factor = 2.75
+			has_idea = corruption_level_06
+		}
+		modifier = {
+			factor = 2.5
+			has_idea = corruption_level_05
+		}
+		modifier = {
+			factor = 1.75
+			has_idea = corruption_level_04
+		}
+		modifier = {
+			factor = 1.5
+			has_idea = corruption_level_03
+		}
+		modifier = {
+			factor = 1.25
+			has_idea = corruption_level_02
+		}
+		modifier = {
+			factor = 1.0
+			has_idea = corruption_level_01
+		}
+		modifier = {
+			factor = 1.5
+			OR = {
+				has_idea = oligarchs
+				neutrality_oligarchism_in_power_or_coalition = yes
+			}
+		}
+	}
+
+	immediate = {
+		roll_corruption_event = yes
+	}
+}

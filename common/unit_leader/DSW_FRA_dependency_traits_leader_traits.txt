@@ -1,15 +1,8 @@
 # DSW France / TFR 2020 port. Source: The Fire Rises 1.0.9.1c.
+# 2026-11-07: bearer_of_artillery / guerilla_fighter 与原版逐字段一致，已删除重复定义；
+#             cavalry_officer 与原版有差异（缺 unit_type/unit_trigger，权重项不同），
+#             改名为 DSW_cavalry_officer 以避免覆盖原版同名 trait。
 leader_traits = {
-	bearer_of_artillery = {
-		type = corps_commander
-		trait_type = personality_trait
-		modifier = {
-			army_artillery_attack_factor = 0.15
-		}
-		new_commander_weight = {
-			factor = 0
-		}
-	}
 	reinvigorated = {
 		type = all
 		trait_type = status_trait
@@ -19,29 +12,11 @@ leader_traits = {
 			army_morale_factor = 0.10
 		}
 	}
-	guerilla_fighter = {
-		type = corps_commander
-		gain_xp = {
-			always = no
-		}
-		cost = 500
-		modifier = {
-			dig_in_speed_factor = 0.5
-		}
-		ai_will_do = {
-			factor = 1
-		}
-		trait_type = assignable_trait
-		any_parent = {
-			trickster
-		}
-		gui_row = 14
-	}
-	cavalry_officer = {
+	DSW_cavalry_officer = {
 		type = land
 		trait_type = personality_trait
 		trait_xp_factor = {
-			cavalry_leader = 1
+			armoured_cavalry_leader = 1
 		}
 		new_commander_weight = {
 			factor = 1

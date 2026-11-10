@@ -25,9 +25,6 @@ defined_text = {
 					has_country_flag = SOV_sided_with_cprf_flag
 				}
 				NOT = {
-					has_country_flag = SOV_sided_with_ldpr_flag
-				}
-				NOT = {
 					has_country_flag = SOV_sided_with_medvedev_flag
 				}
 			}
@@ -41,14 +38,6 @@ defined_text = {
 			}
 		}
 		localization_key = "supporting_cprf"
-	}
-	text = {
-		trigger = {
-			SOV = {
-				has_country_flag = SOV_sided_with_ldpr_flag
-			}
-		}
-		localization_key = "supporting_ldpr"
 	}
 	text = {
 		trigger = {
@@ -1326,6 +1315,12 @@ defined_text = {
 	}
 }
 defined_text = {
+	name = SOV_ruling_party_head_gui
+	text = {
+		localization_key = "SOV_ruling_party_head_loc"
+	}
+}
+defined_text = {
 	name = SOV_ur_head_gui
 	text = {
 		trigger = {
@@ -1494,36 +1489,6 @@ defined_text = {
 			}
 		}
 		localization_key = "SOV_controlled_lib_opposition"
-	}
-	text = {
-		localization_key = "SOV_duma_empty"
-	}
-}
-defined_text = {
-	name = SOV_ldpr_head_gui
-	text = {
-		trigger = {
-			SOV = {
-				has_idea = SOV_duma_ldpr_zhirinovsky
-			}
-		}
-		localization_key = "SOV_ldpr_head_zhirinovsky"
-	}
-	text = {
-		trigger = {
-			SOV = {
-				has_idea = SOV_duma_ldpr_slutsky
-			}
-		}
-		localization_key = "SOV_ldpr_head_slutsky"
-	}
-	text = {
-		trigger = {
-			SOV = {
-				has_idea = SOV_duma_ldpr_slutsky_1
-			}
-		}
-		localization_key = "SOV_ldpr_head_slutsky_1"
 	}
 	text = {
 		localization_key = "SOV_duma_empty"
@@ -2198,112 +2163,6 @@ defined_text = {
 			}
 		}
 		localization_key = "SOV_slutsky_path_focus_3_desc_1"
-	}
-}
-defined_text = {
-	name = ldpr_zhir_focus_scripted_loc_name
-	text = {
-		trigger = {
-			SOV = {
-				NOT = {
-					OR = {
-						has_country_flag = SOV_bout_zhir_flag
-						has_country_flag = SOV_starovoitov_zhir_flag
-					}
-				}
-			}
-		}
-		localization_key = "SOV_youth_recruitment_drive_1"
-	}
-	text = {
-		trigger = {
-			SOV = {
-				has_country_flag = SOV_bout_zhir_flag
-			}
-		}
-		localization_key = "SOV_youth_recruitment_drive_2"
-	}
-	text = {
-		trigger = {
-			SOV = {
-				has_country_flag = SOV_starovoitov_zhir_flag
-			}
-		}
-		localization_key = "SOV_youth_recruitment_drive_3"
-	}
-}
-defined_text = {
-	name = ldpr_zhir_focus_scripted_loc_desc
-	text = {
-		trigger = {
-			SOV = {
-				NOT = {
-					OR = {
-						has_country_flag = SOV_bout_zhir_flag
-						has_country_flag = SOV_starovoitov_zhir_flag
-					}
-				}
-			}
-		}
-		localization_key = "SOV_youth_recruitment_drive_desc_1"
-	}
-	text = {
-		trigger = {
-			SOV = {
-				has_country_flag = SOV_bout_zhir_flag
-			}
-		}
-		localization_key = "SOV_youth_recruitment_drive_desc_2"
-	}
-	text = {
-		trigger = {
-			SOV = {
-				has_country_flag = SOV_starovoitov_zhir_flag
-			}
-		}
-		localization_key = "SOV_youth_recruitment_drive_desc_3"
-	}
-}
-defined_text = {
-	name = ldpr_zhir_focus_1_scripted_loc_name
-	text = {
-		trigger = {
-			SOV = {
-				NOT = {
-					has_country_flag = SOV_starovoitov_zhir_flag
-				}
-			}
-		}
-		localization_key = "SOV_party_popular_media_1"
-	}
-	text = {
-		trigger = {
-			SOV = {
-				has_country_flag = SOV_starovoitov_zhir_flag
-			}
-		}
-		localization_key = "SOV_party_popular_media_2"
-	}
-}
-defined_text = {
-	name = ldpr_zhir_focus_1_scripted_loc_desc
-	text = {
-		trigger = {
-			SOV = {
-				NOT = {
-					has_country_flag = SOV_starovoitov_zhir_flag
-				}
-			}
-		}
-		localization_key = "SOV_party_popular_media_desc_1"
-	}
-	text = {
-		trigger = {
-			SOV = {
-				has_country_flag = SOV_starovoitov_zhir_flag
-			}
-		}
-		localization_key = "SOV_party_popular_media_desc_2"
 	}
 }
 defined_text = {
@@ -3568,11 +3427,15 @@ defined_text = {
 				OR = {
 					AND = {
 						has_idea = SOV_Yuri_Afonin_president_party
-						has_country_leader = DSW_TFR_SOV_yuri_afonin
+						has_country_leader = {
+							character = DSW_TFR_SOV_yuri_afonin
+						}
 					}
 					AND = {
 						has_idea = SOV_Sergey_Levchenko_president_party
-						has_country_leader = DSW_TFR_SOV_sergey_levchenko
+						has_country_leader = {
+							character = DSW_TFR_SOV_sergey_levchenko
+						}
 					}
 				}
 			}
@@ -4073,84 +3936,6 @@ defined_text = {
 	}
 }
 defined_text = {
-	name = SOV_ldpr_alliance_category_loc_dynamic
-	text = {
-		trigger = {
-			SOV = {
-				has_country_flag = DSW_SOV_pending_focus_SOV_holy_union_reborn
-			}
-		}
-		localization_key = "SOV_holy_union_category"
-	}
-	text = {
-		trigger = {
-			SOV = {
-				has_country_flag = DSW_SOV_pending_focus_SOV_reform_csto
-				OR = {
-					has_country_flag = SOV_pushilin_won
-					has_country_flag = SOV_rodina_left_won
-					has_country_flag = SOV_rodina_won
-				}
-			}
-		}
-		localization_key = "SOV_ces_category"
-	}
-	text = {
-		trigger = {
-			SOV = {
-				has_country_flag = DSW_SOV_pending_focus_SOV_reform_csto
-				NOT = {
-					OR = {
-						has_country_flag = SOV_pushilin_won
-						has_country_flag = SOV_rodina_left_won
-						has_country_flag = SOV_rodina_won
-					}
-				}
-			}
-		}
-		localization_key = "SOV_esto_category"
-	}
-}
-defined_text = {
-	name = SOV_ldpr_alliance_loc_dynamic
-	text = {
-		trigger = {
-			SOV = {
-				has_country_flag = DSW_SOV_pending_focus_SOV_holy_union_reborn
-			}
-		}
-		localization_key = "SOV_holy_union_category"
-	}
-	text = {
-		trigger = {
-			SOV = {
-				has_country_flag = DSW_SOV_pending_focus_SOV_reform_csto
-				OR = {
-					has_country_flag = SOV_pushilin_won
-					has_country_flag = SOV_rodina_left_won
-					has_country_flag = SOV_rodina_won
-				}
-			}
-		}
-		localization_key = "SOV_ces_ces_category"
-	}
-	text = {
-		trigger = {
-			SOV = {
-				has_country_flag = DSW_SOV_pending_focus_SOV_reform_csto
-				NOT = {
-					OR = {
-						has_country_flag = SOV_pushilin_won
-						has_country_flag = SOV_rodina_left_won
-						has_country_flag = SOV_rodina_won
-					}
-				}
-			}
-		}
-		localization_key = "SOV_esto_esto_category"
-	}
-}
-defined_text = {
 	name = SOV_let_a_hundred_flowers_bloom_dynamic
 	text = {
 		trigger = {
@@ -4620,7 +4405,6 @@ defined_text = {
 		trigger = {
 			SOV = {
 				OR = {
-					has_country_flag = SOV_sided_with_ldpr_flag
 					has_country_flag = SOV_sided_with_cprf_flag
 				}
 			}
@@ -4821,7 +4605,6 @@ defined_text = {
 	text = {
 		trigger = {
 			OR = {
-				has_global_flag = SOV_ldpr_won
 				has_global_flag = SOV_medvedev_won
 			}
 		}
@@ -4831,34 +4614,12 @@ defined_text = {
 defined_text = {
 	name = SOV_anti_soviet_resistance_loc
 	text = {
-		trigger = {
-			NOT = {
-				has_country_flag = SOV_dissolved_ldpr
-			}
-		}
-		localization_key = "SOV_anti_soviet_resistance_ldpr_loc"
-	}
-	text = {
-		trigger = {
-			has_country_flag = SOV_dissolved_ldpr
-		}
 		localization_key = "SOV_anti_soviet_resistance_nationaloids_loc"
 	}
 }
 defined_text = {
 	name = SOV_anti_soviet_resistance_decision_loc
 	text = {
-		trigger = {
-			NOT = {
-				has_country_flag = SOV_dissolved_ldpr
-			}
-		}
-		localization_key = "SOV_anti_soviet_resistance_decision_ldpr_loc"
-	}
-	text = {
-		trigger = {
-			has_country_flag = SOV_dissolved_ldpr
-		}
 		localization_key = "SOV_anti_soviet_resistance_decision_nationaloids_loc"
 	}
 }
@@ -4876,12 +4637,6 @@ defined_text = {
 		}
 		localization_key = "SOV_patriotic_zealousy_medvedev"
 	}
-	text = {
-		trigger = {
-			has_global_flag = SOV_ldpr_won
-		}
-		localization_key = "SOV_patriotic_zealousy_ldpr"
-	}
 }
 defined_text = {
 	name = SOV_patriotic_zealousy_loc_desc
@@ -4896,12 +4651,6 @@ defined_text = {
 			has_global_flag = SOV_medvedev_won
 		}
 		localization_key = "SOV_patriotic_zealousy_medvedev_desc"
-	}
-	text = {
-		trigger = {
-			has_global_flag = SOV_ldpr_won
-		}
-		localization_key = "SOV_patriotic_zealousy_ldpr_desc"
 	}
 }
 defined_text = {
@@ -4918,12 +4667,6 @@ defined_text = {
 		}
 		localization_key = "SOV_unify_command_structures_normal"
 	}
-	text = {
-		trigger = {
-			has_global_flag = SOV_ldpr_won
-		}
-		localization_key = "SOV_unify_command_structures_rosgvardia"
-	}
 }
 defined_text = {
 	name = SOV_unify_command_structures_loc_desc
@@ -4939,12 +4682,6 @@ defined_text = {
 		}
 		localization_key = "SOV_unify_command_structures_normal_desc"
 	}
-	text = {
-		trigger = {
-			has_global_flag = SOV_ldpr_won
-		}
-		localization_key = "SOV_unify_command_structures_rosgvardia_desc"
-	}
 }
 defined_text = {
 	name = SOV_promote_reliable_cadres_loc
@@ -4957,7 +4694,6 @@ defined_text = {
 	text = {
 		trigger = {
 			OR = {
-				has_global_flag = SOV_ldpr_won
 				has_global_flag = SOV_medvedev_won
 			}
 		}
@@ -4975,7 +4711,6 @@ defined_text = {
 	text = {
 		trigger = {
 			OR = {
-				has_global_flag = SOV_ldpr_won
 				has_global_flag = SOV_medvedev_won
 			}
 		}
@@ -4993,7 +4728,6 @@ defined_text = {
 	text = {
 		trigger = {
 			OR = {
-				has_global_flag = SOV_ldpr_won
 				has_global_flag = SOV_medvedev_won
 			}
 		}
@@ -5011,7 +4745,6 @@ defined_text = {
 	text = {
 		trigger = {
 			OR = {
-				has_global_flag = SOV_ldpr_won
 				has_global_flag = SOV_medvedev_won
 			}
 		}
@@ -5029,7 +4762,6 @@ defined_text = {
 	text = {
 		trigger = {
 			OR = {
-				has_global_flag = SOV_ldpr_won
 				has_global_flag = SOV_medvedev_won
 			}
 		}
@@ -5047,7 +4779,6 @@ defined_text = {
 	text = {
 		trigger = {
 			OR = {
-				has_global_flag = SOV_ldpr_won
 				has_global_flag = SOV_medvedev_won
 			}
 		}
@@ -5646,17 +5377,6 @@ defined_text = {
 	}
 }
 defined_text = {
-	name = SOV_ldpr_name_loc
-	text = {
-		trigger = {
-			SOV = {
-				always = yes
-			}
-		}
-		localization_key = "SOV_ldpr_name_og"
-	}
-}
-defined_text = {
 	name = SOV_patriots_party_name_loc
 	text = {
 		trigger = {
@@ -6052,59 +5772,6 @@ defined_text = {
 	}
 }
 defined_text = {
-	name = SOV_ldpr_opinion
-	text = {
-		trigger = {
-			SOV = {
-				check_variable = {
-					SOV_ldpr_opinion_var = 1
-				}
-			}
-		}
-		localization_key = "SOV_party_opinion_1"
-	}
-	text = {
-		trigger = {
-			SOV = {
-				check_variable = {
-					SOV_ldpr_opinion_var = 2
-				}
-			}
-		}
-		localization_key = "SOV_party_opinion_2"
-	}
-	text = {
-		trigger = {
-			SOV = {
-				check_variable = {
-					SOV_ldpr_opinion_var = 3
-				}
-			}
-		}
-		localization_key = "SOV_party_opinion_3"
-	}
-	text = {
-		trigger = {
-			SOV = {
-				check_variable = {
-					SOV_ldpr_opinion_var = 4
-				}
-			}
-		}
-		localization_key = "SOV_party_opinion_4"
-	}
-	text = {
-		trigger = {
-			SOV = {
-				check_variable = {
-					SOV_ldpr_opinion_var = 5
-				}
-			}
-		}
-		localization_key = "SOV_party_opinion_5"
-	}
-}
-defined_text = {
 	name = SOV_patriots_party_opinion
 	text = {
 		trigger = {
@@ -6317,59 +5984,6 @@ defined_text = {
 	}
 }
 defined_text = {
-	name = SOV_ldpr_opinion_trigger_loc
-	text = {
-		trigger = {
-			SOV = {
-				check_variable = {
-					SOV_ldpr_opinion_var_trigger_temp = 1
-				}
-			}
-		}
-		localization_key = "SOV_party_opinion_1"
-	}
-	text = {
-		trigger = {
-			SOV = {
-				check_variable = {
-					SOV_ldpr_opinion_var_trigger_temp = 2
-				}
-			}
-		}
-		localization_key = "SOV_party_opinion_2"
-	}
-	text = {
-		trigger = {
-			SOV = {
-				check_variable = {
-					SOV_ldpr_opinion_var_trigger_temp = 3
-				}
-			}
-		}
-		localization_key = "SOV_party_opinion_3"
-	}
-	text = {
-		trigger = {
-			SOV = {
-				check_variable = {
-					SOV_ldpr_opinion_var_trigger_temp = 4
-				}
-			}
-		}
-		localization_key = "SOV_party_opinion_4"
-	}
-	text = {
-		trigger = {
-			SOV = {
-				check_variable = {
-					SOV_ldpr_opinion_var_trigger_temp = 5
-				}
-			}
-		}
-		localization_key = "SOV_party_opinion_5"
-	}
-}
-defined_text = {
 	name = SOV_patriots_party_opinion_trigger_loc
 	text = {
 		trigger = {
@@ -6494,20 +6108,6 @@ defined_text = {
 			}
 		}
 		localization_key = "SOV_supreme_soviet_peoples_front"
-	}
-}
-defined_text = {
-	name = SOV_supreme_soviet_ldpr_loc
-	text = {
-		trigger = {
-			SOV = {
-				is_in_array = {
-					array = SOV_other_parties
-					value = GER.id
-				}
-			}
-		}
-		localization_key = "SOV_supreme_soviet_ldpr"
 	}
 }
 defined_text = {

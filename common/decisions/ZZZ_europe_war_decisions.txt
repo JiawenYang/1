@@ -1,0 +1,91 @@
+# ============================================================================
+#  欧陆战争 —— 决议（本工程原创）
+#
+#  作用：由俄方（SOV）把既有的乌克兰战事升级为全欧陆战争。
+#  入口条件刻意保守：
+#    · 只在 SOV 且已与 UKR 交战时出现（不凭空开战）
+#    · 若 DSW 链已经打过欧陆战争（DSW_SOV_european_war_started），本决议永久隐藏
+#    · 全局只允许结算一次（ZZZ_eur_war_resolved）
+#
+#  执行后调用 common/scripted_effects/ZZZ_europe_war_effects.txt 的：
+#    ZZZ_eur_begin_war（宣战 + 阵营拉入）
+#    ZZZ_eur_mark_participants（标记双方参战方）
+#  并向所有人类玩家派发开战超事件 zzz_eur.1。
+# ============================================================================
+ZZZ_europe_war = {
+
+	ZZZ_eur_escalate = {
+		icon = generic_political_actions
+		cost = 0
+		fire_only_once = yes
+
+		allowed = {
+			tag = SOV
+		}
+
+		visible = {
+			date > 2019.1.1
+			has_war_with = UKR
+			NOT = { has_global_flag = ZZZ_eur_war_ongoing }
+			NOT = { has_global_flag = ZZZ_eur_war_resolved }
+			NOT = { has_global_flag = DSW_SOV_european_war_started }
+		}
+
+		available = {
+			date > 2019.1.1
+			has_war_with = UKR
+			is_subject = no
+			NOT = { has_global_flag = ZZZ_eur_war_ongoing }
+			NOT = { has_global_flag = ZZZ_eur_war_resolved }
+			NOT = { has_global_flag = DSW_SOV_european_war_started }
+			# 必须存在一个已入阵营的西方主对手，否则 ZZZ_eur_begin_war 会回滚，
+			# 而 fire_only_once 会让决议被白白消耗
+			OR = {
+				AND = {
+					country_exists = USA
+					country_exists = GER
+					USA = {
+						is_in_faction = yes
+						NOT = { is_in_faction_with = ROOT }
+					}
+					GER = { is_in_faction_with = USA }
+				}
+				AND = {
+					country_exists = GER
+					GER = {
+						is_in_faction = yes
+						NOT = { is_in_faction_with = ROOT }
+					}
+				}
+				AND = {
+					country_exists = FRA
+					FRA = {
+						is_in_faction = yes
+						NOT = { is_in_faction_with = ROOT }
+					}
+				}
+				AND = {
+					country_exists = ENG
+					ENG = {
+						is_in_faction = yes
+						NOT = { is_in_faction_with = ROOT }
+					}
+				}
+			}
+		}
+
+		complete_effect = {
+			ZZZ_eur_begin_war = yes
+			ZZZ_eur_mark_participants = yes
+			every_country = {
+				limit = { is_ai = no }
+				news_event = { id = zzz_eur.1 days = 1 }
+			}
+			log = "[GetDateText]: [This.GetName]: ZZZ_eur_escalate executed"
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+}

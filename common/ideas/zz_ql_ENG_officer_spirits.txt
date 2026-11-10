@@ -1,0 +1,154 @@
+ideas = {
+
+    academy_spirit = {
+
+        ql_ENG_army_academy_spirit_01 = {  # 精神名称：桑赫斯特与军官培养体系
+            ledger = army
+            picture = ql_ENG_spirit_01
+            visible = {
+                has_doctrine = ql_prc_land_multi_domain_expedition
+                original_tag = ENG
+            }
+            allowed_to_remove = { always = no }
+            modifier = {
+                experience_gain_army_factor = 0.12           # 陆军经验获取 +12%
+                terrain_trait_xp_gain_factor = 0.15          # 地形特质经验获取 +15%
+                military_leader_cost_factor = -0.1           # 军事领袖花费 -10%
+            }
+
+            ai_will_do = { base = 199 }
+        }
+
+    }
+
+    army_spirit = {
+
+        ql_ENG_army_spirit_02 = {  # 精神名称：职业化精干陆军
+            ledger = army
+            picture = ql_ENG_spirit_02
+            visible = {
+                has_doctrine = ql_prc_land_multi_domain_expedition
+                original_tag = ENG
+            }
+            allowed_to_remove = { always = no }
+            modifier = {
+                army_org_factor = 0.05                       # 陆军组织度 +5%
+                army_artillery_attack_factor = 0.10          # 炮兵攻击 +10%
+                breakthrough_factor = 0.03                   # 突破 +3%
+                land_reinforce_rate = 0.05                   # 陆军增援率 +5%
+            }
+
+            ai_will_do = { base = 199 }
+        }
+
+    }
+
+    division_command_spirit = {
+
+        ql_ENG_army_command_spirit_03 = {  # 精神名称：联合作战指挥体系
+            ledger = army
+            picture = ql_ENG_spirit_03
+            visible = {
+                has_doctrine = ql_prc_land_multi_domain_expedition
+                original_tag = ENG
+            }
+            allowed_to_remove = { always = no }
+            modifier = {
+                max_planning = 0.05                          # 最大计划值 +5%
+                planning_speed = 0.10                        # 计划速度 +10%
+                coordination_bonus = 0.05                    # 协同 +5%
+                command_power_gain = 0.10                    # 每日指挥点数 +0.1
+            }
+
+            ai_will_do = { base = 199 }
+        }
+
+    }
+
+    naval_command_spirit = {
+
+        ql_ENG_navy_command_spirit_04 = {  # 精神名称：皇家海军远洋投送传统
+            ledger = navy
+            picture = ql_ENG_spirit_04
+            visible = {
+                has_doctrine = ql_prc_naval_mosaic_kill_chain
+                original_tag = ENG
+            }
+            allowed_to_remove = { always = no }
+            modifier = {
+                navy_max_range_factor = 0.15                 # 舰船最大航程 +15%
+                naval_invasion_prep_speed = 0.10             # 登陆准备速度 +10%
+                shore_bombardment_bonus = 0.10               # 岸轰加成 +10%
+                navy_capital_ship_attack_factor = 0.05       # 主力舰攻击 +5%
+            }
+
+            ai_will_do = { base = 199 }
+        }
+
+    }
+
+    air_force_academy_spirit = {
+
+        ql_ENG_air_academy_spirit_05 = {  # 精神名称：皇家空军飞行训练
+            ledger = air
+            picture = ql_ENG_spirit_05
+            visible = {
+                has_doctrine = ql_prc_air_agile_deployment
+                original_tag = ENG
+            }
+            allowed_to_remove = { always = no }
+            modifier = {
+                air_mission_efficiency = 0.05                # 空中任务效率 +5%
+                air_agility_factor = 0.03                    # 飞机机动 +3%
+                minimum_training_level = 0.05                # 最低训练等级 +5%
+            }
+
+            ai_will_do = { base = 199 }
+        }
+
+    }
+
+    air_force_spirit = {
+
+        ql_ENG_air_spirit_06 = {  # 精神名称：皇家空军制空战力
+            ledger = air
+            picture = ql_ENG_spirit_06
+            visible = {
+                has_doctrine = ql_prc_air_agile_deployment
+                original_tag = ENG
+            }
+            allowed_to_remove = { always = no }
+            modifier = {
+                air_superiority_efficiency = 0.08             # 制空效率 +8%
+                air_attack_factor = 0.05                      # 对空攻击 +5%
+                air_defence_factor = 0.05                     # 对空防御 +5%
+            }
+
+            ai_will_do = { base = 199 }
+        }
+
+    }
+
+    air_force_command_spirit = {
+
+        ql_ENG_air_command_spirit_07 = {  # 精神名称：皇家空军远征与制空
+            ledger = air
+            picture = ql_ENG_spirit_07
+            visible = {
+                has_doctrine = ql_prc_air_agile_deployment
+                original_tag = ENG
+            }
+            allowed_to_remove = { always = no }
+            modifier = {
+                air_cas_efficiency = 0.08                     # 近距支援效率 +8%
+                air_intercept_efficiency = 0.05               # 拦截效率 +5%
+                air_escort_efficiency = 0.05                  # 护航效率 +5%
+                air_mission_efficiency = 0.05                 # 空中任务效率 +5%
+            }
+
+            ai_will_do = { base = 199 }
+        }
+
+    }
+
+}

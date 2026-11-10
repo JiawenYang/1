@@ -122,7 +122,7 @@ joint_focus = {
 		set_temp_variable = { percent_change = 5 }
 		set_temp_variable = { tag_index = CHI }
 		set_temp_variable = { influence_target = NKO }
-		change_influence_percentage = yes
+		if = { limit = { NOT = { has_global_flag = cml_md_influence_disabled } } change_influence_percentage = yes }
 	}
 
 	completion_reward_joint_originator = {
@@ -208,7 +208,7 @@ joint_focus = {
 		}
 		set_temp_variable = { percent_change = 5 }
 		set_temp_variable = { influence_target = NKO }
-		change_influence_percentage = yes
+		if = { limit = { NOT = { has_global_flag = cml_md_influence_disabled } } change_influence_percentage = yes }
 	}
 
 	ai_will_do = {
@@ -777,13 +777,13 @@ joint_focus = {
 			set_temp_variable = { percent_change = 5 }
 			set_temp_variable = { tag_index = NKO }
 			set_temp_variable = { influence_target = CHI }
-			change_influence_percentage = yes
+			if = { limit = { NOT = { has_global_flag = cml_md_influence_disabled } } change_influence_percentage = yes }
 		}
 		else = {
 			set_temp_variable = { percent_change = 5 }
 			set_temp_variable = { tag_index = CHI }
 			set_temp_variable = { influence_target = NKO }
-			change_influence_percentage = yes
+			if = { limit = { NOT = { has_global_flag = cml_md_influence_disabled } } change_influence_percentage = yes }
 		}
 		set_temp_variable = { treasury_change = -4.50 }
 		modify_treasury_effect = yes
@@ -897,7 +897,7 @@ joint_focus = {
 			add_doctrine_cost_reduction = {
 				cost_reduction = 0.50
 				name = CHI_NKO_defense_consultations
-				category = CAT_land_doctrine
+				category = land_doctrine
 				uses = 2
 			}
 		}
@@ -915,7 +915,7 @@ joint_focus = {
 			add_doctrine_cost_reduction = {
 				cost_reduction = 0.50
 				name = CHI_NKO_defense_consultations
-				category = CAT_land_doctrine
+				category = land_doctrine
 				uses = 1
 			}
 		}
@@ -1645,7 +1645,7 @@ joint_focus = {
 		set_temp_variable = { percent_change = 5 }
 		set_temp_variable = { tag_index = CHI }
 		set_temp_variable = { influence_target = KOR }
-		change_influence_percentage = yes
+		if = { limit = { NOT = { has_global_flag = cml_md_influence_disabled } } change_influence_percentage = yes }
 		newline = yes
 		unlock_decision_tooltip = CHI_track_ii_academic_forum
 		unlock_decision_tooltip = CHI_rare_earth_supply_assurance
@@ -1776,7 +1776,7 @@ joint_focus = {
 		set_temp_variable = { percent_change = 5 }
 		set_temp_variable = { tag_index = CHI }
 		set_temp_variable = { influence_target = KOR }
-		change_influence_percentage = yes
+		if = { limit = { NOT = { has_global_flag = cml_md_influence_disabled } } change_influence_percentage = yes }
 		newline = yes
 		unlock_decision_tooltip = CHI_trilateral_trade_forum
 	}
@@ -1894,11 +1894,11 @@ joint_focus = {
 		set_temp_variable = { percent_change = -5 }
 		set_temp_variable = { tag_index = USA }
 		set_temp_variable = { influence_target = KOR }
-		change_influence_percentage = yes
+		if = { limit = { NOT = { has_global_flag = cml_md_influence_disabled } } change_influence_percentage = yes }
 		set_temp_variable = { percent_change = 5 }
 		set_temp_variable = { tag_index = CHI }
 		set_temp_variable = { influence_target = KOR }
-		change_influence_percentage = yes
+		if = { limit = { NOT = { has_global_flag = cml_md_influence_disabled } } change_influence_percentage = yes }
 		newline = yes
 		custom_effect_tooltip = {
 			localization_key = modifies_dynamic_modifier_tt
@@ -1964,7 +1964,7 @@ joint_focus = {
 		set_temp_variable = { percent_change = 5 }
 		set_temp_variable = { tag_index = CHI }
 		set_temp_variable = { influence_target = NKO }
-		change_influence_percentage = yes
+		if = { limit = { NOT = { has_global_flag = cml_md_influence_disabled } } change_influence_percentage = yes }
 		newline = yes
 		unlock_decision_tooltip = CHI_beijing_hosted_talks
 		unlock_decision_tooltip = CHI_kaesong_expansion

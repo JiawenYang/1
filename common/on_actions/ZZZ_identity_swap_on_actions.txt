@@ -1,0 +1,68 @@
+# ============================================================================
+# ZZZ 国家身份换组：挂钩
+#
+# HOI4 没有「自治等级变更」回调，因此换组用四条钩子兜住：
+#   on_monthly                  —— 主扫描（只对 is_subject 国家下探，不做全球全量判定）
+#   on_puppet                   —— 新附庸立刻判一次（ROOT = 新附庸，FROM = 宗主）
+#   on_startup                  —— 读档/开局时补扫已存在的协作政府
+#   on_peaceconference_ended    —— 和会结束后补扫新产生的傀儡
+#
+# on_actions 支持多文件合并，本文件与基座/工程的同名钩子互不覆盖。
+# ============================================================================
+on_actions = {
+	on_monthly = {
+		effect = {
+			# 只有带宗主国的国家才可能成立协作政府，先卡这一层
+			if = {
+				limit = { is_subject = yes }
+				ZZZ_identity_swap_check = yes
+			}
+			# MNNA 自动加入/摘除：所有国家都判（加入条件本身很窄，摘除以旗标为准入）
+			ZZZ_mnna_auto_update = yes
+			# 美国非成员共同参战：只在美方作用域跑一次
+			if = {
+				limit = { tag = USA }
+				ZZZ_pdto_usa_co_belligerent = yes
+			}
+		}
+	}
+
+	on_puppet = {
+		effect = {
+			# ROOT = 新附庸，FROM = 宗主国
+			ROOT = {
+				ZZZ_identity_swap_check = yes
+				ZZZ_mnna_auto_update = yes
+			}
+		}
+	}
+
+	on_startup = {
+		effect = {
+			every_country = {
+				limit = { is_subject = yes }
+				# 走事件而不是直接调用：基座 effect 靠 ROOT 记账，循环里 ROOT 不会跟着换
+				country_event = { id = zzz_identity.0 days = 1 }
+			}
+		}
+	}
+
+	on_peaceconference_ended = {
+		effect = {
+			every_country = {
+				limit = { is_subject = yes }
+				country_event = { id = zzz_identity.0 days = 1 }
+			}
+			# 和会结算后，战败与阵营变动会让一批 MNNA 失去资格，就地清一次
+			every_country = {
+				limit = {
+					OR = {
+						has_idea = Major_Non_NATO_Ally
+						has_country_flag = Major_Non_NATO_Ally
+					}
+				}
+				ZZZ_mnna_auto_update = yes
+			}
+		}
+	}
+}

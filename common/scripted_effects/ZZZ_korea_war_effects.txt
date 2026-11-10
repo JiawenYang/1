@@ -1,0 +1,243 @@
+# ============================================================================
+# 朝鲜半岛战争线 —— 脚本效果（本工程原创）
+# 仅服务 events/ZZZ_korea_war.txt，不与其他 ZZZ 效果库重名
+# ============================================================================
+
+# ----------------------------------------------------------------------------
+# 韩国对北方开战（不可逆）
+# 写法依据：events/05_china.txt:2321-2322（KOR 对 NKO 的先 create_wargoal 再 declare_war_on）
+# 作用域：KOR
+# ----------------------------------------------------------------------------
+ZZZ_korea_declare_war_on_north = {
+	if = {
+		limit = {
+			NKO = { exists = yes }
+			NOT = { has_war_with = NKO }
+		}
+		create_wargoal = {
+			type = annex_everything
+			target = NKO
+		}
+		declare_war_on = {
+			target = NKO
+			type = annex_everything
+		}
+	}
+}
+
+# ----------------------------------------------------------------------------
+# 由半岛侧引爆 GAW（大亚洲战争）
+# 作用域：CHI（只能在中国作用域内调用）
+#
+# 调用顺序固定，禁止颠倒：
+#   ① JAP 对 CHI 宣战（若已交战则跳过，避免重复宣战）
+#   ② set_global_flag = ZZZ_gaw_started_by_korea
+#   ③ PRC_gaw_start = yes
+#   ④ 派发 prc.1008
+#
+# 为什么不能反：PRC_gaw_start 内部逐国调用 PRC_GAW_check_faction_members，
+# 会按“当前阵营/交战状态”结算参战方与预备队 OOB。若先做初始化再宣战，
+# 这一步会按空阵营（未交战）结算，导致日方参战方与 OOB 漏算、战争疲惫任务挂空。
+# ----------------------------------------------------------------------------
+ZZZ_start_gaw_from_korea = {
+	if = {
+		limit = {
+			NOT = { has_global_flag = pan_asian_war_ongoing }
+		}
+		# ① 日本对华宣战（已交战则跳过）
+		JAP = {
+			if = {
+				limit = {
+					exists = yes
+					NOT = { has_war_with = CHI }
+				}
+				declare_war_on = {
+					target = CHI
+					type = annex_everything
+				}
+			}
+		}
+		# ② 标记 GAW 由半岛侧引爆
+		set_global_flag = ZZZ_gaw_started_by_korea
+		# ③ GAW 全流程初始化（置 pan_asian_war_ongoing、加载 GAW 预备队 OOB、激活战争疲惫任务）
+		PRC_gaw_start = yes
+		# ④ 解锁中日双方 GAW 国策分支
+		country_event = { id = prc.1008 hours = 6 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# 韩国保守派领袖：尹锡悦
+# 复用 MD 既有条目（common/scripted_effects/KOR_political_leaders.txt:99-100）：
+#   name = "Yoon Seok-youl" / picture = "yoon_seok_youl.dds"
+# 肖像文件确认存在：MD/gfx/leaders/KOR/yoon_seok_youl.dds（大小写一致）
+# 作用域：KOR
+# ----------------------------------------------------------------------------
+ZZZ_party_leader_KOR_yoon = {
+	hidden_effect = {
+		kill_country_leader = yes
+	}
+	create_country_leader = {
+		name = ZZZ_nm_kor_yoon_seok_youl
+		picture = "yoon_seok_youl.dds"
+		ideology = conservatism
+	}
+}
+
+# ----------------------------------------------------------------------------
+# 2022 韩国政党轮替：支持率写法对齐用户既有规范
+# 范本：events/politicsthailand.txt:25-67、events/politicspakistan.txt:54-94
+#   ① set_politics 定组别与选举周期
+#   ② 显式写满 24 个 party_pop_array 绝对值（总和恒为 1）
+#   ③ clear_array + add_to_array 重建 ruling_party / gov_coalition_array
+#   ④ update_government_coalition_strength / update_party_name / set_coalition_drift
+# 作用域：KOR
+# ----------------------------------------------------------------------------
+
+# 未成局分支：保守派（conservatism = 索引 1）
+ZZZ_KW_korea_election_2022_conservative = {
+	set_politics = {
+		ruling_party = democratic
+		last_election = "2022.3.9"
+		election_frequency = 60
+		elections_allowed = yes
+	}
+	set_popularities = {
+		democratic = 96.39
+		communism = 0.08
+		fascism = 0.0
+		neutrality = 3.15
+		nationalist = 0.38
+	}
+	set_variable = { party_pop_array^0 = 0 } #Western_Autocracy
+	set_variable = { party_pop_array^1 = 0.4856 } #conservatism
+	set_variable = { party_pop_array^2 = 0 } #liberalism
+	set_variable = { party_pop_array^3 = 0.4783 } #socialism
+	set_variable = { party_pop_array^4 = 0.0001 } #communist_state
+	set_variable = { party_pop_array^5 = 0.0007 } #anarchist_communism
+	set_variable = { party_pop_array^6 = 0 } #Conservative
+	set_variable = { party_pop_array^7 = 0 } #Autocracy
+	set_variable = { party_pop_array^8 = 0 } #Mod_Vilayat_e_Faqih
+	set_variable = { party_pop_array^9 = 0 } #Vilayat_e_Faqih
+	set_variable = { party_pop_array^10 = 0 } #Kingdom
+	set_variable = { party_pop_array^11 = 0 } #Caliphate
+	set_variable = { party_pop_array^12 = 0 } #Neutral_Muslim_Brotherhood
+	set_variable = { party_pop_array^13 = 0 } #Neutral_Autocracy
+	set_variable = { party_pop_array^14 = 0.0069 } #Neutral_conservatism
+	set_variable = { party_pop_array^15 = 0 } #oligarchism
+	set_variable = { party_pop_array^16 = 0 } #Neutral_Libertarian
+	set_variable = { party_pop_array^17 = 0.0009 } #Neutral_green
+	set_variable = { party_pop_array^18 = 0.0237 } #neutral_Social
+	set_variable = { party_pop_array^19 = 0 } #Neutral_Communism
+	set_variable = { party_pop_array^20 = 0.0038 } #Nat_Populism
+	set_variable = { party_pop_array^21 = 0 } #Nat_Fascism
+	set_variable = { party_pop_array^22 = 0 } #Nat_Autocracy
+	set_variable = { party_pop_array^23 = 0 } #Monarchist
+	clear_array = gov_coalition_array
+	set_variable = { ruling_party = 1 }
+	update_set_politics = yes
+	add_own_ideology_drift = yes
+	update_government_coalition_strength = yes
+	update_party_name = yes
+	set_coalition_drift = yes
+	ZZZ_party_leader_KOR_yoon = yes
+}
+
+# 成局分支：进步派（socialism = 索引 3）
+ZZZ_KW_korea_election_2022_progressive = {
+	set_politics = {
+		ruling_party = democratic
+		last_election = "2022.3.9"
+		election_frequency = 60
+		elections_allowed = yes
+	}
+	set_popularities = {
+		democratic = 96.39
+		communism = 0.08
+		fascism = 0.0
+		neutrality = 3.15
+		nationalist = 0.38
+	}
+	set_variable = { party_pop_array^0 = 0 } #Western_Autocracy
+	set_variable = { party_pop_array^1 = 0.4856 } #conservatism
+	set_variable = { party_pop_array^2 = 0 } #liberalism
+	set_variable = { party_pop_array^3 = 0.4783 } #socialism
+	set_variable = { party_pop_array^4 = 0.0001 } #communist_state
+	set_variable = { party_pop_array^5 = 0.0007 } #anarchist_communism
+	set_variable = { party_pop_array^6 = 0 } #Conservative
+	set_variable = { party_pop_array^7 = 0 } #Autocracy
+	set_variable = { party_pop_array^8 = 0 } #Mod_Vilayat_e_Faqih
+	set_variable = { party_pop_array^9 = 0 } #Vilayat_e_Faqih
+	set_variable = { party_pop_array^10 = 0 } #Kingdom
+	set_variable = { party_pop_array^11 = 0 } #Caliphate
+	set_variable = { party_pop_array^12 = 0 } #Neutral_Muslim_Brotherhood
+	set_variable = { party_pop_array^13 = 0 } #Neutral_Autocracy
+	set_variable = { party_pop_array^14 = 0.0069 } #Neutral_conservatism
+	set_variable = { party_pop_array^15 = 0 } #oligarchism
+	set_variable = { party_pop_array^16 = 0 } #Neutral_Libertarian
+	set_variable = { party_pop_array^17 = 0.0009 } #Neutral_green
+	set_variable = { party_pop_array^18 = 0.0237 } #neutral_Social
+	set_variable = { party_pop_array^19 = 0 } #Neutral_Communism
+	set_variable = { party_pop_array^20 = 0.0038 } #Nat_Populism
+	set_variable = { party_pop_array^21 = 0 } #Nat_Fascism
+	set_variable = { party_pop_array^22 = 0 } #Nat_Autocracy
+	set_variable = { party_pop_array^23 = 0 } #Monarchist
+	clear_array = gov_coalition_array
+	set_variable = { ruling_party = 3 }
+	update_set_politics = yes
+	add_own_ideology_drift = yes
+	update_government_coalition_strength = yes
+	update_party_name = yes
+	set_coalition_drift = yes
+	ZZZ_party_leader_KOR_moon_jae_in = yes
+}
+
+# ③ 戒严失败后：2025.6.3 提前大选，进步派上台（socialism = 索引 3）
+# 支持率口径同 2022 两个效果：24 党绝对值写满，总和恒为 1
+ZZZ_KW_korea_election_2025_progressive = {
+	set_politics = {
+		ruling_party = democratic
+		last_election = "2025.6.3"
+		election_frequency = 60
+		elections_allowed = yes
+	}
+	set_popularities = {
+		democratic = 98.91
+		communism = 0.07
+		fascism = 0.0
+		neutrality = 0.69
+		nationalist = 0.33
+	}
+	set_variable = { party_pop_array^0 = 0 } #Western_Autocracy
+	set_variable = { party_pop_array^1 = 0.4115 } #conservatism
+	set_variable = { party_pop_array^2 = 0.0834 } #liberalism
+	set_variable = { party_pop_array^3 = 0.4942 } #socialism
+	set_variable = { party_pop_array^4 = 0.0001 } #communist_state
+	set_variable = { party_pop_array^5 = 0.0006 } #anarchist_communism
+	set_variable = { party_pop_array^6 = 0 } #Conservative
+	set_variable = { party_pop_array^7 = 0 } #Autocracy
+	set_variable = { party_pop_array^8 = 0 } #Mod_Vilayat_e_Faqih
+	set_variable = { party_pop_array^9 = 0 } #Vilayat_e_Faqih
+	set_variable = { party_pop_array^10 = 0 } #Kingdom
+	set_variable = { party_pop_array^11 = 0 } #Caliphate
+	set_variable = { party_pop_array^12 = 0 } #Neutral_Muslim_Brotherhood
+	set_variable = { party_pop_array^13 = 0 } #Neutral_Autocracy
+	set_variable = { party_pop_array^14 = 0.0061 } #Neutral_conservatism
+	set_variable = { party_pop_array^15 = 0 } #oligarchism
+	set_variable = { party_pop_array^16 = 0 } #Neutral_Libertarian
+	set_variable = { party_pop_array^17 = 0.0008 } #Neutral_green
+	set_variable = { party_pop_array^18 = 0 } #neutral_Social
+	set_variable = { party_pop_array^19 = 0 } #Neutral_Communism
+	set_variable = { party_pop_array^20 = 0.0033 } #Nat_Populism
+	set_variable = { party_pop_array^21 = 0 } #Nat_Fascism
+	set_variable = { party_pop_array^22 = 0 } #Nat_Autocracy
+	set_variable = { party_pop_array^23 = 0 } #Monarchist
+	clear_array = gov_coalition_array
+	set_variable = { ruling_party = 3 }
+	update_set_politics = yes
+	add_own_ideology_drift = yes
+	update_government_coalition_strength = yes
+	update_party_name = yes
+	set_coalition_drift = yes
+	ZZZ_party_leader_KOR_moon_jae_in = yes
+}

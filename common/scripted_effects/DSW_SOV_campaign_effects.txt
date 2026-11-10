@@ -9,13 +9,18 @@ DSW_SOV_ensure_putin = {
 				}
 			}
 		}
-		set_variable = {
-			ruling_party = 6
+		set_temp_variable = {
+			disable_elections = 1
+		}
+		set_temp_variable = {
+			rul_party_temp = 6
 		}
 		promote_character = {
 			character = DSW_TFR_SOV_vladimir_putin
 			ideology = Conservative
 		}
+		change_ruling_party_effect = yes
+		recalculate_party = yes
 	}
 }
 DSW_SOV_initialize_2020 = {
@@ -26,7 +31,6 @@ DSW_SOV_initialize_2020 = {
 				has_country_flag = DSW_SOV_tfr_active
 			}
 		}
-		set_country_flag = DSW_SOV_tfr_active
 		set_country_flag = DSW_SOV_putin_protected
 		set_variable = {
 			disable_elections = 1
@@ -39,200 +43,6 @@ DSW_SOV_initialize_2020 = {
 		}
 		clear_array = gov_coalition_array
 		kill_country_leader = yes
-		recruit_character = DSW_TFR_SOV_viktor_sokolov
-		recruit_character = DSW_TFR_SOV_victor_sobolev
-		recruit_character = DSW_TFR_SOV_albert_makashov
-		recruit_character = DSW_TFR_SOV_igor_osipov
-		recruit_character = DSW_TFR_SOV_vladimir_kravchenko
-		recruit_character = DSW_TFR_SOV_aleksandr_kornev
-		recruit_character = DSW_TFR_SOV_oleg_makovetsky
-		recruit_character = DSW_TFR_SOV_roman_kutuzov
-		recruit_character = DSW_TFR_SOV_vladimir_putin
-		recruit_character = DSW_TFR_SOV_mikhail_mishustin
-		recruit_character = DSW_TFR_SOV_sergei_mironov
-		recruit_character = DSW_TFR_SOV_sergei_udaltsov
-		recruit_character = DSW_TFR_SOV_zakhar_prilepin
-		recruit_character = DSW_TFR_SOV_dmitry_medvedev
-		recruit_character = DSW_TFR_SOV_gennady_zyuganov
-		recruit_character = DSW_TFR_SOV_nikolay_rybakov
-		recruit_character = DSW_TFR_SOV_vladimir_zhirinovsky
-		recruit_character = DSW_TFR_SOV_viktor_zolotov
-		recruit_character = DSW_TFR_SOV_eduard_limonov
-		recruit_character = DSW_TFR_SOV_Nazbol_Troika
-		recruit_character = DSW_TFR_SOV_alexander_dugin
-		recruit_character = DSW_TFR_SOV_mikhail_kasyanov
-		recruit_character = DSW_TFR_SOV_alexei_navalny
-		recruit_character = DSW_TFR_SOV_victor_tyulkin
-		recruit_character = DSW_TFR_SOV_valery_gerasimov
-		recruit_character = DSW_TFR_SOV_oleg_makarevich
-		recruit_character = DSW_TFR_SOV_mikhail_teplinsky
-		recruit_character = DSW_TFR_SOV_andrey_mordvichev
-		recruit_character = DSW_TFR_SOV_vladimir_seliverstov
-		recruit_character = DSW_TFR_SOV_vladimir_alekseev
-		recruit_character = DSW_TFR_SOV_vladimir_zolotukhin
-		recruit_character = DSW_TFR_SOV_yuri_kuznetsov
-		recruit_character = DSW_TFR_SOV_alexander_tulyaganov
-		recruit_character = DSW_TFR_SOV_viktor_goremykin
-		recruit_character = DSW_TFR_SOV_yuri_stavitsky
-		recruit_character = DSW_TFR_SOV_yunus_bek_yevkurov
-		recruit_character = DSW_TFR_SOV_alexey_kuzmenkov
-		recruit_character = DSW_TFR_SOV_andrey_kuzmenko
-		recruit_character = DSW_TFR_SOV_sergey_kuzovlev
-		recruit_character = DSW_TFR_SOV_evgeny_nikiforov
-		recruit_character = DSW_TFR_SOV_alexey_kim
-		recruit_character = DSW_TFR_SOV_roman_berdnikov
-		recruit_character = DSW_TFR_SOV_sergey_kobylash
-		recruit_character = DSW_TFR_SOV_viktor_afzalov
-		recruit_character = DSW_TFR_SOV_oleg_salyukov
-		recruit_character = DSW_TFR_SOV_yuriy_borisov
-		recruit_character = DSW_TFR_SOV_timur_ivanov
-		recruit_character = DSW_TFR_SOV_ruslan_tsalikov
-		recruit_character = DSW_TFR_SOV_nikolay_pankov
-		recruit_character = DSW_TFR_SOV_aleksandr_dvornikov
-		recruit_character = DSW_TFR_SOV_sergei_aleksandrovich_kisel
-		recruit_character = DSW_TFR_SOV_aleksandr_chayko
-		recruit_character = DSW_TFR_SOV_andrey_serdyukov
-		recruit_character = DSW_TFR_SOV_vadim_pankov
-		recruit_character = DSW_TFR_SOV_vladimir_shamanov
-		recruit_character = DSW_TFR_SOV_viktor_bondarev
-		recruit_character = DSW_TFR_SOV_aleksandr_golovko
-		recruit_character = DSW_TFR_SOV_sergey_karakaev
-		recruit_character = DSW_TFR_SOV_aleksandr_kolpachenko
-		recruit_character = DSW_TFR_SOV_aleksandr_fomin
-		recruit_character = DSW_TFR_SOV_ramzan_kadyrov
-		recruit_character = DSW_TFR_SOV_sergei_glaziev
-		recruit_character = DSW_TFR_SOV_maria_vorontsova
-		recruit_character = DSW_TFR_SOV_pavel_popov
-		recruit_character = DSW_TFR_SOV_dmitry_bulgakov
-		recruit_character = DSW_TFR_SOV_igor_jewgenjewitsch_konaschenkow
-		recruit_character = DSW_TFR_SOV_yuryi_sadovenko
-		recruit_character = DSW_TFR_SOV_sergey_shoygu
-		recruit_character = DSW_TFR_SOV_andrey_kartapolov
-		recruit_character = DSW_TFR_SOV_vladimir_zarudnitsky
-		recruit_character = DSW_TFR_SOV_sergei_surovikin
-		recruit_character = DSW_TFR_SOV_vladimir_bakin
-		recruit_character = DSW_TFR_SOV_vladimir_ivanovich_korolev
-		recruit_character = DSW_TFR_SOV_aleksandr_nosatov
-		recruit_character = DSW_TFR_SOV_nikolay_anatolyevich_evmenov
-		recruit_character = DSW_TFR_SOV_aleksandr_vitko
-		recruit_character = DSW_TFR_SOV_sergey_pinchuk
-		recruit_character = DSW_TFR_SOV_viktor_liina
-		recruit_character = DSW_TFR_SOV_vladimir_vysotskiy
-		recruit_character = DSW_TFR_SOV_maxim_suraykin
-		recruit_character = DSW_TFR_SOV_sergei_kurginyan
-		recruit_character = DSW_TFR_SOV_valery_rashkin
-		recruit_character = DSW_TFR_SOV_yuri_afonin
-		recruit_character = DSW_TFR_SOV_pavel_grudinin
-		recruit_character = DSW_TFR_SOV_dmitry_novikov
-		recruit_character = DSW_TFR_SOV_aleksandr_lukashenko
-		recruit_character = DSW_TFR_SOV_andrey_rudoy
-		recruit_character = DSW_TFR_SOV_alexei_nechayev
-		recruit_character = DSW_TFR_SOV_aleksandr_lapin
-		recruit_character = DSW_TFR_SOV_rustam_muradov
-		recruit_character = DSW_TFR_SOV_gennady_zhidko
-		recruit_character = DSW_TFR_SOV_Mikhail_Mizintsev
-		recruit_character = DSW_TFR_SOV_sergei_dronov
-		recruit_character = DSW_TFR_SOV_sergei_naryshkin
-		recruit_character = DSW_TFR_SOV_Rostislav_Romanov
-		recruit_character = DSW_TFR_SOV_Grigory_Romanov
-		recruit_character = DSW_TFR_SOV_Gavril_Romanov
-		recruit_character = DSW_TFR_SOV_ivan_okhlobystin
-		recruit_character = DSW_TFR_SOV_aleksandr_barkashov
-		recruit_character = DSW_TFR_SOV_pyotr_barkashov
-		recruit_character = DSW_TFR_SOV_igor_girkin
-		recruit_character = DSW_TFR_SOV_provisional_LDPR
-		recruit_character = DSW_TFR_SOV_Vladimir_Solovyov
-		recruit_character = DSW_TFR_SOV_denis_parfenov
-		recruit_character = DSW_TFR_SOV_sergey_levchenko
-		recruit_character = DSW_TFR_SOV_alexander_belousov
-		recruit_character = DSW_TFR_SOV_andrey_vorobyov
-		recruit_character = DSW_TFR_SOV_leonid_slutsky
-		recruit_character = DSW_TFR_SOV_vasily_vlasov
-		recruit_character = DSW_TFR_SOV_Viktor_Bout
-		recruit_character = DSW_TFR_SOV_Alexander_Starovoitov
-		recruit_character = DSW_TFR_SOV_Alexander_Sherin
-		recruit_character = DSW_TFR_SOV_supreme_party_council
-		recruit_character = DSW_TFR_SOV_russian_senate
-		recruit_character = DSW_TFR_SOV_andrey_svintsov
-		recruit_character = DSW_TFR_SOV_alexei_dyumin
-		recruit_character = DSW_TFR_SOV_sergei_furgal
-		recruit_character = DSW_TFR_SOV_alexander_kurenkov
-		recruit_character = DSW_TFR_SOV_aleksandr_belov
-		recruit_character = DSW_TFR_SOV_denis_pushilin
-		recruit_character = DSW_TFR_SOV_mikhail_delyagin
-		recruit_character = DSW_TFR_SOV_aleksei_zhuravlyov
-		recruit_character = DSW_TFR_SOV_Dmitry_Demushkin
-		recruit_character = DSW_TFR_SOV_vladimir_kvachkov
-		recruit_character = DSW_TFR_SOV_stanislav_vorobyov
-		recruit_character = DSW_TFR_SOV_denis_gariev
-		recruit_character = DSW_TFR_SOV_evgeny_prigozhin
-		recruit_character = DSW_TFR_SOV_vladislav_surkov
-		recruit_character = DSW_TFR_SOV_vyacheslav_volodin
-		recruit_character = DSW_TFR_SOV_wagner_officer_council
-		recruit_character = DSW_TFR_SOV_Darya_Besedina_char
-		recruit_character = DSW_TFR_SOV_Dmitry_Kisiev_char
-		recruit_character = DSW_TFR_SOV_maksim_katz
-		recruit_character = DSW_TFR_SOV_leonid_zyuganov
-		recruit_character = DSW_TFR_SOV_dmitry_patrushev
-		recruit_character = DSW_TFR_SOV_sergei_sobyanin
-		recruit_character = DSW_TFR_SOV_nikolay_platoshkin
-		recruit_character = DSW_TFR_SOV_valentin_konovalov
-		recruit_character = DSW_TFR_SOV_roman_yuneman
-		recruit_character = DSW_TFR_SOV_nikolay_kharitonov
-		recruit_character = DSW_TFR_SOV_vladislav_davankov
-		recruit_character = DSW_TFR_SOV_anton_alikhanov
-		recruit_character = DSW_TFR_SOV_boris_titov
-		recruit_character = DSW_TFR_SOV_evgeny_fyodorov
-		recruit_character = DSW_TFR_SOV_nikolay_bondarenko
-		recruit_character = DSW_TFR_SOV_oleg_shein
-		recruit_character = DSW_TFR_SOV_boris_nadezhdin
-		recruit_character = DSW_TFR_SOV_grigory_azarenok
-		recruit_character = DSW_TFR_SOV_grigory_filimonov
-		recruit_character = DSW_TFR_SOV_roman_gavrilov
-		recruit_character = DSW_TFR_SOV_yuri_yashin
-		recruit_character = DSW_TFR_SOV_konstantin_yashin
-		recruit_character = DSW_TFR_SOV_olga_kachura
-		recruit_character = DSW_TFR_SOV_evgeny_chintsov
-		recruit_character = DSW_TFR_SOV_boris_dudko
-		recruit_character = DSW_TFR_SOV_sergey_kuzminchuk
-		recruit_character = DSW_TFR_SOV_vladislav_golovin
-		recruit_character = DSW_TFR_SOV_artur_orlov
-		recruit_character = DSW_TFR_SOV_alexey_kondratyev
-		recruit_character = DSW_TFR_SOV_sergey_zakharov
-		recruit_character = DSW_TFR_SOV_alexander_popov
-		recruit_character = DSW_TFR_SOV_disorganized_leadership
-		recruit_character = DSW_TFR_SOV_collective_leadership
-		recruit_character = DSW_TFR_SOV_andrey_klychkov
-		recruit_character = DSW_TFR_SOV_leonid_pasechnik
-		recruit_character = DSW_TFR_SOV_dmitry_rogozin
-		recruit_character = DSW_TFR_SOV_klim_zhukov
-		recruit_character = DSW_TFR_SOV_dmitry_puchkov
-		recruit_character = DSW_TFR_SOV_Grigory_Yavlinsky
-		recruit_character = DSW_TFR_SOV_maxim_shevchenko
-		recruit_character = DSW_TFR_SOV_artyom_zhoga
-		recruit_character = DSW_TFR_SOV_vladimir_zhoga
-		recruit_character = DSW_TFR_SOV_evgeny_poplavsky
-		recruit_character = DSW_TFR_SOV_yakov_rezantsev
-		recruit_character = DSW_TFR_SOV_evgeny_ustinov
-		recruit_character = DSW_TFR_SOV_oleg_tsekov
-		recruit_character = DSW_TFR_SOV_dmitry_glushenkov
-		recruit_character = DSW_TFR_SOV_aleksandr_romanchuk
-		recruit_character = DSW_TFR_SOV_sergei_rudskoy
-		recruit_character = DSW_TFR_SOV_evgeny_burdinsky
-		recruit_character = DSW_TFR_SOV_yaroslav_moskalik
-		recruit_character = DSW_TFR_SOV_aleksei_avdeev
-		recruit_character = DSW_TFR_SOV_vitaly_gerasimov
-		recruit_character = DSW_TFR_SOV_konstantin_smeshko
-		recruit_character = DSW_TFR_SOV_vladimir_frolov
-		recruit_character = DSW_TFR_SOV_andrey_kolesnikov
-		recruit_character = DSW_TFR_SOV_aleksandr_zhuravlev
-		recruit_character = DSW_TFR_SOV_andrey_sukhovetskiy
-		recruit_character = DSW_TFR_SOV_leonid_kalashnikov
-		recruit_character = DSW_TFR_SOV_boris_kagarlitsky
-		recruit_character = DSW_TFR_SOV_nikolay_lukashenko
-		recruit_character = DSW_TFR_SOV_boris_kravchenko
-		recruit_character = DSW_TFR_SOV_anatoly_golov
-		recruit_character = DSW_TFR_SOV_alexey_sakhnin
 		set_variable = {
 			var = SOV_influence_var
 			value = 0.20
@@ -272,7 +82,7 @@ DSW_SOV_initialize_2020 = {
 			SOV_election_approval_rating_cprf_var = 0.25
 		}
 		set_variable = {
-			SOV_election_approval_rating_ldpr_var = 0.2
+			SOV_election_approval_rating_party7_var = 0.2
 		}
 		set_variable = {
 			SOV_election_approval_rating_ur_var = 0.46
@@ -290,7 +100,7 @@ DSW_SOV_initialize_2020 = {
 			SOV_political_parties = SOV_election_approval_rating_cprf_var
 		}
 		add_to_array = {
-			SOV_political_parties = SOV_election_approval_rating_ldpr_var
+			SOV_political_parties = SOV_election_approval_rating_party7_var
 		}
 		add_to_array = {
 			SOV_political_parties = SOV_election_approval_rating_ur_var
@@ -356,22 +166,23 @@ DSW_SOV_recover_putin = {
 			large = "gfx/leaders/SOV/portrait_SOV_vladimir_putin.dds"
 		}
 	}
-	set_variable = {
-		ruling_party = 6
-	}
-	set_politics = {
-		ruling_party = communism
-		elections_allowed = no
-	}
 	promote_character = {
 		character = DSW_TFR_SOV_vladimir_putin
 		ideology = Conservative
 	}
+	set_temp_variable = {
+		disable_elections = 1
+	}
+	set_temp_variable = {
+		rul_party_temp = 6
+	}
+	change_ruling_party_effect = yes
+	recalculate_party = yes
 	add_stability = 0.1
 	add_political_power = 150
 	DSW_SOV_fix_putin_tricolor = yes
 }
-DSW_SOV_start_ukrainian_war = {
+DSW_SOV_declare_war_on_ukraine = {
 	if = {
 		limit = {
 			NOT = {
@@ -481,12 +292,24 @@ DSW_SOV_start_ukrainian_war = {
 		if = {
 			limit = {
 				UKR = {
+					NOT = {
+						has_idea = NATO_member
+					}
 					is_in_faction = yes
 				}
 			}
 			UKR = {
 				leave_faction = yes
 			}
+		}
+		else_if = {
+			limit = {
+				UKR = {
+					has_idea = NATO_member
+				}
+			}
+			set_country_flag = DSW_SOV_nato_war_path
+			log = "[GetDateText]: [Root.GetName]: DSW_SOV_declare_war_on_ukraine NATO path"
 		}
 		if = {
 			limit = {
@@ -649,6 +472,9 @@ DSW_SOV_begin_european_war = {
 			NOT = {
 				has_global_flag = DSW_SOV_european_war_resolved
 			}
+			NOT = {
+				has_global_flag = ZZZ_eur_war_ongoing
+			}
 		}
 		set_global_flag = DSW_SOV_european_war_started
 		log = "[GetDateText]: DSW_SOV_european_war_started"
@@ -717,6 +543,24 @@ DSW_SOV_begin_european_war = {
 			GER = {
 				create_faction = NATO
 				add_to_faction = UKR
+			}
+		}
+		# 美国入欧战正式入口：不依赖内战，仅看 USA 存在、未处于战争、且尚未参战
+		if = {
+			limit = {
+				country_exists = USA
+				USA = {
+					has_war = no
+					NOT = { is_in_faction_with = UKR }
+					NOT = { has_country_flag = DSW_SOV_nato_war_participant }
+				}
+			}
+			every_country = {
+				limit = {
+					is_faction_leader = yes
+					is_in_faction_with = UKR
+				}
+				add_to_faction = USA
 			}
 		}
 		UKR = {
@@ -884,6 +728,8 @@ DSW_SOV_resolve_russian_victory = {
 				DSW_SOV_show_victory_super_event = yes
 			}
 		}
+		ZZZ_MEW_auto_invite_egypt_sco = yes
+		ZZZ_MEW_post_eurasia_uar_war = yes
 	}
 }
 DSW_SOV_resolve_russian_defeat = {
@@ -924,6 +770,8 @@ DSW_SOV_resolve_russian_defeat = {
 				}
 			}
 		}
+		# 俄罗斯战败结算后检查中国是否也已战败：两者都成立才开启反伊扩战
+		ZZZ_MEW_post_eurasia_iran_war = yes
 	}
 }
 DSW_SOV_mark_eastern_settlement = {
@@ -934,6 +782,7 @@ DSW_SOV_mark_eastern_settlement = {
 		EST = {
 			if = {
 				limit = {
+					has_war_with = SOV
 					NOT = {
 						is_in_faction_with = SOV
 					}
@@ -952,6 +801,7 @@ DSW_SOV_mark_eastern_settlement = {
 		LAT = {
 			if = {
 				limit = {
+					has_war_with = SOV
 					NOT = {
 						is_in_faction_with = SOV
 					}
@@ -970,6 +820,7 @@ DSW_SOV_mark_eastern_settlement = {
 		LIT = {
 			if = {
 				limit = {
+					has_war_with = SOV
 					NOT = {
 						is_in_faction_with = SOV
 					}
@@ -988,6 +839,7 @@ DSW_SOV_mark_eastern_settlement = {
 		POL = {
 			if = {
 				limit = {
+					has_war_with = SOV
 					NOT = {
 						is_in_faction_with = SOV
 					}
@@ -1006,6 +858,7 @@ DSW_SOV_mark_eastern_settlement = {
 		ROM = {
 			if = {
 				limit = {
+					has_war_with = SOV
 					NOT = {
 						is_in_faction_with = SOV
 					}
@@ -1024,6 +877,7 @@ DSW_SOV_mark_eastern_settlement = {
 		HUN = {
 			if = {
 				limit = {
+					has_war_with = SOV
 					NOT = {
 						is_in_faction_with = SOV
 					}
@@ -1042,6 +896,7 @@ DSW_SOV_mark_eastern_settlement = {
 		UKR = {
 			if = {
 				limit = {
+					has_war_with = SOV
 					NOT = {
 						is_in_faction_with = SOV
 					}

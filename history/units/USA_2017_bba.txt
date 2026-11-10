@@ -687,7 +687,7 @@ instant_effect = {
 
 	#封存牵引火炮（迫击炮在本mod中归入步兵武器类型，不单独列装）
 	add_equipment_to_stockpile = {
-		variant_name = "M102"
+		variant_name = "M101"
 		type = artillery_1 #M101/M102 105mm榴弹炮（封存，约900门）
 		producer = USA
 		amount = 900
@@ -709,14 +709,14 @@ instant_effect = {
 
 	#封存自行火炮
 	add_equipment_to_stockpile = {
-		variant_name = "M109A2-A5 155mm自行榴弹炮"
-		type = medium_tank_artillery_chassis_0 #M109A2-A5 155mm自行榴弹炮（封存，约500门）
+		variant_name = "M109A5"
+		type = medium_tank_artillery_chassis_1 #M109A2-A5 155mm自行榴弹炮（封存，约500门）
 		producer = USA
 		amount = 500
 	}
 
 	add_equipment_to_stockpile = {
-		variant_name = "M110A2 203mm重型自行火炮老型"
+		variant_name = "M110A2"
 		type = medium_tank_artillery_chassis_0 #M110A2 203mm重型自行火炮老型（封存，约100门）
 		producer = USA
 		amount = 100
@@ -724,29 +724,29 @@ instant_effect = {
 
 	#封存火箭炮
 	add_equipment_to_stockpile = {
-		variant_name = "M270 MLRS火箭炮基本型储备"
-		type = medium_tank_rocket_chassis_0 #M270 MLRS火箭炮基本型储备（封存，约100门）
+		variant_name = "M270"
+		type = medium_tank_rocket_chassis_1 #M270 MLRS火箭炮基本型储备（封存，约100门）
 		producer = USA
 		amount = 100
 	}
 
 	#封存防空装备
 	add_equipment_to_stockpile = {
-		variant_name = "M163火神/M48小槲树/MIM-72自行防空老型"
-		type = medium_tank_aa_chassis_0 #M163火神/M48小槲树/MIM-72自行防空老型（封存，约400辆）
+		variant_name = "M-163 VADS"
+		type = SP_Anti_Air_0
 		producer = USA
 		amount = 400
 	}
 
 	add_equipment_to_stockpile = {
-		variant_name = "M167牵引式火神高炮/M55高射机枪"
+		variant_name = "M167 Vulcan"
 		type = Anti_Air_0 #M167牵引式火神高炮/M55高射机枪（封存，约200件）
 		producer = USA
 		amount = 200
 	}
 
 	add_equipment_to_stockpile = {
-		variant_name = "FIM-92 Stinger毒刺防空导弹早期型"
+		variant_name = "FIM-92E Stinger RMP Block I"
 		type = Anti_Air_1 #FIM-92 Stinger毒刺防空导弹早期型（封存，约1000枚）
 		producer = USA
 		amount = 1000
@@ -761,8 +761,8 @@ instant_effect = {
 	}
 
 	add_equipment_to_stockpile = {
-		variant_name = "TOW早期型重型反坦克导弹"
-		type = Heavy_Anti_tank_1 #TOW早期型重型反坦克导弹（封存，约600具）
+		variant_name = "I-TOW"
+		type = Anti_tank_2 #TOW早期型重型反坦克导弹（封存，约600具）
 		producer = USA
 		amount = 600
 	}
@@ -801,7 +801,7 @@ instant_effect = {
 
 	add_equipment_to_stockpile = {
 		variant_name = "M16A2"
-		type = infantry_weapons_3 #M16A2（封存）
+    type = infantry_weapons_3 #M16A2（封存）
 		producer = USA
 		amount = 600000
 	}
@@ -814,11 +814,23 @@ instant_effect = {
 	}
 
 	add_equipment_to_stockpile = {
-		variant_name = "M4/M4A1卡宾枪"
-		type = infantry_weapons_5 #M4/M4A1卡宾枪（现役，陆军+陆战队约50万支）
+		variant_name = "M4 SOPMOD Block I"
+		type = infantry_weapons_4 #M4/M4A1卡宾枪（现役，陆军+陆战队约50万支）
 		producer = USA
 		amount = 700000
 	}
+		
+		add_equipment_to_stockpile = {
+			type = infantry_weapons_5 #M4A1
+			producer = USA
+			amount = 300000
+		}
+		
+		add_equipment_to_stockpile = {
+			type = infantry_weapons_6 #M27 IAR
+			producer = USA
+			amount = 4200
+		}
 
 	add_equipment_to_stockpile = {
 		variant_name = "FGM-148C Javelin"
@@ -828,11 +840,23 @@ instant_effect = {
 	}
 
 	add_equipment_to_stockpile = {
-		variant_name = "TOW-2系列重型反坦克导弹"
-		type = Heavy_Anti_tank_1 #TOW-2系列重型反坦克导弹
+		variant_name = "TOW-2A"
+		type = Anti_tank_2 #TOW-2系列重型反坦克导弹
 		producer = USA
 		amount = 1360
 	}
+		
+		add_equipment_to_stockpile = {
+			type = Heavy_Anti_tank_2 #Hummer TOW2
+			producer = USA
+			amount = 8000
+		}
+		
+		add_equipment_to_stockpile = {
+			type = Heavy_Anti_tank_3 #M1134 ATGM
+			producer = USA
+			amount = 500
+		}
 
 	add_equipment_to_stockpile = {
 		variant_name = "FIM-92 Stinger"
@@ -1073,7 +1097,7 @@ instant_effect = {
 	add_equipment_to_stockpile = {
 		variant_name = "CH-53 Sea Stallion"
 		type = transport_helicopter_2 #Eurocopter UH-72A Lakota: Army 340
-		producer = FRA
+		producer = USA
 		amount = 340
 	}
 
@@ -1212,6 +1236,11 @@ instant_effect = {
 		add_equipment_to_stockpile = {
 			type = sam_missile_equipment_4
 			amount = 42
+			producer = USA
+		}
+		add_equipment_to_stockpile = {
+			type = sam_missile_equipment_6 #MIM-104F PAC-3 MSE 2016 首批交付，2017.1 约 1 个营 40 套
+			amount = 40
 			producer = USA
 		}
 	}

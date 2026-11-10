@@ -1,0 +1,182 @@
+# ============================================================
+# ZZZ Election Template - shared scripted effects
+# ------------------------------------------------------------
+# 国家变量参数（写在 history/countries 对应 tag 块内）：
+#   ZZZ_term                任期月数（36 / 48 / 54 / 60 ...）
+#   ZZZ_sched_mode          0 = 引擎排期（last_election + election_frequency）
+#                           1 = 内部排期（被激活时按当前日期给一段宽限期，不立即投票）
+#   ZZZ_two_round           1 = 首轮无过半时进入第二轮（总统制/半总统制）
+#   ZZZ_coalition_ok        1 = 无过半时最大党联合第二大党组阁
+#   ZZZ_leader_mode         0 = 不换元首；1 = 换党才换元首；2 = 每次选举都换元首
+#   ZZZ_grc_bonus           集选区/现任者加成，仅新加坡一类制度使用，0 = 关闭
+#   ZZZ_campaign_boost      竞选投入：执政党支持率增幅
+#   ZZZ_campaign_boost_opp  竞选投入：最大反对党支持率增幅
+# ============================================================
+
+# 给内部排期（mode 1）的国家设置一段与任期等长的宽限期，避免新 tag 一露面就投票
+ZZZ_elect_set_grace = {
+	if = { limit = { check_variable = { ZZZ_term = 24 } }
+		set_country_flag = { flag = ZZZ_elect_grace value = 1 days = 720 }
+	}
+	else_if = { limit = { check_variable = { ZZZ_term = 30 } }
+		set_country_flag = { flag = ZZZ_elect_grace value = 1 days = 900 }
+	}
+	else_if = { limit = { check_variable = { ZZZ_term = 36 } }
+		set_country_flag = { flag = ZZZ_elect_grace value = 1 days = 1080 }
+	}
+	else_if = { limit = { check_variable = { ZZZ_term = 48 } }
+		set_country_flag = { flag = ZZZ_elect_grace value = 1 days = 1440 }
+	}
+	else_if = { limit = { check_variable = { ZZZ_term = 54 } }
+		set_country_flag = { flag = ZZZ_elect_grace value = 1 days = 1620 }
+	}
+	else_if = { limit = { check_variable = { ZZZ_term = 60 } }
+		set_country_flag = { flag = ZZZ_elect_grace value = 1 days = 1800 }
+	}
+	else_if = { limit = { check_variable = { ZZZ_term = 72 } }
+		set_country_flag = { flag = ZZZ_elect_grace value = 1 days = 2160 }
+	}
+	else = {
+		set_country_flag = { flag = ZZZ_elect_grace value = 1 days = 1440 }
+	}
+}
+
+# 首次启用时初始化排期。mode 1 = 关闭引擎选举，改由 ZZZ_election_on_actions.txt 的年度脉冲驱动
+ZZZ_elect_init_schedule = {
+	if = { limit = { NOT = { has_country_flag = ZZZ_sched_init } }
+		set_country_flag = ZZZ_sched_init
+		if = { limit = { check_variable = { ZZZ_sched_mode = 1 } }
+			hidden_effect = {
+				set_politics = { ruling_party = THIS elections_allowed = no }
+				ZZZ_elect_set_grace = yes
+			}
+			log = "[GetDateText]: [This.GetName]: ZZZ election schedule initialised (mode 1, term [?ZZZ_term] months, first vote after grace period)"
+		}
+		else = {
+			log = "[GetDateText]: [This.GetName]: ZZZ election schedule is engine-driven (mode 0, term [?ZZZ_term] months)"
+		}
+	}
+}
+
+# 竞选投入：给执政党加支持率
+ZZZ_elect_campaign_boost_ruling = {
+	if = { limit = { has_variable = ruling_party }
+		add_to_variable = { party_pop_array^ruling_party = ZZZ_campaign_boost }
+	}
+}
+
+# 竞选投入：给最大反对党加支持率（若最大党就是执政党，则改投第二大党）
+ZZZ_elect_campaign_boost_opposition = {
+	if = { limit = { has_variable = max_index_1 }
+		if = { limit = { has_variable = ruling_party }
+			if = { limit = { check_variable = { ruling_party = max_index_1 } }
+				if = { limit = { has_variable = max_index_2 }
+					add_to_variable = { party_pop_array^max_index_2 = ZZZ_campaign_boost_opp }
+				}
+			}
+			else = {
+				add_to_variable = { party_pop_array^max_index_1 = ZZZ_campaign_boost_opp }
+			}
+		}
+		else = {
+			add_to_variable = { party_pop_array^max_index_1 = ZZZ_campaign_boost_opp }
+		}
+	}
+}
+
+# ============================================================
+# 巴尔干退约链：旗标写入端
+# 由 ZZZ_elect_apply_result 在选举结果落地后调用。
+# 口径：只有 2021.8.1 之后（美国联邦瘫痪已触发）才写旗标；
+# 反西方/疑欧政党当选 -> 置位；亲西方政府当选 -> 清位，避免残留。
+# 八国对应的反西方党派槽位沿用已写好的 zzz_balkan.1-.8：
+#   BUL 20 / ROM 20 / GRE 18 / TUR 4 / ALB 20 / CRO 20 / SLV 20 / MNT 20
+# ============================================================
+ZZZ_balkan_election_orientation_effect = {
+	if = {
+		limit = {
+			date > 2021.8.1
+			has_global_flag = USA_federal_paralysis_global
+			has_variable = ZZZ_win_index
+			OR = {
+				tag = BUL
+				tag = ROM
+				tag = GRE
+				tag = TUR
+				tag = ALB
+				tag = CRO
+				tag = SLV
+				tag = MNT
+			}
+		}
+		clr_country_flag = BALKAN_anti_western_government
+		if = {
+			limit = {
+				OR = {
+					AND = { tag = BUL check_variable = { ZZZ_win_index = 20 } }
+					AND = { tag = ROM check_variable = { ZZZ_win_index = 20 } }
+					AND = { tag = GRE check_variable = { ZZZ_win_index = 18 } }
+					AND = { tag = TUR check_variable = { ZZZ_win_index = 4 } }
+					AND = { tag = ALB check_variable = { ZZZ_win_index = 20 } }
+					AND = { tag = CRO check_variable = { ZZZ_win_index = 20 } }
+					AND = { tag = SLV check_variable = { ZZZ_win_index = 20 } }
+					AND = { tag = MNT check_variable = { ZZZ_win_index = 20 } }
+				}
+			}
+			set_country_flag = BALKAN_anti_western_government
+			log = "[GetDateText]: [This.GetName]: Balkan anti-western government elected (party [?ZZZ_win_index]); BALKAN_anti_western_government set"
+			# 不在此处主动排 zzz_balkan.20：zzz_balkan.1-.8 已经各自排了 +75 天的 .20，
+			# 再排一次会让 ZZZ_balkan_leave_nato_and_eu_effect 重复收取代价。
+			# 旗标由已有的 60 天重试循环读取。
+		}
+		else = {
+			log = "[GetDateText]: [This.GetName]: Balkan pro-western government elected (party [?ZZZ_win_index]); BALKAN_anti_western_government cleared"
+		}
+	}
+}
+
+# 调用前必须已设置 ZZZ_win_index；联合政府另设 ZZZ_coal_second
+ZZZ_elect_apply_result = {
+	if = { limit = { has_variable = ZZZ_win_index }
+		hidden_effect = {
+			set_temp_variable = { zzz_old_index = -1 }
+			if = { limit = { has_variable = ruling_party }
+				set_temp_variable = { zzz_old_index = ruling_party }
+			}
+			set_variable = { ruling_party = ZZZ_win_index }
+
+			clear_array = gov_coalition_array
+			if = { limit = { has_variable = ZZZ_coal_second }
+				if = { limit = { check_variable = { ZZZ_coal_second > 0 } }
+					set_temp_variable = { zzz_col = ZZZ_coal_second }
+					add_to_array = { gov_coalition_array = zzz_col }
+				}
+			}
+
+			update_government_coalition_strength = yes
+			update_set_politics = yes
+
+			if = { limit = { check_variable = { ZZZ_leader_mode = 2 } }
+				set_leader = yes
+			}
+			else_if = { limit = { check_variable = { ZZZ_leader_mode = 1 } }
+				set_temp_variable = { zzz_party_delta = ZZZ_win_index }
+				subtract_from_temp_variable = { zzz_party_delta = zzz_old_index }
+				if = { limit = { NOT = { check_variable = { zzz_party_delta = 0 } } }
+					set_leader = yes
+				}
+			}
+
+			update_party_name = yes
+			recalculate_party = yes
+			set_variable = { current_term = 1 }
+			set_variable = { ZZZ_coal_second = -1 }
+			clr_country_flag = ZZZ_election_running
+			clr_country_flag = ZZZ_elect_grace
+			ZZZ_balkan_election_orientation_effect = yes
+			if = { limit = { check_variable = { ZZZ_sched_mode = 1 } }
+				ZZZ_elect_set_grace = yes
+			}
+		}
+	}
+}

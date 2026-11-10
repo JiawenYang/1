@@ -8,7 +8,6 @@ focus_tree = {
 		}
 	}
 	continuous_focus_position = { x = 400 y = 3040 }
-	shared_focus = CHI_One_China_Policy
 
 	shortcut = {
 		name = china_party_policy
@@ -1194,7 +1193,7 @@ focus_tree = {
 				name = PRC_anti_corpruption_tech
 				bonus = 1
 				uses = 2
-				category = CAT_computing_tech
+				category = CAT_computing
 			}
 			unlock_decision_tooltip = PRC_accelerate_automation
 			if = {
@@ -1353,15 +1352,14 @@ focus_tree = {
 					is_core_of = ROOT
 					is_able_to_build_energy_farm_in_state = yes
 					free_building_slots = {
-						building = energy_farm
+						building = renewable_energy_infra
 						size > 0
-						include_locked = yes
 					}
 				}
 				random_select_amount = 6
 				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
-					type = energy_farm
+					type = renewable_energy_infra
 					level = 1
 					instant_build = yes
 				}

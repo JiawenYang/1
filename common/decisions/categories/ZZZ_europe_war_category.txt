@@ -1,0 +1,18 @@
+# ============================================================================
+#  欧陆战争 —— 决议分类（补全定义）
+#
+#  ZZZ_europe_war_decisions.txt 的分组头内联了 icon/priority/allowed/visible，
+#  但 common/decisions/categories 是 replace_path 目录，分组头不会生成分类，
+#  缺少本定义会导致整组决议静默不加载。此处按分组头原值补齐。
+#  该组唯一决议 ZZZ_eur_escalate 限定 tag = SOV，故分类只对俄罗斯可见。
+# ============================================================================
+ZZZ_europe_war = {
+	icon = generic_political_actions
+	priority = 90
+	allowed = {
+		always = yes
+	}
+	visible = {
+		tag = SOV
+	}
+}

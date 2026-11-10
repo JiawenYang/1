@@ -505,7 +505,9 @@ USA_fighting_coronavirus = {
 				original_tag = USA
 			}
 		}
-		highlight_color_while_active = 1
+		highlight_states = {
+			highlight_color_while_active = 1
+		}
 		on_map_mode = map_and_decisions_view
 		days_mission_timeout = USA_coronavirus_outbreak_in_state_mission_var
 		activation = {
@@ -1126,8 +1128,8 @@ USA_deal_with_the_movement = {
 		available = {
 			always = no
 		}
-		highlight_color_while_active = 1
 		highlight_states = {
+			highlight_color_while_active = 1
 			highlight_state_targets = {
 				state = FROM
 			}
@@ -1599,13 +1601,7 @@ USA_counting_heads_category = {
 			always = no
 		}
 		visible = {
-			hidden_trigger = {
-				NOT = {
-					has_global_flag = USA_american_civil_war_global
-					has_global_flag = USA_american_civil_war_over_global
-					has_country_flag = USA_civil_war_mission_flag
-				}
-			}
+			always = no
 		}
 		fire_only_once = yes
 		cancel_if_not_visible = yes
@@ -1617,9 +1613,7 @@ USA_counting_heads_category = {
 				limit = {
 					has_country_flag = USA_trump_2020_inauguration_flag
 				}
-				country_event = {
-					id = usa.95
-				}
+				# 内战链已停用：usa.95 不再派发
 				country_event = {
 					id = usa.16
 				}
@@ -1628,14 +1622,12 @@ USA_counting_heads_category = {
 				limit = {
 					has_country_flag = USA_biden_2020_inauguration_flag
 				}
-				country_event = {
-					id = usa.5
-				}
+				# 内战链已停用：usa.5 不再派发
 				country_event = {
 					id = usa.16
 				}
 			}
-			custom_effect_tooltip = USA_civil_war_tooltip
+			# 内战 tooltip 已移除
 		}
 	}
 	USA_compromise_with_democrats_decision = {
@@ -1654,10 +1646,9 @@ USA_counting_heads_category = {
 			NOT = {
 				has_country_flag = USA_political_action_flag
 			}
-			has_government = conservative
-			NOT = {
-				conservative < 0.33
-			}
+			has_government = democratic
+			# 原写法: NOT 包裹 conservative 民调小于 0.33 ; 不可用: 本工程无 conservative 子意识形态及其民调访问器
+			always = no
 		}
 		ai_will_do = {
 			base = 100
@@ -1768,10 +1759,9 @@ USA_counting_heads_category = {
 			NOT = {
 				has_country_flag = USA_political_action_flag
 			}
-			has_government = social_liberal
-			NOT = {
-				social_liberal < 0.25
-			}
+			has_government = democratic
+			# 原写法: NOT 包裹 social_liberal 民调小于 0.25 ; 不可用: 本工程无 social_liberal 子意识形态及其民调访问器
+			always = no
 		}
 		ai_will_do = {
 			base = 100
@@ -1921,7 +1911,7 @@ USA_counting_heads_category = {
 			NOT = {
 				has_country_flag = USA_political_action_flag
 			}
-			has_government = conservative
+			has_government = democratic
 			set_temp_variable = {
 				var = legit_var_trigger_temp
 				value = 0.05
@@ -1983,7 +1973,7 @@ USA_counting_heads_category = {
 			NOT = {
 				has_country_flag = USA_political_action_flag
 			}
-			has_government = social_liberal
+			has_government = democratic
 			set_temp_variable = {
 				var = legit_var_trigger_temp
 				value = 0.05
@@ -2573,7 +2563,7 @@ USA_second_american_civil_war_category = {
 			always = no
 		}
 		visible = {
-			has_global_flag = USA_american_civil_war_global
+			always = no
 		}
 		timeout_effect = {
 			USA_war_with_USB = yes
@@ -3087,5 +3077,107 @@ USA_congress_category = {
 				add_poverty_development = yes
 			}
 		}
+	}
+}
+
+# 美洲反美政权干涉：USA 存在即生效，不再依赖内战结束
+USA_intervene_in_americas = {
+	category = USA_americas_intervention_category
+	icon = generic_political_actions
+	cost = 100
+	fire_only_once = no
+	days_re_enable = 180
+	allowed = {
+		original_tag = USA
+	}
+	available = {
+		any_country = {
+			limit = {
+				OR = {
+					tag = MEX
+					tag = CUB
+					tag = DOM
+					tag = HTI
+					tag = GUA
+					tag = HON
+					tag = SAL
+					tag = NIC
+					tag = COS
+					tag = PAN
+					tag = COL
+					tag = VEN
+					tag = ECU
+					tag = PER
+					tag = BOL
+					tag = BRA
+					tag = ARG
+					tag = CHL
+					tag = URY
+					tag = PAR
+					tag = GYA
+					tag = SUR
+					tag = BLZ
+					tag = JAM
+					tag = TRI
+				}
+				NOT = { has_idea = prousa }
+				NOT = { is_in_faction_with = USA }
+				NOT = { has_war_with = USA }
+				has_opinion = {
+					target = USA
+					value < -30
+				}
+			}
+			count > 0
+		}
+	}
+	complete_effect = {
+		every_country = {
+			limit = {
+				OR = {
+					tag = MEX
+					tag = CUB
+					tag = DOM
+					tag = HTI
+					tag = GUA
+					tag = HON
+					tag = SAL
+					tag = NIC
+					tag = COS
+					tag = PAN
+					tag = COL
+					tag = VEN
+					tag = ECU
+					tag = PER
+					tag = BOL
+					tag = BRA
+					tag = ARG
+					tag = CHL
+					tag = URY
+					tag = PAR
+					tag = GYA
+					tag = SUR
+					tag = BLZ
+					tag = JAM
+					tag = TRI
+				}
+				NOT = { has_idea = prousa }
+				NOT = { is_in_faction_with = USA }
+				NOT = { has_war_with = USA }
+				has_opinion = {
+					target = USA
+					value < -30
+				}
+			}
+			USA = {
+				declare_war_on = {
+					target = PREV
+					type = annex_everything
+				}
+			}
+		}
+	}
+	ai_will_do = {
+		base = 0
 	}
 }

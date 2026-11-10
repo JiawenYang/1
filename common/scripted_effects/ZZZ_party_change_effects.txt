@@ -1,0 +1,414 @@
+# ============================================================================
+# ZZZ 政党更迭效果库（千禧 24 党派体系，本工程原创，非 TFR 移植）
+# 索引 -> 党派类型（common/ideologies/00_ideologies.txt）：
+#   0 Western_Autocracy        1 conservatism          2 liberalism
+#   3 socialism                4 communist_state        5 anarchist_communism
+#   6 Conservative             7 Autocracy             8 Mod_Vilayat_e_Faqih
+#   9 Vilayat_e_Faqih         10 Kingdom              11 Caliphate
+#   12 Neutral_Muslim_Brotherhood  13 Neutral_Autocracy  14 Neutral_conservatism
+#   15 oligarchism             16 Neutral_Libertarian   17 Neutral_green
+#   18 neutral_Social          19 Neutral_Communism     20 Nat_Populism
+#   21 Nat_Fascism             22 Nat_Autocracy         23 Monarchist
+# 顶层意识形态组：0-3 democratic / 4-9 communism / 10-11 fascism /
+#                 12-19 neutrality / 20-23 nationalist
+#
+# 支持率写法依据（千禧原生）：
+#   common/scripted_effects/00_MD_politicsview_scripted_effects.txt
+#   L267-L331 change_relative_party_popularity（组内按比例缩放 + recalculate_party）
+#   L369-L376 scale_party_popularity（party_pop_array^index 直接缩放 + recalculate_party）
+#   common/scripted_effects/00_leader_setup_scripted_effects.txt L375-L396
+#   （set_variable = { party_pop_array^N = 绝对值 } 的绝对赋值写法）
+# 本库的 ZZZ_party_set_popularity 采用千禧同款变量写法：绝对写入目标党，
+# 其余 23 党按比例压缩，保证 24 党支持率总和恒为 1（即 100%）。
+#
+# 用法：在目标国家作用域内直接调用，例如 IND = { ZZZ_party_to_communist_state = yes }
+# ============================================================================
+
+# ----------------------------------------------------------------------------
+# 统一“设支持率”效果（本库唯一绝对赋值入口，禁止在事件里再用相对增减）
+# 入参：
+#   target_party_index  0-23
+#   target_party_share  0.1-0.9（建议 0.30-0.50；总和恒为 1）
+# ----------------------------------------------------------------------------
+ZZZ_party_set_popularity = {
+	# 参数合法性 clamp（千禧约定：不出现负数、不超出 0-1）
+	if = {
+		limit = { check_variable = { target_party_index = 0 compare = less_than } }
+		set_temp_variable = { target_party_index = 0 }
+	}
+	if = {
+		limit = { check_variable = { target_party_index = 23 compare = greater_than } }
+		set_temp_variable = { target_party_index = 23 }
+	}
+	if = {
+		limit = { check_variable = { target_party_share = 0.1 compare = less_than } }
+		set_temp_variable = { target_party_share = 0.1 }
+	}
+	if = {
+		limit = { check_variable = { target_party_share = 0.9 compare = greater_than } }
+		set_temp_variable = { target_party_share = 0.9 }
+	}
+
+	# 1) 统计当前 24 党总和与目标党旧值
+	set_temp_variable = { zzz_pp_total = 0 }
+	set_temp_variable = { zzz_pp_old_target = 0 }
+	for_loop_effect = {
+		start = 0
+		end = 24
+		value = i
+		add_to_temp_variable = { zzz_pp_total = party_pop_array^i }
+		if = {
+			limit = { check_variable = { i = target_party_index } }
+			set_temp_variable = { zzz_pp_old_target = party_pop_array^i }
+		}
+	}
+
+	# 2) 其余 23 党旧总和
+	set_temp_variable = { zzz_pp_other_total = zzz_pp_total }
+	subtract_from_temp_variable = { zzz_pp_other_total = zzz_pp_old_target }
+
+	# 3) 若其余党总和为 0（全部集中在目标党），先均分一个极小基数
+	if = {
+		limit = { check_variable = { zzz_pp_other_total = 0 compare = less_than_or_equals } }
+		set_temp_variable = { zzz_pp_other_total = 0 }
+		for_loop_effect = {
+			start = 0
+			end = 24
+			value = i
+			if = {
+				limit = { NOT = { check_variable = { i = target_party_index } } }
+				set_variable = { party_pop_array^i = 0.001 }
+				add_to_temp_variable = { zzz_pp_other_total = 0.001 }
+			}
+		}
+	}
+
+	# 4) 缩放系数 = (1 - 目标份额) / 其余党旧总和
+	set_temp_variable = { zzz_pp_factor = 1 }
+	subtract_from_temp_variable = { zzz_pp_factor = target_party_share }
+	divide_temp_variable = { zzz_pp_factor = zzz_pp_other_total }
+
+	# 5) 按比例压缩其余 23 党
+	for_loop_effect = {
+		start = 0
+		end = 24
+		value = i
+		if = {
+			limit = { NOT = { check_variable = { i = target_party_index } } }
+			multiply_variable = { party_pop_array^i = zzz_pp_factor }
+		}
+	}
+
+	# 6) 目标党绝对写入
+	set_variable = { party_pop_array^target_party_index = target_party_share }
+
+	# 7) 重算国会席位 / 政府状态
+}
+
+# 0 Western_Autocracy（西方威权民主，democratic 组）
+ZZZ_party_to_western_autocracy = {
+	set_variable = { ruling_party = 0 }
+	set_politics = {
+		ruling_party = democratic
+		elections_allowed = no
+	}
+	set_temp_variable = { target_party_index = 0 }
+	set_temp_variable = { target_party_share = 0.40 }
+	ZZZ_party_set_popularity = yes
+
+	# —— 金标准收尾（对齐 events/ZZZ_party_events_major.txt 的 .15/.171/.172）——
+	# 为什么必须有这一截：MD 的政党显示名由 set_party_name = "[show_ruling_party]" 决定，
+	# 只改组与标量而不跑 update_set_politics，界面会继续显示旧党名（用户实机反馈的"政党显示不正确"）。
+	clear_array = gov_coalition_array
+	update_set_politics = yes
+	add_own_ideology_drift = yes
+	update_government_coalition_strength = yes
+	update_party_name = yes
+	set_coalition_drift = yes
+}
+
+# 1 conservatism（保守主义，democratic 组）
+ZZZ_party_to_conservatism = {
+	set_variable = { ruling_party = 1 }
+	set_politics = {
+		ruling_party = democratic
+		elections_allowed = yes
+	}
+	set_temp_variable = { target_party_index = 1 }
+	set_temp_variable = { target_party_share = 0.40 }
+	ZZZ_party_set_popularity = yes
+
+	# —— 金标准收尾（对齐 events/ZZZ_party_events_major.txt 的 .15/.171/.172）——
+	# 为什么必须有这一截：MD 的政党显示名由 set_party_name = "[show_ruling_party]" 决定，
+	# 只改组与标量而不跑 update_set_politics，界面会继续显示旧党名（用户实机反馈的"政党显示不正确"）。
+	clear_array = gov_coalition_array
+	update_set_politics = yes
+	add_own_ideology_drift = yes
+	update_government_coalition_strength = yes
+	update_party_name = yes
+	set_coalition_drift = yes
+}
+
+# 2 liberalism（自由主义 / 社会自由主义，democratic 组）
+ZZZ_party_to_liberalism = {
+	set_variable = { ruling_party = 2 }
+	set_politics = {
+		ruling_party = democratic
+		elections_allowed = yes
+	}
+	set_temp_variable = { target_party_index = 2 }
+	set_temp_variable = { target_party_share = 0.38 }
+	ZZZ_party_set_popularity = yes
+
+	# —— 金标准收尾（对齐 events/ZZZ_party_events_major.txt 的 .15/.171/.172）——
+	# 为什么必须有这一截：MD 的政党显示名由 set_party_name = "[show_ruling_party]" 决定，
+	# 只改组与标量而不跑 update_set_politics，界面会继续显示旧党名（用户实机反馈的"政党显示不正确"）。
+	clear_array = gov_coalition_array
+	update_set_politics = yes
+	add_own_ideology_drift = yes
+	update_government_coalition_strength = yes
+	update_party_name = yes
+	set_coalition_drift = yes
+}
+
+# 3 socialism（社会民主主义，democratic 组）
+ZZZ_party_to_socialism = {
+	set_variable = { ruling_party = 3 }
+	set_politics = {
+		ruling_party = democratic
+		elections_allowed = yes
+	}
+	set_temp_variable = { target_party_index = 3 }
+	set_temp_variable = { target_party_share = 0.35 }
+	ZZZ_party_set_popularity = yes
+
+	# —— 金标准收尾（对齐 events/ZZZ_party_events_major.txt 的 .15/.171/.172）——
+	# 为什么必须有这一截：MD 的政党显示名由 set_party_name = "[show_ruling_party]" 决定，
+	# 只改组与标量而不跑 update_set_politics，界面会继续显示旧党名（用户实机反馈的"政党显示不正确"）。
+	clear_array = gov_coalition_array
+	update_set_politics = yes
+	add_own_ideology_drift = yes
+	update_government_coalition_strength = yes
+	update_party_name = yes
+	set_coalition_drift = yes
+}
+
+# 4 communist_state（共产主义，communism 组）
+ZZZ_party_to_communist_state = {
+	set_variable = { ruling_party = 4 }
+	set_politics = {
+		ruling_party = communism
+		elections_allowed = no
+	}
+	set_temp_variable = { target_party_index = 4 }
+	set_temp_variable = { target_party_share = 0.50 }
+	ZZZ_party_set_popularity = yes
+
+	# —— 金标准收尾（对齐 events/ZZZ_party_events_major.txt 的 .15/.171/.172）——
+	# 为什么必须有这一截：MD 的政党显示名由 set_party_name = "[show_ruling_party]" 决定，
+	# 只改组与标量而不跑 update_set_politics，界面会继续显示旧党名（用户实机反馈的"政党显示不正确"）。
+	clear_array = gov_coalition_array
+	update_set_politics = yes
+	add_own_ideology_drift = yes
+	update_government_coalition_strength = yes
+	update_party_name = yes
+	set_coalition_drift = yes
+}
+
+# 5 anarchist_communism（无政府共产主义，communism 组）
+ZZZ_party_to_anarchist_communism = {
+	set_variable = { ruling_party = 5 }
+	set_politics = {
+		ruling_party = communism
+		elections_allowed = no
+	}
+	set_temp_variable = { target_party_index = 5 }
+	set_temp_variable = { target_party_share = 0.40 }
+	ZZZ_party_set_popularity = yes
+
+	# —— 金标准收尾（对齐 events/ZZZ_party_events_major.txt 的 .15/.171/.172）——
+	# 为什么必须有这一截：MD 的政党显示名由 set_party_name = "[show_ruling_party]" 决定，
+	# 只改组与标量而不跑 update_set_politics，界面会继续显示旧党名（用户实机反馈的"政党显示不正确"）。
+	clear_array = gov_coalition_array
+	update_set_politics = yes
+	add_own_ideology_drift = yes
+	update_government_coalition_strength = yes
+	update_party_name = yes
+	set_coalition_drift = yes
+}
+
+# 6 Conservative（威权保守 / 传统右翼，communism 组）
+ZZZ_party_to_conservative = {
+	set_variable = { ruling_party = 6 }
+	set_politics = {
+		ruling_party = communism
+		elections_allowed = no
+	}
+	set_temp_variable = { target_party_index = 6 }
+	set_temp_variable = { target_party_share = 0.40 }
+	ZZZ_party_set_popularity = yes
+
+	# —— 金标准收尾（对齐 events/ZZZ_party_events_major.txt 的 .15/.171/.172）——
+	# 为什么必须有这一截：MD 的政党显示名由 set_party_name = "[show_ruling_party]" 决定，
+	# 只改组与标量而不跑 update_set_politics，界面会继续显示旧党名（用户实机反馈的"政党显示不正确"）。
+	clear_array = gov_coalition_array
+	update_set_politics = yes
+	add_own_ideology_drift = yes
+	update_government_coalition_strength = yes
+	update_party_name = yes
+	set_coalition_drift = yes
+}
+
+# 8 Mod_Vilayat_e_Faqih（改革派 / 温和教法学家，communism 组）
+ZZZ_party_to_mod_vilayat_e_faqih = {
+	set_variable = { ruling_party = 8 }
+	set_politics = {
+		ruling_party = communism
+		elections_allowed = yes
+	}
+	set_temp_variable = { target_party_index = 8 }
+	set_temp_variable = { target_party_share = 0.35 }
+	ZZZ_party_set_popularity = yes
+
+	# —— 金标准收尾（对齐 events/ZZZ_party_events_major.txt 的 .15/.171/.172）——
+	# 为什么必须有这一截：MD 的政党显示名由 set_party_name = "[show_ruling_party]" 决定，
+	# 只改组与标量而不跑 update_set_politics，界面会继续显示旧党名（用户实机反馈的"政党显示不正确"）。
+	clear_array = gov_coalition_array
+	update_set_politics = yes
+	add_own_ideology_drift = yes
+	update_government_coalition_strength = yes
+	update_party_name = yes
+	set_coalition_drift = yes
+}
+
+# 9 Vilayat_e_Faqih（原则派 / 教法学家监护，communism 组）
+ZZZ_party_to_vilayat_e_faqih = {
+	set_variable = { ruling_party = 9 }
+	set_politics = {
+		ruling_party = communism
+		elections_allowed = yes
+	}
+	set_temp_variable = { target_party_index = 9 }
+	set_temp_variable = { target_party_share = 0.40 }
+	ZZZ_party_set_popularity = yes
+
+	# —— 金标准收尾（对齐 events/ZZZ_party_events_major.txt 的 .15/.171/.172）——
+	# 为什么必须有这一截：MD 的政党显示名由 set_party_name = "[show_ruling_party]" 决定，
+	# 只改组与标量而不跑 update_set_politics，界面会继续显示旧党名（用户实机反馈的"政党显示不正确"）。
+	clear_array = gov_coalition_array
+	update_set_politics = yes
+	add_own_ideology_drift = yes
+	update_government_coalition_strength = yes
+	update_party_name = yes
+	set_coalition_drift = yes
+}
+
+# 16 Neutral_Libertarian（不结盟自由意志，neutrality 组）
+ZZZ_party_to_neutral_libertarian = {
+	set_variable = { ruling_party = 16 }
+	set_politics = {
+		ruling_party = neutrality
+		elections_allowed = yes
+	}
+	set_temp_variable = { target_party_index = 16 }
+	set_temp_variable = { target_party_share = 0.35 }
+	ZZZ_party_set_popularity = yes
+
+	# —— 金标准收尾（对齐 events/ZZZ_party_events_major.txt 的 .15/.171/.172）——
+	# 为什么必须有这一截：MD 的政党显示名由 set_party_name = "[show_ruling_party]" 决定，
+	# 只改组与标量而不跑 update_set_politics，界面会继续显示旧党名（用户实机反馈的"政党显示不正确"）。
+	clear_array = gov_coalition_array
+	update_set_politics = yes
+	add_own_ideology_drift = yes
+	update_government_coalition_strength = yes
+	update_party_name = yes
+	set_coalition_drift = yes
+}
+
+# 18 neutral_Social（不结盟社会左翼，neutrality 组）
+ZZZ_party_to_neutral_social = {
+	set_variable = { ruling_party = 18 }
+	set_politics = {
+		ruling_party = neutrality
+		elections_allowed = yes
+	}
+	set_temp_variable = { target_party_index = 18 }
+	set_temp_variable = { target_party_share = 0.38 }
+	ZZZ_party_set_popularity = yes
+
+	# —— 金标准收尾（对齐 events/ZZZ_party_events_major.txt 的 .15/.171/.172）——
+	# 为什么必须有这一截：MD 的政党显示名由 set_party_name = "[show_ruling_party]" 决定，
+	# 只改组与标量而不跑 update_set_politics，界面会继续显示旧党名（用户实机反馈的"政党显示不正确"）。
+	clear_array = gov_coalition_array
+	update_set_politics = yes
+	add_own_ideology_drift = yes
+	update_government_coalition_strength = yes
+	update_party_name = yes
+	set_coalition_drift = yes
+}
+
+# 20 Nat_Populism（民族民粹，nationalist 组）
+ZZZ_party_to_nat_populism = {
+	set_variable = { ruling_party = 20 }
+	set_politics = {
+		ruling_party = nationalist
+		elections_allowed = yes
+	}
+	set_temp_variable = { target_party_index = 20 }
+	set_temp_variable = { target_party_share = 0.40 }
+	ZZZ_party_set_popularity = yes
+
+	# —— 金标准收尾（对齐 events/ZZZ_party_events_major.txt 的 .15/.171/.172）——
+	# 为什么必须有这一截：MD 的政党显示名由 set_party_name = "[show_ruling_party]" 决定，
+	# 只改组与标量而不跑 update_set_politics，界面会继续显示旧党名（用户实机反馈的"政党显示不正确"）。
+	clear_array = gov_coalition_array
+	update_set_politics = yes
+	add_own_ideology_drift = yes
+	update_government_coalition_strength = yes
+	update_party_name = yes
+	set_coalition_drift = yes
+}
+
+# 21 Nat_Fascism（民族法西斯，nationalist 组）
+ZZZ_party_to_nat_fascism = {
+	set_variable = { ruling_party = 21 }
+	set_politics = {
+		ruling_party = nationalist
+		elections_allowed = no
+	}
+	set_temp_variable = { target_party_index = 21 }
+	set_temp_variable = { target_party_share = 0.45 }
+	ZZZ_party_set_popularity = yes
+
+	# —— 金标准收尾（对齐 events/ZZZ_party_events_major.txt 的 .15/.171/.172）——
+	# 为什么必须有这一截：MD 的政党显示名由 set_party_name = "[show_ruling_party]" 决定，
+	# 只改组与标量而不跑 update_set_politics，界面会继续显示旧党名（用户实机反馈的"政党显示不正确"）。
+	clear_array = gov_coalition_array
+	update_set_politics = yes
+	add_own_ideology_drift = yes
+	update_government_coalition_strength = yes
+	update_party_name = yes
+	set_coalition_drift = yes
+}
+
+# 22 Nat_Autocracy（民族威权，nationalist 组）
+ZZZ_party_to_nat_autocracy = {
+	set_variable = { ruling_party = 22 }
+	set_politics = {
+		ruling_party = nationalist
+		elections_allowed = no
+	}
+	set_temp_variable = { target_party_index = 22 }
+	set_temp_variable = { target_party_share = 0.45 }
+	ZZZ_party_set_popularity = yes
+
+	# —— 金标准收尾（对齐 events/ZZZ_party_events_major.txt 的 .15/.171/.172）——
+	# 为什么必须有这一截：MD 的政党显示名由 set_party_name = "[show_ruling_party]" 决定，
+	# 只改组与标量而不跑 update_set_politics，界面会继续显示旧党名（用户实机反馈的"政党显示不正确"）。
+	clear_array = gov_coalition_array
+	update_set_politics = yes
+	add_own_ideology_drift = yes
+	update_government_coalition_strength = yes
+	update_party_name = yes
+	set_coalition_drift = yes
+}

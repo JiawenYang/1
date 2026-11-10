@@ -36,7 +36,7 @@ country_event = {
 	id = usacw.6
 	title = usacw.6.t
 	desc = usacw.6.d
-	picture = GFX_report_USA_flag
+	picture = GFX_report_biden_2020_election_victory
 	is_triggered_only = yes
 	major = yes
 	fire_only_once = yes
@@ -76,6 +76,8 @@ country_event = {
 		hidden_effect = {
 			set_country_flag = USA_federal_paralysis_flag
 			set_global_flag = USA_federal_paralysis_global
+			# 联邦政府停摆：解开 taiwan_detente.5 的门（该链此前因全库无写入而中断）
+			set_country_flag = USA_government_shutdown_flag
 			# 华盛顿的外交停摆令台北失去最重要的外部保证
 			if = {
 				limit = {
@@ -84,6 +86,20 @@ country_event = {
 				CHI = {
 					add_to_variable = { CHI_taiwan_us_support = -40 tooltip = CHI_taiwan_us_support_tt }
 					clamp_variable = { var = CHI_taiwan_us_support min = 0 max = 100 }
+				}
+			}
+			# 复会段：taiwan_detente.4 在 2020 年春夏检查时该旗标尚未写入，链在此断掉，故补派 .5 接回整链
+			if = {
+				limit = {
+					country_exists = TAI
+					TAI = { has_country_flag = taiwan_detente_kmt_won }
+					TAI = { has_country_flag = taiwan_detente_xiamen_done }
+				}
+				TAI = {
+					country_event = {
+						id = taiwan_detente.5
+						days = 5
+					}
 				}
 			}
 		}
@@ -159,6 +175,212 @@ country_event = {
 	option = {
 		name = usacw.10.a
 		add_war_support = 0.05
+	}
+}
+
+# ===== 政府停摆前史（2021.1.20 第46任总统就任起） =====
+# 口径：不做内战。本链不产出宣战、国家分裂、势力分立、独立国家或内战旗标。
+# 链路：新政府上台 → 两党对立 → 预算案难产 → 国会僵局 → 联邦机构停摆 → 地方与市场反应 → 政府停摆。
+# 仅使用稳定度/政治点数/战争支持度效果；2021.8.1 的停摆节点写入 USA_government_shutdown_flag。
+
+# 2021.1.20 第46任总统就任
+country_event = {
+	id = usacw.15
+	title = usacw.15.t
+	desc = usacw.15.d
+	picture = GFX_report_biden_2020_election_victory
+	is_triggered_only = yes
+	major = yes
+	fire_only_once = yes
+
+	trigger = {
+		tag = USA
+	}
+
+	option = {
+		name = usacw.15.a
+		add_political_power = 50
+		add_stability = 0.05
+		country_event = {
+			id = usacw.16
+			days = 26
+		}
+	}
+}
+
+# 2021.2.15 两党对立
+country_event = {
+	id = usacw.16
+	title = usacw.16.t
+	desc = usacw.16.d
+	picture = GFX_report_Trump_refuses_to_concede
+	is_triggered_only = yes
+	major = yes
+	fire_only_once = yes
+
+	trigger = {
+		tag = USA
+	}
+
+	option = {
+		name = usacw.16.a
+		add_stability = -0.03
+		add_political_power = -15
+		country_event = {
+			id = usacw.17
+			days = 45
+		}
+	}
+}
+
+# 2021.4.1 预算案难产
+country_event = {
+	id = usacw.17
+	title = usacw.17.t
+	desc = usacw.17.d
+	picture = GFX_report_congress_refuses_diplomacy
+	is_triggered_only = yes
+	major = yes
+	fire_only_once = yes
+
+	trigger = {
+		tag = USA
+	}
+
+	option = {
+		name = usacw.17.a
+		add_stability = -0.04
+		add_political_power = -30
+		country_event = {
+			id = usacw.18
+			days = 44
+		}
+	}
+}
+
+# 2021.5.15 国会僵局
+country_event = {
+	id = usacw.18
+	title = usacw.18.t
+	desc = usacw.18.d
+	picture = GFX_report_congress_refuses_diplomacy
+	is_triggered_only = yes
+	major = yes
+	fire_only_once = yes
+
+	trigger = {
+		tag = USA
+	}
+
+	option = {
+		name = usacw.18.a
+		add_stability = -0.05
+		add_war_support = -0.03
+		add_political_power = -40
+		country_event = {
+			id = usacw.19
+			days = 31
+		}
+	}
+}
+
+# 2021.6.15 联邦机构停摆
+country_event = {
+	id = usacw.19
+	title = usacw.19.t
+	desc = usacw.19.d
+	picture = GFX_report_usc_future_of_government
+	is_triggered_only = yes
+	major = yes
+	fire_only_once = yes
+
+	trigger = {
+		tag = USA
+	}
+
+	option = {
+		name = usacw.19.a
+		add_stability = -0.06
+		add_political_power = -50
+		country_event = {
+			id = usacw.20
+			days = 30
+		}
+	}
+}
+
+# 2021.7.15 地方与市场反应
+country_event = {
+	id = usacw.20
+	title = usacw.20.t
+	desc = usacw.20.d
+	picture = GFX_usa_disaster
+	is_triggered_only = yes
+	major = yes
+	fire_only_once = yes
+
+	trigger = {
+		tag = USA
+	}
+
+	option = {
+		name = usacw.20.a
+		add_stability = -0.05
+		add_war_support = -0.02
+		country_event = {
+			id = usacw.21
+			days = 17
+		}
+	}
+}
+
+# 2021.8.1 政府停摆（脑死亡节点：联邦机器停转）
+country_event = {
+	id = usacw.21
+	title = usacw.21.t
+	desc = usacw.21.d
+	picture = GFX_report_congress_refuses_diplomacy
+	is_triggered_only = yes
+	major = yes
+	fire_only_once = yes
+
+	trigger = {
+		tag = USA
+	}
+
+	option = {
+		name = usacw.21.a
+		add_stability = -0.10
+		add_political_power = -75
+		hidden_effect = {
+			set_country_flag = USA_federal_paralysis_flag
+			set_global_flag = USA_federal_paralysis_global
+			# 脑死亡节点：联邦政府停摆，对外承诺失去执行能力
+			set_country_flag = USA_government_shutdown_flag
+			if = {
+				limit = {
+					country_exists = CHI
+				}
+				CHI = {
+					add_to_variable = { CHI_taiwan_us_support = -40 tooltip = CHI_taiwan_us_support_tt }
+					clamp_variable = { var = CHI_taiwan_us_support min = 0 max = 100 }
+				}
+			}
+			# 停摆落定，接回 taiwan_detente 链
+			if = {
+				limit = {
+					country_exists = TAI
+					TAI = { has_country_flag = taiwan_detente_kmt_won }
+					TAI = { has_country_flag = taiwan_detente_xiamen_done }
+				}
+				TAI = {
+					country_event = {
+						id = taiwan_detente.5
+						days = 5
+					}
+				}
+			}
+		}
 	}
 }
 
@@ -243,15 +465,9 @@ country_event = {
 
 	immediate = {
 		hidden_effect = {
-			if = {
-				limit = {
-					NOT = { is_in_faction_with = JAP }
-				}
-				JAP = {
-					add_to_faction = USA
-				}
-				set_country_flag = pdto_member
-			}
+			# 美国不进 PDTO、不挂 pdto_member：太约成员判定不能把美国算作成员。
+			# 美国与太约的共同参战改由 ZZZ_pdto_usa_co_belligerent 以 add_to_war 实现
+			# （只建战争关系，不写阵营旗标），见 common/scripted_effects/ZZZ_identity_swap_effects.txt
 			if = {
 				limit = {
 					NOT = { has_war_with = CHI }
@@ -271,14 +487,6 @@ country_event = {
 	option = {
 		name = usacw.14.a
 		effect_tooltip = {
-			if = {
-				limit = {
-					NOT = { is_in_faction_with = JAP }
-				}
-				JAP = {
-					add_to_faction = USA
-				}
-			}
 			declare_war_on = {
 				target = CHI
 				type = annex_everything

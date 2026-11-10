@@ -455,9 +455,7 @@ DSW_FRA_dep_change_government_type_military_dictatorship = {
 }
 DSW_FRA_dep_remove_gov_types = {
 	remove_ideas = {
-		ZZZ_russian_political_system
 		ZZZ_chinese_political_system
-		ZZZ_taiwanese_semi_presidential_system
 		ZZZ_absolute_monarchy
 		ZZZ_military_dictatorship
 		ZZZ_socialist_republic
@@ -2547,147 +2545,14 @@ DSW_FRA_dep_restore_previous_government_type = {
 		clear_variable = original_government_type
 		if = {
 			limit = {
-				check_variable = {
-					original_popularities^num > 0
-				}
+				has_variable = original_popularities
 			}
-			set_variable = {
-				party_pop_array^0 = 0
-			}
-			set_variable = {
-				party_pop_array^1 = 0
-			}
-			set_variable = {
-				party_pop_array^2 = 0
-			}
-			set_variable = {
-				party_pop_array^3 = 0
-			}
-			set_variable = {
-				party_pop_array^4 = 0
-			}
-			set_variable = {
-				party_pop_array^5 = 0
-			}
-			set_variable = {
-				party_pop_array^6 = 0
-			}
-			set_variable = {
-				party_pop_array^7 = 0
-			}
-			set_variable = {
-				party_pop_array^8 = 0
-			}
-			set_variable = {
-				party_pop_array^9 = 0
-			}
-			set_variable = {
-				party_pop_array^10 = 0
-			}
-			set_variable = {
-				party_pop_array^11 = 0
-			}
-			set_variable = {
-				party_pop_array^12 = 0
-			}
-			set_variable = {
-				party_pop_array^13 = 0
-			}
-			set_variable = {
-				party_pop_array^14 = 0
-			}
-			set_variable = {
-				party_pop_array^15 = 0
-			}
-			set_variable = {
-				party_pop_array^16 = 0
-			}
-			set_variable = {
-				party_pop_array^17 = 0
-			}
-			set_variable = {
-				party_pop_array^18 = 0
-			}
-			set_variable = {
-				party_pop_array^19 = 0
-			}
-			set_variable = {
-				party_pop_array^20 = 0
-			}
-			set_variable = {
-				party_pop_array^21 = 0
-			}
-			set_variable = {
-				party_pop_array^22 = 0
-			}
-			set_variable = {
-				party_pop_array^23 = 0
-			}
-			set_variable = {
-				party_pop_array^4 = original_popularities^0
-			}
-			divide_variable = {
-				party_pop_array^4 = 100
-			}
-			set_variable = {
-				party_pop_array^19 = original_popularities^1
-			}
-			divide_variable = {
-				party_pop_array^19 = 100
-			}
-			set_variable = {
-				party_pop_array^18 = original_popularities^2
-			}
-			divide_variable = {
-				party_pop_array^18 = 100
-			}
-			set_variable = {
-				party_pop_array^3 = original_popularities^3
-			}
-			divide_variable = {
-				party_pop_array^3 = 100
-			}
-			set_variable = {
-				party_pop_array^2 = original_popularities^4
-			}
-			divide_variable = {
-				party_pop_array^2 = 100
-			}
-			set_variable = {
-				party_pop_array^16 = original_popularities^5
-			}
-			divide_variable = {
-				party_pop_array^16 = 100
-			}
-			set_variable = {
-				party_pop_array^1 = original_popularities^6
-			}
-			divide_variable = {
-				party_pop_array^1 = 100
-			}
-			set_variable = {
-				party_pop_array^14 = original_popularities^7
-			}
-			divide_variable = {
-				party_pop_array^14 = 100
-			}
-			set_variable = {
-				party_pop_array^22 = original_popularities^8
-			}
-			divide_variable = {
-				party_pop_array^22 = 100
-			}
-			set_variable = {
-				party_pop_array^21 = original_popularities^9
-			}
-			divide_variable = {
-				party_pop_array^21 = 100
-			}
-			set_variable = {
-				party_pop_array^20 = original_popularities^10
-			}
-			divide_variable = {
-				party_pop_array^20 = 100
+			set_popularities = {
+				democratic = original_popularities^0
+				communism = original_popularities^1
+				fascism = original_popularities^2
+				neutrality = original_popularities^3
+				nationalist = original_popularities^4
 			}
 			recalculate_party = yes
 			clear_array = original_popularities
@@ -2864,11 +2729,11 @@ DSW_FRA_dep_increase_state_category = {
 		effect_tooltip = {
 			add_extra_state_shared_building_slots = 1
 		}
-		set_state_category = village
+		set_state_category = state_01
 	}
 	else_if = {
 		limit = {
-			has_state_category = village
+			has_state_category = state_01
 		}
 		effect_tooltip = {
 			add_extra_state_shared_building_slots = 1
@@ -2891,20 +2756,20 @@ DSW_FRA_dep_increase_state_category = {
 		effect_tooltip = {
 			add_extra_state_shared_building_slots = 1
 		}
-		set_state_category = suburb
+		set_state_category = state_02
 	}
 	else_if = {
 		limit = {
-			has_state_category = suburb
+			has_state_category = state_02
 		}
 		effect_tooltip = {
 			add_extra_state_shared_building_slots = 1
 		}
-		set_state_category = large_suburb
+		set_state_category = state_02
 	}
 	else_if = {
 		limit = {
-			has_state_category = large_suburb
+			has_state_category = state_02
 		}
 		effect_tooltip = {
 			add_extra_state_shared_building_slots = 1
@@ -2936,11 +2801,11 @@ DSW_FRA_dep_increase_state_category = {
 		effect_tooltip = {
 			add_extra_state_shared_building_slots = 1
 		}
-		set_state_category = conurbation
+		set_state_category = state_03
 	}
 	else_if = {
 		limit = {
-			has_state_category = conurbation
+			has_state_category = state_03
 		}
 		effect_tooltip = {
 			add_extra_state_shared_building_slots = 1
@@ -2983,7 +2848,7 @@ DSW_FRA_dep_get_current_government_type = {
 	DSW_FRA_dep_get_current_popularities = yes
 	if = {
 		limit = {
-			has_coalition = yes
+			always = no
 		}
 		for_each_loop = {
 			array = coalition_partners
@@ -2994,31 +2859,31 @@ DSW_FRA_dep_get_current_government_type = {
 	}
 	if = {
 		limit = {
-			has_autonomy_state = colonial_government
+			has_autonomy_state = autonomy_puppet_state
 		}
 		set_country_flag = colonial_government
 	}
 	else_if = {
 		limit = {
-			has_autonomy_state = integrated_puppet
+			has_autonomy_state = autonomy_autonomous_state
 		}
 		set_country_flag = integrated_puppet
 	}
 	else_if = {
 		limit = {
-			has_autonomy_state = occupied_puppet
+			has_autonomy_state = autonomy_collaboration_government
 		}
 		set_country_flag = occupied_puppet
 	}
 	else_if = {
 		limit = {
-			has_autonomy_state = autonomous_puppet
+			has_autonomy_state = autonomy_satellite_state
 		}
 		set_country_flag = autonomous_puppet
 	}
 	else_if = {
 		limit = {
-			has_autonomy_state = nominal_puppet
+			has_autonomy_state = autonomy_associated_state
 		}
 		set_country_flag = nominal_puppet
 	}
@@ -3032,46 +2897,19 @@ DSW_FRA_dep_get_current_government_type = {
 DSW_FRA_dep_get_current_popularities = {
 	clear_array = original_popularities
 	add_to_array = {
-		original_popularities = party_popularity_100@totalitarian_socialist
+		original_popularities = party_popularity_100@democratic
 	}
 	add_to_array = {
-		original_popularities = party_popularity_100@communist
+		original_popularities = party_popularity_100@communism
 	}
 	add_to_array = {
-		original_popularities = party_popularity_100@libertarian_socialist
+		original_popularities = party_popularity_100@fascism
 	}
 	add_to_array = {
-		original_popularities = party_popularity_100@social_democrat
-	}
-	add_to_array = {
-		original_popularities = party_popularity_100@social_liberal
-	}
-	add_to_array = {
-		original_popularities = party_popularity_100@market_liberal
-	}
-	add_to_array = {
-		original_popularities = party_popularity_100@conservative
-	}
-	add_to_array = {
-		original_popularities = party_popularity_100@authoritarian_democrat
+		original_popularities = party_popularity_100@neutrality
 	}
 	add_to_array = {
 		original_popularities = party_popularity_100@nationalist
-	}
-	add_to_array = {
-		original_popularities = party_popularity_100@fascist
-	}
-	set_temp_variable = {
-		sum = 100
-	}
-	for_each_loop = {
-		array = original_popularities
-		subtract_from_temp_variable = {
-			sum = v
-		}
-	}
-	add_to_array = {
-		original_popularities = sum
 	}
 }
 DSW_FRA_dep_add_total_campaign_slot = {

@@ -3,14 +3,6 @@ on_actions = {
 		effect = {
 			SOV = {
 				DSW_SOV_remove_preparation_bonuses = yes
-				if = {
-					limit = {
-						date < 2020.1.1
-						NOT = {
-							has_country_flag = DSW_SOV_tfr_active
-						}
-					}
-				}
 				DSW_SOV_fix_putin_tricolor = yes
 				DSW_SOV_migrate_postwar_patch = yes
 				DSW_SOV_restore_command_reforms = yes
@@ -43,7 +35,7 @@ on_actions = {
 			}
 			if = {
 				limit = {
-					date > 2019.12.31
+					date > 2016.12.31
 					NOT = {
 						has_country_flag = DSW_SOV_tfr_active
 					}

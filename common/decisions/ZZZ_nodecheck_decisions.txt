@@ -1,0 +1,615 @@
+# ============================================================================
+#  关键节点检查工具（ZZZ_nodecheck）—— 纯只读
+#
+#  规则：本文件只做检查，不推进主线、不改变任何游戏状态。
+#    1. 所有决议的 complete_effect 只含 log 与 custom_effect_tooltip；
+#    2. 不调用事件、不调用开战/结算效果、不置旗标、不加点数与装备；
+#    3. 需要判断「某节点会不会触发」时，逐条输出条件求值结果（满足/不满足），
+#       末尾给出 STUCK AT（当前卡在哪一步），由玩家自行决定是否继续。
+#
+#  【未实现节点（只检查，不补位）】
+#    1) 北约解体：只有旗标 USA_federal_paralysis_global
+#       （events/TFR_events_USA_civilwar.txt），无解体事件/决议。
+#    2) 巴尔干各国专属选举排期：只有通用 on_new_term_election
+#       （common/on_actions/00_on_actions.txt:107），无专属事件。
+#
+#  【检查决议】
+#    ZZZ_nc_ru_status      → 俄乌开战 / 北约加入
+#    ZZZ_nc_eur_status     → 欧陆战争升级与结算
+#    ZZZ_nc_gaw_status     → GAW 亚洲战争
+#    ZZZ_nc_usa_status     → 美国脑死亡链
+#    ZZZ_nc_balkan_status  → 巴尔干联邦 / 退约
+# ============================================================================
+ZZZ_nodecheck = {
+
+    # 分类属性（icon / priority / visible）在 categories/ZZZ_nodecheck_category.txt，
+    # 本文件只放决议本体。
+
+    # ------------------------------------------------------------------
+    #  一、俄乌开战与北约加入（只读判定）
+    #  正式入口：DSW_SOV_declare_war_on_ukraine（SOV）
+    #  后续入口：官方决议 ZZZ_eur_escalate（同时代表北约参战）
+    # ------------------------------------------------------------------
+    ZZZ_nc_ru_status = {
+        icon = generic_political_actions
+        cost = 0
+        fire_only_once = no
+        days_re_enable = 1
+
+        allowed = {
+            always = yes
+        }
+
+        visible = {
+            is_ai = no
+        }
+
+        available = {
+            is_ai = no
+        }
+
+        complete_effect = {
+            custom_effect_tooltip = ZZZ_nc_ru_status_tt
+            log = "[GetDateText]: ===== RU / NATO node check ====="
+
+            # --- 条件 1：UKR 是否存在 ---
+            if = {
+                limit = {
+                    country_exists = UKR
+                }
+                log = "[GetDateText]: CHECK country_exists UKR = YES"
+            }
+            else = {
+                log = "[GetDateText]: CHECK country_exists UKR = NO"
+            }
+
+            # --- 条件 2：SOV 是否存在 ---
+            if = {
+                limit = {
+                    country_exists = SOV
+                }
+                log = "[GetDateText]: CHECK country_exists SOV = YES"
+            }
+            else = {
+                log = "[GetDateText]: CHECK country_exists SOV = NO"
+            }
+
+            # --- 条件 3：正式开战入口是否已执行（DSW_SOV_smo_started）---
+            if = {
+                limit = {
+                    country_exists = SOV
+                    SOV = { has_country_flag = DSW_SOV_smo_started }
+                }
+                log = "[GetDateText]: CHECK SOV flag DSW_SOV_smo_started = YES"
+            }
+            else = {
+                log = "[GetDateText]: CHECK SOV flag DSW_SOV_smo_started = NO (DSW_SOV_declare_war_on_ukraine 未执行)"
+            }
+
+            # --- 条件 4：SOV 是否已与 UKR 交战 ---
+            if = {
+                limit = {
+                    country_exists = SOV
+                    country_exists = UKR
+                    SOV = { has_war_with = UKR }
+                }
+                log = "[GetDateText]: CHECK SOV at war with UKR = YES"
+            }
+            else = {
+                log = "[GetDateText]: CHECK SOV at war with UKR = NO"
+            }
+
+            # --- 条件 5：欧陆升级是否已开打 ---
+            if = {
+                limit = { has_global_flag = DSW_SOV_european_war_started }
+                log = "[GetDateText]: CHECK DSW_SOV_european_war_started = YES"
+            }
+            else = {
+                log = "[GetDateText]: CHECK DSW_SOV_european_war_started = NO"
+            }
+
+            if = {
+                limit = { has_global_flag = ZZZ_eur_war_ongoing }
+                log = "[GetDateText]: CHECK ZZZ_eur_war_ongoing = YES"
+            }
+            else = {
+                log = "[GetDateText]: CHECK ZZZ_eur_war_ongoing = NO"
+            }
+
+            if = {
+                limit = { has_global_flag = ZZZ_eur_war_resolved }
+                log = "[GetDateText]: CHECK ZZZ_eur_war_resolved = YES"
+            }
+            else = {
+                log = "[GetDateText]: CHECK ZZZ_eur_war_resolved = NO"
+            }
+
+            # --- 求值明细：卡在哪一步 ---
+            if = {
+                limit = {
+                    NOT = { country_exists = UKR }
+                }
+                log = "[GetDateText]: STUCK AT: UKR does not exist"
+            }
+            else_if = {
+                limit = {
+                    NOT = { country_exists = SOV }
+                }
+                log = "[GetDateText]: STUCK AT: SOV does not exist"
+            }
+            else_if = {
+                limit = {
+                    NOT = { SOV = { has_country_flag = DSW_SOV_smo_started } }
+                }
+                log = "[GetDateText]: STUCK AT: official entry not executed (expect DSW_SOV_declare_war_on_ukraine)"
+            }
+            else_if = {
+                limit = {
+                    NOT = { SOV = { has_war_with = UKR } }
+                }
+                log = "[GetDateText]: STUCK AT: SOV not at war with UKR"
+            }
+            else_if = {
+                limit = {
+                    NOT = { has_global_flag = ZZZ_eur_war_ongoing }
+                }
+                log = "[GetDateText]: STUCK AT: europe war not escalated (expect ZZZ_eur_escalate)"
+            }
+            else_if = {
+                limit = {
+                    NOT = { has_global_flag = ZZZ_eur_war_resolved }
+                }
+                log = "[GetDateText]: STUCK AT: europe war ongoing, awaiting settlement"
+            }
+            else = {
+                log = "[GetDateText]: STUCK AT: none, europe war resolved"
+            }
+        }
+
+        ai_will_do = {
+            base = 0
+        }
+    }
+
+    # ------------------------------------------------------------------
+    #  二、欧陆战争（只读判定）
+    #  正式入口：ZZZ_eur_escalate / 三个结算效果
+    # ------------------------------------------------------------------
+    ZZZ_nc_eur_status = {
+        icon = generic_political_actions
+        cost = 0
+        fire_only_once = no
+        days_re_enable = 1
+
+        allowed = {
+            always = yes
+        }
+
+        visible = {
+            is_ai = no
+        }
+
+        available = {
+            is_ai = no
+        }
+
+        complete_effect = {
+            custom_effect_tooltip = ZZZ_nc_eur_status_tt
+            log = "[GetDateText]: ===== Europe war node check ====="
+
+            if = {
+                limit = { has_global_flag = ZZZ_eur_war_ongoing }
+                log = "[GetDateText]: CHECK ZZZ_eur_war_ongoing = YES"
+            }
+            else = {
+                log = "[GetDateText]: CHECK ZZZ_eur_war_ongoing = NO"
+            }
+
+            if = {
+                limit = { has_global_flag = ZZZ_eur_war_begins }
+                log = "[GetDateText]: CHECK ZZZ_eur_war_begins = YES"
+            }
+            else = {
+                log = "[GetDateText]: CHECK ZZZ_eur_war_begins = NO"
+            }
+
+            if = {
+                limit = { has_global_flag = DSW_SOV_european_war_started }
+                log = "[GetDateText]: CHECK DSW_SOV_european_war_started = YES"
+            }
+            else = {
+                log = "[GetDateText]: CHECK DSW_SOV_european_war_started = NO"
+            }
+
+            if = {
+                limit = { has_global_flag = ZZZ_eur_nato_victory }
+                log = "[GetDateText]: CHECK settlement ZZZ_eur_nato_victory = YES"
+            }
+            else = {
+                log = "[GetDateText]: CHECK settlement ZZZ_eur_nato_victory = NO"
+            }
+
+            if = {
+                limit = { has_global_flag = ZZZ_eur_csto_victory }
+                log = "[GetDateText]: CHECK settlement ZZZ_eur_csto_victory = YES"
+            }
+            else = {
+                log = "[GetDateText]: CHECK settlement ZZZ_eur_csto_victory = NO"
+            }
+
+            if = {
+                limit = { has_global_flag = ZZZ_eur_stalemate }
+                log = "[GetDateText]: CHECK settlement ZZZ_eur_stalemate = YES"
+            }
+            else = {
+                log = "[GetDateText]: CHECK settlement ZZZ_eur_stalemate = NO"
+            }
+
+            if = {
+                limit = { has_global_flag = ZZZ_eur_war_resolved }
+                log = "[GetDateText]: CHECK ZZZ_eur_war_resolved = YES"
+            }
+            else = {
+                log = "[GetDateText]: CHECK ZZZ_eur_war_resolved = NO"
+            }
+
+            # --- 求值明细：卡在哪一步 ---
+            if = {
+                limit = {
+                    NOT = { has_global_flag = ZZZ_eur_war_ongoing }
+                    NOT = { has_global_flag = ZZZ_eur_war_resolved }
+                }
+                log = "[GetDateText]: STUCK AT: escalation not triggered (expect ZZZ_eur_escalate)"
+            }
+            else_if = {
+                limit = {
+                    has_global_flag = ZZZ_eur_war_ongoing
+                    NOT = { has_global_flag = ZZZ_eur_war_resolved }
+                }
+                log = "[GetDateText]: STUCK AT: war ongoing, settlement branch not resolved"
+            }
+            else = {
+                log = "[GetDateText]: STUCK AT: none, war resolved"
+            }
+        }
+
+        ai_will_do = {
+            base = 0
+        }
+    }
+
+    # ------------------------------------------------------------------
+    #  三、GAW 亚洲战争（只读判定）
+    #  正式入口：ZZZ_start_gaw_from_korea（CHI） / prc.1001 / prc.1002
+    # ------------------------------------------------------------------
+    ZZZ_nc_gaw_status = {
+        icon = generic_industry
+        cost = 0
+        fire_only_once = no
+        days_re_enable = 1
+
+        allowed = {
+            always = yes
+        }
+
+        visible = {
+            is_ai = no
+        }
+
+        available = {
+            is_ai = no
+        }
+
+        complete_effect = {
+            custom_effect_tooltip = ZZZ_nc_gaw_status_tt
+            log = "[GetDateText]: ===== GAW node check ====="
+
+            if = {
+                limit = { has_global_flag = pan_asian_war_ongoing }
+                log = "[GetDateText]: CHECK pan_asian_war_ongoing = YES"
+            }
+            else = {
+                log = "[GetDateText]: CHECK pan_asian_war_ongoing = NO"
+            }
+
+            if = {
+                limit = { has_global_flag = GAW_soon }
+                log = "[GetDateText]: CHECK GAW_soon = YES"
+            }
+            else = {
+                log = "[GetDateText]: CHECK GAW_soon = NO"
+            }
+
+            if = {
+                limit = { has_global_flag = gaw_china_victory_settled }
+                log = "[GetDateText]: CHECK gaw_china_victory_settled = YES"
+            }
+            else = {
+                log = "[GetDateText]: CHECK gaw_china_victory_settled = NO"
+            }
+
+            if = {
+                limit = { has_global_flag = gaw_japan_victory_settled }
+                log = "[GetDateText]: CHECK gaw_japan_victory_settled = YES"
+            }
+            else = {
+                log = "[GetDateText]: CHECK gaw_japan_victory_settled = NO"
+            }
+
+            if = {
+                limit = { has_global_flag = korean_confederation_formed }
+                log = "[GetDateText]: CHECK korean_confederation_formed = YES"
+            }
+            else = {
+                log = "[GetDateText]: CHECK korean_confederation_formed = NO"
+            }
+
+            if = {
+                limit = {
+                    country_exists = JAP
+                    country_exists = CHI
+                    JAP = { has_war_with = CHI }
+                }
+                log = "[GetDateText]: CHECK JAP at war with CHI = YES"
+            }
+            else = {
+                log = "[GetDateText]: CHECK JAP at war with CHI = NO"
+            }
+
+            # --- 求值明细：卡在哪一步 ---
+            if = {
+                limit = {
+                    NOT = { has_global_flag = pan_asian_war_ongoing }
+                }
+                log = "[GetDateText]: STUCK AT: GAW not started (expect ZZZ_start_gaw_from_korea / PRC_gaw_start)"
+            }
+            else_if = {
+                limit = {
+                    has_global_flag = pan_asian_war_ongoing
+                    NOT = { has_global_flag = gaw_china_victory_settled }
+                    NOT = { has_global_flag = gaw_japan_victory_settled }
+                }
+                log = "[GetDateText]: STUCK AT: war ongoing, no settlement yet (expect prc.1001 / prc.1002)"
+            }
+            else = {
+                log = "[GetDateText]: STUCK AT: none, settled"
+            }
+        }
+
+        ai_will_do = {
+            base = 0
+        }
+    }
+
+    # ------------------------------------------------------------------
+    #  四、美国脑死亡链（只读判定）
+    #  链：usacw.5 → usacw.6 → usacw.7（或 usacw.15 → … → usacw.21）
+    # ------------------------------------------------------------------
+    ZZZ_nc_usa_status = {
+        icon = generic_political_actions
+        cost = 0
+        fire_only_once = no
+        days_re_enable = 1
+
+        allowed = {
+            always = yes
+        }
+
+        visible = {
+            is_ai = no
+        }
+
+        available = {
+            is_ai = no
+        }
+
+        complete_effect = {
+            custom_effect_tooltip = ZZZ_nc_usa_status_tt
+            log = "[GetDateText]: ===== USA brain-dead node check ====="
+
+            if = {
+                limit = { has_global_flag = USA_federal_paralysis_global }
+                log = "[GetDateText]: CHECK global USA_federal_paralysis_global = YES"
+            }
+            else = {
+                log = "[GetDateText]: CHECK global USA_federal_paralysis_global = NO"
+            }
+
+            if = {
+                limit = {
+                    country_exists = USA
+                }
+                if = {
+                    limit = {
+                        USA = { has_country_flag = USA_republican_collapse_flag }
+                    }
+                    log = "[GetDateText]: CHECK USA_republican_collapse_flag = YES (usacw.5 已执行)"
+                }
+                else = {
+                    log = "[GetDateText]: CHECK USA_republican_collapse_flag = NO (usacw.5 未执行)"
+                }
+
+                if = {
+                    limit = {
+                        USA = { has_country_flag = USA_democratic_landslide_flag }
+                    }
+                    log = "[GetDateText]: CHECK USA_democratic_landslide_flag = YES (usacw.6 已执行)"
+                }
+                else = {
+                    log = "[GetDateText]: CHECK USA_democratic_landslide_flag = NO (usacw.6 未执行)"
+                }
+
+                if = {
+                    limit = {
+                        USA = { has_country_flag = USA_federal_paralysis_flag }
+                    }
+                    log = "[GetDateText]: CHECK USA_federal_paralysis_flag = YES (usacw.7 / usacw.21 已执行)"
+                }
+                else = {
+                    log = "[GetDateText]: CHECK USA_federal_paralysis_flag = NO"
+                }
+
+                if = {
+                    limit = {
+                        USA = { has_country_flag = USA_government_shutdown_flag }
+                    }
+                    log = "[GetDateText]: CHECK USA_government_shutdown_flag = YES"
+                }
+                else = {
+                    log = "[GetDateText]: CHECK USA_government_shutdown_flag = NO"
+                }
+
+                if = {
+                    limit = {
+                        USA = { has_idea = NATO_member }
+                    }
+                    log = "[GetDateText]: CHECK USA still NATO_member = YES"
+                }
+                else = {
+                    log = "[GetDateText]: CHECK USA still NATO_member = NO"
+                }
+            }
+            else = {
+                log = "[GetDateText]: CHECK country_exists USA = NO"
+            }
+
+            # --- 求值明细：卡在哪一步 ---
+            if = {
+                limit = {
+                    NOT = { country_exists = USA }
+                }
+                log = "[GetDateText]: STUCK AT: USA does not exist"
+            }
+            else_if = {
+                limit = {
+                    NOT = { USA = { has_country_flag = USA_republican_collapse_flag } }
+                }
+                log = "[GetDateText]: STUCK AT: chain head not fired (expect usacw.5)"
+            }
+            else_if = {
+                limit = {
+                    NOT = { USA = { has_country_flag = USA_democratic_landslide_flag } }
+                }
+                log = "[GetDateText]: STUCK AT: landslide not fired (expect usacw.6)"
+            }
+            else_if = {
+                limit = {
+                    NOT = { USA = { has_country_flag = USA_federal_paralysis_flag } }
+                }
+                log = "[GetDateText]: STUCK AT: paralysis not fired (expect usacw.7 / usacw.21)"
+            }
+            else = {
+                log = "[GetDateText]: STUCK AT: none, paralysis reached"
+            }
+
+            log = "[GetDateText]: NOTE NATO dissolution node = NOT IMPLEMENTED (flag only)"
+        }
+
+        ai_will_do = {
+            base = 0
+        }
+    }
+
+    # ------------------------------------------------------------------
+    #  五、巴尔干（只读判定）
+    #  正式入口：SerbiaFocus.17 / Serbia.27 / NATO_leave / EU_leave_effect
+    # ------------------------------------------------------------------
+    ZZZ_nc_balkan_status = {
+        icon = generic_political_actions
+        cost = 0
+        fire_only_once = no
+        days_re_enable = 1
+
+        allowed = {
+            always = yes
+        }
+
+        visible = {
+            is_ai = no
+        }
+
+        available = {
+            is_ai = no
+        }
+
+        complete_effect = {
+            custom_effect_tooltip = ZZZ_nc_balkan_status_tt
+            log = "[GetDateText]: ===== Balkan node check ====="
+
+            if = {
+                limit = { country_exists = SER }
+                log = "[GetDateText]: CHECK country_exists SER = YES"
+            }
+            else = {
+                log = "[GetDateText]: CHECK country_exists SER = NO"
+            }
+
+            if = {
+                limit = { has_country_flag = balkan_subject_agree }
+                log = "[GetDateText]: CHECK balkan_subject_agree = YES (SerbiaFocus.17 已执行)"
+            }
+            else = {
+                log = "[GetDateText]: CHECK balkan_subject_agree = NO"
+            }
+
+            if = {
+                limit = { has_autonomy_state = autonomy_balkan_federation }
+                log = "[GetDateText]: CHECK autonomy_balkan_federation = YES (Serbia.27 已执行)"
+            }
+            else = {
+                log = "[GetDateText]: CHECK autonomy_balkan_federation = NO"
+            }
+
+            if = {
+                limit = { has_idea = NATO_member }
+                log = "[GetDateText]: CHECK has_idea NATO_member = YES"
+            }
+            else = {
+                log = "[GetDateText]: CHECK has_idea NATO_member = NO"
+            }
+
+            if = {
+                limit = {
+                    OR = {
+                        has_idea = EU_euro_idea
+                        has_idea = EU_euro_idea1
+                    }
+                }
+                log = "[GetDateText]: CHECK EU membership idea = YES"
+            }
+            else = {
+                log = "[GetDateText]: CHECK EU membership idea = NO"
+            }
+
+            # --- 求值明细：卡在哪一步 ---
+            if = {
+                limit = {
+                    NOT = { country_exists = SER }
+                }
+                log = "[GetDateText]: STUCK AT: SER does not exist"
+            }
+            else_if = {
+                limit = {
+                    NOT = { has_country_flag = balkan_subject_agree }
+                }
+                log = "[GetDateText]: STUCK AT: federation invitation not accepted (expect SerbiaFocus.17)"
+            }
+            else_if = {
+                limit = {
+                    has_country_flag = balkan_subject_agree
+                    NOT = { has_autonomy_state = autonomy_balkan_federation }
+                }
+                log = "[GetDateText]: STUCK AT: autonomy not applied (expect Serbia.27)"
+            }
+            else = {
+                log = "[GetDateText]: STUCK AT: none, federation autonomy applied"
+            }
+
+            log = "[GetDateText]: NOTE dedicated Balkan election schedule = NOT IMPLEMENTED (generic chain only)"
+        }
+
+        ai_will_do = {
+            base = 0
+        }
+    }
+}

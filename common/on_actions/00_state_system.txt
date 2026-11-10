@@ -46,7 +46,7 @@ on_actions = {
 			limit = {
 				original_tag = TAI
 			}
- 			change_state_system_taiwanese_semi_presidential_system = yes
+ 			change_state_system_presidential_system = yes
 		}
 		every_country = {
 			limit = {
@@ -81,15 +81,21 @@ on_actions = {
 		}
 		every_country = {
 			limit = {
+				original_tag = PER
+			}
+			change_state_system_theocracy = yes
+		}
+		every_country = {
+			limit = {
 				original_tag = SOV
 			}
-			change_state_system_russian_political_system = yes
+			change_state_system_presidential_system = yes
 		}
 		every_country = {
 			limit = {
 				original_tag = USA
 			}
-			change_state_system_american_presidential_republic = yes
+			change_state_system_presidential_system = yes
 		}
 		every_country = {
 			limit = {
@@ -104,6 +110,7 @@ on_actions = {
 		every_country = {
 			limit = { 
 				OR = {
+					original_tag = CHI
 					original_tag = CUB
 					original_tag = LAO
 					original_tag = NKO
@@ -115,7 +122,6 @@ on_actions = {
 		every_country = {
 			limit = {
 				OR = {
-					original_tag = CHI
 					original_tag = NPM
 					}
 				}
@@ -154,7 +160,6 @@ on_actions = {
 				has_elections = no
 				is_in_array = { ruling_party = 21 }	#fascists
 				}
-			}
  			change_state_system_fascist_dictatorship = yes
 		}
 		every_country = {
@@ -165,4 +170,5 @@ on_actions = {
  			change_state_system_ultranationalist_dictatorship = yes
 		}
 	}
+}
 }

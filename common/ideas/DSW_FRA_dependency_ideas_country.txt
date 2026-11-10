@@ -39,9 +39,6 @@ ideas = {
 			allowed = {
 				always = no
 			}
-			modifier = {
-
-			}
 		}
 		BEL_Wallonie_Seperatism_idea = {
 			picture = Wallonie
@@ -111,13 +108,9 @@ ideas = {
 				industrial_capacity_dockyard = -0.5
 				industrial_capacity_factory = -0.5
 				conscription_factor = -0.5
-				cat_old_land_doctrine_cost_factor = 0.5
-				cat_old_air_doctrine_cost_factor = 0.5
-				cat_old_naval_doctrine_cost_factor = 0.5
-				production_cost_max_ship_hull_submarine = 700
-				production_cost_max_ship_hull_cruiser = 5000
-				production_cost_max_ship_hull_heavy = 8000
-				production_cost_max_ship_hull_carrier = 4500
+				land_doctrine_cost_factor = 0.5
+				air_doctrine_cost_factor = 0.5
+				naval_doctrine_cost_factor = 0.5
 			}
 		}
 		SWI_bunkers_of_the_revolution_idea = {
@@ -342,8 +335,7 @@ ideas = {
 			}
 			removal_cost = -1
 			modifier = {
-				social_democrat_drift = 0.03
-				authoritarian_democrat_drift = 0.06
+				democratic_drift = 0.06
 				political_power_gain = -0.10
 			}
 		}
@@ -356,9 +348,7 @@ ideas = {
 				tag = APA
 			}
 			available = {
-				NOT = {
-					has_global_flag = USA_american_civil_war_over_global
-				}
+				country_exists = USA
 			}
 			modifier = {
 				send_volunteer_divisions_required = -0.75

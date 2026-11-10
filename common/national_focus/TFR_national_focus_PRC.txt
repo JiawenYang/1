@@ -30,11 +30,16 @@ focus_tree = {
 				days = 30
 			}
 			add_political_power = 50
-			unlock_decision_tooltip = PRC_visit_wuhan
 		}
 	}
 	focus = {
 		id = PRC_nationwide_lockdown
+		allow_branch = {
+			OR = {
+				date > 2019.12.31
+				has_global_flag = ZZZ_debug_2020
+			}
+		}
 		icon = GFX_focus_PRC_Avoid_Nationwide_Panic
 		x = 2
 		y = 1
@@ -63,6 +68,12 @@ focus_tree = {
 	}
 	focus = {
 		id = PRC_implement_emergency_measures
+		allow_branch = {
+			OR = {
+				date > 2019.12.31
+				has_global_flag = ZZZ_debug_2020
+			}
+		}
 		icon = GFX_focus_PRC_emergency_measures
 		x = 0
 		y = 1
@@ -78,13 +89,16 @@ focus_tree = {
 			focus = PRC_lockdown_wuhan
 		}
 		completion_reward = {
-			unlock_decision_tooltip = PRC_distribute_masks
-			unlock_decision_tooltip = PRC_construct_emergency_hospitals
-			unlock_decision_tooltip = PRC_deploy_the_pla
 		}
 	}
 	focus = {
 		id = PRC_implement_widespread_testing
+		allow_branch = {
+			OR = {
+				date > 2019.12.31
+				has_global_flag = ZZZ_debug_2020
+			}
+		}
 		icon = GFX_focus_PRC_implement_widespread_testing
 		x = -2
 		y = 1
@@ -108,6 +122,12 @@ focus_tree = {
 	}
 	focus = {
 		id = PRC_economic_stability_policy
+		allow_branch = {
+			OR = {
+				date > 2019.12.31
+				has_global_flag = ZZZ_debug_2020
+			}
+		}
 		icon = GFX_focus_PRC_economic_stability_policy
 		x = -1
 		y = 2
@@ -146,6 +166,12 @@ focus_tree = {
 	}
 	focus = {
 		id = PRC_zero_covid_policy
+		allow_branch = {
+			OR = {
+				date > 2019.12.31
+				has_global_flag = ZZZ_debug_2020
+			}
+		}
 		icon = GFX_focus_PRC_zero_covid_policy
 		x = 1
 		y = 2
@@ -192,6 +218,12 @@ focus_tree = {
 	}
 	focus = {
 		id = PRC_adopt_the_swedish_model
+		allow_branch = {
+			OR = {
+				date > 2019.12.31
+				has_global_flag = ZZZ_debug_2020
+			}
+		}
 		icon = GFX_focus_PRC_adopt_the_swedish_model
 		x = -2
 		y = 3
@@ -230,6 +262,12 @@ focus_tree = {
 	}
 	focus = {
 		id = PRC_kickstart_vaccine_research
+		allow_branch = {
+			OR = {
+				date > 2019.12.31
+				has_global_flag = ZZZ_debug_2020
+			}
+		}
 		icon = GFX_focus_PRC_kickstart_the_vaccine_race
 		x = 0
 		y = 3
@@ -252,7 +290,6 @@ focus_tree = {
 				}
 				custom_effect_tooltip = PRC_kickstart_vaccine_research_tt
 			}
-			activate_mission = PRC_vaccine_development_mission
 			add_political_power = 30
 			set_temp_variable = {
 				var = PRC_influence_nat_var_temp
@@ -263,6 +300,12 @@ focus_tree = {
 	}
 	focus = {
 		id = PRC_adopt_strict_lockdown_measures
+		allow_branch = {
+			OR = {
+				date > 2019.12.31
+				has_global_flag = ZZZ_debug_2020
+			}
+		}
 		icon = GFX_focus_PRC_enforce_stricter_lockdown_penalties
 		x = 2
 		y = 3
@@ -279,8 +322,6 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_political_power = 75
-			unlock_decision_tooltip = PRC_burn_infected_bodies
-			unlock_decision_tooltip = PRC_declare_a_curfew
 			set_temp_variable = {
 				var = PRC_influence_nat_var_temp
 				value = 0.05
@@ -295,6 +336,12 @@ focus_tree = {
 	}
 	focus = {
 		id = PRC_focus_on_vaccine_development
+		allow_branch = {
+			OR = {
+				date > 2019.12.31
+				has_global_flag = ZZZ_debug_2020
+			}
+		}
 		icon = GFX_focus_PRC_focus_on_vaccine_development
 		x = -2
 		y = 4
@@ -315,10 +362,6 @@ focus_tree = {
 			focus = PRC_focus_on_mask_production
 		}
 		completion_reward = {
-			add_days_mission_timeout = {
-				mission = PRC_vaccine_development_mission
-				days = -60
-			}
 			set_temp_variable = {
 				var = debt_var_temp
 				value = 200
@@ -328,6 +371,12 @@ focus_tree = {
 	}
 	focus = {
 		id = PRC_focus_on_mask_production
+		allow_branch = {
+			OR = {
+				date > 2019.12.31
+				has_global_flag = ZZZ_debug_2020
+			}
+		}
 		icon = GFX_focus_PRC_focus_on_mask_production
 		x = -4
 		y = 4
@@ -363,6 +412,12 @@ focus_tree = {
 	}
 	focus = {
 		id = PRC_food_safety_reforms
+		allow_branch = {
+			OR = {
+				date > 2019.12.31
+				has_global_flag = ZZZ_debug_2020
+			}
+		}
 		icon = GFX_focus_PRC_enact_food_saftey_reforms
 		x = 0
 		y = 4
@@ -409,6 +464,12 @@ focus_tree = {
 	}
 	focus = {
 		id = PRC_surveillance_state_contact_tracing
+		allow_branch = {
+			OR = {
+				date > 2019.12.31
+				has_global_flag = ZZZ_debug_2020
+			}
+		}
 		icon = GFX_focus_PRC_surveillance_state_contact_tracing
 		x = 4
 		y = 4
@@ -446,6 +507,12 @@ focus_tree = {
 	}
 	focus = {
 		id = PRC_outsource_contact_tracing
+		allow_branch = {
+			OR = {
+				date > 2019.12.31
+				has_global_flag = ZZZ_debug_2020
+			}
+		}
 		icon = GFX_focus_PRC_outsource_contact_tracing
 		x = 2
 		y = 4
@@ -483,6 +550,12 @@ focus_tree = {
 	}
 	focus = {
 		id = PRC_fund_crowd_immunity_studies
+		allow_branch = {
+			OR = {
+				date > 2019.12.31
+				has_global_flag = ZZZ_debug_2020
+			}
+		}
 		icon = GFX_focus_PRC_fund_crowd_immunity_studies
 		x = -3
 		y = 5
@@ -505,14 +578,16 @@ focus_tree = {
 				value = 0.05
 			}
 			PRC_add_influence_lib = yes
-			add_days_mission_timeout = {
-				mission = PRC_vaccine_development_mission
-				days = -60
-			}
 		}
 	}
 	focus = {
 		id = PRC_blame_the_americans
+		allow_branch = {
+			OR = {
+				date > 2019.12.31
+				has_global_flag = ZZZ_debug_2020
+			}
+		}
 		icon = GFX_focus_PRC_blame_the_us
 		x = -1
 		y = 5
@@ -547,6 +622,12 @@ focus_tree = {
 	}
 	focus = {
 		id = PRC_blame_local_officials
+		allow_branch = {
+			OR = {
+				date > 2019.12.31
+				has_global_flag = ZZZ_debug_2020
+			}
+		}
 		icon = GFX_focus_PRC_blame_local_officials
 		x = 1
 		y = 5
@@ -576,6 +657,12 @@ focus_tree = {
 	}
 	focus = {
 		id = PRC_expand_the_social_safety_net
+		allow_branch = {
+			OR = {
+				date > 2019.12.31
+				has_global_flag = ZZZ_debug_2020
+			}
+		}
 		icon = GFX_focus_PRC_widen_the_social_saftey_net
 		x = 3
 		y = 5
@@ -612,6 +699,12 @@ focus_tree = {
 	}
 	focus = {
 		id = PRC_return_to_normalcy
+		allow_branch = {
+			OR = {
+				date > 2019.12.31
+				has_global_flag = ZZZ_debug_2020
+			}
+		}
 		icon = GFX_focus_PRC_return_to_normalcy
 		x = 0
 		y = 6
@@ -681,6 +774,10 @@ focus_tree = {
 		y = 10
 		cost = 1
 		allow_branch = {
+			OR = {
+				date > 2019.12.31
+				has_global_flag = ZZZ_debug_2020
+			}
 			has_country_flag = PRC_oil_crisis_ongoing
 		}
 		available_if_capitulated = yes
@@ -706,6 +803,12 @@ focus_tree = {
 	}
 	focus = {
 		id = PRC_crack_down_on_left_radicals
+		allow_branch = {
+			OR = {
+				date > 2019.12.31
+				has_global_flag = ZZZ_debug_2020
+			}
+		}
 		icon = GFX_focus_PRC_crack_down_on_left_radicals
 		x = -3
 		y = 1
@@ -739,6 +842,12 @@ focus_tree = {
 	}
 	focus = {
 		id = PRC_crack_down_on_reformist_protesters
+		allow_branch = {
+			OR = {
+				date > 2019.12.31
+				has_global_flag = ZZZ_debug_2020
+			}
+		}
 		icon = GFX_focus_PRC_crack_down_on_reformist_protesters
 		x = -5
 		y = 1
@@ -772,6 +881,12 @@ focus_tree = {
 	}
 	focus = {
 		id = PRC_empower_the_50_cent_army
+		allow_branch = {
+			OR = {
+				date > 2019.12.31
+				has_global_flag = ZZZ_debug_2020
+			}
+		}
 		icon = GFX_focus_PRC_empower_the_50_cent_army
 		x = 1
 		y = 1
@@ -802,6 +917,12 @@ focus_tree = {
 	}
 	focus = {
 		id = PRC_concessions_to_corporate_demands
+		allow_branch = {
+			OR = {
+				date > 2019.12.31
+				has_global_flag = ZZZ_debug_2020
+			}
+		}
 		icon = GFX_focus_PRC_concessions_to_corporate_demands
 		x = 0
 		y = 2
@@ -839,6 +960,12 @@ focus_tree = {
 	}
 	focus = {
 		id = PRC_concessions_to_populist_demands
+		allow_branch = {
+			OR = {
+				date > 2019.12.31
+				has_global_flag = ZZZ_debug_2020
+			}
+		}
 		icon = GFX_focus_PRC_concessions_to_populist_demands
 		x = 0
 		y = 2
@@ -868,6 +995,12 @@ focus_tree = {
 	}
 	focus = {
 		id = PRC_stabilize_the_political_sphere
+		allow_branch = {
+			OR = {
+				date > 2019.12.31
+				has_global_flag = ZZZ_debug_2020
+			}
+		}
 		icon = GFX_focus_PRC_stabilize_the_political_sphere
 		x = 0
 		y = 2
@@ -901,6 +1034,12 @@ focus_tree = {
 	}
 	focus = {
 		id = PRC_contain_the_damage
+		allow_branch = {
+			OR = {
+				date > 2019.12.31
+				has_global_flag = ZZZ_debug_2020
+			}
+		}
 		icon = GFX_focus_PRC_contain_the_damage
 		x = 0
 		y = 1
@@ -943,6 +1082,12 @@ focus_tree = {
 	}
 	focus = {
 		id = PRC_a_broken_system
+		allow_branch = {
+			OR = {
+				date > 2019.12.31
+				has_global_flag = ZZZ_debug_2020
+			}
+		}
 		icon = GFX_focus_PRC_a_broken_system
 		x = 4
 		y = 1
@@ -994,6 +1139,12 @@ focus_tree = {
 	}
 	focus = {
 		id = PRC_diversify_the_oil_trade
+		allow_branch = {
+			OR = {
+				date > 2019.12.31
+				has_global_flag = ZZZ_debug_2020
+			}
+		}
 		icon = GFX_focus_PRC_diversify_the_oil_trade
 		x = 0
 		y = 1
@@ -1048,6 +1199,12 @@ focus_tree = {
 	}
 	focus = {
 		id = PRC_a_renewable_revolution
+		allow_branch = {
+			OR = {
+				date > 2019.12.31
+				has_global_flag = ZZZ_debug_2020
+			}
+		}
 		icon = GFX_focus_PRC_a_renewable_revolution
 		x = 0
 		y = 1
@@ -1072,7 +1229,7 @@ focus_tree = {
 				name = PRC_a_renewable_revolution
 				bonus = 0.5
 				uses = 2
-				category = CAT_renewable
+				category = CAT_renewable_energy
 			}
 			every_controlled_state = {
 				limit = {
@@ -1082,7 +1239,6 @@ focus_tree = {
 					free_building_slots = {
 						building = renewable_energy_infra
 						size > 0
-						include_locked = yes
 					}
 				}
 				random_select_amount = 6
@@ -1109,6 +1265,12 @@ focus_tree = {
 	}
 	focus = {
 		id = PRC_expand_domestic_oil_production
+		allow_branch = {
+			OR = {
+				date > 2019.12.31
+				has_global_flag = ZZZ_debug_2020
+			}
+		}
 		icon = GFX_focus_PRC_search_for_domestic_oil_sources
 		x = 0
 		y = 1
@@ -1134,7 +1296,6 @@ focus_tree = {
 		completion_reward = {
 			set_country_flag = PRC_expand_domestic_oil_production_flag
 			add_political_power = 100
-			unlock_decision_tooltip = PRC_kashgar_oil_contract
 			PRC_decrease_oil = yes
 			set_temp_variable = {
 				var = PRC_influence_cen_var_temp
@@ -1155,6 +1316,12 @@ focus_tree = {
 	}
 	focus = {
 		id = PRC_a_nuclear_revolution
+		allow_branch = {
+			OR = {
+				date > 2019.12.31
+				has_global_flag = ZZZ_debug_2020
+			}
+		}
 		icon = GFX_focus_PRC_a_nuclear_revolution
 		x = 0
 		y = 1
@@ -1194,7 +1361,6 @@ focus_tree = {
 					free_building_slots = {
 						building = nuclear_reactor
 						size > 0
-						include_locked = yes
 					}
 				}
 				add_extra_state_shared_building_slots = 1
@@ -1215,7 +1381,6 @@ focus_tree = {
 					free_building_slots = {
 						building = nuclear_reactor
 						size > 0
-						include_locked = yes
 					}
 				}
 				add_extra_state_shared_building_slots = 1
@@ -1237,7 +1402,6 @@ focus_tree = {
 					free_building_slots = {
 						building = nuclear_reactor
 						size > 0
-						include_locked = yes
 					}
 				}
 				add_extra_state_shared_building_slots = 1
@@ -1262,6 +1426,12 @@ focus_tree = {
 	}
 	focus = {
 		id = PRC_stabilize_the_economic_sphere
+		allow_branch = {
+			OR = {
+				date > 2019.12.31
+				has_global_flag = ZZZ_debug_2020
+			}
+		}
 		icon = GFX_focus_PRC_stabilize_the_economic_sphere
 		x = 2
 		y = 1
@@ -1292,6 +1462,12 @@ focus_tree = {
 	}
 	focus = {
 		id = PRC_south_china_sea_expansion
+		allow_branch = {
+			OR = {
+				date > 2019.12.31
+				has_global_flag = ZZZ_debug_2020
+			}
+		}
 		icon = GFX_focus_PRC_south_china_sea_expansion
 		x = 1
 		y = 2
@@ -1313,6 +1489,12 @@ focus_tree = {
 	}
 	focus = {
 		id = PRC_synthetic_oil_investments
+		allow_branch = {
+			OR = {
+				date > 2019.12.31
+				has_global_flag = ZZZ_debug_2020
+			}
+		}
 		icon = GFX_focus_PRC_synthetic_oil_investments
 		x = -1
 		y = 2
@@ -1354,6 +1536,12 @@ focus_tree = {
 	}
 	focus = {
 		id = PRC_drill_for_xinjiang_oil
+		allow_branch = {
+			OR = {
+				date > 2019.12.31
+				has_global_flag = ZZZ_debug_2020
+			}
+		}
 		icon = GFX_focus_PRC_drill_for_xinjiang_oil
 		x = 1
 		y = 2
@@ -1371,12 +1559,16 @@ focus_tree = {
 		completion_reward = {
 			set_country_flag = PRC_drill_for_xinjiang_oil_flag
 			PRC_decrease_oil = yes
-			unlock_decision_tooltip = PRC_altai_oil_contract
-			unlock_decision_tooltip = PRC_hoton_oil_contract
 		}
 	}
 	focus = {
 		id = PRC_southeast_asian_bailout_package
+		allow_branch = {
+			OR = {
+				date > 2019.12.31
+				has_global_flag = ZZZ_debug_2020
+			}
+		}
 		icon = GFX_focus_PRC_southeast_asian_bailout_package
 		x = -1
 		y = 1
@@ -1422,6 +1614,12 @@ focus_tree = {
 	}
 	focus = {
 		id = PRC_chase_the_chinese_dream
+		allow_branch = {
+			OR = {
+				date > 2019.12.31
+				has_global_flag = ZZZ_debug_2020
+			}
+		}
 		icon = GFX_focus_PRC_chase_the_chinese_dream
 		x = 1
 		y = 1
@@ -1453,6 +1651,12 @@ focus_tree = {
 	}
 	focus = {
 		id = PRC_rejuvinate_the_nation
+		allow_branch = {
+			OR = {
+				date > 2019.12.31
+				has_global_flag = ZZZ_debug_2020
+			}
+		}
 		icon = GFX_focus_PRC_rejuvinate_the_nation
 		x = 2
 		y = 1
@@ -1472,11 +1676,16 @@ focus_tree = {
 			PRC_decrease_oil = yes
 			add_political_power = 75
 			PRC_decrease_corrupt_bureaucracy = yes
-			unlock_decision_tooltip = PRC_finalize_recovery_from_the_oil_crisis
 		}
 	}
 	focus = {
 		id = PRC_shake_up_the_politburo
+		allow_branch = {
+			OR = {
+				date > 2019.12.31
+				has_global_flag = ZZZ_debug_2020
+			}
+		}
 		icon = GFX_focus_PRC_shake_up_the_politburo
 		x = -6
 		y = 1
@@ -1511,11 +1720,11 @@ focus_tree = {
 		}
 		completion_reward = {
 			custom_effect_tooltip = PRC_shake_up_the_politburo_tt
+			clr_country_flag = PRC_oil_crisis_ongoing
 			country_event = {
 				id = prc.15
 				days = 1
 			}
-			clr_country_flag = PRC_oil_crisis_ongoing
 			if = {
 				limit = {
 					is_ai = yes
@@ -1537,11 +1746,17 @@ focus_tree = {
 		}
 	}
 }
-#foreign tree КТО ТРОНЕТ В ТОГО ПРИЛЕТИТ РАКЕТА
+#foreign tree
 
 ###GAW
 shared_focus = {
 	id = PRC_chinas_greatest_hour
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_chinas_greatest_hour
 	x = 25
 	y = 10
@@ -1614,6 +1829,12 @@ shared_focus = {
 
 shared_focus = {
 	id = PRC_operation_majestic
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_operation_majestic
 	x = -6
 	y = 1
@@ -1634,15 +1855,19 @@ shared_focus = {
 	}
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: focus PRC_operation_majestic completion_reward"
-		unlock_decision_tooltip = PRC_operation_majestic_dec
 		custom_effect_tooltip = when_selecting_a_decision_tt
 		show_ideas_tooltip = PRC_operation_majestic_idea
-		unlock_decision_tooltip = PRC_operation_genko
 	}
 }
 
 shared_focus = {
 	id = PRC_without_mercy
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_without_mercy
 	x = -8
 	y = 1
@@ -1681,6 +1906,12 @@ shared_focus = {
 
 shared_focus = {
 	id = PRC_revenge_for_nanking
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_revenge_for_nanking
 	x = 0
 	y = 1
@@ -1749,6 +1980,12 @@ shared_focus = {
 
 shared_focus = {
 	id = PRC_operation_changma
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_operation_changma
 	x = -2
 	y = 1
@@ -1794,7 +2031,6 @@ shared_focus = {
 	}
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: focus PRC_operation_majestic completion_reward"
-		unlock_decision_tooltip = PRC_operation_changma_dec
 		custom_effect_tooltip = when_selecting_a_decision_tt
 		show_ideas_tooltip = PRC_operation_changma_idea
 	}
@@ -1802,6 +2038,12 @@ shared_focus = {
 
 shared_focus = {
 	id = PRC_only_one_korea
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_One_Korea
 	x = 0
 	y = 1
@@ -1836,16 +2078,15 @@ shared_focus = {
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: focus PRC_revenge_for_nanking completion_reward"
 		NKO = {
-			unlock_decision_tooltip = prk_proclaim_reunification_of_korea
 		}
 		add_stability = 0.025
 		add_political_power = 50
 		if = {
 			limit = {
-				has_government = communist
+				has_government = communism
 			}
 			add_popularity = {
-				ideology = communist
+				ideology = communism
 				popularity = 0.025
 			}
 		}
@@ -1854,6 +2095,12 @@ shared_focus = {
 
 shared_focus = {
 	id = PRC_appeal_to_the_chinese_people_gaw
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_appeal_to_the_chinese_people_gaw
 	x = 0
 	y = 1
@@ -1875,10 +2122,10 @@ shared_focus = {
 		add_stability = 0.05
 		if = {
 			limit = {
-				has_government = communist
+				has_government = communism
 			}
 			add_popularity = {
-				ideology = communist
+				ideology = communism
 				popularity = 0.05
 			}
 		}
@@ -1887,6 +2134,12 @@ shared_focus = {
 
 shared_focus = {
 	id = PRC_suspend_the_consumer_economy
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_suspend_the_consumer_economy
 	x = 0
 	y = 3
@@ -1913,6 +2166,12 @@ shared_focus = {
 
 shared_focus = {
 	id = PRC_martial_law
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_martial_law
 	x = -1
 	y = 4
@@ -1941,14 +2200,18 @@ shared_focus = {
 				}
 			}
 			set_country_flag = PRC_put_the_nuclear_arsenal_on_full_operational_alert_flag
-			unlock_decision_tooltip = PRC_put_the_nuclear_arsenal_on_full_operational_alert
-			unlock_decision_tooltip = PRC_final_chance_thermonuclear
 		}
 	}
 }
 
 shared_focus = {
 	id = PRC_all_chinese_mobilization
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_all_chinese_mobilization
 	x = 1
 	y = 4
@@ -1982,6 +2245,12 @@ shared_focus = {
 
 shared_focus = {
 	id = PRC_propagandize_our_success
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_Propagandize_Our_Success
 	x = -4
 	y = 1
@@ -2006,6 +2275,12 @@ shared_focus = {
 
 shared_focus = {
 	id = PRC_call_up_the_reserves
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_call_up_the_reserves
 	x = 0
 	y = 2
@@ -2034,6 +2309,12 @@ shared_focus = {
 
 shared_focus = {
 	id = PRC_east_china_wall
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_east_china_wall
 	x = -1
 	y = 3
@@ -2064,7 +2345,6 @@ shared_focus = {
 			}
 		}
 		custom_effect_tooltip = PRC_east_china_wall_tt
-		unlock_decision_tooltip = PRC_fortify_taiwan
 		hidden_effect = {
 			if = {
 				limit = {
@@ -2668,6 +2948,12 @@ shared_focus = {
 
 shared_focus = {
 	id = PRC_coastal_defense_brigades
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_Coastal_Defense_Brigades
 	x = 1
 	y = 3
@@ -2694,6 +2980,12 @@ shared_focus = {
 
 shared_focus = {
 	id = PRC_embrace_the_future
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_embrace_the_future
 	x = 4
 	y = 1
@@ -2721,7 +3013,7 @@ shared_focus = {
 			custom_effect_tooltip = JAP_wide_application_of_exoskeletons_tt2
 			hidden_effect = {
 				add_equipment_to_stockpile = {
-					type = exoskeleton_equipment_1
+					type = Inf_equipment
 					amount = 750
 					producer = CHI
 				}
@@ -2739,7 +3031,7 @@ shared_focus = {
 			custom_effect_tooltip = JAP_wide_application_of_exoskeletons_tt
 			hidden_effect = {
 				add_equipment_to_stockpile = {
-					type = exoskeleton_equipment_1
+					type = Inf_equipment
 					amount = 350
 					producer = CHI
 				}
@@ -2768,6 +3060,12 @@ shared_focus = {
 
 shared_focus = {
 	id = PRC_kashmir_road
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_kashmir_road
 	x = 2
 	y = 1
@@ -2843,13 +3141,17 @@ shared_focus = {
 				}
 			}
 		}
-		unlock_decision_tooltip = PRC_hindustan_offensive_dec
-		unlock_decision_tooltip = PRC_hindustan_offensive_2_dec
 	}
 }
 
 shared_focus = {
 	id = PRC_operation_pallava
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_operation_pallava
 	x = 1
 	y = 1
@@ -2869,7 +3171,6 @@ shared_focus = {
 	}
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: focus PRC_operation_southern_fury completion_reward"
-		unlock_decision_tooltip = PRC_operation_pallava_dec
 		custom_effect_tooltip = when_selecting_a_decision_tt
 		show_ideas_tooltip = PRC_operation_pallava_idea
 	}
@@ -2877,6 +3178,12 @@ shared_focus = {
 
 shared_focus = {
 	id = PRC_operation_southern_fury
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_operation_southern_fury
 	x = 6
 	y = 1
@@ -2907,15 +3214,19 @@ shared_focus = {
 	}
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: focus PRC_operation_southern_fury completion_reward"
-		unlock_decision_tooltip = PRC_operation_southern_fury_dec
 		custom_effect_tooltip = when_selecting_a_decision_tt
 		show_ideas_tooltip = PRC_operation_southern_fury_idea
-		unlock_decision_tooltip = PRC_malaya_offensive_dec
 	}
 }
 
 shared_focus = {
 	id = PRC_operation_baru_nah
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_operation_baru_nah
 	x = 0
 	y = 1
@@ -2935,15 +3246,19 @@ shared_focus = {
 	}
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: focus PRC_operation_southern_fury completion_reward"
-		unlock_decision_tooltip = PRC_operation_baru_nah_dec
 		custom_effect_tooltip = when_selecting_a_decision_tt
 		show_ideas_tooltip = PRC_operation_baru_nah_idea
-		unlock_decision_tooltip = PRC_landing_in_the_java_dec
 	}
 }
 
 shared_focus = {
 	id = PRC_cover_the_back
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_cover_the_back
 	x = 0
 	y = 2
@@ -2972,15 +3287,19 @@ shared_focus = {
 	}
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: focus PRC_operation_southern_fury completion_reward"
-		unlock_decision_tooltip = PRC_philippine_offensive_dec
 		custom_effect_tooltip = when_selecting_a_decision_tt
 		show_ideas_tooltip = PRC_philippine_offensive_idea
-		unlock_decision_tooltip = PRC_landing_in_the_philippines_dec
 	}
 }
 
 shared_focus = {
 	id = PRC_starve_the_island
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_Starve_the_Island
 	x = 1
 	y = 3
@@ -2998,12 +3317,17 @@ shared_focus = {
 	}
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: focus PRC_starve_the_island completion_reward"
-		unlock_decision_tooltip = PRC_starve_the_island_dec
 	}
 }
 
 shared_focus = {
 	id = PRC_operation_coronet
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_OPERATION_CORONET
 	x = -1
 	y = 3
@@ -3021,7 +3345,6 @@ shared_focus = {
 	}
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: focus PRC_operation_coronet completion_reward"
-		unlock_decision_tooltip = PRC_operation_coronet_dec
 		custom_effect_tooltip = when_selecting_a_decision_tt
 		show_ideas_tooltip = PRC_operation_coronet_idea
 	}
@@ -3035,6 +3358,10 @@ shared_focus = {
 	x = -12
 	y = 0
 	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
 		has_country_flag = PRC_military_tree_available
 	}
 	offset = {
@@ -3120,6 +3447,12 @@ shared_focus = {
 
 shared_focus = {
 	id = PRC_prepare_for_the_next_war
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_prepare_for_the_next_war
 	x = -1
 	y = 1
@@ -3166,6 +3499,12 @@ shared_focus = {
 
 shared_focus = {
 	id = PRC_lessons_from_the_taiwan_war
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_lessons_from_the_taiwan_war
 	x = 1
 	y = 1
@@ -3236,6 +3575,12 @@ shared_focus = {
 
 shared_focus = {
 	id = PRC_next_generation_airforce
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_next_generation_airforce
 	x = -9
 	y = 1
@@ -3261,7 +3606,7 @@ shared_focus = {
 			name = PRC_next_generation_airforce
 			bonus = 0.5
 			uses = 2
-			category = CAT_air_eqp
+			category = CAT_aircraft
 		}
 		add_doctrine_cost_reduction = {
 			name = PRC_next_generation_airforce
@@ -3292,6 +3637,12 @@ shared_focus = {
 
 shared_focus = {
 	id = PRC_dominate_the_skies
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_dominate_the_skies
 	x = 1
 	y = 1
@@ -3364,6 +3715,12 @@ shared_focus = {
 
 shared_focus = {
 	id = PRC_flying_fortresses
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_flying_fortresses
 	x = -4
 	y = 1
@@ -3414,6 +3771,12 @@ shared_focus = {
 
 shared_focus = {
 	id = PRC_strikes_on_any_place_of_the_earth
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_strikes_on_any_place_of_the_earth
 	x = 0
 	y = 2
@@ -3453,7 +3816,7 @@ shared_focus = {
 			name = PRC_strikes_on_any_place_of_the_earth
 			bonus = 0.5
 			uses = 2
-			category = CAT_missile
+			category = CAT_missiles
 		}
 		custom_effect_tooltip = tooltip_white_line
 		custom_effect_tooltip = PRC_strikes_on_any_place_of_the_earth_tt
@@ -3463,6 +3826,12 @@ shared_focus = {
 #Drone Age Warfare
 shared_focus = {
 	id = PRC_trust_in_the_pilot
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_trust_in_the_pilot
 	x = -1
 	y = 1
@@ -3483,13 +3852,13 @@ shared_focus = {
 			name = PRC_trust_in_the_pilot
 			bonus = 0.35
 			uses = 1
-			category = CAT_air_wpn
+			category = CAT_air_weapons
 		}
 		add_tech_bonus = {
 			name = PRC_trust_in_the_pilot
 			bonus = 1
 			uses = 1
-			category = CAT_s_fighter
+			category = CAT_air_stealth
 		}
 		custom_effect_tooltip = tooltip_white_line
 		every_army_leader = {
@@ -3511,6 +3880,12 @@ shared_focus = {
 
 shared_focus = {
 	id = PRC_the_exterminating_swarm
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_the_exterminating_swarm
 	x = 0
 	y = 1
@@ -3556,6 +3931,12 @@ shared_focus = {
 
 shared_focus = {
 	id = PRC_non_stop_heavy_air_support
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_non_stop_heavy_air_support
 	x = 1
 	y = 1
@@ -3618,6 +3999,12 @@ shared_focus = {
 
 shared_focus = {
 	id = PRC_deus_ex_machina_nat
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_deus_ex_machina
 	x = -1
 	y = 3
@@ -3649,13 +4036,13 @@ shared_focus = {
 			bonus = 1
 			ahead_reduction = 2
 			uses = 1
-			category = CAT_ai
+			category = CAT_artificial_intelligence
 		}
 		add_tech_bonus = {
 			name = PRC_deus_ex_machina_nat
 			bonus = 0.75
 			uses = 2
-			category = CAT_air_spc
+			category = CAT_space
 		}
 		hidden_effect = {
 			add_to_variable = {
@@ -3676,6 +4063,12 @@ shared_focus = {
 
 shared_focus = {
 	id = PRC_streamline_aircraft_production
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_streamline_aircraft_production
 	x = 0
 	y = 2
@@ -3739,6 +4132,12 @@ shared_focus = {
 
 shared_focus = {
 	id = PRC_modernize_the_missile_corps
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_modernize_the_missile_corps
 	x = -4
 	y = 1
@@ -3765,7 +4164,7 @@ shared_focus = {
 			name = PRC_modernize_the_missile_corps
 			bonus = 0.75
 			uses = 2
-			category = CAT_aa
+			category = CAT_anti_air
 		}
 		add_tech_bonus = {
 			name = PRC_modernize_the_missile_corps
@@ -3804,6 +4203,12 @@ shared_focus = {
 #PRC_the_naval_power_of_asia
 shared_focus = {
 	id = PRC_a_blue_water_navy
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_a_blue_water_navy
 	x = 1
 	y = 1
@@ -3978,6 +4383,12 @@ shared_focus = {
 
 shared_focus = {
 	id = PRC_increase_naval_production
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_increase_naval_production
 	x = -2
 	y = 1
@@ -4026,6 +4437,12 @@ shared_focus = {
 #PRC_elite_marine_corps
 shared_focus = {
 	id = PRC_rain_fire_from_above
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_elite_marine_corps
 	x = 2
 	y = 1
@@ -4055,7 +4472,7 @@ shared_focus = {
 			name = PRC_rain_fire_from_above
 			bonus = 0.75
 			uses = 2
-			category = CAT_air_eqp
+			category = CAT_aircraft
 		}
 		custom_effect_tooltip = tooltip_white_line
 		set_temp_variable = {
@@ -4091,6 +4508,12 @@ shared_focus = {
 
 shared_focus = {
 	id = PRC_dominate_south_china_sea
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_dominate_south_china_sea
 	x = 1
 	y = 2
@@ -4231,6 +4654,12 @@ shared_focus = {
 
 shared_focus = {
 	id = PRC_expand_the_fleet_of_nuclear_submarines
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_expand_the_fleet_of_nuclear_submarines
 	x = 0
 	y = 1
@@ -4251,11 +4680,7 @@ shared_focus = {
 		
 		#show_unit_leaders_tooltip = PRC_sun_jianguo 
 		custom_effect_tooltip = tooltip_white_line
-		custom_effect_tooltip = {
-			activate_advisor = PRC_sun_jianguo_high_command
-		}
 		custom_effect_tooltip = available_highcommand_tt
-		show_ideas_tooltip = PRC_sun_jianguo_high_command
 
 		custom_effect_tooltip = tooltip_white_line
         
@@ -4286,6 +4711,12 @@ shared_focus = {
 
 shared_focus = {
 	id = PRC_carrier_primacy
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_carrier_primacy
 	x = 0
 	y = 1
@@ -4406,6 +4837,12 @@ shared_focus = {
 
 shared_focus = {
 	id = PRC_creation_of_full_scale_missile_cruisers
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_creation_of_full_scale_missile_cruisers
 	x = 3
 	y = 1
@@ -4460,6 +4897,12 @@ shared_focus = {
 
 shared_focus = {
 	id = PRC_supremacy_above_and_below_waters
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_supremacy_above_and_below_waters
 	x = -3
 	y = 1
@@ -4489,7 +4932,7 @@ shared_focus = {
 			name = PRC_supremacy_above_and_below_waters
 			bonus = 0.5
 			uses = 3
-			category = CAT_naval_eqp
+			category = CAT_naval
 		}
 		add_doctrine_cost_reduction = {
 			name = PRC_supremacy_above_and_below_waters
@@ -4530,6 +4973,12 @@ shared_focus = {
 
 shared_focus = {
 	id = PRC_redefine_naval_warfare
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_redefine_naval_warfare
 	x = 1
 	y = 1
@@ -4565,6 +5014,12 @@ shared_focus = {
 
 shared_focus = {
 	id = PRC_resurrect_the_battleship
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_resurrect_the_battleship
 	x = 2
 	y = 1
@@ -4617,6 +5072,12 @@ shared_focus = {
 
 shared_focus = {
 	id = PRC_air_navy_coordination
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_air_navy_coordination
 	x = 1
 	y = 1
@@ -4674,6 +5135,12 @@ shared_focus = {
 
 shared_focus = {
 	id = PRC_sharpen_the_southern_blade
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_sharpen_the_southern_blade
 	x = 1
 	y = 1
@@ -4696,7 +5163,7 @@ shared_focus = {
 			name = PRC_sharpen_the_southern_blade
 			bonus = 0.35
 			uses = 1
-			category = CAT_special_forces
+			category = CAT_special_forces_equipment
 		}
 		custom_effect_tooltip = tooltip_white_line
 		set_temp_variable = {
@@ -4706,7 +5173,7 @@ shared_focus = {
 		PRC_add_army_reform_progress = yes
 		hidden_effect = {
 			division_template = {
-				name = "Elite Unit "Southern Blade""
+				name = "Elite Unit Southern Blade"
 				priority = 1
 				regiments = {
 					special_forces = {
@@ -4779,7 +5246,7 @@ shared_focus = {
 			}
 			capital_scope = {
 				create_unit = {
-					division = "division_template = \"Elite Unit "Southern Blade"\" start_experience_factor = 0.6 start_equipment_factor = 1.0"
+					division = "division_template = \"Elite Unit Southern Blade\" start_experience_factor = 0.6 start_equipment_factor = 1.0"
 					owner = ROOT
 					count = 4
 				}
@@ -4790,6 +5257,12 @@ shared_focus = {
 
 shared_focus = {
 	id = PRC_expand_the_thunder_gods
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_expand_the_thunder_gods
 	x = -2
 	y = 1
@@ -4813,13 +5286,13 @@ shared_focus = {
 			name = PRC_expand_the_thunder_gods
 			bonus = 0.5
 			uses = 1
-			category = CAT_special_forces
+			category = CAT_special_forces_equipment
 		}
 		add_tech_bonus = {
 			name = PRC_expand_the_thunder_gods
 			bonus = 0.5
 			uses = 1
-			category = CAT_inf
+			category = CAT_infantry
 		}
 		custom_effect_tooltip = tooltip_white_line
 		unlock_decision_tooltip = PRC_thunder_god_program_mountain
@@ -4836,6 +5309,12 @@ shared_focus = {
 
 shared_focus = {
 	id = PRC_dawn_of_the_chinese_tactical_thought
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_dawn_of_the_chinese_tactical_thought
 	x = 0
 	y = 3
@@ -4901,6 +5380,12 @@ shared_focus = {
 #Army of Tommorow
 shared_focus = {
 	id = PRC_next_generation_army
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_next_generation_army
 	x = 9
 	y = 1
@@ -4937,6 +5422,12 @@ shared_focus = {
 
 shared_focus = {
 	id = PRC_fresh_personnel_in_the_strategic_command
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_fresh_personnel_in_the_strategic_command
 	x = 3
 	y = 1
@@ -4999,6 +5490,12 @@ shared_focus = {
 
 shared_focus = {
 	id = PRC_improve_officer_training
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_improve_officer_training
 	x = 6
 	y = 1
@@ -5051,6 +5548,12 @@ shared_focus = {
 #Speed and Maneuverability
 shared_focus = {
 	id = PRC_mobile_warfare_nat
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_mobile_warfare
 	x =-1
 	y = 1
@@ -5100,6 +5603,12 @@ shared_focus = {
 
 shared_focus = {
 	id = PRC_modern_special_forces
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_modern_special_forces
 	x = 4
 	y = 2
@@ -5128,7 +5637,7 @@ shared_focus = {
 			name = PRC_modern_special_forces
 			bonus = 0.5
 			uses = 3
-			category = CAT_special_forces
+			category = CAT_special_forces_equipment
 		}
 		custom_effect_tooltip = tooltip_white_line
 		set_temp_variable = {
@@ -5155,6 +5664,12 @@ shared_focus = {
 
 shared_focus = {
 	id = PRC_national_fanaticism
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_national_fanaticism
 	x = 1
 	y = 1
@@ -5190,6 +5705,12 @@ shared_focus = {
 #The Spiritual War
 shared_focus = {
 	id = PRC_infantry_primacy_nat
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_infantry_primacy
 	x = 1
 	y = 1
@@ -5222,7 +5743,7 @@ shared_focus = {
 			name = PRC_infantry_primacy_nat
 			bonus = 0.75
 			uses = 2
-			category = CAT_inf_wep
+			category = CAT_infantry_weapons
 		}
 		custom_effect_tooltip = tooltip_white_line
 		set_temp_variable = {
@@ -5257,6 +5778,12 @@ shared_focus = {
 
 shared_focus = {
 	id = PRC_millions_march_in_unison
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_millions_march_in_unison
 	x = 0
 	y = 3
@@ -5305,6 +5832,12 @@ shared_focus = {
 #Wall of Fire and Steel
 shared_focus = {
 	id = PRC_tank_primacy_nat
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_tank_primacy_nat
 	x = -4
 	y = 1
@@ -5381,6 +5914,12 @@ shared_focus = {
 
 shared_focus = {
 	id = PRC_the_cleansing_fire
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_the_cleansing_fire
 	x = 0
 	y = 2
@@ -5437,6 +5976,12 @@ shared_focus = {
 
 shared_focus = {
 	id = PRC_tidal_wave_of_bodies
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_tidal_wave_of_bodies
 	x = 0
 	y = 1
@@ -5493,6 +6038,12 @@ shared_focus = {
 
 shared_focus = {
 	id = PRC_achieving_network_centric_warfare
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_achieving_network_centric_warfare
 	x = -2
 	y = 2
@@ -5519,7 +6070,7 @@ shared_focus = {
 			name = PRC_achieving_network_centric_warfare
 			bonus = 0.5
 			uses = 3
-			category = CAT_inf_wep
+			category = CAT_infantry_weapons
 		}
 		custom_effect_tooltip = tooltip_white_line
 		unlock_decision_tooltip = PRC_network_centric_warfare_smart_air_land_integration
@@ -5540,6 +6091,12 @@ shared_focus = {
 
 shared_focus = {
 	id = PRC_a_continuous_offensive
+	allow_branch = {
+		OR = {
+			date > 2019.12.31
+			has_global_flag = ZZZ_debug_2020
+		}
+	}
 	icon = GFX_focus_PRC_a_continuous_offensive
 	x = 1
 	y = 1

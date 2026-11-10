@@ -1,7 +1,7 @@
 # ============================================================================
 # 国别特色营（第七轮 + need 差异化细化）
 # ============================================================================
-# 49营：陆战队9 + 伞降14 + 空中突击3 + 山地/丛林4 + 特战20
+# 49营：陆战队8 + 伞降14 + 空中突击3 + 山地/丛林4 + 特战20
 # ============================================================================
 
 sub_units = {
@@ -31,13 +31,18 @@ sub_units = {
 
 		max_strength = 14
 		max_organisation = 30
-		default_morale = 0.09
-		manpower = 900
+		default_morale = 0.11
+		manpower = 1750
 		entrenchment = -0.10
 		suppression = 2.5
 
 		training_time = 150
 		weight = 1
+		defense = 0.15
+		breakthrough = 0.20
+		soft_attack = 0.15
+		hard_attack = 0.15
+		ap_attack = 0.20
 
 		transport = medium_tank_amphibious_chassis
 
@@ -46,13 +51,13 @@ sub_units = {
 		}
 
 		need = {
-			infantry_weapons_type = 520		# 步枪/班用机枪/榴弹发射器（全营 900 人）
-			L_AT_Equipment = 48			# Mk153 SMAW 火箭筒
-			H_AT_Equipment = 12			# FGM-148 标枪反坦克导弹
-			AA_Equipment = 8			# FIM-92 毒刺便携防空导弹
-			cnc_equipment_type = 30
+			infantry_weapons_type = 960		# 步枪/班用机枪/榴弹发射器（全营 900 人）
+			L_AT_Equipment = 56			# Mk153 SMAW 火箭筒
+			H_AT_Equipment = 14			# FGM-148 标枪反坦克导弹
+			AA_Equipment = 20			# FIM-92 毒刺便携防空导弹
+			cnc_equipment_type = 40
 			medium_tank_amphibious_chassis = 30	# AAVP-7A1 两栖突击车（3 个突击连，含营指挥车）
-			util_vehicle_type = 22
+			util_vehicle_type = 8
 		}
 
 		plains = { attack = 0.10 movement = 0.10 }
@@ -89,15 +94,20 @@ sub_units = {
 
 		combat_width = 4
 
-		max_strength = 13
-		max_organisation = 28
-		default_morale = 0.08
-		manpower = 650
+		max_strength = 14
+		max_organisation = 30
+		default_morale = 0.11
+		manpower = 1750
 		entrenchment = -0.10
 		suppression = 2.5
 
 		training_time = 150
 		weight = 1
+		defense = 0.15
+		breakthrough = 0.20
+		soft_attack = 0.15
+		hard_attack = 0.15
+		ap_attack = 0.20
 
 		transport = medium_tank_amphibious_chassis
 
@@ -106,13 +116,13 @@ sub_units = {
 		}
 
 		need = {
-			infantry_weapons_type = 470		# 步枪/班用机枪/AGS-17（全营 650 人）
-			L_AT_Equipment = 45			# RPG-7 火箭筒
-			H_AT_Equipment = 12			# 9M133 短号反坦克导弹
-			AA_Equipment = 16			# 9K38 针式便携防空导弹
-			cnc_equipment_type = 32
+			infantry_weapons_type = 960		# 步枪/班用机枪/AGS-17（全营 650 人）
+			L_AT_Equipment = 56			# RPG-7 火箭筒
+			H_AT_Equipment = 14			# 9M133 短号反坦克导弹
+			AA_Equipment = 20			# 9K38 针式便携防空导弹
+			cnc_equipment_type = 40
 			medium_tank_amphibious_chassis = 31	# BTR-82A ×30 + 营指挥车 ×1
-			util_vehicle_type = 14			# MT-LB / 卡玛斯运输车
+			util_vehicle_type = 8			# MT-LB / 卡玛斯运输车
 		}
 
 		plains = { attack = 0.10 movement = 0.10 }
@@ -127,7 +137,7 @@ sub_units = {
 
 	}
 
-	Marine_Bat_CHI = { # 中国海军陆战队（ZBD-05）
+	Marine_Bat_CHI = { # 中国海军陆战队（ZBD-05 步战车 + ZTD-05 两栖突击车，一营制）
 		sprite = Marine_Bat_CHI
 		map_icon_category = armored
 		priority = 10
@@ -150,14 +160,19 @@ sub_units = {
 		combat_width = 4
 
 		max_strength = 14
-		max_organisation = 29
-		default_morale = 0.09
-		manpower = 700
+		max_organisation = 30
+		default_morale = 0.11
+		manpower = 1750
 		entrenchment = -0.10
 		suppression = 2.5
 
 		training_time = 150
 		weight = 1
+		defense = 0.15
+		breakthrough = 0.20
+		soft_attack = 0.15
+		hard_attack = 0.15
+		ap_attack = 0.20
 
 		transport = ZZ_amphibious_mechanized_equipment
 
@@ -166,13 +181,15 @@ sub_units = {
 		}
 
 		need = {
-			infantry_weapons_type = 380		# 步枪/班用机枪/自动榴弹发射器（全营 700 人）
-			L_AT_Equipment = 42			# PF-89 / 红箭-73 火箭筒
-			H_AT_Equipment = 8			# 红箭-8 反坦克导弹
-			AA_Equipment = 9			# 前卫-2 便携防空导弹
-			cnc_equipment_type = 30
-			ZZ_amphibious_mechanized_equipment = 32	# ZBD-05 ×31 + 营指挥车 ×1
-			util_vehicle_type = 10
+			infantry_weapons_type = 960		# 步枪/班用机枪/自动榴弹发射器（全营 700 人）
+			L_AT_Equipment = 56			# PF-89 / 红箭-73 火箭筒
+			H_AT_Equipment = 14			# 红箭-8 反坦克导弹
+			AA_Equipment = 20			# 前卫-2 便携防空导弹
+			cnc_equipment_type = 40
+			ZZ_amphibious_mechanized_equipment = 32	# ZBD-05 ×31 + 营指挥车 ×1（两栖步战车）
+			medium_tank_destroyer_chassis = 31	# ZTD-05 ×30 + 营指挥车 ×1（两栖突击车/两栖坦克）
+			util_vehicle_type = 8
+			ZZ_neg_armor_amphibious = 1		# 两栖营保障分队（支援装备）
 		}
 
 		plains = { attack = 0.05 }
@@ -188,66 +205,7 @@ sub_units = {
 
 	}
 
-	Marine_Tank_Bat_CHI = { # 中国海军陆战队两栖突击车营（ZTD-05 / 63A，独立于两栖步战营）
-		sprite = MD_light_armor
-		map_icon_category = armored
-		priority = 10
-		active = no
-		ai_priority = 5
-		marines = yes
-		type = {
-			armor
-		}
-		group = marine_infantry
-
-		categories = {
-			category_front_line
-			category_all_armor
-			category_army
-			category_non_militia
-		}
-
-		combat_width = 4
-
-		max_strength = 12
-		max_organisation = 26
-		default_morale = 0.08
-		manpower = 400
-		entrenchment = -0.10
-		suppression = 1.5
-
-		training_time = 150
-		weight = 1
-
-		transport = medium_tank_destroyer_chassis
-
-		essential = {
-			medium_tank_destroyer_chassis
-		}
-
-		need = {
-			infantry_weapons_type = 120		# 车载自卫武器（全营 400 人）
-			L_AT_Equipment = 12
-			H_AT_Equipment = 4
-			AA_Equipment = 3
-			cnc_equipment_type = 16
-			medium_tank_destroyer_chassis = 31	# ZTD-05 ×30 + 营指挥车 ×1
-			util_vehicle_type = 6
-		}
-
-		plains = { attack = 0.05 }
-		hills = { attack = -0.05 defence = -0.05 }
-		forest = { attack = -0.10 }
-		mountain = { attack = -0.15 }
-		jungle = { attack = 0.10 }
-		marsh = { attack = 0.25 movement = 0.20 }
-		urban = { attack = 0.05 }
-		river = { attack = 0.30 movement = 0.25 }
-		amphibious = { attack = 0.40 movement = 0.25 }
-
-	}
-
-	Marine_Bat_FRA = { # 法国海军步兵营（VAB 轮式装甲车，第 9 陆战旅）
+	Marine_Bat_FRA = { # 法国海军陆战队营（VAB 轮式装甲车 + AMX-10RC 装甲战斗车，一营制）
 		sprite = Marine_Bat_FRA
 		map_icon_category = armored
 		priority = 10
@@ -263,21 +221,27 @@ sub_units = {
 			category_front_line
 			category_all_armor
 			category_apc
+			category_IFV
 			category_army
 			category_non_militia
 		}
 
 		combat_width = 4
 
-		max_strength = 13
-		max_organisation = 28
-		default_morale = 0.08
-		manpower = 700
+		max_strength = 14
+		max_organisation = 30
+		default_morale = 0.11
+		manpower = 1750
 		entrenchment = -0.10
 		suppression = 2.5
 
 		training_time = 150
 		weight = 1
+		defense = 0.15
+		breakthrough = 0.20
+		soft_attack = 0.15
+		hard_attack = 0.15
+		ap_attack = 0.20
 
 		transport = medium_tank_amphibious_chassis
 
@@ -286,13 +250,13 @@ sub_units = {
 		}
 
 		need = {
-			infantry_weapons_type = 480		# 步枪/班用机枪（全营 700 人）
-			L_AT_Equipment = 42			# ERYX 近程反坦克导弹
-			H_AT_Equipment = 12			# MILAN 反坦克导弹
-			AA_Equipment = 12			# 西北风便携防空导弹
-			cnc_equipment_type = 30
-			medium_tank_amphibious_chassis = 31	# VAB ×30 + 营指挥车 ×1
-			util_vehicle_type = 12
+			infantry_weapons_type = 473	# 机械化陆战队 260 + 装甲陆战队 213（两型合计 1420 人）
+			L_AT_Equipment = 24		# ERYX / AT4 火箭筒（12 + 12）
+			H_AT_Equipment = 12		# MILAN 反坦克导弹（6 + 6）
+			AA_Equipment = 16		# 西北风便携防空导弹（8 + 8）
+			cnc_equipment_type = 70		# 营连指挥通信（35 + 35）
+			medium_tank_amphibious_chassis = 60	# VAB 轮式装甲车（APC 3×20）；MD 无独立轮式底盘原型，沿用 APC 原型
+			medium_tank_flame_chassis = 60		# AMX-10RC 轮式装甲战斗车（IFV 1×60）；MD_x_tank_chassis.txt:43 经 duplicate_archetypes 覆写为 IFV 原型
 		}
 
 		plains = { attack = 0.10 movement = 0.10 }
@@ -301,9 +265,10 @@ sub_units = {
 		forest = { attack = -0.10 movement = -0.10 }
 		mountain = { attack = -0.25 defence = -0.10 movement = -0.15 }
 		jungle = { attack = -0.10 movement = -0.05 }
-		marsh = { attack = 0.05 movement = 0.05 }
+		marsh = { attack = 0.10 movement = 0.10 }
 		urban = { attack = 0.05 }
-		amphibious = { attack = 0.10 }
+		river = { attack = 0.10 movement = 0.10 }
+		amphibious = { attack = 0.15 movement = 0.10 }
 
 	}
 
@@ -329,15 +294,20 @@ sub_units = {
 
 		combat_width = 4
 
-		max_strength = 13
-		max_organisation = 28
-		default_morale = 0.08
-		manpower = 800
+		max_strength = 14
+		max_organisation = 30
+		default_morale = 0.11
+		manpower = 1750
 		entrenchment = -0.10
 		suppression = 2.5
 
 		training_time = 150
 		weight = 1
+		defense = 0.15
+		breakthrough = 0.20
+		soft_attack = 0.15
+		hard_attack = 0.15
+		ap_attack = 0.20
 
 		transport = medium_tank_amphibious_chassis
 
@@ -346,13 +316,13 @@ sub_units = {
 		}
 
 		need = {
-			infantry_weapons_type = 480		# 步枪/班用机枪（全营 800 人）
-			L_AT_Equipment = 40			# K1 火箭筒
-			H_AT_Equipment = 8			# 标枪反坦克导弹
-			AA_Equipment = 8			# 便携防空导弹
-			cnc_equipment_type = 30
+			infantry_weapons_type = 960		# 步枪/班用机枪（全营 800 人）
+			L_AT_Equipment = 56			# K1 火箭筒
+			H_AT_Equipment = 14			# 标枪反坦克导弹
+			AA_Equipment = 20			# 便携防空导弹
+			cnc_equipment_type = 40
 			medium_tank_amphibious_chassis = 26	# KAAV7 ×25 + 营指挥车 ×1
-			util_vehicle_type = 12
+			util_vehicle_type = 8
 		}
 
 		plains = { attack = 0.10 movement = 0.10 }
@@ -390,15 +360,20 @@ sub_units = {
 
 		combat_width = 4
 
-		max_strength = 13
-		max_organisation = 28
-		default_morale = 0.08
-		manpower = 550
+		max_strength = 14
+		max_organisation = 30
+		default_morale = 0.11
+		manpower = 1750
 		entrenchment = -0.10
 		suppression = 2.5
 
 		training_time = 150
 		weight = 1
+		defense = 0.15
+		breakthrough = 0.20
+		soft_attack = 0.15
+		hard_attack = 0.15
+		ap_attack = 0.20
 
 		transport = medium_tank_amphibious_chassis
 
@@ -407,13 +382,13 @@ sub_units = {
 		}
 
 		need = {
-			infantry_weapons_type = 400		# 步枪/班用机枪（全营 550 人）
-			L_AT_Equipment = 36			# 红隼火箭筒
-			H_AT_Equipment = 8			# 标枪反坦克导弹
-			AA_Equipment = 8			# 便携防空导弹
-			cnc_equipment_type = 28
+			infantry_weapons_type = 960		# 步枪/班用机枪（全营 550 人）
+			L_AT_Equipment = 56			# 红隼火箭筒
+			H_AT_Equipment = 14			# 标枪反坦克导弹
+			AA_Equipment = 20			# 便携防空导弹
+			cnc_equipment_type = 40
 			medium_tank_amphibious_chassis = 24	# AAV-7 ×23 + 营指挥车 ×1
-			util_vehicle_type = 10
+			util_vehicle_type = 8
 		}
 
 		plains = { attack = 0.10 movement = 0.10 }
@@ -451,15 +426,20 @@ sub_units = {
 
 		combat_width = 4
 
-		max_strength = 13
-		max_organisation = 28
-		default_morale = 0.08
-		manpower = 700
+		max_strength = 14
+		max_organisation = 30
+		default_morale = 0.11
+		manpower = 1750
 		entrenchment = -0.10
 		suppression = 2.5
 
 		training_time = 150
 		weight = 1
+		defense = 0.15
+		breakthrough = 0.20
+		soft_attack = 0.15
+		hard_attack = 0.15
+		ap_attack = 0.20
 
 		transport = medium_tank_amphibious_chassis
 
@@ -468,13 +448,13 @@ sub_units = {
 		}
 
 		need = {
-			infantry_weapons_type = 420		# 89 式步枪/班用机枪（全营 700 人）
-			L_AT_Equipment = 36			# 110mm 个人携行反坦克火箭筒
-			H_AT_Equipment = 8			# 01 式反坦克导弹
-			AA_Equipment = 8			# 91 式便携防空导弹
-			cnc_equipment_type = 28
+			infantry_weapons_type = 960		# 89 式步枪/班用机枪（全营 700 人）
+			L_AT_Equipment = 56			# 110mm 个人携行反坦克火箭筒
+			H_AT_Equipment = 14			# 01 式反坦克导弹
+			AA_Equipment = 20			# 91 式便携防空导弹
+			cnc_equipment_type = 40
 			medium_tank_amphibious_chassis = 26	# 73 式/96 式装甲车 ×25 + 营指挥车 ×1
-			util_vehicle_type = 10
+			util_vehicle_type = 8
 		}
 
 		plains = { attack = 0.10 movement = 0.10 }
@@ -512,15 +492,20 @@ sub_units = {
 
 		combat_width = 4
 
-		max_strength = 12
-		max_organisation = 26
-		default_morale = 0.07
-		manpower = 400
+		max_strength = 14
+		max_organisation = 30
+		default_morale = 0.11
+		manpower = 1750
 		entrenchment = -0.10
 		suppression = 2.5
 
 		training_time = 150
 		weight = 1
+		defense = 0.15
+		breakthrough = 0.20
+		soft_attack = 0.15
+		hard_attack = 0.15
+		ap_attack = 0.20
 
 		transport = medium_tank_destroyer_chassis
 
@@ -529,13 +514,13 @@ sub_units = {
 		}
 
 		need = {
-			infantry_weapons_type = 300		# 88 式步枪/班用机枪（全营 400 人）
-			L_AT_Equipment = 32			# 69 式火箭筒
-			H_AT_Equipment = 4			# 仿制反坦克导弹
-			AA_Equipment = 8			# 便携防空导弹
-			cnc_equipment_type = 24
+			infantry_weapons_type = 960		# 88 式步枪/班用机枪（全营 400 人）
+			L_AT_Equipment = 56			# 69 式火箭筒
+			H_AT_Equipment = 14			# 仿制反坦克导弹
+			AA_Equipment = 20			# 便携防空导弹
+			cnc_equipment_type = 40
 			medium_tank_destroyer_chassis = 24	# PT-85 两栖坦克 ×23 + 营指挥车 ×1
-			util_vehicle_type = 10
+			util_vehicle_type = 8
 		}
 
 		plains = { attack = 0.10 movement = 0.10 }
@@ -573,15 +558,20 @@ sub_units = {
 
 		combat_width = 4
 
-		max_strength = 13
-		max_organisation = 28
-		default_morale = 0.08
-		manpower = 700
+		max_strength = 14
+		max_organisation = 30
+		default_morale = 0.11
+		manpower = 1750
 		entrenchment = -0.10
 		suppression = 2.5
 
 		training_time = 150
 		weight = 1
+		defense = 0.15
+		breakthrough = 0.20
+		soft_attack = 0.15
+		hard_attack = 0.15
+		ap_attack = 0.20
 
 		transport = medium_tank_amphibious_chassis
 
@@ -590,13 +580,13 @@ sub_units = {
 		}
 
 		need = {
-			infantry_weapons_type = 460		# 步枪/班用机枪（全营 700 人）
-			L_AT_Equipment = 40			# 火箭筒
-			H_AT_Equipment = 8			# 长钉反坦克导弹
-			AA_Equipment = 8			# 便携防空导弹
-			cnc_equipment_type = 30
+			infantry_weapons_type = 960		# 步枪/班用机枪（全营 700 人）
+			L_AT_Equipment = 56			# 火箭筒
+			H_AT_Equipment = 14			# 长钉反坦克导弹
+			AA_Equipment = 20			# 便携防空导弹
+			cnc_equipment_type = 40
 			medium_tank_amphibious_chassis = 31	# VBM Freccia 8×8 ×30 + 营指挥车 ×1
-			util_vehicle_type = 12
+			util_vehicle_type = 8
 		}
 
 		plains = { attack = 0.10 movement = 0.10 }
@@ -638,24 +628,29 @@ sub_units = {
 
 		combat_width = 4
 
-		max_strength = 12
-		max_organisation = 30
-		default_morale = 0.10
-		manpower = 650
+		max_strength = 14
+		max_organisation = 34
+		default_morale = 0.12
+		manpower = 1700
 		suppression = 2
 
 		training_time = 180
 		weight = 0.5
+		defense = 0.15
+		breakthrough = 0.065
+		soft_attack = 0.15
+		hard_attack = 0.15
+		ap_attack = 0.20
 
 		transport = util_vehicle_type
 
 		need = {
-			infantry_weapons_type = 620
-			L_AT_Equipment = 60
+			infantry_weapons_type = 930
+			L_AT_Equipment = 56
 			H_AT_Equipment = 12
-			AA_Equipment = 8
-			cnc_equipment_type = 32
-			util_vehicle_type = 22
+			AA_Equipment = 20
+			cnc_equipment_type = 36
+			util_vehicle_type = 45
 		}
 
 		plains = { attack = 0.10 movement = 0.10 }
@@ -697,24 +692,30 @@ sub_units = {
 
 		combat_width = 4
 
-		max_strength = 12
-		max_organisation = 30
-		default_morale = 0.10
-		manpower = 600
+		max_strength = 14
+		max_organisation = 34
+		default_morale = 0.12
+		manpower = 1700
 		suppression = 2
 
 		training_time = 180
 		weight = 0.5
+		defense = 0.15
+		breakthrough = 0.065
+		soft_attack = 0.15
+		hard_attack = 0.15
+		ap_attack = 0.20
 
 		transport = airborne_mechanized_equipment
 
 		need = {
-			infantry_weapons_type = 520
-			L_AT_Equipment = 55
-			AA_Equipment = 8
-			cnc_equipment_type = 32
+			infantry_weapons_type = 930
+			L_AT_Equipment = 56
+			AA_Equipment = 20
+			cnc_equipment_type = 36
 			airborne_mechanized_equipment = 31
-			util_vehicle_type = 10
+			util_vehicle_type = 45
+			H_AT_Equipment = 12
 		}
 
 		plains = { attack = 0.10 movement = 0.10 }
@@ -757,20 +758,26 @@ sub_units = {
 		max_strength = 14
 		max_organisation = 36
 		default_morale = 0.14
-		manpower = 700
+		manpower = 1500
 		entrenchment = -0.3
 		suppression = 2.0
 
 		training_time = 200
 		weight = 0.5
+		defense = 0.15
+		breakthrough = 0.20
+		soft_attack = 0.15
+		hard_attack = 0.15
+		ap_attack = 0.20
 
 		need = {
-			infantry_weapons_type = 620
-			L_AT_Equipment = 50
-			AA_Equipment = 8
-			cnc_equipment_type = 36
+			infantry_weapons_type = 820
+			L_AT_Equipment = 56
+			AA_Equipment = 20
+			cnc_equipment_type = 32
 			heavy_tank_amphibious_chassis = 20
-			util_vehicle_type = 8
+			util_vehicle_type = 12
+			H_AT_Equipment = 10
 		}
 
 		transport = heavy_tank_amphibious_chassis
@@ -811,23 +818,30 @@ sub_units = {
 
 		combat_width = 4
 
-		max_strength = 12
-		max_organisation = 31
-		default_morale = 0.10
-		manpower = 650
+		max_strength = 14
+		max_organisation = 34
+		default_morale = 0.12
+		manpower = 1700
 		suppression = 2
 
 		training_time = 180
 		weight = 0.5
+		defense = 0.15
+		breakthrough = 0.065
+		soft_attack = 0.15
+		hard_attack = 0.15
+		ap_attack = 0.20
 
 		transport = airborne_mechanized_equipment
 
 		need = {
-			infantry_weapons_type = 620
-			L_AT_Equipment = 55
-			AA_Equipment = 8
-			cnc_equipment_type = 32
+			infantry_weapons_type = 930
+			L_AT_Equipment = 56
+			AA_Equipment = 20
+			cnc_equipment_type = 36
 			airborne_mechanized_equipment = 30
+			H_AT_Equipment = 12
+			util_vehicle_type = 45
 		}
 
 		plains = { attack = 0.10 movement = 0.10 }
@@ -869,23 +883,29 @@ sub_units = {
 
 		combat_width = 4
 
-		max_strength = 12
-		max_organisation = 30
-		default_morale = 0.10
-		manpower = 550
+		max_strength = 14
+		max_organisation = 34
+		default_morale = 0.12
+		manpower = 1700
 		suppression = 2
 
 		training_time = 180
 		weight = 0.5
+		defense = 0.15
+		breakthrough = 0.065
+		soft_attack = 0.15
+		hard_attack = 0.15
+		ap_attack = 0.20
 
 		transport = util_vehicle_type
 
 		need = {
-			infantry_weapons_type = 620
-			L_AT_Equipment = 55
-			AA_Equipment = 8
-			cnc_equipment_type = 32
-			util_vehicle_type = 22
+			infantry_weapons_type = 930
+			L_AT_Equipment = 56
+			AA_Equipment = 20
+			cnc_equipment_type = 36
+			util_vehicle_type = 45
+			H_AT_Equipment = 12
 		}
 
 		plains = { attack = 0.10 movement = 0.10 }
@@ -927,23 +947,29 @@ sub_units = {
 
 		combat_width = 4
 
-		max_strength = 12
-		max_organisation = 30
-		default_morale = 0.10
-		manpower = 650
+		max_strength = 14
+		max_organisation = 34
+		default_morale = 0.12
+		manpower = 1700
 		suppression = 2
 
 		training_time = 180
 		weight = 0.5
+		defense = 0.15
+		breakthrough = 0.065
+		soft_attack = 0.15
+		hard_attack = 0.15
+		ap_attack = 0.20
 
 		transport = util_vehicle_type
 
 		need = {
-			infantry_weapons_type = 620
-			L_AT_Equipment = 60
-			AA_Equipment = 8
-			cnc_equipment_type = 32
-			util_vehicle_type = 22
+			infantry_weapons_type = 930
+			L_AT_Equipment = 56
+			AA_Equipment = 20
+			cnc_equipment_type = 36
+			util_vehicle_type = 45
+			H_AT_Equipment = 12
 		}
 
 		plains = { attack = 0.10 movement = 0.10 }
@@ -986,22 +1012,28 @@ sub_units = {
 		combat_width = 4
 
 		max_strength = 14
-		max_organisation = 32
-		default_morale = 0.11
-		manpower = 1000
+		max_organisation = 34
+		default_morale = 0.12
+		manpower = 1700
 		suppression = 2.5
 
 		training_time = 180
 		weight = 0.5
+		defense = 0.15
+		breakthrough = 0.065
+		soft_attack = 0.15
+		hard_attack = 0.15
+		ap_attack = 0.20
 
 		transport = util_vehicle_type
 
 		need = {
-			infantry_weapons_type = 760
-			L_AT_Equipment = 60
-			AA_Equipment = 8
-			cnc_equipment_type = 32
-			util_vehicle_type = 22
+			infantry_weapons_type = 930
+			L_AT_Equipment = 56
+			AA_Equipment = 20
+			cnc_equipment_type = 36
+			util_vehicle_type = 45
+			H_AT_Equipment = 12
 		}
 
 		plains = { attack = 0.10 movement = 0.10 }
@@ -1043,23 +1075,29 @@ sub_units = {
 
 		combat_width = 4
 
-		max_strength = 12
-		max_organisation = 30
-		default_morale = 0.10
-		manpower = 750
+		max_strength = 14
+		max_organisation = 34
+		default_morale = 0.12
+		manpower = 1700
 		suppression = 2
 
 		training_time = 180
 		weight = 0.5
+		defense = 0.15
+		breakthrough = 0.065
+		soft_attack = 0.15
+		hard_attack = 0.15
+		ap_attack = 0.20
 
 		transport = util_vehicle_type
 
 		need = {
-			infantry_weapons_type = 620
-			L_AT_Equipment = 60
-			AA_Equipment = 8
-			cnc_equipment_type = 32
-			util_vehicle_type = 22
+			infantry_weapons_type = 930
+			L_AT_Equipment = 56
+			AA_Equipment = 20
+			cnc_equipment_type = 36
+			util_vehicle_type = 45
+			H_AT_Equipment = 12
 		}
 
 		plains = { attack = 0.10 movement = 0.10 }
@@ -1101,23 +1139,29 @@ sub_units = {
 
 		combat_width = 4
 
-		max_strength = 12
-		max_organisation = 30
-		default_morale = 0.10
-		manpower = 620
+		max_strength = 14
+		max_organisation = 34
+		default_morale = 0.12
+		manpower = 1700
 		suppression = 2
 
 		training_time = 180
 		weight = 0.5
+		defense = 0.15
+		breakthrough = 0.065
+		soft_attack = 0.15
+		hard_attack = 0.15
+		ap_attack = 0.20
 
 		transport = util_vehicle_type
 
 		need = {
-			infantry_weapons_type = 620
-			L_AT_Equipment = 55
-			AA_Equipment = 8
-			cnc_equipment_type = 32
-			util_vehicle_type = 22
+			infantry_weapons_type = 930
+			L_AT_Equipment = 56
+			AA_Equipment = 20
+			cnc_equipment_type = 36
+			util_vehicle_type = 45
+			H_AT_Equipment = 12
 		}
 
 		plains = { attack = 0.10 movement = 0.10 }
@@ -1160,22 +1204,28 @@ sub_units = {
 		combat_width = 4
 
 		max_strength = 14
-		max_organisation = 38
-		default_morale = 0.14
-		manpower = 550
+		max_organisation = 34
+		default_morale = 0.12
+		manpower = 1700
 		suppression = 1
 
 		training_time = 180
 		weight = 0.5
+		defense = 0.15
+		breakthrough = 0.065
+		soft_attack = 0.15
+		hard_attack = 0.15
+		ap_attack = 0.20
 
 		transport = util_vehicle_type
 
 		need = {
-			infantry_weapons_type = 620
-			L_AT_Equipment = 60
-			AA_Equipment = 8
-			cnc_equipment_type = 32
-			util_vehicle_type = 22
+			infantry_weapons_type = 930
+			L_AT_Equipment = 56
+			AA_Equipment = 20
+			cnc_equipment_type = 36
+			util_vehicle_type = 45
+			H_AT_Equipment = 12
 		}
 
 		plains = { attack = 0.10 movement = 0.10 }
@@ -1217,23 +1267,29 @@ sub_units = {
 
 		combat_width = 4
 
-		max_strength = 12
-		max_organisation = 30
-		default_morale = 0.10
-		manpower = 650
+		max_strength = 14
+		max_organisation = 34
+		default_morale = 0.12
+		manpower = 1700
 		suppression = 2
 
 		training_time = 180
 		weight = 0.5
+		defense = 0.15
+		breakthrough = 0.065
+		soft_attack = 0.15
+		hard_attack = 0.15
+		ap_attack = 0.20
 
 		transport = util_vehicle_type
 
 		need = {
-			infantry_weapons_type = 620
-			L_AT_Equipment = 55
-			AA_Equipment = 8
-			cnc_equipment_type = 32
-			util_vehicle_type = 22
+			infantry_weapons_type = 930
+			L_AT_Equipment = 56
+			AA_Equipment = 20
+			cnc_equipment_type = 36
+			util_vehicle_type = 45
+			H_AT_Equipment = 12
 		}
 
 		plains = { attack = 0.10 movement = 0.10 }
@@ -1275,23 +1331,29 @@ sub_units = {
 
 		combat_width = 4
 
-		max_strength = 12
-		max_organisation = 30
-		default_morale = 0.10
-		manpower = 650
+		max_strength = 14
+		max_organisation = 34
+		default_morale = 0.12
+		manpower = 1700
 		suppression = 2
 
 		training_time = 180
 		weight = 0.5
+		defense = 0.15
+		breakthrough = 0.065
+		soft_attack = 0.15
+		hard_attack = 0.15
+		ap_attack = 0.20
 
 		transport = util_vehicle_type
 
 		need = {
-			infantry_weapons_type = 620
-			L_AT_Equipment = 55
-			AA_Equipment = 8
-			cnc_equipment_type = 32
-			util_vehicle_type = 22
+			infantry_weapons_type = 930
+			L_AT_Equipment = 56
+			AA_Equipment = 20
+			cnc_equipment_type = 36
+			util_vehicle_type = 45
+			H_AT_Equipment = 12
 		}
 
 		plains = { attack = 0.10 movement = 0.10 }
@@ -1333,23 +1395,29 @@ sub_units = {
 
 		combat_width = 4
 
-		max_strength = 13
-		max_organisation = 30
-		default_morale = 0.10
-		manpower = 700
+		max_strength = 14
+		max_organisation = 34
+		default_morale = 0.12
+		manpower = 1700
 		suppression = 2
 
 		training_time = 180
 		weight = 0.5
+		defense = 0.15
+		breakthrough = 0.065
+		soft_attack = 0.15
+		hard_attack = 0.15
+		ap_attack = 0.20
 
 		transport = util_vehicle_type
 
 		need = {
-			infantry_weapons_type = 665
-			L_AT_Equipment = 55
-			AA_Equipment = 8
-			cnc_equipment_type = 32
-			util_vehicle_type = 22
+			infantry_weapons_type = 930
+			L_AT_Equipment = 56
+			AA_Equipment = 20
+			cnc_equipment_type = 36
+			util_vehicle_type = 45
+			H_AT_Equipment = 12
 		}
 
 		plains = { attack = 0.10 movement = 0.10 }
@@ -1391,23 +1459,29 @@ sub_units = {
 
 		combat_width = 4
 
-		max_strength = 12
-		max_organisation = 30
-		default_morale = 0.10
-		manpower = 400
+		max_strength = 14
+		max_organisation = 34
+		default_morale = 0.12
+		manpower = 1700
 		suppression = 2
 
 		training_time = 180
 		weight = 0.5
+		defense = 0.15
+		breakthrough = 0.065
+		soft_attack = 0.15
+		hard_attack = 0.15
+		ap_attack = 0.20
 
 		transport = util_vehicle_type
 
 		need = {
-			infantry_weapons_type = 620
-			L_AT_Equipment = 55
-			AA_Equipment = 8
-			cnc_equipment_type = 32
-			util_vehicle_type = 22
+			infantry_weapons_type = 930
+			L_AT_Equipment = 56
+			AA_Equipment = 20
+			cnc_equipment_type = 36
+			util_vehicle_type = 45
+			H_AT_Equipment = 12
 		}
 
 		plains = { attack = 0.10 movement = 0.10 }
@@ -1452,20 +1526,26 @@ sub_units = {
 		max_strength = 14
 		max_organisation = 36
 		default_morale = 0.14
-		manpower = 700
+		manpower = 1500
 		entrenchment = -0.3
 		suppression = 2.0
 
 		training_time = 200
 		weight = 0.5
+		defense = 0.15
+		breakthrough = 0.20
+		soft_attack = 0.15
+		hard_attack = 0.15
+		ap_attack = 0.20
 
 		need = {
-			infantry_weapons_type = 620
-			L_AT_Equipment = 55
-			AA_Equipment = 8
-			cnc_equipment_type = 36
+			infantry_weapons_type = 820
+			L_AT_Equipment = 56
+			AA_Equipment = 20
+			cnc_equipment_type = 32
 			heavy_tank_amphibious_chassis = 24
-			util_vehicle_type = 8
+			util_vehicle_type = 12
+			H_AT_Equipment = 10
 		}
 
 		transport = heavy_tank_amphibious_chassis
@@ -1506,20 +1586,87 @@ sub_units = {
 		max_strength = 14
 		max_organisation = 36
 		default_morale = 0.14
-		manpower = 700
+		manpower = 1500
 		entrenchment = -0.3
 		suppression = 2.0
 
 		training_time = 200
 		weight = 0.5
+		defense = 0.15
+		breakthrough = 0.20
+		soft_attack = 0.15
+		hard_attack = 0.15
+		ap_attack = 0.20
 
 		need = {
-			infantry_weapons_type = 620
-			L_AT_Equipment = 50
-			AA_Equipment = 8
-			cnc_equipment_type = 36
+			infantry_weapons_type = 820
+			L_AT_Equipment = 56
+			AA_Equipment = 20
+			cnc_equipment_type = 32
 			heavy_tank_amphibious_chassis = 20
-			util_vehicle_type = 8
+			util_vehicle_type = 12
+			H_AT_Equipment = 10
+		}
+
+		transport = heavy_tank_amphibious_chassis
+
+		hills = { attack = 0.05 defence = 0.10 }
+		forest = { attack = 0.05 defence = 0.10 }
+		mountain = { attack = 0.05 defence = 0.15 }
+		jungle = { attack = 0.05 defence = 0.10 }
+		marsh = { defence = 0.10 movement = 0.05 }
+		urban = { attack = 0.05 defence = 0.05 }
+
+	}
+
+	Marine_AirAssault_Bat_CHI = { # 中国海军陆战旅空中突击营（陆战旅编成内的空突营，兵牌复用陆军空突）
+		sprite = AirAssault_Bat_CHI
+		map_icon_category = infantry
+		priority = 10
+		active = no
+		ai_priority = 5
+		marines = yes
+		type = {
+			motorized
+		}
+		group = airmobile
+
+		categories = {
+			category_front_line
+			category_special_forces
+			category_conventional_infantry
+			category_all_infantry
+			category_army
+			category_non_militia
+			category_all_airborne
+			category_air_aslt
+		}
+
+		combat_width = 3
+
+		max_strength = 14
+		max_organisation = 36
+		default_morale = 0.14
+		manpower = 1500
+		entrenchment = -0.3
+		suppression = 2.0
+
+		training_time = 200
+		weight = 0.5
+		defense = 0.15
+		breakthrough = 0.20
+		soft_attack = 0.15
+		hard_attack = 0.15
+		ap_attack = 0.20
+
+		need = {
+			infantry_weapons_type = 820
+			L_AT_Equipment = 56
+			AA_Equipment = 20
+			cnc_equipment_type = 32
+			heavy_tank_amphibious_chassis = 20
+			util_vehicle_type = 12
+			H_AT_Equipment = 10
 		}
 
 		transport = heavy_tank_amphibious_chassis
@@ -1565,20 +1712,26 @@ sub_units = {
 		max_strength = 14
 		max_organisation = 36
 		default_morale = 0.14
-		manpower = 550
+		manpower = 1500
 		entrenchment = -0.3
 		suppression = 2.0
 
 		training_time = 200
 		weight = 0.5
+		defense = 0.15
+		breakthrough = 0.20
+		soft_attack = 0.15
+		hard_attack = 0.15
+		ap_attack = 0.20
 
 		need = {
-			infantry_weapons_type = 620
-			L_AT_Equipment = 50
-			AA_Equipment = 8
+			infantry_weapons_type = 820
+			L_AT_Equipment = 56
+			AA_Equipment = 20
 			cnc_equipment_type = 32
 			heavy_tank_amphibious_chassis = 18
-			util_vehicle_type = 6
+			util_vehicle_type = 12
+			H_AT_Equipment = 10
 		}
 
 		transport = heavy_tank_amphibious_chassis
@@ -1617,23 +1770,29 @@ sub_units = {
 
 		combat_width = 3
 
-		max_strength = 13
-		max_organisation = 32
-		default_morale = 0.11
-		manpower = 800
+		max_strength = 16
+		max_organisation = 40
+		default_morale = 0.14
+		manpower = 1500
 		suppression = 1
 
 		training_time = 200
 		weight = 0.5
+		defense = 0.15
+		breakthrough = 0.20
+		soft_attack = 0.15
+		hard_attack = 0.15
+		ap_attack = 0.20
 
 		transport = util_vehicle_type
 
 		need = {
-			infantry_weapons_type = 770
-			L_AT_Equipment = 55
-			AA_Equipment = 8
-			cnc_equipment_type = 32
-			util_vehicle_type = 18
+			infantry_weapons_type = 820
+			L_AT_Equipment = 56
+			AA_Equipment = 20
+			cnc_equipment_type = 36
+			util_vehicle_type = 12
+			H_AT_Equipment = 10
 		}
 
 		plains = { attack = -0.10 movement = -0.05 }
@@ -1673,23 +1832,29 @@ sub_units = {
 
 		combat_width = 3
 
-		max_strength = 13
-		max_organisation = 32
-		default_morale = 0.11
-		manpower = 800
+		max_strength = 16
+		max_organisation = 40
+		default_morale = 0.14
+		manpower = 1500
 		suppression = 1
 
 		training_time = 200
 		weight = 0.5
+		defense = 0.15
+		breakthrough = 0.20
+		soft_attack = 0.15
+		hard_attack = 0.15
+		ap_attack = 0.20
 
 		transport = util_vehicle_type
 
 		need = {
-			infantry_weapons_type = 770
-			L_AT_Equipment = 55
-			AA_Equipment = 8
-			cnc_equipment_type = 32
-			util_vehicle_type = 18
+			infantry_weapons_type = 820
+			L_AT_Equipment = 56
+			AA_Equipment = 20
+			cnc_equipment_type = 36
+			util_vehicle_type = 12
+			H_AT_Equipment = 10
 		}
 
 		plains = { attack = -0.10 movement = -0.05 }
@@ -1729,23 +1894,29 @@ sub_units = {
 
 		combat_width = 3
 
-		max_strength = 13
-		max_organisation = 32
-		default_morale = 0.11
-		manpower = 650
+		max_strength = 16
+		max_organisation = 40
+		default_morale = 0.14
+		manpower = 1500
 		suppression = 1
 
 		training_time = 200
 		weight = 0.5
+		defense = 0.15
+		breakthrough = 0.20
+		soft_attack = 0.15
+		hard_attack = 0.15
+		ap_attack = 0.20
 
 		transport = util_vehicle_type
 
 		need = {
-			infantry_weapons_type = 620
-			L_AT_Equipment = 50
-			AA_Equipment = 8
-			cnc_equipment_type = 32
-			util_vehicle_type = 18
+			infantry_weapons_type = 820
+			L_AT_Equipment = 56
+			AA_Equipment = 20
+			cnc_equipment_type = 36
+			util_vehicle_type = 12
+			H_AT_Equipment = 10
 		}
 
 		plains = { attack = -0.10 movement = -0.05 }
@@ -1784,23 +1955,29 @@ sub_units = {
 
 		combat_width = 3
 
-		max_strength = 13
-		max_organisation = 32
-		default_morale = 0.11
-		manpower = 800
+		max_strength = 16
+		max_organisation = 40
+		default_morale = 0.14
+		manpower = 1500
 		suppression = 1
 
 		training_time = 200
 		weight = 0.5
+		defense = 0.15
+		breakthrough = 0.20
+		soft_attack = 0.15
+		hard_attack = 0.15
+		ap_attack = 0.20
 
 		transport = util_vehicle_type
 
 		need = {
-			infantry_weapons_type = 620
-			L_AT_Equipment = 40
-			AA_Equipment = 8
-			cnc_equipment_type = 32
-			util_vehicle_type = 15
+			infantry_weapons_type = 820
+			L_AT_Equipment = 56
+			AA_Equipment = 20
+			cnc_equipment_type = 36
+			util_vehicle_type = 12
+			H_AT_Equipment = 10
 		}
 
 		plains = { attack = -0.10 movement = -0.05 }
@@ -1848,21 +2025,27 @@ sub_units = {
 		max_strength = 14
 		max_organisation = 36
 		default_morale = 0.14
-		manpower = 660
+		manpower = 1400
 		entrenchment = 0.1
 		suppression = 1
 
 		training_time = 200
 		weight = 0.5
+		defense = 0.60
+		breakthrough = 0.24
+		soft_attack = 0.24
+		hard_attack = 0.24
+		ap_attack = 0.60
 
 		transport = util_vehicle_type
 
 		need = {
-			infantry_weapons_type = 710
+			infantry_weapons_type = 770
 			L_AT_Equipment = 50
-			AA_Equipment = 8
+			AA_Equipment = 16
 			cnc_equipment_type = 32
-			util_vehicle_type = 22
+			util_vehicle_type = 15
+			H_AT_Equipment = 12
 		}
 
 		plains = { attack = -0.05 }
@@ -1910,20 +2093,26 @@ sub_units = {
 		max_strength = 14
 		max_organisation = 32
 		default_morale = 0.14
-		manpower = 400
+		manpower = 1250
 		suppression = 1
 
 		training_time = 200
 		weight = 0.5
+		defense = 1.15
+		breakthrough = 2.4
+		soft_attack = 1.75
+		hard_attack = 1.78
+		ap_attack = 1.15
 
 		transport = util_vehicle_type
 
 		need = {
-			infantry_weapons_type = 380
+			infantry_weapons_type = 1000
 			L_AT_Equipment = 24
-			AA_Equipment = 8
+			AA_Equipment = 12
 			cnc_equipment_type = 40
-			util_vehicle_type = 16
+			util_vehicle_type = 24
+			H_AT_Equipment = 12
 		}
 
 		plains = { attack = 0.05 }
@@ -1969,20 +2158,26 @@ sub_units = {
 		max_strength = 14
 		max_organisation = 32
 		default_morale = 0.14
-		manpower = 300
+		manpower = 1250
 		suppression = 1
 
 		training_time = 200
 		weight = 0.5
+		defense = 1.15
+		breakthrough = 2.4
+		soft_attack = 1.75
+		hard_attack = 1.78
+		ap_attack = 1.15
 
 		transport = util_vehicle_type
 
 		need = {
-			infantry_weapons_type = 285
-			L_AT_Equipment = 18
-			AA_Equipment = 6
-			cnc_equipment_type = 36
-			util_vehicle_type = 12
+			infantry_weapons_type = 1000
+			L_AT_Equipment = 24
+			AA_Equipment = 12
+			cnc_equipment_type = 40
+			util_vehicle_type = 24
+			H_AT_Equipment = 12
 		}
 
 		plains = { attack = 0.05 }
@@ -2030,20 +2225,26 @@ sub_units = {
 		max_strength = 14
 		max_organisation = 32
 		default_morale = 0.14
-		manpower = 450
+		manpower = 1250
 		suppression = 1
 
 		training_time = 200
 		weight = 0.5
+		defense = 1.15
+		breakthrough = 2.4
+		soft_attack = 1.75
+		hard_attack = 1.78
+		ap_attack = 1.15
 
 		transport = util_vehicle_type
 
 		need = {
-			infantry_weapons_type = 430
-			L_AT_Equipment = 30
-			AA_Equipment = 10
-			cnc_equipment_type = 44
-			util_vehicle_type = 16
+			infantry_weapons_type = 1000
+			L_AT_Equipment = 24
+			AA_Equipment = 12
+			cnc_equipment_type = 40
+			util_vehicle_type = 24
+			H_AT_Equipment = 12
 		}
 
 		plains = { attack = 0.05 }
@@ -2090,20 +2291,26 @@ sub_units = {
 		max_strength = 14
 		max_organisation = 32
 		default_morale = 0.14
-		manpower = 400
+		manpower = 1250
 		suppression = 1
 
 		training_time = 200
 		weight = 0.5
+		defense = 1.15
+		breakthrough = 2.4
+		soft_attack = 1.75
+		hard_attack = 1.78
+		ap_attack = 1.15
 
 		transport = util_vehicle_type
 
 		need = {
-			infantry_weapons_type = 380
-			L_AT_Equipment = 28
-			AA_Equipment = 8
+			infantry_weapons_type = 1000
+			L_AT_Equipment = 24
+			AA_Equipment = 12
 			cnc_equipment_type = 40
-			util_vehicle_type = 16
+			util_vehicle_type = 24
+			H_AT_Equipment = 12
 		}
 
 		plains = { attack = 0.05 }
@@ -2148,20 +2355,26 @@ sub_units = {
 		max_strength = 14
 		max_organisation = 32
 		default_morale = 0.14
-		manpower = 700
+		manpower = 1500
 		suppression = 1
 
 		training_time = 200
 		weight = 0.5
+		defense = 1.15
+		breakthrough = 2.4
+		soft_attack = 1.75
+		hard_attack = 1.78
+		ap_attack = 1.15
 
 		transport = util_vehicle_type
 
 		need = {
-			infantry_weapons_type = 665
-			L_AT_Equipment = 20
-			AA_Equipment = 6
-			cnc_equipment_type = 40
-			util_vehicle_type = 18
+			infantry_weapons_type = 820
+			L_AT_Equipment = 50
+			AA_Equipment = 16
+			cnc_equipment_type = 32
+			util_vehicle_type = 12
+			H_AT_Equipment = 14
 		}
 
 		plains = { attack = 0.05 }
@@ -2208,20 +2421,26 @@ sub_units = {
 		max_strength = 14
 		max_organisation = 32
 		default_morale = 0.14
-		manpower = 300
+		manpower = 1250
 		suppression = 1
 
 		training_time = 200
 		weight = 0.5
+		defense = 1.15
+		breakthrough = 2.4
+		soft_attack = 1.75
+		hard_attack = 1.78
+		ap_attack = 1.15
 
 		transport = util_vehicle_type
 
 		need = {
-			infantry_weapons_type = 285
-			L_AT_Equipment = 18
-			AA_Equipment = 6
-			cnc_equipment_type = 36
-			util_vehicle_type = 12
+			infantry_weapons_type = 1000
+			L_AT_Equipment = 24
+			AA_Equipment = 12
+			cnc_equipment_type = 40
+			util_vehicle_type = 24
+			H_AT_Equipment = 12
 		}
 
 		plains = { attack = 0.05 }
@@ -2265,20 +2484,26 @@ sub_units = {
 		max_strength = 14
 		max_organisation = 32
 		default_morale = 0.14
-		manpower = 400
+		manpower = 1500
 		suppression = 1
 
 		training_time = 200
 		weight = 0.5
+		defense = 1.15
+		breakthrough = 2.4
+		soft_attack = 1.75
+		hard_attack = 1.78
+		ap_attack = 1.15
 
 		transport = util_vehicle_type
 
 		need = {
-			infantry_weapons_type = 380
-			L_AT_Equipment = 20
-			AA_Equipment = 6
+			infantry_weapons_type = 820
+			L_AT_Equipment = 50
+			AA_Equipment = 16
 			cnc_equipment_type = 32
-			util_vehicle_type = 18
+			util_vehicle_type = 12
+			H_AT_Equipment = 14
 		}
 
 		plains = { attack = 0.05 }
@@ -2325,20 +2550,26 @@ sub_units = {
 		max_strength = 14
 		max_organisation = 32
 		default_morale = 0.14
-		manpower = 300
+		manpower = 1250
 		suppression = 1
 
 		training_time = 200
 		weight = 0.5
+		defense = 1.15
+		breakthrough = 2.4
+		soft_attack = 1.75
+		hard_attack = 1.78
+		ap_attack = 1.15
 
 		transport = util_vehicle_type
 
 		need = {
-			infantry_weapons_type = 285
-			L_AT_Equipment = 18
-			AA_Equipment = 6
-			cnc_equipment_type = 36
-			util_vehicle_type = 12
+			infantry_weapons_type = 1000
+			L_AT_Equipment = 24
+			AA_Equipment = 12
+			cnc_equipment_type = 40
+			util_vehicle_type = 24
+			H_AT_Equipment = 12
 		}
 
 		plains = { attack = 0.05 }
@@ -2382,20 +2613,26 @@ sub_units = {
 		max_strength = 14
 		max_organisation = 32
 		default_morale = 0.14
-		manpower = 250
+		manpower = 1250
 		suppression = 1
 
 		training_time = 200
 		weight = 0.5
+		defense = 1.15
+		breakthrough = 2.4
+		soft_attack = 1.75
+		hard_attack = 1.78
+		ap_attack = 1.15
 
 		transport = util_vehicle_type
 
 		need = {
-			infantry_weapons_type = 285
-			L_AT_Equipment = 18
-			AA_Equipment = 6
-			cnc_equipment_type = 36
-			util_vehicle_type = 12
+			infantry_weapons_type = 1000
+			L_AT_Equipment = 24
+			AA_Equipment = 12
+			cnc_equipment_type = 40
+			util_vehicle_type = 24
+			H_AT_Equipment = 12
 		}
 
 		plains = { attack = 0.05 }
@@ -2442,20 +2679,26 @@ sub_units = {
 		max_strength = 14
 		max_organisation = 32
 		default_morale = 0.14
-		manpower = 250
+		manpower = 1250
 		suppression = 1
 
 		training_time = 200
 		weight = 0.5
+		defense = 1.15
+		breakthrough = 2.4
+		soft_attack = 1.75
+		hard_attack = 1.78
+		ap_attack = 1.15
 
 		transport = util_vehicle_type
 
 		need = {
-			infantry_weapons_type = 285
-			L_AT_Equipment = 18
-			AA_Equipment = 6
-			cnc_equipment_type = 36
-			util_vehicle_type = 12
+			infantry_weapons_type = 1000
+			L_AT_Equipment = 24
+			AA_Equipment = 12
+			cnc_equipment_type = 40
+			util_vehicle_type = 24
+			H_AT_Equipment = 12
 		}
 
 		plains = { attack = 0.05 }
@@ -2500,20 +2743,26 @@ sub_units = {
 		max_strength = 14
 		max_organisation = 32
 		default_morale = 0.14
-		manpower = 400
+		manpower = 1250
 		suppression = 1
 
 		training_time = 200
 		weight = 0.5
+		defense = 1.15
+		breakthrough = 2.4
+		soft_attack = 1.75
+		hard_attack = 1.78
+		ap_attack = 1.15
 
 		transport = util_vehicle_type
 
 		need = {
-			infantry_weapons_type = 475
-			L_AT_Equipment = 30
-			AA_Equipment = 8
-			cnc_equipment_type = 44
-			util_vehicle_type = 20
+			infantry_weapons_type = 1000
+			L_AT_Equipment = 24
+			AA_Equipment = 12
+			cnc_equipment_type = 40
+			util_vehicle_type = 24
+			H_AT_Equipment = 12
 		}
 
 		plains = { attack = 0.05 }
@@ -2557,20 +2806,26 @@ sub_units = {
 		max_strength = 14
 		max_organisation = 32
 		default_morale = 0.14
-		manpower = 450
+		manpower = 1250
 		suppression = 1
 
 		training_time = 200
 		weight = 0.5
+		defense = 1.15
+		breakthrough = 2.4
+		soft_attack = 1.75
+		hard_attack = 1.78
+		ap_attack = 1.15
 
 		transport = util_vehicle_type
 
 		need = {
-			infantry_weapons_type = 430
+			infantry_weapons_type = 1000
 			L_AT_Equipment = 24
-			AA_Equipment = 8
+			AA_Equipment = 12
 			cnc_equipment_type = 40
-			util_vehicle_type = 18
+			util_vehicle_type = 24
+			H_AT_Equipment = 12
 		}
 
 		plains = { attack = 0.05 }
@@ -2617,20 +2872,26 @@ sub_units = {
 		max_strength = 14
 		max_organisation = 32
 		default_morale = 0.14
-		manpower = 380
+		manpower = 1250
 		suppression = 1
 
 		training_time = 200
 		weight = 0.5
+		defense = 1.15
+		breakthrough = 2.4
+		soft_attack = 1.75
+		hard_attack = 1.78
+		ap_attack = 1.15
 
 		transport = util_vehicle_type
 
 		need = {
-			infantry_weapons_type = 330
-			L_AT_Equipment = 18
-			AA_Equipment = 8
-			cnc_equipment_type = 36
-			util_vehicle_type = 12
+			infantry_weapons_type = 1000
+			L_AT_Equipment = 24
+			AA_Equipment = 12
+			cnc_equipment_type = 40
+			util_vehicle_type = 24
+			H_AT_Equipment = 12
 		}
 
 		plains = { attack = 0.05 }
@@ -2675,20 +2936,26 @@ sub_units = {
 		max_strength = 14
 		max_organisation = 32
 		default_morale = 0.14
-		manpower = 500
+		manpower = 1250
 		suppression = 1
 
 		training_time = 200
 		weight = 0.5
+		defense = 1.15
+		breakthrough = 2.4
+		soft_attack = 1.75
+		hard_attack = 1.78
+		ap_attack = 1.15
 
 		transport = util_vehicle_type
 
 		need = {
-			infantry_weapons_type = 330
-			L_AT_Equipment = 18
-			AA_Equipment = 8
-			cnc_equipment_type = 36
-			util_vehicle_type = 14
+			infantry_weapons_type = 1000
+			L_AT_Equipment = 24
+			AA_Equipment = 12
+			cnc_equipment_type = 40
+			util_vehicle_type = 24
+			H_AT_Equipment = 12
 		}
 
 		plains = { attack = 0.05 }
@@ -2735,20 +3002,26 @@ sub_units = {
 		max_strength = 14
 		max_organisation = 32
 		default_morale = 0.14
-		manpower = 350
+		manpower = 1250
 		suppression = 1
 
 		training_time = 200
 		weight = 0.5
+		defense = 1.15
+		breakthrough = 2.4
+		soft_attack = 1.75
+		hard_attack = 1.78
+		ap_attack = 1.15
 
 		transport = util_vehicle_type
 
 		need = {
-			infantry_weapons_type = 285
-			L_AT_Equipment = 18
-			AA_Equipment = 6
-			cnc_equipment_type = 36
-			util_vehicle_type = 12
+			infantry_weapons_type = 1000
+			L_AT_Equipment = 24
+			AA_Equipment = 12
+			cnc_equipment_type = 40
+			util_vehicle_type = 24
+			H_AT_Equipment = 12
 		}
 
 		plains = { attack = 0.05 }
@@ -2793,20 +3066,26 @@ sub_units = {
 		max_strength = 14
 		max_organisation = 32
 		default_morale = 0.14
-		manpower = 350
+		manpower = 1250
 		suppression = 1
 
 		training_time = 200
 		weight = 0.5
+		defense = 1.15
+		breakthrough = 2.4
+		soft_attack = 1.75
+		hard_attack = 1.78
+		ap_attack = 1.15
 
 		transport = util_vehicle_type
 
 		need = {
-			infantry_weapons_type = 330
-			L_AT_Equipment = 18
-			AA_Equipment = 8
-			cnc_equipment_type = 36
-			util_vehicle_type = 14
+			infantry_weapons_type = 1000
+			L_AT_Equipment = 24
+			AA_Equipment = 12
+			cnc_equipment_type = 40
+			util_vehicle_type = 24
+			H_AT_Equipment = 12
 		}
 
 		plains = { attack = 0.05 }
@@ -2853,20 +3132,26 @@ sub_units = {
 		max_strength = 14
 		max_organisation = 32
 		default_morale = 0.14
-		manpower = 350
+		manpower = 1250
 		suppression = 1
 
 		training_time = 200
 		weight = 0.5
+		defense = 1.15
+		breakthrough = 2.4
+		soft_attack = 1.75
+		hard_attack = 1.78
+		ap_attack = 1.15
 
 		transport = util_vehicle_type
 
 		need = {
-			infantry_weapons_type = 285
-			L_AT_Equipment = 18
-			AA_Equipment = 6
-			cnc_equipment_type = 36
-			util_vehicle_type = 12
+			infantry_weapons_type = 1000
+			L_AT_Equipment = 24
+			AA_Equipment = 12
+			cnc_equipment_type = 40
+			util_vehicle_type = 24
+			H_AT_Equipment = 12
 		}
 
 		plains = { attack = 0.05 }
@@ -2911,20 +3196,26 @@ sub_units = {
 		max_strength = 14
 		max_organisation = 32
 		default_morale = 0.14
-		manpower = 500
+		manpower = 1250
 		suppression = 1
 
 		training_time = 200
 		weight = 0.5
+		defense = 1.15
+		breakthrough = 2.4
+		soft_attack = 1.75
+		hard_attack = 1.78
+		ap_attack = 1.15
 
 		transport = util_vehicle_type
 
 		need = {
-			infantry_weapons_type = 380
-			L_AT_Equipment = 28
-			AA_Equipment = 8
+			infantry_weapons_type = 1000
+			L_AT_Equipment = 24
+			AA_Equipment = 12
 			cnc_equipment_type = 40
-			util_vehicle_type = 16
+			util_vehicle_type = 24
+			H_AT_Equipment = 12
 		}
 
 		plains = { attack = 0.05 }
@@ -2969,20 +3260,26 @@ sub_units = {
 		max_strength = 14
 		max_organisation = 32
 		default_morale = 0.14
-		manpower = 400
+		manpower = 1250
 		suppression = 1
 
 		training_time = 200
 		weight = 0.5
+		defense = 1.15
+		breakthrough = 2.4
+		soft_attack = 1.75
+		hard_attack = 1.78
+		ap_attack = 1.15
 
 		transport = util_vehicle_type
 
 		need = {
-			infantry_weapons_type = 380
-			L_AT_Equipment = 18
-			AA_Equipment = 8
-			cnc_equipment_type = 36
-			util_vehicle_type = 16
+			infantry_weapons_type = 1000
+			L_AT_Equipment = 24
+			AA_Equipment = 12
+			cnc_equipment_type = 40
+			util_vehicle_type = 24
+			H_AT_Equipment = 12
 		}
 
 		plains = { attack = 0.05 }
@@ -3021,15 +3318,20 @@ sub_units = {
 
 		combat_width = 4
 
-		max_strength = 15
-		max_organisation = 32
-		default_morale = 0.11
-		manpower = 1100
+		max_strength = 16
+		max_organisation = 30
+		default_morale = 0.10
+		manpower = 1750
 		entrenchment = -0.20
 		suppression = 2
 
 		training_time = 150
 		weight = 1
+		defense = 0.10
+		breakthrough = 0.15
+		soft_attack = 0.10
+		hard_attack = 0.10
+		ap_attack = 0.15
 
 		transport = medium_tank_flame_chassis
 
@@ -3038,14 +3340,14 @@ sub_units = {
 		}
 
 		need = {
-			infantry_weapons_type = 900
-			L_AT_Equipment = 48
+			infantry_weapons_type = 960
+			L_AT_Equipment = 56
 			H_AT_Equipment = 16
-			AA_Equipment = 16
+			AA_Equipment = 20
 			cnc_equipment_type = 40
 			medium_tank_flame_chassis = 44
 			medium_tank_destroyer_chassis = 4
-			util_vehicle_type = 10
+			util_vehicle_type = 8
 			ZZ_neg_armor_pzgren = 1
 		}
 

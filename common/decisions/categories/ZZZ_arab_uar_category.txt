@@ -1,0 +1,16 @@
+# 阿拉伯联合共和国剧情链 —— 决议分类
+# 仅中国与俄罗斯可见；中国赢得全球战争后解锁（其余门槛由各条决议自身 visible 控制）
+
+ZZZ_arab_uar_category = {
+	icon = GFX_decision_category_generic_propaganda
+	allowed = {
+		OR = {
+			original_tag = CHI
+			original_tag = SOV
+		}
+	}
+	visible = {
+		has_global_flag = gaw_china_victory_settled
+	}
+	priority = 200
+}

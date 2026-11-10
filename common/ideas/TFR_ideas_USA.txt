@@ -22,8 +22,7 @@ ideas = {
 			}
 			modifier = {
 				#political_power_gain = -0.15
-				conservative_drift = 0.02
-				social_liberal_drift = 0.02
+				democratic_drift = 0.02
 			}
 		}
 		USA_worker_strikes = {
@@ -97,9 +96,7 @@ ideas = {
 				tag = USA
 			}
 			available = {
-				NOT = {
-					has_global_flag = USA_american_civil_war_global
-				}
+				always = no
 			}
 			removal_cost = -1
 			modifier = {
@@ -197,9 +194,7 @@ ideas = {
 				tag = USA
 			}
 			available = {
-				NOT = {
-					has_global_flag = USA_american_civil_war_global
-				}
+				always = no
 			}
 			modifier = {
 				trade_opinion_factor = 0.25
@@ -244,7 +239,6 @@ ideas = {
 			}
 			modifier = {
 				political_power_gain = -0.15
-				modifier_army_sub_unit_militia_defence_factor = 0.05
 			}
 		}
 		USA_second_amendment_idea1 = {
@@ -253,8 +247,6 @@ ideas = {
 				tag = USA
 			}
 			modifier = {
-				modifier_army_sub_unit_militia_attack_factor = 0.05
-				modifier_army_sub_unit_militia_defence_factor = 0.05
 			}
 		}
 		USA_second_amendment_idea2 = {
@@ -263,8 +255,6 @@ ideas = {
 				tag = USA
 			}
 			modifier = {
-				modifier_army_sub_unit_militia_attack_factor = 0.1
-				modifier_army_sub_unit_militia_defence_factor = 0.1
 			}
 		}
 		USA_on_the_up = {
@@ -273,10 +263,7 @@ ideas = {
 				tag = USA
 			}
 			available = {
-				NOT = {
-					has_country_flag = USA_coronavirus_strikes
-					has_global_flag = USA_american_civil_war_global
-				}
+				always = no
 			}
 			removal_cost = -1
 			modifier = {
@@ -391,8 +378,6 @@ ideas = {
 				tag = USA
 			}
 			modifier = {
-				modifier_army_sub_unit_militia_attack_factor = 0.05
-				modifier_army_sub_unit_militia_defence_factor = 0.05
 			}
 		}
 		USA_congressional_stagnation_idea = {
@@ -538,9 +523,7 @@ ideas = {
 				always = no
 			}
 			available = {
-				NOT = {
-					has_global_flag = USA_american_civil_war_over_global
-				}
+				country_exists = USA
 			}
 			removal_cost = -1
 			modifier = {
@@ -554,9 +537,7 @@ ideas = {
 				always = no
 			}
 			available = {
-				NOT = {
-					has_global_flag = USA_american_civil_war_over_global
-				}
+				country_exists = USA
 			}
 			removal_cost = -1
 			modifier = {
@@ -570,9 +551,7 @@ ideas = {
 				always = no
 			}
 			available = {
-				NOT = {
-					has_global_flag = USA_american_civil_war_over_global
-				}
+				country_exists = USA
 			}
 			removal_cost = -1
 			modifier = {
@@ -586,14 +565,10 @@ ideas = {
 				always = no
 			}
 			available = {
-				NOT = {
-					has_global_flag = USA_american_civil_war_over_global
-				}
+				country_exists = USA
 			}
 			removal_cost = -1
 			modifier = {
-				modifier_army_sub_unit_militia_attack_factor = -0.05
-				modifier_army_sub_unit_militia_defence_factor = -0.05
 			}
 		}
 		USA_low_morale_idea = {

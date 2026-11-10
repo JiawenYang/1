@@ -59,7 +59,7 @@ division_template = {
 		Marine_Bat_CHI = { x = 1 y = 0 }
 		Marine_Bat_CHI = { x = 1 y = 1 }
 		Arty_Bat = { x = 1 y = 2 }
-		Marine_Tank_Bat_CHI = { x = 1 y = 3 }
+		Marine_Bat_CHI = { x = 1 y = 3 }
 	}
 	support = {
 		SP_arty_battery = { x = 0 y = 0 }
@@ -78,7 +78,8 @@ division_template = {
 		Marine_Bat_CHI = { x = 0 y = 1 }
 		Marine_Bat_CHI = { x = 0 y = 2 }
 		Arty_Bat = { x = 1 y = 0 }
-		Marine_Tank_Bat_CHI = { x = 0 y = 3 }
+		Marine_Bat_CHI = { x = 0 y = 3 }
+		Marine_AirAssault_Bat_CHI = { x = 1 y = 1 }
 	}
 	support = {
 		SP_arty_battery = { x = 0 y = 0 }
@@ -139,7 +140,7 @@ division_template = {
 		Marine_Bat_CHI = { x = 0 y = 0 }
 		Marine_Bat_CHI = { x = 0 y = 1 }
 		Marine_Bat_CHI = { x = 0 y = 2 }
-		Marine_Tank_Bat_CHI = { x = 0 y = 3 }
+		Marine_Bat_CHI = { x = 0 y = 3 }
 	}
 	support = {
 		SP_arty_battery = { x = 0 y = 0 }
@@ -234,7 +235,7 @@ division_template = {
 		Marine_Bat_CHI = { x = 0 y = 1 }
 		Marine_Bat_CHI = { x = 0 y = 2 }
 		Arty_Bat = { x = 1 y = 0 }
-		Marine_Tank_Bat_CHI = { x = 0 y = 3 }
+		Marine_Bat_CHI = { x = 0 y = 3 }
 	}
 	support = {
 		Arty_Battery = { x = 0 y = 0 }
@@ -1466,31 +1467,31 @@ instant_effect = {
 			amount = 152
 		}
 		add_equipment_to_stockpile = {
-			variant_name = "Z-9"
+			variant_name = "Harbin Z-9"
 			type = transport_helicopter_2 #Z-9
 			producer = CHI
 			amount = 301
 		}
 		add_equipment_to_stockpile = {
-			variant_name = "Mil Mi-8"
+			variant_name = "Mil Mi-8T"
 			type = transport_helicopter_1 #Mil Mi-8
 			producer = SOV
 			amount = 55
 		}
 		add_equipment_to_stockpile = {
-			variant_name = "Sikorsky UH-60 Black Hawk"
+			variant_name = "UH-60 Black Hawk"
 			type = transport_helicopter_2 #Sikorsky UH-60 Black Hawk
 			producer = USA
 			amount = 19
 		}
 		add_equipment_to_stockpile = {
-			variant_name = "Mil Mi-8"
+			variant_name = "Mil Mi-8T"
 			type = transport_helicopter_1 #Mil Mi-8
 			producer = SOV
 			amount = 8
 		}
 		add_equipment_to_stockpile = {
-			variant_name = "Eurocopter AS332 Super Puma"
+			variant_name = "Eurocopter AS330 Puma"
 			type = transport_helicopter_1 #Eurocopter AS332 Super Puma
 			producer = FRA
 			amount = 89
@@ -1669,8 +1670,8 @@ instant_effect = {
 			amount = 450
 		}
 		add_equipment_to_stockpile = {
-			variant_name = "ZSL-09 (not listed in military balance but used in several units)"
-			type = medium_tank_amphibious_chassis_3 #ZSL-09 (not listed in military balance but used in several units)
+			variant_name = "ZSL-10"
+			type = medium_tank_amphibious_chassis_2
 			producer = CHI
 			amount = 400
 		}
@@ -1720,7 +1721,7 @@ instant_effect = {
 			amount = 1052	#452+600
 		}
 		add_equipment_to_stockpile = {
-			variant_name = "63式两栖坦克"
+			variant_name = "Type-63"
 			type = ZZ_amphibious_tank_chassis_type63 #63式两栖坦克
 			producer = CHI
 			amount = 300
@@ -1737,7 +1738,7 @@ instant_effect = {
 		}
 	
 		add_equipment_to_stockpile = {
-			variant_name = "HQ16"
+			variant_name = "HQ-6"
 			type = medium_tank_aa_chassis_1 #HQ16
 			producer = CHI
 			amount = 72
@@ -1760,7 +1761,7 @@ instant_effect = {
 		#MANPADS
 	
 		add_equipment_to_stockpile = {
-			variant_name = "HN-5"
+			variant_name = "9K32 Strela-2"
 			type = Anti_Air_0 #HN-5
 			producer = CHI
 			amount = 20000
@@ -1772,31 +1773,43 @@ instant_effect = {
 			producer = CHI
 			amount = 3000
 		}
+		
+		add_equipment_to_stockpile = {
+			type = Anti_Air_2 #FN-6
+			producer = CHI
+			amount = 5000
+		}
 	
 		#ATGM
 	
 		add_equipment_to_stockpile = {
-			type = Anti_tank_0 #HJ-73
+			type = Anti_tank_1 #HJ-73
 			producer = CHI
 			amount = 25000
 		}
 	
 		add_equipment_to_stockpile = {
-			type = Anti_tank_1 #HJ-8
+			type = Anti_tank_2 #HJ-8
 			producer = CHI
 			amount = 10000
+		}
+
+		add_equipment_to_stockpile = {
+			type = Anti_tank_3 #HJ-12
+			producer = CHI
+			amount = 1500
 		}
 	
 		#mounted
 	
 		add_equipment_to_stockpile = {
-			type = Heavy_Anti_tank_1 #HJ-9
+			type = Heavy_Anti_tank_2 #HJ-9
 			producer = CHI
 			amount = 1900
 		}
 	
 		add_equipment_to_stockpile = {
-			type = Heavy_Anti_tank_2 #HJ-10
+			type = Heavy_Anti_tank_3 #HJ-10
 			producer = CHI
 			amount = 300
 		}
@@ -1819,7 +1832,7 @@ instant_effect = {
 	
 		add_equipment_to_stockpile = {
 			variant_name = "PHZ-10"
-			type = medium_tank_rocket_chassis_2 #PHZ-10
+			type = SP_R_arty_2
 			producer = CHI
 			amount = 18
 		}
@@ -1840,6 +1853,12 @@ instant_effect = {
 			producer = CHI
 			amount = 1154 #as many as needed
 		}
+		
+		add_equipment_to_stockpile = {
+			type = artillery_2 #PLL-01 155mm
+			producer = CHI
+			amount = 400
+		}
 	
 		#SP
 		add_equipment_to_stockpile = {
@@ -1858,7 +1877,7 @@ instant_effect = {
 	
 		add_equipment_to_stockpile = {
 			variant_name = "PLZ-07"
-			type = medium_tank_artillery_chassis_1 #PLZ-07
+			type = SP_arty_2
 			producer = CHI
 			amount = 450
 		}
@@ -1965,8 +1984,8 @@ instant_effect = {
 	
 		#封存自行火炮
 		add_equipment_to_stockpile = {
-			variant_name = "83式152"
-			type = medium_tank_artillery_chassis_0 #83式152（封存）
+			variant_name = "PZL-83"
+			type = medium_tank_artillery_chassis_1
 			producer = CHI
 			amount = 200
 		}
@@ -2005,7 +2024,7 @@ instant_effect = {
 			amount = 2000
 		}
 		add_equipment_to_stockpile = {
-			variant_name = "HN-5便携防空"
+			variant_name = "9K32 Strela-2"
 			type = Anti_Air_0 #HN-5便携防空（封存）
 			producer = CHI
 			amount = 8000
@@ -2019,12 +2038,12 @@ instant_effect = {
 	
 		#封存反坦克导弹
 		add_equipment_to_stockpile = {
-			type = Anti_tank_0 #HJ-73（封存）
+			type = Anti_tank_1 #HJ-73（封存）
 			producer = CHI
 			amount = 10000
 		}
 		add_equipment_to_stockpile = {
-			type = Anti_tank_1 #HJ-8（封存）
+			type = Anti_tank_2 #HJ-8（封存）
 			producer = CHI
 			amount = 5000
 		}

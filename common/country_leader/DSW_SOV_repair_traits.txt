@@ -1,4 +1,6 @@
 # DSW Russia / repaired source references
+# @tier1_cp_cap_increase: TFR 源变量在移植时丢了定义; 取值参照 MD 基底 01_military_advisor_traits.txt 的 @tier1 = 5
+@tier1_cp_cap_increase = 5
 leader_traits = {
 	army_chief_militarist_merc_boss = {
 		sprite = 1
@@ -54,11 +56,7 @@ leader_traits = {
 	}
 	eco_infantry_proponent = {
 		equipment_bonus = {
-			infantry_equipment = {
-				build_cost_ic = -0.02
-				instant = yes
-			}
-			support_equipment = {
+			infantry = {
 				build_cost_ic = -0.02
 				instant = yes
 			}
@@ -94,7 +92,7 @@ leader_traits = {
 		production_factory_efficiency_gain_factor = 0.05
 		production_speed_synthetic_refinery_factor = 0.02
 		production_speed_industrial_complex_factor = 0.05
-		totalitarian_socialist_drift = 0.01
+		communism_drift = 0.01
 		random = no
 	}
 	eco_railway_magnate = {
@@ -178,7 +176,7 @@ leader_traits = {
 		random = no
 		political_power_gain = 0.075
 		stability_factor = 0.04
-		conservative_drift = 0.02
+		democratic_drift = 0.02
 		ai_will_do = {
 			factor = 1
 		}

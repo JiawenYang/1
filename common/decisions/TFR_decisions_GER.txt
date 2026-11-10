@@ -124,7 +124,8 @@ GER_trust_category = {
 				var = GER_ruling_support_trigger_temp
 				value = 0.6
 			}
-			GER_has_ruling_support_greater_than_or_equals = yes
+			# 原写法: GER_has_ruling_support_greater_than_or_equals ; 不可用: 本工程无执政党支持度变量，只有各党 GER_support_*_var，且执政党判定依赖 TFR 专属 government 值
+			always = no
 		}
 		ai_will_do = {
 			base = 0
@@ -169,7 +170,7 @@ GER_trust_category = {
 			base = 1
 		}
 		modifier = {
-			social_democrat_drift = 0.01
+			democratic_drift = 0.01
 			weekly_manpower = 1000
 			production_speed_buildings_factor = 0.15
 		}
@@ -593,11 +594,10 @@ GER_trust_category = {
 		}
 		modifier = {
 			stability_weekly = 0.002
-			authoritarian_democrat_drift = -0.04
+			democratic_drift = -0.04
 			nationalist_drift = -0.04
 			fascism_drift = -0.04
 			communism_drift = -0.04
-			totalitarian_socialist_drift = -0.04
 		}
 		complete_effect = {
 			if = {
@@ -755,7 +755,7 @@ GER_trust_category = {
 			}
 		}
 		modifier = {
-			stability_weekly$10.004
+			stability_weekly = 0.003
 		}
 		complete_effect = {
 			if = {
@@ -1165,7 +1165,6 @@ GER_trust_category = {
 					free_building_slots = {
 						building = nuclear_reactor
 						size > 0
-						include_locked = yes
 					}
 				}
 				add_extra_state_shared_building_slots = 1
@@ -1208,14 +1207,13 @@ GER_trust_category = {
 					is_core_of = ROOT
 					is_able_to_build_energy_farm_in_state = yes
 					free_building_slots = {
-						building = energy_farm
+						building = renewable_energy_infra
 						size > 0
-						include_locked = yes
 					}
 				}
 				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
-					type = energy_farm
+					type = renewable_energy_infra
 					level = 1
 					instant_build = yes
 				}
@@ -1239,13 +1237,12 @@ GER_trust_category = {
 		available = {
 			num_of_civilian_factories_available_for_projects > 2
 			any_other_country = {
-				is_EU_member = yes
+				has_idea = EU_member
 				any_core_state = {
 					is_controlled_by = PREV
 					free_building_slots = {
-						building = energy_farm
+						building = renewable_energy_infra
 						size > 0
-						include_locked = yes
 					}
 				}
 			}
@@ -1266,7 +1263,7 @@ GER_trust_category = {
 			GER_add_eu_fed = yes
 			random_other_country = {
 				limit = {
-					is_EU_member = yes
+					has_idea = EU_member
 				}
 				set_temp_variable = {
 					var = social_liberal_popularity_var_temp
@@ -1277,14 +1274,13 @@ GER_trust_category = {
 					limit = {
 						is_controlled_by = PREV
 						free_building_slots = {
-							building = energy_farm
+							building = renewable_energy_infra
 							size > 0
-							include_locked = yes
 						}
 					}
 					add_extra_state_shared_building_slots = 1
 					add_building_construction = {
-						type = energy_farm
+						type = renewable_energy_infra
 						level = 1
 						instant_build = yes
 					}
@@ -1561,7 +1557,7 @@ GER_parties_category = {
 			base = 30
 		}
 		modifier = {
-			libertarian_socialist_drift = 0.08
+			communism_drift = 0.08
 		}
 		complete_effect = {
 			hidden_effect = {
@@ -1604,31 +1600,43 @@ GER_parties_category = {
 			}
 			if = {
 				limit = {
-					has_government = market_liberal
-					has_government = conservative
+					has_government = democratic
+					has_government = democratic
 				}
 				set_temp_variable = {
 					var = GER_die_linke_support_trigger_temp
 					value = 0.6
 				}
-				GER_has_die_linke_support_less_than = yes
+				check_variable = {
+					var = GER_support_die_linke_var
+					value = GER_die_linke_support_trigger_temp
+					compare = less_than
+				}
 			}
 			else_if = {
 				limit = {
-					has_government = authoritarian_democrat
+					has_government = democratic
 				}
 				set_temp_variable = {
 					var = GER_die_linke_support_trigger_temp
 					value = 0.4
 				}
-				GER_has_die_linke_support_less_than = yes
+				check_variable = {
+					var = GER_support_die_linke_var
+					value = GER_die_linke_support_trigger_temp
+					compare = less_than
+				}
 			}
 			else = {
 				set_temp_variable = {
 					var = GER_die_linke_support_trigger_temp
 					value = 0.8
 				}
-				GER_has_die_linke_support_less_than = yes
+				check_variable = {
+					var = GER_support_die_linke_var
+					value = GER_die_linke_support_trigger_temp
+					compare = less_than
+				}
 			}
 		}
 		ai_will_do = {
@@ -1636,9 +1644,9 @@ GER_parties_category = {
 			modifier = {
 				factor = 2
 				OR = {
-					has_government = libertarian_socialist
-					has_government = social_democrat
-					has_government = social_liberal
+					has_government = communism
+					has_government = democratic
+					has_government = democratic
 				}
 			}
 			#modifier = {
@@ -1685,7 +1693,7 @@ GER_parties_category = {
 			}
 		}
 		modifier = {
-			libertarian_socialist_drift = -0.08
+			communism_drift = -0.08
 		}
 		complete_effect = {
 			hidden_effect = {
@@ -1721,7 +1729,7 @@ GER_parties_category = {
 			has_country_flag = GER_die_linke_enable_flag
 			has_completed_focus = GER_empower_the_chancellor
 			NOT = {
-				has_government = libertarian_socialist
+				has_government = communism
 			}
 			count_triggers = {
 				amount = 4
@@ -1741,10 +1749,14 @@ GER_parties_category = {
 				var = GER_die_linke_popularity_trigger_temp
 				value = 0.05
 			}
-			GER_has_die_linke_popularity_less_than = yes
+			check_variable = {
+				var = GER_die_linke_popularity_var
+				value = GER_die_linke_popularity_trigger_temp
+				compare = less_than
+			}
 		}
 		modifier = {
-			libertarian_socialist_drift = -0.15
+			communism_drift = -0.15
 		}
 		complete_effect = {
 			hidden_effect = {
@@ -1756,7 +1768,7 @@ GER_parties_category = {
 			}
 			set_temp_variable = {
 				var = GER_popularity_stability_var_temp
-				value = party_popularity@libertarian_socialist
+				value = party_popularity@neutral_Social
 			}
 			multiply_temp_variable = {
 				var = GER_popularity_stability_var_temp
@@ -1796,7 +1808,7 @@ GER_parties_category = {
 			modifier = {
 				add = 10
 				has_country_leader = {
-					name = "Winfried Kretschmann"
+					name = USoE_winfried_kretschmann
 					ruling_only = yes
 				}
 			}
@@ -1806,7 +1818,7 @@ GER_parties_category = {
 			}
 		}
 		modifier = {
-			social_liberal_drift = 0.08
+			democratic_drift = 0.08
 		}
 		complete_effect = {
 			hidden_effect = {
@@ -1851,13 +1863,17 @@ GER_parties_category = {
 				var = GER_greens_support_trigger_temp
 				value = 0.8
 			}
-			GER_has_greens_support_less_than = yes
+			check_variable = {
+				var = GER_support_greens_var
+				value = GER_greens_support_trigger_temp
+				compare = less_than
+			}
 		}
 		ai_will_do = {
 			base = 30
 			modifier = {
 				factor = 2
-				has_government = social_liberal
+				has_government = democratic
 			}
 		}
 		complete_effect = {
@@ -1899,11 +1915,11 @@ GER_parties_category = {
 			base = 2
 			modifier = {
 				factor = 0
-				has_government = social_liberal
+				has_government = democratic
 			}
 		}
 		modifier = {
-			social_liberal_drift = -0.08
+			democratic_drift = -0.08
 		}
 		complete_effect = {
 			hidden_effect = {
@@ -1939,7 +1955,7 @@ GER_parties_category = {
 			has_country_flag = GER_greens_enable_flag
 			has_completed_focus = GER_empower_the_chancellor
 			NOT = {
-				has_government = social_liberal
+				has_government = democratic
 			}
 			count_triggers = {
 				amount = 4
@@ -1959,10 +1975,14 @@ GER_parties_category = {
 				var = GER_greens_popularity_trigger_temp
 				value = 0.05
 			}
-			GER_has_greens_popularity_less_than = yes
+			check_variable = {
+				var = GER_greens_popularity_var
+				value = GER_greens_popularity_trigger_temp
+				compare = less_than
+			}
 		}
 		modifier = {
-			social_liberal_drift = -0.15
+			democratic_drift = -0.15
 		}
 		complete_effect = {
 			hidden_effect = {
@@ -1974,7 +1994,7 @@ GER_parties_category = {
 			}
 			set_temp_variable = {
 				var = GER_popularity_stability_var_temp
-				value = party_popularity@social_liberal
+				value = party_popularity@liberalism
 			}
 			multiply_temp_variable = {
 				var = GER_popularity_stability_var_temp
@@ -2012,19 +2032,12 @@ GER_parties_category = {
 		ai_will_do = {
 			base = 15
 			modifier = {
-				add = 10
-				has_country_leader = {
-					name = "Malu Dreyer"
-					ruling_only = yes
-				}
-			}
-			modifier = {
 				add = 25
 				has_country_flag = GER_i_want_to_be_spd
 			}
 		}
 		modifier = {
-			social_democrat_drift = 0.08
+			democratic_drift = 0.08
 		}
 		complete_effect = {
 			hidden_effect = {
@@ -2069,13 +2082,17 @@ GER_parties_category = {
 				var = GER_spd_support_trigger_temp
 				value = 0.8
 			}
-			GER_has_spd_support_less_than = yes
+			check_variable = {
+				var = GER_support_spd_var
+				value = GER_spd_support_trigger_temp
+				compare = less_than
+			}
 		}
 		ai_will_do = {
 			base = 30
 			modifier = {
 				factor = 2
-				has_government = social_democrat
+				has_government = democratic
 			}
 		}
 		complete_effect = {
@@ -2117,11 +2134,11 @@ GER_parties_category = {
 			base = 2
 			modifier = {
 				factor = 0
-				has_government = social_democrat
+				has_government = democratic
 			}
 		}
 		modifier = {
-			social_democrat_drift = -0.08
+			democratic_drift = -0.08
 		}
 		complete_effect = {
 			hidden_effect = {
@@ -2157,7 +2174,7 @@ GER_parties_category = {
 			has_country_flag = GER_spd_enable_flag
 			has_completed_focus = GER_empower_the_chancellor
 			NOT = {
-				has_government = social_democrat
+				has_government = democratic
 			}
 			count_triggers = {
 				amount = 4
@@ -2177,10 +2194,14 @@ GER_parties_category = {
 				var = GER_spd_popularity_trigger_temp
 				value = 0.05
 			}
-			GER_has_spd_popularity_less_than = yes
+			check_variable = {
+				var = GER_spd_popularity_var
+				value = GER_spd_popularity_trigger_temp
+				compare = less_than
+			}
 		}
 		modifier = {
-			social_democrat_drift = -0.15
+			democratic_drift = -0.15
 		}
 		complete_effect = {
 			hidden_effect = {
@@ -2192,7 +2213,7 @@ GER_parties_category = {
 			}
 			set_temp_variable = {
 				var = GER_popularity_stability_var_temp
-				value = party_popularity@social_democrat
+				value = party_popularity@socialism
 			}
 			multiply_temp_variable = {
 				var = GER_popularity_stability_var_temp
@@ -2228,7 +2249,7 @@ GER_parties_category = {
 			has_completed_focus = GER_focus_on_domestic_issues
 		}
 		modifier = {
-			market_liberal_drift = 0.08
+			democratic_drift = 0.08
 		}
 		ai_will_do = {
 			base = 30
@@ -2280,13 +2301,17 @@ GER_parties_category = {
 				var = GER_fdp_support_trigger_temp
 				value = 0.8
 			}
-			GER_has_fdp_support_less_than = yes
+			check_variable = {
+				var = GER_support_fdp_var
+				value = GER_fdp_support_trigger_temp
+				compare = less_than
+			}
 		}
 		ai_will_do = {
 			base = 30
 			modifier = {
 				factor = 2
-				has_government = market_liberal
+				has_government = democratic
 			}
 		}
 		complete_effect = {
@@ -2328,11 +2353,11 @@ GER_parties_category = {
 			base = 2
 			modifier = {
 				factor = 0
-				has_government = market_liberal
+				has_government = democratic
 			}
 		}
 		modifier = {
-			market_liberal_drift = -0.08
+			democratic_drift = -0.08
 		}
 		complete_effect = {
 			hidden_effect = {
@@ -2368,7 +2393,7 @@ GER_parties_category = {
 			has_country_flag = GER_fdp_enable_flag
 			has_completed_focus = GER_empower_the_chancellor
 			NOT = {
-				has_government = market_liberal
+				has_government = democratic
 			}
 			count_triggers = {
 				amount = 4
@@ -2388,10 +2413,14 @@ GER_parties_category = {
 				var = GER_fdp_popularity_trigger_temp
 				value = 0.05
 			}
-			GER_has_fdp_popularity_less_than = yes
+			check_variable = {
+				var = GER_fdp_popularity_var
+				value = GER_fdp_popularity_trigger_temp
+				compare = less_than
+			}
 		}
 		modifier = {
-			market_liberal_drift = -0.15
+			democratic_drift = -0.15
 		}
 		complete_effect = {
 			hidden_effect = {
@@ -2403,7 +2432,7 @@ GER_parties_category = {
 			}
 			set_temp_variable = {
 				var = GER_popularity_stability_var_temp
-				value = party_popularity@market_liberal
+				value = party_popularity@liberalism
 			}
 			multiply_temp_variable = {
 				var = GER_popularity_stability_var_temp
@@ -2442,18 +2471,11 @@ GER_parties_category = {
 			base = 30
 			modifier = {
 				add = 10
-				has_country_leader = {
-					name = "Frank-Walter Steinmeir"
-					ruling_only = yes
-				}
-			}
-			modifier = {
-				add = 10
 				has_country_flag = GER_i_want_to_be_cdu
 			}
 		}
 		modifier = {
-			conservative_drift = 0.08
+			democratic_drift = 0.08
 		}
 		complete_effect = {
 			hidden_effect = {
@@ -2498,13 +2520,17 @@ GER_parties_category = {
 				var = GER_cdu_support_trigger_temp
 				value = 0.8
 			}
-			GER_has_cdu_support_less_than = yes
+			check_variable = {
+				var = GER_support_cdu_var
+				value = GER_cdu_support_trigger_temp
+				compare = less_than
+			}
 		}
 		ai_will_do = {
 			base = 30
 			modifier = {
 				factor = 2
-				has_government = conservative
+				has_government = democratic
 			}
 		}
 		complete_effect = {
@@ -2546,11 +2572,11 @@ GER_parties_category = {
 			base = 2
 			modifier = {
 				factor = 0
-				has_government = conservative
+				has_government = democratic
 			}
 		}
 		modifier = {
-			conservative_drift = -0.08
+			democratic_drift = -0.08
 		}
 		complete_effect = {
 			hidden_effect = {
@@ -2586,7 +2612,7 @@ GER_parties_category = {
 			has_country_flag = GER_cdu_enable_flag
 			has_completed_focus = GER_empower_the_chancellor
 			NOT = {
-				has_government = conservative
+				has_government = democratic
 			}
 			count_triggers = {
 				amount = 4
@@ -2606,10 +2632,14 @@ GER_parties_category = {
 				var = GER_cdu_popularity_trigger_temp
 				value = 0.05
 			}
-			GER_has_cdu_popularity_less_than = yes
+			check_variable = {
+				var = GER_cdu_popularity_var
+				value = GER_cdu_popularity_trigger_temp
+				compare = less_than
+			}
 		}
 		modifier = {
-			conservative_drift = -0.15
+			democratic_drift = -0.15
 		}
 		complete_effect = {
 			hidden_effect = {
@@ -2621,7 +2651,7 @@ GER_parties_category = {
 			}
 			set_temp_variable = {
 				var = GER_popularity_stability_var_temp
-				value = party_popularity@conservative
+				value = party_popularity@conservatism
 			}
 			multiply_temp_variable = {
 				var = GER_popularity_stability_var_temp
@@ -2663,24 +2693,21 @@ GER_parties_category = {
 				var = GER_afd_popularity_trigger_temp
 				value = 0.85
 			}
-			GER_has_afd_popularity_less_than = yes
+			check_variable = {
+				var = GER_afd_popularity_var
+				value = GER_afd_popularity_trigger_temp
+				compare = less_than
+			}
 		}
 		ai_will_do = {
 			base = 30
-			modifier = {
-				add = 10
-				has_country_leader = {
-					name = "Bernd Baumann"
-					ruling_only = yes
-				}
-			}
 			modifier = {
 				add = 10
 				has_country_flag = GER_i_want_to_be_chuddy
 			}
 		}
 		modifier = {
-			authoritarian_democrat_drift = 0.08
+			democratic_drift = 0.08
 		}
 		complete_effect = {
 			hidden_effect = {
@@ -2726,13 +2753,17 @@ GER_parties_category = {
 				var = GER_afd_support_trigger_temp
 				value = 0.8
 			}
-			GER_has_afd_support_less_than = yes
+			check_variable = {
+				var = GER_support_afd_var
+				value = GER_afd_support_trigger_temp
+				compare = less_than
+			}
 		}
 		ai_will_do = {
 			base = 30
 			modifier = {
 				factor = 2
-				has_government = authoritarian_democrat
+				has_government = democratic
 			}
 		}
 		complete_effect = {
@@ -2774,11 +2805,11 @@ GER_parties_category = {
 			base = 6
 			modifier = {
 				factor = 0
-				has_government = authoritarian_democrat
+				has_government = democratic
 			}
 		}
 		modifier = {
-			authoritarian_democrat_drift = -0.08
+			democratic_drift = -0.08
 		}
 		complete_effect = {
 			hidden_effect = {
@@ -2814,7 +2845,7 @@ GER_parties_category = {
 			has_country_flag = GER_afd_enable_flag
 			has_completed_focus = GER_empower_the_chancellor
 			NOT = {
-				has_government = authoritarian_democrat
+				has_government = democratic
 			}
 			count_triggers = {
 				amount = 4
@@ -2834,10 +2865,14 @@ GER_parties_category = {
 				var = GER_afd_popularity_trigger_temp
 				value = 0.05
 			}
-			GER_has_afd_popularity_less_than = yes
+			check_variable = {
+				var = GER_afd_popularity_var
+				value = GER_afd_popularity_trigger_temp
+				compare = less_than
+			}
 		}
 		modifier = {
-			authoritarian_democrat_drift = -0.15
+			democratic_drift = -0.15
 		}
 		complete_effect = {
 			hidden_effect = {
@@ -2849,7 +2884,7 @@ GER_parties_category = {
 			}
 			set_temp_variable = {
 				var = GER_popularity_stability_var_temp
-				value = party_popularity@authoritarian_democrat
+				value = party_popularity@Conservative
 			}
 			multiply_temp_variable = {
 				var = GER_popularity_stability_var_temp
@@ -2908,8 +2943,8 @@ GER_parties_category = {
 			GER_add_support_afd = yes
 		}
 		modifier = {
-			authoritarian_democrat_drift = -0.08
-			libertarian_socialist_drift = -0.08
+			democratic_drift = -0.08
+			communism_drift = -0.08
 		}
 	}
 	GER_invite_finland_to_nato = {
@@ -3200,27 +3235,27 @@ GER_parties_category = {
 		remove_effect = {
 			MAL = {
 				add_equipment_to_stockpile = {
-					type = infantry_equipment_1
+					type = Inf_equipment
 					amount = 1000
 					producer = GER
 				}
 				add_equipment_to_stockpile = {
-					type = anti_tank_equipment_1
+					type = L_AT_Equipment
 					amount = 200
 					producer = GER
 				}
 				add_equipment_to_stockpile = {
-					type = anti_air_equipment_1
+					type = AA_Equipment
 					amount = 200
 					producer = GER
 				}
 				add_equipment_to_stockpile = {
-					type = support_equipment
+					type = Inf_equipment
 					amount = 500
 					producer = GER
 				}
 				add_equipment_to_stockpile = {
-					type = motorized_equipment
+					type = util_vehicle_equipment
 					amount = 500
 					producer = GER
 				}
@@ -3478,7 +3513,7 @@ GER_parties_category = {
 				value = 1
 				compare = greater_than_or_equals
 			}
-			has_government = conservative
+			has_government = democratic
 		}
 		ai_will_do = {
 			base = 1
@@ -3545,7 +3580,7 @@ GER_parties_category = {
 				value = 1
 				compare = greater_than_or_equals
 			}
-			has_government = authoritarian_democrat
+			has_government = democratic
 		}
 		ai_will_do = {
 			base = 1
@@ -3610,18 +3645,12 @@ GER_peoples_economy_category = {
 		activation = {
 			has_completed_focus = GER_convene_the_bundestag
 			GER = {
-				has_resources_in_country = {
-					resource = coal
-					amount < 0 
-				}	
+					
 			}		
 		}
 		available = {
 			GER = {
-				has_resources_in_country = {
-					resource = coal
-					amount > 0
-				}	
+					
 			}
 		}
 		complete_effect = {
@@ -3659,10 +3688,10 @@ GER_peoples_economy_category = {
 				10 = {
 					random_owned_controlled_state = {
 						limit = {
-							office_park > 0
+							offices > 0
 						}
 						remove_building = {
-							type = office_park
+							type = offices
 							level = 1
 						}
 					}
@@ -3776,14 +3805,10 @@ GER_peoples_economy_category = {
 					instant_build = yes
 				}
 			}
-			mio:GER_hk_organization = {
-				add_mio_funds = 750
-				add_mio_research_bonus = 0.05
-			}
 			add_tech_bonus = {
 				bonus = 0.25
 				uses = 1
-				category = infantry_weapons
+				category = CAT_infantry_weapons
 			}					
 		}
 	}
@@ -3841,11 +3866,7 @@ GER_peoples_economy_category = {
 					instant_build = yes
 				}
 			}
-			mio:GER_eurofighter_organization = {
-				add_mio_funds = 750
-				add_mio_research_bonus = 0.05
-			}
-		}
+					}
 	}
 	GER_agreement_with_rheinmetall_decision = {
 		icon = GFX_GER_european_defense_decision
@@ -3904,16 +3925,8 @@ GER_peoples_economy_category = {
 			add_tech_bonus = {
 				bonus = 0.25
 				uses = 1
-				category = armor
+				category = CAT_armor
 			}					
-			mio:GER_rheinmetall1_organization = {
-				add_mio_funds = 750
-				add_mio_research_bonus = 0.05
-			}
-			mio:GER_rheinmetall2_organization = {
-				add_mio_funds = 750
-				add_mio_research_bonus = 0.05
-			}
 			set_temp_variable = {
 				var = military_development_var_temp
 				value = 0.1
@@ -3974,10 +3987,6 @@ GER_peoples_economy_category = {
 					level = 3
 					instant_build = yes
 				}
-			}
-			mio:GER_kmw_organization = {
-				add_mio_funds = 750
-				add_mio_research_bonus = 0.05
 			}
 			set_temp_variable = {
 				var = military_development_var_temp
@@ -4048,7 +4057,7 @@ GER_peoples_economy_category = {
 			add_tech_bonus = {
 				bonus = 0.5
 				uses = 1
-				category = rocketry
+				category = CAT_missiles
 			}								
 		}
 	}
@@ -4206,7 +4215,7 @@ GER_peoples_economy_category = {
 			random_country = {
 				limit = {
 					AND = {
-						is_EU_member = yes
+						has_idea = EU_member
 						NOT = {
 							tag = GER
 						}
@@ -4219,9 +4228,9 @@ GER_peoples_economy_category = {
 						level = 2
 						instant_build = yes
 					}	
-					fixed_random_seed = no			
+								
 				}
-				fixed_random_seed = no
+				
 			}		
 			set_temp_variable = {
 				var = GER_rearm_europe_plan_temp_tracker
@@ -4252,10 +4261,10 @@ GER_peoples_economy_category = {
 		}
 		remove_effect = {
 			random_country = {
-				fixed_random_seed = no
+				
 				limit = {
 					AND = {
-						is_EU_member = yes
+						has_idea = EU_member
 						NOT = {
 							tag = GER
 						}
@@ -4264,22 +4273,22 @@ GER_peoples_economy_category = {
 				add_tech_bonus = {
 					bonus = 0.5
 					uses = 1
-					category = infantry_weapons
+					category = CAT_infantry_weapons
 				}					
 				add_tech_bonus = {
 					bonus = 0.5
 					uses = 1
-					category = support_tech
+					category = CAT_support_weapons
 				}					
 				add_tech_bonus = {
 					bonus = 0.5
 					uses = 1
-					category = artillery
+					category = CAT_artillery
 				}					
 				add_tech_bonus = {
 					bonus = 0.5
 					uses = 1
-					category = motorized_equipment
+					category = CAT_utility_vehicles
 				}					
 			}
 			set_temp_variable = {
@@ -4289,54 +4298,6 @@ GER_peoples_economy_category = {
 			GER_add_rearm_progress = yes
 		}
 	}
-	GER_invest_in_the_european_defense_industries_decision = {
-		icon = GFX_decision_generic_attract_foreign_investors
-		allowed = {
-			tag = GER
-		}
-		visible = {
-			tag = GER
-			has_idea = GER_rearm_europe_active_idea
-		}
-		ai_will_do = {
-			base = 1
-		}
-		fire_only_once = no
-		cost = 50
-		days_remove = 40
-		days_re_enable = 40
-		modifier = {
-			political_power_gain = -0.05
-			production_speed_arms_factory_factor = -0.05
-		}
-		remove_effect = {
-			random_country = {
-				limit = {
-					AND = {
-						is_EU_member = yes
-						NOT = {
-							tag = GER
-						}
-					}
-				}
-				random_owned_controlled_state = {
-					add_extra_state_shared_building_slots = 2
-					add_building_construction = {
-						type = arms_factory
-						level = 2
-						instant_build = yes
-					}	
-					fixed_random_seed = no			
-				}
-				fixed_random_seed = no
-			}		
-			set_temp_variable = {
-				var = GER_rearm_europe_plan_temp_tracker
-				value = 3
-			}
-			GER_add_rearm_progress = yes
-		}
-	}	
 	GER_european_taurus_project_decision = {
 		icon = generic_tank
 		allowed = {
@@ -4372,16 +4333,16 @@ GER_peoples_economy_category = {
 		remove_effect = {
 			every_country = {
 				limit = {
-					is_EU_member = yes
+					has_idea = EU_member
 				}
 				add_tech_bonus = {
 					bonus = 0.25
 					uses = 2
-					category = armor
+					category = CAT_armor
 				}					
 				create_equipment_variant = {
 					name = "Taurus E-1"
-					type = modern_tank_chassis_3
+					type = mbt_hull
 					parent_version = 1
 					modules = {
 						main_armament_slot = tank_medium_cannon_3
@@ -4408,7 +4369,7 @@ GER_peoples_economy_category = {
 				add_military_development = yes
 			}
 			add_equipment_to_stockpile = {
-				type = modern_tank_chassis_3
+				type = mbt_hull
 				amount = 200
 				variant_name = "Taurus E-1"
 			}
@@ -4454,7 +4415,7 @@ GER_peoples_economy_category = {
 				add_tech_bonus = {
 					bonus = 0.5
 					uses = 2
-					category = armor
+					category = CAT_armor
 				}
 				set_temp_variable = {
 					var = income_var_temp
@@ -4474,7 +4435,7 @@ GER_peoples_economy_category = {
 				add_tech_bonus = {
 					bonus = 0.25
 					uses = 1
-					category = armor
+					category = CAT_armor
 				}
 				set_temp_variable = {
 					var = income_var_temp
@@ -4537,7 +4498,7 @@ GER_peoples_economy_category = {
 				add_tech_bonus = {
 					bonus = 0.5
 					uses = 2
-					category = infantry_weapons
+					category = CAT_infantry_weapons
 				}
 				set_temp_variable = {
 					var = income_var_temp
@@ -4557,7 +4518,7 @@ GER_peoples_economy_category = {
 				add_tech_bonus = {
 					bonus = 0.25
 					uses = 1
-					category = infantry_weapons
+					category = CAT_infantry_weapons
 				}
 				set_temp_variable = {
 					var = income_var_temp
@@ -4645,7 +4606,7 @@ GER_peoples_economy_category = {
 				add_tech_bonus = {
 					bonus = 0.25
 					uses = 1
-					category = infantry_weapons
+					category = CAT_infantry_weapons
 				}
 			}
 			60 = {
@@ -4788,7 +4749,7 @@ GER_peoples_economy_category = {
 		remove_effect = {
 			every_country = {
 				limit = {
-					is_EU_member = yes
+					has_idea = EU_member
 					OR = {
 						tag = GER
 						any_neighbor_country = {
@@ -4799,7 +4760,7 @@ GER_peoples_economy_category = {
 				add_tech_bonus = {
 					bonus = 0.25
 					uses = 2
-					category = rocketry
+					category = CAT_missiles
 				}
 				add_offsite_building = { type = arms_factory level = 1 }
 				add_equipment_to_stockpile = {
@@ -4829,9 +4790,7 @@ GER_peoples_economy_category = {
 		}
 		available = {
 			any_country = {
-				limit = {
-					USA_is_civil_war_faction = yes
-				}
+				USA_is_civil_war_faction = yes
 				custom_trigger_tooltip = {
     				tooltip = GER_is_american_civil_war_country		
 					USA_is_civil_war_faction = yes
@@ -4852,17 +4811,17 @@ GER_peoples_economy_category = {
 				add_tech_bonus = {
 					bonus = 0.25
 					uses = 2
-					category = land_doctrine
+					category = CAT_infantry
 				}	
 				add_tech_bonus = {
 					bonus = 0.25
 					uses = 2
-					category = air_doctrine
+					category = CAT_aircraft
 				}	
 				add_tech_bonus = {
 					bonus = 0.25
 					uses = 1
-					category = rocketry
+					category = CAT_missiles
 				}	
 				add_tech_bonus = {
 					bonus = 0.25
@@ -4877,12 +4836,12 @@ GER_peoples_economy_category = {
 				add_tech_bonus = {
 					bonus = 0.25
 					uses = 2
-					category = infantry_tech
+					category = CAT_infantry
 				}	
 				add_tech_bonus = {
 					bonus = 0.25
 					uses = 1
-					category = jet_technology
+					category = CAT_aircraft
 				}	
 			set_temp_variable = {
 				var = GER_rearm_europe_plan_temp_tracker
@@ -5107,7 +5066,7 @@ GER_peoples_economy_category = {
 				}
 			}
 			add_building_construction = {
-    			type = supply_hub
+    			type = supply_node
     			level = 1
     			instant_build = yes
     			province = 564
@@ -5122,7 +5081,6 @@ GER_peoples_economy_category = {
 		icon = GFX_GER_green_grids_decision
 		allowed = {
 			tag = GER
-			has_completed_focus = GER_european_green_deal
 		}
 		visible = {
 			tag = GER
@@ -5166,21 +5124,17 @@ GER_peoples_economy_category = {
 						is_owned_by = PLD
 						is_owned_by = ROM
 					}
-					power_plant < 1
+					fossil_powerplant < 1
 					nuclear_reactor < 1
 				}
 				random_select_amount = 5
 				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
-					type = energy_farm
+					type = renewable_energy_infra
 					level = 1
 					instant_build = yes
 				}
-				add_resource = {
-    				type = coal
-    				amount = 6
-				}
-					
+									
 			}
 		}
 	}
@@ -5195,7 +5149,7 @@ GER_peoples_economy_category = {
 		}
 		available = {
 			64 = {
-				power_plant > 0
+				fossil_powerplant > 0
 			}
 		}
 		ai_will_do = {
@@ -5217,7 +5171,7 @@ GER_peoples_economy_category = {
 			}
 			64 = {
 				set_building_level = {
-    				type = power_plant
+    				type = fossil_powerplant
     				level = 0
     				instant_build = yes
 				}
@@ -5231,7 +5185,7 @@ GER_peoples_economy_category = {
 			64 = {
 				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
-					type = energy_farm
+					type = renewable_energy_infra
 					level = 1
 					instant_build = yes
 				}
@@ -5240,15 +5194,11 @@ GER_peoples_economy_category = {
 					level = 1
 					instant_build = yes
 				}
-				add_resource = {
-    				type = coal
-    				amount = 4
-				}
-			}
+							}
 			add_tech_bonus = {
 				bonus = 0.25
 				uses = 1
-				category = industry
+				category = CAT_industry
 			}
 			set_temp_variable = {
 				var = industrial_development_var_temp
@@ -5319,7 +5269,7 @@ GER_peoples_economy_category = {
 					instant_build = yes
 				}
 				add_building_construction = {
-					type = office_park
+					type = offices
 					level = 1
 					instant_build = yes
 				}
@@ -5355,7 +5305,7 @@ GER_peoples_economy_category = {
 			add_tech_bonus = {
 				bonus = 0.25
 				uses = 2
-				category = excavation_tech
+				category = CAT_excavation
 			}
 			set_temp_variable = {
 				var = industrial_development_var_temp
@@ -5408,7 +5358,7 @@ GER_peoples_economy_category = {
 					instant_build = yes
 				}
 				add_building_construction = {
-					type = office_park
+					type = offices
 					level = 1
 					instant_build = yes
 				}
@@ -5437,11 +5387,11 @@ GER_peoples_economy_category = {
 			controls_state = 888
 			controls_state = 54
 			888 = {
-				power_plant < 1
+				fossil_powerplant < 1
 				nuclear_reactor < 1
 			}	
 			54 = {
-				power_plant < 1
+				fossil_powerplant < 1
 				nuclear_reactor < 1
 			}		
 		}
@@ -5471,12 +5421,12 @@ GER_peoples_economy_category = {
 			888 = {
 				add_extra_state_shared_building_slots = 3
 				add_building_construction = {
-					type = 	power_plant
+					type = fossil_powerplant
 					level = 2
 					instant_build = yes
 				}
 				add_building_construction = {
-					type = office_park
+					type = offices
 					level = 1
 					instant_build = yes
 				}		
@@ -5484,7 +5434,7 @@ GER_peoples_economy_category = {
 			888 = {
 				add_extra_state_shared_building_slots = 3
 				add_building_construction = {
-					type = 	power_plant
+					type = fossil_powerplant
 					level = 2
 					instant_build = yes
 				}
@@ -5542,7 +5492,7 @@ GER_peoples_economy_category = {
 			add_tech_bonus = {
 				bonus = 0.25
 				uses = 1
-				category = train_tech
+				category = CAT_production_lines
 			}
 			every_controlled_state = {
 				limit = {
@@ -5592,7 +5542,7 @@ GER_peoples_economy_category = {
 			add_tech_bonus = {
 				bonus = 0.25
 				uses = 1
-				category = excavation_tech
+				category = CAT_excavation
 			}
 			68 = {
 				add_extra_state_shared_building_slots = 2
@@ -5662,7 +5612,7 @@ GER_peoples_economy_category = {
 			add_tech_bonus = {
 				bonus = 0.25
 				uses = 2
-				category = motorized_equipment
+				category = CAT_utility_vehicles
 			}
 			65 = {
 				add_extra_state_shared_building_slots = 3
@@ -5672,7 +5622,7 @@ GER_peoples_economy_category = {
 					instant_build = yes
 				}
 				add_resource = {
-    				type = alluminum
+    				type = aluminium
     				amount = 6
 				}
 			}
@@ -5777,7 +5727,7 @@ GER_peoples_economy_category = {
 				add_income_with_inflation = yes
 		}
 		modifier = {
-			authoritarian_democrat_drift = 0.01
+			democratic_drift = 0.01
 			consumer_goods_factor = -0.20
 		}
 		remove_effect = {
@@ -5831,7 +5781,7 @@ GER_peoples_economy_category = {
 			}
 		}
 		modifier = {
-			social_liberal_drift = 0.01
+			democratic_drift = 0.01
 			corporate_tax_income_multiplier_modifier = 0.05
 		}
 		remove_effect = {
@@ -5855,7 +5805,7 @@ GER_peoples_economy_category = {
 			add_tech_bonus = {
 			    bonus = 0.25
 			    uses = 1
-			    category = cat_synth_oil
+			    category = CAT_fuel_refining
 			}			
 		}
 	}
@@ -5905,7 +5855,7 @@ GER_peoples_economy_category = {
 			add_tech_bonus = {
 			    bonus = 0.25
 			    uses = 1
-			    category = cat_synth_oil
+			    category = CAT_fuel_refining
 			}
 		}
 	}
@@ -5920,7 +5870,7 @@ GER_peoples_economy_category = {
 		}
 		available = {
 			61 = {
-				power_plant < 1
+				fossil_powerplant < 1
 				nuclear_reactor < 1
 			}
 		}
@@ -5960,19 +5910,16 @@ GER_peoples_economy_category = {
 					instant_build = yes
 				}
 				add_building_construction = {
-					type = energy_farm
+					type = renewable_energy_infra
 					level = 2
 					instant_build = yes
 				}	
-				add_resource = {
-    				type = coal
-    				amount = 15
-				}											
+															
 			}
 			add_tech_bonus = {
 		    	bonus = 0.25
 		    	uses = 1
-		    	category = energy
+		    	category = CAT_energy
 			}
 			set_temp_variable = {
 				var = income_var_temp
@@ -6021,7 +5968,7 @@ GER_peoples_economy_category = {
 			every_controlled_state = {
 				limit = {
 					is_core_of = ROOT
-					power_plant < 1
+					fossil_powerplant < 1
 					nuclear_reactor < 1
 				}
 				random_select_amount = 3
@@ -6032,7 +5979,7 @@ GER_peoples_economy_category = {
 					instant_build = yes
 				}
 				add_building_construction = {
-					type = energy_farm
+					type = renewable_energy_infra
 					level = 1
 					instant_build = yes
 				}
@@ -6063,10 +6010,10 @@ GER_peoples_economy_category = {
 				exists = yes
 				NOT = {
 					OR = {
-						has_government = fascist
-						has_government = national_socialist
+						has_government = fascism
+						has_government = fascism
 						has_government = nationalist
-						has_government = totalitarian_socialist
+						has_government = communism
 					}
 				}
 			}
@@ -6107,7 +6054,7 @@ GER_peoples_economy_category = {
 					instant_build = yes
 				}
 				add_building_construction = {
-					type = office_park
+					type = offices
 					level = 1
 					instant_build = yes
 				}					
@@ -6131,7 +6078,7 @@ GER_peoples_economy_category = {
 					instant_build = yes
 				}	
 				add_building_construction = {
-					type = office_park
+					type = offices
 					level = 1
 					instant_build = yes
 				}				
@@ -6332,7 +6279,7 @@ GER_peoples_economy_category = {
 						}
 						modifier = {
 							factor = 10
-							has_government = social_democrat
+							has_government = democratic
 						}
 					}
 				}
@@ -6486,7 +6433,6 @@ GER_peoples_economy_category = {
 						free_building_slots = {
 							building = nuclear_reactor
 							size > 0
-							include_locked = yes
 						}
 					}
 					add_extra_state_shared_building_slots = 1
@@ -6555,7 +6501,6 @@ GER_peoples_economy_category = {
 						free_building_slots = {
 							building = nuclear_reactor
 							size > 0
-							include_locked = yes
 						}
 					}
 					add_extra_state_shared_building_slots = 1
@@ -6636,7 +6581,7 @@ GER_peoples_economy_category = {
 			effect_tooltip = {
 				every_country = {
 					limit = {
-						is_EU_member = yes
+						has_idea = EU_member
 					}
 					add_timed_idea = {
 						idea = GER_rearm_europe_active_idea
@@ -6647,7 +6592,7 @@ GER_peoples_economy_category = {
 			hidden_effect = {
 				every_country = {
 					limit = {
-						is_EU_member = yes
+						has_idea = EU_member
 					}
 					country_event = {
 						id = germany.352
@@ -6657,7 +6602,7 @@ GER_peoples_economy_category = {
 				every_country = {
 					limit = {
 						AND = {
-							is_EU_member = yes
+							has_idea = EU_member
 							NOT = {
 								tag = GER
 							}
@@ -6749,7 +6694,6 @@ GER_peoples_economy_category = {
 			add_income_with_inflation = yes			
 		}
 		modifier = {
-			country_resource_coal = 10
 			business_value_factor = 0.1
 			political_power_factor = -0.1
 		}
@@ -7051,7 +6995,7 @@ GER_peoples_economy_category = {
 			has_completed_focus = GER_invest_in_defense_contractors
 		}
 		available = {
-			is_EU_member = yes
+			has_idea = EU_member
 		}
 		ai_will_do = {
 			base = 1
@@ -7086,32 +7030,32 @@ GER_peoples_economy_category = {
 			add_tech_bonus = {
 				bonus = 0.5
 				uses = 1
-				category = industry
+				category = CAT_industry
 			}
 			add_tech_bonus = {
 				bonus = 0.5
 				uses = 1
-				category = electronics
+				category = CAT_electronics
 			}
 			add_tech_bonus = {
 				bonus = 0.5
 				uses = 1
-				category = construction_tech
+				category = CAT_construction
 			}
 			add_tech_bonus = {
 				bonus = 0.5
 				uses = 1
-				category = energy
+				category = CAT_energy
 			}
 			add_tech_bonus = {
 				bonus = 0.5
 				uses = 1
-				category = radar_tech
+				category = CAT_naval_radar
 			}
 			add_tech_bonus = {
 				bonus = 0.5
 				uses = 1
-				category = computing_tech
+				category = CAT_computing
 			}
 		}
 	}
@@ -7125,16 +7069,16 @@ GER_peoples_economy_category = {
 			has_completed_focus = GER_invest_in_defense_contractors
 		}
 		available = {
-			is_EU_member = yes
+			has_idea = EU_member
 			controls_state = 52	
 			HOL = {
 				exists = yes
-				is_EU_member = yes	
+				has_idea = EU_member	
 				controls_state = 35	
 			}
 			FRA = {
 				exists = yes
-				is_EU_member = yes	
+				has_idea = EU_member	
 				controls_state = 18
 			}
 		}
@@ -7173,7 +7117,7 @@ GER_peoples_economy_category = {
 					instant_build = yes
 				}
 				add_building_construction = {
-					type = office_park
+					type = offices
 					level = 1
 					instant_build = yes
 				}
@@ -7194,12 +7138,12 @@ GER_peoples_economy_category = {
 				add_tech_bonus = {
 					bonus = 0.5
 					uses = 1
-					category = electronics
+					category = CAT_electronics
 				}
 				add_tech_bonus = {
 					bonus = 0.5
 					uses = 1
-					category = computing_tech
+					category = CAT_computing
 				}
 				set_temp_variable = {
 					var = industrial_development_var_temp
@@ -7215,7 +7159,7 @@ GER_peoples_economy_category = {
 					instant_build = yes
 				}
 				add_building_construction = {
-					type = office_park
+					type = offices
 					level = 1
 					instant_build = yes
 				}
@@ -7231,7 +7175,7 @@ GER_peoples_economy_category = {
 				add_tech_bonus = {
 					bonus = 0.5
 					uses = 1
-					category = electronics
+					category = CAT_electronics
 				}
 				set_temp_variable = {
 					var = industrial_development_var_temp
@@ -7261,7 +7205,7 @@ GER_peoples_economy_category = {
 			add_tech_bonus = {
 				bonus = 0.25
 				uses = 1
-				category = computing_tech
+				category = CAT_computing
 			}
 			set_temp_variable = {
 				var = industrial_development_var_temp
@@ -7280,16 +7224,16 @@ GER_peoples_economy_category = {
 			has_completed_focus = GER_invest_in_defense_contractors
 		}
 		available = {
-			is_EU_member = yes
+			has_idea = EU_member
 			controls_state = 54
 			ITA = {
 				exists = yes
-				is_EU_member = yes	
+				has_idea = EU_member	
 				controls_state = 115	
 			}
 			FRA = {
 				exists = yes
-				is_EU_member = yes	
+				has_idea = EU_member	
 				controls_state = 20
 			}
 		}
@@ -7328,7 +7272,7 @@ GER_peoples_economy_category = {
 					instant_build = yes
 				}
 				add_building_construction = {
-					type = office_park
+					type = offices
 					level = 1
 					instant_build = yes
 				}
@@ -7349,12 +7293,12 @@ GER_peoples_economy_category = {
 				add_tech_bonus = {
 					bonus = 0.5
 					uses = 1
-					category = electronics
+					category = CAT_electronics
 				}
 				add_tech_bonus = {
 					bonus = 0.5
 					uses = 1
-					category = computing_tech
+					category = CAT_computing
 				}
 				set_temp_variable = {
 					var = industrial_development_var_temp
@@ -7370,7 +7314,7 @@ GER_peoples_economy_category = {
 					instant_build = yes
 				}
 				add_building_construction = {
-					type = office_park
+					type = offices
 					level = 1
 					instant_build = yes
 				}
@@ -7385,7 +7329,7 @@ GER_peoples_economy_category = {
 				add_tech_bonus = {
 					bonus = 0.5
 					uses = 1
-					category = computing_tech
+					category = CAT_computing
 				}
 				set_temp_variable = {
 					var = industrial_development_var_temp
@@ -7415,7 +7359,7 @@ GER_peoples_economy_category = {
 			add_tech_bonus = {
 				bonus = 0.25
 				uses = 1
-				category = electronics
+				category = CAT_electronics
 			}
 			set_temp_variable = {
 				var = industrial_development_var_temp
@@ -7438,8 +7382,8 @@ GER_peoples_economy_category = {
 				controls_state = 85
 			}
 			85 = {
-				power_plant < 1
-				energy_farm < 1
+				fossil_powerplant < 1
+				renewable_energy_infra < 1
 			}
 		}
 		ai_will_do = {
@@ -7488,10 +7432,7 @@ GER_peoples_economy_category = {
 					level = 1
 					instant_build = yes
 				}
-				add_resource = {
-    				type = coal
-    				amount = 20
-				}	
+					
 			}
 			PLD = {
 				set_temp_variable = {
@@ -7502,7 +7443,7 @@ GER_peoples_economy_category = {
 				add_tech_bonus = {
 			    	bonus = 0.5
 			    	uses = 2
-			    	category = energy
+			    	category = CAT_energy
 				}				
 			}
 		}
@@ -7542,7 +7483,7 @@ GER_peoples_economy_category = {
 				add_income_with_inflation = yes
 		}
 		modifier = {
-			social_democrat_drift = 0.01
+			democratic_drift = 0.01
 			production_factory_efficiency_gain_factor = 0.15
 		}
 		remove_effect = {
@@ -7600,7 +7541,7 @@ GER_peoples_economy_category = {
 				add_income_with_inflation = yes
 		}
 		modifier = {
-			market_liberal_drift = 0.01
+			democratic_drift = 0.01
 			production_speed_offices_factor = 0.05
 			production_speed_industrial_complex_factor = 0.05
 			business_value_factor = 0.1
@@ -7663,7 +7604,7 @@ GER_peoples_economy_category = {
 				add_income_with_inflation = yes
 		}
 		modifier = {
-			conservative_drift = 0.01
+			democratic_drift = 0.01
 			production_speed_infrastructure_factor = 0.1
 			personal_value_factor = 0.15
 		}
@@ -7722,7 +7663,7 @@ GER_peoples_economy_category = {
 			}
 		}
 		modifier = {
-			libertarian_socialist_drift = 0.01
+			communism_drift = 0.01
 			corporate_tax_income_multiplier_modifier = 0.1
 			political_power_gain = 0.15
 		}
@@ -7800,7 +7741,7 @@ GER_peoples_economy_category = {
 			55 = {
 				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
-					type = office_park
+					type = offices
 					level = 1
 					instant_build = yes
 				}	
@@ -7808,7 +7749,7 @@ GER_peoples_economy_category = {
 			1378 = {
 				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
-					type = office_park
+					type = offices
 					level = 1
 					instant_build = yes
 				}	
@@ -7816,7 +7757,7 @@ GER_peoples_economy_category = {
 			52 = {
 				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
-					type = office_park
+					type = offices
 					level = 1
 					instant_build = yes
 				}	
@@ -7829,7 +7770,7 @@ GER_peoples_economy_category = {
 			16 = {
 				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
-					type = office_park
+					type = offices
 					level = 1
 					instant_build = yes
 				}	
@@ -7844,7 +7785,7 @@ GER_peoples_economy_category = {
 			1492 = {
 				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
-					type = office_park
+					type = offices
 					level = 1
 					instant_build = yes
 				}	
@@ -7859,7 +7800,7 @@ GER_peoples_economy_category = {
 			41 = {
 				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
-					type = office_park
+					type = offices
 					level = 1
 					instant_build = yes
 				}	
@@ -7884,7 +7825,7 @@ GER_peoples_economy_category = {
 		}
 		available = {
 			GER = {
-				is_EU_member = yes
+				has_idea = EU_member
 			}
 		}
 		ai_will_do = {
@@ -7912,7 +7853,7 @@ GER_peoples_economy_category = {
 			55 = {
 				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
-					type = office_park
+					type = offices
 					level = 1
 					instant_build = yes
 				}	
@@ -7976,7 +7917,7 @@ GER_peoples_economy_category = {
 					instant_build = yes
 				}	
 				add_building_construction = {
-					type = office_park
+					type = offices
 					level = 1
 					instant_build = yes
 				}				
@@ -8009,7 +7950,7 @@ GER_peoples_economy_category = {
 		available = {
 			ITA = {
 				exists = yes
-				is_EU_member = yes
+				has_idea = EU_member
 				controls_state = 161		
 			}
 		}
@@ -8058,7 +7999,7 @@ GER_peoples_economy_category = {
 				add_tech_bonus = {
 			    	bonus = 0.5
 			    	uses = 1
-			    	category = artificial_intelligence
+			    	category = CAT_artificial_intelligence
 				}
 			}
 			set_temp_variable = {
@@ -8080,7 +8021,7 @@ GER_peoples_economy_category = {
 		available = {
 			SPR = {
 				exists = yes
-				is_EU_member = yes	
+				has_idea = EU_member	
 				controls_state = 852	
 			}
 		}
@@ -8129,13 +8070,13 @@ GER_peoples_economy_category = {
 				add_tech_bonus = {
 			    	bonus = 0.5
 			    	uses = 1
-			    	category = artificial_intelligence
+			    	category = CAT_artificial_intelligence
 				}
 			}
 			add_tech_bonus = {
 			    bonus = 0.25
 			    uses = 1
-			    category = artificial_intelligence
+			    category = CAT_artificial_intelligence
 			}
 		}
 	}
@@ -8151,7 +8092,7 @@ GER_peoples_economy_category = {
 		available = {
 			GRE = {
 				exists = yes
-				is_EU_member = yes	
+				has_idea = EU_member	
 				controls_state = 47	
 			}
 		}
@@ -8200,7 +8141,7 @@ GER_peoples_economy_category = {
 				add_tech_bonus = {
 			    	bonus = 0.5
 			    	uses = 1
-			    	category = artificial_intelligence
+			    	category = CAT_artificial_intelligence
 				}
 			}
 			set_temp_variable = {
@@ -8222,7 +8163,7 @@ GER_peoples_economy_category = {
 		available = {
 			SWE = {
 				exists = yes
-				is_EU_member = yes	
+				has_idea = EU_member	
 				controls_state = 1463	
 			}
 		}
@@ -8271,7 +8212,7 @@ GER_peoples_economy_category = {
 				add_tech_bonus = {
 			    	bonus = 0.5
 			    	uses = 1
-			    	category = artificial_intelligence
+			    	category = CAT_artificial_intelligence
 				}
 			}
 			set_temp_variable = {
@@ -8293,7 +8234,7 @@ GER_peoples_economy_category = {
 		available = {
 			POL = {
 				exists = yes
-				is_EU_member = yes	
+				has_idea = EU_member	
 				controls_state = 86	
 			}
 		}
@@ -8342,7 +8283,7 @@ GER_peoples_economy_category = {
 				add_tech_bonus = {
 			    	bonus = 0.5
 			    	uses = 1
-			    	category = artificial_intelligence
+			    	category = CAT_artificial_intelligence
 				}
 			}
 			set_temp_variable = {
@@ -8364,7 +8305,7 @@ GER_peoples_economy_category = {
 		available = {
 			HOL = {
 				exists = yes
-				is_EU_member = yes	
+				has_idea = EU_member	
 				controls_state = 35	
 			}
 		}
@@ -8414,13 +8355,13 @@ GER_peoples_economy_category = {
 				add_tech_bonus = {
 			    	bonus = 0.5
 			    	uses = 1
-			    	category = artificial_intelligence
+			    	category = CAT_artificial_intelligence
 				}
 			}
 			1378 = {
 				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
-					type = office_park
+					type = offices
 					level = 1
 					instant_build = yes
 				}				
@@ -8445,7 +8386,7 @@ GER_peoples_economy_category = {
 			}
 			ITA = {
 				exists = yes
-				is_EU_member = yes
+				has_idea = EU_member
 				controls_state = 1492		
 			}
 		}
@@ -8540,7 +8481,7 @@ GER_peoples_economy_category = {
 			}
 			FRA = {
 				exists = yes
-				is_EU_member = yes
+				has_idea = EU_member
 				controls_state = 15		
 			}
 		}
@@ -8635,7 +8576,7 @@ GER_peoples_economy_category = {
 			}
 			PLD = {
 				exists = yes
-				is_EU_member = yes
+				has_idea = EU_member
 				controls_state = 88		
 			}
 		}
@@ -8730,7 +8671,7 @@ GER_peoples_economy_category = {
 			}
 			FRA = {
 				exists = yes
-				is_EU_member = yes
+				has_idea = EU_member
 				controls_state = 19		
 			}
 		}
@@ -8869,7 +8810,7 @@ GER_peoples_economy_category = {
 					instant_build = yes
 				}	
 				add_building_construction = {
-					type = office_park
+					type = offices
 					level = 1
 					instant_build = yes
 				}	
@@ -8883,15 +8824,12 @@ GER_peoples_economy_category = {
 					level = 2
 					instant_build = yes
 				}
-				add_resource = {
-    				type = coal
-    				amount = 15
-				}								
+												
 			}
 			add_tech_bonus = {
 		    	bonus = 0.25
 		    	uses = 1
-		    	category = energy
+		    	category = CAT_energy
 			}
 			add_victory_points = {
 				province = 241
@@ -8909,10 +8847,7 @@ GER_peoples_economy_category = {
 			GER_add_support_afd = yes
 			custom_effect_tooltip = tooltip_white_line
 			99 = {
-				add_resource = {
-    				type = coal
-    				amount = 10
-				}					
+									
 			}
 			DEN = {
 				set_temp_variable = {
@@ -8923,15 +8858,12 @@ GER_peoples_economy_category = {
 				add_tech_bonus = {
 		    		bonus = 0.5
 		    		uses = 1
-		    		category = energy
+		    		category = CAT_energy
 				}
 			}
 			custom_effect_tooltip = tooltip_white_line
 			1458 = {
-				add_resource = {
-    				type = coal
-    				amount = 10
-				}					
+									
 			}
 			NRY = {
 				set_temp_variable = {
@@ -8942,15 +8874,12 @@ GER_peoples_economy_category = {
 				add_tech_bonus = {
 		    		bonus = 0.5
 		    		uses = 1
-		    		category = energy
+		    		category = CAT_energy
 				}
 			}
 			custom_effect_tooltip = tooltip_white_line
 			125 = {
-				add_resource = {
-    				type = coal
-    				amount = 10
-				}					
+									
 			}
 			ENG = {
 				set_temp_variable = {
@@ -8961,15 +8890,12 @@ GER_peoples_economy_category = {
 				add_tech_bonus = {
 		    		bonus = 0.5
 		    		uses = 1
-		    		category = energy
+		    		category = CAT_energy
 				}
 			}
 			custom_effect_tooltip = tooltip_white_line
 			841 = {
-				add_resource = {
-    				type = coal
-    				amount = 10
-				}					
+									
 			}
 			HOL = {
 				set_temp_variable = {
@@ -8980,7 +8906,7 @@ GER_peoples_economy_category = {
 				add_tech_bonus = {
 		    		bonus = 0.5
 		    		uses = 1
-		    		category = energy
+		    		category = CAT_energy
 				}
 			}
 		}
@@ -9025,47 +8951,47 @@ GER_peoples_economy_category = {
 		remove_effect = {
 			every_country = {
 				limit = {
-					is_EU_member = yes
+					has_idea = EU_member
 				}
 				add_tech_bonus = {
 		    		bonus = 0.25
 		    		uses = 1
-		    		category = energy
+		    		category = CAT_energy
 				}			
 				add_tech_bonus = {
 		    		bonus = 0.25
 		    		uses = 1
-		    		category = train_tech
+		    		category = CAT_production_lines
 				}
 				add_tech_bonus = {
 		    		bonus = 0.25
 		    		uses = 3
-		    		category = industry
+		    		category = CAT_industry
 				}	
 				add_tech_bonus = {
 		    		bonus = 0.25
 		    		uses = 2
-		    		category = electronics
+		    		category = CAT_electronics
 				}
 				add_tech_bonus = {
 		    		bonus = 0.25
 		    		uses = 1
-		    		category = construction_tech
+		    		category = CAT_construction
 				}
 				add_tech_bonus = {
 		    		bonus = 0.25
 		    		uses = 1
-		    		category = excavation_tech
+		    		category = CAT_excavation
 				}
 				add_tech_bonus = {
 			    	bonus = 0.25
 			    	uses = 1
-			    	category = artificial_intelligence
+			    	category = CAT_artificial_intelligence
 				}
 				add_tech_bonus = {
 			    	bonus = 0.25
 			    	uses = 1
-			    	category = cat_production
+			    	category = CAT_production_lines
 				}
 				set_temp_variable = {
 					var = academic_development_var_temp
@@ -9155,7 +9081,7 @@ GER_peoples_economy_category = {
 					instant_build = yes
 				}	
 				add_building_construction = {
-					type = office_park
+					type = offices
 					level = 1
 					instant_build = yes
 				}				
@@ -9212,7 +9138,7 @@ GER_peoples_economy_category = {
 			59 = {
 				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
-					type = office_park
+					type = offices
 					level = 1
 					instant_build = yes
 				}	
@@ -9241,7 +9167,7 @@ GER_peoples_economy_category = {
 					instant_build = yes
 				}	
 				add_building_construction = {
-					type = office_park
+					type = offices
 					level = 1
 					instant_build = yes
 				}				
@@ -9744,7 +9670,7 @@ GER_peoples_economy_category = {
 			add_tech_bonus = {
 		    	bonus = 0.25
 		    	uses = 1
-		    	category = artificial_intelligence
+		    	category = CAT_artificial_intelligence
 			}
 		}
 	}
@@ -9806,7 +9732,7 @@ GER_peoples_economy_category = {
 					instant_build = yes
 				}	
 				add_building_construction = {
-					type = office_park
+					type = offices
 					level = 1
 					instant_build = yes
 				}				
@@ -10091,7 +10017,11 @@ GER_bundeswehr_category = {
 				var = GER_support_bundestag_total_trigger_var_temp
 				value = 0.5
 			}
-			GER_has_bundestag_support_greater_than = yes
+			check_variable = {
+				var = GER_support_bundestag_total_var
+				value = GER_support_bundestag_total_trigger_var_temp
+				compare = greater_than
+			}
 		}
 		ai_will_do = {
 			base = 1
@@ -11860,7 +11790,6 @@ GER_socialist_market_economics_cat = {
 					free_building_slots = {
 						building = nuclear_reactor
 						size > 0
-						include_locked = yes
 					}
 				}
 				add_extra_state_shared_building_slots = 1
@@ -11903,14 +11832,13 @@ GER_socialist_market_economics_cat = {
 					is_core_of = ROOT
 					is_able_to_build_power_plant_in_state = yes
 					free_building_slots = {
-						building = power_plant
+						building = fossil_powerplant
 						size > 0
-						include_locked = yes
 					}
 				}
 				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
-					type = power_plant
+					type = fossil_powerplant
 					level = 1
 					instant_build = yes
 				}
@@ -12065,7 +11993,7 @@ GER_five_year_plan_cat = {
 					instant_build = yes
 				}
 				add_building_construction = {
-					type = office_park
+					type = offices
 					level = 1
 					instant_build = yes
 				}
@@ -12205,7 +12133,7 @@ GER_five_year_plan_cat = {
 					instant_build = yes
 				}
 				add_building_construction = {
-					type = office_park
+					type = offices
 					level = 1
 					instant_build = yes
 				}
@@ -12278,7 +12206,6 @@ GER_five_year_plan_cat = {
 					free_building_slots = {
 						building = nuclear_reactor
 						size > 0
-						include_locked = yes
 					}
 				}
 				add_extra_state_shared_building_slots = 1
@@ -12321,14 +12248,13 @@ GER_five_year_plan_cat = {
 					is_core_of = ROOT
 					is_able_to_build_power_plant_in_state = yes
 					free_building_slots = {
-						building = power_plant
+						building = fossil_powerplant
 						size > 0
-						include_locked = yes
 					}
 				}
 				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
-					type = power_plant
+					type = fossil_powerplant
 					level = 1
 					instant_build = yes
 				}
@@ -12597,7 +12523,7 @@ GER_spread_the_revolution_category = {
 			hidden_effect = {
 				DEN = {
 					set_politics = {
-						ruling_party = libertarian_socialist
+						ruling_party = communism
 						last_election = "2019.6.5"
 						election_frequency = 48
 						elections_allowed = no
@@ -12787,38 +12713,6 @@ GER_spread_the_revolution_category = {
 			base = 1000
 		}
 	}
-	GER_invite_communist_france = {
-		icon = GFX_GER_eurointern_invite
-		allowed = {
-			tag = GER
-		}
-		visible = {
-			has_completed_focus = GER_form_european_internationale
-			country_exists = FPR
-			FRA = { exists = no }
-			FAF = { exists = no }
-		}
-		fire_only_once = yes
-		cost = 10
-		days_remove = 30
-		cancel_if_not_visible = no
-		remove_effect = {
-			GER = {
-				add_to_faction = FPR
-			}
-			FPR = {
-				every_owned_state = {
-					add_core_of = FPR
-				}
-			}
-		}
-		modifier = {
-			political_power_gain = -0.1
-		}
-		ai_will_do = {
-			base = 1000
-		}
-	}
 	GER_invite_communist_uk = {
 		icon = GFX_GER_eurointern_invite
 		allowed = {
@@ -12979,9 +12873,9 @@ GER_spread_the_revolution_category = {
 				has_war = no
 				exists = yes
 				OR = {
-					has_government = communist
-					has_government = libertarian_socialist
-					has_government = totalitarian_socialist
+					has_government = communism
+					has_government = communism
+					has_government = communism
 				}
 			}
 		}
@@ -13343,8 +13237,7 @@ GER_auferstanden_aus_ruinen_cat = {
 		}
 		modifier = {
 			communism_drift = 0.015
-			libertarian_socialist_drift = 0.015
-			social_liberal_drift = -0.015
+			democratic_drift = -0.015
 		}
 		remove_effect = {
 			set_temp_variable = {
@@ -14372,7 +14265,7 @@ GER_eastern_rebellions_cat = {
 		remove_effect = {
 			UFA = {
 				add_equipment_to_stockpile = {
-					type = infantry_equipment
+					type = Inf_equipment
 					amount = 1000
 					producer = GER
 				}
@@ -14643,7 +14536,7 @@ GER_eastern_rebellions_cat = {
 		remove_effect = {
 			BDM = {
 				add_equipment_to_stockpile = {
-					type = infantry_equipment
+					type = Inf_equipment
 					amount = 1000
 					producer = GER
 				}
@@ -14906,7 +14799,7 @@ GER_eastern_rebellions_cat = {
 		remove_effect = {
 			BFW = {
 				add_equipment_to_stockpile = {
-					type = infantry_equipment
+					type = Inf_equipment
 					amount = 1000
 					producer = GER
 				}
@@ -15071,7 +14964,7 @@ GER_eastern_rebellions_cat = {
 						hidden_effect = {
 							capital_scope = {
 								create_unit = {
-									division = "division_template = \"Jalaväebrigaad\" start_experience_factor = 0.1 start_equipment_factor = 0.9"
+									division = "division_template = \"Jalav盲ebrigaad\" start_experience_factor = 0.1 start_equipment_factor = 0.9"
 									owner = PREV
 									count = GER.BFW_uprise_units
 								}
@@ -15189,7 +15082,7 @@ GER_eastern_rebellions_cat = {
 		remove_effect = {
 			PRA = {
 				add_equipment_to_stockpile = {
-					type = infantry_equipment
+					type = Inf_equipment
 					amount = 1000
 					producer = GER
 				}
@@ -15890,7 +15783,7 @@ GER_war_on_authoritarianism = {
 					drop_cosmetic_tag = yes
 					set_cosmetic_tag = EGY_nato_free
 					set_politics = {
-						ruling_party = social_democrat
+						ruling_party = democratic
 						elections_allowed = yes
 						last_election = "2011.12.1"
 						election_frequency = 48
@@ -16051,7 +15944,7 @@ GER_war_on_authoritarianism = {
 					drop_cosmetic_tag = yes
 					set_cosmetic_tag = PER_nato_free
 					set_politics = {
-						ruling_party = social_democrat
+						ruling_party = democratic
 						elections_allowed = yes
 						last_election = "2011.12.1"
 						election_frequency = 48
@@ -16072,7 +15965,7 @@ GER_war_on_authoritarianism = {
 					create_country_leader = {
 						name = PER_maryam_rajavi
 						picture = "Maryam_Rajav.dds"
-						ideology = neoliberalism
+						ideology = liberalism
 					}
 				}
 			}
@@ -16217,7 +16110,7 @@ GER_war_on_authoritarianism = {
 					drop_cosmetic_tag = yes
 					set_cosmetic_tag = HRL_nato_free
 					set_politics = {
-						ruling_party = social_democrat
+						ruling_party = democratic
 						elections_allowed = yes
 						last_election = "2011.12.1"
 						election_frequency = 48
@@ -16238,7 +16131,7 @@ GER_war_on_authoritarianism = {
 					create_country_leader = {
 						name = LBA_fayez_sarraj_char
 						picture = "Fayez al-sarraj.dds"
-						ideology = left_populism
+						ideology = socialism
 					}
 				}
 			}
@@ -16334,12 +16227,12 @@ GER_war_on_authoritarianism = {
 				add_ideas = GER_nato_intervention_idea
 				custom_effect_tooltip = tooltip_white_line
 				add_equipment_to_stockpile = {
-					type = infantry_equipment_2
+					type = Inf_equipment
 					amount = 5000
 					producer = GER
 				}
 				add_equipment_to_stockpile = {
-					type = support_equipment
+					type = Inf_equipment
 					amount = 500
 					producer = GER
 				}
@@ -16388,12 +16281,12 @@ GER_war_on_authoritarianism = {
 			COL = {
 				add_ideas = GER_nato_intervention_idea
 				add_equipment_to_stockpile = {
-					type = infantry_equipment_2
+					type = Inf_equipment
 					amount = 5000
 					producer = GER
 				}
 				add_equipment_to_stockpile = {
-					type = support_equipment
+					type = Inf_equipment
 					amount = 500
 					producer = GER
 				}
@@ -16443,12 +16336,12 @@ GER_war_on_authoritarianism = {
 			NIG = {
 				add_ideas = GER_nato_intervention_idea
 				add_equipment_to_stockpile = {
-					type = infantry_equipment_2
+					type = Inf_equipment
 					amount = 5000
 					producer = GER
 				}
 				add_equipment_to_stockpile = {
-					type = support_equipment
+					type = Inf_equipment
 					amount = 500
 					producer = GER
 				}
@@ -16497,12 +16390,12 @@ GER_war_on_authoritarianism = {
 			DRO = {
 				add_ideas = GER_nato_intervention_idea
 				add_equipment_to_stockpile = {
-					type = infantry_equipment_2
+					type = Inf_equipment
 					amount = 5000
 					producer = GER
 				}
 				add_equipment_to_stockpile = {
-					type = support_equipment
+					type = Inf_equipment
 					amount = 500
 					producer = GER
 				}
@@ -16551,12 +16444,12 @@ GER_war_on_authoritarianism = {
 			SAF = {
 				add_ideas = GER_nato_intervention_idea
 				add_equipment_to_stockpile = {
-					type = infantry_equipment_2
+					type = Inf_equipment
 					amount = 5000
 					producer = GER
 				}
 				add_equipment_to_stockpile = {
-					type = support_equipment
+					type = Inf_equipment
 					amount = 500
 					producer = GER
 				}
@@ -16589,7 +16482,6 @@ GER_war_on_authoritarianism = {
 			#set_country_flag = GER_democracy
 		}
 		remove_effect = {
-			# 第二幕欧陆战争内容，当前阶段禁用对伊朗宣战（待第二幕实装时恢复）
 			#declare_war_on = {
 			#	target = PER
 			#	type = annex_everything
@@ -16631,7 +16523,6 @@ GER_war_on_authoritarianism = {
 			#set_country_flag = GER_democracy
 		}
 		remove_effect = {
-			# 第二幕欧陆战争内容，当前阶段禁用对埃及宣战（待第二幕实装时恢复）
 			#declare_war_on = {
 			#	target = EGY
 			#	type = annex_everything
@@ -16673,7 +16564,6 @@ GER_war_on_authoritarianism = {
 			#set_country_flag = GER_democracy
 		}
 		remove_effect = {
-			# 第二幕欧陆战争内容，当前阶段禁用对叙利亚/真主党宣战及加入以色列阵营（待第二幕实装时恢复）
 			#if = {
 			#	limit = {
 			#		SYR = {
@@ -16723,7 +16613,7 @@ GER_war_on_authoritarianism = {
 			#set_country_flag = GER_democracy
 			create_equipment_variant = {
 				name = "Khalid"
-				type = modern_tank_chassis_3
+				type = mbt_hull
 				parent_version = 0
 				model = "modern_armor_entity"
 				modules = {
@@ -16766,7 +16656,7 @@ GER_war_on_authoritarianism = {
 					}
 					set_cosmetic_tag = ARR_khalid
 					set_politics = {
-						ruling_party = authoritarian_democrat
+						ruling_party = communism
 						elections_allowed = no
 						last_election = "2020.1.1"
 						election_frequency = 48
@@ -16774,7 +16664,7 @@ GER_war_on_authoritarianism = {
 					create_country_leader = {
 						name = ENG_colin_weir_char
 						picture = "Colin Weir.dds"
-						ideology = military_democracy
+						ideology = communist_state
 					}
 				}
 			}
@@ -16796,7 +16686,7 @@ GER_war_on_authoritarianism = {
 					}
 					set_cosmetic_tag = ARR_khalid
 					set_politics = {
-						ruling_party = authoritarian_democrat
+						ruling_party = communism
 						elections_allowed = no
 						last_election = "2020.1.1"
 						election_frequency = 48
@@ -16804,7 +16694,7 @@ GER_war_on_authoritarianism = {
 					create_country_leader = {
 						name = ENG_colin_weir_char
 						picture = "Colin Weir.dds"
-						ideology = military_democracy
+						ideology = communist_state
 					}
 				}
 			}
@@ -17211,7 +17101,11 @@ european_union_category = {
 					var = eu_fed_var_trigger_temp
 					value = 0.3
 				}
-				GER_has_federalization_less_than = yes
+				check_variable = {
+					var = eu_fed_var
+					value = eu_fed_var_trigger_temp
+					compare = less_than
+				}
 			}
 		}
 		activation = {
@@ -18402,11 +18296,8 @@ european_union_category = {
 		days_re_enable = 20
 		cancel_if_not_visible = yes
 		modifier = {
-			social_liberal_drift = 0.03
-			social_democrat_drift = 0.02
-			conservative_drift = 0.01
-			libertarian_socialist_drift = 0.02
-			market_liberal_drift = 0.02
+			communism_drift = 0.02
+			democratic_drift = 0.02
 			compliance_growth = 0.15
 			political_power_gain = 0.1
 			society_development_monthly = 0.05
@@ -18419,192 +18310,6 @@ european_union_category = {
 		remove_effect = {
 			hidden_effect = {
 				add_to_variable = { var = campaign_slot_var value = 1 }
-			}
-		}
-	}
-	GER_intervene_in_spain_eu = {
-		icon = generic_industry
-		allowed = {
-			tag = GER
-		}
-		visible = {
-			tag = GER
-			has_completed_focus = GER_aggressive_realpolitk
-		}
-		available = {
-			NOT = {
-				FRA = {
-					has_completed_focus = FRA_EU_Sister_Republic
-				}
-			}
-			hidden_trigger = {
-				OR = {
-					GER = {
-						controls_state = 16
-					}
-					any_other_country = {
-						is_in_faction_with = GER
-						controls_state = 16
-					}
-				}
-			}
-		}
-		ai_will_do = {
-			base = 1000
-		}
-		fire_only_once = yes
-		cost = 60
-		days_remove = 25
-		cancel_if_not_visible = yes
-		complete_effect = {
-		}
-		remove_effect = {
-			puppet = FSP
-			FSP = {
-				GER_ultralib_eu_puppet = yes
-				annex_country = {
-					target = SPR
-					transfer_troops = yes
-				}
-				declare_war_on = {
-					target = LCA
-					type = annex_everything
-				}
-				declare_war_on = {
-					target = GAL
-					type = annex_everything
-				}
-				declare_war_on = {
-					target = SNS
-					type = annex_everything
-				}
-				declare_war_on = {
-					target = RSR
-					type = annex_everything
-				}
-				declare_war_on = {
-					target = BSQ
-					type = annex_everything
-				}
-				#   declare_war_on = {
-				#	target = ADU
-				#	type = annex_everything
-				#   }
-				declare_war_on = {
-					target = CAT
-					type = annex_everything
-				}
-				declare_war_on = {
-					target = BAR
-					type = annex_everything
-				}
-				set_cosmetic_tag = FSP_Iberian_Occupation_Zone
-			}
-			declare_war_on = {
-				target = LCA
-				type = annex_everything
-			}
-			declare_war_on = {
-				target = GAL
-				type = annex_everything
-			}
-			declare_war_on = {
-				target = SNS
-				type = annex_everything
-			}
-			declare_war_on = {
-				target = RSR
-				type = annex_everything
-			}
-			declare_war_on = {
-				target = BSQ
-				type = annex_everything
-			}
-			#declare_war_on = {
-			#	target = ADU
-			#	type = annex_everything
-			#}
-			declare_war_on = {
-				target = CAT
-				type = annex_everything
-			}
-			declare_war_on = {
-				target = BAR
-				type = annex_everything
-			}
-		}
-	}
-	FRA_Intervene_in_Spain_EU = {
-		icon = generic_industry
-		allowed = {
-			tag = FRA
-		}
-		visible = {
-			tag = FRA
-			has_completed_focus = FRA_EU_Iberian_Intervention
-		}
-		available = {
-			hidden_trigger = {
-				OR = {
-					FRA = {
-						controls_state = 16
-					}
-					any_other_country = {
-						is_in_faction_with = FRA
-						controls_state = 16
-					}
-				}
-			}
-		}
-		ai_will_do = {
-			base = 100
-		}
-		fire_only_once = yes
-		cost = 60
-		days_remove = 25
-		cancel_if_not_visible = yes
-		complete_effect = {
-		}
-		remove_effect = {
-			annex_country = {
-				target = SPR
-				transfer_troops = yes
-			}
-			annex_country = {
-				target = FSP
-				transfer_troops = yes
-			}
-			declare_war_on = {
-				target = LCA
-				type = annex_everything
-			}
-			declare_war_on = {
-				target = GAL
-				type = annex_everything
-			}
-			declare_war_on = {
-				target = SNS
-				type = annex_everything
-			}
-			declare_war_on = {
-				target = RSR
-				type = annex_everything
-			}
-			declare_war_on = {
-				target = BSQ
-				type = annex_everything
-			}
-			#declare_war_on = {
-			#	target = ADU
-			#	type = annex_everything
-			#}
-			declare_war_on = {
-				target = CAT
-				type = annex_everything
-			}
-			declare_war_on = {
-				target = BAR
-				type = annex_everything
 			}
 		}
 	}
@@ -18646,7 +18351,7 @@ european_union_category = {
 					}
 				}
 				set_politics = {
-					ruling_party = social_liberal
+					ruling_party = democratic
 					elections_allowed = no
 					last_election = "1945.5.8"
 				}
@@ -18654,83 +18359,15 @@ european_union_category = {
 				create_country_leader = {
 					name = AUS_Gunther_Fehlinger_char
 					picture = "Gunther Fehlinger.dds"
-					ideology = ultra_liberalism
+					ideology = liberalism
 				}
 				set_party_name = {
-					ideology = social_liberal
+					ideology = democratic
 					long_name = GER_volt_europa_long
 					name = GER_volt_europa
 				}
 				set_cosmetic_tag = BLK_euro_commission
 				remove_all_national_spirits = yes
-				declare_war_on = {
-					target = GRK
-					type = annex_everything
-				}
-			}
-		}
-	}
-	FRA_Intervene_in_Greece = {
-		icon = generic_industry
-		allowed = {
-			tag = FRA
-		}
-		visible = {
-			tag = FRA
-			has_completed_focus = FRA_EU_Never_Again_means_Now
-			GER = {
-				NOT = {
-					has_country_flag = GER_gunther_fehlinger_flag
-				}
-			}
-		}
-		available = {
-			NOT = {
-				GRE = {
-					is_puppet_of = GER
-				}
-			}
-		}
-		ai_will_do = {
-			base = 100
-		}
-		fire_only_once = yes
-		cost = 60
-		days_remove = 25
-		cancel_if_not_visible = yes
-		complete_effect = {
-		}
-		remove_effect = {
-			GRE = {
-				FRA = {
-					country_event = {
-						id = european_union.12
-					}
-					puppet = GRE
-					declare_war_on = {
-						target = GRK
-						type = annex_everything
-					}
-				}
-				set_politics = {
-					ruling_party = social_liberal
-					elections_allowed = no
-					last_election = "1945.5.8"
-				}
-				kill_country_leader = yes
-				create_country_leader = {
-					name = AUS_Gunther_Fehlinger_char
-					picture = "Gunther Fehlinger.dds"
-					ideology = ultra_liberalism
-					traits = {
-					}
-				}
-				set_party_name = {
-					ideology = social_liberal
-					long_name = GER_volt_europa_long
-					name = GER_volt_europa
-				}
-				set_cosmetic_tag = BLK_euro_commission
 				declare_war_on = {
 					target = GRK
 					type = annex_everything
@@ -18954,109 +18591,6 @@ european_union_category = {
 			}
 		}
 	}
-	GER_intervene_in_portugal = {
-		icon = generic_industry
-		allowed = {
-			tag = GER
-		}
-		visible = {
-			tag = GER
-			has_completed_focus = GER_aggressive_realpolitk
-		}
-		available = {
-			NOT = {
-				FRA = {
-					has_completed_focus = FRA_EU_Sister_Republic
-				}
-			}
-		}
-		ai_will_do = {
-			base = 100
-		}
-		fire_only_once = yes
-		cost = 45
-		days_remove = 25
-		cancel_if_not_visible = yes
-		complete_effect = {
-		}
-		remove_effect = {
-			puppet = FSP
-			FSP = {
-				GER_ultralib_eu_puppet = yes
-				annex_country = {
-					target = POR
-					transfer_troops = yes
-				}
-				declare_war_on = {
-					target = POR
-					type = annex_everything
-				}
-				declare_war_on = {
-					target = PRP
-					type = annex_everything
-				}
-				declare_war_on = {
-					target = GOD
-					type = annex_everything
-				}
-			}
-			declare_war_on = {
-				target = POR
-				type = annex_everything
-			}
-			declare_war_on = {
-				target = PRP
-				type = annex_everything
-			}
-			declare_war_on = {
-				target = GOD
-				type = annex_everything
-			}
-		}
-	}
-	FRA_Intervene_in_Portugal = {
-		icon = generic_industry
-		allowed = {
-			tag = FRA
-		}
-		visible = {
-			tag = FRA
-			has_completed_focus = FRA_EU_Iberian_Intervention
-		}
-		available = {
-		}
-		ai_will_do = {
-			base = 100
-		}
-		fire_only_once = yes
-		cost = 45
-		days_remove = 25
-		cancel_if_not_visible = yes
-		complete_effect = {
-		}
-		remove_effect = {
-			annex_country = {
-				target = POR
-				transfer_troops = yes
-			}
-			annex_country = {
-				target = FSP
-				transfer_troops = yes
-			}
-			declare_war_on = {
-				target = POR
-				type = annex_everything
-			}
-			declare_war_on = {
-				target = PRP
-				type = annex_everything
-			}
-			declare_war_on = {
-				target = GOD
-				type = annex_everything
-			}
-		}
-	}
 	GER_invite_italy_eu = {
 		icon = GFX_GER_EU_invite_decision
 		allowed = {
@@ -19237,322 +18771,6 @@ european_union_category = {
 				country_event = {
 					id = european_union.5
 				}
-			}
-		}
-	}
-	GER_invite_france_eu = {
-		icon = GFX_GER_EU_invite_decision
-		allowed = {
-			tag = GER
-		}
-		visible = {
-			tag = GER
-			has_completed_focus = GER_aggressive_realpolitk
-			hidden_trigger = {
-				FRA = {
-					is_ai = no
-				}
-			}
-		}
-		available = {
-			NOT = {
-				FRA = {
-					has_completed_focus = FRA_EU_Sister_Republic
-				}
-			}
-		}
-		ai_will_do = {
-			base = 100
-		}
-		fire_only_once = yes
-		cost = 45
-		days_remove = 25
-		cancel_if_not_visible = yes
-		complete_effect = {
-		}
-		remove_effect = {
-			FRA = {
-				add_state_core = 29
-				add_state_core = 15
-				add_state_core = 14
-				add_state_core = 25
-				add_state_core = 19
-				add_state_core = 31
-				add_state_core = 21
-				add_state_core = 17
-				add_state_core = 800
-				add_state_core = 1
-			}
-			GER = {
-				annex_country = {
-					target = FRA
-					transfer_troops = yes
-				}
-				annex_country = {
-					target = PRV
-					transfer_troops = yes
-				}
-			}
-		}
-	}
-	GER_crush_belgium_eu = {
-		icon = generic_industry
-		allowed = {
-			tag = GER
-		}
-		visible = {
-			tag = GER
-			has_completed_focus = GER_aggressive_realpolitk
-			BEL = { exists = yes }
-		}
-		available = {
-			NOT = {
-				FRA = {
-					has_completed_focus = FRA_EU_Sister_Republic
-				}
-			}
-		}
-		ai_will_do = {
-			base = 100
-		}
-		fire_only_once = yes
-		cost = 45
-		days_remove = 25
-		cancel_if_not_visible = yes
-		complete_effect = {
-		}
-		remove_effect = {
-			GER = {
-				declare_war_on = {
-					target = BEL
-					type = annex_everything
-				}
-			}
-		}
-	}
-	GER_invite_austria_eu = {
-		icon = GFX_GER_EU_invite_decision
-		allowed = {
-			tag = GER
-		}
-		visible = {
-			tag = GER
-			has_completed_focus = GER_secure_central_european_democracy
-		}
-		available = {
-			NOT = {
-				FRA = {
-					has_completed_focus = FRA_EU_Sister_Republic
-				}
-			}
-		}
-		ai_will_do = {
-			base = 100
-		}
-		fire_only_once = yes
-		cost = 45
-		days_remove = 25
-		cancel_if_not_visible = yes
-		complete_effect = {
-		}
-		remove_effect = {
-			GER = {
-				annex_country = {
-					target = AUS
-					transfer_troops = yes
-				}
-			}
-		}
-	}
-	FRA_invite_Austria_EU = {
-		icon = generic_industry
-		allowed = {
-			tag = FRA
-		}
-		visible = {
-			tag = FRA
-			has_completed_focus = FRA_EU_European_Cooperation
-		}
-		available = {
-		}
-		ai_will_do = {
-			base = 100
-		}
-		fire_only_once = yes
-		cost = 45
-		days_remove = 25
-		cancel_if_not_visible = yes
-		complete_effect = {
-		}
-		remove_effect = {
-			AUS = {
-				country_event = {
-					id = eufrance.5
-				}
-			}
-		}
-	}
-	FRA_invite_Switzerland_EU = {
-		icon = generic_industry
-		allowed = {
-			tag = FRA
-		}
-		visible = {
-			tag = FRA
-			has_completed_focus = FRA_EU_European_Cooperation
-		}
-		available = {
-		}
-		ai_will_do = {
-			base = 100
-		}
-		fire_only_once = yes
-		cost = 45
-		days_remove = 25
-		cancel_if_not_visible = yes
-		complete_effect = {
-		}
-		remove_effect = {
-			SWI = {
-				country_event = {
-					id = eufrance.5
-				}
-			}
-		}
-	}
-	GER_invite_ireland_eu = {
-		icon = GFX_GER_EU_invite_decision
-		allowed = {
-			tag = GER
-		}
-		visible = {
-			tag = GER
-			has_completed_focus = GER_aggressive_realpolitk
-		}
-		available = {
-		}
-		ai_will_do = {
-			base = 100
-		}
-		fire_only_once = yes
-		cost = 45
-		days_remove = 25
-		cancel_if_not_visible = yes
-		complete_effect = {
-		}
-		remove_effect = {
-			if = {
-				limit = {
-					NOT = {
-						FRA = {
-							has_completed_focus = FRA_EU_Sister_Republic
-						}
-					}
-				}
-			GER = {
-				annex_country = {
-					target = IRE
-					transfer_troops = no
-				}
-				declare_war_on = {
-					target = IRA
-					type = annex_everything
-				}
-				declare_war_on = {
-					target = NIR
-					type = annex_everything
-				}
-				every_state = {
-					limit = {
-						is_core_of = IRE
-					}
-					add_core_of = GER
-					}
-				}
-			}
-			if = {
-				limit = {
-					FRA = {
-						has_completed_focus = FRA_EU_Sister_Republic
-					}
-				}
-				UK2 = {
-					annex_country = {
-						target = IRE
-					}
-					every_owned_state = {
-						add_core_of = UK2
-					}
-					set_cosmetic_tag = UK2_euro
-					set_capital = {
-						state = 126
-						remember_old_capital = no
-					}
-				}
-			}
-		
-		}
-	}
-	FRA_invite_Spain_EU = {
-		icon = generic_industry
-		allowed = {
-			tag = FRA
-		}
-		visible = {
-			tag = FRA
-			has_completed_focus = FRA_EU_Iberian_Intervention
-			country_exists = FSP
-		}
-		available = {
-		}
-		ai_will_do = {
-			base = 100
-		}
-		fire_only_once = no
-		cost = 100
-		days_remove = 25
-		cancel_if_not_visible = yes
-		complete_effect = {
-		}
-		remove_effect = {
-			FSP = {
-				country_event = {
-					id = eufrance.5
-				}
-			}
-		}
-	}
-	FRA_rejoin_NATO_EU = {
-		icon = generic_industry
-		allowed = {
-			tag = FRA
-		}
-		visible = {
-			tag = FRA
-			has_completed_focus = FRA_EU_A_New_NATO
-			GER = {
-				NOT = {
-					is_in_faction_with = FRA
-				}
-			}
-		}
-		available = {
-		}
-		ai_will_do = {
-			base = 100
-		}
-		fire_only_once = yes
-		cost = 15
-		days_remove = 7
-		cancel_if_not_visible = yes
-		complete_effect = {
-		}
-		remove_effect = {
-			FRA = {
-				leave_faction = yes
-			}
-			GER = {
-				add_to_faction = FRA
 			}
 		}
 	}
@@ -19813,7 +19031,6 @@ european_union_category = {
 			tag = GER
 			OR = {
 				has_global_flag = SOV_cprf_won
-				has_global_flag = SOV_ldpr_won
 			}
 		}
 		available = {
@@ -19996,7 +19213,8 @@ european_union_category = {
 			if = {
 				limit = {
 					FROM = {
-						social_liberal > 0.5
+						# 原写法: social_liberal 民调大于 0.5 ; 不可用: 本工程无 social_liberal 子意识形态及其民调访问器
+						always = no
 					}
 				}
 				set_temp_variable = {
@@ -20006,7 +19224,7 @@ european_union_category = {
 				GER_add_eu_fed = yes
 				if = {
 					limit = {
-						has_global_flag = GER_EU_federalized_global
+						has_global_flag = FRA_EU_federalized_global
 					}
 					every_country = {
 						limit = {
@@ -20014,13 +19232,13 @@ european_union_category = {
 						}
 						PREV = {
 							get_current_government_type = yes
-							GER = {
+							FRA = {
 								puppet = PREV
 							}
 							restore_previous_government_type = yes
 						}
 					}
-					GER = {
+					FRA = {
 						annex_country = {
 							target = FROM
 							transfer_troops = yes
@@ -20030,7 +19248,7 @@ european_union_category = {
 						limit = {
 							is_core_of = FROM
 						}
-						add_core_of = GER
+						add_core_of = FRA
 					}
 				}
 				else = {
@@ -20086,6 +19304,7 @@ european_union_category = {
 		}
 		visible = {
 			has_completed_focus = GER_formalize_the_european_union
+			country_exists = FRA
 			#SOV = { is_puppet = yes }
 		}
 		available = {
@@ -20104,33 +19323,39 @@ european_union_category = {
 		complete_effect = {
 		}
 		remove_effect = {
-			set_global_flag = GER_EU_federalized_global
-			set_cosmetic_tag = EUU
-			annex_country = {
-				target = BEL
-				transfer_troops = no 
-			}
-			transfer_state = 1364
-			set_capital = {
-				state = 1364
-			}
-			news_event = {
-				id = news.272
-			}
+			set_global_flag = FRA_EU_federalized_global
 			every_country = {
 				limit = {
 					is_puppet_of = GER
 					has_cosmetic_tag = GER_EUU
 				}
-				GER = {
+				FRA = {
 					annex_country = {
 						target = PREV
 						transfer_troops = yes
 					}
 				}
 			}
-			every_controlled_state = {
-				add_core_of = GER
+			FRA = {
+				set_cosmetic_tag = FRA_EU
+				annex_country = {
+					target = BEL
+					transfer_troops = no 
+				}
+				transfer_state = 1364
+				set_capital = {
+					state = 1364
+				}
+				annex_country = {
+					target = GER
+					transfer_troops = yes
+				}
+				every_controlled_state = {
+					add_core_of = FRA
+				}
+				news_event = {
+					id = news.272
+				}
 			}
 		}
 	}
@@ -20168,17 +19393,17 @@ european_union_category = {
 		}
 		remove_effect = {
 			add_equipment_to_stockpile = {
-				type = infantry_equipment_1
+				type = Inf_equipment
 				amount = 1000
 				producer = JAP
 			}
 			add_equipment_to_stockpile = {
-				type = anti_tank_equipment_1
+				type = L_AT_Equipment
 				amount = 500
 				producer = JAP
 			}
 			add_equipment_to_stockpile = {
-				type = support_equipment
+				type = Inf_equipment
 				amount = 500
 				producer = JAP
 			}
@@ -20219,7 +19444,7 @@ european_union_category = {
 					has_dlc = "No Step Back"
 				}
 				add_equipment_to_stockpile = {
-					type = modern_tank_chassis_3
+					type = mbt_hull
 					amount = 100
 					producer = GER
 				}
@@ -20231,23 +19456,23 @@ european_union_category = {
 					}
 				}
 				add_equipment_to_stockpile = {
-					type = modern_tank_equipment_3
+					type = mbt_hull
 					amount = 100
 					producer = GER
 				}
 			}
 			add_equipment_to_stockpile = {
-				type = infantry_equipment_1
+				type = Inf_equipment
 				amount = 1000
 				producer = USA
 			}
 			add_equipment_to_stockpile = {
-				type = anti_tank_equipment_1
+				type = L_AT_Equipment
 				amount = 500
 				producer = USA
 			}
 			add_equipment_to_stockpile = {
-				type = support_equipment
+				type = Inf_equipment
 				amount = 500
 				producer = USA
 			}
@@ -20735,12 +19960,11 @@ GER_new_political_sphere_category = {
 				character = GER_Heinrich_XIII
 				promote_leader = yes
 				country_leader = {
-					ideology = absolute_monarchist
+					ideology = Neutral_conservatism
 					desc = GER_HEINRICH_DESC
 					expire = "1.1.1.1"
 					id = -1
 					traits = {
-						hos_estranged_son
 					}
 				}
 			}
@@ -20768,10 +19992,9 @@ GER_new_political_sphere_category = {
 					large = "gfx/leaders/GER/generals/GER_josef_boltz_imperial.png"
 				}
 			}
-			GER_josef_blotz = {
-				add_trait = {
-					trait = clinically_insane
-				}
+			add_trait = {
+			    character = GER_josef_blotz
+			    trait = clinically_insane
 			}
 			set_portraits = {
 				character = GER_gert_gawellek
@@ -20779,10 +20002,9 @@ GER_new_political_sphere_category = {
 					large = "gfx/leaders/GER/generals/GER_gert_gawellek_imperial.png"
 				}
 			}
-			GER_gert_gawellek = {
-				add_trait = {
-					trait = clinically_insane
-				}
+			add_trait = {
+			    character = GER_gert_gawellek
+			    trait = clinically_insane
 			}
 		}
 	}
@@ -21180,7 +20402,7 @@ GER_new_political_sphere_category = {
 				create_country_leader = {
 					name = GER_Reuss_Family
 					picture = "Reuss.dds"
-					ideology = absolute_monarchist
+					ideology = Monarchist
 					}
 				}
 				hidden_effect = {
@@ -21785,7 +21007,6 @@ GER_new_political_sphere_category = {
 		cost = 25
 		modifier = {
 			fascism_drift = 0.01
-			national_socialist_drift = 0.01
 		}
 		remove_effect = {
 			add_war_support = 0.05
@@ -21916,7 +21137,7 @@ GER_new_political_sphere_category = {
 		custom_cost_text = 1000inf_cost
 		custom_cost_trigger = {
 			stockpile_ratio = {
-				archetype = infantry_equipment
+				archetype = infantry_weapons_type
 				ratio > 0.01
 			}
 		}
@@ -21928,7 +21149,7 @@ GER_new_political_sphere_category = {
 		complete_effect = {
 			hidden_effect = {
 				add_equipment_to_stockpile = {
-					type = infantry_equipment
+					type = Inf_equipment
 					amount = -1000
 				}
 			}
@@ -21983,8 +21204,7 @@ GER_new_political_sphere_category = {
 		fire_only_once = yes
 		cost = 100
 		modifier = {
-			fascism_drift = 0.025
-			national_socialist_drift = 0.02
+			fascism_drift = 0.02
 			weekly_manpower = -100
 		}
 		remove_effect = {
@@ -22395,8 +21615,8 @@ GER_pact_of_steel_category = {
 		available = {
 			GRE = {
 				OR = {
-					has_government = fascist
-					has_government = national_socialist
+					has_government = fascism
+					has_government = fascism
 				}
 				NOT = {
 					has_civil_war = yes
@@ -22513,17 +21733,17 @@ GER_pact_of_steel_category = {
 					days = 40
 				}
 				add_equipment_to_stockpile = {
-					type = infantry_equipment_1
+					type = Inf_equipment
 					amount = 1000
 					producer = GER
 				}
 				add_equipment_to_stockpile = {
-					type = anti_tank_equipment_1
+					type = L_AT_Equipment
 					amount = 500
 					producer = GER
 				}
 				add_equipment_to_stockpile = {
-					type = support_equipment
+					type = Inf_equipment
 					amount = 500
 					producer = GER
 				}
@@ -22553,17 +21773,17 @@ GER_pact_of_steel_category = {
 					days = 40
 				}
 				add_equipment_to_stockpile = {
-					type = infantry_equipment_1
+					type = Inf_equipment
 					amount = 1000
 					producer = GER
 				}
 				add_equipment_to_stockpile = {
-					type = anti_tank_equipment_1
+					type = L_AT_Equipment
 					amount = 500
 					producer = GER
 				}
 				add_equipment_to_stockpile = {
-					type = support_equipment
+					type = Inf_equipment
 					amount = 500
 					producer = GER
 				}
@@ -22623,17 +21843,17 @@ GER_pact_of_steel_category = {
 					days = 40
 				}
 				add_equipment_to_stockpile = {
-					type = infantry_equipment_1
+					type = Inf_equipment
 					amount = 1000
 					producer = GER
 				}
 				add_equipment_to_stockpile = {
-					type = anti_tank_equipment_1
+					type = L_AT_Equipment
 					amount = 500
 					producer = GER
 				}
 				add_equipment_to_stockpile = {
-					type = support_equipment
+					type = Inf_equipment
 					amount = 500
 					producer = GER
 				}
@@ -22668,7 +21888,7 @@ GER_pact_of_steel_category = {
 				set_country_flag = GER_support_uia
 			}
 			set_party_name = {
-				ideology = market_liberal
+				ideology = democratic
 				long_name = GER_regency_committee_long
 				name = GER_regency_committee_short
 			}
@@ -22697,17 +21917,17 @@ GER_pact_of_steel_category = {
 					days = 40
 				}
 				add_equipment_to_stockpile = {
-					type = infantry_equipment_1
+					type = Inf_equipment
 					amount = 1000
 					producer = GER
 				}
 				add_equipment_to_stockpile = {
-					type = anti_tank_equipment_1
+					type = L_AT_Equipment
 					amount = 500
 					producer = GER
 				}
 				add_equipment_to_stockpile = {
-					type = support_equipment
+					type = Inf_equipment
 					amount = 500
 					producer = GER
 				}
@@ -22836,10 +22056,18 @@ GER_NATO_war_category = {
 			original_tag = GER
 		}
 		visible = {
-			NATO_war_escalation_level_2 = yes
+			check_variable = {
+				var = GER_war_escalation_level
+				value = 2
+				compare = greater_than_or_equals
+			}
 		}
 		available = {
-			NATO_war_escalation_level_2 = yes
+			check_variable = {
+				var = GER_war_escalation_level
+				value = 2
+				compare = greater_than_or_equals
+			}
 		}
 		ai_will_do = {
 			base = 1
@@ -23087,7 +22315,6 @@ GER_second_NATO_war_category = {
 			country_event = {
 				id = germany.141
 			}
-			complete_national_focus = GER_der_brand
 			set_country_flag = show_defense_tree
 			hidden_effect = {
 				focus_unlock = yes
@@ -23607,7 +22834,7 @@ GER_second_NATO_war_category = {
 					limit = {
 						GER = {
 							OR = {
-								has_government = fascist
+								has_government = fascism
 								has_government = nationalist
 							}
 						}
@@ -23655,10 +22882,6 @@ GER_second_NATO_war_category = {
 								x = 0
 								y = 0
 							}
-							Arty_Bat = {
-								x = 0
-								y = 1
-							}
 						}
 					}
 					capital_scope = {
@@ -23673,8 +22896,8 @@ GER_second_NATO_war_category = {
 					limit = {
 						GER = {
 							OR = {
-								has_government = communist
-								has_government = libertarian_socialist
+								has_government = communism
+								has_government = communism
 							}
 						}
 					}
@@ -23720,10 +22943,6 @@ GER_second_NATO_war_category = {
 							L_Engi_Comp = {
 								x = 0
 								y = 0
-							}
-							Arty_Bat = {
-								x = 0
-								y = 1
 							}
 						}
 					}
@@ -23878,7 +23097,6 @@ GER_second_NATO_war_category = {
 			country_event = {
 				id = germany.141
 			}
-			complete_national_focus = GER_der_brand
 			set_country_flag = show_defense_tree
 			hidden_effect = {
 				focus_unlock = yes
@@ -24383,8 +23601,7 @@ GER_second_NATO_war_category = {
 					is_able_to_build_nuclear_reactor_in_state = yes
 					free_building_slots = {
 						building = nuclear_reactor
-						size > 1
-						include_locked = no
+						size > 0
 					}
 				}
 				add_building_construction = {
@@ -24712,7 +23929,7 @@ GER_lacc_cat = {
 			base = 10
 		}
 		modifier = {
-			libertarian_socialist_drift = 0.05
+			communism_drift = 0.05
 			stability_factor = 0.1
 			war_support_factor = 0.1
 			compliance_growth = 0.1
@@ -24857,7 +24074,7 @@ GER_lacc_cat = {
 		}
 		modifier = {
 			political_power_gain = -0.1
-			libertarian_socialist_drift = 0.1
+			communism_drift = 0.1
 		}
 		remove_effect = {
 			add_stability = 0.15
@@ -24979,7 +24196,7 @@ GER_spartanist_cat = {
 			research_speed_factor = 0.1
 			industrial_development_monthly = 0.01
 			military_development_monthly = 0.01
-			totalitarian_socialist_drift = 0.1
+			communism_drift = 0.1
 		}
 		complete_effect = {
 			GER_strengthen_juche = yes
@@ -25019,10 +24236,9 @@ GER_spartanist_cat = {
 			personal_value_factor = 0.1
 			society_development_monthly = 0.01
 			academic_development_monthly = 0.01
-			totalitarian_socialist_drift = 0.05
+			communism_drift = 0.05
 			nationalist_drift = 0.05
-			fascism_drift = 0.05
-			national_socialist_drift = 0.1
+			fascism_drift = 0.1
 		}
 		complete_effect = {
 			GER_strengthen_querfront = yes
@@ -25063,8 +24279,7 @@ GER_spartanist_cat = {
 			army_org_factor = 0.1
 			army_speed_factor = 0.1
 			nationalist_drift = 0.03
-			fascism_drift = 0.05
-			national_socialist_drift = 0.08
+			fascism_drift = 0.08
 		}
 		complete_effect = {
 			hidden_effect = {
@@ -25149,30 +24364,27 @@ GER_spartanist_cat = {
 		}
 		modifier = {
 			stability_weekly = -0.005
-			social_democrat_drift = -0.2
-			social_liberal_drift = -0.2
-			conservative_drift = -0.2
-			authoritarian_democrat_drift = -0.2
+			democratic_drift = -0.2
 		}
 		complete_effect = {
 			GER_strengthen_juche = yes
 			set_party_name = {
-				ideology = social_democrat
+				ideology = democratic
 				long_name = GER_outlawed_long
 				name = GER_outlawed_short
 			}	
 			set_party_name = {
-				ideology = social_liberal
+				ideology = democratic
 				long_name = GER_outlawed_long
 				name = GER_outlawed_short
 			}			
 			set_party_name = {
-				ideology = conservative
+				ideology = democratic
 				long_name = GER_outlawed_long
 				name = GER_outlawed_short
 			}	
 			set_party_name = {
-				ideology = authoritarian_democrat
+				ideology = communism
 				long_name = GER_outlawed_long
 				name = GER_outlawed_short
 			}
@@ -25288,8 +24500,8 @@ GER_spartanist_cat = {
 				add_core_of = GER
 			}
 			3 = {
-				add_core_of = FPR
-				transfer_state_to = FPR
+				add_core_of = GER
+				transfer_state_to = GER
 			}
 			838 = {
 				add_core_of = ITA
@@ -25464,7 +24676,7 @@ GER_agenda_2040_cat = {
 				}
 			}
 		}
-		available = {
+		complete_effect = {
 			if = {
 				limit = {
 					check_variable = {
@@ -25473,8 +24685,8 @@ GER_agenda_2040_cat = {
 						compare = equals
 					}
 				}
-				has_completed_focus = GER_safety_and_security
-				has_completed_focus = GER_architecture_of_post_modernity
+				complete_national_focus = GER_safety_and_security
+				complete_national_focus = GER_architecture_of_post_modernity
 			}
 			else_if = {
 				limit = {
@@ -25484,8 +24696,8 @@ GER_agenda_2040_cat = {
 						compare = equals
 					}
 				}
-				has_completed_focus = GER_new_human_concept
-				has_completed_focus = GER_the_new_surplus_value
+				complete_national_focus = GER_new_human_concept
+				complete_national_focus = GER_the_new_surplus_value
 			}
 			else_if = {
 				limit = {
@@ -25495,15 +24707,15 @@ GER_agenda_2040_cat = {
 						compare = equals
 					}
 				}
-				has_completed_focus = GER_state_capitalism
-				has_completed_focus = GER_establish_the_two_class_society
+				complete_national_focus = GER_state_capitalism
+				complete_national_focus = GER_establish_the_two_class_society
 			}
 		}
 		ai_will_do = {
 			base = 1000
 		}
 		modifier = {
-			authoritarian_democrat_drift = 0.1
+			democratic_drift = 0.1
 		}
 		complete_effect = {
 			custom_effect_tooltip = GER_agenda_2040_progress_tt
@@ -25573,8 +24785,8 @@ GER_agenda_2040_cat = {
 						compare = greater_than_or_equals
 					}
 				}
-				has_completed_focus = GER_safety_and_security
-				has_completed_focus = GER_architecture_of_post_modernity
+				complete_national_focus = GER_safety_and_security
+				complete_national_focus = GER_architecture_of_post_modernity
 			}
 			else_if = {
 				limit = {
@@ -25584,8 +24796,8 @@ GER_agenda_2040_cat = {
 						compare = greater_than_or_equals
 					}
 				}
-				has_completed_focus = GER_new_human_concept
-				has_completed_focus = GER_the_new_surplus_value
+				complete_national_focus = GER_new_human_concept
+				complete_national_focus = GER_the_new_surplus_value
 			}
 			else_if = {
 				limit = {
@@ -25595,8 +24807,8 @@ GER_agenda_2040_cat = {
 						compare = greater_than_or_equals
 					}
 				}
-				has_completed_focus = GER_state_capitalism
-				has_completed_focus = GER_establish_the_two_class_society
+				complete_national_focus = GER_state_capitalism
+				complete_national_focus = GER_establish_the_two_class_society
 			}
 		}
 	}
@@ -25657,7 +24869,7 @@ GER_agenda_2040_cat = {
 				set_state_flag = GER_big_city_state_flag
 				add_extra_state_shared_building_slots = 5
 				add_building_construction = {
-					type = office_park
+					type = offices
 					level = 1
 					instant_build = yes
 				}
@@ -25740,7 +24952,7 @@ GER_agenda_2040_cat = {
 			base = 10
 		}
 		modifier = {
-			authoritarian_democrat_drift = 0.1
+			democratic_drift = 0.1
 			political_power_cost = -0.15
 			production_speed_renewable_energy_infra_factor = 0.15
 			production_speed_buildings_factor = 0.15
@@ -25781,7 +24993,7 @@ GER_agenda_2040_cat = {
 			base = 10
 		}
 		modifier = {
-			authoritarian_democrat_drift = 0.1
+			democratic_drift = 0.1
 			tax_gain_multiplier_modifier = 0.2
 			business_value_factor = 0.2
 			production_speed_offices_factor = 0.25
@@ -25821,7 +25033,7 @@ GER_agenda_2040_cat = {
 			base = 10
 		}
 		modifier = {
-			authoritarian_democrat_drift = 0.1
+			democratic_drift = 0.1
 			monthly_population = -0.5
 			academic_development_monthly = 0.03
 			society_development_monthly = 0.03
@@ -26259,7 +25471,6 @@ GER_gunthers_twitter_cat = {
 		complete_effect = {
 		}
 		remove_effect = {
-			complete_national_focus = GER_the_end_of_the_russian_experiment
 			if = {
 				limit = {
 					has_global_flag = GER_gaw_intervention_global
@@ -26356,8 +25567,7 @@ GER_gunthers_twitter_cat = {
 			base = 10
 		}
 		modifier = {
-			conservative_drift = 0.1
-			social_liberal_drift = 0.1
+			democratic_drift = 0.1
 			political_power_cost = -0.15
 			mobilization_speed = 0.1
 			society_development_monthly = 0.04
@@ -27305,10 +26515,10 @@ GER_gunthers_twitter_cat = {
 					JOR = {
 						is_in_faction = no
 					}
-					declare_war_on = {
-						target = JOR
-						type = annex_everything
-					}
+				}
+				declare_war_on = {
+					target = JOR
+					type = annex_everything
 				}
 			}
 		}
@@ -27341,7 +26551,6 @@ GER_gunthers_twitter_cat = {
 		complete_effect = {
 		}
 		remove_effect = {
-			# 第二幕欧陆战争内容，当前阶段禁用对伊朗宣战（待第二幕实装时恢复）
 			#declare_war_on = {
 			#	target = PER
 			#	type = annex_everything
@@ -27370,22 +26579,22 @@ PROXY_libyan_cw_cat = {
 		remove_effect = {
 			LBA = {
 				add_equipment_to_stockpile = {
-					type = infantry_equipment_2
+					type = Inf_equipment
 					amount = 1500
 					producer = GER
 				}
 				add_equipment_to_stockpile = {
-					type = support_equipment
+					type = Inf_equipment
 					amount = 150
 					producer = GER
 				}
 				add_equipment_to_stockpile = {
-					type = anti_tank_equipment_1
+					type = L_AT_Equipment
 					amount = 150
 					producer = GER
 				}
 				add_equipment_to_stockpile = {
-					type = anti_air_equipment_1
+					type = AA_Equipment
 					amount = 150
 					producer = GER
 				}
@@ -27412,27 +26621,27 @@ PROXY_libyan_cw_cat = {
 		remove_effect = {
 			LBA = {
 				add_equipment_to_stockpile = {
-					type = motorized_equipment_1
+					type = util_vehicle_equipment
 					amount = 200
 					producer = GER
 				}
 				add_equipment_to_stockpile = {
-					type = modern_tank_equipment_1
+					type = mbt_hull
 					amount = 50
 					producer = GER
 				}
 				add_equipment_to_stockpile = {
-					type = light_mechanized_equipment_2
+					type = apc_hull
 					amount = 100
 					producer = GER
 				}
 				add_equipment_to_stockpile = {
-					type = mechanized_equipment_2
+					type = ifv_hull
 					amount = 100
 					producer = GER
 				}
 				add_equipment_to_stockpile = {
-					type = modern_tank_artillery_equipment_1
+					type = spart_hull
 					amount = 100
 					producer = GER
 				}
@@ -27459,7 +26668,7 @@ PROXY_libyan_cw_cat = {
 		remove_effect = {
 			LBA = {
 				add_equipment_to_stockpile = {
-					type = attack_helicopter_equipment_1
+					type = attack_helicopter_hull
 					amount = 25
 					producer = GER
 				}
@@ -27545,22 +26754,22 @@ PROXY_libyan_cw_cat = {
 		remove_effect = {
 			HRL = {
 				add_equipment_to_stockpile = {
-					type = infantry_equipment_2
+					type = Inf_equipment
 					amount = 2200
 					producer = SOV
 				}
 				add_equipment_to_stockpile = {
-					type = support_equipment
+					type = Inf_equipment
 					amount = 225
 					producer = SOV
 				}
 				add_equipment_to_stockpile = {
-					type = anti_tank_equipment_1
+					type = L_AT_Equipment
 					amount = 250
 					producer = SOV
 				}
 				add_equipment_to_stockpile = {
-					type = anti_air_equipment_1
+					type = AA_Equipment
 					amount = 250
 					producer = SOV
 				}
@@ -27584,27 +26793,27 @@ PROXY_libyan_cw_cat = {
 		remove_effect = {
 			HRL = {
 				add_equipment_to_stockpile = {
-					type = motorized_equipment_1
+					type = util_vehicle_equipment
 					amount = 300
 					producer = SOV
 				}
 				add_equipment_to_stockpile = {
-					type = modern_tank_equipment_1
+					type = mbt_hull
 					amount = 80
 					producer = SOV
 				}
 				add_equipment_to_stockpile = {
-					type = light_mechanized_equipment_2
+					type = apc_hull
 					amount = 125
 					producer = SOV
 				}
 				add_equipment_to_stockpile = {
-					type = mechanized_equipment_2
+					type = ifv_hull
 					amount = 125
 					producer = SOV
 				}
 				add_equipment_to_stockpile = {
-					type = modern_tank_artillery_equipment_1
+					type = spart_hull
 					amount = 125
 					producer = SOV
 				}
@@ -27628,7 +26837,7 @@ PROXY_libyan_cw_cat = {
 		remove_effect = {
 			HRL = {
 				add_equipment_to_stockpile = {
-					type = attack_helicopter_equipment_1
+					type = attack_helicopter_hull
 					amount = 35
 					producer = SOV
 				}
@@ -27683,22 +26892,22 @@ PROXY_saudi_cw_cat = {
 		remove_effect = {
 			ARR = {
 				add_equipment_to_stockpile = {
-					type = infantry_equipment_2
+					type = Inf_equipment
 					amount = 1500
 					producer = GER
 				}
 				add_equipment_to_stockpile = {
-					type = support_equipment
+					type = Inf_equipment
 					amount = 150
 					producer = GER
 				}
 				add_equipment_to_stockpile = {
-					type = anti_tank_equipment_1
+					type = L_AT_Equipment
 					amount = 150
 					producer = GER
 				}
 				add_equipment_to_stockpile = {
-					type = anti_air_equipment_1
+					type = AA_Equipment
 					amount = 150
 					producer = GER
 				}
@@ -27725,27 +26934,27 @@ PROXY_saudi_cw_cat = {
 		remove_effect = {
 			ARR = {
 				add_equipment_to_stockpile = {
-					type = motorized_equipment_1
+					type = util_vehicle_equipment
 					amount = 200
 					producer = GER
 				}
 				add_equipment_to_stockpile = {
-					type = modern_tank_equipment_1
+					type = mbt_hull
 					amount = 50
 					producer = GER
 				}
 				add_equipment_to_stockpile = {
-					type = light_mechanized_equipment_2
+					type = apc_hull
 					amount = 100
 					producer = GER
 				}
 				add_equipment_to_stockpile = {
-					type = mechanized_equipment_2
+					type = ifv_hull
 					amount = 100
 					producer = GER
 				}
 				add_equipment_to_stockpile = {
-					type = modern_tank_artillery_equipment_1
+					type = spart_hull
 					amount = 100
 					producer = GER
 				}
@@ -27772,7 +26981,7 @@ PROXY_saudi_cw_cat = {
 		remove_effect = {
 			ARR = {
 				add_equipment_to_stockpile = {
-					type = attack_helicopter_equipment_1
+					type = attack_helicopter_hull
 					amount = 25
 					producer = GER
 				}
@@ -27861,22 +27070,22 @@ PROXY_saudi_cw_cat = {
 		remove_effect = {
 			SAU = {
 				add_equipment_to_stockpile = {
-					type = infantry_equipment_2
+					type = Inf_equipment
 					amount = 2200
 					producer = SOV
 				}
 				add_equipment_to_stockpile = {
-					type = support_equipment
+					type = Inf_equipment
 					amount = 225
 					producer = SOV
 				}
 				add_equipment_to_stockpile = {
-					type = anti_tank_equipment_1
+					type = L_AT_Equipment
 					amount = 250
 					producer = SOV
 				}
 				add_equipment_to_stockpile = {
-					type = anti_air_equipment_1
+					type = AA_Equipment
 					amount = 250
 					producer = SOV
 				}
@@ -27903,27 +27112,27 @@ PROXY_saudi_cw_cat = {
 		remove_effect = {
 			SAU = {
 				add_equipment_to_stockpile = {
-					type = motorized_equipment_1
+					type = util_vehicle_equipment
 					amount = 300
 					producer = SOV
 				}
 				add_equipment_to_stockpile = {
-					type = modern_tank_equipment_1
+					type = mbt_hull
 					amount = 80
 					producer = SOV
 				}
 				add_equipment_to_stockpile = {
-					type = light_mechanized_equipment_2
+					type = apc_hull
 					amount = 125
 					producer = SOV
 				}
 				add_equipment_to_stockpile = {
-					type = mechanized_equipment_2
+					type = ifv_hull
 					amount = 125
 					producer = SOV
 				}
 				add_equipment_to_stockpile = {
-					type = modern_tank_artillery_equipment_1
+					type = spart_hull
 					amount = 125
 					producer = SOV
 				}
@@ -27950,7 +27159,7 @@ PROXY_saudi_cw_cat = {
 		remove_effect = {
 			SAU = {
 				add_equipment_to_stockpile = {
-					type = attack_helicopter_equipment_1
+					type = attack_helicopter_hull
 					amount = 35
 					producer = SOV
 				}
@@ -28043,22 +27252,22 @@ PROXY_saudi_cw_cat = {
 		remove_effect = {
 			SAR = {
 				add_equipment_to_stockpile = {
-					type = infantry_equipment_2
+					type = Inf_equipment
 					amount = 2200
 					producer = SOV
 				}
 				add_equipment_to_stockpile = {
-					type = support_equipment
+					type = Inf_equipment
 					amount = 225
 					producer = SOV
 				}
 				add_equipment_to_stockpile = {
-					type = anti_tank_equipment_1
+					type = L_AT_Equipment
 					amount = 250
 					producer = SOV
 				}
 				add_equipment_to_stockpile = {
-					type = anti_air_equipment_1
+					type = AA_Equipment
 					amount = 250
 					producer = SOV
 				}
@@ -28085,27 +27294,27 @@ PROXY_saudi_cw_cat = {
 		remove_effect = {
 			SAR = {
 				add_equipment_to_stockpile = {
-					type = motorized_equipment_1
+					type = util_vehicle_equipment
 					amount = 300
 					producer = SOV
 				}
 				add_equipment_to_stockpile = {
-					type = modern_tank_equipment_1
+					type = mbt_hull
 					amount = 80
 					producer = SOV
 				}
 				add_equipment_to_stockpile = {
-					type = light_mechanized_equipment_2
+					type = apc_hull
 					amount = 125
 					producer = SOV
 				}
 				add_equipment_to_stockpile = {
-					type = mechanized_equipment_2
+					type = ifv_hull
 					amount = 125
 					producer = SOV
 				}
 				add_equipment_to_stockpile = {
-					type = modern_tank_artillery_equipment_1
+					type = spart_hull
 					amount = 125
 					producer = SOV
 				}
@@ -28132,7 +27341,7 @@ PROXY_saudi_cw_cat = {
 		remove_effect = {
 			SAR = {
 				add_equipment_to_stockpile = {
-					type = attack_helicopter_equipment_1
+					type = attack_helicopter_hull
 					amount = 35
 					producer = SOV
 				}
@@ -28256,7 +27465,7 @@ PROXY_maghreb_war_cat = {
 				}
 				TUN = {
 					set_politics = {
-						ruling_party = authoritarian_democrat
+						ruling_party = democratic
 						elections_allowed = yes
 					}
 					set_popularities = {
@@ -28273,7 +27482,7 @@ PROXY_maghreb_war_cat = {
 						name = TUN_Mohamed_El_Ghoul_char
 						picture = "gfx/leaders/MOR/Mohamed El Ghoul.png"
 						expire = "1.1.1.1"
-						ideology = hybrid_regime
+						ideology = Western_Autocracy
 					}
 					get_current_government_type = yes
 					ALG = {
@@ -28300,7 +27509,7 @@ PROXY_maghreb_war_cat = {
 				add_state_core = 290
 				set_cosmetic_tag = MOR_rif_republic
 				set_politics = {
-					ruling_party = social_democrat
+					ruling_party = democratic
 					elections_allowed = yes
 				}
 				set_popularities = {
@@ -28318,7 +27527,7 @@ PROXY_maghreb_war_cat = {
 					name = RIF_nasser_zezfaki
 					picture = "gfx/leaders/ALG/RIF_nasser_zezfaki.png"
 					expire = "1.1.1.1"
-					ideology = social_patriotism
+					ideology = Nat_Populism
 				}
 				get_current_government_type = yes
 				ALG = {
@@ -28336,7 +27545,7 @@ PROXY_maghreb_war_cat = {
 				MOR = {
 					set_cosmetic_tag = MOR_democratic_republic
 					set_politics = {
-						ruling_party = authoritarian_democrat
+						ruling_party = democratic
 						elections_allowed = yes
 					}
 					set_popularities = {
@@ -28354,7 +27563,7 @@ PROXY_maghreb_war_cat = {
 						name = MOR_ahmed_assid
 						picture = "gfx/leaders/MOR/MOR_ahmed_assid.png"
 						expire = "1.1.1.1"
-						ideology = hybrid_regime
+						ideology = Western_Autocracy
 					}
 					get_current_government_type = yes
 					ALG = {
@@ -28380,7 +27589,7 @@ PROXY_maghreb_war_cat = {
 			}
 			MOR = {
 				dismantle_faction = yes
-				transfer_state = 1486
+				transfer_state = 382   # MD 西部大沙丘（含 TFR 1486 贝沙尔三省），原 1486 在 MD 不存在
 				annex_country = {
 					target = WES
 					transfer_troops = no
@@ -28420,7 +27629,7 @@ PROXY_maghreb_war_cat = {
 						name = MOR_Mohammed_Berrid
 						picture = "gfx/leaders/MOR/MOR_mohamed_berrid.png"
 						expire = "1.1.1.1"
-						ideology = military_junta
+						ideology = Nat_Populism
 					}
 				}
 			}
@@ -28446,7 +27655,7 @@ PROXY_maghreb_war_cat = {
 					name = KAB_ferhat_mehenni
 					picture = "gfx/leaders/MOR/KAB_ferhat_mehenni.png"
 					expire = "1.1.1.1"
-					ideology = radical_nationalism
+					ideology = Nat_Autocracy
 				}
 				get_current_government_type = yes
 				MOR = {
@@ -28522,22 +27731,22 @@ PROXY_maghreb_war_cat = {
 		remove_effect = {
 			MOR = {
 				add_equipment_to_stockpile = {
-					type = infantry_equipment_2
+					type = Inf_equipment
 					amount = 1500
 					producer = GER
 				}
 				add_equipment_to_stockpile = {
-					type = support_equipment
+					type = Inf_equipment
 					amount = 150
 					producer = GER
 				}
 				add_equipment_to_stockpile = {
-					type = anti_tank_equipment_1
+					type = L_AT_Equipment
 					amount = 150
 					producer = GER
 				}
 				add_equipment_to_stockpile = {
-					type = anti_air_equipment_1
+					type = AA_Equipment
 					amount = 150
 					producer = GER
 				}
@@ -28564,27 +27773,27 @@ PROXY_maghreb_war_cat = {
 		remove_effect = {
 			MOR = {
 				add_equipment_to_stockpile = {
-					type = motorized_equipment_1
+					type = util_vehicle_equipment
 					amount = 200
 					producer = GER
 				}
 				add_equipment_to_stockpile = {
-					type = modern_tank_equipment_1
+					type = mbt_hull
 					amount = 50
 					producer = GER
 				}
 				add_equipment_to_stockpile = {
-					type = light_mechanized_equipment_2
+					type = apc_hull
 					amount = 100
 					producer = GER
 				}
 				add_equipment_to_stockpile = {
-					type = mechanized_equipment_2
+					type = ifv_hull
 					amount = 100
 					producer = GER
 				}
 				add_equipment_to_stockpile = {
-					type = modern_tank_artillery_equipment_1
+					type = spart_hull
 					amount = 100
 					producer = GER
 				}
@@ -28611,7 +27820,7 @@ PROXY_maghreb_war_cat = {
 		remove_effect = {
 			MOR = {
 				add_equipment_to_stockpile = {
-					type = attack_helicopter_equipment_1
+					type = attack_helicopter_hull
 					amount = 25
 					producer = GER
 				}
@@ -28697,22 +27906,22 @@ PROXY_maghreb_war_cat = {
 		remove_effect = {
 			ALG = {
 				add_equipment_to_stockpile = {
-					type = infantry_equipment_2
+					type = Inf_equipment
 					amount = 2200
 					producer = SOV
 				}
 				add_equipment_to_stockpile = {
-					type = support_equipment
+					type = Inf_equipment
 					amount = 225
 					producer = SOV
 				}
 				add_equipment_to_stockpile = {
-					type = anti_tank_equipment_1
+					type = L_AT_Equipment
 					amount = 250
 					producer = SOV
 				}
 				add_equipment_to_stockpile = {
-					type = anti_air_equipment_1
+					type = AA_Equipment
 					amount = 250
 					producer = SOV
 				}
@@ -28736,27 +27945,27 @@ PROXY_maghreb_war_cat = {
 		remove_effect = {
 			ALG = {
 				add_equipment_to_stockpile = {
-					type = motorized_equipment_1
+					type = util_vehicle_equipment
 					amount = 300
 					producer = SOV
 				}
 				add_equipment_to_stockpile = {
-					type = modern_tank_equipment_1
+					type = mbt_hull
 					amount = 80
 					producer = SOV
 				}
 				add_equipment_to_stockpile = {
-					type = light_mechanized_equipment_2
+					type = apc_hull
 					amount = 125
 					producer = SOV
 				}
 				add_equipment_to_stockpile = {
-					type = mechanized_equipment_2
+					type = ifv_hull
 					amount = 125
 					producer = SOV
 				}
 				add_equipment_to_stockpile = {
-					type = modern_tank_artillery_equipment_1
+					type = spart_hull
 					amount = 125
 					producer = SOV
 				}
@@ -28780,7 +27989,7 @@ PROXY_maghreb_war_cat = {
 		remove_effect = {
 			ALG = {
 				add_equipment_to_stockpile = {
-					type = attack_helicopter_equipment_1
+					type = attack_helicopter_hull
 					amount = 35
 					producer = SOV
 				}
@@ -28979,3 +28188,4 @@ debug_decisions = {
 		}
 	}
 }
+

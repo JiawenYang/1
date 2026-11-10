@@ -13,7 +13,6 @@ debug_decisions = {
 			}
 		}
 		complete_effect = {
-			PRC_chinas_victory_in_the_gaw = yes
 		}
 		ai_will_do = {
 			base = 0
@@ -33,7 +32,6 @@ debug_decisions = {
 			}
 		}
 		complete_effect = {
-			PRC_japans_victory_in_the_gaw = yes
 		}
 		ai_will_do = {
 			base = 0
@@ -50,7 +48,6 @@ debug_decisions = {
 			tag = CHI
 		}
 		complete_effect = {
-			complete_national_focus = CHI_Road_to_War
 			set_country_flag = PRC_analyze_first_days_unlocked_flag
 			set_global_flag = PRC_ongoing_taiwan_war
 			mark_focus_tree_layout_dirty = yes
@@ -73,11 +70,7 @@ debug_decisions = {
 		complete_effect = {
 			create_faction_from_template = faction_template_eadi
 			hidden_effect = {
-				remove_faction_goal = faction_goal_the_atomic_race
-				add_faction_goal = faction_goal_placeholder_long_term
 				remove_faction_goal = faction_goal_a_military_base
-				add_faction_goal = faction_goal_placeholder_medium_term
-				add_faction_goal = faction_goal_placeholder_short_term
 			}
 			every_country = {
 				remove_ideas = ASEAN_member
@@ -234,7 +227,7 @@ debug_decisions = {
 				set_variable = { party_pop_array^21 = 0 } #Nat_Fascism
 				set_variable = { party_pop_array^22 = 0 } #Nat_Autocracy
 				set_variable = { party_pop_array^23 = 0 } #Monarchist
-				add_to_array = { ruling_party = 7 }
+				set_variable = { ruling_party = 7 }
 				add_to_array = { gov_coalition_array = 14 } #Neutral_conservatism
 				add_to_array = { gov_coalition_array = 16 } #Neutral_Libertarian
 				add_to_array = { gov_coalition_array = 19 } #Neutral_Communism
@@ -274,11 +267,7 @@ debug_decisions = {
 		fire_only_once = yes
 		complete_effect = {
 			create_faction_from_template = faction_template_pdto
-			remove_faction_goal = faction_goal_the_atomic_race
-			add_faction_goal = faction_goal_placeholder_long_term
 			remove_faction_goal = faction_goal_a_military_base
-			add_faction_goal = faction_goal_placeholder_medium_term
-			add_faction_goal = faction_goal_placeholder_short_term
 			set_faction_leader = yes
 			set_country_flag = pdto_member
 			every_country = {
@@ -467,7 +456,6 @@ debug_decisions = {
 			set_global_flag = ZZZ_debug_taiwan_2020
 			CHI = {
 				set_variable = { CHI_taiwan_us_support = 100 }
-				news_event = { id = politicstaiwan.6 }
 			}
 		}
 		ai_will_do = {
@@ -492,7 +480,7 @@ debug_decisions = {
 			custom_effect_tooltip = ZZZ_debug_MEW_war_start_tt
 			ISR = {
 				news_event = { id = mew.1 }
-				# 调试入口：立即派发 mew.0，不必等 4 天
+				# 调试入口：立即派mew.0，不必等 4 
 				country_event = { id = mew.0 days = 0 }
 			}
 		}
@@ -519,16 +507,16 @@ debug_decisions = {
 		complete_effect = {
 			custom_effect_tooltip = ZZZ_debug_gaw_start_tt
 			hidden_effect = {
-				# 解锁GAW决策分类（GAW_soon，PRC_gaw_start执行后会替换为pan_asian_war_ongoing）
+				# 解锁GAW决策分类（GAW_soon，PRC_gaw_start执行后会替换为pan_asian_war_ongoing
 				set_global_flag = GAW_soon
-				# 日本对中国宣战，引爆大亚洲战争
+				# 日本对中国宣战，引爆大亚洲战
 				JAP = {
 					declare_war_on = {
 						target = CHI
 						type = annex_everything
 					}
 				}
-				# 朝鲜半岛未组建中立邦联则朝鲜南下、韩国加入太约
+				# 朝鲜半岛未组建中立邦联则朝鲜南下、韩国加入太
 				if = {
 					limit = {
 						NOT = { has_global_flag = korean_confederation_formed }
@@ -543,18 +531,12 @@ debug_decisions = {
 						add_to_faction = KOR
 					}
 				}
-				# 美国直接加入太约一方参战
-				USA = {
-					country_event = {
-						id = usacw.14
-						days = 2
-					}
-				}
+				# 美国入战已移交 PRC_gaw_start 正式流程
 				news_event = {
 					id = sino_jap_coldwar.11
 					hours = 1
 				}
-				# 由中国作用域执行GAW全流程初始化：设置全局旗、加载各国OOB、激活战争疲惫任务
+				# 由中国作用域执行GAW全流程初始化：设置全局旗、加载各国OOB、激活战争疲惫任
 				CHI = {
 					PRC_gaw_start = yes
 					country_event = {
@@ -585,7 +567,7 @@ debug_decisions = {
 		complete_effect = {
 			custom_effect_tooltip = ZZZ_debug_SOV_activate_tfr_tt
 			hidden_effect = {
-				# 无视日期门控，直接激活烈焰升腾俄罗斯内容（招募全部角色、加载SOV国策树、设定政治/经济变量）
+				# 无视日期门控，直接激活烈焰升腾俄罗斯内容（招募全部角色、加载SOV国策树、设定政经济变量
 				SOV = {
 					DSW_SOV_initialize_2020 = yes
 				}
@@ -612,7 +594,7 @@ debug_decisions = {
 		complete_effect = {
 			custom_effect_tooltip = ZZZ_debug_SOV_campaign_menu_tt
 			hidden_effect = {
-				# 打开俄罗斯战役测试菜单：可直接触发俄乌战争、僵持、总攻、欧洲战争、胜/负结算
+				# 打开俄罗斯战役测试菜单：可直接触发俄乌战争、僵持、总攻、欧洲战争、胜/负结
 				SOV = {
 					country_event = { id = dsw_sov.90 }
 				}
@@ -640,7 +622,7 @@ debug_decisions = {
 		complete_effect = {
 			custom_effect_tooltip = ZZZ_debug_SOV_recover_putin_tt
 			hidden_effect = {
-				# 普京康复：清除病重/辞职/死亡旗，恢复肖像，重新执政
+				# 普京康复：清除病辞职/死亡旗，恢复肖像，重新执
 				SOV = {
 					set_country_flag = DSW_SOV_putin_recovery_selected
 					DSW_SOV_recover_putin = yes
@@ -669,7 +651,7 @@ debug_decisions = {
 		complete_effect = {
 			custom_effect_tooltip = ZZZ_debug_SOV_medvedev_tree_tt
 			hidden_effect = {
-				# 切换至梅德韦杰夫/统俄党国策树：设SOV_medvedev_won全局旗，加载SOV_medvedev树
+				# 切换至梅德韦杰夫/统俄党国策树：设SOV_medvedev_won全局旗，加载SOV_medvedev
 				SOV = {
 					set_global_flag = SOV_medvedev_won
 					set_global_flag = SOV_ur_won
@@ -707,7 +689,7 @@ debug_decisions = {
 		complete_effect = {
 			custom_effect_tooltip = ZZZ_debug_SOV_communist_tree_tt
 			hidden_effect = {
-				# 切换至俄共(CPRF)国策树：设SOV_cprf_won全局旗，加载SOV_communist树
+				# 切换至俄CPRF)国策树：设SOV_cprf_won全局旗，加载SOV_communist
 				SOV = {
 					set_global_flag = SOV_cprf_won
 					clr_country_flag = DSW_SOV_putin_protected
@@ -741,10 +723,10 @@ debug_decisions = {
 		complete_effect = {
 			custom_effect_tooltip = ZZZ_debug_MEW_arab_victory_tt
 			hidden_effect = {
-				# 一次性、可清除的 debug 标记（ZZZ_debug_MEW_reset 负责清理）
+				# 一次性、可清除debug 标记（ZZZ_debug_MEW_reset 负责清理
 				set_global_flag = MEW_debug_arab_boost
-				# 第六次中东战争还没开场时，先用既有脚本真正开战（mew.0 自己会置上下文旗标），
-				# 调试决策不代跑任何转州 / 白和 / 吞并
+				# 第六次中东战争还没开场时，先用既有脚本真正开战（mew.0 自己会置上下文旗标）
+				# 调试决策不代跑任何转/ 白和 / 吞并
 				if = {
 					limit = { NOT = { has_global_flag = MEW_war_declared } }
 					ISR = {
@@ -786,7 +768,7 @@ debug_decisions = {
 		complete_effect = {
 			custom_effect_tooltip = ZZZ_debug_MEW_israel_victory_tt
 			hidden_effect = {
-				# 一次性、可清除的 debug 标记（ZZZ_debug_MEW_reset 负责清理）
+				# 一次性、可清除debug 标记（ZZZ_debug_MEW_reset 负责清理
 				set_global_flag = MEW_debug_israel_boost
 				# 战争尚未开场时走既有开战脚本，其余全部交回正常 on_capitulation / on_daily 结算
 				if = {
@@ -833,7 +815,7 @@ debug_decisions = {
 			custom_effect_tooltip = ZZZ_debug_MEW_iran_war_tt
 			hidden_effect = {
 				set_global_flag = MEW_debug_iran_war_started
-				# ===== 复刻 mew.30 effect 块：以色列+美国+海湾国家对伊朗开战 =====
+				# ===== 复刻 mew.30 effect 块：以色美国+海湾国家对伊朗开=====
 				set_global_flag = MEW_iran_war_declared
 				set_global_flag = MEW_iran_war_ongoing
 				ISR = {
@@ -898,7 +880,7 @@ debug_decisions = {
 			hidden_effect = {
 				set_global_flag = MEW_debug_iran_settled
 				set_global_flag = MEW_iran_war_ongoing
-				# ===== 复刻 on_capitulation 里的反伊战争结算 effect 块：巴列维王朝复辟 =====
+				# ===== 复刻 on_capitulation 里的反伊战争结算 effect 块：巴列维王朝复=====
 				every_country = {
 					limit = {
 						OR = {
@@ -964,6 +946,9 @@ debug_decisions = {
 				clr_global_flag = MEW_arab_pact_formed
 				clr_global_flag = MEW_palestine_victory
 				clr_global_flag = MEW_israel_victory
+				# 终局结算幂等锁与中间结算开关：一并清除，保证 debug 可反复复
+				clr_global_flag = MEW_settlement_done
+				clr_global_flag = MEW_interim_settlements
 				clr_global_flag = MEW_isr_took_pal
 				clr_global_flag = MEW_isr_took_ham
 				clr_global_flag = MEW_isr_took_hez
@@ -973,11 +958,11 @@ debug_decisions = {
 				clr_global_flag = MEW_iran_war_declared
 				clr_global_flag = MEW_iran_war_ongoing
 				clr_global_flag = MEW_pahlavi_restored
-				# 清除调试入口的自清标记，让调试决策重新出现
+				# 清除调试入口的自清标记，让调试决策重新出
 				clr_global_flag = MEW_debug_war_started
 				clr_global_flag = MEW_debug_iran_war_started
 				clr_global_flag = MEW_debug_iran_settled
-				# 清除两处胜负加成标记，保证 debug 可以反复跑
+				# 清除两处胜负加成标记，保debug 可以反复
 				clr_global_flag = MEW_debug_arab_boost
 				clr_global_flag = MEW_debug_israel_boost
 				every_country = {
@@ -990,7 +975,7 @@ debug_decisions = {
 					clr_country_flag = ISR_settled_JOR
 					clr_country_flag = ISR_settled_by_isr
 					clr_country_flag = ISR_war_on_JOR_started
-					# 移除调试加成 / 压制动态修正
+					# 移除调试加成 / 压制动态修
 					remove_dynamic_modifier = { modifier = ZZZ_debug_boost_major }
 					remove_dynamic_modifier = { modifier = ZZZ_debug_debuff_major }
 				}
@@ -1017,9 +1002,9 @@ debug_decisions = {
 		complete_effect = {
 			custom_effect_tooltip = ZZZ_debug_gaw_china_boost_tt
 			hidden_effect = {
-				# 一次性、可清除的 debug 标记（ZZZ_debug_gaw_reset 负责清理）
+				# 一次性、可清除debug 标记（ZZZ_debug_gaw_reset 负责清理
 				set_global_flag = GAW_debug_china_boost
-				# 中国侧固定成员：CHI、PAK + CBD/IND（印度尼西亚）/LAO/BRM/VIE（均需确实与日本交战）
+				# 中国侧固定成员：CHI、PAK + CBD/IND（印度尼西亚LAO/BRM/VIE（均需确实与日本交战）
 				if = { limit = { country_exists = CHI CHI = { has_war_with = JAP } } CHI = { ZZZ_debug_apply_boost = yes } }
 				if = { limit = { country_exists = PAK PAK = { has_war_with = JAP } } PAK = { ZZZ_debug_apply_boost = yes } }
 				if = { limit = { country_exists = CBD CBD = { has_war_with = JAP } } CBD = { ZZZ_debug_apply_boost = yes } }
@@ -1027,7 +1012,7 @@ debug_decisions = {
 				if = { limit = { country_exists = LAO LAO = { has_war_with = JAP } } LAO = { ZZZ_debug_apply_boost = yes } }
 				if = { limit = { country_exists = BRM BRM = { has_war_with = JAP } } BRM = { ZZZ_debug_apply_boost = yes } }
 				if = { limit = { country_exists = VIE VIE = { has_war_with = JAP } } VIE = { ZZZ_debug_apply_boost = yes } }
-				# 日本侧固定成员：JAP、AST + MAY/PHI/SIN/SIA，以及条件性 KOR/TAI（仅限确实与中国交战的成员）
+				# 日本侧固定成员：JAP、AST + MAY/PHI/SIN/SIA，以及条件KOR/TAI（仅限确实与中国交战的成员）
 				if = { limit = { country_exists = JAP JAP = { has_war_with = CHI } } JAP = { ZZZ_debug_apply_debuff = yes } }
 				if = { limit = { country_exists = AST AST = { has_war_with = CHI } } AST = { ZZZ_debug_apply_debuff = yes } }
 				if = { limit = { country_exists = MAY MAY = { has_war_with = CHI } } MAY = { ZZZ_debug_apply_debuff = yes } }
@@ -1059,9 +1044,9 @@ debug_decisions = {
 		complete_effect = {
 			custom_effect_tooltip = ZZZ_debug_gaw_japan_boost_tt
 			hidden_effect = {
-				# 一次性、可清除的 debug 标记（ZZZ_debug_gaw_reset 负责清理）
+				# 一次性、可清除debug 标记（ZZZ_debug_gaw_reset 负责清理
 				set_global_flag = GAW_debug_japan_boost
-				# 日本侧固定成员：JAP、AST + MAY/PHI/SIN/SIA，以及条件性 KOR/TAI（均需确实与中国交战）
+				# 日本侧固定成员：JAP、AST + MAY/PHI/SIN/SIA，以及条件KOR/TAI（均需确实与中国交战）
 				if = { limit = { country_exists = JAP JAP = { has_war_with = CHI } } JAP = { ZZZ_debug_apply_boost = yes } }
 				if = { limit = { country_exists = AST AST = { has_war_with = CHI } } AST = { ZZZ_debug_apply_boost = yes } }
 				if = { limit = { country_exists = MAY MAY = { has_war_with = CHI } } MAY = { ZZZ_debug_apply_boost = yes } }
@@ -1070,7 +1055,7 @@ debug_decisions = {
 				if = { limit = { country_exists = SIA SIA = { has_war_with = CHI } } SIA = { ZZZ_debug_apply_boost = yes } }
 				if = { limit = { country_exists = KOR KOR = { has_war_with = CHI } } KOR = { ZZZ_debug_apply_boost = yes } }
 				if = { limit = { country_exists = TAI TAI = { has_war_with = CHI } } TAI = { ZZZ_debug_apply_boost = yes } }
-				# 中国侧固定成员：CHI、PAK + CBD/IND（印度尼西亚）/LAO/BRM/VIE（仅限确实与日本交战的成员）
+				# 中国侧固定成员：CHI、PAK + CBD/IND（印度尼西亚LAO/BRM/VIE（仅限确实与日本交战的成员）
 				if = { limit = { country_exists = CHI CHI = { has_war_with = JAP } } CHI = { ZZZ_debug_apply_debuff = yes } }
 				if = { limit = { country_exists = PAK PAK = { has_war_with = JAP } } PAK = { ZZZ_debug_apply_debuff = yes } }
 				if = { limit = { country_exists = CBD CBD = { has_war_with = JAP } } CBD = { ZZZ_debug_apply_debuff = yes } }
@@ -1102,9 +1087,9 @@ debug_decisions = {
 				clr_global_flag = PRC_japanese_gaw_victory_global
 				clr_global_flag = PRC_china_victory
 				clr_global_flag = PRC_china_collapse
-				# jap.1002 写的是国家旗（与 TFR 原版一致，供日本国策读取），这里一并清掉
+				# jap.1002 写的是国家旗（与 TFR 原版一致，供日本国策读取），这里一并清
 				if = { limit = { country_exists = JAP } JAP = { clr_country_flag = pan_asian_war_ongoing } }
-				# 移除调试加成 / 压制动态修正，并把厌战变量归零，保证 GAW 可以反复跑
+				# 移除调试加成 / 压制动态修正，并把厌战变量归零，保GAW 可以反复
 				every_country = {
 					remove_dynamic_modifier = { modifier = ZZZ_debug_boost_major }
 					remove_dynamic_modifier = { modifier = ZZZ_debug_debuff_major }

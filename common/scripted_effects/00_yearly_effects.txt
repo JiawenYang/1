@@ -1,4 +1,10 @@
 # Author(s): AngriestBird
+
+# 空桩：本工程已刻意移除原 MD_event_on_startup_events 的排期内容（相关事件被删除）。
+# 仅用于满足 common/on_actions/00_on_actions.txt:1214 的调用，避免 Invalid effect，且不会重新拉起任何事件。
+MD_event_on_startup_events = {
+}
+
 trigger_year_2017_events = {
 	gpu_development_milestone_2017 = yes
 	USA = { USA_corporate_history_2017 = yes }
@@ -47,8 +53,8 @@ trigger_year_2017_events = {
 		if = {
 			limit = {
 				OR = {
-					has_country_leader = { name = "Almazbek Atambayev" ruling_only = yes }
-					has_country_leader = { name = "Roza Otunbayeva" ruling_only = yes }
+					has_country_leader = { name = KYR_almazbek_atambayev ruling_only = yes }
+					has_country_leader = { name = KYR_roza_otunbayeva ruling_only = yes }
 				}
 			}
 			country_event = { id = centralkyr.28 days = 286 }
@@ -202,7 +208,7 @@ trigger_year_2019_events = {
 		country_event = { id = JAP_historical.20180507 days = 126 }
 		country_event = { id = JAP_historical.20190401 days = 90 }
 	}
-	KAZ = { if = { limit = { has_country_leader = { name = "Nursultan Nazarbayev" ruling_only = yes } } country_event = { id = centralkaz.4 days = 77 } } }
+	KAZ = { if = { limit = { has_country_leader = { name = KAZ_nursultan_nazarbayev ruling_only = yes } } country_event = { id = centralkaz.4 days = 77 } } }
 	PER = { country_event = { id = iranian_flavor.20 days = 115 random_days = 60 } }
 	RAJ = {
 		country_event = { id = indian_event.50 days = 44 random_days = 1 }
@@ -221,7 +227,6 @@ trigger_year_2019_events = {
 	UKR = { country_event = { id = ukr_history.400 days = 139 } }
 	USA = {
 		country_event = { id = USA_econ_event.7 days = 354 random_days = 31 }
-		country_event = { id = USA_crisis_event.1004 days = 250 random_days = 10 }
 	}
 	BUL = { country_event = { id = bulg.35 days = 110 } }
 	GEO = { country_event = { id = geo_misc.101 days = 355 } }
@@ -257,10 +262,9 @@ trigger_year_2020_events = {
 		country_event = { id = JAP_ai.4 days = 259 }
 	}
 	KOR = {
-		if = { limit = { country_exists = CHI has_country_flag = KOR_agreed_to_return_cpv_remains } news_event = { id = korea.31 days = 270 } }
+		if = { limit = { country_exists = CHI has_country_flag = KOR_agreed_to_return_cpv_remains } news_event = { id = zzz_kor.11 days = 270 } }
 	}
-	KYR = { if = { limit = { has_country_leader = { name = "Sooronbay Jeenbekov" ruling_only = yes } } country_event = { id = centralkyr.21 days = 277 } } }
-	OMA = { country_event = { id = oman_royal.1 days = 1 random_days = 90 } }
+	KYR = { if = { limit = { has_country_leader = { name = KYR_sooronbay_jeenbekov ruling_only = yes } } country_event = { id = centralkyr.21 days = 277 } } }
 	POL = { if = { limit = { western_conservatism_are_in_power = yes } country_event = { id = poland.10 days = 210 random_days = 30 } } }
 	RAJ = {
 		country_event = { id = RAJ_eastas.7 days = 152 random_days = 1 }
@@ -276,9 +280,6 @@ trigger_year_2020_events = {
 	KOR = { KOR_samsung_milestone_2020 = yes }
 	USA = {
 		country_event = { id = iranian_focus.160 days = 3 random_days = 10 }
-		country_event = { id = USA_crisis_event.1005 days = 59 random_days = 25 }
-		country_event = { id = USA_treason_event.6 days = 286 }
-		country_event = { id = USA_treason_event.20 days = 286 }
 	}
 	CZE = { country_event = { id = CZE_political_event.11 days = 24 } }
 }
@@ -326,7 +327,6 @@ trigger_year_2021_events = {
 	KOR = { KOR_samsung_milestone_2021 = yes }
 	TUR = { country_event = { id = TurkeyFocusEvents.54 days = 7 } }
 	USA = {
-		country_event = { id = USA_crisis_event.1006 days = 5 random_days = 25 }
 		country_event = { id = usa.999 days = 19 }
 	}
 	FIJ = { country_event = { id = fiji_news.507 days = 223 } }
@@ -376,7 +376,7 @@ trigger_year_2022_events = {
 	}
 	KAZ = {
 		if = {
-			limit = { has_country_leader = { name = "Kassym-Jomart Tokayev" ruling_only = yes } }
+			limit = { has_country_leader = { name = KAZ_kassym_jomart_tokayev ruling_only = yes } }
 			country_event = { id = centralkaz.5 days = 154 }
 			country_event = { id = centralkaz.6 days = 1 }
 		}
@@ -479,9 +479,6 @@ trigger_year_2024_events = {
 	HOL = { HOL_asml_milestone_2024 = yes }
 	KOR = { KOR_samsung_milestone_2024 = yes }
 	USA = {
-		country_event = { id = USA_crisis_event.1007 days = 22 }
-		country_event = { id = USA_treason_event.7 days = 286 }
-		country_event = { id = USA_treason_event.23 days = 286 }
 	}
 	BUL = { country_event = { id = bulg.36 days = 253 } }
 	CZE = { country_event = { id = CZE_political_event.13 days = 292 } }
@@ -705,7 +702,6 @@ trigger_year_2065_events = {
 trigger_year_2066_events = {
 }
 trigger_year_2067_events = {
-	USA = { country_event = { id = USA_crisis_event.8 days = 30 random_days = 336 } }
 }
 trigger_year_2068_events = {
 	SOV = {

@@ -3,6 +3,10 @@ DSW_SOV_ukraine_joined_nato = {
 		has_global_flag = DSW_SOV_european_war_started
 		UKR = {
 			has_idea = NATO_member
+			# 排除“俄带乌一起入约”的旧路线（俄联邦主体入约，乌与俄同阵营）
+			NOT = {
+				has_country_flag = UKR_NATO_VIA_UNION_STATE
+			}
 			NOT = {
 				is_in_faction_with = SOV
 			}
@@ -10,6 +14,7 @@ DSW_SOV_ukraine_joined_nato = {
 				is_in_faction_with = USA
 				is_in_faction_with = GER
 				is_in_faction_with = FRA
+				is_in_faction_with = ENG
 			}
 		}
 	}

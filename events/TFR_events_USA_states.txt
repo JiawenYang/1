@@ -676,34 +676,33 @@ country_event = {
 	}
 	option = {
 		name = states.20.a
-		load_oob = "Exploited_Stockpile"
 		add_equipment_to_stockpile = {
-			type = motorized_equipment_1
+			type = util_vehicle_equipment
 			amount = 200
 			producer = USA
 		}
 		add_equipment_to_stockpile = {
-			type = mechanized_equipment_1
+			type = ifv_hull
 			amount = 200
 			producer = USA
 		}
 		add_equipment_to_stockpile = {
-			type = light_mechanized_equipment_2
+			type = apc_hull
 			amount = 200
 			producer = USA
 		}
 		add_equipment_to_stockpile = {
-			type = modern_tank_equipment_3
+			type = mbt_hull
 			amount = 200
 			producer = USA
 		}
 		add_equipment_to_stockpile = {
-			type = spaa_equipment_1
+			type = spaa_hull
 			amount = 200
 			producer = USA
 		}
 		add_equipment_to_stockpile = {
-			type = modern_tank_artillery_equipment_1
+			type = spart_hull
 			amount = 200
 			producer = USA
 		}
@@ -724,17 +723,17 @@ country_event = {
 	option = {
 		name = states.21.a
 		add_equipment_to_stockpile = {
-			type = fighter_equipment_2
+			type = AS_Fighter_equipment
 			amount = 20
 			producer = USA
 		}
 		add_equipment_to_stockpile = {
-			type = fighter_equipment_3
+			type = AS_Fighter_equipment
 			amount = 10
 			producer = USA
 		}
 		add_equipment_to_stockpile = {
-			type = CAS_equipment_2
+			type = CAS_equipment
 			amount = 20
 			producer = USA
 		}
@@ -1085,15 +1084,6 @@ country_event = {
 				id = states.33
 				days = 28
 			}
-		}
-		LOU = {
-			load_oob = "LOU_2020"
-		}
-		MSS = {
-			load_oob = "MSS_2020"
-		}
-		ALA = {
-			load_oob = "ALA_2020"
 		}
 	}
 }
@@ -3135,7 +3125,6 @@ country_event = {
 				limit = {
 					tag = GMA
 				}
-				load_oob = "New_england_nat_guard"
 				357 = {
 					create_unit = {
 						division = "name = \"Revolutionary Armored Brigade\" division_template = \"Armored Brigade\"  start_experience_factor = 0.0"
@@ -3145,7 +3134,6 @@ country_event = {
 				}
 			}
 			else = {
-				load_oob = "New_england_nat_guard"
 				357 = {
 					create_unit = {
 						division = "name = \"1st Armored Brigade 'Pershing'\" division_template = \"Armored Brigade\"  start_experience_factor = 0.0"
@@ -3462,7 +3450,7 @@ country_event = {
 	immediate = {
 		hidden_effect = {
 			add_equipment_to_stockpile = {
-				type = attack_helicopter_equipment_1
+				type = attack_helicopter_hull
 				amount = 10
 				producer = USA
 			}
@@ -3473,12 +3461,12 @@ country_event = {
 					}
 				}
 				add_equipment_to_stockpile = {
-					type = fighter_equipment_3
+					type = AS_Fighter_equipment
 					amount = 15
 					producer = USA
 				}
 				add_equipment_to_stockpile = {
-					type = CAS_equipment_2
+					type = CAS_equipment
 					amount = 10
 					producer = USA
 				}
@@ -3499,7 +3487,7 @@ country_event = {
 				}
 			}
 			add_equipment_to_stockpile = {
-				type = anti_air_equipment_1
+				type = AA_Equipment
 				amount = 250
 				producer = USA
 			}
@@ -3520,7 +3508,7 @@ country_event = {
 		}
 		effect_tooltip = {
 			add_equipment_to_stockpile = {
-				type = attack_helicopter_equipment_1
+				type = attack_helicopter_hull
 				amount = 10
 				producer = USA
 			}
@@ -3531,12 +3519,12 @@ country_event = {
 					}
 				}
 				add_equipment_to_stockpile = {
-					type = fighter_equipment_3
+					type = AS_Fighter_equipment
 					amount = 15
 					producer = USA
 				}
 				add_equipment_to_stockpile = {
-					type = CAS_equipment_2
+					type = CAS_equipment
 					amount = 10
 					producer = USA
 				}
@@ -3557,7 +3545,7 @@ country_event = {
 				}
 			}
 			add_equipment_to_stockpile = {
-				type = anti_air_equipment_1
+				type = AA_Equipment
 				amount = 250
 				producer = USA
 			}

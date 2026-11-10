@@ -1,0 +1,37 @@
+# 现代战争减速方案 - 占领代价
+# ROOT = 新控制方, FROM = 原控制方, FROM.FROM = 州
+# 仅在“战时夺取敌方固有领土”时挂载，收复本国核心州不挂载
+
+on_actions = {
+	on_state_control_changed = {
+		effect = {
+			if = {
+				limit = {
+					ROOT = {
+						has_war = yes
+					}
+					FROM.FROM = {
+						is_owned_by = FROM
+						NOT = {
+							is_core_of = ROOT
+						}
+					}
+				}
+				FROM.FROM = {
+					add_dynamic_modifier = {
+						modifier = ZZZ_newly_occupied_penalty_30
+						days = 30
+					}
+					add_dynamic_modifier = {
+						modifier = ZZZ_newly_occupied_penalty_60
+						days = 60
+					}
+					add_dynamic_modifier = {
+						modifier = ZZZ_newly_occupied_penalty_90
+						days = 90
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,58 @@
+# 第六次中东战争（MEW）—— 以色列战时任务
+# 原 TFR 的 ISR_arab_war_countdown 定义在 TFR_decisions_ISR.txt；
+# 该目录已被本模组 replace_path，故在此重新实现，并把超时事件改为本模组 MD 州号适配版 isrwar.15。
+ISR_arab_war = {
+	ISR_arab_war_countdown = {
+		icon = generic_industry
+
+		allowed = {
+			tag = ISR
+		}
+
+		activation = {
+			always = no
+		}
+
+		available = {
+			always = no
+		}
+
+		# 内战链停用后不再依赖 USB 阵营；本任务只由 mew.0 激活
+		# mew.0 在激活本任务前已置 MEW_sixth_war_ongoing，故本条不会在激活瞬间误取消。
+		# 任一终局结算（以色列胜 / 阿拉伯胜 / 本任务的超时收束）都会置 MEW_settlement_done，
+		# 此时必须取消，否则 700 天后 timeout_effect 会用 isrwar.15 两国方案覆盖已有结算结果
+		cancel_trigger = {
+			OR = {
+				has_global_flag = MEW_settlement_done
+				NOT = { has_global_flag = MEW_sixth_war_ongoing }
+			}
+		}
+
+		is_good = no
+		selectable_mission = no
+		days_mission_timeout = 700
+
+		complete_effect = {
+		}
+
+		cancel_effect = {
+		}
+
+		timeout_effect = {
+			# 700 天消耗战后被迫接受两国方案（原 TFR israel.15 使用 TFR 地图州号，不能直接套用）
+			country_event = {
+				id = isrwar.15
+			}
+			# 强制收束：对仍与以色列交战的 MEW 参战方白和，避免倒计时结束后战争悬空
+			every_country = {
+				limit = {
+					has_country_flag = MEW_belligerent
+					has_war_with = ISR
+				}
+				white_peace = ISR
+			}
+			clr_global_flag = MEW_sixth_war_ongoing
+			set_global_flag = MEW_settlement_done
+		}
+	}
+}

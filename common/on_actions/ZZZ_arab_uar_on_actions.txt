@@ -1,0 +1,57 @@
+# 阿拉伯联合共和国剧情链 —— on_capitulation 钩子
+# 作用域约定（与工程 on_actions_ZZZ_peace.txt:19-29 的既有写法一致）：
+#   ROOT = 投降国（败方），FROM = 胜方
+# 不修改任何既有 on_actions 文件；HOI4 会合并同名钩子，本文件独立生效。
+
+on_actions = {
+	on_capitulation = {
+		effect = {
+
+			# 君主国向泛阿拉伯同盟投降 → 并入埃及；七个君主国全部并入即判胜利
+			if = {
+				limit = {
+					has_global_flag = ZZZ_UAR_war_on_monarchies
+					NOT = { has_global_flag = ZZZ_UAR_war_over }
+					country_exists = EGY
+					ROOT = {
+						OR = {
+							original_tag = SAU
+							original_tag = JOR
+							original_tag = UAE
+							original_tag = KUW
+							original_tag = QAT
+							original_tag = OMA
+							original_tag = BHR
+						}
+					}
+					FROM = {
+						OR = {
+							original_tag = EGY
+							is_ally_with = EGY
+						}
+					}
+				}
+				log = "[GetDateText]: ZZZ_UAR on_capitulation: [Root.GetName] annexed by Egypt"
+				EGY = {
+					annex_country = {
+						target = ROOT
+						transfer_troops = no
+					}
+				}
+				EGY = { ZZZ_UAR_check_victory = yes }
+			}
+
+			# 埃及投降 → 同盟战败：白和、解散阵营、清战争旗标（上合身份不倒退）
+			if = {
+				limit = {
+					has_global_flag = ZZZ_UAR_war_on_monarchies
+					NOT = { has_global_flag = ZZZ_UAR_war_over }
+					ROOT = { original_tag = EGY }
+				}
+				log = "[GetDateText]: ZZZ_UAR on_capitulation: Egypt capitulated, Arab alliance dissolved"
+				EGY = { ZZZ_UAR_settle_defeat = yes }
+			}
+
+		}
+	}
+}

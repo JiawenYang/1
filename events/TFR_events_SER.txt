@@ -1,0 +1,213 @@
+# 巴尔干窄链补搬：serbia.12 / 23 / 24 / 25 与 news.293
+# 来源：TFR 3350890356 events/TFR_events_SER.txt 与 events/TFR_events_ZZZ_news.txt
+# 已按本工程既有资产做最小适配（不存在的 2020 OOB / 图片不引用）
+add_namespace = serbia
+add_namespace = news
+
+# 塞尔维亚兼并塞族共和国
+country_event = {
+	id = serbia.12
+	title = serbia.12.t
+	desc = serbia.12.d
+	picture = GFX_Serbia_National_Assembly
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tag = SER
+	}
+	option = {
+		name = serbia.12.a
+		if = {
+			limit = {
+				check_variable = { ruling_party = 4 }
+			}
+			set_cosmetic_tag = SER_yug
+		}
+		annex_country = {
+			target = SRP
+			transfer_troops = yes
+		}
+		hidden_effect = {
+			country_event = {
+				id = serbia.24
+				days = 25
+			}
+			add_state_core = 105
+			add_state_core = 849
+			add_state_core = 850
+			add_state_core = 848
+			CRO = {
+				leave_faction = yes
+			}
+			# TFR 此处 load_oob = "BOS_2020" / "BOS_Volunteers" / "CRO_volunteers"
+			# 本工程没有对应的 2020 编制，删除以免重复加载或报错
+			CRO = {
+				if = {
+					limit = {
+						NOT = {
+							check_variable = { ruling_party = 21 }
+						}
+					}
+					109 = {
+						create_unit = {
+							division = "name = \"3. Gardijska Motorizirana Brigada\" division_template = \"Gardijska Motorizirana Brigada\"  start_experience_factor = 0.1"
+							allow_spawning_on_enemy_provs = yes
+							owner = CRO
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+# 克罗地亚极右翼政变
+country_event = {
+	id = serbia.23
+	title = serbia.23.t
+	desc = serbia.23.d
+	picture = GFX_Serbia_National_Assembly
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tag = CRO
+	}
+	option = {
+		name = serbia.23.a
+		CRO = {
+			set_politics = {
+				ruling_party = nationalist
+				elections_allowed = no
+			}
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.29
+			}
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.17
+			}
+			add_popularity = {
+				ideology = communism
+				popularity = 0.10
+			}
+			remove_ideas = {
+				CRO_fading_grudges
+				CRO_european_reliance
+			}
+			add_ideas = CRO_fascist_resurgence
+			# TFR 此处 load_oob = "CRO_mobilization"，本工程无该 OOB，改用既有 CRO 编制
+			news_event = {
+				id = news.293
+			}
+			puppet = SLV
+			leave_faction = yes
+			clr_country_flag = global_ass_lol
+			EU_leave_effect = yes
+			SLV = {
+				set_politics = {
+					ruling_party = nationalist
+					elections_allowed = no
+				}
+				add_popularity = {
+					ideology = nationalist
+					popularity = -0.1
+				}
+				add_popularity = {
+					ideology = nationalist
+					popularity = 0.45
+				}
+				add_popularity = {
+					ideology = communism
+					popularity = 0.15
+				}
+				clr_country_flag = global_ass_lol
+				leave_faction = yes
+				EU_leave_effect = yes
+			}
+		}
+	}
+}
+
+# 塞尔维亚兼并北马其顿
+country_event = {
+	id = serbia.24
+	title = serbia.24.t
+	desc = serbia.24.d
+	picture = GFX_Serbia_National_Assembly
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tag = SER
+	}
+	option = {
+		name = serbia.24.a
+		set_portraits = {
+			character = SER_aleksandar_vucic
+			civilian = {
+				large = "GFX_portrait_SER_Aleksandar_Vucic_cool"
+			}
+		}
+		if = {
+			limit = {
+				OR = {
+					check_variable = { ruling_party = 1 }
+					check_variable = { ruling_party = 6 }
+				}
+			}
+			puppet = MAC
+		}
+		else_if = {
+			limit = {
+				OR = {
+					check_variable = { ruling_party = 4 }
+					check_variable = { ruling_party = 21 }
+				}
+			}
+			annex_country = {
+				target = MAC
+				transfer_troops = yes
+			}
+			country_event = {
+				id = serbia.25
+				days = 90
+			}
+		}
+	}
+}
+
+# 塞尔维亚对克罗地亚宣战
+country_event = {
+	id = serbia.25
+	title = serbia.25.t
+	desc = serbia.25.d
+	picture = GFX_Serbia_National_Assembly
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tag = SER
+	}
+	option = {
+		name = serbia.25.a
+		declare_war_on = {
+			target = CRO
+			type = annex_everything
+		}
+	}
+}
+
+# 克罗地亚极右翼政变新闻
+news_event = {
+	id = news.293
+	title = news.293.t
+	picture = GFX_Serbia_National_Assembly
+	desc = news.293.d
+	is_triggered_only = yes
+	major = yes
+	trigger = {
+	}
+	option = {
+		name = news.293.a
+	}
+}
+

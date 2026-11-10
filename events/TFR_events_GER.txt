@@ -258,4 +258,2981 @@ country_event = {
 	}
 }
 
+country_event = {
+	id = germany.107
+	title = germany.107.t
+	desc = germany.107.d
+	picture = GFX_Generic_Orban
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event germany.107 immediate"
+		}
+	}
+	trigger = {
+		tag = GER
+	}
+	option = {
+		name = germany.107.a
+		add_political_power = 75
+		set_temp_variable = {
+			var = eu_fed_var_temp
+			value = 0.05
+		}
+		GER_add_eu_fed = yes
+		set_temp_variable = {
+			var = eu_euroskepticism_var_temp
+			value = -0.05
+		}
+		GER_add_eu_euroskepticism = yes
+	}
+}
+
+country_event = {
+	id = germany.108
+	title = germany.108.t
+	desc = germany.108.d
+	picture = GFX_Generic_Orban
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event germany.108 immediate"
+		}
+	}
+	trigger = {
+		tag = GER
+	}
+	option = {
+		name = germany.108.a
+		add_political_power = -75
+		set_temp_variable = {
+			var = eu_euroskepticism_var_temp
+			value = 0.05
+		}
+		GER_add_eu_euroskepticism = yes
+	}
+}
+
+country_event = {
+	id = germany.123
+	title = germany.123.t
+	desc = germany.123.d
+	picture = GFX_Bundeswehr_Volunteers
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event germany.123 immediate"
+		}
+	}
+	option = {
+		name = germany.123.a
+		add_manpower = 9500
+		set_country_flag = GER_legion_recruitment_HOL
+		custom_effect_tooltip = GER_recruitment_tt
+		trigger = {
+			NOT = {
+				has_country_flag = GER_legion_recruitment_HOL
+			}
+		}
+	}
+	option = {
+		name = germany.123.b
+		if = {
+			limit = {
+				NOT = {
+					has_country_flag = GER_legion_recruitment_HOL
+				}
+			}
+			custom_effect_tooltip = GER_full_recruitment_HOL_tt
+			hidden_effect = {
+				GER_set_templates = yes
+				set_country_flag = GER_motorised_division
+				64 = {
+					create_unit = {
+						division = "name = \"23. Legion Infanterie-Division\" division_template = \"Legion Motorisierte Division\" start_experience_factor = 1.0 start_equipment_factor = 0.01"
+						owner = GER
+					}
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				has_country_flag = GER_legion_recruitment_HOL
+			}
+			hidden_effect = {
+				GER_set_templates = yes
+				set_country_flag = GER_air_assault_division
+				set_country_flag = GER_sof_division
+				64 = {
+					create_unit = {
+						division = "name = \"12. Legion Spezialeinsatzkräfte-Division Wilhelm V\" division_template = \"Legion Spezialeinsatzkräfte-Division\" start_experience_factor = 1.0 start_equipment_factor = 0.01"
+						owner = GER
+					}
+				}
+				64 = {
+					create_unit = {
+						division = "name = \"11. Legion Legion Luftangriffsabteilung Wilhelmina of Prussia\" division_template = \"Legion Luftangriffsabteilung\" start_experience_factor = 1.0 start_equipment_factor = 0.01"
+						owner = GER
+					}
+				}
+			}
+			custom_effect_tooltip = GER_double_recruitment_HOL_tt
+		}
+	}
+	option = {
+		name = germany.123.c
+		add_manpower = 5000
+		army_experience = 15
+	}
+}
+
+country_event = {
+	id = germany.124
+	title = germany.124.t
+	desc = germany.124.d
+	picture = GFX_Bundeswehr_Volunteers
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event germany.124 immediate"
+		}
+	}
+	option = {
+		name = germany.124.a
+		add_manpower = 9500
+		set_country_flag = GER_legion_recruitment_BEL
+		custom_effect_tooltip = GER_recruitment_tt
+		trigger = {
+			NOT = {
+				has_country_flag = GER_legion_recruitment_BEL
+			}
+		}
+	}
+	option = {
+		name = germany.124.b
+		if = {
+			limit = {
+				NOT = {
+					has_country_flag = GER_legion_recruitment_BEL
+				}
+			}
+			custom_effect_tooltip = GER_legion_recruitment_BEL
+			hidden_effect = {
+				GER_set_templates = yes
+				set_country_flag = GER_infantry_division
+				64 = {
+					create_unit = {
+						division = "name = \"4. Legion-Infanterie Division Belgien\" division_template = \"Legion Infanterie-Division\" start_experience_factor = 1.0 start_equipment_factor = 0.01"
+						owner = GER
+					}
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				has_country_flag = GER_legion_recruitment_BEL
+			}
+			hidden_effect = {
+				GER_set_templates = yes
+				set_country_flag = GER_infantry_division
+				set_country_flag = GER_armor_division
+				64 = {
+					create_unit = {
+						division = "name = \"2. Legion Infanterie-Division Degrelle\" division_template = \"Legion Infanterie-Division\" start_experience_factor = 1.0 start_equipment_factor = 0.01"
+						owner = GER
+					}
+				}
+				64 = {
+					create_unit = {
+						division = "name = \"5. Legion Panzer-Division Leopold II\" division_template = \"Legion Panzer-Division\" start_experience_factor = 1.0 start_equipment_factor = 0.01"
+						owner = GER
+					}
+				}
+			}
+			custom_effect_tooltip = GER_armor_recruitment_BEL_tt
+		}
+	}
+	option = {
+		name = germany.124.c
+		add_manpower = 5000
+		army_experience = 15
+	}
+}
+
+country_event = {
+	id = germany.137
+	title = germany.137.t
+	desc = germany.137.d
+	picture = GFX_NATO_Libya
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event germany.137 immediate"
+		}
+	}
+	option = {
+		name = germany.137.a
+	}
+}
+
+country_event = {
+	id = germany.138
+	title = germany.138.t
+	desc = germany.138.d
+	picture = GFX_NATO_Iran
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event germany.138 immediate"
+		}
+	}
+	option = {
+		name = germany.138.a
+	}
+}
+
+country_event = {
+	id = germany.139
+	title = germany.139.t
+	desc = germany.139.d
+	picture = GFX_NATO_Egypt
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event germany.139 immediate"
+		}
+	}
+	option = {
+		name = germany.139.a
+	}
+}
+
+country_event = {
+	id = germany.141
+	title = germany.141.t
+	desc = germany.141.d
+	picture = GFX_Operation_Michael
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event germany.141 immediate"
+			set_country_flag = GER_operation_michael_failed
+		}
+	}
+	option = {
+		name = germany.141.a
+	}
+}
+
+country_event = {
+	id = germany.142
+	title = germany.142.t
+	desc = germany.142.d
+	picture = GFX_Operation_Michael
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event germany.142 immediate"
+			set_country_flag = GER_operation_michael_success
+		}
+	}
+	option = {
+		name = germany.142.a
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = GER_military_reformation_dummy_idea
+				add_idea = GER_army_reformation_idea
+			}
+		}
+		hidden_effect = {
+			add_to_variable = {
+				var = GER_breakthrough_factor_dynamic_var
+				value = 0.05
+			}
+			add_to_variable = {
+				var = GER_army_defence_factor_dynamic_var
+				value = 0.05
+			}
+			add_to_variable = {
+				var = GER_army_org_dynamic_var
+				value = 5
+			}
+		}
+	}
+}
+
+country_event = {
+	id = germany.157
+	title = germany.157.t
+	desc = germany.157.d
+	picture = GFX_Generic_Riot
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event germany.157 immediate"
+		}
+	}
+	option = {
+		name = germany.157.a
+		add_stability = -0.05
+		set_country_flag = GER_end_riots
+	}
+	option = {
+		name = germany.157.b
+		add_stability = -0.1
+		add_political_power = 75
+		set_country_flag = GER_end_riots
+	}
+}
+
+news_event = {
+	id = germany.159
+	title = germany.159.t
+	desc = germany.159.d
+	picture = GFX_news_german_army
+	is_triggered_only = yes
+	major = yes
+	trigger = {
+		tag = GER
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event germany.159 immediate"
+		}
+	}
+	option = {
+		name = germany.159.a
+		
+	}
+}
+
+news_event = {
+	id = germany.160
+	title = germany.160.t
+	desc = germany.160.d
+	picture = GFX_news_german_army2
+	is_triggered_only = yes
+	major = yes
+	trigger = {
+		tag = GER
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event germany.160 immediate"
+		}
+	}
+	option = {
+		name = germany.160.a
+		
+	}
+}
+
+country_event = {
+	id = germany.165
+	title = germany.165.t
+	desc = germany.165.d
+	picture = GFX_Bundeswehr_Volunteers
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event germany.165 immediate"
+		}
+	}
+	trigger = {
+		tag = GER
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event germany.165 immediate"
+		}
+	}
+	option = {
+		name = germany.165.a
+		set_country_flag = GER_China_Invades_flag
+		add_war_support = 0.05
+	}
+}
+
+country_event = {
+	id = germany.166
+	title = germany.166.t
+	desc = germany.166.d
+	picture = GFX_Bundeswehr_Volunteers
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event germany.166 immediate"
+		}
+	}
+	trigger = {
+		tag = GER
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event germany.166 immediate"
+		}
+	}
+	option = {
+		name = germany.166.a
+		add_political_power = -25
+	}
+}
+
+country_event = {
+	id = germany.185
+	title = germany.185.t
+	desc = germany.185.d
+	picture = GFX_pososi_v_posledniy_raz
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event germany.185 immediate"
+		}
+	}
+	option = {
+		name = germany.185.a
+		trigger = {
+			NOT = {
+				has_country_flag = GER_CSW_member_flag
+			}
+		}
+		ai_chance = {
+			base = 5
+			modifier = {
+				factor = 10
+				tag = HRL
+			}
+			modifier = {
+				factor = 10
+				tag = TZN
+			}
+			modifier = {
+				factor = 10
+				tag = VEN
+			}
+			modifier = {
+				factor = 10
+				tag = CUB
+			}
+			modifier = {
+				factor = 10
+				tag = NIC
+			}
+			modifier = {
+				factor = 10
+				tag = ANG
+			}
+			modifier = {
+				factor = 10
+				tag = PRS
+			}
+			modifier = {
+				factor = 10
+				tag = PRP
+			}
+			modifier = {
+				factor = 10
+				tag = GRK
+			}
+			modifier = {
+				factor = 10
+				tag = UK2
+			}
+		}
+		GER_join_csw = yes
+		if = {
+			limit = {
+				OR = {
+					original_tag = BOL
+					original_tag = COL
+				}
+			}
+			set_politics = {
+				ruling_party = neutrality
+				elections_allowed = no
+			}
+			add_popularity = {
+				ideology = neutrality
+				popularity = 0.2
+			}
+		}
+		if = {
+			limit = {
+				OR = {
+					original_tag = PRU
+					original_tag = ANG
+				}
+			}
+			set_politics = {
+				ruling_party = communism
+				elections_allowed = no
+			}
+			add_popularity = {
+				ideology = communism
+				popularity = 0.2
+			}
+			add_popularity = {
+				ideology = democratic
+				popularity = -0.2
+			}
+			add_popularity = {
+				ideology = neutrality
+				popularity = -0.2
+			}
+		}
+	}
+	option = {
+		name = germany.185.b
+		ai_chance = {
+			base = 3
+			modifier = {
+				factor = 0
+				check_variable = { ruling_party = 4 }
+			}
+			modifier = {
+				factor = 0
+				check_variable = { ruling_party = 4 }
+			}
+			modifier = {
+				factor = 0
+				check_variable = { ruling_party = 18 }
+			}
+			modifier = {
+				factor = 0
+				check_variable = { ruling_party = 3 }
+			}
+		}
+	}
+}
+
+country_event = {
+	id = germany.193
+	title = germany.193.t
+	desc = germany.193.d
+	picture = GFX_Black_Out
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tag = GER
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event germany.193 immediate"
+			1285 = {
+				add_dynamic_modifier = {
+					modifier = GER_rolling_blackout
+					days = 70
+				}
+			}
+			202 = {
+				add_dynamic_modifier = {
+					modifier = GER_rolling_blackout
+					days = 70
+				}
+			}
+			91 = {
+				add_dynamic_modifier = {
+					modifier = GER_rolling_blackout
+					days = 70
+				}
+			}
+			192 = {
+				add_dynamic_modifier = {
+					modifier = GER_rolling_blackout
+					days = 70
+				}
+			}
+			196 = {
+				add_dynamic_modifier = {
+					modifier = GER_rolling_blackout
+					days = 70
+				}
+			}
+			221 = {
+				add_dynamic_modifier = {
+					modifier = GER_rolling_blackout
+					days = 70
+				}
+			}
+			201 = {
+				add_dynamic_modifier = {
+					modifier = GER_rolling_blackout
+					days = 70
+				}
+			}
+		}
+	}
+	option = {
+		name = germany.193.a
+		effect_tooltip = {
+			1285 = {
+				add_dynamic_modifier = {
+					modifier = GER_rolling_blackout
+					days = 70
+				}
+			}
+			202 = {
+				add_dynamic_modifier = {
+					modifier = GER_rolling_blackout
+					days = 70
+				}
+			}
+			91 = {
+				add_dynamic_modifier = {
+					modifier = GER_rolling_blackout
+					days = 70
+				}
+			}
+			192 = {
+				add_dynamic_modifier = {
+					modifier = GER_rolling_blackout
+					days = 70
+				}
+			}
+			196 = {
+				add_dynamic_modifier = {
+					modifier = GER_rolling_blackout
+					days = 70
+				}
+			}
+			221 = {
+				add_dynamic_modifier = {
+					modifier = GER_rolling_blackout
+					days = 70
+				}
+			}
+			201 = {
+				add_dynamic_modifier = {
+					modifier = GER_rolling_blackout
+					days = 70
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = germany.194
+	title = germany.194.t
+	desc = germany.194.d
+	picture = GFX_Black_Out
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tag = GER
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event germany.194 immediate"
+		}
+	}
+	option = {
+		name = germany.194.a
+	}
+}
+
+country_event = {
+	id = germany.195
+	title = germany.195.t
+	desc = germany.195.d
+	picture = GFX_Black_Out
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tag = GER
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event germany.195 immediate"
+			206 = {
+				add_dynamic_modifier = {
+					modifier = GER_rolling_blackout
+					days = 70
+				}
+			}
+			94 = {
+				add_dynamic_modifier = {
+					modifier = GER_rolling_blackout
+					days = 70
+				}
+			}
+			204 = {
+				add_dynamic_modifier = {
+					modifier = GER_rolling_blackout
+					days = 70
+				}
+			}
+		}
+	}
+	option = {
+		name = germany.195.a
+		effect_tooltip = {
+			206 = {
+				add_dynamic_modifier = {
+					modifier = GER_rolling_blackout
+					days = 70
+				}
+			}
+			94 = {
+				add_dynamic_modifier = {
+					modifier = GER_rolling_blackout
+					days = 70
+				}
+			}
+			204 = {
+				add_dynamic_modifier = {
+					modifier = GER_rolling_blackout
+					days = 70
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = germany.196
+	title = germany.196.t
+	desc = germany.196.d
+	picture = GFX_Black_Out
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tag = GER
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event germany.196 immediate"
+		}
+	}
+	option = {
+		name = germany.196.a
+	}
+}
+
+country_event = {
+	id = germany.197
+	title = germany.197.t
+	desc = germany.197.d
+	picture = GFX_Black_Out
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tag = GER
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event germany.197 immediate"
+		}
+	}
+	option = {
+		name = germany.195.a
+		effect_tooltip = {
+			835 = {
+				add_dynamic_modifier = {
+					modifier = GER_rolling_blackout
+					days = 70
+				}
+			}
+			46 = {
+				add_dynamic_modifier = {
+					modifier = GER_rolling_blackout
+					days = 70
+				}
+			}
+			76 = {
+				add_dynamic_modifier = {
+					modifier = GER_rolling_blackout
+					days = 70
+				}
+			}
+			79 = {
+				add_dynamic_modifier = {
+					modifier = GER_rolling_blackout
+					days = 70
+				}
+			}
+			84 = {
+				add_dynamic_modifier = {
+					modifier = GER_rolling_blackout
+					days = 70
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = germany.198
+	title = germany.198.t
+	desc = germany.198.d
+	picture = GFX_Black_Out
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tag = GER
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event germany.198 immediate"
+		}
+	}
+	option = {
+		name = germany.198.a
+	}
+}
+
+country_event = {
+	id = germany.20
+	title = germany.20.t
+	desc = germany.20.d
+	picture = GFX_Join_Axis
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event germany.20 immediate"
+		}
+	}
+	option = {
+		name = germany.20.a
+		GER = {
+			add_to_faction = ROOT
+		}
+	}
+}
+
+country_event = {
+	id = germany.200
+	title = germany.200.t
+	desc = germany.200.d
+	picture = GFX_Finland_nato
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tag = GER
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event germany.200 immediate"
+		}
+	}
+	option = {
+		name = germany.200.a
+		every_country = {
+			limit = {
+				has_country_flag = NATO_current_leader
+			}
+			add_to_faction = FIN
+		}
+		effect_tooltip = {
+		}
+	}
+}
+
+country_event = {
+	id = germany.201
+	title = germany.201.t
+	desc = germany.201.d
+	picture = GFX_Sweden_nato
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tag = GER
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event germany.201 immediate"
+		}
+	}
+	option = {
+		name = germany.201.a
+		every_country = {
+			limit = {
+				has_country_flag = NATO_current_leader
+			}
+			add_to_faction = SWE
+		}
+		effect_tooltip = {
+		}
+	}
+}
+
+country_event = {
+	id = germany.202
+	title = germany.202.t
+	desc = germany.202.d
+	picture = GFX_NATO_speech
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tag = GER
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event germany.202 immediate"
+		}
+	}
+	option = {
+		name = germany.202.a
+		effect_tooltip = {
+		}
+	}
+}
+
+country_event = {
+	id = germany.203
+	title = germany.203.t
+	desc = germany.203.d
+	picture = GFX_NATO_speech
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tag = GER
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event germany.203 immediate"
+		}
+	}
+	option = {
+		name = germany.203.a
+		effect_tooltip = {
+		}
+	}
+}
+
+country_event = {
+	id = germany.204
+	title = germany.204.t
+	desc = germany.204.d
+	picture = GFX_Walled_City
+	is_triggered_only = yes
+	trigger = {
+		tag = GER
+		NOT = {
+			has_country_flag = GER_urbanite_hell1
+			has_country_flag = GER_urbanite_hell2
+			has_country_flag = GER_urbanite_hell3
+		}
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event germany.204 immediate"
+			country_event = {
+				id = germany.204
+				days = 720
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_country_flag = GER_urbanite_hell1
+						has_country_flag = GER_urbanite_hell2
+						has_country_flag = GER_urbanite_hell3
+					}
+				}
+				set_country_flag = GER_urbanite_hell1
+			}
+			else_if = {
+				limit = {
+					has_country_flag = GER_urbanite_hell1
+				}
+				set_country_flag = GER_urbanite_hell2
+			}
+			else_if = {
+				limit = {
+					has_country_flag = GER_urbanite_hell2
+				}
+				set_country_flag = GER_urbanite_hell3
+			}
+			random_owned_controlled_state = {
+				if = {
+					limit = {
+						NOT = {
+							has_dynamic_modifier = {
+								modifier = GER_lined_city
+							}
+						}
+					}
+					add_dynamic_modifier = {
+						modifier = GER_lined_city
+					}
+				}
+			}
+		}
+	}
+	option = {
+		name = germany.204.a
+		effect_tooltip = {
+			random_owned_controlled_state = {
+				if = {
+					limit = {
+						NOT = {
+							has_dynamic_modifier = {
+								modifier = GER_lined_city
+							}
+						}
+					}
+					add_dynamic_modifier = {
+						modifier = GER_lined_city
+					}
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = germany.206
+	title = germany.206.t
+	desc = germany.206.d
+	picture = GFX_generic_nuclear_power_plant
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tag = GER
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event germany.206 immediate"
+			activate_mission = GER_phase_out_nuclear_power_mission
+		}
+	}
+	option = {
+		name = germany.206.a
+		effect_tooltip = {
+			activate_mission = GER_phase_out_nuclear_power_mission
+		}
+	}
+}
+
+country_event = {
+	id = germany.216
+	title = germany.216.t
+	desc = germany.216.d
+	picture = GFX_EMP
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event germany.216 immediate"
+		}
+	}
+	trigger = {
+	}
+	option = {
+		name = germany.216.a
+		effect_tooltip = {
+		}
+	}
+}
+
+country_event = {
+	id = germany.221
+	title = germany.221.t
+	desc = germany.221.d
+	picture = GFX_Mona_Lisa
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event germany.221 immediate"
+			change_government_type_corporate_council = yes
+			add_stability = -0.1
+			add_country_leader_role = {
+				character = GER_european_commission_char
+				promote_leader = yes
+				country_leader = {
+					ideology = Conservative
+					desc = GER_EUROCOMMISSION_DESC
+					expire = "1.1.1.1"
+				}
+			}
+			set_politics = {
+				ruling_party = communism
+				elections_allowed = no
+				election_frequency = 48
+			}
+			add_popularity = {
+				ideology = communism
+				popularity = 0.25
+			}
+			hidden_effect = {
+				retire_character = GER_max_otte_char
+				retire_character = GER_bernd_baumann
+			}
+			add_ideas = GER_Busch
+			add_ideas = GER_Schwaub
+			add_ideas = GER_Potsch
+			add_ideas = GER_Bate
+			add_ideas = GER_Eichelmann
+			set_country_flag = GER_corporate_coup_flag
+			set_party_name = {
+				ideology = communism
+				long_name = GER_volt_europa_corp_long
+				name = GER_volt_europa_corp
+			}
+		}
+	}
+	trigger = {
+	}
+	option = {
+		name = germany.221.a
+		effect_tooltip = {
+			change_government_type_corporate_council = yes
+			add_stability = -0.1
+			set_politics = {
+				ruling_party = communism
+				elections_allowed = no
+				election_frequency = 48
+			}
+			add_popularity = {
+				ideology = communism
+				popularity = 0.25
+			}
+			hidden_effect = {
+				retire_character = GER_max_otte_char
+				retire_character = GER_bernd_baumann
+			}
+			add_ideas = GER_Busch
+			add_ideas = GER_Bate
+			add_ideas = GER_Potsch
+			add_ideas = GER_Schwaub
+			add_ideas = GER_Eichelmann
+		}
+	}
+}
+
+country_event = {
+	id = germany.227
+	title = germany.227.t
+	desc = germany.227.d
+	picture = GFX_german_parliament
+	is_triggered_only = yes
+
+	# Okay
+	option = {
+		name = germany.227.a
+		log = "[GetDateText]: [This.GetName]: germany.227.a executed"
+		GER = {
+			country_event = {
+				id = germany.228
+				days = 1
+			}
+		}
+		set_country_flag = GER_were_joining_the_war
+		ai_chance = {
+			base = 5
+			modifier = {
+				has_opinion = { target = GER value > 39 }
+				add = 80
+			}
+		}
+	}
+
+	option = {
+		name = germany.227.b
+		log = "[GetDateText]: [This.GetName]: germany.227.b executed"
+		GER = {
+			country_event = {
+				id = germany.229
+				days = 1
+			}
+		}
+		ai_chance = { base = 5 }
+	}
+}
+
+country_event = {
+	id = germany.23
+	title = germany.23.t
+	desc = germany.23.d
+	picture = GFX_Bundeswehr_Volunteers
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event germany.23 immediate"
+			GER_richard_rossmanith = {
+				unit_leader_event = {
+					id = germany.25
+					days = 28
+				}
+			}
+			set_global_flag = SOV_nato_war_begins_global
+			add_manpower = 15000
+			add_war_support = 0.03
+			focus_unlock = yes
+		}
+	}
+	option = {
+		name = germany.23.a
+		effect_tooltip = {
+			add_manpower = 15000
+			add_war_support = 0.03
+			focus_unlock = yes
+		}
+		hidden_effect = {
+			MLI = {
+				country_event = {
+					id = mali.99
+					days = 14
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = germany.24
+	title = germany.24.t
+	desc = germany.24.d
+	picture = GFX_Blitz_und_Donner
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event germany.24 immediate"
+		}
+	}
+	option = {
+		name = germany.24.a
+		air_experience = 25
+	}
+}
+
+country_event = {
+	id = germany.240
+	title = germany.240.t
+	desc = germany.240.d
+	picture = GFX_GER_natsoc_rally
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = GER
+	}
+	immediate = {
+	}
+	option = {
+		#paganism
+		name = germany.240.a
+		custom_effect_tooltip = GER_kirchenkampf_pagan_tt
+		show_ideas_tooltip = GER_radical_paganism_idea
+		add_timed_idea = {
+			idea = GER_kirchenkampf_pagan_idea
+			days = 355
+		}
+	}
+	option = {
+		#german chirstianity
+		name = germany.240.b
+		custom_effect_tooltip = GER_kirchenkampf_christianity_tt
+		show_ideas_tooltip = GER_deutsche_christen_idea
+		add_timed_idea = {
+			idea = GER_kirchenkampf_christianity_idea
+			days = 265
+		}
+	}
+}
+
+country_event = {
+	id = germany.248
+	title = germany.248.t
+	desc = germany.248.d
+	picture = GFX_Serbia_in_the_21st_Century
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tag = SER
+	}
+	option = {
+		name = germany.248.a
+		trigger = {
+			SER = {
+				has_country_leader = {
+					character = SER_aleksandar_vulin
+					ruling_only = yes
+				}
+			}
+		}
+		GER = {
+			country_event = {
+				id = germany.249
+			}
+		}
+	}
+	option = {
+		name = germany.248.b
+		trigger = {
+			SER = {
+				has_country_leader = {
+					character = SER_joska_broz
+					ruling_only = yes
+				}
+			}
+		}
+		GER = {
+			add_to_faction = SER
+		}
+	}
+}
+
+unit_leader_event = {
+	id = germany.25
+	title = germany.25.t
+	desc = germany.25.d
+	picture = GFX_report_event_generic_mussolini
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event germany.25 immediate"
+		}
+	}
+	option = {
+		name = germany.25.a
+	}
+}
+
+country_event = {
+	id = germany.281
+	title = germany.281.t
+	desc = germany.281.d
+	picture = GFX_GER_moscow_nuke
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tag = GER
+	}
+	option = {
+		name = germany.281.a
+	}
+}
+
+country_event = {
+	id = germany.287
+	title = germany.287.t
+	desc = germany.287.d
+	picture = GFX_GER_peripeteia
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tag = GER
+	}
+	immediate = {
+		hidden_effect = {
+		}
+	}
+	option = {
+		name = germany.287.a
+	}
+}
+
+country_event = {
+	id = germany.291
+	title = germany.291.t
+	desc = germany.291.d
+	picture = GFX_GER_mahler
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tag = GER
+	}
+	immediate = {
+		hidden_effect = {
+			set_country_flag = GER_horst_mahler_flag
+			create_country_leader = {
+				name = GER_horst_mahler_char
+				picture = "gfx/leaders/GER/GER_horst_mahler.png"
+				expire = "1.1.1.1"
+				ideology = social_fascism
+				traits = {
+					hos_peoples_fuhrer 
+				}
+			}
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.1
+			}
+		}
+	}
+	option = {
+		name = germany.291.a
+	}
+}
+
+news_event = {
+	id = germany.296
+	title = germany.296.t
+	desc = germany.296.d
+	picture = GFX_Kolettis
+	is_triggered_only = yes
+	fire_only_once = yes
+	major = yes
+	trigger = {
+	}
+	immediate = {
+		hidden_effect = {
+			every_country = {
+				limit = {
+					is_in_faction_with = GER
+					NOT = { is_puppet_of = GER }
+				}
+				leave_faction = yes
+			}
+			FPR = {
+				create_faction = FPR_European_Internationale
+				hidden_effect = {
+					remove_faction_goal = faction_goal_the_atomic_race
+					add_faction_goal = faction_goal_placeholder_long_term
+					remove_faction_goal = faction_goal_a_military_base
+					add_faction_goal = faction_goal_placeholder_medium_term
+				}
+				add_to_faction = RSR
+				add_to_faction = PRP
+				add_to_faction = ITA
+				add_to_faction = UK2
+				add_to_faction = GRK
+				add_to_faction = LUX
+			}
+			GER = {
+				create_faction = DDR_European_Internationale
+				hidden_effect = {
+					remove_faction_goal = faction_goal_the_atomic_race
+					add_faction_goal = faction_goal_placeholder_long_term
+					remove_faction_goal = faction_goal_a_military_base
+					add_faction_goal = faction_goal_placeholder_medium_term
+				}
+			}
+		}
+	}
+	option = {
+		name = germany.296.a
+		
+	}
+}
+
+country_event = { #Cybernetics go terribly wrong
+    id = germany.310
+    title = germany.310.t
+    desc = germany.310.d
+    picture = GFX_GER_leash
+    is_triggered_only = yes
+    fire_only_once = yes
+    trigger = {
+        tag = GER
+    }
+    immediate = {
+        hidden_effect = {
+        }
+    }
+    option = {
+        name = germany.310.a
+		hidden_effect = { 
+			scoped_play_song = "TFR_mu_tfr_dialtone"
+			country_event = germany.338
+		}
+    }
+}
+
+country_event = {
+	id = germany.34
+	title = germany.34.t
+	desc = germany.34.d
+	picture = GFX_Saudi_Refugees
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event germany.34 immediate"
+			set_country_flag = GER_american_refugees_flag
+		}
+	}
+	option = {
+		name = germany.34.a
+		add_stability = -0.02
+		unlock_decision_tooltip = GER_support_orphans
+		set_temp_variable = {
+			var = poverty_development_var_temp
+			value = -0.15
+		}
+		add_poverty_development = yes
+	}
+}
+
+country_event = { #Generic Rearm Event
+    id = germany.352
+    title = germany.352.t
+    desc = germany.352.d
+    picture = GFX_GER_generic_rearm
+    is_triggered_only = yes
+    fire_only_once = yes
+    trigger = {
+        tag = GER
+    }
+    immediate = {
+        hidden_effect = {
+        }
+    }
+    option = {
+        name = germany.352.a
+	}
+}
+
+country_event = { #Money Rearm Event
+    id = germany.353
+    title = germany.353.t
+    desc = germany.353.d
+    picture = GFX_GER_money_rearm
+    is_triggered_only = yes
+    fire_only_once = yes
+    trigger = {
+        tag = GER
+    }
+    immediate = {
+        hidden_effect = {
+        }
+    }
+    option = {
+        name = germany.353.a
+		set_temp_variable = {
+			var = income_var_temp
+			value = -200
+		}
+		add_income_with_inflation = yes	
+		set_temp_variable = {
+			var = GER_fdp_popularity_var_temp
+			value = 0.01
+		}
+		GER_add_fdp = yes
+		set_temp_variable = {
+			var = GER_cdu_popularity_var_temp
+			value = 0.01
+		}
+		GER_add_cdu = yes
+		set_temp_variable = {
+			var = eu_euroskepticism_var_temp
+			value = 0.05
+		}
+		GER_add_eu_euroskepticism = yes
+	}
+    option = {
+        name = germany.353.b
+		set_temp_variable = {
+			var = GER_rearm_europe_plan_temp_tracker
+			value = 5
+		}
+		GER_add_rearm_progress = yes
+
+		set_temp_variable = {
+			var = income_var_temp
+			value = -400
+		}
+		add_income_with_inflation = yes	
+
+		set_temp_variable = {
+			var = GER_blue_economy_points_var_temp
+			value = 1
+		}
+		GER_add_blue_economy_points = yes
+		set_temp_variable = {
+			var = GER_afd_popularity_var_temp
+			value = 0.01
+		}
+		GER_add_afd = yes
+		set_temp_variable = {
+			var = GER_die_linke_popularity_var_temp
+			value = 0.01
+		}
+		GER_add_die_linke = yes
+		set_temp_variable = {
+			var = eu_visregard_sepratism_var_temp
+			value = 0.05
+		}
+		GER_add_eu_visregard_sepratism = yes
+	}
+    option = {
+        name = germany.353.c
+		set_temp_variable = {
+			var = GER_rearm_europe_plan_temp_tracker
+			value = 10
+		}
+		GER_add_rearm_progress = yes
+		set_temp_variable = {
+			var = income_var_temp
+			value = -800
+		}
+		add_income_with_inflation = yes	
+		set_temp_variable = {
+			var = GER_blue_economy_points_var_temp
+			value = 3
+		}
+		GER_add_blue_economy_points = yes
+		set_temp_variable = {
+			var = GER_greens_popularity_var_temp
+			value = 0.01
+		}
+		GER_add_greens = yes
+		set_temp_variable = {
+			var = GER_spd_popularity_var_temp
+			value = 0.01
+		}
+		GER_add_spd = yes
+		set_temp_variable = {
+			var = eu_fed_var_temp
+			value = 0.05
+		}
+		GER_add_eu_fed = yes
+	}
+}
+
+country_event = { #German Cars
+    id = germany.355
+    title = germany.355.t
+    desc = germany.355.d
+    picture = GFX_GER_wow_cars
+    is_triggered_only = yes
+    fire_only_once = yes
+    trigger = {
+        tag = GER
+    }
+    immediate = {
+        hidden_effect = {
+        }
+    }
+    option = {
+        name = germany.355.a
+	}
+}
+
+country_event = {
+	id = germany.42
+	title = germany.42.t
+	desc = germany.42.d
+	picture = GFX_German_Far_right
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event germany.42 immediate"
+		}
+	}
+	option = {
+		name = germany.42.a
+		add_stability = -0.05
+		add_political_power = -25
+	}
+}
+
+country_event = {
+	id = germany.43
+	title = germany.43.t
+	desc = germany.43.d
+	picture = GFX_German_Far_right
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event germany.43 immediate"
+		}
+	}
+	option = {
+		name = germany.43.a
+		add_stability = -0.05
+		add_political_power = -5
+	}
+}
+
+country_event = {
+	id = germany.44
+	title = germany.44.t
+	desc = germany.44.d
+	picture = GFX_German_Far_left
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event germany.44 immediate"
+		}
+	}
+	option = {
+		name = germany.44.a
+		add_stability = -0.05
+		add_political_power = -5
+	}
+}
+
+country_event = {
+	id = germany.45
+	title = germany.45.t
+	desc = germany.45.d
+	picture = GFX_Atomwaffen_Disbands
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event germany.45 immediate"
+		}
+	}
+	option = {
+		name = germany.45.a
+	}
+}
+
+country_event = {
+	id = germany.52
+	title = germany.52.t
+	desc = germany.52.d
+	picture = GFX_Bundesmarine
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event germany.52 immediate"
+		}
+	}
+	option = {
+		name = germany.52.a
+	}
+}
+
+country_event = {
+	id = germany.53
+	title = germany.53.t
+	desc = germany.53.d
+	picture = GFX_Bundesmarine
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event germany.53 immediate"
+		}
+	}
+	option = {
+		name = germany.53.a
+	}
+}
+
+country_event = {
+	id = germany.62
+	title = germany.62.t
+	desc = germany.62.d
+	picture = GFX_German_Police
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event germany.62 immediate"
+		}
+	}
+	option = {
+		name = germany.62.a
+		add_stability = -0.05
+		add_political_power = -25
+	}
+}
+
+country_event = {
+	id = germany.94
+	title = germany.94.t
+	desc = germany.94.d
+	picture = GFX_Generic_ISIS
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event germany.94 immediate"
+		}
+	}
+	option = {
+		name = germany.94.a
+		activate_mission = GER_crescent_moon_timer
+	}
+}
+
+country_event = {
+	id = germany.105
+	title = germany.105.t
+	desc = germany.105.d
+	picture = GFX_report_line_we_toe
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event germany.105 immediate"
+		}
+	}
+	trigger = {
+		tag = GER
+	}
+	option = {
+		name = germany.105.a
+		effect_tooltip = {
+		}
+	}
+}
+
+country_event = {
+	id = germany.228
+	title = germany.228.t
+	desc = germany.228.d
+	picture = GFX_German_Police
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event germany.228 immediate"
+		}
+	}
+	trigger = {
+	}
+	option = {
+		name = germany.228.a
+		hidden_effect = {
+			country_event = {
+				id = germany.229
+				days = 100
+			}
+		}
+	}
+}
+
+country_event = {
+	id = germany.229
+	title = germany.229.t
+	desc = germany.229.d
+	picture = GFX_Bundeswehr_Parade
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event germany.229 immediate"
+		}
+	}
+	trigger = {
+	}
+	option = {
+		name = germany.229.a
+	}
+}
+
+country_event = {
+	id = germany.249
+	title = germany.249.t
+	desc = germany.249.d
+	picture = GFX_Serbia_in_the_21st_Century
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tag = GER
+	}
+	option = {
+		name = germany.249.a
+	}
+}
+
+country_event = {
+	id = germany.69
+	title = germany.69.t
+	desc = germany.69.d
+	picture = GFX_Bundestag
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event germany.69 immediate"
+			set_temp_variable = {
+				var = GER_ruling_popularity_var_temp
+				value = -0.03
+			}
+			GER_add_ruling_party = yes
+			set_country_flag = GER_depression_ongoing_flag
+			add_to_variable = {
+				var = GER_economy_min_export_dynamic_var
+				value = -0.2
+			}
+			add_to_variable = {
+				var = GER_economy_industrial_capacity_dockyard_dynamic_var
+				value = -0.4
+			}
+			add_to_variable = {
+				var = GER_economy_production_factory_max_efficiency_factor_dynamic_var
+				value = -0.2
+			}
+			add_to_variable = {
+				var = GER_economy_consumer_goods_factor_dynamic_var
+				value = 0.4
+			}
+			add_to_variable = {
+				var = GER_economy_poverty_development_monthly_dynamic_var
+				value = -0.04
+			}
+			if = {
+				limit = {
+					has_completed_focus = GER_european_green_deal
+				}
+				set_variable = {
+					var = GER_budget_sustainment_var
+					value = 0
+				}
+				activate_mission = GER_budget_sustainment_mission
+			}
+		}
+	}
+	option = {
+		name = germany.69.a
+		effect_tooltip = {
+			set_temp_variable = {
+				var = GER_ruling_popularity_var_temp
+				value = -0.03
+			}
+			GER_add_ruling_party = yes
+			swap_ideas = {
+				remove_idea = GER_peoples_economy_dummy_idea
+				add_idea = GER_economic_devastation_idea
+			}
+			if = {
+				limit = {
+					has_completed_focus = GER_european_green_deal
+				}
+				activate_mission = GER_budget_sustainment_mission
+			}
+		}
+		
+	}
+}
+
+country_event = {
+	id = germany.561
+	title = germany.561.t
+	desc = germany.561.d
+	picture = GFX_german_parliament_bundestag
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	trigger = {
+		NOT = {
+			OR = {
+				has_completed_focus = POTEF800
+				has_completed_focus = GER_farewell_to_humiliation
+				has_completed_focus = GER_the_constitution_of_germany
+			}
+		}
+	}
+
+	option = {
+		name = germany.561.a
+		log = "[GetDateText]: [This.GetName]: germany.561.a executed"
+		hidden_effect = {
+			country_event = {
+				id = germany.560
+				days = 2
+			}
+			country_lock_all_division_template = yes
+		}
+	}
+}
+country_event = {
+	id = germany.562
+	title = germany.562.t
+	desc = germany.562.d
+	picture = GFX_bundeswehr1
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = { name = germany.562.a }
+}
+country_event = {
+	id = germany.234
+	title = germany.234.t
+	desc = germany.234.d
+	picture = GFX_GER_burning_building
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event germany.234 immediate"
+			add_political_power = -50
+			add_stability = -0.15
+			set_temp_variable = {
+				var = debt_var_temp
+				value = 35
+			}
+			add_debt = yes
+			random_owned_controlled_state = {
+				damage_building = {
+					type = infrastructure
+					damage = 1
+				}
+			}
+			random_owned_controlled_state = {
+				damage_building = {
+					type = infrastructure
+					damage = 2
+				}
+			}
+			random_owned_controlled_state = {
+				damage_building = {
+					type = infrastructure
+					damage = 1
+				}
+			}
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.06
+			}
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.035
+			}
+		}
+	}
+	trigger = {
+	}
+	option = {
+		name = germany.234.a
+		effect_tooltip = {
+			add_political_power = -50
+			add_stability = -0.15
+			set_temp_variable = {
+				var = debt_var_temp
+				value = 35
+			}
+			add_debt = yes
+			random_owned_controlled_state = {
+				damage_building = {
+					type = infrastructure
+					damage = 1
+				}
+			}
+			random_owned_controlled_state = {
+				damage_building = {
+					type = infrastructure
+					damage = 2
+				}
+			}
+			random_owned_controlled_state = {
+				damage_building = {
+					type = infrastructure
+					damage = 1
+				}
+			}
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.06
+			}
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.035
+			}
+		}
+	}
+}
+country_event = {
+	id = germany.414
+	title = germany.414.t
+	desc = germany.414.d
+	picture = GFX_hezbollah_forces
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = germany.414.a
+		log = "[GetDateText]: [This.GetName]: germany.414.a executed"
+		custom_effect_tooltip = GER_uh_oh_TT
+		hidden_effect = {
+			add_to_variable = { GER_bavarian_nationalism_var = 65 }
+			increase_corruption = yes
+			increase_corruption = yes
+			increase_corruption = yes
+			increase_corruption = yes
+			decrease_economic_growth = yes
+			decrease_economic_growth = yes
+			decrease_economic_growth = yes
+			decrease_economic_growth = yes
+			decrease_economic_growth = yes
+			decrease_economic_growth = yes
+		}
+		ai_chance = { base = 5 }
+	}
+}
+country_event = {
+	id = germany.67
+	title = germany.67.t
+	desc = germany.67.d
+	picture = GFX_Bundestag
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event germany.67 immediate"
+			country_event = {
+				id = germany.68
+				days = 14
+			}
+		}
+	}
+	option = {
+		name = germany.67.a
+		ai_chance = {
+			base = 100
+		}
+		set_temp_variable = {
+			var = income_var_temp
+			value = -80
+		}
+		add_income_with_inflation = yes
+		if = {
+			limit = {
+				has_active_mission = GER_depression_recovery_mission
+			}
+			add_days_mission_timeout = {
+				mission = GER_depression_recovery_mission
+				days = -70
+			}
+		}
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = GER_economic_devastation_dummy_idea
+				add_idea = GER_wholesale_bailout_idea
+			}
+		}
+		hidden_effect = {
+			set_country_flag = GER_wholesale_bailout_flag
+			add_to_variable = {
+				var = GER_economy_consumer_goods_factor_dynamic_var
+				value = -0.2
+			}
+		}
+	}
+	option = {
+		name = germany.67.b
+		ai_chance = {
+			base = 0
+		}
+		add_political_power = 50
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = GER_economic_devastation_dummy_idea
+				add_idea = GER_wholesale_bailout_idea1
+			}
+		}
+		hidden_effect = {
+			set_country_flag = GER_wholesale_bailout_flag1
+			add_to_variable = {
+				var = GER_economy_consumer_goods_factor_dynamic_var
+				value = -0.1
+			}
+		}
+	}
+}
+country_event = {
+	id = germany.66
+	title = germany.66.t
+	desc = germany.66.d
+	picture = GFX_Bundestag
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event germany.66 immediate"
+			add_political_power = 50
+		}
+	}
+	option = {
+		name = germany.66.a
+		effect_tooltip = {
+			add_political_power = 50
+		}
+	}
+}
+country_event = {
+	id = germany.8
+	title = germany.8.t
+	desc = germany.8.d
+	picture = GFX_Bundeswehr_Acting
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		always = yes
+	}
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event germany.8 immediate"
+			set_cosmetic_tag = GER_day_x
+			add_stability = -0.15
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.15
+			}
+			news_event = {
+				id = news.187
+				hours = 6
+			}
+			set_politics = {
+				ruling_party = nationalist
+				elections_allowed = no
+				#last_election = "[GetDateText]"
+				election_frequency = 48
+			}
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_country_flag = GER_destroy_far_right_in_army_flag
+				}
+			}
+			promote_character = {
+				character = GER_radelsfuhrer
+				ideology = national_spartanism
+			}
+			set_country_flag = GER_day_x_startocratic_nationalism_flag
+		}
+	}
+	option = {
+		name = germany.8.a
+		set_party_name = {
+			ideology = democratic
+			long_name = GER_outlawed_long
+			name = GER_outlawed_short
+		}
+		set_party_name = {
+			ideology = democratic
+			long_name = GER_outlawed_long
+			name = GER_outlawed_short
+		}
+		set_party_name = {
+			ideology = democratic
+			long_name = GER_outlawed_long
+			name = GER_outlawed_short
+		}
+		set_party_name = {
+			ideology = neutrality
+			long_name = GER_outlawed_long
+			name = GER_outlawed_short
+		}
+		set_party_name = {
+			ideology = communism
+			long_name = GER_outlawed_long
+			name = GER_outlawed_short
+		}
+		effect_tooltip = {
+			add_stability = -0.1
+			add_war_support = -0.1
+			set_politics = {
+				ruling_party = nationalist
+				elections_allowed = no
+				#last_election = "[GetDateText]"
+				election_frequency = 48
+			}
+		}
+		focus_unlock = yes
+	}
+}
+# [syntax-fix] orphan event call -> 			country_event = {
+# [syntax-fix] orphan event call -> 				id = germany.41
+# [syntax-fix] orphan event call -> 			}
+
+country_event = { #Cybernetics End
+    id = germany.338
+    title = germany.338.t
+    desc = germany.338.d
+    picture = GFX_GER_big_building
+    is_triggered_only = yes
+    fire_only_once = yes
+    trigger = {
+        tag = GER
+    }
+    immediate = {
+        hidden_effect = {
+        }
+    }
+    option = {
+        name = germany.338.a
+		hidden_effect = { 
+			add_stability = 0.01 
+			add_war_support = 0.01
+		}
+	}
+}
+country_event = {
+	id = germany.560
+	title = germany.560.t
+	desc = germany.560.d
+	picture = GFX_german_parliament_bundestag
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	#Let´s wait for the Reactions
+	option = {
+		name = germany.560.a
+		log = "[GetDateText]: [This.GetName]: germany.560.a executed"
+		GER = {
+			clr_country_flag = GER_Final_settlement
+			country_lock_all_division_template = no
+		}
+		custom_effect_tooltip = GER_Contract_I_TT
+		hidden_effect = {
+			random_list = {
+				45 = {
+				}
+				45 = {
+				}
+				10 = {
+				}
+			}
+		}
+	}
+
+	#We announce that we are no longer bound by this contract
+	option = {
+		name = germany.560.b
+		log = "[GetDateText]: [This.GetName]: germany.560.b executed"
+		GER = {
+			clr_country_flag = GER_Final_settlement
+			country_lock_all_division_template = no
+		}
+		custom_effect_tooltip = GER_Contract_I_TT
+		hidden_effect = {
+			random_list = {
+				60 = {
+				}
+				30 = {
+				}
+				10 = {
+				}
+			}
+		}
+	}
+}
+country_event = {
+	id = germany.68
+	title = germany.68.t
+	desc = germany.68.d
+	picture = GFX_Bundestag
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event germany.68 immediate"
+			country_event = {
+				id = germany.70
+				days = 14
+			}
+		}
+	}
+	option = {
+		name = germany.68.a
+		ai_chance = {
+			base = 100
+		}
+		set_temp_variable = {
+			var = income_var_temp
+			value = -80
+		}
+		add_income_with_inflation = yes
+		if = {
+			limit = {
+				has_active_mission = GER_depression_recovery_mission
+			}
+			add_days_mission_timeout = {
+				mission = GER_depression_recovery_mission
+				days = -70
+			}
+		}
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = GER_economic_devastation_dummy_idea
+				add_idea = GER_finance_bailout_idea
+			}
+		}
+		hidden_effect = {
+			set_country_flag = GER_finance_bailout_flag
+			add_to_variable = {
+				var = GER_economy_min_export_dynamic_var
+				value = 0.1
+			}
+			add_to_variable = {
+				var = GER_economy_poverty_development_monthly_dynamic_var
+				value = 0.02
+			}
+		}
+	}
+	option = {
+		name = germany.68.b
+		ai_chance = {
+			base = 0
+		}
+		add_political_power = 50
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = GER_economic_devastation_dummy_idea
+				add_idea = GER_finance_bailout_idea1
+			}
+		}
+		hidden_effect = {
+			set_country_flag = GER_finance_bailout_flag1
+			add_to_variable = {
+				var = GER_economy_min_export_dynamic_var
+				value = 0.05
+			}
+			add_to_variable = {
+				var = GER_economy_poverty_development_monthly_dynamic_var
+				value = 0.01
+			}
+		}
+	}
+}
+country_event = {
+	id = germany.235
+	title = germany.235.t
+	desc = germany.235.d
+	picture = GFX_GER_libtards
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event germany.235 immediate"
+		}
+	}
+	trigger = {
+	}
+	option = {
+		#keep pds
+		name = germany.235.a
+		ai_chance = {
+		    factor = 1
+		    modifier = {
+		        factor = 0
+		        always = no
+		    }
+		}
+		add_political_power = 50
+		add_stability = 0.1
+		set_temp_variable = {
+			var = GER_peoples_chamber_dynamic_var_temp
+			value = 0.03
+		}
+		GER_add_peoples_chamber_rating = yes
+		add_popularity = {
+			ideology = neutrality
+			popularity = 0.05
+		}
+	}
+	option = {
+		#trot
+		name = germany.235.b
+		ai_chance = {
+		        factor = 0
+		    }
+		add_political_power = 15
+		add_stability = -0.1
+		add_war_support = 0.05
+		set_temp_variable = {
+			var = GER_peoples_chamber_dynamic_var_temp
+			value = -0.05
+		}
+		GER_add_peoples_chamber_rating = yes
+		add_popularity = {
+			ideology = communism
+			popularity = 0.1
+		}
+		set_politics = {
+			ruling_party = communism
+			elections_allowed = no
+		}
+		promote_character = {
+			character = GER_christine_buchholz
+			ideology = trotskyism
+		}
+		set_temp_variable = {
+			coalition_partner_var_temp = token:libertarian_socialist
+		}
+		add_to_coalition = yes
+	}
+	option = {
+		#radical succdems
+		name = germany.235.c
+		ai_chance = {
+		        factor = 0
+		    }
+		add_political_power = -10
+		add_stability = 0.1
+		add_war_support = -0.1
+		set_temp_variable = {
+			var = GER_peoples_chamber_dynamic_var_temp
+			value = -0.1
+		}
+		GER_add_peoples_chamber_rating = yes
+		add_popularity = {
+			ideology = democratic
+			popularity = 0.1
+		}
+		set_politics = {
+			ruling_party = democratic
+			elections_allowed = no
+		}
+		promote_character = {
+			character = GER_dorothee_martin
+			ideology = socialism
+		}
+		set_temp_variable = {
+			coalition_partner_var_temp = token:libertarian_socialist
+		}
+		add_to_coalition = yes
+	}
+	option = {
+		#Byung-Chul Han
+		name = germany.235.e
+		trigger = { has_country_flag = GER_lacc_enabled_flag }
+		set_country_flag = GER_left_accelerationist_flag
+		unlock_decision_category_tooltip = GER_lacc_cat
+		set_party_name = {
+			ideology = neutrality
+			long_name = GER_lacc_party_long
+			name = GER_lacc_party
+		}
+		focus_unlock = yes
+		add_political_power = -10
+		add_stability = -0.05
+		add_war_support = 0.05
+		set_temp_variable = {
+			var = GER_peoples_chamber_dynamic_var_temp
+			value = -0.15
+		}
+		GER_add_peoples_chamber_rating = yes
+		add_popularity = {
+			ideology = neutrality
+			popularity = 0.15
+		}
+		set_politics = {
+			ruling_party = neutrality
+			elections_allowed = no
+		}
+		hidden_effect = {	
+			create_country_leader = {
+				name = GER_byung_chul_han_char
+				desc = GER_BYUNG_CHUL_HAN_DESC
+				picture = "gfx/leaders/GER/GER_byung_chul_han.png"
+				expire = "1.1.1.1"
+				ideology = left_accelerationist
+				traits = {
+					hos_philosopher
+				}
+			}
+			news_event = {
+				id = news.599
+				days = 2
+			}
+		}
+		mark_focus_tree_layout_dirty = yes
+	}
+}
+news_event = {
+	id = germany.297
+	title = germany.297.t
+	desc = germany.297.d
+	picture = GFX_Kolettis
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = germany.297.a
+		hidden_effect = {
+			if = {
+				limit = {
+					is_ai = no
+				}
+				if = {
+					limit = {
+						GER = { has_country_flag = GER_juche_germany_flag }
+					}
+					set_country_flag = GER_juche_germany_super
+					scoped_sound_effect = TFR_se_juche_germany
+					scoped_play_song = "one_minute_of_silence"
+				}
+				else = {
+					set_country_flag = GER_third_european_war_super
+					scoped_sound_effect = TFR_se_germany_third_european_war
+					scoped_play_song = "one_minute_of_silence"
+				}
+			}
+		}
+	}
+}
+country_event = {
+	id = germany.292
+	title = germany.292.t
+	desc = germany.292.d
+	picture = GFX_GER_nk
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tag = GER
+	}
+	immediate = {
+		hidden_effect = {
+			set_country_flag = GER_juche_germany_flag
+			set_cosmetic_tag = GER_juche
+			create_country_leader = {
+				name = GER_michael_koth_char
+				picture = "gfx/leaders/GER/GER_michael_koth.png"
+				expire = "1.1.1.1"
+				ideology = jucheism
+			}
+			add_popularity = {
+				ideology = communism
+				popularity = 0.2
+			}
+		}
+	}
+	option = {
+		name = germany.292.a
+		effect_tooltip = {
+			set_cosmetic_tag = GER_juche
+			add_country_leader_role = {
+				character = GER_michael_koth_char
+				promote_leader = yes
+				country_leader = {
+					ideology = jucheism
+					expire = "1.1.1.1"
+				}
+			}
+			add_popularity = {
+				ideology = communism
+				popularity = 0.2
+			}
+		}
+	}
+}
+country_event = {
+	id = germany.293
+	title = germany.293.t
+	desc = germany.293.d
+	picture = GFX_GER_koth_speech
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tag = GER
+	}
+	immediate = {
+		hidden_effect = {
+			set_country_flag = GER_querfront_germany_flag
+			create_country_leader = {
+				name = GER_michael_koth_char
+				picture = "gfx/leaders/GER/GER_michael_koth.png"
+				expire = "1.1.1.1"
+				ideology = social_fascism
+				traits = {
+					hos_peoples_fuhrer
+				}
+			}
+			add_popularity = {
+				ideology = communism
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.08
+			}
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.08
+			}
+		}
+	}
+	option = {
+		name = germany.293.a
+		effect_tooltip = {
+			add_country_leader_role = {
+				character = GER_michael_koth_char
+				promote_leader = yes
+				country_leader = {
+					ideology = social_fascism
+					traits = {
+						hos_peoples_fuhrer
+					}
+					expire = "1.1.1.1"
+				}
+			}
+			add_popularity = {
+				ideology = communism
+				popularity = 0.1
+			}
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.05
+			}
+		}
+	}
+}
+country_event = { #SCHWAB - Total Victory
+    id = germany.311
+    title = germany.311.t
+    desc = germany.311.d
+    picture = GFX_GER_schwab_tricks
+    is_triggered_only = yes
+    fire_only_once = yes
+    trigger = {
+        tag = GER
+    }
+    immediate = {
+        hidden_effect = {
+        }
+    }
+    option = {
+        name = germany.311.a
+		custom_effect_tooltip = GER_tfr_schwab_ending_tt
+		hidden_effect = {
+			set_cosmetic_tag = GER_WEF_world
+			set_politics = {
+				ruling_party = nationalist
+				elections_allowed = no
+			}
+			set_party_name = {
+				ideology = nationalist
+				long_name = GER_wef_long
+				name = GER_wef
+			}
+			set_party_name = {
+				ideology = democratic
+				long_name = GER_outlawed_long
+				name = GER_outlawed_short
+			}
+			set_party_name = {
+				ideology = democratic
+				long_name = GER_outlawed_long
+				name = GER_outlawed_short
+			}
+			set_party_name = {
+				ideology = democratic
+				long_name = GER_outlawed_long
+				name = GER_outlawed_short
+			}
+			set_party_name = {
+				ideology = neutrality
+				long_name = GER_outlawed_long
+				name = GER_outlawed_short
+			}
+			set_temp_variable = { coalition_partner_var_temp = token:market_liberal }
+			remove_from_coalition = yes
+			set_temp_variable = { coalition_partner_var_temp = token:social_liberal }
+			remove_from_coalition = yes
+			set_temp_variable = { coalition_partner_var_temp = token:social_democrat }
+			remove_from_coalition = yes
+			set_temp_variable = { coalition_partner_var_temp = token:conservative }
+			remove_from_coalition = yes
+			set_temp_variable = { coalition_partner_var_temp = token:libertarian_socialist }
+			remove_from_coalition = yes
+			set_temp_variable = { coalition_partner_var_temp = token:authoritarian_democrat }
+			add_to_coalition = yes
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.5
+			}
+			add_country_leader_role = {
+                character = GER_klaus_schwab_char
+                promote_leader = yes
+                country_leader = {
+                    ideology = davos_system
+                    desc = GER_SCHWAB_DESC
+					traits = {
+						hos_the_architect
+					}
+                }
+            }
+			news_event = news.578
+			every_country = {
+				limit = {
+					OR = {
+						is_puppet_of = GER
+						tag = UK2
+						tag = GEO
+						tag = NIR
+						tag = WLS
+					}
+				}
+				GER = {
+					annex_country = {
+						target = PREV
+						transfer_troops = yes
+					}
+				}
+			}
+			every_controlled_state = {
+				add_core_of = GER
+			}
+		}
+    }
+}
+country_event = {
+	id = germany.2343
+	title = germany.2343.t
+	desc = germany.2343.d
+	picture = GFX_Military_Reform
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	# Okay
+	option = {
+		name = germany.2343.a
+		ai_chance = { base = 5 }
+	}
+}
+country_event = {
+	id = germany.238
+	title = germany.238.t
+	desc = germany.238.d
+	picture = GFX_GER_reichstag_black_and_white
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = GER
+	}
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event germany.238 immediate"
+	}
+	option = {
+		name = germany.238.a
+		ai_chance = {
+		    factor = 1
+		    modifier = {
+		        factor = 0
+		        always = no
+		    }
+		}
+		set_country_flag = GER_didnazi_this_coming_flag
+		add_political_power = -200
+		add_stability = -0.1
+		add_country_leader_role = {
+			character = GER_frank_franz
+			promote_leader = yes
+			country_leader = {
+				ideology = Nat_Fascism
+				expire = "2099.1.1.1"
+			}
+		}
+		set_portraits = {
+			character = GER_frank_franz
+			civilian = {
+				large = "GFX_portrait_GER_Frank_Franz_Fuhrer"
+			}
+		}
+		set_party_name = {
+			ideology = nationalist
+			long_name = GER_nsdap_long
+			name = GER_nsdap
+		}
+		set_politics = {
+			ruling_party = nationalist
+			elections_allowed = no
+		}
+		set_temp_variable = {
+			coalition_partner_var_temp = token:fascist
+		}
+		add_to_coalition = yes
+		focus_unlock = yes
+		set_cosmetic_tag = GER_new_reich
+		if = {
+			limit = {
+				has_completed_focus = GER_revive_the_economy
+			}
+			custom_effect_tooltip = tooltip_white_line
+			change_economy_type_managed_economy = yes
+		}
+		hidden_effect = {
+			news_event = {
+				id = news.363
+				hours = 4
+			}
+			country_event = {
+				id = germany.239
+				days = 20
+			}
+			scoped_play_song = "wewalkedinline"
+		}
+	}
+	option = {
+		name = germany.238.b
+		ai_chance = {
+		    factor = 1
+		    modifier = {
+		        factor = 0
+		        always = no
+		    }
+		}
+		add_political_power = 50
+		add_stability = 0.1
+		add_popularity = {
+			ideology = nationalist
+			popularity = -0.1
+		}
+	}
+}
+
+country_event = {
+	id = germany.323
+	title = germany.323.t
+	desc = germany.323.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tag = GER
+	}
+	option = {
+		name = germany.323.a
+	}
+}
+
+country_event = {
+	id = germany.70
+	title = germany.70.t
+	desc = germany.70.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tag = GER
+	}
+	option = {
+		name = germany.70.a
+	}
+	option = {
+		name = germany.70.b
+	}
+}
+
+country_event = {
+	id = germany.239
+	title = germany.239.t
+	desc = germany.239.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tag = GER
+	}
+	option = {
+		name = germany.239.a
+	}
+}
+
+#Ghost of Kyiv（搬运自 TFR ukraine.5 依赖；原图片 GFX_ghost_of_kyiv 本工程未定义，改用已有 GFX_russian_planes）
+country_event = {
+	id = germany.243
+	title = germany.243.t
+	desc = germany.243.d
+	picture = GFX_russian_planes
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+	}
+	immediate = {
+	}
+	option = {
+		name = germany.243.a
+	}
+}
 

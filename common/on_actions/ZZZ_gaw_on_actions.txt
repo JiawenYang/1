@@ -1,0 +1,118 @@
+### ============================================================
+### GAW（大亚洲战争）协作政府挂载点
+### on_capitulation：被推掉 -> 变成协助征服方的协作政府
+### on_daily：反推回来 -> 恢复原执政党 / 原 cosmetic / 解除傀儡
+### 战败方清单（按用户既定阵营表）：
+###   中国侧：CBD / IND / LAO / BRM（条件性 KOR / NKO / TAI）
+###   日本侧：MAY / PHI / SIN / SIA（条件性 VIE）——MAY/PHI/SIN/SIA 结算为亲西方民主代理政府
+###   例外：IND 一律亲日右翼；VIE 仅日本侧变南越伪政权，中国侧完全不变（已移出中国侧名单）
+### ============================================================
+on_actions = {
+	# 开局修正：千禧原生 PER 的 24 党支持率合计为 1.125，超出 100%。
+	# 本工程已删除伊朗两条政党轮替事件，不再有任何事件改写该数组，
+	# 故在此把 PER 归一到合计 1（100%），保证数组合法。
+	on_startup = {
+		effect = {
+			PER = {
+				set_temp_variable = { zzz_per_pop_total = 0 }
+				for_loop_effect = { start = 0 end = 24 value = i add_to_temp_variable = { zzz_per_pop_total = party_pop_array^i } }
+				if = {
+					limit = { check_variable = { zzz_per_pop_total > 0 } }
+					set_temp_variable = { zzz_per_pop_factor = 1 }
+					divide_temp_variable = { zzz_per_pop_factor = zzz_per_pop_total }
+					for_loop_effect = { start = 0 end = 24 value = i multiply_variable = { party_pop_array^i = zzz_per_pop_factor } }
+					recalculate_party = yes
+				}
+			}
+		}
+	}
+	on_capitulation = {
+		effect = {
+			# 中国侧：被中国（或中国阵营）推掉
+			if = {
+				limit = {
+					has_global_flag = pan_asian_war_ongoing
+					FROM = {
+						OR = {
+							original_tag = CHI
+							original_tag = PRC
+							has_country_flag = eadi_member
+							is_ally_with = CHI
+						}
+					}
+					ROOT = {
+						OR = {
+							original_tag = CBD
+							original_tag = IND
+							original_tag = LAO
+							original_tag = BRM
+							original_tag = KOR
+							original_tag = NKO
+							original_tag = TAI
+						}
+					}
+				}
+				ROOT = {
+					set_variable = { var = gaw_collab_master value = FROM }
+					ZZZ_gaw_set_collaboration_government = yes
+				}
+			}
+			# 日本侧：被日本（或日本阵营）推掉
+			else_if = {
+				limit = {
+					has_global_flag = pan_asian_war_ongoing
+					FROM = {
+						OR = {
+							original_tag = JAP
+							has_country_flag = pdto_member
+							is_ally_with = JAP
+						}
+					}
+					ROOT = {
+						OR = {
+							original_tag = MAY
+							original_tag = PHI
+							original_tag = SIN
+							original_tag = SIA
+							original_tag = VIE
+						}
+					}
+				}
+				ROOT = {
+					set_country_flag = gaw_collab_to_west
+					set_variable = { var = gaw_collab_master value = FROM }
+					ZZZ_gaw_set_collaboration_government = yes
+				}
+			}
+		}
+	}
+	on_daily = {
+		effect = {
+			# 中俄联动
+			ZZZ_gaw_sino_russian_linkage = yes
+			if = {
+				limit = { has_global_flag = gaw_collab_active }
+				every_country = {
+					limit = { has_country_flag = gaw_collaboration_government }
+					# 判据：宗主已无法维持傀儡，或首都已被第三方（非本国、非宗主）控制
+					if = {
+						limit = {
+							OR = {
+								NOT = { is_puppet_of = var:gaw_collab_master }
+								capital_scope = {
+									NOT = { is_controlled_by = ROOT }
+									NOT = { is_controlled_by = var:gaw_collab_master }
+								}
+							}
+						}
+						ZZZ_gaw_restore_original_government = yes
+					}
+				}
+				if = {
+					limit = { NOT = { any_country = { has_country_flag = gaw_collaboration_government } } }
+					clr_global_flag = gaw_collab_active
+				}
+			}
+		}
+	}
+}

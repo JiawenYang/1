@@ -117,7 +117,7 @@ scripted_diplomatic_actions = {
 			set_temp_variable = { percent_change = 1 }
 			set_temp_variable = { tag_index = ROOT.id }
 			set_temp_variable = { influence_target = THIS.id }
-			change_influence_percentage = yes
+			if = { limit = { NOT = { has_global_flag = cml_md_influence_disabled } } change_influence_percentage = yes }
 			add_to_variable = { signed_trade_agreements = 1 }
 
 			if = {
@@ -128,7 +128,7 @@ scripted_diplomatic_actions = {
 				set_temp_variable = { percent_change = 1 }
 				set_temp_variable = { tag_index = PREV.id }
 				set_temp_variable = { influence_target = THIS.id }
-				change_influence_percentage = yes
+				if = { limit = { NOT = { has_global_flag = cml_md_influence_disabled } } change_influence_percentage = yes }
 				add_to_variable = { signed_trade_agreements = 1 }
 
 				if = {
@@ -450,7 +450,7 @@ scripted_diplomatic_actions = {
 			set_temp_variable = { percent_change = -1.25 }
 			set_temp_variable = { tag_index = ROOT.id }
 			set_temp_variable = { influence_target = THIS.id }
-			change_influence_percentage = yes
+			if = { limit = { NOT = { has_global_flag = cml_md_influence_disabled } } change_influence_percentage = yes }
 			add_to_variable = { signed_trade_agreements = -1 }
 			set_country_flag = { flag = has_recently_canceled_trade_agreement_@ROOT days = 90 value = 1 }
 			ROOT = {
@@ -461,7 +461,7 @@ scripted_diplomatic_actions = {
 				set_temp_variable = { percent_change = -1.25 }
 				set_temp_variable = { tag_index = PREV.id }
 				set_temp_variable = { influence_target = THIS.id }
-				change_influence_percentage = yes
+				if = { limit = { NOT = { has_global_flag = cml_md_influence_disabled } } change_influence_percentage = yes }
 				add_to_variable = { signed_trade_agreements = -1 }
 				if = {
 					limit = { ROOT = { original_tag = SIN } }
@@ -581,7 +581,7 @@ scripted_diplomatic_actions = {
 			set_temp_variable = { percent_change = 1 }
 			set_temp_variable = { tag_index = ROOT.id }
 			set_temp_variable = { influence_target = THIS.id }
-			change_influence_percentage = yes
+			if = { limit = { NOT = { has_global_flag = cml_md_influence_disabled } } change_influence_percentage = yes }
 
 			# Permanent Investment Targets
 			set_temp_variable = { target_nation = THIS.id }
@@ -591,7 +591,7 @@ scripted_diplomatic_actions = {
 				set_temp_variable = { percent_change = 1 }
 				set_temp_variable = { tag_index = PREV.id }
 				set_temp_variable = { influence_target = THIS.id }
-				change_influence_percentage = yes
+				if = { limit = { NOT = { has_global_flag = cml_md_influence_disabled } } change_influence_percentage = yes }
 
 				# Permanent Investment Targets
 				set_temp_variable = { target_nation = THIS.id }
@@ -929,7 +929,7 @@ scripted_diplomatic_actions = {
 			set_temp_variable = { percent_change = -1.25 }
 			set_temp_variable = { tag_index = ROOT.id }
 			set_temp_variable = { influence_target = THIS.id }
-			change_influence_percentage = yes
+			if = { limit = { NOT = { has_global_flag = cml_md_influence_disabled } } change_influence_percentage = yes }
 			set_country_flag = { flag = has_recently_canceled_mif_treaty_@ROOT days = 90 value = 1 }
 			ROOT = {
 				clr_country_flag = mutual_investment_treaty_@PREV
@@ -941,7 +941,7 @@ scripted_diplomatic_actions = {
 				set_temp_variable = { percent_change = -1.25 }
 				set_temp_variable = { tag_index = PREV.id }
 				set_temp_variable = { influence_target = THIS.id }
-				change_influence_percentage = yes
+				if = { limit = { NOT = { has_global_flag = cml_md_influence_disabled } } change_influence_percentage = yes }
 			}
 		}
 
@@ -1281,7 +1281,7 @@ scripted_diplomatic_actions = {
 			set_temp_variable = { percent_change = -15 }
 			set_temp_variable = { tag_index = ROOT }
 			set_temp_variable = { influence_target = THIS }
-			change_influence_percentage = yes
+			if = { limit = { NOT = { has_global_flag = cml_md_influence_disabled } } change_influence_percentage = yes }
 			ROOT = {
 				clear_variable = pending_enforce_peace_pending_offer
 				set_country_flag = { flag = recently_demanded_enforce_peace_@PREV value = 1 days = 90 }

@@ -1,0 +1,603 @@
+# ============================================================================
+#  ZZZ_korea_events —— 朝鲜半岛统一链（本工程自有事件，不再基于基座文件）
+#
+#  设计口径：
+#    1. 事件 ID 全部落在本工程自建段 zzz_kor.*，与基座 korea.* 彻底断开；
+#    2. 旗标沿用既有名字（国策/决议/调试工具仍在引用）：
+#         korean_confederation_formed   邦联成立（军事同盟，不合并国家）
+#         korea_peninsula_reunited      半岛完成合并
+#         korean_postwar_settled        战后安排已结算（两条路线互斥）
+#         KOR_peninsula_talks_resolved  半岛谈判已落定（三八线决议不再显示）
+#         KOR_reunification_talks_failed 谈崩分支已发生
+#         zzz_kpr_proclaimed            KPR 已成立
+#         zzz_kpr_election_done         NKO 路线全半岛选举已执行
+#         zzz_kpr_election_done_kor     KOR 路线全半岛选举已执行
+#         zzz_korea_north_annexed       北吞南（NKO 吞并 KOR，军事压倒后触发）
+#    3. 事件只做本链自己的事；不调用、不复制任何 korea.* 事件。
+#
+#  链顺序：
+#    zzz_kor.1  谈判开启（KOR 或 NKO 收到；a=继续谈，b=谈崩）
+#      ├─ a → zzz_kor.2 谈判成功：成立邦联（korean_confederation_formed）
+#      └─ b → zzz_kor.3 谈崩（KOR_reunification_talks_failed）
+#    统一落地（两条互斥方向，由战后决议派发）：
+#      zzz_kor.4  朝鲜吞并韩国（NKO 统一）
+#      zzz_kor.5  韩国吞并朝鲜（KOR 统一，加入太约）
+#    KPR 与选举：
+#      zzz_kor.6  KPR 成立 → zzz_kor.7 新闻 → 140 天后 zzz_kor.8 全半岛选举
+#      zzz_kor.9  选举结果新闻
+#      zzz_kor.10 KOR 路线全半岛选举
+#    zzz_kor.11 志愿军遗骸归国新闻（原 korea.31 的替代，供年度效果引用）
+# ============================================================================
+
+add_namespace = zzz_kor
+
+# ----------------------------------------------------------------------------
+# .1 谈判开启
+#    KOR 收到（中国斡旋决议）或 NKO 收到（韩国重启和谈决议）均可。
+#    a 选项要求双方同属民主阵营或同属共产阵营，避免跨阵营强行统一。
+# ----------------------------------------------------------------------------
+country_event = {
+    id = zzz_kor.1
+    title = zzz_kor.1.t
+    desc = zzz_kor.1.d
+    picture = GFX_politics_negotiations
+    is_triggered_only = yes
+
+    trigger = {
+        NOT = { has_country_flag = korea_peninsula_reunited }
+        NOT = { has_global_flag = korean_postwar_settled }
+        NOT = { has_global_flag = zzz_korea_north_annexed }
+        OR = {
+            AND = {
+                tag = KOR
+                country_exists = NKO
+            }
+            AND = {
+                tag = NKO
+                country_exists = KOR
+            }
+        }
+    }
+
+    option = {
+        name = zzz_kor.1.a
+        trigger = {
+            country_exists = KOR
+            country_exists = NKO
+            OR = {
+                AND = {
+                    KOR = { has_government = democratic }
+                    NKO = { has_government = democratic }
+                }
+                AND = {
+                    KOR = { has_government = communism }
+                    NKO = { has_government = communism }
+                }
+            }
+        }
+        log = "[GetDateText]: [This.GetName]: zzz_kor.1.a executed"
+        add_opinion_modifier = {
+            target = KOR
+            modifier = imminent_reunification
+        }
+        add_war_support = -0.05
+        KOR = {
+            country_event = {
+                id = zzz_kor.2
+                days = 1
+            }
+        }
+        ai_chance = {
+            base = 1
+            modifier = {
+                add = 1
+                KOR = { check_variable = { reunification_chance > 6 } }
+            }
+            modifier = {
+                add = 1
+                KOR = { check_variable = { reunification_chance > 8 } }
+            }
+            modifier = {
+                add = 1
+                KOR = { check_variable = { reunification_chance > 10 } }
+            }
+            modifier = {
+                factor = 0
+                OR = {
+                    has_war_with = KOR
+                    KOR = { check_variable = { reunification_chance < 6 } }
+                }
+            }
+        }
+    }
+
+    option = {
+        name = zzz_kor.1.b
+        log = "[GetDateText]: [This.GetName]: zzz_kor.1.b executed"
+        KOR = {
+            set_country_flag = KOR_reunification_talks_failed
+            set_country_flag = KOR_peninsula_talks_resolved
+            country_event = {
+                id = zzz_kor.3
+                days = 1
+            }
+        }
+        ai_chance = {
+            base = 5
+        }
+    }
+}
+
+# ----------------------------------------------------------------------------
+# .2 谈判成功：成立邦联
+#    仅结盟，不合并国家、不傀儡、不吞并；统一落地由 zzz_kor.4 / zzz_kor.5 负责。
+# ----------------------------------------------------------------------------
+country_event = {
+    id = zzz_kor.2
+    title = zzz_kor.2.t
+    desc = zzz_kor.2.d
+    picture = GFX_politics_negotiations
+    is_triggered_only = yes
+
+    option = {
+        name = zzz_kor.2.a
+        log = "[GetDateText]: [This.GetName]: zzz_kor.2.a executed"
+        set_country_flag = KOR_peninsula_talks_resolved
+        if = {
+            limit = {
+                country_exists = NKO
+                NOT = { has_global_flag = korean_confederation_formed }
+            }
+            create_faction_from_template = faction_template_juche
+            NKO = {
+                add_to_faction = KOR
+            }
+            set_global_flag = korean_confederation_formed
+        }
+    }
+}
+
+# ----------------------------------------------------------------------------
+# .3 谈崩
+#    中性收尾：谈判落定，但统一未发生；不写任何战争/吞并效果。
+# ----------------------------------------------------------------------------
+country_event = {
+    id = zzz_kor.3
+    title = zzz_kor.3.t
+    desc = zzz_kor.3.d
+    picture = GFX_politics_negotiations
+    is_triggered_only = yes
+
+    option = {
+        name = zzz_kor.3.a
+        log = "[GetDateText]: [This.GetName]: zzz_kor.3.a executed"
+        set_country_flag = KOR_peninsula_talks_resolved
+        set_country_flag = KOR_reunification_talks_failed
+    }
+}
+
+# ----------------------------------------------------------------------------
+# .4 统一落地：朝鲜吞并韩国（NKO 统一）
+#    触发方：战后决议 PRC_gaw_postwar_korea_settlement（NKO 作用域）。
+#    旗标 korean_postwar_settled 置位后，两条路线互斥。
+# ----------------------------------------------------------------------------
+country_event = {
+    id = zzz_kor.4
+    title = zzz_kor.4.t
+    desc = zzz_kor.4.d
+    picture = GFX_KOR_generic
+    fire_only_once = yes
+    is_triggered_only = yes
+
+    trigger = {
+        tag = NKO
+        country_exists = KOR
+        NOT = { has_global_flag = korean_postwar_settled }
+    }
+
+    option = {
+        name = zzz_kor.4.a
+        log = "[GetDateText]: [This.GetName]: zzz_kor.4.a executed (branch=north_annex)"
+        annex_country = {
+            target = KOR
+            transfer_troops = yes
+        }
+        # 州归属已由 annex_country 转入 NKO；此处补齐半岛南部的核心
+        add_state_core = 604
+        add_state_core = 605
+        add_state_core = 606
+        add_state_core = 607
+        add_state_core = 608
+        add_state_core = 1099
+        if = {
+            limit = {
+                owns_state = 604
+            }
+            set_capital = {
+                state = 604
+            }
+        }
+        set_cosmetic_tag = NKO_korean_peoples_republic
+        set_politics = {
+            ruling_party = communism
+            elections_allowed = yes
+            last_election = "2024.1.1"
+            election_frequency = 48
+        }
+        # 统一后分布：共产组 32%（北）、民主组 42%（南）、中立组 22%（统一后新派系）、民族组 4%
+        # 24 槽合计恒为 1.000；执政党 ^5 KSDP 为最大单槽（0.180）
+        set_popularities = {
+            democratic = 42.0
+            communism = 32.0
+            fascism = 0.0
+            neutrality = 22.0
+            nationalist = 4.0
+        }
+        set_variable = { party_pop_array^0 = 0 } #Western_Autocracy
+        set_variable = { party_pop_array^1 = 0.160 } #conservatism（南方保守）
+        set_variable = { party_pop_array^2 = 0.090 } #liberalism（南方自由派）
+        set_variable = { party_pop_array^3 = 0.170 } #socialism（南方进步/民主党）
+        set_variable = { party_pop_array^4 = 0.140 } #communist_state（朝鲜劳动党）
+        set_variable = { party_pop_array^5 = 0.180 } #anarchist_communism（KSDP，执政）
+        set_variable = { party_pop_array^6 = 0 } #Conservative
+        set_variable = { party_pop_array^7 = 0 } #Autocracy
+        set_variable = { party_pop_array^8 = 0 } #Mod_Vilayat_e_Faqih
+        set_variable = { party_pop_array^9 = 0 } #Vilayat_e_Faqih
+        set_variable = { party_pop_array^10 = 0 } #Kingdom
+        set_variable = { party_pop_array^11 = 0 } #Caliphate
+        set_variable = { party_pop_array^12 = 0 } #Neutral_Muslim_Brotherhood
+        set_variable = { party_pop_array^13 = 0.020 } #Neutral_Autocracy（北方军政技术官僚）
+        set_variable = { party_pop_array^14 = 0.050 } #Neutral_conservatism（南方保守残余）
+        set_variable = { party_pop_array^15 = 0 } #oligarchism
+        set_variable = { party_pop_array^16 = 0.010 } #Neutral_Libertarian
+        set_variable = { party_pop_array^17 = 0.010 } #Neutral_green
+        set_variable = { party_pop_array^18 = 0.100 } #neutral_Social（统一左翼/北方改良派）
+        set_variable = { party_pop_array^19 = 0.030 } #Neutral_Communism
+        set_variable = { party_pop_array^20 = 0.020 } #Nat_Populism（民族统一民粹）
+        set_variable = { party_pop_array^21 = 0.001 } #Nat_Fascism
+        set_variable = { party_pop_array^22 = 0.019 } #Nat_Autocracy（先军残余）
+        set_variable = { party_pop_array^23 = 0 } #Monarchist
+        clear_array = gov_coalition_array
+        set_variable = { ruling_party = 5 }
+        update_set_politics = yes
+        add_own_ideology_drift = yes
+        add_to_array = { gov_coalition_array = 4 }
+        update_government_coalition_strength = yes
+        update_party_name = yes
+        set_coalition_drift = yes
+        ZZZ_party_leader_NKO_sim_sang_jung = yes
+        if = {
+            limit = {
+                has_idea = ZZZ_spirit_korea_confederation
+            }
+            remove_ideas = ZZZ_spirit_korea_confederation
+        }
+        add_ideas = ZZZ_spirit_korea_unified
+        log = "[GetDateText]: [This.GetName]: north annex complete, ZZZ_spirit_korea_unified applied"
+        if = {
+            limit = {
+                is_in_faction = no
+            }
+            create_faction_from_template = faction_template_juche
+        }
+        set_country_flag = korea_peninsula_reunited
+        set_global_flag = zzz_korea_north_annexed
+        set_global_flag = korean_postwar_settled
+        country_event = {
+            id = zzz_kor.6
+            days = 1
+        }
+    }
+}
+
+# ----------------------------------------------------------------------------
+# .5 统一落地：韩国吞并朝鲜（KOR 统一）
+#    正常游戏无派发入口：真实决议 ZZZ_korea_unify_under_kor 在内联块完成吞并与
+#    支持率写入后直接 fire zzz_kor.10，不经过本事件；本事件只由调试决议
+#    ZZZ_chainrun_korea.txt 的南吞北入口派发。
+# ----------------------------------------------------------------------------
+country_event = {
+    id = zzz_kor.5
+    title = zzz_kor.5.t
+    desc = zzz_kor.5.d
+    picture = GFX_KOR_generic
+    fire_only_once = yes
+    is_triggered_only = yes
+
+    trigger = {
+        tag = KOR
+        country_exists = NKO
+        NOT = { has_global_flag = korean_postwar_settled }
+    }
+
+    option = {
+        name = zzz_kor.5.a
+        log = "[GetDateText]: [This.GetName]: zzz_kor.5.a executed"
+        annex_country = {
+            target = NKO
+            transfer_troops = yes
+        }
+        set_politics = {
+            ruling_party = democratic
+            elections_allowed = yes
+            election_frequency = 60
+        }
+        # 统一后分布：民主组 60%（南）、共产组 13%（北）、中立组 23%（统一后新派系）、民族组 4%
+        # 组内比例取自 TFR korea.2（Hanoi Accords）：conservative 30 : social_liberal 40 : social_democrat 24
+        # 并沿用其左翼 3:2:1（totalitarian_socialist : communist : libertarian_socialist）
+        # 24 槽合计恒为 1.000；执政党 ^1 conservatism 为最大单槽（0.255）
+        set_popularities = {
+            democratic = 60.0
+            communism = 13.0
+            fascism = 0.0
+            neutrality = 23.0
+            nationalist = 4.0
+        }
+        set_variable = { party_pop_array^0 = 0 } #Western_Autocracy
+        set_variable = { party_pop_array^1 = 0.255 } #conservatism（执政，南方保守，TFR 权重 40）
+        set_variable = { party_pop_array^2 = 0.191 } #liberalism（TFR social_liberal 30）
+        set_variable = { party_pop_array^3 = 0.154 } #socialism（TFR social_democrat 24）
+        set_variable = { party_pop_array^4 = 0.065 } #communist_state（TFR totalitarian_socialist）
+        set_variable = { party_pop_array^5 = 0.022 } #anarchist_communism（TFR libertarian_socialist）
+        set_variable = { party_pop_array^6 = 0.043 } #Conservative（TFR communist）
+        set_variable = { party_pop_array^7 = 0 } #Autocracy
+        set_variable = { party_pop_array^8 = 0 } #Mod_Vilayat_e_Faqih
+        set_variable = { party_pop_array^9 = 0 } #Vilayat_e_Faqih
+        set_variable = { party_pop_array^10 = 0 } #Kingdom
+        set_variable = { party_pop_array^11 = 0 } #Caliphate
+        set_variable = { party_pop_array^12 = 0 } #Neutral_Muslim_Brotherhood
+        set_variable = { party_pop_array^13 = 0.020 } #Neutral_Autocracy（北方军政技术官僚）
+        set_variable = { party_pop_array^14 = 0.070 } #Neutral_conservatism（北方保守派）
+        set_variable = { party_pop_array^15 = 0 } #oligarchism
+        set_variable = { party_pop_array^16 = 0.020 } #Neutral_Libertarian
+        set_variable = { party_pop_array^17 = 0.020 } #Neutral_green
+        set_variable = { party_pop_array^18 = 0.080 } #neutral_Social（统一左翼）
+        set_variable = { party_pop_array^19 = 0.020 } #Neutral_Communism
+        set_variable = { party_pop_array^20 = 0.030 } #Nat_Populism（民族统一民粹）
+        set_variable = { party_pop_array^21 = 0.002 } #Nat_Fascism
+        set_variable = { party_pop_array^22 = 0.008 } #Nat_Autocracy（先军残余）
+        set_variable = { party_pop_array^23 = 0 } #Monarchist
+        clear_array = gov_coalition_array
+        set_variable = { ruling_party = 1 }
+        update_set_politics = yes
+        add_own_ideology_drift = yes
+        update_government_coalition_strength = yes
+        update_party_name = yes
+        set_coalition_drift = yes
+        if = {
+            limit = {
+                country_exists = JAP
+                JAP = { is_in_faction = no }
+            }
+            JAP = {
+                create_faction_from_template = faction_template_pdto
+                set_faction_leader = yes
+                set_country_flag = pdto_member
+            }
+        }
+        if = {
+            limit = {
+                country_exists = JAP
+            }
+            add_to_faction = JAP
+            set_country_flag = pdto_member
+        }
+        set_country_flag = korea_peninsula_reunited
+        set_global_flag = korean_postwar_settled
+        country_event = {
+            id = zzz_kor.10
+            days = 140
+        }
+    }
+}
+
+# ----------------------------------------------------------------------------
+# .6 KPR 成立（朝鲜人民共和国）
+#    由 zzz_kor.4 在统一后派发；也可由调试跑通器在条件齐备时直派。
+# ----------------------------------------------------------------------------
+country_event = {
+    id = zzz_kor.6
+    title = zzz_kor.6.t
+    desc = zzz_kor.6.d
+    picture = GFX_politics_negotiations
+    fire_only_once = yes
+    is_triggered_only = yes
+
+    trigger = {
+        tag = NKO
+        owns_state = 604
+        OR = {
+            has_cosmetic_tag = NKO_korean_peoples_republic
+            has_global_flag = korean_postwar_settled
+        }
+        NOT = { has_country_flag = zzz_kpr_proclaimed }
+        date > 2024.1.1
+    }
+
+    option = {
+        name = zzz_kor.6.a
+        log = "[GetDateText]: [This.GetName]: zzz_kor.6.a executed"
+        set_country_flag = zzz_kpr_proclaimed
+        if = {
+            limit = {
+                NOT = { has_cosmetic_tag = NKO_korean_peoples_republic }
+            }
+            set_cosmetic_tag = NKO_korean_peoples_republic
+        }
+        news_event = {
+            id = zzz_kor.7
+            days = 1
+        }
+        country_event = {
+            id = zzz_kor.8
+            days = 140
+        }
+    }
+}
+
+# ----------------------------------------------------------------------------
+# .7 新闻：KPR 成立
+# ----------------------------------------------------------------------------
+news_event = {
+    id = zzz_kor.7
+    title = zzz_kor.7.t
+    desc = zzz_kor.7.d
+    picture = GFX_news_South_Korea_Mil
+    fire_only_once = yes
+    is_triggered_only = yes
+    major = yes
+
+    option = {
+        name = zzz_kor.7.a
+    }
+}
+
+# ----------------------------------------------------------------------------
+# .8 全半岛选举（NKO 路线）
+#    24 槽位绝对值合计恒为 1.0000；执政党 ^5 KSDP，民主组(44%)为最大组、共产组(28%)次之。
+# ----------------------------------------------------------------------------
+country_event = {
+    id = zzz_kor.8
+    title = zzz_kor.8.t
+    desc = zzz_kor.8.d
+    picture = GFX_politics_talks
+    fire_only_once = yes
+    is_triggered_only = yes
+
+    trigger = {
+        tag = NKO
+        has_country_flag = zzz_kpr_proclaimed
+        NOT = { has_country_flag = zzz_kpr_election_done }
+    }
+
+    option = {
+        name = zzz_kor.8.a
+        # 统一后分布：民主组 44%（南）、共产组 28%（北）、中立组 23%（统一后新派系）、民族组 5%
+        # 民主组内比例取自 TFR korea.5（战后全半岛选举·社民胜）：social_democrat 40 : social_liberal 30 : conservative 24
+        # 24 槽合计恒为 1.000；执政党 ^5 KSDP 为最大单槽（0.190）
+        set_popularities = {
+            democratic = 44.0
+            communism = 28.0
+            fascism = 0.0
+            neutrality = 23.0
+            nationalist = 5.0
+        }
+        set_politics = {
+            ruling_party = communism
+            elections_allowed = yes
+            last_election = "2024.1.1"
+            election_frequency = 48
+        }
+        start_politics_input = yes
+        set_variable = { party_pop_array^0 = 0 } #Western_Autocracy
+        set_variable = { party_pop_array^1 = 0.112 } #conservatism（南方保守，TFR 24）
+        set_variable = { party_pop_array^2 = 0.140 } #liberalism（TFR social_liberal 30）
+        set_variable = { party_pop_array^3 = 0.188 } #socialism（韩国民主党，TFR social_democrat 40）
+        set_variable = { party_pop_array^4 = 0.090 } #communist_state（朝鲜劳动党）
+        set_variable = { party_pop_array^5 = 0.190 } #anarchist_communism（KSDP，执政）
+        set_variable = { party_pop_array^6 = 0 } #Conservative
+        set_variable = { party_pop_array^7 = 0 } #Autocracy
+        set_variable = { party_pop_array^8 = 0 } #Mod_Vilayat_e_Faqih
+        set_variable = { party_pop_array^9 = 0 } #Vilayat_e_Faqih
+        set_variable = { party_pop_array^10 = 0 } #Kingdom
+        set_variable = { party_pop_array^11 = 0 } #Caliphate
+        set_variable = { party_pop_array^12 = 0 } #Neutral_Muslim_Brotherhood
+        set_variable = { party_pop_array^13 = 0.020 } #Neutral_Autocracy（北方军政技术官僚）
+        set_variable = { party_pop_array^14 = 0.060 } #Neutral_conservatism（南方保守残余）
+        set_variable = { party_pop_array^15 = 0 } #oligarchism
+        set_variable = { party_pop_array^16 = 0.010 } #Neutral_Libertarian
+        set_variable = { party_pop_array^17 = 0.010 } #Neutral_green
+        set_variable = { party_pop_array^18 = 0.110 } #neutral_Social（统一左翼/北方改良派）
+        set_variable = { party_pop_array^19 = 0.020 } #Neutral_Communism
+        set_variable = { party_pop_array^20 = 0.025 } #Nat_Populism（民族统一民粹）
+        set_variable = { party_pop_array^21 = 0.001 } #Nat_Fascism
+        set_variable = { party_pop_array^22 = 0.024 } #Nat_Autocracy（先军残余）
+        set_variable = { party_pop_array^23 = 0 } #Monarchist
+        clear_array = gov_coalition_array
+        add_to_array = { gov_coalition_array = 4 }
+        set_variable = { ruling_party = 5 }
+        update_set_politics = yes
+        add_own_ideology_drift = yes
+        update_government_coalition_strength = yes
+        update_party_name = yes
+        set_coalition_drift = yes
+        hidden_effect = {
+            set_country_flag = zzz_kpr_election_done
+        }
+        ZZZ_party_leader_NKO_sim_sang_jung = yes
+        news_event = {
+            id = zzz_kor.9
+            days = 1
+        }
+        log = "[GetDateText]: [This.GetName]: zzz_kor.8.a executed"
+    }
+}
+
+# ----------------------------------------------------------------------------
+# .9 新闻：全半岛选举结果
+# ----------------------------------------------------------------------------
+news_event = {
+    id = zzz_kor.9
+    title = zzz_kor.9.t
+    desc = zzz_kor.9.d
+    picture = GFX_news_South_Korea_Mil
+    fire_only_once = yes
+    is_triggered_only = yes
+    major = yes
+
+    option = {
+        name = zzz_kor.9.a
+    }
+}
+
+# ----------------------------------------------------------------------------
+# .10 全半岛选举（KOR 路线）
+#     不重写支持率与政党数组：沿用决议内联块（调试路径为 zzz_kor.5）写入的现值；
+#     元首由基座按当前执政党与支持率产生，不写死人名。
+# ----------------------------------------------------------------------------
+country_event = {
+    id = zzz_kor.10
+    title = zzz_kor.10.t
+    desc = zzz_kor.10.d
+    picture = GFX_politics_talks
+    fire_only_once = yes
+    is_triggered_only = yes
+
+    trigger = {
+        tag = KOR
+        has_global_flag = korean_postwar_settled
+        owns_state = 604
+        NOT = { has_country_flag = zzz_kpr_election_done_kor }
+        NOT = { has_cosmetic_tag = NKO_korean_peoples_republic }
+    }
+
+    option = {
+        name = zzz_kor.10.a
+        # 不调用 start_politics_input：它会 clear_variable = ruling_party 并清空 party_pop_array，此处必须沿用上游已写入的值。
+        update_set_politics = yes
+        update_party_name = yes
+        set_coalition_drift = yes
+        set_leader = yes
+        hidden_effect = {
+            set_country_flag = zzz_kpr_election_done_kor
+        }
+        log = "[GetDateText]: [This.GetName]: zzz_kor.10.a executed"
+    }
+}
+
+# ----------------------------------------------------------------------------
+# .11 新闻：志愿军遗骸归国
+#     原 korea.31 的替代事件，供 common/scripted_effects/00_yearly_effects.txt 引用。
+# ----------------------------------------------------------------------------
+news_event = {
+    id = zzz_kor.11
+    title = zzz_kor.11.t
+    desc = zzz_kor.11.d
+    picture = GFX_news_trade_agreement
+    fire_only_once = yes
+    is_triggered_only = yes
+
+    option = {
+        name = zzz_kor.11.a
+    }
+}
