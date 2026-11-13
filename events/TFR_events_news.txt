@@ -29,3 +29,1105 @@ news_event = {
 		name = news.173.a
 	}
 }
+
+news_event = {
+	id = news.1918
+	title = news.1918.t
+	desc = news.1918.d
+	picture = GFX_GER_Imperial_Restoration
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = news.1918.a
+	}
+}
+
+country_event = {
+	id = news.268
+	title = news.268.t
+	desc = news.268.d
+	picture = GFX_news_event_united_nations
+	is_triggered_only = yes
+	trigger = {
+		country_exists = LRA
+	}
+	option = {
+		name = news.268.a
+		hidden_effect = {
+			news_event = {
+				id = news.269
+			}
+			LRA = {
+				set_country_flag = developed_country
+				set_cosmetic_tag = LRA_UN
+				remove_ideas = militia_looting
+				remove_ideas = empire_of_vice
+				add_ideas = LRA_harsh_rules_of_engagement
+				transfer_state = 1092
+				delete_units = {
+					division_template = "Soldados"
+					disband = yes
+				}
+				load_oob = "UN_Miami"
+				set_politics = {
+					ruling_party = democratic
+					elections_allowed = no
+					last_election = "2020.1.1"
+					election_frequency = 48
+				}
+				create_country_leader = {
+					name = LRA_un_char
+					picture = "United Nations.dds"
+					ideology = centrist
+				}
+				set_party_name = {
+					ideology = democratic
+					long_name = LRA_peacekeepers
+					name = LRA_peacekeepers
+				}
+				set_popularities = {
+					democratic = 100
+					communism = 0
+					fascism = 0
+					neutrality = 0
+					nationalist = 0
+				}
+			}
+		}
+	}
+}
+
+news_event = {
+	id = news.272
+	title = news.272.t
+	desc = news.272.d
+	picture = GFX_European_Union
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = news.272.a
+	}
+}
+
+news_event = {
+	id = news.273
+	title = news.273.t
+	desc = news.273.d
+	picture = GFX_AAS_Victory
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = news.273.a
+	}
+}
+
+news_event = {
+	id = news.274
+	title = news.274.t
+	desc = news.274.d
+	picture = GFX_AAS_Victory
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = news.274.a
+	}
+}
+
+news_event = {
+	id = news.277
+	title = news.277.t
+	desc = news.277.d
+	picture = GFX_Abe_resign_news
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = news.277.a
+	}
+}
+
+news_event = {
+	id = news.278
+	title = news.278.t
+	desc = news.278.d
+	picture = GFX_European_Union
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = news.278.a
+	}
+}
+
+news_event = {
+	id = news.331
+	title = news.331.t
+	desc = news.331.d
+	picture = GFX_china_military_coup
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = news.331.a
+	}
+}
+
+news_event = {
+	id = news.340
+	title = news.340.t
+	desc = news.340.d
+	picture = GFX_Korean_War
+	is_triggered_only = yes
+	major = yes
+	trigger = {
+		PRK = {
+			has_war_with = KOR
+		}
+	}
+	option = {
+		name = news.340.a
+	}
+}
+
+news_event = {
+	id = news.345
+	title = news.345.t
+	desc = news.345.d
+	picture = GFX_Japanese_Fleet
+	major = yes
+	is_triggered_only = yes
+	option = {
+		name = news.345.a
+		trigger = {
+			NOT = {
+				original_tag = PRC
+			}
+		}
+	}
+	option = {
+		name = news.345.b
+		trigger = {
+			original_tag = PRC
+		}
+	}
+}
+
+news_event = {
+	id = news.346
+	title = news.346.t
+	desc = news.346.d
+	picture = GFX_Korean_Civil_War
+	major = yes
+	is_triggered_only = yes
+	option = {
+		name = news.346.a
+		trigger = {
+			NOT = {
+				original_tag = PRC
+			}
+		}
+	}
+	option = {
+		name = news.346.b
+		trigger = {
+			original_tag = PRC
+		}
+	}
+}
+
+news_event = {
+	id = news.355
+	title = news.355.t
+	desc = news.355.d
+	picture = GFX_Samson_Strike
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = news.355.a
+		trigger = {
+			NOT = {
+				tag = JAP
+			}
+		}
+	}
+	option = {
+		name = news.355.b
+		trigger = {
+			tag = JAP
+		}
+	}
+}
+
+news_event = {
+	id = news.356
+	title = news.356.t
+	desc = news.356.d
+	picture = GFX_event_taiwanwarwin_news
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = news.356.a
+		trigger = {
+			NOT = {
+				OR = {
+					original_tag = PRC
+					original_tag = JAP
+				}
+			}
+		}
+	}
+	option = {
+		name = news.356.b
+		trigger = {
+			original_tag = PRC
+		}
+	}
+	option = {
+		name = news.356.c
+		trigger = {
+			original_tag = JAP
+		}
+	}
+}
+
+news_event = {
+	id = news.536
+	title = news.536.t
+	desc = news.536.d
+	picture = GFX_abe_death_shinzo
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = news.536.a
+	}
+}
+
+news_event = {
+	id = news.544
+	title = news.544.t
+	desc = news.544.d
+	picture = GFX_china_ai
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = news.544.a
+	}
+}
+
+news_event = {
+	id = news.658
+	title = news.658.t
+	desc = news.658.d
+	picture = GFX_MOR_parade_news
+	is_triggered_only = yes
+	
+	major = yes
+	option = {
+		name = news.658.a
+		FRA = {
+			add_timed_idea = {
+				idea = GER_victory_in_maghreb_idea
+				days = 225
+			}
+		}
+		GER = {
+			add_timed_idea = {
+				idea = GER_victory_in_maghreb_idea
+				days = 225
+			}
+		}
+	}
+}
+
+news_event = {
+	id = news.659
+	title = news.659.t
+	desc = news.659.d
+	picture = GFX_ALG_parade_news
+	is_triggered_only = yes
+	
+	major = yes
+	option = {
+		name = news.659.a
+		SOV = {
+			add_timed_idea = {
+				idea = GER_victory_in_maghreb_idea
+				days = 225
+			}
+		}
+	}
+}
+
+news_event = {
+	id = news.660
+	title = news.660.t
+	desc = news.660.d
+	picture = GFX_MOR_tanks_news
+	is_triggered_only = yes
+	
+	major = yes
+	option = {
+		name = news.660.a
+	}
+}
+
+news_event = {
+	id = news.91
+	title = news.91.t
+	desc = news.91.d
+	picture = GFX_nepal_Narayanhiti_Palace
+	major = yes
+	is_triggered_only = yes
+
+	option = {
+		name = news.91.a
+	}
+}
+
+news_event = {
+	id = news.92
+	title = news.92.t
+	desc = news.92.d
+	picture = GFX_nepal_Narayanhiti_Palace
+	major = yes
+	is_triggered_only = yes
+
+	option = {
+		name = news.92.a
+	}
+}
+
+news_event = {
+	id = news.264
+	title = news.264.t
+	desc = news.264.d
+	picture = GFX_France_NATO_Leader
+	major = yes
+	is_triggered_only = yes
+	option = {
+		name = news.264.a
+	}
+}
+
+news_event = {
+	id = news.265
+	title = news.265.t
+	desc = news.265.d
+	picture = GFX_Germany_NATO_Leader
+	major = yes
+	is_triggered_only = yes
+	option = {
+		name = news.265.a
+	}
+}
+
+news_event = {
+	id = news.266
+	title = news.266.t
+	desc = news.266.d
+	picture = GFX_UK_NATO_Leader
+	major = yes
+	is_triggered_only = yes
+	option = {
+		name = news.266.a
+	}
+}
+
+news_event = {
+	id = news.269
+	title = news.269.t
+	desc = news.269.d
+	picture = GFX_news_event_united_nations
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = news.269.a
+	}
+}
+
+news_event = {
+	id = news.281
+	title = news.281.t
+	desc = news.281.d
+	picture = GFX_Navalny_Protests
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = news.281.a
+	}
+}
+
+news_event = {
+	#Algerian civil war
+	id = news.283
+	title = news.283.t
+	desc = news.283.d
+	picture = GFX_news_Algerian_CW
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = news.283.a
+	}
+}
+
+news_event = {
+	id = news.336
+	title = news.336.t
+	desc = news.336.d
+	picture = GFX_canada_nato
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = news.336.a
+	}
+}
+
+news_event = {
+	id = news.417
+	title = news.417.t
+	desc = news.417.d
+	picture = GFX_ecomomic_crash
+	is_triggered_only = yes
+	major = yes
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [Root.GetName]: event news.417 immediate"
+			scoped_play_song = "ftitanic"
+		}
+	}
+	option = {
+		name = news.417.a
+		effect_tooltip = {
+			if = {
+				limit = {
+					OR = {
+						tag = MEX
+						tag = CAN
+						tag = BRA
+						tag = PRC
+						tag = JAP
+						tag = FRA
+						tag = ENG
+						tag = ARG
+						tag = CHI
+						tag = BEL
+					}
+				}
+				add_timed_idea = {
+					idea = generic_world_wide_financial_crisis_1
+					days = 245
+				}
+			}
+			else_if = {
+				limit = {
+					NOT = {
+						has_idea = generic_world_wide_financial_crisis_1
+					}
+					OR = {
+						has_dynamic_modifier = {
+							modifier = EU_member_dynamic
+						}
+						tag = SOV
+						tag = UKR
+						tag = KAZ
+						tag = UZB
+						tag = KYR
+						tag = AZR
+						tag = TUR
+						tag = KOR
+						tag = PHI
+						tag = AST
+						tag = NOR
+						tag = SWI
+						tag = IRE
+						tag = SAF
+						tag = EGY
+						tag = ISR
+					}
+				}
+				add_timed_idea = {
+					idea = generic_world_wide_financial_crisis_2
+					days = 245
+				}
+			}
+			else_if = {
+				limit = {
+					NOT = {
+						tag = PRK
+						tag = ERI
+						tag = WAT
+						tag = MND
+						tag = BHU
+						tag = TMS
+					}
+				}
+				add_timed_idea = {
+					idea = generic_world_wide_financial_crisis_3
+					days = 245
+				}
+			}
+			if = {
+				limit = {
+					tag = SOV
+				}
+				unlock_decision_tooltip = SOV_stabilize_ruble_crisis
+				unlock_decision_tooltip = SOV_freeze_social_payments_crisis
+			}
+			if = {
+				limit = {
+					tag = PRC
+				}
+			}
+		}
+	}
+}
+
+news_event = {
+	id = news.115
+	title = news.115.t
+	desc = news.115.d
+	picture = GFX_Tank_Duel
+	is_triggered_only = yes
+	major = yes
+	immediate = {
+		hidden_effect = {
+            if = {
+                limit = {
+                    has_game_rule = { rule = april_fools_content option = APRIL_FOOLS_ENABLED }
+                }
+                APA = {
+                }
+            }
+        }
+	}
+	option = {
+		name = news.115.a
+		custom_effect_tooltip = pop_up_close_tt
+		hidden_effect = {
+			if = {
+				limit = {
+					is_ai = no
+				}
+				set_country_flag = USA_civil_war_super
+				scoped_sound_effect = TFR_se_second_american_civil_war
+				scoped_play_song = "one_minute_of_silence"
+			}
+		}
+	}
+}
+
+news_event = {
+	id = news.282
+	title = news.282.t
+	desc = news.282.d
+	picture = GFX_Greek_Revolution
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = news.282.a
+	}
+}
+
+news_event = {
+	id = news.337
+	title = news.337.t
+	desc = news.337.d
+	picture = GFX_trudeau
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = news.337.a
+	}
+}
+
+# [syntax-fix] orphan event call -> 		news_event = {
+# [syntax-fix] orphan event call -> 			id = news.198
+# [syntax-fix] orphan event call -> 			hours = 4
+# [syntax-fix] orphan event call -> 		}
+
+# [syntax-fix] orphan event call -> 		news_event = {
+# [syntax-fix] orphan event call -> 			id = news.231
+# [syntax-fix] orphan event call -> 		}
+
+# [syntax-fix] orphan event call -> 		news_event = { id = news.322 }
+
+# [syntax-fix] orphan event call -> 		news_event = { id = news.354 hours = 2 }
+
+news_event = {
+	id = news.86
+	title = news.86.t
+	desc = news.86.desc
+	picture = GFX_bosnian_end_to_war
+	major = yes
+	is_triggered_only = yes
+
+	option = {
+		name = news.86.a
+	}
+}
+
+news_event = {
+	id = news.187
+	title = news.187.t
+	desc = news.187.d
+	picture = GFX_Day_X
+	is_triggered_only = yes
+	major = yes
+	trigger = {
+	}
+	option = {
+		name = news.187.a
+		hidden_effect = {
+			if = {
+				limit = {
+					is_ai = no
+				}
+				set_country_flag = GER_day_x_super
+				scoped_sound_effect = TFR_se_day_x
+				scoped_play_song = "one_minute_of_silence"
+			}
+		}
+	}
+}
+news_event = {
+	id = news.183
+	title = news.183.t
+	desc = news.183.d
+	picture = GFX_Algerian_moroccan_war
+	is_triggered_only = yes
+	major = yes
+	trigger = {
+	}
+	option = {
+		name = news.183.a
+		SOV = {
+			unlock_decision_category_tooltip = PROXY_maghreb_war_cat
+		}
+		GER = {
+			unlock_decision_category_tooltip = PROXY_maghreb_war_cat
+		}
+		FRA = {
+			unlock_decision_category_tooltip = PROXY_maghreb_war_cat
+		}
+	}
+}
+news_event = {
+	id = news.1929
+	title = news.1929.t
+	desc = news.1929.d
+	picture = GFX_russian_planes
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = news.1929.a
+		hidden_effect = {
+			if = {
+				limit = {
+					is_ai = no
+				}
+				set_country_flag = SOV_second_nato_war_alikhanov_flag
+				scoped_sound_effect = TFR_se_second_nato_war_alikhanov
+				scoped_play_song = "one_minute_of_silence"
+			}
+			SOV = {
+				mark_focus_tree_layout_dirty = yes
+			}
+			GER = {
+				mark_focus_tree_layout_dirty = yes
+			}
+		}
+	}
+}
+news_event = {
+	id = news.650
+	title = news.650.t
+	desc = news.650.d
+	picture = GFX_FRA_junta_victory_news
+	is_triggered_only = yes
+	
+	major = yes
+	option = {
+		name = news.650.a
+	}
+}
+news_event = {
+	id = news.655
+	title = news.655.t
+	desc = news.655.d
+	picture = GFX_FRA_bonaparte_victory_news
+	is_triggered_only = yes
+	
+	major = yes
+	option = {
+		name = news.655.a
+	}
+}
+news_event = {
+	id = news.653
+	title = news.653.t
+	desc = news.653.d
+	picture = GFX_FRA_benedetti_victory_news
+	is_triggered_only = yes
+	
+	major = yes
+	option = {
+		name = news.653.a
+	}
+}
+news_event = {
+	id = news.657
+	title = news.657.t
+	desc = news.657.d
+	picture = GFX_FRA_bourbon_victory_news
+	is_triggered_only = yes
+	
+	major = yes
+	option = {
+		name = news.657.a
+	}
+}
+news_event = {
+	id = news.654
+	title = news.654.t
+	desc = news.654.d
+	picture = GFX_FRA_latin_victory_news
+	is_triggered_only = yes
+	
+	major = yes
+	option = {
+		name = news.654.a
+	}
+}
+news_event = {
+	id = news.652
+	title = news.652.t
+	desc = news.652.d
+	picture = GFX_FRA_lafayette_victory_news
+	is_triggered_only = yes
+	
+	major = yes
+	option = {
+		name = news.652.a
+	}
+}
+news_event = {
+	id = news.646
+	title = news.646.t
+	desc = news.646.d
+	picture = GFX_GER_french_victory_news
+	is_triggered_only = yes
+	
+	major = yes
+	option = {
+		name = news.646.a
+	}
+}
+news_event = {
+	id = news.256
+	title = news.256.t
+	desc = news.256.d
+	picture = GFX_USB_nato_dugin_victory_news
+	is_triggered_only = yes
+	major = yes
+	trigger = {
+	}
+	option = {
+		name = news.256.a
+		hidden_effect = {
+			if = {
+				limit = {
+					is_ai = no
+				}
+				set_country_flag = BEL_EU_victory_super_flag
+				scoped_sound_effect = TFR_se_nato_victory_2
+				scoped_play_song = "one_minute_of_silence"
+			}
+		}
+	}
+}
+news_event = {
+	id = news.583
+	title = news.583.t
+	desc = news.583.d
+	picture = GFX_USB_nato_navalny_victory_news
+	is_triggered_only = yes
+	
+	major = yes
+	trigger = {
+	}
+	option = {
+		name = news.583.a
+		hidden_effect = {
+			if = {
+				limit = {
+					is_ai = no
+				}
+				set_country_flag = BEL_EU_victory_super_flag
+				scoped_sound_effect = TFR_se_nato_victory_2
+				scoped_play_song = "one_minute_of_silence"
+			}
+		}
+	}
+}
+news_event = {
+	id = news.584
+	title = news.584.t
+	desc = news.584.d
+	picture = GFX_USB_nato_prigozhin_victory_news
+	is_triggered_only = yes
+	
+	major = yes
+	trigger = {
+	}
+	option = {
+		name = news.584.a
+		hidden_effect = {
+			if = {
+				limit = {
+					is_ai = no
+				}
+				set_country_flag = BEL_EU_victory_super_flag
+				scoped_sound_effect = TFR_se_nato_victory_2
+				scoped_play_song = "one_minute_of_silence"
+			}
+		}
+	}
+}
+news_event = {
+	id = news.540
+	title = news.540.t
+	desc = news.540.d
+	picture = GFX_USB_pos_victory_news
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = news.540.a
+		hidden_effect = {
+			if = {
+				limit = {
+					is_ai = no
+				}
+				set_country_flag = GER_second_nato_war_fascist_victory_flag
+				scoped_sound_effect = TFR_se_fascist_victory
+				scoped_play_song = "one_minute_of_silence"
+			}
+		}
+	}
+}
+news_event = {
+	id = news.539
+	title = news.539.t
+	desc = news.539.d
+	picture = GFX_USB_ei_victory_news
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = news.539.a
+		hidden_effect = {
+			if = {
+				limit = {
+					is_ai = no
+				}
+				set_country_flag = GER_second_nato_war_communist_victory_flag
+				scoped_sound_effect = TFR_se_communist_victory
+				scoped_play_song = "one_minute_of_silence"
+			}
+		}
+	}
+}
+news_event = {
+	id = news.586
+	title = news.586.t
+	desc = news.586.d
+	picture = GFX_USB_gunther_victory_news
+	is_triggered_only = yes
+	
+	major = yes
+	option = {
+		name = news.586.a
+		hidden_effect = {
+			if = {
+				limit = {
+					is_ai = no
+				}
+				set_country_flag = GER_gunther_victory_super
+				scoped_sound_effect = TFR_se_gunther_victory
+				scoped_play_song = "one_minute_of_silence"
+			}
+		}
+	}
+}
+news_event = {
+	id = news.541
+	title = news.541.t
+	desc = news.541.d
+	picture = GFX_USB_eto_victory_news
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = news.541.a
+		hidden_effect = {
+			if = {
+				limit = {
+					is_ai = no
+				}
+				set_country_flag = GER_second_nato_war_nafo_victory_flag
+				scoped_sound_effect = TFR_se_nafo_victory
+				scoped_play_song = "one_minute_of_silence"
+			}
+		}
+	}
+}
+news_event = {
+	id = news.578
+	title = news.578.t
+	desc = news.578.d
+	picture = GFX_GER_schwab_news
+	is_triggered_only = yes
+	major = yes
+	trigger = {
+	}
+	option = {
+		name = news.578.a
+		trigger = {
+			NOT = {
+				tag = GER
+			}
+		}
+		hidden_effect = {
+			if = {
+				limit = {
+					is_ai = no
+				}
+				set_country_flag = GER_schwab_victory_super
+				scoped_sound_effect = TFR_se_schwab_victory
+				scoped_play_song = "one_minute_of_silence"
+				scoped_play_song = "elegia"
+			}
+			GER = {
+				country_event = {
+					id = germany.323
+					days = 7
+				}
+			}
+		}
+	}
+	option = {
+		name = news.578.b
+		trigger = {
+			tag = GER
+		}
+		hidden_effect = {
+			if = {
+				limit = {
+					is_ai = no
+				}
+				set_country_flag = GER_schwab_victory_super
+				scoped_sound_effect = TFR_se_schwab_victory
+				scoped_play_song = "one_minute_of_silence"
+				scoped_play_song = "elegia"
+			}
+			GER = {
+				country_event = {
+					id = germany.323
+					days = 7
+				}
+			}
+		}
+	}
+}
+
+news_event = {
+	id = news.287
+	title = news.287.t
+	desc = news.287.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = news.287.a
+	}
+}
+
+news_event = {
+	id = news.227
+	title = news.227.t
+	desc = news.227.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = news.227.a
+	}
+}
+
+news_event = {
+	id = news.599
+	title = news.599.t
+	desc = news.599.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = news.599.a
+	}
+}
+
+news_event = {
+	id = news.363
+	title = news.363.t
+	desc = news.363.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = news.363.a
+	}
+}
+
+# 中美洲战争三则新闻（2026-11-07 移植）
+# 来源：TFR 工坊原件 3350890356\events\TFR_events_ZZZ_news.txt 第 4746-4819 行，逐字移植。
+# 3350890356 不在启用集内，故必须落到本工程才能生效。
+# news.322 —— NIC.3 开战
+# news.323 —— NIC 主导统一（GFX_FSLN1）
+# news.326 —— ELS 主导共和国（GFX_Bukele，贴图已复制进本工程）
+
+#Central American War
+news_event = {
+	id = news.322
+	title = news.322.t
+	desc = news.322.d
+	picture = GFX_latin_american_war1
+	is_triggered_only = yes
+	major = yes
+	trigger = {
+	}
+	option = {
+		name = news.322.a
+	}
+}
+
+#Unification of Central America
+news_event = {
+	id = news.323
+	title = news.323.t
+	desc = news.323.d
+	picture = GFX_FSLN1
+	is_triggered_only = yes
+	major = yes
+	trigger = {
+	}
+	option = {
+		name = news.323.a
+	}
+}
+
+#Unification of Central America 2
+news_event = {
+	id = news.326
+	title = news.326.t
+	desc = news.326.d
+	picture = GFX_Bukele
+	is_triggered_only = yes
+	major = yes
+	trigger = {
+	}
+	option = {
+		name = news.326.a
+	}
+}
+
+

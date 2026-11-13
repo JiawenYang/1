@@ -2,7 +2,7 @@ historical_aircraft_category = {
 	# Russia Aircraft
 	# Fighters
 	su57_decision = {
-		icon = GFX_decision_generic_aircraft
+		icon = GFX_decision_generic_air
 
 		fire_only_once = yes
 		custom_cost_trigger = {
@@ -57,7 +57,7 @@ historical_aircraft_category = {
 		}
 	}
 	mig35_decision = {
-		icon = GFX_decision_generic_aircraft
+		icon = GFX_decision_generic_air
 
 		fire_only_once = yes
 		custom_cost_trigger = {
@@ -111,7 +111,7 @@ historical_aircraft_category = {
 		}
 	}
 	su75_decision = {
-		icon = GFX_decision_generic_fighter
+		icon = GFX_decision_generic_air
 
 		fire_only_once = yes
 		custom_cost_trigger = {
@@ -167,7 +167,7 @@ historical_aircraft_category = {
 		}
 	}
 	tu160m2_decision = {
-		icon = GFX_decision_generic_aircraft
+		icon = GFX_decision_generic_air
 
 		fire_only_once = yes
 		custom_cost_trigger = {
@@ -221,7 +221,7 @@ historical_aircraft_category = {
 		}
 	}
 	il112v_decision = {
-		icon = GFX_decision_generic_aircraft
+		icon = GFX_decision_generic_air
 
 		fire_only_once = yes
 		custom_cost_trigger = {
@@ -273,8 +273,62 @@ historical_aircraft_category = {
 			base = 1000
 		}
 	}
+	su25sm3_decision = {
+		icon = GFX_decision_generic_air
+
+		fire_only_once = yes
+		custom_cost_trigger = {
+			has_air_experience > 14
+		}
+		custom_cost_text = air_xp_15
+
+		visible = {
+			original_tag = SOV
+		}
+
+		available = {
+			date > 2018.1.1
+			has_tech = gen_4_light
+			has_tech = ag_weapons_3
+			has_tech = avionics_3
+			has_tech = countermeasures_2
+			has_tech = engines_3
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision su25sm3_decision"
+			air_experience = -15
+			create_equipment_variant = {
+				name = "Su-25SM3"
+				type = small_plane_cas_airframe_2
+				parent_version = 2
+				modules = {
+					fixed_main_weapon_slot = weap_ag_cas_hardpoint_1
+					fixed_gun_slot = weap_multi_gun_3
+					fixed_auxiliary_weapon_slot_1 = weap_mp_light_hardpoint_2
+					engine_type_slot = engine_light_double_2
+					avionics_type_slot = avionics_manned_3
+					wingform_type_slot = wing_straight
+					special_slot_type_1 = spec_countermeasures_2
+					special_slot_type_2 = spec_protection_1
+					special_slot_type_3 = spec_redundant_2
+				}
+				upgrades = {
+					plane_bba_radar_upgrade = 2
+					plane_bba_engine_upgrade = 1
+				}
+				icon = "gfx/interface/technologies/SOV/AIR/Su-25SM.dds"
+				model = "SOV_small_plane_cas_airframe_2_entity"
+				design_team = mio:SOV_united_aircraft_corporation_aircraft_manufacturer
+			}
+		}
+
+		ai_will_do = {
+			base = 1000
+		}
+	}
 	f15ex_decision = {
-		icon = GFX_decision_generic_fighter
+		icon = GFX_decision_generic_air
 
 		fire_only_once = yes
 		custom_cost_trigger = {
@@ -328,7 +382,7 @@ historical_aircraft_category = {
 		}
 	}
 	b21_decision = {
-		icon = GFX_decision_generic_aircraft
+		icon = GFX_decision_generic_air
 
 		fire_only_once = yes
 		custom_cost_trigger = {
@@ -382,7 +436,7 @@ historical_aircraft_category = {
 		}
 	}
 	ac130j_decision = {
-		icon = GFX_decision_generic_aircraft
+		icon = GFX_decision_generic_air
 
 		fire_only_once = yes
 		custom_cost_trigger = {
@@ -436,7 +490,7 @@ historical_aircraft_category = {
 		}
 	}
 	j35_decision = {
-		icon = GFX_decision_generic_fighter
+		icon = GFX_decision_generic_air
 
 		fire_only_once = yes
 		custom_cost_trigger = {
@@ -492,7 +546,7 @@ historical_aircraft_category = {
 		}
 	}
 	j36_decision = {
-		icon = GFX_decision_generic_fighter
+		icon = GFX_decision_generic_air
 
 		fire_only_once = yes
 		custom_cost_trigger = {
@@ -548,7 +602,7 @@ historical_aircraft_category = {
 		}
 	}
 	kj600_decision = {
-		icon = GFX_decision_generic_aircraft
+		icon = GFX_decision_generic_air
 
 		fire_only_once = yes
 		custom_cost_trigger = {
@@ -600,7 +654,7 @@ historical_aircraft_category = {
 		}
 	}
 	attack11_decision = {
-		icon = GFX_decision_generic_aircraft
+		icon = GFX_decision_generic_air
 
 		fire_only_once = yes
 		custom_cost_trigger = {
@@ -650,7 +704,7 @@ historical_aircraft_category = {
 		}
 	}
 	j15t_decision = {
-		icon = GFX_decision_generic_fighter
+		icon = GFX_decision_generic_air
 
 		fire_only_once = yes
 		custom_cost_trigger = {
@@ -705,7 +759,7 @@ historical_aircraft_category = {
 		}
 	}
 	wz7_decision = {
-		icon = GFX_decision_generic_aircraft
+		icon = GFX_decision_generic_air
 
 		fire_only_once = yes
 		custom_cost_trigger = {
@@ -753,7 +807,7 @@ historical_aircraft_category = {
 		}
 	}
 	gripen_e_decision = {
-		icon = GFX_decision_generic_fighter
+		icon = GFX_decision_generic_air
 
 		fire_only_once = yes
 		custom_cost_trigger = {
@@ -808,7 +862,7 @@ historical_aircraft_category = {
 		}
 	}
 	rafale_f4_decision = {
-		icon = GFX_decision_generic_fighter
+		icon = GFX_decision_generic_air
 
 		fire_only_once = yes
 		custom_cost_trigger = {
@@ -864,7 +918,7 @@ historical_aircraft_category = {
 		}
 	}
 	sirtap_decision = {
-		icon = GFX_decision_generic_fighter
+		icon = GFX_decision_generic_air
 
 		fire_only_once = yes
 		custom_cost_trigger = {
@@ -1020,7 +1074,7 @@ historical_aircraft_category = {
 		}
 	}
 	a330_aewc_decision = {
-		icon = GFX_decision_generic_aircraft
+		icon = GFX_decision_generic_air
 
 		fire_only_once = yes
 		custom_cost_trigger = {
@@ -1215,7 +1269,7 @@ historical_aircraft_category = {
 		}
 	}
 	kf21_decision = {
-		icon = GFX_decision_generic_aircraft
+		icon = GFX_decision_generic_air
 
 		fire_only_once = yes
 		custom_cost_trigger = {
@@ -1271,7 +1325,7 @@ historical_aircraft_category = {
 		}
 	}
 	kc390_decision = {
-		icon = GFX_decision_generic_aircraft
+		icon = GFX_decision_generic_air
 
 		fire_only_once = yes
 		custom_cost_trigger = {
@@ -1325,7 +1379,7 @@ historical_aircraft_category = {
 		}
 	}
 	jf17_block3_decision = {
-		icon = GFX_decision_generic_aircraft
+		icon = GFX_decision_generic_air
 
 		fire_only_once = yes
 		custom_cost_trigger = {
@@ -1385,7 +1439,7 @@ historical_aircraft_category = {
 		}
 	}
 	lca_tejas_mk2_decision = {
-		icon = GFX_decision_generic_aircraft
+		icon = GFX_decision_generic_air
 
 		fire_only_once = yes
 		custom_cost_trigger = {
@@ -1440,7 +1494,7 @@ historical_aircraft_category = {
 		}
 	}
 	hurjet_decision = {
-		icon = GFX_decision_generic_aircraft
+		icon = GFX_decision_generic_air
 
 		fire_only_once = yes
 		custom_cost_trigger = {
@@ -1495,7 +1549,7 @@ historical_aircraft_category = {
 		}
 	}
 	akinci_decision = {
-		icon = GFX_decision_generic_aircraft
+		icon = GFX_decision_generic_air
 
 		fire_only_once = yes
 		custom_cost_trigger = {
@@ -1549,7 +1603,7 @@ historical_aircraft_category = {
 		}
 	}
 	h6n_decision = {
-		icon = GFX_decision_generic_aircraft
+		icon = GFX_decision_generic_air
 
 		fire_only_once = yes
 		custom_cost_trigger = {
@@ -1601,7 +1655,7 @@ historical_aircraft_category = {
 		}
 	}
 	h6j_decision = {
-		icon = GFX_decision_generic_aircraft
+		icon = GFX_decision_generic_air
 
 		fire_only_once = yes
 		custom_cost_trigger = {
@@ -1652,7 +1706,7 @@ historical_aircraft_category = {
 		}
 	}
 	tu95msm_decision = {
-		icon = GFX_decision_generic_aircraft
+		icon = GFX_decision_generic_air
 
 		fire_only_once = yes
 		custom_cost_trigger = {
@@ -1703,7 +1757,7 @@ historical_aircraft_category = {
 		}
 	}
 	su34m_decision = {
-		icon = GFX_decision_generic_aircraft
+		icon = GFX_decision_generic_air
 
 		fire_only_once = yes
 		custom_cost_trigger = {
@@ -1756,7 +1810,7 @@ historical_aircraft_category = {
 		}
 	}
 	e7_usaf_decision = {
-		icon = GFX_decision_generic_aircraft
+		icon = GFX_decision_generic_air
 
 		fire_only_once = yes
 		custom_cost_trigger = {
@@ -1808,7 +1862,7 @@ historical_aircraft_category = {
 	}
 
 	tfx_kaan_decision = {
-		icon = GFX_decision_generic_aircraft
+		icon = GFX_decision_generic_air
 
 		fire_only_once = yes
 		custom_cost_trigger = {

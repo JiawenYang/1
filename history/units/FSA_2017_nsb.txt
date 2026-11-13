@@ -309,7 +309,7 @@ units = {
 		force_equipment_variants = { infantry_weapons_1 = { owner = "SOV" } }
 		force_equipment_variants = { cnc_equipment_1 = { owner = "USA" } }
 		force_equipment_variants = { util_vehicle_1 = { owner = "FSA" } }
-		force_equipment_variants = { Anti_tank_0 = { owner = "SOV" } }
+		force_equipment_variants = { Anti_tank_1 = { owner = "SOV" } }
 		force_equipment_variants = { Heavy_Anti_tank_1 = { owner = "USA" } }
 		force_equipment_variants = { Anti_Air_0 = { owner = "SOV" } }
 	}
@@ -328,10 +328,10 @@ units = {
 		force_equipment_variants = { infantry_weapons_1 = { owner = "SOV" } }
 		force_equipment_variants = { cnc_equipment_1 = { owner = "TUR" } }
 		force_equipment_variants = { util_vehicle_1 = { owner = "FSA" } }
-		force_equipment_variants = { Anti_tank_0 = { owner = "SOV" } }
+		force_equipment_variants = { Anti_tank_1 = { owner = "SOV" } }
 		force_equipment_variants = { Heavy_Anti_tank_1 = { owner = "USA" } }
 		force_equipment_variants = { Anti_Air_0 = { owner = "SOV" } }
-		force_equipment_variants = { SP_R_arty_0 = { owner = "SOV" } }
+		force_equipment_variants = { SP_R_arty_1 = { owner = "SOV" } }
 	}
 	division = {
 		#name = "Northern Division" #2000
@@ -346,10 +346,10 @@ units = {
 		force_equipment_variants = { infantry_weapons_1 = { owner = "SOV" } }
 		force_equipment_variants = { cnc_equipment_1 = { owner = "TUR" } }
 		force_equipment_variants = { util_vehicle_1 = { owner = "FSA" } }
-		force_equipment_variants = { Anti_tank_0 = { owner = "SOV" } }
+		force_equipment_variants = { Anti_tank_1 = { owner = "SOV" } }
 		force_equipment_variants = { Heavy_Anti_tank_1 = { owner = "USA" } }
 		force_equipment_variants = { Anti_Air_0 = { owner = "SOV" } }
-		force_equipment_variants = { SP_R_arty_0 = { owner = "SOV" } }
+		force_equipment_variants = { SP_R_arty_1 = { owner = "SOV" } }
 	}
 	division = {
 		#name = "Mountain Hawks Brigade" #2000
@@ -364,10 +364,10 @@ units = {
 		force_equipment_variants = { infantry_weapons_1 = { owner = "SOV" } }
 		force_equipment_variants = { cnc_equipment_1 = { owner = "TUR" } }
 		force_equipment_variants = { util_vehicle_1 = { owner = "FSA" } }
-		force_equipment_variants = { Anti_tank_0 = { owner = "SOV" } }
+		force_equipment_variants = { Anti_tank_1 = { owner = "SOV" } }
 		force_equipment_variants = { Heavy_Anti_tank_1 = { owner = "USA" } }
 		force_equipment_variants = { Anti_Air_0 = { owner = "SOV" } }
-		force_equipment_variants = { SP_R_arty_0 = { owner = "SOV" } }
+		force_equipment_variants = { SP_R_arty_1 = { owner = "SOV" } }
 	}
 
 	##Southern Desert Groups
@@ -387,8 +387,8 @@ units = {
 		force_equipment_variants = { Anti_tank_1 = { owner = "CHI" } }
 		force_equipment_variants = { Heavy_Anti_tank_1 = { owner = "USA" } }
 		force_equipment_variants = { Anti_Air_1 = { owner = "USA" } }
-		force_equipment_variants = { SP_R_arty_0 = { owner = "SOV" } }
-		force_equipment_variants = { medium_tank_chassis_0 = { owner = "SOV" version_name = "T-55" } }
+		force_equipment_variants = { SP_R_arty_1 = { owner = "SOV" } }
+		force_equipment_variants = { medium_tank_chassis_0 = { owner = "SOV" version_name = "T-55A" } }
 	}
 	division = {
 		#name = "Lions of the East Army" #1500
@@ -406,8 +406,8 @@ units = {
 		force_equipment_variants = { Anti_tank_1 = { owner = "CHI" } }
 		force_equipment_variants = { Heavy_Anti_tank_1 = { owner = "USA" } }
 		force_equipment_variants = { Anti_Air_1 = { owner = "USA" } }
-		force_equipment_variants = { SP_R_arty_0 = { owner = "SOV" } }
-		force_equipment_variants = { medium_tank_chassis_0 = { owner = "SOV" version_name = "T-55" } }
+		force_equipment_variants = { SP_R_arty_1 = { owner = "SOV" } }
+		force_equipment_variants = { medium_tank_chassis_0 = { owner = "SOV" version_name = "T-55A" } }
 	}
 	division = {
 		#name = "Forces of Martyr Ahmad al-Abdo" #2500
@@ -477,7 +477,7 @@ units = {
 		force_equipment_variants = { Anti_tank_1 = { owner = "SOV" } }
 		force_equipment_variants = { Heavy_Anti_tank_1 = { owner = "SOV" } }
 		force_equipment_variants = { Anti_Air_0 = { owner = "SOV" } }
-		force_equipment_variants = { SP_R_arty_0 = { owner = "SOV" } }
+		force_equipment_variants = { SP_R_arty_1 = { owner = "SOV" } }
 		force_equipment_variants = { medium_tank_chassis_0 = { owner = "SOV" version_name = "T-62" } }
 	}
 
@@ -602,19 +602,21 @@ instant_effect = {
 
 
 	add_equipment_to_stockpile = {
-		variant_name = "Humvee"
+		variant_name = "Humwee"
 		type = util_vehicle_3	#Humwee
 		amount = 40
 		producer = USA
 	}
 
 	add_equipment_to_stockpile = {
+		variant_name = "Technicals"
 		type = util_vehicle_1	#Technicals
 		producer = FSA
 		amount = 1900
 	}
 
 	add_equipment_to_stockpile = {
+		variant_name = "Technicals"
 		type = util_vehicle_1	#Technicals
 		producer = FSA
 		amount = 900
@@ -633,21 +635,21 @@ instant_effect = {
 	}
 
 	add_equipment_to_stockpile = {
-		variant_name = "AK-47"
+		variant_name = "AKs"
 		type = infantry_weapons_1			#AKs
 		amount = 12000
 		producer = SOV
 	}
 
 	add_equipment_to_stockpile = {
-		variant_name = "AK-47"
+		variant_name = "AKs"
 		type = infantry_weapons_1			#AKs
 		amount = 2500
 		producer = SOV
 	}
 
 	add_equipment_to_stockpile = {
-		variant_name = "AK-47"
+		variant_name = "AKs"
 		type = infantry_weapons_1			#AKs
 		amount = 1000
 		producer = SOV
@@ -673,7 +675,7 @@ instant_effect = {
 	}
 
 	add_equipment_to_stockpile = {
-	variant_name = "M4"
+	variant_name = "M4 SOPMOD Block I"
 	type = infantry_weapons_4 #M4
 	amount = 600
 	producer = USA
@@ -687,15 +689,15 @@ instant_effect = {
 	}
 
 	add_equipment_to_stockpile = {
-	variant_name = "AK-47"
-	type = infantry_weapons_2 #AK-47（封存）
+	variant_name = "AKM"
+	type = infantry_weapons_1 #AK-47（封存）
 	amount = 100000
 	producer = SOV
 	}
 
 	#缴获封存坦克
 	add_equipment_to_stockpile = {
-	variant_name = "T-55"
+	variant_name = "T-55A"
 	type = medium_tank_chassis_0 #T-55（缴获封存）
 	amount = 60
 	producer = SOV
@@ -711,8 +713,8 @@ instant_effect = {
 	#ATGM
 
 	add_equipment_to_stockpile = {
-	variant_name = "MILAN"
-	type = Anti_tank_1 #MILAN
+	variant_name = "Milan 2"
+	type = Anti_tank_2 #MILAN
 	amount = 170
 	producer = FRA
 	}
@@ -727,7 +729,7 @@ instant_effect = {
 	producer = FSA
 	}
 	add_equipment_to_stockpile = {
-	variant_name = "Metis-M"
+	variant_name = "9K115-2 Metis-M"
 	type = Anti_tank_2 #9K115-2 Metis-M
 	amount = 40
 	producer = SOV
@@ -739,8 +741,8 @@ instant_effect = {
 	producer = USA
 	}
 	add_equipment_to_stockpile = {
-	variant_name = "Kornet"
-	type = Heavy_Anti_tank_2 #Kornet
+	variant_name = "9K135 Kornet"
+    type = Anti_tank_2 #Kornet
 	amount = 40
 	producer = SOV
 	}
@@ -748,28 +750,28 @@ instant_effect = {
 	#MANPADS
 
 	add_equipment_to_stockpile = {
-	variant_name = "Strela-2"
+	variant_name = "SA7"
 	type = Anti_Air_0 #SA7
 	amount = 150
 	producer = SOV
 	}
 
 	add_equipment_to_stockpile = {
-	variant_name = "SA-16 Igla"
+	variant_name = "SA16"
 	type = Anti_Air_1 #SA16
 	amount = 50
 	producer = SOV
 	}
 
 	add_equipment_to_stockpile = {
-	variant_name = "SA-24 Igla-S"
+	variant_name = "SA24"
 	type = Anti_Air_2 #SA24
 	amount = 25 #50
 	producer = SOV
 	}
 
 	add_equipment_to_stockpile = {
-	variant_name = "FN-6"
+	variant_name = "fn-6"
 	type = Anti_Air_2 #fn-6
 	amount = 40 #120
 	producer = FSA

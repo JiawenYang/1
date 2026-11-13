@@ -1,0 +1,808 @@
+# ============================================================================
+#  欧陆战争（ZZZ European War）—— 效果库（本工程原创）
+#
+#  分层：① 开战链  ② 参战方  ③ 停战结算与州归属  ④ 双向联动
+#  写法依据：
+#    · GAW 协作政府：common/scripted_effects/ZZZ_gaw_collaboration_effects.txt
+#    · MEW 结算：common/on_actions/on_actions_ZZZ_peace.txt:356-459
+#    · 本工程既有欧洲战争：common/scripted_effects/DSW_SOV_campaign_effects.txt:643-824
+#      （只借用其 add_to_war / every_country 写法，不复用其旗标，避免双结算）
+#
+#  命名空间：事件 zzz_eur.*；效果与旗标 ZZZ_eur_*
+#  互斥：DSW_SOV_european_war_started 存在时本链路不启动（见决议 visible）。
+#
+#  参战方判定口径：
+#    俄方（CSTO 侧） = SOV 本身 + 与 SOV 同阵营者 + BLR（若尚未入阵营则拉入）
+#    西方（NATO 侧） = 被宣战方所在阵营全体 + 被宣战方本身
+#
+#  州归属数据来源：mod/1 与 MD 基座 history/states 实取
+#    EST 1012,105,106,1074   LAT 1013,1058,107,108   LIT 1043,1044,109,110
+#    POL 1014,1098,111,112,113,114,115,116,433,474,625,626,628
+#    BLR 1092,1093,1094,702,703,704
+#    UKR 1075,669,693,1030,1076,1085,1086,1087,1088,1089,1090,1091,1110,1111,333,335,694,695,696,697,698,699,700,701
+# ============================================================================
+
+# ----------------------------------------------------------------------------
+# ① 开战：ROOT = 发起方（SOV）
+#   主对手按 美国 → 德国 → 法国 → 英国 的次序选定（首个存在且已入阵营者优先），
+#   对该国 declare_war_on，其阵营成员由引擎 call-to-war 带入；
+#   SOV 侧的阵营成员用 add_to_war 兜底拉入，与 DSW 的写法一致。
+# ----------------------------------------------------------------------------
+ZZZ_eur_begin_war = {
+	if = {
+		limit = {
+			NOT = { has_global_flag = ZZZ_eur_war_ongoing }
+			NOT = { has_global_flag = ZZZ_eur_war_resolved }
+			NOT = { has_global_flag = DSW_SOV_european_war_started }
+		}
+		set_global_flag = ZZZ_eur_war_ongoing
+		set_global_flag = ZZZ_eur_war_begins
+		log = "[GetDateText]: ZZZ_eur_war_ongoing"
+
+		# ---- 主对手：美国 ----
+		if = {
+			limit = {
+				country_exists = USA
+				USA = {
+					is_in_faction = yes
+					NOT = { is_in_faction_with = ROOT }
+				}
+			}
+			USA = { set_country_flag = ZZZ_eur_nato_participant }
+			USA = { set_country_flag = ZZZ_eur_nato_leader }
+			declare_war_on = {
+				target = USA
+				type = annex_everything
+			}
+			every_country = {
+				limit = {
+					is_in_faction_with = USA
+					NOT = { tag = ROOT }
+				}
+				set_country_flag = ZZZ_eur_nato_participant
+			}
+			every_country = {
+				limit = {
+					is_in_faction_with = ROOT
+					NOT = { tag = ROOT }
+					NOT = { has_war_with = USA }
+				}
+				add_to_war = {
+					targeted_alliance = ROOT
+					enemy = USA
+					hostility_reason = asked_to_join
+					single_target_only = no
+				}
+			}
+		}
+		# ---- 主对手：德国 ----
+		else_if = {
+			limit = {
+				country_exists = GER
+				GER = {
+					is_in_faction = yes
+					NOT = { is_in_faction_with = ROOT }
+				}
+			}
+			GER = { set_country_flag = ZZZ_eur_nato_participant }
+			GER = { set_country_flag = ZZZ_eur_nato_leader }
+			declare_war_on = {
+				target = GER
+				type = annex_everything
+			}
+			every_country = {
+				limit = {
+					is_in_faction_with = GER
+					NOT = { tag = ROOT }
+				}
+				set_country_flag = ZZZ_eur_nato_participant
+			}
+			every_country = {
+				limit = {
+					is_in_faction_with = ROOT
+					NOT = { tag = ROOT }
+					NOT = { has_war_with = GER }
+				}
+				add_to_war = {
+					targeted_alliance = ROOT
+					enemy = GER
+					hostility_reason = asked_to_join
+					single_target_only = no
+				}
+			}
+		}
+		# ---- 主对手：法国 ----
+		else_if = {
+			limit = {
+				country_exists = FRA
+				FRA = {
+					is_in_faction = yes
+					NOT = { is_in_faction_with = ROOT }
+				}
+			}
+			FRA = { set_country_flag = ZZZ_eur_nato_participant }
+			FRA = { set_country_flag = ZZZ_eur_nato_leader }
+			declare_war_on = {
+				target = FRA
+				type = annex_everything
+			}
+			every_country = {
+				limit = {
+					is_in_faction_with = FRA
+					NOT = { tag = ROOT }
+				}
+				set_country_flag = ZZZ_eur_nato_participant
+			}
+			every_country = {
+				limit = {
+					is_in_faction_with = ROOT
+					NOT = { tag = ROOT }
+					NOT = { has_war_with = FRA }
+				}
+				add_to_war = {
+					targeted_alliance = ROOT
+					enemy = FRA
+					hostility_reason = asked_to_join
+					single_target_only = no
+				}
+			}
+		}
+		# ---- 主对手：英国 ----
+		else_if = {
+			limit = {
+				country_exists = ENG
+				ENG = {
+					is_in_faction = yes
+					NOT = { is_in_faction_with = ROOT }
+				}
+			}
+			ENG = { set_country_flag = ZZZ_eur_nato_participant }
+			ENG = { set_country_flag = ZZZ_eur_nato_leader }
+			declare_war_on = {
+				target = ENG
+				type = annex_everything
+			}
+			every_country = {
+				limit = {
+					is_in_faction_with = ENG
+					NOT = { tag = ROOT }
+				}
+				set_country_flag = ZZZ_eur_nato_participant
+			}
+			every_country = {
+				limit = {
+					is_in_faction_with = ROOT
+					NOT = { tag = ROOT }
+					NOT = { has_war_with = ENG }
+				}
+				add_to_war = {
+					targeted_alliance = ROOT
+					enemy = ENG
+					hostility_reason = asked_to_join
+					single_target_only = no
+				}
+			}
+		}
+		# ---- 无任何西方目标：不开战，回滚旗标 ----
+		else = {
+			clr_global_flag = ZZZ_eur_war_ongoing
+			clr_global_flag = ZZZ_eur_war_begins
+			log = "[GetDateText]: ZZZ_eur_war aborted: no western target"
+		}
+	}
+}
+
+# ----------------------------------------------------------------------------
+# ② 参战：标记双方参战方（在开战后调用，也可由 on_daily 补标）
+#    ROOT = 发起方（SOV）
+# ----------------------------------------------------------------------------
+ZZZ_eur_mark_participants = {
+	if = {
+		limit = { has_global_flag = ZZZ_eur_war_ongoing }
+		ROOT = { set_country_flag = ZZZ_eur_csto_participant }
+		# 俄方：与 ROOT 同阵营者
+		every_country = {
+			limit = {
+				NOT = { tag = ROOT }
+				is_in_faction_with = ROOT
+			}
+			set_country_flag = ZZZ_eur_csto_participant
+		}
+		# 白俄罗斯：未入阵营则并入 ROOT 阵营，再标记
+		if = {
+			limit = {
+				country_exists = BLR
+				BLR = { NOT = { is_in_faction_with = ROOT } }
+			}
+			BLR = {
+				if = {
+					limit = { is_in_faction = yes }
+					leave_faction = yes
+				}
+			}
+			ROOT = { add_to_faction = BLR }
+			BLR = { set_country_flag = ZZZ_eur_csto_participant }
+		}
+		# 西方：当前与 ROOT 交战的非俄方国家
+		every_country = {
+			limit = {
+				NOT = { tag = ROOT }
+				has_war_with = ROOT
+				NOT = { has_country_flag = ZZZ_eur_csto_participant }
+			}
+			set_country_flag = ZZZ_eur_nato_participant
+		}
+	}
+}
+
+# ----------------------------------------------------------------------------
+# ③ 结算前置：对全部参战方互相白和（只碰双方参战旗标持有者）
+#    写法参照 DSW_SOV_conclude_european_war:792-824
+# ----------------------------------------------------------------------------
+ZZZ_eur_white_peace_all = {
+	every_country = {
+		limit = {
+			OR = {
+				has_country_flag = ZZZ_eur_csto_participant
+				has_country_flag = ZZZ_eur_nato_participant
+				# 上合合体后中国一侧（含东协成员与俄罗斯）
+				has_country_flag = ZZZ_sco_merged_identity
+			}
+		}
+		every_enemy_country = {
+			limit = {
+				OR = {
+					has_country_flag = ZZZ_eur_csto_participant
+					has_country_flag = ZZZ_eur_nato_participant
+					# 上合合体后中国一侧（含东协成员与俄罗斯）
+					has_country_flag = ZZZ_sco_merged_identity
+				}
+			}
+			white_peace = PREV
+		}
+	}
+}
+
+# ----------------------------------------------------------------------------
+# ③-a 北约胜利结算：波罗的海三国与波兰脱离俄方控制并归还核心州，
+#      乌克兰恢复独立，随后全员白和。
+#      调用者 ROOT = SOV（战败方）。
+# ----------------------------------------------------------------------------
+ZZZ_eur_restore_baltic_states = {
+	# 爱沙尼亚：1012 / 105 / 106 / 1074
+	if = { limit = { country_exists = EST } EST = { add_state_core = 1012 } }
+	if = { limit = { country_exists = EST } EST = { add_state_core = 105 } }
+	if = { limit = { country_exists = EST } EST = { add_state_core = 106 } }
+	if = { limit = { country_exists = EST } EST = { add_state_core = 1074 } }
+	if = {
+		limit = { country_exists = EST 1012 = { NOT = { is_owned_by = EST } } }
+		1012 = { transfer_state_to = EST }
+	}
+	if = {
+		limit = { country_exists = EST 105 = { NOT = { is_owned_by = EST } } }
+		105 = { transfer_state_to = EST }
+	}
+	if = {
+		limit = { country_exists = EST 106 = { NOT = { is_owned_by = EST } } }
+		106 = { transfer_state_to = EST }
+	}
+	if = {
+		limit = { country_exists = EST 1074 = { NOT = { is_owned_by = EST } } }
+		1074 = { transfer_state_to = EST }
+	}
+	# 拉脱维亚：1013 / 1058 / 107 / 108
+	if = { limit = { country_exists = LAT } LAT = { add_state_core = 1013 } }
+	if = { limit = { country_exists = LAT } LAT = { add_state_core = 1058 } }
+	if = { limit = { country_exists = LAT } LAT = { add_state_core = 107 } }
+	if = { limit = { country_exists = LAT } LAT = { add_state_core = 108 } }
+	if = {
+		limit = { country_exists = LAT 1013 = { NOT = { is_owned_by = LAT } } }
+		1013 = { transfer_state_to = LAT }
+	}
+	if = {
+		limit = { country_exists = LAT 1058 = { NOT = { is_owned_by = LAT } } }
+		1058 = { transfer_state_to = LAT }
+	}
+	if = {
+		limit = { country_exists = LAT 107 = { NOT = { is_owned_by = LAT } } }
+		107 = { transfer_state_to = LAT }
+	}
+	if = {
+		limit = { country_exists = LAT 108 = { NOT = { is_owned_by = LAT } } }
+		108 = { transfer_state_to = LAT }
+	}
+	# 立陶宛：1043 / 1044 / 109 / 110
+	if = { limit = { country_exists = LIT } LIT = { add_state_core = 1043 } }
+	if = { limit = { country_exists = LIT } LIT = { add_state_core = 1044 } }
+	if = { limit = { country_exists = LIT } LIT = { add_state_core = 109 } }
+	if = { limit = { country_exists = LIT } LIT = { add_state_core = 110 } }
+	if = {
+		limit = { country_exists = LIT 1043 = { NOT = { is_owned_by = LIT } } }
+		1043 = { transfer_state_to = LIT }
+	}
+	if = {
+		limit = { country_exists = LIT 1044 = { NOT = { is_owned_by = LIT } } }
+		1044 = { transfer_state_to = LIT }
+	}
+	if = {
+		limit = { country_exists = LIT 109 = { NOT = { is_owned_by = LIT } } }
+		109 = { transfer_state_to = LIT }
+	}
+	if = {
+		limit = { country_exists = LIT 110 = { NOT = { is_owned_by = LIT } } }
+		110 = { transfer_state_to = LIT }
+	}
+}
+
+ZZZ_eur_settle_nato_victory = {
+	if = {
+		limit = {
+			has_global_flag = ZZZ_eur_war_ongoing
+			NOT = { has_global_flag = ZZZ_eur_war_resolved }
+		}
+		# 已被吞并的东欧国家：先借 release_puppet 复国
+		# 写法参照 DSW_SOV_campaign_effects.txt:1089-1102（is_core_of 判定 + release_puppet）
+		if = {
+			limit = {
+				NOT = { country_exists = EST }
+				any_owned_state = { is_core_of = EST }
+			}
+			release_puppet = EST
+		}
+		if = {
+			limit = {
+				NOT = { country_exists = LAT }
+				any_owned_state = { is_core_of = LAT }
+			}
+			release_puppet = LAT
+		}
+		if = {
+			limit = {
+				NOT = { country_exists = LIT }
+				any_owned_state = { is_core_of = LIT }
+			}
+			release_puppet = LIT
+		}
+		if = {
+			limit = {
+				NOT = { country_exists = POL }
+				any_owned_state = { is_core_of = POL }
+			}
+			release_puppet = POL
+		}
+		if = {
+			limit = {
+				NOT = { country_exists = UKR }
+				any_owned_state = { is_core_of = UKR }
+			}
+			release_puppet = UKR
+		}
+		# 波罗的海三国：先解除傀儡（release_puppet 由宗主国执行）
+		if = {
+			limit = { country_exists = EST EST = { is_puppet_of = SOV } }
+			release_puppet = EST
+		}
+		if = {
+			limit = { country_exists = LAT LAT = { is_puppet_of = SOV } }
+			release_puppet = LAT
+		}
+		if = {
+			limit = { country_exists = LIT LIT = { is_puppet_of = SOV } }
+			release_puppet = LIT
+		}
+		# 波兰：脱离俄方，归还核心州
+		if = {
+			limit = { country_exists = POL POL = { is_puppet_of = SOV } }
+			release_puppet = POL
+		}
+		if = {
+			limit = { country_exists = POL }
+			POL = { add_state_core = 1014 }
+			POL = { add_state_core = 1098 }
+			POL = { add_state_core = 111 }
+			POL = { add_state_core = 112 }
+			POL = { add_state_core = 113 }
+			POL = { add_state_core = 114 }
+			POL = { add_state_core = 115 }
+			POL = { add_state_core = 116 }
+			POL = { add_state_core = 433 }
+			POL = { add_state_core = 474 }
+			POL = { add_state_core = 625 }
+			POL = { add_state_core = 626 }
+			POL = { add_state_core = 628 }
+			if = { limit = { 1014 = { NOT = { is_owned_by = POL } } } 1014 = { transfer_state_to = POL } }
+			if = { limit = { 1098 = { NOT = { is_owned_by = POL } } } 1098 = { transfer_state_to = POL } }
+			if = { limit = { 111 = { NOT = { is_owned_by = POL } } } 111 = { transfer_state_to = POL } }
+			if = { limit = { 112 = { NOT = { is_owned_by = POL } } } 112 = { transfer_state_to = POL } }
+			if = { limit = { 113 = { NOT = { is_owned_by = POL } } } 113 = { transfer_state_to = POL } }
+			if = { limit = { 114 = { NOT = { is_owned_by = POL } } } 114 = { transfer_state_to = POL } }
+			if = { limit = { 115 = { NOT = { is_owned_by = POL } } } 115 = { transfer_state_to = POL } }
+			if = { limit = { 116 = { NOT = { is_owned_by = POL } } } 116 = { transfer_state_to = POL } }
+			if = { limit = { 433 = { NOT = { is_owned_by = POL } } } 433 = { transfer_state_to = POL } }
+			if = { limit = { 474 = { NOT = { is_owned_by = POL } } } 474 = { transfer_state_to = POL } }
+			if = { limit = { 625 = { NOT = { is_owned_by = POL } } } 625 = { transfer_state_to = POL } }
+			if = { limit = { 626 = { NOT = { is_owned_by = POL } } } 626 = { transfer_state_to = POL } }
+			if = { limit = { 628 = { NOT = { is_owned_by = POL } } } 628 = { transfer_state_to = POL } }
+		}
+		# 乌克兰：脱离俄方控制
+		if = {
+			limit = { country_exists = UKR UKR = { is_puppet_of = SOV } }
+			release_puppet = UKR
+		}
+		# 波罗的海核心州归还
+		ZZZ_eur_restore_baltic_states = yes
+		# 全员白和
+		ZZZ_eur_white_peace_all = yes
+		# 白和完成后再拆回合体（撤通行、清身份旗标）
+		ZZZ_sco_split = yes
+		# 白和已由本结算（on_capitulation 钩子进入）当场完成，不再置无效的 skip_default_capitulation
+		set_global_flag = ZZZ_eur_nato_victory
+		ZZZ_eur_clear_participants = yes
+		clr_global_flag = ZZZ_eur_war_ongoing
+		set_global_flag = ZZZ_eur_war_resolved
+		log = "[GetDateText]: ZZZ_eur_nato_victory"
+		every_country = {
+			limit = { is_ai = no }
+			news_event = { id = zzz_eur.2 days = 1 }
+		}
+	}
+}
+
+# ----------------------------------------------------------------------------
+# V4 党务重排：仅在俄罗斯赢下欧陆战争后执行（2017 开局不做任何改动）
+# ----------------------------------------------------------------------------
+ZZZ_eur_settle_v4_governments = {
+	if = {
+		limit = { country_exists = POL }
+		POL = {
+			set_popularities = {
+				democratic = 37.7
+				fascism = 0
+				communism = 43.3
+				neutrality = 17
+				nationalist = 2
+			}
+			set_variable = { party_pop_elect_array^1 = 0 }
+			set_variable = { party_pop_elect_array^6 = 0.511 }
+			set_variable = { party_pop_elect_array^2 = 0.36 }
+			set_variable = { party_pop_elect_array^14 = 0.081 }
+			set_variable = { party_pop_elect_array^20 = 0.01 }
+			set_variable = { party_pop_elect_array^15 = 0.035 }
+			set_variable = { party_pop_array^1 = 0 }
+			set_variable = { party_pop_array^2 = 0.285 }
+			set_variable = { party_pop_array^3 = 0.068 }
+			set_variable = { party_pop_array^5 = 0.011 }
+			set_variable = { party_pop_array^6 = 0.423 }
+			set_variable = { party_pop_array^14 = 0.086 }
+			set_variable = { party_pop_array^15 = 0.057 }
+			set_variable = { party_pop_array^18 = 0.041 }
+			set_variable = { party_pop_array^16 = 0.023 }
+			set_variable = { party_pop_array^20 = 0.006 }
+			set_temp_variable = { rul_party_temp = 6 }
+			set_temp_variable = { col_one = 14 }
+			set_temp_variable = { disable_elections = 0 }
+			change_ruling_party_effect = yes
+			set_cosmetic_tag = POL_democratic
+		}
+	}
+	if = {
+		limit = { country_exists = HUN }
+		HUN = {
+			set_popularities = {
+				democratic = 25.6
+				communism = 65.1
+				fascism = 0.0
+				neutrality = 5.3
+				nationalist = 4.0
+			}
+			set_variable = { party_pop_array^6 = 0.449 }
+			set_variable = { party_pop_array^7 = 0.202 }
+			set_variable = { party_pop_array^14 = 0 }
+			set_temp_variable = { rul_party_temp = 6 }
+			set_temp_variable = { disable_elections = 0 }
+			change_ruling_party_effect = yes
+			set_cosmetic_tag = HUN_neutrality
+		}
+	}
+	if = {
+		limit = { country_exists = SLO }
+		SLO = {
+			set_popularities = {
+				democratic = 46.7
+				communism = 12.7
+				fascism = 0.0
+				neutrality = 21.3
+				nationalist = 19.3
+			}
+			set_variable = { party_pop_array^1 = 0 }
+			set_variable = { party_pop_array^6 = 0.127 }
+		}
+	}
+}
+
+# ----------------------------------------------------------------------------
+# ③-b 俄方（CSTO）胜利结算：波罗的海三国、波兰、乌克兰转为 SOV 傀儡，
+#      州归属保持原状（本就归原主），随后按“是否联动”分两种白和范围。
+#      调用者 ROOT = SOV（战胜方）。
+#      判负触发点：柏林（州 45）被集安一方控制（见 ZZZ_europe_war_on_actions.txt 的 on_daily）。
+# ----------------------------------------------------------------------------
+ZZZ_eur_settle_csto_victory = {
+	if = {
+		limit = {
+			has_global_flag = ZZZ_eur_war_ongoing
+			NOT = { has_global_flag = ZZZ_eur_war_resolved }
+		}
+		if = {
+			limit = { country_exists = EST NOT = { EST = { is_puppet_of = SOV } } }
+			puppet = EST
+		}
+		if = {
+			limit = { country_exists = LAT NOT = { LAT = { is_puppet_of = SOV } } }
+			puppet = LAT
+		}
+		if = {
+			limit = { country_exists = LIT NOT = { LIT = { is_puppet_of = SOV } } }
+			puppet = LIT
+		}
+		if = {
+			limit = { country_exists = POL NOT = { POL = { is_puppet_of = SOV } } }
+			puppet = POL
+		}
+		if = {
+			limit = { country_exists = UKR NOT = { UKR = { is_puppet_of = SOV } } }
+			puppet = UKR
+		}
+		# V4 党务重排：俄方胜利后重设东欧国家政权
+		ZZZ_eur_settle_v4_governments = yes
+		# 白和范围（精确到阵营名单，不用“所有与某国交战的国家”宽口径）
+		if = {
+			limit = {
+				# 联动判定：东协（中国）与集安在同一场战争中，或两国已同阵营
+				OR = {
+					AND = {
+						country_exists = USA
+						SOV = { has_war_with = USA }
+						CHI = { has_war_with = USA }
+					}
+					AND = {
+						country_exists = GER
+						SOV = { has_war_with = GER }
+						CHI = { has_war_with = GER }
+					}
+					AND = {
+						country_exists = FRA
+						SOV = { has_war_with = FRA }
+						CHI = { has_war_with = FRA }
+					}
+					AND = {
+						country_exists = ENG
+						SOV = { has_war_with = ENG }
+						CHI = { has_war_with = ENG }
+					}
+					CHI = { is_in_faction_with = SOV }
+				}
+			}
+			# 情形② 联动：除美国外的北约国家与集安白和，美国继续打
+			every_country = {
+				limit = {
+					OR = {
+						has_country_flag = ZZZ_eur_nato_participant
+						has_idea = NATO_member
+					}
+					NOT = { original_tag = USA }
+				}
+				every_enemy_country = {
+					limit = {
+						OR = {
+							original_tag = SOV
+							has_country_flag = ZZZ_eur_csto_participant
+							is_in_faction_with = SOV
+							# 上合合体后中国一侧
+							has_country_flag = ZZZ_sco_merged_identity
+						}
+					}
+					white_peace = PREV
+				}
+			}
+			# 清理参战标记：保留美国的北约参战旗标（美国继续与集安交战），其余清空
+			every_country = {
+				limit = { NOT = { original_tag = USA } }
+				clr_country_flag = ZZZ_eur_nato_participant
+				clr_country_flag = ZZZ_eur_csto_participant
+				clr_country_flag = ZZZ_eur_nato_leader
+			}
+		}
+		else = {
+			# 情形① 未联动：北约全体（含美国）与集安白和
+			every_country = {
+				limit = {
+					OR = {
+						has_country_flag = ZZZ_eur_nato_participant
+						has_idea = NATO_member
+					}
+				}
+				every_enemy_country = {
+					limit = {
+						OR = {
+							original_tag = SOV
+							has_country_flag = ZZZ_eur_csto_participant
+							is_in_faction_with = SOV
+							# 上合合体后中国一侧
+							has_country_flag = ZZZ_sco_merged_identity
+						}
+					}
+					white_peace = PREV
+				}
+			}
+			ZZZ_eur_clear_participants = yes
+		}
+		# 白和完成后再拆回合体（撤通行、清身份旗标）
+		ZZZ_sco_split = yes
+		# 白和已在上面按参战方逐对完成，不再置无效的 skip_default_capitulation
+		set_global_flag = ZZZ_eur_csto_victory
+		clr_global_flag = ZZZ_eur_war_ongoing
+		set_global_flag = ZZZ_eur_war_resolved
+		log = "[GetDateText]: ZZZ_eur_csto_victory"
+		every_country = {
+			limit = { is_ai = no }
+			news_event = { id = zzz_eur.3 days = 1 }
+		}
+	}
+}
+
+# ----------------------------------------------------------------------------
+# ③-c 僵持/超时：不做领土变更，仅全员白和并标记已结算
+# ----------------------------------------------------------------------------
+ZZZ_eur_settle_stalemate = {
+	if = {
+		limit = {
+			has_global_flag = ZZZ_eur_war_ongoing
+			NOT = { has_global_flag = ZZZ_eur_war_resolved }
+		}
+		ZZZ_eur_white_peace_all = yes
+		# 白和完成后再拆回合体（撤通行、清身份旗标）
+		ZZZ_sco_split = yes
+		set_global_flag = ZZZ_eur_stalemate
+		ZZZ_eur_clear_participants = yes
+		clr_global_flag = ZZZ_eur_war_ongoing
+		set_global_flag = ZZZ_eur_war_resolved
+		log = "[GetDateText]: ZZZ_eur_stalemate"
+		every_country = {
+			limit = { is_ai = no }
+			news_event = { id = zzz_eur.4 days = 1 }
+		}
+	}
+}
+
+# ----------------------------------------------------------------------------
+# ③-d 结算后清理参战标记（本链路一次性，清旗标只为避免残留）
+# ----------------------------------------------------------------------------
+ZZZ_eur_clear_participants = {
+	every_country = {
+		limit = { has_country_flag = ZZZ_eur_nato_participant }
+		clr_country_flag = ZZZ_eur_nato_participant
+	}
+	every_country = {
+		limit = { has_country_flag = ZZZ_eur_nato_leader }
+		clr_country_flag = ZZZ_eur_nato_leader
+	}
+	every_country = {
+		limit = { has_country_flag = ZZZ_eur_csto_participant }
+		clr_country_flag = ZZZ_eur_csto_participant
+	}
+}
+
+# ----------------------------------------------------------------------------
+# ③-e 双向联动（各自只跑一次）：
+#    · 俄方先败、中国仍在战 → 蓝方欧洲（NATO 成员）加入对华战争
+#    · 中国先败、俄方仍在战 → 蓝方亚洲（PDTO 成员）加入对俄战争
+#    只用 add_to_war 建战争关系；不改阵营归属、不写 add_to_faction、不动 pdto_member；
+#    已与该敌国交战者跳过；单点挂载在 on_daily。
+# ----------------------------------------------------------------------------
+ZZZ_eur_link_nato_vs_china = {
+	if = {
+		limit = {
+			NOT = { has_global_flag = ZZZ_eur_link_nato_vs_china_done }
+			OR = {
+				has_global_flag = DSW_SOV_russian_defeat
+				has_global_flag = ZZZ_eur_nato_victory
+			}
+			country_exists = CHI
+			CHI = { has_war = yes }
+			any_country = {
+				OR = {
+					has_idea = NATO_member
+					has_country_flag = pdto_member
+				}
+				has_war_with = CHI
+			}
+		}
+		set_global_flag = ZZZ_eur_link_nato_vs_china_done
+		# 以“已在对华战争中的蓝方国家”为锚点，其余 NATO 成员用 add_to_war 加入同一场战争
+		every_country = {
+			limit = {
+				OR = {
+					has_idea = NATO_member
+					has_country_flag = pdto_member
+				}
+				has_war_with = CHI
+			}
+			every_country = {
+				limit = {
+					has_idea = NATO_member
+					NOT = { has_war_with = CHI }
+				}
+				add_to_war = {
+					targeted_alliance = PREV
+					enemy = CHI
+					hostility_reason = asked_to_join
+					single_target_only = no
+				}
+			}
+		}
+	}
+}
+
+ZZZ_eur_link_pdto_vs_sov = {
+	if = {
+		limit = {
+			NOT = { has_global_flag = ZZZ_eur_link_pdto_vs_sov_done }
+			OR = {
+				NOT = { country_exists = CHI }
+				CHI = { has_capitulated = yes }
+			}
+			country_exists = SOV
+			SOV = { has_war = yes }
+			any_country = {
+				OR = {
+					has_idea = NATO_member
+					has_country_flag = pdto_member
+				}
+				has_war_with = SOV
+			}
+			OR = {
+				has_global_flag = ZZZ_eur_war_ongoing
+				has_global_flag = ZZZ_eur_war_resolved
+				has_global_flag = DSW_SOV_european_war_started
+			}
+		}
+		set_global_flag = ZZZ_eur_link_pdto_vs_sov_done
+		# 以“已在对俄战争中的蓝方国家”为锚点，其余 PDTO 成员用 add_to_war 加入同一场战争
+		every_country = {
+			limit = {
+				OR = {
+					has_idea = NATO_member
+					has_country_flag = pdto_member
+				}
+				has_war_with = SOV
+			}
+			every_country = {
+				limit = {
+					has_country_flag = pdto_member
+					NOT = { has_war_with = SOV }
+				}
+				add_to_war = {
+					targeted_alliance = PREV
+					enemy = SOV
+					hostility_reason = asked_to_join
+					single_target_only = no
+				}
+			}
+		}
+	}
+}
+
+# 单点挂载入口：由 ZZZ_europe_war_on_actions.txt 的 on_daily 调用一次
+ZZZ_eur_linkage = {
+	if = {
+		limit = {
+			OR = {
+				has_global_flag = ZZZ_eur_war_ongoing
+				has_global_flag = ZZZ_eur_war_resolved
+				has_global_flag = DSW_SOV_european_war_started
+			}
+		}
+		ZZZ_eur_link_nato_vs_china = yes
+		ZZZ_eur_link_pdto_vs_sov = yes
+	}
+}

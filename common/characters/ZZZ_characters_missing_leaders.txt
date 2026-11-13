@@ -1,0 +1,83 @@
+# ============================================================================
+# ZZZ 补漏领导人 · character 定义
+# 说明：千禧基座 common/characters 未定义以下四位 2018-2024 年的政府首脑，
+# 本文件按同一 schema 独立新增，不改动基座文件、也不改动其它正在编辑的 character 文件。
+#
+# 字段写法照抄基座 common/characters/AST.txt 的 TAG_leader_* 条目：
+#   name / portraits.civilian.large / country_leader = { ideology / traits / expire }
+# 肖像路径按统一规范写死，实际贴图由头像任务提供；本文件不伪造图片、不引用别的路径。
+#
+# ideology 取人物所属子意识形态（与对应事件的 ruling_party 索引一致）：
+#   MEX_claudia_sheinbaum   ^5  anarchist_communism  -> communism 组
+#   TUN_kais_saied          ^20 Nat_Populism        -> nationalist 组
+#   CHL_gabriel_boric       ^3  socialism           -> democratic 组
+#   MAY_muhyiddin_yassin    ^20 Nat_Populism        -> nationalist 组
+# traits 只使用基座 common/country_leader/00_traits.txt 里真实存在的意识形态特质。
+# expire 取同目录 AST 条目的写法（2050.1.1.1）。
+# ============================================================================
+
+characters = {
+	MEX_claudia_sheinbaum = {
+		name = MEX_claudia_sheinbaum
+		portraits = {
+			civilian = {
+				large = "gfx/leaders/MEX/Claudia_Sheinbaum.dds"
+			}
+		}
+		country_leader = {
+			ideology = anarchist_communism
+			traits = {
+				emerging_anarchist_communism
+			}
+			expire = 2050.1.1.1
+		}
+	}
+
+	TUN_kais_saied = {
+		name = ZZZ_nm_tun_kais_saied_char
+		portraits = {
+			civilian = {
+				large = "gfx/leaders/TUN/Kais_Saied.dds"
+			}
+		}
+		country_leader = {
+			ideology = Nat_Populism
+			traits = {
+				nationalist_Nat_Populism
+			}
+			expire = 2050.1.1.1
+		}
+	}
+
+	CHL_gabriel_boric = {
+		name = CHL_gabriel_boric
+		portraits = {
+			civilian = {
+				large = "gfx/leaders/CHL/Gabriel_Boric.dds"
+			}
+		}
+		country_leader = {
+			ideology = socialism
+			traits = {
+				western_socialism
+			}
+			expire = 2050.1.1.1
+		}
+	}
+
+	MAY_muhyiddin_yassin = {
+		name = MAY_muhyiddin_yassin
+		portraits = {
+			civilian = {
+				large = "gfx/leaders/MAY/Muhyiddin_Yassin.dds"
+			}
+		}
+		country_leader = {
+			ideology = Nat_Populism
+			traits = {
+				nationalist_Nat_Populism
+			}
+			expire = 2050.1.1.1
+		}
+	}
+}

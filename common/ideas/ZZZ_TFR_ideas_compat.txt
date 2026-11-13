@@ -1,0 +1,229 @@
+# TFR idea compatibility layer
+# Source: TFR (workshop 3350890356) common/ideas
+# Ported because the parent engine kept reporting "Invalid idea" for these ids.
+# Changes vs source: removed picture = (GFX not present in this project) and
+# removed traits = { ZZZ_blank_idea_trait } (that trait is a country leader trait here).
+
+ideas = {
+    country = {
+
+        KOR_recent_cyberattack = {
+            allowed = {
+                always = no
+            }
+            modifier = {
+                planning_speed = -0.2
+                attrition = 0.1
+                army_org_factor = -0.15
+            }
+        }
+
+        KOR_dominance_of_chaebols = {
+            allowed = {
+                always = no
+            }
+            modifier = {
+                consumer_goods_factor = 0.05
+                production_speed_buildings_factor = 0.05
+                misc_expense = 0.1
+                personal_value_factor = -0.1
+                poverty_development_monthly = -0.01
+                business_value_factor = 0.3
+                production_speed_offices_factor = 0.15
+                production_speed_industrial_complex_factor = 0.1
+            }
+        }
+
+        KOR_dominance_of_chaebols_2 = {
+            name = KOR_dominance_of_chaebols
+            allowed = {
+                always = no
+            }
+            modifier = {
+                consumer_goods_factor = 0.025
+                production_speed_buildings_factor = 0.15
+                misc_expense = 0.05
+                personal_value_factor = -0.05
+                poverty_development_monthly = -0.005
+                business_value_factor = 0.5
+                production_speed_offices_factor = 0.25
+                production_speed_industrial_complex_factor = 0.15
+            }
+        }
+
+        KOR_surprise_offensive = {
+            name = PRK_surprise_offensive
+            allowed = {
+                always = no
+            }
+            allowed_civil_war = {
+                always = yes
+            }
+            removal_cost = -1
+            modifier = {
+                army_speed_factor = -0.15
+                army_attack_factor = -0.35
+                breakthrough_factor = -0.35
+                army_org_factor = -0.15
+                planning_speed = -0.25
+            }
+        }
+
+        generic_world_wide_financial_crisis_3 = {
+            allowed = {
+                always = no
+            }
+            allowed_civil_war = {
+                always = yes
+            }
+            removal_cost = -1
+            modifier = {
+                consumer_goods_factor = 0.05
+                poverty_development_monthly = -0.005
+                income_growth_factor = -0.15
+                inflation_monthly_factor = 0.1
+                business_value_factor = -0.05
+                personal_value_factor = -0.05
+            }
+        }
+
+        HRL_supply_allah_blessing = {
+            allowed = {
+                always = no
+            }
+            visible = {
+                always = no
+            }
+            allowed_civil_war = {
+                always = yes
+            }
+            modifier = {
+                supply_consumption_factor = -2
+                attrition = -2
+            }
+        }
+
+        NATO_offensive = {
+            modifier = {
+                breakthrough_factor = 0.05
+                army_attack_factor = 0.1
+            }
+        }
+
+        PER_widespread_corruption = {
+            allowed = {
+                always = no
+            }
+            allowed_civil_war = {
+                always = yes
+            }
+            removal_cost = -1
+            modifier = {
+                foreign_minister_cost_factor = 0.10
+                economic_minister_cost_factor = 0.10
+                interior_minister_cost_factor = 0.10
+                intelligence_minister_cost_factor = 0.10
+                income_growth_factor = -0.025
+                army_org = -10
+            }
+        }
+
+        PRC_project_ghost_partially_succeeded_idea = {
+            name = PRC_pla_idea
+            allowed = {
+                always = no
+            }
+            allowed_civil_war = {
+                always = yes
+            }
+            removal_cost = -1
+            modifier = {
+                recon_factor = 0.15
+                breakthrough_factor = 0.015
+            }
+        }
+
+        TNM_republican_fillibustering_idea = {
+            allowed = {
+                always = no
+            }
+            allowed_civil_war = {
+                always = yes
+            }
+            removal_cost = -1
+            modifier = {
+                democratic_acceptance = 50
+                stability_weekly = -0.05
+                political_power_gain = -1.0
+            }
+        }
+
+        TNM_republican_abandonment_idea = {
+            allowed = {
+                always = no
+            }
+            allowed_civil_war = {
+                always = yes
+            }
+            removal_cost = -1
+            modifier = {
+                planning_speed = -0.25
+                conscription_factor = -0.30
+                democratic_drift = -0.05
+            }
+        }
+
+        ZZZ_collective_capitalism = {
+            allowed = {
+                always = no
+            }
+            allowed_civil_war = {
+                always = yes
+            }
+            modifier = {
+                consumer_goods_factor = -0.02
+                industrial_capacity_dockyard = 0.05
+                production_speed_infrastructure_factor = -0.05
+                production_speed_offices_factor = 0.075
+                business_value_factor = 0.1
+                personal_value_factor = -0.05
+            }
+        }
+
+        ZZZ_collective_capitalism2 = {
+            allowed = {
+                always = no
+            }
+            allowed_civil_war = {
+                always = yes
+            }
+            modifier = {
+                consumer_goods_factor = -0.04
+                industrial_capacity_dockyard = 0.05
+                industrial_capacity_factory = 0.05
+                production_speed_infrastructure_factor = -0.1
+                production_speed_offices_factor = 0.025
+                business_value_factor = 0.05
+            }
+        }
+
+        ZZZ_collective_capitalism_defeat = {
+            name = ZZZ_collective_capitalism2
+            allowed = {
+                always = no
+            }
+            allowed_civil_war = {
+                always = yes
+            }
+            modifier = {
+                consumer_goods_factor = -0.08
+                industrial_capacity_dockyard = 0.05
+                production_speed_infrastructure_factor = -0.025
+                production_speed_offices_factor = 0.05
+                business_value_factor = 0.2
+                personal_expense_factor = -0.10
+            }
+        }
+
+    }
+}

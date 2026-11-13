@@ -52,6 +52,13 @@
 					type = annex_everything
 				}
 			}
+			# 工程补充：烈焰升腾原版的 prc.134 派发只写在 PAK.3（PAK.2→PAK.3 时间线链）里，
+			# 若印度通过本焦点直接宣战，PAK.2 永不触发、中国拿不到印巴任务；此处按原版同一语义补派发。
+			# prc.134 负责 set_country_flag = PRC_indo_pakistan_war_ongoing 并 activate_mission = PRC_indo_pakistani_war_mission，
+			# 该事件 fire_only_once，重复派发无副作用。
+			CHI = {
+				country_event = { id = prc.134 }
+			}
 			add_timed_idea = {
 				idea = RAJ_operation_cariappa_idea
 				days = 40
@@ -700,14 +707,7 @@
 		completion_reward = {
 			custom_effect_tooltip = RAJ_secure_control_of_the_seas_tt
 			hidden_effect = {
-				load_oob = RAJ_marines
-				if = {
-					limit = { has_dlc = "Man the Guns" }
-						load_oob = "RAJ_2000_naval_mtg"
-					else = {
-						load_oob = "RAJ_2000_naval_legacy"
-					}
-				}
+				load_oob = "RAJ_2017_naval_mtg"
 			}
 		}
 	}

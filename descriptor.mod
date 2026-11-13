@@ -1,5 +1,6 @@
 replace_path="common/decisions"
 replace_path="common/decisions/categories"
+replace_path="common/national_focus"
 replace_path="events"
 version="2.0.3"
 tags={

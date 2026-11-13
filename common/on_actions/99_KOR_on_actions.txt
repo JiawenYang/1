@@ -1,0 +1,89 @@
+# ============================================================================
+#  朝鲜半岛周常与合并钩子（本工程自带覆盖副本）
+#
+#  来源与改动：
+#    基座依赖 mod（workshop 2777392649）的 common/on_actions/99_KOR_on_actions.txt
+#    在本工程 replace_path="events" 后引用已删除的 korea.16 / korea.17 / korea.22 /
+#    korea.50，启动时报 "Malformed token"，故本工程自带同名文件覆盖：
+#      · on_weekly_KOR 删除 korea.16 / korea.17 / korea.22（这三个事件已随
+#        events/Korea.txt 一并移除，本工程新链不提供等价随机事件）
+#      · on_weekly_NKO 删除 korea.22
+#      · on_annex 保留基座行为（置 korea_peninsula_reunited），
+#        改为挂 ZZZ_spirit_korea_unified 并补齐对方半岛州核心；
+#        不再添加 KOR_reunification_shocks 等五个后遗症精神；
+#        仅删除已失效的 korea.50 新闻；统一新闻改由本工程
+#        events/ZZZ_korea_events.txt 的 zzz_kor.7 / zzz_kor.9 承担
+#
+#  本文件不新增任何效果或触发器，只做引用清理。
+# ============================================================================
+on_actions = {
+    on_weekly_KOR = {
+        random_events = {
+            100 = 0
+        }
+    }
+
+    on_weekly_NKO = {
+        random_events = {
+            100 = 0
+        }
+    }
+
+    on_annex = {
+        effect = {
+            if = {
+                limit = {
+                    OR = {
+                        AND = {
+                            ROOT = { tag = NKO }
+                            FROM = { tag = KOR }
+                        }
+                        AND = {
+                            ROOT = { tag = KOR }
+                            FROM = { tag = NKO }
+                        }
+                    }
+                }
+                if = {
+                    limit = { country_exists = KOR }
+                    KOR = {
+                        set_country_flag = korea_peninsula_reunited
+                        if = {
+                            limit = { has_idea = ZZZ_spirit_korea_confederation }
+                            remove_ideas = ZZZ_spirit_korea_confederation
+                        }
+                        add_ideas = ZZZ_spirit_korea_unified
+                        add_state_core = 601
+                        add_state_core = 602
+                        add_state_core = 603
+                        add_state_core = 1199
+                        add_state_core = 1200
+                        add_state_core = 1201
+                    }
+                }
+                else_if = {
+                    limit = { country_exists = NKO }
+                    NKO = {
+                        set_country_flag = korea_peninsula_reunited
+                        if = {
+                            limit = { has_idea = ZZZ_spirit_korea_confederation }
+                            remove_ideas = ZZZ_spirit_korea_confederation
+                        }
+                        add_ideas = ZZZ_spirit_korea_unified
+                        add_state_core = 604
+                        add_state_core = 605
+                        add_state_core = 606
+                        add_state_core = 607
+                        add_state_core = 608
+                        add_state_core = 1099
+                        set_global_flag = zzz_korea_north_annexed
+                    }
+                    JAP = { add_opinion_modifier = { target = NKO modifier = NKO_forced_reunification } }
+                    TAI = { add_opinion_modifier = { target = NKO modifier = NKO_forced_reunification } }
+                    USA = { add_opinion_modifier = { target = NKO modifier = NKO_forced_reunification } }
+                    PHI = { add_opinion_modifier = { target = NKO modifier = NKO_forced_reunification } }
+                }
+            }
+        }
+    }
+}

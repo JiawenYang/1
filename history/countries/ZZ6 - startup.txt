@@ -66,6 +66,8 @@
 
     # 通用游骑兵营 + 特种作战部队：排除特色特战 16 国
     # （USA SOV CHI ENG GER KOR ISR NKO UKR TUR PER POL CAN AST PAK TAI）
+    # 说明：L_Ranger_Bat 与 Special_Forces 同属 group = special_forces（同一特战栏），
+    # 故两者共用同一排除名单：有本国特战营的国家，两个通用营都不发放。
     every_country = {
         limit = {
             NOT = {
@@ -95,9 +97,9 @@
         }
     }
 
-    # 空降/两栖战车装备线：以装备原产国为准发放
-    # BMD 系列 + PT-76/PT-76B → SOV；PT-85 → NKO；ZBD-03 + ZBD-05 + 63式系列 → CHI
-    # LVTP-5 + AAVP-7A1 → USA；KAAV7 → KOR
+    # 空降/两栖战车装备线：以装备原产国为准发放（第一代，子代见 2000.1.2~2000.1.4）
+    # BMD 系列 + PT-76 → SOV；PT-85 → NKO；ZBD-03 + ZBD-05 + 63式 → CHI
+    # LVTP-5 → USA；KAAV7 → KOR
     every_country = {
         limit = {
             original_tag = SOV
@@ -126,7 +128,7 @@
             original_tag = USA
         }
         set_technology = {
-            ZZ_amphibious_apc_aavp7_tech = 1
+            ZZ_amphibious_apc_lvtp5_tech = 1
         }
     }
     every_country = {
@@ -136,6 +138,49 @@
         }
     }
 
+}
+
+# ==================== 两栖/空降装备代际错峰解锁（修复旧型号过时显示）====================
+# 每一代装备各由一个科技解锁。后一代在独立日期解锁，引擎在此刻把 parent 链上
+# 的前一代型号标记为"过时(obsolete)"，生产界面即可正确显示 63式 / 63-I / 63-II /
+# PT-76 / LVTP-5 等为过时。2000 与 2017 开局均按日期顺序执行这些块。
+2000.1.2 = {
+    every_country = {
+        limit = { original_tag = SOV }
+        set_technology = {
+            ZZ_amphibious_tank_pt76b_tech = 1
+        }
+    }
+    every_country = {
+        limit = { original_tag = USA }
+        set_technology = {
+            ZZ_amphibious_apc_aavp7a1_tech = 1
+        }
+    }
+    every_country = {
+        limit = { original_tag = CHI }
+        set_technology = {
+            ZZ_amphibious_tank_type63_1_tech = 1
+        }
+    }
+}
+
+2000.1.3 = {
+    every_country = {
+        limit = { original_tag = CHI }
+        set_technology = {
+            ZZ_amphibious_tank_type63_2_tech = 1
+        }
+    }
+}
+
+2000.1.4 = {
+    every_country = {
+        limit = { original_tag = CHI }
+        set_technology = {
+            ZZ_amphibious_tank_type63a_tech = 1
+        }
+    }
 }
 
 2017.1.1 = {
@@ -628,15 +673,6 @@
     every_country = {
         limit = {
             OR = {
-                original_tag = SOV
-            }
-        }
-        add_country_leader_trait = hos_puppet_master
-    }
-
-    every_country = {
-        limit = {
-            OR = {
                 original_tag = AUS
                 original_tag = COS
                 original_tag = FIN
@@ -664,15 +700,18 @@
             }
         }
         add_ideas = CHI_sco_member
-        add_to_array = { global.sco_members = CHI }
-        add_to_array = { global.sco_members = KAZ }
-        add_to_array = { global.sco_members = KYR }
-        add_to_array = { global.sco_members = SOV }
-        add_to_array = { global.sco_members = TAJ }
-        add_to_array = { global.sco_members = UZB }
-        add_to_array = { global.sco_members = RAJ }
-        add_to_array = { global.sco_members = PAK }
     }
+
+    # Written once outside the loop above; inside it the whole roster was
+    # appended once per matching country (8 x 8 duplicate entries).
+    add_to_array = { global.sco_members = CHI }
+    add_to_array = { global.sco_members = KAZ }
+    add_to_array = { global.sco_members = KYR }
+    add_to_array = { global.sco_members = SOV }
+    add_to_array = { global.sco_members = TAJ }
+    add_to_array = { global.sco_members = UZB }
+    add_to_array = { global.sco_members = RAJ }
+    add_to_array = { global.sco_members = PAK }
 
     every_country = {
         limit = {
@@ -1043,6 +1082,8 @@
             neutrality = 100.0
             nationalist = 0.0
         }
+        set_variable = { party_pop_array^13 = 1.0 }
+        recalculate_party = yes
         set_politics = {
             ruling_party = neutrality
             last_election = "1999.1.10"
@@ -1266,7 +1307,7 @@
         remove_ideas = { social_03 }
         add_ideas = { KOR_korean_welfare }
     }
-    USA = {
+    TUR = {
         remove_ideas = { social_03 }
         add_ideas = { KOR_korean_welfare }
     }
@@ -1277,8 +1318,8 @@
         add_ideas = { KOR_korean_welfare_lv4 }
     }
     AST = {
-        remove_ideas = { social_04 }
-        add_ideas = { KOR_korean_welfare_lv4 }
+        remove_ideas = { social_05 }
+        add_ideas = { KOR_korean_welfare_lv5 }
     }
     CAN = {
         remove_ideas = { social_04 }
@@ -1413,6 +1454,54 @@
             }
         }
         add_ideas = subjectvie
+    }
+    every_country = {
+        limit = { 
+            is_subject_of = BRA
+        }
+        add_ideas = subjectbra
+    }
+    every_country = {
+        limit = { 
+            is_subject_of = GER
+        }
+        add_ideas = subjectger
+    }
+    every_country = {
+        limit = { 
+            is_subject_of = JAP
+        }
+        add_ideas = subjectjap
+    }
+    every_country = {
+        limit = { 
+            OR = {
+                is_subject_of = PER
+                AND = {
+                    original_tag = HEZ
+                    is_in_faction_with = PER
+                }
+            }
+        }
+        add_ideas = subjectper
+    }
+    every_country = {
+        limit = { 
+            is_subject_of = SAF
+        }
+        add_ideas = subjectsaf
+    }
+    every_country = {
+        limit = { 
+            is_subject_of = SAU
+        }
+        add_ideas = subjectsau
+    }
+    every_country = {
+        limit = { 
+            is_subject_of = SER
+        }
+        add_ideas = subjectser
     }
     every_country = {
         limit = { 
@@ -1564,7 +1653,8 @@
     # 此处按"不具备该类专属营"发放对应通用科技。
     # 空降（运输机）与空突（直升机）分属两类，各自独立门控。
 
-    # 通用海军陆战营：排除专属国 USA SOV CHI FRA JAP KOR NKO ITA TAI ENG
+    # 通用海军陆战营：排除专属国 USA SOV CHI FRA JAP KOR NKO ITA TAI
+    # （ENG 只有海军突击营 RM_Cdo_Bat_ENG，不构成本档同类，故恢复其通用陆战营）
     every_country = {
         limit = {
             NOT = {
@@ -1578,7 +1668,6 @@
                     original_tag = NKO
                     original_tag = ITA
                     original_tag = TAI
-                    original_tag = ENG
                 }
             }
         }
@@ -1613,11 +1702,12 @@
         }
     }
 
-    # 通用空中突击营：排除专属国 USA CHI UKR
+    # 通用空中突击营：排除专属国 SOV USA CHI UKR
     every_country = {
         limit = {
             NOT = {
                 OR = {
+                    original_tag = SOV
                     original_tag = USA
                     original_tag = CHI
                     original_tag = UKR

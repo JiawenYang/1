@@ -1,0 +1,632 @@
+division_template = {
+	name = "Guarnición"
+
+	regiments = {
+		L_Inf_Bat = { x = 0 y = 0 }
+		Mot_Inf_Bat = { x = 0 y = 1 }
+		Arty_Bat = { x = 0 y = 2 }
+		L_Inf_Bat = { x = 0 y = 3 }
+	}
+}
+
+division_template = {
+	name = "Brigada de Paracaidistas"
+
+	regiments = {
+		L_Air_Inf_Bat = { x = 0 y = 0 }
+		L_Air_Inf_Bat = { x = 0 y = 1 }
+	}
+
+	support = {
+		Arty_Battery = { x = 0 y = 0 }
+		L_Recce_Comp = { x = 0 y = 1 }
+		L_Engi_Comp = { x = 0 y = 2 }
+	}
+
+	priority = 2
+}
+
+division_template = {
+	name = "Brigada Mecanizada"
+
+	regiments = {
+		armor_Bat = { x = 0 y = 0 }
+		Mech_Inf_Bat = { x = 0 y = 1 }
+		Mech_Inf_Bat = { x = 0 y = 2 }
+		Mech_Inf_Bat = { x = 0 y = 3 }
+	}
+
+	support = {
+		Arty_Battery = { x = 0 y = 0 }
+		SP_Arty_Battery = { x = 0 y = 1 }
+		H_Engi_Comp = { x = 0 y = 2 }
+	}
+}
+
+division_template = {
+	name = "Brigada Mecanizada Reforzada"
+
+	regiments = {
+		armor_Bat = { x = 0 y = 0 }
+		Mech_Inf_Bat = { x = 0 y = 1 }
+		L_arm_Bat = { x = 1 y = 2 }
+		Mech_Inf_Bat = { x = 1 y = 0 }
+		Mech_Inf_Bat = { x = 1 y = 1 }
+	}
+
+	support = {
+		SP_Arty_Battery = { x = 0 y = 0 }
+	}
+}
+
+division_template = {
+	name = "AFOE"
+
+	regiments = {
+		L_Air_Inf_Bat = { x = 0 y = 0 }
+		Special_Forces = { x = 0 y = 1 }
+	}
+	priority = 2
+}
+
+division_template = {
+	name = "Brigada Blindada"
+
+	regiments = {
+		armor_Bat = { x = 0 y = 0 }
+		armor_Bat = { x = 0 y = 1 }
+		armor_Bat = { x = 0 y = 2 }
+		Arm_Inf_Bat = { x = 1 y = 0 }
+		L_arm_Bat = { x = 1 y = 1 }
+		Mech_Inf_Bat = { x = 1 y = 2 }
+	}
+
+	support = {
+		SP_Arty_Battery = { x = 0 y = 0 }
+	}
+}
+
+division_template = {
+	name = "Brigada de la Selva"
+
+	regiments = {
+		L_Inf_Bat = { x = 0 y = 0 }
+		L_Inf_Bat = { x = 0 y = 1 }
+		L_Inf_Bat = { x = 0 y = 2 }
+		L_Inf_Bat = { x = 1 y = 0 }
+		L_Inf_Bat = { x = 1 y = 1 }
+	}
+
+	support = {
+		Arty_Battery = { x = 0 y = 0 }
+	}
+}
+
+division_template = {
+	name = "Brigada de Montaña"
+
+	regiments = {
+		L_Inf_Bat = { x = 0 y = 0 }
+		L_Inf_Bat = { x = 0 y = 1 }
+		L_arm_Bat = { x = 0 y = 2 }
+		L_Inf_Bat = { x = 1 y = 0 }
+		L_Inf_Bat = { x = 1 y = 1 }
+		Arty_Bat = { x = 1 y = 2 }
+	}
+}
+
+division_template = {
+	name = "Fuerza de Marina"
+
+	regiments = {
+		Mot_Marine_Bat = { x = 0 y = 0 }
+		Mot_Marine_Bat = { x = 0 y = 1 }
+		Mot_Marine_Bat = { x = 0 y = 2 }
+	}
+}
+
+division_template = {
+	name = "Brigada de Marina"
+
+	regiments = {
+		Mot_Marine_Bat = { x = 0 y = 0 }
+		Mech_Marine_Bat = { x = 0 y = 1 }
+		Special_Forces = { x = 0 y = 2 }
+		L_Inf_Bat = { x = 0 y = 3 }
+		Arty_Bat = { x = 0 y = 4 }
+	}
+}
+
+units = {
+	division = {
+		name = "Guarnición de Buenos Aires"
+		location = 12364	#Buenois Aires
+		division_template = "Guarnición"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "4ta Brigada de Paracaidistas"
+		location = 12942	#Cordoba
+		division_template = "Brigada de Paracaidistas"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "10ma Brigada Mecanizada"
+		location = 1596		#Santa Rosa
+		division_template = "Brigada Mecanizada"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "Agrupación de Fuerzas de Operaciones Especiales"
+		location = 12364	#Campo de Mayo
+		division_template = "AFOE"
+		start_experience_factor = 0.7
+		start_equipment_factor = 0.01
+	}
+
+	#1st Division
+	division = {
+		name = "2a Brigada Blindada"
+		location = 1449		#Parana
+		division_template = "Brigada Blindada"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "12ma Brigada de la Selva"
+		location = 11007	#Posadas
+		division_template = "Brigada de la Selva"
+		start_experience_factor = 0.6
+		start_equipment_factor = 0.01
+	}
+
+	#2nd Division
+	division = {
+		name = "5a Brigada de Montaña"
+		location = 4351	#Salta
+		division_template = "Brigada de Montaña"
+		start_experience_factor = 0.6
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "6a Brigada de Montaña"
+		location = 12306	#Neuquen
+		division_template = "Brigada de Montaña"
+		start_experience_factor = 0.6
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "8a Brigada de Montaña"
+		location = 8215		#Mendoza
+		division_template = "Brigada de Montaña"
+		start_experience_factor = 0.6
+		start_equipment_factor = 0.01
+	}
+
+	#3rd Division
+	division = {
+		name = "1ra Brigada Blindada"
+		location = 1568		#Tandil
+		division_template = "Brigada Blindada"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "9a Brigada Mecanizada"
+		location = 3363	#Comodoro Rivadavia
+		division_template = "Brigada Mecanizada Reforzada"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "11a Brigada Mecanizada"
+		location = 5173		#Rio Gallegos
+		division_template = "Brigada Mecanizada Reforzada"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "Fuerza Marina de la Flota"
+		location = 1639		#Puerto Belgrano
+		division_template = "Brigada de Marina"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "Fuerza Marina Meridional"
+		location = 11009	#Rio Grande
+		division_template = "Fuerza de Marina"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.01
+	}
+}
+
+instant_effect = {
+	add_equipment_to_stockpile = {
+		variant_name = "Steyr AUG"
+		type = infantry_weapons_2		#Steyr AUG
+		amount = 500
+		producer = AUS
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "M16"
+		type = infantry_weapons_2		#M16
+		amount = 500
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "FARA 83"
+		type = infantry_weapons_3		#FARA 83
+		amount = 1200
+		producer = ARG
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "G41"
+		type = infantry_weapons_3		#G41
+		amount = 500
+		producer = GER
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "C8"
+		type = infantry_weapons_3		#C8
+		amount = 500
+		producer = CAN
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "FN FAL"
+		type = infantry_weapons_1		#FN-FAL
+		amount = 1500
+		producer = BEL
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Spike"
+		type = Anti_tank_3		#Spike
+		amount = 1200
+		producer = ISR
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "TOW-2A"
+    type = Anti_tank_2		#TOW
+		amount = 80
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "RBS 70ÖS (MK.1)"
+		type = Anti_Air_1		#RBS-70
+		amount = 340
+		producer = SWE
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "M56"
+		type = artillery_1		#OTO Melara Mod 56
+		amount = 64
+		producer = SER
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "CITER L33"
+		type = artillery_1		#CITER L33
+		amount = 108
+		producer = ARG
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Canon 155mm L45 CALA 30"
+		type = artillery_2		#Canon 155mm L45 CALA 30
+		amount = 28
+		producer = ARG
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "M101"
+		type = artillery_1		#M101
+		amount = 200
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "VCTM"
+		type = medium_tank_artillery_chassis_1			#VCTM
+		amount = 39
+		producer = ARG
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Palmaria"
+		type = medium_tank_artillery_chassis_0			#Palmaria
+		amount = 56
+		producer = ITA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Pampero"
+		type = medium_tank_rocket_chassis_0		#Pampero
+		amount = 8
+		producer = ARG
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "CITEDEF CP-30"
+		type = medium_tank_rocket_chassis_1		#CITEDEF CP-30
+		amount = 60
+		producer = ARG
+	}
+
+	add_equipment_to_stockpile = {
+		type = medium_tank_chassis_1
+		variant_name = "TAM"
+		producer = ARG
+		amount = 213
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "SK-105 Kürassier"
+		type = Rec_tank_0			#SK-105 Kürassier
+		amount = 113
+		producer = AUS
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Patagon"
+		type = Rec_tank_1			#Patagon
+		amount = 4
+		producer = ARG
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "VCTP"
+		type = medium_tank_flame_chassis_0				#VCTP
+		amount = 118
+		producer = ARG
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "M113"
+		type = medium_tank_amphibious_chassis_1				#M113
+		amount = 422
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "AMX-VCI"
+		type = medium_tank_amphibious_chassis_0				#AMX VCI
+		amount = 41
+		producer = FRA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "ZBL08"
+		type = medium_tank_amphibious_chassis_2				#ZBL08
+		amount = 110
+		producer = CHI
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "AAV"
+		type = medium_tank_amphibious_chassis_1			#AAV
+		amount = 11
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Panhard VCR"
+		type = medium_tank_amphibious_chassis_1			#Panhard VCR
+		amount = 31
+		producer = FRA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Panhard AML"
+		type = Rec_tank_0				#Panhard AML
+		#version_name = "Panhard AML"
+		amount = 47
+		producer = FRA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Humvee"
+		type = util_vehicle_3		#Humvee
+		amount = 182
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "VLEGA Gaucho"
+		type = util_vehicle_5		#VLEGA Gaucho
+		amount = 28
+		producer = ARG
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "M151"
+		type = util_vehicle_1		#M151
+		amount = 340
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Pinzgauer"
+		type = util_vehicle_1		#Pinzgauer
+		amount = 70
+		producer = AUS
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Wolf"
+		type = util_vehicle_2		#Wolf
+		amount = 1000
+		producer = GER
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Agrale Marrua"
+		type = util_vehicle_5		#Agrale Marrua
+		amount = 31
+		producer = BRA
+	}
+
+	add_equipment_to_stockpile = {
+		type = cnc_equipment_3
+		amount = 1500
+		producer = ARG
+	}
+
+	#Aircraft
+	add_equipment_to_stockpile = {
+		variant_name = "A-4AR Fightinghawk"
+		type = small_plane_strike_airframe_1	#A-4AR
+		amount = 22
+		producer = ARG
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "IA 58 Pucará"
+		type = small_plane_strike_airframe_1 #FMA IA 58 Pucara
+		amount = 32
+		producer = ARG
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Super Etendard"
+		type = cv_medium_plane_airframe_1	 #Super Etendard
+		amount = 11
+		producer = FRA
+	}
+
+	### Sealed Storage 封存 ###
+	add_equipment_to_stockpile = {
+		variant_name = "VCTM"
+		type = medium_tank_artillery_chassis_1 #VCTM（封存）
+		producer = ARG
+		amount = 15
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Palmaria"
+		type = medium_tank_artillery_chassis_0 #Palmaria（封存）
+		producer = ITA
+		amount = 22
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "CITEDEF CP-30"
+		type = medium_tank_rocket_chassis_1 #CITEDEF CP-30（封存）
+		producer = ARG
+		amount = 24
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "TAM"
+		type = medium_tank_chassis_1 #TAM（封存）
+		producer = ARG
+		amount = 85
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "VCTP"
+		type = medium_tank_flame_chassis_0 #VCTP（封存）
+		producer = ARG
+		amount = 47
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "M113"
+		type = medium_tank_amphibious_chassis_1 #M113（封存）
+		producer = USA
+		amount = 168
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "AMX-VCI"
+		type = medium_tank_amphibious_chassis_0 #AMX VCI（封存）
+		producer = FRA
+		amount = 16
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "AAV"
+		type = medium_tank_amphibious_chassis_1 #AAV（封存）
+		producer = USA
+		amount = 5
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Panhard VCR"
+		type = medium_tank_amphibious_chassis_1 #Panhard VCR（封存）
+		producer = FRA
+		amount = 12
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "TOW-2A"
+    type = Anti_tank_2 #TOW（封存）
+		producer = USA
+		amount = 32
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Steyr AUG"
+		type = infantry_weapons_2 #Steyr AUG（封存）
+		producer = AUS
+		amount = 200
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "M16"
+		type = infantry_weapons_2 #M16（封存）
+		producer = USA
+		amount = 200
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "FN FAL"
+		type = infantry_weapons_1 #FN-FAL（封存）
+		producer = BEL
+		amount = 600
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "M56"
+		type = artillery_1 #OTO Melara Mod 56（封存）
+		producer = SER
+		amount = 25
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "CITER L33"
+		type = artillery_1 #CITER L33（封存）
+		producer = ARG
+		amount = 43
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "M101"
+		type = artillery_1 #M101（封存）
+		producer = USA
+		amount = 80
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Humvee"
+		type = util_vehicle_3 #Humvee（封存）
+		producer = USA
+		amount = 72
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "M151"
+		type = util_vehicle_1 #M151（封存）
+		producer = USA
+		amount = 136
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Pinzgauer"
+		type = util_vehicle_1 #Pinzgauer（封存）
+		producer = AUS
+		amount = 28
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Wolf"
+		type = util_vehicle_2 #Wolf（封存）
+		producer = GER
+		amount = 400
+	}
+}

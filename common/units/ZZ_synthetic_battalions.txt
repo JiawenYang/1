@@ -1,5 +1,5 @@
 # ============================================================================
-# 通用合成营体系（第十三轮定案 · 2017年真实编制尺度）
+# 国别合成营体系（第十三轮定案 · 2017年真实编制尺度）
 # ============================================================================
 # 设计前提（来自千禧黎明用户设定，非通用二战营）：
 #   - 美ABCT 740人 / 美SBCT 680人 / 俄BTG 920人 / 中重合成 750人
@@ -10,274 +10,8 @@
 
 sub_units = {
 
-	# ==================== 重装合成营（履带） ====================
-	# 参考美 ABCT（2坦克连+1机步连）/ 俄加强 BTG / 中重型合成营
-	# 坦克 28 + 步战车 29（含 1 辆营指挥车）+ 火力支援 8 = 65 台装甲底盘
-	# 步枪 250（下车步兵 + 乘员自卫）、其他 107（硬度 0）
-	# util 20 → 加权 ≈ 25%（剩余靠 tech/MIO 加成）
-	syn_heavy_bat = {
-		abbreviation = "SYH"
-		sprite = MD_light_armor
-		map_icon_category = armored
-		priority = 610
-		active = no
-		ai_priority = 3
-		type = {
-			mechanized
-		}
-		group = armor
-
-		categories = {
-			category_tanks
-			category_front_line
-			category_real_tanks
-			category_all_armor
-			category_army
-			category_non_militia
-		}
-
-		combat_width = 4
-
-		max_strength = 20
-		max_organisation = 42
-		default_morale = 0.11
-		manpower = 740
-		entrenchment = 0.05
-		suppression = 2.5
-
-		training_time = 180
-		weight = 3
-
-		transport = medium_tank_flame_chassis
-
-		essential = {
-			medium_tank_flame_chassis
-		}
-
-		need = {
-			infantry_weapons_type = 250
-			L_AT_Equipment = 48
-			H_AT_Equipment = 8
-			AA_Equipment = 9
-			cnc_equipment_type = 30
-			medium_tank_chassis = 28
-			medium_tank_flame_chassis = 29 # 含 1 辆营指挥车
-			medium_tank_destroyer_chassis = 8
-			medium_tank_artillery_chassis = 6
-			medium_tank_aa_chassis = 3
-			util_vehicle_type = 20
-			ZZ_neg_armor_heavy = 1
-		}
-		plains = { attack = 0.15 defence = 0.10 }
-		desert = { attack = 0.10 defence = 0.05 }
-		hills = { attack = -0.05 movement = -0.05 }
-		forest = { attack = -0.15 movement = -0.10 }
-		mountain = { attack = -0.25 defence = -0.15 movement = -0.20 }
-		jungle = { attack = -0.20 movement = -0.10 }
-		marsh = { attack = -0.15 movement = -0.20 }
-		urban = { attack = -0.05 defence = 0.10 }
-		amphibious = { attack = -0.15 movement = -0.10 }
-		river = { attack = -0.10 movement = -0.10 }
-	}
-
-	# ==================== 中型合成营（轮式） ====================
-	# 参考美 SBCT（斯崔克 680 人）/ 中轮式合成营 / BTR 系列
-	# 装输 33（含 1 辆营指挥车）+ 火力支援 8 = 41 装甲底盘（0.5×41≈20）
-	# 步枪 220、其他 103、util 18 → 加权 ≈ 20%（靠装备科技拉到 50%）
-	syn_medium_bat = {
-		abbreviation = "SYM"
-		sprite = MD_mechanized
-		map_icon_category = armored
-		priority = 610
-		active = no
-		ai_priority = 3
-		type = {
-			mechanized
-		}
-		group = armor
-
-		categories = {
-			category_front_line
-			category_all_armor
-			category_apc
-			category_army
-			category_non_militia
-		}
-
-		combat_width = 4
-
-		max_strength = 19
-		max_organisation = 40
-		default_morale = 0.12
-		manpower = 680
-		entrenchment = 0.03
-		suppression = 2.5
-
-		training_time = 165
-		weight = 2.5
-
-		transport = medium_tank_amphibious_chassis
-
-		essential = {
-			medium_tank_amphibious_chassis
-		}
-
-		need = {
-			infantry_weapons_type = 220
-			L_AT_Equipment = 36
-			H_AT_Equipment = 6
-			AA_Equipment = 9
-			cnc_equipment_type = 30
-			medium_tank_amphibious_chassis = 33 # 含 1 辆营指挥车
-			medium_tank_destroyer_chassis = 8
-			medium_tank_artillery_chassis = 6
-			medium_tank_aa_chassis = 3
-			util_vehicle_type = 18
-			ZZ_neg_armor_medium = 1
-		}
-		plains = { attack = 0.10 movement = 0.10 }
-		desert = { movement = 0.10 }
-		hills = { attack = 0.05 movement = 0.05 }
-		forest = { attack = -0.10 movement = -0.05 }
-		mountain = { attack = -0.20 defence = -0.10 movement = -0.10 }
-		jungle = { attack = -0.15 movement = -0.10 }
-		marsh = { attack = -0.05 movement = -0.10 }
-		urban = { attack = 0.05 defence = 0.10 }
-		river = { attack = 0.10 movement = 0.15 }
-	}
-
-	# ==================== 轻型合成营（高机动卡车） ====================
-	# 参考美 IBCT 轻装旅 600 人 / 猛士/Humvee 车队 / 无坦克
-	# 无装甲底盘 → 靠 util + 少量 destroyer（AT 突击炮）提供装甲骨架
-	# destroyer 6 + util 41（含 1 辆营指挥车）→ 装甲占比低，硬度靠装备科技
-	syn_light_bat = {
-		abbreviation = "SYL"
-		sprite = MD_motorized
-		map_icon_category = infantry
-		priority = 610
-		active = no
-		ai_priority = 3
-		type = {
-			motorized
-		}
-		group = mobile
-
-		categories = {
-			category_front_line
-			category_all_infantry
-			category_mot_inf
-			category_army
-			category_non_militia
-		}
-
-		combat_width = 4
-
-		max_strength = 21
-		max_organisation = 44
-		default_morale = 0.13
-		manpower = 600
-		entrenchment = 0.10
-		suppression = 3
-
-		training_time = 150
-		weight = 1.5
-
-		transport = util_vehicle_type
-
-		essential = {
-			util_vehicle_type
-		}
-
-		need = {
-			infantry_weapons_type = 420
-			L_AT_Equipment = 48
-			H_AT_Equipment = 4
-			AA_Equipment = 9
-			cnc_equipment_type = 24
-			medium_tank_destroyer_chassis = 6
-			util_vehicle_type = 41 # 含 1 辆营指挥车
-			artillery_equipment = 6
-			ZZ_neg_armor_light = 1
-		}
-		plains = { movement = 0.10 }
-		hills = { attack = 0.05 }
-		forest = { attack = 0.05 defence = 0.05 }
-		mountain = { attack = 0.05 defence = 0.10 movement = -0.05 }
-		jungle = { defence = 0.05 }
-		marsh = { defence = 0.05 }
-		urban = { attack = 0.05 defence = 0.10 }
-		amphibious = { attack = -0.05 }
-	}
-
-	# ==================== 两栖合成营 ====================
-	# 参考美 Clevland 营级两栖突击 650 人 / 中 ZBD-05 装步营
-	# 两栖装输 32 + 火力支援 6 + 两栖火炮 6 = 44 装甲底盘（0.5×44=22）
-	# 步枪 230、其他 93、util 10 → 加权 ≈ 22%（靠装备科技拉到 55%）
-	syn_amphibious_bat = {
-		abbreviation = "SYA"
-		sprite = MD_light_armor
-		map_icon_category = armored
-		marines = yes
-		priority = 610
-		active = no
-		ai_priority = 3
-		type = {
-			mechanized
-		}
-		group = armor
-
-		categories = {
-			category_front_line
-			category_all_armor
-			category_all_amphibous
-			category_inf_amphib
-			category_army
-			category_non_militia
-		}
-
-		combat_width = 4
-
-		max_strength = 19
-		max_organisation = 40
-		default_morale = 0.12
-		manpower = 650
-		entrenchment = 0.05
-		suppression = 2.5
-
-		training_time = 180
-		weight = 2
-
-		transport = medium_tank_amphibious_chassis
-
-		essential = {
-			medium_tank_amphibious_chassis
-		}
-
-		need = {
-			infantry_weapons_type = 230
-			L_AT_Equipment = 36
-			H_AT_Equipment = 4
-			AA_Equipment = 9
-			cnc_equipment_type = 30
-			medium_tank_amphibious_chassis = 32
-			medium_tank_destroyer_chassis = 6
-			medium_tank_artillery_chassis = 6
-			util_vehicle_type = 10
-			ZZ_neg_armor_amphibious = 1
-		}
-		plains = { attack = 0.05 }
-		hills = { attack = -0.05 defence = -0.05 }
-		forest = { attack = -0.10 }
-		mountain = { attack = -0.15 }
-		jungle = { attack = 0.05 }
-		marsh = { attack = 0.25 movement = 0.20 }
-		urban = { attack = 0.05 }
-		river = { attack = 0.30 movement = 0.25 }
-		amphibious = { attack = 0.40 movement = 0.25 }
-	}
-
 	# ============================================================================
-	# 第十四轮：国别合成营拆分（美/俄/中三国专属，其余北约国家沿用通用 syn_*）
+	# 第十四轮：国别合成营拆分（美/俄/中三国专属）
 	# 命名对齐 3D 模型前缀 <TAG>_syn_*_bat_<TAG>_entity，由 ZZ 专属科技解锁
 	# ============================================================================
 
@@ -725,7 +459,9 @@ sub_units = {
 		amphibious = { attack = -0.05 }
 	}
 
-	# ==================== 俄罗斯 · 两栖合成营（海军步兵） ====================
+	# ==================== 俄罗斯 · 海军步兵合成营（BTR-82A） ====================
+	# 2017 年俄海军步兵无两栖突击车/两栖坦克编制：以 BTR-82A 轮式装甲车浮渡，
+	# 配合 2S19/2S12 火力与短号反坦克导弹，故按轮式中型合成营编成
 	syn_amphibious_bat_SOV = {
 		abbreviation = "SYA"
 		sprite = MD_light_armor
@@ -767,26 +503,27 @@ sub_units = {
 		}
 
 		need = {
-			infantry_weapons_type = 250
-			L_AT_Equipment = 48
-			H_AT_Equipment = 8
-			AA_Equipment = 12
+			infantry_weapons_type = 300		# 下车步兵 + 乘员自卫（全营 650 人）
+			L_AT_Equipment = 48			# RPG-7 火箭筒
+			H_AT_Equipment = 12			# 9M133 短号反坦克导弹
+			AA_Equipment = 12			# 9K38 针式便携防空导弹
 			cnc_equipment_type = 30
-			medium_tank_amphibious_chassis = 34
+			medium_tank_amphibious_chassis = 35	# BTR-82A ×34 + 营指挥车 ×1
 			medium_tank_destroyer_chassis = 6
 			medium_tank_artillery_chassis = 6
 			util_vehicle_type = 10
 			ZZ_neg_armor_amphibious = 1
 		}
-		plains = { attack = 0.05 }
-		hills = { attack = -0.05 defence = -0.05 }
-		forest = { attack = -0.10 }
-		mountain = { attack = -0.15 }
-		jungle = { attack = 0.05 }
-		marsh = { attack = 0.30 movement = 0.20 }
-		urban = { attack = 0.05 }
-		river = { attack = 0.30 movement = 0.25 }
-		amphibious = { attack = 0.35 movement = 0.25 }
+		plains = { attack = 0.10 movement = 0.10 }
+		desert = { movement = 0.10 }
+		hills = { attack = 0.05 movement = 0.05 }
+		forest = { attack = -0.10 movement = -0.05 }
+		mountain = { attack = -0.20 defence = -0.10 movement = -0.10 }
+		jungle = { attack = -0.15 movement = -0.10 }
+		marsh = { attack = 0.10 movement = 0.10 }
+		urban = { attack = 0.05 defence = 0.05 }
+		river = { attack = 0.25 movement = 0.20 }
+		amphibious = { attack = 0.10 }
 	}
 
 	# ==================== 中国 · 重型合成营 ====================

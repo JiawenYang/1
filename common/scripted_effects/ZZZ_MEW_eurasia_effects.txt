@@ -1,0 +1,83 @@
+# ============================================================================
+#  欧亚战败后的反伊扩战（本工程原创，不移植 TFR）
+#
+#  触发判定点全部复用工程内现成全局旗标，不自造条件：
+#    中国战败：gaw_japan_victory_settled
+#      —— common/scripted_effects/TFR_scripted_effects_PRC.txt 的
+#         ZZZ_gaw_settle_japan_victory 末尾置位（GAW 日本胜利 = 中国战败）
+#    俄罗斯战败：DSW_SOV_russian_defeat
+#      —— common/scripted_effects/DSW_SOV_campaign_effects.txt 的
+#         DSW_SOV_resolve_russian_defeat 内置位
+#
+#  两个结算效果各自在末尾调用本效果一次；中国、俄罗斯都战败才开战。
+#  宣战对象：PER（伊朗）。
+#  参战方：USA / ISR / 海湾六国（SAU UAE KUW QAT BHR OMA），
+#  名单与 mew.30、on_capitulation 反伊结算完全一致。
+#
+#  与 mew.30 共用 MEW_iran_war_declared / MEW_iran_war_ongoing 两个全局旗标，
+#  并沿用 540 天僵持兜底：旗标挂在 ISR，由 common/on_actions/on_actions_ZZZ_peace.txt
+#  里唯一的 on_monthly 块收束，不新增第二个 on_monthly 声明。
+# ============================================================================
+ZZZ_MEW_post_eurasia_iran_war = {
+	if = {
+		limit = {
+			has_global_flag = gaw_japan_victory_settled
+			has_global_flag = DSW_SOV_russian_defeat
+			NOT = { has_global_flag = MEW_iran_war_declared }
+			country_exists = PER
+			country_exists = USA
+			country_exists = ISR
+		}
+		set_global_flag = MEW_iran_war_declared
+		set_global_flag = MEW_iran_war_ongoing
+		set_global_flag = ZZZ_MEW_eurasia_iran_war
+		ISR = {
+			# 与 mew.30 相同的 540 天兜底；on_monthly 只认这个 country flag
+			set_country_flag = {
+				flag = MEW_iran_war_timeout
+				days = 540
+			}
+			# 防重复宣战：已经在打伊朗就不再宣
+			if = {
+				limit = {
+					NOT = { has_war_with = PER }
+				}
+				declare_war_on = {
+					target = PER
+					type = annex_everything
+				}
+			}
+		}
+		USA = {
+			if = {
+				limit = {
+					country_exists = PER
+					NOT = { has_war_with = PER }
+				}
+				declare_war_on = {
+					target = PER
+					type = annex_everything
+				}
+			}
+		}
+		every_country = {
+			limit = {
+				OR = {
+					original_tag = SAU
+					original_tag = UAE
+					original_tag = KUW
+					original_tag = QAT
+					original_tag = BHR
+					original_tag = OMA
+				}
+				country_exists = PER
+				NOT = { has_war_with = PER }
+			}
+			declare_war_on = {
+				target = PER
+				type = annex_everything
+			}
+		}
+		news_event = { id = mew.31 hours = 2 }
+	}
+}

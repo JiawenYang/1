@@ -1,0 +1,375 @@
+# Ported from Millennium Dawn / TFR (dangling-dispatch remediation, 2026-11-06)
+add_namespace = nato
+add_namespace = NATO
+country_event = {
+	id = nato.24
+	title = nato.24.t
+	desc = nato.24.d
+	picture = GFX_Generic_Bundeswehr
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			GER = {
+				country_event = {
+					id = nato.25
+					days = 5
+				}
+			}
+		}
+	}
+	option = {
+		#Agree
+		name = nato.24.a
+		if = {
+			limit = {
+				tag = ENG
+			}
+			GER = {
+				set_country_flag = ENG_agreed_offensive
+			}
+		}
+		if = {
+			limit = {
+				tag = FRA
+			}
+			GER = {
+				set_country_flag = FRA_agreed_offensive
+			}
+		}
+	}
+	option = {
+		#Deny
+		name = nato.24.b
+		GER = {
+			set_country_flag = NATO_offensive_denied
+		}
+	}
+}
+
+country_event = {
+	id = nato.26
+	title = nato.26.t
+	desc = nato.26.d
+	picture = GFX_Generic_NATO
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			set_global_flag = NATO_elections_begin
+		}
+	}
+	option = {
+		name = nato.26.a
+		effect_tooltip = {
+			unlock_decision_category_tooltip = NATO_leadership_category
+		}
+	}
+}
+
+country_event = {
+	id = nato.27
+	title = nato.27.t
+	desc = nato.27.d
+	picture = GFX_Generic_NATO
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			activate_mission = NATO_leadership_vote_countdown
+		}
+	}
+	option = {
+		name = nato.27.a
+		effect_tooltip = {
+			activate_mission = NATO_leadership_vote_countdown
+		}
+	}
+}
+
+country_event = {
+	id = nato.28
+	title = nato.28.t
+	desc = nato.28.d
+	picture = GFX_Generic_NATO
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			ROOT = {
+				set_country_flag = NATO_current_leader
+				set_faction_leader = yes
+			}
+			if = {
+				limit = {
+					has_global_flag = GER_won_leadership_global
+				}
+				news_event = {
+					id = news.265
+					hours = 6
+				}
+			}
+			else_if = {
+				limit = {
+					has_global_flag = FRA_won_leadership_global
+				}
+				news_event = {
+					id = news.264
+					hours = 6
+				}
+			}
+			else_if = {
+				limit = {
+					has_global_flag = ENG_won_leadership_global
+				}
+				news_event = {
+					id = news.266
+					hours = 6
+				}
+			}
+		}
+	}
+	option = {
+		name = nato.28.a
+		custom_effect_tooltip = NATO_alliance_actions_tt
+	}
+}
+
+country_event = {
+	id = nato.30
+	title = nato.30.t
+	desc = nato.30.d
+	picture = GFX_Generic_NATO
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+		}
+	}
+	option = {
+		name = nato.30.a
+		MNT = {
+			set_politics = {
+				ruling_party = democratic
+				elections_allowed = yes
+				last_election = "2020.01.01"
+				election_frequency = 48
+			}
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.07
+			}
+		}
+		news_event = {
+			id = news.281
+		}
+		MAC = {
+			country_event = {
+				id = nato.31
+				days = 30
+			}
+		}
+	}
+}
+
+country_event = {
+	id = nato.25
+	title = {
+		text = nato.25.t1
+		trigger = {
+			GER = {
+				has_country_flag = ENG_agreed_offensive
+				has_country_flag = FRA_agreed_offensive
+			}
+		}
+	}
+	title = {
+		text = nato.25.t2
+		trigger = {
+			GER = {
+				has_country_flag = NATO_offensive_denied
+			}
+		}
+	}
+	desc = {
+		text = nato.25.d1
+		trigger = {
+			GER = {
+				has_country_flag = ENG_agreed_offensive
+				has_country_flag = FRA_agreed_offensive
+			}
+		}
+	}
+	desc = {
+		text = nato.25.d2
+		trigger = {
+			GER = {
+				has_country_flag = NATO_offensive_denied
+			}
+		}
+	}
+	picture = GFX_Generic_Bundeswehr
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			if = {
+				limit = {
+					GER = {
+						has_country_flag = ENG_agreed_offensive
+						has_country_flag = FRA_agreed_offensive
+					}
+				}
+			}
+			GER = {
+				add_timed_idea = {
+					idea = NATO_offensive
+					days = 60
+				}
+			}
+			FRA = {
+				add_timed_idea = {
+					idea = NATO_offensive
+					days = 60
+				}
+			}
+			ENG = {
+				add_timed_idea = {
+					idea = NATO_offensive
+					days = 60
+				}
+			}
+		}
+	}
+	option = {
+		name = nato.25.a
+		trigger = {
+			NOT = {
+				has_country_flag = NATO_offensive_denied
+			}
+		}
+		effect_tooltip = {
+			GER = {
+				add_timed_idea = {
+					idea = NATO_offensive
+					days = 60
+				}
+			}
+			FRA = {
+				add_timed_idea = {
+					idea = NATO_offensive
+					days = 60
+				}
+			}
+			ENG = {
+				add_timed_idea = {
+					idea = NATO_offensive
+					days = 60
+				}
+			}
+		}
+		NATO_escalate_the_war_effect = yes
+	}
+	option = {
+		name = nato.25.b
+		trigger = {
+			NOT = {
+				GER = {
+					OR = {
+						has_country_flag = ENG_agreed_offensive
+						has_country_flag = FRA_agreed_offensive
+					}
+				}
+			}
+			GER = {
+				has_country_flag = NATO_offensive_denied
+			}
+		}
+	}
+}
+
+country_event = {
+	id = nato.31
+	title = nato.31.t
+	desc = nato.31.d
+	picture = GFX_Generic_NATO
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+		}
+	}
+	option = {
+		name = nato.31.a
+		MAC = {
+			set_politics = {
+				ruling_party = democratic
+				elections_allowed = yes
+				last_election = "2020.01.01"
+				election_frequency = 48
+			}
+			remove_ideas = MAC_fading_antiquisation
+			add_ideas = MAC_rising_antiquisation
+		}
+		news_event = {
+			id = news.282
+		}
+		ENG = {
+			country_event = {
+				id = nato.11
+				days = 7
+			}
+		}
+	}
+}
+
+country_event = {
+	id = nato.11
+	title = nato.11.t
+	desc = nato.11.d
+	picture = GFX_Civilian_Airliners
+	is_triggered_only = yes
+	option = {
+		name = nato.11.a
+		ENG = {
+			remove_from_faction = MNT
+			remove_from_faction = MAC
+		}
+		news_event = {
+			id = news.231
+		}
+	}
+}
+
+country_event = {
+	id = NATO.17
+	title = NATO.17.t
+	desc = NATO.17.d
+	picture = GFX_NATO_picture
+	is_triggered_only = yes
+
+	trigger = {
+		has_idea = NATO_member
+		has_elections = no
+		NOT = { has_government = fascism }
+	}
+
+	option = {
+		name = NATO.17.o1
+		log = "[GetDateText]: [This.GetName]: NATO.17.o1 executed"
+		NATO_leave = yes
+		hidden_effect = { news_event = NATO.16 }
+	}
+}
+news_event = {
+	id = NATO.16
+	title = NATO.16.t
+	desc = NATO.16.d
+	picture = GFX_news_nato
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = NATO.16.o1
+		trigger = { original_tag = FROM }
+	}
+
+	option = {
+		name = NATO.16.o2
+		trigger = { NOT = { original_tag = FROM } }
+	}
+}
+

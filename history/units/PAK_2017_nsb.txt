@@ -1,4 +1,4 @@
-﻿division_template = {
+division_template = {
 	name = "Marine Brigade" #Fixed
 	regiments = {
 		L_Marine_Bat = { x = 0 y = 0 }
@@ -6,6 +6,11 @@
 		L_Marine_Bat = { x = 0 y = 2 }
 	}
 	priority = 2
+	support = {
+		L_Recce_Comp = { x = 0 y = 0 }
+		L_Engi_Comp = { x = 0 y = 1 }
+		combat_service_support_company = { x = 0 y = 2 }
+	}
 }
 division_template = {
 	name = "Infantry Division" #Fixed
@@ -79,6 +84,13 @@ division_template = {
 		Mech_Inf_Bat = { x = 3 y = 1 }
 		SP_AA_Bat = { x = 3 y = 2 }
 	}
+	support = {
+		SP_arty_battery = { x = 0 y = 0 }
+		SP_AA_Battery = { x = 0 y = 1 }
+		armor_Recce_Comp = { x = 0 y = 2 }
+		H_Engi_Comp = { x = 0 y = 3 }
+		combat_service_support_company = { x = 0 y = 4 }
+	}
 }
 
 division_template = {
@@ -115,6 +127,13 @@ division_template = {
 		SP_Arty_Bat = { x = 0 y = 0 }
 		Mech_Inf_Bat = { x = 0 y = 1 }
 		Mech_Inf_Bat = { x = 0 y = 2 }
+	}
+	support = {
+		SP_arty_battery = { x = 0 y = 0 }
+		SP_AA_Battery = { x = 0 y = 1 }
+		Mech_Recce_Comp = { x = 0 y = 2 }
+		H_Engi_Comp = { x = 0 y = 3 }
+		combat_service_support_company = { x = 0 y = 4 }
 	}
 }
 division_template = {
@@ -452,26 +471,26 @@ instant_effect = {
 	### Smaller Weaponry ###
 
 	add_equipment_to_stockpile = {
-		variant_name = "Heckler & Koch G3A4"
+		variant_name = "G3A3"
 		type = infantry_weapons_2 #Heckler & Koch G3A4
 		amount = 53700
-		producer = PAK
+		producer = GER
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "Type-56"
-		type = infantry_weapons_2 #Type-56
+		variant_name = "Type 56"
+		type = infantry_weapons_1 #Type 56
 		amount = 20000
 		producer = CHI
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "AK-47"
-		type = infantry_weapons_2 #AK-47/旧式步枪（封存）
+		variant_name = "AKM"
+		type = infantry_weapons_1 #AK-47/旧式步枪（封存）
 		amount = 150000
 		producer = SOV
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "M4"
-		type = infantry_weapons_5 #M4
+		variant_name = "M4 SOPMOD Block I"
+    type = infantry_weapons_4 #M4
 		amount = 2000
 		producer = USA
 	}
@@ -496,8 +515,14 @@ instant_effect = {
 		amount = 1650
 		producer = PAK
 	}
+		
+		add_equipment_to_stockpile = {
+			type = Anti_tank_2 #Baktar-Shikan
+			producer = PAK
+			amount = 2000
+		}
 	add_equipment_to_stockpile = {
-		variant_name = "Anza"
+		variant_name = "anza"
 		type = Anti_Air_1 #anza
 		producer = PAK
 		amount = 2500
@@ -511,39 +536,46 @@ instant_effect = {
 	###LAND EQUIPMENT###
 
 	add_equipment_to_stockpile = {
+		variant_name = "Al-Khalid"
 		type = medium_tank_chassis_1
 		producer = PAK
 		amount = 415
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "Al-Khalid"
 		type = medium_tank_chassis_1
 		amount = 320
-		producer = SOV
+		producer = PAK
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "Al-Zarrar"
 		type = medium_tank_chassis_0
 		amount = 51
-		producer = SOV
+		producer = PAK
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "Al-Zarrar"
 		type = medium_tank_chassis_0
 		producer = PAK
 		amount = 1100
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "Al-Zarrar"
 		type = medium_tank_chassis_0
 		amount = 400
-		producer = CHI
+		producer = PAK
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "Al-Zarrar"
 		type = medium_tank_chassis_0
 		amount = 650
-		producer = CHI
+		producer = PAK
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "Al-Zarrar"
 		type = medium_tank_chassis_0
 		amount = 275
-		producer = CHI
+		producer = PAK
 	}
 	add_equipment_to_stockpile = {
 		variant_name = "Talha"
@@ -553,7 +585,7 @@ instant_effect = {
 	}
 	add_equipment_to_stockpile = {
 		variant_name = "Type-63"
-		type = medium_tank_amphibious_chassis_0 #Type-63
+		type = medium_tank_destroyer_chassis_0 #Type-63
 		amount = 100
 		producer = CHI
 	}
@@ -564,13 +596,12 @@ instant_effect = {
 		producer = SOV
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "Dingo II"
-		type = util_vehicle_6 #Dingo II
+		type = heavy_util_vehicle_5 #Dingo II
 		amount = 2
 		producer = GER
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "M109A2"
+		variant_name = "M109A3"
 		type = medium_tank_artillery_chassis_1 #M109A2
 		amount = 200
 		producer = USA
@@ -583,7 +614,7 @@ instant_effect = {
 		#version_name = "M109A5"
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "M110"
+		variant_name = "M110A2"
 		type = medium_tank_artillery_chassis_0 #M110
 		amount = 60
 		producer = USA
@@ -596,6 +627,7 @@ instant_effect = {
 		producer = SOV
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "PL-59"
 		type = artillery_1 #Type-54
 		amount = 900
 		producer = CHI
@@ -609,7 +641,7 @@ instant_effect = {
 		#version_name = "M114"
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "M198"
+		variant_name = "M198 howitzer"
 		type = artillery_2 #M198 howitzer
 		amount = 148
 		producer = USA
@@ -623,7 +655,7 @@ instant_effect = {
 	}
 
 	add_equipment_to_stockpile = {
-		variant_name = "AH-1 Cobra"
+		variant_name = "AH-1S Cobra"
 		type = heavy_tank_chassis_0 #AH-1 Cobra
 		amount = 38
 		producer = USA
@@ -641,42 +673,57 @@ instant_effect = {
 		producer = ITA
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "Bell CH-135 Twin Huey"
+		variant_name = "UH-1N Twin Huey"
 		type = transport_helicopter_1 #Bell CH-135 Twin Huey
 		amount = 26
-		producer = PAK
+		producer = USA
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "Mi-17"
+		variant_name = "Mil Mi-17"
 		type = transport_helicopter_1 #Mil Mi-17
 		amount = 39
 		producer = SOV
 		#version_name = "Mil Mi-17"
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "SA-330 Puma"
+		variant_name = "Eurocopter AS330 Puma"
 		type = transport_helicopter_1 #Aérospatiale SA-330 Puma
 		amount = 12
 		producer = FRA
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "SA-316 Alouette III"
+		variant_name = "Aérospatiale SA-316 Alouette III"
 		type = transport_helicopter_1 #Aérospatiale SA-316 Alouette III
 		amount = 20
 		producer = FRA
 		#version_name = "Aérospatiale SA-316 Alouette III"
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "SA-330 Puma"
+		variant_name = "Eurocopter AS330 Puma"
 		type = transport_helicopter_1 #Aérospatiale SA-330 Puma
 		amount = 20
 		producer = FRA
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "Mi-17"
+		variant_name = "Mil Mi-17"
 		type = transport_helicopter_1 #Mil Mi-17
 		amount = 5
 		producer = SOV
 		#version_name = "Mil Mi-17"
+	}
+
+
+	# Orphan variant attachment (2017 real-world holdings)
+	add_equipment_to_stockpile = {
+		type = small_plane_airframe_1
+		variant_name = "F-7PG"
+		amount = 40
+		producer = PAK
+	}
+	add_equipment_to_stockpile = {
+		type = large_plane_awacs_airframe_2
+		variant_name = "Saab 2000 Erieye"
+		amount = 4
+		producer = PAK
 	}
 }

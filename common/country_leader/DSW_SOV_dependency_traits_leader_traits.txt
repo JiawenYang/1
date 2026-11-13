@@ -9,9 +9,20 @@ leader_traits = {
 			factor = 1
 		}
 	}
+	# 事件中由 hos_wounded_lion 升级而来（events\TFR_events_SOV.txt 两处 swap_ruler_traits）
+	# 数值沿用同类既有档位 hos_wounded_lion，未新增数值
+	hos_wounded_lion_1 = {
+		random = no
+		political_power_factor = -0.05
+		stability_factor = -0.05
+		party_popularity_stability_factor = -0.05
+		ai_will_do = {
+			factor = 1
+		}
+	}
 	hos_peoples_president = {
 		random = no
-		communist_drift = 0.01
+		communism_drift = 0.01
 		poverty_development_monthly = 0.005
 		farming_development_monthly = 0.01
 		ai_will_do = {
@@ -45,7 +56,7 @@ leader_traits = {
 	}
 	hos_young_guard = {
 		random = no
-		communist_drift = 0.03
+		communism_drift = 0.03
 		stability_factor = 0.025
 		ai_will_do = {
 			factor = 1
@@ -268,7 +279,7 @@ leader_traits = {
 	}
 	hos_peoples_candidate = {
 		random = no
-		communist_drift = 0.03
+		communism_drift = 0.03
 		poverty_development_monthly = 0.005
 		farming_development_monthly = 0.005
 		ai_will_do = {
@@ -364,7 +375,7 @@ leader_traits = {
 	}
 	hos_red_governor = {
 		random = no
-		communist_drift = 0.03
+		communism_drift = 0.03
 		political_power_gain = 0.05
 		production_speed_infrastructure_factor = 0.01
 		production_speed_rail_way_factor = 0.01
@@ -592,7 +603,7 @@ leader_traits = {
 	}
 	party_historian = {
 		random = no
-		communist_drift = 0.01
+		communism_drift = 0.01
 		drift_defence_factor = 0.1
 		stability_factor = 0.015
 		ai_will_do = {
@@ -601,7 +612,7 @@ leader_traits = {
 	}
 	party_eurasian_leninist = {
 		random = no
-		communist_drift = 0.01
+		communism_drift = 0.01
 		war_support_factor = 0.03
 		ai_will_do = {
 			factor = 1
@@ -610,7 +621,7 @@ leader_traits = {
 	party_guardian_of_marxism_leninism = {
 		random = no
 		political_power_gain = 0.1
-		communist_drift = 0.01
+		communism_drift = 0.01
 		ai_will_do = {
 			factor = 1
 		}
@@ -662,7 +673,7 @@ leader_traits = {
 		random = no
 		war_support_factor = 0.1
 		stability_factor = -0.02
-		authoritarian_democrat_drift = 0.03
+		democratic_drift = 0.03
 		political_power_gain = -0.05
 	}
 	hos_successor = {
@@ -708,9 +719,6 @@ leader_traits = {
 			attack_bonus_against = 0.035
 			defense_bonus_against = 0.035
 		}
-		communist_acceptance = -75
-		totalitarian_socialist_acceptance = -75
-		libertarian_socialist_acceptance = -75
 	}
 	hos_wolf_in_the_moonlight = {
 		random = no
@@ -726,7 +734,7 @@ leader_traits = {
 	}
 	mass_assault_expert = {
 		sprite = 14
-		cat_mass_assault_cost_factor = -0.15
+		land_doctrine_cost_factor = -0.15
 		ai_will_do = {
 			factor = 1
 		}

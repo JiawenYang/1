@@ -1,0 +1,91 @@
+# ============================================================================
+#  ZZZ_chainrun —— 事件链跑通器（直接施加效果版 · 东南亚 / 东盟）
+#
+#  先说清楚现状：本 mod 的 events/ 里没有独立的东南亚战争链（无 zzz_sea / 南海冲突
+#  事件；`JAP_security_south_china_sea` 只是国策 stub，无 reward）。唯一以 asean 命名
+#  空间的真实事件是 events/TFR_events_PORT_misc.txt:17666 的 asean.6（老挝王政化 /
+#  柬埔寨自由化换届）。本决议即走它的成功分支 asean.6.a。
+#
+#  原实现是 if = { limit = { tag = LAO } ... } else_if = { limit = { tag = CAM } ... }，
+#  两支互斥且各自只作用于本国；按新口径不写 if/limit，改为直接写进 LAO / CAM 两个国家域，
+#  结果与原链一致（原链一次只可能命中其中一支）。
+#
+#  allowed 恒真：效果只按显式 TAG 作用，不读 ROOT。
+#
+#  该链需先有：无（asean.6 无 trigger 旗标要求）。
+# ============================================================================
+
+ZZZ_chainrun = {
+
+    ZZZ_cr_sea_01_asean_turnover = {
+        icon = generic_political_actions
+        cost = 0
+        fire_only_once = no
+
+        allowed = { always = yes }
+        visible = { always = yes }
+        available = { always = yes }
+
+        complete_effect = {
+            LAO = {
+                # asean.6.a 的 LAO 分支原文
+                set_cosmetic_tag = LAO_monarchist
+                create_country_leader = {
+                    name = LAO_soulivong_savang_char
+                    picture = "gfx/leaders/LAO/LAO_soulivong_savang.png"
+                    ideology = Monarchist
+                    traits = {
+                    }
+                }
+                create_country_leader = {
+                    name = LAO_soulivong_savang_char
+                    picture = "gfx/leaders/LAO/LAO_soulivong_savang.png"
+                    ideology = conservatism
+                    traits = {
+                    }
+                }
+                set_politics = {
+                    ruling_party = nationalist
+                    elections_allowed = no
+                }
+                set_party_name = {
+                    long_name = LAO_khun_lo_dynasty
+                    name = LAO_khun_lo_dynasty
+                    ideology = nationalist
+                }
+                clr_country_flag = head_of_gov_ui_enabled
+                add_popularity = {
+                    ideology = nationalist
+                    popularity = 0.45
+                }
+                add_popularity = {
+                    ideology = communism
+                    popularity = 0.15
+                }
+                add_popularity = {
+                    ideology = democratic
+                    popularity = 0.15
+                }
+            }
+            CAM = {
+                # asean.6.a 的 CAM 分支原文
+                set_politics = {
+                    ruling_party = democratic
+                    elections_allowed = yes
+                    election_frequency = 60
+                }
+                set_popularities = {
+                    democratic = 83
+                    communism = 17
+                    fascism = 0
+                    neutrality = 0
+                    nationalist = 0
+                }
+            }
+        }
+
+        ai_will_do = { base = 0 }
+    }
+}
+
+

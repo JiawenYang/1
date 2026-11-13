@@ -1,2 +1,60 @@
+# 空桩：本工程刻意删除了原基座 01_civil_war_effects.txt 的内战收尾逻辑（不恢复）。
+# 这些同名 effect 仅用于消除既有调用产生的 unknown effect 报错，不执行任何操作。
+# 调用来源：
+#   common/on_actions/MD_on_actions.txt:90            -> civil_war_cleanup_hooks
+#   common/on_actions/00_on_actions.txt:1215         -> civil_war_startup_repairs
+#   events/Nepal.txt:18                              -> civil_war_cleanup_nepal_truth_ending
+#   （下面 6 个为原 civil_war_cleanup_hooks 内部调用的名字，保留同名空定义以防未来重新启用）
 civil_war_cleanup_hooks = {
+}
+
+civil_war_cleanup_afghanistan = {
+}
+
+civil_war_cleanup_ivory_coast = {
+}
+
+civil_war_cleanup_senegal = {
+}
+
+civil_war_cleanup_haiti = {
+}
+
+civil_war_cleanup_car_bush_war = {
+}
+
+civil_war_cleanup_mali = {
+}
+
+civil_war_cleanup_nepal_truth_ending = {
+}
+
+civil_war_startup_repairs = {
+}
+
+# 从基座 01_civil_war_effects.txt:201-224 原样搬回（此前被同名空桩遮蔽，属事故）。
+# 调用来源：common/on_actions/00_on_actions.txt:1625、1629
+add_civil_war_debuff = {
+	#Remove all ideas in-case not fully recovered yet
+	set_country_flag = manual_civil_war_debuff_removal
+	remove_ideas = civil_war_disorganised_military_1
+	remove_ideas = civil_war_disorganised_military_2_military
+	remove_ideas = civil_war_disorganised_military_2_production
+	remove_ideas = civil_war_disorganised_military_2_experience
+	remove_ideas = civil_war_disorganised_military_3_military
+	remove_ideas = civil_war_disorganised_military_3_production
+	remove_ideas = civil_war_disorganised_military_3_experience
+	remove_ideas = civil_war_disorganised_military_4_military
+	remove_ideas = civil_war_disorganised_military_4_production
+	remove_ideas = civil_war_disorganised_military_4_experience
+	remove_ideas = civil_war_disorganised_military_5_military
+	remove_ideas = civil_war_disorganised_military_5_production
+	remove_ideas = civil_war_disorganised_military_5_experience
+	clr_country_flag = manual_civil_war_debuff_removal
+
+	#Add timed idea for 5 months, other levels will be handled with on_remove events
+	add_timed_idea = {
+		idea = civil_war_disorganised_military_1
+		days = 150
+	}
 }

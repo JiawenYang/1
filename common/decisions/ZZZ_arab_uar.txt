@@ -1,0 +1,204 @@
+# 阿拉伯联合共和国剧情链 —— 决议
+# 门槛：中国胜全球战争 + 俄罗斯胜欧陆战争 + 巴勒斯坦/阿拉伯方胜中东战争
+#   gaw_china_victory_settled  : common/scripted_effects/TFR_scripted_effects_PRC.txt:2466
+#   DSW_SOV_russian_victory    : common/scripted_effects/DSW_SOV_campaign_effects.txt:841
+#   MEW_palestine_victory      : common/on_actions/on_actions_ZZZ_peace.txt:453
+# 上合机制复用 MD 基座既有实现（idea + global.sco_members），不自造并行系统：
+#   common/scripted_effects/05_CHI_scripted_effects.txt:430 / :440
+
+ZZZ_arab_uar_category = {
+
+	# ① 邀请埃及成为上合观察员（先点的一方置旗标，另一方不再可见）
+	ZZZ_UAR_invite_egypt_observer = {
+		icon = generic_political_discourse
+		cost = 150
+		fire_only_once = yes
+		ai_will_do = {
+			base = 0
+		}
+
+		visible = {
+			has_global_flag = gaw_china_victory_settled
+			has_global_flag = DSW_SOV_russian_victory
+			has_global_flag = MEW_palestine_victory
+			country_exists = EGY
+			NOT = { has_global_flag = ZZZ_UAR_egypt_invited }
+			EGY = { NOT = { is_sco = yes } }
+		}
+
+		available = {
+			has_global_flag = gaw_china_victory_settled
+			has_global_flag = DSW_SOV_russian_victory
+			has_global_flag = MEW_palestine_victory
+			country_exists = EGY
+			NOT = { has_global_flag = ZZZ_UAR_egypt_invited }
+			EGY = { NOT = { is_sco = yes } }
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [This.GetName]: Decision ZZZ_UAR_invite_egypt_observer executed"
+			set_global_flag = ZZZ_UAR_egypt_invited
+			if = {
+				limit = { original_tag = CHI }
+				set_global_flag = ZZZ_UAR_invited_by_china
+			}
+			else = {
+				set_global_flag = ZZZ_UAR_invited_by_soviet
+			}
+			EGY = { CHI_sco_promote_to_observer = yes }
+			EGY = { country_event = { id = ZZZ_arab_uar.1 days = 30 } }
+			country_event = { id = ZZZ_arab_uar.2 }
+		}
+	}
+
+	# ② 埃及军方否决后重试（每次消耗政治点数，可重复）
+	ZZZ_UAR_retry_egypt_membership = {
+		icon = generic_political_discourse
+		cost = 100
+		fire_only_once = no
+		ai_will_do = {
+			base = 20
+		}
+
+		visible = {
+			has_global_flag = ZZZ_UAR_egypt_invited
+			NOT = { has_global_flag = ZZZ_UAR_egypt_member }
+			country_exists = EGY
+			EGY = { has_country_flag = ZZZ_UAR_egypt_rejected }
+		}
+
+		available = {
+			has_global_flag = ZZZ_UAR_egypt_invited
+			NOT = { has_global_flag = ZZZ_UAR_egypt_member }
+			country_exists = EGY
+			EGY = { has_country_flag = ZZZ_UAR_egypt_rejected }
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [This.GetName]: Decision ZZZ_UAR_retry_egypt_membership executed"
+			EGY = { clr_country_flag = ZZZ_UAR_egypt_rejected }
+			# 已转正后（自动重发先一步成功）不再重复发表决
+			if = {
+				limit = {
+					NOT = { has_global_flag = ZZZ_UAR_egypt_member }
+					EGY = { NOT = { is_sco = yes } }
+				}
+				EGY = { country_event = { id = ZZZ_arab_uar.1 days = 30 } }
+			}
+		}
+	}
+
+	# ③ 埃及正式入上合后，由其牵头成立泛阿拉伯军事同盟
+	ZZZ_UAR_form_arab_alliance = {
+		icon = generic_political_discourse
+		cost = 100
+		fire_only_once = yes
+		ai_will_do = {
+			base = 0
+		}
+
+		visible = {
+			has_global_flag = ZZZ_UAR_egypt_member
+			NOT = { has_global_flag = ZZZ_UAR_arab_faction_formed }
+			country_exists = EGY
+			OR = {
+				country_exists = SYR
+				country_exists = ALG
+				country_exists = LBA
+				country_exists = YEM
+			}
+		}
+
+		available = {
+			has_global_flag = ZZZ_UAR_egypt_member
+			NOT = { has_global_flag = ZZZ_UAR_arab_faction_formed }
+			country_exists = EGY
+			OR = {
+				country_exists = SYR
+				country_exists = ALG
+				country_exists = LBA
+				country_exists = YEM
+			}
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [This.GetName]: Decision ZZZ_UAR_form_arab_alliance executed"
+			EGY = { ZZZ_UAR_form_uae_military_alliance = yes }
+			country_event = { id = ZZZ_arab_uar.3 }
+		}
+	}
+
+	# ④ 对阿拉伯君主制国家开战（玩家手动点击，不自动开战）
+	ZZZ_UAR_war_on_arab_monarchies = {
+		icon = generic_political_discourse
+		cost = 75
+		fire_only_once = yes
+		ai_will_do = {
+			base = 0
+		}
+
+		visible = {
+			has_global_flag = ZZZ_UAR_arab_faction_formed
+			NOT = { has_global_flag = ZZZ_UAR_war_on_monarchies }
+			country_exists = EGY
+			OR = {
+				country_exists = SAU
+				country_exists = JOR
+				country_exists = UAE
+				country_exists = KUW
+				country_exists = QAT
+				country_exists = OMA
+				country_exists = BHR
+			}
+		}
+
+		available = {
+			has_global_flag = ZZZ_UAR_arab_faction_formed
+			NOT = { has_global_flag = ZZZ_UAR_war_on_monarchies }
+			country_exists = EGY
+			OR = {
+				country_exists = SAU
+				country_exists = JOR
+				country_exists = UAE
+				country_exists = KUW
+				country_exists = QAT
+				country_exists = OMA
+				country_exists = BHR
+			}
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [This.GetName]: Decision ZZZ_UAR_war_on_arab_monarchies executed"
+			EGY = { ZZZ_UAR_declare_wars = yes }
+			set_global_flag = ZZZ_UAR_war_on_monarchies
+		}
+	}
+
+	# ⑤ 白和兜底结算：白和不触发 on_capitulation，避免旗标永久残留
+	ZZZ_UAR_settle_war = {
+		icon = generic_political_discourse
+		fire_only_once = no
+		ai_will_do = {
+			base = 0
+		}
+
+		visible = {
+			has_global_flag = ZZZ_UAR_war_on_monarchies
+			NOT = { has_global_flag = ZZZ_UAR_war_over }
+			country_exists = EGY
+			EGY = { NOT = { has_war = yes } }
+		}
+
+		available = {
+			has_global_flag = ZZZ_UAR_war_on_monarchies
+			NOT = { has_global_flag = ZZZ_UAR_war_over }
+			country_exists = EGY
+			EGY = { NOT = { has_war = yes } }
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [This.GetName]: Decision ZZZ_UAR_settle_war executed"
+			EGY = { ZZZ_UAR_resolve_war_outcome = yes }
+		}
+	}
+}

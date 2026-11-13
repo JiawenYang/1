@@ -1,0 +1,100 @@
+# ============================================================================
+#  ZZZ_chainrun —— 事件链跑通器（直接施加效果版 · 中东 MEW 结算）
+#
+#  链路本体：common/on_actions/on_actions_ZZZ_peace.txt:380 起
+#  “Sixth Middle East War (MEW) settlements” 的结算A（阿拉伯方胜利：
+#  巴勒斯坦吞并以色列、犹太人流散）。MEW 结算由 mew.0 置位的
+#  MEW_interim_settlements 开启投降即时结算，终局由 on_daily 一次性收尾。
+#
+#  原块结构（关键点）：
+#    limit：has_global_flag = MEW_sixth_war_ongoing、NOT MEW_settlement_done、
+#           ROOT = ISR 且 FROM = 阿拉伯参战方之一
+#    顺序：戈兰（587）归还 SYR → 真主党（HEZ，州 201）复国 → 参战方白和 →
+#          PAL 吞并 ISR（再吞并 HAM）→ 置 skip_default_capitulation /
+#          clr MEW_sixth_war_ongoing / set MEW_palestine_victory / set MEW_settlement_done
+#          → news_event mew.10 → EGY country_event mew.11
+#
+#  本决议内联的部分：PAL 吞并 ISR / HAM、四个全局旗标。
+#  跳过的部分：
+#    · 587 → SYR、201 → HEZ 两段州转移（原实现包在 if 里，且需 ROOT 先持有该州）
+#    · 参战方白和循环（需要真实战争与 MEW_belligerent 旗标）
+#    · news_event = { id = mew.10 } 与 EGY = { country_event = { id = mew.11 days = 7 } }
+#
+#  allowed 恒真：全部按显式 TAG 作用，不写 ROOT。
+#
+#  该链需先有：MEW_sixth_war_ongoing（第六次中东战争进行中）。
+#  注意：本决议不做这个检查，也不会自己补旗标——若该旗标不存在，本决议仍会执行
+#  吞并与置旗，属于“强行结算”，与正式流程（战后自动结算）不同。
+# ============================================================================
+
+ZZZ_chainrun = {
+
+    ZZZ_cr_mew_01_palestine_victory = {
+        icon = generic_political_actions
+        cost = 0
+        fire_only_once = no
+
+        allowed = { always = yes }
+        visible = { always = yes }
+        available = { always = yes }
+
+        complete_effect = {
+            PAL = {
+                # 结算A 的收尾原文
+                annex_country = {
+                    target = ISR
+                    transfer_troops = no
+                }
+                annex_country = {
+                    target = HAM
+                    transfer_troops = yes
+                }
+            }
+            set_global_flag = skip_default_capitulation
+            clr_global_flag = MEW_sixth_war_ongoing
+            set_global_flag = MEW_palestine_victory
+            set_global_flag = MEW_settlement_done
+        }
+
+        ai_will_do = { base = 0 }
+    }
+
+    # 节点：中东 MEW 结算B 以色列胜利（结算B-1/B-2/B-3）
+    ZZZ_cr_mew_02_israel_victory = {
+        icon = generic_political_actions
+        cost = 0
+        fire_only_once = no
+
+        allowed = { always = yes }
+        visible = { always = yes }
+        available = { always = yes }
+
+        complete_effect = {
+            # 原文：ISR 吞并 PAL（约旦河西岸）、HAM（加沙）、HEZ（黎巴嫩南部）
+            # 原实现包在 MEW_interim_settlements 守卫里（该开关现由 mew.0 置位），
+            # 这里按调试口径直接施加；B-4/B-5（埃及西奈、约旦/叙利亚割地）未走
+            ISR = {
+                annex_country = {
+                    target = PAL
+                    transfer_troops = no
+                }
+                annex_country = {
+                    target = HAM
+                    transfer_troops = no
+                }
+                annex_country = {
+                    target = HEZ
+                    transfer_troops = no
+                }
+            }
+            set_global_flag = skip_default_capitulation
+            clr_global_flag = MEW_sixth_war_ongoing
+            set_global_flag = MEW_isr_took_pal
+            set_global_flag = MEW_isr_took_ham
+            set_global_flag = MEW_isr_took_hez
+            set_global_flag = MEW_settlement_done
+        }
+
+        ai_will_do = { base = 0 }
+    }
+}

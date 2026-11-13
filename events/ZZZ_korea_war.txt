@@ -1,0 +1,269 @@
+add_namespace = ZZZ_KW_korea_war
+
+# ============================================================================
+# 朝鲜半岛战争线（千禧黎明 / 本工程原创）
+#
+# 结构（三分叉树）：
+#   2022.5.9 仅关闭谈判窗口，不宣战、不升温（ZZZ_KW_korea_war.1）
+#   ├─ ① 邦联/已统一            → .2 和平，半岛不打
+#   │                             （进步派 2022 大选，仅换党，不建领袖条目）
+#   └─ ② 未成局 → .3 保守派政府（尹锡悦）
+#        └─ 2024.12.3 戒严尝试（.4），按「台湾是否已统一」分叉：
+#            ├─ 台湾已统一（特别行政区）+ 朝韩未统一
+#            │    → .4 戒严成功 → .5 国会之夜 → .6 对北开战 → .7 GAW
+#            └─ 台湾未统一 + 朝韩未统一
+#                 → .4 戒严失败 → .9 戒严被否 / 尹锡悦下台 → .10 进步派上台，无战事
+#
+# 「台湾已统一」的唯一判据：
+#   common/scripted_triggers/ZZZ_geopolitics_triggers.txt 的 ZZZ_taiwan_is_sar
+#   （依据 taiwan_detente.11 的实际落地动作：CHI puppet TAI + 特别行政区自治等级）
+#
+# 命名空间独立（ZZZ_KW_korea_war），避免与工坊 Korea Plus 的 korea.* 同号
+# ============================================================================
+
+# 2022.5.9 谈判窗口关闭：只做分叉，不宣战、不升温
+country_event = {
+	id = ZZZ_KW_korea_war.1
+	title = ZZZ_KW_korea_war.1.t
+	desc = ZZZ_KW_korea_war.1.d
+	picture = GFX_politics_negotiations
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tag = KOR
+		date > 2022.5.8
+	}
+
+	option = {
+		name = ZZZ_KW_korea_war.1.a
+		log = "[GetDateText]: [This.GetName]: ZZZ_KW_korea_war.1.a executed"
+		if = {
+			limit = {
+				OR = {
+					has_global_flag = korean_confederation_formed
+					has_country_flag = korea_peninsula_reunited
+				}
+			}
+			set_country_flag = ZZZ_kw_peace_settled
+			country_event = { id = ZZZ_KW_korea_war.2 days = 1 }
+		}
+		else = {
+			set_country_flag = ZZZ_kw_tension_branch
+			country_event = { id = ZZZ_KW_korea_war.3 days = 1 }
+		}
+	}
+}
+
+# ① 和平分支：邦联/统一已成局，半岛不打；只做政党轮替
+# 说明：李在明在 MD 与本工程均无 create_country_leader 条目与肖像，
+#       此处只走显式支持率效果，不新建领袖、不套用他人头像
+country_event = {
+	id = ZZZ_KW_korea_war.2
+	title = ZZZ_KW_korea_war.2.t
+	desc = ZZZ_KW_korea_war.2.d
+	picture = GFX_politics_negotiations
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tag = KOR
+		has_country_flag = ZZZ_kw_peace_settled
+	}
+
+	option = {
+		name = ZZZ_KW_korea_war.2.a
+		log = "[GetDateText]: [This.GetName]: ZZZ_KW_korea_war.2.a executed"
+		ZZZ_KW_korea_election_2022_progressive = yes
+		set_country_flag = ZZZ_kw_progressive_government
+	}
+}
+
+# ② 未成局分支：保守派政府上台（尹锡悦，复用 MD 既有条目与肖像）
+# 同时排程 2024.12 戒严入口；链内自带日期门控，外层不重复触发
+country_event = {
+	id = ZZZ_KW_korea_war.3
+	title = ZZZ_KW_korea_war.3.t
+	desc = ZZZ_KW_korea_war.3.d
+	picture = GFX_politics_talks
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tag = KOR
+		has_country_flag = ZZZ_kw_tension_branch
+	}
+
+	option = {
+		name = ZZZ_KW_korea_war.3.a
+		log = "[GetDateText]: [This.GetName]: ZZZ_KW_korea_war.3.a executed"
+		ZZZ_KW_korea_election_2022_conservative = yes
+		ZZZ_party_leader_KOR_yoon = yes
+		set_country_flag = ZZZ_kw_conservative_government
+		# 2022.5.9 + 939 天 ≈ 2024.12.3
+		country_event = { id = ZZZ_KW_korea_war.4 days = 939 }
+	}
+}
+
+# 2024.12.3 戒严尝试：成败只看「台湾是否已统一」
+#   台湾已统一（特别行政区落地）→ 戒严成功 → .5
+#   台湾未统一                    → 戒严失败 → .9
+country_event = {
+	id = ZZZ_KW_korea_war.4
+	title = ZZZ_KW_korea_war.4.t
+	desc = ZZZ_KW_korea_war.4.d
+	picture = GFX_politics_talks
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tag = KOR
+		date > 2024.11.1
+		has_country_flag = ZZZ_kw_conservative_government
+		NOT = { has_country_flag = ZZZ_kw_martial_law_started }
+		NOT = { has_country_flag = ZZZ_kw_martial_law_failed }
+	}
+
+	option = {
+		name = ZZZ_KW_korea_war.4.a
+		log = "[GetDateText]: [This.GetName]: ZZZ_KW_korea_war.4.a executed"
+		if = {
+			limit = { ZZZ_taiwan_is_sar = yes }
+			set_country_flag = ZZZ_kw_martial_law_started
+			add_ideas = ZZZ_KW_martial_law_2024
+			country_event = { id = ZZZ_KW_korea_war.5 days = 2 }
+		}
+		else = {
+			set_country_flag = ZZZ_kw_martial_law_failed
+			country_event = { id = ZZZ_KW_korea_war.9 days = 1 }
+		}
+	}
+}
+
+# 国会否决与弹劾危机：戒严不可逆，无缓和选项（仅「戒严成功」分支可达）
+country_event = {
+	id = ZZZ_KW_korea_war.5
+	title = ZZZ_KW_korea_war.5.t
+	desc = ZZZ_KW_korea_war.5.d
+	picture = GFX_politics_talks
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tag = KOR
+		date > 2024.11.5
+		has_country_flag = ZZZ_kw_martial_law_started
+		NOT = { has_country_flag = ZZZ_kw_peninsula_war_started }
+	}
+
+	option = {
+		name = ZZZ_KW_korea_war.5.a
+		log = "[GetDateText]: [This.GetName]: ZZZ_KW_korea_war.5.a executed"
+		country_event = { id = ZZZ_KW_korea_war.6 days = 4 }
+	}
+}
+
+# 对北开战：单选项、不可逆；开战即由半岛侧触发 GAW
+country_event = {
+	id = ZZZ_KW_korea_war.6
+	title = ZZZ_KW_korea_war.6.t
+	desc = ZZZ_KW_korea_war.6.d
+	picture = GFX_politics_talks
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tag = KOR
+		date > 2024.11.8
+		has_country_flag = ZZZ_kw_martial_law_started
+		NOT = { has_country_flag = ZZZ_kw_peninsula_war_started }
+	}
+
+	option = {
+		name = ZZZ_KW_korea_war.6.a
+		log = "[GetDateText]: [This.GetName]: ZZZ_KW_korea_war.6.a executed"
+		ZZZ_korea_declare_war_on_north = yes
+		set_country_flag = ZZZ_kw_peninsula_war_started
+		news_event = { id = ZZZ_KW_korea_war.8 hours = 6 }
+		CHI = {
+			country_event = { id = ZZZ_KW_korea_war.7 days = 1 }
+		}
+	}
+}
+
+# GAW 入口（在中国作用域执行）
+# 唯一派发者：ZZZ_KW_korea_war.6（② 「台湾已统一 + 朝韩未统一」分支）
+country_event = {
+	id = ZZZ_KW_korea_war.7
+	title = ZZZ_KW_korea_war.7.t
+	desc = ZZZ_KW_korea_war.7.d
+	picture = GFX_PRC_gaw_start
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tag = CHI
+	}
+
+	option = {
+		name = ZZZ_KW_korea_war.7.a
+		log = "[GetDateText]: [This.GetName]: ZZZ_KW_korea_war.7.a executed"
+		ZZZ_start_gaw_from_korea = yes
+	}
+}
+
+# 半岛战争爆发新闻
+news_event = {
+	id = ZZZ_KW_korea_war.8
+	title = ZZZ_KW_korea_war.8.t
+	desc = ZZZ_KW_korea_war.8.d
+	picture = GFX_news_press_conference
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = ZZZ_KW_korea_war.8.a
+	}
+}
+
+# ③ 戒严失败：国会推翻戒严令，弹劾启动，尹锡悦下台；半岛不开战
+country_event = {
+	id = ZZZ_KW_korea_war.9
+	title = ZZZ_KW_korea_war.9.t
+	desc = ZZZ_KW_korea_war.9.d
+	picture = GFX_politics_talks
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tag = KOR
+		date > 2024.12.1
+		has_country_flag = ZZZ_kw_martial_law_failed
+		NOT = { has_country_flag = ZZZ_kw_peninsula_war_started }
+	}
+
+	option = {
+		name = ZZZ_KW_korea_war.9.a
+		log = "[GetDateText]: [This.GetName]: ZZZ_KW_korea_war.9.a executed"
+		set_country_flag = ZZZ_kw_martial_law_revoked
+		# 2024.12.3 + 181 天 ≈ 2025.6.2（提前大选前夜）
+		country_event = { id = ZZZ_KW_korea_war.10 days = 181 }
+	}
+}
+
+# ③ 续：2025.6.3 提前大选，进步派政府上台（只换执政党，不钦定领袖）
+country_event = {
+	id = ZZZ_KW_korea_war.10
+	title = ZZZ_KW_korea_war.10.t
+	desc = ZZZ_KW_korea_war.10.d
+	picture = GFX_politics_negotiations
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tag = KOR
+		date > 2025.6.1
+		has_country_flag = ZZZ_kw_martial_law_revoked
+		NOT = { has_country_flag = ZZZ_kw_progressive_government_2025 }
+	}
+
+	option = {
+		name = ZZZ_KW_korea_war.10.a
+		log = "[GetDateText]: [This.GetName]: ZZZ_KW_korea_war.10.a executed"
+		ZZZ_KW_korea_election_2025_progressive = yes
+		# 只换执政党，不钦定领袖：由 MD 既有领袖库按党派自动接任
+		set_country_flag = ZZZ_kw_progressive_government_2025
+		set_country_flag = ZZZ_kw_peninsula_peace_outcome
+	}
+}

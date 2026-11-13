@@ -1,0 +1,141 @@
+# ============================================================================
+# TFR 派系模板缺失目标补定义（2026-11-08）
+# 来源：common/factions/templates/00_TFR.txt 的 goals 列表引用了 7 个从未定义的目标。
+# 模板 goals 不做加载期校验，故日志不报；但派系界面会显示空目标。
+# 本文件只给最小可用形状（name / description / category / group / visible / completed / complete_effect）。
+# completed 条件一律用 always = no：语义无法从名称与现有脚本可靠反推，按"判不准标出来"处理，
+# 待后续有明确玩法设计再补条件。complete_effect 留空，避免凭空发奖励。
+# ============================================================================
+
+# 短周期：愿景为"成员国首都互联"，具体判定标准（基建等级/铁路连通）无法静态确认，标为待定。
+faction_goal_sco_connected_capitals = {
+    name = sco_connected_capitals_goal_name
+    description = sco_connected_capitals_goal_desc
+    category = short_term
+    group = FOCUS_FILTER_INDUSTRY
+    visible = {
+        always = yes
+    }
+    completed = {
+        always = no
+    }
+    complete_effect = {
+    }
+    ai_will_do = {
+        base = 0
+    }
+}
+
+# 短周期：愿景为"消除恐怖主义威胁"，判定口径（是否以 idea/flag 表示）不明，标为待定。
+faction_goal_no_terrorism = {
+    name = no_terrorism_goal_name
+    description = no_terrorism_goal_desc
+    category = short_term
+    group = FOCUS_FILTER_INTERNAL_AFFAIRS
+    visible = {
+        always = yes
+    }
+    completed = {
+        always = no
+    }
+    complete_effect = {
+    }
+    ai_will_do = {
+        base = 0
+    }
+}
+
+# 短周期：愿景为"改编东亚条约组织部队"，具体编制/规模门槛不明，标为待定。
+faction_goal_transform_eap_forces = {
+    name = transform_eap_forces_goal_name
+    description = transform_eap_forces_goal_desc
+    category = short_term
+    group = FOCUS_FILTER_ARMY_XP
+    visible = {
+        always = yes
+    }
+    completed = {
+        always = no
+    }
+    complete_effect = {
+    }
+    ai_will_do = {
+        base = 0
+    }
+}
+
+# 中周期：愿景为"援助台湾"，目标国 tag 与判定条件（控制/援助程度）不明，标为待定。
+faction_goal_help_taiwan = {
+    name = help_taiwan_goal_name
+    description = help_taiwan_goal_desc
+    category = medium_term
+    group = FOCUS_FILTER_POLITICAL
+    visible = {
+        always = yes
+    }
+    completed = {
+        always = no
+    }
+    complete_effect = {
+    }
+    ai_will_do = {
+        base = 0
+    }
+}
+
+# 中周期：愿景为"稳固东亚大陆"，范围与判定标准不明，标为待定。
+faction_goal_secure_east_asia_continent = {
+    name = secure_east_asia_continent_goal_name
+    description = secure_east_asia_continent_goal_desc
+    category = medium_term
+    group = FOCUS_FILTER_WAR_SUPPORT
+    visible = {
+        always = yes
+    }
+    completed = {
+        always = no
+    }
+    complete_effect = {
+    }
+    ai_will_do = {
+        base = 0
+    }
+}
+
+# 长周期：愿景为"制衡俄罗斯"，判定条件不明，标为待定。
+faction_goal_check_russia = {
+    name = check_russia_goal_name
+    description = check_russia_goal_desc
+    category = long_term
+    group = FOCUS_FILTER_POLITICAL
+    visible = {
+        always = yes
+    }
+    completed = {
+        always = no
+    }
+    complete_effect = {
+    }
+    ai_will_do = {
+        base = 0
+    }
+}
+
+# 长周期：愿景为"制衡中国"，判定条件不明，标为待定。
+faction_goal_check_china = {
+    name = check_china_goal_name
+    description = check_china_goal_desc
+    category = long_term
+    group = FOCUS_FILTER_POLITICAL
+    visible = {
+        always = yes
+    }
+    completed = {
+        always = no
+    }
+    complete_effect = {
+    }
+    ai_will_do = {
+        base = 0
+    }
+}

@@ -1,0 +1,34 @@
+# ============================================================
+# ZZZ 选举模板：内部排期脉冲（mode 1）
+# mode 0（真实国家）完全由 last_election + election_frequency 驱动，
+# 本文件只做两件事：
+#   1. 对 ZZZ_sched_mode = 1 的国家，首次出现时初始化排期并给任期宽限期
+#   2. 宽限期结束后触发竞选事件，保证新 tag 不会一露面就投票
+# 扫描范围被 ZZZ_election_enabled 旗标限制，不是对所有国家无差别遍历。
+# ============================================================
+
+on_actions = {
+	on_yearly = {
+		effect = {
+			every_country = {
+				limit = {
+					has_country_flag = ZZZ_election_enabled
+					check_variable = { ZZZ_sched_mode = 1 }
+					NOT = { has_country_flag = ZZZ_sched_init }
+				}
+				ZZZ_elect_init_schedule = yes
+			}
+			every_country = {
+				limit = {
+					has_country_flag = ZZZ_election_enabled
+					has_country_flag = ZZZ_sched_init
+					check_variable = { ZZZ_sched_mode = 1 }
+					NOT = { has_country_flag = ZZZ_elect_grace }
+					NOT = { has_country_flag = ZZZ_election_running }
+				}
+				log = "[GetDateText]: [This.GetName]: ZZZ election chain=ZZZ_template (mode 1 pulse)"
+				country_event = ZZZ_election.0
+			}
+		}
+	}
+}

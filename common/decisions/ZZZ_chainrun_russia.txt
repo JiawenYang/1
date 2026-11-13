@@ -1,0 +1,132 @@
+# ============================================================================
+#  ZZZ_chainrun —— 事件链跑通器（直接施加效果版 · 俄乌三条路径）
+#
+#  口径：与 ZZZ_chainrun_korea.txt 完全一致 —— 一条链一条决议，
+#  complete_effect 里按该链成功分支的国策 completion_reward 顺序【直接执行】
+#  效果，不 fire 事件、不写 if / limit、不判断前置条件。
+#
+#  俄乌三条路径本体是三个国策的 completion_reward，核心效果统一落在
+#  common/scripted_effects/DSW_SOV_campaign_effects.txt:185 的
+#  DSW_SOV_declare_war_on_ukraine（该文件注释明确要求“调试决议全部调用本效果，
+#  不保留第二份实现”，故此处只调用脚本效果，不在决议里重复一份实现）。
+#
+#    · 普京线      SOV_declare_smo                （TFR_national_focus_SOV.txt:1304）
+#    · 梅德韦杰夫线 SOV_address_the_nation        （TFR_national_focus_SOV_medvedev.txt:1799）
+#    · 俄共线      SOV_operation_little_saturn    （TFR_national_focus_SOV_communist_new.txt:3518）
+#
+#  三条路径均由 DSW_SOV_smo_started 自锁：第一条生效后其余两条的脚本效果内部
+#  if 不成立、自然空转，这与正式游玩时“只有一条路径能开战”的真实结果一致。
+# ============================================================================
+
+ZZZ_chainrun = {
+
+    ZZZ_cr_ru_01_putin_smo = {
+        icon = generic_political_actions
+        cost = 0
+        fire_only_once = no
+
+        allowed = { always = yes }
+        visible = { always = yes }
+        available = { always = yes }
+
+        complete_effect = {
+            SOV = {
+                # 国策 SOV_declare_smo 的 completion_reward 原文（全文仅此一句）
+                DSW_SOV_declare_war_on_ukraine = yes
+            }
+        }
+
+        ai_will_do = { base = 0 }
+    }
+
+    ZZZ_cr_ru_02_medvedev_wall = {
+        icon = generic_political_actions
+        cost = 0
+        fire_only_once = no
+
+        allowed = { always = yes }
+        visible = { always = yes }
+        available = { always = yes }
+
+        complete_effect = {
+            SOV = {
+                # 国策 SOV_address_the_nation 的 completion_reward 原文前四段
+                add_named_threat = {
+                    threat = 20
+                    name = SOV_european_war_threat
+                }
+                DSW_SOV_declare_war_on_ukraine = yes
+                UKR = {
+                    add_ideas = UKR_to_the_last
+                }
+                set_country_flag = DSW_SOV_pending_news_190
+            }
+        }
+
+        ai_will_do = { base = 0 }
+    }
+
+    ZZZ_cr_ru_03_communist_saturn = {
+        icon = generic_political_actions
+        cost = 0
+        fire_only_once = no
+
+        allowed = { always = yes }
+        visible = { always = yes }
+        available = { always = yes }
+
+        complete_effect = {
+            SOV = {
+                # 国策 SOV_operation_little_saturn 的 completion_reward 原文前四段
+                add_named_threat = {
+                    threat = 20
+                    name = SOV_european_war_threat
+                }
+                DSW_SOV_declare_war_on_ukraine = yes
+                UKR = {
+                    add_ideas = UKR_to_the_last
+                }
+                set_country_flag = DSW_SOV_pending_news_190
+            }
+        }
+
+        ai_will_do = { base = 0 }
+    }
+
+    # 节点：俄乌/欧陆战争 俄方胜利终局（DSW_SOV_resolve_russian_victory）
+    ZZZ_cr_ru_04_russian_victory = {
+        icon = generic_political_actions
+        cost = 0
+        fire_only_once = no
+
+        allowed = { always = yes }
+        visible = { always = yes }
+        available = { always = yes }
+
+        complete_effect = {
+            # 脚本效果原文：置胜利旗标、加载战后国策树、触发法方结果事件、走东欧结算
+            # 效果内部自带 if / limit 守卫（未开战时会空转），本决议不额外加前置
+            DSW_SOV_resolve_russian_victory = yes
+        }
+
+        ai_will_do = { base = 0 }
+    }
+
+    # 节点：俄乌/欧陆战争 俄方战败终局（DSW_SOV_resolve_russian_defeat）
+    ZZZ_cr_ru_05_russian_defeat = {
+        icon = generic_political_actions
+        cost = 0
+        fire_only_once = no
+
+        allowed = { always = yes }
+        visible = { always = yes }
+        available = { always = yes }
+
+        complete_effect = {
+            # 脚本效果原文：置战败旗标、切换战后国策树、触发乌克兰/欧洲方结果
+            DSW_SOV_resolve_russian_defeat = yes
+        }
+
+        ai_will_do = { base = 0 }
+    }
+}

@@ -1,0 +1,158 @@
+# ============================================================================
+# ZZZ 君主立宪 / 君主制国家 · 君主 character 定义（欧洲批次）
+# 本工程原创，非 TFR 移植。
+#
+# 设计依据（实证）：
+#   TFR 3350890356/common/characters/TFR_characters_ENG.txt:8-96
+#   TFR 3350890356/common/characters/TFR_characters_HOL.txt:8-43
+#   → 引擎的党首按意识形态大组存储（子意识形态只是组内显示细分），同一角色
+#     在同一大组只挂 1 块 country_leader；5 大组各 1 块即可覆盖全部 24 个子意识
+#     形态。选举/换党只改执政党，元首因角色覆盖大组而始终不变。
+#
+# 子意识形态 token 取自 2777392649/common/ideologies/00_ideologies.txt；
+# 索引 -> 党派 token 对应表见本工程
+#   common/scripted_effects/ZZZ_party_change_effects.txt:4-11。
+# traits 使用基座 2777392649/common/country_leader/00_traits.txt:2441 的 king。
+# expire 统一 2050.1.1.1：游戏时段内不设退位/驾崩，避免元首空窗；
+#   真实继承剧情应由专门事件调用 kill_country_leader + promote_character。
+# 肖像：优先复用基座 gfx/leaders 已有文件；无图的按统一规范留标准路径，
+#   不伪造图片路径、不引用其它模组目录。
+# ============================================================================
+
+characters = {
+
+	# 英国 · 伊丽莎白二世（2017 在位）
+	ZZZ_monarch_ENG_elizabeth_ii = {
+		name = ENG_elizabeth_ii
+		portraits = {
+			civilian = {
+				large = "gfx/leaders/ENG/Elizabeth_II.dds"
+			}
+		}
+		country_leader = { ideology = conservatism             traits = { king } expire = "2050.1.1.1" id = -1 }
+		country_leader = { ideology = communist_state          traits = { king } expire = "2050.1.1.1" id = -1 }
+		country_leader = { ideology = Kingdom                  traits = { king } expire = "2050.1.1.1" id = -1 }
+		country_leader = { ideology = Neutral_Muslim_Brotherhood traits = { king } expire = "2050.1.1.1" id = -1 }
+		country_leader = { ideology = Nat_Populism             traits = { king } expire = "2050.1.1.1" id = -1 }
+	}
+
+	# 英国 · 伊丽莎白二世（社会民主主义镜像）
+	# 同大组 democratic 内 socialism 必须用独立角色：同一角色在大组内只能有 1 块
+	# country_leader，换党到社会民主主义党时由本镜像担任元首，避免同组冲突告警。
+	ZZZ_monarch_ENG_socialism = {
+		name = ENG_elizabeth_ii
+		portraits = {
+			civilian = {
+				large = "gfx/leaders/ENG/Elizabeth_II.dds"
+			}
+		}
+		country_leader = { ideology = socialism traits = { king } expire = "2050.1.1.1" id = -1 }
+	}
+
+	# 荷兰 · 威廉-亚历山大（2017 在位）
+	ZZZ_monarch_HOL_willem_alexander = {
+		name = HOL_willem_alexander_monarch
+		portraits = {
+			civilian = {
+				large = "gfx/leaders/HOL/willem_alexander.dds"
+			}
+		}
+		country_leader = { ideology = liberalism               traits = { king } expire = "2050.1.1.1" id = -1 }
+		country_leader = { ideology = communist_state          traits = { king } expire = "2050.1.1.1" id = -1 }
+		country_leader = { ideology = Kingdom                  traits = { king } expire = "2050.1.1.1" id = -1 }
+		country_leader = { ideology = Neutral_Muslim_Brotherhood traits = { king } expire = "2050.1.1.1" id = -1 }
+		country_leader = { ideology = Nat_Populism             traits = { king } expire = "2050.1.1.1" id = -1 }
+	}
+
+	# 比利时 · 菲利普（2017 在位）
+	ZZZ_monarch_BEL_philippe = {
+		name = BEL_philippe
+		portraits = {
+			civilian = {
+				large = "gfx/leaders/BEL/king_phillipe.dds"
+			}
+		}
+		country_leader = { ideology = liberalism               traits = { king } expire = "2050.1.1.1" id = -1 }
+		country_leader = { ideology = communist_state          traits = { king } expire = "2050.1.1.1" id = -1 }
+		country_leader = { ideology = Kingdom                  traits = { king } expire = "2050.1.1.1" id = -1 }
+		country_leader = { ideology = Neutral_Muslim_Brotherhood traits = { king } expire = "2050.1.1.1" id = -1 }
+		country_leader = { ideology = Nat_Populism             traits = { king } expire = "2050.1.1.1" id = -1 }
+	}
+
+	# 瑞典 · 卡尔十六世·古斯塔夫（2017 在位）
+	ZZZ_monarch_SWE_carl_xvi_gustaf = {
+		name = SWE_carl_xvi_gustaf
+		portraits = {
+			civilian = {
+				large = "gfx/leaders/SWE/carl_xvi_gustaf.dds"
+			}
+		}
+		country_leader = { ideology = socialism                traits = { king } expire = "2050.1.1.1" id = -1 }
+		country_leader = { ideology = communist_state          traits = { king } expire = "2050.1.1.1" id = -1 }
+		country_leader = { ideology = Kingdom                  traits = { king } expire = "2050.1.1.1" id = -1 }
+		country_leader = { ideology = Neutral_Muslim_Brotherhood traits = { king } expire = "2050.1.1.1" id = -1 }
+		country_leader = { ideology = Nat_Populism             traits = { king } expire = "2050.1.1.1" id = -1 }
+	}
+
+	# 挪威 · 哈拉尔五世（2017 在位；挪威 tag = NRY）
+	ZZZ_monarch_NRY_harald_v = {
+		name = NOR_harald_v
+		portraits = {
+			civilian = {
+				large = "gfx/leaders/NRY/Harald_V.dds"
+			}
+		}
+		country_leader = { ideology = conservatism             traits = { king } expire = "2050.1.1.1" id = -1 }
+		country_leader = { ideology = communist_state          traits = { king } expire = "2050.1.1.1" id = -1 }
+		country_leader = { ideology = Kingdom                  traits = { king } expire = "2050.1.1.1" id = -1 }
+		country_leader = { ideology = Neutral_Muslim_Brotherhood traits = { king } expire = "2050.1.1.1" id = -1 }
+		country_leader = { ideology = Nat_Populism             traits = { king } expire = "2050.1.1.1" id = -1 }
+	}
+
+	# 丹麦 · 玛格丽特二世（2017 在位）
+	ZZZ_monarch_DEN_margrethe_ii = {
+		name = DEN_margrethe_ii
+		portraits = {
+			civilian = {
+				large = "gfx/leaders/DEN/margrethe_ii.dds"
+			}
+		}
+		country_leader = { ideology = liberalism               traits = { king } expire = "2050.1.1.1" id = -1 }
+		country_leader = { ideology = communist_state          traits = { king } expire = "2050.1.1.1" id = -1 }
+		country_leader = { ideology = Kingdom                  traits = { king } expire = "2050.1.1.1" id = -1 }
+		country_leader = { ideology = Neutral_Muslim_Brotherhood traits = { king } expire = "2050.1.1.1" id = -1 }
+		country_leader = { ideology = Nat_Populism             traits = { king } expire = "2050.1.1.1" id = -1 }
+	}
+
+	# 西班牙 · 费利佩六世（2017 在位）
+	ZZZ_monarch_SPR_felipe_vi = {
+		name = SPR_felipe_vi
+		portraits = {
+			civilian = {
+				large = "gfx/leaders/SPR/felipe_vi.dds"
+			}
+		}
+		country_leader = { ideology = conservatism             traits = { king } expire = "2050.1.1.1" id = -1 }
+		country_leader = { ideology = communist_state          traits = { king } expire = "2050.1.1.1" id = -1 }
+		country_leader = { ideology = Kingdom                  traits = { king } expire = "2050.1.1.1" id = -1 }
+		country_leader = { ideology = Neutral_Muslim_Brotherhood traits = { king } expire = "2050.1.1.1" id = -1 }
+		country_leader = { ideology = Nat_Populism             traits = { king } expire = "2050.1.1.1" id = -1 }
+	}
+
+	# 卢森堡 · 大公亨利（2017 在位；已补真实照片肖像）
+	ZZZ_monarch_LUX_henri = {
+		name = LUX_henri
+		portraits = {
+			civilian = {
+				large = "gfx/leaders/LUX/henri.png"
+			}
+		}
+		country_leader = { ideology = liberalism               traits = { king } expire = "2050.1.1.1" id = -1 }
+		country_leader = { ideology = communist_state          traits = { king } expire = "2050.1.1.1" id = -1 }
+		country_leader = { ideology = Kingdom                  traits = { king } expire = "2050.1.1.1" id = -1 }
+		country_leader = { ideology = Neutral_Muslim_Brotherhood traits = { king } expire = "2050.1.1.1" id = -1 }
+		country_leader = { ideology = Nat_Populism             traits = { king } expire = "2050.1.1.1" id = -1 }
+	}
+
+}
+

@@ -17,8 +17,6 @@ economy_types_category = {
 				has_idea = law_absolute_monarchy
 				has_idea = law_authoritarianism
 				has_idea = law_constitutional_monarchy
-				has_idea = law_russian_political_system
-				has_idea = law_american_presidential_republic
 				has_idea = law_socialist_republic
 			}
 			NOT = { has_idea = wall_street }
@@ -157,7 +155,7 @@ economy_types_category = {
 		complete_effect = {
 		}
 		timeout_effect = {
-			econ_collective_capitalism = yes
+			change_economy_type_collective_capitalism = yes
 		}
 	}
 
@@ -180,8 +178,6 @@ economy_types_category = {
 				has_idea = law_absolute_monarchy
 				has_idea = law_authoritarianism
 				has_idea = law_constitutional_monarchy
-				has_idea = law_russian_political_system
-				has_idea = law_american_presidential_republic
 				has_idea = law_socialist_republic
 				has_idea = law_islamic_republic
 			}
@@ -222,8 +218,6 @@ economy_types_category = {
 				has_idea = law_absolute_monarchy
 				has_idea = law_authoritarianism
 				has_idea = law_constitutional_monarchy
-				has_idea = law_russian_political_system
-				has_idea = law_american_presidential_republic
 				has_idea = law_socialist_republic
 			}
 			OR = {
@@ -293,8 +287,6 @@ economy_types_category = {
 				has_idea = law_absolute_monarchy
 				has_idea = law_authoritarianism
 				has_idea = law_constitutional_monarchy
-				has_idea = law_russian_political_system
-				has_idea = law_american_presidential_republic
 				has_idea = law_socialist_republic
 			}
 			is_in_array = { ruling_party = 21 }
@@ -373,10 +365,12 @@ economy_types_category = {
 				has_idea = law_absolute_monarchy
 				has_idea = law_authoritarianism
 				has_idea = law_constitutional_monarchy
-				has_idea = law_russian_political_system
-				has_idea = law_american_presidential_republic
 				has_idea = law_socialist_republic
 				has_idea = law_islamic_republic
+				AND = {
+					has_idea = law_theocracy
+					has_elections = yes
+				}
 			}
 		}
 

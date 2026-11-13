@@ -1,0 +1,317 @@
+# ============================================================================
+# ZZZ 政党更迭事件 · 非主要国家批次四（本工程原创，非 TFR 移植）
+# 触发日期按 2017.1.20 开局推算的真实年月；全部调用
+# common/scripted_effects/ZZZ_party_change_effects.txt 中的现有效果，不内联 set_politics。
+# tag 已逐一核对千禧 common/country_tags/00_countries.txt：
+#   COL 哥伦比亚 / ETH 埃塞俄比亚 / FIN 芬兰 / GRE 希腊 / ICE 冰岛 / IRE 爱尔兰
+#   ISR 以色列 / MEX 墨西哥 / MON 蒙古 / NEP 尼泊尔
+#   ROM 罗马尼亚 / SLO 斯洛伐克 / SPR 西班牙 / SUD 苏丹 / IRQ 伊拉克 / CHL 智利
+# 说明：伊朗（PER）与叙利亚（SYR）不属于选举型政党轮替，已整体移出本批次：
+#   伊朗最高领袖不变、总统换人不构成执政党更迭；叙利亚是内战，政权更替走 GAW 协作政府机制。
+# 与原生选举关系：事件日期尽量排在目标国当年原生选举之后，覆盖选举结果，避免同年双重换党；
+# 无法完全错开的（如 ETH 2019、GRE 2019、CHL 2021）已用 popularity 加成保证事件结果不被立即抹平。
+# ============================================================================
+
+# ---- 哥伦比亚：2022.8.7 佩特罗就职（原生大选 2022.5.29 之后）----
+country_event = {
+	id = zzz_party.140
+	title = zzz_party.140.t
+	desc = zzz_party.140.d
+	is_triggered_only = no
+	fire_only_once = yes
+	trigger = {
+		date > 2022.8.8
+		original_tag = COL
+	}
+	option = {
+		name = zzz_party.140.a
+		ZZZ_party_to_socialism = yes
+		set_leader = yes
+	}
+}
+# ---- 芬兰：2019.6.6 社会民主党主导的五党政府就职（原生选举 2019.1.10 之后）----
+country_event = {
+	id = zzz_party.142
+	title = zzz_party.142.t
+	desc = zzz_party.142.d
+	is_triggered_only = no
+	fire_only_once = yes
+	trigger = {
+		date > 2019.6.7
+		original_tag = FIN
+	}
+	option = {
+		name = zzz_party.142.a
+		ZZZ_party_to_socialism = yes
+		set_leader = yes
+	}
+}
+
+# ---- 芬兰：2023.6.20 民族联合党主导的右翼政府就职（原生选举 2023.1.10 之后）----
+country_event = {
+	id = zzz_party.143
+	title = zzz_party.143.t
+	desc = zzz_party.143.d
+	is_triggered_only = no
+	fire_only_once = yes
+	trigger = {
+		date > 2023.6.21
+		original_tag = FIN
+	}
+	option = {
+		name = zzz_party.143.a
+		ZZZ_party_to_liberalism = yes
+		set_leader = yes
+	}
+}
+
+# ---- 希腊：2019.7.8 新民主党上台（原生选举 2020.4 之前，提前大选结果）----
+country_event = {
+	id = zzz_party.144
+	title = zzz_party.144.t
+	desc = zzz_party.144.d
+	is_triggered_only = no
+	fire_only_once = yes
+	trigger = {
+		date > 2019.7.9
+		original_tag = GRE
+	}
+	option = {
+		name = zzz_party.144.a
+		ZZZ_party_to_conservatism = yes
+		set_leader = yes
+	}
+}
+
+# ---- 冰岛：2024.12.1 社会民主联盟主导的新政府就职（原生选举 2021.5 之后，下一次 2025.5）----
+country_event = {
+	id = zzz_party.145
+	title = zzz_party.145.t
+	desc = zzz_party.145.d
+	is_triggered_only = no
+	fire_only_once = yes
+	trigger = {
+		date > 2024.12.2
+		original_tag = ICE
+	}
+	option = {
+		name = zzz_party.145.a
+		ZZZ_party_to_socialism = yes
+		set_leader = yes
+	}
+}
+
+# ---- 爱尔兰：2020.6.27 共和党与统一党联合政府就职（原生选举 2021.6 之前，提前大选结果）----
+country_event = {
+	id = zzz_party.146
+	title = zzz_party.146.t
+	desc = zzz_party.146.d
+	is_triggered_only = no
+	fire_only_once = yes
+	trigger = {
+		date > 2020.6.28
+		original_tag = IRE
+	}
+	option = {
+		name = zzz_party.146.a
+		ZZZ_party_to_conservatism = yes
+		ZZZ_party_leader_IRE_micheal_martin = yes
+	}
+}
+
+# ---- 以色列：2021.6.13 反内塔尼亚胡联合政府就职（原生选举 2020.5 之后，下一次 2023.9）----
+country_event = {
+	id = zzz_party.147
+	title = zzz_party.147.t
+	desc = zzz_party.147.d
+	is_triggered_only = no
+	fire_only_once = yes
+	trigger = {
+		date > 2021.6.14
+		original_tag = ISR
+	}
+	option = {
+		name = zzz_party.147.a
+		ZZZ_party_to_liberalism = yes
+		set_leader = yes
+	}
+}
+
+# ---- 以色列：2022.11.1 内塔尼亚胡重新组阁（原生选举 2023.9 之前，提前大选结果）----
+country_event = {
+	id = zzz_party.148
+	title = zzz_party.148.t
+	desc = zzz_party.148.d
+	is_triggered_only = no
+	fire_only_once = yes
+	trigger = {
+		date > 2022.11.2
+		original_tag = ISR
+	}
+	option = {
+		name = zzz_party.148.a
+		ZZZ_party_to_conservatism = yes
+		set_leader = yes
+	}
+}
+
+# ---- 尼泊尔：2017.12.15 奥利领导的尼共（联合马列）执政（无原生选举数据）----
+country_event = {
+	id = zzz_party.151
+	title = zzz_party.151.t
+	desc = zzz_party.151.d
+	is_triggered_only = no
+	fire_only_once = yes
+	trigger = {
+		date > 2017.12.16
+		original_tag = NEP
+	}
+	option = {
+		name = zzz_party.151.a
+		ZZZ_party_to_communist_state = yes
+		set_leader = yes
+	}
+}
+
+# ---- 尼泊尔：2021.7.13 德乌帕领导的尼泊尔大会党执政 ----
+country_event = {
+	id = zzz_party.152
+	title = zzz_party.152.t
+	desc = zzz_party.152.d
+	is_triggered_only = no
+	fire_only_once = yes
+	trigger = {
+		date > 2021.7.14
+		original_tag = NEP
+	}
+	option = {
+		name = zzz_party.152.a
+		ZZZ_party_to_socialism = yes
+		set_leader = yes
+	}
+}
+
+# ---- 罗马尼亚：2019.11.4 国家自由党政府就职（原生选举 2020.11 之前）----
+country_event = {
+	id = zzz_party.155
+	title = zzz_party.155.t
+	desc = zzz_party.155.d
+	is_triggered_only = no
+	fire_only_once = yes
+	trigger = {
+		date > 2019.11.5
+		original_tag = ROM
+	}
+	option = {
+		name = zzz_party.155.a
+		ZZZ_party_to_liberalism = yes
+		set_leader = yes
+	}
+}
+# ---- 斯洛伐克：2020.3.21 普通人党主导的政府就职（原生选举 2020.2.29 之后）----
+country_event = {
+	id = zzz_party.157
+	title = zzz_party.157.t
+	desc = zzz_party.157.d
+	is_triggered_only = no
+	fire_only_once = yes
+	trigger = {
+		date > 2020.3.22
+		original_tag = SLO
+	}
+	option = {
+		name = zzz_party.157.a
+		ZZZ_party_to_conservatism = yes
+		set_leader = yes
+	}
+}
+
+# ---- 斯洛伐克：2023.10.25 方向党重新执政（原生选举 2022.9 之后）----
+country_event = {
+	id = zzz_party.158
+	title = zzz_party.158.t
+	desc = zzz_party.158.d
+	is_triggered_only = no
+	fire_only_once = yes
+	trigger = {
+		date > 2023.10.26
+		original_tag = SLO
+	}
+	option = {
+		name = zzz_party.158.a
+		ZZZ_party_to_socialism = yes
+		set_leader = yes
+	}
+}
+
+# ---- 西班牙：2018.6.2 桑切斯领导的社会党政府就职（原生选举 2020.3 之前，提前大选结果）----
+country_event = {
+	id = zzz_party.159
+	title = zzz_party.159.t
+	desc = zzz_party.159.d
+	is_triggered_only = no
+	fire_only_once = yes
+	trigger = {
+		date > 2018.6.3
+		original_tag = SPR
+	}
+	option = {
+		name = zzz_party.159.a
+		ZZZ_party_to_socialism = yes
+		set_leader = yes
+	}
+}
+
+# ---- 苏丹：2019.4.12 过渡军事委员会接管（原生选举 2020.12 之前）----
+country_event = {
+	id = zzz_party.160
+	title = zzz_party.160.t
+	desc = zzz_party.160.d
+	is_triggered_only = no
+	fire_only_once = yes
+	trigger = {
+		date > 2019.4.13
+		original_tag = SUD
+	}
+	option = {
+		name = zzz_party.160.a
+		ZZZ_party_to_nat_autocracy = yes
+		ZZZ_party_leader_SUD_burhan = yes
+	}
+}
+
+# ---- 伊拉克：2018.10.25 阿卜杜勒-迈赫迪政府就职（原生选举 2019.4 之前）----
+country_event = {
+	id = zzz_party.162
+	title = zzz_party.162.t
+	desc = zzz_party.162.d
+	is_triggered_only = no
+	fire_only_once = yes
+	trigger = {
+		date > 2018.10.26
+		original_tag = IRQ
+	}
+	option = {
+		name = zzz_party.162.a
+		ZZZ_party_to_mod_vilayat_e_faqih = yes
+		set_leader = yes
+	}
+}
+
+# ---- 智利：2021.12.19 博里奇当选（原生选举 2023.12 之前，2021 年大选结果）----
+country_event = {
+	id = zzz_party.163
+	title = zzz_party.163.t
+	desc = zzz_party.163.d
+	is_triggered_only = no
+	fire_only_once = yes
+	trigger = {
+		date > 2021.12.20
+		original_tag = CHL
+	}
+	option = {
+		name = zzz_party.163.a
+		ZZZ_party_to_socialism = yes
+		ZZZ_party_leader_CHL_boric = yes
+	}
+}

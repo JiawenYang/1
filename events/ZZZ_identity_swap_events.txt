@@ -1,0 +1,86 @@
+# ============================================================================
+# ZZZ 国家身份换组：通讯稿
+#
+# zzz_identity.1  正向进（蓝 → 红）：协作政府成立，整组切到红方体系
+# zzz_identity.2  逆向退（红 → 蓝）：协作政府结束，整组退回原归属
+#
+# 由 common/scripted_effects/ZZZ_identity_swap_effects.txt 的
+# ZZZ_identity_swap_check 在实际换组发生时触发；同一个国家可反复触发。
+# ============================================================================
+add_namespace = zzz_identity
+
+# 内部调度事件：把换组判定放进独立事件里执行，让 ROOT 重置为「被判定国」。
+# 原因：换组会调用基座 effect（CSTO_join / NATO_join / PRC_join_BRI 等），
+# 这些 effect 内部用 ROOT 记账；若在 every_country 循环里直接调用，
+# ROOT 仍指向循环外的作用域，记账会落错国家。走事件可彻底避开这个问题。
+country_event = {
+	id = zzz_identity.0
+	hidden = yes
+	is_triggered_only = yes
+
+	immediate = {
+		ZZZ_identity_swap_check = yes
+	}
+}
+
+news_event = {
+	id = zzz_identity.1
+	title = zzz_identity.1.t
+	desc = zzz_identity.1.d
+	picture = GFX_politics_talks
+	is_triggered_only = yes
+	major = yes
+	fire_only_once = no
+
+	option = {
+		name = zzz_identity.1.a
+		log = "[GetDateText]: [ROOT.GetName]: zzz_identity.1 (identity swap to red bloc)"
+	}
+}
+
+news_event = {
+	id = zzz_identity.2
+	title = zzz_identity.2.t
+	desc = zzz_identity.2.d
+	picture = GFX_politics_talks
+	is_triggered_only = yes
+	major = yes
+	fire_only_once = no
+
+	option = {
+		name = zzz_identity.2.a
+		log = "[GetDateText]: [ROOT.GetName]: zzz_identity.2 (identity swap back to original bloc)"
+	}
+}
+
+# MNNA：系统自动授予
+news_event = {
+	id = zzz_identity.3
+	title = zzz_identity.3.t
+	desc = zzz_identity.3.d
+	picture = GFX_politics_talks
+	is_triggered_only = yes
+	major = no
+	fire_only_once = no
+
+	option = {
+		name = zzz_identity.3.a
+		log = "[GetDateText]: [ROOT.GetName]: zzz_identity.3 (MNNA granted)"
+	}
+}
+
+# MNNA：系统自动摘除
+news_event = {
+	id = zzz_identity.4
+	title = zzz_identity.4.t
+	desc = zzz_identity.4.d
+	picture = GFX_politics_talks
+	is_triggered_only = yes
+	major = no
+	fire_only_once = no
+
+	option = {
+		name = zzz_identity.4.a
+		log = "[GetDateText]: [ROOT.GetName]: zzz_identity.4 (MNNA revoked)"
+	}
+}

@@ -213,10 +213,7 @@ USA_recoring_category = {
 		}
 	}
 	visible = {
-		OR = {
-			has_global_flag = USA_american_civil_war_global
-			has_global_flag = USA_american_civil_war_over_global
-		}
+		always = no
 	}
 	priority = 8
 	on_map_area = {
@@ -235,7 +232,7 @@ USA_reconstruction_category = {
 		}
 	}
 	visible = {
-		has_global_flag = USA_american_civil_war_over_global
+		country_exists = USA
 		has_completed_focus = USA_back_in_business
 	}
 }
@@ -250,7 +247,7 @@ USA_restoring_american_foreign_influence_category = {
 		}
 	}
 	visible = {
-		has_global_flag = USA_american_civil_war_over_global
+		country_exists = USA
 		OR = {
 			has_completed_focus = USA_safeguard_the_nation
 			has_completed_focus = USA_american_diplomatic_corps
@@ -270,3 +267,15 @@ USA_restoring_american_foreign_influence_category = {
 #		has_global_flag = USA_american_civil_war_global
 #	}
 #}
+
+# 美洲反美政权干涉（正式入口，不依赖美国内战）
+USA_americas_intervention_category = {
+	icon = generic_political_actions
+	priority = 4
+	allowed = {
+		original_tag = USA
+	}
+	visible = {
+		country_exists = USA
+	}
+}

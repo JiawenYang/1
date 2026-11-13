@@ -1,0 +1,228 @@
+division_template = {
+	name = "Tmíma Pezikoú"
+
+	regiments = {
+		Mech_Inf_Bat = { x = 0 y = 0 }
+		Mech_Inf_Bat = { x = 0 y = 1 }
+		Mech_Inf_Bat = { x = 1 y = 0 }
+		Arm_Inf_Bat = { x = 1 y = 1 }
+	}
+	support = {
+		SP_Arty_Battery = { x = 0 y = 0 }
+	}
+}
+
+division_template = {
+	name = "Taxiarchía Pezikoú"
+
+	regiments = {
+		Mot_Inf_Bat = { x = 0 y = 0 }
+		Mot_Inf_Bat = { x = 0 y = 1 }
+	}
+	support = {
+		Arty_Battery = { x = 0 y = 0 }
+	}
+}
+
+division_template = {
+	name = "Thorakisméni Taxiarchía"
+
+	regiments = {
+		armor_Bat = { x = 0 y = 0 }
+		armor_Bat = { x = 0 y = 1 }
+	}
+	support = {
+		SP_Arty_Battery = { x = 0 y = 0 }
+		armor_Recce_Comp = { x = 0 y = 1 }
+	}
+}
+
+units = {
+	division = {
+		name = "I Tmíma Pezikoú"
+		location = 11984
+		division_template = "Tmíma Pezikoú"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "II Tmíma Pezikoú"
+		location = 11984
+		division_template = "Tmíma Pezikoú"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "IV Taxiarchía Pezikoú"
+		location = 11984
+		division_template = "Taxiarchía Pezikoú"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "VIII Taxiarchía Pezikoú"
+		location = 11984
+		division_template = "Taxiarchía Pezikoú"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "XX Thorakisméni Taxiarchía"
+		location = 11984
+		division_template = "Thorakisméni Taxiarchía"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.01
+	}
+}
+
+instant_effect = {
+	add_equipment_to_stockpile = {
+		variant_name = "Zastava M77"
+		type = infantry_weapons_2		#Zastava M77
+		amount = 500
+		producer = SER
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "vz. 58"
+		type = infantry_weapons_2
+		amount = 500
+		producer = CZE
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Artillery Zuzana"
+		type = medium_tank_artillery_chassis_1			#Artillery Zuzana
+		amount = 12
+		producer = SLO
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "MPi-AK-74N"
+		type = infantry_weapons_2		#AK-74
+		amount = 500
+		producer = GER
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "AK-47"
+		type = infantry_weapons_1		#AK-47
+		amount = 500
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "G3A2"
+		type = infantry_weapons_1		#G3
+		amount = 500
+		producer = GER
+	}
+
+	add_equipment_to_stockpile = {
+		type = medium_tank_chassis_1
+		variant_name = "T-80"
+		amount = 82
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		type = medium_tank_chassis_0
+		variant_name = "AMX-30B2"
+		amount = 52
+		producer = FRA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BMP-3"
+		type = medium_tank_flame_chassis_2		#BMP-3
+		amount = 43
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "EE-9 Cascavel"
+		type = medium_tank_destroyer_chassis_1		#EE-9 Cascavel
+		amount = 67
+		producer = BRA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "VAB"
+		type = medium_tank_amphibious_chassis_1		#VAB
+		amount = 153
+		producer = FRA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Leonidas 2"
+		type = medium_tank_amphibious_chassis_1		#Leonidas 2
+		amount = 197
+		producer = GRE
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "EE-3 Jararaca"
+		type = Heavy_Anti_tank_1 	#EE-3 Jararaca
+		amount = 15
+		producer = BRA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "G-Class"
+		type = util_vehicle_2		#G-Class
+		amount = 300
+		producer = GER
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "ShKH Zuzana"
+		type = medium_tank_artillery_chassis_2		#ShKH Zuzana
+		amount = 12
+		producer = SLO
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Mk F3"
+		type = medium_tank_artillery_chassis_0		#Mk F3 155mm
+		amount = 12
+		producer = FRA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BM-21 Grad"
+		type = medium_tank_rocket_chassis_0		#BM-21 Grad
+		amount = 4
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "TRF1"
+		type = artillery_2		#TRF1
+		amount = 12
+		producer = FRA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "M56"
+		type = artillery_1		#Mod 56
+		amount = 54
+		producer = SER
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "M-63"
+		type = medium_tank_rocket_chassis_0		#M-63 Plamen
+		amount = 18
+		producer = SER
+	}
+
+	add_equipment_to_stockpile = {
+		type = cnc_equipment_1
+		amount = 280
+		producer = USA
+	}
+}

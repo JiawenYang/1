@@ -1,0 +1,30 @@
+# ============================================================================
+#  大以色列 · 伊拉克作战目标
+#
+#  基座问题：MD 的 take_claimed_state 在 common/wargoals/00_invasion.txt:47-61 里
+#  写死了 take_states_limit = 5（第 58 行），而 mew.28 对伊拉克宣称了 7 个州，
+#  和平会议最多只能割走 5 个，大以色列版图缺口 2 州。
+#
+#  处理方式：不改基座文件，新建同构 wargoal ZZZ_take_claimed_state_all：
+#    take_states 三项判定与基座逐字一致（is_claimed_by ROOT / is_owned_by PREV / is_controlled_by PREV）
+#    war_name / 生成成本 / 单州成本 / threat 全部沿用基座
+#    仅将 take_states_limit 由 5 提高到 7，对应 mew.28 的 7 个宣称州
+#  这样战争流程、AI 评估与和平会议逻辑保持不变，mew.28 只改 wargoal 类型名。
+# ============================================================================
+wargoal_types = {
+	ZZZ_take_claimed_state_all = {
+		# PREV = original target country
+		# ROOT = goal owner country
+		war_name = WAR_TAKE_CLAIM_NAME
+		take_states = {
+			is_claimed_by = ROOT
+			is_owned_by = PREV
+			is_controlled_by = PREV
+		}
+		generate_base_cost = 125
+		generate_per_state_cost = 10
+		take_states_limit = 7
+		take_states_cost = -50
+		threat = 1
+	}
+}

@@ -54,6 +54,11 @@ division_template = {
 		Sayeret_Bat_ISR = { x = 0 y = 2 }
 		Sayeret_Bat_ISR = { x = 0 y = 3 }
 	}
+	support = {
+		L_Recce_Comp = { x = 0 y = 0 }
+		L_Engi_Comp = { x = 0 y = 1 }
+		combat_service_support_company = { x = 0 y = 2 }
+	}
 	priority = 2
 }
 
@@ -106,6 +111,11 @@ division_template = {
 		L_Inf_Bat = { x = 2 y = 1 }
 		L_Inf_Bat = { x = 2 y = 2 }
 
+	}
+	support = {
+		L_Recce_Comp = { x = 0 y = 0 }
+		L_Engi_Comp = { x = 0 y = 1 }
+		combat_service_support_company = { x = 0 y = 2 }
 	}
 	priority = 0
 }
@@ -400,16 +410,19 @@ instant_effect = {
 
 	#封存装甲车/装甲运兵车
 	add_equipment_to_stockpile = {
+		variant_name = "Zelda"
 		type = medium_tank_amphibious_chassis_1			#M113 Zelda（封存）
-		producer = USA
+		producer = ISR
 		amount = 2500
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "Bardehlas"
 		type = medium_tank_amphibious_chassis_1			#Nagmashot/Nakpadon（封存）
 		producer = ISR
 		amount = 200
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "Zelda"
 		type = medium_tank_amphibious_chassis_1			#Achzarit（封存）
 		producer = ISR
 		amount = 100
@@ -417,45 +430,53 @@ instant_effect = {
 
 	#封存牵引火炮
 	add_equipment_to_stockpile = {
+		variant_name = "M101"
 		type = artillery_1			#M101 105榴（封存）
 		producer = USA
 		amount = 300
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "D-30"
 		type = artillery_1			#M114/M71 155榴（封存）
-		producer = USA
+		producer = SOV
 		amount = 200
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "M-46"
 		type = artillery_1			#各型迫击炮（封存）
-		producer = ISR
+		producer = SOV
 		amount = 600
 	}
 
 	#封存自行火炮
 	add_equipment_to_stockpile = {
+		variant_name = "M109A2 Rochev"
 		type = medium_tank_artillery_chassis_1			#M109 Doher（封存）
-		producer = USA
+		producer = ISR
 		amount = 250
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "Atmos 2000"
 		type = medium_tank_artillery_chassis_2			#M109 Doher后期型（封存）
-		producer = USA
+		producer = ISR
 		amount = 80
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "L-33"
 		type = medium_tank_artillery_chassis_0			#M107 175重炮（封存）
-		producer = USA
+		producer = ISR
 		amount = 60
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "M109A5 Doher"
 		type = medium_tank_artillery_chassis_1			#M110 203重炮（封存）
-		producer = USA
+		producer = ISR
 		amount = 100
 	}
 
 	#封存火箭炮
 	add_equipment_to_stockpile = {
+		variant_name = "LAR-160"
 		type = medium_tank_rocket_chassis_0			#LAR-160/240（封存）
 		producer = ISR
 		amount = 80
@@ -463,16 +484,19 @@ instant_effect = {
 
 	#封存高炮/防空
 	add_equipment_to_stockpile = {
+		variant_name = "ZU-23-2"
 		type = Anti_Air_0			#M163/Machbet火神（封存）
-		producer = USA
+		producer = SOV
 		amount = 150
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "M163"
 		type = medium_tank_aa_chassis_0			#MIM-72 Chaparral（封存）
 		producer = USA
 		amount = 40
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "FIM-92E Stinger RMP Block I"
 		type = Anti_Air_1			#Stinger老型（封存）
 		producer = USA
 		amount = 800
@@ -480,28 +504,33 @@ instant_effect = {
 
 	#封存反坦克导弹
 	add_equipment_to_stockpile = {
+		variant_name = "M40"
 		type = Anti_tank_1			#Dragon老型（封存）
 		producer = USA
 		amount = 300
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "M40"
 		type = Anti_tank_1			#TOW老型（封存）
 		producer = USA
 		amount = 300
 	}
 	add_equipment_to_stockpile = {
-		type = Heavy_Anti_tank_1			#TOW重型老型（封存）
+		variant_name = "I-TOW"
+		type = Anti_tank_2			#TOW重型老型（封存）
 		producer = USA
 		amount = 200
 	}
 
 	#封存运输车辆
 	add_equipment_to_stockpile = {
+		variant_name = "老卡车"
 		type = util_vehicle_2			#老卡车（封存）
 		producer = ISR
 		amount = 6000
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "M151吉普"
 		type = util_vehicle_1			#M151吉普（封存）
 		producer = ISR
 		amount = 1500
@@ -513,77 +542,98 @@ instant_effect = {
 		producer = ISR
 	}
 	add_equipment_to_stockpile = {
-		type = infantry_weapons_5			#Tavor X95
+		variant_name = "Tavor X95"
+		type = infantry_weapons_6			#Tavor X95
 		amount = 100000
 		producer = ISR
 	}
 	add_equipment_to_stockpile = {
-		type = infantry_weapons_4			#TAR-21
+		variant_name = "IWI TAR-21"
+		type = infantry_weapons_5
 		amount = 6000
 		producer = ISR
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "IMI Galil"
 		type = infantry_weapons_2			#IMI Galil
 		amount = 1000
 		producer = ISR
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "IMI Galil"
 		type = infantry_weapons_2			#IMI Galil（封存）
 		amount = 50000
 		producer = ISR
 	}
 	add_equipment_to_stockpile = {
-		type = infantry_weapons_3			#M16A2/A3
+		variant_name = "M16A2"
+    type = infantry_weapons_3			#M16A2/A3
 		amount = 15000
 		producer = USA
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "CAR-15"
 		type = infantry_weapons_4			#CAR-15
 		amount = 1000
 		producer = ISR
 	}
 	add_equipment_to_stockpile = {
-		type = infantry_weapons_5			#M4
+		variant_name = "M4 SOPMOD Block I"
+    type = infantry_weapons_4			#M4
 		amount = 1000
 		producer = USA
 	}
 	add_equipment_to_stockpile = {
-		type = infantry_weapons_1			#TAR-21
+		variant_name = "IWI TAR-21"
+		type = infantry_weapons_5
 		amount = 1000
 		producer = ISR
 	}
 	add_equipment_to_stockpile = {
-		type = Heavy_Anti_tank_1			#TOW
+		variant_name = "TOW-2A"
+    type = Anti_tank_2			#TOW
 		amount = 100
 		producer = USA
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "MAPATS"
 		type = Heavy_Anti_tank_1			#MAPATS
 		amount = 100
 		producer = ISR
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "Spike"
 		type = Heavy_Anti_tank_2			#Spike
 		amount = 500
 		producer = ISR
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "M40"
 		type = Anti_tank_1			#M47 Dragon
 		amount = 200
 		producer = USA
 	}
 	add_equipment_to_stockpile = {
-		type = Anti_tank_2			#Spike
+		variant_name = "Spike"
+		type = Anti_tank_3			#Spike-MR
 		amount = 1000
 		producer = ISR
 	}
+		
+		add_equipment_to_stockpile = {
+			type = Heavy_Anti_tank_3 #Spike-NLOS
+			producer = ISR
+			amount = 500
+		}
 	add_equipment_to_stockpile = {
+		variant_name = "Iron Dome"
 		type = medium_tank_aa_chassis_2			#Iron Dome
 		#version_name = "Iron Dome"
 		amount = 10
 		producer = ISR
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "FIM-92E Stinger RMP Block I"
 		type = Anti_Air_1			#Stinger
 		amount = 1000
 		producer = USA
@@ -618,9 +668,10 @@ instant_effect = {
 		producer = ISR
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "Tpz-1 Fuchs"
 		type = medium_tank_amphibious_chassis_1			#M113
 		amount = 6131
-		producer = USA
+		producer = GER
 	}
 	add_equipment_to_stockpile = {
 		variant_name = "Zelda"
@@ -635,11 +686,13 @@ instant_effect = {
 		producer = ISR
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "Nagmachon"
 		type = medium_tank_flame_chassis_2			#Nagmachon
 		amount = 200
 		producer = ISR
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "Nakpadon"
 		type = medium_tank_flame_chassis_2			#Nakpadon
 		#version_name = "Nakpadon"
 		amount = 200
@@ -652,37 +705,44 @@ instant_effect = {
 		producer = ISR
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "AIL Abir"
 		type = util_vehicle_1			#AIL Abir
 		amount = 1000
 		producer = ISR
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "AIL Storm"
 		type = util_vehicle_3			#AIL Storm
 		amount = 300
 		producer = ISR
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "Humvee"
 		type = util_vehicle_3			#Humvee
 		amount = 2000
 		producer = USA
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "AIL Storm II"
 		type = util_vehicle_4			#AIL Storm II
 		amount = 400
 		producer = ISR
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "Wolf Armoured Vehicle"
 		type = util_vehicle_5			#Wolf
 		#version_name = "Wolf Armoured Vehicle"
 		amount = 300
 		producer = ISR
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "Sand Cat"
 		type = util_vehicle_5			#Sand Cat
 		amount = 79
 		producer = ISR
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "Otokar Akrep"
 		type = util_vehicle_3			#Otokar Akrep
 		amount = 30
 		producer = ISR
@@ -697,13 +757,13 @@ instant_effect = {
 		variant_name = "M109A5 Doher"
 		type = medium_tank_artillery_chassis_1			#M109A5
 		amount = 600
-		producer = USA
+		producer = ISR
 	}
 	add_equipment_to_stockpile = {
 		variant_name = "M270 Menatetz"
 		type = medium_tank_rocket_chassis_1			#M270
 		amount = 48
-		producer = USA
+		producer = ISR
 	}
 	add_equipment_to_stockpile = {
 		variant_name = "LAR-160"
@@ -712,18 +772,20 @@ instant_effect = {
 		producer = ISR
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "M114"
 		type = artillery_1			#Soltam M71
 		amount = 350
-		producer = ISR
+		producer = USA
 	} 
 	add_equipment_to_stockpile = {
 		variant_name = "AH-1F Tzefa"
 		type = heavy_tank_chassis_0			#AH-1 Cobra
 		amount = 49
-		producer = USA
+		producer = ISR
 	}
 	add_equipment_to_stockpile = {
-		type = heavy_tank_chassis_1			#Eurocopter Panther
+		variant_name = "Eurocopter AS565 Panther"
+		type = attack_helicopter_2			#Eurocopter Panther
 		amount = 7
 		producer = FRA
 	}
@@ -731,12 +793,13 @@ instant_effect = {
 		variant_name = "AH-64A Peten"
 		type = heavy_tank_chassis_2			#AH-64
 		amount = 30
-		producer = USA
+		producer = ISR
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "AH-64A Peten"
 		type = heavy_tank_chassis_2			#AH-64D
 		amount = 22
-		producer = USA
+		producer = ISR
 	}
 	add_equipment_to_stockpile = {
 		variant_name = "CH-53 Sea Stallion"
@@ -745,10 +808,11 @@ instant_effect = {
 		producer = ISR
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "Aérospatiale SA-316 Alouette III"
 		type = transport_helicopter_1			#Bell 206
 		#version_name = "Bell 206"
 		amount = 18
-		producer = ISR
+		producer = FRA
 	}
 	add_equipment_to_stockpile = {
 		variant_name = "UH-60 Black Hawk"
@@ -756,4 +820,22 @@ instant_effect = {
 		amount = 49
 		producer = ISR
 	} 
+	add_equipment_to_stockpile = {
+		type = medium_tank_destroyer_chassis_1
+		producer = ISR
+		amount = 410
+	}
+	# Orphan variant attachment (2017 real-world holdings)
+	add_equipment_to_stockpile = {
+		type = medium_tank_chassis_2
+		variant_name = "Merkava Mk.4"
+		amount = 300
+		producer = ISR
+	}
+	add_equipment_to_stockpile = {
+		type = large_plane_maritime_patrol_airframe_1
+		variant_name = "Heron TP"
+		amount = 10
+		producer = ISR
+	}
 }

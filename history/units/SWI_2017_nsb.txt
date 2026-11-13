@@ -1,0 +1,299 @@
+division_template = {
+	name = "Panzerbrigade"
+
+	regiments = {
+		armor_Bat = { x = 0 y = 0 }
+		Mech_Inf_Bat = { x = 0 y = 1 }
+		Mech_Inf_Bat = { x = 0 y = 2 }
+		Arm_Inf_Bat = { x = 1 y = 0 }
+		Arm_Inf_Bat = { x = 1 y = 1 }
+		SP_Arty_Bat = { x = 1 y = 2 }
+	}
+}
+
+division_template = {
+	name = "Leichte Panzerbrigade"
+
+	regiments = {
+		Mech_Inf_Bat = { x = 0 y = 0 }
+		Mech_Inf_Bat = { x = 0 y = 1 }
+		SP_Arty_Bat = { x = 0 y = 2 }
+		SP_Arty_Bat = { x = 0 y = 3 }
+	}
+}
+
+division_template = {
+	name = "Spezialkräfte Brigade"
+
+	regiments = {
+		Special_Forces = { x = 0 y = 0 }
+		Special_Forces = { x = 0 y = 1 }
+	}
+
+	priority = 2
+}
+
+division_template = {
+	name = "Infanteriebrigade"
+
+	regiments = {
+		Mech_Inf_Bat = { x = 0 y = 0 }
+		Mech_Inf_Bat = { x = 0 y = 1 }
+		L_Inf_Bat = { x = 0 y = 2 }
+		Mech_Inf_Bat = { x = 1 y = 0 }
+		Mech_Inf_Bat = { x = 1 y = 1 }
+	}
+}
+
+division_template = {
+	name = "Gebirgsinfanteriebrigade"
+
+	regiments = {
+		L_Inf_Bat = { x = 0 y = 0 }
+		L_Inf_Bat = { x = 0 y = 1 }
+		L_Inf_Bat = { x = 0 y = 2 }
+		L_Inf_Bat = { x = 1 y = 0 }
+		L_Inf_Bat = { x = 1 y = 1 }
+	}
+}
+
+division_template = {
+	name = "Kombinierte Brigade"
+
+	regiments = {
+		L_Inf_Bat = { x = 0 y = 0 }
+		L_Inf_Bat = { x = 0 y = 1 }
+		L_Inf_Bat = { x = 0 y = 2 }
+		Mech_Inf_Bat = { x = 1 y = 0 }
+		Mech_Inf_Bat = { x = 1 y = 1 }
+	}
+}
+
+units = {
+	division = {
+		name = "Brigade Mécanisée 1"
+		location = 6666		#Morges
+		division_template = "Panzerbrigade"
+		start_experience_factor = 0.65
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "Panzerbrigade 11"
+		location = 663		#Winterthur
+		division_template = "Panzerbrigade"
+		start_experience_factor = 0.65
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "Panzerbrigade 4"
+		location = 11604		#Aarau
+		division_template = "Leichte Panzerbrigade"
+		start_experience_factor = 0.65
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "Spezialkräfte Brigade"
+		location = 663
+		division_template = "Spezialkräfte Brigade"
+		start_experience_factor = 0.9
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "Territoriale Division 2"
+		location = 11604		#Kriens
+		division_template = "Infanteriebrigade"
+		start_experience_factor = 0.65
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "Territoriale Division 3"
+		location = 11601		#Altdorf
+		division_template = "Gebirgsinfanteriebrigade"
+		start_experience_factor = 0.65
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "Territoriale Division 4"
+		location = 11623		#St. Gallen
+		division_template = "Kombinierte Brigade"
+		start_experience_factor = 0.65
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "Division Territoriale 1"
+		location = 6666		#Morges
+		division_template = "Kombinierte Brigade"
+		start_experience_factor = 0.65
+		start_equipment_factor = 0.01
+	}
+}
+
+instant_effect = {
+	add_equipment_to_stockpile = {
+		variant_name = "M109A4"
+		type = medium_tank_artillery_chassis_1	 #M109
+		amount = 577
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		type = medium_tank_chassis_1
+		variant_name = "Leopard 2A4"
+		amount = 380
+		producer = GER
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "M113"
+		type = medium_tank_amphibious_chassis_1		 	#M113
+		amount = 507
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Mowag Piranha 8x8 (Piranha III)"
+		type = medium_tank_amphibious_chassis_2		 	#Mowag Piranha 8x8 (Piranha III)
+		amount = 500
+		producer = SWI
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Mowag Piranha 6x6 (Piranha I)"
+		type = medium_tank_amphibious_chassis_1		 	#Mowag Piranha 6x6 (Piranha I)
+		amount = 100
+		producer = SWI
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Mowag Eagle"
+		type = util_vehicle_4		 #Mowag Eagle
+		amount = 300
+		producer = SWI
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Mowag Duro"
+		type = util_vehicle_3		 #Mowag Duro
+		amount = 520
+		producer = SWI
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "CV90 MkII"
+		type = medium_tank_flame_chassis_2			 #CV90 MkII
+		amount = 200
+		producer = SWE
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "SIG SG 550"
+		type = infantry_weapons_3			 #SIG SG 550
+		amount = 65000
+		producer = SWI
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "M47 Dragon"
+		type = Anti_tank_1			 #M47 Dragon
+		amount = 100
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		type = Heavy_Anti_tank_1
+		amount = 100
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "FIM-92E Stinger RMP Block I"
+		type = Anti_Air_1			 #Stinger
+		amount = 100
+		producer = USA
+	}
+
+   add_equipment_to_stockpile = {
+		type = cnc_equipment_1
+		amount = 600
+		producer = SWI
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "F-5 Freedom Fighter"
+		type = small_plane_airframe_1		 #F-5
+		amount = 42
+		producer = TUR
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "F/A-18 Hornet"
+		type = cv_medium_plane_airframe_2	 #F/A-18 Hornet
+		amount = 26
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "AS332 Super Puma"
+		type = transport_helicopter_1	 #AS332 Super Puma
+		amount = 15
+		producer = FRA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "AS532 Cougar"
+		type = transport_helicopter_2	 #AS532 Cougar
+		amount = 10
+		producer = FRA
+	}
+
+	### Sealed Storage 封存 ###
+	add_equipment_to_stockpile = {
+		variant_name = "F-5 Freedom Fighter"
+		type = small_plane_airframe_1 #F-5（封存）
+		producer = TUR
+		amount = 16
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "M109A4"
+		type = medium_tank_artillery_chassis_1 #M109（封存）
+		producer = USA
+		amount = 230
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Leopard 2A4"
+		type = medium_tank_chassis_1 #Leopard 2A4（封存）
+		producer = GER
+		amount = 152
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "M113"
+		type = medium_tank_amphibious_chassis_1 #M113（封存）
+		producer = USA
+		amount = 202
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Mowag Piranha 6x6 (Piranha I)"
+		type = medium_tank_amphibious_chassis_1 #Mowag Piranha 6x6 (Piranha I)（封存）
+		producer = SWI
+		amount = 40
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "AS332 Super Puma"
+		type = transport_helicopter_1 #AS332 Super Puma（封存）
+		producer = FRA
+		amount = 6
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Mowag Duro"
+		type = util_vehicle_3 #Mowag Duro（封存）
+		producer = SWI
+		amount = 208
+	}
+}

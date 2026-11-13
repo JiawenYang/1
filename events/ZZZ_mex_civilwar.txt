@@ -1,0 +1,147 @@
+# ============================================================================
+# 墨西哥毒枭战争补强事件（本工程原创命名空间，不占用烈焰升腾 mexico.* 原 ID）
+# 依赖：events/TFR_events_MEX.txt 的 mexico.11 / mexico.12 主链
+# ============================================================================
+
+add_namespace = zzz_mex
+
+# ---------------------------------------------------------------------------
+# zzz_mex.0 2017 年开局头目校正
+# "矮子"古兹曼 2017 年 1 月被引渡美国，锡那罗亚集团改由"埃尔·梅奥"掌舵；
+# 海湾集团自 2015 年起由"会计"卡德纳斯·马丁内斯领导。本事件在开局自动触发一次。
+# ---------------------------------------------------------------------------
+country_event = {
+	id = zzz_mex.0
+	title = zzz_mex.0.t
+	desc = zzz_mex.0.d
+	picture = GFX_Generic_Mexican_Police
+
+	fire_only_once = yes
+
+	trigger = {
+		date > 2017.1.5
+		OR = {
+			tag = SLA
+			tag = TAM
+		}
+	}
+
+	immediate = {
+		hidden_effect = {
+			if = {
+				limit = { tag = SLA }
+				if = {
+					limit = {
+						NOT = { has_country_flag = zzz_mex_sla_mayo_2017 }
+					}
+					retire_country_leader = yes
+					create_country_leader = {
+						name = MEX_ismael_zambada_garcia
+						picture = "gfx/leaders/MEX/Ismael_Zambada_Garcia.dds"
+						ideology = oligarchism
+					}
+					set_country_flag = zzz_mex_sla_mayo_2017
+				}
+			}
+			if = {
+				limit = { tag = TAM }
+				if = {
+					limit = {
+						NOT = { has_country_flag = zzz_mex_tam_contador_2017 }
+					}
+					retire_country_leader = yes
+					create_country_leader = {
+						name = MEX_jose_alfredo_cardenas_martinez
+						picture = "gfx/leaders/MEX/Jose_Alfredo_Cardenas_Martinez.dds"
+						ideology = oligarchism
+					}
+					set_country_flag = zzz_mex_tam_contador_2017
+				}
+			}
+		}
+	}
+
+	option = {
+		name = zzz_mex.0.a
+	}
+}
+
+# ---------------------------------------------------------------------------
+# zzz_mex.1 新一代毒枭头目浮出水面
+# 由 mexico.11 开战后 30 天触发；锡那罗亚集团由"埃尔·梅奥"过渡到奥维迪奥。
+# ---------------------------------------------------------------------------
+country_event = {
+	id = zzz_mex.1
+	title = zzz_mex.1.t
+	desc = zzz_mex.1.d
+	picture = GFX_Generic_Mexican_Police
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	trigger = {
+		tag = MEX
+		has_global_flag = MEX_mexican_cartel_war_global
+	}
+
+	immediate = {
+		hidden_effect = {
+			# 锡那罗亚集团：由"埃尔·梅奥"过渡到"小矮子"之子奥维迪奥（2021 年）
+			SLA = {
+				if = {
+					limit = {
+						NOT = { has_country_flag = zzz_mex_sla_ovidio_2021 }
+					}
+					retire_country_leader = yes
+					create_country_leader = {
+						name = MEX_ovidio_guzman_lopez
+						picture = "gfx/leaders/MEX/Ovidio_Guzman_Lopez.dds"
+						ideology = oligarchism
+					}
+					set_country_flag = zzz_mex_sla_ovidio_2021
+				}
+			}
+		}
+	}
+
+	option = {
+		name = zzz_mex.1.a
+		add_political_power = 25
+		add_war_support = 0.05
+	}
+}
+
+# ---------------------------------------------------------------------------
+# zzz_mex.2 毒枭接管全国
+# 由 mexico.12 在卡特尔一方获胜时触发，作为新政权成立的叙述事件。
+# ---------------------------------------------------------------------------
+country_event = {
+	id = zzz_mex.2
+	title = zzz_mex.2.t
+	desc = zzz_mex.2.d
+	picture = GFX_Generic_Mexican_Police
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			tag = SLA
+			tag = TRC
+			tag = TAM
+		}
+	}
+
+	immediate = {
+		hidden_effect = {
+			set_country_flag = zzz_mex_cartel_reunified
+		}
+	}
+
+	option = {
+		name = zzz_mex.2.a
+		add_stability = 0.10
+		add_war_support = 0.10
+		add_political_power = 100
+	}
+}

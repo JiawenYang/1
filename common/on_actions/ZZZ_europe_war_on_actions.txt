@@ -1,0 +1,94 @@
+# ============================================================================
+#  欧陆战争 —— on_actions（本工程原创）
+#
+#  与 common/on_actions/on_actions_ZZZ_peace.txt、ZZZ_gaw_on_actions.txt 同法：
+#  同名 on_action 在多个文件里追加，不覆盖基座内容。
+#
+#  on_capitulation：ROOT = 崩溃国，FROM = 敌对方
+#    · ROOT = SOV          → 俄方战败，北约胜（ZZZ_eur_settle_nato_victory）
+#    · 北约判负不再以“领袖投降”为准，统一改为 on_daily 判“柏林（州 45）被集安一方控制”
+#    其它参战国崩溃不触发结算，交给普通战争流程。
+#
+#  on_daily：① 上合合体判定（阈值在 ZZZ_sco_merge_triggers.txt）
+#            ② 柏林（州 45）被集安一方控制 → 俄方胜（ZZZ_eur_settle_csto_victory）
+#            ③ 双方已无交战（第三方白和/战争被外部结束）时转入僵持结算，
+#               避免战争旗标永远挂着。
+#            ④ 双向联动：俄方先败→北约欧洲成员加入对华战争；中国先败→PDTO 成员加入对俄战争。
+# ============================================================================
+on_actions = {
+
+	on_capitulation = {
+		effect = {
+			# 欧陆战争：俄方崩溃 → 北约胜
+			if = {
+				limit = {
+					has_global_flag = ZZZ_eur_war_ongoing
+					NOT = { has_global_flag = ZZZ_eur_war_resolved }
+					ROOT = { original_tag = SOV }
+					FROM = {
+						OR = {
+							has_country_flag = ZZZ_eur_nato_participant
+							has_country_flag = ZZZ_eur_nato_leader
+						}
+					}
+				}
+				SOV = { ZZZ_eur_settle_nato_victory = yes }
+			}
+		}
+	}
+
+	on_daily = {
+		effect = {
+			# 欧陆战争：上合合体判定（只判一次，置 ZZZ_sco_merged 后不再进入）
+			if = {
+				limit = {
+					NOT = { has_global_flag = ZZZ_sco_merged }
+					ZZZ_sco_merge_ready = yes
+				}
+				ZZZ_sco_merge = yes
+			}
+			# 欧陆战争：打到柏林 → 俄方胜
+			# 判定用“控制”（state 的 controller），集安一方 = SOV 本身 / 与 SOV 同阵营 /
+			# 已标记的集安参战方；不要求恰好由 SOV 亲自占领
+			if = {
+				limit = {
+					has_global_flag = ZZZ_eur_war_ongoing
+					NOT = { has_global_flag = ZZZ_eur_war_resolved }
+					45 = {
+						controller = {
+							OR = {
+								original_tag = SOV
+								has_country_flag = ZZZ_eur_csto_participant
+								is_in_faction_with = SOV
+							}
+						}
+					}
+				}
+				SOV = { ZZZ_eur_settle_csto_victory = yes }
+			}
+			# 欧陆战争：俄方与北约主对手都已停战 → 僵持结算
+			if = {
+				limit = {
+					has_global_flag = ZZZ_eur_war_ongoing
+					NOT = { has_global_flag = ZZZ_eur_war_resolved }
+				}
+				if = {
+					limit = {
+						NOT = {
+							any_country = {
+								OR = {
+									has_country_flag = ZZZ_eur_nato_leader
+									has_country_flag = ZZZ_eur_nato_participant
+								}
+								has_war_with = SOV
+							}
+						}
+					}
+					ZZZ_eur_settle_stalemate = yes
+				}
+			}
+			# 欧陆战争：双向联动（幂等，内部各只跑一次）
+			ZZZ_eur_linkage = yes
+		}
+	}
+}

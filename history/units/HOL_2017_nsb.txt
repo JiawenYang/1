@@ -24,6 +24,11 @@ division_template = {
 		Mech_Inf_Bat = { x = 2 y = 0 }
 		SP_Arty_Bat = { x = 2 y = 1 }
 	}
+	support = {
+		Mot_Recce_Comp = { x = 0 y = 0 }
+		L_Engi_Comp = { x = 0 y = 1 }
+		combat_service_support_company = { x = 0 y = 2 }
+	}
 }
 division_template = {
 	name = "Mechanized Brigade"
@@ -37,12 +42,23 @@ division_template = {
 		Mech_Inf_Bat = { x = 3 y = 0 }
 		SP_Arty_Bat = { x = 3 y = 1 }
 	}
+	support = {
+		armor_Recce_Comp = { x = 0 y = 0 }
+		H_Engi_Comp = { x = 0 y = 1 }
+		SP_AA_Battery = { x = 0 y = 2 }
+		combat_service_support_company = { x = 0 y = 3 }
+	}
 }
 division_template = {
 	name = "Korps Commandotroepen"
 
 	regiments = {
 		Special_Forces = { x = 0 y = 0 }
+	}
+	support = {
+		L_Recce_Comp = { x = 0 y = 0 }
+		L_Engi_Comp = { x = 0 y = 1 }
+		combat_service_support_company = { x = 0 y = 2 }
 	}
 	priority = 2
 }
@@ -54,6 +70,11 @@ division_template = {
 		Mech_Marine_Bat = { x = 0 y = 0 }
 		Mot_Marine_Bat = { x = 0 y = 1 }
 		Special_Forces = { x = 1 y = 0 }
+	}
+	support = {
+		Mech_Recce_Comp = { x = 0 y = 0 }
+		L_Engi_Comp = { x = 0 y = 1 }
+		combat_service_support_company = { x = 0 y = 2 }
 	}
 }
 division_template = {
@@ -125,10 +146,10 @@ units = {
 instant_effect = {
 
 	add_equipment_to_stockpile = {
-		variant_name = "C7NLD"
+		variant_name = "C7A1"
 		type = infantry_weapons_4 #C7NLD
 		amount = 1930
-		producer = HOL
+		producer = CAN
 	}
 	add_equipment_to_stockpile = {
 		type = cnc_equipment_5 #C4ISTAR Equipment
@@ -142,7 +163,7 @@ instant_effect = {
 		producer = HOL
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "HK-416"
+		variant_name = "HK416"
 		type = infantry_weapons_6 #HK-416
 		amount = 150
 		producer = HOL
@@ -160,13 +181,14 @@ instant_effect = {
 		producer = ISR
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "FIM-92 Stinger"
+		variant_name = "FIM-92E Stinger RMP Block I"
 		type = Anti_Air_1 #FIM-92 Stinger
 		amount = 147
 		producer = USA
 	}
 	#Vehicles
 	add_equipment_to_stockpile = {
+		variant_name = "Leopard 2A5"
 		type = medium_tank_chassis_1
 		amount = 18
 		producer = GER
@@ -197,7 +219,7 @@ instant_effect = {
 	}
 	add_equipment_to_stockpile = {
 		variant_name = "Tpz-1"
-		type = medium_tank_amphibious_chassis_1 #Tpz-1
+		type = Rec_tank_0 #Tpz-1
 		amount = 9
 		producer = GER
 	}
@@ -208,7 +230,7 @@ instant_effect = {
 		producer = SWE
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "Pz-2000"
+		variant_name = "PzH 2000"
 		type = medium_tank_artillery_chassis_2 #Pz-2000
 		amount = 57
 		producer = HOL
@@ -216,9 +238,9 @@ instant_effect = {
 
 	add_equipment_to_stockpile = {
 		variant_name = "FENNEK"
-		type = util_vehicle_4 #FENNEK
+		type = medium_tank_destroyer_chassis_2 #FENNEK
 		amount = 365
-		producer = HOL
+		producer = GER
 	}
 	add_equipment_to_stockpile = {
 		variant_name = "Bushmaster"
@@ -227,7 +249,7 @@ instant_effect = {
 		producer = AST
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "Lohr LVA"
+		variant_name = "lohr lva"
 		type = util_vehicle_3 #lohr lva
 		producer = FRA
 		amount = 150
@@ -255,7 +277,7 @@ instant_effect = {
 
 	add_equipment_to_stockpile = {
 		variant_name = "AH-64D"
-		type = heavy_tank_chassis_2 #AH-64D
+		type = attack_helicopter_2 #AH-64D
 		amount = 28
 		producer = USA
 	}
@@ -269,10 +291,10 @@ instant_effect = {
 
 	#Reserve Stockpiles (Sealed)
 	add_equipment_to_stockpile = {
-		variant_name = "FN FAL"
+		variant_name = "Ak 4"
 		type = infantry_weapons_2 #FN FAL（封存）
 		amount = 60000
-		producer = BEL
+		producer = SWE
 	}
 	add_equipment_to_stockpile = {
 		variant_name = "YPR-765"

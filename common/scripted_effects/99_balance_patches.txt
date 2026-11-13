@@ -10,6 +10,10 @@
 # 原版 inflation_rate_var 允许 ±200%，派生出 ±340% 建造速度、±270% 工厂产出、
 # 以及 -200%（即免费）的项目/投资/采购成本。此处保留通胀率本身的显示与货币逻辑，
 # 只对游戏性出口做非对称 clamp，正常对局（±30% 通胀）完全无感。
+# @currency_inflation_sensitivity comes from MD base common/scripted_effects/00_currency_effects.txt line 30 (= 0.025).
+# @ constants are file-scoped, so this patch file needs its own copy for refresh_currency_inflation_effects.
+@currency_inflation_sensitivity = 0.025
+
 calculate_inflation_effects = {
 	set_variable = {
 		inflation_rate_prod_var = {

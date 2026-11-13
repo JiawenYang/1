@@ -1,0 +1,415 @@
+division_template = {
+	name = "Zrahapat Gumartak"		#Tank battalion
+
+	regiments = {
+		armor_Bat = { x = 0 y = 0 }
+		armor_Bat = { x = 0 y = 1 }
+		armor_Bat = { x = 0 y = 2 }
+
+		Arm_Inf_Bat = { x = 1 y = 0 }
+	}
+
+	support = {
+		SP_Arty_Battery = { x = 0 y = 0 }
+	}
+}
+
+division_template = {
+	name = "Motohradzgayin Gund"	#Motor Rifle Regiment
+
+	regiments = {
+		Mech_Inf_Bat = { x = 0 y = 0 }
+		Mech_Inf_Bat = { x = 0 y = 1 }
+		Arm_Inf_Bat = { x = 0 y = 2 }
+		SP_Arty_Bat = { x = 0 y = 3 }
+	}
+
+	support = {
+		SP_AA_Battery = { x = 0 y = 0 }
+		armor_Recce_Comp = { x = 0 y = 1 }
+	}
+}
+
+division_template = {
+	name = "Hradzgayin Gund"			#Rifle Regiment
+
+	regiments = {
+		Mot_Inf_Bat = { x = 0 y = 0 }
+		Mot_Inf_Bat = { x = 0 y = 1 }
+		Mot_Inf_Bat = { x = 0 y = 2 }
+		Arty_Bat = { x = 0 y = 3 }
+	}
+
+	support = {
+		L_Engi_Comp = { x = 0 y = 0 }
+	}
+}
+
+division_template = {
+	name = "Armenian Army Corps"
+
+	regiments = {
+		Mot_Inf_Bat = { x = 0 y = 0 }
+		Mot_Inf_Bat = { x = 0 y = 1 }
+		Mot_Inf_Bat = { x = 0 y = 2 }
+		Mot_Inf_Bat = { x = 0 y = 3 }
+
+		Arty_Bat = { x = 1 y = 0 }
+		Arty_Bat = { x = 1 y = 1 }
+
+		armor_Bat = { x = 2 y = 0 }
+		Mech_Inf_Bat = { x = 2 y = 1 }
+	}
+
+	support = {
+		SP_AA_Battery = { x = 0 y = 0 }
+		H_Engi_Comp = { x = 0 y = 1 }
+	}
+}
+
+division_template = {
+	name = "Armenian Army Corps 2"
+
+	regiments = {
+		Mot_Inf_Bat = { x = 0 y = 0 }
+		Mot_Inf_Bat = { x = 0 y = 1 }
+		Mot_Inf_Bat = { x = 0 y = 2 }
+		Mot_Inf_Bat = { x = 0 y = 3 }
+
+		Mot_Inf_Bat = { x = 1 y = 0 }
+		Mot_Inf_Bat = { x = 1 y = 1 }
+		Mot_Inf_Bat = { x = 1 y = 2 }
+		Mot_Inf_Bat = { x = 1 y = 3 }
+
+		SP_Arty_Bat = { x = 2 y = 0 }
+		SP_Arty_Bat = { x = 2 y = 1 }
+
+		Arm_Inf_Bat = { x = 3 y = 0 }
+	}
+
+	support = {
+		SP_AA_Battery = { x = 0 y = 0 }
+		H_Engi_Comp = { x = 0 y = 1 }
+	}
+}
+
+division_template = {
+	name = "Hatuk Uzhery Gund"
+
+	regiments = {
+		Special_Forces = { x = 0 y = 0 }
+		Special_Forces = { x = 0 y = 1 }
+	}
+
+	priority = 2
+}
+
+units = {
+	division = {
+		name = "1st Army Corps"
+		location = 4660		#Goris
+		division_template = "Armenian Army Corps"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "2nd Army Corps"
+		location = 11708		#Khachaghbyur
+		division_template = "Armenian Army Corps"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "3rd Army Corps"
+		location = 12380		#Vanadzor
+		division_template = "Armenian Army Corps 2"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "4th Army Corps"
+		location = 1210		#Yeghegnadzor
+		division_template = "Armenian Army Corps 2"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.01
+	}
+	division = {
+		name = "5th Army Corps"
+		location = 12320		#Yerevan
+		division_template = "Armenian Army Corps"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.01
+	}
+
+	#Special Forces Regiment
+	division = {
+		name = "Hatuk Uzhery Gund"
+		location = 12320		#Nubarashen
+		division_template = "Hatuk Uzhery Gund"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.01
+	}
+}
+
+instant_effect = {
+	add_equipment_to_stockpile = {
+		variant_name = "Aero L-39"
+		type = small_plane_strike_airframe_1		#L-39
+		amount = 6
+		producer = CZE
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "MPi-AK-74N"
+		type = infantry_weapons_2			#AK-74
+		amount = 10000
+		producer = GER
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "AK-105"
+		type = infantry_weapons_4			#AK-105
+		amount = 200
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "K-3"
+		type = infantry_weapons_4			#K-3
+		amount = 200
+		producer = ARM
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "9K111 Fagot"
+		type = Anti_tank_2				#Fagot
+		amount = 200
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "9P148 Konkurs"
+		type = Heavy_Anti_tank_2				#Konkurs
+		amount = 50
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "AT-6 Spiral"
+		type = Heavy_Anti_tank_2				#Spiral
+		#version_name = "AT-6 Spiral"
+		amount = 50
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "9K32 Strela-2"
+		type = Anti_Air_0				#Strela 2
+		amount = 250
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Igla-S"
+		type = Anti_Air_2				#Igla-S
+		amount = 30
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		type = medium_tank_chassis_2
+		variant_name = "T-90"
+		producer = SOV
+		amount = 1
+	}
+
+	add_equipment_to_stockpile = {
+		type = medium_tank_chassis_1
+		variant_name = "T-72A"
+		producer = SOV
+		amount = 101
+	}
+
+	add_equipment_to_stockpile = {
+    type = medium_tank_chassis_0
+		variant_name = "T-55A"
+		producer = SOV
+		amount = 8
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BMP-2"
+		type = medium_tank_flame_chassis_1				#BMP-2
+		amount = 5
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BMP-1"
+		type = medium_tank_flame_chassis_0				#BMP-1 (includes command variants (armed))
+		amount = 131
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		type = medium_tank_flame_chassis_0
+		amount = 5
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BTR-80"
+		type = medium_tank_amphibious_chassis_1				#BTR-80
+		amount = 4
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BTR-70"
+		type = medium_tank_amphibious_chassis_1				#BTR-70
+		amount = 18
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BTR-60PB"
+		type = medium_tank_amphibious_chassis_0				#BTR-60
+		amount = 132
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "GAZ Tigr"
+		type = util_vehicle_4				#GAZ Tigr
+		amount = 4
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BM-21 Grad"
+		type = medium_tank_rocket_chassis_0				#BM-21 Grad
+		amount = 47
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "2S3 Akatsiya"
+		type = medium_tank_artillery_chassis_1					#2S3 Akatsiya
+		amount = 28
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "2S1 Gvozdika"
+		type = medium_tank_artillery_chassis_0					#2S1 Gvozdika
+		#version_name = "2S1 Gvozdika"
+		amount = 10
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "D-30"
+		type = artillery_1				#D-30
+		amount = 69
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "9K35M Strela-10M"
+		type = medium_tank_aa_chassis_1				#Strela-10
+		#version_name = "9K35 Strela-10"
+		amount = 30
+		producer = SOV
+	}
+
+	#Fill up what's missing
+	add_equipment_to_stockpile = {
+		type = cnc_equipment_1
+		amount = 800
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		type = util_vehicle_1
+		amount = 2000
+		producer = SOV
+	}
+
+	#Aircraft
+	add_equipment_to_stockpile = {
+		variant_name = "Mi-24P"
+    type = heavy_tank_chassis_0	#Mi-24
+		amount = 15
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "su-25"
+		type = small_plane_cas_airframe_2					#su-25
+		amount = 15
+		producer = SOV
+	}
+
+
+	### Sealed Storage 封存 ###
+	add_equipment_to_stockpile = {
+		variant_name = "9K32 Strela-2"
+		type = Anti_Air_0 #Strela 2（封存）
+		producer = SOV
+		amount = 100
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "T-72A"
+		type = medium_tank_chassis_1 #T-72A（封存）
+		producer = SOV
+		amount = 40
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "BMP-1"
+		type = medium_tank_flame_chassis_0 #BMP-1 (includes command variants (armed))（封存）
+		producer = SOV
+		amount = 52
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "BTR-70"
+		type = medium_tank_amphibious_chassis_1 #BTR-70（封存）
+		producer = SOV
+		amount = 7
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "BTR-60PB"
+		type = medium_tank_amphibious_chassis_0 #BTR-60（封存）
+		producer = SOV
+		amount = 52
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "BM-21 Grad"
+		type = medium_tank_rocket_chassis_0 #BM-21 Grad（封存）
+		producer = SOV
+		amount = 18
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "2S3 Akatsiya"
+		type = medium_tank_artillery_chassis_1 #2S3 Akatsiya（封存）
+		producer = SOV
+		amount = 11
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "2S1 Gvozdika"
+		type = medium_tank_artillery_chassis_0 #2S1 Gvozdika（封存）
+		producer = SOV
+		amount = 5
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "9K35M Strela-10M"
+		type = medium_tank_aa_chassis_1 #Strela-10（封存）
+		producer = SOV
+		amount = 12
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "MPi-AK-74N"
+		type = infantry_weapons_2 #AK-74（封存）
+		producer = GER
+		amount = 3000
+	}
+}

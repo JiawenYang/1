@@ -40,6 +40,11 @@ division_template = {
 		Mot_Air_Inf_Bat = { x = 1 y = 1 }
 		Special_Forces = { x = 2 y = 0 }
 	}
+	support = {
+		L_Recce_Comp = { x = 0 y = 0 }
+		L_Engi_Comp = { x = 0 y = 1 }
+		combat_service_support_company = { x = 0 y = 2 }
+	}
 }
 
 division_template = {
@@ -244,18 +249,21 @@ instant_effect = {
 	}
 
 	add_equipment_to_stockpile = {
+		variant_name = "T-72A"
 		type = medium_tank_chassis_1
 		producer = SOV
 		amount = 500
 	}
 
 	add_equipment_to_stockpile = {
+		variant_name = "T-62M"
 		type = medium_tank_chassis_0
 		producer = SOV
 		amount = 800
 	}
 
 	add_equipment_to_stockpile = {
+		variant_name = "T-55A"
 		type = medium_tank_chassis_0
 		producer = SOV
 		amount = 600
@@ -263,7 +271,7 @@ instant_effect = {
 
 	add_equipment_to_stockpile = {
 		variant_name = "BMPT Terminator"
-		type = medium_tank_flame_chassis_3			#BMPT Terminator
+		type = medium_tank_destroyer_chassis_2			#BMPT Terminator
 		#version_name = "BMPT Terminator"
 		amount = 80
 		producer = SOV
@@ -292,20 +300,20 @@ instant_effect = {
 
 	add_equipment_to_stockpile = {
 		variant_name = "BTR-80"
-		type = medium_tank_amphibious_chassis_2			#BTR-80
+		type = medium_tank_amphibious_chassis_1			#BTR-80
 		amount = 150
 		producer = SOV
 	}
 
 	add_equipment_to_stockpile = {
-		variant_name = "BTR-60"
+		variant_name = "BTR-60PB"
 		type = medium_tank_amphibious_chassis_0			#BTR-60
 		amount = 250
 		producer = SOV
 	}
 
 	add_equipment_to_stockpile = {
-		variant_name = "BTR-60"
+		variant_name = "BTR-60PB"
 		type = medium_tank_amphibious_chassis_0			#BTR-60
 		amount = 250
 		producer = SOV
@@ -319,7 +327,7 @@ instant_effect = {
 	}
 
 	add_equipment_to_stockpile = {
-		variant_name = "Panhard M3"
+		variant_name = "M3 Panhard"
 		type = medium_tank_amphibious_chassis_0			#Panhard M3
 		amount = 55
 		producer = ALG
@@ -357,9 +365,9 @@ instant_effect = {
 
 	add_equipment_to_stockpile = {
 		variant_name = "OT-64"
-		type = medium_tank_amphibious_chassis_0		#OT-64
+		type = medium_tank_amphibious_chassis_1		#OT-64
 		amount = 150
-		producer = ALG
+		producer = CZE
 	}
 
 	add_equipment_to_stockpile = {
@@ -372,7 +380,7 @@ instant_effect = {
 
 	add_equipment_to_stockpile = {
 		variant_name = "2S3 Akatsiya"
-		type = medium_tank_artillery_chassis_0		#2S3 Akatsiya
+		type = medium_tank_artillery_chassis_1		#2S3 Akatsiya
 		amount = 30
 		producer = SOV
 	}
@@ -424,51 +432,52 @@ instant_effect = {
 
 	add_equipment_to_stockpile = {
 		variant_name = "SA-22 Pantsir"
-		type = medium_tank_aa_chassis_2		#Pantsirs
+		type = SP_Anti_Air_2		#Pantsirs
 		#version_name = "SA-22 Pantsir"
 		amount = 76
 		producer = SOV
 	}
 
 	add_equipment_to_stockpile = {
-		variant_name = "Strela-1"
-		type = medium_tank_aa_chassis_0		#Strela-1s
+		variant_name = "SA-9 Strela-1"
+		type = SP_Anti_Air_0		#Strela-1s
 		#version_name = "SA-9 Strela-1"
 		amount = 20
 		producer = SOV
 	}
 
 	add_equipment_to_stockpile = {
-		variant_name = "Strela-10"
-		type = medium_tank_aa_chassis_1		#Strela-10s
+		variant_name = "9K35 Strela-10"
+		type = SP_Anti_Air_1		#Strela-10s
 		#version_name = "9K35 Strela-10"
 		amount = 32
 		producer = SOV
 	}
 
 	add_equipment_to_stockpile = {
-		variant_name = "Strela-10"
-		type = medium_tank_aa_chassis_1		#Strela-10s
+		variant_name = "9K35 Strela-10"
+		type = SP_Anti_Air_1		#Strela-10s
 		#version_name = "9K35 Strela-10"
 		amount = 32
 		producer = SOV
 	}
 
 	add_equipment_to_stockpile = {
-		variant_name = "MILAN"
+		variant_name = "MILANs"
 		type = Anti_tank_1			#MILANs
 		amount = 50
 		producer = FRA
 	}
 
 	add_equipment_to_stockpile = {
-		variant_name = "Metis-M"
+		variant_name = "AT-7 Metis"
 		type = Anti_tank_2			#Metis
 		amount = 50
 		producer = SOV
 	}
 
 	add_equipment_to_stockpile = {
+		variant_name = "9K11 Malyutka"
 		type = Anti_tank_1			#Malyutka
 		amount = 50
 		producer = SOV
@@ -476,27 +485,27 @@ instant_effect = {
 
 	add_equipment_to_stockpile = {
 		variant_name = "9K111 Fagot"
-		type = Anti_tank_1			#Fagot
+    type = Anti_tank_2			#Fagot
 		amount = 50
 		producer = SOV
 	}
 
 	add_equipment_to_stockpile = {
-		variant_name = "AT-14 Kornet"
+		variant_name = "Kornets"
 		type = Heavy_Anti_tank_2			#Kornets
 		amount = 50
 		producer = ALG
 	}
 
 	add_equipment_to_stockpile = {
-		variant_name = "Konkurs"
-		type = Heavy_Anti_tank_1			#Konkurs
+		variant_name = "9P148 Konkurs"
+		type = Heavy_Anti_tank_2			#Konkurs
 		amount = 50
 		producer = SOV
 	}
 
 	add_equipment_to_stockpile = {
-		variant_name = "Strela-2"
+		variant_name = "9K32M Strela-2M"
 		type = Anti_Air_0			#Strela
 		amount = 50
 		producer = SOV
@@ -504,36 +513,36 @@ instant_effect = {
 
 	add_equipment_to_stockpile = {
 		variant_name = "AKM"
-		type = infantry_weapons_2			#AKM（现役）
+		type = infantry_weapons_1			#AKM（现役）
 		amount = 10000
 		producer = SOV
 	}
  
 
 	add_equipment_to_stockpile = {
-		variant_name = "Mi-24"
-		type = heavy_tank_chassis_0	#Mi-24
+		variant_name = "Mi-24P"
+    type = heavy_tank_chassis_0	#Mi-24
 		amount = 35
 		producer = SOV
 	}
 
 	add_equipment_to_stockpile = {
 		variant_name = "Mi-28"
-		type = heavy_tank_chassis_1	#Mi-28
+		type = attack_helicopter_2	#Mi-28
 		amount = 42
 		producer = SOV
 	}
 
 	add_equipment_to_stockpile = {
-		variant_name = "Mi-17"
+		variant_name = "Mil Mi-17"
 		type = transport_helicopter_1		#Mi-17
 		amount = 101
 		producer = SOV
 	}
 
 	add_equipment_to_stockpile = {
-		variant_name = "Mi-26"
-		type = transport_helicopter_1		#Mi-26
+		variant_name = "Mil Mi-26"
+		type = transport_helicopter_2		#Mi-26
 		amount = 4
 		producer = SOV
 	}
@@ -565,14 +574,14 @@ instant_effect = {
 
 	#### Sealed Storage（封存）####
 	add_equipment_to_stockpile = {
-		variant_name = "AK-47"
-		type = infantry_weapons_2			#AK-47（封存）
+		variant_name = "AKM"
+		type = infantry_weapons_1			#AK-47（封存）
 		amount = 200000
 		producer = SOV
 	}
 
 	add_equipment_to_stockpile = {
-		variant_name = "T-55"
+		variant_name = "T-55A"
 		type = medium_tank_chassis_0		#T-55（封存）
 		producer = SOV
 		amount = 500

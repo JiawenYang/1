@@ -1,0 +1,73 @@
+# ============================================================================
+#  ZZZ_chainrun —— 事件链跑通器（直接施加效果版 · 巴尔干联邦 / 退约）
+#
+#  链路本体（本工程现存实现，基座的 Serbia.txt / SerbiaFocus.17 / Serbia.27
+#  不在本 mod 的 common/decisions、events 内，故不调用）：
+#    ① 退约：events/ZZZ_balkan_elections.txt 的 zzz_balkan.20.a 成功分支
+#       （trigger 要求 BALKAN_anti_western_government，本决议跳过判断直接执行）
+#       实际效果 = common/scripted_effects/ZZZ_balkan_effects.txt:36
+#       ZZZ_balkan_leave_nato_and_eu_effect（NATO_leave / EU_leave_effect + 旗标 + 代价 + 批次汇总）
+#    ② 联邦支点：common/decisions/TFR_decisions_PRC.txt:1432 PRC_balkan_federation_support
+#       的 remove_effect（成功分支）：伙伴理念、全局旗标、七国影响力置换、
+#       SER +100 政治点、七国 balkan_subject_agree
+#    ③ 跳过 country_event = { id = zzz_balkan.30 }；其选项自身的 +30 政治点按“效果内联”口径
+#       直接记在 CHI 上，不派发事件。
+#
+#  原 remove_effect 里对 SER 的 country_exists 判断未内联（新口径不写 if/limit），
+#  若本局 SER 不存在，SER = { ... } 为空转。
+#
+#  本条效果均不读 ROOT，故 allowed 恒真。
+# ============================================================================
+
+ZZZ_chainrun = {
+
+    ZZZ_cr_balk_01_withdraw_federation = {
+        icon = generic_political_actions
+        cost = 0
+        fire_only_once = no
+
+        allowed = { always = yes }
+        visible = { always = yes }
+        available = { always = yes }
+
+        complete_effect = {
+            # ① 第一批退约：BUL / ROM / GRE / TUR
+            BUL = { ZZZ_balkan_leave_nato_and_eu_effect = yes }
+            ROM = { ZZZ_balkan_leave_nato_and_eu_effect = yes }
+            GRE = { ZZZ_balkan_leave_nato_and_eu_effect = yes }
+            TUR = { ZZZ_balkan_leave_nato_and_eu_effect = yes }
+            # ① 第二批退约：ALB / CRO / SLV / MNT
+            ALB = { ZZZ_balkan_leave_nato_and_eu_effect = yes }
+            CRO = { ZZZ_balkan_leave_nato_and_eu_effect = yes }
+            SLV = { ZZZ_balkan_leave_nato_and_eu_effect = yes }
+            MNT = { ZZZ_balkan_leave_nato_and_eu_effect = yes }
+
+            # ② 中国支持巴尔干联邦
+            CHI = {
+                add_ideas = PRC_balkan_federation_partnership
+                set_global_flag = PRC_balkan_federation_supported
+                # zzz_balkan.30.a 的选项效果（事件不派发，效果内联）
+                add_political_power = 30
+            }
+            BUL = { ZZZ_balkan_china_federation_invest_effect = yes }
+            ROM = { ZZZ_balkan_china_federation_invest_effect = yes }
+            GRE = { ZZZ_balkan_china_federation_invest_effect = yes }
+            ALB = { ZZZ_balkan_china_federation_invest_effect = yes }
+            CRO = { ZZZ_balkan_china_federation_invest_effect = yes }
+            SLV = { ZZZ_balkan_china_federation_invest_effect = yes }
+            MNT = { ZZZ_balkan_china_federation_invest_effect = yes }
+            SER = {
+                add_political_power = 100
+            }
+            BUL = { set_country_flag = balkan_subject_agree }
+            ROM = { set_country_flag = balkan_subject_agree }
+            GRE = { set_country_flag = balkan_subject_agree }
+            ALB = { set_country_flag = balkan_subject_agree }
+            CRO = { set_country_flag = balkan_subject_agree }
+            SLV = { set_country_flag = balkan_subject_agree }
+            MNT = { set_country_flag = balkan_subject_agree }
+        }
+
+        ai_will_do = { base = 0 }
+    }
+}

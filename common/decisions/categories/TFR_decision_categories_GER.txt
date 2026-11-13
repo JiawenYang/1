@@ -24,10 +24,10 @@ GER_european_armed_forces_category = {
 		}
 		NOT = {
 			OR = {
-				has_government = fascist
-				has_government = communist
+				has_government = fascism
+				has_government = communism
 				has_government = nationalist
-				has_government = libertarian_socialist
+				has_government = communism
 			}
 		}
 	}
@@ -47,15 +47,15 @@ GER_parties_category = {
 			has_country_flag = GER_COVID_ongoing
 		}
 		NOT = {
-			has_government = fascist
+			has_government = fascism
 			has_government = nationalist
 			has_completed_focus = GER_democracy_falters
 		}
 		if = {
 			limit = {
 				OR = {
-					has_government = libertarian_socialist
-					has_government = communist
+					has_government = communism
+					has_government = communism
 				}
 			}
 			NOT = {
@@ -75,8 +75,8 @@ GER_peoples_economy_category = {
 	visible = {
 		NOT = {
 			OR = {
-				has_government = fascist
-				has_government = communist
+				has_government = fascism
+				has_government = communism
 				has_government = nationalist
 			}
 		}
@@ -128,7 +128,7 @@ european_union_category = {
 		}
 	}
 	visible = {
-		is_EU_member = yes
+		has_idea = EU_member
 	}
 	visible_when_empty = yes
 }
@@ -165,8 +165,8 @@ GER_turkish_gamble_category = {
 		has_completed_focus = GER_the_turkish_gamble
 		NOT = {
 			OR = {
-				has_government = fascist
-				has_government = communist
+				has_government = fascism
+				has_government = communism
 			}
 			OR = {
 				has_country_flag = TUR_stay_nato
@@ -184,8 +184,8 @@ GER_economic_wars_category = {
 		tag = GER
 		NOT = {
 			OR = {
-				has_government = fascist
-				has_government = communist
+				has_government = fascism
+				has_government = communism
 			}
 		}
 	}
@@ -229,8 +229,8 @@ GER_gas_shortages_category = {
 		}
 		NOT = {
 			OR = {
-				has_government = fascist
-				has_government = communist
+				has_government = fascism
+				has_government = communism
 			}
 		}
 	}
@@ -262,9 +262,9 @@ GER_new_political_sphere_category = {
 	visible = {
 		has_completed_focus = GER_facit_omnia_voluntas
 		OR = {
-			has_government = fascist
+			has_government = fascism
 			has_government = nationalist
-			has_government = national_socialist
+			has_government = fascism
 		}
 	}
 }
@@ -279,9 +279,9 @@ GER_ministry_of_propaganda = {
 	visible = {
 		has_completed_focus = GER_mastery_of_propaganda
 		OR = {
-			has_government = fascist
+			has_government = fascism
 			has_government = nationalist
-			has_government = national_socialist
+			has_government = fascism
 		}
 	}
 }
@@ -296,9 +296,9 @@ GER_national_economy_category = {
 	visible = {
 		has_completed_focus = GER_revive_the_economy
 		OR = {
-			has_government = fascist
+			has_government = fascism
 			has_government = nationalist
-			has_government = national_socialist
+			has_government = fascism
 		}
 	}
 }
@@ -313,9 +313,9 @@ GER_pact_of_steel_category = {
 	visible = {
 		has_completed_focus = GER_eternal_alliance
 		OR = {
-			has_government = fascist
+			has_government = fascism
 			has_government = nationalist
-			has_government = national_socialist
+			has_government = fascism
 		}
 	}
 }
@@ -459,9 +459,9 @@ GER_spread_the_revolution_category = {
 			has_completed_focus = GER_form_european_internationale
 		}
 		OR = {
-			has_government = totalitarian_socialist
-			has_government = communist
-			has_government = libertarian_socialist
+			has_government = communism
+			has_government = communism
+			has_government = communism
 		}
 	}
 }

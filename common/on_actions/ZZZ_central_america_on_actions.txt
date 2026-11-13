@@ -1,0 +1,58 @@
+on_actions = {
+	# 中美洲统一战后结算（2026-11-07）
+	# NIC.3 的战争目标已由 annex_everything 改为 puppet_wargoal_focus：
+	# 战败方不会在和会里被直接吞并，只能被傀儡化或保持独立。
+	# 和会一结束就在此自动派发 NIC.4，由 NIC.4 的 NIC / ELS 两个分支
+	# 分别完成合并，并写入 CAM_union_formed / CAM_republic_formed。
+	# 不依赖玩家手动释放傀儡，也不需要再点 CEN_unification_with_panama 决议。
+	on_peaceconference_ended = {
+		effect = {
+			# NIC 主导：NIC 打赢 ELS 阵营，且三国都不再处于战争状态
+			if = {
+				limit = {
+					ROOT = { original_tag = NIC }
+					country_exists = ELS
+					country_exists = GUA
+					country_exists = BLZ
+					NIC = {
+						NOT = { has_war_with = ELS }
+						NOT = { has_war_with = GUA }
+						NOT = { has_war_with = BLZ }
+						NOT = { has_country_flag = CAM_unification_queued }
+					}
+					NOT = { has_global_flag = CAM_union_formed }
+					NOT = { has_global_flag = CAM_republic_formed }
+				}
+				NIC = {
+					set_country_flag = CAM_unification_queued
+					country_event = { id = NIC.4 }
+				}
+			}
+			# ELS 主导：ELS 顶住 NIC 阵营，且 NIC / HON 都不再处于战争状态
+			# 已用户确认收紧：必须 ELS 真的把 NIC 与 HON 都傀儡化才算 ELS 主导统一，
+			# 白和 / 单纯防守成功不再触发合并。
+			else_if = {
+				limit = {
+					ROOT = { original_tag = ELS }
+					country_exists = NIC
+					country_exists = HON
+					NIC = {
+						is_puppet_of = ELS
+						NOT = { has_war_with = ELS }
+						NOT = { has_war_with = HON }
+						NOT = { has_country_flag = CAM_unification_queued }
+					}
+					HON = {
+						is_puppet_of = ELS
+					}
+					NOT = { has_global_flag = CAM_union_formed }
+					NOT = { has_global_flag = CAM_republic_formed }
+				}
+				ELS = {
+					set_country_flag = CAM_unification_queued
+					country_event = { id = NIC.4 }
+				}
+			}
+		}
+	}
+}

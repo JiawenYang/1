@@ -1,0 +1,236 @@
+division_template = {
+	name = "Brigáda Rychleho Nasazeni"
+
+	regiments = {
+		Arm_Inf_Bat = { x = 0 y = 0 }
+		Arm_Inf_Bat = { x = 0 y = 1 }
+		SP_Arty_Bat = { x = 0 y = 2 }
+		armor_Bat = { x = 1 y = 0 }
+		Mot_Inf_Bat = { x = 2 y = 0 }
+		L_Inf_Bat = { x = 2 y = 1 }
+	}
+	support = {
+		armor_Recce_Comp = { x = 0 y = 0 }
+		H_Engi_Comp = { x = 0 y = 1 }
+		SP_AA_Battery = { x = 0 y = 2 }
+		combat_service_support_company = { x = 0 y = 3 }
+	}
+}
+
+division_template = {
+	name = "Mechanizovaná Brigáda"
+
+	regiments = {
+		Mech_Inf_Bat = { x = 0 y = 0 }
+		Mech_Inf_Bat = { x = 0 y = 1 }
+		SP_Arty_Bat = { x = 0 y = 2 }
+		L_Air_Inf_Bat = { x = 1 y = 0 }
+		Mot_Inf_Bat = { x = 2 y = 0 }
+		L_Inf_Bat = { x = 2 y = 1 }
+	}
+
+	support = {
+		SP_arty_battery = { x = 0 y = 0 }
+		SP_AA_Battery = { x = 0 y = 1 }
+		combat_service_support_company = { x = 0 y = 2 }
+		H_Engi_Comp = { x = 0 y = 3 }
+	}
+}
+
+units = {
+	division = {
+		name = "4. Brigáda Rychleho Nasazeni"
+		location = 3418 		#zatec
+		division_template = "Brigáda Rychleho Nasazeni"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "7. Mechanizovaná Brigáda"
+		location = 6590 		#Hranice
+		division_template = "Mechanizovaná Brigáda"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.01
+	}
+}
+
+instant_effect = {
+
+
+
+
+
+
+
+
+
+
+
+	add_equipment_to_stockpile = {
+		variant_name = "Land Rover Defender"
+		type = util_vehicle_3		 	#Land Rover Defender
+		producer = ENG
+		amount = 240
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "UAZ-469"
+		type = util_vehicle_2 			#UAZ-469
+		producer = SOV
+		amount = 230
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Tatra T815"
+		type = util_vehicle_2 			#Tatra T815
+		producer = CZE
+		amount = 686
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Tatra T815-7"
+		type = util_vehicle_3 			#Tatra T815-7
+		producer = CZE
+		amount = 43
+	}
+
+
+	add_equipment_to_stockpile = {
+		variant_name = "Tatra T810"
+		type = util_vehicle_4 			#Tatra T810
+		producer = CZE
+		amount = 213
+	}
+
+
+	add_equipment_to_stockpile = {
+		type = heavy_util_vehicle_5 			#Dingo II
+		producer = GER
+		amount = 21
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Iveco LMV"
+		type = util_vehicle_5 			#Iveco LMV
+		producer = ITA
+		amount = 120
+	}
+
+
+
+	add_equipment_to_stockpile = {
+		variant_name = "RBS 70ÖS (MK.1)"
+		type = Anti_Air_1 				#RBS 70
+		producer = SWE
+		amount = 100
+	}
+
+
+	add_equipment_to_stockpile = {
+		variant_name = "vz. 58"
+		type = infantry_weapons_2 		#vz. 58
+		producer = CZE
+		amount = 4000
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "vz. 58"
+		type = infantry_weapons_2		#vz. 58（封存）
+		producer = CZE
+		amount = 80000
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "CZ 805 BREN"
+		type = infantry_weapons_5 		#CZ 805 BREN
+		producer = CZE
+		amount = 8000
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "CZ 805 BREN 2"
+		type = infantry_weapons_6 		#CZ 805 BREN 2
+		producer = CZE
+		amount = 2600
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "M4 Carabine"
+		type = infantry_weapons_5		#M4 Carabine
+		producer = USA
+		amount = 100
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "9K11 Malyutka"
+		type = Anti_tank_1 		#Malyutka
+		producer = SOV
+		amount = 185
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "9P148 Konkurs"
+		type = Heavy_Anti_tank_2 		#Konkurs
+		producer = SOV
+		amount = 225
+	}
+
+
+	add_equipment_to_stockpile = {
+		variant_name = "Spike-LR"
+		type = Heavy_Anti_tank_2 		#Spike-LR
+		producer = ISR
+		amount = 500
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Javelin"
+    type = Heavy_Anti_tank_2 		#Javelin
+		producer = USA
+		amount = 50
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Karl Gustav"
+		type = Anti_tank_1 				#Karl Gustav
+		producer = SWE
+		amount = 30
+	}
+
+	add_equipment_to_stockpile = {
+		type = cnc_equipment_1
+		producer = CZE
+		amount = 220
+	}
+
+	#AIR FORCE
+
+	add_equipment_to_stockpile = {
+		variant_name = "Mil Mi-24"
+		type = attack_helicopter_1 		#Mil Mi-24
+		producer = SOV
+		amount = 17
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Mi-171Š"
+		type = transport_helicopter_2 		#Mi-171Š
+		producer = SOV
+		amount = 16
+	}
+
+	add_equipment_to_stockpile = {
+			variant_name = "Mil Mi-8T"
+			type = transport_helicopter_1 	#Mil Mi-8
+			producer = SOV
+			amount = 14
+		}
+
+	add_equipment_to_stockpile = {
+		variant_name = "PZL W-3 Sokół"
+		type = transport_helicopter_1 	#PZL W-3 Sokół
+		producer = POL
+		amount = 10
+	}
+}

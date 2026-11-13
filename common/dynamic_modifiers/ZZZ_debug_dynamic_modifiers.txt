@@ -1,0 +1,41 @@
+# 调试专用动态修正：供 debug_decisions.txt 的 MEW / GAW 胜负测试使用
+# 仅由玩家手动点击调试决策挂载，AI 永远不会获得（调试决策 available 内 is_ai = no）
+# 所有修正键均在 MD（千禧黎明）common 目录中实际使用过，未自创
+ZZZ_debug_boost_major = {
+	icon = GFX_modifiers_PRC_economic_zone
+	enable = {
+		always = yes
+	}
+
+	industrial_capacity_factory = 0.5
+	industrial_capacity_dockyard = 0.5
+	production_speed_buildings_factor = 0.5
+	army_attack_factor = 0.5
+	army_defence_factor = 0.5
+	army_org_factor = 0.4
+	army_morale_factor = 0.3
+	planning_speed = 0.5
+	supply_consumption_factor = -0.5
+	war_support_factor = 0.5
+	stability_factor = 0.3
+	recruitable_population_factor = 0.5
+	equipment_capture_factor = 0.5
+}
+
+ZZZ_debug_debuff_major = {
+	icon = GFX_modifiers_unplanned_offensive
+	enable = {
+		always = yes
+	}
+
+	industrial_capacity_factory = -0.5
+	army_attack_factor = -0.4
+	army_defence_factor = -0.4
+	army_org_factor = -0.4
+	army_morale_factor = -0.3
+	planning_speed = -0.5
+	supply_consumption_factor = 0.5
+	war_support_factor = -0.4
+	stability_factor = -0.3
+	recruitable_population_factor = -0.5
+}

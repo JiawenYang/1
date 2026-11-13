@@ -79,3 +79,26 @@ country_event = {
 		complete_national_focus = AST_war_beyond_the_seas
 	}
 }
+
+country_event = {
+	#Penny Wong decries our aggression against China
+	id = Australia.0
+	title = Australia.0.t
+	desc = Australia.0.d
+	picture = GFX_AST_Penny_wong
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			remove_ideas = AST_Penny_Wong_idea
+		}
+	}
+	option = {
+		#Traitor
+		name = Australia.0.a
+		ai_chance = {
+			factor = 33
+		}
+		add_war_support = -0.1
+	}
+}

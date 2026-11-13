@@ -24,9 +24,9 @@ division_template = {
 	name = "Brigata di Cavalleria"
 
 	regiments = {
-		Mot_Marine_Bat = { x = 0 y = 0 } #lagunari serenissima
+		SanMarco_Bat_ITA = { x = 0 y = 0 } #lagunari serenissima
 		Mot_Inf_Bat = { x = 0 y = 1 } #Reggimento "Genova Cavalleria" (4°)
-		Mech_Marine_Bat = { x = 1 y = 0 } #lagunari serenissima
+		SanMarco_Bat_ITA = { x = 1 y = 0 } #lagunari serenissima
 		Mech_Inf_Bat = { x = 1 y = 1 } #Reggimento "Genova Cavalleria" (4°)
 		Arty_Bat = { x = 2 y = 0 } #Reggimento Artiglieria Terrestre "a Cavallo"
 	}
@@ -163,7 +163,7 @@ division_template = {
 	regiments = {
 		SanMarco_Bat_ITA = { x = 0 y = 0 } #1° Grado
 		SanMarco_Bat_ITA = { x = 1 y = 0 } #2°
-		Mot_Marine_Bat = { x = 1 y = 1 } #3° Golametto
+		SanMarco_Bat_ITA = { x = 1 y = 1 } #3° Golametto
 	}
 
 	regimental_support = {
@@ -269,30 +269,41 @@ instant_effect = {
 		amount = 600
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "GAZ-66"
+		producer = SOV
 		type = util_vehicle_1 #Lancia ACL/90 + Iveco ACM 80/90
 		amount = 6800
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "KrAZ-260"
+		producer = UKR
 		type = util_vehicle_2 #AR90
 		amount = 2750
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "VM90T"
 		type = util_vehicle_3 #VM90T
 		amount = 2000
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "VM90P Lince"
 		type = util_vehicle_4 #VM90P Lince
 		amount = 1800
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "AS VAL"
+		producer = SOV
 		type = infantry_weapons_3 #AR70/90
 		amount = 35000
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "M4 SOPMOD Block I"
+		producer = USA
 		type = infantry_weapons_4 #SCP70/90
 		amount = 5000
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "ARX160"
 		type = infantry_weapons_5 #ARX160
 		amount = 30000
 	}
@@ -305,20 +316,24 @@ instant_effect = {
 		amount = 1500
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "Spike MR/LR"
 		type = Heavy_Anti_tank_2 #Spike MR/LR
 		amount = 300
 		producer = ISR
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "Panzerfaust3"
 		type = Anti_tank_3 #Panzerfaust3
 		amount = 2000
 		producer = GER
 	}
 	add_equipment_to_stockpile = {
-		type = Anti_tank_3 #Milan
+		variant_name = "Milan 2"
+		type = Anti_tank_2 #Milan
 		amount = 714
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "FIM-92E Stinger RMP Block I"
 		type = Anti_Air_1 #Stinger
 		amount = 145
 		producer = USA
@@ -343,7 +358,6 @@ instant_effect = {
 	}
 	add_equipment_to_stockpile = {
 		type = medium_tank_flame_chassis_3
-		variant_name = "Freccia"
 		amount = 249
 		producer = ITA
 	}
@@ -373,7 +387,6 @@ instant_effect = {
 	}
 	add_equipment_to_stockpile = {
 		type = medium_tank_amphibious_chassis_1
-		variant_name = "AAV-7"
 		amount = 35
 		producer = USA
 	}
@@ -390,17 +403,20 @@ instant_effect = {
 		producer = ITA
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "PL-66"
+		producer = CHI
 		type = artillery_1 #OTO-Melara Mod 56
 		amount = 340
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "FH-70"
 		type = artillery_2 #FH-70
 		amount = 90
 		producer = ITA
 	}
 	add_equipment_to_stockpile = {
 		type = medium_tank_artillery_chassis_1
-		variant_name = "M109L"
+		variant_name = "M109L52"
 		amount = 96
 		producer = ITA
 	}
@@ -418,23 +434,77 @@ instant_effect = {
 	}
 	add_equipment_to_stockpile = {
 		type = heavy_tank_chassis_1
-		variant_name = "AW129 Mangusta"
+		variant_name = "A-129 Mangusta"
 		amount = 60
 		producer = ITA
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "AW109 + AB-412"
 		type = transport_helicopter_1 #AW109 + AB-412
 		amount = 203
 		producer = ITA
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "NH90 TTH"
 		type = transport_helicopter_2 #NH90
 		amount = 60
 		producer = ITA
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "CH-47F Chinook"
 		type = transport_helicopter_2 #CH-47F
 		amount = 16
 		producer = USA
+	}
+
+	### Sealed Storage 封存 ###
+	add_equipment_to_stockpile = {
+		variant_name = "Leopard 1A5"
+		type = medium_tank_chassis_0 #Leopard 1A5（封存）
+		producer = ITA
+		amount = 100
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "UH-1N Twin Huey"
+		type = transport_helicopter_1 #AB-212（封存）
+		producer = USA
+		amount = 30
+	}
+	# Orphan variant attachment (2017 real-world holdings)
+	add_equipment_to_stockpile = {
+		type = medium_tank_amphibious_chassis_2
+		variant_name = "VBM Freccia"
+		amount = 200
+		producer = ITA
+	}
+	add_equipment_to_stockpile = {
+		type = small_plane_suicide_airframe_1
+		variant_name = "Falco EVO"
+		amount = 10
+		producer = ITA
+	}
+	add_equipment_to_stockpile = {
+		type = medium_plane_airframe_2
+		variant_name = "F-2000 Tranche 3"
+		amount = 20
+		producer = ITA
+	}
+	add_equipment_to_stockpile = {
+		type = large_plane_air_transport_airframe_1
+		variant_name = "C-27J Spartan"
+		amount = 12
+		producer = ITA
+	}
+	add_equipment_to_stockpile = {
+		type = small_plane_strike_airframe_2
+		variant_name = "Alenia Aermacchi M-346 Master"
+		amount = 20
+		producer = ITA
+	}
+	add_equipment_to_stockpile = {
+		type = large_plane_maritime_patrol_airframe_1
+		variant_name = "ATR 72ASW (P-72A)"
+		amount = 4
+		producer = ITA
 	}
 }

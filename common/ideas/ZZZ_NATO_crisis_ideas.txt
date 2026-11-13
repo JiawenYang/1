@@ -1,0 +1,82 @@
+# ============================================================================
+# NATO 危机精神（hidden_ideas）
+# 来源：TFR 3350890356 common/ideas/TFR_ideas_ZZZ_NATO.txt 第 171-237 行
+#       （TFR 本体不在启用列表内，本工程此前调用 swap_ideas 时全部悬空）
+# ID 与数值原样照搬，未改动任何 modifier 数值。
+# 肖像：原文件用 GFX_idea_generic_feeble_government（TFR 自有贴图，本工程无此图），
+#      按「不复用 TFR 头像」口径改用本工程已注册的同类通用图：
+#        unstable_administration* -> GFX_idea_generic_ineffective_legal_system
+#        devestated_economy*      -> GFX_idea_generic_economic_ruin
+#      （两张图见 interface/ZZZ_restored_TFR_ideas_20261107.gfx，贴图在本工程 gfx 下已存在）
+# ============================================================================
+ideas = {
+    hidden_ideas = {
+        NATO_unstable_administration = {
+            allowed = {
+            }
+            picture = GFX_idea_generic_ineffective_legal_system
+            modifier = {
+                political_power_gain = -0.5
+                stability_factor = -0.25
+                party_popularity_stability_factor = -0.25
+                army_attack_factor = -0.1
+                army_defence_factor = -0.1
+            }
+        }
+        NATO_unstable_administration2 = {
+            allowed = {
+            }
+            picture = GFX_idea_generic_ineffective_legal_system
+            modifier = {
+                political_power_gain = -0.35
+                stability_factor = -0.15
+                party_popularity_stability_factor = -0.15
+                army_attack_factor = -0.05
+                army_defence_factor = -0.05
+            }
+        }
+        NATO_unstable_administration3 = {
+            allowed = {
+            }
+            picture = GFX_idea_generic_ineffective_legal_system
+            modifier = {
+                political_power_gain = -0.15
+                stability_factor = -0.05
+                party_popularity_stability_factor = -0.05
+            }
+        }
+        NATO_devestated_economy = {
+            allowed = {
+            }
+            picture = GFX_idea_generic_economic_ruin
+            modifier = {
+                production_speed_buildings_factor = -0.2
+                industry_free_repair_factor = -0.15
+                production_factory_max_efficiency_factor = -0.25
+                income_growth_factor = -0.1
+            }
+        }
+        NATO_devestated_economy2 = {
+            allowed = {
+            }
+            picture = GFX_idea_generic_economic_ruin
+            modifier = {
+                production_speed_buildings_factor = -0.1
+                industry_free_repair_factor = -0.1
+                production_factory_max_efficiency_factor = -0.15
+                income_growth_factor = -0.1
+            }
+        }
+        NATO_devestated_economy3 = {
+            allowed = {
+            }
+            picture = GFX_idea_generic_economic_ruin
+            modifier = {
+                production_speed_buildings_factor = -0.05
+                industry_free_repair_factor = -0.05
+                production_factory_max_efficiency_factor = -0.05
+                income_growth_factor = -0.05
+            }
+        }
+    }
+}

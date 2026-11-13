@@ -1,0 +1,43 @@
+# 按真实服役日期补齐航母（2017 开局时未服役，因此从 OOB 中移除）
+# 机制：on_daily_<TAG> + date 判断 + load_oob（工程内既有做法，参照 99_CZE_on_actions.txt / DSW_FRA_timeline.txt）
+# ENG  HMS Prince of Wales：开工 2011-05-26，下水 2017-12-21，服役 2019-12-10
+# RAJ  INS Vikrant：开工 2009-02-28，下水 2015-06-17，服役 2022-09-02
+# ITA  ITS Trieste：开工 2018-02-20，下水 2019-05-25，服役 2024-12-07
+on_actions = {
+	on_daily_ENG = {
+		effect = {
+			if = {
+				limit = {
+					date > 2019.12.9
+					NOT = { has_country_flag = ENG_prince_of_wales_spawned }
+				}
+				set_country_flag = ENG_prince_of_wales_spawned
+				load_oob = "ENG_prince_of_wales"
+			}
+		}
+	}
+	on_daily_RAJ = {
+		effect = {
+			if = {
+				limit = {
+					date > 2022.9.1
+					NOT = { has_country_flag = RAJ_vikrant_spawned }
+				}
+				set_country_flag = RAJ_vikrant_spawned
+				load_oob = "RAJ_vikrant"
+			}
+		}
+	}
+	on_daily_ITA = {
+		effect = {
+			if = {
+				limit = {
+					date > 2024.12.6
+					NOT = { has_country_flag = ITA_trieste_spawned }
+				}
+				set_country_flag = ITA_trieste_spawned
+				load_oob = "ITA_trieste"
+			}
+		}
+	}
+}

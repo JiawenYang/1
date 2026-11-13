@@ -69,20 +69,28 @@ country_event = {
 
 	option = { #关闭南部边境
 		name = mexico.3.a
-		add_popularity = {
-			ideology = nationalist
-			popularity = 0.02
+		set_temp_variable = { party_index = 20 }
+		if = {
+			limit = { has_government = nationalist }
+			set_temp_variable = { party_index = ruling_party }
 		}
+		set_temp_variable = { party_popularity_increase = 0.02 }
+		set_temp_variable = { temp_outlook_increase = 0.02 }
+		change_relative_party_popularity = yes
 		add_stability = 0.01
 	}
 	option = { #提供人道主义过境
 		name = mexico.3.b
 		add_stability = -0.01
 		add_political_power = -20
-		add_popularity = {
-			ideology = democratic
-			popularity = 0.01
+		set_temp_variable = { party_index = 0 }
+		if = {
+			limit = { has_government = democratic }
+			set_temp_variable = { party_index = ruling_party }
 		}
+		set_temp_variable = { party_popularity_increase = 0.01 }
+		set_temp_variable = { temp_outlook_increase = 0.01 }
+		change_relative_party_popularity = yes
 	}
 }
 
@@ -124,10 +132,14 @@ country_event = {
 	option = {
 		name = mexico.5.a
 		add_stability = -0.02
-		add_popularity = {
-			ideology = nationalist
-			popularity = 0.01
+		set_temp_variable = { party_index = 20 }
+		if = {
+			limit = { has_government = nationalist }
+			set_temp_variable = { party_index = ruling_party }
 		}
+		set_temp_variable = { party_popularity_increase = 0.01 }
+		set_temp_variable = { temp_outlook_increase = 0.01 }
+		change_relative_party_popularity = yes
 	}
 }
 
@@ -306,6 +318,8 @@ country_event = {
 			# 联邦政府权威崩溃，军队大规模倒戈（千禧黎明原版兵力分割机制）
 			MEX = {
 				add_ideas = MEX_collapsed_authority_tfx
+				# 卡特尔 12 份 OOB 兵源统一从墨西哥人力池扣除（12 × 1580 = 18960），避免小国人力被 clamp 到 0
+				add_manpower = -18960
 				transfer_units_fraction = {
 					target = SLA
 					size = 0.25
@@ -336,6 +350,12 @@ country_event = {
 			country_event = {
 				id = cartel_event.13
 				days = 1
+			}
+
+			# 本工程新增：开战 30 天后各集团头目更替（见 events/ZZZ_mex_civilwar.txt）
+			country_event = {
+				id = zzz_mex.1
+				days = 30
 			}
 		}
 	}
@@ -385,6 +405,23 @@ country_event = {
 					days = 15
 				}
 			}
+			else = {
+				# 卡特尔一方获胜：迁都墨西哥城、清除联邦政府核心宣称、成立新政权
+				set_capital = {
+					state = 835
+					remember_old_capital = no
+				}
+				add_ideas = MEX_mexican_resconstruction_idea
+				every_owned_state = {
+					limit = {
+						is_core_of = MEX
+					}
+					remove_core_of = MEX
+				}
+				country_event = {
+					id = zzz_mex.2
+				}
+			}
 		}
 	}
 
@@ -411,10 +448,14 @@ country_event = {
 
 	option = {
 		name = mexico.13.a
-		add_popularity = {
-			ideology = democratic
-			popularity = 0.07
+		set_temp_variable = { party_index = 0 }
+		if = {
+			limit = { has_government = democratic }
+			set_temp_variable = { party_index = ruling_party }
 		}
+		set_temp_variable = { party_popularity_increase = 0.07 }
+		set_temp_variable = { temp_outlook_increase = 0.07 }
+		change_relative_party_popularity = yes
 		add_stability = 0.03
 		add_political_power = 25
 	}

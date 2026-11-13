@@ -29,3 +29,39 @@ is_able_to_build_energy_farm_in_state = {
 is_able_to_build_nuclear_reactor_in_state = {
 	always = yes
 }
+
+is_able_to_build_power_plant_in_state = {
+	always = yes
+}
+
+# TFR 依赖触发器移植（TFR_decisions_GER / DSW_FRA / TFR_events 调用处所需）
+is_EU_member = {
+	has_dynamic_modifier = {
+		modifier = EU_member_dynamic
+	}
+}
+
+is_controlled_by_SOV_or_ally = {
+	custom_trigger_tooltip = {
+		CONTROLLER = {
+			OR = {
+				tag = SOV
+				is_subject_of = SOV
+				is_in_faction_with = SOV
+			}
+		}
+	}
+}
+
+is_controlled_by_GER_or_ally = {
+	custom_trigger_tooltip = {
+		CONTROLLER = {
+			OR = {
+				tag = GER
+				is_subject_of = GER
+				is_in_faction_with = GER
+			}
+		}
+	}
+}
+

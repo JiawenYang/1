@@ -1,4 +1,4 @@
-﻿division_template = {
+division_template = {
 	name = "Corpo de Fuzileiros Navais"
 
 	regiments = {
@@ -20,6 +20,11 @@ division_template = {
 	regiments = {
 		Jungle_Bat_BRA = { x = 0 y = 0 }
 	}
+	support = {
+		L_Recce_Comp = { x = 0 y = 0 }
+		L_Engi_Comp = { x = 0 y = 1 }
+		combat_service_support_company = { x = 0 y = 2 }
+	}
 	priority = 2
 }
 
@@ -33,6 +38,11 @@ division_template = {
 		L_Inf_Bat = { x = 0 y = 3 }
 		Arty_Bat = { x = 0 y = 4 }
 	}
+	support = {
+		L_Recce_Comp = { x = 0 y = 0 }
+		L_Engi_Comp = { x = 0 y = 1 }
+		combat_service_support_company = { x = 0 y = 2 }
+	}
 }
 
 division_template = {
@@ -44,6 +54,11 @@ division_template = {
 		L_Inf_Bat = { x = 0 y = 2 }
 		L_Inf_Bat = { x = 0 y = 3 }
 		L_Inf_Bat = { x = 0 y = 4 }
+	}
+	support = {
+		L_Recce_Comp = { x = 0 y = 0 }
+		L_Engi_Comp = { x = 0 y = 1 }
+		combat_service_support_company = { x = 0 y = 2 }
 	}
 }
 
@@ -73,6 +88,12 @@ division_template = {
 		Mech_Inf_Bat = { x = 0 y = 1 }
 		L_Inf_Bat = { x = 1 y = 0 }
 		L_Inf_Bat = { x = 1 y = 1 }
+	}
+	support = {
+		SP_AA_Battery = { x = 0 y = 0 }
+		Mech_Recce_Comp = { x = 0 y = 1 }
+		H_Engi_Comp = { x = 0 y = 2 }
+		combat_service_support_company = { x = 0 y = 3 }
 	}
 }
 
@@ -133,6 +154,11 @@ division_template = {
 		L_Air_Inf_Bat = { x = 0 y = 2 }
 		L_Air_Inf_Bat = { x = 0 y = 3 }
 	}
+	support = {
+		L_Recce_Comp = { x = 0 y = 0 }
+		L_Engi_Comp = { x = 0 y = 1 }
+		combat_service_support_company = { x = 0 y = 2 }
+	}
 }
 
 division_template = {
@@ -141,6 +167,12 @@ division_template = {
 	regiments = {
 		Mech_Inf_Bat = { x = 0 y = 0 }
 		Mech_Inf_Bat = { x = 0 y = 1 }
+	}
+	support = {
+		SP_AA_Battery = { x = 0 y = 0 }
+		Mech_Recce_Comp = { x = 0 y = 1 }
+		H_Engi_Comp = { x = 0 y = 2 }
+		combat_service_support_company = { x = 0 y = 3 }
 	}
 }
 
@@ -567,376 +599,354 @@ units = {
 }
 
 instant_effect = {
+	### 步兵装备 ###
 	add_equipment_to_stockpile = {
-		type = command_control_equipment4
-		amount = 4200
+		variant_name = "M964 FAL"
+		type = infantry_weapons_1 #M964 FAL
 		producer = BRA
-	}
-
-	add_equipment_to_stockpile = {
-		type = infantry_weapons 	#M964 FAL
 		amount = 22500
-		producer = BRA
 	}
-
 	add_equipment_to_stockpile = {
-		type = infantry_weapons1 	#M16
-		amount = 500
+		variant_name = "M16"
+		type = infantry_weapons_1 #M16
 		producer = USA
+		amount = 500
 	}
-
 	add_equipment_to_stockpile = {
-		type = infantry_weapons3 	#IMBEL MD97
+		variant_name = "IMBEL MD97"
+		type = infantry_weapons_4 #IMBEL MD97
+		producer = BRA
 		amount = 2500
-		producer = BRA
 	}
-
 	add_equipment_to_stockpile = {
-		type = infantry_weapons4 	#M4
-		amount = 500
+		variant_name = "M4 SOPMOD Block I"
+		type = infantry_weapons_4 #M4 卡宾枪
 		producer = USA
-	}
-
-	add_equipment_to_stockpile = {
-		type = infantry_weapons5 	#HK416
 		amount = 500
-		producer = GER
 	}
-
 	add_equipment_to_stockpile = {
-		type = infantry_weapons4 	#IMBEL IA2
+		variant_name = "HK416"
+		type = infantry_weapons_5 #HK416
+		producer = GER
+		amount = 500
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "IMBEL IA2"
+		type = infantry_weapons_5 #IMBEL IA2
+		producer = BRA
 		amount = 7500
+	}
+	add_equipment_to_stockpile = {
+		type = cnc_equipment_3 #C4ISR 指管通情系统
 		producer = BRA
+		amount = 7900
 	}
 
+	### 反坦克与防空 ###
 	add_equipment_to_stockpile = {
-		type = Anti_Air_1 	#Igla
-		amount = 1500
-		producer = SOV
-	}
-
-	add_equipment_to_stockpile = {
-		type = Anti_Air_1 	#RBS 70
-		amount = 50
-		producer = SWE
-	}
-
-	add_equipment_to_stockpile = {
-		type = Anti_tank_1 	#Eryx
-		amount = 600
-		producer = CAN
-	}
-
-	add_equipment_to_stockpile = {
-		type = Anti_tank_1 	#MILAN
-		amount = 600
+		variant_name = "ERYX"
+		type = Anti_tank_2 #ERYX 反坦克导弹
 		producer = FRA
+		amount = 600
 	}
-
-
 	add_equipment_to_stockpile = {
-		type = Anti_tank_2 	#MSS-1.2
+		variant_name = "Milan 2"
+		type = Anti_tank_2 #MILAN 反坦克导弹
+		producer = FRA
+		amount = 600
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "MSS-1.2"
+		type = Anti_tank_2 #MSS-1.2 反坦克导弹
+		producer = BRA
 		amount = 250
-		producer = BRA
 	}
-
 	add_equipment_to_stockpile = {
-		type = Heavy_Anti_tank_0 	#EE-3 Jararaca
-		amount = 2
-		producer = BRA
-	}
-
-	add_equipment_to_stockpile = {
-		type = Heavy_Anti_tank_1 	#EE-18 Sucurí
-		amount = 2
-		producer = BRA
-	}
-
-	add_equipment_to_stockpile = {
-		type = mbt_hull_0
-		variant_name = "Leopard 1A1"
-		amount = 128
-		producer = GER
-	}
-
-	add_equipment_to_stockpile = {
-		type = mbt_hull_0
-		variant_name = "Leopard 1A5"
-		amount = 220
-		producer = GER
-	}
-
-	add_equipment_to_stockpile = {
-		type = mbt_hull_0
-		variant_name = "M60A3"
-		amount = 45
-		producer = USA
-	}
-
-	add_equipment_to_stockpile = {
-		type = Rec_tank_0 #M41C
-		amount = 128
-		producer = USA
-	}
-
-	add_equipment_to_stockpile = {
-		type = Rec_tank_0 #EE-9 Cascavel
-		amount = 600
-		producer = BRA
-	}
-
-	add_equipment_to_stockpile = {
-		type = APC_2 #M113
-		amount = 584
-		producer = USA
-	}
-
-	add_equipment_to_stockpile = {
-		type = APC_1 #M577A2
-		amount = 34
-		producer = USA
-	}
-
-	add_equipment_to_stockpile = {
-		type = APC_2 #EE-11 Urutu
-		amount = 223
-		producer = BRA
-	}
-
-	add_equipment_to_stockpile = {
-		type = APC_4
-		amount = 2
-		producer = BRA
-	}
-
-	add_equipment_to_stockpile = {
-		type = APC_5 #VBTP-MR Guarani
-		amount = 280
-		producer = BRA
-	}
-
-	add_equipment_to_stockpile = {
-		type = SP_arty_0 #M7/108
-		#version_name = "M108"
-		amount = 72
-		producer = USA
-	}
-
-	add_equipment_to_stockpile = {
-		type = SP_arty_1	 #M109A3
-		#version_name = "M109A3"
-		amount = 40
-		producer = USA
-	}
-
-	add_equipment_to_stockpile = {
-		type = SP_arty_1 #M109A5
-		#version_name = "M109A5"
-		amount = 100
-		producer = USA
-	}
-
-	add_equipment_to_stockpile = {
-		type = artillery_0 #M101/M102
-		amount = 233
-		producer = USA
-	}
-
-	add_equipment_to_stockpile = {
-		type = artillery_1 #L118 Light Gun
-		amount = 40
-		producer = ENG
-	}
-
-	add_equipment_to_stockpile = {
-		type = artillery_0 #OTO Melara Mod 56
-		amount = 63
-		producer = ITA
-	}
-
-	add_equipment_to_stockpile = {
-		type = artillery_0 #M114
-		#version_name = "M114"
-		amount = 95
-		producer = USA
-	}
-
-	add_equipment_to_stockpile = {
-		type = SP_R_arty_1 #ASTROS II Mk3
-		amount = 24
-		producer = BRA
-	}
-
-	add_equipment_to_stockpile = {
-		type = SP_R_arty_2 #ASTROS 2020 (mk6)
-		amount = 24
-		producer = BRA
-	}
-
-	add_equipment_to_stockpile = {
-		type = artillery_0 #M2 RAIADO
-		amount = 77
-		producer = BRA
-	}
-
-	add_equipment_to_stockpile = {
-		type = Anti_tank_0 #Carl Gustav
-		amount = 300
+		variant_name = "Carl Gustav"
+		type = Anti_tank_1 #Carl Gustav 84mm 无后坐力炮
 		producer = SWE
+		amount = 300
 	}
-
 	add_equipment_to_stockpile = {
-		type = SP_Anti_Air_0 #Gepard 1A2
-		amount = 34
-		producer = GER
-	}
-
-	add_equipment_to_stockpile = {
-		type = util_vehicle_0	 #M151
-		amount = 318
-		producer = USA
-	}
-
-	add_equipment_to_stockpile = {
-		type = util_vehicle_3	 #JPX Montez
-		amount = 750
+		variant_name = "EE-3 Jararaca"
+		type = Heavy_Anti_tank_2 #EE-3 Jararaca
 		producer = BRA
+		amount = 2
 	}
-
 	add_equipment_to_stockpile = {
-		type = util_vehicle_4	 #Agrale Marrua
-		amount = 1600
+		variant_name = "EE-18 Sucuri"
+		type = Heavy_Anti_tank_2 #EE-18 Sucuri
 		producer = BRA
+		amount = 2
 	}
-
 	add_equipment_to_stockpile = {
-		type = util_vehicle_2	 #Land Rover Defender
-		amount = 941
-		producer = ENG
-	}
-
-	add_equipment_to_stockpile = {
-		type = transport_plane1 #C-130 Hercules
-		amount = 23
-		producer = USA
-	}
-
-
-
-		add_equipment_to_stockpile = {
-		type = transport_helicopter3 #H225M
-		amount = 5
-		producer = FRA
-		}
-
-		add_equipment_to_stockpile = {
-		type = transport_helicopter2 #AS532 Cougar
-		amount = 8
-		producer = FRA
-		}
-
-		add_equipment_to_stockpile = {
-		type = transport_helicopter1 #S-70A-36 Black Hawk
-		amount = 4
-		producer = USA
-		}
-
-		add_equipment_to_stockpile = {
-		type = transport_helicopter1 #AS350L1 Ecureuil
-		amount = 15
-		producer = FRA
-		}
-
-		add_equipment_to_stockpile = {
-		type = attack_helicopter2 #AS565 Panther
-		amount = 32
-		producer = FRA
-		}
-
-	add_equipment_to_stockpile = {
-		type = attack_helicopter3 #AS550U2 Fennec
-		amount = 17
-		producer = FRA
-	}
-
-	add_equipment_to_stockpile = {
-		type = attack_helicopter2 #Mi-35 (AH-2)
-		amount = 12
+		variant_name = "9K38 Igla"
+		type = Anti_Air_1 #9K38 针式
 		producer = SOV
+		amount = 1500
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "RBS 70 (MK.0)"
+		type = Anti_Air_0 #RBS 70
+		producer = SWE
+		amount = 50
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Gepard 1A2"
+		type = medium_tank_aa_chassis_1 #Gepard 1A2
+		producer = GER
+		amount = 34
 	}
 
+	### 装甲车辆 ###
 	add_equipment_to_stockpile = {
-		type = attack_helicopter1 #Super Lynx
-		amount = 10
-		producer = ENG
+		variant_name = "Leopard 1BE"
+		type = medium_tank_chassis_1 #豹1BE
+		producer = GER
+		amount = 128
 	}
-
 	add_equipment_to_stockpile = {
-		type = MR_Fighter1	 #F-5
-		amount = 57
+		variant_name = "Leopard 1A5"
+		type = medium_tank_chassis_0 #豹1A5
+		producer = GER
+		amount = 220
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "M60A3"
+		type = medium_tank_chassis_0 #M60A3
 		producer = USA
+		amount = 45
 	}
-
 	add_equipment_to_stockpile = {
-		type = Strike_fighter2	 #AMX International
-		amount = 53
+		variant_name = "M41C"
+		type = medium_tank_destroyer_chassis_1 #M41C 卡德拉克
+		producer = USA
+		amount = 128
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "EE-9 Cascavel"
+		type = medium_tank_destroyer_chassis_1 #EE-9 响尾蛇
 		producer = BRA
+		amount = 600
 	}
-
 	add_equipment_to_stockpile = {
-		type = L_Strike_fighter3	 #EMB-314
-		amount = 99
-		producer = BRA
-	}
-
-	add_equipment_to_stockpile = {
-		type = L_Strike_fighter2	 #EMB-312
-		amount = 109
-		producer = BRA
-	}
-
-	#Corpo de Fuzileiros Navais (Marine Corps)
-
-	add_equipment_to_stockpile = {
-		type = Rec_tank_0 #SK-105 Kürassier
-		amount = 18
+		variant_name = "SK-105 Kurassier"
+		type = medium_tank_destroyer_chassis_0 #SK-105 骑士
 		producer = AUS
-	}
-
-	add_equipment_to_stockpile = {
-		type = APC_3 #LVTP-7A1
-		amount = 52
-		producer = USA
-	}
-
-	add_equipment_to_stockpile = {
-		type = APC_2 #M113
-		amount = 30
-		producer = USA
-	}
-
-	add_equipment_to_stockpile = {
-		type = APC_4 #Piranha IIIC
-		amount = 30
-		producer = SWI
-	}
-
-	add_equipment_to_stockpile = {
-		type = SP_R_arty_1 #ASTROS II Mk3
-		amount = 12
-		producer = BRA
-	}
-
-	add_equipment_to_stockpile = {
-		type = artillery_1 #L118 Light Gun
 		amount = 18
-		producer = ENG
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "M577A2"
+		type = medium_tank_amphibious_chassis_1 #M577A2 指挥车
+		producer = USA
+		amount = 34
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "M113"
+		type = medium_tank_amphibious_chassis_1 #M113
+		producer = USA
+		amount = 614
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "EE-11 Urutu"
+		type = medium_tank_amphibious_chassis_1 #EE-11 乌鲁图
+		producer = BRA
+		amount = 223
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Piranha IIIC"
+		type = medium_tank_amphibious_chassis_2 #Piranha IIIC
+		producer = SWI
+		amount = 30
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "VBTP-MR Guaraní"
+		type = APC_5
+		producer = BRA
+		amount = 280
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "LVTP-7A1"
+		type = medium_tank_amphibious_chassis_1 #LVTP-7A1 两栖突击车
+		producer = USA
+		amount = 52
 	}
 
+	### 火炮 ###
 	add_equipment_to_stockpile = {
-		type = artillery_0 #M114
-		#version_name = "M114"
-		amount = 6
+		variant_name = "M108"
+		type = medium_tank_artillery_chassis_0 #M108 105mm 自行榴弹炮
 		producer = USA
+		amount = 72
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "M109A3"
+		type = medium_tank_artillery_chassis_1 #M109A3 155mm 自行榴弹炮
+		producer = USA
+		amount = 40
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "M109A5"
+		type = medium_tank_artillery_chassis_1 #M109A5 155mm 自行榴弹炮
+		producer = USA
+		amount = 100
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "M101"
+		type = artillery_1 #M101 / M102 105mm 牵引榴弹炮
+		producer = USA
+		amount = 233
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "L118"
+		type = artillery_1 #L118 轻型榴弹炮
+		producer = ENG
+		amount = 58
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "M56"
+		type = artillery_1 #OTO Melara Mod 56
+		producer = SER
+		amount = 63
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "M114"
+		type = artillery_1 #M114 155mm 牵引榴弹炮
+		producer = USA
+		amount = 101
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "120mm M2 RAIADO"
+		type = artillery_1 #M2 RAIADO 105mm
+		producer = BRA
+		amount = 77
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Astros II"
+		type = medium_tank_rocket_chassis_1 #ASTROS II Mk3 多管火箭
+		producer = BRA
+		amount = 36
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Astros 2020"
+		type = medium_tank_rocket_chassis_2 #ASTROS 2020 多管火箭
+		producer = BRA
+		amount = 24
+	}
+
+	### 车辆 ###
+	add_equipment_to_stockpile = {
+		variant_name = "M151"
+		type = util_vehicle_1 #M151 吉普
+		producer = USA
+		amount = 318
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "JPX Montez"
+		type = util_vehicle_3 #JPX 蒙泰斯
+		producer = BRA
+		amount = 750
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Agrale Marrua"
+		type = util_vehicle_4 #Agrale Marrua
+		producer = BRA
+		amount = 1600
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Land Rover Defender"
+		type = util_vehicle_2 #路虎卫士
+		producer = ENG
+		amount = 941
+	}
+
+	### 直升机 ###
+	add_equipment_to_stockpile = {
+		variant_name = "H225M Caracal"
+		type = transport_helicopter_3 #H225M 超级美洲狮
+		producer = FRA
+		amount = 5
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "AS532 Cougar"
+		type = transport_helicopter_2 #AS532 美洲狮
+		producer = FRA
+		amount = 8
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "S-70A"
+		type = transport_helicopter_1 #S-70A-36 黑鹰
+		producer = USA
+		amount = 4
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "AS350B Ecureuil"
+		type = transport_helicopter_1 #AS350 小松鼠
+		producer = FRA
+		amount = 15
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "AS565 Panther"
+		type = heavy_tank_chassis_1 #AS565 黑豹
+		producer = FRA
+		amount = 32
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "AS550 Esquilo II"
+		type = heavy_tank_chassis_1 #AS550 小狐
+		producer = BRA
+		amount = 17
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Mi-35 Hind"
+		type = attack_helicopter_1 #Mi-35 雌鹿
+		producer = SOV
+		amount = 12
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Super Lynx"
+		type = attack_helicopter_1 #超级大山猫
+		producer = ENG
+		amount = 10
+	}
+
+	### 飞机 ###
+	add_equipment_to_stockpile = {
+		variant_name = "F-5EM"
+		type = small_plane_airframe_1 #F-5EM/FM 虎式
+		producer = USA
+		amount = 57
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "AMX A-1"
+		type = small_plane_strike_airframe_2 #AMX 国际
+		producer = BRA
+		amount = 53
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Embraer EMB-314 Super Tucano"
+		type = small_plane_strike_airframe_2 #EMB-314 超级巨嘴鸟
+		producer = BRA
+		amount = 99
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Embraer EMB-312 Tucano"
+		type = small_plane_strike_airframe_1 #EMB-312 巨嘴鸟
+		producer = BRA
+		amount = 109
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "C-130H Hercules"
+		type = large_plane_air_transport_airframe_1 #C-130 大力神
+		producer = USA
+		amount = 23
+	}
+
+	### Sealed Storage 封存 ###
+	add_equipment_to_stockpile = {
+		variant_name = "Mirage 2000C"
+		type = small_plane_airframe_2 #Mirage 2000（封存）
+		producer = FRA
+		amount = 12
 	}
 }

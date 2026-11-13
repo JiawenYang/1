@@ -1,0 +1,299 @@
+# Dependency closure (round 3, 2026-11-06)
+add_namespace = european_union
+
+	country_event = {
+		id = european_union.5
+		title = european_union.5.t
+		desc = european_union.5.d
+		picture = GFX_Join_Axis
+		
+		is_triggered_only = yes
+		immediate = {
+		
+		}	
+		
+		option = { #fuck you
+			name = european_union.5.a
+			trigger = {
+				NOT = {
+					OR = {
+						tag = DEN
+						tag = NOR
+						tag = PLD
+						tag = AUS
+						tag = ITA
+						tag = FRA
+						tag = SWE
+					}
+				}
+			}
+			if = {
+				limit = {
+					ROOT = {
+						tag = PLD
+					}
+				}
+				GER = {
+					country_event = { id = european_union.6 days = 3 }
+				}
+			}
+			else_if = {
+				limit = {
+					ROOT = {
+						tag = ITA
+					}
+				}
+				GER = {
+					country_event = { id = european_union.7 days = 3 }
+				}
+			}
+			else_if = {
+				limit = {
+					ROOT = {
+						tag = CRO
+					}
+				}
+				GER = {
+					country_event = { id = european_union.8 days = 3 }
+				}
+			}
+			else_if = {
+				limit = {
+					ROOT = {
+						tag = SWE
+					}
+				}
+				GER = {
+					country_event = { id = european_union.9 days = 3 }
+				}
+			}
+			else_if = {
+				limit = {
+					ROOT = {
+						tag = CZE
+					}
+				}
+				GER = {
+					country_event = { id = european_union.10 days = 3 }
+				}
+			}
+			else_if = {
+				limit = {
+					ROOT = {
+						tag = AUS
+					}
+				}
+				GER = {
+					country_event = { id = european_union.11 days = 3 }
+				}
+			}
+		}
+		
+		option = { #fuck me
+			name = european_union.5.b
+			trigger = {
+				NOT = {
+					OR = {
+						tag = DEN
+						tag = NOR
+					}
+				}
+			}
+			GER = {
+				puppet = ROOT
+			}
+			if = {
+				limit = {
+					ROOT = {
+						tag = PLD
+					}
+				}
+				set_cosmetic_tag = POL_euro_commission
+				GER_ultralib_eu_puppet = yes
+				if = {
+					limit = {
+						CZE = {
+							is_puppet_of = GER
+						}
+					}
+					annex_country = {
+						target = CZE
+					}
+				}
+				annex_country = {
+					target = SIL
+				}
+			}
+			else_if = {
+				limit = {
+					ROOT = {
+						tag = ITA
+					}
+				}
+				GER = {
+					annex_country = {
+						target = ITA
+					}
+				}
+				ITA = {
+					every_core_state = {
+						add_core_of = GER
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					ROOT = {
+						tag = CRO
+					}
+				}
+				GRE = {
+					annex_country = {
+						target = CRO
+						transfer_troops = yes
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					ROOT = {
+						tag = SWE
+					}
+				}
+				DEN = {
+					annex_country = {
+						target = SWE
+						transfer_troops = yes
+					}
+			        every_state = {
+				        limit = {
+				            is_core_of = SWE
+				        }
+				    add_core_of = DEN
+				    }
+			    }
+			}
+			else_if = {
+				limit = {
+					ROOT = {
+						tag = CZE
+					}
+				}
+				if = {
+					limit = {
+						PLD = {
+							is_puppet_of = GER
+						}
+					}
+						PLD = {
+							annex_country = {
+							target = CZE
+						}
+			            every_state = {
+				            limit = {
+				            is_core_of = CZE
+				        }
+				        add_core_of = PLD
+				        }
+					    }
+				}
+				else_if = {
+					limit = {
+						PLD = {
+							NOT = {
+								is_puppet_of = GER
+							}
+						}
+					}
+					#set_cosmetic_tag = GER_EUU
+					GER = {
+						puppet = ROOT
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					ROOT = {
+						tag = AUS
+					}
+				}
+				GER = {
+					annex_country = {
+						target = AUS
+						transfer_troops = yes
+					}
+				}
+			}
+		}
+		
+		option = { #fuck me
+			name = european_union.5.c
+            trigger = {
+				OR = {
+				    tag = DEN
+					tag = NOR
+				}
+			}
+			if = {
+				limit = {
+					ROOT = {
+						tag = DEN
+					}
+				}
+				GER = {
+					puppet = DEN
+				}
+				set_cosmetic_tag = SCA_euro_commission
+				GER_ultralib_eu_puppet = yes
+			}
+			else_if = {
+				limit = {
+					ROOT = {
+						tag = NOR
+					}
+				}
+				NOR = {
+					every_controlled_state = {
+						limit = {
+							is_core_of = NOR
+						}
+						add_core_of = DEN
+					}
+				}
+				DEN = {
+					annex_country = {
+						target = NOR
+						transfer_troops = yes
+					}
+				}
+			}
+		}
+	}
+
+	country_event = {
+		id = european_union.12
+		title = european_union.12.t
+		desc = european_union.12.d
+		picture = GFX_GER_gunther_kosovo
+		
+		is_triggered_only = yes
+		immediate = {
+		
+		}	
+		
+		option = { #fuck you
+			name = european_union.12.a
+		}
+	}
+
+# [syntax-fix] orphan event call -> 					country_event = { id = european_union.10 days = 3 }
+
+# [syntax-fix] orphan event call -> 					country_event = { id = european_union.11 days = 3 }
+
+# [syntax-fix] orphan event call -> 					country_event = { id = european_union.6 days = 3 }
+
+# [syntax-fix] orphan event call -> 					country_event = { id = european_union.7 days = 3 }
+
+# [syntax-fix] orphan event call -> 					country_event = { id = european_union.8 days = 3 }
+
+# [syntax-fix] orphan event call -> 					country_event = { id = european_union.9 days = 3 }

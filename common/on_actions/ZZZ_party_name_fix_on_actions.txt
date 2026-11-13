@@ -1,0 +1,17 @@
+# ZZZ 原生党名修复：开局逐国写一次原生党名
+#
+# 只处理 MD 政治国家（拥有 ruling_party 变量），避免波及本工程并入的 TFR 国家。
+# on_actions 支持多文件合并，本文件与基座/工程的其它 on_startup 互不覆盖。
+
+on_actions = {
+	on_startup = {
+		effect = {
+			every_country = {
+				limit = {
+					has_variable = ruling_party
+				}
+				ZZZ_set_native_party_name = yes
+			}
+		}
+	}
+}

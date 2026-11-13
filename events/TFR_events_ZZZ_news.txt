@@ -1,3 +1,5 @@
+add_namespace = news
+
 #The Invasion Of Taiwan
 news_event = {
 	id = news.139
@@ -50,7 +52,7 @@ news_event = {
 		hidden_effect = {
 			ARK = {
 				create_country_leader = {
-					name = "Aung San Suu Kyi"
+					name = BRM_aung_san_suu_kyi
 					picture = "aung_san_suu_kyi.dds"
 					ideology = Neutral_Libertarian
 					traits = {
@@ -89,5 +91,214 @@ news_event = {
 	}
 	option = {
 		name = news.421.a
+	}
+}
+
+#Oil Prices fall（油价暴跌：石油协议破裂的世界新闻）
+news_event = {
+	id = news.121
+	title = news.121.t
+	desc = news.121.d
+	picture = GFX_Oil_War_News
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = news.121.a
+		trigger = {
+			NOT = {
+				tag = SOV
+			}
+		}
+	}
+	option = {
+		name = news.121.b
+		trigger = {
+			tag = SOV
+		}
+	}
+}
+
+#EADI Victory（大亚洲战争：中国胜利）
+news_event = {
+	id = news.413
+	title = news.413.t
+	desc = news.413.d
+	picture = GFX_PRC_gaw_victory_news
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = news.413.a
+		hidden_effect = {
+			if = {
+				limit = {
+					is_ai = no
+				}
+				set_country_flag = PRC_eadi_victory_super_event_flag
+				scoped_sound_effect = TFR_se_eadi_victory
+				scoped_play_song = "one_minute_of_silence"
+			}
+		}
+	}
+}
+
+#PDTO Victory（大亚洲战争：日本胜利）
+news_event = {
+	id = news.414
+	title = news.414.t
+	desc = news.414.d
+	picture = GFX_JAP_gaw_victory_news
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = news.414.a
+		hidden_effect = {
+			if = {
+				limit = {
+					is_ai = no
+				}
+				set_country_flag = JAP_pdto_victory_super_event_flag
+				scoped_sound_effect = TFR_se_pdto_victory
+				scoped_play_song = "one_minute_of_silence"
+			}
+		}
+	}
+}
+
+#big war in asia（大亚洲战争爆发）
+news_event = {
+	id = news.415
+	title = {
+		text = news.415.t
+		trigger = {
+			NOT = {
+				has_global_flag = PRC_wu_qi_operation_mission_success_flag
+			}
+		}
+	}
+	title = {
+		text = news.415.t.1
+		trigger = {
+			has_global_flag = PRC_wu_qi_operation_mission_success_flag
+		}
+	}
+	desc = {
+		text = news.415.d
+		trigger = {
+			NOT = {
+				has_global_flag = PRC_wu_qi_operation_mission_success_flag
+			}
+		}
+	}
+	desc = {
+		text = news.415.d.1
+		trigger = {
+			has_global_flag = PRC_wu_qi_operation_mission_success_flag
+		}
+	}
+	picture = GFX_PRC_gaw_start_news
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = news.415.a
+		trigger = {
+			NOT = {
+				has_global_flag = PRC_wu_qi_operation_mission_success_flag
+			}
+		}
+		hidden_effect = {
+			if = {
+				limit = {
+					is_ai = no
+				}
+				set_country_flag = PRC_great_asian_war_super_event_flag
+				scoped_sound_effect = TFR_se_gaw
+				scoped_play_song = "one_minute_of_silence"
+			}
+		}
+	}
+	option = {
+		name = news.415.a.1
+		trigger = {
+			has_global_flag = PRC_wu_qi_operation_mission_success_flag
+		}
+		hidden_effect = {
+			if = {
+				limit = {
+					is_ai = no
+				}
+				set_country_flag = PRC_great_asian_war_super_event_flag
+				scoped_sound_effect = TFR_se_gaw
+				scoped_play_song = "one_minute_of_silence"
+			}
+		}
+	}
+}
+
+#乌克兰 2024 年大选 · 泽连斯基连任（搬运自 TFR ukraine.13 依赖；原图片未在本工程定义，改用 GFX_2021_Russian_Election）
+news_event = {
+	id = news.313
+	title = news.313.t
+	desc = news.313.d
+	picture = GFX_2021_Russian_Election
+	is_triggered_only = yes
+	major = yes
+	trigger = {
+	}
+	option = {
+		name = news.313.a
+		trigger = {
+			original_tag = SOV
+		}
+	}
+	option = {
+		name = news.313.b
+		trigger = {
+			NOT = {
+				original_tag = SOV
+			}
+		}
+	}
+}
+
+#乌克兰 2024 年大选 · 波罗申科回归（搬运自 TFR ukraine.13 依赖；原图片未在本工程定义，改用 GFX_2021_Russian_Election）
+news_event = {
+	id = news.314
+	title = news.314.t
+	desc = news.314.d
+	picture = GFX_2021_Russian_Election
+	is_triggered_only = yes
+	major = yes
+	trigger = {
+	}
+	option = {
+		name = news.314.a
+		trigger = {
+			original_tag = SOV
+		}
+	}
+	option = {
+		name = news.314.b
+		trigger = {
+			NOT = {
+				original_tag = SOV
+			}
+		}
+	}
+}
+
+# 印度退出上合：印巴战争爆发当日（由 ZZZ_sco_india_exit 触发，同一退出动作只弹一次）
+# 配图复用基座印巴战争新闻图 GFX_India_Pakistan_War（TFR_events_PAK.txt 的 PAK.7 / PAK.13 已在用）
+news_event = {
+	id = news.426
+	title = news.426.t
+	desc = news.426.d
+	picture = GFX_India_Pakistan_War
+	is_triggered_only = yes
+	fire_only_once = yes
+	major = yes
+	trigger = {
+	}
+	option = {
+		name = news.426.a
 	}
 }

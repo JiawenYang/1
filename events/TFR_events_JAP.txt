@@ -90,28 +90,16 @@ country_event = {
 			mark_focus_tree_layout_dirty = yes
 			create_faction_from_template = faction_template_pdto
 			remove_faction_goal = faction_goal_the_atomic_race
-			add_faction_goal = faction_goal_placeholder_long_term
 			remove_faction_goal = faction_goal_a_military_base
-			add_faction_goal = faction_goal_placeholder_medium_term
-			add_faction_goal = faction_goal_placeholder_short_term
 			set_faction_leader = yes
 			set_country_flag = pdto_member
+			# 工程口径：太约成立时只拉澳大利亚（AST）；台湾由 2025 年 jap.2001 拉入
 			JAP = {
 				complete_national_focus = JAP_form_pdto2
 				add_to_faction = AST
-				add_to_faction = TAI
 			}
 			AST = {
 				set_country_flag = pdto_member
-			}
-			TAI = {
-				set_country_flag = pdto_member
-			}
-			CHI = {
-				country_event = {
-					id = prc.329
-					days = 15
-				}
 			}
 		}
 	}
@@ -121,7 +109,6 @@ country_event = {
 			create_faction = PDTO
 			JAP = {
 				add_to_faction = AST
-				add_to_faction = TAI
 			}
 		}
 	}
@@ -231,7 +218,6 @@ country_event = {
 		}
 		focus_unlock = yes
 		hidden_effect = {
-			load_focus_tree = TFR_tree_JAP_ldp
 			complete_national_focus = JAP_triumph_of_japanese_people
 			remove_ideas = JAP_helicopter_bonus
 			remove_ideas = JAP_helicopter_destroyers
@@ -355,7 +341,7 @@ country_event = {
 		add_war_support = 0.05
 		hidden_effect = {
 			TAI = {
-				transfer_state = 648
+				transfer_state = 430
 			}
 		}
 	}
@@ -486,8 +472,10 @@ country_event = {
 	desc = jap.58.d
 	immediate = {
 		JAP = {
-			transfer_state = 555
-			transfer_state = 537
+			# 工程适配：TFR 555 千岛群岛 / 537 萨哈林 → MD 691 萨哈林 + 1168 南千岛 + 690 北千岛
+			transfer_state = 691
+			transfer_state = 1168
+			transfer_state = 690
 		}
 	}
 	is_triggered_only = yes
@@ -498,8 +486,10 @@ country_event = {
 				tag = SOV
 			}
 		}
-		transfer_state = 555
-		transfer_state = 537
+		# 工程适配：TFR 555 千岛群岛 / 537 萨哈林 → MD 691 萨哈林 + 1168 南千岛 + 690 北千岛
+		transfer_state = 691
+		transfer_state = 1168
+		transfer_state = 690
 	}
 	option = {
 		#and risk war? no way!
@@ -819,7 +809,7 @@ country_event = {
 		effect_tooltip = {
 			give_resource_rights = {
 				receiver = JAP
-				state = 567
+				state = 685
 			}
 		}
 		custom_effect_tooltip = SOV_after_this_tooltip
@@ -1057,10 +1047,10 @@ country_event = {
 		name = jap.92.a
 		add_political_power = -50
 		remove_ideas = JAP_nobuo_kishi_defence
-		add_popularity = {
-			ideology = authoritarian_democrat
-			popularity = -0.025
-		}
+		set_temp_variable = { party_index = 0 }
+		set_temp_variable = { party_popularity_increase = -0.025 }
+		set_temp_variable = { temp_outlook_increase = -0.025 }
+		change_relative_party_popularity = yes
 		set_country_flag = JAP_church_remove
 	}
 	option = {
@@ -1105,7 +1095,6 @@ country_event = {
 			JAP_increase_economic_stagnation = yes
 		}
 		unlock_decision_tooltip = JAP_stabilize_yen_crisis
-		unlock_decision_tooltip = JAP_increase_taxes_crisis
 		unlock_decision_tooltip = JAP_reduce_social_security_crisis
 	}
 }
@@ -2138,7 +2127,6 @@ country_event = {
 			add_faction_goal = faction_goal_placeholder_long_term
 			remove_faction_goal = faction_goal_a_military_base
 			add_faction_goal = faction_goal_placeholder_medium_term
-			add_faction_goal = faction_goal_placeholder_short_term
 		}
 		JAP = {
 			add_to_faction = VIE
@@ -2158,7 +2146,6 @@ country_event = {
 				add_faction_goal = faction_goal_placeholder_long_term
 				remove_faction_goal = faction_goal_a_military_base
 				add_faction_goal = faction_goal_placeholder_medium_term
-				add_faction_goal = faction_goal_placeholder_short_term
 			}
 		}
 		RAJ = {
@@ -2275,7 +2262,7 @@ country_event = {
 	option = {
 		name = jap.174.a
 		effect_tooltip = {
-			PRC = {
+			CHI = {
 				add_timed_idea = {
 					idea = KOR_recent_cyberattack
 					days = 35
@@ -2437,12 +2424,12 @@ country_event = {
 		add_tech_bonus = {
 			bonus = 0.25
 			uses = 2
-			category = electronics
+			category = CAT_electronics
 		}
 		add_tech_bonus = {
 			bonus = 0.25
 			uses = 2
-			category = industry
+			category = CAT_industry
 		}
 		hidden_effect = {
 			JAP = {
@@ -2593,10 +2580,10 @@ country_event = {
 		name = jap.189.b
 		add_stability = -0.1
 		add_political_power = -50
-		add_popularity = {
-			ideology = authoritarian_democrat
-			popularity = -0.075
-		}
+		set_temp_variable = { party_index = 0 }
+		set_temp_variable = { party_popularity_increase = -0.075 }
+		set_temp_variable = { temp_outlook_increase = -0.075 }
+		change_relative_party_popularity = yes
 		custom_effect_tooltip = tooltip_white_line
 		custom_effect_tooltip = JAP_ishiba_event_tt
 		custom_effect_tooltip = tooltip_white_line
@@ -2693,20 +2680,19 @@ country_event = {
 		set_cosmetic_tag = JAP_empire_fools
 		custom_effect_tooltip = JAP_mitsubishi
 		hidden_effect = { 
-			add_popularity = {
-				ideology = authoritarian_democrat
-				popularity = 0.45
-			}
+			set_temp_variable = { party_index = 0 }
+			set_temp_variable = { party_popularity_increase = 0.45 }
+			set_temp_variable = { temp_outlook_increase = 0.45 }
+			change_relative_party_popularity = yes
 			set_party_name = {
-				ideology = authoritarian_democrat
+				ideology = communism
 				long_name = JAP_jpj_long
 				name = JAP_jpj
 			}
 			set_politics = {
-				ruling_party = authoritarian_democrat
+				ruling_party = communism
 				elections_allowed = no 
 			}
-			country_event = { id = jap.556 hours = 12 }
 			remove_ideas = JAP_political_monopoly_idea
 			remove_ideas = JAP_political_monopoly_1_idea
 			remove_ideas = JAP_political_monopoly_2_idea
@@ -2794,7 +2780,6 @@ country_event = {
 
 	option = {
 		name = jap.561.a
-		load_oob = "JAP_yoshiro"
 	}
 }
 #TOKYO 3
@@ -2843,7 +2828,7 @@ country_event = {
 		1332 = {
 			add_extra_state_shared_building_slots = 1
 			add_building_construction = {
-				type = office_park
+				type = offices
 				level = 1
 				instant_build = yes
 			}
@@ -2882,7 +2867,6 @@ country_event = {
 
 	option = {
 		name = jap.566.a
-		load_oob = "JAP_president"
 	}
 }
 #PRESIDENT OF JAPAN tunnel
@@ -3084,3 +3068,695 @@ country_event = {
 		name = jap.1004.a
 	}
 }
+
+# 台湾有事：日本首相国会答辩（2025.11.7）——GAW 开局入口，单选项，不做可选放弃
+country_event = {
+	id = jap.2000
+	title = jap.2000.t
+	desc = jap.2000.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = jap.2000.a
+		hidden_effect = {
+			# 表态后“不久”，日本推进对台安保合作并拉台湾入阵
+			country_event = {
+				id = jap.2001
+				days = 10
+			}
+		}
+	}
+}
+
+# 日本拉台湾入阵 → 入阵成功后触发中国侧 prc.2 开启台海国策线
+country_event = {
+	id = jap.2001
+	title = jap.2001.t
+	desc = jap.2001.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		hidden_effect = {
+			# 太约已由 jap.5（JAP_form_pdto2）成立，此处不再自建阵营；仅在已入阵时拉台湾
+			if = {
+				limit = {
+					is_in_faction = yes
+				}
+				add_to_faction = TAI
+			}
+			if = {
+				limit = {
+					TAI = {
+						is_in_faction_with = JAP
+					}
+				}
+				# 台湾确实已在日本阵营后，才置台海线旗标并触发 prc.2
+				TAI = {
+					# 入阵即视为太约成员（与 jap.5 对 AST 的处理一致）
+					set_country_flag = pdto_member
+				}
+				CHI = {
+					set_country_flag = PRC_taiwan_war_start
+					country_event = {
+						id = prc.2
+						days = 3
+					}
+				}
+			}
+		}
+	}
+	option = {
+		name = jap.2001.a
+	}
+}
+
+country_event = {
+	# Elected Suga
+	id = jap.14
+	title = jap.14.t
+	desc = jap.14.d
+	picture = GFX_Suga
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			country_event = {
+				id = jap.15
+				days = 375
+			}
+			add_ideas = JAP_suga
+			set_temp_variable = {
+				var = JAP_election_approval_rating_ldp_var_temp
+				value = 0.05
+			}
+			JAP_add_election_approval_rating_ldp = yes
+		}
+	}
+	option = {
+		name = jap.14.a
+		effect_tooltip = {
+			set_temp_variable = {
+				var = JAP_election_approval_rating_ldp_var_temp
+				value = 0.05
+			}
+			JAP_add_election_approval_rating_ldp = yes
+			custom_effect_tooltip = appoint_head_minister_tooltip
+			show_ideas_tooltip = JAP_suga
+		}
+	}
+}
+
+country_event = {
+	# Government Reshuffle
+	id = jap.44
+	title = jap.44.t
+	desc = jap.44.d
+	picture = GFX_ministers_japan
+	immediate = {
+	}
+	is_triggered_only = yes
+	option = {
+		name = jap.44.a
+		add_political_power = 5
+		remove_ideas = JAP_toshimitsu
+		add_ideas = JAP_yoshimasa
+		remove_ideas = JAP_taro
+		add_ideas = JAP_shunichi
+		remove_ideas = JAP_sanae
+		add_ideas = JAP_yasushi
+	}
+}
+
+country_event = {
+	# Dissolution of the Civil Coalition
+	id = jap.45
+	title = jap.45.t
+	desc = jap.45.d
+	picture = GFX_JAP_yukio_edano_cc
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			set_party_name = {
+				ideology = neutrality
+				long_name = JAP_libertarian_socialist_party_long
+				name = JAP_libertarian_socialist_party
+			}
+			set_party_name = {
+				ideology = democratic
+				long_name = JAP_social_democrat_party_long
+				name = JAP_social_democrat_party
+			}
+			set_party_name = {
+				ideology = democratic
+				long_name = JAP_social_liberal_party_long
+				name = JAP_social_liberal_party
+			}
+		}
+	}
+	option = {
+		name = jap.45.a
+		clr_country_flag = JAP_civil_coalition_formed
+	}
+}
+
+country_event = {
+	id = jap.64
+	title = jap.64.t
+	desc = jap.64.d
+	picture = GFX_Japan_general_election
+	immediate = {
+		hidden_effect = { 
+			JAP_form_united_coalition_liberal = yes
+			set_country_flag = JAP_only_liberal_ministers
+			add_stability = -0.075
+			add_ideas = JAP_fragmented_goverment_idea
+			set_temp_variable = {
+				coalition_partner_var_temp = token:libertarian_socialist
+			}
+			remove_from_coalition = yes
+			set_temp_variable = {
+				coalition_partner_var_temp = token:social_democrat
+			}
+			remove_from_coalition = yes
+			hidden_effect = {
+				add_ideas = JAP_yuichiro_tamaki
+				add_ideas = JAP_ichiro_matsui
+				add_ideas = JAP_kenta_izumi
+				add_ideas = JAP_akira_nagatsuma
+				set_party_name = {
+					ideology = neutrality
+					long_name = JAP_libertarian_socialist_party_long
+					name = JAP_libertarian_socialist_party
+				}
+				set_party_name = {
+					ideology = democratic
+					long_name = JAP_social_democrat_party_long
+					name = JAP_social_democrat_party
+				}
+				add_power_balance_value = {
+					id = JAP_civil_coalition_power_balance
+					value = -0.25
+				}
+				set_power_balance_gfx = {
+					id = JAP_civil_coalition_power_balance
+					side = JAP_bop_cc_socialist
+					gfx = GFX_bop_JAP_cc_centre
+				}
+			}
+		}
+	}
+	is_triggered_only = yes
+	option = {
+		name = jap.64.a
+		if = {
+			limit = {
+				is_ai = no
+			}
+		}
+		else = {
+			hidden_effect = {
+				remove_economy_types = yes
+				add_ideas = ZZZ_collective_capitalism2
+			}
+			custom_effect_tooltip = upgrade_economy_type_tt
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ZZZ_collective_capitalism
+					add_idea = ZZZ_collective_capitalism2
+				}
+			}
+			add_timed_idea = {
+				idea = JAP_liberal_reforms_civic
+				days = 100
+			}
+		}
+		effect_tooltip = {
+			JAP_form_united_coalition_liberal = yes
+			set_country_flag = JAP_only_liberal_ministers
+			add_stability = -0.075
+			add_ideas = JAP_fragmented_goverment_idea
+			set_temp_variable = {
+				coalition_partner_var_temp = token:libertarian_socialist
+			}
+			remove_from_coalition = yes
+			set_temp_variable = {
+				coalition_partner_var_temp = token:social_democrat
+			}
+			remove_from_coalition = yes
+		}
+	}
+}
+
+country_event = {
+	id = jap.65
+	title = jap.65.t
+	desc = jap.65.d
+	picture = GFX_Japan_general_election
+	immediate = {
+	}
+	is_triggered_only = yes
+	option = {
+		name = jap.65.a
+		JAP_form_united_coalition_socialist = yes
+		set_country_flag = JAP_only_socialist_ministers
+		add_stability = -0.075
+		add_ideas = JAP_fragmented_goverment_idea
+		set_temp_variable = {
+			coalition_partner_var_temp = token:market_liberal
+		}
+		remove_from_coalition = yes
+		hidden_effect = {
+			add_ideas = JAP_akira_kasai
+			add_ideas = JAP_kazuo_shii_eco
+			add_ideas = JAP_mari_kushibuchi
+			add_ideas = JAP_akira_koike
+			set_party_name = {
+				ideology = democratic
+				long_name = JAP_market_liberal_party_long
+				name = JAP_market_liberal_party
+			}
+			add_power_balance_value = {
+				id = JAP_civil_coalition_power_balance
+				value = 0.25
+			}
+			set_power_balance_gfx = {
+				id = JAP_civil_coalition_power_balance
+				side = JAP_bop_cc_liberal
+				gfx = GFX_bop_JAP_cc_centre
+			}
+		}
+	}
+}
+
+country_event = {
+	id = jap.98
+	title = jap.98.t
+	desc = jap.98.d
+	picture = GFX_JAP_korean_neocolonialism
+	immediate = {
+	}
+	is_triggered_only = yes
+	option = {
+		name = jap.98.a
+		KOR = {
+			get_current_government_type = yes
+			swap_ideas = {
+				remove_idea = KOR_dominance_of_chaebols
+				add_idea = KOR_dominance_of_chaebols_2
+			}
+		}
+		JAP_decrease_keiretsu_control = yes
+		puppet = KOR
+		KOR = {
+			restore_previous_government_type = yes
+		}
+	}
+	option = {
+		name = jap.98.b
+		swap_ideas = {
+			remove_idea = KOR_dominance_of_chaebols
+			add_idea = KOR_dominance_of_chaebols_2
+		}
+	}
+}
+
+country_event = {
+	# LDP leadership election
+	id = jap.15
+	title = jap.15.t
+	desc = jap.15.d
+	picture = GFX_LDP_leadership_election
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = jap.15.a
+		ai_chance = {
+		    factor = 1
+		    modifier = {
+		        factor = 0
+		        OR = {
+		            has_game_rule = {
+		                rule = The_JAP_LDP_2021_leadership_election
+		                option = The_JAP_LDP_2021_leadership_election_2
+		            }
+		        }
+		    }
+		}
+		set_temp_variable = {
+			var = JAP_election_approval_rating_ldp_var_temp
+			value = 0.025
+		}
+		JAP_add_election_approval_rating_ldp = yes
+		set_temp_variable = {
+			var = JAP_ldp_centrists_var_temp
+			value = 0.15
+		}
+		JAP_add_influence_ldp_centrists = yes
+		custom_effect_tooltip = appoint_head_minister_tooltip
+		show_ideas_tooltip = JAP_fumio
+		hidden_effect = {
+			remove_ideas = JAP_suga
+			add_ideas = JAP_fumio
+			set_country_flag = JAP_fumio_elected
+			set_country_leader_ideology = conservatism
+		}
+	}
+	option = {
+		name = jap.15.b
+		ai_chance = {
+		    factor = 1
+		    modifier = {
+		        factor = 0
+		        OR = {
+		            has_game_rule = {
+		                rule = The_JAP_LDP_2021_leadership_election
+		                option = The_JAP_LDP_2021_leadership_election_1
+		            }
+		        }
+		    }
+		}
+		set_temp_variable = {
+			var = JAP_election_approval_rating_ldp_var_temp
+			value = 0.025
+		}
+		JAP_add_election_approval_rating_ldp = yes
+		set_temp_variable = {
+			var = JAP_ldp_liberals_var_temp
+			value = 0.15
+		}
+		JAP_add_influence_ldp_liberals = yes
+		custom_effect_tooltip = appoint_head_minister_tooltip
+		show_ideas_tooltip = JAP_kono
+		hidden_effect = {
+			remove_ideas = JAP_suga
+			add_ideas = JAP_kono
+			set_country_flag = JAP_kono_elected
+			set_country_leader_ideology = conservatism
+		}
+	}
+}
+
+country_event = {
+	id = jap.96
+	title = jap.96.t
+	desc = jap.96.d
+	picture = GFX_JAP_ldp_elections
+	immediate = {
+	}
+	is_triggered_only = yes
+	trigger = {
+		tag = JAP
+		has_global_flag = JAP_ldp_won
+		has_global_flag = JAP_japan_victory
+	}
+	option = {
+		#gunji otaku shigeru ishiba
+		name = jap.96.a
+		ai_chance = {
+		    factor = 1
+		    modifier = {
+		        factor = 0
+		        OR = {
+		            has_game_rule = {
+		                rule = The_JAP_LDP_Postwar_leadership_election
+		                option = The_JAP_LDP_Postwar_leadership_election_2
+		            }
+		            has_game_rule = {
+		                rule = The_JAP_LDP_Postwar_leadership_election
+		                option = The_JAP_LDP_Postwar_leadership_election_3
+		            }
+		            has_game_rule = {
+		                rule = The_JAP_LDP_Postwar_leadership_election
+		                option = The_JAP_LDP_Postwar_leadership_election_4
+		            }
+		            has_game_rule = {
+		                rule = The_JAP_LDP_Postwar_leadership_election
+		                option = The_JAP_LDP_Postwar_leadership_election_5
+		            }
+		        }
+		    }
+		}
+		add_ideas = JAP_shigeru_ishiba
+		set_country_flag = JAP_chosen_shigeru
+		set_temp_variable = {
+			var = JAP_ldp_conservatives_var_temp
+			value = 0.05
+		}
+		JAP_add_influence_ldp_conservatives = yes
+		set_temp_variable = {
+			var = JAP_ldp_centrists_var_temp
+			value = 0.05
+		}
+		JAP_add_influence_ldp_centrists = yes
+		hidden_effect = {
+			country_event = {
+				id = jap.97
+				days = 365
+			}
+		}
+	}
+	option = {
+		#nothing ever happens
+		name = jap.96.b
+		trigger = {
+			has_country_flag = JAP_fumio_elected
+		}
+		ai_chance = {
+		    factor = 1
+		    modifier = {
+		        factor = 0
+		        OR = {
+		            has_game_rule = {
+		                rule = The_JAP_LDP_Postwar_leadership_election
+		                option = The_JAP_LDP_Postwar_leadership_election_1
+		            }
+		            has_game_rule = {
+		                rule = The_JAP_LDP_Postwar_leadership_election
+		                option = The_JAP_LDP_Postwar_leadership_election_3
+		            }
+		            has_game_rule = {
+		                rule = The_JAP_LDP_Postwar_leadership_election
+		                option = The_JAP_LDP_Postwar_leadership_election_4
+		            }
+		            has_game_rule = {
+		                rule = The_JAP_LDP_Postwar_leadership_election
+		                option = The_JAP_LDP_Postwar_leadership_election_5
+		            }
+		        }
+		    }
+		}
+		set_temp_variable = {
+			var = JAP_ldp_centrists_var_temp
+			value = 0.05
+		}
+		JAP_add_influence_ldp_centrists = yes
+		hidden_effect = {
+			country_event = {
+				id = jap.97
+				days = 365
+			}
+		}
+	}
+	option = {
+		#nothing ever happens
+		name = jap.96.c
+		trigger = {
+			has_country_flag = JAP_kono_elected
+		}
+		ai_chance = {
+		    factor = 1
+		    modifier = {
+		        factor = 0
+		        OR = {
+		            has_game_rule = {
+		                rule = The_JAP_LDP_Postwar_leadership_election
+		                option = The_JAP_LDP_Postwar_leadership_election_1
+		            }
+		            has_game_rule = {
+		                rule = The_JAP_LDP_Postwar_leadership_election
+		                option = The_JAP_LDP_Postwar_leadership_election_3
+		            }
+		            has_game_rule = {
+		                rule = The_JAP_LDP_Postwar_leadership_election
+		                option = The_JAP_LDP_Postwar_leadership_election_4
+		            }
+		            has_game_rule = {
+		                rule = The_JAP_LDP_Postwar_leadership_election
+		                option = The_JAP_LDP_Postwar_leadership_election_5
+		            }
+		        }
+		    }
+		}
+		set_temp_variable = {
+			var = JAP_ldp_centrists_var_temp
+			value = 0.05
+		}
+		JAP_add_influence_ldp_centrists = yes
+		hidden_effect = {
+			country_event = {
+				id = jap.97
+				days = 365
+			}
+		}
+	}
+	option = {
+		#sanae takaichi
+		name = jap.96.e
+		trigger = {
+			set_temp_variable = {
+				var = JAP_ldp_conservatives_influence_var_temp
+				value = 0.4
+			}
+			JAP_conservatives_influence_greater_than_or_equals = yes
+		}
+		ai_chance = {
+		    factor = 1
+		    modifier = {
+		        factor = 0
+		        OR = {
+		            has_game_rule = {
+		                rule = The_JAP_LDP_Postwar_leadership_election
+		                option = The_JAP_LDP_Postwar_leadership_election_1
+		            }
+		            has_game_rule = {
+		                rule = The_JAP_LDP_Postwar_leadership_election
+		                option = The_JAP_LDP_Postwar_leadership_election_2
+		            }
+		            has_game_rule = {
+		                rule = The_JAP_LDP_Postwar_leadership_election
+		                option = The_JAP_LDP_Postwar_leadership_election_4
+		            }
+		            has_game_rule = {
+		                rule = The_JAP_LDP_Postwar_leadership_election
+		                option = The_JAP_LDP_Postwar_leadership_election_5
+		            }
+		        }
+		    }
+		}
+		set_country_flag = JAP_chosen_takaichi
+		add_ideas = JAP_sanae_takaichi_hog
+		set_temp_variable = {
+			var = JAP_ldp_conservatives_var_temp
+			value = 0.05
+		}
+		JAP_add_influence_ldp_conservatives = yes
+		hidden_effect = {
+			country_event = {
+				id = jap.97
+				days = 365
+			}
+		}
+	}
+	option = {
+		#koizumi legacy
+		name = jap.96.f
+		trigger = {
+			set_temp_variable = {
+				var = JAP_ldp_liberals_influence_var_temp
+				value = 0.4
+			}
+			JAP_liberals_influence_greater_than_or_equals = yes
+		}
+		ai_chance = {
+		    factor = 1
+		    modifier = {
+		        factor = 0
+		        OR = {
+		            has_game_rule = {
+		                rule = The_JAP_LDP_Postwar_leadership_election
+		                option = The_JAP_LDP_Postwar_leadership_election_1
+		            }
+		            has_game_rule = {
+		                rule = The_JAP_LDP_Postwar_leadership_election
+		                option = The_JAP_LDP_Postwar_leadership_election_2
+		            }
+		            has_game_rule = {
+		                rule = The_JAP_LDP_Postwar_leadership_election
+		                option = The_JAP_LDP_Postwar_leadership_election_3
+		            }
+		            has_game_rule = {
+		                rule = The_JAP_LDP_Postwar_leadership_election
+		                option = The_JAP_LDP_Postwar_leadership_election_5
+		            }
+		        }
+		    }
+		}
+		set_country_flag = JAP_chosen_koizumi
+		add_ideas = JAP_shinjiro_koizumi_hog
+		set_temp_variable = {
+			var = JAP_ldp_liberals_var_temp
+			value = 0.05
+		}
+		JAP_add_influence_ldp_liberals = yes
+		hidden_effect = {
+			country_event = {
+				id = jap.97
+				days = 365
+			}
+		}
+	}
+	option = {
+		#koizumi legacy
+		name = jap.96.g
+		trigger = {
+			has_country_flag = JAP_abe_return
+		}
+		ai_chance = {
+		    factor = 1
+		    modifier = {
+		        factor = 0
+		        OR = {
+		            has_game_rule = {
+		                rule = The_JAP_LDP_Postwar_leadership_election
+		                option = The_JAP_LDP_Postwar_leadership_election_1
+		            }
+		            has_game_rule = {
+		                rule = The_JAP_LDP_Postwar_leadership_election
+		                option = The_JAP_LDP_Postwar_leadership_election_2
+		            }
+		            has_game_rule = {
+		                rule = The_JAP_LDP_Postwar_leadership_election
+		                option = The_JAP_LDP_Postwar_leadership_election_3
+		            }
+		            has_game_rule = {
+		                rule = The_JAP_LDP_Postwar_leadership_election
+		                option = The_JAP_LDP_Postwar_leadership_election_4
+		            }
+		        }
+		    }
+		}
+		set_country_flag = JAP_chosen_abe
+		add_ideas = JAP_abe
+		add_stability = 0.1
+		hidden_effect = {
+			country_event = {
+				id = jap.97
+				days = 365
+			}
+		}
+	}
+}
+
+country_event = {
+	id = jap.97
+	title = jap.97.t
+	desc = jap.97.d
+	picture = GFX_JAP_voting_booth
+	immediate = {
+	}
+	is_triggered_only = yes
+	option = {
+		name = jap.97.a
+		set_temp_variable = {
+			var = JAP_election_approval_rating_ldp_var_temp
+			value = 0.03
+		}
+		JAP_add_election_approval_rating_ldp = yes
+		add_popularity = {
+			ideology = democratic
+			popularity = 0.05
+		}
+	}
+}
+

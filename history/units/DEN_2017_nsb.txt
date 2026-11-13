@@ -1,0 +1,250 @@
+##### Division Templates #####
+division_template = {
+	name = "Tung Brigade"
+
+	regiments = {
+		armor_Bat = { x = 0 y = 0 }
+		Arm_Inf_Bat = { x = 0 y = 1 }
+		Mech_Inf_Bat = { x = 0 y = 2 }
+	}
+	support = {
+		H_Engi_Comp = { x = 0 y = 0 }
+		SP_Arty_Battery = { x = 0 y = 1 }
+	}
+}
+
+division_template = {
+	name = "Lette Brigade"
+
+	regiments = {
+		Mech_Inf_Bat = { x = 0 y = 0 }
+		Mech_Inf_Bat = { x = 0 y = 1 }
+		Mech_Inf_Bat = { x = 0 y = 2 }
+		Mech_Inf_Bat = { x = 0 y = 3 }
+	}
+	support = {
+		L_Engi_Comp = { x = 0 y = 0 }
+		SP_Arty_Battery = { x = 0 y = 1 }
+	}
+}
+
+
+#Ground Forces
+units = {
+	division = {
+		name = "1. Brigaden"
+		location = 11251		#Haderslev
+		division_template = "Tung Brigade"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "2. Brigade"
+		location = 3260		#Slagelse
+		division_template = "Lette Brigade"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.01
+	}
+
+	#1st Squadron - Fredrikshavn
+	#2nd Squadron - Korsor
+}
+
+instant_effect = {
+	add_equipment_to_stockpile = {
+		variant_name = "Colt C7"
+		type = infantry_weapons_3 	#Colt C7
+		producer = CAN
+		amount = 1500
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Colt C8"
+		type = infantry_weapons_4 	#Colt C8
+		producer = CAN
+		amount = 250
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "AT-4"
+		type = Anti_tank_2	#AT-4
+		producer = SWE
+		amount = 100
+	}
+
+	add_equipment_to_stockpile = {
+		type = cnc_equipment_4
+		producer = DEN
+		amount = 150
+	}
+
+	add_equipment_to_stockpile = {
+		type = medium_tank_chassis_1
+		variant_name = "Leopard 2A5"
+		producer = GER
+		amount = 64
+	}
+
+	add_equipment_to_stockpile = {
+		type = medium_tank_flame_chassis_2		#CV9035DK
+		producer = SWE
+		amount = 45
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "M113"
+		type = medium_tank_amphibious_chassis_1		#M113
+		producer = USA
+		amount = 532
+	}
+
+	add_equipment_to_stockpile = {
+		type = heavy_util_vehicle_5		#MRAP Cougar
+		 #version_name = "Cougar"
+		producer = USA
+		amount = 40
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Mowag Piranha III"
+		type = medium_tank_amphibious_chassis_1			#Mowag Piranha III
+		producer = SWI
+		amount = 113
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "XA-185"
+		type = medium_tank_amphibious_chassis_1			#XA-185
+		producer = FIN
+		amount = 11
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Mowag Eagle"
+		type = util_vehicle_5			#Mowag Eagle
+		producer = SWI
+		amount = 91
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Humvee"
+		type = util_vehicle_3			#Humvee
+		producer = USA
+		amount = 22
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Various MAN trucks"
+		type = util_vehicle_1			#Various MAN trucks
+		producer = GER
+		amount = 100
+	}
+
+   add_equipment_to_stockpile = {
+	   variant_name = "M109A3"
+	   type = medium_tank_artillery_chassis_1		#M109A3
+		#version_name = "M109A3"
+		producer = USA
+	   amount = 3
+	}
+
+	add_equipment_to_stockpile = {
+	   variant_name = "Caesar 8x8"
+	   type = medium_tank_artillery_chassis_2		#Caesar 8x8
+		producer = FRA
+	   amount = 15
+	}
+
+	add_equipment_to_stockpile = {
+	   variant_name = "F-16A"
+	   type = small_plane_strike_airframe_2		#F-16A
+		producer = USA
+	   amount = 33
+	}
+
+	add_equipment_to_stockpile = {
+	   variant_name = "C-130H Hercules"
+	   type = large_plane_air_transport_airframe_1		#C-130 Hercules
+		producer = USA
+	   amount = 4
+	}
+
+	add_equipment_to_stockpile = {
+	   variant_name = "AW101 & Westland Lynx"
+	   type = transport_helicopter_2		#AW101 & Westland Lynx
+		producer = ENG
+	   amount = 19
+	}
+
+	add_equipment_to_stockpile = {
+	   variant_name = "Sikorsky SH-60"
+	   type = transport_helicopter_1		#Sikorsky SH-60
+		producer = USA
+	   amount = 3
+	}
+
+	add_equipment_to_stockpile = {
+	   variant_name = "TOW-2A"
+    type = Anti_tank_2				#TOW
+		producer = USA
+	   amount = 40
+	}
+
+	add_equipment_to_stockpile = {
+	   variant_name = "FIM-92E Stinger RMP Block I"
+	   type = Anti_Air_1				#Stinger
+		producer = USA
+	   amount = 100
+	}
+
+	### Sealed Storage 封存 ###
+	add_equipment_to_stockpile = {
+		variant_name = "Leopard 2A5"
+		type = medium_tank_chassis_1 #Leopard 2A5（封存）
+		producer = GER
+		amount = 25
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "M113"
+		type = medium_tank_amphibious_chassis_1 #M113（封存）
+		producer = USA
+		amount = 212
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Mowag Piranha III"
+		type = medium_tank_amphibious_chassis_1 #Mowag Piranha III（封存）
+		producer = SWI
+		amount = 45
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "XA-185"
+		type = medium_tank_amphibious_chassis_1 #XA-185（封存）
+		producer = FIN
+		amount = 5
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "TOW-2A"
+    type = Anti_tank_2 #TOW（封存）
+		producer = USA
+		amount = 16
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Colt C7"
+		type = infantry_weapons_3 #Colt C7（封存）
+		producer = CAN
+		amount = 600
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Humvee"
+		type = util_vehicle_3 #Humvee（封存）
+		producer = USA
+		amount = 8
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Various MAN trucks"
+		type = util_vehicle_1 #Various MAN trucks（封存）
+		producer = GER
+		amount = 40
+	}
+}

@@ -1,0 +1,26 @@
+# ============================================================================
+# ZZZ 地缘政治共用判据（本工程原创）
+# 台海线（common/on_actions/00_TFR_on_actions_ZZZ_timeline.txt）与朝鲜半岛线
+# （events/ZZZ_korea_war.txt）共用同一判据，避免两处写不同口径。
+# ============================================================================
+
+# ----------------------------------------------------------------------------
+# 「台湾已统一」= 台湾作为特别行政区和平回归
+#
+# 取证：events/TFR_events_CHI.txt:1096-1155（taiwan_detente.11 的实际落地动作）
+#   ① CHI = { puppet = TAI }
+#   ② CHI = { set_autonomy = { target = TAI autonomy_state = autonomy_special_administrative_region_TAI } }
+#   ③ TAI = { set_cosmetic_tag = TAI_autonomy_special_administrative_region }
+# 该事件不置任何 country_flag / global_flag，因此不能用旗标判定；
+# 只能按「附庸关系 + 自治等级」判定。自治等级定义见
+# Millennium_Dawn/common/autonomous_states/MD_chinese_autonomies.txt:105。
+#
+# 用法：ZZZ_taiwan_is_sar = yes
+# ============================================================================
+ZZZ_taiwan_is_sar = {
+	TAI = {
+		exists = yes
+		is_puppet_of = CHI
+		has_autonomy_state = autonomy_special_administrative_region_TAI
+	}
+}

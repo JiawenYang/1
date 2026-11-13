@@ -1,4 +1,4 @@
-﻿uthor(s): TheGeneral
+# Author(s): TheGeneral
 focus_tree = {
 	id = china_focus
 	country = {
@@ -51,7 +51,7 @@ focus_tree = {
 
 		search_filters = { FOCUS_FILTER_POLITICAL }
 
-		available = { has_country_leader = { name = "Xi Jinping" } }
+		available = { has_country_leader = { name = CHI_xi_jinping } }
 
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus CHI_the_chinese_dream"
@@ -94,7 +94,7 @@ focus_tree = {
 
 		search_filters = { FOCUS_FILTER_POLITICAL }
 
-		available = { has_country_leader = { name = "Xi Jinping" } }
+		available = { has_country_leader = { name = CHI_xi_jinping } }
 
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus CHI_made_in_china_2025"
@@ -150,7 +150,7 @@ focus_tree = {
 
 		search_filters = { FOCUS_FILTER_POLITICAL }
 
-		available = { has_country_leader = { name = "Xi Jinping" } }
+		available = { has_country_leader = { name = CHI_xi_jinping } }
 
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus CHI_two_centeraries"
@@ -186,7 +186,7 @@ focus_tree = {
 
 		search_filters = { FOCUS_FILTER_POLITICAL }
 
-		available = { has_country_leader = { name = "Xi Jinping" } }
+		available = { has_country_leader = { name = CHI_xi_jinping } }
 
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus CHI_xi_jinping_thought_enshrined"
@@ -236,7 +236,7 @@ focus_tree = {
 
 		search_filters = { FOCUS_FILTER_POLITICAL }
 
-		available = { has_country_leader = { name = "Xi Jinping" } }
+		available = { has_country_leader = { name = CHI_xi_jinping } }
 
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus CHI_abolish_term_limits"
@@ -273,7 +273,7 @@ focus_tree = {
 
 		search_filters = { FOCUS_FILTER_POLITICAL }
 
-		available = { has_country_leader = { name = "Xi Jinping" } }
+		available = { has_country_leader = { name = CHI_xi_jinping } }
 
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus CHI_wolf_warrior_doctrine"
@@ -658,7 +658,7 @@ focus_tree = {
 					bonus = 0.50
 					uses = 2
 					category = CAT_avionics
-					category = CAT_fixed_wing
+					category = CAT_aircraft
 				}
 			}
 			else = {
@@ -666,7 +666,7 @@ focus_tree = {
 					name = CHI_avic_reunification
 					bonus = 0.50
 					uses = 2
-					category = CAT_fixed_wing
+					category = CAT_aircraft
 				}
 			}
 			two_random_arms_factory = yes
@@ -721,8 +721,8 @@ focus_tree = {
 				name = CHI_norinco_rationalism
 				bonus = 0.50
 				uses = 2
-				category = CAT_inf_wep
-				category = CAT_arty
+				category = CAT_infantry_weapons
+				category = CAT_artillery
 			}
 			newline = yes
 			two_random_arms_factory = yes
@@ -772,7 +772,6 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus CHI_own_designs"
-			unlock_decision_tooltip = CHI_localise_licensed_system
 			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_economy_modifier }
 			add_to_variable = { CHI_economy_research_speed_factor = 0.05 tooltip = research_speed_factor_tt }
 			newline = yes
@@ -831,7 +830,7 @@ focus_tree = {
 					name = CHI_ws15_bottleneck_solve
 					bonus = 0.75
 					uses = 2
-					category = CAT_air_engine
+					category = CAT_air_engines
 				}
 			}
 			else = {
@@ -839,7 +838,7 @@ focus_tree = {
 					name = CHI_ws15_bottleneck_solve
 					bonus = 0.75
 					uses = 2
-					category = CAT_air_eqp
+					category = CAT_aircraft
 				}
 			}
 			newline = yes
@@ -1443,7 +1442,7 @@ focus_tree = {
 				name = CHI_combat_engineer_modernisation
 				bonus = 0.25
 				uses = 1
-				category = CAT_excavation_tech
+				category = CAT_excavation
 			}
 		}
 
@@ -1481,7 +1480,7 @@ focus_tree = {
 		available = {
 			OR = {
 				is_special_project_completed = sp:sp_radar_jamming_module
-				has_tech = computing4
+				has_tech = computing_4
 			}
 		}
 
@@ -1594,7 +1593,7 @@ focus_tree = {
 					name = CHI_qbz191_rifle
 					bonus = 0.25
 					uses = 1
-					category = CAT_inf_wep
+					category = CAT_infantry_weapons
 				}
 			}
 		}
@@ -1678,8 +1677,8 @@ focus_tree = {
 				name = CHI_red_arrow_program
 				bonus = 0.25
 				uses = 2
-				category = CAT_l_at
-				category = CAT_h_at
+				category = CAT_light_anti_tank
+				category = CAT_heavy_anti_tank
 			}
 			newline = yes
 			add_equipment_to_stockpile = {
@@ -1778,7 +1777,7 @@ focus_tree = {
 				name = CHI_plz_howitzer_program
 				bonus = 0.25
 				uses = 1
-				category = CAT_sp_arty
+				category = CAT_self_propelled_artillery
 			}
 			newline = yes
 			if = {
@@ -1850,7 +1849,7 @@ focus_tree = {
 				name = CHI_artillery_modernisation
 				bonus = 0.15
 				uses = 1
-				category = CAT_arty
+				category = CAT_artillery
 			}
 			newline = yes
 			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_landforce_modifier }
@@ -1896,7 +1895,7 @@ focus_tree = {
 				name = CHI_phl_mlrs_modernisation
 				ahead_reduction = 2.5
 				uses = 1
-				category = CAT_sp_r_arty
+				category = CAT_self_propelled_artillery
 			}
 			newline = yes
 			add_design_template_bonus = {
@@ -1945,7 +1944,7 @@ focus_tree = {
 				name = CHI_hq17_short_range_sam
 				bonus = 0.15
 				uses = 1
-				category = CAT_sp_aa
+				category = CAT_self_propelled_anti_air
 			}
 			newline = yes
 			two_anti_air = yes
@@ -1992,7 +1991,7 @@ focus_tree = {
 				name = CHI_hq17_medium_range_air_defense
 				bonus = 0.15
 				uses = 1
-				category = CAT_sp_aa
+				category = CAT_self_propelled_anti_air
 			}
 			newline = yes
 			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_airforce_modifier }
@@ -2297,7 +2296,7 @@ focus_tree = {
 				name = CHI_active_defense_doctrine
 				bonus = 0.15
 				uses = 1
-				category = CAT_land_doctrine
+				category = CAT_infantry
 			}
 			newline = yes
 			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_landforce_modifier }
@@ -2593,7 +2592,7 @@ focus_tree = {
 				name = CHI_army_aviation_corps
 				bonus = 0.15
 				uses = 1
-				category = CAT_heli
+				category = CAT_helicopters
 			}
 			newline = yes
 			add_equipment_to_stockpile = {
@@ -2659,7 +2658,7 @@ focus_tree = {
 				name = CHI_special_operations_forces
 				bonus = 0.50
 				uses = 1
-				category = CAT_special_forces
+				category = CAT_special_forces_equipment
 			}
 			newline = yes
 			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_landforce_modifier }
@@ -2743,7 +2742,7 @@ focus_tree = {
 				name = CHI_ztz96_mainstreaming
 				bonus = 0.15
 				uses = 1
-				category = CAT_mbt
+				category = CAT_tanks
 			}
 			newline = yes
 			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_defense_industry }
@@ -2855,7 +2854,7 @@ focus_tree = {
 				name = CHI_mengshi_program
 				bonus = 0.50
 				uses = 1
-				category = CAT_util
+				category = CAT_utility_vehicles
 			}
 		}
 
@@ -2938,7 +2937,7 @@ focus_tree = {
 				name = CHI_zbd04_apex_ifv
 				bonus = 0.25
 				uses = 1
-				category = CAT_ifv
+				category = CAT_infantry_fighting_vehicles
 			}
 			newline = yes
 			if = {
@@ -3009,7 +3008,7 @@ focus_tree = {
 				name = CHI_zb108_wheeled_family
 				bonus = 0.25
 				uses = 1
-				category = CAT_apc
+				category = CAT_armored_personnel_carriers
 			}
 			newline = yes
 			add_equipment_to_stockpile = {
@@ -3058,7 +3057,7 @@ focus_tree = {
 			add_to_variable = { CHI_air_air_detection = 0.05 tooltip = air_detection_tt }
 			newline = yes
 			air_experience = 15
-			add_tech_bonus = { name = CHI_integrated_air_and_space bonus = 0.25 uses = 1 category = CAT_fixed_wing }
+			add_tech_bonus = { name = CHI_integrated_air_and_space bonus = 0.25 uses = 1 category = CAT_aircraft }
 		}
 
 		ai_will_do = {
@@ -3170,10 +3169,10 @@ focus_tree = {
 			newline = yes
 			if = {
 				limit = { has_dlc = "By Blood Alone" }
-				add_tech_bonus = { name = CHI_the_self_reliant_path bonus = 0.25 uses = 1 category = CAT_air_engine }
+				add_tech_bonus = { name = CHI_the_self_reliant_path bonus = 0.25 uses = 1 category = CAT_air_engines }
 			}
 			else = {
-				add_tech_bonus = { name = CHI_the_self_reliant_path bonus = 0.25 uses = 1 category = CAT_air_eqp }
+				add_tech_bonus = { name = CHI_the_self_reliant_path bonus = 0.25 uses = 1 category = CAT_aircraft }
 			}
 			newline = yes
 			set_temp_variable = { arms_ss_gain = 20 }
@@ -3304,7 +3303,7 @@ focus_tree = {
 			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_airforce_modifier }
 			add_to_variable = { CHI_air_air_agility_factor = 0.05 tooltip = air_agility_factor_tt }
 			newline = yes
-			add_tech_bonus = { name = CHI_project_no_10 bonus = 0.25 uses = 2 category = CAT_air_eqp }
+			add_tech_bonus = { name = CHI_project_no_10 bonus = 0.25 uses = 2 category = CAT_aircraft }
 			newline = yes
 			if = {
 				limit = { has_dlc = "By Blood Alone" }
@@ -3395,10 +3394,10 @@ focus_tree = {
 			}
 			if = {
 				limit = { has_dlc = "By Blood Alone" }
-				add_tech_bonus = { name = CHI_saturn_engine_crisis bonus = 0.25 uses = 1 category = CAT_air_engine }
+				add_tech_bonus = { name = CHI_saturn_engine_crisis bonus = 0.25 uses = 1 category = CAT_air_engines }
 			}
 			else = {
-				add_tech_bonus = { name = CHI_saturn_engine_crisis bonus = 0.25 uses = 1 category = CAT_air_eqp }
+				add_tech_bonus = { name = CHI_saturn_engine_crisis bonus = 0.25 uses = 1 category = CAT_aircraft }
 			}
 		}
 
@@ -3543,7 +3542,7 @@ focus_tree = {
 			add_to_variable = { CHI_air_air_detection = 0.05 tooltip = air_detection_tt }
 			add_to_variable = { CHI_air_air_intercept_efficiency = 0.05 tooltip = air_intercept_efficiency_tt }
 			newline = yes
-			add_tech_bonus = { name = CHI_kj2000_mainring_awacs bonus = 0.25 uses = 1 category = CAT_awacs }
+			add_tech_bonus = { name = CHI_kj2000_mainring_awacs bonus = 0.25 uses = 1 category = CAT_airborne_early_warning }
 		}
 
 		ai_will_do = {
@@ -3588,7 +3587,7 @@ focus_tree = {
 				add_tech_bonus = { name = CHI_j10c_multirole_refit bonus = 0.25 uses = 2 category = CAT_air_to_air_weapons }
 			}
 			else = {
-				add_tech_bonus = { name = CHI_j10c_multirole_refit bonus = 0.25 uses = 2 category = CAT_air_eqp }
+				add_tech_bonus = { name = CHI_j10c_multirole_refit bonus = 0.25 uses = 2 category = CAT_aircraft }
 			}
 			newline = yes
 			if = {
@@ -3843,11 +3842,11 @@ focus_tree = {
 			newline = yes
 			if = {
 				limit = { has_dlc = "By Blood Alone" }
-				add_tech_bonus = { name = CHI_yj12_standoff_family bonus = 0.25 uses = 1 category = CAT_air_naval_weapons }
-				add_tech_bonus = { name = CHI_yj12_standoff_family bonus = 0.25 uses = 1 category = CAT_air_ground_weapons }
+				add_tech_bonus = { name = CHI_yj12_standoff_family bonus = 0.25 uses = 1 category = CAT_air_to_naval_weapons }
+				add_tech_bonus = { name = CHI_yj12_standoff_family bonus = 0.25 uses = 1 category = CAT_air_to_ground_weapons }
 			}
 			else = {
-				add_tech_bonus = { name = CHI_yj12_standoff_family bonus = 0.25 uses = 2 category = CAT_air_eqp }
+				add_tech_bonus = { name = CHI_yj12_standoff_family bonus = 0.25 uses = 2 category = CAT_aircraft }
 			}
 		}
 
@@ -4040,7 +4039,7 @@ focus_tree = {
 			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_airforce_modifier }
 			add_to_variable = { CHI_air_air_strategic_bomber_bombing_factor = 0.05 tooltip = air_strategic_bomber_bombing_factor_tt }
 			newline = yes
-			add_tech_bonus = { name = CHI_cj10_cj20_cruise_missile_family bonus = 0.25 uses = 3 category = CAT_missile }
+			add_tech_bonus = { name = CHI_cj10_cj20_cruise_missile_family bonus = 0.25 uses = 3 category = CAT_missiles }
 		}
 
 		ai_will_do = {
@@ -4090,7 +4089,7 @@ focus_tree = {
 				add_tech_bonus = { name = CHI_the_sharp_sword_doctrine bonus = 0.25 uses = 1 category = CAT_avionics }
 			}
 			else = {
-				add_tech_bonus = { name = CHI_the_sharp_sword_doctrine bonus = 0.25 uses = 1 category = CAT_air_eqp }
+				add_tech_bonus = { name = CHI_the_sharp_sword_doctrine bonus = 0.25 uses = 1 category = CAT_aircraft }
 			}
 		}
 
@@ -4132,13 +4131,13 @@ focus_tree = {
 			add_to_variable = { CHI_air_air_attack_factor = 0.05 tooltip = air_attack_factor_tt }
 			add_to_variable = { CHI_air_naval_strike_targetting_factor = 0.05 tooltip = naval_strike_targetting_factor_tt }
 			newline = yes
-			add_tech_bonus = { name = CHI_hypersonic_strike_integration bonus = 0.25 uses = 1 category = CAT_missile }
+			add_tech_bonus = { name = CHI_hypersonic_strike_integration bonus = 0.25 uses = 1 category = CAT_missiles }
 			if = {
 				limit = { has_dlc = "By Blood Alone" }
-				add_tech_bonus = { name = CHI_hypersonic_strike_integration bonus = 0.25 uses = 1 category = CAT_air_ground_weapons }
+				add_tech_bonus = { name = CHI_hypersonic_strike_integration bonus = 0.25 uses = 1 category = CAT_air_to_ground_weapons }
 			}
 			else = {
-				add_tech_bonus = { name = CHI_hypersonic_strike_integration bonus = 0.25 uses = 1 category = CAT_air_eqp }
+				add_tech_bonus = { name = CHI_hypersonic_strike_integration bonus = 0.25 uses = 1 category = CAT_aircraft }
 			}
 		}
 
@@ -4179,7 +4178,7 @@ focus_tree = {
 			add_to_variable = { CHI_air_air_detection = 0.05 tooltip = air_detection_tt }
 			add_to_variable = { CHI_air_air_intercept_efficiency = 0.05 tooltip = air_intercept_efficiency_tt }
 			newline = yes
-			add_tech_bonus = { name = CHI_kj500_network_centric_hub bonus = 0.25 uses = 1 category = CAT_awacs }
+			add_tech_bonus = { name = CHI_kj500_network_centric_hub bonus = 0.25 uses = 1 category = CAT_airborne_early_warning }
 		}
 
 		ai_will_do = {
@@ -4218,7 +4217,7 @@ focus_tree = {
 			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_airforce_modifier }
 			add_to_variable = { CHI_air_air_range_factor = 0.05 tooltip = air_range_factor_tt }
 			newline = yes
-			add_tech_bonus = { name = CHI_the_tanker_gap bonus = 0.25 uses = 1 category = CAT_fixed_wing }
+			add_tech_bonus = { name = CHI_the_tanker_gap bonus = 0.25 uses = 1 category = CAT_aircraft }
 		}
 
 		ai_will_do = {
@@ -4258,7 +4257,7 @@ focus_tree = {
 			add_to_variable = { CHI_air_paradrop_organization_factor = 0.05 tooltip = paradrop_organization_factor_tt }
 			add_to_variable = { CHI_air_air_range_factor = 0.05 tooltip = air_range_factor_tt }
 			newline = yes
-			add_tech_bonus = { name = CHI_y20_strategic_lift_program bonus = 0.25 uses = 1 category = CAT_fixed_wing }
+			add_tech_bonus = { name = CHI_y20_strategic_lift_program bonus = 0.25 uses = 1 category = CAT_aircraft }
 		}
 
 		ai_will_do = {
@@ -4299,7 +4298,7 @@ focus_tree = {
 			add_to_variable = { CHI_air_air_mission_efficiency = 0.04 tooltip = air_mission_efficiency_tt }
 			add_to_variable = { CHI_air_air_cas_efficiency = 0.05 tooltip = air_cas_efficiency_tt }
 			newline = yes
-			add_tech_bonus = { name = CHI_the_pterodactyl_generation bonus = 0.25 uses = 1 category = CAT_l_drone }
+			add_tech_bonus = { name = CHI_the_pterodactyl_generation bonus = 0.25 uses = 1 category = CAT_land_drones }
 		}
 
 		ai_will_do = {
@@ -4340,7 +4339,7 @@ focus_tree = {
 			add_to_variable = { CHI_air_air_detection = 0.05 tooltip = air_detection_tt }
 			add_to_variable = { CHI_air_air_range_factor = 0.04 tooltip = air_range_factor_tt }
 			newline = yes
-			add_tech_bonus = { name = CHI_the_soaring_dragon bonus = 0.25 uses = 1 category = CAT_a_uav }
+			add_tech_bonus = { name = CHI_the_soaring_dragon bonus = 0.25 uses = 1 category = CAT_air_drones }
 		}
 
 		ai_will_do = {
@@ -4426,7 +4425,7 @@ focus_tree = {
 				limit = { has_dlc = "By Blood Alone" }
 				add_tech_bonus = { name = CHI_h20_programme bonus = 0.25 uses = 1 category = CAT_air_stealth }
 			}
-			add_tech_bonus = { name = CHI_h20_programme bonus = 0.25 uses = 1 category = CAT_fixed_wing }
+			add_tech_bonus = { name = CHI_h20_programme bonus = 0.25 uses = 1 category = CAT_aircraft }
 			559 = { add_building_construction = { type = air_base level = 1 instant_build = yes } }
 			newline = yes
 			if = {
@@ -4434,10 +4433,10 @@ focus_tree = {
 					has_completed_focus = CHI_the_self_reliant_path
 					has_dlc = "By Blood Alone"
 				}
-				add_tech_bonus = { name = CHI_h20_programme bonus = 0.25 uses = 1 category = CAT_air_engine }
+				add_tech_bonus = { name = CHI_h20_programme bonus = 0.25 uses = 1 category = CAT_air_engines }
 			}
 			else = {
-				add_tech_bonus = { name = CHI_h20_programme bonus = 0.25 uses = 1 category = CAT_air_eqp }
+				add_tech_bonus = { name = CHI_h20_programme bonus = 0.25 uses = 1 category = CAT_aircraft }
 			}
 			newline = yes
 			set_temp_variable = { treasury_change = -2.5 }
@@ -4488,7 +4487,7 @@ focus_tree = {
 			add_to_variable = { CHI_navy_naval_coordination = 0.03 tooltip = naval_coordination_tt }
 			newline = yes
 			navy_experience = 15
-			add_tech_bonus = { name = CHI_liu_huaqing_first_island_chain bonus = 0.25 uses = 1 category = CAT_naval_all }
+			add_tech_bonus = { name = CHI_liu_huaqing_first_island_chain bonus = 0.25 uses = 1 category = CAT_naval }
 		}
 
 		ai_will_do = {
@@ -4530,7 +4529,7 @@ focus_tree = {
 			add_to_variable = { CHI_navy_navy_max_range_factor = 0.10 tooltip = navy_max_range_factor_tt }
 			add_to_variable = { CHI_navy_naval_coordination = 0.05 tooltip = naval_coordination_tt }
 			newline = yes
-			add_tech_bonus = { name = CHI_project_998 bonus = 0.25 uses = 1 category = CAT_surface_ship }
+			add_tech_bonus = { name = CHI_project_998 bonus = 0.25 uses = 1 category = CAT_surface_ships }
 		}
 
 		ai_will_do = {
@@ -4632,7 +4631,7 @@ focus_tree = {
 			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_navy_modifier }
 			add_to_variable = { CHI_navy_navy_submarine_detection_factor = 0.07 tooltip = navy_submarine_detection_factor_tt }
 			newline = yes
-			add_tech_bonus = { name = CHI_the_yuan_and_the_shang bonus = 0.25 uses = 1 category = CAT_sub }
+			add_tech_bonus = { name = CHI_the_yuan_and_the_shang bonus = 0.25 uses = 1 category = CAT_submarines }
 		}
 
 		ai_will_do = {
@@ -4728,7 +4727,7 @@ focus_tree = {
 			add_to_variable = { CHI_navy_naval_coordination = 0.03 tooltip = naval_coordination_tt }
 			newline = yes
 			navy_experience = 10
-			add_tech_bonus = { name = CHI_flying_leopard_doctrine bonus = 0.25 uses = 1 category = CAT_naval_all }
+			add_tech_bonus = { name = CHI_flying_leopard_doctrine bonus = 0.25 uses = 1 category = CAT_naval }
 		}
 
 		ai_will_do = {
@@ -4905,7 +4904,7 @@ focus_tree = {
 			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_navy_modifier }
 			add_to_variable = { CHI_navy_naval_coordination = 0.03 tooltip = naval_coordination_tt }
 			newline = yes
-			add_tech_bonus = { name = CHI_dragon_eye_over_lanzhou bonus = 0.50 uses = 1 category = CAT_destroyer }
+			add_tech_bonus = { name = CHI_dragon_eye_over_lanzhou bonus = 0.50 uses = 1 category = CAT_destroyers }
 		}
 
 		ai_will_do = {
@@ -4946,7 +4945,7 @@ focus_tree = {
 				add_building_construction = { type = dockyard level = 2 instant_build = yes }
 			}
 			newline = yes
-			add_tech_bonus = { name = CHI_the_varyag_refit bonus = 0.25 uses = 1 category = CAT_carrier }
+			add_tech_bonus = { name = CHI_the_varyag_refit bonus = 0.25 uses = 1 category = CAT_aircraft_carriers }
 			set_temp_variable = { treasury_change = -17 }
 			modify_treasury_effect = yes
 		}
@@ -5275,7 +5274,7 @@ focus_tree = {
 				allow_without_tech = yes
 	            modules = {
 	                fixed_ship_engine_slot = module_surface_jet_turbine_power2
-	                fixed_ship_fire_control_system_slot = module_capital_advanced_integrated_missile_radar_control
+	                fixed_ship_fire_control_system_slot = module_advanced_integrated_missile_radar_control
 	                fixed_ship_radar_slot = module_radar_4
 	                fixed_ship_battery_slot = module_127mm_battery
 	                front_1_custom_slot = module_naval_vls_cells_32
@@ -5466,7 +5465,7 @@ focus_tree = {
 				type = carrier_hull_3
 				parent_version = 0
 				modules = {
-					fixed_ship_engine_slot = module_surface_diesel_power_2
+					fixed_ship_engine_slot = module_surface_jet_turbine_power
 					fixed_ship_fire_control_system_slot = module_advanced_integrated_missile_radar_control
 					fixed_ship_radar_slot = module_radar_4
 					fixed_ship_auxillary_slot_2 = module_naval_vls_cells_16
@@ -5554,7 +5553,7 @@ focus_tree = {
 				name_group = CHI_CV_HISTORICAL
 				parent_version = 0
 				modules = {
-					fixed_ship_engine_slot = module_surface_diesel_power_2
+					fixed_ship_engine_slot = module_surface_jet_turbine_power
 					fixed_ship_fire_control_system_slot = module_digital_integrated_fire_control
 					fixed_ship_radar_slot = module_radar_4
 					fixed_ship_auxillary_slot_3 = module_naval_missile_mount_single
@@ -5624,7 +5623,7 @@ focus_tree = {
 			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = CHI_navy_modifier }
 			add_to_variable = { CHI_navy_navy_submarine_detection_factor = 0.08 tooltip = navy_submarine_detection_factor_tt }
 			newline = yes
-			add_tech_bonus = { name = CHI_the_quiet_dragons bonus = 0.25 uses = 1 category = CAT_sub }
+			add_tech_bonus = { name = CHI_the_quiet_dragons bonus = 0.25 uses = 1 category = CAT_submarines }
 			mio:CHI_csic_manufacturer = { add_mio_funds = 2000 }
 		}
 
@@ -5665,7 +5664,7 @@ focus_tree = {
 			add_to_variable = { CHI_navy_navy_submarine_detection_factor = 0.07 tooltip = navy_submarine_detection_factor_tt }
 			add_to_variable = { CHI_navy_navy_max_range_factor = 0.05 tooltip = navy_max_range_factor_tt }
 			newline = yes
-			add_tech_bonus = { name = CHI_the_bohai_bastion bonus = 0.25 uses = 1 category = CAT_m_sub }
+			add_tech_bonus = { name = CHI_the_bohai_bastion bonus = 0.25 uses = 1 category = CAT_missile_submarines }
 			552 = {
 				add_building_construction = { type = dockyard level = 2 instant_build = yes }
 				add_extra_state_shared_building_slots = 2
@@ -6051,7 +6050,7 @@ focus_tree = {
 				name = CHI_TAI_dongfeng_program
 				bonus = 0.50
 				uses = 2
-				category = CAT_missile
+				category = CAT_missiles
 			}
 		}
 
@@ -6130,7 +6129,6 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus CHI_TAI_cyber_warfare"
-			unlock_decision_tooltip = CHI_TAI_cyberattack
 			add_to_variable = { cyber_offense_investment = 2 }
 			calculate_cyber_capability = yes
 			custom_effect_tooltip = cyber_gui_invest_offense_tt

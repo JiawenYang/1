@@ -1,0 +1,62 @@
+# ============================================================================
+# ZZZ 政党更迭事件 · 非主要国家批次二 / 三（本工程原创，非 TFR 移植）
+# 触发日期按 2017.1.20 开局推算的真实年月；全部调用
+# common/scripted_effects/ZZZ_party_change_effects.txt 中的现有效果，不内联 set_politics。
+# tag 核实结果（千禧 common/country_tags/00_countries.txt）：
+#   突尼斯 TUN / 南非 SAF / 秘鲁 PRU（不是 PER，PER=伊朗）/ 柬埔寨 CBD（不是 CAM，CAM=喀麦隆）
+#   缅甸 BRM（不是 BUR，BUR=布隆迪）/ 委内瑞拉 VEN / 马里 MAL（不是 MLI）/ 尼日利亚 NIG（不是 NGA）
+# 与原生选举关系：事件一律排在目标国当年原生选举之后，覆盖选举结果，避免同年双重换党。
+# ============================================================================
+
+# ---- 突尼斯：2019.10.13 总统选举，凯斯·赛义德当选（原生选举 2019.10 之后）----
+country_event = {
+	id = zzz_party.120
+	title = zzz_party.120.t
+	desc = zzz_party.120.d
+	is_triggered_only = no
+	fire_only_once = yes
+	trigger = {
+		date > 2019.10.20
+		original_tag = TUN
+	}
+	option = {
+		name = zzz_party.120.a
+		ZZZ_party_to_nat_populism = yes
+		ZZZ_party_leader_TUN_kais_saied = yes
+	}
+}
+# ---- 秘鲁：2021.6.6 第二轮投票，卡斯蒂略当选（原生选举 2020.4 之后，下一次 2025.4）----
+country_event = {
+	id = zzz_party.123
+	title = zzz_party.123.t
+	desc = zzz_party.123.d
+	is_triggered_only = no
+	fire_only_once = yes
+	trigger = {
+		date > 2021.6.10
+		original_tag = PRU
+	}
+	option = {
+		name = zzz_party.123.a
+		ZZZ_party_to_socialism = yes
+		set_leader = yes
+	}
+}
+
+# ---- 秘鲁：2022.12.7 卡斯蒂略被弹劾、博卢阿特接任（技术官僚过渡政府）----
+country_event = {
+	id = zzz_party.124
+	title = zzz_party.124.t
+	desc = zzz_party.124.d
+	is_triggered_only = no
+	fire_only_once = yes
+	trigger = {
+		date > 2022.12.8
+		original_tag = PRU
+	}
+	option = {
+		name = zzz_party.124.a
+		ZZZ_party_to_liberalism = yes
+		set_leader = yes
+	}
+}

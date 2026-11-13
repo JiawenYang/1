@@ -1,115 +1,276 @@
 add_namespace = politicsjapan
 
-country_event = { #菅义伟
+# =====================================================================
+# 日本（JAP）—— 君主立宪制选举事件
+#
+# 口径：
+#   1) 选举只改三样：24 槽支持率（party_pop_array^0..23）、执政党标量
+#      （set_variable = { ruling_party = N }）、联盟席位数组
+#      （gov_coalition_array，只放联盟党，不含执政党）。
+#   2) 结尾统一走 startup_politics，不写 recalculate_party。
+#   3) 天皇由 ZZZ_monarch_JAP_akihito + ZZZ_monarch_guard 维持；
+#      本文件任何事件都不调用 set_leader / kill_country_leader /
+#      retire_character / promote_character，也不写 country_leader 角色。
+#
+# 政党槽位（沿用 ZZ9 - 2017.txt 日本块既有口径）：
+#   ^1 conservatism       自民党 + 公明党（执政联盟）
+#   ^2 liberalism         立宪民主党 / 民主党系
+#   ^3 socialism          社民党 / 令和新选组
+#   ^4 communist_state    日本共产党
+#
+# 联盟席位说明：自民党与公明党同属 ^1 conservatism，没有独立索引，
+#   因此日本各届联盟数组为空（不含执政党是硬性规则，不能把 ^1 写进数组）。
+# =====================================================================
+
+# ---------------------------------------------------------------------
+# 2017.10.22 第48回众议院大选
+# 现实：自民党 284 席、公明党 29 席，两党联盟过半；立宪民主党 55 席、
+#       日本共产党 12 席、社民党 2 席。按四党归一得 68.6 / 21.1 / 3.0 / 7.3。
+# 执政：自民党（^1 conservatism，democratic 组）
+# ---------------------------------------------------------------------
+country_event = {
 	id = politicsjapan.11
 	title = politicsjapan.11.t
 	desc = politicsjapan.11.d
-
+	picture = GFX_election_rally
 	fire_only_once = yes
-	hidden = yes
+
 	trigger = {
-		tag = JAP
-		date > 2020.09.16
-		NOT = {
-			JAP = {
-				is_subject_of = CHI
-			}
-		}
-	}	
+		original_tag = JAP
+		date > 2017.10.22
+		has_country_flag = ZZZ_monarchy_active
+	}
 
 	option = {
 		name = politicsjapan.11.a
-		create_country_leader = {
-			name = "Yoshihide Suga"
-			desc = yoshihide_suga_DESC
-			picture = "yoshihide_suga.dds"
-			ideology = conservatism
-			traits = {
-				western_conservatism
-				CHI_Silent_doer
-				cautious
-				rational
-			}
+
+		set_popularities = {
+			democratic = 92.7
+			communism = 7.3
+			fascism = 0.0
+			neutrality = 0.0
+			nationalist = 0.0
 		}
-		log = "[GetDateText]: [This.GetName]: politicsjapan.11.a executed"
+		set_politics = {
+			ruling_party = democratic
+			last_election = "2017.10.22"
+			election_frequency = 36
+			elections_allowed = yes
+		}
+
+		start_politics_input = yes
+
+		### Party Popularities
+		set_variable = { party_pop_array^0 = 0 } #Western_Autocracy
+		set_variable = { party_pop_array^1 = 0.686 } #conservatism（自民党+公明党）
+		set_variable = { party_pop_array^2 = 0.211 } #liberalism（立宪民主党）
+		set_variable = { party_pop_array^3 = 0.030 } #socialism（社民党）
+		set_variable = { party_pop_array^4 = 0.073 } #communist_state（日本共产党）
+		set_variable = { party_pop_array^5 = 0 } #anarchist_communism
+		set_variable = { party_pop_array^6 = 0 } #Conservative
+		set_variable = { party_pop_array^7 = 0 } #Autocracy
+		set_variable = { party_pop_array^8 = 0 } #Mod_Vilayat_e_Faqih
+		set_variable = { party_pop_array^9 = 0 } #Vilayat_e_Faqih
+		set_variable = { party_pop_array^10 = 0 } #Kingdom
+		set_variable = { party_pop_array^11 = 0 } #Caliphate
+		set_variable = { party_pop_array^12 = 0 } #Neutral_Muslim_Brotherhood
+		set_variable = { party_pop_array^13 = 0 } #Neutral_Autocracy
+		set_variable = { party_pop_array^14 = 0 } #Neutral_conservatism
+		set_variable = { party_pop_array^15 = 0 } #oligarchism
+		set_variable = { party_pop_array^16 = 0 } #Neutral_Libertarian
+		set_variable = { party_pop_array^17 = 0 } #Neutral_green
+		set_variable = { party_pop_array^18 = 0 } #neutral_Social
+		set_variable = { party_pop_array^19 = 0 } #Neutral_Communism
+		set_variable = { party_pop_array^20 = 0 } #Nat_Populism
+		set_variable = { party_pop_array^21 = 0 } #Nat_Fascism
+		set_variable = { party_pop_array^22 = 0 } #Nat_Autocracy
+		set_variable = { party_pop_array^23 = 0 } #Monarchist
+
+		### Ruling Party
+		set_variable = { ruling_party = 1 }
+
+		startup_politics = yes
+		log = "[GetDateText]: [This.GetName]: politicsjapan.11.a executed (2017 general election, ruling=1)"
 	}
 }
 
-country_event = { #岸田文雄
+# ---------------------------------------------------------------------
+# 2021.10.31 第49回众议院大选
+# 现实：自民党 259 席、公明党 32 席；立宪民主党 96 席、日本共产党 10 席、
+#       社民党 1 席。按四党归一得 60.4 / 31.1 / 1.6 / 6.9。
+# 执政：自民党（^1 conservatism，democratic 组）
+# ---------------------------------------------------------------------
+country_event = {
 	id = politicsjapan.12
 	title = politicsjapan.12.t
 	desc = politicsjapan.12.d
-	hidden = yes
+	picture = GFX_election_rally
 	fire_only_once = yes
 
 	trigger = {
-		tag = JAP
-		date > 2021.10.04
-		NOT = {
-			JAP = {
-				is_subject_of = CHI
-			}
-		}
-	}	
+		original_tag = JAP
+		date > 2021.10.31
+		has_country_flag = ZZZ_monarchy_active
+	}
 
 	option = {
 		name = politicsjapan.12.a
-		create_country_leader = {
-			name = "Fumio Kishida"
-			desc = fumio_kishida_DESC
-			picture = "fumio_kishida.dds"
-			ideology = conservatism
-			traits = {
-				western_conservatism
-				lawyer
-				polished
-				rational
-				cautious
-				capable
-				Reformer
-				economist
-				pro_american
-			}
+
+		set_popularities = {
+			democratic = 93.1
+			communism = 6.9
+			fascism = 0.0
+			neutrality = 0.0
+			nationalist = 0.0
 		}
-		log = "[GetDateText]: [This.GetName]: politicsjapan.12.a executed"
+		set_politics = {
+			ruling_party = democratic
+			last_election = "2021.10.31"
+			election_frequency = 36
+			elections_allowed = yes
+		}
+
+		start_politics_input = yes
+
+		### Party Popularities
+		set_variable = { party_pop_array^0 = 0 } #Western_Autocracy
+		set_variable = { party_pop_array^1 = 0.604 } #conservatism（自民党+公明党）
+		set_variable = { party_pop_array^2 = 0.311 } #liberalism（立宪民主党）
+		set_variable = { party_pop_array^3 = 0.016 } #socialism（社民党）
+		set_variable = { party_pop_array^4 = 0.069 } #communist_state（日本共产党）
+		set_variable = { party_pop_array^5 = 0 } #anarchist_communism
+		set_variable = { party_pop_array^6 = 0 } #Conservative
+		set_variable = { party_pop_array^7 = 0 } #Autocracy
+		set_variable = { party_pop_array^8 = 0 } #Mod_Vilayat_e_Faqih
+		set_variable = { party_pop_array^9 = 0 } #Vilayat_e_Faqih
+		set_variable = { party_pop_array^10 = 0 } #Kingdom
+		set_variable = { party_pop_array^11 = 0 } #Caliphate
+		set_variable = { party_pop_array^12 = 0 } #Neutral_Muslim_Brotherhood
+		set_variable = { party_pop_array^13 = 0 } #Neutral_Autocracy
+		set_variable = { party_pop_array^14 = 0 } #Neutral_conservatism
+		set_variable = { party_pop_array^15 = 0 } #oligarchism
+		set_variable = { party_pop_array^16 = 0 } #Neutral_Libertarian
+		set_variable = { party_pop_array^17 = 0 } #Neutral_green
+		set_variable = { party_pop_array^18 = 0 } #neutral_Social
+		set_variable = { party_pop_array^19 = 0 } #Neutral_Communism
+		set_variable = { party_pop_array^20 = 0 } #Nat_Populism
+		set_variable = { party_pop_array^21 = 0 } #Nat_Fascism
+		set_variable = { party_pop_array^22 = 0 } #Nat_Autocracy
+		set_variable = { party_pop_array^23 = 0 } #Monarchist
+
+		### Ruling Party
+		set_variable = { ruling_party = 1 }
+
+		startup_politics = yes
+		log = "[GetDateText]: [This.GetName]: politicsjapan.12.a executed (2021 general election, ruling=1)"
 	}
 }
 
-country_event = { #石破茂
+# ---------------------------------------------------------------------
+# 2024.10.27 第50回众议院大选
+# 现实：自民党 191 席、公明党 24 席，联盟失去过半；立宪民主党 148 席、
+#       日本维新会 38 席、国民民主党 28 席、日本共产党 8 席、令和新选组 9 席。
+#       按本文件四党口径归一得 50.4 / 36.2 / 7.3 / 6.1。
+# 执政：自民党少数政府（^1 conservatism，democratic 组）
+# ---------------------------------------------------------------------
+country_event = {
 	id = politicsjapan.13
 	title = politicsjapan.13.t
 	desc = politicsjapan.13.d
-	hidden = yes
+	picture = GFX_election_rally
 	fire_only_once = yes
 
 	trigger = {
-		tag = JAP
-		date > 2024.10.01
-		NOT = {
-			JAP = {
-				is_subject_of = CHI
-			}
-		}
-	}	
+		original_tag = JAP
+		date > 2024.10.27
+		has_country_flag = ZZZ_monarchy_active
+	}
 
 	option = {
 		name = politicsjapan.13.a
-		create_country_leader = {
-			name = "Shigeru Ishiba"
-			desc = shigeru_ishiba_DESC
-			picture = "shigeru_ishiba.dds"
-			ideology = conservatism
-			traits = {
-				western_conservatism
-				lawyer
-				experienced_banker
-				career_politician
-				agricultural_resource_economist
-				rational
-				cautious
-				drunkard
-			}
+
+		set_popularities = {
+			democratic = 93.9
+			communism = 6.1
+			fascism = 0.0
+			neutrality = 0.0
+			nationalist = 0.0
 		}
-		log = "[GetDateText]: [This.GetName]: politicsjapan.13.a executed"
+		set_politics = {
+			ruling_party = democratic
+			last_election = "2024.10.27"
+			election_frequency = 48
+			elections_allowed = yes
+		}
+
+		start_politics_input = yes
+
+		### Party Popularities
+		set_variable = { party_pop_array^0 = 0 } #Western_Autocracy
+		set_variable = { party_pop_array^1 = 0.504 } #conservatism（自民党+公明党）
+		set_variable = { party_pop_array^2 = 0.362 } #liberalism（立宪民主党）
+		set_variable = { party_pop_array^3 = 0.073 } #socialism（社民党/令和新选组）
+		set_variable = { party_pop_array^4 = 0.061 } #communist_state（日本共产党）
+		set_variable = { party_pop_array^5 = 0 } #anarchist_communism
+		set_variable = { party_pop_array^6 = 0 } #Conservative
+		set_variable = { party_pop_array^7 = 0 } #Autocracy
+		set_variable = { party_pop_array^8 = 0 } #Mod_Vilayat_e_Faqih
+		set_variable = { party_pop_array^9 = 0 } #Vilayat_e_Faqih
+		set_variable = { party_pop_array^10 = 0 } #Kingdom
+		set_variable = { party_pop_array^11 = 0 } #Caliphate
+		set_variable = { party_pop_array^12 = 0 } #Neutral_Muslim_Brotherhood
+		set_variable = { party_pop_array^13 = 0 } #Neutral_Autocracy
+		set_variable = { party_pop_array^14 = 0 } #Neutral_conservatism
+		set_variable = { party_pop_array^15 = 0 } #oligarchism
+		set_variable = { party_pop_array^16 = 0 } #Neutral_Libertarian
+		set_variable = { party_pop_array^17 = 0 } #Neutral_green
+		set_variable = { party_pop_array^18 = 0 } #neutral_Social
+		set_variable = { party_pop_array^19 = 0 } #Neutral_Communism
+		set_variable = { party_pop_array^20 = 0 } #Nat_Populism
+		set_variable = { party_pop_array^21 = 0 } #Nat_Fascism
+		set_variable = { party_pop_array^22 = 0 } #Nat_Autocracy
+		set_variable = { party_pop_array^23 = 0 } #Monarchist
+
+		### Ruling Party
+		set_variable = { ruling_party = 1 }
+
+		startup_politics = yes
+		log = "[GetDateText]: [This.GetName]: politicsjapan.13.a executed (2024 general election, ruling=1)"
+	}
+}
+
+# ---------------------------------------------------------------------
+# 周期选举（2024.10.27 之后的每一届）
+# 由 common/on_actions/00_on_actions.txt 的 on_new_term_election 路由：
+#   original_tag = JAP + ZZZ_monarchy_active -> politicsjapan.14
+# 不做历史数值注入，按当前 24 槽支持率计票（hold_elections）后再走同一套
+# 三件套写入；天皇不参与，也不碰任何元首角色。
+# ---------------------------------------------------------------------
+country_event = {
+	id = politicsjapan.14
+	hidden = yes
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [This.GetName]: politicsjapan.14 executed (cycle election, chain=JAP_special)"
+			hold_elections = yes
+
+			set_temp_variable = { rul_party_temp = max_index_1 }
+			set_variable = { ruling_party = rul_party_temp }
+
+			clear_array = gov_coalition_array
+			if = {
+				limit = {
+					NOT = { check_variable = { party_pop_array^ruling_party > majority_threshold } }
+					has_variable = max_index_2
+				}
+				set_temp_variable = { col_one = max_index_2 }
+				add_to_array = { gov_coalition_array = col_one }
+			}
+
+			update_set_politics = yes
+			startup_politics = yes
+		}
 	}
 }

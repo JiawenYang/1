@@ -1,0 +1,107 @@
+# 阿拉伯联合共和国剧情链 —— 事件
+# 事件流向：ZZZ_arab_uar.1 发往 EGY（30 天后表决）；.2/.3/.4/.5 发往先点决议的一方（CHI 或 SOV）
+# 图片复用既有 GFX_CHI_event_sco_military（工程 events/05_china.txt:4729 已在使用）
+
+add_namespace = ZZZ_arab_uar
+
+# ① 埃及军方表决：接受转正 / 反对（反对后 90 天自动重发，决议②可提前重试）
+country_event = {
+	id = ZZZ_arab_uar.1
+	title = ZZZ_arab_uar.1.t
+	desc = ZZZ_arab_uar.1.d
+	picture = GFX_CHI_event_sco_military
+	is_triggered_only = yes
+
+	option = {
+		name = ZZZ_arab_uar.1.a
+		ai_chance = {
+			base = 65
+		}
+		log = "[GetDateText]: [This.GetName]: Event ZZZ_arab_uar.1.a executed"
+		# 自动重发与手动重试可能各排一次表决，已转正后重复进来的表决不再执行
+		if = {
+			limit = {
+				NOT = { is_sco = yes }
+				NOT = { has_global_flag = ZZZ_UAR_egypt_member }
+			}
+			CHI_sco_promote_to_member = yes
+			set_country_flag = ZZZ_UAR_egypt_sco_member
+			set_global_flag = ZZZ_UAR_egypt_member
+			clr_country_flag = ZZZ_UAR_egypt_rejected
+			# 闸门③通过：先由埃及组建“阿拉伯联合共和国”军事联盟并拉入盟友，再对 GCC 开战
+			ZZZ_MEW_post_eurasia_uar_war = yes
+		}
+	}
+
+	option = {
+		name = ZZZ_arab_uar.1.b
+		ai_chance = {
+			base = 35
+		}
+		log = "[GetDateText]: [This.GetName]: Event ZZZ_arab_uar.1.b executed"
+		if = {
+			limit = {
+				NOT = { is_sco = yes }
+				NOT = { has_global_flag = ZZZ_UAR_egypt_member }
+			}
+			set_country_flag = ZZZ_UAR_egypt_rejected
+			# 保留 35% 否决率，但否决后 90 天自动重发表决（事件计时器，不逐日扫描）
+			country_event = {
+				id = ZZZ_arab_uar.1
+				days = 90
+			}
+		}
+	}
+}
+
+# ② 观察员受理通知（发往邀请方）
+country_event = {
+	id = ZZZ_arab_uar.2
+	title = ZZZ_arab_uar.2.t
+	desc = ZZZ_arab_uar.2.d
+	picture = GFX_CHI_event_sco_military
+	is_triggered_only = yes
+
+	option = {
+		name = ZZZ_arab_uar.2.a
+	}
+}
+
+# ③ 泛阿拉伯同盟成立（发往邀请方）
+country_event = {
+	id = ZZZ_arab_uar.3
+	title = ZZZ_arab_uar.3.t
+	desc = ZZZ_arab_uar.3.d
+	picture = GFX_CHI_event_sco_military
+	is_triggered_only = yes
+
+	option = {
+		name = ZZZ_arab_uar.3.a
+	}
+}
+
+# ④ 阿拉伯联合共和国成立（同盟获胜）
+country_event = {
+	id = ZZZ_arab_uar.4
+	title = ZZZ_arab_uar.4.t
+	desc = ZZZ_arab_uar.4.d
+	picture = GFX_CHI_event_sco_military
+	is_triggered_only = yes
+
+	option = {
+		name = ZZZ_arab_uar.4.a
+	}
+}
+
+# ⑤ 同盟解散（同盟战败）
+country_event = {
+	id = ZZZ_arab_uar.5
+	title = ZZZ_arab_uar.5.t
+	desc = ZZZ_arab_uar.5.d
+	picture = GFX_CHI_event_sco_military
+	is_triggered_only = yes
+
+	option = {
+		name = ZZZ_arab_uar.5.a
+	}
+}

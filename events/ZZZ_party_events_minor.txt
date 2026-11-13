@@ -1,0 +1,189 @@
+# ============================================================================
+# ZZZ 政党更迭事件 · 非主要国家批次一（本工程原创，非 TFR 移植）
+# 触发日期按 2017.1.20 开局推算的真实年月；全部调用
+# common/scripted_effects/ZZZ_party_change_effects.txt 中的现有效果，不内联 set_politics。
+# 与千禧原生选举的关系：事件日期一律排在目标国当年原生选举之后（见各条注释），
+# 由事件覆盖原生选举结果；目标国当年若无原生选举，则直接用事件强制。
+# 事件 ID 段：zzz_party.100-113（已全库查重，无冲突）
+# ============================================================================
+
+# ---- 韩国：2017.5.9 大选，文在寅上台（原生选举 2017.12.18 之后校正）----
+country_event = {
+	id = zzz_party.100
+	title = zzz_party.100.t
+	desc = zzz_party.100.d
+	is_triggered_only = no
+	fire_only_once = yes
+	trigger = {
+		date > 2017.12.21
+		original_tag = KOR
+	}
+	option = {
+		name = zzz_party.100.a
+		ZZZ_party_to_socialism = yes
+		set_leader = yes
+	}
+}
+
+# ---- 韩国：2022.3.9 大选，尹锡悦上台（原生选举 2022.12.18 之后校正）----
+country_event = {
+	id = zzz_party.101
+	title = zzz_party.101.t
+	desc = zzz_party.101.d
+	is_triggered_only = no
+	fire_only_once = yes
+	trigger = {
+		date > 2022.12.21
+		original_tag = KOR
+		# 与朝韩统一谈判链挂钩：邦联已成局或半岛已统一时不再强行换党，避免顶掉谈判结果
+		NOT = { has_global_flag = korean_confederation_formed }
+		NOT = { has_country_flag = korea_peninsula_reunited }
+		NOT = { NKO = { has_country_flag = korea_peninsula_reunited } }
+	}
+	option = {
+		name = zzz_party.101.a
+		ZZZ_party_to_conservatism = yes
+		set_leader = yes
+	}
+}
+
+# ---- 意大利：2018.6.1 五星运动-联盟党联合政府（当年无原生选举）----
+country_event = {
+	id = zzz_party.102
+	title = zzz_party.102.t
+	desc = zzz_party.102.d
+	is_triggered_only = no
+	fire_only_once = yes
+	trigger = {
+		date > 2018.6.2
+		original_tag = ITA
+	}
+	option = {
+		name = zzz_party.102.a
+		ZZZ_party_to_anarchist_communism = yes
+		set_leader = yes
+	}
+}
+# ---- 波兰：2023.10.15 议会选举，公民联盟主导（当年无原生选举）----
+country_event = {
+	id = zzz_party.104
+	title = zzz_party.104.t
+	desc = zzz_party.104.d
+	is_triggered_only = no
+	fire_only_once = yes
+	trigger = {
+		date > 2023.10.16
+		original_tag = POL
+	}
+	option = {
+		name = zzz_party.104.a
+		ZZZ_party_to_liberalism = yes
+		set_leader = yes
+	}
+}
+# ---- 澳大利亚：2022.5.21 大选，工党上台（原生选举 2022.8 之后校正）----
+country_event = {
+	id = zzz_party.106
+	title = zzz_party.106.t
+	desc = zzz_party.106.d
+	is_triggered_only = no
+	fire_only_once = yes
+	trigger = {
+		date > 2022.8.20
+		original_tag = AST
+	}
+	option = {
+		name = zzz_party.106.a
+		ZZZ_party_to_socialism = yes
+		set_leader = yes
+	}
+}
+
+# ---- 菲律宾：2022.5.9 大选，小马科斯上台（原生选举 2022.5 之后校正）----
+country_event = {
+	id = zzz_party.107
+	title = zzz_party.107.t
+	desc = zzz_party.107.d
+	is_triggered_only = no
+	fire_only_once = yes
+	trigger = {
+		date > 2022.5.25
+		original_tag = PHI
+	}
+	option = {
+		name = zzz_party.107.a
+		ZZZ_party_to_nat_populism = yes
+		set_leader = yes
+	}
+}
+# ---- 乌克兰：2019.4.21 总统选举，泽连斯基上台（原生选举 2019.10 之后校正）----
+country_event = {
+	id = zzz_party.110
+	title = zzz_party.110.t
+	desc = zzz_party.110.d
+	is_triggered_only = no
+	fire_only_once = yes
+	trigger = {
+		date > 2019.10.25
+		original_tag = UKR
+	}
+	option = {
+		name = zzz_party.110.a
+		ZZZ_party_to_neutral_libertarian = yes
+		set_leader = yes
+	}
+}
+
+# ---- 巴西：2018.10.28 大选，博索纳罗上台（原生选举 2018.4 之后校正）----
+country_event = {
+	id = zzz_party.111
+	title = zzz_party.111.t
+	desc = zzz_party.111.d
+	is_triggered_only = no
+	fire_only_once = yes
+	trigger = {
+		date > 2018.11.1
+		original_tag = BRA
+	}
+	option = {
+		name = zzz_party.111.a
+		ZZZ_party_to_nat_populism = yes
+		set_leader = yes
+	}
+}
+
+# ---- 巴西：2022.10.30 大选，卢拉回归（原生选举 2022.4 之后校正）----
+country_event = {
+	id = zzz_party.112
+	title = zzz_party.112.t
+	desc = zzz_party.112.d
+	is_triggered_only = no
+	fire_only_once = yes
+	trigger = {
+		date > 2022.11.1
+		original_tag = BRA
+	}
+	option = {
+		name = zzz_party.112.a
+		ZZZ_party_to_anarchist_communism = yes
+		set_leader = yes
+	}
+}
+
+# ---- 阿根廷：2023.11.19 大选，米莱上台（原生选举 2023.10 之后校正）----
+country_event = {
+	id = zzz_party.113
+	title = zzz_party.113.t
+	desc = zzz_party.113.d
+	is_triggered_only = no
+	fire_only_once = yes
+	trigger = {
+		date > 2023.11.20
+		original_tag = ARG
+	}
+	option = {
+		name = zzz_party.113.a
+		ZZZ_party_to_nat_populism = yes
+		set_leader = yes
+	}
+}

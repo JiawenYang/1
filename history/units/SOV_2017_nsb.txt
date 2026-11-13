@@ -172,6 +172,16 @@ division_template = {
 
 	}
 
+	support = {
+
+		L_Recce_Comp = { x = 0 y = 0 }
+
+		L_Engi_Comp = { x = 0 y = 1 }
+
+		combat_service_support_company = { x = 0 y = 2 }
+
+	}
+
 	priority = 2
 
 }
@@ -367,6 +377,20 @@ division_template = {
 
 	}
 
+	support = {
+
+		SP_arty_battery = { x = 0 y = 0 }
+
+		SP_AA_Battery = { x = 0 y = 1 }
+
+		E_Recce_Comp = { x = 0 y = 2 }
+
+		E_Engi_Comp = { x = 0 y = 3 }
+
+		combat_service_support_company = { x = 0 y = 4 }
+
+	}
+
 	priority = 0
 
 }
@@ -425,6 +449,16 @@ division_template = {
 
 	}
 
+	support = {
+
+		E_Recce_Comp = { x = 0 y = 0 }
+
+		E_Engi_Comp = { x = 0 y = 1 }
+
+		combat_service_support_company = { x = 0 y = 2 }
+
+	}
+
 }
 
 
@@ -446,6 +480,18 @@ division_template = {
 		SP_Arty_Bat = { x = 1 y = 1 }
 
 		SP_Arty_Bat = { x = 1 y = 2 }
+
+	}
+
+	support = {
+
+		SP_arty_battery = { x = 0 y = 0 }
+
+		E_Recce_Comp = { x = 0 y = 1 }
+
+		E_Engi_Comp = { x = 0 y = 2 }
+
+		combat_service_support_company = { x = 0 y = 3 }
 
 	}
 
@@ -1866,7 +1912,7 @@ instant_effect = {
 
 		name = "T-15 Armata"
 
-		type = heavy_tank_chassis_3
+		type = medium_tank_chassis_3
 
 		parent_version = 0
 
@@ -1888,15 +1934,11 @@ instant_effect = {
 
 			reload_type_slot = automatic_loading
 
-			special_type_slot_1 = smoothbore_atgm_gen3
+			special_type_slot_1 = hardkill_system_gen1
 
 			special_type_slot_2 = afv_troop_capacity
 
-			special_type_slot_3 = hardkill_system_gen1
-
 			special_type_slot_4 = tank_battlestation_3
-
-			special_type_slot_5 = additional_mg
 
 			special_type_slot_6 = reactive_armor_gen3
 
@@ -2028,6 +2070,7 @@ instant_effect = {
 
 
 	add_equipment_to_stockpile = {
+		variant_name = "Mil Mi-8MT"
 
 		type = transport_helicopter_1 #Mi-8
 
@@ -2039,6 +2082,7 @@ instant_effect = {
 
 
 	add_equipment_to_stockpile = {
+		variant_name = "Mil Mi-8T"
 
 		type = transport_helicopter_1 #Mi-14
 
@@ -2052,6 +2096,7 @@ instant_effect = {
 
 
 	add_equipment_to_stockpile = {
+		variant_name = "Mil Mi-26"
 
 		type = transport_helicopter_2 #Mi-26
 
@@ -2077,6 +2122,8 @@ instant_effect = {
 
 
 	add_equipment_to_stockpile = {
+
+		variant_name = "Kazan Ansat"
 
 		type = transport_helicopter_4 #Kazan Ansat
 
@@ -2194,7 +2241,7 @@ instant_effect = {
 	add_equipment_to_stockpile = {
 		variant_name = "T-15 Armata"
 
-		type = heavy_tank_chassis_3 #T-15 Armata（试产）
+		type = medium_tank_chassis_3 #T-15 Armata（试产）
 
 		producer = SOV
 
@@ -2267,8 +2314,22 @@ instant_effect = {
 
 	add_equipment_to_stockpile = {
 
+		type = medium_tank_chassis_1
+		variant_name = "T-64A"
+
+		producer = UKR
+
+
+		amount = 1000 #（封存）
+
+	}
+
+
+
+	add_equipment_to_stockpile = {
+
 		type = medium_tank_chassis_0
-		variant_name = "T-55AM2"
+		variant_name = "T-55A"
 
 		producer = SOV
 
@@ -2280,20 +2341,7 @@ instant_effect = {
 
 
 	add_equipment_to_stockpile = {
-
-		type = medium_tank_chassis_0
-		variant_name = "T-55MV"
-
-		producer = SOV
-
-
-		amount = 1000 #（封存）
-
-	}
-
-
-
-	add_equipment_to_stockpile = {
+		variant_name = "KamAZ-4310"
 
 		type = util_vehicle_3 #GAZ-3132
 
@@ -2305,6 +2353,7 @@ instant_effect = {
 
 
 	add_equipment_to_stockpile = {
+		variant_name = "UAZ-469"
 
 		type = util_vehicle_2 #UAZ-469
 
@@ -2317,6 +2366,8 @@ instant_effect = {
 
 	add_equipment_to_stockpile = {
 
+		variant_name = "Tigr"
+
 		type = util_vehicle_4 #Tigr
 
 		producer = SOV
@@ -2328,6 +2379,8 @@ instant_effect = {
 
 	add_equipment_to_stockpile = {
 
+		variant_name = "Iveco LMV"
+
 		type = util_vehicle_5 #Iveco LMV
 
 		producer = ITA
@@ -2338,9 +2391,9 @@ instant_effect = {
 
 
 	add_equipment_to_stockpile = {
-		variant_name = "KamAZ-63968 Typhoon-K"
 
-		type = util_vehicle_6 #Kamaz-63968 Typhoon-K（2015年底列装，首批）
+
+		type = heavy_util_vehicle_6 #Kamaz-63968 Typhoon-K（2015年底列装，首批）
 
 		producer = SOV
 		amount = 30
@@ -2350,6 +2403,7 @@ instant_effect = {
 
 
 	add_equipment_to_stockpile = {
+		variant_name = "BMP-1P"
 
 		type = medium_tank_flame_chassis_0 #BMP-1
 
@@ -2375,6 +2429,7 @@ instant_effect = {
 
 
 	add_equipment_to_stockpile = {
+		variant_name = "BMP-2"
 
 		type = medium_tank_flame_chassis_1 #BMP-2
 
@@ -2386,6 +2441,7 @@ instant_effect = {
 
 
 	add_equipment_to_stockpile = {
+		variant_name = "BMP-3"
 
 		type = medium_tank_flame_chassis_2 #BMP-3
 
@@ -2398,6 +2454,8 @@ instant_effect = {
 
 	add_equipment_to_stockpile = {
 
+		variant_name = "BMP-3M"
+
 		type = medium_tank_flame_chassis_3 #BMP-3M
 
 		producer = SOV
@@ -2408,6 +2466,7 @@ instant_effect = {
 
 
 	add_equipment_to_stockpile = {
+		variant_name = "BTR-90"
 
 		type = medium_tank_amphibious_chassis_2 #BTR-80
 
@@ -2433,6 +2492,7 @@ instant_effect = {
 
 
 	add_equipment_to_stockpile = {
+		variant_name = "BTR-82A"
 
 		type = medium_tank_amphibious_chassis_1 #MT-LB
 
@@ -2444,6 +2504,7 @@ instant_effect = {
 
 
 	add_equipment_to_stockpile = {
+		variant_name = "BTR-60PB"
 
 		type = medium_tank_amphibious_chassis_0 #BTR-60
 
@@ -2455,6 +2516,7 @@ instant_effect = {
 
 
 	add_equipment_to_stockpile = {
+		variant_name = "BTR-70"
 
 		type = medium_tank_amphibious_chassis_1 #BTR-70
 
@@ -2469,7 +2531,7 @@ instant_effect = {
 
 
 
-	add_equipment_to_stockpile = {		type = ZZ_airborne_ifv_chassis_bmd1p #BMD-1
+	add_equipment_to_stockpile = {		variant_name = "BMD-1"		type = medium_tank_flame_chassis_0 #BMD-1
 
 		producer = SOV
 
@@ -2480,7 +2542,7 @@ instant_effect = {
 
 
 
-	add_equipment_to_stockpile = {		type = ZZ_airborne_ifv_chassis_bmd2 #BMD-2
+	add_equipment_to_stockpile = {		variant_name = "BMD-2"		type = medium_tank_flame_chassis_1 #BMD-2
 
 		producer = SOV
 
@@ -2491,7 +2553,7 @@ instant_effect = {
 
 
 
-	add_equipment_to_stockpile = {		type = ZZ_airborne_ifv_chassis_bmd3 #BMD-3
+	add_equipment_to_stockpile = {		variant_name = "BMD-3"		type = ZZ_airborne_ifv_chassis_bmd3 #BMD-3
 
 		producer = SOV
 
@@ -2502,7 +2564,7 @@ instant_effect = {
 
 
 
-	add_equipment_to_stockpile = {		type = ZZ_airborne_ifv_chassis_bmd4m #BMD-4M
+	add_equipment_to_stockpile = {		variant_name = "BMD-4M"		type = ZZ_airborne_ifv_chassis_bmd4m #BMD-4M
 
 		producer = SOV
 
@@ -2545,6 +2607,7 @@ instant_effect = {
 
 
 	add_equipment_to_stockpile = {
+		variant_name = "BMP-2"
 
 		type = medium_tank_flame_chassis_1 #BMP-2
 
@@ -2556,6 +2619,7 @@ instant_effect = {
 
 
 	add_equipment_to_stockpile = {
+		variant_name = "BTR-82A"
 
 		type = medium_tank_amphibious_chassis_1 #MT-LB
 
@@ -2567,6 +2631,7 @@ instant_effect = {
 
 
 	add_equipment_to_stockpile = {
+		variant_name = "BTR-90"
 
 		type = medium_tank_amphibious_chassis_2 #BTR-80
 
@@ -2600,6 +2665,7 @@ instant_effect = {
 
 
 	add_equipment_to_stockpile = {
+
 		variant_name = "9K33 Osa"
 
 		type = medium_tank_aa_chassis_0 #9K33 Osa
@@ -2614,9 +2680,10 @@ instant_effect = {
 
 
 	add_equipment_to_stockpile = {
+
 		variant_name = "9K37 Buk"
 
-		type = medium_tank_aa_chassis_1 #9K37 Buk
+		type = SP_Anti_Air_1
 
 		producer = SOV
 
@@ -2628,7 +2695,6 @@ instant_effect = {
 
 
 	add_equipment_to_stockpile = {
-		variant_name = "9K35 Strela-10"
 
 		type = medium_tank_aa_chassis_1
 
@@ -2670,9 +2736,10 @@ instant_effect = {
 
 
 	add_equipment_to_stockpile = {
+
 		variant_name = "2K22 Tunguska"
 
-		type = medium_tank_aa_chassis_1 #2K22 Tunguska
+		type = SP_Anti_Air_2 #2K22 Tunguska
 
 		producer = SOV
 
@@ -2684,6 +2751,7 @@ instant_effect = {
 
 
 	add_equipment_to_stockpile = {
+		variant_name = "9K330 Tor-M2"
 
 		type = medium_tank_aa_chassis_2
 
@@ -2702,6 +2770,8 @@ instant_effect = {
 
 	add_equipment_to_stockpile = {
 
+		variant_name = "SA-14 Strela-2"
+
 		type = Anti_Air_0 #SA-14 Strela-2
 
 		producer = SOV
@@ -2712,6 +2782,7 @@ instant_effect = {
 
 
 	add_equipment_to_stockpile = {
+		variant_name = "9K38 Igla"
 
 		type = Anti_Air_1 #SA-18 Igla
 
@@ -2724,6 +2795,8 @@ instant_effect = {
 
 	add_equipment_to_stockpile = {
 
+		variant_name = "SA-24 Igla-S"
+
 		type = Anti_Air_2 #SA-24 Igla-S
 
 		producer = SOV
@@ -2734,6 +2807,8 @@ instant_effect = {
 
 
 	add_equipment_to_stockpile = {
+
+		variant_name = "SA-25 Verba"
 
 		type = Anti_Air_2
 
@@ -2751,6 +2826,7 @@ instant_effect = {
 
 
 	add_equipment_to_stockpile = {
+		variant_name = "RPG-7V"
 
 		type = Anti_tank_1 #AT-4 Fagot
 
@@ -2762,6 +2838,7 @@ instant_effect = {
 
 
 	add_equipment_to_stockpile = {
+		variant_name = "SPG-9"
 
 		type = Anti_tank_1
 
@@ -2775,6 +2852,7 @@ instant_effect = {
 
 
 	add_equipment_to_stockpile = {
+		variant_name = "9K111 Fagot"
 
 		type = Anti_tank_2 #AT-13 Metis-M
 
@@ -2787,6 +2865,8 @@ instant_effect = {
 
 	add_equipment_to_stockpile = {
 
+		variant_name = "AT-5 Konkurs"
+
 		type = Heavy_Anti_tank_1 #AT-5 Konkurs
 
 		producer = SOV
@@ -2797,6 +2877,7 @@ instant_effect = {
 
 
 	add_equipment_to_stockpile = {
+		variant_name = "9P149 Shturm-S"
 
 		type = Heavy_Anti_tank_2 #AT-14 Kornet
 
@@ -2808,14 +2889,21 @@ instant_effect = {
 
 
 	add_equipment_to_stockpile = {
+
 		variant_name = "9M133M Kornet-M"
 
-		type = Heavy_Anti_tank_2 #9M133M Kornet-M（2015年列装，增程改进型）
+		type = Anti_tank_3 #9M133M Kornet-M (2015)
 
 		producer = SOV
 		amount = 100
 
 	}
+		
+		add_equipment_to_stockpile = {
+			type = Heavy_Anti_tank_3 #9P157 Khrizantema
+			producer = SOV
+			amount = 800
+		}
 
 
 
@@ -2838,9 +2926,10 @@ instant_effect = {
 
 
 	add_equipment_to_stockpile = {
+
 		variant_name = "BM-27 Uragan"
 
-		type = medium_tank_rocket_chassis_0 #BM-27 Uragan
+		type = medium_tank_rocket_chassis_1 #BM-27 Uragan
 
 		producer = SOV
 
@@ -2881,7 +2970,9 @@ instant_effect = {
 
 	add_equipment_to_stockpile = {
 
-		type = medium_tank_rocket_chassis_2 #Tornado
+		variant_name = "9A52-4 Tornado"
+
+		type = SP_R_arty_2
 
 		producer = SOV
 		amount = 132
@@ -2897,6 +2988,7 @@ instant_effect = {
 
 
 	add_equipment_to_stockpile = {
+		variant_name = "D-30"
 
 		type = artillery_1 #D-30
 
@@ -2908,6 +3000,7 @@ instant_effect = {
 
 
 	add_equipment_to_stockpile = {
+		variant_name = "D-30"
 
 		type = artillery_1 #2S9 Nona
 
@@ -2937,6 +3030,7 @@ instant_effect = {
 
 
 	add_equipment_to_stockpile = {
+
 		variant_name = "2S5 Giatsynt"
 
 		type = medium_tank_artillery_chassis_0 #2S5 Giatsynt
@@ -2951,7 +3045,8 @@ instant_effect = {
 
 
 	add_equipment_to_stockpile = {
-		variant_name = "2S19 Msta"
+
+		variant_name = "2S19 Msta-S"
 
 		type = medium_tank_artillery_chassis_2 #2S19 Msta
 
@@ -2965,6 +3060,7 @@ instant_effect = {
 
 
 	add_equipment_to_stockpile = {
+		variant_name = "2S19 Msta-S"
 
 		type = medium_tank_artillery_chassis_2 #2S19M2 Msta-SM
 
@@ -2996,6 +3092,7 @@ instant_effect = {
 	#封存坦克（追加）
 
 	add_equipment_to_stockpile = {
+		variant_name = "T-55A"
 
 		type = medium_tank_chassis_0 #T-54/55（封存追加）
 
@@ -3005,6 +3102,7 @@ instant_effect = {
 	}
 
 	add_equipment_to_stockpile = {
+		variant_name = "T-62MV"
 
 		type = medium_tank_chassis_0 #T-62（封存追加）
 
@@ -3018,6 +3116,7 @@ instant_effect = {
 	#封存装甲车/步战车
 
 	add_equipment_to_stockpile = {
+		variant_name = "BTR-60PB"
 
 		type = medium_tank_amphibious_chassis_0 #BTR-60（封存）
 
@@ -3027,6 +3126,7 @@ instant_effect = {
 	}
 
 	add_equipment_to_stockpile = {
+		variant_name = "BTR-70"
 
 		type = medium_tank_amphibious_chassis_1 #BTR-70（封存）
 
@@ -3036,6 +3136,7 @@ instant_effect = {
 	}
 
 	add_equipment_to_stockpile = {
+		variant_name = "BTR-82A"
 
 		type = medium_tank_amphibious_chassis_1 #MT-LB（封存）
 
@@ -3045,6 +3146,7 @@ instant_effect = {
 	}
 
 	add_equipment_to_stockpile = {
+		variant_name = "BRDM-2"
 
 		type = medium_tank_destroyer_chassis_0 #BRDM-2（封存）
 
@@ -3058,6 +3160,7 @@ instant_effect = {
 	#封存牵引火炮
 
 	add_equipment_to_stockpile = {
+		variant_name = "D-30"
 
 		type = artillery_1 #D-30/MT-12反坦克炮（封存）
 
@@ -3067,6 +3170,7 @@ instant_effect = {
 	}
 
 	add_equipment_to_stockpile = {
+		variant_name = "ZiS-3"
 
 		type = artillery_1 #各型迫击炮（封存）
 
@@ -3076,6 +3180,7 @@ instant_effect = {
 	}
 
 	add_equipment_to_stockpile = {
+		variant_name = "D-20"
 
 		type = artillery_1 #2A65 Msta-B/D-20/2A36（封存）
 
@@ -3089,6 +3194,7 @@ instant_effect = {
 	#封存自行火炮
 
 	add_equipment_to_stockpile = {
+		variant_name = "2S1 Gvozdika"
 
 		type = medium_tank_artillery_chassis_0 #2S1 Gvozdika（封存）
 
@@ -3098,6 +3204,7 @@ instant_effect = {
 	}
 
 	add_equipment_to_stockpile = {
+		variant_name = "2S1 Gvozdika"
 
 		type = medium_tank_artillery_chassis_0 #2S4郁金香/2S7芍药（封存）
 
@@ -3107,6 +3214,7 @@ instant_effect = {
 	}
 
 	add_equipment_to_stockpile = {
+		variant_name = "2S3 Akatsiya"
 
 		type = medium_tank_artillery_chassis_1 #2S3 Akatsiya（封存追加）
 
@@ -3120,6 +3228,7 @@ instant_effect = {
 	#封存火箭炮
 
 	add_equipment_to_stockpile = {
+		variant_name = "BM-21 Grad"
 
 		type = medium_tank_rocket_chassis_0 #BM-21 Grad（封存）
 
@@ -3129,6 +3238,7 @@ instant_effect = {
 	}
 
 	add_equipment_to_stockpile = {
+		variant_name = "BM-21 Grad"
 
 		type = medium_tank_rocket_chassis_0 #BM-27 Uragan（封存）
 
@@ -3142,6 +3252,7 @@ instant_effect = {
 	#封存防空
 
 	add_equipment_to_stockpile = {
+		variant_name = "ZSU-23-4M3 Biryusa"
 
 		type = medium_tank_aa_chassis_0 #9K33 Osa（封存追加）
 
@@ -3151,6 +3262,7 @@ instant_effect = {
 	}
 
 	add_equipment_to_stockpile = {
+		variant_name = "9K330 Tor"
 
 		type = medium_tank_aa_chassis_1 #2K12 Kub（封存）
 
@@ -3160,6 +3272,7 @@ instant_effect = {
 	}
 
 	add_equipment_to_stockpile = {
+		variant_name = "S-60"
 
 		type = Anti_Air_0 #ZU-23/S-60高炮（封存）
 
@@ -3169,6 +3282,7 @@ instant_effect = {
 	}
 
 	add_equipment_to_stockpile = {
+		variant_name = "9K32M Strela-2M"
 
 		type = Anti_Air_0 #Strela-2/9K32便携防空（封存）
 
@@ -3182,6 +3296,7 @@ instant_effect = {
 	#封存反坦克导弹
 
 	add_equipment_to_stockpile = {
+		variant_name = "RPG-18"
 
 		type = Anti_tank_1 #9M14 Malyutka（封存）
 
@@ -3191,6 +3306,7 @@ instant_effect = {
 	}
 
 	add_equipment_to_stockpile = {
+		variant_name = "D-44"
 
 		type = Anti_tank_1 #9K111 Fagot（封存）
 
@@ -3200,6 +3316,8 @@ instant_effect = {
 	}
 
 	add_equipment_to_stockpile = {
+
+		variant_name = "9M17 Falanga/9K11-2"
 
 		type = Heavy_Anti_tank_1 #9M17 Falanga/9K11-2（封存）
 
@@ -3213,6 +3331,7 @@ instant_effect = {
 	#封存直升机
 
 	add_equipment_to_stockpile = {
+		variant_name = "Mi-24VP"
 
 		type = heavy_tank_chassis_0 #Mi-24（封存）
 
@@ -3222,6 +3341,7 @@ instant_effect = {
 	}
 
 	add_equipment_to_stockpile = {
+		variant_name = "Mil Mi-8MT"
 
 		type = transport_helicopter_1 #Mi-8（封存）
 
@@ -3235,6 +3355,7 @@ instant_effect = {
 	#封存运输车辆
 
 	add_equipment_to_stockpile = {
+		variant_name = "Ural-375D"
 
 		type = util_vehicle_2 #Ural/ZIL老卡车（封存）
 
@@ -3251,6 +3372,8 @@ instant_effect = {
 
 	add_equipment_to_stockpile = {
 
+		variant_name = "AK-74M"
+
 		type = infantry_weapons_4 #AK-74M（现役，约80万支）
 
 		producer = SOV
@@ -3262,6 +3385,8 @@ instant_effect = {
 
 	add_equipment_to_stockpile = {
 
+		variant_name = "2005"
+
 		type = infantry_weapons_5 #2005
 
 		producer = SOV
@@ -3272,9 +3397,10 @@ instant_effect = {
 
 
 	add_equipment_to_stockpile = {
+
 		variant_name = "AK-12"
 
-		type = infantry_weapons_5 #AK-12（2016年试产批次）
+		type = infantry_weapons_6 #AK-12（2016年试产批次）
 
 		producer = SOV
 
@@ -3286,6 +3412,7 @@ instant_effect = {
 
 
 	add_equipment_to_stockpile = {
+		variant_name = "AK-74N"
 
 		type = infantry_weapons_3 #AKM（封存）
 
@@ -3298,7 +3425,9 @@ instant_effect = {
 
 	add_equipment_to_stockpile = {
 
-		type = infantry_weapons_2 #AK-47（封存）
+		variant_name = "AKM"
+
+		type = infantry_weapons_1 #AK-47（封存）
 
 		producer = SOV
 		amount = 300000
@@ -3311,6 +3440,7 @@ instant_effect = {
 
 	add_equipment_to_stockpile = {
 
+
 		type = cnc_equipment_2 #C3
 
 		producer = SOV
@@ -3322,6 +3452,7 @@ instant_effect = {
 
 	add_equipment_to_stockpile = {
 
+
 		type = cnc_equipment_4 #C4I
 
 		producer = SOV
@@ -3329,4 +3460,43 @@ instant_effect = {
 
 	}
 
+
+
+	# Orphan variant attachment (2017 real-world holdings)
+	add_equipment_to_stockpile = {
+		type = medium_tank_chassis_1
+		variant_name = "T-80BVM"
+		amount = 30
+		producer = SOV
+	}
+	add_equipment_to_stockpile = {
+		type = medium_tank_destroyer_chassis_2
+		variant_name = "BMPT Terminator"
+		amount = 10
+		producer = SOV
+	}
+	add_equipment_to_stockpile = {
+		type = medium_tank_chassis_2
+		variant_name = "T-90M"
+		amount = 10
+		producer = SOV
+	}
+	add_equipment_to_stockpile = {
+		type = medium_tank_artillery_chassis_2
+		variant_name = "2S31 Vena"
+		amount = 10
+		producer = SOV
+	}
+	add_equipment_to_stockpile = {
+		type = medium_plane_airframe_2
+		variant_name = "Su-35 Flanker-E"
+		amount = 60
+		producer = SOV
+	}
+	add_equipment_to_stockpile = {
+		type = small_plane_cas_airframe_1
+		variant_name = "Su-22M4 Fitter"
+		amount = 30
+		producer = SOV
+	}
 }

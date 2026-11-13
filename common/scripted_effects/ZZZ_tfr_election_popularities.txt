@@ -1,0 +1,398 @@
+# ============================================================================
+# TFR 移植事件支持率补完 —— 第一批（2026.11.06）
+# 仅服务以下事件，不与现有 ZZZ 效果重名：
+#   dsw_tfr_russia.275 .276 .277 .280 .281 .1554 .2110
+#   germany.8 .235
+#   usa.4
+#   france.219
+#
+# 取值口径：
+#   基线 = history/countries/ZZ9 - 2017.txt 各国开局 party_pop_array
+#   推演 = 该事件对应的现实选举/政变结果
+#   24 党绝对值合计恒为 1.0000
+#   写法 = set_popularities + 24 行绝对值 + 重建 ruling_party / gov_coalition_array
+#          + update_government_coalition_strength / update_party_name
+#          + set_coalition_drift
+# ============================================================================
+
+# ----------------------------------------------------------------------------
+# dsw_tfr_russia.275 —— 保加利亚：基里尔·佩特科夫（自由派）组阁
+# 现实依据：2021.11 保加利亚国民议会选举，我们继续改变党（PP）25.7% 居首，
+#           GERB 24.0%、BSP 10.4%；PP+BSP+ITN 联合政府。
+# 基线 BUL：^1=0.422 ^2=0.215 ^5=0.272 ^20=0.091，执政 ^1
+# 作用域：BUL
+# ----------------------------------------------------------------------------
+ZZZ_TFR_SOV_275_BUL_liberal = {
+	set_politics = {
+		ruling_party = democratic
+		elections_allowed = yes
+	}
+	set_popularities = {
+		democratic = 73.0
+		communism = 10.0
+		fascism = 0.0
+		neutrality = 0.0
+		nationalist = 17.0
+	}
+	set_variable = { party_pop_array^0 = 0 } #Western_Autocracy
+	set_variable = { party_pop_array^1 = 0.24 } #conservatism（GERB）
+	set_variable = { party_pop_array^2 = 0.30 } #liberalism（PP/我们继续改变）
+	set_variable = { party_pop_array^3 = 0.19 } #socialism（ITN 等中间派）
+	set_variable = { party_pop_array^4 = 0 } #communist_state
+	set_variable = { party_pop_array^5 = 0.10 } #anarchist_communism（BSP）
+	set_variable = { party_pop_array^6 = 0 } #Conservative
+	set_variable = { party_pop_array^7 = 0 } #Autocracy
+	set_variable = { party_pop_array^8 = 0 } #Mod_Vilayat_e_Faqih
+	set_variable = { party_pop_array^9 = 0 } #Vilayat_e_Faqih
+	set_variable = { party_pop_array^10 = 0 } #Kingdom
+	set_variable = { party_pop_array^11 = 0 } #Caliphate
+	set_variable = { party_pop_array^12 = 0 } #Neutral_Muslim_Brotherhood
+	set_variable = { party_pop_array^13 = 0 } #Neutral_Autocracy
+	set_variable = { party_pop_array^14 = 0 } #Neutral_conservatism
+	set_variable = { party_pop_array^15 = 0 } #oligarchism
+	set_variable = { party_pop_array^16 = 0 } #Neutral_Libertarian
+	set_variable = { party_pop_array^17 = 0 } #Neutral_green
+	set_variable = { party_pop_array^18 = 0 } #neutral_Social
+	set_variable = { party_pop_array^19 = 0 } #Neutral_Communism
+	set_variable = { party_pop_array^20 = 0.17 } #Nat_Populism（复兴党 Vazrazhdane）
+	set_variable = { party_pop_array^21 = 0 } #Nat_Fascism
+	set_variable = { party_pop_array^22 = 0 } #Nat_Autocracy
+	set_variable = { party_pop_array^23 = 0 } #Monarchist
+	clear_array = gov_coalition_array
+	set_variable = { ruling_party = 2 }
+	update_set_politics = yes
+	add_own_ideology_drift = yes
+	add_to_array = { gov_coalition_array = 2 }
+	add_to_array = { gov_coalition_array = 3 }
+	add_to_array = { gov_coalition_array = 5 }
+	update_government_coalition_strength = yes
+	update_party_name = yes
+	set_coalition_drift = yes
+}
+
+# ----------------------------------------------------------------------------
+# dsw_tfr_russia.276 —— 保加利亚：斯特凡·亚内夫（保守派）组阁
+# 现实依据：2022.10 保加利亚提前大选，GERB 25.4% 重回第一，
+#           PP 19.6%、BSP 10.5%、复兴党 10.2%；GERB 主导少数政府。
+# 基线 BUL 同上；执政 ^1
+# 作用域：BUL
+# ----------------------------------------------------------------------------
+ZZZ_TFR_SOV_276_BUL_conservative = {
+	set_politics = {
+		ruling_party = democratic
+		elections_allowed = yes
+	}
+	set_popularities = {
+		democratic = 74.0
+		communism = 13.0
+		fascism = 0.0
+		neutrality = 0.0
+		nationalist = 13.0
+	}
+	set_variable = { party_pop_array^0 = 0 } #Western_Autocracy
+	set_variable = { party_pop_array^1 = 0.40 } #conservatism（GERB）
+	set_variable = { party_pop_array^2 = 0.13 } #liberalism（PP 下滑）
+	set_variable = { party_pop_array^3 = 0.21 } #socialism（中间派）
+	set_variable = { party_pop_array^4 = 0 } #communist_state
+	set_variable = { party_pop_array^5 = 0.13 } #anarchist_communism（BSP）
+	set_variable = { party_pop_array^6 = 0 } #Conservative
+	set_variable = { party_pop_array^7 = 0 } #Autocracy
+	set_variable = { party_pop_array^8 = 0 } #Mod_Vilayat_e_Faqih
+	set_variable = { party_pop_array^9 = 0 } #Vilayat_e_Faqih
+	set_variable = { party_pop_array^10 = 0 } #Kingdom
+	set_variable = { party_pop_array^11 = 0 } #Caliphate
+	set_variable = { party_pop_array^12 = 0 } #Neutral_Muslim_Brotherhood
+	set_variable = { party_pop_array^13 = 0 } #Neutral_Autocracy
+	set_variable = { party_pop_array^14 = 0 } #Neutral_conservatism
+	set_variable = { party_pop_array^15 = 0 } #oligarchism
+	set_variable = { party_pop_array^16 = 0 } #Neutral_Libertarian
+	set_variable = { party_pop_array^17 = 0 } #Neutral_green
+	set_variable = { party_pop_array^18 = 0 } #neutral_Social
+	set_variable = { party_pop_array^19 = 0 } #Neutral_Communism
+	set_variable = { party_pop_array^20 = 0.13 } #Nat_Populism（复兴党）
+	set_variable = { party_pop_array^21 = 0 } #Nat_Fascism
+	set_variable = { party_pop_array^22 = 0 } #Nat_Autocracy
+	set_variable = { party_pop_array^23 = 0 } #Monarchist
+	clear_array = gov_coalition_array
+	set_variable = { ruling_party = 1 }
+	update_set_politics = yes
+	add_own_ideology_drift = yes
+	add_to_array = { gov_coalition_array = 1 }
+	add_to_array = { gov_coalition_array = 20 }
+	update_government_coalition_strength = yes
+	update_party_name = yes
+	set_coalition_drift = yes
+}
+
+# ----------------------------------------------------------------------------
+# dsw_tfr_russia.277 —— 保加利亚：科斯塔丁·科斯塔迪诺夫（左翼/旧共产党系）
+# 现实依据：2023.4 保加利亚大选，GERB 26.5%、PP-DB 24.6%、复兴党 14.2%、
+#           BSP 9.0%；此处为俄方扶植的旧共产党系政权，左翼与威权派合计过半。
+# 基线 BUL 同上；执政 ^6（ communism 组 Conservative）
+# 作用域：BUL
+# ----------------------------------------------------------------------------
+ZZZ_TFR_SOV_277_BUL_communist = {
+	set_politics = {
+		ruling_party = communism
+		elections_allowed = yes
+	}
+	set_popularities = {
+		democratic = 40.0
+		communism = 56.0
+		fascism = 0.0
+		neutrality = 0.0
+		nationalist = 4.0
+	}
+	set_variable = { party_pop_array^0 = 0 } #Western_Autocracy
+	set_variable = { party_pop_array^1 = 0.16 } #conservatism（GERB 受压制）
+	set_variable = { party_pop_array^2 = 0.10 } #liberalism
+	set_variable = { party_pop_array^3 = 0.14 } #socialism
+	set_variable = { party_pop_array^4 = 0 } #communist_state
+	set_variable = { party_pop_array^5 = 0.14 } #anarchist_communism（BSP）
+	set_variable = { party_pop_array^6 = 0.36 } #Conservative（执政的旧共产党系）
+	set_variable = { party_pop_array^7 = 0.06 } #Autocracy
+	set_variable = { party_pop_array^8 = 0 } #Mod_Vilayat_e_Faqih
+	set_variable = { party_pop_array^9 = 0 } #Vilayat_e_Faqih
+	set_variable = { party_pop_array^10 = 0 } #Kingdom
+	set_variable = { party_pop_array^11 = 0 } #Caliphate
+	set_variable = { party_pop_array^12 = 0 } #Neutral_Muslim_Brotherhood
+	set_variable = { party_pop_array^13 = 0 } #Neutral_Autocracy
+	set_variable = { party_pop_array^14 = 0 } #Neutral_conservatism
+	set_variable = { party_pop_array^15 = 0 } #oligarchism
+	set_variable = { party_pop_array^16 = 0 } #Neutral_Libertarian
+	set_variable = { party_pop_array^17 = 0 } #Neutral_green
+	set_variable = { party_pop_array^18 = 0 } #neutral_Social
+	set_variable = { party_pop_array^19 = 0 } #Neutral_Communism
+	set_variable = { party_pop_array^20 = 0.04 } #Nat_Populism
+	set_variable = { party_pop_array^21 = 0 } #Nat_Fascism
+	set_variable = { party_pop_array^22 = 0 } #Nat_Autocracy
+	set_variable = { party_pop_array^23 = 0 } #Monarchist
+	clear_array = gov_coalition_array
+	set_variable = { ruling_party = 6 }
+	update_set_politics = yes
+	add_own_ideology_drift = yes
+	add_to_array = { gov_coalition_array = 6 }
+	add_to_array = { gov_coalition_array = 7 }
+	update_government_coalition_strength = yes
+	update_party_name = yes
+	set_coalition_drift = yes
+}
+
+# ----------------------------------------------------------------------------
+# dsw_tfr_russia.280 —— 罗马尼亚：阿德利娜·米尔扎（保守派/PNL 系）上台
+# 现实依据：2020.12 罗马尼亚议会选举，PSD 27.0%、PNL 25.2%、
+#           USR-PLUS 15.4%、AUR 9.1%；PNL 主导中右翼联合政府。
+# 基线 ROM：^1=0.255 ^3=0.455 ^4=0.1 ^5=0.09 ^19=0.06 ^20=0.04，执政 ^3
+# 作用域：ROM
+# ----------------------------------------------------------------------------
+ZZZ_TFR_SOV_280_ROM_conservative = {
+	set_politics = {
+		ruling_party = democratic
+		elections_allowed = yes
+	}
+	set_popularities = {
+		democratic = 67.0
+		communism = 15.0
+		fascism = 0.0
+		neutrality = 4.0
+		nationalist = 14.0
+	}
+	set_variable = { party_pop_array^0 = 0 } #Western_Autocracy
+	set_variable = { party_pop_array^1 = 0.40 } #conservatism（PNL 系）
+	set_variable = { party_pop_array^2 = 0 } #liberalism
+	set_variable = { party_pop_array^3 = 0.27 } #socialism（PSD）
+	set_variable = { party_pop_array^4 = 0.05 } #communist_state
+	set_variable = { party_pop_array^5 = 0.10 } #anarchist_communism
+	set_variable = { party_pop_array^6 = 0 } #Conservative
+	set_variable = { party_pop_array^7 = 0 } #Autocracy
+	set_variable = { party_pop_array^8 = 0 } #Mod_Vilayat_e_Faqih
+	set_variable = { party_pop_array^9 = 0 } #Vilayat_e_Faqih
+	set_variable = { party_pop_array^10 = 0 } #Kingdom
+	set_variable = { party_pop_array^11 = 0 } #Caliphate
+	set_variable = { party_pop_array^12 = 0 } #Neutral_Muslim_Brotherhood
+	set_variable = { party_pop_array^13 = 0 } #Neutral_Autocracy
+	set_variable = { party_pop_array^14 = 0 } #Neutral_conservatism
+	set_variable = { party_pop_array^15 = 0 } #oligarchism
+	set_variable = { party_pop_array^16 = 0 } #Neutral_Libertarian
+	set_variable = { party_pop_array^17 = 0 } #Neutral_green
+	set_variable = { party_pop_array^18 = 0 } #neutral_Social
+	set_variable = { party_pop_array^19 = 0.04 } #Neutral_Communism
+	set_variable = { party_pop_array^20 = 0.14 } #Nat_Populism（AUR）
+	set_variable = { party_pop_array^21 = 0 } #Nat_Fascism
+	set_variable = { party_pop_array^22 = 0 } #Nat_Autocracy
+	set_variable = { party_pop_array^23 = 0 } #Monarchist
+	clear_array = gov_coalition_array
+	set_variable = { ruling_party = 1 }
+	update_set_politics = yes
+	add_own_ideology_drift = yes
+	add_to_array = { gov_coalition_array = 1 }
+	add_to_array = { gov_coalition_array = 20 }
+	update_government_coalition_strength = yes
+	update_party_name = yes
+	set_coalition_drift = yes
+}
+
+# ----------------------------------------------------------------------------
+# dsw_tfr_russia.281 —— 斯洛伐克：鲍里斯·科拉尔（保守派/社会民主-斯梅罗德）
+# 现实依据：2020.2 斯洛伐克议会选举，OLaNO 25.0%、方向党 18.3%、
+#           斯梅罗德 8.2%、科特莱巴 8.0%、SaS 6.2%；中右翼联合政府。
+# 基线 SLO：^1=0.127 ^2=0.14 ^3=0.327 ^14=0.073 ^16=0.14 ^20=0.1 ^21=0.093，执政 ^3
+# 作用域：SLO
+# ----------------------------------------------------------------------------
+ZZZ_TFR_SOV_281_SLO_conservative = {
+	set_politics = {
+		ruling_party = democratic
+		elections_allowed = yes
+	}
+	set_popularities = {
+		democratic = 57.0
+		communism = 0.0
+		fascism = 0.0
+		neutrality = 15.0
+		nationalist = 28.0
+	}
+	set_variable = { party_pop_array^0 = 0 } #Western_Autocracy
+	set_variable = { party_pop_array^1 = 0.25 } #conservatism（OLaNO/KDH 系）
+	set_variable = { party_pop_array^2 = 0.10 } #liberalism（SaS）
+	set_variable = { party_pop_array^3 = 0.22 } #socialism（方向党）
+	set_variable = { party_pop_array^4 = 0 } #communist_state
+	set_variable = { party_pop_array^5 = 0 } #anarchist_communism
+	set_variable = { party_pop_array^6 = 0 } #Conservative
+	set_variable = { party_pop_array^7 = 0 } #Autocracy
+	set_variable = { party_pop_array^8 = 0 } #Mod_Vilayat_e_Faqih
+	set_variable = { party_pop_array^9 = 0 } #Vilayat_e_Faqih
+	set_variable = { party_pop_array^10 = 0 } #Kingdom
+	set_variable = { party_pop_array^11 = 0 } #Caliphate
+	set_variable = { party_pop_array^12 = 0 } #Neutral_Muslim_Brotherhood
+	set_variable = { party_pop_array^13 = 0 } #Neutral_Autocracy
+	set_variable = { party_pop_array^14 = 0.06 } #Neutral_conservatism
+	set_variable = { party_pop_array^15 = 0 } #oligarchism
+	set_variable = { party_pop_array^16 = 0.09 } #Neutral_Libertarian
+	set_variable = { party_pop_array^17 = 0 } #Neutral_green
+	set_variable = { party_pop_array^18 = 0 } #neutral_Social
+	set_variable = { party_pop_array^19 = 0 } #Neutral_Communism
+	set_variable = { party_pop_array^20 = 0.22 } #Nat_Populism（斯梅罗德/SNS）
+	set_variable = { party_pop_array^21 = 0.06 } #Nat_Fascism（科特莱巴）
+	set_variable = { party_pop_array^22 = 0 } #Nat_Autocracy
+	set_variable = { party_pop_array^23 = 0 } #Monarchist
+	clear_array = gov_coalition_array
+	set_variable = { ruling_party = 1 }
+	update_set_politics = yes
+	add_own_ideology_drift = yes
+	add_to_array = { gov_coalition_array = 1 }
+	add_to_array = { gov_coalition_array = 20 }
+	update_government_coalition_strength = yes
+	update_party_name = yes
+	set_coalition_drift = yes
+}
+
+# ----------------------------------------------------------------------------
+# dsw_tfr_russia.1554 —— 俄罗斯：新联盟社会民主派胜出（ruling_party = 18）
+# 现实依据：2021.9 俄罗斯国家杜马选举，统一俄罗斯 49.8%、俄共 18.9%、
+#           自民党 7.5%、公正俄罗斯 7.5%、新人党 5.3%；
+#           此处为新联盟/社会民主路线掌权，社会民主与自由派合计过半。
+# 基线 SOV：^1=0.005 ^2=0.035 ^3=0.070 ^4=0.153 ^5=0.010 ^6=0.512
+#           ^14=0.002 ^15=0.023 ^17=0.010 ^18=0.063 ^20=0.110 ^21=0.010
+# 作用域：SOV
+# ----------------------------------------------------------------------------
+ZZZ_TFR_SOV_1554_neutral_social = {
+	set_politics = {
+		ruling_party = neutrality
+		elections_allowed = yes
+	}
+	set_popularities = {
+		democratic = 27.0
+		communism = 18.0
+		fascism = 0.0
+		neutrality = 47.0
+		nationalist = 8.0
+	}
+	set_variable = { party_pop_array^0 = 0 } #Western_Autocracy
+	set_variable = { party_pop_array^1 = 0.06 } #conservatism
+	set_variable = { party_pop_array^2 = 0.12 } #liberalism
+	set_variable = { party_pop_array^3 = 0.09 } #socialism
+	set_variable = { party_pop_array^4 = 0.10 } #communist_state
+	set_variable = { party_pop_array^5 = 0.02 } #anarchist_communism
+	set_variable = { party_pop_array^6 = 0.06 } #Conservative
+	set_variable = { party_pop_array^7 = 0 } #Autocracy
+	set_variable = { party_pop_array^8 = 0 } #Mod_Vilayat_e_Faqih
+	set_variable = { party_pop_array^9 = 0 } #Vilayat_e_Faqih
+	set_variable = { party_pop_array^10 = 0 } #Kingdom
+	set_variable = { party_pop_array^11 = 0 } #Caliphate
+	set_variable = { party_pop_array^12 = 0 } #Neutral_Muslim_Brotherhood
+	set_variable = { party_pop_array^13 = 0 } #Neutral_Autocracy
+	set_variable = { party_pop_array^14 = 0.02 } #Neutral_conservatism
+	set_variable = { party_pop_array^15 = 0.03 } #oligarchism
+	set_variable = { party_pop_array^16 = 0 } #Neutral_Libertarian
+	set_variable = { party_pop_array^17 = 0.02 } #Neutral_green
+	set_variable = { party_pop_array^18 = 0.40 } #neutral_Social（执政）
+	set_variable = { party_pop_array^19 = 0 } #Neutral_Communism
+	set_variable = { party_pop_array^20 = 0.07 } #Nat_Populism
+	set_variable = { party_pop_array^21 = 0.01 } #Nat_Fascism
+	set_variable = { party_pop_array^22 = 0 } #Nat_Autocracy
+	set_variable = { party_pop_array^23 = 0 } #Monarchist
+	clear_array = gov_coalition_array
+	set_variable = { ruling_party = 18 }
+	update_set_politics = yes
+	add_own_ideology_drift = yes
+	add_to_array = { gov_coalition_array = 18 }
+	add_to_array = { gov_coalition_array = 3 }
+	add_to_array = { gov_coalition_array = 2 }
+	update_government_coalition_strength = yes
+	update_party_name = yes
+	set_coalition_drift = yes
+}
+
+# ----------------------------------------------------------------------------
+# dsw_tfr_russia.1554 —— 俄罗斯：革新共产党掌权（ruling_party = 4）
+# 现实依据：同上杜马选举数据；此处为旧体制内共产党系重组掌权，
+#           俄共与体制内保守派合计过半，自由派被压缩。
+# 基线 SOV 同上
+# 作用域：SOV
+# ----------------------------------------------------------------------------
+ZZZ_TFR_SOV_1554_communist = {
+	set_politics = {
+		ruling_party = communism
+		elections_allowed = yes
+	}
+	set_popularities = {
+		democratic = 12.0
+		communism = 65.0
+		fascism = 0.0
+		neutrality = 12.0
+		nationalist = 11.0
+	}
+	set_variable = { party_pop_array^0 = 0 } #Western_Autocracy
+	set_variable = { party_pop_array^1 = 0.01 } #conservatism
+	set_variable = { party_pop_array^2 = 0.03 } #liberalism
+	set_variable = { party_pop_array^3 = 0.08 } #socialism
+	set_variable = { party_pop_array^4 = 0.42 } #communist_state（执政）
+	set_variable = { party_pop_array^5 = 0.03 } #anarchist_communism
+	set_variable = { party_pop_array^6 = 0.20 } #Conservative
+	set_variable = { party_pop_array^7 = 0 } #Autocracy
+	set_variable = { party_pop_array^8 = 0 } #Mod_Vilayat_e_Faqih
+	set_variable = { party_pop_array^9 = 0 } #Vilayat_e_Faqih
+	set_variable = { party_pop_array^10 = 0 } #Kingdom
+	set_variable = { party_pop_array^11 = 0 } #Caliphate
+	set_variable = { party_pop_array^12 = 0 } #Neutral_Muslim_Brotherhood
+	set_variable = { party_pop_array^13 = 0 } #Neutral_Autocracy
+	set_variable = { party_pop_array^14 = 0.01 } #Neutral_conservatism
+	set_variable = { party_pop_array^15 = 0.02 } #oligarchism
+	set_variable = { party_pop_array^16 = 0 } #Neutral_Libertarian
+	set_variable = { party_pop_array^17 = 0.01 } #Neutral_green
+	set_variable = { party_pop_array^18 = 0.08 } #neutral_Social
+	set_variable = { party_pop_array^19 = 0 } #Neutral_Communism
+	set_variable = { party_pop_array^20 = 0.10 } #Nat_Populism
+	set_variable = { party_pop_array^21 = 0.01 } #Nat_Fascism
+	set_variable = { party_pop_array^22 = 0 } #Nat_Autocracy
+	set_variable = { party_pop_array^23 = 0 } #Monarchist
+	clear_array = gov_coalition_array
+	set_variable = { ruling_party = 4 }
+	update_set_politics = yes
+	add_own_ideology_drift = yes
+	add_to_array = { gov_coalition_array = 4 }
+	add_to_array = { gov_coalition_array = 6 }
+	update_government_coalition_strength = yes
+	update_party_name = yes
+	set_coalition_drift = yes
+}

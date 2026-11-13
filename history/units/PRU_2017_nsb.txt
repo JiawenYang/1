@@ -38,6 +38,12 @@ division_template = {
 		L_arm_Bat = { x = 0 y = 2 }
 		L_arm_Bat = { x = 0 y = 3 }
 	}
+	support = {
+		SP_AA_Battery = { x = 0 y = 0 }
+		armor_Recce_Comp = { x = 0 y = 1 }
+		H_Engi_Comp = { x = 0 y = 2 }
+		combat_service_support_company = { x = 0 y = 3 }
+	}
 }
 division_template = {
 	name = "Motorized Infantry Brigade"
@@ -58,6 +64,11 @@ division_template = {
 		L_Inf_Bat = { x = 0 y = 0 }
 		L_Inf_Bat = { x = 0 y = 1 }
 		L_Inf_Bat = { x = 0 y = 2 }
+	}
+	support = {
+		L_Recce_Comp = { x = 0 y = 0 }
+		L_Engi_Comp = { x = 0 y = 1 }
+		combat_service_support_company = { x = 0 y = 2 }
 	}
 }
 division_template = {
@@ -85,6 +96,11 @@ division_template = {
 		L_Inf_Bat = { x = 0 y = 3 }
 	}
 
+	support = {
+		L_Recce_Comp = { x = 0 y = 0 }
+		L_Engi_Comp = { x = 0 y = 1 }
+		combat_service_support_company = { x = 0 y = 2 }
+	}
 }
 division_template = {
 	name = "Air Assult Brigade"
@@ -198,14 +214,14 @@ units = {
 instant_effect = {
 
 	add_equipment_to_stockpile = {
-		variant_name = "FN FAL"
+		variant_name = "Ak 4"
 		type = infantry_weapons_2 #FN FAL
 		amount = 6600
-		producer = BEL
+		producer = SWE
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "M4"
-		type = infantry_weapons_5 #M4
+		variant_name = "M4 SOPMOD Block I"
+    type = infantry_weapons_4 #M4
 		amount = 1500
 		producer = USA
 	}
@@ -231,19 +247,20 @@ instant_effect = {
 	}
 
 	add_equipment_to_stockpile = {
+		variant_name = "T-55A"
 		type = medium_tank_chassis_0
 		amount = 140
 		producer = SOV
 	}
 	add_equipment_to_stockpile = {
 		variant_name = "AMX-10 RC"
-		type = medium_tank_destroyer_chassis_1 #AMX-10 RC
+		type = medium_tank_destroyer_chassis_2 #AMX-10 RC
 		amount = 246 #+140 for balance
 		producer = FRA
 	}
 	add_equipment_to_stockpile = {
 		variant_name = "BRDM-2"
-		type = medium_tank_amphibious_chassis_0 #BRDM-2
+		type = medium_tank_destroyer_chassis_0 #BRDM-2
 		amount = 30
 		producer = SOV
 	}
@@ -260,14 +277,14 @@ instant_effect = {
 		producer = USA
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "Henschel UR-416"
+		variant_name = "UR-416"
 		type = medium_tank_amphibious_chassis_0 #Henschel UR-416
 		amount = 150
-		producer = PRU
+		producer = GER
 		#version_name = "Henschel UR-416"
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "M109A2"
+		variant_name = "M109A3"
 		type = medium_tank_artillery_chassis_1 #M109A2
 		amount = 12
 		producer = USA
@@ -280,9 +297,10 @@ instant_effect = {
 		#version_name = "M101"
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "M56"
 		type = artillery_1 #OTO-Melara Mod 56
 		amount = 25
-		producer = PRU
+		producer = SER
 	}
 	add_equipment_to_stockpile = {
 		variant_name = "D-30"
@@ -298,6 +316,7 @@ instant_effect = {
 		#version_name = "M114"
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "Obusier de 155 mm Modèle 50"
 		type = artillery_1 #Obusier de 155 mm Modèle 50
 		amount = 30
 		producer = PRU
@@ -331,7 +350,7 @@ instant_effect = {
 	}
 	add_equipment_to_stockpile = {
 		variant_name = "LAV-25"
-		type = medium_tank_amphibious_chassis_1 #LAV-25
+		type = medium_tank_flame_chassis_2 #LAV-25
 		amount = 2
 		producer = USA
 	}
@@ -344,8 +363,8 @@ instant_effect = {
 	} 
 
 	add_equipment_to_stockpile = {
-		variant_name = "Mi-24"
-		type = heavy_tank_chassis_0 #Mil Mi-24 Hind
+		variant_name = "Mi-24P"
+    type = heavy_tank_chassis_0 #Mil Mi-24 Hind
 		amount = 18
 		producer = SOV
 	}
@@ -362,15 +381,20 @@ instant_effect = {
 		producer = PRU
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "FN FAL"
+		variant_name = "Ak 4"
 		type = infantry_weapons_2 #FN FAL（封存）
 		amount = 60000
-		producer = BEL
+		producer = SWE
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "T-55"
+		variant_name = "T-55-64"
 		type = medium_tank_chassis_0 #T-55（封存）
 		amount = 200
-		producer = SOV
+		producer = UKR
+	}
+	add_equipment_to_stockpile = {
+		type = transport_helicopter_1
+		producer = PRU
+		amount = 90
 	}
 }

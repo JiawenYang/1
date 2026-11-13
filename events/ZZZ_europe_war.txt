@@ -1,0 +1,101 @@
+# ============================================================================
+#  欧陆战争 —— 事件（本工程原创）
+#
+#  zzz_eur.1  开战超事件（决议 ZZZ_eur_escalate 执行后派发给人类玩家）
+#  zzz_eur.2  北约方胜利停战新闻
+#  zzz_eur.3  俄方（CSTO）胜利停战新闻
+#  zzz_eur.4  僵持停战新闻（超时兜底）
+#
+#  所有事件均为 is_triggered_only + fire_only_once，由
+#  common/decisions/ZZZ_europe_war_decisions.txt 与
+#  common/on_actions/ZZZ_europe_war_on_actions.txt 调度。
+# ============================================================================
+add_namespace = zzz_eur
+
+# ----------------------------------------------------------------------------
+# 开战超事件
+# ----------------------------------------------------------------------------
+news_event = {
+	id = zzz_eur.1
+	title = zzz_eur.1.t
+	desc = zzz_eur.1.d
+	picture = GFX_politics_talks
+	major = yes
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_global_flag = ZZZ_eur_war_ongoing
+	}
+
+	option = {
+		name = zzz_eur.1.a
+		log = "[GetDateText]: [This.GetName]: zzz_eur.1.a executed"
+	}
+}
+
+# ----------------------------------------------------------------------------
+# 北约方胜利：波罗的海三国与波兰复国、乌克兰恢复，全员白和
+# ----------------------------------------------------------------------------
+news_event = {
+	id = zzz_eur.2
+	title = zzz_eur.2.t
+	desc = zzz_eur.2.d
+	picture = GFX_politics_talks
+	major = yes
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_global_flag = ZZZ_eur_nato_victory
+	}
+
+	option = {
+		name = zzz_eur.2.a
+		log = "[GetDateText]: [This.GetName]: zzz_eur.2.a executed"
+	}
+}
+
+# ----------------------------------------------------------------------------
+# 俄方胜利：波罗的海三国、波兰、乌克兰转为俄方傀儡，全员白和
+# ----------------------------------------------------------------------------
+news_event = {
+	id = zzz_eur.3
+	title = zzz_eur.3.t
+	desc = zzz_eur.3.d
+	picture = GFX_politics_talks
+	major = yes
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_global_flag = ZZZ_eur_csto_victory
+	}
+
+	option = {
+		name = zzz_eur.3.a
+		log = "[GetDateText]: [This.GetName]: zzz_eur.3.a executed"
+	}
+}
+
+# ----------------------------------------------------------------------------
+# 僵持停战：不做领土变更
+# ----------------------------------------------------------------------------
+news_event = {
+	id = zzz_eur.4
+	title = zzz_eur.4.t
+	desc = zzz_eur.4.d
+	picture = GFX_politics_talks
+	major = yes
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_global_flag = ZZZ_eur_stalemate
+	}
+
+	option = {
+		name = zzz_eur.4.a
+		log = "[GetDateText]: [This.GetName]: zzz_eur.4.a executed"
+	}
+}

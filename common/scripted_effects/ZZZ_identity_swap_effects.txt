@@ -1,0 +1,612 @@
+# ============================================================================
+# ZZZ 国家身份换组：军事阵营 + 经济组织「整组替换」
+#
+# 口径（2026-11 定稿）：
+#   蓝方体系 = NATO（NATO_member）/ PDTO（太平洋防卫条约，pdto_member 旗标）/
+#               EAST（faction_seato_alliance）/ EU（EU_member）/
+#               PEC（JAP_PEC_member）/ GCC（idea_gcc_member_state）/
+#               MNNA（Major_Non_NATO_Ally）
+#   红方体系 = CSTO（CSTO_member）/ 上合（CHI_sco_member 系列）/
+#               EADI（eadi_member 旗标 + faction_template_eadi）/
+#               金砖（SOV_brics_member）/ 一带一路（PRC_BRI_member）/
+#               抵抗轴心（faction_resistance_axis_member）
+#
+# 「太约」= PDTO，与 EAST 是两家：成员判定用旗标 pdto_member，
+# EAST 成员判定用 idea faction_seato_alliance，两者不互相替代。
+#
+# 方向：
+#   正向进（蓝→红）：国家被击败并成立协作政府，宗主国属红方 → 整组切到红方体系。
+#   逆向退（红→蓝）：协作政府结束、国家恢复自主 → 整组退回原归属体系。
+#
+# 幂等：ZZZ_identity_side（1=蓝 2=红），等于目标侧直接跳过。
+# 复员依据：ZZZ_identity_origin（首次换组前记录的原始归属，0=无阵营身份）。
+#           原始归属为 0 的国家不参与换组（无身份可换，避免凭空入组）。
+# ============================================================================
+
+# ----------------------------------------------------------------------------
+# 记录原始归属与「按原成员资格还原」的留档
+# 由 ZZZ_identity_swap_check 在首次观测到协作政府时调用一次。
+# ----------------------------------------------------------------------------
+ZZZ_identity_record_origin = {
+	if = {
+		limit = {
+			OR = {
+				has_idea = CSTO_member
+				has_idea = CHI_sco_member
+				has_idea = CHI_sco_member_econ
+				has_idea = CHI_sco_member_pol
+				has_idea = CHI_sco_member_mil
+				has_country_flag = eadi_member
+				has_idea = SOV_brics_member
+				has_idea = SOV_brics_member_2
+				has_idea = PRC_BRI_member
+				has_idea = faction_resistance_axis_member
+			}
+		}
+		set_variable = { var = ZZZ_identity_origin value = 2 }
+	}
+	else_if = {
+		limit = {
+			OR = {
+				has_idea = NATO_member
+				has_country_flag = pdto_member
+				has_idea = faction_seato_alliance
+				has_idea = EU_member
+				has_idea = JAP_PEC_member
+				has_idea = JAP_PEC_member_2
+				has_idea = idea_gcc_member_state
+				has_idea = Major_Non_NATO_Ally
+			}
+		}
+		set_variable = { var = ZZZ_identity_origin value = 1 }
+	}
+	else = {
+		set_variable = { var = ZZZ_identity_origin value = 0 }
+	}
+
+	# 这三家不随「阵营侧」整组加入，只在原成员身份成立时还原
+	if = {
+		limit = { has_idea = EU_member }
+		set_variable = { var = ZZZ_id_bak_eu value = 1 }
+	}
+	if = {
+		limit = { has_idea = idea_gcc_member_state }
+		set_variable = { var = ZZZ_id_bak_gcc value = 1 }
+	}
+	if = {
+		limit = {
+			OR = {
+				has_idea = JAP_PEC_member
+				has_idea = JAP_PEC_member_2
+			}
+		}
+		set_variable = { var = ZZZ_id_bak_pec value = 1 }
+	}
+	# MNNA 的成员判定是三件套：idea + 旗标 + 科技共享组，任缺其一都不算完整成员
+	if = {
+		limit = {
+			OR = {
+				has_idea = Major_Non_NATO_Ally
+				has_country_flag = Major_Non_NATO_Ally
+			}
+		}
+		set_variable = { var = ZZZ_id_bak_mnna value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# 主判定：协作政府 → 按宗主国阵营切组；协作政府结束 → 退回原始归属
+# 调用位置：on_monthly（逐国）、on_puppet、on_startup、on_peaceconference_ended
+# ----------------------------------------------------------------------------
+ZZZ_identity_swap_check = {
+	if = {
+		limit = {
+			is_subject = yes
+			has_autonomy_state = autonomy_collaboration_government
+		}
+
+		# 首次观测：先留档，再换组
+		if = {
+			limit = { NOT = { has_variable = ZZZ_identity_origin } }
+			ZZZ_identity_record_origin = yes
+		}
+
+		if = {
+			limit = {
+				NOT = { check_variable = { var = ZZZ_identity_origin value = 0 } }
+				overlord = {
+					OR = {
+						has_idea = CSTO_member
+						has_idea = CHI_sco_member
+						has_idea = CHI_sco_member_econ
+						has_idea = CHI_sco_member_pol
+						has_idea = CHI_sco_member_mil
+						has_country_flag = eadi_member
+						has_idea = SOV_brics_member
+						has_idea = SOV_brics_member_2
+						has_idea = PRC_BRI_member
+						has_idea = faction_resistance_axis_member
+					}
+				}
+			}
+			if = {
+				limit = { NOT = { check_variable = { var = ZZZ_identity_side value = 2 } } }
+				ZZZ_identity_swap_to_red = yes
+				set_variable = { var = ZZZ_identity_side value = 2 }
+				news_event = { id = zzz_identity.1 hours = 6 }
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = { check_variable = { var = ZZZ_identity_origin value = 0 } }
+				overlord = {
+					OR = {
+						has_idea = NATO_member
+						has_country_flag = pdto_member
+						has_idea = faction_seato_alliance
+						has_idea = EU_member
+						has_idea = JAP_PEC_member
+						has_idea = JAP_PEC_member_2
+						has_idea = idea_gcc_member_state
+						has_idea = Major_Non_NATO_Ally
+					}
+				}
+			}
+			if = {
+				limit = { NOT = { check_variable = { var = ZZZ_identity_side value = 1 } } }
+				ZZZ_identity_swap_to_blue = yes
+				set_variable = { var = ZZZ_identity_side value = 1 }
+				news_event = { id = zzz_identity.2 hours = 6 }
+			}
+		}
+	}
+	else = {
+		# 已不再是协作政府：若此前换过组，按留档退回原归属
+		if = {
+			limit = { has_variable = ZZZ_identity_side }
+			if = {
+				limit = { check_variable = { var = ZZZ_identity_origin value = 1 } }
+				if = {
+					limit = { NOT = { check_variable = { var = ZZZ_identity_side value = 1 } } }
+					ZZZ_identity_swap_to_blue = yes
+					news_event = { id = zzz_identity.2 hours = 6 }
+				}
+			}
+			else_if = {
+				limit = { check_variable = { var = ZZZ_identity_origin value = 2 } }
+				if = {
+					limit = { NOT = { check_variable = { var = ZZZ_identity_side value = 2 } } }
+					ZZZ_identity_swap_to_red = yes
+					news_event = { id = zzz_identity.1 hours = 6 }
+				}
+			}
+			clear_variable = ZZZ_identity_side
+			clear_variable = ZZZ_id_bak_eu
+			clear_variable = ZZZ_id_bak_gcc
+			clear_variable = ZZZ_id_bak_pec
+			clear_variable = ZZZ_id_bak_mnna
+		}
+	}
+}
+
+# ----------------------------------------------------------------------------
+# 正向进：切到红方体系
+# 退出蓝方（NATO / PDTO / EAST / GCC / MNNA / EU / PEC），并入红方（CSTO / 上合 / EADI / 金砖 / 一带一路）
+# ----------------------------------------------------------------------------
+ZZZ_identity_swap_to_red = {
+	# ---- 退出蓝方体系 ----
+	if = {
+		limit = { has_idea = NATO_member }
+		NATO_leave = yes
+	}
+	if = {
+		limit = { has_country_flag = pdto_member }
+		clr_country_flag = pdto_member
+	}
+	if = {
+		limit = { has_idea = idea_gcc_member_state }
+		remove_ideas = idea_gcc_member_state
+	}
+	# MNNA：走基座原生退出包（idea + 旗标 + 科技共享组 + 互评），不能只摘 idea
+	if = {
+		limit = {
+			OR = {
+				has_idea = Major_Non_NATO_Ally
+				has_country_flag = Major_Non_NATO_Ally
+			}
+		}
+		NATO_major_non_nato_ally_leave = yes
+		clear_variable = ZZZ_mnna_active
+	}
+	if = {
+		limit = { has_idea = EU_member }
+		remove_ideas = EU_member
+	}
+	if = {
+		limit = {
+			country_exists = JAP
+			OR = {
+				has_idea = JAP_PEC_member
+				has_idea = JAP_PEC_member_2
+			}
+		}
+		JAP_leave_PEC = yes
+	}
+
+	# 统一退组一次：会顺带摘掉 faction_seato_alliance（EAST 成员判定靠 on_leave_faction）
+	if = {
+		limit = { is_in_faction = yes }
+		leave_faction = yes
+	}
+
+	# PDTO 成员国 idea 不在退组联动里，单独摘除
+	if = {
+		limit = { has_idea = JAP_PDTO_member_1 }
+		remove_ideas = JAP_PDTO_member_1
+	}
+	if = {
+		limit = { has_idea = JAP_PDTO_member_2 }
+		remove_ideas = JAP_PDTO_member_2
+	}
+
+	# ---- 加入红方体系 ----
+	# 集安组织：仅当世界上存在集安组织领袖时入组
+	if = {
+		limit = {
+			NOT = { has_idea = CSTO_member }
+			any_country = {
+				has_idea = CSTO_member
+				is_faction_leader = yes
+			}
+		}
+		CSTO_join = yes
+	}
+	# 上合：仅当中国本身是上合成员（有组织可入）
+	if = {
+		limit = {
+			country_exists = CHI
+			CHI = { has_idea = CHI_sco_member }
+			NOT = { has_idea = CHI_sco_member }
+			NOT = { has_idea = CHI_sco_member_econ }
+			NOT = { has_idea = CHI_sco_member_pol }
+			NOT = { has_idea = CHI_sco_member_mil }
+		}
+		CHI_sco_promote_to_member = yes
+	}
+	# 欧亚发展倡议（EADI）：中国为阵营领袖时入组，成员判定 = eadi_member 旗标
+	if = {
+		limit = {
+			country_exists = CHI
+			CHI = {
+				is_faction_leader = yes
+				has_faction_template = faction_template_eadi
+			}
+			NOT = { has_country_flag = eadi_member }
+		}
+		CHI = { add_to_faction = PREV }
+		set_country_flag = eadi_member
+		if = {
+			limit = {
+				NOT = { has_idea = CHI_sco_member }
+				NOT = { has_idea = CHI_sco_member_econ }
+				NOT = { has_idea = CHI_sco_member_pol }
+				NOT = { has_idea = CHI_sco_member_mil }
+			}
+			add_ideas = CHI_sco_member
+		}
+	}
+	# 金砖：由俄罗斯记账，内部自带幂等守卫
+	if = {
+		limit = {
+			country_exists = SOV
+			NOT = { has_idea = SOV_brics_member }
+			NOT = { has_idea = SOV_brics_member_2 }
+		}
+		SOV_join_brics = yes
+	}
+	# 一带一路：由俄罗斯/中国两条线都认，这里走中国记账
+	if = {
+		limit = {
+			country_exists = CHI
+			NOT = { has_idea = PRC_BRI_member }
+		}
+		PRC_join_BRI = yes
+	}
+}
+
+# ----------------------------------------------------------------------------
+# 逆向退：切到蓝方体系
+# 退出红方（CSTO / 上合 / EADI / 抵抗轴心 / 金砖 / 一带一路），并入蓝方（NATO / PDTO / EAST / GCC / EU / PEC）
+# ----------------------------------------------------------------------------
+ZZZ_identity_swap_to_blue = {
+	# ---- 退出红方体系 ----
+	if = {
+		limit = { has_idea = CSTO_member }
+		CSTO_leave = yes
+	}
+	if = {
+		limit = {
+			OR = {
+				has_idea = CHI_sco_member
+				has_idea = CHI_sco_member_econ
+				has_idea = CHI_sco_member_pol
+				has_idea = CHI_sco_member_mil
+				has_idea = CHI_sco_observer
+				has_idea = CHI_sco_dialogue_partner
+			}
+		}
+		CHI_sco_remove = yes
+	}
+	if = {
+		limit = { has_country_flag = eadi_member }
+		clr_country_flag = eadi_member
+	}
+	if = {
+		limit = {
+			country_exists = SOV
+			OR = {
+				has_idea = SOV_brics_member
+				has_idea = SOV_brics_member_2
+			}
+		}
+		SOV_leave_brics = yes
+	}
+	if = {
+		limit = {
+			country_exists = CHI
+			has_idea = PRC_BRI_member
+		}
+		PRC_leave_BRI = yes
+	}
+
+	# 抵抗轴心等靠 idea 记账的阵营，退组即由 on_leave_faction 摘掉 idea
+	if = {
+		limit = { is_in_faction = yes }
+		leave_faction = yes
+	}
+
+	# ---- 加入蓝方体系 ----
+	# NATO：走基座原生入口；不符合地理条件者由该 effect 自行降级为 MNNA
+	if = {
+		limit = { NOT = { has_idea = NATO_member } }
+		NATO_join = yes
+	}
+	# PDTO：仅当日本仍是太平洋防卫条约的领袖时才入组
+	if = {
+		limit = {
+			NOT = { has_country_flag = pdto_member }
+			country_exists = JAP
+			JAP = {
+				is_faction_leader = yes
+				has_faction_template = faction_template_pdto
+			}
+		}
+		JAP = { add_to_faction = PREV }
+		set_country_flag = pdto_member
+	}
+	# EAST：只有东亚/大洋洲国家有资格（与 joining_rule_seato 同口径）
+	if = {
+		limit = {
+			NOT = { has_idea = faction_seato_alliance }
+			OR = {
+				is_East_Asia = yes
+				has_country_flag = oceania_nation_flag
+			}
+			any_country = {
+				has_idea = faction_seato_alliance
+				is_faction_leader = yes
+			}
+		}
+		random_other_country = {
+			limit = {
+				has_idea = faction_seato_alliance
+				is_faction_leader = yes
+			}
+			add_to_faction = PREV
+		}
+	}
+	# 海合会：仅原海合会成员还原
+	if = {
+		limit = {
+			check_variable = { var = ZZZ_id_bak_gcc value = 1 }
+			NOT = { has_idea = idea_gcc_member_state }
+			any_country = {
+				has_idea = idea_gcc_member_state
+				is_faction_leader = yes
+			}
+		}
+		random_other_country = {
+			limit = {
+				has_idea = idea_gcc_member_state
+				is_faction_leader = yes
+			}
+			add_to_faction = PREV
+		}
+		add_ideas = idea_gcc_member_state
+	}
+	# 欧盟：仅原欧盟成员还原（EU_member 的 on_add 自行登记 global.EU_member 与法案）
+	if = {
+		limit = {
+			check_variable = { var = ZZZ_id_bak_eu value = 1 }
+			NOT = { has_idea = EU_member }
+		}
+		add_ideas = EU_member
+	}
+	# PEC：仅原 PEC 成员还原
+	if = {
+		limit = {
+			check_variable = { var = ZZZ_id_bak_pec value = 1 }
+			country_exists = JAP
+			NOT = { has_idea = JAP_PEC_member }
+			NOT = { has_idea = JAP_PEC_member_2 }
+		}
+		JAP_join_PEC = yes
+	}
+	# MNNA：仅原 MNNA 还原。上面 NATO_join 在不合格时会自行降级为 MNNA，
+	# 所以这里再查一次旗标，避免同一 tick 内重复套用互评修正。
+	if = {
+		limit = {
+			check_variable = { var = ZZZ_id_bak_mnna value = 1 }
+			NOT = { has_idea = NATO_member }
+			NOT = { has_country_flag = Major_Non_NATO_Ally }
+		}
+		NATO_major_non_nato_ally_join = yes
+		set_variable = { var = ZZZ_mnna_active value = 1 }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# 美国“非成员共同参战”
+#
+# 美国不挂 pdto_member、不进 PDTO 阵营，因此不会被任何成员判定
+# （has_country_flag = pdto_member / 阵营成员列表 / 退组逻辑）算作成员；
+# 但 PDTO 一旦开战或被攻击，美国以同一场战争的共同交战国身份加入。
+# 实现取 add_to_war（工程内既有写法，见 ZZZ_europe_war_effects.txt）：
+# 它只建立战争关系，不写入任何阵营旗标，正好满足「同战不同盟」。
+# ----------------------------------------------------------------------------
+ZZZ_pdto_usa_co_belligerent = {
+	if = {
+		limit = {
+			country_exists = USA
+			country_exists = JAP
+			JAP = {
+				is_faction_leader = yes
+				has_faction_template = faction_template_pdto
+				has_war = yes
+			}
+		}
+		USA = {
+			JAP = {
+				every_enemy_country = {
+					limit = {
+						NOT = { tag = USA }
+						NOT = { has_war_with = USA }
+					}
+					USA = {
+						add_to_war = {
+							targeted_alliance = JAP
+							enemy = PREV
+							hostility_reason = asked_to_join
+							single_target_only = no
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+# ----------------------------------------------------------------------------
+# MNNA（主要非北约盟友）：系统自动加入 / 摘除
+#
+# 资产（工程实文件）：
+#   idea            = Major_Non_NATO_Ally（MD common/ideas/united_states.txt，自带 cancel 条件）
+#   country flag    = Major_Non_NATO_Ally（科技共享组的准入旗标）
+#   科技共享组      = Major_Non_NATO_Ally_Share（只认旗标）
+#   互评修正        = Major_Non_NATO_Ally
+# 加入/退出一律走基座原生包：
+#   NATO_major_non_nato_ally_join  = idea + 旗标 + 科技组 + 与北约成员的互评
+#   NATO_major_non_nato_ally_leave = idea + 旗标 + 科技组 + 互评清理（扫全图，含已退北约者）
+# 这两条 effect 内部会写互评修正，重复调用会叠加，故本判定以旗标为准入门槛，
+# 另用 ZZZ_mnna_active 记录「由本系统发放」，保证同一国家同一 tick 不重复 add/remove。
+#
+# 与身份换组的关系：MNNA 属于蓝方池子，但不占用阵营位。
+# 换组 to_red 直接调原生退出包；换组 to_blue 的 NATO_join 不合格时会自行降级为 MNNA，
+# 这里只在「原本就是 MNNA」时才补一次，且补前先查旗标，避免和 NATO 路径打架。
+# ----------------------------------------------------------------------------
+ZZZ_mnna_auto_update = {
+	# ---- 摘除（优先判定，命中后本 tick 不再走加入分支）----
+	if = {
+		limit = {
+			OR = {
+				has_idea = Major_Non_NATO_Ally
+				has_country_flag = Major_Non_NATO_Ally
+			}
+			AND = {
+				OR = {
+					# 已经进了北约：MNNA 的 idea cancel 也会摘 idea，但旗标/科技组/互评要一并清
+					has_idea = NATO_member
+					# 与 idea 的 cancel 同口径：激进、共产、法西斯、民族主义政府
+					has_government = communism
+					has_government = fascism
+					has_government = nationalist
+					jihadist_government = yes
+					# 战争状态：与美开战，或与任一北约成员开战（cancel 里 enemies 那一条）
+					has_war_with = USA
+					# 与 idea cancel 的 enemies / any_of_scopes(global.nato_members) 同口径：
+					# 与北约成员交战，或任一北约阵营领袖对这国好感为负
+					any_country = {
+						has_idea = NATO_member
+						OR = {
+							has_war_with = PREV
+							AND = {
+								is_faction_leader = yes
+								NOT = { has_country_flag = collapsed_nation }
+								has_opinion = { target = PREV value < 0 }
+							}
+						}
+					}
+					# 倒向红方体系
+					has_idea = CSTO_member
+					has_idea = CHI_sco_member
+					has_idea = CHI_sco_member_econ
+					has_idea = CHI_sco_member_pol
+					has_idea = CHI_sco_member_mil
+					has_country_flag = eadi_member
+					has_idea = SOV_brics_member
+					has_idea = SOV_brics_member_2
+					has_idea = PRC_BRI_member
+					has_idea = faction_resistance_axis_member
+					# 沦为协作政府（宗主国是红是蓝都在此列：协作政府本身不具备盟友资格）
+					has_autonomy_state = autonomy_collaboration_government
+				}
+			}
+		}
+		NATO_major_non_nato_ally_leave = yes
+		clear_variable = ZZZ_mnna_active
+		news_event = { id = zzz_identity.4 hours = 6 }
+	}
+	# ---- 加入 ----
+	# 确证过的条件：美国存在、本国是 major、非北约成员、政府形态不与 idea cancel 冲突、
+	# 对美关系为正且过线、不在任何红方体系、不在战争状态、非协作政府。
+	# 未能确证、暂不写入的：美国国会军售授权、双边基地协定、核保护伞承诺——
+	# 工程里没有对应的 trigger，留待后续加机制再补。
+	else_if = {
+		limit = {
+			NOT = {
+				OR = {
+					has_idea = Major_Non_NATO_Ally
+					has_country_flag = Major_Non_NATO_Ally
+					has_idea = NATO_member
+					has_government = communism
+					has_government = fascism
+					has_government = nationalist
+					jihadist_government = yes
+					has_war_with = USA
+					any_country = {
+						has_idea = NATO_member
+						has_war_with = PREV
+					}
+					has_idea = CSTO_member
+					has_idea = CHI_sco_member
+					has_idea = CHI_sco_member_econ
+					has_idea = CHI_sco_member_pol
+					has_idea = CHI_sco_member_mil
+					has_country_flag = eadi_member
+					has_idea = SOV_brics_member
+					has_idea = SOV_brics_member_2
+					has_idea = PRC_BRI_member
+					has_idea = faction_resistance_axis_member
+					has_autonomy_state = autonomy_collaboration_government
+				}
+			}
+			country_exists = USA
+			is_major = yes
+			# 美国对这国的好感过线（阈值 50，与工程里对美关系类国策的写法同档）
+			USA = { has_opinion = { target = PREV value > 50 } }
+		}
+		NATO_major_non_nato_ally_join = yes
+		set_variable = { var = ZZZ_mnna_active value = 1 }
+		news_event = { id = zzz_identity.3 hours = 6 }
+	}
+}

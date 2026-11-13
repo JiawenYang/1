@@ -1,0 +1,543 @@
+2017.1.1 = {
+
+    # =========================================================
+    # Microstates / non-sovereign entities - corrected 2017 setup
+    # Loaded after ZZ9 - 2017.txt and overrides its politics data.
+    # =========================================================
+
+    DPR = {
+        set_popularities = {
+            democratic = 0.0
+            communism = 100.0
+            fascism = 0.0
+            neutrality = 0.0
+            nationalist = 0.0
+        }
+        set_politics = {
+            ruling_party = communism
+            last_election = "2014.11.11"
+            election_frequency = 48
+            elections_allowed = yes
+        }
+        start_politics_input = yes
+        set_variable = { party_pop_array^7 = 0.62 }
+        set_variable = { party_pop_array^4 = 0.20 }
+        set_variable = { party_pop_array^5 = 0.18 }
+        set_variable = { ruling_party = 7 }
+        startup_politics = yes
+    }
+
+    LPR = {
+        set_popularities = {
+            democratic = 0.0
+            communism = 100.0
+            fascism = 0.0
+            neutrality = 0.0
+            nationalist = 0.0
+        }
+        set_politics = {
+            ruling_party = communism
+            last_election = "2014.11.11"
+            election_frequency = 48
+            elections_allowed = yes
+        }
+        start_politics_input = yes
+        set_variable = { party_pop_array^7 = 0.60 }
+        set_variable = { party_pop_array^4 = 0.22 }
+        set_variable = { party_pop_array^18 = 0.18 }
+        set_variable = { ruling_party = 7 }
+        create_country_leader = {
+            name = LPR_igor_plotnitsky
+            picture = "Igor_Plotnitsky.dds"
+            ideology = Autocracy
+            traits = {
+                emerging_Autocracy
+            }
+        }
+        startup_politics = yes
+    }
+
+    KAC = {
+        set_popularities = {
+            democratic = 0.0
+            communism = 0.0
+            fascism = 0.0
+            neutrality = 100.0
+            nationalist = 0.0
+        }
+        set_politics = {
+            ruling_party = neutrality
+            elections_allowed = no
+        }
+        start_politics_input = yes
+        set_variable = { party_pop_array^13 = 0.80 }
+        set_variable = { party_pop_array^19 = 0.20 }
+        set_variable = { ruling_party = 13 }
+        create_country_leader = {
+            name = KAC_lanyaw_zawng_hra
+            picture = "Lanyaw_Zawng.dds"
+            ideology = Neutral_Autocracy
+            traits = {
+                neutrality_Neutral_Autocracy
+            }
+        }
+        startup_politics = yes
+    }
+
+    SHN = {
+        # 无公认继任者，保持原任（Yawd Serk 持续领导 RCSS）
+        set_popularities = {
+            democratic = 0.0
+            communism = 0.0
+            fascism = 0.0
+            neutrality = 100.0
+            nationalist = 0.0
+        }
+        set_politics = {
+            ruling_party = neutrality
+            elections_allowed = no
+        }
+        start_politics_input = yes
+        set_variable = { party_pop_array^13 = 1.0 }
+        set_variable = { ruling_party = 13 }
+        create_country_leader = {
+            name = SHN_yawd_serk
+            picture = "Yawd_Serk.dds"
+            ideology = Neutral_Autocracy
+            traits = {
+                neutrality_Neutral_Autocracy
+            }
+        }
+        startup_politics = yes
+    }
+
+    NHN = {
+        # 无公认继任者，保持原任（Pang Fa 持续领导 SSPP）
+        set_popularities = {
+            democratic = 0.0
+            communism = 0.0
+            fascism = 0.0
+            neutrality = 100.0
+            nationalist = 0.0
+        }
+        set_politics = {
+            ruling_party = neutrality
+            elections_allowed = no
+        }
+        start_politics_input = yes
+        set_variable = { party_pop_array^13 = 1.0 }
+        set_variable = { ruling_party = 13 }
+        create_country_leader = {
+            name = NHN_pang_fa
+            picture = "Pang_Fa.dds"
+            ideology = Neutral_Autocracy
+            traits = {
+                neutrality_Neutral_Autocracy
+            }
+        }
+        startup_politics = yes
+    }
+
+    WAA = {
+        # 无公认继任者，保持原任（Bao Youxiang 持续任佤邦联合党主席）
+        set_popularities = {
+            democratic = 0.0
+            communism = 100.0
+            fascism = 0.0
+            neutrality = 0.0
+            nationalist = 0.0
+        }
+        set_politics = {
+            ruling_party = communism
+            elections_allowed = no
+        }
+        start_politics_input = yes
+        set_variable = { party_pop_array^4 = 1.0 }
+        set_variable = { ruling_party = 4 }
+        create_country_leader = {
+            name = WAA_bao_youxiang
+            picture = "Bao_Youxiang.dds"
+            ideology = communist_state
+            traits = {
+                emerging_communist_state
+                legendary_guerrilla_leader
+                pro_china
+            }
+        }
+        startup_politics = yes
+    }
+
+    KUR = {
+        set_popularities = {
+            democratic = 100.0
+            communism = 0.0
+            fascism = 0.0
+            neutrality = 0.0
+            nationalist = 0.0
+        }
+        set_politics = {
+            ruling_party = democratic
+            last_election = "2013.9.21"
+            election_frequency = 60
+            elections_allowed = yes
+        }
+        start_politics_input = yes
+        set_variable = { party_pop_array^1 = 0.41 }
+        set_variable = { party_pop_array^15 = 0.37 }
+        set_variable = { party_pop_array^18 = 0.10 }
+        set_variable = { party_pop_array^12 = 0.06 }
+        set_variable = { party_pop_array^5 = 0.06 }
+        set_variable = { ruling_party = 1 }
+        create_country_leader = {
+            name = KUR_masoud_barzani
+            picture = "Masoud_Barzani.dds"
+            ideology = conservatism
+            traits = {
+                western_conservatism
+            }
+        }
+        startup_politics = yes
+    }
+
+    PUK = {
+        set_popularities = {
+            democratic = 0.0
+            communism = 0.0
+            fascism = 0.0
+            neutrality = 100.0
+            nationalist = 0.0
+        }
+        set_politics = {
+            ruling_party = neutrality
+            elections_allowed = no
+        }
+        start_politics_input = yes
+        set_variable = { party_pop_array^18 = 0.75 }
+        set_variable = { party_pop_array^7 = 0.25 }
+        set_variable = { ruling_party = 18 }
+        create_country_leader = {
+            name = PUK_jalal_talabani
+            picture = "jalal_talabani_war.dds"
+            ideology = neutral_Social
+            traits = {
+                neutrality_neutral_Social
+            }
+        }
+        startup_politics = yes
+    }
+
+    ROJ = {
+        # 罗贾瓦为双主席制：2018-07 Hediya Yousef -> Ilham Ehmed 属共同主席交接，非严格意义上的继任
+        set_popularities = {
+            democratic = 0.0
+            communism = 0.0
+            fascism = 0.0
+            neutrality = 100.0
+            nationalist = 0.0
+        }
+        set_politics = {
+            ruling_party = neutrality
+            elections_allowed = no
+        }
+        start_politics_input = yes
+        set_variable = { party_pop_array^18 = 0.55 }
+        set_variable = { party_pop_array^3 = 0.35 }
+        set_variable = { party_pop_array^5 = 0.10 }
+        set_variable = { ruling_party = 18 }
+        startup_politics = yes
+    }
+
+    SML = {
+        set_popularities = {
+            democratic = 0.0
+            communism = 0.0
+            fascism = 0.0
+            neutrality = 100.0
+            nationalist = 0.0
+        }
+        set_politics = {
+            ruling_party = neutrality
+            last_election = "2010.6.26"
+            election_frequency = 89
+            elections_allowed = yes
+        }
+        start_politics_input = yes
+        set_variable = { party_pop_array^17 = 0.68 }
+        set_variable = { party_pop_array^2 = 0.20 }
+        set_variable = { party_pop_array^3 = 0.12 }
+        set_variable = { ruling_party = 17 }
+        startup_politics = yes
+    }
+
+    PUN = {
+        set_popularities = {
+            democratic = 0.0
+            communism = 0.0
+            fascism = 0.0
+            neutrality = 100.0
+            nationalist = 0.0
+        }
+        set_politics = {
+            ruling_party = neutrality
+            last_election = "2014.1.8"
+            election_frequency = 60
+            elections_allowed = yes
+        }
+        start_politics_input = yes
+        set_variable = { party_pop_array^13 = 1.0 }
+        set_variable = { ruling_party = 13 }
+        create_country_leader = {
+            name = PUN_abdiweli_mohamed_ali_gaas
+            picture = "gfx/leaders/generic_politicians/black_001.dds"
+            ideology = Neutral_Autocracy
+            traits = {
+                neutrality_Neutral_Autocracy
+            }
+        }
+        startup_politics = yes
+    }
+
+    SWS = {
+        set_popularities = {
+            democratic = 0.0
+            communism = 0.0
+            fascism = 0.0
+            neutrality = 100.0
+            nationalist = 0.0
+        }
+        set_politics = {
+            ruling_party = neutrality
+            last_election = "2014.12.19"
+            election_frequency = 48
+            elections_allowed = yes
+        }
+        start_politics_input = yes
+        set_variable = { party_pop_array^13 = 1.0 }
+        set_variable = { ruling_party = 13 }
+        create_country_leader = {
+            name = SWS_sharif_hassan_sheikh_aden
+            picture = "gfx/leaders/generic_politicians/black_002.dds"
+            ideology = Neutral_Autocracy
+            traits = {
+                neutrality_Neutral_Autocracy
+            }
+        }
+        startup_politics = yes
+    }
+
+    JUB = {
+        set_popularities = {
+            democratic = 0.0
+            communism = 0.0
+            fascism = 0.0
+            neutrality = 0.0
+            nationalist = 100.0
+        }
+        set_politics = {
+            ruling_party = nationalist
+            last_election = "2013.8.26"
+            election_frequency = 72
+            elections_allowed = yes
+        }
+        start_politics_input = yes
+        set_variable = { party_pop_array^22 = 0.70 }
+        set_variable = { party_pop_array^0 = 0.30 }
+        set_variable = { ruling_party = 22 }
+        create_country_leader = {
+            name = JUB_ahmed_mohamed_islam_madobe
+            picture = "gfx/leaders/generic_politicians/black_003.dds"
+            ideology = Nat_Autocracy
+            traits = {
+                nationalist_Nat_Autocracy
+            }
+        }
+        startup_politics = yes
+    }
+
+    FSA = {
+        set_popularities = {
+            democratic = 0.0
+            communism = 0.0
+            fascism = 0.0
+            neutrality = 100.0
+            nationalist = 0.0
+        }
+        set_politics = {
+            ruling_party = neutrality
+            elections_allowed = no
+        }
+        start_politics_input = yes
+        set_variable = { party_pop_array^12 = 1.0 }
+        set_variable = { ruling_party = 12 }
+        startup_politics = yes
+    }
+
+    GNA = {
+        set_popularities = {
+            democratic = 0.0
+            communism = 0.0
+            fascism = 0.0
+            neutrality = 100.0
+            nationalist = 0.0
+        }
+        set_politics = {
+            ruling_party = neutrality
+            elections_allowed = no
+        }
+        start_politics_input = yes
+        set_variable = { party_pop_array^13 = 1.0 }
+        set_variable = { ruling_party = 13 }
+        startup_politics = yes
+    }
+
+    GNC = {
+        # 无公认继任者，保持原任（Khalifa al-Ghawil 领导救国政府）
+        set_popularities = {
+            democratic = 0.0
+            communism = 0.0
+            fascism = 0.0
+            neutrality = 100.0
+            nationalist = 0.0
+        }
+        set_politics = {
+            ruling_party = neutrality
+            elections_allowed = no
+        }
+        start_politics_input = yes
+        set_variable = { party_pop_array^12 = 1.0 }
+        set_variable = { ruling_party = 12 }
+        startup_politics = yes
+    }
+
+    HEZ = {
+        set_popularities = {
+            democratic = 0.0
+            communism = 100.0
+            fascism = 0.0
+            neutrality = 0.0
+            nationalist = 0.0
+        }
+        set_politics = {
+            ruling_party = communism
+            elections_allowed = no
+        }
+        start_politics_input = yes
+        set_variable = { party_pop_array^9 = 1.0 }
+        set_variable = { ruling_party = 9 }
+        startup_politics = yes
+    }
+
+    HOR = {
+        # 无公认继任者，保持原任（Aguila Saleh Issa 持续任国民代表大会主席）
+        set_popularities = {
+            democratic = 0.0
+            communism = 0.0
+            fascism = 0.0
+            neutrality = 0.0
+            nationalist = 100.0
+        }
+        set_politics = {
+            ruling_party = nationalist
+            last_election = "2014.6.25"
+            election_frequency = 60
+            elections_allowed = no
+        }
+        start_politics_input = yes
+        set_variable = { party_pop_array^22 = 0.85 }
+        set_variable = { party_pop_array^7 = 0.15 }
+        set_variable = { ruling_party = 22 }
+        startup_politics = yes
+    }
+
+    HOU = {
+        # 无公认继任者，保持原任（Abdul-Malik al-Houthi 持续领导安萨鲁拉）
+        set_popularities = {
+            democratic = 0.0
+            communism = 100.0
+            fascism = 0.0
+            neutrality = 0.0
+            nationalist = 0.0
+        }
+        set_politics = {
+            ruling_party = communism
+            elections_allowed = no
+        }
+        start_politics_input = yes
+        set_variable = { party_pop_array^9 = 1.0 }
+        set_variable = { ruling_party = 9 }
+        startup_politics = yes
+    }
+
+    ISI = {
+        set_popularities = {
+            democratic = 0.0
+            communism = 0.0
+            fascism = 100.0
+            neutrality = 0.0
+            nationalist = 0.0
+        }
+        set_politics = {
+            ruling_party = fascism
+            elections_allowed = no
+        }
+        start_politics_input = yes
+        set_variable = { party_pop_array^11 = 1.0 }
+        set_variable = { ruling_party = 11 }
+        startup_politics = yes
+    }
+
+    NUS = {
+        # 无公认继任者，保持原任（Abu Mohammad al-Julani 持续领导 HTS）
+        set_popularities = {
+            democratic = 0.0
+            communism = 0.0
+            fascism = 100.0
+            neutrality = 0.0
+            nationalist = 0.0
+        }
+        set_politics = {
+            ruling_party = fascism
+            elections_allowed = no
+        }
+        start_politics_input = yes
+        set_variable = { party_pop_array^11 = 1.0 }
+        set_variable = { ruling_party = 11 }
+        create_country_leader = {
+            name = NUS_abu_mohammad_al_julani
+            picture = "Abu_Mohammad_Al-Julani.dds"
+            ideology = Caliphate
+            traits = {
+                salafist_Caliphate
+            }
+        }
+        startup_politics = yes
+    }
+
+    PKK = {
+        # 无公认继任者，保持原任（Cemil Bayik 为集体领导层成员）
+        set_popularities = {
+            democratic = 0.0
+            communism = 100.0
+            fascism = 0.0
+            neutrality = 0.0
+            nationalist = 0.0
+        }
+        set_politics = {
+            ruling_party = communism
+            elections_allowed = no
+        }
+        start_politics_input = yes
+        set_variable = { party_pop_array^5 = 1.0 }
+        set_variable = { ruling_party = 5 }
+        create_country_leader = {
+            name = PKK_cemil_bayik
+            picture = "Cemil_Bayik.dds"
+            ideology = anarchist_communism
+            traits = {
+                emerging_anarchist_communism
+            }
+        }
+        startup_politics = yes
+    }
+
+}

@@ -1,0 +1,20 @@
+# ============================================================================
+#  事件链跑通器 —— 决议分类（本工程原创）
+#
+#  排名说明（2026-11-07 修复）：
+#    HOI4 的决议分类按 priority 从高到低排序，数值越大越靠上；
+#    基座/MD 的分类大量使用 150–10000（如 debug_decisions = 10000），
+#    本分类原为 130，会被排到可滚动列表的最底部、首屏看不到，
+#    表现为「分类按钮不出现」。现提到 10001，固定排在列表最上方。
+#
+#  visible 改为 always = yes：本分类只放玩家使用的跑通器，
+#  各条决议自身 ai_will_do = { base = 0 }，AI 不会点。
+#  visible_when_empty = yes：决议全部执行完也保留入口，方便复查。
+# ============================================================================
+ZZZ_chainrun = {
+    icon = GFX_decision_category_generic_political_actions
+    priority = 10001
+    allowed = { always = yes }
+    visible = { always = yes }
+    visible_when_empty = yes
+}

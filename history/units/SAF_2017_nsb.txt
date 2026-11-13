@@ -1,4 +1,13 @@
 division_template = {
+	name = "Special Forces Battalion"
+
+	regiments = {
+		Special_Forces = { x = 0 y = 0 }
+	}
+	priority = 2
+}
+
+division_template = {
 	name = "Light Tank Regiment"
 
 	regiments = {
@@ -245,14 +254,14 @@ instant_effect = {
 
 	#### Aircraft #### 
 	add_equipment_to_stockpile = {
-		variant_name = "Rooikat"
-		type = heavy_tank_chassis_1 #Rooiwak
+		variant_name = "Rooiwak"
+		type = attack_helicopter_2 #Rooiwak
 		producer = SAF
 		amount = 11
 	}
 	add_equipment_to_stockpile = {
 		variant_name = "Lynx AH9A"
-		type = heavy_tank_chassis_1 #Lynx AH9A
+		type = attack_helicopter_1 #Lynx AH9A
 		amount = 4
 		producer = SAF
 	} 
@@ -271,7 +280,7 @@ instant_effect = {
 
 	### Vehicles ###
 	add_equipment_to_stockpile = {
-		variant_name = "Olifant 2"
+		variant_name = "Olifant-2"
 		type = medium_tank_chassis_0		#Olifant-2
 		producer = SAF
 		amount = 24
@@ -284,7 +293,7 @@ instant_effect = {
 	}
 
 	add_equipment_to_stockpile = {
-		variant_name = "Ratel 20"
+		variant_name = "Ratel-20"
 		type = medium_tank_flame_chassis_1 #Ratel-20
 		producer = SAF
 		amount = 424
@@ -299,28 +308,27 @@ instant_effect = {
 
 	add_equipment_to_stockpile = {
 		variant_name = "Ratel 90"
-		type = medium_tank_destroyer_chassis_1 #Ratel 90
+		type = medium_tank_flame_chassis_0 #Ratel 90
 		producer = SAF
 		amount = 110
 	}
 
 	add_equipment_to_stockpile = {
 		variant_name = "Rooikat 76"
-		type = medium_tank_destroyer_chassis_1 #Rooikat-76
+		type = Rec_tank_2
 		producer = SAF
 		amount = 176
 	}
 
 	add_equipment_to_stockpile = {
-		variant_name = "Casspir"
+		variant_name = "Buffel"
 		type = util_vehicle_3 #Casspir
 		producer = SAF
 		amount = 370
 	}
 
 	add_equipment_to_stockpile = {
-		variant_name = "Mamba"
-		type = util_vehicle_4 #Mamba
+		type = heavy_util_vehicle_5 #Mamba
 		producer = SAF
 		amount = 440
 	}
@@ -364,7 +372,7 @@ instant_effect = {
 
 	### Inf Equip
 	add_equipment_to_stockpile = {
-		variant_name = "R4"
+		variant_name = "1985"
 		type = infantry_weapons_3 #1985
 		producer = USA
 		amount = 5000
@@ -379,8 +387,8 @@ instant_effect = {
 	}
 
 	add_equipment_to_stockpile = {
-		variant_name = "MILAN"
-		type = Anti_tank_1 #Milan
+		variant_name = "Milan 2"
+		type = Anti_tank_2 #Milan
 		amount = 90
 		producer = FRA
 	}
@@ -400,14 +408,14 @@ instant_effect = {
 
 	#### Sealed Storage（封存）####
 	add_equipment_to_stockpile = {
-		variant_name = "R1 FN FAL"
+		variant_name = "Ak 4"
 		type = infantry_weapons_2 #R1 FN FAL（封存）
 		amount = 100000
-		producer = SAF
+		producer = SWE
 	}
 
 	add_equipment_to_stockpile = {
-		variant_name = "Olifant Mk1A"
+		variant_name = "Olifant Mark 1A"
 		type = medium_tank_chassis_0 #Olifant Mk1A（封存）
 		amount = 100
 		producer = SAF
@@ -418,5 +426,10 @@ instant_effect = {
 		type = medium_tank_flame_chassis_0 #Ratel 90（封存）
 		amount = 120
 		producer = SAF
+	}
+	add_equipment_to_stockpile = {
+		type = Anti_Air_1
+		producer = SAF
+		amount = 192
 	}
 }

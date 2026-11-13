@@ -8,6 +8,12 @@ division_template = {
 		SP_Arty_Bat = { x = 0 y = 3 }
 		Mech_Inf_Bat = { x = 0 y = 4 }
 	}
+	support = {
+		SP_AA_Battery = { x = 0 y = 0 }
+		Mech_Recce_Comp = { x = 0 y = 1 }
+		H_Engi_Comp = { x = 0 y = 2 }
+		combat_service_support_company = { x = 0 y = 3 }
+	}
 }
 division_template = {
 	name = "Mechanized Brigade 2"
@@ -65,7 +71,7 @@ units = {
 instant_effect = {
 
 	add_equipment_to_stockpile = {
-		variant_name = "Zastava M70"
+		variant_name = "Zastava M70/AR系"
 		type = infantry_weapons_3			#Zastava M70/AR系
 		amount = 1250
 		producer = SLO
@@ -97,9 +103,10 @@ instant_effect = {
 		producer = SLO
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "T-72M1"
 		type = medium_tank_chassis_1
 		amount = 30
-		producer = SOV
+		producer = CZE
 	}
 	add_equipment_to_stockpile = {
 		variant_name = "BMP-1"
@@ -119,18 +126,19 @@ instant_effect = {
 		producer = CZE
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "Tatrapan"
 		type = medium_tank_amphibious_chassis_1
 		amount = 7
-		producer = CZE
+		producer = SLO
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "Tatrapan"
 		type = medium_tank_amphibious_chassis_1
 		producer = SLO
 		amount = 15
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "RG-32 Scout"
-		type = util_vehicle_5 #RG-32 Scout
+		type = heavy_util_vehicle_5 #RG-32 Scout
 		amount = 7
 		producer = SWE
 		#version_name = "RG-32 Scout"
@@ -142,6 +150,7 @@ instant_effect = {
 		producer = SLO
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "Zuzana"
 		type = medium_tank_artillery_chassis_1
 		producer = SLO
 		amount = 16
@@ -159,47 +168,53 @@ instant_effect = {
 		producer = CZE
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "Strela-10"
-		type = medium_tank_aa_chassis_1 #SA-13 Strela-10
+		variant_name = "9K35 Strela-10"
+		type = SP_Anti_Air_1 #SA-13 Strela-10
 		amount = 48
 		producer = SOV
 		#version_name = "9K35 Strela-10"
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "Mi-24"
-		type = heavy_tank_chassis_0 #Mil Mi-24 Hind
+		variant_name = "Mi-24P"
+    type = heavy_tank_chassis_0 #Mil Mi-24 Hind
 		amount = 24
 		producer = SOV
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "Mi-17"
+		variant_name = "Mil Mi-17"
 		type = transport_helicopter_1 #Mil Mi-17
 		amount = 13
 		producer = SOV
 		#version_name = "Mil Mi-17"
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "Mi-8"
+		variant_name = "Mil Mi-8T"
 		type = transport_helicopter_1 #Mil Mi-8
 		amount = 1
 		producer = SOV
 	}
 
 	add_equipment_to_stockpile = {
-		variant_name = "Zastava M70"
+		variant_name = "Zastava"
 		type = infantry_weapons_2			#Zastava（封存）
 		producer = SLO
 		amount = 30000
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "T-72M1"
 		type = medium_tank_chassis_1
 		amount = 60			#M-84（封存）
-		producer = SER
+		producer = CZE
 	}
 	add_equipment_to_stockpile = {
 		variant_name = "Valuk"
-		type = APC_4			#Valuk（封存）
-		producer = SLO
+		type = medium_tank_amphibious_chassis_1			#Valuk（封存）
+		producer = SLV
 		amount = 40
+	}
+	add_equipment_to_stockpile = {
+		type = util_vehicle_1
+		producer = SLO
+		amount = 493
 	}
 }

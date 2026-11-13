@@ -76,9 +76,7 @@ ideas = {
 				political_power_factor = 0.1
 				stability_factor = 0.05
 				industrial_capacity_factory = 0.05
-				market_liberal_drift = -0.02
-				social_liberal_drift = -0.02
-				conservative_drift = -0.02
+				democratic_drift = -0.02
 			}
 		}
 		VEN_economic_chavismo_idea = {
@@ -115,7 +113,7 @@ ideas = {
 				army_strength_factor = 0.075
 				recon_factor = 0.1
 				military_development_monthly = 0.01
-				battalion_upkeep_factor = 0.15
+				army_personnel_cost_multiplier_modifier = 0.15
 			}
 		}
 		COL_colombian_armed_forces = {
@@ -213,9 +211,8 @@ ideas = {
 			modifier = {
 				stability_factor = -0.1
 				political_power_factor = -0.1
-				libertarian_socialist_drift = 0.02
-				social_liberal_drift = 0.01
-				market_liberal_drift = 0.01
+				neutrality_drift = 0.02
+				democratic_drift = 0.01
 			}
 		}
 		PRU_castillo_revolution_idea = {
@@ -232,8 +229,7 @@ ideas = {
 				consumer_goods_factor = 0.1
 				political_power_factor = -0.15
 				nationalist_drift = 0.01
-				authoritarian_democrat_drift = 0.03
-				conservative_drift = 0.02
+				democratic_drift = 0.02
 				society_development_monthly = -0.01
 			}
 			on_remove = {
@@ -246,19 +242,19 @@ ideas = {
 						random_list = {
 							40 = {
 								set_politics = {
-									ruling_party = libertarian_socialist
+									ruling_party = communism
 									elections_allowed = yes
 									last_election = "2021.11.28"
 									election_frequency = 60
 								}
-								add_popularity = {
-									ideology = communist
-									popularity = -0.4
-								}
+								set_temp_variable = { party_index = 4 }
+								set_temp_variable = { party_popularity_increase = -0.4 }
+								set_temp_variable = { temp_outlook_increase = -0.4 }
+								change_relative_party_popularity = yes
 							}
 							20 = {
 								set_politics = {
-									ruling_party = communist
+									ruling_party = communism
 									elections_allowed = yes
 									last_election = "2021.11.28"
 									election_frequency = 60
@@ -282,8 +278,8 @@ ideas = {
 				war_support_factor = 0.05
 				political_power_factor = 0.05
 				tax_gain_multiplier_modifier = 0.25
-				libertarian_socialist_drift = 0.02
-				communist_drift = 0.01
+				neutrality_drift = 0.02
+				communism_drift = 0.01
 				society_development_monthly = 0.02
 			}
 		}
@@ -300,7 +296,7 @@ ideas = {
 				political_power_factor = 0.1
 				consumer_goods_factor = 0.05
 				business_value_factor = 0.2
-				authoritarian_democrat_drift = 0.02
+				democratic_drift = 0.02
 			}
 		}
 		CHL_pinochet_legacy_idea = {
@@ -314,7 +310,7 @@ ideas = {
 			modifier = {
 				stability_factor = -0.15
 				political_power_gain = -0.1
-				authoritarian_democrat_drift = 0.01
+				democratic_drift = 0.01
 			}
 		}
 		CHL_estallido_social_idea = {
@@ -330,8 +326,9 @@ ideas = {
 				political_power_gain = -0.2
 				industrial_capacity_factory = -0.15
 				production_factory_max_efficiency_factor = -0.10
-				libertarian_socialist_drift = 0.02
+				neutrality_drift = 0.02
 			}
 		}
 	}
 }
+

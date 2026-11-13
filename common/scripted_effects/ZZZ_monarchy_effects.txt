@@ -1,0 +1,100 @@
+# ============================================================================
+# ZZZ 君主制元首总控效果
+#
+# 配套文件：
+#   common/characters/ZZZ_monarchs_europe.txt            （欧洲 8 位君主，5 大组角色全覆盖）
+#   common/characters/ZZZ_monarchs_asia_mea.txt          （亚洲/中东/非洲/大洋洲 16 位君主）
+#   common/scripted_effects/ZZZ_monarchy_crown_effects.txt（逐国 ZZZ_crown_<TAG> 加冕）
+#   common/scripted_triggers/ZZZ_monarchy_triggers.txt    （ZZZ_active_monarchy 判据）
+#
+# 工作方式（与 TFR 同构，TFR 见 3350890356/common/characters/TFR_characters_ENG.txt:8-96）：
+#   1) 开局落地：39 国的 2017 history 块（history/countries/ZZ9 - 2017.txt）直接
+#      set_country_flag = ZZZ_monarchy_active + recruit_character + promote_character
+#      （5 个意识形态大组各一次），不经过任何 on_action / scripted_effect；
+#      history 只能调用内建效果，故此处只保留运行期使用的守护与废除效果；
+#   2) set_leader 总闸门（common/scripted_effects/00_leader_setup_scripted_effects.txt:9）
+#      只跳过 kill_country_leader / set_leader_[TAG] / set_correct_ideology_trait，
+#      update_set_politics 照常执行，选举结果仍会写入执政大组；
+#   3) on_government_change（common/on_actions/00_on_actions.txt:1369）调 ZZZ_monarch_guard，
+#      君主制仍在时重新加冕；一旦 ZZZ_monarchy_abolished 生效就停手。
+#
+# 实证：MD 自己的注释已确认「子意识形态互换不改变大组，on_government_change 不会触发」
+#   -> 394360/2777392649/common/scripted_effects/00_MD_politicsview_scripted_effects.txt:2045
+#   引擎的党首是「按大组」存储的（TFR 的伊丽莎白在每个大组只挂 1 块也能跨子意识
+#   形态一直当元首，见 3350890356/common/characters/TFR_characters_ENG.txt:8-96），
+#   因此子意识形态层级的换党由"每个大组 1 角色 + promote 全 5 组"兜住，不依赖钩子。
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# 换政府守护：君主制仍在时，若君主角色被移除（kill_country_leader / retire 等），
+# 重新 recruit 并把 5 个党的党首身份重新扶正；一旦君主制废除旗标生效则完全不动作。
+# 不 kill 任何现役元首，避免误伤玩家操作。
+# ----------------------------------------------------------------------------
+ZZZ_monarch_guard = {
+	if = {
+		limit = { ZZZ_active_monarchy = yes }
+
+		if = { limit = { tag = ENG } ZZZ_crown_ENG = yes }
+		if = { limit = { tag = HOL } ZZZ_crown_HOL = yes }
+		if = { limit = { tag = BEL } ZZZ_crown_BEL = yes }
+		if = { limit = { tag = SWE } ZZZ_crown_SWE = yes }
+		if = { limit = { tag = NRY } ZZZ_crown_NRY = yes }
+		if = { limit = { tag = DEN } ZZZ_crown_DEN = yes }
+		if = { limit = { tag = SPR } ZZZ_crown_SPR = yes }
+		if = { limit = { tag = LUX } ZZZ_crown_LUX = yes }
+
+		if = { limit = { tag = JAP } ZZZ_crown_JAP = yes }
+		if = { limit = { tag = SIA } ZZZ_crown_SIA = yes }
+		if = { limit = { tag = CBD } ZZZ_crown_CBD = yes }
+		if = { limit = { tag = MAY } ZZZ_crown_MAY = yes }
+		if = { limit = { tag = BHU } ZZZ_crown_BHU = yes }
+		if = { limit = { tag = TON } ZZZ_crown_TON = yes }
+		if = { limit = { tag = LES } ZZZ_crown_LES = yes }
+		if = { limit = { tag = SWA } ZZZ_crown_SWA = yes }
+		if = { limit = { tag = JOR } ZZZ_crown_JOR = yes }
+		if = { limit = { tag = MOR } ZZZ_crown_MOR = yes }
+		if = { limit = { tag = SAU } ZZZ_crown_SAU = yes }
+		if = { limit = { tag = UAE } ZZZ_crown_UAE = yes }
+		if = { limit = { tag = QAT } ZZZ_crown_QAT = yes }
+		if = { limit = { tag = KUW } ZZZ_crown_KUW = yes }
+		if = { limit = { tag = BHR } ZZZ_crown_BHR = yes }
+		if = { limit = { tag = OMA } ZZZ_crown_OMA = yes }
+
+		if = { limit = { tag = CAN } ZZZ_crown_CAN = yes }
+		if = { limit = { tag = AST } ZZZ_crown_AST = yes }
+		if = { limit = { tag = NZL } ZZZ_crown_NZL = yes }
+		if = { limit = { tag = ANT } ZZZ_crown_ANT = yes }
+		if = { limit = { tag = BAH } ZZZ_crown_BAH = yes }
+		if = { limit = { tag = BAR } ZZZ_crown_BAR = yes }
+		if = { limit = { tag = BLZ } ZZZ_crown_BLZ = yes }
+		if = { limit = { tag = GRA } ZZZ_crown_GRA = yes }
+		if = { limit = { tag = JAM } ZZZ_crown_JAM = yes }
+		if = { limit = { tag = PAP } ZZZ_crown_PAP = yes }
+		if = { limit = { tag = SOL } ZZZ_crown_SOL = yes }
+		if = { limit = { tag = STK } ZZZ_crown_STK = yes }
+		if = { limit = { tag = STL } ZZZ_crown_STL = yes }
+		if = { limit = { tag = STV } ZZZ_crown_STV = yes }
+		if = { limit = { tag = TUL } ZZZ_crown_TUL = yes }
+	}
+}
+
+# ----------------------------------------------------------------------------
+# 废除君主制：任何剧情/决议改共和时调用即可。
+# 调用后 ZZZ_active_monarchy 失效，set_leader 恢复正常，元首交回政党指派。
+# ----------------------------------------------------------------------------
+ZZZ_abolish_monarchy = {
+	set_country_flag = ZZZ_monarchy_abolished
+	clr_country_flag = ZZZ_monarchy_active
+}
+
+# ----------------------------------------------------------------------------
+# 复辟君主制：清掉废除旗标、恢复 active，并立即按当前旗标/日期选出现实在位
+# 君主。ZZZ_crown_<TAG> 的日期兜底保证复辟国家拿到的是「当时在位」的那位，
+# 而不是 2017 开局那位（例：2023 年复辟的加拿大拿到查尔斯三世而非伊丽莎白二世）。
+# ----------------------------------------------------------------------------
+ZZZ_restore_monarchy = {
+	clr_country_flag = ZZZ_monarchy_abolished
+	set_country_flag = ZZZ_monarchy_active
+	ZZZ_monarch_guard = yes
+}

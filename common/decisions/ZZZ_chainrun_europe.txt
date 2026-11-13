@@ -1,0 +1,74 @@
+# ============================================================================
+#  ZZZ_chainrun —— 事件链跑通器（直接施加效果版 · 欧陆战争）
+#
+#  链路本体：common/decisions/ZZZ_europe_war_decisions.txt 的 ZZZ_eur_escalate
+#  成功分支效果（原文）：
+#    ZZZ_eur_begin_war = yes
+#    ZZZ_eur_mark_participants = yes
+#    every_country = { limit = { is_ai = no } country_event = { id = zzz_eur.1 } }
+#  按新口径：前两句原样调用；第三句是 fire 事件，跳过（zzz_eur.1 仅为新闻/文案）。
+#
+#  注意 ROOT：ZZZ_eur_begin_war / ZZZ_eur_mark_participants 内部依赖 ROOT
+#  （is_in_faction_with = ROOT、ROOT = { set_country_flag = ZZZ_eur_csto_participant }）。
+#  决议的 ROOT 恒为“点决议的国家”，所以本决议必须由 SOV 本人点，
+#  故 allowed = { tag = SOV }；visible / available 仍按要求恒真。
+# ============================================================================
+
+ZZZ_chainrun = {
+
+    ZZZ_cr_eur_01_escalate = {
+        icon = generic_political_actions
+        cost = 0
+        fire_only_once = no
+
+        allowed = { tag = SOV }
+        visible = { always = yes }
+        available = { always = yes }
+
+        complete_effect = {
+            # 国策/决议 ZZZ_eur_escalate 的效果原文（去掉派发给人类玩家的 zzz_eur.1）
+            ZZZ_eur_begin_war = yes
+            ZZZ_eur_mark_participants = yes
+        }
+
+        ai_will_do = { base = 0 }
+    }
+
+    # 节点：欧陆战争 北约方胜利结算（ZZZ_eur_settle_nato_victory）
+    ZZZ_cr_eur_02_nato_victory = {
+        icon = generic_political_actions
+        cost = 0
+        fire_only_once = no
+
+        allowed = { always = yes }
+        visible = { always = yes }
+        available = { always = yes }
+
+        complete_effect = {
+            # 原文：释放被吞并的东欧国家、归还核心州、全员白和、置 ZZZ_eur_nato_victory
+            # 内部需要 ZZZ_eur_war_ongoing（先点欧陆开战），否则整段空转
+            ZZZ_eur_settle_nato_victory = yes
+        }
+
+        ai_will_do = { base = 0 }
+    }
+
+    # 节点：欧陆战争 俄方（CSTO）胜利结算（ZZZ_eur_settle_csto_victory）
+    ZZZ_cr_eur_03_csto_victory = {
+        icon = generic_political_actions
+        cost = 0
+        fire_only_once = no
+
+        allowed = { always = yes }
+        visible = { always = yes }
+        available = { always = yes }
+
+        complete_effect = {
+            # 原文：EST/LAT/LIT/POL/UKR 转 SOV 傀儡、全员白和、置 ZZZ_eur_csto_victory
+            # 内部需要 ZZZ_eur_war_ongoing，否则整段空转
+            ZZZ_eur_settle_csto_victory = yes
+        }
+
+        ai_will_do = { base = 0 }
+    }
+}

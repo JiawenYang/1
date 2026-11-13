@@ -1,0 +1,179 @@
+# ============================================================================
+#  上合合体 —— 脚本效果（A 形态：不碰阵营归属）
+#
+#  形态说明（不新建阵营、不合并阵营模板）：
+#    ① 中俄双向军事通行（中国军队可进俄罗斯领土、使用对方机场港口，反之亦然）
+#    ② 中国一侧（中国本体 + 东协阵营成员）以 add_to_war 进入俄罗斯对北约的同一场战争
+#    ③ 合体只挂旗标与通行关系，不改动任何阵营归属；结算时 ZZZ_sco_split 原样拆回
+#
+#  判定阈值集中在 common/scripted_triggers/ZZZ_sco_merge_triggers.txt：
+#    欧洲线 = 644 / 652 / 667 三城丢两城（非集安方控制）
+#    亚洲线 = 547 北京失守 + （540 上海 或 536 南京）任一失守
+#
+#  调用点：
+#    common/on_actions/ZZZ_europe_war_on_actions.txt 的 on_daily（每次结算前判定一次）
+#    common/scripted_effects/ZZZ_europe_war_effects.txt 三个结算效果的尾部（拆回）
+#
+#  复用基座既有资产：
+#    CHI_sco_member / is_sco      —— 基座 99_CHI_scripted_triggers.txt:4
+#    CHI_sco_remove               —— 基座 05_CHI_scripted_effects.txt:469（印度退出上合时使用）
+# ============================================================================
+
+# 合体：判定通过则挂身份旗标、建双向通行、把中国一侧塞进俄罗斯的战争
+# 作用域：全局调用（on_daily），内部全部显式国家作用域，不读 ROOT
+ZZZ_sco_merge = {
+	if = {
+		limit = {
+			NOT = { has_global_flag = ZZZ_sco_merged }
+			ZZZ_sco_merge_ready = yes
+		}
+		set_global_flag = ZZZ_sco_merged
+		# ① 身份旗标：中国一侧（中国本体 + 东协阵营成员）与俄罗斯
+		every_country = {
+			limit = {
+				OR = {
+					original_tag = CHI
+					is_in_faction_with = CHI
+				}
+			}
+			set_country_flag = ZZZ_sco_merged_identity
+		}
+		SOV = {
+			set_country_flag = ZZZ_sco_merged_identity
+		}
+		# ② 中俄双向军事通行权（宣战后不会自动获得，必须显式授予）
+		if = {
+			limit = {
+				country_exists = CHI
+				country_exists = SOV
+			}
+			CHI = {
+				diplomatic_relation = {
+					country = SOV
+					relation = military_access
+					active = yes
+				}
+			}
+			SOV = {
+				diplomatic_relation = {
+					country = CHI
+					relation = military_access
+					active = yes
+				}
+			}
+		}
+		# ③ 东协成员塞进俄罗斯对北约的同一场战争（不是各自另开一场）
+		ZZZ_sco_join_soviet_war = yes
+		log = "[GetDateText]: ZZZ_sco_merge"
+	}
+}
+
+# 同一场战争：中国一侧逐国加入俄罗斯已在对北约四国进行的战争
+# 作用域：全局调用；内部 every_country 的当前国家即“中国一侧”
+ZZZ_sco_join_soviet_war = {
+	every_country = {
+		limit = {
+			has_country_flag = ZZZ_sco_merged_identity
+			NOT = { original_tag = SOV }
+		}
+		if = {
+			limit = {
+				country_exists = USA
+				SOV = { has_war_with = USA }
+				NOT = { has_war_with = USA }
+			}
+			add_to_war = {
+				targeted_alliance = SOV
+				enemy = USA
+				hostility_reason = asked_to_join
+			}
+		}
+		if = {
+			limit = {
+				country_exists = GER
+				SOV = { has_war_with = GER }
+				NOT = { has_war_with = GER }
+			}
+			add_to_war = {
+				targeted_alliance = SOV
+				enemy = GER
+				hostility_reason = asked_to_join
+			}
+		}
+		if = {
+			limit = {
+				country_exists = FRA
+				SOV = { has_war_with = FRA }
+				NOT = { has_war_with = FRA }
+			}
+			add_to_war = {
+				targeted_alliance = SOV
+				enemy = FRA
+				hostility_reason = asked_to_join
+			}
+		}
+		if = {
+			limit = {
+				country_exists = ENG
+				SOV = { has_war_with = ENG }
+				NOT = { has_war_with = ENG }
+			}
+			add_to_war = {
+				targeted_alliance = SOV
+				enemy = ENG
+				hostility_reason = asked_to_join
+			}
+		}
+	}
+}
+
+# 拆回：撤双向通行、清合体身份旗标（不调用 CHI_sco_remove，成员的上合身份原样保留）
+# 作用域：全局调用；在三个欧陆战争结算效果的白和之后执行
+ZZZ_sco_split = {
+	if = {
+		limit = { has_global_flag = ZZZ_sco_merged }
+		if = {
+			limit = {
+				country_exists = CHI
+				country_exists = SOV
+			}
+			CHI = {
+				diplomatic_relation = {
+					country = SOV
+					relation = military_access
+					active = no
+				}
+			}
+			SOV = {
+				diplomatic_relation = {
+					country = CHI
+					relation = military_access
+					active = no
+				}
+			}
+		}
+		every_country = {
+			limit = { has_country_flag = ZZZ_sco_merged_identity }
+			clr_country_flag = ZZZ_sco_merged_identity
+		}
+		clr_global_flag = ZZZ_sco_merged
+		log = "[GetDateText]: ZZZ_sco_split"
+	}
+}
+
+# 印度退出上合（印巴战争开战点专用）
+# 身份层：印度（RAJ）在 history/countries/ZZ6 - startup.txt:698-720 只拿到基座层 CHI_sco_member，
+# 并写入 global.sco_members；CHI_sco_remove 会清空成员四层 + 观察员 + 对话伙伴 + 成员数组，
+# 不论印度后续被提升到哪一层都不会漏删，也不会误伤其它国家。
+ZZZ_sco_india_exit = {
+	if = {
+		limit = {
+			NOT = { has_global_flag = ZZZ_sco_india_exit_done }
+			is_sco = yes
+		}
+		CHI_sco_remove = yes
+		set_global_flag = ZZZ_sco_india_exit_done
+		# 玩家提示：同一次退出只弹一条全球新闻（news.426，fire_only_once + 全局旗标双保险）
+		news_event = { id = news.426 hours = 2 }
+	}
+}

@@ -58,7 +58,7 @@
             parent_version = 0
             modules = {
                 fixed_ship_engine_slot = module_surface_jet_turbine_power2
-                fixed_ship_fire_control_system_slot = module_capital_advanced_integrated_missile_radar_control
+                fixed_ship_fire_control_system_slot = module_screen_advanced_integrated_missile_radar_control
                 fixed_ship_radar_slot = module_radar_4
                 fixed_ship_auxillary_slot_3 = module_torpedoes_3
                 fixed_ship_auxillary_slot_2 = module_naval_missile_mount_quad
@@ -94,7 +94,7 @@
             type = helicopter_operator_hull_2
             parent_version = 0
             modules = {
-                fixed_ship_engine_slot = module_surface_diesel_power_2
+                fixed_ship_engine_slot = module_surface_jet_turbine_power
                 fixed_ship_fire_control_system_slot = module_digital_integrated_fire_control
                 fixed_ship_radar_slot = module_radar_4
                 fixed_ship_auxillary_slot_3 = module_naval_missile_mount_single
@@ -330,7 +330,7 @@
             parent_version = 0
             modules = {
                 fixed_ship_engine_slot = module_surface_jet_turbine_power2
-                fixed_ship_fire_control_system_slot = module_capital_advanced_integrated_missile_radar_control
+                fixed_ship_fire_control_system_slot = module_screen_advanced_integrated_missile_radar_control
                 fixed_ship_radar_slot = module_radar_4
                 fixed_ship_battery_slot = module_127mm_battery
                 front_1_custom_slot = module_naval_vls_cells_32
@@ -349,7 +349,7 @@
             parent_version = 0
             modules = {
                 fixed_ship_engine_slot = module_surface_jet_turbine_power2
-                fixed_ship_fire_control_system_slot = module_capital_advanced_integrated_missile_radar_control
+                fixed_ship_fire_control_system_slot = module_screen_advanced_integrated_missile_radar_control
                 fixed_ship_radar_slot = module_radar_4
                 fixed_ship_auxillary_slot_3 = module_naval_vls_cells_32
                 fixed_ship_auxillary_slot_2 = module_naval_vls_cells_32
@@ -368,7 +368,7 @@
             parent_version = 0
             modules = {
                 fixed_ship_engine_slot = module_surface_jet_turbine_power2
-                fixed_ship_fire_control_system_slot = module_capital_digital_integrated_fire_control
+                fixed_ship_fire_control_system_slot = module_screen_digital_integrated_fire_control
                 fixed_ship_radar_slot = module_radar_4
                 fixed_ship_auxillary_slot_3 = module_naval_vls_cells_16
                 fixed_ship_auxillary_slot_2 = module_naval_missile_mount_twin
@@ -383,11 +383,11 @@
         }
         create_equipment_variant = {
             name = "Type 051C Class"
-            type = destroyer_hull_2
+            type = destroyer_hull_3
             parent_version = 0
             modules = {
                 fixed_ship_engine_slot = module_surface_diesel_power_1
-                fixed_ship_fire_control_system_slot = module_capital_digital_integrated_fire_control
+                fixed_ship_fire_control_system_slot = module_screen_digital_integrated_fire_control
                 fixed_ship_radar_slot = module_radar_4
                 fixed_ship_auxillary_slot_3 = module_naval_vls_cells_32
                 fixed_ship_auxillary_slot_2 = module_naval_missile_mount_twin
@@ -405,7 +405,7 @@
             type = helicopter_operator_hull_2
             parent_version = 0
             modules = {
-                fixed_ship_engine_slot = module_surface_diesel_power_2
+                fixed_ship_engine_slot = module_surface_jet_turbine_power
                 fixed_ship_fire_control_system_slot = module_digital_integrated_fire_control
                 fixed_ship_radar_slot = module_radar_3
                 fixed_ship_auxillary_slot_3 = module_naval_missile_mount_single
@@ -420,7 +420,7 @@
         }
         create_equipment_variant = {
             name = "Shang Class"
-            type = attack_submarine_hull_3
+            type = attack_submarine_hull_4
             parent_version = 0
             modules = {
                 fixed_ship_engine_slot = module_sub_mod_reactor_power
@@ -514,6 +514,8 @@
 
     DEN = {
         set_technology = {
+            frigate_hull_3 = 1
+            corvette_hull_3 = 1
             aircraft_heli_engineering_1 = 1
             frigate_hull_4 = 1
             tech_combat_radar_3 = 1
@@ -542,6 +544,34 @@
                 fixed_ship_auxillary_slot_2 = module_torpedoes_3
             }
         }
+        create_equipment_variant = {
+            name = "Diana Class"
+            type = corvette_hull_3
+            parent_version = 0
+            modules = {
+                fixed_ship_engine_slot = module_light_surface_diesel_power_1
+                fixed_ship_fire_control_system_slot = module_analog_fire_control
+                fixed_ship_radar_slot = module_sonar_4
+                fixed_ship_auxillary_slot = module_mineclearing
+                fixed_ship_battery_slot = module_76mm_gun_2
+                front_1_custom_slot = module_chain_gun
+                rear_1_custom_slot = module_light_helipad_2
+            }
+        }
+        create_equipment_variant = {
+            name = "Absalon Class"
+            type = frigate_hull_3
+            parent_version = 0
+            modules = {
+                fixed_ship_engine_slot = module_light_surface_diesel_power_1
+                fixed_ship_fire_control_system_slot = module_analog_fire_control
+                fixed_ship_radar_slot = module_radar_2
+                fixed_ship_auxillary_slot_2 = module_chain_gun
+                fixed_ship_auxillary_slot_1 = module_chain_gun
+                fixed_ship_battery_slot = module_76mm_gun_2
+                rear_1_custom_slot = module_light_helipad_1
+            }
+        }
     }
 
     EGU = {
@@ -563,7 +593,7 @@
             type = frigate_hull_4
             parent_version = 0
             modules = {
-                fixed_ship_engine_slot = module_light_surface_diesel_power_2
+                fixed_ship_engine_slot = module_light_surface_jet_turbine_power
                 fixed_ship_fire_control_system_slot = module_digital_integrated_fire_control
                 fixed_ship_radar_slot = module_radar_4
                 fixed_ship_auxillary_slot_2 = module_naval_missile_mount_single
@@ -642,7 +672,7 @@
             parent_version = 0
             modules = {
                 fixed_ship_engine_slot = module_surface_jet_turbine_power2
-                fixed_ship_fire_control_system_slot = module_capital_digital_integrated_fire_control
+                fixed_ship_fire_control_system_slot = module_screen_digital_integrated_fire_control
                 fixed_ship_radar_slot = module_radar_4
                 fixed_ship_auxillary_slot_3 = module_torpedoes_3
                 fixed_ship_auxillary_slot_2 = module_naval_missile_mount_quad
@@ -676,7 +706,7 @@
             parent_version = 0
             modules = {
                 fixed_ship_engine_slot = module_surface_jet_turbine_power2
-                fixed_ship_fire_control_system_slot = module_capital_digital_integrated_fire_control
+                fixed_ship_fire_control_system_slot = module_digital_integrated_fire_control
                 fixed_ship_radar_slot = module_radar_4
                 fixed_ship_auxillary_slot_2 = module_ciws_3
                 fixed_ship_auxillary_slot_1 = module_esm_2
@@ -689,7 +719,7 @@
                 mid_3_custom_slot = module_helipads_3
                 rear_1_custom_slot = module_ciws_3
                 rear_2_custom_slot = empty
-                fixed_ship_missile_ammo_slot = module_naval_ammo_air_defense_3
+                fixed_ship_missile_ammo_slot = module_naval_ammo_balanced_3
             }
             icon = "gfx/interface/technologies/ENG/NAV/ELIS.dds"
             design_team = mio:ENG_bae_systems_manufacturer
@@ -726,6 +756,7 @@
 
     FIN = {
         set_technology = {
+            corvette_hull_2 = 1
             aircraft_heli_engineering_3 = 1
             corvette_hull_3 = 1
             tech_combat_sonar_3 = 1
@@ -736,7 +767,7 @@
             tech_point_defense_chain_gun = 1
         }
         create_equipment_variant = {
-            name = "Katanp盲盲 Class"
+            name = "Katanpää Class"
             type = corvette_hull_3
             parent_version = 0
             modules = {
@@ -747,6 +778,20 @@
                 fixed_ship_battery_slot = module_76mm_gun_2
                 front_1_custom_slot = module_chain_gun
                 rear_1_custom_slot = module_light_helipad_2
+            }
+        }
+        create_equipment_variant = {
+            name = "Pansio Class"
+            type = corvette_hull_2
+            parent_version = 0
+            modules = {
+                fixed_ship_engine_slot = module_light_surface_diesel_power_1
+                fixed_ship_fire_control_system_slot = module_digital_integrated_fire_control
+                fixed_ship_radar_slot = module_sonar_3
+                fixed_ship_auxillary_slot = module_mineclearing
+                fixed_ship_battery_slot = module_76mm_gun_2
+                front_1_custom_slot = module_chain_gun
+                rear_1_custom_slot = module_chain_gun
             }
         }
     }
@@ -810,7 +855,7 @@
             parent_version = 0
             modules = {
                 fixed_ship_engine_slot = module_surface_jet_turbine_power2
-                fixed_ship_fire_control_system_slot = module_capital_advanced_integrated_missile_radar_control
+                fixed_ship_fire_control_system_slot = module_screen_advanced_integrated_missile_radar_control
                 fixed_ship_radar_slot = module_radar_4
                 fixed_ship_auxillary_slot_3 = module_naval_missile_mount_quad
                 fixed_ship_auxillary_slot_2 = module_torpedoes_3
@@ -825,7 +870,7 @@
         }
         create_equipment_variant = {
             name = "Tahya Misr Class"
-            type = frigate_hull_3
+            type = frigate_hull_4
             parent_version = 0
             modules = {
                 fixed_ship_engine_slot = module_light_surface_jet_turbine_power2
@@ -888,7 +933,7 @@
             }
         }
         create_equipment_variant = {
-            name = "Scorp猫ne Class"
+            name = "Scorpène Class"
             type = attack_submarine_hull_2
             parent_version = 0
             modules = {
@@ -943,7 +988,7 @@
             tech_vls_surface_3 = 1
         }
         create_equipment_variant = {
-            name = "Type 209 Class - G眉r Variant"
+            name = "Type 209 Class - Gür Variant"
             type = attack_submarine_hull_2
             parent_version = 0
             modules = {
@@ -973,7 +1018,7 @@
             }
         }
         create_equipment_variant = {
-            name = "Baden-W眉rttemberg Class"
+            name = "Baden-Württemberg Class"
             type = frigate_hull_4
             parent_version = 0
             modules = {
@@ -1011,7 +1056,7 @@
             tech_vls_surface_4 = 1
         }
         create_equipment_variant = {
-            name = "De Zeven Provinci毛n Class"
+            name = "De Zeven Provinciën Class"
             type = frigate_hull_3
             parent_version = 0
             modules = {
@@ -1123,7 +1168,7 @@
             parent_version = 0
             modules = {
                 fixed_ship_engine_slot = module_surface_jet_turbine_power
-                fixed_ship_fire_control_system_slot = module_capital_advanced_integrated_missile_radar_control
+                fixed_ship_fire_control_system_slot = module_screen_advanced_integrated_missile_radar_control
                 fixed_ship_radar_slot = module_radar_4
                 fixed_ship_auxillary_slot_3 = module_ciws_3
                 fixed_ship_auxillary_slot_2 = module_76mm_gun_2
@@ -1182,7 +1227,7 @@
             parent_version = 0
             modules = {
                 fixed_ship_engine_slot = module_surface_jet_turbine_power
-                fixed_ship_fire_control_system_slot = module_capital_advanced_integrated_missile_radar_control
+                fixed_ship_fire_control_system_slot = module_screen_advanced_integrated_missile_radar_control
                 fixed_ship_radar_slot = module_radar_4
                 fixed_ship_auxillary_slot_3 = module_ciws_3
                 fixed_ship_auxillary_slot_2 = module_torpedoes_3
@@ -1201,7 +1246,7 @@
             parent_version = 0
             modules = {
                 fixed_ship_engine_slot = module_surface_jet_turbine_power
-                fixed_ship_fire_control_system_slot = module_capital_advanced_integrated_missile_radar_control
+                fixed_ship_fire_control_system_slot = module_screen_advanced_integrated_missile_radar_control
                 fixed_ship_radar_slot = module_sonar_4
                 fixed_ship_auxillary_slot_3 = module_ciws_3
                 fixed_ship_auxillary_slot_2 = module_torpedoes_3
@@ -1215,7 +1260,7 @@
             }
         }
         create_equipment_variant = {
-            name = "Todaro 2陋 Serie Class"
+            name = "Todaro 2ª Serie Class"
             type = attack_submarine_hull_4
             parent_version = 0
             modules = {
@@ -1309,7 +1354,7 @@
             parent_version = 0
             modules = {
                 fixed_ship_engine_slot = module_surface_jet_turbine_power2
-                fixed_ship_fire_control_system_slot = module_capital_digital_integrated_fire_control
+                fixed_ship_fire_control_system_slot = module_screen_digital_integrated_fire_control
                 fixed_ship_radar_slot = module_radar_4
                 fixed_ship_auxillary_slot_3 = module_naval_vls_cells_32
                 fixed_ship_auxillary_slot_2 = module_naval_vls_cells_32
@@ -1329,7 +1374,7 @@
             design_team = mio:JAP_mitsubishi_shipbuilding_naval_manufacturer
             modules = {
                 fixed_ship_engine_slot = module_surface_jet_turbine_power2
-                fixed_ship_fire_control_system_slot = module_capital_digital_integrated_fire_control
+                fixed_ship_fire_control_system_slot = module_screen_digital_integrated_fire_control
                 fixed_ship_radar_slot = module_radar_4
                 fixed_ship_auxillary_slot_3 = module_naval_vls_cells_32
                 fixed_ship_auxillary_slot_2 = module_naval_vls_cells_32
@@ -1348,7 +1393,7 @@
             parent_version = 0
             modules = {
                 fixed_ship_engine_slot = module_surface_jet_turbine_power2
-                fixed_ship_fire_control_system_slot = module_capital_advanced_integrated_missile_radar_control
+                fixed_ship_fire_control_system_slot = module_screen_advanced_integrated_missile_radar_control
                 fixed_ship_radar_slot = module_radar_4
                 fixed_ship_auxillary_slot_3 = module_naval_vls_cells_32
                 fixed_ship_auxillary_slot_2 = module_naval_missile_mount_quad
@@ -1367,7 +1412,7 @@
             parent_version = 0
             modules = {
                 fixed_ship_engine_slot = module_surface_jet_turbine_power2
-                fixed_ship_fire_control_system_slot = module_capital_advanced_integrated_missile_radar_control
+                fixed_ship_fire_control_system_slot = module_screen_advanced_integrated_missile_radar_control
                 fixed_ship_radar_slot = module_radar_4
                 fixed_ship_auxillary_slot_3 = module_naval_vls_cells_32
                 fixed_ship_auxillary_slot_2 = module_naval_vls_cells_32
@@ -1382,7 +1427,7 @@
         }
         create_equipment_variant = {
             name = "Soryu Class"
-            type = attack_submarine_hull_3
+            type = attack_submarine_hull_4
             parent_version = 0
             modules = {
                 fixed_ship_engine_slot = module_sub_diesel_electric_power2
@@ -1485,7 +1530,7 @@
             type = helicopter_operator_hull_2
             parent_version = 0
             modules = {
-                fixed_ship_engine_slot = module_surface_diesel_power_2
+                fixed_ship_engine_slot = module_surface_jet_turbine_power
                 fixed_ship_fire_control_system_slot = module_digital_integrated_fire_control
                 fixed_ship_radar_slot = module_radar_4
                 fixed_ship_auxillary_slot_3 = module_naval_missile_mount_single
@@ -1503,7 +1548,7 @@
             type = helicopter_operator_hull_2
             parent_version = 0
             modules = {
-                fixed_ship_engine_slot = module_surface_diesel_power_2
+                fixed_ship_engine_slot = module_surface_jet_turbine_power
                 fixed_ship_fire_control_system_slot = module_digital_integrated_fire_control
                 fixed_ship_radar_slot = module_radar_4
                 fixed_ship_auxillary_slot_3 = module_naval_missile_mount_single
@@ -1522,7 +1567,7 @@
             parent_version = 0
             modules = {
                 fixed_ship_engine_slot = module_surface_jet_turbine_power2
-                fixed_ship_fire_control_system_slot = module_capital_digital_integrated_fire_control
+                fixed_ship_fire_control_system_slot = module_screen_digital_integrated_fire_control
                 fixed_ship_radar_slot = module_radar_4
                 fixed_ship_auxillary_slot_3 = module_naval_vls_cells_32
                 fixed_ship_auxillary_slot_2 = module_naval_missile_mount_quad
@@ -1541,7 +1586,7 @@
             parent_version = 0
             modules = {
                 fixed_ship_engine_slot = module_surface_jet_turbine_power
-                fixed_ship_fire_control_system_slot = module_capital_digital_integrated_fire_control
+                fixed_ship_fire_control_system_slot = module_screen_digital_integrated_fire_control
                 fixed_ship_radar_slot = module_radar_4
                 fixed_ship_auxillary_slot_3 = module_naval_vls_cells_16
                 fixed_ship_auxillary_slot_2 = module_naval_missile_mount_twin
@@ -1669,7 +1714,6 @@
         create_equipment_variant = {
             name = "Fridtjof Nansen Class"
             type = frigate_hull_3
-            name_group = NOR_HISTORICAL
             parent_version = 0
             modules = {
                 fixed_ship_engine_slot = module_light_surface_diesel_power_1
@@ -1720,6 +1764,7 @@
 
     PER = {
         set_technology = {
+            attack_submarine_hull_3 = 1
             aircraft_heli_engineering_1 = 1
             frigate_hull_3 = 1
             tech_combat_radar_2 = 1
@@ -1746,6 +1791,20 @@
                 front_1_custom_slot = module_torpedoes_2
                 rear_1_custom_slot = module_light_helipad_1
                 fixed_ship_missile_ammo_slot = module_naval_ammo_balanced_3
+            }
+        }
+        create_equipment_variant = {
+            name = "Fateh Class"
+            type = attack_submarine_hull_3
+            parent_version = 0
+            modules = {
+                fixed_ship_engine_slot = module_sub_diesel_electric_power
+                fixed_ship_radar_slot = module_sonar_4
+                fixed_ship_auxillary_slot = module_sub_esm_1
+                fixed_ship_auxillary_slot_1 = module_minelaying
+                fixed_ship_auxillary_slot_2 = module_torpedoes_3
+                fixed_ship_auxillary_slot_3 = module_torpedoes_3
+                fixed_ship_battery_slot = module_anti_ship_torpedoes_2
             }
         }
     }
@@ -1878,7 +1937,7 @@
             parent_version = 0
             modules = {
                 fixed_ship_engine_slot = module_surface_jet_turbine_power2
-                fixed_ship_fire_control_system_slot = module_capital_digital_integrated_fire_control
+                fixed_ship_fire_control_system_slot = module_screen_digital_integrated_fire_control
                 fixed_ship_radar_slot = module_radar_4
                 fixed_ship_auxillary_slot_3 = module_ciws_3
                 fixed_ship_auxillary_slot_2 = module_torpedoes_3
@@ -2293,6 +2352,7 @@
 
     SWE = {
         set_technology = {
+            corvette_hull_4 = 1
             attack_submarine_hull_2 = 1
             corvette_hull_2 = 1
             corvette_hull_3 = 1
@@ -2325,7 +2385,7 @@
             }
         }
         create_equipment_variant = {
-            name = "Sp氓r枚 Class"
+            name = "Spårö Class"
             type = corvette_hull_3
             parent_version = 0
             modules = {
@@ -2339,7 +2399,7 @@
             }
         }
         create_equipment_variant = {
-            name = "S枚dermanland Class"
+            name = "Södermanland Class"
             type = attack_submarine_hull_2
             parent_version = 0
             modules = {
@@ -2351,6 +2411,21 @@
                 fixed_ship_auxillary_slot = module_torpedoes_2
                 fixed_ship_battery_slot = module_anti_ship_torpedoes_2
                 fixed_ship_missile_ammo_slot = module_naval_sub_ammo_anti_ship_2
+            }
+        }
+        create_equipment_variant = {
+            name = "Visby Class"
+            type = corvette_hull_4
+            parent_version = 0
+            modules = {
+                fixed_ship_engine_slot = module_light_surface_diesel_power_1
+                fixed_ship_fire_control_system_slot = module_digital_integrated_fire_control
+                fixed_ship_radar_slot = module_radar_4
+                fixed_ship_auxillary_slot = module_naval_missile_mount_twin
+                fixed_ship_battery_slot = module_76mm_gun_2
+                front_1_custom_slot = module_torpedoes_3
+                rear_1_custom_slot = module_light_helipad_1
+                fixed_ship_missile_ammo_slot = module_naval_ammo_balanced_4
             }
         }
     }
@@ -2386,6 +2461,7 @@
 
     USA = {
         set_technology = {
+            corvette_hull_4 = 1
             aircraft_carrier_engineering = 1
             aircraft_heli_engineering_1 = 1
             aircraft_heli_engineering_3 = 1
@@ -2439,7 +2515,7 @@
         }
         create_equipment_variant = {
             name = "America Class"
-            type = helicopter_operator_hull_2
+            type = helicopter_operator_hull_3
             parent_version = 0
             modules = {
                 fixed_ship_engine_slot = module_surface_jet_turbine_power3
@@ -2510,7 +2586,7 @@
             parent_version = 0
             modules = {
                 fixed_ship_engine_slot = module_surface_jet_turbine_power2
-                fixed_ship_fire_control_system_slot = module_capital_digital_integrated_fire_control
+                fixed_ship_fire_control_system_slot = module_screen_digital_integrated_fire_control
                 fixed_ship_radar_slot = module_radar_4
                 fixed_ship_auxillary_slot_3 = module_naval_vls_cells_16
                 fixed_ship_auxillary_slot_2 = module_anti_submarine_mortar
@@ -2523,6 +2599,1065 @@
                 mid_2_custom_slot = module_torpedoes_3
             }
         }
+        create_equipment_variant = {
+            name = "Freedom Class"
+            type = corvette_hull_4
+            parent_version = 0
+            modules = {
+                fixed_ship_engine_slot = module_light_surface_diesel_power_1
+                fixed_ship_fire_control_system_slot = module_digital_integrated_fire_control
+                fixed_ship_radar_slot = module_radar_4
+                fixed_ship_auxillary_slot = module_naval_missile_mount_twin
+                fixed_ship_battery_slot = module_76mm_gun_2
+                front_1_custom_slot = module_torpedoes_3
+                rear_1_custom_slot = module_light_helipad_1
+                fixed_ship_missile_ammo_slot = module_naval_ammo_balanced_4
+            }
+        }
+    }
+    # === BEGIN NAVAL TECH COMPLETION BLOCK (generated) ===
+    ALG = {
+        set_technology = {
+            attack_submarine_hull_2 = 1
+            corvette_hull_1 = 1
+            corvette_hull_2 = 1
+            frigate_hull_3 = 1
+            tech_combat_radar_1 = 1
+            tech_combat_radar_2 = 1
+            tech_combat_sonar_2 = 1
+            tech_diesel_power_systems_2 = 1
+            tech_fire_control_1 = 1
+            tech_light_guns_1 = 1
+            tech_submarine_engineering_1 = 1
+            tech_torpedoes_2 = 1
+            tech_torpedoes_3 = 1
+        }
     }
 
+    ARG = {
+        set_technology = {
+            attack_submarine_hull_2 = 1
+            corvette_hull_2 = 1
+            destroyer_hull_2 = 1
+            tech_combat_radar_1 = 1
+            tech_combat_radar_2 = 1
+            tech_combat_sonar_2 = 1
+            tech_diesel_power_systems_1 = 1
+            tech_diesel_power_systems_2 = 1
+            tech_fire_control_2 = 1
+            tech_light_guns_2 = 1
+            tech_power_systems_2 = 1
+            tech_submarine_engineering_1 = 1
+            tech_torpedoes_2 = 1
+            tech_vls_surface_1 = 1
+        }
+    }
+
+    AST = {
+        set_technology = {
+            attack_submarine_hull_3 = 1
+            frigate_hull_2 = 1
+            frigate_hull_3 = 1
+            tech_combat_radar_2 = 1
+            tech_combat_sonar_3 = 1
+            tech_nuclear_power_systems_2 = 1
+            tech_submarine_engineering_2 = 1
+            tech_torpedoes_2 = 1
+        }
+    }
+
+    BAN = {
+        set_technology = {
+            attack_submarine_hull_2 = 1
+            corvette_hull_2 = 1
+            corvette_hull_3 = 1
+            frigate_hull_1 = 1
+            frigate_hull_2 = 1
+            tech_combat_radar_1 = 1
+            tech_combat_radar_2 = 1
+            tech_combat_sonar_2 = 1
+            tech_diesel_power_systems_2 = 1
+            tech_submarine_engineering_1 = 1
+        }
+    }
+
+    BEL = {
+        set_technology = {
+            corvette_hull_2 = 1
+            frigate_hull_3 = 1
+            tech_combat_radar_2 = 1
+            tech_torpedoes_3 = 1
+            tech_vls_surface_1 = 1
+        }
+        create_equipment_variant = {
+            name = "Karel Doorman Class"
+            type = frigate_hull_3
+            parent_version = 0
+            modules = {
+                fixed_ship_engine_slot = module_light_surface_jet_turbine_power2
+                fixed_ship_fire_control_system_slot = module_digital_integrated_fire_control
+                fixed_ship_radar_slot = module_radar_3
+                fixed_ship_auxillary_slot_2 = module_naval_missile_mount_quad
+                fixed_ship_auxillary_slot_1 = module_torpedoes_3
+                fixed_ship_auxillary_slot = module_ciws_2
+                fixed_ship_battery_slot = module_76mm_gun_2
+                front_1_custom_slot = module_naval_missile_mount_twin
+                rear_1_custom_slot = module_light_helipad_2
+            }
+        }
+        create_equipment_variant = {
+            name = "Tripartite Class"
+            type = corvette_hull_2
+            parent_version = 0
+            modules = {
+                fixed_ship_engine_slot = module_light_surface_diesel_power_1
+                fixed_ship_fire_control_system_slot = module_analog_fire_control
+                fixed_ship_radar_slot = module_radar_2
+                fixed_ship_auxillary_slot = module_minelaying
+                fixed_ship_battery_slot = module_76mm_gun_2
+                front_1_custom_slot = module_chain_gun
+                rear_1_custom_slot = module_chain_gun
+            }
+        }
+    }
+
+    BRA = {
+        set_technology = {
+            attack_submarine_hull_2 = 1
+            corvette_hull_2 = 1
+            frigate_hull_2 = 1
+            tech_combat_radar_1 = 1
+            tech_combat_sonar_2 = 1
+            tech_diesel_power_systems_2 = 1
+            tech_light_guns_2 = 1
+            tech_submarine_engineering_1 = 1
+            tech_torpedoes_2 = 1
+        }
+    }
+
+    BRM = {
+        set_technology = {
+            corvette_hull_1 = 1
+            frigate_hull_2 = 1
+            tech_combat_radar_2 = 1
+            tech_fire_control_1 = 1
+            tech_light_guns_1 = 1
+            tech_torpedoes_2 = 1
+        }
+    }
+
+    BUL = {
+        set_technology = {
+            corvette_hull_2 = 1
+            frigate_hull_2 = 1
+            tech_combat_radar_1 = 1
+            tech_combat_radar_2 = 1
+            tech_diesel_power_systems_1 = 1
+            tech_fire_control_2 = 1
+            tech_light_guns_2 = 1
+            tech_torpedoes_2 = 1
+        }
+    }
+
+    CAN = {
+        set_technology = {
+            attack_submarine_hull_2 = 1
+            destroyer_hull_1 = 1
+            frigate_hull_3 = 1
+            tech_combat_radar_1 = 1
+            tech_combat_radar_2 = 1
+            tech_combat_sonar_2 = 1
+            tech_diesel_power_systems_1 = 1
+            tech_diesel_power_systems_2 = 1
+            tech_fire_control_2 = 1
+            tech_light_guns_2 = 1
+            tech_power_systems_2 = 1
+            tech_submarine_engineering_1 = 1
+            tech_torpedoes_2 = 1
+            tech_torpedoes_3 = 1
+            tech_vls_surface_1 = 1
+        }
+    }
+
+    CHI = {
+        set_technology = {
+            attack_submarine_hull_1 = 1
+            attack_submarine_hull_2 = 1
+            attack_submarine_hull_4 = 1
+            frigate_hull_2 = 1
+            tech_combat_sonar_1 = 1
+            tech_combat_sonar_4 = 1
+            tech_submarine_engineering_2 = 1
+            tech_torpedoes_1 = 1
+        }
+    }
+
+    CHL = {
+        set_technology = {
+            attack_submarine_hull_2 = 1
+            attack_submarine_hull_3 = 1
+            frigate_hull_2 = 1
+            frigate_hull_3 = 1
+            helicopter_operator_hull_2 = 1
+            aircraft_heli_engineering_2 = 1
+            tech_combat_radar_2 = 1
+            tech_combat_sonar_2 = 1
+            tech_combat_sonar_3 = 1
+            tech_diesel_power_systems_1 = 1
+            tech_diesel_power_systems_2 = 1
+            tech_fire_control_2 = 1
+            tech_light_guns_2 = 1
+            tech_nuclear_power_systems_2 = 1
+            tech_submarine_engineering_1 = 1
+            tech_submarine_engineering_2 = 1
+            tech_torpedoes_2 = 1
+            tech_torpedoes_3 = 1
+            tech_vls_aa_1 = 1
+            tech_vls_surface_1 = 1
+        }
+    }
+
+    COL = {
+        set_technology = {
+            attack_submarine_hull_2 = 1
+            frigate_hull_2 = 1
+            tech_combat_radar_2 = 1
+            tech_combat_sonar_2 = 1
+            tech_diesel_power_systems_1 = 1
+            tech_diesel_power_systems_2 = 1
+            tech_fire_control_2 = 1
+            tech_light_guns_2 = 1
+            tech_submarine_engineering_1 = 1
+            tech_torpedoes_2 = 1
+        }
+    }
+
+    CUB = {
+        set_technology = {
+            corvette_hull_2 = 1
+            frigate_hull_2 = 1
+            tech_combat_radar_1 = 1
+            tech_combat_radar_2 = 1
+            tech_diesel_power_systems_1 = 1
+            tech_fire_control_2 = 1
+            tech_light_guns_2 = 1
+            tech_torpedoes_2 = 1
+        }
+    }
+
+    DEN = {
+        set_technology = {
+            corvette_hull_3 = 1
+            corvette_hull_4 = 1
+            frigate_hull_3 = 1
+            tech_combat_radar_2 = 1
+            tech_diesel_power_systems_1 = 1
+        }
+        create_equipment_variant = {
+            name = "Knud Rasmussen Class"
+            type = corvette_hull_4
+            parent_version = 0
+            modules = {
+                fixed_ship_engine_slot = module_light_surface_diesel_power_1
+                fixed_ship_fire_control_system_slot = module_digital_integrated_fire_control
+                fixed_ship_radar_slot = module_radar_3
+                fixed_ship_auxillary_slot = module_chain_gun
+                fixed_ship_battery_slot = module_76mm_gun_2
+                front_1_custom_slot = module_torpedoes_2
+                rear_1_custom_slot = module_light_helipad_1
+            }
+        }
+    }
+
+    ECU = {
+        set_technology = {
+            attack_submarine_hull_2 = 1
+            corvette_hull_2 = 1
+            frigate_hull_1 = 1
+            tech_combat_radar_1 = 1
+            tech_combat_sonar_2 = 1
+            tech_diesel_power_systems_1 = 1
+            tech_diesel_power_systems_2 = 1
+            tech_fire_control_2 = 1
+            tech_light_guns_2 = 1
+            tech_submarine_engineering_1 = 1
+            tech_torpedoes_2 = 1
+        }
+    }
+
+    EGU = {
+        set_technology = {
+            corvette_hull_3 = 1
+            frigate_hull_5 = 1
+            tech_combat_radar_2 = 1
+            tech_diesel_power_systems_1 = 1
+            tech_fire_control_3 = 1
+            tech_light_guns_3 = 1
+            tech_power_systems_3 = 1
+            tech_vls_surface_3 = 1
+        }
+    }
+
+    EGY = {
+        set_technology = {
+            attack_submarine_hull_2 = 1
+            corvette_hull_2 = 1
+            frigate_hull_1 = 1
+            frigate_hull_2 = 1
+            frigate_hull_4 = 1
+            tech_combat_radar_1 = 1
+            tech_combat_radar_3 = 1
+            tech_combat_sonar_2 = 1
+            tech_diesel_power_systems_2 = 1
+            tech_fire_control_3 = 1
+            tech_light_guns_2 = 1
+            tech_power_systems_2 = 1
+            tech_submarine_engineering_1 = 1
+            tech_torpedoes_2 = 1
+            tech_torpedoes_3 = 1
+            tech_vls_surface_3 = 1
+        }
+    }
+
+    ENG = {
+        set_technology = {
+            attack_submarine_hull_2 = 1
+            attack_submarine_hull_4 = 1
+            frigate_hull_3 = 1
+            helicopter_operator_hull_2 = 1
+            missile_submarine_hull_3 = 1
+            aircraft_heli_engineering_2 = 1
+            tech_combat_sonar_2 = 1
+            tech_combat_sonar_3 = 1
+            tech_combat_sonar_4 = 1
+            tech_diesel_power_systems_2 = 1
+            tech_nuclear_power_systems_2 = 1
+            tech_nuclear_power_systems_3 = 1
+            tech_submarine_engineering_1 = 1
+            tech_submarine_engineering_2 = 1
+            tech_torpedoes_2 = 1
+            tech_vls_aa_1 = 1
+        }
+    }
+
+    FIN = {
+        set_technology = {
+            corvette_hull_2 = 1
+            frigate_hull_2 = 1
+            tech_combat_radar_1 = 1
+            tech_combat_radar_2 = 1
+            tech_fire_control_2 = 1
+            tech_torpedoes_2 = 1
+        }
+    }
+
+    FRA = {
+        set_technology = {
+            carrier_hull_2 = 1
+            corvette_hull_2 = 1
+            destroyer_hull_2 = 1
+            missile_submarine_hull_3 = 1
+            tech_combat_radar_1 = 1
+            tech_nuclear_power_systems_2 = 1
+            tech_vls_aa_1 = 1
+        }
+    }
+
+    GER = {
+        set_technology = {
+            attack_submarine_hull_3 = 1
+            corvette_hull_3 = 1
+            frigate_hull_2 = 1
+            frigate_hull_3 = 1
+            tech_combat_sonar_3 = 1
+            tech_diesel_power_systems_1 = 1
+            tech_fire_control_2 = 1
+            tech_nuclear_power_systems_2 = 1
+            tech_submarine_engineering_2 = 1
+            tech_torpedoes_3 = 1
+        }
+    }
+
+    GRE = {
+        set_technology = {
+            attack_submarine_hull_2 = 1
+            attack_submarine_hull_4 = 1
+            frigate_hull_2 = 1
+            frigate_hull_3 = 1
+            tech_combat_radar_2 = 1
+            tech_combat_sonar_2 = 1
+            tech_combat_sonar_4 = 1
+            tech_diesel_power_systems_1 = 1
+            tech_diesel_power_systems_2 = 1
+            tech_fire_control_2 = 1
+            tech_light_guns_2 = 1
+            tech_nuclear_power_systems_3 = 1
+            tech_submarine_engineering_1 = 1
+            tech_submarine_engineering_2 = 1
+            tech_torpedoes_2 = 1
+            tech_torpedoes_3 = 1
+            tech_vls_surface_1 = 1
+        }
+    }
+
+    HOL = {
+        set_technology = {
+            attack_submarine_hull_2 = 1
+            helicopter_operator_hull_2 = 1
+            aircraft_heli_engineering_2 = 1
+            tech_combat_radar_2 = 1
+            tech_combat_sonar_2 = 1
+            tech_diesel_power_systems_2 = 1
+            tech_submarine_engineering_1 = 1
+            tech_torpedoes_2 = 1
+            tech_vls_aa_1 = 1
+        }
+    }
+
+    HOR = {
+        set_technology = {
+            corvette_hull_2 = 1
+            tech_combat_radar_1 = 1
+            tech_diesel_power_systems_1 = 1
+            tech_fire_control_2 = 1
+            tech_light_guns_2 = 1
+        }
+    }
+
+    IND = {
+        set_technology = {
+            attack_submarine_hull_2 = 1
+            corvette_hull_2 = 1
+            corvette_hull_3 = 1
+            frigate_hull_1 = 1
+            frigate_hull_3 = 1
+            frigate_hull_4 = 1
+            helicopter_operator_hull_2 = 1
+            aircraft_heli_engineering_2 = 1
+            tech_combat_radar_1 = 1
+            tech_combat_radar_3 = 1
+            tech_combat_sonar_2 = 1
+            tech_diesel_power_systems_1 = 1
+            tech_diesel_power_systems_2 = 1
+            tech_fire_control_2 = 1
+            tech_fire_control_3 = 1
+            tech_light_guns_2 = 1
+            tech_power_systems_2 = 1
+            tech_submarine_engineering_1 = 1
+            tech_vls_aa_1 = 1
+            tech_vls_surface_3 = 1
+        }
+    }
+
+    ISR = {
+        set_technology = {
+            attack_submarine_hull_2 = 1
+            corvette_hull_3 = 1
+            tech_combat_radar_2 = 1
+            tech_combat_sonar_2 = 1
+            tech_diesel_power_systems_1 = 1
+            tech_diesel_power_systems_2 = 1
+            tech_fire_control_2 = 1
+            tech_light_guns_2 = 1
+            tech_submarine_engineering_1 = 1
+            tech_torpedoes_2 = 1
+        }
+    }
+
+    ITA = {
+        set_technology = {
+            attack_submarine_hull_2 = 1
+            attack_submarine_hull_3 = 1
+            carrier_hull_2 = 1
+            corvette_hull_2 = 1
+            corvette_hull_3 = 1
+            destroyer_hull_2 = 1
+            frigate_hull_2 = 1
+            frigate_hull_3 = 1
+            tech_combat_radar_1 = 1
+            tech_combat_sonar_2 = 1
+            tech_diesel_power_systems_1 = 1
+            tech_diesel_power_systems_2 = 1
+            tech_fire_control_2 = 1
+            tech_nuclear_power_systems_2 = 1
+            tech_power_systems_2 = 1
+            tech_submarine_engineering_1 = 1
+            tech_torpedoes_2 = 1
+            tech_vls_aa_1 = 1
+        }
+    }
+
+    JAP = {
+        set_technology = {
+            corvette_hull_2 = 1
+            destroyer_hull_2 = 1
+            frigate_hull_2 = 1
+            frigate_hull_3 = 1
+            tech_combat_radar_1 = 1
+        }
+    }
+
+    KOR = {
+        set_technology = {
+            corvette_hull_2 = 1
+            frigate_hull_2 = 1
+            tech_combat_radar_1 = 1
+        }
+    }
+
+    MAY = {
+        set_technology = {
+            attack_submarine_hull_3 = 1
+            corvette_hull_2 = 1
+            corvette_hull_3 = 1
+            tech_combat_radar_1 = 1
+            tech_combat_radar_2 = 1
+            tech_combat_sonar_3 = 1
+            tech_diesel_power_systems_1 = 1
+            tech_fire_control_2 = 1
+            tech_light_guns_2 = 1
+            tech_nuclear_power_systems_2 = 1
+            tech_submarine_engineering_2 = 1
+            tech_torpedoes_3 = 1
+        }
+    }
+
+    MEX = {
+        set_technology = {
+            frigate_hull_1 = 1
+            tech_combat_radar_1 = 1
+            tech_diesel_power_systems_1 = 1
+            tech_fire_control_2 = 1
+            tech_light_guns_2 = 1
+            tech_torpedoes_2 = 1
+        }
+    }
+
+    MOR = {
+        set_technology = {
+            corvette_hull_2 = 1
+            frigate_hull_3 = 1
+            tech_combat_radar_1 = 1
+            tech_combat_radar_2 = 1
+            tech_diesel_power_systems_1 = 1
+            tech_fire_control_2 = 1
+        }
+    }
+
+    NIG = {
+        set_technology = {
+            corvette_hull_3 = 1
+            tech_combat_radar_2 = 1
+            tech_diesel_power_systems_1 = 1
+            tech_fire_control_2 = 1
+            tech_light_guns_2 = 1
+        }
+    }
+
+    NKO = {
+        set_technology = {
+            attack_submarine_hull_1 = 1
+            frigate_hull_1 = 1
+            tech_combat_radar_1 = 1
+            tech_combat_sonar_1 = 1
+            tech_diesel_power_systems_1 = 1
+            tech_fire_control_2 = 1
+            tech_light_guns_2 = 1
+            tech_submarine_engineering_1 = 1
+            tech_torpedoes_1 = 1
+            tech_torpedoes_2 = 1
+        }
+    }
+
+    NZL = {
+        set_technology = {
+            frigate_hull_3 = 1
+            tech_combat_radar_2 = 1
+            tech_diesel_power_systems_1 = 1
+            tech_fire_control_2 = 1
+            tech_light_guns_2 = 1
+            tech_torpedoes_3 = 1
+            tech_vls_surface_1 = 1
+        }
+    }
+
+    OMA = {
+        set_technology = {
+            corvette_hull_3 = 1
+            tech_combat_radar_2 = 1
+            tech_diesel_power_systems_1 = 1
+            tech_fire_control_2 = 1
+            tech_light_guns_2 = 1
+        }
+    }
+
+    PAK = {
+        set_technology = {
+            attack_submarine_hull_2 = 1
+            frigate_hull_1 = 1
+            frigate_hull_3 = 1
+            tech_combat_radar_1 = 1
+            tech_combat_radar_2 = 1
+            tech_combat_sonar_2 = 1
+            tech_diesel_power_systems_2 = 1
+            tech_fire_control_2 = 1
+            tech_light_guns_2 = 1
+            tech_submarine_engineering_1 = 1
+            tech_torpedoes_2 = 1
+            tech_torpedoes_3 = 1
+        }
+    }
+
+    PER = {
+        set_technology = {
+            attack_submarine_hull_2 = 1
+            attack_submarine_hull_3 = 1
+            corvette_hull_1 = 1
+            corvette_hull_3 = 1
+            frigate_hull_1 = 1
+            helicopter_operator_hull_1 = 1
+            tech_combat_radar_1 = 1
+            tech_combat_sonar_2 = 1
+            tech_combat_sonar_3 = 1
+            tech_diesel_power_systems_2 = 1
+            tech_fire_control_1 = 1
+            tech_light_guns_2 = 1
+            tech_nuclear_power_systems_2 = 1
+            tech_submarine_engineering_1 = 1
+            tech_submarine_engineering_2 = 1
+            tech_torpedoes_3 = 1
+        }
+    }
+
+    PHI = {
+        set_technology = {
+            corvette_hull_1 = 1
+            corvette_hull_2 = 1
+            frigate_hull_1 = 1
+            tech_combat_radar_1 = 1
+            tech_diesel_power_systems_1 = 1
+            tech_fire_control_1 = 1
+            tech_fire_control_2 = 1
+            tech_light_guns_1 = 1
+            tech_light_guns_2 = 1
+            tech_torpedoes_2 = 1
+        }
+    }
+
+    POL = {
+        set_technology = {
+            attack_submarine_hull_1 = 1
+            attack_submarine_hull_2 = 1
+            corvette_hull_2 = 1
+            corvette_hull_3 = 1
+            frigate_hull_2 = 1
+            tech_combat_radar_1 = 1
+            tech_combat_radar_2 = 1
+            tech_combat_sonar_1 = 1
+            tech_combat_sonar_2 = 1
+            tech_diesel_power_systems_1 = 1
+            tech_diesel_power_systems_2 = 1
+            tech_fire_control_2 = 1
+            tech_light_guns_2 = 1
+            tech_submarine_engineering_1 = 1
+            tech_torpedoes_1 = 1
+            tech_torpedoes_2 = 1
+        }
+        create_equipment_variant = {
+            name = "Orkan Class"
+            type = corvette_hull_3
+            parent_version = 0
+            modules = {
+                fixed_ship_engine_slot = module_light_surface_diesel_power_1
+                fixed_ship_fire_control_system_slot = module_analog_fire_control
+                fixed_ship_radar_slot = module_sonar_4
+                fixed_ship_auxillary_slot = module_mineclearing
+                fixed_ship_battery_slot = module_76mm_gun_2
+                front_1_custom_slot = module_chain_gun
+                rear_1_custom_slot = module_light_helipad_2
+            }
+        }
+    }
+
+    POR = {
+        set_technology = {
+            corvette_hull_1 = 1
+            tech_fire_control_1 = 1
+        }
+    }
+
+    PRU = {
+        set_technology = {
+            attack_submarine_hull_2 = 1
+            corvette_hull_2 = 1
+            cruiser_hull_1 = 1
+            frigate_hull_2 = 1
+            helicopter_operator_hull_2 = 1
+            aircraft_heli_engineering_2 = 1
+            tech_combat_radar_1 = 1
+            tech_combat_radar_2 = 1
+            tech_combat_sonar_2 = 1
+            tech_diesel_power_systems_1 = 1
+            tech_diesel_power_systems_2 = 1
+            tech_fire_control_2 = 1
+            tech_light_guns_2 = 1
+            tech_power_systems_2 = 1
+            tech_submarine_engineering_1 = 1
+            tech_torpedoes_2 = 1
+            tech_vls_aa_1 = 1
+            tech_vls_surface_1 = 1
+        }
+    }
+
+    RAJ = {
+        set_technology = {
+            attack_submarine_hull_3 = 1
+            carrier_hull_1 = 1
+            corvette_hull_2 = 1
+            destroyer_hull_2 = 1
+            frigate_hull_2 = 1
+            helicopter_operator_hull_1 = 1
+            tech_combat_radar_1 = 1
+            tech_fire_control_1 = 1
+            tech_nuclear_power_systems_2 = 1
+        }
+    }
+
+    ROM = {
+        set_technology = {
+            attack_submarine_hull_2 = 1
+            corvette_hull_2 = 1
+            frigate_hull_2 = 1
+            tech_combat_radar_1 = 1
+            tech_combat_radar_2 = 1
+            tech_combat_sonar_2 = 1
+            tech_diesel_power_systems_1 = 1
+            tech_diesel_power_systems_2 = 1
+            tech_fire_control_2 = 1
+            tech_light_guns_2 = 1
+            tech_submarine_engineering_1 = 1
+            tech_torpedoes_2 = 1
+        }
+    }
+
+    SAU = {
+        set_technology = {
+            corvette_hull_2 = 1
+            frigate_hull_2 = 1
+            frigate_hull_3 = 1
+            tech_combat_radar_1 = 1
+            tech_combat_radar_2 = 1
+            tech_diesel_power_systems_1 = 1
+            tech_fire_control_2 = 1
+            tech_light_guns_2 = 1
+            tech_torpedoes_2 = 1
+            tech_torpedoes_3 = 1
+            tech_vls_surface_1 = 1
+        }
+    }
+
+    SIA = {
+        set_technology = {
+            corvette_hull_1 = 1
+            corvette_hull_3 = 1
+            frigate_hull_1 = 1
+            frigate_hull_2 = 1
+            helicopter_operator_hull_1 = 1
+            helicopter_operator_hull_2 = 1
+            aircraft_heli_engineering_1 = 1
+            aircraft_heli_engineering_2 = 1
+            tech_combat_radar_1 = 1
+            tech_combat_radar_2 = 1
+            tech_diesel_power_systems_1 = 1
+            tech_fire_control_1 = 1
+            tech_fire_control_2 = 1
+            tech_light_guns_1 = 1
+            tech_light_guns_2 = 1
+            tech_torpedoes_2 = 1
+            tech_vls_aa_1 = 1
+        }
+    }
+
+    SIN = {
+        set_technology = {
+            attack_submarine_hull_1 = 1
+            attack_submarine_hull_2 = 1
+            corvette_hull_3 = 1
+            helicopter_operator_hull_2 = 1
+            aircraft_heli_engineering_2 = 1
+            tech_combat_sonar_1 = 1
+            tech_combat_sonar_2 = 1
+            tech_diesel_power_systems_1 = 1
+            tech_diesel_power_systems_2 = 1
+            tech_submarine_engineering_1 = 1
+            tech_torpedoes_1 = 1
+            tech_torpedoes_2 = 1
+            tech_vls_aa_1 = 1
+        }
+    }
+
+    SOV = {
+        set_technology = {
+            attack_submarine_hull_2 = 1
+            attack_submarine_hull_3 = 1
+            battleship_hull_1 = 1
+            carrier_hull_2 = 1
+            corvette_hull_1 = 1
+            corvette_hull_2 = 1
+            corvette_hull_3 = 1
+            cruiser_hull_2 = 1
+            destroyer_hull_1 = 1
+            destroyer_hull_2 = 1
+            frigate_hull_1 = 1
+            missile_submarine_hull_2 = 1
+            missile_submarine_hull_3 = 1
+            aircraft_carrier_engineering = 1
+            tech_combat_radar_1 = 1
+            tech_combat_radar_2 = 1
+            tech_combat_radar_3 = 1
+            tech_combat_sonar_3 = 1
+            tech_diesel_power_systems_2 = 1
+            tech_fire_control_1 = 1
+            tech_fire_control_3 = 1
+            tech_light_guns_1 = 1
+            tech_nuclear_power_systems_2 = 1
+            tech_power_systems_3 = 1
+            tech_submarine_engineering_1 = 1
+            tech_submarine_engineering_2 = 1
+            tech_torpedoes_2 = 1
+            tech_torpedoes_3 = 1
+            tech_vls_aa_1 = 1
+            tech_vls_surface_2 = 1
+            tech_vls_surface_1 = 1
+            tech_torpedoes_1 = 1
+            tech_light_guns_2 = 1
+            tech_point_defense_chain_gun = 1
+            tech_point_defense_system_2 = 1
+        }
+        create_equipment_variant = {
+            name = "Grisha Class"
+            type = corvette_hull_2
+            parent_version = 0
+            modules = {
+                fixed_ship_engine_slot = module_light_surface_diesel_power_1
+                fixed_ship_fire_control_system_slot = module_analog_fire_control
+                fixed_ship_radar_slot = module_radar_2
+                fixed_ship_auxillary_slot = module_mineclearing
+                fixed_ship_battery_slot = module_76mm_gun_2
+                front_1_custom_slot = module_chain_gun
+                rear_1_custom_slot = module_minelaying
+            }
+        }
+        create_equipment_variant = {
+            name = "Buyan Class"
+            type = corvette_hull_3
+            parent_version = 0
+            modules = {
+                fixed_ship_engine_slot = module_light_surface_diesel_power_1
+                fixed_ship_fire_control_system_slot = module_digital_integrated_fire_control
+                fixed_ship_radar_slot = module_radar_3
+                fixed_ship_auxillary_slot = module_naval_missile_mount_quad
+                fixed_ship_battery_slot = module_76mm_gun_3
+                front_1_custom_slot = module_ciws_2
+                rear_1_custom_slot = module_ciws_2
+                fixed_ship_missile_ammo_slot = module_naval_ammo_anti_ship_2
+            }
+        }
+        create_equipment_variant = {
+            name = "Buyan-M Class"
+            type = corvette_hull_3
+            parent_version = 0
+            modules = {
+                fixed_ship_engine_slot = module_light_surface_diesel_power_1
+                fixed_ship_fire_control_system_slot = module_digital_integrated_fire_control
+                fixed_ship_radar_slot = module_radar_3
+                fixed_ship_auxillary_slot = module_naval_missile_mount_quad
+                fixed_ship_battery_slot = module_76mm_gun_3
+                front_1_custom_slot = module_ciws_2
+                rear_1_custom_slot = module_ciws_2
+                fixed_ship_missile_ammo_slot = module_naval_ammo_anti_ship_2
+            }
+        }
+    }
+
+    SPR = {
+        set_technology = {
+            attack_submarine_hull_2 = 1
+            corvette_hull_1 = 1
+            corvette_hull_2 = 1
+            frigate_hull_2 = 1
+            tech_combat_radar_1 = 1
+            tech_combat_sonar_2 = 1
+            tech_diesel_power_systems_2 = 1
+            tech_fire_control_1 = 1
+            tech_submarine_engineering_1 = 1
+        }
+    }
+
+    SWE = {
+        set_technology = {
+            attack_submarine_hull_3 = 1
+            corvette_hull_4 = 1
+            tech_combat_radar_3 = 1
+            tech_nuclear_power_systems_2 = 1
+            tech_submarine_engineering_2 = 1
+            tech_torpedoes_3 = 1
+        }
+    }
+
+    TAI = {
+        set_technology = {
+            attack_submarine_hull_2 = 1
+            corvette_hull_4 = 1
+            destroyer_hull_1 = 1
+            frigate_hull_1 = 1
+            frigate_hull_2 = 1
+            frigate_hull_3 = 1
+            tech_combat_radar_1 = 1
+            tech_combat_radar_2 = 1
+            tech_combat_radar_3 = 1
+            tech_combat_sonar_2 = 1
+            tech_diesel_power_systems_1 = 1
+            tech_diesel_power_systems_2 = 1
+            tech_fire_control_2 = 1
+            tech_light_guns_2 = 1
+            tech_power_systems_2 = 1
+            tech_submarine_engineering_1 = 1
+            tech_torpedoes_2 = 1
+            tech_torpedoes_3 = 1
+            tech_vls_surface_1 = 1
+        }
+        create_equipment_variant = {
+            name = "Tuo Chiang Class"
+            type = corvette_hull_4
+            parent_version = 0
+            modules = {
+                fixed_ship_engine_slot = module_light_surface_diesel_power_1
+                fixed_ship_fire_control_system_slot = module_digital_integrated_fire_control
+                fixed_ship_radar_slot = module_radar_4
+                fixed_ship_auxillary_slot = module_naval_missile_mount_twin
+                fixed_ship_battery_slot = module_76mm_gun_2
+                front_1_custom_slot = module_torpedoes_3
+                rear_1_custom_slot = module_light_helipad_1
+                fixed_ship_missile_ammo_slot = module_naval_ammo_balanced_4
+            }
+        }
+    }
+
+    TUR = {
+        set_technology = {
+            attack_submarine_hull_2 = 1
+            corvette_hull_2 = 1
+            frigate_hull_2 = 1
+            frigate_hull_3 = 1
+            tech_combat_radar_1 = 1
+            tech_combat_radar_2 = 1
+            tech_combat_sonar_2 = 1
+            tech_diesel_power_systems_2 = 1
+            tech_submarine_engineering_1 = 1
+            tech_torpedoes_2 = 1
+            tech_torpedoes_3 = 1
+        }
+    }
+
+    UAE = {
+        set_technology = {
+            corvette_hull_2 = 1
+            corvette_hull_3 = 1
+            frigate_hull_2 = 1
+            tech_combat_radar_1 = 1
+            tech_combat_radar_2 = 1
+            tech_diesel_power_systems_1 = 1
+            tech_fire_control_2 = 1
+            tech_light_guns_2 = 1
+            tech_torpedoes_2 = 1
+        }
+    }
+
+    UKR = {
+        set_technology = {
+            corvette_hull_2 = 1
+            frigate_hull_3 = 1
+            tech_combat_radar_1 = 1
+            tech_combat_radar_2 = 1
+            tech_diesel_power_systems_1 = 1
+            tech_fire_control_2 = 1
+            tech_light_guns_2 = 1
+            tech_torpedoes_3 = 1
+            tech_vls_surface_1 = 1
+        }
+    }
+
+    URG = {
+        set_technology = {
+            frigate_hull_1 = 1
+            tech_combat_radar_1 = 1
+            tech_diesel_power_systems_1 = 1
+            tech_fire_control_2 = 1
+            tech_light_guns_2 = 1
+            tech_torpedoes_2 = 1
+        }
+    }
+
+    USA = {
+        set_technology = {
+            attack_submarine_hull_2 = 1
+            attack_submarine_hull_3 = 1
+            carrier_hull_2 = 1
+            corvette_hull_2 = 1
+            corvette_hull_4 = 1
+            cruiser_hull_2 = 1
+            destroyer_hull_2 = 1
+            helicopter_operator_hull_3 = 1
+            missile_submarine_hull_2 = 1
+            tech_combat_radar_1 = 1
+            tech_combat_sonar_2 = 1
+            tech_diesel_power_systems_1 = 1
+            tech_diesel_power_systems_2 = 1
+            tech_submarine_engineering_1 = 1
+            tech_submarine_engineering_2 = 1
+            tech_vls_aa_1 = 1
+            tech_vls_aa_2 = 1
+            tech_vls_surface_2 = 1
+        }
+    }
+
+    VEN = {
+        set_technology = {
+            attack_submarine_hull_2 = 1
+            frigate_hull_2 = 1
+            tech_combat_radar_2 = 1
+            tech_combat_sonar_2 = 1
+            tech_diesel_power_systems_1 = 1
+            tech_diesel_power_systems_2 = 1
+            tech_fire_control_2 = 1
+            tech_light_guns_2 = 1
+            tech_submarine_engineering_1 = 1
+            tech_torpedoes_2 = 1
+        }
+    }
+
+    VIE = {
+        set_technology = {
+            attack_submarine_hull_2 = 1
+            corvette_hull_1 = 1
+            corvette_hull_2 = 1
+            frigate_hull_3 = 1
+            tech_combat_radar_1 = 1
+            tech_combat_radar_2 = 1
+            tech_combat_sonar_2 = 1
+            tech_diesel_power_systems_1 = 1
+            tech_diesel_power_systems_2 = 1
+            tech_fire_control_1 = 1
+            tech_fire_control_2 = 1
+            tech_light_guns_1 = 1
+            tech_light_guns_2 = 1
+            tech_submarine_engineering_1 = 1
+            tech_torpedoes_2 = 1
+            tech_torpedoes_3 = 1
+            tech_vls_surface_1 = 1
+        }
+    }
+
+    # === END NAVAL TECH COMPLETION BLOCK ===
 }

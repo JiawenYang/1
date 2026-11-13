@@ -32,20 +32,24 @@ UKR_special_military_operation = {
 			set_country_flag = DSW_SOV_pending_news_237
 			custom_effect_tooltip = DSW_SOV_external_content_pending_tt
 			UKR = {
-				set_country_flag = DSW_SOV_pending_ukraine_5
-				custom_effect_tooltip = DSW_SOV_external_content_pending_tt
+				# 已补搬 ukraine.5，接真实派发
+				country_event = { id = ukraine.5 }
 			}
 			GER = {
 				set_country_flag = DSW_SOV_pending_nato_22
 				custom_effect_tooltip = DSW_SOV_external_content_pending_tt
-				set_country_flag = DSW_SOV_pending_germany_23
-				custom_effect_tooltip = DSW_SOV_external_content_pending_tt
+				# germany.23 已导入（events/TFR_events_GER.txt:1453），恢复真实国家事件派发。
+				# 其 option 会在 14 天后向 MLI 派发 mali.99（萨赫勒联盟 vs 科特迪瓦/ECOWAS）。
+				country_event = {
+					id = germany.23
+					days = 20
+				}
 				set_country_flag = DSW_SOV_pending_germany_28
 				custom_effect_tooltip = DSW_SOV_external_content_pending_tt
 				GER_richard_rossmanith = {
 					unit_leader_event = {
-						id = germany.23
-						days = 10
+						id = germany.25
+						days = 14
 					}
 				}
 				if = {
@@ -548,7 +552,7 @@ second_nato_war_decisions = {
 			}
 			if = {
 				limit = {
-					has_global_flag = SOV_ldpr_won
+					always = no
 					NOT = {
 						has_global_flag = nato_nato_won_nato_war
 					}
@@ -666,7 +670,7 @@ second_nato_war_decisions = {
 			}
 			if = {
 				limit = {
-					has_global_flag = SOV_ldpr_won
+					always = no
 					NOT = {
 						has_global_flag = nato_nato_won_nato_war
 					}

@@ -21,6 +21,8 @@ country_event = {
 			set_global_flag = MEW_war_declared
 			set_global_flag = MEW_sixth_war_ongoing
 			set_global_flag = MEW_oil_crisis_news
+			# 开启投降即时结算：此前该开关永不置位，导致结算B-1~B-6 全部失效、战争可能悬空
+			set_global_flag = MEW_interim_settlements
 			# 第一阶段：以色列国防军进入加沙，清剿哈马斯
 			if = {
 				limit = {
@@ -45,7 +47,7 @@ country_event = {
 			}
 			# 第六次中东战争引发全球石油危机（替代原沙特触发链）
 			USA = {
-				country_event = { id = usa.7 days = 1 }
+				country_event = { id = tfr_usa.7 days = 1 }
 			}
 			CHI = {
 				country_event = { id = prc.4 days = 1 }
@@ -54,8 +56,8 @@ country_event = {
 				country_event = { id = jap.182 days = 1 }
 			}
 			GER = {
-				country_event = { id = germany.16 days = 1 }
-				country_event = { id = germany.17 days = 25 }
+				country_event = { id = tfr_germany.16 days = 1 }
+				country_event = { id = tfr_germany.17 days = 25 }
 			}
 		}
 	}
@@ -96,12 +98,15 @@ country_event = {
 		hidden_effect = {
 			set_global_flag = MEW_coalition_joined
 			# 阿拉伯阵营参战：埃及、叙利亚、阿尔及利亚、利比亚、黎巴嫩政府
-			EGY = {
-				if = {
-					limit = { NOT = { has_war_with = ISR } }
-					declare_war_on = {
-						target = ISR
-						type = liberate_wargoal
+			if = {
+				limit = { country_exists = EGY }
+				EGY = {
+					if = {
+						limit = { NOT = { has_war_with = ISR } }
+						declare_war_on = {
+							target = ISR
+							type = liberate_wargoal
+						}
 					}
 				}
 			}
@@ -194,13 +199,16 @@ country_event = {
 				}
 			}
 			# 伊朗经伊拉克与叙利亚的陆路通道：两国向伊朗开放军事通行
-			IRQ = {
-				if = {
-					limit = { country_exists = PER }
-					diplomatic_relation = {
-						country = PER
-						relation = military_access
-						active = yes
+			if = {
+				limit = { country_exists = IRQ }
+				IRQ = {
+					if = {
+						limit = { country_exists = PER }
+						diplomatic_relation = {
+							country = PER
+							relation = military_access
+							active = yes
+						}
 					}
 				}
 			}
@@ -418,6 +426,17 @@ news_event = {
 	major = yes
 	trigger = {
 	}
+	immediate = {
+		hidden_effect = {
+			# 战火冲击波斯湾油路，利雅得被迫坐上谈判桌又谈崩——石油危机全链由此引爆
+			SAU = {
+				country_event = {
+					id = saudi.12
+					days = 1
+				}
+			}
+		}
+	}
 	option = {
 		name = mew.4.a
 	}
@@ -566,7 +585,8 @@ news_event = {
 }
 
 # ===== 第三阶段：反伊战争，复辟巴列维王朝 =====
-# 绑定第二幕蓝方胜利（usacw.12）后由美国背书，以色列联合美国与海湾国家对伊朗开战
+# 以色列胜利后由美国背书，以色列联合美国与海湾国家对伊朗开战
+# 内战链停用后不再依赖 USA_democratic_era_global；改由 on_daily 终局在以色列胜利 90 天后正式派发
 country_event = {
 	id = mew.30
 	title = mew.30.t
@@ -578,7 +598,7 @@ country_event = {
 	trigger = {
 		tag = ISR
 		has_global_flag = MEW_israel_victory
-		has_global_flag = USA_democratic_era_global
+		country_exists = USA
 		NOT = { has_global_flag = MEW_iran_war_declared }
 		country_exists = PER
 	}
@@ -588,6 +608,12 @@ country_event = {
 		hidden_effect = {
 			set_global_flag = MEW_iran_war_declared
 			set_global_flag = MEW_iran_war_ongoing
+			# 僵持兜底：540 天内未打垮伊朗则由 on_monthly 白和收场；
+			# 期间若 PER 先投降，on_capitulation 的巴列维复辟结算会先清掉 MEW_iran_war_ongoing，二者互斥
+			set_country_flag = {
+				flag = MEW_iran_war_timeout
+				days = 540
+			}
 			# 以色列率先发难
 			if = {
 				limit = { NOT = { has_war_with = PER } }
@@ -660,5 +686,429 @@ news_event = {
 	}
 	option = {
 		name = mew.32.a
+	}
+}
+
+# 东进决策：从河到海——以色列撕毁停火，进军大马士革与幼发拉底河
+country_event = {
+	id = mew.22
+	title = mew.22.t
+	desc = mew.22.d
+	picture = GFX_fucked_up_israeli_tank
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	trigger = {
+		tag = ISR
+		has_global_flag = MEW_israel_victory
+		NOT = { has_global_flag = MEW_eastward_march }
+	}
+
+	option = {
+		name = mew.22.a
+		ai_chance = {
+			factor = 90
+		}
+		hidden_effect = {
+			set_global_flag = MEW_eastward_march
+			# 叙利亚政权退出所有阵营后单独挨打，避免把阿拉伯同盟或抵抗之弧拖进战争
+			if = {
+				limit = { country_exists = SYR }
+				SYR = {
+					if = {
+						limit = { is_in_faction = yes }
+						leave_faction = yes
+					}
+				}
+				SYR = {
+					if = {
+						limit = { NOT = { has_war_with = PREV } }
+						declare_war_on = {
+							target = PREV
+							type = annex_everything
+						}
+					}
+				}
+			}
+			if = {
+				limit = { country_exists = FSA }
+				FSA = {
+					if = {
+						limit = { is_in_faction = yes }
+						leave_faction = yes
+					}
+				}
+				FSA = {
+					if = {
+						limit = { NOT = { has_war_with = PREV } }
+						declare_war_on = {
+							target = PREV
+							type = annex_everything
+						}
+					}
+				}
+			}
+			country_event = { id = mew.23 days = 10 }
+			country_event = { id = mew.25 days = 25 }
+			country_event = { id = mew.26 days = 40 }
+			country_event = { id = mew.28 days = 55 }
+		}
+	}
+}
+
+# 东进第一波：大马士革、霍姆斯、哈马、拉塔基亚
+country_event = {
+	id = mew.23
+	title = mew.23.t
+	desc = mew.23.d
+	picture = GFX_fucked_up_israeli_tank
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		hidden_effect = {
+			186 = {
+				if = {
+					limit = {
+						OR = {
+							is_owned_by = SYR
+							is_owned_by = FSA
+						}
+					}
+					transfer_state_to = ISR
+				}
+			}
+			571 = {
+				if = {
+					limit = {
+						OR = {
+							is_owned_by = SYR
+							is_owned_by = FSA
+						}
+					}
+					transfer_state_to = ISR
+				}
+			}
+			188 = {
+				if = {
+					limit = {
+						OR = {
+							is_owned_by = SYR
+							is_owned_by = FSA
+						}
+					}
+					transfer_state_to = ISR
+				}
+			}
+			189 = {
+				if = {
+					limit = {
+						OR = {
+							is_owned_by = SYR
+							is_owned_by = FSA
+						}
+					}
+					transfer_state_to = ISR
+				}
+			}
+			news_event = { id = mew.24 hours = 2 }
+		}
+	}
+	option = {
+		name = mew.23.a
+	}
+}
+
+# 新闻：大马士革陷落
+news_event = {
+	id = mew.24
+	title = mew.24.t
+	desc = mew.24.d
+	picture = GFX_fucked_up_israeli_tank
+	is_triggered_only = yes
+	major = yes
+	trigger = {
+	}
+	option = {
+		name = mew.24.a
+	}
+}
+
+# 东进第二波：伊德利卜、阿勒颇、阿扎兹
+country_event = {
+	id = mew.25
+	title = mew.25.t
+	desc = mew.25.d
+	picture = GFX_fucked_up_israeli_tank
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		hidden_effect = {
+			190 = {
+				if = {
+					limit = {
+						OR = {
+							is_owned_by = SYR
+							is_owned_by = FSA
+						}
+					}
+					transfer_state_to = ISR
+				}
+			}
+			566 = {
+				if = {
+					limit = {
+						OR = {
+							is_owned_by = SYR
+							is_owned_by = FSA
+						}
+					}
+					transfer_state_to = ISR
+				}
+			}
+			575 = {
+				if = {
+					limit = {
+						OR = {
+							is_owned_by = SYR
+							is_owned_by = FSA
+						}
+					}
+					transfer_state_to = ISR
+				}
+			}
+		}
+	}
+	option = {
+		name = mew.25.a
+	}
+}
+
+# 东进第三波：饮马幼发拉底——叙利亚本土终局与库尔德划界
+country_event = {
+	id = mew.26
+	title = mew.26.t
+	desc = mew.26.d
+	picture = GFX_fucked_up_israeli_tank
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		hidden_effect = {
+			# 幼发拉底河以西全部归以色列
+			561 = {
+				if = {
+					limit = {
+						OR = {
+							is_owned_by = SYR
+							is_owned_by = FSA
+						}
+					}
+					transfer_state_to = ISR
+				}
+			}
+			191 = {
+				if = {
+					limit = {
+						OR = {
+							is_owned_by = SYR
+							is_owned_by = FSA
+						}
+					}
+					transfer_state_to = ISR
+				}
+			}
+			994 = {
+				if = {
+					limit = {
+						OR = {
+							is_owned_by = SYR
+							is_owned_by = FSA
+						}
+					}
+					transfer_state_to = ISR
+				}
+			}
+			192 = {
+				if = {
+					limit = {
+						OR = {
+							is_owned_by = SYR
+							is_owned_by = FSA
+						}
+					}
+					transfer_state_to = ISR
+				}
+			}
+			# 河东的哈塞克与北代尔祖尔不归以色列：库尔德斯坦存在则划给库尔德斯坦，否则交给伊拉克
+			if = {
+				limit = { country_exists = KUR }
+				193 = {
+					if = {
+						limit = {
+							OR = {
+								is_owned_by = SYR
+								is_owned_by = FSA
+							}
+						}
+						transfer_state_to = KUR
+					}
+				}
+				995 = {
+					if = {
+						limit = {
+							OR = {
+								is_owned_by = SYR
+								is_owned_by = FSA
+							}
+						}
+						transfer_state_to = KUR
+					}
+				}
+			}
+			else = {
+				193 = {
+					if = {
+						limit = {
+							OR = {
+								is_owned_by = SYR
+								is_owned_by = FSA
+							}
+						}
+						transfer_state_to = IRQ
+					}
+				}
+				995 = {
+					if = {
+						limit = {
+							OR = {
+								is_owned_by = SYR
+								is_owned_by = FSA
+							}
+						}
+						transfer_state_to = IRQ
+					}
+				}
+			}
+			# 灭亡叙利亚与自由军残部（含流亡政权）
+			if = {
+				limit = { country_exists = SYR }
+				annex_country = {
+					target = SYR
+					transfer_troops = no
+				}
+			}
+			if = {
+				limit = { country_exists = FSA }
+				annex_country = {
+					target = FSA
+					transfer_troops = no
+				}
+			}
+			news_event = { id = mew.27 hours = 2 }
+		}
+	}
+	option = {
+		name = mew.26.a
+	}
+}
+
+# 新闻：以色列装甲纵队抵达幼发拉底河
+news_event = {
+	id = mew.27
+	title = mew.27.t
+	desc = mew.27.d
+	picture = GFX_fucked_up_israeli_tank
+	is_triggered_only = yes
+	major = yes
+	trigger = {
+	}
+	option = {
+		name = mew.27.a
+	}
+}
+
+# 越河西进：以色列对伊拉克宣战，河谷与沙漠的归属由战争结果决定（原为无条件割地）
+country_event = {
+	id = mew.28
+	title = mew.28.t
+	desc = mew.28.d
+	picture = GFX_fucked_up_israeli_tank
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		hidden_effect = {
+			# 原实现：不经战争，直接把安巴尔、巴士拉与南部沙漠等 7 州无条件 transfer_state_to = ISR，
+			# 目的是在幼发拉底河以南画出“以色列控制河谷、伊拉克仅存底格里斯走廊”的缓冲区/撤军线。
+			# 现改为宣战：先对这 7 州加宣称，再以自建 ZZZ_take_claimed_state_all（上限 7）开战，
+			# 是否割地、割多少由战争结果（投降与和平会议）决定，且和平会议里只能拿这些宣称州。
+			if = {
+				limit = {
+					country_exists = IRQ
+				}
+				# 幼发拉底河以南 7 州：安巴尔 168、巴士拉 171、纳杰夫 169、卡尔巴拉 1143、
+				# 卡迪西亚 1142、穆萨纳 1122、济加尔 1123；
+				# 伊拉克只余底格里斯走廊（尼尼微、萨拉赫丁、巴格达、迪亚拉、瓦西特、迈桑）
+				if = {
+					limit = {
+						NOT = {
+							has_war_with = IRQ
+						}
+					}
+					add_state_claim = 168
+					add_state_claim = 171
+					add_state_claim = 169
+					add_state_claim = 1143
+					add_state_claim = 1142
+					add_state_claim = 1122
+					add_state_claim = 1123
+					declare_war_on = {
+						target = IRQ
+						# 自建同构 wargoal：判定与基座 take_claimed_state 一致，仅去 5 州上限改 7
+						# 详见 common/wargoals/ZZZ_iraq_wargoals.txt
+						type = ZZZ_take_claimed_state_all
+					}
+					# 伊拉克战争僵持兜底：270 天后由 on_monthly 白和收场（详见 on_actions_ZZZ_peace.txt 末尾）
+					set_global_flag = MEW_iraq_war_ongoing
+					set_country_flag = {
+						flag = MEW_iraq_war_timeout
+						days = 270
+					}
+				}
+				# 原新闻节点保留：宣布“自幼发拉底河至埃及河”的完整疆域主张，属于战争目标而非既成事实
+				news_event = { id = mew.29 hours = 2 }
+			}
+		}
+	}
+	option = {
+		name = mew.28.a
+	}
+}
+
+# 新闻：宣称边界——自幼发拉底河到埃及河
+news_event = {
+	id = mew.29
+	title = mew.29.t
+	desc = mew.29.d
+	picture = GFX_fucked_up_israeli_tank
+	is_triggered_only = yes
+	major = yes
+	trigger = {
+	}
+	option = {
+		name = mew.29.a
+	}
+}
+
+# 中俄胜利后：阿拉伯联合共和国对海湾君主国开战
+news_event = {
+	id = mew.33
+	title = mew.33.t
+	desc = mew.33.d
+	picture = GFX_CHI_event_sco_military
+	is_triggered_only = yes
+	major = yes
+	trigger = {
+	}
+	option = {
+		name = mew.33.a
 	}
 }

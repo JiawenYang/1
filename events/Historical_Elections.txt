@@ -28,6 +28,15 @@ country_event = {
 			elections_allowed = yes
 		}
 		clr_country_flag = generic_election_killswitch
+		set_country_flag = ZZZ_election_enabled
+		set_variable = { ZZZ_term = 60 }
+		set_variable = { ZZZ_sched_mode = 0 }
+		set_variable = { ZZZ_two_round = 0 }
+		set_variable = { ZZZ_coalition_ok = 1 }
+		set_variable = { ZZZ_leader_mode = 1 }
+		set_variable = { ZZZ_grc_bonus = 0 }
+		set_variable = { ZZZ_campaign_boost = 0 }
+		set_variable = { ZZZ_campaign_boost_opp = 0 }
 	}
 
 	option = {
@@ -65,5 +74,55 @@ country_event = {
 
 	option = {
 		name = historical_elections.2.a
+	}
+}
+
+country_event = {
+	id = historical_elections.3
+	title = historical_elections.3.t
+	desc = historical_elections.3.d
+	picture = GFX_election_day
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	immediate = {
+		country_event = { id = historical_elections.4 days = 26 }
+	}
+
+	option = {
+		name = historical_elections.3.a
+	}
+}
+
+country_event = {
+	id = historical_elections.4
+	title = historical_elections.4.t
+	desc = historical_elections.4.d
+	picture = GFX_election_day
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	immediate = {
+		set_country_flag = KOR_2020_election_complete
+		set_politics = {
+			ruling_party = democratic
+			last_election = "2020.4.15"
+			election_frequency = 48
+			elections_allowed = yes
+		}
+		clr_country_flag = generic_election_killswitch
+		set_country_flag = ZZZ_election_enabled
+		set_variable = { ZZZ_term = 48 }
+		set_variable = { ZZZ_sched_mode = 0 }
+		set_variable = { ZZZ_two_round = 0 }
+		set_variable = { ZZZ_coalition_ok = 1 }
+		set_variable = { ZZZ_leader_mode = 0 }
+		set_variable = { ZZZ_grc_bonus = 0 }
+		set_variable = { ZZZ_campaign_boost = 0 }
+		set_variable = { ZZZ_campaign_boost_opp = 0 }
+	}
+
+	option = {
+		name = historical_elections.4.a
 	}
 }

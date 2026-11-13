@@ -1,0 +1,99 @@
+# ============================================================================
+# ZZZ_debug 调试决议（本工程原创，仅供玩家手动点击）
+# 原则（只读）：
+#   1. 本文件只保留状态检查类决议，不推进主线、不改变任何 game state；
+#   2. 检查结果通过 log 与只读展示事件呈现（zzz_debug_status.*，无任何 effect）；
+#   3. 所有决议可用条件含 is_ai = no，AI 永不触发；
+#   4. 推进类（宣战 / 触发事件 / 置旗标 / 加装备与点数）的决议已全部删除。
+# 分类定义见 common/decisions/categories/ZZZ_debug_category.txt
+# ============================================================================
+
+ZZZ_debug = {
+
+    # --------------------------------------------------------------------
+    # 状态检查（只读）：台海/朝鲜半岛
+    # --------------------------------------------------------------------
+    ZZZ_dbg_status_taiwan = {
+        icon = generic_political_actions
+        cost = 0
+        fire_only_once = no
+        days_re_enable = 3
+        visible = {
+            always = yes
+        }
+        available = {
+            is_ai = no
+        }
+        complete_effect = {
+            custom_effect_tooltip = ZZZ_dbg_status_taiwan_tt
+            log = "[GetDateText]: [Root.GetName]: ZZZ_dbg_status_taiwan executed"
+            hidden_effect = {
+                country_event = {
+                    id = zzz_debug_status.1
+                    days = 0
+                }
+            }
+        }
+        ai_will_do = {
+            base = 0
+        }
+    }
+
+    # --------------------------------------------------------------------
+    # 状态检查（只读）：GAW 亚洲战争
+    # --------------------------------------------------------------------
+    ZZZ_dbg_status_gaw = {
+        icon = generic_industry
+        cost = 0
+        fire_only_once = no
+        days_re_enable = 3
+        visible = {
+            always = yes
+        }
+        available = {
+            is_ai = no
+        }
+        complete_effect = {
+            custom_effect_tooltip = ZZZ_dbg_status_gaw_tt
+            log = "[GetDateText]: [Root.GetName]: ZZZ_dbg_status_gaw executed"
+            hidden_effect = {
+                country_event = {
+                    id = zzz_debug_status.2
+                    days = 0
+                }
+            }
+        }
+        ai_will_do = {
+            base = 0
+        }
+    }
+
+    # --------------------------------------------------------------------
+    # 状态检查（只读）：MEW / 美国联邦
+    # --------------------------------------------------------------------
+    ZZZ_dbg_status_mew = {
+        icon = generic_political_actions
+        cost = 0
+        fire_only_once = no
+        days_re_enable = 3
+        visible = {
+            always = yes
+        }
+        available = {
+            is_ai = no
+        }
+        complete_effect = {
+            custom_effect_tooltip = ZZZ_dbg_status_mew_tt
+            log = "[GetDateText]: [Root.GetName]: ZZZ_dbg_status_mew executed"
+            hidden_effect = {
+                country_event = {
+                    id = zzz_debug_status.3
+                    days = 0
+                }
+            }
+        }
+        ai_will_do = {
+            base = 0
+        }
+    }
+}
