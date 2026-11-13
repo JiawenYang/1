@@ -152,6 +152,19 @@ on_actions = {
 				log = "[GetDateText]: [This.GetName]: election chain = ENG_special (zzz_elections_uk.1)"
 				country_event = zzz_elections_uk.1
 			}
+			# Italy, Korea, and France have date-driven historical election routes.
+			else_if = {
+				limit = {
+					has_country_flag = generic_election_killswitch
+					OR = {
+						original_tag = ITA
+						original_tag = KOR
+						original_tag = FRA
+					}
+				}
+				set_variable = { ZZZ_last_chain = 8 }
+				log = "[GetDateText]: [This.GetName]: election chain = historical_timeline"
+			}
 			# 其余国家走基座通用链
 			else = {
 				set_variable = { ZZZ_last_chain = 2 }

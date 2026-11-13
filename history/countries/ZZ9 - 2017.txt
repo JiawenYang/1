@@ -10823,8 +10823,10 @@
 			ruling_party = democratic
 			last_election = "2012.5.6"
 			election_frequency = 60
-			elections_allowed = yes
+			# The scripted 2017 election is handled by the DSW France timeline.
+			elections_allowed = no
 		}
+		set_country_flag = generic_election_killswitch
 
 		start_politics_input = yes
 
@@ -15221,6 +15223,7 @@
 		}
 	}
 	ITA = {
+		set_country_flag = generic_election_killswitch
 		if = {
 			limit = { has_dlc = "By Blood Alone" }
 			set_air_oob = "ITA_2017_bba"
@@ -15477,7 +15480,7 @@
 			ruling_party = democratic
 			last_election = "2013.2.25"
 			election_frequency = 60
-			elections_allowed = yes
+			elections_allowed = no
 		}
 
 		start_politics_input = yes
@@ -16595,6 +16598,7 @@
 		set_variable = { literacy_rate = 0.815 }
 	}
 	KOR = {
+		set_country_flag = generic_election_killswitch
 		set_technology = {
 			MBT_5 = 1
 			IFV_6 = 1
@@ -16614,7 +16618,6 @@
 			Anti_Air_2 = 1
 			tech_arty_2 = 1
 		}
-
         add_dynamic_modifier = {
             modifier = first_island_chain
         }
@@ -16860,9 +16863,9 @@
 		}
 		set_politics = {
 			ruling_party = democratic
-			last_election = "2012.4.26"
+			last_election = "2012.12.19"
 			election_frequency = 60
-			elections_allowed = yes
+			elections_allowed = no
 		}
 
 		start_politics_input = yes

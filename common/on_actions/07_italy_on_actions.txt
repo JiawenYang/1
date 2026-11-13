@@ -1,1 +1,16 @@
-# [MOD1 shell] base MD per-country content intentionally disabled (overrides '07_italy_on_actions.txt').
+on_actions = {
+	on_daily_ITA = {
+		effect = {
+			if = {
+				limit = {
+					original_tag = ITA
+					date > 2018.5.31
+					date < 2018.6.2
+					has_country_flag = generic_election_killswitch
+					NOT = { has_country_flag = rework_ITA_2018_election }
+				}
+				country_event = historical_elections.1
+			}
+		}
+	}
+}

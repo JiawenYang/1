@@ -1,0 +1,128 @@
+add_namespace = historical_elections
+
+country_event = {
+	id = historical_elections.1
+	title = historical_elections.1.t
+	desc = historical_elections.1.d
+	picture = GFX_election_day
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	trigger = {
+		tag = ITA
+		has_country_flag = generic_election_killswitch
+		NOT = { has_country_flag = rework_ITA_2018_election }
+	}
+
+	immediate = {
+		set_country_flag = rework_ITA_2018_election
+		set_variable = { anarchist_communism_leader = 2 }
+		set_temp_variable = { rul_party_temp = 5 }
+		set_temp_variable = { col_one = 6 }
+		set_temp_variable = { disable_elections = 0 }
+		change_ruling_party_effect = yes
+		set_politics = {
+			ruling_party = democratic
+			last_election = "2018.3.4"
+			election_frequency = 60
+			elections_allowed = yes
+		}
+		clr_country_flag = generic_election_killswitch
+		set_country_flag = ZZZ_election_enabled
+		set_variable = { ZZZ_term = 60 }
+		set_variable = { ZZZ_sched_mode = 0 }
+		set_variable = { ZZZ_two_round = 0 }
+		set_variable = { ZZZ_coalition_ok = 1 }
+		set_variable = { ZZZ_leader_mode = 1 }
+		set_variable = { ZZZ_grc_bonus = 0 }
+		set_variable = { ZZZ_campaign_boost = 0 }
+		set_variable = { ZZZ_campaign_boost_opp = 0 }
+	}
+
+	option = {
+		name = historical_elections.1.a
+	}
+}
+
+country_event = {
+	id = historical_elections.2
+	title = historical_elections.2.t
+	desc = historical_elections.2.d
+	picture = GFX_election_day
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	trigger = {
+		tag = KOR
+		has_country_flag = generic_election_killswitch
+		NOT = { has_country_flag = rework_KOR_2017_election }
+	}
+
+	immediate = {
+		set_country_flag = rework_KOR_2017_election
+		set_variable = { socialism_leader = 2 }
+		set_temp_variable = { rul_party_temp = 3 }
+		set_temp_variable = { disable_elections = 0 }
+		change_ruling_party_effect = yes
+		set_politics = {
+			ruling_party = democratic
+			last_election = "2017.5.9"
+			election_frequency = 60
+			elections_allowed = yes
+		}
+	}
+
+	option = {
+		name = historical_elections.2.a
+	}
+}
+
+country_event = {
+	id = historical_elections.3
+	title = historical_elections.3.t
+	desc = historical_elections.3.d
+	picture = GFX_election_day
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	immediate = {
+		country_event = { id = historical_elections.4 days = 26 }
+	}
+
+	option = {
+		name = historical_elections.3.a
+	}
+}
+
+country_event = {
+	id = historical_elections.4
+	title = historical_elections.4.t
+	desc = historical_elections.4.d
+	picture = GFX_election_day
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	immediate = {
+		set_country_flag = KOR_2020_election_complete
+		set_politics = {
+			ruling_party = democratic
+			last_election = "2020.4.15"
+			election_frequency = 48
+			elections_allowed = yes
+		}
+		clr_country_flag = generic_election_killswitch
+		set_country_flag = ZZZ_election_enabled
+		set_variable = { ZZZ_term = 48 }
+		set_variable = { ZZZ_sched_mode = 0 }
+		set_variable = { ZZZ_two_round = 0 }
+		set_variable = { ZZZ_coalition_ok = 1 }
+		set_variable = { ZZZ_leader_mode = 0 }
+		set_variable = { ZZZ_grc_bonus = 0 }
+		set_variable = { ZZZ_campaign_boost = 0 }
+		set_variable = { ZZZ_campaign_boost_opp = 0 }
+	}
+
+	option = {
+		name = historical_elections.4.a
+	}
+}

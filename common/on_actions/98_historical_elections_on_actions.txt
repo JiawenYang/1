@@ -1,0 +1,31 @@
+on_actions = {
+	on_daily_KOR = {
+		effect = {
+			if = {
+				limit = {
+					original_tag = KOR
+					date > 2017.5.8
+					date < 2017.5.10
+					has_country_flag = generic_election_killswitch
+					NOT = { has_country_flag = rework_KOR_2017_election }
+				}
+				country_event = historical_elections.2
+			}
+			if = {
+				limit = {
+					original_tag = KOR
+					date > 2020.3.18
+					date < 2020.3.20
+					has_country_flag = rework_KOR_2017_election
+					NOT = { has_country_flag = KOR_assembly_election_cycle_started }
+				}
+				set_country_flag = KOR_assembly_election_cycle_started
+				set_politics = {
+					ruling_party = democratic
+					elections_allowed = yes
+				}
+				country_event = { id = historical_elections.3 days = 1 }
+			}
+		}
+	}
+}
