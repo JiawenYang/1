@@ -1,0 +1,72 @@
+# ============================================================================
+# faction_goal_military_infrastructure —— 补齐定义（本工程新文件）
+#
+# 来源：The Digital Frontier (3721160655) common/factions/goals/
+#       faction_goals_short_term.txt:318。
+# 基座 MD v1.11.2a 不含 common/factions；原版同名定义在运行日志中报
+# "Unable to find item with id: faction_goal_military_infrastructure"，
+# 故按 TFR 原文移植，供 00_TFR.txt 与 00_ZZZ_korea.txt 的模板引用。
+# 不覆盖、不修改基座任何文件。
+# ============================================================================
+faction_goal_military_infrastructure = {
+	name = military_infrastructure_goal_name
+	description = military_infrastructure_goal_desc
+	category = short_term
+	group = FOCUS_FILTER_CONSOLIDATION
+	visible = {
+		collection_size = {
+			input = {
+				input = game:all_states
+				operators = {
+					limit = {
+						is_core_of = CONTROLLER
+						is_controlled_by_ROOT_or_ally = yes
+						any_neighbor_state = {
+							controller = {
+								NOT = { is_in_faction_with = ROOT }
+							}
+						}
+						infrastructure < 5
+					}
+				}
+				name = COLLECTION_FACTION_BORDER_STATES_FULL_INFRASTRUCTURE
+			}
+			value > 0
+		}
+	}
+	completed = {
+		collection_size = {
+			input = {
+				input = game:all_states
+				operators = {
+					limit = {
+						is_controlled_by_ROOT_or_ally = yes
+						any_neighbor_state = {
+							controller = {
+								NOT = { is_in_faction_with = ROOT }
+							}
+						}
+						infrastructure > 4
+					}
+				}
+				name = COLLECTION_FACTION_BORDER_STATES_FULL_INFRASTRUCTURE
+			}
+			value < 1
+		}
+	}
+	complete_effect = {
+		add_faction_power_projection = 100
+		newline = yes
+		custom_effect_tooltip = ALL_FACTION_MEMBERS
+		every_faction_member = {
+			army_experience = 50
+		}
+	}
+	ai_will_do = {
+		base = 0
+		modifier = {
+			add = 1
+			has_war = no
+		}
+	}
+}

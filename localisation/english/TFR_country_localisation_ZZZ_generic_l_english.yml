@@ -1,4 +1,4 @@
-l_english:
+﻿l_english:
  #Ideas
  EU_euro_idea: "$EU_member_dynamic$"
  lower_covid_cases: "Extremely Low Covid-19 Cases"
@@ -38,7 +38,7 @@ l_english:
  ZZZ_debug_SOV_activate_tfr: "[DEBUG] Activate TFR Russia Content"
  ZZZ_debug_SOV_activate_tfr_tt: "Ignores the 2020 date gate and immediately runs DSW_SOV_initialize_2020: recruits all Russian characters (Putin, Medvedev, Zyuganov, etc.), sets up political/economic/oligarch variables, loads the SOV (Putin) focus tree, and schedules the opening event chain dsw_tfr_russia.18/20. After use, Russia switches from Millennium Dawn's default system to the TFR Russia system."
  ZZZ_debug_SOV_campaign_menu: "[DEBUG] Russia Campaign Test Menu"
- ZZZ_debug_SOV_campaign_menu_tt: "Opens the dsw_sov.90 campaign test menu, allowing one-click triggers for: the Ukraine war (DSW_SOV_start_ukrainian_war), stalemate line (DSW_SOV_apply_stalemate), final offensive (DSW_SOV_launch_final_offensive), European war (DSW_SOV_begin_european_war), and Russian victory/defeat resolutions. Requires TFR Russia content to be activated first."
+ ZZZ_debug_SOV_campaign_menu_tt: "Opens the dsw_sov.90 campaign test menu, allowing one-click triggers for: the Ukraine war (DSW_SOV_declare_war_on_ukraine), stalemate line (DSW_SOV_apply_stalemate), final offensive (DSW_SOV_launch_final_offensive), European war (DSW_SOV_begin_european_war), and Russian victory/defeat resolutions. Requires TFR Russia content to be activated first."
  ZZZ_debug_SOV_recover_putin: "[DEBUG] Recover Putin"
  ZZZ_debug_SOV_recover_putin_tt: "Clears Putin's serious illness / resignation / death flags, restores his portrait and leadership, adds stability and political power. Only available when Putin is seriously ill (SOV_putin_ill_more_flag)."
  ZZZ_debug_SOV_medvedev_tree: "[DEBUG] Switch to Medvedev Focus Tree"
@@ -299,3 +299,38 @@ l_english:
  decision_event_news.5.t: "On the Horizon..."
  decision_event_news.5.d: "John Titor here\n\nRelease is scheduled for the 18th of October. Were in the home stretch, don't fuck this up. For some of us, we've been working on this for 4 years. 4 grueling years. Many came and went, lets finish what we started and wipe the floor with our competition.\n\nWe got this man, we got this by the ass!"
  decision_event_news.5.a: "Victory for TFR"
+ ZZZ_debug_MEW_arab_victory_settlement: "[DEBUG] Arab Side Wins: Apply Debug Boost"
+ ZZZ_debug_MEW_arab_victory_tt: "Applies ZZZ_debug_boost_major to Egypt, Syria / Free Syrian Army, Palestine, Hamas, Hezbollah, Iraq, Algeria, Libya, Lebanon and Iran, and ZZZ_debug_debuff_major to Israel. If the Sixth Middle East War has not started yet, mew.0 is fired first so the war opens normally. Nothing is transferred, peaced out or annexed here — the war is then decided by the normal on_capitulation / on_daily settlement."
+ ZZZ_debug_MEW_israel_victory_settlement: "[DEBUG] Israeli Side Wins: Apply Debug Boost"
+ ZZZ_debug_MEW_israel_victory_tt: "Applies ZZZ_debug_boost_major to Israel and ZZZ_debug_debuff_major to the Arab belligerents. If the war has not started yet, mew.0 is fired first. Settlement still runs through the normal on_capitulation / on_daily blocks (Greater Israel check included)."
+ ZZZ_debug_MEW_iran_war: "[DEBUG] Trigger the Anti-Iran War (post-Israeli-victory)"
+ ZZZ_debug_MEW_iran_war_tt: "Runs the mew.30 effect block: Israel + USA + six Gulf states (Saudi/UAE/Kuwait/Qatar/Bahrain/Oman) declare war on Iran. Requires MEW_israel_victory to be set first."
+ ZZZ_debug_MEW_iran_victory: "[DEBUG] Anti-Iran War Victory (Pahlavi Restoration)"
+ ZZZ_debug_MEW_iran_victory_tt: "Runs the on_capitulation anti-Iran settlement effect block: all attackers white-peace Iran → kill current Iranian leader → set Reza Pahlavi II as Monarchist head of state → sets MEW_pahlavi_restored → mew.32 (Pahlavi restoration news)."
+ ZZZ_debug_MEW_reset: "[DEBUG] Clear all Middle East War Flags"
+ ZZZ_debug_MEW_reset_tt: "Removes every MEW_* global and country flag, including ISR_war_on_JOR_started, MEW_israel_victory, ISR_settled_* and the MEW_debug_*_boost flags, and strips ZZZ_debug_boost_major / ZZZ_debug_debuff_major from every country, so every branch can be retested."
+ ZZZ_debug_gaw_china_boost: "[DEBUG] GAW: China Side Wins (Apply Debug Boost)"
+ ZZZ_debug_gaw_china_boost_tt: "Applies ZZZ_debug_boost_major to China, Pakistan, Cambodia, Indonesia, Laos, Burma and Vietnam (whichever of them are at war with Japan), and ZZZ_debug_debuff_major to Japan, Australia, Malaysia, the Philippines, Singapore and Thailand (plus Korea and Taiwan if they are at war with China). Requires the Great Asian War to be ongoing; the war then closes through the normal mission and prc.1001."
+ ZZZ_debug_gaw_japan_boost: "[DEBUG] GAW: Japan Side Wins (Apply Debug Boost)"
+ ZZZ_debug_gaw_japan_boost_tt: "Applies ZZZ_debug_boost_major to Japan, Australia, Malaysia, the Philippines, Singapore and Thailand (plus Korea and Taiwan if they are at war with China), and ZZZ_debug_debuff_major to China, Pakistan, Cambodia, Indonesia, Laos, Burma and Vietnam (whichever of them are at war with Japan). Requires the Great Asian War to be ongoing; the war then closes through the normal mission and prc.1002."
+ ZZZ_debug_gaw_reset: "[DEBUG] Clear all GAW Flags and War Exhaustion"
+ ZZZ_debug_gaw_reset_tt: "Clears pan_asian_war_ongoing, GAW_soon, all GAW victory / collapse flags and the GAW debug boost flags, strips ZZZ_debug_boost_major / ZZZ_debug_debuff_major from every country, and resets PRC_war_exhaustion_dynamic plus its six scaling variables to zero on every country."
+
+ # ============================================================
+ # Korean Confederation / postwar reunification (ZZZ original)
+ # ============================================================
+ faction_korean_confederation: "Korean Confederation"
+ ZZZ_korea_postwar: "Korean Peninsula: Postwar Settlement"
+ ZZZ_korea_postwar_desc: "The Great Asian War is over, and the Korean question can no longer be postponed. The victor now holds the initiative: if China prevails, Pyongyang will unify the peninsula; if Japan prevails, Seoul will absorb the North and join the Pacific Defense Treaty Organisation."
+ ZZZ_korea_unify_under_kor: "Unify Korea Under Seoul"
+ ZZZ_korea_unify_under_kor_desc: "The Great Asian War has ended in Japan's favour. The Republic of Korea will annex the Democratic People's Republic of Korea, take over all its states and cores, and the reunified state will join the Japan-led Pacific Defense Treaty Organisation."
+ ZZZ_korea_north_march: "Korean Peninsula: March South"
+ ZZZ_korea_north_march_desc: "With the South Korean army broken and Seoul under Northern control, Pyongyang can end the division by force instead of waiting for another round of talks."
+ ZZZ_NKO_march_to_seoul: "March South and Reunify the Peninsula"
+ ZZZ_NKO_march_to_seoul_desc: "The Korean People's Army has destroyed the South Korean field army. Pyongyang will annex the Republic of Korea, transfer its remaining troops, core the southern states, and place the whole peninsula under a single government. This locks out every negotiated or confederal route."
+ nuclear_fallout1: "Nuclear Fallout"
+ nuclear_fallout1_desc: "Nuclear fallout blankets the state. Underground facilities offer partial protection, but without civil bunkers most of the population remains exposed to contamination."
+ nuclear_fallout2: "Nuclear Fallout"
+ nuclear_fallout2_desc: "Nuclear fallout blankets the state. Civil bunkers shelter part of the population, but without underground facilities the state remains largely exposed to contamination."
+ nuclear_fallout3: "Nuclear Fallout"
+ nuclear_fallout3_desc: "Nuclear fallout blankets the state. Underground facilities and civil bunkers together shield much of the population, softening the effects of contamination."

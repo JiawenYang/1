@@ -219,6 +219,7 @@ launch_nuclear_ai_country_strike = {
 						if = {
 							limit = {
 								NOT = { has_dynamic_modifier = { modifier = Underground_modifier } }
+								NOT = { civil_bunker > 0 }
 							}
 							add_dynamic_modifier = {
 								modifier = nuclear_fallout
@@ -228,6 +229,7 @@ launch_nuclear_ai_country_strike = {
 						else_if = {
 							limit = {
 								has_dynamic_modifier = { modifier = Underground_modifier }
+								NOT = { civil_bunker > 0 }
 							}
 							add_dynamic_modifier = {
 								modifier = nuclear_fallout1
@@ -237,6 +239,7 @@ launch_nuclear_ai_country_strike = {
 						else_if = {
 							limit = {
 								NOT = { has_dynamic_modifier = { modifier = Underground_modifier } }
+								civil_bunker > 0
 							}
 							add_dynamic_modifier = {
 								modifier = nuclear_fallout2
@@ -317,7 +320,7 @@ launch_nuclear_ai_country_strike = {
 						   }
 					   }
 					   if = {
-						   limit = { rubber_refinery > 0 }
+						   limit = { synthetic_refinery > 0 }
 						   random = {
 							   chance = nuke_building_destroy_chance
 							   state_event = destroy_building.9
@@ -670,6 +673,7 @@ launch_tactical_nuclear_ai_strike = {
 						if = {
 							limit = {
 								NOT = { has_dynamic_modifier = { modifier = Underground_modifier } }
+								NOT = { civil_bunker > 0 }
 							}
 							add_dynamic_modifier = {
 								modifier = nuclear_fallout
@@ -679,6 +683,7 @@ launch_tactical_nuclear_ai_strike = {
 						else_if = {
 							limit = {
 								has_dynamic_modifier = { modifier = Underground_modifier }
+								NOT = { civil_bunker > 0 }
 							}
 							add_dynamic_modifier = {
 								modifier = nuclear_fallout1
@@ -688,6 +693,7 @@ launch_tactical_nuclear_ai_strike = {
 						else_if = {
 							limit = {
 								NOT = { has_dynamic_modifier = { modifier = Underground_modifier } }
+								civil_bunker > 0
 							}
 							add_dynamic_modifier = {
 								modifier = nuclear_fallout2
@@ -768,7 +774,7 @@ launch_tactical_nuclear_ai_strike = {
 				 			}
 			 			}
 			 			if = {
-				 			limit = { rubber_refinery > 0 }
+				 			limit = { synthetic_refinery > 0 }
 				 			random = {
 								chance = nuke_building_destroy_chance
 					 			state_event = destroy_building.9
@@ -1131,6 +1137,7 @@ launch_tactical_nuclear_ai_strike = {
 						if = {
 							limit = {
 								NOT = { has_dynamic_modifier = { modifier = Underground_modifier } }
+								NOT = { civil_bunker > 0 }
 							}
 							add_dynamic_modifier = {
 								modifier = nuclear_fallout
@@ -1140,6 +1147,7 @@ launch_tactical_nuclear_ai_strike = {
 						else_if = {
 							limit = {
 								has_dynamic_modifier = { modifier = Underground_modifier }
+								NOT = { civil_bunker > 0 }
 							}
 							add_dynamic_modifier = {
 								modifier = nuclear_fallout1
@@ -1149,6 +1157,7 @@ launch_tactical_nuclear_ai_strike = {
 						else_if = {
 							limit = {
 								NOT = { has_dynamic_modifier = { modifier = Underground_modifier } }
+								civil_bunker > 0
 							}
 							add_dynamic_modifier = {
 								modifier = nuclear_fallout2
@@ -1229,7 +1238,7 @@ launch_tactical_nuclear_ai_strike = {
 				 			}
 			 			}
 			 			if = {
-				 			limit = { rubber_refinery > 0 }
+				 			limit = { synthetic_refinery > 0 }
 				 			random = {
 								chance = nuke_building_destroy_chance
 					 			state_event = destroy_building.9
@@ -1589,6 +1598,7 @@ launch_tactical_nuclear_ai_strike = {
 							if = {
 								limit = {
 									NOT = { has_dynamic_modifier = { modifier = Underground_modifier } }
+									NOT = { civil_bunker > 0 }
 								}
 								add_dynamic_modifier = {
 									modifier = nuclear_fallout
@@ -1598,6 +1608,7 @@ launch_tactical_nuclear_ai_strike = {
 							else_if = {
 								limit = {
 									has_dynamic_modifier = { modifier = Underground_modifier }
+									NOT = { civil_bunker > 0 }
 								}
 								add_dynamic_modifier = {
 									modifier = nuclear_fallout1
@@ -1607,6 +1618,7 @@ launch_tactical_nuclear_ai_strike = {
 							else_if = {
 								limit = {
 									NOT = { has_dynamic_modifier = { modifier = Underground_modifier } }
+									civil_bunker > 0
 								}
 								add_dynamic_modifier = {
 									modifier = nuclear_fallout2
@@ -1687,7 +1699,7 @@ launch_tactical_nuclear_ai_strike = {
 				 				}
 			 				}
 			 				if = {
-				 				limit = { rubber_refinery > 0 }
+				 				limit = { synthetic_refinery > 0 }
 				 				random = {
 									chance = nuke_building_destroy_chance
 					 				state_event = destroy_building.9
@@ -2091,6 +2103,7 @@ launch_tactical_nuclear_ai_first_strike = {
 						if = {
 							limit = {
 								NOT = { has_dynamic_modifier = { modifier = Underground_modifier } }
+								NOT = { civil_bunker > 0 }
 							}
 							add_dynamic_modifier = {
 								modifier = nuclear_fallout
@@ -2100,6 +2113,7 @@ launch_tactical_nuclear_ai_first_strike = {
 						else_if = {
 							limit = {
 								has_dynamic_modifier = { modifier = Underground_modifier }
+								NOT = { civil_bunker > 0 }
 							}
 							add_dynamic_modifier = {
 								modifier = nuclear_fallout1
@@ -2109,6 +2123,7 @@ launch_tactical_nuclear_ai_first_strike = {
 						else_if = {
 							limit = {
 								NOT = { has_dynamic_modifier = { modifier = Underground_modifier } }
+								civil_bunker > 0
 							}
 							add_dynamic_modifier = {
 								modifier = nuclear_fallout2
@@ -2189,7 +2204,7 @@ launch_tactical_nuclear_ai_first_strike = {
 				 			}
 			 			}
 			 			if = {
-				 			limit = { rubber_refinery > 0 }
+				 			limit = { synthetic_refinery > 0 }
 				 			random = {
 								chance = nuke_building_destroy_chance
 					 			state_event = destroy_building.9
@@ -2579,6 +2594,7 @@ launch_tactical_nuclear_ai_first_strike = {
 						if = {
 							limit = {
 								NOT = { has_dynamic_modifier = { modifier = Underground_modifier } }
+								NOT = { civil_bunker > 0 }
 							}
 							add_dynamic_modifier = {
 								modifier = nuclear_fallout
@@ -2588,6 +2604,7 @@ launch_tactical_nuclear_ai_first_strike = {
 						else_if = {
 							limit = {
 								has_dynamic_modifier = { modifier = Underground_modifier }
+								NOT = { civil_bunker > 0 }
 							}
 							add_dynamic_modifier = {
 								modifier = nuclear_fallout1
@@ -2597,6 +2614,7 @@ launch_tactical_nuclear_ai_first_strike = {
 						else_if = {
 							limit = {
 								NOT = { has_dynamic_modifier = { modifier = Underground_modifier } }
+								civil_bunker > 0
 							}
 							add_dynamic_modifier = {
 								modifier = nuclear_fallout2
@@ -2677,7 +2695,7 @@ launch_tactical_nuclear_ai_first_strike = {
 				 			}
 			 			}
 			 			if = {
-				 			limit = { rubber_refinery > 0 }
+				 			limit = { synthetic_refinery > 0 }
 				 			random = {
 								chance = nuke_building_destroy_chance
 					 			state_event = destroy_building.9
@@ -3064,6 +3082,7 @@ launch_tactical_nuclear_ai_first_strike = {
 							if = {
 								limit = {
 									NOT = { has_dynamic_modifier = { modifier = Underground_modifier } }
+									NOT = { civil_bunker > 0 }
 								}
 								add_dynamic_modifier = {
 									modifier = nuclear_fallout
@@ -3073,6 +3092,7 @@ launch_tactical_nuclear_ai_first_strike = {
 							else_if = {
 								limit = {
 									has_dynamic_modifier = { modifier = Underground_modifier }
+									NOT = { civil_bunker > 0 }
 								}
 								add_dynamic_modifier = {
 									modifier = nuclear_fallout1
@@ -3163,7 +3183,7 @@ launch_tactical_nuclear_ai_first_strike = {
 				 				}
 			 				}
 			 				if = {
-				 				limit = { rubber_refinery > 0 }
+				 				limit = { synthetic_refinery > 0 }
 				 				random = {
 									chance = nuke_building_destroy_chance
 					 				state_event = destroy_building.9

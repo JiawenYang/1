@@ -17,12 +17,12 @@ PRC_recruit_character_effect = {
 		limit = {
 			NOT = {
 				THIS = { has_character_flag = is_dead }
-				PLA = { has_character = PREV }
+				PRC = { has_character = PREV }
 			}
 		}
 		if = {
 			limit = { THIS = { is_army_leader = yes } }
-			demote_to_general = yes
+			demote_leader = yes
 			remove_trait = { trait = recently_promoted }
 		}
 		set_nationality = CHI
@@ -1304,85 +1304,87 @@ PRC_decrease_new_religious_policy_idea = { #worse
 	PRC_gaw_start = {
 		every_state = {
 			limit = {
+				# 工程适配：以下州号/地区号已按 MD（千禧黎明）实际 history/states 与 map/strategicregions 重新映射。
+				# 烈焰升腾州号在 MD 中含义完全不同（例：TFR 441=克什米尔，MD 441=圣皮埃尔；TFR 716=辽宁，MD 716=哈萨克中部），
+				# 禁止照抄，详见交付报告中的「TFR → MD → 州名」对照表。
 				OR = {
-					state = 787
-					state = 1132
-					state = 440
-					state = 1380
-					state = 442
-					state = 443
-					state = 445
-					state = 1324
-					state = 441
-					state = 1131
-					state = 1373
-					state = 439
-					state = 1381
-					state = 437
-					state = 1397
-					state = 1398
-					state = 1370
-					state = 789
-					state = 432
-					state = 1367
-					state = 434
-					state = 1366
-					state = 1368
-					state = 1369
-					state = 430
-					state = 431
-					state = 424
-					state = 1418
-					state = 1413
-					state = 1417
-					state = 1414
-					state = 1415
-					state = 1416
+					# ---- 南亚：克什米尔 / 巴基斯坦 ----
+					state = 414
+					state = 418
+					state = 420
 					state = 422
-					region = 146
-					region = 189
-					region = 142
-					region = 188
-					region = 160
-					region = 159
-					region = 187
-					region = 158
-					region = 93
-					region = 167
-					region = 193
-					region = 194
-					region = 195
-					region = 156
-					region = 76
-					region = 154
-					region = 165
-					region = 164
-					region = 143
-					region = 145
-					region = 220
-					region = 216
-					region = 219
-					region = 152
-					state = 428
-					state = 433
-					state = 1379
-					state = 438
-					state = 436
-					state = 1400
-					state = 1399
-					state = 435
-					state = 1371
 					state = 426
-					state = 1372
 					state = 427
-					state = 425
-					state = 423
-					state = 320
-					state = 429
-					state = 716
-					state = 1394
-					state = 328
-					state = 717
+					state = 428
+					state = 563
+					state = 993
+					# ---- 南亚：印度本土 ----
+					state = 431
+					state = 436
+					state = 438
+					state = 440
+					state = 444
+					state = 445
+					state = 447
+					state = 451
+					state = 452
+					state = 455
+					state = 456
+					state = 458
+					state = 459
+					state = 460
+					state = 461
+					state = 462
+					state = 464
+					state = 467
+					state = 471
+					state = 473
+					state = 475
+					state = 476
+					state = 477
+					state = 478
+					state = 482
+					state = 483
+					state = 490
+					state = 492
+					state = 493
+					state = 494
+					state = 981
+					state = 982
+					state = 984
+					state = 985
+					state = 986
+					state = 987
+					state = 988
+					state = 989
+					state = 990
+					state = 991
+					# ---- 中国东北（原版 716/717/328/1413-1417/1394）----
+					state = 552
+					state = 554
+					state = 555
+					state = 1096
+					# ---- 地区（按 MD strategicregions 的实际地理范围对应，非按编号对应）----
+					region = 136
+					region = 137
+					region = 142
+					region = 143
+					region = 144
+					region = 145
+					region = 146
+					region = 147
+					region = 152
+					region = 154
+					region = 155
+					region = 156
+					region = 158
+					region = 159
+					region = 160
+					region = 164
+					region = 165
+					region = 167
+					region = 211
+					region = 76
 				}
 			}
 			add_dynamic_modifier = {
@@ -1399,293 +1401,55 @@ PRC_decrease_new_religious_policy_idea = { #worse
 		#		modifier = PRC_non_combat_area
 		#	}
 		#}
+		# ===== GAW 阵营：按 TAG 硬编码（用户设计，优先级高于烈焰升腾原版的影响力机制）=====
+		# 中国侧固定成员：CBD（柬埔寨） / IND（印度尼西亚） / LAO / BRM / VIE
+		if = { limit = { country_exists = CBD CBD = { is_in_faction = no } } CHI = { add_to_faction = CBD } }
+		if = { limit = { country_exists = IND IND = { is_in_faction = no } } CHI = { add_to_faction = IND } }
+		if = { limit = { country_exists = LAO LAO = { is_in_faction = no } } CHI = { add_to_faction = LAO } }
+		if = { limit = { country_exists = BRM BRM = { is_in_faction = no } } CHI = { add_to_faction = BRM } }
+		if = { limit = { country_exists = VIE VIE = { is_in_faction = no } } CHI = { add_to_faction = VIE } }
+		# 日本侧固定成员：MAY / PHI / SIN / SIA
+		if = { limit = { country_exists = MAY MAY = { is_in_faction = no } } JAP = { add_to_faction = MAY } }
+		if = { limit = { country_exists = PHI PHI = { is_in_faction = no } } JAP = { add_to_faction = PHI } }
+		if = { limit = { country_exists = SIN SIN = { is_in_faction = no } } JAP = { add_to_faction = SIN } }
+		if = { limit = { country_exists = SIA SIA = { is_in_faction = no } } JAP = { add_to_faction = SIA } }
+		# 条件性成员：判据全部取自工程内既有旗标 / 国策，不自创
+		# 韩国：未成立朝韩邦联则随日本侧（依据 prc.183 / prc.218 既有写法）
 		if = {
 			limit = {
-				CBD = {
+				country_exists = KOR
+				NOT = { has_global_flag = korean_confederation_formed }
+				KOR = {
 					is_in_faction = no
+					NOT = { has_war_with = CHI }
 				}
 			}
-			if = {
-				limit = {
-					check_variable = { global.PRC_influence_CAM_var > global.JAP_influence_CAM_var }
-				}
-				CHI = { add_to_faction = CBD }
-			}
-			else_if = {
-				limit = {
-					check_variable = { global.PRC_influence_CAM_var < global.JAP_influence_CAM_var }
-				}
-				JAP = { add_to_faction = CBD }
-			}
-			else_if = {
-				limit = {
-					check_variable = { global.PRC_influence_CAM_var = global.JAP_influence_CAM_var }
-				}
-				random_list = {
-					50 = {
-						CHI = { add_to_faction = CBD }
-					}
-					50 = {
-						JAP = { add_to_faction = CBD }
-					}
-				}
-			}
+			JAP = { add_to_faction = KOR }
 		}
+		# 朝鲜：半岛未统一则随中国侧（依据 prc.219 既有写法）
 		if = {
 			limit = {
-				IND = {
+				country_exists = NKO
+				NOT = { has_global_flag = korean_confederation_formed }
+				NKO = {
 					is_in_faction = no
+					NOT = { has_war_with = CHI }
 				}
 			}
-			if = {
-				limit = {
-					check_variable = { global.PRC_influence_CAM_var > global.JAP_influence_CAM_var }
-				}
-				CHI = { add_to_faction = IND }
-			}
-			else_if = {
-				limit = {
-					check_variable = { global.PRC_influence_CAM_var < global.JAP_influence_CAM_var }
-				}
-				JAP = { add_to_faction = IND }
-			}
-			else_if = {
-				limit = {
-					check_variable = { global.PRC_influence_CAM_var = global.JAP_influence_CAM_var }
-				}
-				random_list = {
-					50 = {
-						CHI = { add_to_faction = IND }
-					}
-					50 = {
-						JAP = { add_to_faction = IND }
-					}
-				}
-			}
+			CHI = { add_to_faction = NKO }
 		}
+		# 台湾：未被统一（台海战争未获胜）则随日本侧
+		# 工程适配：CHI_Establish_Taiwan_SAR 无定义（恒真），改用台海战争胜负旗标
 		if = {
 			limit = {
-				LAO = {
+				country_exists = TAI
+				NOT = { has_global_flag = PRC_taiwan_war_won }
+				TAI = {
 					is_in_faction = no
+					NOT = { has_war_with = CHI }
 				}
 			}
-			if = {
-				limit = {
-					check_variable = { global.PRC_influence_CAM_var > global.JAP_influence_CAM_var }
-				}
-				CHI = { add_to_faction = LAO }
-			}
-			else_if = {
-				limit = {
-					check_variable = { global.PRC_influence_CAM_var < global.JAP_influence_CAM_var }
-				}
-				JAP = { add_to_faction = LAO }
-			}
-			else_if = {
-				limit = {
-					check_variable = { global.PRC_influence_CAM_var = global.JAP_influence_CAM_var }
-				}
-				random_list = {
-					50 = {
-						CHI = { add_to_faction = LAO }
-					}
-					50 = {
-						JAP = { add_to_faction = LAO }
-					}
-				}
-			}
-		}
-		if = {
-			limit = {
-				MAY = {
-					is_in_faction = no
-				}
-			}
-			if = {
-				limit = {
-					check_variable = { global.PRC_influence_CAM_var > global.JAP_influence_CAM_var }
-				}
-				CHI = { add_to_faction = MAY }
-			}
-			else_if = {
-				limit = {
-					check_variable = { global.PRC_influence_CAM_var < global.JAP_influence_CAM_var }
-				}
-				JAP = { add_to_faction = MAY }
-			}
-			else_if = {
-				limit = {
-					check_variable = { global.PRC_influence_CAM_var = global.JAP_influence_CAM_var }
-				}
-				random_list = {
-					50 = {
-						CHI = { add_to_faction = MAY }
-					}
-					50 = {
-						JAP = { add_to_faction = MAY }
-					}
-				}
-			}
-		}
-		if = {
-			limit = {
-				BRM = {
-					is_in_faction = no
-				}
-			}
-			if = {
-				limit = {
-					check_variable = { global.PRC_influence_CAM_var > global.JAP_influence_CAM_var }
-				}
-				CHI = { add_to_faction = BRM }
-			}
-			else_if = {
-				limit = {
-					check_variable = { global.PRC_influence_CAM_var < global.JAP_influence_CAM_var }
-				}
-				JAP = { add_to_faction = BRM }
-			}
-			else_if = {
-				limit = {
-					check_variable = { global.PRC_influence_CAM_var = global.JAP_influence_CAM_var }
-				}
-				random_list = {
-					50 = {
-						CHI = { add_to_faction = BRM }
-					}
-					50 = {
-						JAP = { add_to_faction = BRM }
-					}
-				}
-			}
-		}
-		if = {
-			limit = {
-				PHI = {
-					is_in_faction = no
-				}
-			}
-			if = {
-				limit = {
-					check_variable = { global.PRC_influence_CAM_var > global.JAP_influence_CAM_var }
-				}
-				CHI = { add_to_faction = PHI }
-			}
-			else_if = {
-				limit = {
-					check_variable = { global.PRC_influence_CAM_var < global.JAP_influence_CAM_var }
-				}
-				JAP = { add_to_faction = PHI }
-			}
-			else_if = {
-				limit = {
-					check_variable = { global.PRC_influence_CAM_var = global.JAP_influence_CAM_var }
-				}
-				random_list = {
-					50 = {
-						CHI = { add_to_faction = PHI }
-					}
-					50 = {
-						JAP = { add_to_faction = PHI }
-					}
-				}
-			}
-		}
-		if = {
-			limit = {
-				SIN = {
-					is_in_faction = no
-				}
-			}
-			if = {
-				limit = {
-					check_variable = { global.PRC_influence_CAM_var > global.JAP_influence_CAM_var }
-				}
-				CHI = { add_to_faction = SIN }
-			}
-			else_if = {
-				limit = {
-					check_variable = { global.PRC_influence_CAM_var < global.JAP_influence_CAM_var }
-				}
-				JAP = { add_to_faction = SIN }
-			}
-			else_if = {
-				limit = {
-					check_variable = { global.PRC_influence_CAM_var = global.JAP_influence_CAM_var }
-				}
-				random_list = {
-					50 = {
-						CHI = { add_to_faction = SIN }
-					}
-					50 = {
-						JAP = { add_to_faction = SIN }
-					}
-				}
-			}
-		}
-		if = {
-			limit = {
-				SIA = {
-					is_in_faction = no
-				}
-			}
-			if = {
-				limit = {
-					check_variable = { global.PRC_influence_CAM_var > global.JAP_influence_CAM_var }
-				}
-				CHI = { add_to_faction = SIA }
-			}
-			else_if = {
-				limit = {
-					check_variable = { global.PRC_influence_CAM_var < global.JAP_influence_CAM_var }
-				}
-				JAP = { add_to_faction = SIA }
-			}
-			else_if = {
-				limit = {
-					check_variable = { global.PRC_influence_CAM_var = global.JAP_influence_CAM_var }
-				}
-				random_list = {
-					50 = {
-						CHI = { add_to_faction = SIA }
-					}
-					50 = {
-						JAP = { add_to_faction = SIA }
-					}
-				}
-			}
-		}
-		if = {
-			limit = {
-				VIE = {
-					is_in_faction = no
-				}
-			}
-			if = {
-				limit = {
-					check_variable = { global.PRC_influence_CAM_var > global.JAP_influence_CAM_var }
-				}
-				CHI = { add_to_faction = VIE }
-			}
-			else_if = {
-				limit = {
-					check_variable = { global.PRC_influence_CAM_var < global.JAP_influence_CAM_var }
-				}
-				JAP = { add_to_faction = VIE }
-			}
-			else_if = {
-				limit = {
-					check_variable = { global.PRC_influence_CAM_var = global.JAP_influence_CAM_var }
-				}
-				random_list = {
-					50 = {
-						CHI = { add_to_faction = VIE }
-					}
-					50 = {
-						JAP = { add_to_faction = VIE }
-					}
-				}
-			}
+			JAP = { add_to_faction = TAI }
 		}
 		JAP = {
 			country_event = {
@@ -1698,20 +1462,28 @@ PRC_decrease_new_religious_policy_idea = { #worse
 				modifier = PRC_war_exhaustion_dynamic
 			}
 			load_oob = GAW_reserves_jap1
-		}
-		if = {
-			limit = {
-				JAP = {
-					is_ai = yes
-				}
-			}
-			JAP = {
-				load_oob = GAW_reserves_jap1_ai
-			}
+			add_manpower = -10600
 		}
 		news_event = news.415
 		set_global_flag = pan_asian_war_ongoing
 		clr_global_flag = GAW_soon
+		# 美国入战：不依赖内战，仅校验 USA 存在、未处于战争、且未重复入战
+		if = {
+			limit = {
+				country_exists = USA
+				USA = {
+					has_war = no
+					NOT = { has_country_flag = PRC_gaw_usa_joined_flag }
+				}
+			}
+			USA = {
+				set_country_flag = PRC_gaw_usa_joined_flag
+				country_event = {
+					id = usacw.14
+					days = 2
+				}
+			}
+		}
 		activate_mission = PRC_GAW_war_exhaustion
 		PRC_GAW_check_faction_members = yes
 		add_dynamic_modifier = {
@@ -1727,52 +1499,54 @@ PRC_decrease_new_religious_policy_idea = { #worse
 			add_dynamic_modifier = {
 				modifier = PRC_war_exhaustion_dynamic
 			}
-			load_oob = GAW_reserves_ast1_ai
-			if = {
-				limit = { has_dlc = "Man the Guns" }
-					load_oob = "AST_2000_naval_mtg"
-					load_oob = "AST_2000_naval_mtg"
-					load_oob = "AST_2000_naval_mtg"
-				else = {
-					load_oob = "AST_2000_naval_legacy"
-					load_oob = "AST_2000_naval_legacy"
-					load_oob = "AST_2000_naval_legacy"
+		}
+		# 印度（RAJ）：用户设计「印度不参战 GAW」，仅在确实已与中日开战时才挂厌战 / 派事件
+		if = {
+			limit = {
+				country_exists = RAJ
+				RAJ = {
+					OR = {
+						has_war_with = CHI
+						has_war_with = JAP
+					}
 				}
 			}
+			RAJ = {
+				country_event = {
+					id = RAJ.19
+					hours = 6
+				}
+				activate_mission = JAP_GAW_war_exhaustion
+				PRC_GAW_check_faction_members = yes
+				add_dynamic_modifier = {
+					modifier = PRC_war_exhaustion_dynamic
+				}
+				load_oob = GAW_militia_raj1
+				add_manpower = -133500
+			}
 		}
-		RAJ = {
-			country_event = {
-				id = RAJ.19
-				hours = 6
-			}
-			activate_mission = JAP_GAW_war_exhaustion
-			PRC_GAW_check_faction_members = yes
-			add_dynamic_modifier = {
-				modifier = PRC_war_exhaustion_dynamic
-			}
-			load_oob = GAW_militia_raj1
-			load_oob = GAW_templates_for_ai
-			if = {
-				limit = { has_dlc = "Man the Guns" }
-					load_oob = "RAJ_2000_naval_mtg"
-				else = {
-					load_oob = "RAJ_2000_naval_legacy"
+		# 台湾（TAI）：条件性成员，只有确实参战时才挂厌战 / 派事件
+		if = {
+			limit = {
+				country_exists = TAI
+				TAI = {
+					OR = {
+						has_war_with = CHI
+						has_war_with = JAP
+					}
 				}
 			}
-		}
-		TAI = {
-			country_event = {
-				id = roc.500
-				hours = 6
+			TAI = {
+				country_event = {
+					id = roc.500
+					hours = 6
+				}
+				activate_mission = JAP_GAW_war_exhaustion
+				PRC_GAW_check_faction_members = yes
+				add_dynamic_modifier = {
+					modifier = PRC_war_exhaustion_dynamic
+				}
 			}
-			activate_mission = JAP_GAW_war_exhaustion
-			PRC_GAW_check_faction_members = yes
-			add_dynamic_modifier = {
-				modifier = PRC_war_exhaustion_dynamic
-			}
-		}
-		CUB = {
-			activate_mission = great_asian_war_mission
 		}
 		if = {
 			limit = {
@@ -1782,6 +1556,7 @@ PRC_decrease_new_religious_policy_idea = { #worse
 			}
 			IND = {
 				load_oob = GAW_militia_ins2
+				add_manpower = -12720
 			}
 		}
 		if = {
@@ -1792,6 +1567,7 @@ PRC_decrease_new_religious_policy_idea = { #worse
 			}
 			IND = {
 				load_oob = GAW_militia_ins1
+				add_manpower = -26500
 			}
 		}
 		if = {
@@ -1802,6 +1578,7 @@ PRC_decrease_new_religious_policy_idea = { #worse
 			}
 			PAK = {
 				load_oob = GAW_militia_pak1
+				add_manpower = -44920
 			}
 		}
 		if = {
@@ -1817,8 +1594,11 @@ PRC_decrease_new_religious_policy_idea = { #worse
 				limit = {
 					OR = {
 						tag = AST
-						tag = RAJ
 						tag = JAP
+						AND = {
+							tag = RAJ
+							has_war_with = CHI
+						}
 					}
 				}
 				add_ideas = JAP_AST_RAJ_ai_buff_against_prc_player_gaw
@@ -1855,15 +1635,16 @@ PRC_decrease_new_religious_policy_idea = { #worse
 					tag = BAN
 				}
 			}
-			load_oob = GAW_templates_for_ai
+			load_oob = GAW_templates
+			add_manpower = -13800
 			capital_scope = {
 				create_unit = {
-					division = "division_template = \"GAW Militia\" start_experience_factor = 0.2 start_equipment_factor = 1.0"
+					division = "division_template = \"GAW Militia\" start_experience_factor = 0.2 start_equipment_factor = 0.01"
 					owner = PREV
 					count = 6
 				}
 				create_unit = {
-					division = "division_template = \"GAW Regular Infantry\" start_experience_factor = 0.2 start_equipment_factor = 1.0"
+					division = "division_template = \"GAW Regular Infantry\" start_experience_factor = 0.2 start_equipment_factor = 0.01"
 					owner = PREV
 					count = 4
 				}
@@ -1957,14 +1738,15 @@ PRC_decrease_new_religious_policy_idea = { #worse
 				}
 				add_offsite_building = { type = arms_factory level = 5 }
 				add_manpower = 100000
+				add_manpower = -19640
 				capital_scope = {
 					create_unit = {
-						division = "division_template = \"GAW Militia\" start_experience_factor = 0.2 start_equipment_factor = 1.0"
+						division = "division_template = \"GAW Militia\" start_experience_factor = 0.2 start_equipment_factor = 0.01"
 						owner = PREV
 						count = 8
 					}
 					create_unit = {
-						division = "division_template = \"GAW Regular Infantry\" start_experience_factor = 0.2 start_equipment_factor = 1.0"
+						division = "division_template = \"GAW Regular Infantry\" start_experience_factor = 0.2 start_equipment_factor = 0.01"
 						owner = PREV
 						count = 6
 					}
@@ -1975,85 +1757,36 @@ PRC_decrease_new_religious_policy_idea = { #worse
 
 PRC_GAW_check_faction_members = {
 	hidden_effect = {
-		if = {
+		# 工程口径：GAW 阵营已按 TAG 硬编码，这里按硬编码名单判断；
+		# 不再读取影响力变量，也不再逐个 is_ally_with 试探（避免名单改了而下游仍看旧结果）
+		every_country = {
 			limit = {
-				is_ally_with = VIE
+				is_ally_with = ROOT
+				OR = {
+					tag = CBD
+					tag = IND
+					tag = LAO
+					tag = BRM
+					tag = VIE
+					tag = MAY
+					tag = PHI
+					tag = SIN
+					tag = SIA
+					AND = {
+						tag = KOR
+						has_war_with = CHI
+					}
+					AND = {
+						tag = TAI
+						has_war_with = CHI
+					}
+				}
 			}
-			add_days_mission_timeout = {
-				mission = PRC_GAW_war_exhaustion
-				days = 20
-			}
-		}
-		if = {
-			limit = {
-				is_ally_with = LAO
-			}
-			add_days_mission_timeout = {
-				mission = PRC_GAW_war_exhaustion
-				days = 20
-			}
-		}
-		if = {
-			limit = {
-				is_ally_with = CBD
-			}
-			add_days_mission_timeout = {
-				mission = PRC_GAW_war_exhaustion
-				days = 20
-			}
-		}
-		if = {
-			limit = {
-				is_ally_with = SIA
-			}
-			add_days_mission_timeout = {
-				mission = PRC_GAW_war_exhaustion
-				days = 20
-			}
-		}
-		if = {
-			limit = {
-				is_ally_with = BRM
-			}
-			add_days_mission_timeout = {
-				mission = PRC_GAW_war_exhaustion
-				days = 20
-			}
-		}
-		if = {
-			limit = {
-				is_ally_with = MAY
-			}
-			add_days_mission_timeout = {
-				mission = PRC_GAW_war_exhaustion
-				days = 20
-			}
-		}
-		if = {
-			limit = {
-				is_ally_with = SIN
-			}
-			add_days_mission_timeout = {
-				mission = PRC_GAW_war_exhaustion
-				days = 20
-			}
-		}
-		if = {
-			limit = {
-				is_ally_with = IND
-			}
-			add_days_mission_timeout = {
-				mission = PRC_GAW_war_exhaustion
-				days = 20
-			}
-		}
-		if = {
-			limit = {
-				is_ally_with = PHI
-			}
-			add_days_mission_timeout = {
-				mission = PRC_GAW_war_exhaustion
-				days = 20
+			ROOT = {
+				add_days_mission_timeout = {
+					mission = PRC_GAW_war_exhaustion
+					days = 20
+				}
 			}
 		}
 	}
@@ -2286,4 +2019,846 @@ PRC_decrease_corona = {
 			add_idea = PRC_coronavirus_pandemic_idea1
 		}
 	}
+}
+
+# ===== 调试加成 / 压制（仅由 debug_decisions.txt 手动点击，AI 不可用）=====
+ZZZ_debug_apply_boost = {
+	if = {
+		limit = {
+			NOT = { has_dynamic_modifier = { modifier = ZZZ_debug_boost_major } }
+		}
+		add_dynamic_modifier = { modifier = ZZZ_debug_boost_major }
+	}
+	remove_dynamic_modifier = { modifier = ZZZ_debug_debuff_major }
+}
+
+ZZZ_debug_apply_debuff = {
+	if = {
+		limit = {
+			NOT = { has_dynamic_modifier = { modifier = ZZZ_debug_debuff_major } }
+		}
+		add_dynamic_modifier = { modifier = ZZZ_debug_debuff_major }
+	}
+	remove_dynamic_modifier = { modifier = ZZZ_debug_boost_major }
+}
+
+# ===== GAW（泛亚战争）固定成员结算 =====
+# 固定成员读自 PRC_gaw_start 的 TAG 硬编码分派：
+# 中国侧 = CHI、PAK + CBD/IND（印度尼西亚）/LAO/BRM/VIE（+ 条件性 NKO/KOR/TAI）
+# 日本侧 = JAP、AST + MAY/PHI/SIN/SIA（+ 条件性 KOR/TAI）
+# 印度（RAJ）按用户设计不参战，仅在已与中日开战时才进入结算
+ZZZ_clear_gaw_war_exhaustion = {
+	remove_dynamic_modifier = { modifier = PRC_war_exhaustion_dynamic }
+	set_variable = { var = PRC_war_exhaustion_war_support_factor_dynamic value = 0 }
+	set_variable = { var = PRC_war_exhaustion_army_attack_factor_dynamic value = 0 }
+	set_variable = { var = PRC_war_exhaustion_army_defence_factor_dynamic value = 0 }
+	set_variable = { var = PRC_war_exhaustion_army_org_factor_dynamic value = 0 }
+	set_variable = { var = PRC_war_exhaustion_army_morale_factor_dynamic value = 0 }
+	set_variable = { var = PRC_war_exhaustion_surrender_limit_dynamic value = 0 }
+	remove_ideas = {
+		PRC_war_exhaustion
+		PRC_war_exhaustion2
+	}
+}
+
+ZZZ_gaw_clear_war_exhaustion_all = {
+	if = { limit = { country_exists = CHI } CHI = { ZZZ_clear_gaw_war_exhaustion = yes } }
+	if = { limit = { country_exists = JAP } JAP = { ZZZ_clear_gaw_war_exhaustion = yes } }
+	if = { limit = { country_exists = AST } AST = { ZZZ_clear_gaw_war_exhaustion = yes } }
+	if = { limit = { country_exists = RAJ } RAJ = { ZZZ_clear_gaw_war_exhaustion = yes } }
+	if = { limit = { country_exists = TAI } TAI = { ZZZ_clear_gaw_war_exhaustion = yes } }
+	if = { limit = { country_exists = KOR } KOR = { ZZZ_clear_gaw_war_exhaustion = yes } }
+	if = { limit = { country_exists = PAK } PAK = { ZZZ_clear_gaw_war_exhaustion = yes } }
+	if = { limit = { country_exists = CBD } CBD = { ZZZ_clear_gaw_war_exhaustion = yes } }
+	if = { limit = { country_exists = IND } IND = { ZZZ_clear_gaw_war_exhaustion = yes } }
+	if = { limit = { country_exists = LAO } LAO = { ZZZ_clear_gaw_war_exhaustion = yes } }
+	if = { limit = { country_exists = MAY } MAY = { ZZZ_clear_gaw_war_exhaustion = yes } }
+	if = { limit = { country_exists = BRM } BRM = { ZZZ_clear_gaw_war_exhaustion = yes } }
+	if = { limit = { country_exists = PHI } PHI = { ZZZ_clear_gaw_war_exhaustion = yes } }
+	if = { limit = { country_exists = SIN } SIN = { ZZZ_clear_gaw_war_exhaustion = yes } }
+	if = { limit = { country_exists = SIA } SIA = { ZZZ_clear_gaw_war_exhaustion = yes } }
+	if = { limit = { country_exists = VIE } VIE = { ZZZ_clear_gaw_war_exhaustion = yes } }
+	if = { limit = { country_exists = NKO } NKO = { ZZZ_clear_gaw_war_exhaustion = yes } }
+}
+
+ZZZ_gaw_white_peace_to_china = {
+	if = { limit = { country_exists = JAP JAP = { has_war_with = CHI } } JAP = { white_peace = CHI } }
+	if = { limit = { country_exists = AST AST = { has_war_with = CHI } } AST = { white_peace = CHI } }
+	if = { limit = { country_exists = RAJ RAJ = { has_war_with = CHI } } RAJ = { white_peace = CHI } }
+	if = { limit = { country_exists = TAI TAI = { has_war_with = CHI } } TAI = { white_peace = CHI } }
+	if = { limit = { country_exists = KOR KOR = { has_war_with = CHI } } KOR = { white_peace = CHI } }
+	if = { limit = { country_exists = PAK PAK = { has_war_with = CHI } } PAK = { white_peace = CHI } }
+	if = { limit = { country_exists = CBD CBD = { has_war_with = CHI } } CBD = { white_peace = CHI } }
+	if = { limit = { country_exists = IND IND = { has_war_with = CHI } } IND = { white_peace = CHI } }
+	if = { limit = { country_exists = LAO LAO = { has_war_with = CHI } } LAO = { white_peace = CHI } }
+	if = { limit = { country_exists = MAY MAY = { has_war_with = CHI } } MAY = { white_peace = CHI } }
+	if = { limit = { country_exists = BRM BRM = { has_war_with = CHI } } BRM = { white_peace = CHI } }
+	if = { limit = { country_exists = PHI PHI = { has_war_with = CHI } } PHI = { white_peace = CHI } }
+	if = { limit = { country_exists = SIN SIN = { has_war_with = CHI } } SIN = { white_peace = CHI } }
+	if = { limit = { country_exists = SIA SIA = { has_war_with = CHI } } SIA = { white_peace = CHI } }
+	if = { limit = { country_exists = VIE VIE = { has_war_with = CHI } } VIE = { white_peace = CHI } }
+	if = { limit = { country_exists = NKO NKO = { has_war_with = CHI } } NKO = { white_peace = CHI } }
+}
+
+ZZZ_gaw_white_peace_to_japan = {
+	if = { limit = { country_exists = CHI CHI = { has_war_with = JAP } } CHI = { white_peace = JAP } }
+	if = { limit = { country_exists = AST AST = { has_war_with = JAP } } AST = { white_peace = JAP } }
+	if = { limit = { country_exists = RAJ RAJ = { has_war_with = JAP } } RAJ = { white_peace = JAP } }
+	if = { limit = { country_exists = TAI TAI = { has_war_with = JAP } } TAI = { white_peace = JAP } }
+	if = { limit = { country_exists = KOR KOR = { has_war_with = JAP } } KOR = { white_peace = JAP } }
+	if = { limit = { country_exists = PAK PAK = { has_war_with = JAP } } PAK = { white_peace = JAP } }
+	if = { limit = { country_exists = CBD CBD = { has_war_with = JAP } } CBD = { white_peace = JAP } }
+	if = { limit = { country_exists = IND IND = { has_war_with = JAP } } IND = { white_peace = JAP } }
+	if = { limit = { country_exists = LAO LAO = { has_war_with = JAP } } LAO = { white_peace = JAP } }
+	if = { limit = { country_exists = MAY MAY = { has_war_with = JAP } } MAY = { white_peace = JAP } }
+	if = { limit = { country_exists = BRM BRM = { has_war_with = JAP } } BRM = { white_peace = JAP } }
+	if = { limit = { country_exists = PHI PHI = { has_war_with = JAP } } PHI = { white_peace = JAP } }
+	if = { limit = { country_exists = SIN SIN = { has_war_with = JAP } } SIN = { white_peace = JAP } }
+	if = { limit = { country_exists = SIA SIA = { has_war_with = JAP } } SIA = { white_peace = JAP } }
+	if = { limit = { country_exists = VIE VIE = { has_war_with = JAP } } VIE = { white_peace = JAP } }
+	if = { limit = { country_exists = NKO NKO = { has_war_with = JAP } } NKO = { white_peace = JAP } }
+}
+
+ZZZ_gaw_settle_china_victory = {
+	ZZZ_gaw_white_peace_to_china = yes
+	if = {
+		limit = {
+			country_exists = JAP
+		}
+		JAP = { dismantle_faction = yes }
+	}
+	# ---- 1. 敌对国政权改造：CBD / LAO / BRM / SIA 社会主义化、IND 转亲华左翼；VIE 完全不变 ----
+	#    口径（修订）：印尼在中国胜利分支走亲华左翼政府（communism / ^5），不走日本侧的亲日民族主义；
+	#    泰国在中国胜利分支由共产党执政（communism / ^4）。两国均不再受通用“战败国转协作政府”效果覆盖。
+	if = {
+		limit = { country_exists = CBD }
+		CBD = {
+			ZZZ_gaw_force_socialist_government = yes
+			set_cosmetic_tag = CBD_communism
+		}
+	}
+	if = {
+		limit = { country_exists = IND }
+		IND = {
+			ZZZ_gaw_gov_IND_communist = yes
+			set_cosmetic_tag = IND_communism
+		}
+	}
+	if = {
+		limit = { country_exists = SIA }
+		SIA = {
+			ZZZ_gaw_gov_SIA_communist = yes
+			set_cosmetic_tag = SIA_communism
+		}
+	}
+	if = {
+		limit = { country_exists = LAO }
+		LAO = {
+			ZZZ_gaw_force_socialist_government = yes
+			set_cosmetic_tag = LAO_communism
+		}
+	}
+	if = {
+		limit = { country_exists = BRM }
+		BRM = {
+			ZZZ_gaw_force_socialist_government = yes
+			set_cosmetic_tag = BRM_communism
+		}
+	}
+	if = {
+		limit = { country_exists = VIE }
+		VIE = {
+			# 口径（最终版）：中国胜利时 VIE 完全不变——不换执政党、不换领导人、不改支持率、不加 cosmetic。
+			# LAO / CBD 归 VIE 的既有设定保留；此处不做任何政治改动。
+		}
+	}
+	# ---- 2. 大印尼：马来 / 新加坡并入印尼（IND）；缅甸（BRM）不并入 ----
+	if = {
+		limit = { country_exists = IND }
+		IND = {
+			if = {
+				limit = { country_exists = MAY }
+				annex_country = { target = MAY transfer_troops = yes }
+			}
+			if = {
+				limit = { country_exists = SIN }
+				annex_country = { target = SIN transfer_troops = yes }
+			}
+			# 缅甸（BRM）保持独立主权：用户明确「印尼不吞缅甸」。
+			# 缅甸已在第 1 段按自身政权逻辑社会主义化（BRM_communism），此处不做吞并。
+		}
+	}
+	# ---- 3. 越南统一老挝与柬埔寨 ----
+	if = {
+		limit = { country_exists = VIE }
+		VIE = {
+			if = {
+				limit = { country_exists = LAO }
+				annex_country = { target = LAO transfer_troops = yes }
+			}
+			if = {
+				limit = { country_exists = CBD }
+				annex_country = { target = CBD transfer_troops = yes }
+			}
+		}
+	}
+	# ---- 4. 南海诸岛全部归中国（东沙/西沙/中沙/南沙） ----
+	if = {
+		limit = { country_exists = CHI }
+		CHI = {
+			transfer_state = 491
+			add_state_core = 491
+			transfer_state = 526
+			add_state_core = 526
+			transfer_state = 801
+			add_state_core = 801
+			transfer_state = 802
+			add_state_core = 802
+			transfer_state = 813
+			add_state_core = 813
+			transfer_state = 816
+			add_state_core = 816
+			transfer_state = 943
+			add_state_core = 943
+			transfer_state = 1015
+			add_state_core = 1015
+			# 尖阁 / 钓鱼岛（939，原 owner JAP，CHI 有主张）：中国胜利归 CHI
+			transfer_state = 939
+			add_state_core = 939
+		}
+	}
+	# ---- 5. 台湾：中国胜利后直接吞并（原条件“已是特别行政区”在 GAW 中不会成立） ----
+	if = {
+		limit = {
+			country_exists = CHI
+			country_exists = TAI
+		}
+		CHI = {
+			annex_country = {
+				target = TAI
+				transfer_troops = yes
+			}
+		}
+		598 = {
+			add_state_modifier = {
+				modifier = {
+					local_building_slots_factor = 0.20
+					local_supplies = 0.20
+					state_production_speed_infrastructure_factor = 0.25
+				}
+			}
+		}
+		599 = {
+			add_state_modifier = {
+				modifier = {
+					local_building_slots_factor = 0.20
+					local_supplies = 0.20
+					state_production_speed_infrastructure_factor = 0.25
+				}
+			}
+		}
+	}
+	# ---- 5b. 台湾三地挂 PRC_taiwan（598 台北 / 939 尖阁 / 1158 澎湖），已挂则跳过 ----
+	if = {
+		limit = {
+			country_exists = CHI
+			CHI = { controls_state = 598 }
+		}
+		if = {
+			limit = { NOT = { 598 = { has_dynamic_modifier = { modifier = PRC_taiwan } } } }
+			598 = { add_dynamic_modifier = { modifier = PRC_taiwan } }
+		}
+		if = {
+			limit = { NOT = { 939 = { has_dynamic_modifier = { modifier = PRC_taiwan } } } }
+			939 = { add_dynamic_modifier = { modifier = PRC_taiwan } }
+		}
+		if = {
+			limit = { NOT = { 1158 = { has_dynamic_modifier = { modifier = PRC_taiwan } } } }
+			1158 = { add_dynamic_modifier = { modifier = PRC_taiwan } }
+		}
+	}
+	# ---- 6. 澳新二选一：围困 vs 攻打（判别开关 = PRC 国策完成状态） ----
+	if = {
+		limit = {
+			country_exists = CHI
+			CHI = { has_completed_focus = PRC_starve_the_island }
+		}
+		# 围困分支：PNG 得西巴布亚；东帝汶得整个帝汶岛；两国芬兰化永久中立
+		if = {
+			limit = { country_exists = PAP }
+			PAP = {
+				transfer_state = 638
+				add_state_core = 638
+				leave_faction = yes
+				if = {
+					limit = { has_idea = neutrality_idea }
+					remove_ideas = neutrality_idea
+				}
+				add_ideas = neutrality_idea
+			}
+		}
+		if = {
+			limit = { country_exists = TIM }
+			TIM = {
+				transfer_state = 1185
+				add_state_core = 1185
+				leave_faction = yes
+				if = {
+					limit = { has_idea = neutrality_idea }
+					remove_ideas = neutrality_idea
+				}
+				add_ideas = neutrality_idea
+			}
+		}
+		# 澳新与英国结盟，准备一体化
+		if = {
+			limit = { country_exists = ENG }
+			ENG = {
+				if = {
+					limit = { country_exists = AST }
+					add_to_faction = AST
+				}
+				if = {
+					limit = { country_exists = NZL }
+					add_to_faction = NZL
+				}
+			}
+		}
+	}
+	else = {
+		# 攻打分支：印尼吞并 PNG，完成大印尼
+		if = {
+			limit = {
+				country_exists = IND
+				country_exists = PAP
+			}
+			IND = {
+				annex_country = {
+					target = PAP
+					transfer_troops = yes
+				}
+			}
+		}
+		# 攻打分支：澳新两国转为社会主义执政
+		if = {
+			limit = { country_exists = AST }
+			AST = {
+				ZZZ_gaw_force_socialist_government = yes
+				set_cosmetic_tag = AST_communism
+			}
+		}
+		if = {
+			limit = { country_exists = NZL }
+			NZL = {
+				ZZZ_gaw_force_socialist_government = yes
+				set_cosmetic_tag = NZL_communism
+			}
+		}
+	}
+	# ---- 6b. 英国 / 加拿大退出欧陆战争（本工程原创，非 TFR 移植）----
+	# 欧陆战争 = DSW_SOV_begin_european_war 开启的北约 vs SOV 战事。
+	# 判据：只对 SOV 及其联盟/傀儡（BLR、KAZ）白和，不触碰对 CHI / JAP 开战的 GAW 交战方。
+	if = {
+		limit = {
+			country_exists = ENG
+			has_global_flag = DSW_SOV_european_war_started
+		}
+		every_country = {
+			limit = {
+				has_war_with = ENG
+				OR = {
+					tag = SOV
+					tag = BLR
+					tag = KAZ
+					is_puppet_of = SOV
+				}
+			}
+			ENG = { white_peace = PREV }
+		}
+	}
+	if = {
+		limit = {
+			country_exists = CAN
+			has_global_flag = DSW_SOV_european_war_started
+		}
+		every_country = {
+			limit = {
+				has_war_with = CAN
+				OR = {
+					tag = SOV
+					tag = BLR
+					tag = KAZ
+					is_puppet_of = SOV
+				}
+			}
+			CAN = { white_peace = PREV }
+		}
+	}
+	# ---- 7~8b. 印度割地：仅当印度已战败（投降 / 被傀儡 / 已不存在）时执行 ----
+	# 前提：GAW 是中日之间的战争；中印仍处和平状态时不得触发任何印度领土变更。
+	# 分配依据（TFR 原版 PRC_dissolve_india 的各国诉求，州号已换成 MD 实际号）：
+	#   巴基斯坦 7 州：427 查谟-克什米尔 / 993 拉达克 / 428 喜马偕尔 / 431 哈里亚纳 /
+	#                  984 西拉贾斯坦 / 458 特伦甘纳 / 987 西古吉拉特（987 为本工程原创争议州）
+	#   中国 1 州（藏南）：475 阿鲁纳恰尔（MD 全印度唯一 add_claim_by = CHI 的州）
+	#   孟加拉 1 州：452 西孟加拉（TFR 的 Calcutta/Tripura 诉求，MD 合并为西孟加拉）
+	#   尼泊尔 1 州：489 西尼泊尔
+	#   其余 11 州不割出、实际仍由印度（RAJ）控制：
+	#     440 布拉杰 / 447 比哈尔 / 473 阿萨姆 / 982 锡金 / 438 西中央邦 /
+	#     985 南中央邦 / 986 东中央邦 / 455 大吉岭-戈拉加特 / 476 那加兰 / 477 曼尼普尔 / 478 米佐拉姆
+	#     982 有 SIK 核心、455/473 有 KAM 核心/声索、477 有 MAN 核心，但这些分邦 tag 均不在开局地图上，
+	#     属可释放国、不是独立诉求国，故不单独割出；TFR 原版这些州交给 PRJ 驻印政权，MD 无 PRJ 标签。
+	# 核心语义：割出/保留声索的州一律 add_state_core 认作中国核心领土，不作占领处理。
+	if = {
+		limit = {
+			OR = {
+				NOT = { country_exists = RAJ }
+				RAJ = { has_capitulated = yes }
+				RAJ = { is_subject = yes }
+			}
+		}
+		# ---- 7. 巴基斯坦：TFR 的 PRC_dissolve_india 土地清单移植（州号已换成 MD 实际号）----
+		# TFR 原号 -> MD 号对照（PAK 本体份额）：
+		#   Kashmir(441)/Jammu(787) -> 427   Ladakh(1131) -> 993   Himachal Pradesh(1373) -> 428
+		#   Delhi(439) -> 431   Jodhpur(1381) -> 984   Hyderabad(443) -> 458
+		# 依据 MD history/states：427 查谟-克什米尔(RAJ) / 993 拉达克(RAJ) / 428 喜马偕尔(RAJ)
+		#   431 哈里亚纳(RAJ) / 984 西拉贾斯坦(RAJ) / 458 特伦甘纳(RAJ)
+		if = {
+			limit = { country_exists = PAK }
+			PAK = {
+				transfer_state = 427
+				add_state_core = 427
+				# TFR 原版对 PAK 只 core 439/441/1381（对应 MD 431/427/984）；
+				# 993/428/458/987 在 TFR 只 transfer、不 core，此处按占领语义保留，不加核心。
+				transfer_state = 993
+				transfer_state = 428
+				transfer_state = 431
+				add_state_core = 431
+				transfer_state = 984
+				add_state_core = 984
+				transfer_state = 458
+				# 987 西古吉拉特：MD 的 RAJ-PAK 边境争议州（decisions/05_india.txt 的 border sector）——本工程原创
+				transfer_state = 987
+			}
+		}
+		# ---- 7b. 藏南归中国：实际转移只取 475（阿鲁纳恰尔）----
+		# TFR 原版 PRC_dissolve_india 的 PRC 本体只 transfer 434（Arunachal Pradesh）并 add_state_core；
+		# MD 无 PRJ 驻印政权标签，475 是全印度唯一 add_claim_by = CHI 的州，故实占只保留 475。
+		# 其余 11 州不转移（仍由印度 RAJ 实际控制），但保留 add_state_core 核心声索：
+		# 这 12 州一律认作中国核心领土，不按占领语义处理。
+		if = {
+			limit = { country_exists = CHI }
+			CHI = {
+				transfer_state = 475
+				add_state_core = 475
+				add_state_core = 440
+				add_state_core = 447
+				add_state_core = 473
+				add_state_core = 982
+				add_state_core = 438
+				add_state_core = 985
+				add_state_core = 986
+				add_state_core = 455
+				add_state_core = 476
+				add_state_core = 477
+				add_state_core = 478
+			}
+		}
+		# ---- 8. 孟加拉：TFR 的 Calcutta(Tripura) 诉求，MD 合并为西孟加拉 452 ----
+		if = {
+			limit = { country_exists = BAN }
+			BAN = {
+				transfer_state = 452
+				add_state_core = 452
+			}
+		}
+		# ---- 8b. 尼泊尔：489 西尼泊尔归尼泊尔政府；毛派政权（NPM）按 2017 实际并入 NEP，不残存 ----
+		# 2017 尼泊尔内战已结束，毛派不再作为独立政权存在，故该州不应留在 NPM 手里。
+		# NEP 已被他国兼并时，NPM 退而并入 RAJ，保证同一分支内只走一条 annex_country。
+		if = {
+			limit = { country_exists = NEP }
+			NEP = {
+				# 先处置毛派：并入尼泊尔政府，避免 NPM 在结算后仍以独立政权残存
+				if = {
+					limit = { country_exists = NPM }
+					annex_country = {
+						target = NPM
+						transfer_troops = yes
+					}
+				}
+				transfer_state = 489
+				add_state_core = 489
+			}
+		}
+		else_if = {
+			limit = {
+				country_exists = NPM
+				country_exists = RAJ
+			}
+			RAJ = {
+				annex_country = {
+					target = NPM
+					transfer_troops = yes
+				}
+			}
+		}
+	}
+	# ---- 9. 印度人民共和国：RAJ 换执政党 + 换 cosmetic ----
+	if = {
+		limit = { country_exists = RAJ }
+		RAJ = {
+			ZZZ_gaw_force_socialist_government = yes
+			set_cosmetic_tag = RAJ_communism
+		}
+	}
+	# 半岛终局改由半岛胜方的战后决议处理（common/decisions/ZZZ_korea_decisions.txt），
+	# 此处只确保停战，不自动吞并、不自动置 settled
+	if = {
+		limit = {
+			country_exists = NKO
+			country_exists = KOR
+			NKO = { has_war_with = KOR }
+		}
+		NKO = { white_peace = KOR }
+	}
+	# ---- 10. 琉球独立：日本战败后释放 RYU（本工程原创，非 TFR 移植）----
+	# RYU tag 与旗帜在千禧中已存在；核心州：618 冲绳主岛（含那霸/名护/石垣/奄美）、827 冲绳基地
+	# 827 开局属 USA（驻日美军基地），不强行划给 RYU，仅补核心声明
+	# RYU 已存在（或有核无地）时不再走 release，直接补 618 归属
+	if = {
+		limit = {
+			country_exists = JAP
+		}
+		if = {
+			limit = { NOT = { country_exists = RYU } }
+			JAP = { release = RYU }
+		}
+		if = {
+			limit = { country_exists = RYU }
+			RYU = {
+				transfer_state = 618
+				add_state_core = 618
+				set_capital = { state = 618 }
+			}
+		}
+	}
+	# ---- 11. 日本本土：annex_everything 战争目标被开头的白和丢弃，此处显式吞并 ----
+	# 609 九州 / 610 四国 / 611 中国 / 612 关西 / 613 中部 / 615 关东 / 616 东北 / 617 北海道
+	# 619 对马 / 620 南鸟岛 / 621 硫磺岛（939 尖阁已在第 4 段转给 CHI）
+	if = {
+		limit = {
+			country_exists = CHI
+			country_exists = JAP
+		}
+		CHI = {
+			annex_country = {
+				target = JAP
+				transfer_troops = yes
+			}
+		}
+	}
+	set_global_flag = gaw_china_victory_settled
+	ZZZ_gaw_clear_war_exhaustion_all = yes
+	# 中俄双双胜利后的反海湾君主国扩战：本效果只提供“中国已胜”条件，两国都胜才点火
+	ZZZ_MEW_auto_invite_egypt_sco = yes
+	ZZZ_MEW_post_eurasia_uar_war = yes
+}
+
+ZZZ_gaw_settle_japan_victory = {
+	ZZZ_gaw_white_peace_to_japan = yes
+	if = {
+		limit = {
+			country_exists = CHI
+		}
+		CHI = { dismantle_faction = yes }
+	}
+	# ---- 0. 中华民国（TAI）傀儡全国政府（日本胜利分支；本工程原创，非 TFR 移植）----
+	# 定位：TAI = 中华民国（localisation 国名键 TAI_* = "中华民国" / "Republic of China"）
+	# 形态：作为 JAP 的傀儡，名义代表全中国，但拿不到边疆；首都与执政党保持不变
+	# 执行顺序：先转本土州，再处理其它国家分州（TIB 的 585/588/589 在后续步骤转走）
+	# 排除清单（不给 TAI）：592 新疆、589 西藏、591 阿克赛钦、556 内蒙古、1097 呼伦贝尔
+	#   —— 这 5 州 TAI 无核心（千禧州史无 add_core_of = TAI），即千禧自带的"边疆"定义
+	# 588 青海、585 西川藏区：TAI 有核心但按西藏条款交 TIB，故也不在转移清单
+	# 526/813/943 南海岛礁：非本土州，TAI 无核心，留在 CHI
+	if = {
+		limit = {
+			country_exists = TAI
+			country_exists = JAP
+		}
+		# 若 TAI 已是别人的附庸，先解除，避免 puppet 失败
+		if = {
+			limit = {
+				TAI = {
+					is_subject = yes
+					NOT = { is_puppet_of = JAP }
+				}
+			}
+			TAI = {
+				overlord = { end_puppet = PREV }
+			}
+		}
+		if = {
+			limit = { NOT = { TAI = { is_puppet_of = JAP } } }
+			JAP = { puppet = TAI }
+		}
+		TAI = {
+			# 逐州转移（不整国 annex、不退州），33 个本土州
+			transfer_state = 434
+			transfer_state = 435
+			transfer_state = 531
+			transfer_state = 532
+			transfer_state = 534
+			transfer_state = 536
+			transfer_state = 537
+			transfer_state = 538
+			transfer_state = 540
+			transfer_state = 541
+			transfer_state = 544
+			transfer_state = 547
+			transfer_state = 548
+			transfer_state = 549
+			transfer_state = 552
+			transfer_state = 554
+			transfer_state = 555
+			transfer_state = 558
+			transfer_state = 559
+			transfer_state = 560
+			transfer_state = 562
+			transfer_state = 564
+			transfer_state = 567
+			transfer_state = 570
+			transfer_state = 572
+			transfer_state = 574
+			transfer_state = 578
+			transfer_state = 582
+			transfer_state = 583
+			transfer_state = 586
+			transfer_state = 1072
+			transfer_state = 1095
+			transfer_state = 1096
+			# 国名/旗帜保持"中华民国"，不套共产主义/民族主义 cosmetic
+			set_cosmetic_tag = TAI
+		}
+	}
+	# ---- 1. 大印度斯坦：RAJ 吞并巴基斯坦 / 孟加拉 / 尼泊尔 / 斯里兰卡 ----
+	if = {
+		limit = { country_exists = RAJ }
+		RAJ = {
+			if = {
+				limit = { country_exists = PAK }
+				annex_country = { target = PAK transfer_troops = yes }
+			}
+			if = {
+				limit = { country_exists = BAN }
+				annex_country = { target = BAN transfer_troops = yes }
+			}
+			if = {
+				limit = { country_exists = NEP }
+				annex_country = { target = NEP transfer_troops = yes }
+			}
+			# 毛派政权（NPM）随尼泊尔一并并入 RAJ，避免日本胜分支结算后 NPM 残存
+			if = {
+				limit = { country_exists = NPM }
+				annex_country = { target = NPM transfer_troops = yes }
+			}
+			if = {
+				limit = { country_exists = SRI }
+				annex_country = { target = SRI transfer_troops = yes }
+			}
+			if = {
+				limit = { country_exists = BHU }
+				annex_country = { target = BHU transfer_troops = yes }
+			}
+			# 阿克赛钦（591，原 owner CHI，RAJ 已有核心）：归 RAJ
+			transfer_state = 591
+			add_state_core = 591
+			set_cosmetic_tag = RAJ_nationalist
+		}
+	}
+	# ---- 2. 西藏：被 RAJ 傀儡，版图含青海与四川西部藏区 ----
+	if = {
+		limit = {
+			country_exists = RAJ
+			country_exists = TIB
+		}
+		RAJ = {
+			if = {
+				limit = { NOT = { is_puppet_of = TIB } }
+				puppet = TIB
+			}
+		}
+		TIB = {
+			transfer_state = 589
+			add_state_core = 589
+			transfer_state = 588
+			add_state_core = 588
+			transfer_state = 585
+			add_state_core = 585
+		}
+		if = {
+			limit = { country_exists = RAJ }
+			RAJ = {
+				set_autonomy = {
+					target = TIB
+					autonomy_state = autonomy_puppet_state
+				}
+			}
+		}
+	}
+	# ---- 2b. 日本侧扶持政权与北方领土 ----
+	# ETK（东突厥斯坦，592 新疆的唯一核心持有者）：自 CHI 释放，得 592，再置为日本附庸
+	if = {
+		limit = {
+			country_exists = CHI
+			NOT = { country_exists = ETK }
+		}
+		CHI = {
+			release = ETK
+		}
+	}
+	if = {
+		limit = { country_exists = ETK }
+		ETK = {
+			transfer_state = 592
+		}
+		# release = ETK 会让 ETK 成为 CHI 的傀儡；不先解除旧宗主，JAP 的 set_autonomy 不会生效
+		if = {
+			limit = {
+				ETK = {
+					is_subject = yes
+					NOT = { is_puppet_of = JAP }
+				}
+			}
+			ETK = {
+				overlord = { end_puppet = PREV }
+			}
+		}
+		if = {
+			limit = { country_exists = JAP }
+			if = {
+				limit = { NOT = { ETK = { is_puppet_of = JAP } } }
+				JAP = { puppet = ETK }
+			}
+			JAP = {
+				set_autonomy = {
+					target = ETK
+					autonomy_state = autonomy_puppet_state
+				}
+			}
+		}
+	}
+	# 库页岛 / 千岛：归日本（691、690 原 owner SOV，1168 原 owner SOV；939 开局即 JAP 所有，不重复转移）
+	# 本节属"中俄都输"情形，必须等俄罗斯战败（DSW_SOV_russian_defeat）后才划地，否则等于从非交战国割地
+	if = {
+		limit = {
+			country_exists = JAP
+			has_global_flag = DSW_SOV_russian_defeat
+		}
+		JAP = {
+			transfer_state = 691
+			transfer_state = 1168
+			transfer_state = 690
+		}
+	}
+	# ---- 3. 肢解中国 / 印尼：已放弃，不新建 tag；印尼方向唯一结局见下方"马菲林多" ----
+	# ---- 4. 中俄联动：由 on_daily 的 ZZZ_gaw_sino_russian_linkage 块处理 ----
+	# ---- 5. 若中俄都输：蒙古坐大 / 马菲林多联邦 / 大暹罗 ----
+	if = {
+		limit = {
+			country_exists = MON
+			country_exists = SOV
+			has_global_flag = DSW_SOV_russian_defeat
+		}
+		MON = {
+			transfer_state = 556
+			add_state_core = 556
+			transfer_state = 1011
+			add_state_core = 1011
+			# 呼伦贝尔（1097，原 owner CHI，无蒙古核心）：归蒙古
+			transfer_state = 1097
+			add_state_core = 1097
+		}
+	}
+	# 马来西亚主导的"马菲林多"联邦：吞并 PHI / SIN
+	if = {
+		limit = { country_exists = MAY }
+		MAY = {
+			if = {
+				limit = { country_exists = PHI }
+				annex_country = { target = PHI transfer_troops = yes }
+			}
+			if = {
+				limit = { country_exists = SIN }
+				annex_country = { target = SIN transfer_troops = yes }
+			}
+			set_cosmetic_tag = MAY_nationalist
+		}
+	}
+	# 泰国大暹罗主义：完整吞并缅泰边境民地武（WAA 佤邦 / SHN 南掸邦）+ 北掸邦 + 老挝 + 柬埔寨
+	# 设定要求：从挨着泰国的民地武一路到佤邦全部吞掉，WAA 与 SHN 不得残存
+	if = {
+		limit = { country_exists = SIA }
+		SIA = {
+			# 完整吞并：先灭国，州随国一并转入，避免只抽州、留下残存政权
+			if = {
+				limit = { country_exists = WAA }
+				annex_country = {
+					target = WAA
+					transfer_troops = yes
+				}
+			}
+			if = {
+				limit = { country_exists = SHN }
+				annex_country = {
+					target = SHN
+					transfer_troops = yes
+				}
+			}
+			# 显式补划与核心化：497 佤城 / 931 南佤原属 WAA，498 南掸邦原属 SHN，930 北掸邦原属 BRM
+			transfer_state = 497
+			add_state_core = 497
+			transfer_state = 931
+			add_state_core = 931
+			transfer_state = 498
+			add_state_core = 498
+			transfer_state = 930
+			add_state_core = 930
+			if = {
+				limit = { country_exists = LAO }
+				annex_country = {
+					target = LAO
+					transfer_troops = yes
+				}
+			}
+			if = {
+				limit = { country_exists = CBD }
+				annex_country = {
+					target = CBD
+					transfer_troops = yes
+				}
+			}
+			set_cosmetic_tag = SIA_nationalist
+		}
+	}
+	# 半岛终局改由半岛胜方的战后决议处理（common/decisions/ZZZ_korea_decisions.txt），
+	# 此处只确保停战，不自动吞并、不自动置 settled
+	if = {
+		limit = {
+			country_exists = KOR
+			country_exists = NKO
+			KOR = { has_war_with = NKO }
+		}
+		KOR = { white_peace = NKO }
+	}
+	# ---- 6. 越南（日本胜利唯一改动）：统一于南越反共政权 ----
+	# 中国胜利分支完全不改 VIE；只有日本胜利才换党、换领袖、写支持率、加 cosmetic、迁都西贡。
+	if = {
+		limit = { country_exists = VIE }
+		VIE = {
+			ZZZ_gaw_south_vietnam_government = yes
+		}
+	}
+	set_global_flag = gaw_japan_victory_settled
+	ZZZ_gaw_clear_war_exhaustion_all = yes
+	# 中国战败结算后检查俄罗斯是否也已战败：两者都成立才开启反伊扩战
+	ZZZ_MEW_post_eurasia_iran_war = yes
 }

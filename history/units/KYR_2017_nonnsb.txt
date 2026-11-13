@@ -1,0 +1,127 @@
+division_template = {
+	name = "Atayin Kuchter Battalion"
+
+	regiments = {
+		Special_Forces = { x = 0 y = 0 }
+	}
+	priority = 2
+}
+
+division_template = {
+	name = "Motoatkichtar Elum Battalion"
+
+	regiments = {
+		Arm_Inf_Bat = { x = 0 y = 0 }
+		Arm_Inf_Bat = { x = 0 y = 1 }
+		Mech_Inf_Bat = { x = 0 y = 2 }
+		armor_Bat = { x = 0 y = 3 }
+		Arty_Bat = { x = 0 y = 4 }
+	}
+
+	support = {
+		armor_Recce_Comp = { x = 0 y = 0 }
+		SP_arty_battery = { x = 0 y = 1 }
+	}
+}
+
+units = {
+	division = {
+		name = "Atayin Kuchter Battalion"
+		location = 7706
+		division_template = "Atayin Kuchter Battalion"
+		start_experience_factor = 0.7
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "1 Motoatkichtar Elum Battalion"
+		location = 7706
+		division_template = "Motoatkichtar Elum Battalion"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "2 Motoatkichtar Elum Battalion"
+		location = 7706
+		division_template = "Motoatkichtar Elum Battalion"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.01
+	}
+}
+
+instant_effect = { 
+
+	add_equipment_to_stockpile = {
+		variant_name = "AKM"
+		type = infantry_weapons_1			#AKM
+		amount = 1100
+		producer = SOV
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "AT-3"
+		type = small_plane_strike_airframe_1			#AT-3
+		amount = 30
+		producer = TAI
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "AT-4"
+		type = Anti_tank_1			#AT-4
+		amount = 30
+		producer = KYR
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "AT-3"
+		type = small_plane_strike_airframe_1			#AT-3
+		amount = 25
+		producer = TAI
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "AT-5"
+		type = Heavy_Anti_tank_1			#AT-5
+		amount = 25
+		producer = KYR
+	}
+	add_equipment_to_stockpile = {
+		type = Anti_Air_0
+		amount = 100
+		producer = KYR
+	}
+	add_equipment_to_stockpile = {
+		type = cnc_equipment_1
+		amount = 200
+		producer = KYR
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "D-30"
+		type = artillery_1		#D-30
+		amount = 72
+		producer = SOV
+	}
+	#### Sealed Storage（封存）####
+	add_equipment_to_stockpile = {
+		variant_name = "AKM"
+		type = infantry_weapons_1			#AK-47（封存）
+		amount = 35000
+		producer = SOV
+	}
+
+
+	add_equipment_to_stockpile = {
+		variant_name = "Mil Mi-8T"
+		type = transport_helicopter_1 #Hip
+		amount = 8
+		producer = SOV
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Mi-24V"
+		type = heavy_tank_chassis_0 #Hind
+		amount = 2
+		producer = SOV
+	} 
+	add_equipment_to_stockpile = {
+		type = util_vehicle_1
+		producer = KYR
+		amount = 450
+	}
+}

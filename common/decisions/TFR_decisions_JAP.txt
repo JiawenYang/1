@@ -65,7 +65,7 @@ JAP_national_diet_category = {
 			decrease_welfare = yes
 			if = {
 				limit = {
-					has_government = conservative
+					has_government = democratic
 				}
 				set_temp_variable = {
 					var = JAP_election_approval_rating_ldp_var_temp
@@ -75,7 +75,7 @@ JAP_national_diet_category = {
 			}
 			else_if = {
 				limit = {
-					has_government = social_liberal
+					has_government = democratic
 				}
 				set_temp_variable = {
 					var = JAP_election_approval_rating_kdp_var_temp
@@ -85,7 +85,7 @@ JAP_national_diet_category = {
 			}
 			else_if = {
 				limit = {
-					has_government = social_democrat
+					has_government = democratic
 				}
 				set_temp_variable = {
 					var = JAP_election_approval_rating_kdp_var_temp
@@ -95,7 +95,7 @@ JAP_national_diet_category = {
 			}
 			else_if = {
 				limit = {
-					has_government = market_liberal
+					has_government = democratic
 				}
 				set_temp_variable = {
 					var = JAP_election_approval_rating_ino_var_temp
@@ -124,7 +124,7 @@ JAP_national_diet_category = {
 		modifier = {
 			consumer_goods_factor = 0.025
 			expense_growth_factor = 0.15
-			inflation_monthly = -0.003
+			inflation_cost_multiplier_modifier = -0.003
 			business_value_factor = 0.025
 			personal_value_factor = 0.025
 		}
@@ -163,7 +163,7 @@ JAP_national_diet_category = {
 		modifier = {
 			consumer_goods_factor = -0.025
 			expense_growth_factor = -0.15
-			inflation_monthly = 0.003
+			inflation_cost_multiplier_modifier = 0.003
 			business_value_factor = -0.025
 			personal_value_factor = -0.025
 		}
@@ -197,7 +197,7 @@ JAP_national_diet_category = {
 			consumer_goods_factor = 0.025
 			poverty_development_monthly = 0.005
 			business_value_factor = 0.075
-			income_growth_factor = 0.1
+			productivity_growth_modifier = 0.1
 		}
 		remove_effect = {
 		}
@@ -266,7 +266,7 @@ JAP_national_diet_category = {
 		days_re_enable = 50
 		days_remove = 50
 		modifier = {
-			income_growth_factor = 0.1
+			productivity_growth_modifier = 0.1
 			political_power_gain = -0.15
 		}
 		remove_effect = {
@@ -282,7 +282,7 @@ JAP_national_diet_category = {
 			add_poverty_development = yes
 			if = {
 				limit = {
-					has_government = conservative
+					has_government = democratic
 				}
 				set_temp_variable = {
 					var = JAP_election_approval_rating_ldp_var_temp
@@ -292,7 +292,7 @@ JAP_national_diet_category = {
 			}
 			else_if = {
 				limit = {
-					has_government = social_liberal
+					has_government = democratic
 				}
 				set_temp_variable = {
 					var = JAP_election_approval_rating_kdp_var_temp
@@ -302,7 +302,7 @@ JAP_national_diet_category = {
 			}
 			else_if = {
 				limit = {
-					has_government = social_democrat
+					has_government = democratic
 				}
 				set_temp_variable = {
 					var = JAP_election_approval_rating_kdp_var_temp
@@ -312,7 +312,7 @@ JAP_national_diet_category = {
 			}
 			else_if = {
 				limit = {
-					has_government = market_liberal
+					has_government = democratic
 				}
 				set_temp_variable = {
 					var = JAP_election_approval_rating_ino_var_temp
@@ -439,7 +439,7 @@ JAP_national_diet_category = {
 		modifier = {
 			consumer_goods_factor = -0.05
 			production_factory_efficiency_gain_factor = 0.05
-			income_growth_factor = 0.1
+			productivity_growth_modifier = 0.1
 			business_value_factor = 0.1
 		}
 		ai_will_do = {
@@ -506,7 +506,7 @@ JAP_national_diet_category = {
 		modifier = {
 			consumer_goods_factor = -0.05
 			production_factory_efficiency_gain_factor = 0.05
-			income_growth_factor = 0.1
+			productivity_growth_modifier = 0.1
 			business_value_factor = 0.1
 		}
 		ai_will_do = {
@@ -573,7 +573,7 @@ JAP_national_diet_category = {
 		modifier = {
 			consumer_goods_factor = -0.05
 			production_factory_efficiency_gain_factor = 0.05
-			income_growth_factor = 0.1
+			productivity_growth_modifier = 0.1
 			business_value_factor = 0.1
 		}
 		ai_will_do = {
@@ -1393,10 +1393,10 @@ JAP_national_diet_category = {
 		days_re_enable = 25
 		cost = 75
 		remove_effect = {
-			add_popularity = {
-				ideology = authoritarian_democrat
-				popularity = 0.03
-			}
+			set_temp_variable = { party_index = 0 }
+			set_temp_variable = { party_popularity_increase = 0.03 }
+			set_temp_variable = { temp_outlook_increase = 0.03 }
+			change_relative_party_popularity = yes
 			set_temp_variable = {
 				var = JAP_election_approval_rating_ldp_var_temp
 				value = 0.03
@@ -1504,10 +1504,10 @@ JAP_national_diet_category = {
 			personal_value_factor = 0.05
 		}
 		remove_effect = {
-			add_popularity = {
-				ideology = authoritarian_democrat
-				popularity = 0.025
-			}
+			set_temp_variable = { party_index = 0 }
+			set_temp_variable = { party_popularity_increase = 0.025 }
+			set_temp_variable = { temp_outlook_increase = 0.025 }
+			change_relative_party_popularity = yes
 			set_temp_variable = {
 				var = JAP_election_approval_rating_ldp_var_temp
 				value = 0.025
@@ -1559,30 +1559,30 @@ JAP_national_diet_category = {
 		remove_effect = {
 			if = {
 				limit = {
-					has_government = social_liberal
+					has_government = democratic
 				}
-				add_popularity = {
-					ideology = social_liberal
-					popularity = 0.05
-				}
+				set_temp_variable = { party_index = 2 }
+				set_temp_variable = { party_popularity_increase = 0.05 }
+				set_temp_variable = { temp_outlook_increase = 0.05 }
+				change_relative_party_popularity = yes
 			}
 			else_if = {
 				limit = {
-					has_government = social_democrat
+					has_government = democratic
 				}
-				add_popularity = {
-					ideology = social_democrat
-					popularity = 0.05
-				}
+				set_temp_variable = { party_index = 3 }
+				set_temp_variable = { party_popularity_increase = 0.05 }
+				set_temp_variable = { temp_outlook_increase = 0.05 }
+				change_relative_party_popularity = yes
 			}
 			else_if = {
 				limit = {
-					has_government = market_liberal
+					has_government = democratic
 				}
-				add_popularity = {
-					ideology = market_liberal
-					popularity = 0.05
-				}
+				set_temp_variable = { party_index = 2 }
+				set_temp_variable = { party_popularity_increase = 0.05 }
+				set_temp_variable = { temp_outlook_increase = 0.05 }
+				change_relative_party_popularity = yes
 			}
 			set_temp_variable = {
 				var = society_development_var_temp
@@ -1758,13 +1758,13 @@ JAP_national_diet_category = {
 						NOT = {
 							OR = {
 								has_state_category = metropolis 
-								has_state_category = conurbation 
+								has_state_category = state_03 
 								has_state_category = megalopolis 
 							}
 						}
 					}
 					add_building_construction = {
-						type = office_park
+						type = offices
 						level = 2
 						instant_build = yes
 					}
@@ -1776,13 +1776,13 @@ JAP_national_diet_category = {
 						NOT = {
 							OR = {
 								has_state_category = metropolis 
-								has_state_category = conurbation 
+								has_state_category = state_03 
 								has_state_category = megalopolis 
 							}
 						}
 					}
 					add_building_construction = {
-						type = office_park
+						type = offices
 						level = 2
 						instant_build = yes
 					}
@@ -1803,13 +1803,13 @@ JAP_national_diet_category = {
 						NOT = {
 							OR = {
 								has_state_category = metropolis 
-								has_state_category = conurbation 
+								has_state_category = state_03 
 								has_state_category = megalopolis 
 							}
 						}
 					}
 					add_building_construction = {
-						type = office_park
+						type = offices
 						level = 1
 						instant_build = yes
 					}
@@ -1860,7 +1860,7 @@ JAP_national_diet_category = {
 					NOT = {
 						OR = {
 							has_state_category = metropolis 
-							has_state_category = conurbation 
+							has_state_category = state_03 
 							has_state_category = megalopolis 
 						}
 					}
@@ -1879,7 +1879,7 @@ JAP_national_diet_category = {
 					NOT = {
 						OR = {
 							has_state_category = metropolis 
-							has_state_category = conurbation 
+							has_state_category = state_03 
 							has_state_category = megalopolis 
 						}
 					}
@@ -1955,7 +1955,7 @@ JAP_national_diet_category = {
 					NOT = {
 						OR = {
 							has_state_category = metropolis 
-							has_state_category = conurbation 
+							has_state_category = state_03 
 							has_state_category = megalopolis 
 						}
 					}
@@ -1968,7 +1968,7 @@ JAP_national_diet_category = {
 					NOT = {
 						OR = {
 							has_state_category = metropolis 
-							has_state_category = conurbation 
+							has_state_category = state_03 
 							has_state_category = megalopolis 
 						}
 					}
@@ -1981,7 +1981,7 @@ JAP_national_diet_category = {
 					NOT = {
 						OR = {
 							has_state_category = metropolis 
-							has_state_category = conurbation 
+							has_state_category = state_03 
 							has_state_category = megalopolis 
 						}
 					}
@@ -2035,7 +2035,7 @@ JAP_national_diet_category = {
 		days_remove = 100
 		modifier = {
 			personal_value_factor = 0.1
-			income_growth_factor = -0.05
+			productivity_growth_modifier = -0.05
 			business_value_factor = -0.1
 			production_speed_infrastructure_factor = 0.1
 			poverty_development_monthly = 0.01
@@ -2068,9 +2068,8 @@ JAP_national_diet_category = {
 			industrial_capacity_factory = 0.05
 			industrial_capacity_dockyard = 0.05
 			personal_value_factor = -0.025
-			social_democrat_drift = -0.02
-			social_liberal_drift = -0.02
-			libertarian_socialist_drift = -0.02
+			democratic_drift = -0.02
+			communism_drift = -0.02
 		}
 		remove_effect = {
 		}
@@ -2091,10 +2090,7 @@ JAP_national_diet_category = {
 		modifier = {
 			society_development_monthly = 0.01
 			personal_value_factor = 0.05
-			social_democrat_drift = 0.02
-			social_liberal_drift = 0.02
-			market_liberal_drift = 0.02
-			conservative_drift = 0.02
+			democratic_drift = 0.02
 		}
 		remove_effect = {
 			set_temp_variable = {
@@ -2122,9 +2118,8 @@ JAP_national_diet_category = {
 			production_factory_efficiency_gain_factor = 0.05
 			production_factory_max_efficiency_factor = 0.05
 			personal_value_factor = 0.05
-			fascist_drift = -0.02
-			national_socialist_drift = -0.02
-			authoritarian_democrat_drift = -0.02
+			fascism_drift = -0.02
+			democratic_drift = -0.02
 		}
 		remove_effect = {
 		}
@@ -2599,12 +2594,12 @@ JAP_oil_crisis_cat = {
 			}
 			add_opinion_modifier = {
 				target = ARG
-				modifier = economic_ties
+				modifier = oil_deals
 			}
 			ARG = {
 				add_opinion_modifier = {
 					target = JAP
-					modifier = economic_ties
+					modifier = oil_deals
 				}
 			}
 		}
@@ -2618,7 +2613,7 @@ JAP_oil_crisis_cat = {
 			}
 		}
 		targets = {
-			INS
+			IND
 		}
 		visible = {
 			tag = JAP
@@ -2650,7 +2645,7 @@ JAP_oil_crisis_cat = {
 					amount = 13
 				}
 			}
-			INS = {
+			IND = {
 				add_timed_idea = {
 					idea = JAP_south_america_cooperation
 					days = 100
@@ -2664,13 +2659,13 @@ JAP_oil_crisis_cat = {
 				}
 			}
 			add_opinion_modifier = {
-				target = INS
-				modifier = economic_ties
+				target = IND
+				modifier = oil_deals
 			}
-			INS = {
+			IND = {
 				add_opinion_modifier = {
 					target = JAP
-					modifier = economic_ties
+					modifier = oil_deals
 				}
 			}
 		}
@@ -2731,12 +2726,12 @@ JAP_oil_crisis_cat = {
 			}
 			add_opinion_modifier = {
 				target = ECU
-				modifier = economic_ties
+				modifier = oil_deals
 			}
 			ECU = {
 				add_opinion_modifier = {
 					target = JAP
-					modifier = economic_ties
+					modifier = oil_deals
 				}
 			}
 		}
@@ -2785,14 +2780,13 @@ JAP_oil_crisis_cat = {
 						is_core_of = ROOT
 						is_able_to_build_energy_farm_in_state = yes
 						free_building_slots = {
-							building = energy_farm
+							building = renewable_energy_infra
 							size > 0
-							include_locked = yes
 						}
 					}
 					add_extra_state_shared_building_slots = 1
 					add_building_construction = {
-						type = energy_farm
+						type = renewable_energy_infra
 						level = 1
 						instant_build = yes
 					}
@@ -3228,8 +3222,8 @@ JAP_japan_economy_category = {
 		visible = {
 			has_completed_focus = JAP_develop_northern_prefectures
 			OR = {
-				has_government = conservative
-				has_government = authoritarian_democrat
+				has_government = democratic
+				has_government = democratic
 			}
 		}
 		highlight_states = {
@@ -3289,7 +3283,7 @@ JAP_japan_economy_category = {
 			1336 = {
 				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
-					type = energy_farm
+					type = renewable_energy_infra
 					level = 1
 					instant_build = yes
 				}
@@ -3572,7 +3566,7 @@ JAP_japan_economy_category = {
 			534 = {
 				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
-					type = energy_farm
+					type = renewable_energy_infra
 					level = 1
 					instant_build = yes
 				}
@@ -3606,7 +3600,7 @@ JAP_japan_economy_category = {
 		remove_effect = {
 			534 = {
 				add_building_construction = {
-					type = power_plant
+					type = fossil_powerplant
 					level = 1
 					instant_build = yes
 				}
@@ -3786,7 +3780,7 @@ JAP_japan_economy_category = {
 			532 = {
 				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
-					type = energy_farm
+					type = renewable_energy_infra
 					level = 1
 					instant_build = yes
 				}
@@ -3821,7 +3815,7 @@ JAP_japan_economy_category = {
 			532 = {
 				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
-					type = power_plant
+					type = fossil_powerplant
 					level = 1
 					instant_build = yes
 				}
@@ -4474,7 +4468,7 @@ JAP_coronavirus_category = {
 			activate_mission = JAP_the_pandemic_worsens_mission
 			if = {
 				limit = {
-					has_government = conservative
+					has_government = democratic
 				}
 				set_temp_variable = {
 					var = JAP_election_approval_rating_ldp_var_temp
@@ -4482,10 +4476,10 @@ JAP_coronavirus_category = {
 				}
 				JAP_add_election_approval_rating_ldp = yes
 				hidden_effect = {
-					add_popularity = {
-						ideology = conservative
-						popularity = -0.01
-					}
+					set_temp_variable = { party_index = 1 }
+					set_temp_variable = { party_popularity_increase = -0.01 }
+					set_temp_variable = { temp_outlook_increase = -0.01 }
+					change_relative_party_popularity = yes
 				}
 			}
 		}
@@ -4527,7 +4521,7 @@ JAP_coronavirus_category = {
 			activate_mission = JAP_waning_coronavirus_mission
 			if = {
 				limit = {
-					has_government = conservative
+					has_government = democratic
 				}
 				set_temp_variable = {
 					var = JAP_election_approval_rating_ldp_var_temp
@@ -4535,10 +4529,10 @@ JAP_coronavirus_category = {
 				}
 				JAP_add_election_approval_rating_ldp = yes
 				hidden_effect = {
-					add_popularity = {
-						ideology = conservative
-						popularity = 0.05
-					}
+					set_temp_variable = { party_index = 1 }
+					set_temp_variable = { party_popularity_increase = 0.05 }
+					set_temp_variable = { temp_outlook_increase = 0.05 }
+					change_relative_party_popularity = yes
 				}
 			}
 		}
@@ -4749,7 +4743,7 @@ JAP_coronavirus_category = {
 		icon = generic_coronavirus
 		available = {
 			has_completed_focus = JAP_restrict_travel
-			PRC = {
+			CHI = {
 				NOT = {
 					has_country_flag = PRC_dealt_with_coronavirus
 				}
@@ -4766,8 +4760,8 @@ JAP_coronavirus_category = {
 				days = 20
 			}
 			add_opinion_modifier = {
-				target = PRC
-				modifier = restricted_travel
+				target = CHI
+				modifier = stringent_tourism_restrictions
 			}
 			add_stability = -0.03
 		}
@@ -4792,7 +4786,7 @@ JAP_coronavirus_category = {
 			}
 			add_opinion_modifier = {
 				target = USA
-				modifier = restricted_travel
+				modifier = stringent_tourism_restrictions
 			}
 			add_stability = -0.05
 		}
@@ -4823,7 +4817,7 @@ JAP_coronavirus_category = {
 			}
 			add_opinion_modifier = {
 				target = SOV
-				modifier = restricted_travel
+				modifier = stringent_tourism_restrictions
 			}
 			add_stability = -0.03
 		}
@@ -4930,7 +4924,7 @@ JAP_taiwan_war_category = {
 				producer = JAP
 			}
 			add_equipment_to_stockpile = {
-				type = command_control_equipment2
+				type = cnc_equipment
 				amount = 200
 				producer = JAP
 			}
@@ -6031,24 +6025,16 @@ JAP_great_asian_war = {
 			}
 		}
 		cancel_effect = {
-			effect_tooltip = {
-				news_event = {
-					id = news.414
-					days = 1
-				}
-			}
+			# news.414 统一由 prc.1002 的选项派发（中国崩溃时 Japan 胜结算入口）
+			# 本任务在 JAP / AST / RAJ / TAI 各挂一份，若在此派发会重复播放 4 次，故留空
 		}
 		timeout_effect = {
 			PRC_increase_war_exhaustion = yes
 			activate_mission = JAP_GAW_war_exhaustion
 		}
 		complete_effect = {
-			effect_tooltip = {
-				news_event = {
-					id = news.413
-					days = 1
-				}
-			}
+			# 本任务为隐藏计时器（available 含 hidden_trigger = { always = no }），本效果不可达
+			# news.413 统一由 prc.1001 的选项派发
 		}
 	}
 	JAP_korean_war_joining = {
@@ -6132,12 +6118,12 @@ JAP_great_asian_war = {
 			army_experience = 25
 			KOR = {
 				add_equipment_to_stockpile = {
-					type = infantry_equipment
+					type = Inf_equipment
 					amount = 7500
 					producer = JAP
 				}
 				add_equipment_to_stockpile = {
-					type = support_equipment
+					type = Inf_equipment
 					amount = 750
 					producer = JAP
 				}
@@ -6147,7 +6133,7 @@ JAP_great_asian_war = {
 					producer = JAP
 				}
 				add_equipment_to_stockpile = {
-					type = motorized_equipment
+					type = util_vehicle_equipment
 					amount = 750
 					producer = JAP
 				}
@@ -6245,6 +6231,7 @@ JAP_great_asian_war = {
 			custom_effect_tooltip = JAP_landing_in_the_qingdao_tt
 			hidden_effect = {
 				load_oob = JAP_qingdao
+				add_manpower = -5100
 			}
 		}
 		ai_will_do = {
@@ -6349,6 +6336,7 @@ JAP_great_asian_war = {
 			custom_effect_tooltip = JAP_landing_in_the_shanghai_tt
 			hidden_effect = {
 				load_oob = JAP_shanghai
+				add_manpower = -5100
 			}
 		}
 		ai_will_do = {
@@ -6503,6 +6491,7 @@ JAP_great_asian_war = {
 			custom_effect_tooltip = JAP_landing_in_the_hong_kong_tt
 			hidden_effect = {
 				load_oob = JAP_hong_kong
+				add_manpower = -9200
 			}
 		}
 		ai_will_do = {
@@ -6736,6 +6725,7 @@ JAP_great_asian_war = {
 			custom_effect_tooltip = JAP_japan_reserves_tt
 			hidden_effect = {
 				load_oob = GAW_reserves_jap2
+				add_manpower = -8500
 			}
 		}
 		remove_effect = {
@@ -7034,10 +7024,10 @@ JAP_great_asian_war = {
 		available = {
 			has_idea = JAP_operation_white_sun_idea
 			has_equipment = {
-				infantry_equipment > 10000
+				Inf_equipment > 10000
 			}
 			has_equipment = {
-				support_equipment > 1000
+				always = no
 			}
 		}
 		cost = 25
@@ -7054,11 +7044,11 @@ JAP_great_asian_war = {
 				days = 35
 			}
 			add_equipment_to_stockpile = {
-				type = infantry_equipment
+				type = Inf_equipment
 				amount = -10000
 			}
 			add_equipment_to_stockpile = {
-				type = support_equipment
+				type = Inf_equipment
 				amount = -1000
 			}
 		}
@@ -7513,27 +7503,27 @@ JAP_great_asian_war = {
 		remove_effect = {
 			AST = {
 				add_equipment_to_stockpile = {
-					type = infantry_equipment_2
+					type = Inf_equipment
 					amount = 2000
 					producer = JAP
 				}
 				add_equipment_to_stockpile = {
-					type = support_equipment
+					type = Inf_equipment
 					amount = 300
 					producer = JAP
 				}
 				add_equipment_to_stockpile = {
-					type = anti_tank_equipment_1
+					type = L_AT_Equipment
 					amount = 100
 					producer = JAP
 				}
 				add_equipment_to_stockpile = {
-					type = anti_air_equipment_1
+					type = AA_Equipment
 					amount = 100
 					producer = JAP
 				}
 				add_equipment_to_stockpile = {
-					type = motorized_equipment
+					type = util_vehicle_equipment
 					amount = 140
 					producer = JAP
 				}
@@ -7563,27 +7553,27 @@ JAP_great_asian_war = {
 		remove_effect = {
 			PHI = {
 				add_equipment_to_stockpile = {
-					type = infantry_equipment_2
+					type = Inf_equipment
 					amount = 2000
 					producer = JAP
 				}
 				add_equipment_to_stockpile = {
-					type = support_equipment
+					type = Inf_equipment
 					amount = 300
 					producer = JAP
 				}
 				add_equipment_to_stockpile = {
-					type = anti_tank_equipment_1
+					type = L_AT_Equipment
 					amount = 100
 					producer = JAP
 				}
 				add_equipment_to_stockpile = {
-					type = anti_air_equipment_1
+					type = AA_Equipment
 					amount = 100
 					producer = JAP
 				}
 				add_equipment_to_stockpile = {
-					type = motorized_equipment
+					type = util_vehicle_equipment
 					amount = 140
 					producer = JAP
 				}
@@ -7613,27 +7603,27 @@ JAP_great_asian_war = {
 		remove_effect = {
 			SIA = {
 				add_equipment_to_stockpile = {
-					type = infantry_equipment_2
+					type = Inf_equipment
 					amount = 2000
 					producer = JAP
 				}
 				add_equipment_to_stockpile = {
-					type = support_equipment
+					type = Inf_equipment
 					amount = 300
 					producer = JAP
 				}
 				add_equipment_to_stockpile = {
-					type = anti_tank_equipment_1
+					type = L_AT_Equipment
 					amount = 100
 					producer = JAP
 				}
 				add_equipment_to_stockpile = {
-					type = anti_air_equipment_1
+					type = AA_Equipment
 					amount = 100
 					producer = JAP
 				}
 				add_equipment_to_stockpile = {
-					type = motorized_equipment
+					type = util_vehicle_equipment
 					amount = 140
 					producer = JAP
 				}
@@ -7663,27 +7653,27 @@ JAP_great_asian_war = {
 		remove_effect = {
 			VIE = {
 				add_equipment_to_stockpile = {
-					type = infantry_equipment_2
+					type = Inf_equipment
 					amount = 2000
 					producer = JAP
 				}
 				add_equipment_to_stockpile = {
-					type = support_equipment
+					type = Inf_equipment
 					amount = 300
 					producer = JAP
 				}
 				add_equipment_to_stockpile = {
-					type = anti_tank_equipment_1
+					type = L_AT_Equipment
 					amount = 100
 					producer = JAP
 				}
 				add_equipment_to_stockpile = {
-					type = anti_air_equipment_1
+					type = AA_Equipment
 					amount = 100
 					producer = JAP
 				}
 				add_equipment_to_stockpile = {
-					type = motorized_equipment
+					type = util_vehicle_equipment
 					amount = 140
 					producer = JAP
 				}
@@ -7713,27 +7703,27 @@ JAP_great_asian_war = {
 		remove_effect = {
 			MAY = {
 				add_equipment_to_stockpile = {
-					type = infantry_equipment_2
+					type = Inf_equipment
 					amount = 2000
 					producer = JAP
 				}
 				add_equipment_to_stockpile = {
-					type = support_equipment
+					type = Inf_equipment
 					amount = 300
 					producer = JAP
 				}
 				add_equipment_to_stockpile = {
-					type = anti_tank_equipment_1
+					type = L_AT_Equipment
 					amount = 100
 					producer = JAP
 				}
 				add_equipment_to_stockpile = {
-					type = anti_air_equipment_1
+					type = AA_Equipment
 					amount = 100
 					producer = JAP
 				}
 				add_equipment_to_stockpile = {
-					type = motorized_equipment
+					type = util_vehicle_equipment
 					amount = 140
 					producer = JAP
 				}

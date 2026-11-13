@@ -946,7 +946,7 @@ SOV_second_defeat = {
 			recalculate_party = yes
 			create_country_leader = {
 				name = DSW_TFR_SOV_viktor_zolotov
-				picture = "Viktor Zolotov.dds"
+				picture = "gfx/leaders/SOV/Viktor_Zolotov_2017.dds"
 				ideology = Nat_Autocracy
 				traits = {
 
@@ -2926,26 +2926,6 @@ SOV_add_peoples_front_influence = {
 		custom_effect_tooltip = SOV_add_peoples_front_influence_var_tt
 	}
 }
-SOV_add_ldpr_influence = {
-	if = {
-		limit = {
-			is_in_array = {
-				array = SOV_other_parties
-				value = GER.id
-			}
-		}
-		add_to_variable = {
-			var = SOV_ldpr_influence_var
-			value = SOV_ldpr_influence_var_temp
-		}
-		clamp_variable = {
-			var = SOV_ldpr_influence_var
-			min = 0
-			max = 1
-		}
-		custom_effect_tooltip = SOV_add_ldpr_influence_var_tt
-	}
-}
 SOV_add_patriots_party_influence = {
 	if = {
 		limit = {
@@ -3026,27 +3006,6 @@ SOV_add_peoples_front_opinion = {
 			max = 5
 		}
 		custom_effect_tooltip = SOV_add_peoples_front_opinion_tt
-		SOV_supreme_soviet_calculate = yes
-	}
-}
-SOV_add_ldpr_opinion = {
-	if = {
-		limit = {
-			is_in_array = {
-				array = SOV_other_parties
-				value = GER.id
-			}
-		}
-		add_to_variable = {
-			var = SOV_ldpr_opinion_var
-			value = 1
-		}
-		clamp_variable = {
-			var = SOV_ldpr_opinion_var
-			min = 1
-			max = 5
-		}
-		custom_effect_tooltip = SOV_add_ldpr_opinion_tt
 		SOV_supreme_soviet_calculate = yes
 	}
 }
@@ -3131,27 +3090,6 @@ SOV_reduce_peoples_front_opinion = {
 			max = 5
 		}
 		custom_effect_tooltip = SOV_reduce_peoples_front_opinion_tt
-		SOV_supreme_soviet_calculate = yes
-	}
-}
-SOV_reduce_ldpr_opinion = {
-	if = {
-		limit = {
-			is_in_array = {
-				array = SOV_other_parties
-				value = GER.id
-			}
-		}
-		add_to_variable = {
-			var = SOV_ldpr_opinion_var
-			value = -1
-		}
-		clamp_variable = {
-			var = SOV_ldpr_opinion_var
-			min = 1
-			max = 5
-		}
-		custom_effect_tooltip = SOV_reduce_ldpr_opinion_tt
 		SOV_supreme_soviet_calculate = yes
 	}
 }
@@ -3504,7 +3442,7 @@ SOV_join_brics = {
 				SOV_brics_political_power_factor_dynamic_var = 0.005
 			}
 			add_to_variable = {
-				SOV_brics_income_growth_factor_dynamic_var = 0.005
+				SOV_brics_tax_gain_multiplier_modifier_dynamic_var = 0.005
 			}
 			add_to_variable = {
 				SOV_brics_trade_cost_for_target_factor_dynamic_var = -0.005
@@ -3527,7 +3465,7 @@ SOV_join_brics = {
 					SOV_brics_political_power_factor_dynamic_var = 0.005
 				}
 				add_to_variable = {
-					SOV_brics_income_growth_factor_dynamic_var = 0.005
+					SOV_brics_tax_gain_multiplier_modifier_dynamic_var = 0.005
 				}
 				add_to_variable = {
 					SOV_brics_trade_cost_for_target_factor_dynamic_var = -0.005
@@ -3656,7 +3594,7 @@ SOV_leave_brics = {
 				SOV_brics_political_power_factor_dynamic_var = -0.005
 			}
 			add_to_variable = {
-				SOV_brics_income_growth_factor_dynamic_var = -0.005
+				SOV_brics_tax_gain_multiplier_modifier_dynamic_var = -0.005
 			}
 			add_to_variable = {
 				SOV_brics_trade_cost_for_target_factor_dynamic_var = 0.005
@@ -4548,7 +4486,7 @@ SOV_supreme_soviet_calculate = {
 			}
 			add_to_variable = {
 				var = SOV_other_parties_var
-				value = SOV_ldpr_opinion_var
+				value = SOV_party_opinion_var
 			}
 		}
 		if = {
@@ -4655,7 +4593,6 @@ SOV_duma_setup = {
 		add_ideas = SOV_duma_ur_neverov
 		add_ideas = SOV_duma_cprf_zyuganov
 		add_ideas = SOV_duma_jr_mironov
-		add_ideas = SOV_duma_ldpr_zhirinovsky
 	}
 }
 SOV_add_new_russia_party = {
@@ -4897,9 +4834,6 @@ SOV_duma_disable = {
 			SOV_duma_people_russia_mironov
 			SOV_duma_people_russia_delyagin
 			SOV_duma_people_russia_prilepin
-			SOV_duma_ldpr_zhirinovsky
-			SOV_duma_ldpr_slutsky
-			SOV_duma_ldpr_slutsky_1
 			SOV_duma_new_people_nechaev
 			SOV_duma_new_people_nechaev_1
 			SOV_duma_nat_russia_alikhanov
@@ -4983,14 +4917,6 @@ SOV_remove_people_russia_party = {
 		SOV_duma_people_russia_mironov
 		SOV_duma_people_russia_delyagin
 		SOV_duma_people_russia_prilepin
-	}
-}
-SOV_remove_ldpr_party = {
-	custom_effect_tooltip = SOV_remove_ldpr_party_tt
-	remove_ideas = {
-		SOV_duma_ldpr_zhirinovsky
-		SOV_duma_ldpr_slutsky
-		SOV_duma_ldpr_slutsky_1
 	}
 }
 SOV_remove_united_russia_party = {
@@ -5521,8 +5447,6 @@ SOV_remove_all_ideas_prewar_loss = {
 		SOV_duginomics2_idea
 		SOV_new_imperial_constitution
 		SOV_russian_top_down_system_idea
-		idea_SOV_national_oligarchy_LDPR
-		idea_SOV_imperial_oligrachy_LDPR
 		SOV_ministry_of_media_management_idea
 		SOV_legacy_of_the_whites_idea
 		SOV_the_greater_union
@@ -6022,57 +5946,13 @@ SOV_election_var_balancer = {
 			SOV_election_approval_rating_cprf_var_temp = -1
 		}
 		add_to_variable = {
-			SOV_election_approval_rating_ldpr_var = SOV_election_approval_rating_cprf_var_temp
+			SOV_election_approval_rating_party7_var = SOV_election_approval_rating_cprf_var_temp
 		}
 		add_to_variable = {
 			SOV_election_approval_rating_ur_var = SOV_election_approval_rating_cprf_var_temp
 		}
 		add_to_variable = {
 			SOV_election_approval_rating_srzp_var = SOV_election_approval_rating_cprf_var_temp
-		}
-	}
-	else_if = {
-		limit = {
-			check_variable = {
-				target = 2
-			}
-		}
-		divide_temp_variable = {
-			SOV_election_approval_rating_ldpr_var_temp = 5
-		}
-		multiply_temp_variable = {
-			SOV_election_approval_rating_ldpr_var_temp = -1
-		}
-		add_to_variable = {
-			SOV_election_approval_rating_cprf_var = SOV_election_approval_rating_ldpr_var_temp
-		}
-		add_to_variable = {
-			SOV_election_approval_rating_ur_var = SOV_election_approval_rating_ldpr_var_temp
-		}
-		add_to_variable = {
-			SOV_election_approval_rating_srzp_var = SOV_election_approval_rating_ldpr_var_temp
-		}
-	}
-	else_if = {
-		limit = {
-			check_variable = {
-				target = 3
-			}
-		}
-		divide_temp_variable = {
-			SOV_election_approval_rating_ur_var_temp = 5
-		}
-		multiply_temp_variable = {
-			SOV_election_approval_rating_ur_var_temp = -1
-		}
-		add_to_variable = {
-			SOV_election_approval_rating_ldpr_var = SOV_election_approval_rating_ur_var_temp
-		}
-		add_to_variable = {
-			SOV_election_approval_rating_cprf_var = SOV_election_approval_rating_ur_var_temp
-		}
-		add_to_variable = {
-			SOV_election_approval_rating_srzp_var = SOV_election_approval_rating_ur_var_temp
 		}
 	}
 	else = {
@@ -6083,7 +5963,7 @@ SOV_election_var_balancer = {
 			SOV_election_approval_rating_srzp_var_temp = -1
 		}
 		add_to_variable = {
-			SOV_election_approval_rating_ldpr_var = SOV_election_approval_rating_srzp_var_temp
+			SOV_election_approval_rating_party7_var = SOV_election_approval_rating_srzp_var_temp
 		}
 		add_to_variable = {
 			SOV_election_approval_rating_cprf_var = SOV_election_approval_rating_srzp_var_temp
@@ -6112,12 +5992,12 @@ SOV_election_var_balancer = {
 		total_popularity = SOV_election_approval_rating_cprf_var
 	}
 	clamp_variable = {
-		var = SOV_election_approval_rating_ldpr_var
+		var = SOV_election_approval_rating_party7_var
 		min = 0
 		max = 1
 	}
 	add_to_temp_variable = {
-		total_popularity = SOV_election_approval_rating_ldpr_var
+		total_popularity = SOV_election_approval_rating_party7_var
 	}
 	clamp_variable = {
 		var = SOV_election_approval_rating_srzp_var
@@ -6153,11 +6033,11 @@ SOV_election_var_balancer = {
 					modifier = {
 						factor = 0
 						check_variable = {
-							SOV_election_approval_rating_ldpr_var < total_popularity
+							SOV_election_approval_rating_party7_var < total_popularity
 						}
 					}
 					subtract_from_variable = {
-						SOV_election_approval_rating_ldpr_var = total_popularity
+						SOV_election_approval_rating_party7_var = total_popularity
 					}
 				}
 				114 = {
@@ -6185,43 +6065,6 @@ SOV_election_var_balancer = {
 			}
 		}
 	}
-	else_if = {
-		limit = {
-			check_variable = {
-				total_popularity < 1
-			}
-		}
-		subtract_from_temp_variable = {
-			total_popularity = 1
-		}
-		multiply_temp_variable = {
-			total_popularity = -1
-		}
-		hidden_effect = {
-			random_list = {
-				114 = {
-					add_to_variable = {
-						SOV_election_approval_rating_cprf_var = total_popularity
-					}
-				}
-				114 = {
-					add_to_variable = {
-						SOV_election_approval_rating_ldpr_var = total_popularity
-					}
-				}
-				114 = {
-					add_to_variable = {
-						SOV_election_approval_rating_ur_var = total_popularity
-					}
-				}
-				114 = {
-					add_to_variable = {
-						SOV_election_approval_rating_srzp_var = total_popularity
-					}
-				}
-			}
-		}
-	}
 	set_temp_variable = {
 		SOV_election_approval_rating_ur_var_temp = 0
 	}
@@ -6229,7 +6072,7 @@ SOV_election_var_balancer = {
 		SOV_election_approval_rating_cprf_var_temp = 0
 	}
 	set_temp_variable = {
-		SOV_election_approval_rating_ldpr_var_temp = 0
+		SOV_election_approval_rating_party7_var_temp = 0
 	}
 	set_temp_variable = {
 		SOV_election_approval_rating_srzp_var_temp = 0
@@ -6239,9 +6082,6 @@ SOV_remove_bop = {
 	hidden_effect = {
 		remove_power_balance = {
 			id = SOV_communist_party_balance
-		}
-		remove_power_balance = {
-			id = SOV_LDPR_balance
 		}
 		remove_power_balance = {
 			id = SOV_soviet_navalny_balance
@@ -6352,17 +6192,6 @@ SOV_add_election_approval_rating_cprf = {
 	}
 	SOV_election_var_balancer = yes
 }
-SOV_add_election_approval_rating_ldpr = {
-	custom_effect_tooltip = SOV_add_election_approval_rating_ldpr_tooltip
-	set_temp_variable = {
-		target = 2
-	}
-	add_to_variable = {
-		var = SOV_election_approval_rating_ldpr_var
-		value = SOV_election_approval_rating_ldpr_var_temp
-	}
-	SOV_election_var_balancer = yes
-}
 SOV_add_election_approval_rating_ur = {
 	set_temp_variable = {
 		target = 3
@@ -6371,6 +6200,14 @@ SOV_add_election_approval_rating_ur = {
 	add_to_variable = {
 		var = SOV_election_approval_rating_ur_var
 		value = SOV_election_approval_rating_ur_var_temp
+	}
+	SOV_election_var_balancer = yes
+}
+SOV_add_election_approval_rating_ep = {
+	custom_effect_tooltip = SOV_add_election_approval_rating_ep_tooltip
+	add_to_variable = {
+		var = SOV_election_approval_rating_ep_var
+		value = SOV_election_approval_rating_ep_var_temp
 	}
 	SOV_election_var_balancer = yes
 }
@@ -6409,8 +6246,11 @@ SOV_onf_ideology_picker = {
 				character = DSW_TFR_SOV_dmitry_medvedev
 				ruling_only = yes
 			}
+			# 依据: 原版 TFR TFR_scripted_effects_SOV.txt 原为 NOT 判断: 领袖意识形态 != putinism
+			# 语义 = 梅德韦杰夫当权且其意识形态不在统一俄罗斯一脉时, 按派系分数重选意识形态
+			# putinism 在 MD 槽位表归 Conservative(槽6); 梅德韦杰夫在 TFR_characters_SOV.txt 同时有 Conservative / conservatism 领袖块
 			NOT = {
-				has_country_leader_ideology = putinism
+			has_country_leader_ideology = Conservative
 			}
 		}
 		if = {
@@ -9095,7 +8935,7 @@ SOV_who_won_the_election = {
 		limit = {
 			AND = {
 				check_variable = {
-					SOV_election_approval_rating_cprf_var > SOV_election_approval_rating_ldpr_var
+					SOV_election_approval_rating_cprf_var > SOV_election_approval_rating_party7_var
 				}
 				check_variable = {
 					SOV_election_approval_rating_cprf_var > SOV_election_approval_rating_ur_var
@@ -9109,44 +8949,6 @@ SOV_who_won_the_election = {
 			}
 		}
 		set_global_flag = SOV_cprf_won
-	}
-	else_if = {
-		limit = {
-			AND = {
-				check_variable = {
-					SOV_election_approval_rating_ldpr_var > SOV_election_approval_rating_cprf_var
-				}
-				check_variable = {
-					SOV_election_approval_rating_ldpr_var > SOV_election_approval_rating_ur_var
-				}
-				check_variable = {
-					SOV_election_approval_rating_ldpr_var > SOV_election_approval_rating_srzp_var
-				}
-				check_variable = {
-					SOV_election_approval_rating_ldpr_var > 0.5
-				}
-			}
-		}
-		set_global_flag = SOV_ldpr_won
-	}
-	else_if = {
-		limit = {
-			AND = {
-				check_variable = {
-					SOV_election_approval_rating_srzp_var > SOV_election_approval_rating_cprf_var
-				}
-				check_variable = {
-					SOV_election_approval_rating_srzp_var > SOV_election_approval_rating_ldpr_var
-				}
-				check_variable = {
-					SOV_election_approval_rating_srzp_var > SOV_election_approval_rating_ur_var
-				}
-				check_variable = {
-					SOV_election_approval_rating_srzp_var > 0.5
-				}
-			}
-		}
-		set_global_flag = SOV_srzp_won
 	}
 	else = {
 		set_global_flag = SOV_medvedev_won
@@ -10220,48 +10022,6 @@ SOV_BLR_LDPB_Rule = {
 	702 = {
 		add_dynamic_modifier = {
 			modifier = BLR_LDPB_rule
-		}
-	}
-}
-SOV_BLR_LDPR_Rule = {
-	1092 = {
-		add_dynamic_modifier = {
-			modifier = BLR_LDPR_rule
-		}
-	}
-	1094 = {
-		add_dynamic_modifier = {
-			modifier = BLR_LDPR_rule
-		}
-	}
-	1092 = {
-		add_dynamic_modifier = {
-			modifier = BLR_LDPR_rule
-		}
-	}
-	704 = {
-		add_dynamic_modifier = {
-			modifier = BLR_LDPR_rule
-		}
-	}
-	703 = {
-		add_dynamic_modifier = {
-			modifier = BLR_LDPR_rule
-		}
-	}
-	704 = {
-		add_dynamic_modifier = {
-			modifier = BLR_LDPR_rule
-		}
-	}
-	1093 = {
-		add_dynamic_modifier = {
-			modifier = BLR_LDPR_rule
-		}
-	}
-	702 = {
-		add_dynamic_modifier = {
-			modifier = BLR_LDPR_rule
 		}
 	}
 }
@@ -11787,7 +11547,7 @@ SOV_USSR_defeat_in_2nd_European_War = {
 		recalculate_party = yes
 		create_country_leader = {
 			name = DSW_TFR_SOV_nikolay_platoshkin
-			picture = "gfx/leaders/SOV/Nikolai_Platoshkin.png"
+			picture = "gfx/leaders/SOV/Nikolai_Platoshkin_2017.dds"
 			ideology = communist_state
 			traits = {
 
@@ -13254,7 +13014,7 @@ SOV_USSR_defeat_in_2nd_European_War = {
 				}
 				recalculate_party = yes
 				create_country_leader = {
-					name = "UKR_andriy_tarasenko"
+					name = UKR_andriy_tarasenko
 					picture = "Andriy Tarasenko.dds"
 					ideology = Nat_Fascism
 					traits = {
@@ -15837,7 +15597,7 @@ SOV_Zhir_defeat_in_2nd_European_War = {
 		recalculate_party = yes
 		create_country_leader = {
 			name = DSW_TFR_SOV_viktor_zolotov
-			picture = "gfx/leaders/SOV/Viktor Zolotov.dds"
+			picture = "gfx/leaders/SOV/Viktor_Zolotov_2017.dds"
 			ideology = Nat_Autocracy
 		}
 	}
@@ -16057,11 +15817,6 @@ SOV_Zhir_defeat_in_2nd_European_War = {
 		change_relative_party_popularity = yes
 		recalculate_party = yes
 		set_cosmetic_tag = CKK_zhir_loyalists
-		set_party_name = {
-			ideology = nationalist
-			long_name = SOV_new_ldpr_post_party
-			name = SOV_new_ldpr_post_party_short
-		}
 		create_country_leader = {
 			name = DSW_TFR_SOV_sergei_furgal
 			picture = "gfx/Leaders/SOV/Sergei Furgal.dds"
@@ -16723,11 +16478,6 @@ SOV_Zhir_defeat_in_2nd_European_War = {
 			ideology = democratic
 			long_name = SOV_eurocuckmunist_party4_long
 			name = SOV_eurocuckmunist_party4
-		}
-		set_party_name = {
-			ideology = nationalist
-			long_name = SOV_zhirinovsky_guard_party
-			name = SOV_zhirinovsky_guard_party
 		}
 		country_event = {
 			id = dsw_tfr_russia.352
@@ -17596,7 +17346,7 @@ SOV_Navalny_victory_in_2nd_European_War = {
 		create_country_leader = {
 			name = CZE_libor_vondracek
 			desc = ""
-			picture = "gfx/leaders/CZE/Libor_Vondracek.png"
+			picture = "gfx/leaders/CZE/Libor_Vondracek_2017.dds"
 			expire = "2100.1.1"
 			ideology = Neutral_Libertarian
 		}
@@ -17843,7 +17593,7 @@ SOV_Navalny_victory_in_2nd_European_War = {
 		create_country_leader = {
 			name = HOL_Joost_Eerdmans
 			desc = ""
-			picture = "gfx/leaders/HOL/Joost_Eerdmans.png"
+			picture = "gfx/leaders/HOL/Joost_Eerdmans_2017.dds"
 			expire = "2100.1.1"
 			ideology = conservatism
 		}
@@ -18208,7 +17958,7 @@ SOV_Navalny_victory_in_2nd_European_War = {
 		create_country_leader = {
 			name = POR_Carlos_Moedas
 			desc = ""
-			picture = "gfx/leaders/POR/Carlos_Moedas.png"
+			picture = "gfx/leaders/POR/Carlos_Moedas_2017.dds"
 			expire = "2100.1.1"
 			ideology = conservatism
 		}
@@ -18331,7 +18081,7 @@ SOV_Navalny_victory_in_2nd_European_War = {
 		create_country_leader = {
 			name = SPR_Jose_Luis_Martinez_Almeida
 			desc = ""
-			picture = "gfx/leaders/SPR/Jose_Luis_Martinez_Almeida.png"
+			picture = "gfx/leaders/SPR/Jose_Luis_Martinez_Almeida_2017.dds"
 			expire = "2100.1.1"
 			ideology = conservatism
 		}
@@ -18488,7 +18238,7 @@ SOV_Navalny_victory_in_2nd_European_War = {
 		create_country_leader = {
 			name = UK1_Mark_Drakeford
 			desc = ""
-			picture = "gfx/leaders/ENG/Mark_Drakeford.png"
+			picture = "gfx/leaders/ENG/Mark_Drakeford_2017.dds"
 			expire = "2100.1.1"
 			ideology = socialism
 		}
@@ -18682,7 +18432,7 @@ SOV_Navalny_victory_in_2nd_European_War = {
 		create_country_leader = {
 			name = ITA_Angelo_Bonelli
 			desc = ""
-			picture = "gfx/leaders/ITA/Angelo_Bonelli.png"
+			picture = "gfx/leaders/ITA/Angelo_Bonelli_2017.dds"
 			expire = "2100.1.1"
 			ideology = neutral_Social
 		}
@@ -18807,7 +18557,7 @@ SOV_Navalny_victory_in_2nd_European_War = {
 		create_country_leader = {
 			name = NOR_Trygve_Slagsvold_Vedum
 			desc = ""
-			picture = "gfx/leaders/NOR/Trygve_Slagsvold_Vedum.png"
+			picture = "gfx/leaders/NOR/Trygve_Slagsvold_Vedum_2017.dds"
 			expire = "2100.1.1"
 			ideology = liberalism
 		}
@@ -18934,7 +18684,7 @@ SOV_Navalny_victory_in_2nd_European_War = {
 		create_country_leader = {
 			name = SWE_Jimmie_akesson
 			desc = ""
-			picture = "gfx/leaders/SWE/Jimmie_akesson.png"
+			picture = "gfx/leaders/SWE/Jimmie_Akesson_2017.dds"
 			expire = "2100.1.1"
 			ideology = conservatism
 		}
@@ -19186,7 +18936,7 @@ SOV_Navalny_victory_in_2nd_European_War = {
 		create_country_leader = {
 			name = DEN_morten_messerschmidt
 			desc = ""
-			picture = "gfx/leaders/DEN/Morten_Messerschmidt.png"
+			picture = "gfx/leaders/DEN/Morten_Messerschmidt_2017.dds"
 			expire = "2100.1.1"
 			ideology = conservatism
 		}
@@ -19317,7 +19067,7 @@ SOV_Navalny_victory_in_2nd_European_War = {
 		create_country_leader = {
 			name = GRE_zoe_konstantopoulou
 			desc = ""
-			picture = "gfx/leaders/GRE/Zoe_Konstantopoulou.png"
+			picture = "gfx/leaders/GRE/Zoe_Konstantopoulou_2017.dds"
 			expire = "2100.1.1"
 			ideology = neutral_Social
 		}
@@ -20120,7 +19870,7 @@ SOV_Navalny_victory_in_2nd_European_War = {
 		create_country_leader = {
 			name = CRO_Ivan_Vilibor_Sincic
 			desc = ""
-			picture = "gfx/leaders/CRO/Ivan_Vilibor_Sincic.png"
+			picture = "gfx/leaders/CRO/Ivan_Vilibor_Sincic_2017.dds"
 			expire = "2100.1.1"
 			ideology = Neutral_Libertarian
 		}
@@ -20260,7 +20010,7 @@ SOV_Navalny_victory_in_2nd_European_War = {
 		create_country_leader = {
 			name = ROM_George_Simion_char
 			desc = ""
-			picture = "gfx/leaders/ROM/George_Simion.png"
+			picture = "gfx/leaders/ROM/George_Simion_2017.dds"
 			expire = "2100.1.1"
 			ideology = Neutral_Libertarian
 		}
@@ -21576,7 +21326,7 @@ SOV_Medv_victory_in_2nd_European_War = {
 					create_country_leader = {
 						name = CZE_libor_vondracek
 						desc = ""
-						picture = "gfx/leaders/CZE/Libor_Vondracek.png"
+						picture = "gfx/leaders/CZE/Libor_Vondracek_2017.dds"
 						expire = "2100.1.1"
 						ideology = Neutral_Libertarian
 					}
@@ -22393,7 +22143,7 @@ SOV_Medv_victory_in_2nd_European_War = {
 		create_country_leader = {
 			name = AUS_heinz_christian_strache
 			desc = ""
-			picture = "gfx/leaders/AUS/Heinz_Christian_Strache.png"
+			picture = "gfx/leaders/AUS/Heinz_Christian_Strache_2017.dds"
 			expire = "2100.1.1"
 			ideology = Conservative
 		}
@@ -22523,7 +22273,7 @@ SOV_Medv_victory_in_2nd_European_War = {
 		create_country_leader = {
 			name = HOL_Thierry_Baudet_char
 			desc = ""
-			picture = "gfx/leaders/HOL/Thierry_Baudet.png"
+			picture = "gfx/leaders/HOL/Thierry_Baudet_2017.dds"
 			expire = "2100.1.1"
 			ideology = conservatism
 		}
@@ -23428,7 +23178,7 @@ SOV_Medv_victory_in_2nd_European_War = {
 				create_country_leader = {
 					name = SPR_santiago_abascal
 					desc = ""
-					picture = "gfx/leaders/SPR/SPR_santiago_abascal.png"
+					picture = "gfx/leaders/SPR/Santiago_Abascal_2017.dds"
 					expire = "2100.1.1"
 					ideology = Conservative
 				}
@@ -23708,7 +23458,7 @@ SOV_Medv_victory_in_2nd_European_War = {
 		create_country_leader = {
 			name = UK1_Mark_Drakeford
 			desc = ""
-			picture = "gfx/leaders/ENG/Mark_Drakeford.png"
+			picture = "gfx/leaders/ENG/Mark_Drakeford_2017.dds"
 			expire = "2100.1.1"
 			ideology = socialism
 		}
@@ -23918,7 +23668,7 @@ SOV_Medv_victory_in_2nd_European_War = {
 				create_country_leader = {
 					name = ITA_stefano_fassina
 					desc = ""
-					picture = "gfx/leaders/ITA/Stefano_Fassina.png"
+					picture = "gfx/leaders/ITA/Stefano_Fassina_2017.dds"
 					expire = "2100.1.1"
 					ideology = neutral_Social
 				}
@@ -24409,7 +24159,7 @@ SOV_Medv_victory_in_2nd_European_War = {
 		create_country_leader = {
 			name = SWE_gustav_kasselstrand
 			desc = ""
-			picture = "gfx/leaders/SWE/Gustav_Kasselstrand.png"
+			picture = "gfx/leaders/SWE/Gustav_Kasselstrand_2017.dds"
 			expire = "2100.1.1"
 			ideology = Conservative
 		}
@@ -24595,7 +24345,7 @@ SOV_Medv_victory_in_2nd_European_War = {
 				create_country_leader = {
 					name = DEN_morten_messerschmidt
 					desc = ""
-					picture = "gfx/leaders/DEN/Morten_Messerschmidt.png"
+					picture = "gfx/leaders/DEN/Morten_Messerschmidt_2017.dds"
 					expire = "2100.1.1"
 					ideology = conservatism
 				}
@@ -24870,7 +24620,7 @@ SOV_Medv_victory_in_2nd_European_War = {
 		create_country_leader = {
 			name = GRE_zoe_konstantopoulou
 			desc = ""
-			picture = "gfx/leaders/GRE/Zoe_Konstantopoulou.png"
+			picture = "gfx/leaders/GRE/Zoe_Konstantopoulou_2017.dds"
 			expire = "2100.1.1"
 			ideology = neutral_Social
 		}
@@ -26764,7 +26514,7 @@ SOV_alikhanov_victory_in_2nd_European_War = {
 		create_country_leader = {
 			name = AUS_harald_vilimsky
 			desc = ""
-			picture = "gfx/leaders/AUS/AUS_harald_vilimsky.png"
+			picture = "gfx/leaders/AUS/Harald_Vilimsky_2017.dds"
 			expire = "2100.1.1"
 			ideology = Nat_Fascism
 		}
@@ -26894,7 +26644,7 @@ SOV_alikhanov_victory_in_2nd_European_War = {
 		create_country_leader = {
 			name = HOL_Thierry_Baudet_char
 			desc = ""
-			picture = "gfx/leaders/HOL/Thierry_Baudet.png"
+			picture = "gfx/leaders/HOL/Thierry_Baudet_2017.dds"
 			expire = "2100.1.1"
 			ideology = Nat_Fascism
 		}
@@ -27418,7 +27168,7 @@ SOV_alikhanov_victory_in_2nd_European_War = {
 		create_country_leader = {
 			name = SPR_santiago_abascal
 			desc = ""
-			picture = "gfx/leaders/SPR/SPR_santiago_abascal.png"
+			picture = "gfx/leaders/SPR/Santiago_Abascal_2017.dds"
 			expire = "2100.1.1"
 			ideology = Nat_Fascism
 		}
@@ -27633,7 +27383,7 @@ SOV_alikhanov_victory_in_2nd_European_War = {
 		create_country_leader = {
 			name = SWE_gustav_kasselstrand
 			desc = ""
-			picture = "gfx/leaders/SWE/Gustav_Kasselstrand.png"
+			picture = "gfx/leaders/SWE/Gustav_Kasselstrand_2017.dds"
 			expire = "2100.1.1"
 			ideology = Nat_Fascism
 		}
@@ -28263,7 +28013,7 @@ SOV_Zhir_victory_in_2nd_European_War = {
 	SPR = {
 		release = POR
 	}
-	FPR = {
+	FRA = {
 		transfer_state = 52
 		transfer_state = 54
 		transfer_state = 55
@@ -28542,7 +28292,7 @@ SOV_Zhir_victory_in_2nd_European_War = {
 		create_country_leader = {
 			name = AUS_harald_vilimsky
 			desc = ""
-			picture = "gfx/leaders/AUS/AUS_harald_vilimsky.png"
+			picture = "gfx/leaders/AUS/Harald_Vilimsky_2017.dds"
 			expire = "2100.1.1"
 			ideology = Nat_Autocracy
 		}
@@ -28681,7 +28431,7 @@ SOV_Zhir_victory_in_2nd_European_War = {
 		create_country_leader = {
 			name = HOL_Thierry_Baudet_char
 			desc = ""
-			picture = "gfx/leaders/HOL/Thierry_Baudet.png"
+			picture = "gfx/leaders/HOL/Thierry_Baudet_2017.dds"
 			expire = "2100.1.1"
 			ideology = Nat_Fascism
 		}
@@ -28876,9 +28626,6 @@ SOV_Zhir_victory_in_2nd_European_War = {
 		set_country_flag = DSW_SOV_external_tree_pending
 		custom_effect_tooltip = DSW_SOV_external_content_pending_tt
 		set_cosmetic_tag = FRA
-		SOV = {
-			puppet = FPR
-		}
 		create_country_leader = {
 			name = FRA_francois_asselineau
 			desc = ""
@@ -29021,7 +28768,7 @@ SOV_Zhir_victory_in_2nd_European_War = {
 		create_country_leader = {
 			name = POR_pedro_frazao
 			desc = ""
-			picture = "gfx/leaders/POR/POR_pedro_frazao.png"
+			picture = "gfx/leaders/POR/Pedro_Frazao_2017.dds"
 			expire = "2100.1.1"
 			ideology = Nat_Fascism
 		}
@@ -29161,7 +28908,7 @@ SOV_Zhir_victory_in_2nd_European_War = {
 		create_country_leader = {
 			name = POR_pedro_frazao
 			desc = ""
-			picture = "gfx/leaders/POR/POR_pedro_frazao.png"
+			picture = "gfx/leaders/POR/Pedro_Frazao_2017.dds"
 			expire = "2100.1.1"
 			ideology = Nat_Fascism
 		}
@@ -29300,7 +29047,7 @@ SOV_Zhir_victory_in_2nd_European_War = {
 		create_country_leader = {
 			name = POR_pedro_frazao
 			desc = ""
-			picture = "gfx/leaders/POR/POR_pedro_frazao.png"
+			picture = "gfx/leaders/POR/Pedro_Frazao_2017.dds"
 			expire = "2100.1.1"
 			ideology = Nat_Fascism
 		}
@@ -29578,7 +29325,7 @@ SOV_Zhir_victory_in_2nd_European_War = {
 		create_country_leader = {
 			name = ITA_Roberto_Fiore_char
 			desc = ""
-			picture = "gfx/leaders/ITA/Roberto_Fiore.png"
+			picture = "gfx/leaders/ITA/Roberto_Fiore_2017.dds"
 			expire = "2100.1.1"
 			ideology = Nat_Fascism
 		}
@@ -29686,7 +29433,7 @@ SOV_Zhir_victory_in_2nd_European_War = {
 		create_country_leader = {
 			name = SWE_gustav_kasselstrand
 			desc = ""
-			picture = "gfx/leaders/SWE/Gustav_Kasselstrand.png"
+			picture = "gfx/leaders/SWE/Gustav_Kasselstrand_2017.dds"
 			expire = "2100.1.1"
 			ideology = Nat_Fascism
 		}
@@ -30058,7 +29805,7 @@ SOV_Zhir_victory_in_2nd_European_War = {
 		create_country_leader = {
 			name = SOV_russian_military_administration
 			desc = ""
-			picture = "gfx/leaders/SOV/SOV_russian_occupational_administration.png"
+			picture = "gfx/leaders/SOV/SOV_russian_senate.png"
 			expire = "2100.1.1"
 			ideology = Nat_Autocracy
 		}
@@ -31483,7 +31230,7 @@ SOV_Medv_defeat_in_2nd_European_War = {
 		limit = {
 			NOT = {
 				FRA = {
-					has_completed_focus = FRA_EU_Sister_Republic
+					always = no
 				}
 			}
 		}
@@ -31947,7 +31694,7 @@ SOV_Medv_defeat_in_2nd_European_War = {
 		recalculate_party = yes
 		create_country_leader = {
 			name = DSW_TFR_SOV_viktor_zolotov
-			picture = "gfx/leaders/SOV/Viktor Zolotov.dds"
+			picture = "gfx/leaders/SOV/Viktor_Zolotov_2017.dds"
 			ideology = Nat_Autocracy
 		}
 		set_party_name = {
@@ -32364,7 +32111,7 @@ SOV_Medv_defeat_in_2nd_European_War = {
 		recalculate_party = yes
 		create_country_leader = {
 			name = DSW_TFR_SOV_igor_girkin
-			picture = "gfx/leaders/SOV/SOV_Girkin.png"
+			picture = "gfx/leaders/SOV/Igor_Girkin_2017.dds"
 			ideology = Nat_Fascism
 		}
 	}
@@ -32833,7 +32580,7 @@ SOV_Medv_defeat_in_2nd_European_War = {
 			limit = {
 				NOT = {
 					FRA = {
-						has_completed_focus = FRA_EU_Sister_Republic
+						always = no
 					}
 				}
 			}
@@ -34572,7 +34319,7 @@ SOV_soviet_victory_in_2nd_European_War = {
 			recalculate_party = yes
 			create_country_leader = {
 				name = RSR_Inigo_Errejon
-				picture = "gfx/leaders/SPR/Civil_War/Íñigo Errejón.png"
+				picture = "gfx/leaders/SPR/Civil_War/閼淬儱闄刬go Errej鐠愮珱.png"
 				ideology = socialism
 			}
 			set_variable = {

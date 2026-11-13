@@ -1,0 +1,66 @@
+instant_effect = {
+	#Taiwanese aircraft inventory (total = deployed + reserve)
+	#F-16A Blk 20 144, F-CK-1 127, Mirage 2000-5F 57, F-5E 60, AT-3 55
+	#E-2 Hawkeye 6, P-3 Orion 12, C-130 Hercules 19
+	add_equipment_to_stockpile = {
+		type = Strike_fighter2 #F-16A Blk 20
+		amount = 144
+		producer = USA
+	}
+	add_equipment_to_stockpile = {
+		type = Strike_fighter2 #F-CK-1 Ching-kuo
+		amount = 127
+	}
+	add_equipment_to_stockpile = {
+		type = MR_Fighter2 #Mirage 2000-5F
+		amount = 57
+		producer = FRA
+	}
+	add_equipment_to_stockpile = {
+		type = MR_Fighter1 #F-5E Chung Cheng
+		amount = 60
+	}
+	add_equipment_to_stockpile = {
+		type = L_Strike_fighter2 #AT-3
+		amount = 55
+	}
+	add_equipment_to_stockpile = {
+		type = cv_awacs_equipment_1 #E-2 Hawkeye
+		amount = 6
+		producer = USA
+	}
+	add_equipment_to_stockpile = {
+		type = naval_plane2 #P-3 Orion
+		amount = 12
+		producer = USA
+	}
+	add_equipment_to_stockpile = {
+		type = transport_plane1 #C-130 Hercules
+		amount = 19
+		producer = USA
+	}
+	# SAM missile equipment (Gotterdammerung DLC)
+	if = {
+		limit = { has_dlc = "Gotterdammerung" }
+		add_equipment_to_stockpile = {
+			type = sam_missile_equipment_1
+			amount = 0
+			producer = TAI
+		}
+		add_equipment_to_stockpile = {
+			type = sam_missile_equipment_2
+			amount = 0
+			producer = TAI
+		}
+		add_equipment_to_stockpile = {
+			type = sam_missile_equipment_3
+			amount = 60
+			producer = TAI
+		}
+		add_equipment_to_stockpile = {
+			type = sam_missile_equipment_4
+			amount = 60
+			producer = TAI
+		}
+	}
+}

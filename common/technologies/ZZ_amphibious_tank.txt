@@ -1,20 +1,40 @@
 # ============================================================================
 # ZZ 两栖坦克解锁科技（隐藏，不显示在科技树，仅通过开局 set_technology 授予）
-# 按车系国籍拆分：
-#   ZZ_amphibious_tank_pt76_tech   → PT-76 / PT-76B（苏联：SOV）
-#   ZZ_amphibious_tank_pt85_tech   → PT-85（朝鲜：NKO）
-#   ZZ_amphibious_tank_type63_tech → 63式 / 63-I / 63-II / 63A（中国：CHI）
+#
+# 按"代际"拆分为独立科技（对齐原版/MD 的"每一代装备各由一个科技解锁"模式）：
+# 这样后一代装备解锁时，引擎会把 parent 链上的前一代标记为"过时(obsolete)"，
+# 从而在生产界面正确显示 63式/63-I/63-II/PT-76 等旧型号为过时。
+#
+#   ZZ_amphibious_tank_pt76_tech    → PT-76（苏联：SOV）
+#   ZZ_amphibious_tank_pt76b_tech   → PT-76B（苏联：SOV）
+#   ZZ_amphibious_tank_pt85_tech    → PT-85（朝鲜：NKO）
+#   ZZ_amphibious_tank_type63_tech  → 63式（中国：CHI）
+#   ZZ_amphibious_tank_type63_1_tech→ 63-I（中国：CHI）
+#   ZZ_amphibious_tank_type63_2_tech→ 63-II（中国：CHI）
+#   ZZ_amphibious_tank_type63a_tech → 63A（中国：CHI）
 # ============================================================================
 
 technologies = {
 	ZZ_amphibious_tank_pt76_tech = {
 		enable_equipments = {
 			ZZ_amphibious_tank_chassis_pt76
-			ZZ_amphibious_tank_chassis_pt76b
 		}
 
 		research_cost = 1
 		start_year = 1951
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	ZZ_amphibious_tank_pt76b_tech = {
+		enable_equipments = {
+			ZZ_amphibious_tank_chassis_pt76b
+		}
+
+		research_cost = 1
+		start_year = 1959
 
 		ai_will_do = {
 			factor = 0
@@ -37,13 +57,62 @@ technologies = {
 	ZZ_amphibious_tank_type63_tech = {
 		enable_equipments = {
 			ZZ_amphibious_tank_chassis_type63
-			ZZ_amphibious_tank_chassis_type63_1
-			ZZ_amphibious_tank_chassis_type63_2
-			ZZ_amphibious_tank_chassis_type63a
 		}
 
 		research_cost = 1
 		start_year = 1963
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	ZZ_amphibious_tank_type63_1_tech = {
+		enable_equipments = {
+			ZZ_amphibious_tank_chassis_type63_1
+		}
+
+		research_cost = 1
+		start_year = 1966
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	ZZ_amphibious_tank_type63_2_tech = {
+		enable_equipments = {
+			ZZ_amphibious_tank_chassis_type63_2
+		}
+
+		research_cost = 1
+		start_year = 1979
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	ZZ_amphibious_tank_type63a_tech = {
+		enable_equipments = {
+			ZZ_amphibious_tank_chassis_type63a
+		}
+
+		research_cost = 1
+		start_year = 1997
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	ZZ_amphibious_tank_ztd05_tech = {
+		enable_equipments = {
+			ZZ_amphibious_tank_chassis_ztd05
+		}
+
+		research_cost = 1
+		start_year = 2005
 
 		ai_will_do = {
 			factor = 0

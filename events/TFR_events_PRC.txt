@@ -1,5 +1,7 @@
 add_namespace = prc
+add_namespace = china
 add_namespace = sino_jap_coldwar
+add_namespace = russia
 
 #Taiwan Invasion Preparations
 country_event = {
@@ -8,13 +10,16 @@ country_event = {
 	desc = prc.2.d
 	picture = GFX_Chinese_soldiers
 	is_triggered_only = yes
+	fire_only_once = yes
 	trigger = {
-		NOT = {
-			has_country_flag = PRC_taiwan_war_forced_start
-		}
+		tag = CHI
 	}
 	option = {
 		name = prc.2.a
+		set_country_flag = PRC_taiwan_war_start
+		hidden_effect = {
+			load_focus_tree = PRC_taiwan_war_tree
+		}
 	}
 }
 country_event = {
@@ -29,7 +34,6 @@ country_event = {
 	#}
 	option = {
 		name = prc.703.a
-		load_oob = PRC_2020_nsb
 	}
 } 
 #President Xi Visits Myanmar
@@ -93,10 +97,10 @@ country_event = {
 				days = 110
 			}
 			add_stability = -0.25
-			add_popularity = {
-				ideology = communist
-				popularity = -0.175
-			}
+			set_temp_variable = { party_index = 4 }
+			set_temp_variable = { party_popularity_increase = -0.175 }
+			set_temp_variable = { temp_outlook_increase = -0.175 }
+			change_relative_party_popularity = yes
 		}
 	}
 	option = {
@@ -268,6 +272,25 @@ country_event = {
 	}
 }
 
+#2022 CPC Election for General Secretary
+country_event = {
+	id = prc.15
+	title = prc.15.t
+	desc = prc.15.d
+	picture = GFX_PRC_cpc_generic_1
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tag = CHI
+	}
+	option = {
+		name = prc.15.a
+		hidden_effect = {
+			PRC_who_won_power_struggle = yes
+		}
+	}
+}
+
 country_event = {
 	id = prc.17
 	title = prc.17.t
@@ -290,6 +313,44 @@ country_event = {
 }
 
 country_event = {
+	id = prc.18
+	title = prc.18.t
+	desc = prc.18.d
+	picture = GFX_PRC_huchunhua
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tag = CHI
+	}
+	option = {
+		name = prc.18.a
+		add_stability = 0.05
+		add_political_power = 50
+		set_country_flag = PRC_new_left_win
+		clr_country_flag = PRC_internal_factions_enabled_flag
+	}
+}
+
+country_event = {
+	id = prc.19
+	title = prc.19.t
+	desc = prc.19.d
+	picture = GFX_event_wang_yang
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tag = CHI
+	}
+	option = {
+		name = prc.19.a
+		add_stability = 0.05
+		add_political_power = 100
+		set_country_flag = PRC_liberal_win
+		clr_country_flag = PRC_internal_factions_enabled_flag
+	}
+}
+
+country_event = {
 	id = prc.20
 	title = prc.20.t
 	desc = prc.20.d
@@ -303,6 +364,26 @@ country_event = {
 		name = prc.20.a
 		add_stability = 0.1
 		add_political_power = 100
+	}
+}
+
+country_event = {
+	id = prc.21
+	title = prc.21.t
+	desc = prc.21.d
+	picture = GFX_PRC_nationalists_main_three
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tag = CHI
+	}
+	option = {
+		name = prc.21.a
+		add_political_power = -50
+		add_war_support = 0.05
+		add_stability = -0.05
+		set_country_flag = PRC_nationalist_win
+		clr_country_flag = PRC_internal_factions_enabled_flag
 	}
 }
 
@@ -374,7 +455,6 @@ country_event = {
 	immediate = {
 		hidden_effect = {
 			set_temp_variable = { hegemony_victory_change = 800 }
-			PRC_USA_relations_get_victory_point = yes
 			if = {
 				limit = {
 					has_completed_focus = PRC_economic_conversion_to_military_needs
@@ -389,7 +469,6 @@ country_event = {
 				remove_ideas = common_prosperity_law_1
 				add_ideas = common_prosperity_law
 			}
-			complete_national_focus = CHI_Establish_Taiwan_SAR
 			hidden_effect = {
 				JAP = {
 					country_event = {
@@ -409,7 +488,6 @@ country_event = {
 			}
 			USA = {
 				set_temp_variable = { hegemony_victory_change = -800 }
-				PRC_USA_relations_get_victory_point = yes
 			}
 		}
 	}
@@ -525,44 +603,26 @@ country_event = {
 		name = prc.31.o1
 		hidden_effect = {
 			NKO = {
-				transfer_state = 1045
-			}
-			NKO = {
-				transfer_state = 1044
-			}
-			NKO = {
-				transfer_state = 1046
-			}
-			NKO = {
-				transfer_state = 1042
-			}
-			NKO = {
-				transfer_state = 872
-			}
-			NKO = {
-				transfer_state = 1043
-			}
-			NKO = {
-				transfer_state = 1050
-			}
-			NKO = {
-				transfer_state = 527
-			}
-			NKO = {
-				transfer_state = 875
-			}
-			NKO = {
-				transfer_state = 873
-			}
-			NKO = {
-				transfer_state = 874
+				# TFR
+				transfer_state = 601
+				transfer_state = 602
+				transfer_state = 603
+				transfer_state = 604
+				transfer_state = 605
+				transfer_state = 606
+				transfer_state = 607
+				transfer_state = 608
+				transfer_state = 1099
+				transfer_state = 1199
+				transfer_state = 1200
+				transfer_state = 1201
 			}
 			NKO = {
 				set_cosmetic_tag = NKO_chinese_puppet
 				create_country_leader = {
 					name = NKO_liang_guanglie
 					picture = "Liang Guanglie.dds"
-					ideology = marxism_leninism
+					ideology = communist_state
 				}
 			}
 		}
@@ -629,7 +689,7 @@ country_event = {
 				character = PRC_Zhang_Youxia
 				promote_leader = yes
 				country_leader = {
-					ideology = military_junta
+					ideology = Nat_Autocracy
 					expire = "2099.1.1.1"
 					traits = {
 					}
@@ -659,7 +719,7 @@ country_event = {
 				character = PRC_Zhang_Youxia
 				promote_leader = yes
 				country_leader = {
-					ideology = military_junta
+					ideology = Nat_Autocracy
 					expire = "2099.1.1.1"
 					traits = {
 					}
@@ -833,10 +893,9 @@ country_event = {
 	immediate = {
 		hidden_effect = {
 			HKG = {
-				transfer_state = 326
-				add_state_core = 326
+				transfer_state = 595
+				add_state_core = 595
 				set_cosmetic_tag = HKG_revolution
-				load_oob = HKG_revolt
 				declare_war_on = {
 					target = CHI
 					type = annex_everything
@@ -1319,7 +1378,7 @@ country_event = {
 			add_political_power = -150
 		}
 		VIE = {
-			transfer_state = 879
+			transfer_state = 813
 		}
 		news_event = {
 			id = prc.89
@@ -1621,13 +1680,13 @@ country_event = {
 	trigger = {
 	}
 	option = {
-		name = prc.112.a
+		name = prc.113.a
 		548 = {
 			add_dynamic_modifier = {
 				modifier = PRC_megacity
 			}
 		}
-		549 = {
+		547 = {
 			add_dynamic_modifier = {
 				modifier = PRC_megacity
 			}
@@ -1698,7 +1757,7 @@ country_event = {
 		PRC_add_influence_new = yes
 		CHI = {
 			add_equipment_to_stockpile = {
-				type = infantry_equipment_2
+				type = Inf_equipment
 				amount = -2000
 				producer = CHI
 			}
@@ -1715,7 +1774,7 @@ country_event = {
 		}
 		EFF = {
 			add_equipment_to_stockpile = {
-				type = infantry_equipment_2
+				type = Inf_equipment
 				amount = 2000
 				producer = CHI
 			}
@@ -1730,7 +1789,7 @@ country_event = {
 		PRC_add_influence_cen = yes
 		CHI = {
 			add_equipment_to_stockpile = {
-				type = infantry_equipment_2
+				type = Inf_equipment
 				amount = -2000
 				producer = CHI
 			}
@@ -1747,7 +1806,7 @@ country_event = {
 		}
 		SWZ = {
 			add_equipment_to_stockpile = {
-				type = infantry_equipment_2
+				type = Inf_equipment
 				amount = 2000
 				producer = CHI
 			}
@@ -1762,7 +1821,7 @@ country_event = {
 		PRC_add_influence_lib = yes
 		CHI = {
 			add_equipment_to_stockpile = {
-				type = infantry_equipment_2
+				type = Inf_equipment
 				amount = -2000
 				producer = CHI
 			}
@@ -1779,7 +1838,7 @@ country_event = {
 		}
 		SAF = {
 			add_equipment_to_stockpile = {
-				type = infantry_equipment_2
+				type = Inf_equipment
 				amount = 1000
 				producer = CHI
 			}
@@ -2031,24 +2090,24 @@ country_event = {
 	option = {
 		name = prc.131.a
 		set_country_flag = PRC_operation_wu_qi_fuckup
-		#hidden_effect = {
-		#	country_event = { id = prc.216 days = 18 }
-		#	country_event = { id = prc.217 days = 33 }
-		#	country_event = { id = prc.218 days = 37 }
-		#}
+		hidden_effect = {
+			country_event = { id = prc.216 days = 18 }
+			country_event = { id = prc.217 days = 33 }
+			country_event = { id = prc.218 days = 37 }
+		}
 	}
 	option = {
 		name = prc.131.b
-		#if = {
-		#	limit = {
-		#		has_country_flag = PRC_operation_wu_qi_fuckup
-		#	}
-		#	hidden_effect = {
-		#		country_event = { id = prc.216 days = 18 }
-		#		country_event = { id = prc.217 days = 33 }
-		#		country_event = { id = prc.218 days = 37 }
-		#	}
-		#}
+		if = {
+			limit = {
+				has_country_flag = PRC_operation_wu_qi_fuckup
+			}
+			hidden_effect = {
+				country_event = { id = prc.216 days = 18 }
+				country_event = { id = prc.217 days = 33 }
+				country_event = { id = prc.218 days = 37 }
+			}
+		}
 	}
 }
 
@@ -2191,7 +2250,7 @@ country_event = {
 		add_doctrine_cost_reduction = {
 			cost_reduction = 0.75
 			uses = 1
-			category = CAT_land_doctrine
+			category = land_doctrine
 		}
 	}
 	option = {
@@ -2394,10 +2453,10 @@ country_event = {
 	option = {
 		name = prc.159.a
 		add_ideas = PRC_hardliner_resistance_idea1
-		add_popularity = {
-			ideology = communist
-			popularity = 0.1
-		}
+		set_temp_variable = { party_index = 4 }
+		set_temp_variable = { party_popularity_increase = 0.1 }
+		set_temp_variable = { temp_outlook_increase = 0.1 }
+		change_relative_party_popularity = yes
 	}
 }
 
@@ -2414,10 +2473,10 @@ country_event = {
 	option = {
 		name = prc.161.a
 		add_ideas = PRC_liberal_resistance_idea1
-		add_popularity = {
-			ideology = libertarian_socialist
-			popularity = 0.1
-		}
+		set_temp_variable = { party_index = 5 }
+		set_temp_variable = { party_popularity_increase = 0.1 }
+		set_temp_variable = { temp_outlook_increase = 0.1 }
+		change_relative_party_popularity = yes
 	}
 }
 
@@ -2572,11 +2631,11 @@ country_event = {
 	trigger = {
 	}
 	option = {
-		name = prc.171.a #туду добавить ивент японии что в китае нацисты надо кароче усиливать усиление себя
-		add_popularity = {
-			ideology = fascist
-			popularity = 0.05
-		}
+		name = prc.171.a
+		set_temp_variable = { party_index = 10 }
+		set_temp_variable = { party_popularity_increase = 0.05 }
+		set_temp_variable = { temp_outlook_increase = 0.05 }
+		change_relative_party_popularity = yes
 	}
 }
 
@@ -2641,14 +2700,19 @@ unit_leader_event = {
 					type = annex_everything
 				}
 			}
-			NKO = {
-				country_event = {
-					id = nk.14
-					days = 60
+			if = {
+				limit = {
+					NOT = { has_global_flag = korean_confederation_formed }
 				}
-			}
-			JAP = {
-				add_to_faction = KOR
+				NKO = {
+					country_event = {
+						id = nk.14
+						days = 60
+					}
+				}
+				JAP = {
+					add_to_faction = KOR
+				}
 			}
 			news_event = {
 				id = sino_jap_coldwar.11
@@ -2724,7 +2788,7 @@ country_event = {
 			random_select_amount = 5
 			limit = {
 				is_core_of = ROOT
-				office_park > 0
+				offices > 0
 			}
 			remove_building = {
 				type = offices
@@ -2760,7 +2824,7 @@ country_event = {
 			random_select_amount = 5
 			limit = {
 				is_core_of = ROOT
-				office_park > 0
+				offices > 0
 			}
 			remove_building = {
 				type = offices
@@ -3006,14 +3070,19 @@ country_event = {
 					type = annex_everything
 				}
 			}
-			NKO = {
-				country_event = {
-					id = nk.14
-					days = 20
+			if = {
+				limit = {
+					NOT = { has_global_flag = korean_confederation_formed }
 				}
-			}
-			JAP = {
-				add_to_faction = KOR
+				NKO = {
+					country_event = {
+						id = nk.14
+						days = 20
+					}
+				}
+				JAP = {
+					add_to_faction = KOR
+				}
 			}
 			news_event = {
 				id = sino_jap_coldwar.11
@@ -3068,6 +3137,7 @@ country_event = {
 	immediate = {
 	}
 	trigger = {
+		NOT = { has_global_flag = korean_confederation_formed }
 		NKO = {
 			NOT = {
 				is_ally_with = CHI
@@ -3103,6 +3173,7 @@ country_event = {
 		custom_effect_tooltip = PRC_kpa
 		hidden_effect = {
 			load_oob = "PRC_north_korean_remnants"
+			add_manpower = -3120
 			add_ideas = PRC_kim_jong_un
 		}
 	}
@@ -3253,7 +3324,6 @@ country_event = {
 	}
 }
 
-#абибас 228
 country_event = {
 	id = prc.228
 	title = prc.228.t
@@ -3334,7 +3404,6 @@ country_event = {
 	}
 }
 
-#чурки ахуели
 country_event = {
 	id = prc.231
 	title = prc.231.t
@@ -3347,10 +3416,10 @@ country_event = {
 	option = {
 		name = prc.231.a
 		add_stability = -0.025
-		add_popularity = {
-			ideology = communist
-			popularity = -0.025
-		}
+		set_temp_variable = { party_index = 4 }
+		set_temp_variable = { party_popularity_increase = -0.025 }
+		set_temp_variable = { temp_outlook_increase = -0.025 }
+		change_relative_party_popularity = yes
 		country_event = {
 			id = prc.232
 			days = 35
@@ -3429,7 +3498,6 @@ country_event = {
 	}
 	option = {
 		name = prc.235.a
-		unlock_decision_tooltip = PRC_military_operation_in_bhutan
 		set_country_flag = PRC_military_operation_in_bhutan_flag
 	}
 }
@@ -3598,13 +3666,13 @@ country_event = {
 			treasury_change = -150
 		}
 		modify_treasury_effect = yes
-		set_state_owner = 1383
-		set_state_controller = 1383
-		add_state_core = 1383
+		set_state_owner = 801
+		set_state_controller = 801
+		add_state_core = 801
 		add_resource = {
 			type = oil
 			amount = 15
-			state = 1383
+			state = 801
 		}
 	}
 }
@@ -3628,11 +3696,11 @@ country_event = {
 		add_resource = {
 			type = oil
 			amount = 15
-			state = 1383
+			state = 801
 		}
 		give_resource_rights = {
 			receiver = CHI
-			state = 1383
+			state = 801
 			resources = {
 				oil
 			}
@@ -3656,512 +3724,41 @@ country_event = {
 			treasury_change = 25
 		}
 		modify_treasury_effect = yes
-		add_popularity = {
-			ideology = communism
-			popularity = 0.05
+		set_temp_variable = { party_index = 4 }
+		if = {
+			limit = { has_government = communism }
+			set_temp_variable = { party_index = ruling_party }
 		}
+		set_temp_variable = { party_popularity_increase = 0.05 }
+		set_temp_variable = { temp_outlook_increase = 0.05 }
+		change_relative_party_popularity = yes
 		add_stability = 0.035
 	}
 }
 
 #PLA Terminates Communications
-country_event = {
-	id = prc.245
-	title = prc.245.t
-	desc = prc.245.d
-	picture = GFX_PRC_pla_reform
-	is_triggered_only = yes
-	fire_only_once = yes
-	immediate = {
-		hidden_effect = {
-			add_country_leader_role = {
-				character = PRC_anarchy_char
-				promote_leader = yes
-				country_leader = {
-					ideology = military_junta
-					expire = "1.1.1.1"
-					traits={
-					}
-				}
-			}
-			hidden_effect = {
-				set_variable = {
-					disband_fraction = 0.25
-				}
-				disband_units_fraction = yes
-				clear_variable = disband_fraction
-			}
-			teleport_armies = {
-				to_state_array = capital_scope
-			}
-			add_ideas = PRC_disobedient_army_idea
-			CNT = {
-				PRC_cw_warlords_setup = yes
-				transfer_state = 1211
-				transfer_state = 1225
-				transfer_state = 1224
-				transfer_state = 1223
-				transfer_state = 1226
-				transfer_state = 606
-				transfer_state = 1428
-				transfer_state = 1223
-				add_state_core = 1211
-				add_state_core = 1225
-				add_state_core = 1224
-				add_state_core = 1223
-				add_state_core = 1226
-				add_state_core = 606
-				add_state_core = 1428
-				add_state_core = 1223
-				set_capital = {
-					state = 1211
-				}
-			}
-			transfer_units_fraction = {
-				target = CNT
-				stockpile_ratio = 0.2
-				army_ratio = 0.20
-				air_ratio = 0.25
-			}
-			NTT = {
-				PRC_cw_warlords_setup = yes
-				transfer_state = 716
-				add_state_core = 716
-				if = {
-					limit = {
-						NOT = {
-							JAP = {
-								controls_state = 1394
-							}
-						}
-					}
-					transfer_state = 1394
-					add_state_core = 1394
-				}
-				if = {
-					limit = {
-						NOT = {
-							PD1 = {
-								controls_state = 1413
-							}
-						}
-					}
-					transfer_state = 1413
-					add_state_core = 1413
-					transfer_state = 1417
-					add_state_core = 1417
-				}
-				if = {
-					limit = {
-						NOT = {
-							JAP = {
-								controls_state = 1393
-							}
-						}
-					}
-					transfer_state = 1393
-					add_state_core = 1393
-				}
-				if = {
-					limit = {
-						NOT = {
-							JAP = {
-								controls_state = 1420
-							}
-						}
-					}
-					transfer_state = 1420
-					add_state_core = 1420
-				}
-				set_capital = {
-					state = 716
-				}
-			}
-			transfer_units_fraction = {
-				target = NTT
-				stockpile_ratio = 0.15
-				army_ratio = 0.15
-				navy_ratio = 0.5
-				air_ratio = 0.15
-			}
-			if = {
-				limit = {
-					NOT = {
-						TAI = {
-							controls_state = 596
-						}
-					}
-				}
-				ESF = {
-					PRC_cw_warlords_setup = yes
-					transfer_state = 596
-					add_state_core = 596
-					set_capital = {
-						state = 596
-					}
-					set_cosmetic_tag = PRC_collapse_military_navy_tags
-				}
-				transfer_units_fraction = {
-					target = ESF
-					stockpile_ratio = 0.03
-					army_ratio = 0.03
-					air_ratio = 0.1
-					navy_ratio = 1
-				}
-			}
-			if = {
-				limit = {
-					TAI = {
-						controls_state = 596
-					}
-				}
-				transfer_units_fraction = {
-					target = NTT
-					army_ratio = 0.03
-					air_ratio = 0.1
-					navy_ratio = 1
-				}
-			}
-			every_owned_state = {
-				limit = {
-					NOT = {
-						state = 608
-						state = 609
-						state = 1154
-						state = 1157
-						state = 1232
-						state = 1421
-					}
-				}
-				set_demilitarized_zone = yes
-			}
-		}
-	}
-	option = {
-		name = prc.245.a
-		effect_tooltip = {
-			add_ideas = PRC_disobedient_army_idea
-		}
-	}
-}
 
 #Governors Take Power in Their Hands
-country_event = {
-	id = prc.246
-	title = prc.246.t
-	desc = prc.246.d
-	picture = GFX_PRC_generic_deputy
-	is_triggered_only = yes
-	fire_only_once = yes
-	immediate = {
-		hidden_effect = {
-			YUN = {
-				PRC_cw_warlords_setup = yes
-				transfer_state = 1196
-				transfer_state = 325
-				add_state_core = 1196
-				add_state_core = 325
-				load_oob = PRC_YUN_civil_war
-			}
-			GAN = {
-				PRC_cw_warlords_setup = yes
-				transfer_state = 283
-				add_state_core = 283
-				set_capital = {
-					state = 283
-				}
-				load_oob = PRC_GAN_civil_war
-			}
-			GXC = {
-				PRC_cw_warlords_setup = yes
-				transfer_state = 1204
-				transfer_state = 1203
-				transfer_state = 594
-				transfer_state = 1205
-				transfer_state = 593
-				add_state_core = 1204
-				add_state_core = 1203
-				add_state_core = 594
-				add_state_core = 1205
-				add_state_core = 593
-				if = {
-					limit = {
-						NOT = {
-							TAI = {
-								controls_state = 1191
-							}
-						}
-					}
-					transfer_state = 1191
-					add_state_core = 1191
-				}
-				set_capital = {
-					state = 594
-				}
-				load_oob = PRC_GXC_civil_war
-			}
-			every_state = {
-				limit = {
-					OR = {
-						is_owned_by = YUN
-						is_owned_by = GAN
-						is_owned_by = GXC
-					}
-				}
-				set_demilitarized_zone = no
-			}
-		}
-	}
-	option = {
-		name = prc.246.a
-	}
-}
 
 #total collapse
-country_event = {
-	id = prc.247
-	title = prc.247.t
-	desc = prc.247.d
-	picture = GFX_Generic_Collapse
-	is_triggered_only = yes
-	fire_only_once = yes
-	immediate = {
-		hidden_effect = {
-			set_country_flag = PRC_total_collapse
-			country_event = {
-				id = prc.245
-				days = 2
-			}
-			country_event = {
-				id = prc.246
-				days = 5
-			}
-			country_event = {
-				id = prc.248
-				days = 6
-			}
-			country_event = {
-				id = prc.249
-				days = 7
-			}
-			country_event = {
-				id = prc.44
-				days = 8
-			}
-			country_event = {
-				id = prc.45
-				days = 9
-			}
-			country_event = {
-				id = prc.46
-				days = 10
-			}
-			country_event = {
-				id = prc.47
-				days = 11
-			}
-			country_event = {
-				id = prc.48
-				days = 12
-			}
-			country_event = {
-				id = prc.50
-				days = 13
-			}
-			country_event = {
-				id = prc.51
-				days = 14
-			}
-		}
-	}
-	option = {
-		name = prc.247.a
-	}
-}
+
+#Northwest Collapse
+
+#Southwest Collapse
+
+#Anarchy in Inner Mongolia
+
+#Insurgency in Shaanxi
+
+#Dongbei Ceases Communications
+
+#Nanjing Declaration
+
+#Central Command Loses Control
 
 #tibet declares independence
-country_event = {
-	id = prc.248
-	title = prc.248.t
-	desc = prc.248.d
-	picture = GFX_PRC_tibet3
-	is_triggered_only = yes
-	fire_only_once = yes
-	immediate = {
-	}
-	option = {
-		name = prc.248.a
-		hidden_effect = {
-			if = {
-				limit = {
-					NOT = {
-						has_global_flag = RAJ_india_dead
-					}
-				}
-				RAJ = {
-					puppet = TIB
-				}
-			}
-			TIB = {
-				PRC_cw_warlords_setup = yes
-				transfer_state = 1153
-				transfer_state = 1155
-				transfer_state = 1156
-				add_state_core = 1153
-				add_state_core = 1155
-				add_state_core = 1156
-				set_capital = {
-					state = 1156
-				}
-				set_politics = {
-					ruling_party = nationalist
-					elections_allowed = no
-				}
-				retire_character = RAJ_indian_military_command
-				set_popularities = {
-					nationalist = 40
-					authoritarian_democrat = 10
-					conservative = 30
-					market_liberal = 5
-					social_liberal = 15
-				}
-				drop_cosmetic_tag = yes
-				if = {
-					limit = {
-						NOT = {
-							has_global_flag = RAJ_india_dead
-						}
-					}
-					set_cosmetic_tag = RAJ_military_administration
-				}
-			}
-			TAR = {
-				PRC_cw_warlords_setup = yes
-				transfer_state = 322
-				transfer_state = 1152
-				add_state_core = 322
-				add_state_core = 1152
-				set_capital = {
-					state = 1152
-				}
-				set_politics = {
-					ruling_party = nationalist
-					elections_allowed = no
-				}
-				set_cosmetic_tag = TAR_tib_military_district
-				load_oob = PRC_TAR_civil_war
-			}
-			every_state = {
-				limit = {
-					OR = {
-						is_owned_by = TIB
-						is_owned_by = TAR
-					}
-				}
-				set_demilitarized_zone = no
-			}
-		}
-	}
-}
 
 #east turkestan declares independence
-country_event = {
-	id = prc.249
-	title = prc.249.t
-	desc = prc.249.d
-	picture = GFX_PRC_xinjiang4
-	is_triggered_only = yes
-	fire_only_once = yes
-	immediate = {
-	}
-	option = {
-		name = prc.249.a
-		hidden_effect = {
-			if = {
-				limit = {
-					has_global_flag = RAJ_india_dead
-				}
-				PAK = {
-					transfer_state = 788
-					add_state_core = 788
-				}
-			}
-			XIN = {
-				PRC_cw_warlords_setup = yes
-				transfer_state = 1158
-				transfer_state = 1161
-				transfer_state = 617
-				transfer_state = 1165
-				transfer_state = 1162
-				transfer_state = 1163
-				transfer_state = 618
-				add_state_core = 1158
-				add_state_core = 1161
-				add_state_core = 617
-				add_state_core = 1165
-				add_state_core = 1162
-				add_state_core = 1163
-				add_state_core = 618
-				set_capital = {
-					state = 1165
-				}
-				add_ideas = {
-					CCW_cpc_clique_idea
-				}
-				load_oob = PRC_XIN_civil_war
-			}
-			if = {
-				limit = {
-					country_exists = SIK
-				}
-				SIK = {
-					declare_war_on = {
-						target = XIN
-						type = annex_everything
-					}
-					add_state_core = 1158
-					add_state_core = 1161
-					add_state_core = 617
-					add_state_core = 1165
-					add_state_core = 1162
-					add_state_core = 1163
-					add_state_core = 618
-				}
-			}
-			SIK = {
-				PRC_cw_warlords_setup = yes
-				transfer_state = 287
-				transfer_state = 619
-				transfer_state = 1160
-				transfer_state = 1164
-				add_state_core = 287
-				add_state_core = 619
-				add_state_core = 1160
-				add_state_core = 1164
-				set_politics = {
-				ruling_party = conservative
-				elections_allowed = no
-			    }
-				set_capital = {
-					state = 287
-				}
-				retire_character = RAJ_indian_military_command2
-				retire_character = SIK_Abdullah_Mansour_char
-				drop_cosmetic_tag = yes
-				load_oob = PRC_SIK_civil_war
-			}
-			every_state = {
-				limit = {
-					OR = {
-						is_owned_by = XIN
-						is_owned_by = SIK
-					}
-				}
-				set_demilitarized_zone = no
-			}
-		}
-	}
-}
 
 #Former Premier Li Keqiang Passed Away
 country_event = {
@@ -4522,7 +4119,7 @@ country_event = {
 			name = PRC_ghost
 			bonus = 0.15
 			uses = 2
-			category = infantry_tech
+			category = CAT_infantry
 		}
 		army_experience = 15
 		set_temp_variable = {
@@ -4857,10 +4454,10 @@ country_event = {
 		}
 		decrease_society = yes
 		decrease_farming = yes
-		add_popularity = {
-			ideology = communist
-			popularity = -0.075
-		}
+		set_temp_variable = { party_index = 4 }
+		set_temp_variable = { party_popularity_increase = -0.075 }
+		set_temp_variable = { temp_outlook_increase = -0.075 }
+		change_relative_party_popularity = yes
 		add_stability = -0.15
 		add_war_support = -0.1
 		add_political_power = -150
@@ -4943,10 +4540,10 @@ country_event = {
 			value = 0.175
 		}
 		add_farming_development = yes
-		add_popularity = {
-			ideology = communist
-			popularity = 0.05
-		}
+		set_temp_variable = { party_index = 4 }
+		set_temp_variable = { party_popularity_increase = 0.05 }
+		set_temp_variable = { temp_outlook_increase = 0.05 }
+		change_relative_party_popularity = yes
 		add_stability = 0.05
 		add_political_power = 100
 		set_country_flag = PRC_environmental_reform_success
@@ -5030,29 +4627,31 @@ country_event = {
 			give_military_access = PAK
 			give_military_access = CHI
 		}
+		# MD / 410 / 419 / 418
 		build_railway = {
 			level = 2
-			start_state = 619
-			target_state = 267
+			start_state = 592
+			target_state = 410
 		}
 		build_railway = {
 			level = 2
-			start_state = 267
-			target_state = 1321
+			start_state = 410
+			target_state = 419
 		}
 		build_railway = {
 			level = 2
-			start_state = 1321
-			target_state = 442
+			start_state = 419
+			target_state = 418
 		}
-		619 = {
+		592 = {
 			add_building_construction = {
 			type = infrastructure  
 			level = 1
 				instant_build = yes
 			}
 		}
-		824 = {
+		# TFR 824
+		410 = {
 			add_building_construction = {
 			type = infrastructure  
 			level = 1
@@ -5113,19 +4712,25 @@ country_event = {
 			give_military_access = PAK
 			give_military_access = CHI
 		}
+		# MD / 718 / 722
 		build_railway = {
 			level = 2
-			start_state = 1160
-			target_state = 405
+			start_state = 592
+			target_state = 722
 		}
-		1160 = {
+		build_railway = {
+			level = 2
+			start_state = 722
+			target_state = 718
+		}
+		592 = {
 			add_building_construction = {
 			type = infrastructure  
 			level = 1
 				instant_build = yes
 			}
 		}
-		732 = {
+		722 = {
 			add_building_construction = {
 			type = infrastructure  
 			level = 1
@@ -5244,7 +4849,6 @@ country_event = {
 }
 
 
-#A-shares Fall
 country_event = {
 	id = prc.288
 	title = prc.288.t
@@ -5256,14 +4860,13 @@ country_event = {
 	}
 	option = {
 		name = prc.288.a
-		add_popularity = {
-			ideology = communist
-			popularity = -0.03
-		}
+		set_temp_variable = { party_index = 4 }
+		set_temp_variable = { party_popularity_increase = -0.03 }
+		set_temp_variable = { temp_outlook_increase = -0.03 }
+		change_relative_party_popularity = yes
 	}
 }
 
-#Workers Protest
 country_event = {
 	id = prc.289
 	title = prc.289.t
@@ -5275,15 +4878,14 @@ country_event = {
 	}
 	option = {
 		name = prc.289.a
-		add_popularity = {
-			ideology = communist
-			popularity = -0.03
-		}
+		set_temp_variable = { party_index = 4 }
+		set_temp_variable = { party_popularity_increase = -0.03 }
+		set_temp_variable = { temp_outlook_increase = -0.03 }
+		change_relative_party_popularity = yes
 		add_stability = -0.015
 	}
 }
 
-#Masses Protest
 country_event = {
 	id = prc.290
 	title = prc.290.t
@@ -5295,10 +4897,10 @@ country_event = {
 	}
 	option = {
 		name = prc.290.a
-		add_popularity = {
-			ideology = communist
-			popularity = -0.04
-		}
+		set_temp_variable = { party_index = 4 }
+		set_temp_variable = { party_popularity_increase = -0.04 }
+		set_temp_variable = { temp_outlook_increase = -0.04 }
+		change_relative_party_popularity = yes
 		add_stability = -0.035
 	}
 }
@@ -5316,10 +4918,10 @@ country_event = {
 	option = {
 		name = prc.291.a
 		add_political_power = 50
-		add_popularity = {
-			ideology = communist
-			popularity = 0.025
-		}
+		set_temp_variable = { party_index = 4 }
+		set_temp_variable = { party_popularity_increase = 0.025 }
+		set_temp_variable = { temp_outlook_increase = 0.025 }
+		change_relative_party_popularity = yes
 	}
 }
 
@@ -5878,7 +5480,6 @@ country_event = {
 	}
 }
 
-#Power Outages and Restrictions in Mainland China
 country_event = {
 	id = prc.324
 	title = prc.324.t
@@ -6411,10 +6012,10 @@ country_event = {
 	option = {
 		name = prc.351.a
 		add_political_power = -75
-		add_popularity = {
-			ideology = communist
-			popularity = -0.05
-		}
+		set_temp_variable = { party_index = 4 }
+		set_temp_variable = { party_popularity_increase = -0.05 }
+		set_temp_variable = { temp_outlook_increase = -0.05 }
+		change_relative_party_popularity = yes
 	}
 }
 
@@ -6525,12 +6126,12 @@ country_event = {
 		PAK = {
 			restore_previous_government_type = yes
 		}
-		transfer_state = 1131
-		transfer_state = 787
-		transfer_state = 434
-		add_state_core = 1131
-		add_state_core = 787
-		add_state_core = 434
+		transfer_state = 993
+		transfer_state = 427
+		transfer_state = 475
+		add_state_core = 993
+		add_state_core = 427
+		add_state_core = 475
 		declare_war_on = {
 			target = BAL
 			type = civil_war
@@ -7628,7 +7229,7 @@ country_event = {
 	    effect_tooltip = {
 			unlock_national_focus = PRC_dream_come_true
 	    }
-	    set_country_flag = PRC_capital_moVIEg_process_is_finished_flag
+	    set_country_flag = PRC_capital_moving_process_is_finished_flag
 	}
 }
 
@@ -7954,7 +7555,7 @@ country_event = {
 	}
 }
 
-#Quantum Consciousness Entity #LM-∞-π Internal Calculation Report
+#Quantum Consciousness Entity #LM-鈭?蟺 Internal Calculation Report
 country_event = {
 	id = prc.436
 	title = prc.436.t
@@ -8081,7 +7682,7 @@ country_event = {
 		hidden_effect = {
 			add_stability = -0.02
 			add_war_support = -0.02
-			326 = {
+			595 = {
 				set_demilitarized_zone = yes
 			}
 		}
@@ -8094,7 +7695,7 @@ country_event = {
 		effect_tooltip = {
 			add_stability = -0.02
 			add_war_support = -0.02
-			326 = {
+			595 = {
 				set_demilitarized_zone = yes
 			}
 		}
@@ -8501,10 +8102,10 @@ country_event = {
 				tag = APA
 			}
 			add_stability = 0.025
-			add_popularity = {
-				ideology = communist
-				popularity = 0.05
-			}
+			set_temp_variable = { party_index = 4 }
+			set_temp_variable = { party_popularity_increase = 0.05 }
+			set_temp_variable = { temp_outlook_increase = 0.05 }
+			change_relative_party_popularity = yes
 		}
 		if = {
 			limit = {
@@ -9250,7 +8851,7 @@ country_event = {
 			name = PRC_song_wencong
 			bonus = 1
 			uses = 1
-			category = light_air
+			category = CAT_light_aircraft
 		}
 		set_temp_variable = {
 			var = PRC_army_reform_progress_temp
@@ -9278,7 +8879,7 @@ country_event = { #Xinjiang War failed
 				type = civil_war
 			}
 			declare_war_on = {
-				target = SIK
+				target = ETK
 				type = civil_war
 			}
 			declare_war_on = {
@@ -9481,19 +9082,19 @@ country_event = {
 			bonus = 1
 			ahead_reduction = 1
 			uses = 1
-			technology = body_armor6
+			technology = body_armor_2030
 		}
 		add_tech_bonus = {
 			bonus = 1
 			ahead_reduction = 1
 			uses = 1
-			technology = body_armor7
+			technology = body_armor_7
 		}
 		add_tech_bonus = {
 			bonus = 1
 			ahead_reduction = 1
 			uses = 1
-			technology = body_armor8
+			technology = body_armor_8
 		}
 	}
 }
@@ -9866,11 +9467,27 @@ country_event = {
 		hidden_effect = {
 			country_event = {
 				id = prc.616
-				days = 1
+				days = 5
 			}
 		}
 	}
 }
+#The Founding of the National Militia
+country_event = {
+	id = prc.616
+	title = prc.616.t
+	desc = prc.616.d
+	picture = GFX_PRC_national_militia
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tag = CHI
+	}
+	option = {
+		name = prc.616.a
+	}
+}
+
 #God Loves the World
 country_event = {
 	id = prc.621
@@ -10156,14 +9773,6 @@ unit_leader_event = {
 	}
 	option = { #approved
 		name = prc.701.a
-		mio:PRC_bohai_shipyard_organization = {
-			add_mio_funds_gain_factor = 0.10
-			complete_mio_trait = PRC_mio_cmc_funds
-			set_mio_flag = PRC_mio_flag_cmc_approve_ssn_funding
-		}
-		mio:PRC_csic_wuchang_shipyard_organization = {
-			add_mio_funds_gain_factor = 0.10
-		}
 		custom_effect_tooltip = tooltip_white_line
 		set_temp_variable = {
 			treasury_change = -10
@@ -10172,10 +9781,6 @@ unit_leader_event = {
 	}
 	option = {
 		name = prc.701.b
-		mio:PRC_bohai_shipyard_organization = {
-			add_mio_funds_gain_factor = 0.10
-			complete_mio_trait = PRC_mio_Navy_Field_Test
-		}
 	}
 }
 
@@ -10290,7 +9895,12 @@ country_event = {
 			puppet = VIE
 		}
 		VIE = {
-			set_cosmetic_tag = VIE_PRC_military_administration
+			set_politics = {
+				ruling_party = communism
+				elections_allowed = no
+			}
+			recalculate_party = yes
+			set_cosmetic_tag = VIE_communism
 		}
 		JAP = {
 			create_faction = PDTO
@@ -10337,23 +9947,19 @@ country_event = {
 		NOT = {
 			has_global_flag = PRC_china_collapse
 		}
-		CHI = {
-			NOT = {
-				has_war_with = JAP
-				has_war_with = AST
-				has_war_with = RAJ
-			}
+		NOT = {
+			has_global_flag = gaw_china_victory_settled
+		}
+		NOT = {
+			has_global_flag = gaw_japan_victory_settled
 		}
 	}
 	option = {
 		name = prc.1001.a
-		clr_global_flag = pan_asian_war_ongoing
-		every_country = {
-			limit = {
-				has_war_with = CHI
-			}
-			white_peace = CHI
-			dismantle_faction = yes
+		hidden_effect = {
+			clr_global_flag = pan_asian_war_ongoing
+			clr_global_flag = GAW_soon
+			ZZZ_gaw_settle_china_victory = yes
 		}
 		news_event = {
 			id = news.413
@@ -10373,24 +9979,18 @@ country_event = {
 		tag = JAP
 		has_global_flag = pan_asian_war_ongoing
 		NOT = {
-			has_global_flag = PRC_china_victory
+			has_global_flag = gaw_japan_victory_settled
 		}
-		JAP = {
-			NOT = {
-				has_war_with = CHI
-				is_ally_with = CHI
-			}
+		NOT = {
+			has_global_flag = gaw_china_victory_settled
 		}
 	}
 	option = {
 		name = prc.1002.a
-		clr_global_flag = pan_asian_war_ongoing
-		every_country = {
-			limit = {
-				has_war_with = JAP
-			}
-			white_peace = JAP
-			dismantle_faction = yes
+		hidden_effect = {
+			clr_global_flag = pan_asian_war_ongoing
+			clr_global_flag = GAW_soon
+			ZZZ_gaw_settle_japan_victory = yes
 		}
 		news_event = {
 			id = news.414
@@ -10399,73 +9999,9 @@ country_event = {
 	}
 }
 #After The End
-country_event = {
-	id = prc.1003
-	title = prc.1003.t
-	desc = prc.1003.d
-	picture = GFX_Generic_Collapse
-	fire_only_once = yes
-	is_triggered_only = yes
-	trigger = {
-	
-	}
-	option = {
-		name = prc.1003.a
-		country_event = {
-			id = prc.1004
-			days = 1
-		}
-	}
-}
+#Rogue Military Elements Storm Beijing
+
 #The Smoke Dissolves - HIM
-country_event = {
-	id = prc.1005
-	title = prc.1005.t
-	desc = prc.1005.d
-	picture = GFX_PRC_its_him
-	fire_only_once = yes
-	is_triggered_only = yes
-	trigger = {
-	}
-	option = {
-		name = prc.1005.a
-		add_country_leader_role = {
-			character = PRC_NL_char
-			promote_leader = yes
-			country_leader = {
-				ideology = right_wing_accelerationist
-				expire = "1.1.1.1"
-				traits={
-					hos_father_of_dark_enlightment
-				}
-			}
-		}
-		focus_unlock = yes
-		create_faction = PRC_beijing_government_faction
-		swap_ideas = {
-			remove_idea = PRC_disobedient_army_idea
-			add_idea = PRC_disobedient_army_idea_2
-		}
-		hidden_effect = {
-			set_politics = {
-				ruling_party = nationalist
-				elections_allowed = no
-			}
-			set_party_name = {
-				ideology = nationalist
-				long_name = PRC_nick_land_nationalist_long
-				name = PRC_nick_land_nationalist
-			}
-			add_popularity = {
-				ideology = nationalist
-				popularity = 0.25
-			}
-			set_cosmetic_tag = PRC_nick_land_cosmetic
-			set_country_flag = PRC_post_gaw_lost_nick_land_won
-			load_focus_tree = PRC_post_gaw_lost
-		}
-	}
-}
 #The Graduates
 country_event = {
 	id = prc.1006
@@ -10492,7 +10028,6 @@ country_event = {
 	}
 	immediate = {
 		hidden_effect = {
-			activate_mission = PRC_korean_war_joining
 			country_event = {
 				id = prc.325
 				days = 7
@@ -10517,9 +10052,6 @@ country_event = {
 	}
 	option = {
 		name = prc.1007.a
-		effect_tooltip = {
-			activate_mission = PRC_korean_war_joining
-		}
 	}
 }
 #the great asian war
@@ -10535,15 +10067,7 @@ country_event = {
 	option = {
 		name = prc.1008.a
 		focus_unlock = yes
-		if = {
-			limit = {
-				has_country_flag = PRC_nationalist_win
-			}
-			complete_national_focus = PRC_new_asian_liberation_war
-		}
-		else = {
-			complete_national_focus = PRC_chinas_greatest_hour
-		}
+		complete_national_focus = PRC_chinas_greatest_hour
 	}
 }
 #slowdown in offensive
@@ -10793,16 +10317,31 @@ country_event = {
 				days = 2
 			}
 			ZZZ = {
-				transfer_state = 1156
-				transfer_state = 287
-				transfer_state = 619
-				transfer_state = 1160
+				transfer_state = 589
+				transfer_state = 592
 			}
-			set_province_controller = 8112
-			set_province_controller = 5016
-			set_province_controller = 8042
-			set_province_controller = 1970
-			set_province_controller = 5087
+			if = {
+				limit = { NOT = { country_exists = ETK } }
+				if = {
+					limit = { 592 = { is_owned_by = ZZZ } }
+					ZZZ = {
+						release = ETK
+					}
+				}
+				else_if = {
+					limit = { 592 = { is_owned_by = CHI } }
+					CHI = {
+						release = ETK
+					}
+				}
+			}
+			ETK = {
+				set_province_controller = 8112
+				set_province_controller = 5016
+				set_province_controller = 8042
+				set_province_controller = 1970
+				set_province_controller = 5087
+			}
 		}
 	}
 	option = {
@@ -10832,63 +10371,67 @@ country_event = {
 			}
 			RAJ = {
 				puppet = TIB
-				puppet = SIK
+				puppet = ETK
 			}
 			TIB = {
-				set_capital = { state = 1156 }
+				set_capital = { state = 589 }
 				set_politics = {
 				    ruling_party = nationalist
 				    elections_allowed = no
 				    long_name = RAJ_indian_military_command_party_long
 				    name = RAJ_indian_military_command_party
 				}
-				add_popularity = {
-				    ideology = nationalist
-				    popularity = 0.5
+				set_temp_variable = { party_index = 20 }
+				if = {
+					limit = { has_government = nationalist }
+					set_temp_variable = { party_index = ruling_party }
 				}
+				set_temp_variable = { party_popularity_increase = 0.5 }
+				set_temp_variable = { temp_outlook_increase = 0.5 }
+				change_relative_party_popularity = yes
 				promote_character = RAJ_indian_military_command
 				set_cosmetic_tag = RAJ_tibet_rebellion
-				transfer_state = 1156
-				add_state_core = 1156
-				load_oob = RAJ_tibet_rebellion_oob
+				transfer_state = 589
+				add_state_core = 589
 				declare_war_on = {
 				    target = CHI
 				    type = annex_everything
 				}
 				add_ideas = TIB_SIK_anti_chinese_freedom_fighters
 			}
-			SIK = {
-				set_capital = { state = 619 }
+			ETK = {
+				set_capital = { state = 592 }
 				set_politics = {
 				    ruling_party = nationalist
 				    elections_allowed = no
 				    long_name = RAJ_indian_military_command_party_long
 				    name = RAJ_indian_military_command_party
 				}
-				add_popularity = {
-				    ideology = nationalist
-				    popularity = 0.5
+				set_temp_variable = { party_index = 20 }
+				if = {
+					limit = { has_government = nationalist }
+					set_temp_variable = { party_index = ruling_party }
 				}
+				set_temp_variable = { party_popularity_increase = 0.5 }
+				set_temp_variable = { temp_outlook_increase = 0.5 }
+				change_relative_party_popularity = yes
 				promote_character = RAJ_indian_military_command2
 				set_cosmetic_tag = RAJ_xinjiang_rebellion
-				transfer_state = 287
-				transfer_state = 619
-				transfer_state = 1160
-				add_state_core = 287
-				add_state_core = 619
-				add_state_core = 1160
-				load_oob = RAJ_xinjiang_rebellion_oob
+				transfer_state = 592
+				add_state_core = 592
 				declare_war_on = {
 				    target = CHI
 				    type = annex_everything
 				}
 				add_ideas = TIB_SIK_anti_chinese_freedom_fighters
 			}
-			set_province_controller = 8112
-			set_province_controller = 5016
-			set_province_controller = 8042
-			set_province_controller = 1970
-			set_province_controller = 5087
+			ETK = {
+				set_province_controller = 8112
+				set_province_controller = 5016
+				set_province_controller = 8042
+				set_province_controller = 1970
+				set_province_controller = 5087
+			}
 		}
 	}
 	option = {
@@ -10900,7 +10443,7 @@ country_event = {
 				    type = annex_everything
 				}
 			}
-			SIK = {
+			ETK = {
 				declare_war_on = {
 				    target = CHI
 				    type = annex_everything
@@ -11248,17 +10791,14 @@ country_event = {
 	}
 	option = {
 		name = prc.1038.a
-		JAP = {
-			set_cosmetic_tag = JAP_chinese_military_district_cosmetic
-		}
 		custom_effect_tooltip = tooltip_white_line
 		add_war_support = 0.05
 		add_political_power = 75
-		transfer_state = 876
-		transfer_state = 526
-		transfer_state = 1338
-		transfer_state = 1341
-		transfer_state = 645
+		transfer_state = 939
+		transfer_state = 618
+		# TFR 1338 / 615
+		# TFR 645 620
+		transfer_state = 620
 		hidden_effect = {
 			set_nationality = {
 				target_country = JAP
@@ -11274,14 +10814,18 @@ country_event = {
 				    character = PRC_He_Weidong
 				    promote_leader = yes
 				    country_leader = {
-				        ideology = military_junta
+				        ideology = Nat_Autocracy
 				        expire = "1.1.1.1"
 				    }
 				}
-				add_popularity = {
-					ideology = nationalist
-					popularity = 0.35
+				set_temp_variable = { party_index = 20 }
+				if = {
+					limit = { has_government = nationalist }
+					set_temp_variable = { party_index = ruling_party }
 				}
+				set_temp_variable = { party_popularity_increase = 0.35 }
+				set_temp_variable = { temp_outlook_increase = 0.35 }
+				change_relative_party_popularity = yes
 				set_party_name = {
 					ideology = nationalist
 					long_name = PRC_nationalist_party_long
@@ -11294,7 +10838,6 @@ country_event = {
 		name = prc.1038.b
 		country_event = prc.1011
 		custom_effect_tooltip = PRC_revenge_for_nanking_tt
-		unlock_decision_tooltip = PRC_dissolve_japan
 		add_war_support = 0.05
 		add_political_power = 75
 		set_country_flag = PRC_dissolve_japan_visible_flag
@@ -11364,7 +10907,7 @@ country_event = {
 		focus_unlock = yes
 		promote_character = PRC_long_march
 		set_politics = {
-			ruling_party = totalitarian_socialist
+			ruling_party = communism
 			elections_allowed = no
 		}
 		add_stability = -0.5
@@ -11374,15 +10917,15 @@ country_event = {
 			hours = 6
 		}
 		set_party_name = {
-			ideology = totalitarian_socialist
+			ideology = communism
 			long_name = SIC_long_march_DEF
 			name = SIC_long_march
 		}
 		hidden_effect = {
-			add_popularity = {
-				ideology = totalitarian_socialist
-				popularity = 100
-			}
+			set_temp_variable = { party_index = 4 }
+			set_temp_variable = { party_popularity_increase = 1.0 }
+			set_temp_variable = { temp_outlook_increase = 1.0 }
+			change_relative_party_popularity = yes
 		}
 	}
 }
@@ -11403,7 +10946,7 @@ country_event = {
 		name = prc.669.a
 		set_country_flag = PRC_popstar_enabled_flag
 		set_country_leader_portrait = {
-			ideology = totalitarian_socialist
+			ideology = communist_state
 			portrait = GFX_Portrait_PRC_The_Long_March_anime_popstar
 		}
 	}
@@ -11514,10 +11057,10 @@ country_event = {
 			add_stability = -0.1
 			add_war_support = -0.1
 			add_political_power = -50
-			add_popularity = {
-			    ideology = fascist
-			    popularity = -0.1
-		    }
+			set_temp_variable = { party_index = 10 }
+			set_temp_variable = { party_popularity_increase = -0.1 }
+			set_temp_variable = { temp_outlook_increase = -0.1 }
+			change_relative_party_popularity = yes
 		}
 		1332 = {
 			add_building_construction = {
@@ -11536,18 +11079,18 @@ country_event = {
 			}
 			add_stability = -0.05
 			add_war_support = -0.05
-			add_popularity = {
-			    ideology = social_democrat
-			    popularity = 0.03
-		    }
-		    add_popularity = {
-			    ideology = communist
-			    popularity = 0.02
-		    }
-			add_popularity = {
-			    ideology = fascist
-			    popularity = -0.1
-		    }
+			set_temp_variable = { party_index = 3 }
+			set_temp_variable = { party_popularity_increase = 0.03 }
+			set_temp_variable = { temp_outlook_increase = 0.03 }
+			change_relative_party_popularity = yes
+		    set_temp_variable = { party_index = 4 }
+		    set_temp_variable = { party_popularity_increase = 0.02 }
+		    set_temp_variable = { temp_outlook_increase = 0.02 }
+		    change_relative_party_popularity = yes
+			set_temp_variable = { party_index = 10 }
+			set_temp_variable = { party_popularity_increase = -0.1 }
+			set_temp_variable = { temp_outlook_increase = -0.1 }
+			change_relative_party_popularity = yes
 		}
 	}
 
@@ -11559,10 +11102,10 @@ country_event = {
 			}
 			add_stability = -0.05
 			add_war_support = -0.05
-			add_popularity = {
-			    ideology = fascist
-			    popularity = -0.1
-		    }
+			set_temp_variable = { party_index = 10 }
+			set_temp_variable = { party_popularity_increase = -0.1 }
+			set_temp_variable = { temp_outlook_increase = -0.1 }
+			change_relative_party_popularity = yes
 		}
 	}
 }
@@ -12266,3 +11809,828 @@ news_event = {
 		name = sino_jap_coldwar.23.a
 	}
 }
+
+
+# ============================================================================
+# PLA military projects (ported from The Fire Rises)
+# Adapted: china.* -> prc.*, game-rule modifiers removed, MD tech categories,
+# TFR-only tank variant/tech rewards removed.
+# ============================================================================
+
+country_event = {
+	id = prc.259
+	title = prc.259.t
+	desc = prc.259.d
+	picture = GFX_PRC_ghost
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+	}
+	option = {
+		name = prc.259.a
+		set_country_flag = PRC_military_project_researching
+		activate_mission = PRC_military_project_mission
+		set_temp_variable = {
+			var = debt_var_temp
+			value = 12.5
+		}
+		add_debt_with_inflation = yes
+		clr_country_flag = anti_debil
+		hidden_effect = {
+			random_list = {
+				60 = {
+					set_country_flag = PRC_project_ghost_partially_succeeded
+				}
+				40 = {
+					set_country_flag = PRC_project_ghost_failed
+				}
+			}
+		}
+		country_event = {
+			id = prc.266
+			days = 125
+		}
+		add_timed_idea = {
+			idea = PRC_ongoing_military_project_idea
+			days = 125
+		}
+	}
+	option = {
+		name = prc.259.b
+		add_political_power = 25
+		clr_country_flag = anti_debil
+	}
+}
+
+country_event = {
+	id = prc.260
+	title = prc.260.t
+	desc = prc.260.d
+	picture = GFX_PRC_nib
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+	}
+	option = {
+		name = prc.260.a
+		set_country_flag = PRC_military_project_researching
+		activate_mission = PRC_military_project_mission
+		set_temp_variable = {
+			var = debt_var_temp
+			value = 10
+		}
+		add_debt_with_inflation = yes
+		clr_country_flag = anti_debil
+		hidden_effect = {
+			random_list = {
+				60 = {
+					set_country_flag = PRC_project_nib_succeeded
+				}
+				40 = {
+					set_country_flag = PRC_project_nib_failed
+				}
+			}
+		}
+		country_event = {
+			id = prc.267
+			days = 125
+		}
+		add_timed_idea = {
+			idea = PRC_ongoing_military_project_idea
+			days = 125
+		}
+	}
+	option = {
+		name = prc.260.b
+		add_political_power = 25
+		clr_country_flag = anti_debil
+	}
+}
+
+country_event = {
+	id = prc.261
+	title = prc.261.t
+	desc = prc.261.d
+	picture = GFX_PRC_swimmer
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+	}
+	option = {
+		name = prc.261.a
+		set_country_flag = PRC_military_project_researching
+		activate_mission = PRC_military_project_mission
+		set_temp_variable = {
+			var = debt_var_temp
+			value = 15
+		}
+		add_debt_with_inflation = yes
+		clr_country_flag = anti_debil
+		hidden_effect = {
+			random_list = {
+				80 = {
+					set_country_flag = PRC_project_swimmer_succeeded
+				}
+				20 = {
+					set_country_flag = PRC_project_swimmer_failed
+				}
+			}
+		}
+		country_event = {
+			id = prc.268
+			days = 125
+		}
+		add_timed_idea = {
+			idea = PRC_ongoing_military_project_idea
+			days = 125
+		}
+	}
+	option = {
+		name = prc.261.b
+		add_political_power = 25
+		clr_country_flag = anti_debil
+	}
+}
+
+country_event = {
+	id = prc.262
+	title = prc.262.t
+	desc = prc.262.d
+	picture = GFX_PRC_impulse
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+	}
+	option = {
+		name = prc.262.a
+		set_country_flag = PRC_military_project_researching
+		activate_mission = PRC_military_project_mission
+		set_temp_variable = {
+			var = debt_var_temp
+			value = 20
+		}
+		add_debt_with_inflation = yes
+		clr_country_flag = anti_debil
+		hidden_effect = {
+			random_list = {
+				60 = {
+					set_country_flag = PRC_project_impulse_succeeded
+				}
+				40 = {
+					set_country_flag = PRC_project_impulse_failed
+				}
+			}
+		}
+		country_event = {
+			id = prc.269
+			days = 125
+		}
+		add_timed_idea = {
+			idea = PRC_ongoing_military_project_idea
+			days = 125
+		}
+	}
+	option = {
+		name = prc.262.b
+		add_political_power = 25
+		clr_country_flag = anti_debil
+	}
+}
+
+country_event = {
+	id = prc.267
+	title = prc.267.t
+	desc = {
+		text = prc.267.d.1
+		trigger = {
+			has_country_flag = PRC_project_nib_succeeded
+		}
+	}
+	desc = {
+		text = prc.267.d.2
+		trigger = {
+			has_country_flag = PRC_project_nib_failed
+		}
+	}
+	picture = GFX_PRC_nib
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		clr_country_flag = PRC_military_project_researching
+	}
+	option = {
+		name = prc.267.a
+		trigger = {
+			has_country_flag = PRC_project_nib_succeeded
+		}
+		set_country_flag = PRC_project_nib_succeeded1
+		add_tech_bonus = {
+			name = PRC_nib
+			bonus = 0.35
+			uses = 1
+			category = CAT_infantry
+		}
+		army_experience = 25
+		set_temp_variable = {
+			var = PRC_army_reform_progress_temp
+			value = 0.02
+		}
+		PRC_add_army_reform_progress = yes
+	}
+	option = {
+		name = prc.267.b
+		add_political_power = 25
+		trigger = {
+			has_country_flag = PRC_project_nib_failed
+		}
+		set_country_flag = PRC_project_nib_failed1
+		add_tech_bonus = {
+			name = PRC_nib2
+			bonus = 0.1
+			uses = 1
+			category = CAT_infantry
+		}
+	}
+}
+
+country_event = {
+	id = prc.268
+	title = prc.268.t
+	desc = {
+		text = prc.268.d.1
+		trigger = {
+			has_country_flag = PRC_project_swimmer_succeeded
+		}
+	}
+	desc = {
+		text = prc.268.d.2
+		trigger = {
+			has_country_flag = PRC_project_swimmer_failed
+		}
+	}
+	picture = GFX_PRC_swimmer
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		clr_country_flag = PRC_military_project_researching
+	}
+	option = {
+		name = prc.268.a
+		trigger = {
+			has_country_flag = PRC_project_swimmer_succeeded
+		}
+		set_country_flag = PRC_project_swimmer_succeeded1
+		add_tech_bonus = {
+			name = PRC_swimmer
+			bonus = 0.5
+			uses = 1
+			category = CAT_tanks
+		}
+		army_experience = 25
+		set_temp_variable = {
+			var = PRC_army_reform_progress_temp
+			value = 0.02
+		}
+		PRC_add_army_reform_progress = yes
+	}
+	option = {
+		name = prc.268.b
+		add_political_power = 25
+		trigger = {
+			has_country_flag = PRC_project_swimmer_failed
+		}
+		set_country_flag = PRC_project_swimmer_failed1
+		add_tech_bonus = {
+			name = PRC_swimmer
+			bonus = 0.15
+			uses = 1
+			category = CAT_tanks
+		}
+	}
+}
+
+country_event = {
+	id = prc.269
+	title = prc.269.t
+	desc = {
+		text = prc.269.d.1
+		trigger = {
+			has_country_flag = PRC_project_impulse_succeeded
+		}
+	}
+	desc = {
+		text = prc.269.d.2
+		trigger = {
+			has_country_flag = PRC_project_impulse_failed
+		}
+	}
+	picture = GFX_PRC_impulse
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		clr_country_flag = PRC_military_project_researching
+	}
+	option = {
+		name = prc.269.a
+		trigger = {
+			has_country_flag = PRC_project_impulse_succeeded
+		}
+		set_country_flag = PRC_project_impulse_succeeded1
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = PRC_plan_dummy
+				add_idea = PRC_project_impulse_succeeded_idea
+			}
+		}
+		hidden_effect = {
+			add_to_variable = {
+				var = PRC_plan_navy_capital_ship_attack_factor_dynamic_var
+				value = 0.1
+			}
+			add_to_variable = {
+				var = PRC_navy_screen_attack_factor_dynamic_var
+				value = 0.1
+			}
+			add_to_variable = {
+				var = PRC_plan_naval_damage_factor_dynamic_var
+				value = 0.05
+			}
+		}
+		add_tech_bonus = {
+			name = PRC_impulse
+			bonus = 0.5
+			uses = 2
+			category = CAT_naval
+		}
+		set_temp_variable = {
+			var = PRC_army_reform_progress_temp
+			value = 0.02
+		}
+		PRC_add_army_reform_progress = yes
+	}
+	option = {
+		name = prc.269.b
+		add_political_power = 25
+		trigger = {
+			has_country_flag = PRC_project_impulse_failed
+		}
+		set_country_flag = PRC_project_impulse_failed1
+		add_tech_bonus = {
+			name = PRC_impulse
+			bonus = 0.2
+			uses = 1
+			category = CAT_naval
+		}
+	}
+}
+
+country_event = {
+	id = prc.546
+	title = prc.546.t
+	desc = prc.546.d
+	picture = GFX_PRC_gaw_start_news
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		hidden_effect = {
+			if = {
+				limit = { NOT = { has_global_flag = pan_asian_war_ongoing } }
+				JAP = {
+					declare_war_on = {
+						target = CHI
+						type = annex_everything
+					}
+				}
+				set_global_flag = GAW_senkaku_chain_started
+				PRC_gaw_start = yes
+				country_event = {
+					id = prc.1008
+					hours = 6
+				}
+				news_event = {
+					id = sino_jap_coldwar.11
+					hours = 1
+				}
+			}
+		}
+	}
+	option = {
+		name = prc.546.a
+		add_war_support = 0.05
+	}
+}
+
+# ===== china.140 MD
+country_event = {
+	id = prc.140
+	title = prc.140.t
+	desc = prc.140.d
+	picture = GFX_Generic_Pakistani_Army
+	is_triggered_only = yes
+	fire_only_once = no
+
+	option = {
+		name = prc.140.a
+		ai_chance = {
+			base = 60
+		}
+		if = {
+			limit = { tag = RAJ }
+			CHI = {
+				country_event = { id = prc.136 days = 1 }
+			}
+		}
+		else_if = {
+			limit = { tag = PAK }
+			CHI = {
+				country_event = { id = prc.137 days = 2 }
+			}
+		}
+	}
+	option = {
+		name = prc.140.b
+		ai_chance = {
+			base = 40
+		}
+		if = {
+			limit = { tag = RAJ }
+			CHI = {
+				country_event = { id = prc.138 days = 1 }
+			}
+		}
+		else_if = {
+			limit = { tag = PAK }
+			CHI = {
+				country_event = { id = prc.139 days = 2 }
+			}
+		}
+	}
+}
+
+country_event = {
+	id = prc.136
+	title = prc.136.t
+	desc = prc.136.d
+	picture = GFX_Generic_Pakistani_Army
+	is_triggered_only = yes
+	fire_only_once = no
+
+	option = {
+		name = prc.136.a
+		if = {
+			limit = { NOT = { has_global_flag = PRC_indo_pak_nuclear_talks_failed } }
+			set_global_flag = PRC_india_no_nukes
+			if = {
+				limit = {
+					has_global_flag = PRC_india_no_nukes
+					has_global_flag = PRC_pakistan_no_nukes
+				}
+				set_global_flag = PRC_indo_pak_mediation_succeeded
+				RAJ = {
+					remove_ideas = nuclear_energy
+					remove_ideas = nuclear_power_def
+					remove_ideas = nuclear_power_off
+					add_ideas = non_nuclear_power
+					remove_ideas = strategic_retaliation_only
+					remove_ideas = tac_and_strat_retaliation
+					remove_ideas = tac_first_use_strat_retaliation
+					remove_ideas = full_first_use
+					add_ideas = no_use_case
+					country_event = { id = prc.547 days = 1 }
+				}
+				PAK = {
+					remove_ideas = nuclear_energy
+					remove_ideas = nuclear_power_def
+					remove_ideas = nuclear_power_off
+					add_ideas = non_nuclear_power
+					remove_ideas = strategic_retaliation_only
+					remove_ideas = tac_and_strat_retaliation
+					remove_ideas = tac_first_use_strat_retaliation
+					remove_ideas = full_first_use
+					add_ideas = no_use_case
+					country_event = { id = prc.547 days = 1 }
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = prc.137
+	title = prc.137.t
+	desc = prc.137.d
+	picture = GFX_Generic_Pakistani_Army
+	is_triggered_only = yes
+	fire_only_once = no
+
+	option = {
+		name = prc.137.a
+		if = {
+			limit = { NOT = { has_global_flag = PRC_indo_pak_nuclear_talks_failed } }
+			set_global_flag = PRC_pakistan_no_nukes
+			if = {
+				limit = {
+					has_global_flag = PRC_india_no_nukes
+					has_global_flag = PRC_pakistan_no_nukes
+				}
+				set_global_flag = PRC_indo_pak_mediation_succeeded
+				RAJ = {
+					remove_ideas = nuclear_energy
+					remove_ideas = nuclear_power_def
+					remove_ideas = nuclear_power_off
+					add_ideas = non_nuclear_power
+					remove_ideas = strategic_retaliation_only
+					remove_ideas = tac_and_strat_retaliation
+					remove_ideas = tac_first_use_strat_retaliation
+					remove_ideas = full_first_use
+					add_ideas = no_use_case
+					country_event = { id = prc.547 days = 1 }
+				}
+				PAK = {
+					remove_ideas = nuclear_energy
+					remove_ideas = nuclear_power_def
+					remove_ideas = nuclear_power_off
+					add_ideas = non_nuclear_power
+					remove_ideas = strategic_retaliation_only
+					remove_ideas = tac_and_strat_retaliation
+					remove_ideas = tac_first_use_strat_retaliation
+					remove_ideas = full_first_use
+					add_ideas = no_use_case
+					country_event = { id = prc.547 days = 1 }
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = prc.138
+	title = prc.138.t
+	desc = prc.138.d
+	picture = GFX_Generic_Pakistani_Army
+	is_triggered_only = yes
+	fire_only_once = no
+
+	option = {
+		name = prc.138.a
+		if = {
+			limit = { NOT = { has_global_flag = PRC_indo_pak_mediation_succeeded } }
+			set_global_flag = PRC_indo_pak_nuclear_talks_failed
+			clr_global_flag = PRC_india_no_nukes
+			clr_global_flag = PRC_pakistan_no_nukes
+		}
+	}
+}
+
+country_event = {
+	id = prc.139
+	title = prc.139.t
+	desc = prc.139.d
+	picture = GFX_Generic_Pakistani_Army
+	is_triggered_only = yes
+	fire_only_once = no
+
+	option = {
+		name = prc.139.a
+		if = {
+			limit = { NOT = { has_global_flag = PRC_indo_pak_mediation_succeeded } }
+			set_global_flag = PRC_indo_pak_nuclear_talks_failed
+			clr_global_flag = PRC_india_no_nukes
+			clr_global_flag = PRC_pakistan_no_nukes
+		}
+	}
+}
+
+country_event = {
+	id = prc.547
+	title = prc.547.t
+	desc = prc.547.d
+	picture = GFX_Generic_Pakistani_Army
+	is_triggered_only = yes
+	fire_only_once = no
+
+	option = {
+		name = prc.547.a
+	}
+}
+
+news_event = {
+	id = china.90
+	title = china.90.t
+	desc = china.90.d
+	picture = GFX_news_japan_vietnam
+	major = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = PRC
+	}
+	option = {
+		name = china.90.a
+		
+	}
+}
+
+country_event = {
+	id = china.201
+	title = china.201.t
+	desc = china.201.d
+	picture = GFX_stock_market_generic
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+	}
+	option = {
+		name = china.201.a
+		every_controlled_state = {
+			random_select_amount = 20
+			limit = {
+				is_core_of = ROOT
+				industrial_complex > 0
+			}
+			remove_building = {
+				type = industrial_complex
+				level = 1
+			}
+		}
+		every_controlled_state = {
+			random_select_amount = 5
+			limit = {
+				is_core_of = ROOT
+				offices > 0
+			}
+			remove_building = {
+				type = offices
+				level = 1
+			}
+		}
+	}
+}
+
+country_event = {
+	id = china.313
+	title = china.313.t
+	desc = china.313.d
+	picture = GFX_Iceland_Science
+	
+	is_triggered_only = yes
+	immediate = {
+	}
+	option = {
+	 	name = china.313.a
+	    add_political_power = 25
+	    add_timed_idea = {
+			idea = PRC_scientists_from_america_idea
+			days = 250
+	    }
+	}
+}
+
+country_event = {
+	id = china.64
+	title = china.64.t
+	desc = china.64.d
+	picture = GFX_PRC_Siberian_War
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+	}
+	option = {
+		name = china.64.a
+		trigger = {
+			NOT = {
+				tag = SOV
+			}
+		}
+		start_border_war = {
+			change_state_after_war = no
+			attacker = {
+				state = 328
+				num_provinces = 4
+				on_win = china.65
+				on_lose = china.67
+				on_cancel = china.66
+			}
+			defender = {
+				state = 408
+				num_provinces = 4
+				on_win = china.67
+				on_lose = china.65
+				on_cancel = china.66
+			}
+		}
+	}
+	option = {
+		name = china.64.b
+		trigger = {
+			NOT = {
+				tag = SOV
+			}
+		}
+		add_political_power = 30
+		add_stability = 0.05
+		add_war_support = -0.05
+	}
+	option = {
+		name = china.64.c
+		trigger = {
+			tag = SOV
+		}
+	}
+}
+
+#Pandemic Timeline: First COVID-19 Death Reported
+country_event = {
+	id = prc.5
+	title = prc.5.t
+	desc = prc.5.d
+	picture = GFX_Covid-19_Cases_Increase
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tag = CHI
+	}
+	option = {
+		name = prc.5.a
+	}
+}
+
+#Pandemic Timeline: Wuhan Outbreak Identified
+country_event = {
+	id = prc.10
+	title = prc.10.t
+	desc = prc.10.d
+	picture = GFX_Covid-19_Cases_Increase
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tag = CHI
+	}
+	option = {
+		name = prc.10.a
+	}
+}
+
+#Pandemic Timeline: Coronavirus Spreads to Neighboring States
+country_event = {
+	id = prc.30
+	title = prc.30.t
+	desc = prc.30.d
+	picture = GFX_Covid-19_Cases_Increase
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tag = CHI
+	}
+	option = {
+		name = prc.30.o1
+	}
+}
+
+#Pandemic Timeline: COVID-19 Spreads to Other Provinces
+country_event = {
+	id = prc.31
+	title = prc.31.t
+	desc = prc.31.d
+	picture = GFX_Covid-19_Cases_Increase
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tag = CHI
+	}
+	option = {
+		name = prc.31.a
+	}
+}
+
+#Pandemic Timeline: COVID-19 Spreads Overseas
+country_event = {
+	id = prc.34
+	title = prc.34.t
+	desc = prc.34.desc
+	picture = GFX_Covid-19_Cases_Increase
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tag = CHI
+	}
+	option = {
+		name = prc.34.a
+	}
+}
+
+#Pandemic Timeline: PLA Defends Hubei
+country_event = {
+	id = prc.302
+	title = prc.302.t
+	desc = prc.302.d
+	picture = GFX_Chinese_soldiers
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tag = CHI
+	}
+	option = {
+		name = prc.302.a
+	}
+}
+

@@ -1,0 +1,193 @@
+# ============================================================================
+# ZZZ 政党更迭事件 · 南亚/东南亚补充批次（PAK / MAY / SIA，本工程原创）
+# 依据现实史实，按千禧 common/scripted_effects/<TAG>_political_leaders.txt 的
+# 实际党派索引落盘：
+#   PAK：伊姆兰·汗 = Nat_Populism(20)；纳瓦兹/谢巴兹·谢里夫(PML-N) = Conservative(6)
+#   MAY：马哈蒂尔 = socialism(3)；喜来登行动后的马来民族统一机构/土著团结党 = Nat_Populism(20)；
+#        安华(希望联盟) = socialism(3)
+#   SIA：巴育 = Nat_Autocracy(22)；赛塔·他威信(为泰党) = neutral_Social(18)
+# 剧情守卫：与 GAW 结算、朝韩谈判、台海冲突相关的旗标，一律加 NOT，确保不顶掉剧情结果。
+# 事件 ID：zzz_party.164-170（已全库查重，无冲突）
+# ============================================================================
+
+# ---- 巴基斯坦：2018.8.18 伊姆兰·汗就任总理（正义运动党 PTI）----
+country_event = {
+	id = zzz_party.164
+	title = zzz_party.164.t
+	desc = zzz_party.164.d
+	is_triggered_only = no
+	fire_only_once = yes
+	trigger = {
+		date > 2018.8.18
+		original_tag = PAK
+		NOT = { has_global_flag = gaw_china_victory_settled }
+		NOT = { has_global_flag = gaw_japan_victory_settled }
+		NOT = { has_global_flag = korean_confederation_formed }
+		NOT = { KOR = { has_country_flag = korea_peninsula_reunited } }
+		NOT = { NKO = { has_country_flag = korea_peninsula_reunited } }
+		NOT = { TAI = { has_country_flag = taiwan_detente_kmt_won } }
+		NOT = { TAI = { has_country_flag = taiwan_detente_dpp_won } }
+		NOT = { PRC = { has_country_flag = PRC_taiwan_war_start } }
+	}
+	option = {
+		name = zzz_party.164.a
+		ZZZ_party_to_nat_populism = yes
+		set_leader = yes
+	}
+}
+
+# ---- 巴基斯坦：2022.4.11 谢巴兹·谢里夫就任总理（穆斯林联盟-谢里夫派 PML-N）----
+country_event = {
+	id = zzz_party.165
+	title = zzz_party.165.t
+	desc = zzz_party.165.d
+	is_triggered_only = no
+	fire_only_once = yes
+	trigger = {
+		date > 2022.4.11
+		original_tag = PAK
+		NOT = { has_global_flag = gaw_china_victory_settled }
+		NOT = { has_global_flag = gaw_japan_victory_settled }
+		NOT = { has_global_flag = korean_confederation_formed }
+		NOT = { KOR = { has_country_flag = korea_peninsula_reunited } }
+		NOT = { NKO = { has_country_flag = korea_peninsula_reunited } }
+		NOT = { TAI = { has_country_flag = taiwan_detente_kmt_won } }
+		NOT = { TAI = { has_country_flag = taiwan_detente_dpp_won } }
+		NOT = { PRC = { has_country_flag = PRC_taiwan_war_start } }
+	}
+	option = {
+		name = zzz_party.165.a
+		ZZZ_party_to_conservative = yes
+		set_leader = yes
+	}
+}
+
+# ---- 马来西亚：2018.7.2 希望联盟胜选，马哈蒂尔就任首相 ----
+country_event = {
+	id = zzz_party.166
+	title = zzz_party.166.t
+	desc = zzz_party.166.d
+	is_triggered_only = no
+	fire_only_once = yes
+	trigger = {
+		date > 2018.7.2
+		original_tag = MAY
+		NOT = { has_global_flag = gaw_china_victory_settled }
+		NOT = { has_global_flag = gaw_japan_victory_settled }
+		NOT = { has_global_flag = korean_confederation_formed }
+		NOT = { KOR = { has_country_flag = korea_peninsula_reunited } }
+		NOT = { NKO = { has_country_flag = korea_peninsula_reunited } }
+		NOT = { TAI = { has_country_flag = taiwan_detente_kmt_won } }
+		NOT = { TAI = { has_country_flag = taiwan_detente_dpp_won } }
+		NOT = { PRC = { has_country_flag = PRC_taiwan_war_start } }
+	}
+	option = {
+		name = zzz_party.166.a
+		ZZZ_party_to_socialism = yes
+		set_leader = yes
+	}
+}
+
+# ---- 马来西亚：2020.3.1 喜来登行动，土著团结党联合马来民族统一机构执政 ----
+country_event = {
+	id = zzz_party.167
+	title = zzz_party.167.t
+	desc = zzz_party.167.d
+	is_triggered_only = no
+	fire_only_once = yes
+	trigger = {
+		date > 2020.3.1
+		original_tag = MAY
+		NOT = { has_global_flag = gaw_china_victory_settled }
+		NOT = { has_global_flag = gaw_japan_victory_settled }
+		NOT = { has_global_flag = korean_confederation_formed }
+		NOT = { KOR = { has_country_flag = korea_peninsula_reunited } }
+		NOT = { NKO = { has_country_flag = korea_peninsula_reunited } }
+		NOT = { TAI = { has_country_flag = taiwan_detente_kmt_won } }
+		NOT = { TAI = { has_country_flag = taiwan_detente_dpp_won } }
+		NOT = { PRC = { has_country_flag = PRC_taiwan_war_start } }
+	}
+	option = {
+		name = zzz_party.167.a
+		ZZZ_party_to_nat_populism = yes
+		ZZZ_party_leader_MAY_muhyiddin = yes
+	}
+}
+
+# ---- 马来西亚：2022.11.24 安华就任首相（希望联盟）----
+country_event = {
+	id = zzz_party.168
+	title = zzz_party.168.t
+	desc = zzz_party.168.d
+	is_triggered_only = no
+	fire_only_once = yes
+	trigger = {
+		date > 2022.11.24
+		original_tag = MAY
+		NOT = { has_global_flag = gaw_china_victory_settled }
+		NOT = { has_global_flag = gaw_japan_victory_settled }
+		NOT = { has_global_flag = korean_confederation_formed }
+		NOT = { KOR = { has_country_flag = korea_peninsula_reunited } }
+		NOT = { NKO = { has_country_flag = korea_peninsula_reunited } }
+		NOT = { TAI = { has_country_flag = taiwan_detente_kmt_won } }
+		NOT = { TAI = { has_country_flag = taiwan_detente_dpp_won } }
+		NOT = { PRC = { has_country_flag = PRC_taiwan_war_start } }
+	}
+	option = {
+		name = zzz_party.168.a
+		ZZZ_party_to_socialism = yes
+		set_leader = yes
+	}
+}
+
+# ---- 泰国：2019.6.11 巴育·占奥差连任总理（全国维持和平秩序委员会/人民国家力量党）----
+country_event = {
+	id = zzz_party.169
+	title = zzz_party.169.t
+	desc = zzz_party.169.d
+	is_triggered_only = no
+	fire_only_once = yes
+	trigger = {
+		date > 2019.6.11
+		original_tag = SIA
+		NOT = { has_global_flag = gaw_china_victory_settled }
+		NOT = { has_global_flag = gaw_japan_victory_settled }
+		NOT = { has_global_flag = korean_confederation_formed }
+		NOT = { KOR = { has_country_flag = korea_peninsula_reunited } }
+		NOT = { NKO = { has_country_flag = korea_peninsula_reunited } }
+		NOT = { TAI = { has_country_flag = taiwan_detente_kmt_won } }
+		NOT = { TAI = { has_country_flag = taiwan_detente_dpp_won } }
+		NOT = { PRC = { has_country_flag = PRC_taiwan_war_start } }
+	}
+	option = {
+		name = zzz_party.169.a
+		ZZZ_party_to_nat_autocracy = yes
+		set_leader = yes
+	}
+}
+
+# ---- 泰国：2023.8.22 赛塔·他威信就任总理（为泰党主导的联合政府）----
+country_event = {
+	id = zzz_party.170
+	title = zzz_party.170.t
+	desc = zzz_party.170.d
+	is_triggered_only = no
+	fire_only_once = yes
+	trigger = {
+		date > 2023.8.22
+		original_tag = SIA
+		NOT = { has_global_flag = gaw_china_victory_settled }
+		NOT = { has_global_flag = gaw_japan_victory_settled }
+		NOT = { has_global_flag = korean_confederation_formed }
+		NOT = { KOR = { has_country_flag = korea_peninsula_reunited } }
+		NOT = { NKO = { has_country_flag = korea_peninsula_reunited } }
+		NOT = { TAI = { has_country_flag = taiwan_detente_kmt_won } }
+		NOT = { TAI = { has_country_flag = taiwan_detente_dpp_won } }
+		NOT = { PRC = { has_country_flag = PRC_taiwan_war_start } }
+	}
+	option = {
+		name = zzz_party.170.a
+		ZZZ_party_to_neutral_social = yes
+		set_leader = yes
+	}
+}

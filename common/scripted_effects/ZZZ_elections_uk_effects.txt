@@ -1,0 +1,28 @@
+# ============================================================
+# ZZZ 英国选举结算效果
+# 由 events/ZZZ_elections_uk.txt 的 zzz_elections_uk.2 调用。
+# 全部使用基座已有 effect（hold_elections / update_set_politics 等），
+# 不新增任何模板变量，也不读写 ZZ9 - 2017.txt。
+# ============================================================
+ZZZ_uk_election_result = {
+	hold_elections = yes
+	hidden_effect = {
+		set_temp_variable = { uk_win = max_index_1 }
+		set_temp_variable = { uk_old = ruling_party }
+
+		set_variable = { ruling_party = uk_win }
+
+		clear_array = gov_coalition_array
+		update_government_coalition_strength = yes
+		update_set_politics = yes
+		update_party_name = yes
+		recalculate_party = yes
+		set_variable = { current_term = 1 }
+
+		# 执政大组变化时才更换政府首脑；君主立宪下 set_leader 会保留君主
+		if = {
+			limit = { NOT = { check_variable = { uk_win = uk_old } } }
+			set_leader = yes
+		}
+	}
+}

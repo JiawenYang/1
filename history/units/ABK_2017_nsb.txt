@@ -1,0 +1,160 @@
+division_template = {
+	name = "Motostrelkovaya Brigada"
+	regiments = {
+		Mech_Inf_Bat = { x = 0 y = 0 }
+		armor_Bat = { x = 0 y = 1 }
+		Mot_Inf_Bat = { x = 1 y = 0 }
+		Arty_Bat = { x = 2 y = 0 }
+	}
+	support = {
+		Arm_Recce_Comp = { x = 0 y = 0 }
+	}
+}
+
+division_template = {
+	name = "Morskoy Pekhotnyy Batalyon"
+	regiments = {
+		L_Marine_Bat = { x = 0 y = 0 }
+	}
+}
+
+units = {
+	division = {
+		name = "1-go Motostrelkovaya Brigada"
+		location = 11617
+		division_template = "Motostrelkovaya Brigada"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "2-go Motostrelkovaya Brigada"
+		location = 672
+		division_template = "Motostrelkovaya Brigada"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "3-go Motostrelkovaya Brigada"
+		location = 11599
+		division_template = "Motostrelkovaya Brigada"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.01
+	}
+}
+
+instant_effect = {
+	add_equipment_to_stockpile = {
+    type = medium_tank_chassis_0
+		producer = SOV
+		variant_name = "T-55A"
+		amount = 53
+	}
+
+	add_equipment_to_stockpile = {
+		type = medium_tank_chassis_1
+		producer = SOV
+		variant_name = "T-72A"
+		amount = 9
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BMP-2"
+		type = medium_tank_flame_chassis_1			#BMP-2
+		amount = 10
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BMP-1"
+		type = medium_tank_flame_chassis_0			#BMP-1
+		amount = 80
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BTR-70"
+		type = medium_tank_amphibious_chassis_1			#BTR-70
+		amount = 20
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BTR-60PB"
+		type = medium_tank_amphibious_chassis_0			#BTR-60
+		amount = 200
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "D-30"
+		type = artillery_1			#D-30
+		amount = 80
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		type = util_vehicle_2
+		amount = 150
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		type = infantry_weapons_2
+		amount = 2000
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		type = Anti_Air_0
+		amount = 100
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		type = Heavy_Anti_tank_1
+		amount = 50
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		type = Anti_tank_1
+		amount = 100
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		type = cnc_equipment_1
+		amount = 300
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "SU-25"
+		type = small_plane_cas_airframe_2		#SU-25
+		amount = 12
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Aero L-39"
+		type = small_plane_strike_airframe_1		#L-39
+		amount = 5
+		producer = CZE
+	}
+
+	add_equipment_to_stockpile = {
+		type = heavy_tank_chassis_0
+		variant_name = "Mi-24V"
+		amount = 8
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "An-12"
+		producer = SOV
+		type = large_plane_air_transport_airframe_1 #An-12
+		amount = 2
+	}
+}

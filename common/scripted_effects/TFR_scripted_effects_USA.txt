@@ -87,7 +87,7 @@ USA_count_down_mission_effect = {
 							is_ai = yes
 							has_game_rule = {
 								rule = USA_ai_behavior
-								option = USA_TRUMP_CHOSEN_AND_WINS
+								option = REPUBLICANS
 							}
 						}
 						NOT = {
@@ -111,7 +111,7 @@ USA_count_down_mission_effect = {
 							is_ai = yes
 							has_game_rule = {
 								rule = USA_ai_behavior
-								option = USA_TRUMP_CHOSEN_AND_LOSES
+								option = REPUBLICANS
 							}
 						}
 						NOT = {
@@ -208,7 +208,7 @@ USA_count_down_mission_effect = {
 							is_ai = yes
 							has_game_rule = {
 								rule = USA_ai_behavior
-								option = USA_BIDEN_CHOSEN_AND_WINS
+								option = DEMOCRATS
 							}
 						}
 						NOT = {
@@ -232,7 +232,7 @@ USA_count_down_mission_effect = {
 							is_ai = yes
 							has_game_rule = {
 								rule = USA_ai_behavior
-								option = USA_BIDEN_CHOSEN_AND_LOSES
+								option = DEMOCRATS
 							}
 						}
 						NOT = {
@@ -2511,7 +2511,6 @@ USA_civil_war_outbreak_effect = {
 			add_faction_goal = faction_goal_placeholder_long_term
 			remove_faction_goal = faction_goal_a_military_base
 			add_faction_goal = faction_goal_placeholder_medium_term
-			add_faction_goal = faction_goal_placeholder_short_term
 		}
 		#Was in event usa.103
 		transfer_state = 1122
@@ -3000,7 +2999,6 @@ USA_civil_war_outbreak_effect = {
 			add_faction_goal = faction_goal_placeholder_long_term
 			remove_faction_goal = faction_goal_a_military_base
 			add_faction_goal = faction_goal_placeholder_medium_term
-			add_faction_goal = faction_goal_placeholder_short_term
 		}
 		load_oob = "GMA_2020"
 	}
@@ -4816,7 +4814,7 @@ USA_civil_war_outbreak_effect1 = {
 			character = USA_micheal_flynn_char
 			promote_leader = yes
 			country_leader = {
-				ideology = military_junta
+				ideology = Nat_Autocracy
 				traits = {
 					hos_respected_general
 				}
@@ -4835,7 +4833,6 @@ USA_civil_war_outbreak_effect1 = {
 			add_faction_goal = faction_goal_placeholder_long_term
 			remove_faction_goal = faction_goal_a_military_base
 			add_faction_goal = faction_goal_placeholder_medium_term
-			add_faction_goal = faction_goal_placeholder_short_term
 		}
 		every_state = {
 			limit = {
@@ -4870,9 +4867,8 @@ USA_civil_war_begins = {
 		}
 		if = {
 			limit = {
-				ATW = { has_achievements_enabled = yes }
+				ATW = { always = no }
 			}
-			activate_mission = hotline_miami_check_mission
 		}
 	}
 	ISR = {
@@ -5668,10 +5664,6 @@ USA_civil_war_begins = {
 		}
 	}
 	TAL = {
-		country_event = {
-			id = afghanistan.2
-			days = 30
-		}
 	}
 	CAN = {
 		country_event = {
@@ -6151,25 +6143,25 @@ USA_civil_war_divisions = {
 	division_template = {
 		name = "Garrison"
 		regiments = {
-			militia = {
+			Militia_Bat = {
 				x = 0
 				y = 0
 			}
-			militia = {
+			Militia_Bat = {
 				x = 0
 				y = 1
 			}
-			militia = {
+			Militia_Bat = {
 				x = 0
 				y = 2
 			}
-			militia = {
+			Militia_Bat = {
 				x = 1
 				y = 0
 			}
 		}
 		support = {
-			military_police = {
+			military_police_attachment = {
 				x = 0
 				y = 0
 			}
@@ -6179,27 +6171,27 @@ USA_civil_war_divisions = {
 		name = "Volunteer Militia"
 		is_locked = yes
 		regiments = {
-			militia = {
+			Militia_Bat = {
 				x = 0
 				y = 0
 			}
-			militia = {
+			Militia_Bat = {
 				x = 0
 				y = 1
 			}
-			militia = {
+			Militia_Bat = {
 				x = 0
 				y = 2
 			}
-			militia = {
+			Militia_Bat = {
 				x = 1
 				y = 0
 			}
-			militia = {
+			Militia_Bat = {
 				x = 1
 				y = 1
 			}
-			militia = {
+			Militia_Bat = {
 				x = 1
 				y = 2
 			}
@@ -6209,27 +6201,27 @@ USA_civil_war_divisions = {
 		name = "Motorized Militia"
 		is_locked = yes
 		regiments = {
-			mot_militia = {
+			Mot_Militia_Bat = {
 				x = 0
 				y = 0
 			}
-			mot_militia = {
+			Mot_Militia_Bat = {
 				x = 0
 				y = 1
 			}
-			mot_militia = {
+			Mot_Militia_Bat = {
 				x = 0
 				y = 2
 			}
-			mot_militia = {
+			Mot_Militia_Bat = {
 				x = 1
 				y = 0
 			}
-			mot_militia = {
+			Mot_Militia_Bat = {
 				x = 1
 				y = 1
 			}
-			mot_militia = {
+			Mot_Militia_Bat = {
 				x = 1
 				y = 2
 			}
@@ -6239,37 +6231,37 @@ USA_civil_war_divisions = {
 		name = "National Guard"
 		#is_locked = yes
 		regiments = {
-			infantry = {
+			L_Inf_Bat = {
 				x = 0
 				y = 0
 			}
-			infantry = {
+			L_Inf_Bat = {
 				x = 0
 				y = 1
 			}
-			infantry = {
+			L_Inf_Bat = {
 				x = 1
 				y = 0
 			}
-			infantry = {
+			L_Inf_Bat = {
 				x = 1
 				y = 1
 			}
-			artillery_brigade = {
+			Arty_Bat = {
 				x = 2
 				y = 0
 			}
 		}
 		support = {
-			engineer = {
+			L_Engi_Comp = {
 				x = 0
 				y = 0
 			}
-			signal_company = {
+			communications_company = {
 				x = 0
 				y = 1
 			}
-			anti_tank = {
+			AT_company = {
 				x = 0
 				y = 2
 			}
@@ -6346,7 +6338,6 @@ USA_enable_militia_recruitment = {
 }
 
 USA_enable_raise_legitimacy = {
-	unlock_decision_tooltip = USA_raise_legitimacy_decision
 	set_variable = {
 		var = ROOT.USA_raise_legitimacy_cost_var
 		value = 15
@@ -6355,7 +6346,6 @@ USA_enable_raise_legitimacy = {
 }
 
 USA_enable_recruit_foreign_volunteers = {
-	unlock_decision_tooltip = USA_recruit_foreign_volunteers_decision
 	set_variable = {
 		var = ROOT.USA_recruit_foreign_volunteers_cost_var
 		value = 15

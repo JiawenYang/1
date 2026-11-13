@@ -1,0 +1,91 @@
+# ============================================================================
+#  ZZZ_chainrun —— 事件链跑通器（直接施加效果版 · GAW 大亚洲战争）
+#
+#  链路本体：events/ZZZ_korea_war.txt
+#    ZZZ_KW_korea_war.6.a 半岛侧对北开战（成功分支）
+#      ZZZ_korea_declare_war_on_north = yes
+#      set_country_flag = ZZZ_kw_peninsula_war_started
+#      news_event = { id = ZZZ_KW_korea_war.8 }      ← fire 事件，跳过
+#      CHI = { country_event = { id = ZZZ_KW_korea_war.7 } }  ← fire 事件，跳过
+#    ZZZ_KW_korea_war.7.a GAW 入口（成功分支）
+#      ZZZ_start_gaw_from_korea = yes
+#  即：效果直接执行，读者不必再让 .6 派 .7；两处事件派发都不写进决议。
+#
+#  注意 ROOT：ZZZ_start_gaw_from_korea 内部走 PRC_gaw_start →
+#  PRC_GAW_check_faction_members，后者用 is_ally_with = ROOT / ROOT 加任务时间，
+#  要求 ROOT = CHI（正式链路里事件 .7 就派发在 CHI 上）。
+#  故本决议 allowed = { tag = CHI }；visible / available 仍恒真。
+# ============================================================================
+
+ZZZ_chainrun = {
+
+    ZZZ_cr_gaw_01_korea_ignites = {
+        icon = generic_political_actions
+        cost = 0
+        fire_only_once = no
+
+        allowed = { tag = CHI }
+        visible = { always = yes }
+        available = { always = yes }
+
+        complete_effect = {
+            KOR = {
+                # zzz_kw.6.a 半岛侧对北开战
+                ZZZ_korea_declare_war_on_north = yes
+                set_country_flag = ZZZ_kw_peninsula_war_started
+            }
+            CHI = {
+                # zzz_kw.7.a GAW 入口（内部含宣战 / 置旗 / PRC_gaw_start / prc.1008）
+                ZZZ_start_gaw_from_korea = yes
+            }
+        }
+
+        ai_will_do = { base = 0 }
+    }
+
+    # 节点：GAW 中国胜利结算（ZZZ_gaw_settle_china_victory）
+    ZZZ_cr_gaw_02_china_victory = {
+        icon = generic_political_actions
+        cost = 0
+        fire_only_once = no
+
+        allowed = { always = yes }
+        visible = { always = yes }
+        available = {
+            # 与日本胜利终局互斥：日本线已结算后不再允许中国线结算
+            NOT = { has_global_flag = gaw_japan_victory_settled }
+        }
+
+        complete_effect = {
+            # 原文：对日白和、置 gaw_china_victory_settled、处理日本/东南亚终局
+            ZZZ_gaw_settle_china_victory = yes
+            # 结算后摘除进行中旗标，避免 GAW 结束仍挂 pan_asian_war_ongoing
+            clr_global_flag = pan_asian_war_ongoing
+        }
+
+        ai_will_do = { base = 0 }
+    }
+
+    # 节点：GAW 日本胜利结算（ZZZ_gaw_settle_japan_victory）
+    ZZZ_cr_gaw_03_japan_victory = {
+        icon = generic_political_actions
+        cost = 0
+        fire_only_once = no
+
+        allowed = { always = yes }
+        visible = { always = yes }
+        available = {
+            # 与中国胜利终局互斥：中国线已结算后不再允许日本线结算
+            NOT = { has_global_flag = gaw_china_victory_settled }
+        }
+
+        complete_effect = {
+            # 原文：对华白和、置 gaw_japan_victory_settled、扶植傀儡政府
+            ZZZ_gaw_settle_japan_victory = yes
+            # 结算后摘除进行中旗标，避免 GAW 结束仍挂 pan_asian_war_ongoing
+            clr_global_flag = pan_asian_war_ongoing
+        }
+
+        ai_will_do = { base = 0 }
+    }
+}

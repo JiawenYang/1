@@ -416,7 +416,6 @@ PRC_national_peoples_congress_cat = {
 			every_country = {
 				limit = {
 					OR = {
-						tag = KNC
 						tag = SHN
 						tag = KAR
 						tag = ARK
@@ -482,7 +481,7 @@ PRC_foreign_policy_category = {
 			set_temp_variable = { percent_change = 2 }
 			set_temp_variable = { tag_index = CHI }
 			set_temp_variable = { influence_target = FROM }
-			change_influence_percentage = yes
+			if = { limit = { NOT = { has_global_flag = cml_md_influence_disabled } } change_influence_percentage = yes }
 			FROM = {
 				every_owned_state = {
 					add_building_construction = {
@@ -750,7 +749,6 @@ PRC_foreign_policy_category = {
 		}
 	}
 	PRC_invite_pakistan_to_eadi = {
-		#какой долбаеб это делал потом переделаю #ну как, какой... известно, какой -IAVL #переделал
 		available = {
 			PAK = {
 				OR = {
@@ -832,27 +830,27 @@ PRC_foreign_policy_category = {
 					}
 				}
 				add_equipment_to_stockpile = {
-					type = infantry_equipment_1
+					type = Inf_equipment
 					amount = 1500
 					producer = CHI
 				}
 				add_equipment_to_stockpile = {
-					type = anti_tank_equipment_1
+					type = L_AT_Equipment
 					amount = 300
 					producer = CHI
 				}
 				add_equipment_to_stockpile = {
-					type = anti_air_equipment_1
+					type = AA_Equipment
 					amount = 300
 					producer = CHI
 				}
 				add_equipment_to_stockpile = {
-					type = support_equipment
+					type = Inf_equipment
 					amount = 500
 					producer = CHI
 				}
 				add_equipment_to_stockpile = {
-					type = motorized_equipment
+					type = util_vehicle_equipment
 					amount = 500
 					producer = CHI
 				}
@@ -1015,7 +1013,7 @@ PRC_foreign_policy_category = {
 			}
 			modify_treasury_effect = yes
 			send_equipment = {
-				equipment = infantry_weapons
+				equipment = Inf_equipment
 				amount = 90600
 				target = BRM
 			}
@@ -1209,12 +1207,12 @@ PRC_foreign_policy_category = {
 		days_remove = 70
 		remove_effect = {
 			send_equipment = {
-				equipment = infantry_weapons
+				equipment = Inf_equipment
 				amount = 7500
 				target = NKO
 			}
 			send_equipment = {
-				equipment = command_control_equipment
+				equipment = cnc_equipment
 				amount = 750
 				target = NKO
 			}
@@ -1425,6 +1423,149 @@ PRC_foreign_policy_category = {
 			base = 100
 		}
 	}
+
+	PRC_balkan_federation_support = {
+		icon = GFX_decision_generic_form_nation
+		allowed = {
+			tag = CHI
+		}
+		visible = {
+			has_global_flag = USA_federal_paralysis_global
+			has_global_flag = balkan_withdraw_batch1_done
+			NOT = { has_global_flag = PRC_balkan_federation_supported }
+			NOT = { has_global_flag = balkan_federation_branch_failed }
+		}
+		available = {
+			has_global_flag = balkan_withdraw_batch2_done
+			NOT = { has_global_flag = PRC_balkan_federation_supported }
+			NOT = { has_global_flag = balkan_federation_branch_failed }
+		}
+		custom_cost_text = PRC_balkan_federation_support_cost_tt
+		custom_cost_trigger = {
+			has_political_power > 149
+			command_power > 59
+			NOT = { check_variable = { treasury < 12 } }
+		}
+		cost = 0
+		fire_only_once = yes
+		days_remove = 90
+		complete_effect = {
+			add_political_power = -150
+			add_command_power = -60
+			set_temp_variable = { treasury_change = -12 }
+			modify_treasury_effect = yes
+		}
+		remove_effect = {
+			add_ideas = PRC_balkan_federation_partnership
+			set_global_flag = PRC_balkan_federation_supported
+			BUL = { ZZZ_balkan_china_federation_invest_effect = yes }
+			ROM = { ZZZ_balkan_china_federation_invest_effect = yes }
+			GRE = { ZZZ_balkan_china_federation_invest_effect = yes }
+			ALB = { ZZZ_balkan_china_federation_invest_effect = yes }
+			CRO = { ZZZ_balkan_china_federation_invest_effect = yes }
+			SLV = { ZZZ_balkan_china_federation_invest_effect = yes }
+			MNT = { ZZZ_balkan_china_federation_invest_effect = yes }
+			#   common/decisions/categories/99_SER_decision_categories.txt:88
+			#   common/decisions/Serbia.txt:1331
+			#   common/autonomous_states/MD_serbian_autonomies.txt:116
+			if = {
+				limit = { country_exists = SER }
+				SER = {
+					add_political_power = 100
+				}
+				BUL = { set_country_flag = balkan_subject_agree }
+				ROM = { set_country_flag = balkan_subject_agree }
+				GRE = { set_country_flag = balkan_subject_agree }
+				ALB = { set_country_flag = balkan_subject_agree }
+				CRO = { set_country_flag = balkan_subject_agree }
+				SLV = { set_country_flag = balkan_subject_agree }
+				MNT = { set_country_flag = balkan_subject_agree }
+			}
+			country_event = { id = zzz_balkan.30 }
+		}
+		ai_will_do = {
+			base = 10
+			modifier = {
+				add = 40
+				has_global_flag = gaw_china_victory_settled
+			}
+			modifier = {
+				add = 20
+				has_global_flag = DSW_SOV_russian_victory
+			}
+			modifier = {
+				factor = 0
+				NOT = { check_variable = { treasury > 11 } }
+			}
+			modifier = {
+				factor = 0
+				command_power < 60
+			}
+			modifier = {
+				factor = 0
+				has_political_power < 150
+			}
+		}
+	}
+
+	PRC_balkan_war_on_turkey = {
+		icon = GFX_PRC_rocket_strike
+		allowed = {
+			tag = CHI
+		}
+		visible = {
+			has_global_flag = PRC_balkan_federation_supported
+			has_global_flag = gaw_china_victory_settled
+			has_global_flag = DSW_SOV_russian_victory
+			NOT = { has_global_flag = balkan_federation_branch_failed }
+		}
+		available = {
+			TUR = { has_country_flag = BALKAN_left_NATO }
+			NOT = { has_war_with = TUR }
+			NOT = { is_in_faction_with = TUR }
+			NOT = { has_global_flag = balkan_federation_branch_failed }
+		}
+		cost = 75
+		fire_only_once = yes
+		complete_effect = {
+			declare_war_on = {
+				target = TUR
+				type = annex_everything
+			}
+		}
+		ai_will_do = {
+			base = 10
+			modifier = {
+				add = 90
+				has_global_flag = PRC_balkan_federation_supported
+			}
+		}
+	}
+
+	PRC_balkan_federation_collapse = {
+		icon = GFX_decision_generic_form_nation
+		allowed = {
+			tag = CHI
+		}
+		visible = {
+			has_global_flag = PRC_balkan_federation_supported
+			OR = {
+				has_global_flag = DSW_SOV_russian_defeat
+				has_global_flag = nato_nato_won_nato_war
+			}
+		}
+		available = {
+			has_global_flag = PRC_balkan_federation_supported
+		}
+		cost = 0
+		fire_only_once = yes
+		complete_effect = {
+			ZZZ_balkan_federation_rollback_effect = yes
+		}
+		ai_will_do = {
+			base = 1000
+		}
+	}
 }
 
 PRC_balance_of_power_category = {
@@ -1559,7 +1700,11 @@ PRC_balance_of_power_category = {
 				var = PRC_approval_rating_trigger_temp
 				value = 0.75
 			}
-			PRC_has_approval_rating_greater_than_or_equals = yes
+			check_variable = {
+				var = PRC_approval_rating_var
+				value = PRC_approval_rating_trigger_temp
+				compare = greater_than_or_equals
+			}
 		}
 		fire_only_once = yes
 		cost = 100
@@ -1699,12 +1844,6 @@ PRC_indo_pakistan_war = {
 					transfer_state = 420
 					transfer_state = 421
 					transfer_state = 427
-					add_state_core = 426
-					add_state_core = 563
-					add_state_core = 573
-					transfer_state = 426
-					transfer_state = 563
-					transfer_state = 573
 				}
 				PAK = {
 					set_country_flag = PAK_lost_indo_pakistan_war
@@ -1779,6 +1918,7 @@ PRC_indo_pakistan_war = {
 		complete_effect = {
 			hidden_effect = {
 				PAK = {
+					set_country_flag = PAK_won_indo_pakistan_war
 					white_peace = RAJ
 					add_state_core = 428
 					add_state_core = 429
@@ -1854,12 +1994,12 @@ PRC_indo_pakistan_war = {
 		remove_effect = {
 			PAK = {
 				add_equipment_to_stockpile = {
-					type = infantry_weapons1
+					type = Inf_equipment
 					amount = 2500
 					producer = CHI
 				}
 				add_equipment_to_stockpile = {
-					type = command_control_equipment1
+					type = cnc_equipment
 					amount = 750
 					producer = CHI
 				}
@@ -1972,6 +2112,38 @@ PRC_indo_pakistan_war = {
 		days_remove = 100
 		ai_will_do = {
 			base = 100
+		}
+	}
+	PRC_host_non_nuclear_negotiations = {
+		icon = GFX_decision_generic_political_discourse
+		cost = 75
+		fire_only_once = yes
+		visible = {
+			tag = CHI
+			is_ai = no
+			has_country_flag = PRC_indo_pakistan_war_ongoing
+			NOT = { has_country_flag = PRC_indo_pak_mediation_attempted }
+			country_exists = RAJ
+			country_exists = PAK
+			RAJ = { has_war_with = PAK }
+		}
+		available = {
+			is_ai = no
+			has_country_flag = PRC_indo_pakistan_war_ongoing
+			NOT = { has_country_flag = PRC_indo_pak_mediation_attempted }
+			RAJ = { has_war_with = PAK }
+		}
+		complete_effect = {
+			set_country_flag = PRC_indo_pak_mediation_attempted
+			RAJ = {
+				country_event = { id = prc.140 days = 1 }
+			}
+			PAK = {
+				country_event = { id = prc.140 days = 2 }
+			}
+		}
+		ai_will_do = {
+			base = 0
 		}
 	}
 }
@@ -2860,7 +3032,7 @@ PRC_the_chinese_century_category = {
 			586 = {
 				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
-					type = energy_farm
+					type = renewable_energy_infra
 					level = 2
 					instant_build = yes
 				}
@@ -3193,7 +3365,7 @@ PRC_enviromental_policy_category = {
 			}
 			PRC_add_enviromental_progress = yes
 			add_stability = 0.01
-			621 = {
+			556 = {
 				add_building_construction = {
 					type = infrastructure
 					level = 1
@@ -3820,7 +3992,6 @@ PRC_xiongania_category = {
 						free_building_slots = {
 							building = nuclear_reactor
 							size > 0
-							include_locked = yes
 						}
 					}
 					add_building_construction = {
@@ -3945,4 +4116,1717 @@ PRC_xiongania_category = {
 			base = 100
 		}
 	}
+}
+
+PRC_pla_reformation = {
+	PRC_serve_the_people_prop = {
+		icon = generic_propaganda_campaigns
+		allowed = {
+			original_tag = CHI
+		}
+		visible = {
+			has_country_flag = PRC_army_reform_start
+		}
+		available = {
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
+		}
+		ai_will_do = {
+			base = 5
+		}
+		cost = 75
+		days_remove = 100
+		days_re_enable = 100
+		fire_only_once = no
+		cancel_if_not_visible = yes
+		modifier = {
+			army_defence_factor = 0.05
+			army_attack_factor = 0.015
+			army_morale_factor = 0.015
+			conscription_factor = 0.015
+			training_time_factor = -0.07
+		}
+		complete_effect = {
+			remove_campaign_slot = yes
+		}
+		remove_effect = {
+			add_campaign_slot = yes
+		}
+	}
+	PRC_expand_baotou_tank_plant = {
+		icon = GFX_decision_generic_factory
+		allowed = {
+			tag = CHI
+		}
+		visible = {
+			has_completed_focus = PRC_tank_primacy_nat
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 556
+			}
+		}
+		on_map_mode = map_and_decisions_view
+		available = {
+		}
+		ai_will_do = {
+			base = 100
+		}
+		cost = 35
+		fire_only_once = yes
+		days_remove = 100
+		complete_effect = {
+		}
+		modifier = {
+			consumer_goods_factor = 0.04
+		}
+		remove_effect = {
+			556 = {
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = arms_factory
+					level = 3
+					instant_build = yes
+				}
+			}
+			set_temp_variable = {
+				var = debt_var_temp
+				value = 5
+			}
+			add_debt_with_inflation = yes
+		}
+	}
+	PRC_invest_in_china_south_industries_group = {
+		icon = GFX_decision_generic_attract_foreign_investors
+		allowed = {
+			tag = CHI
+		}
+		visible = {
+			has_completed_focus = PRC_tidal_wave_of_bodies
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 100
+		}
+		cost = 35
+		fire_only_once = yes
+		days_remove = 60
+		complete_effect = {
+		}
+		modifier = {
+			consumer_goods_factor = 0.02
+		}
+		remove_effect = {
+			583 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			set_temp_variable = {
+				var = debt_var_temp
+				value = 7.5
+			}
+			add_debt_with_inflation = yes
+		}
+	}
+	PRC_expand_heilongjiang_artillery_plants = {
+		icon = GFX_decision_generic_factory
+		allowed = {
+			tag = CHI
+		}
+		visible = {
+			has_completed_focus = PRC_the_cleansing_fire
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 555
+				state = 554
+			}
+		}
+		on_map_mode = map_and_decisions_view
+		available = {
+		}
+		ai_will_do = {
+			base = 100
+		}
+		cost = 35
+		fire_only_once = yes
+		days_remove = 100
+		complete_effect = {
+		}
+		modifier = {
+			consumer_goods_factor = 0.04
+		}
+		remove_effect = {
+			554 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+			555 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			set_temp_variable = {
+				var = debt_var_temp
+				value = 5
+			}
+			add_debt_with_inflation = yes
+		}
+	}
+	PRC_network_centric_warfare_smart_air_land_integration = {
+		icon = GFX_decision_generic_air
+		allowed = {
+			tag = CHI
+		}
+		visible = {
+			has_completed_focus = PRC_achieving_network_centric_warfare
+		}
+		available = {
+			hidden_trigger = {
+				NOT = {
+					has_country_flag = PRC_network_centric_warfare_timer_flag
+				}
+			}
+			command_power > 20
+		}
+		ai_will_do = {
+			base = 100
+		}
+		cost = 25
+		fire_only_once = yes
+		days_remove = 80
+		complete_effect = {
+			set_country_flag = PRC_network_centric_warfare_timer_flag
+			add_command_power = -20
+		}
+		modifier = {
+			experience_gain_army_factor = 0.05
+		}
+		remove_effect = {
+			clr_country_flag = PRC_network_centric_warfare_timer_flag
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_plaaf_dummy_1
+					add_idea = PRC_network_centric_warfare_smart_air_land_integration_air_idea
+				}
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_pla_dummy_idea
+					add_idea = PRC_network_centric_warfare_smart_air_land_integration_land_idea
+				}
+			}
+			set_temp_variable = {
+				var = PRC_army_reform_progress_temp
+				value = 0.01
+			}
+			PRC_add_army_reform_progress = yes
+			hidden_effect = {
+				add_to_variable = {
+					var = PRC_plaaf_ground_attack_factor_dynamic_var
+					value = 0.05
+				}
+				add_to_variable = {
+					var = PRC_plaaf_air_cas_efficiency_dynamic_var
+					value = 0.05
+				}
+				add_to_variable = {
+					var = PRC_pla_coordination_bonus_dynamic_var
+					value = 0.05
+				}
+				add_to_variable = {
+					var = PRC_pla_initiative_factor_dynamic_var
+					value = 0.02
+				}
+			}
+		}
+	}
+	PRC_network_centric_warfare_advanced_artillery_support = {
+		icon = GFX_decision_generic_military
+		allowed = {
+			tag = CHI
+		}
+		visible = {
+			has_completed_focus = PRC_achieving_network_centric_warfare
+		}
+		available = {
+			hidden_trigger = {
+				NOT = {
+					has_country_flag = PRC_network_centric_warfare_timer_flag
+				}
+			}
+			command_power > 20
+		}
+		ai_will_do = {
+			base = 100
+		}
+		cost = 25
+		fire_only_once = yes
+		days_remove = 80
+		complete_effect = {
+			set_country_flag = PRC_network_centric_warfare_timer_flag
+			add_command_power = -20
+		}
+		modifier = {
+			experience_gain_army_factor = 0.05
+		}
+		remove_effect = {
+			clr_country_flag = PRC_network_centric_warfare_timer_flag
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_pla_dummy_idea
+					add_idea = PRC_network_centric_warfare_advanced_artillery_support_idea
+				}
+			}
+			set_temp_variable = {
+				var = PRC_army_reform_progress_temp
+				value = 0.01
+			}
+			PRC_add_army_reform_progress = yes
+			hidden_effect = {
+				add_to_variable = {
+					var = PRC_pla_army_attack_factor_dynamic_var
+					value = 0.03
+				}
+				add_to_variable = {
+					var = PRC_pla_breakthrough_factor_dynamic_var
+					value = 0.03
+				}
+				add_to_variable = {
+					var = PRC_pla_army_artillery_attack_factor_dynamic_var
+					value = 0.04
+				}
+				add_to_variable = {
+					var = PRC_pla_army_artillery_defence_factor_dynamic_var
+					value = 0.04
+				}
+			}
+		}
+	}
+	PRC_network_centric_warfare_smart_infantry_equipment = {
+		icon = GFX_decision_generic_military
+		allowed = {
+			tag = CHI
+		}
+		visible = {
+			has_completed_focus = PRC_achieving_network_centric_warfare
+		}
+		available = {
+			hidden_trigger = {
+				NOT = {
+					has_country_flag = PRC_network_centric_warfare_timer_flag
+				}
+			}
+			command_power > 20
+		}
+		ai_will_do = {
+			base = 100
+		}
+		cost = 25
+		fire_only_once = yes
+		days_remove = 80
+		complete_effect = {
+			set_country_flag = PRC_network_centric_warfare_timer_flag
+			add_command_power = -20
+		}
+		modifier = {
+			experience_gain_army_factor = 0.05
+		}
+		remove_effect = {
+			clr_country_flag = PRC_network_centric_warfare_timer_flag
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_pla_dummy_idea
+					add_idea = PRC_network_centric_warfare_smart_infantry_equipment_idea
+				}
+			}
+			set_temp_variable = {
+				var = PRC_army_reform_progress_temp
+				value = 0.01
+			}
+			PRC_add_army_reform_progress = yes
+			hidden_effect = {
+				add_to_variable = {
+					var = PRC_pla_training_time_factor_dynamic_var
+					value = -0.1
+				}
+				add_to_variable = {
+					var = PRC_pla_supply_consumption_factor_dynamic_var
+					value = 0.05
+				}
+				add_to_variable = {
+					var = PRC_pla_experience_gain_army_unit_factor_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = PRC_pla_army_speed_factor_dynamic_var
+					value = 0.04
+				}
+				add_to_variable = {
+					var = PRC_pla_army_infantry_attack_factor_dynamic_var
+					value = 0.04
+				}
+				add_to_variable = {
+					var = PRC_pla_army_infantry_defence_factor_dynamic_var
+					value = 0.04
+				}
+			}
+		}
+	}
+	PRC_skill_training_attack_skills = {
+		icon = GFX_decision_generic_military
+		allowed = {
+			tag = CHI
+		}
+		visible = {
+			has_completed_focus = PRC_dawn_of_the_chinese_tactical_thought
+		}
+		available = {
+			hidden_trigger = {
+				NOT = {
+					has_country_flag = PRC_skill_training_timer_flag
+				}
+			}
+			command_power > 25
+		}
+		ai_will_do = {
+			base = 100
+		}
+		cost = 35
+		fire_only_once = yes
+		days_remove = 120
+		complete_effect = {
+			set_country_flag = PRC_skill_training_timer_flag
+			add_command_power = -25
+		}
+		modifier = {
+			experience_gain_factor = 0.05
+		}
+		remove_effect = {
+			clr_country_flag = PRC_skill_training_timer_flag
+			every_army_leader = {
+				add_attack = 1
+			}
+			set_temp_variable = {
+				var = PRC_army_reform_progress_temp
+				value = 0.01
+			}
+			PRC_add_army_reform_progress = yes
+		}
+	}
+	PRC_skill_training_defense_skills = {
+		icon = GFX_decision_generic_military
+		allowed = {
+			tag = CHI
+		}
+		visible = {
+			has_completed_focus = PRC_dawn_of_the_chinese_tactical_thought
+		}
+		available = {
+			hidden_trigger = {
+				NOT = {
+					has_country_flag = PRC_skill_training_timer_flag
+				}
+			}
+			command_power > 25
+		}
+		ai_will_do = {
+			base = 100
+		}
+		cost = 35
+		fire_only_once = yes
+		days_remove = 120
+		complete_effect = {
+			set_country_flag = PRC_skill_training_timer_flag
+			add_command_power = -25
+		}
+		modifier = {
+			experience_gain_factor = 0.05
+		}
+		remove_effect = {
+			clr_country_flag = PRC_skill_training_timer_flag
+			every_army_leader = {
+				add_defense = 1
+			}
+			set_temp_variable = {
+				var = PRC_army_reform_progress_temp
+				value = 0.01
+			}
+			PRC_add_army_reform_progress = yes
+		}
+	}
+	PRC_skill_training_planning_skills = {
+		icon = GFX_decision_generic_military
+		allowed = {
+			tag = CHI
+		}
+		visible = {
+			has_completed_focus = PRC_dawn_of_the_chinese_tactical_thought
+		}
+		available = {
+			hidden_trigger = {
+				NOT = {
+					has_country_flag = PRC_skill_training_timer_flag
+				}
+			}
+			command_power > 25
+		}
+		ai_will_do = {
+			base = 100
+		}
+		cost = 35
+		fire_only_once = yes
+		days_remove = 120
+		complete_effect = {
+			set_country_flag = PRC_skill_training_timer_flag
+			add_command_power = -25
+		}
+		modifier = {
+			experience_gain_factor = 0.05
+		}
+		remove_effect = {
+			clr_country_flag = PRC_skill_training_timer_flag
+			every_army_leader = {
+				add_planning = 1
+			}
+			set_temp_variable = {
+				var = PRC_army_reform_progress_temp
+				value = 0.01
+			}
+			PRC_add_army_reform_progress = yes
+		}
+	}
+	PRC_skill_training_logistics_skills = {
+		icon = GFX_decision_generic_military
+		allowed = {
+			tag = CHI
+		}
+		visible = {
+			has_completed_focus = PRC_dawn_of_the_chinese_tactical_thought
+		}
+		available = {
+			hidden_trigger = {
+				NOT = {
+					has_country_flag = PRC_skill_training_timer_flag
+				}
+			}
+			command_power > 25
+		}
+		ai_will_do = {
+			base = 100
+		}
+		cost = 35
+		fire_only_once = yes
+		days_remove = 120
+		complete_effect = {
+			set_country_flag = PRC_skill_training_timer_flag
+			add_command_power = -25
+		}
+		modifier = {
+			experience_gain_factor = 0.05
+		}
+		remove_effect = {
+			clr_country_flag = PRC_skill_training_timer_flag
+			every_army_leader = {
+				add_logistics = 1
+			}
+			set_temp_variable = {
+				var = PRC_army_reform_progress_temp
+				value = 0.01
+			}
+			PRC_add_army_reform_progress = yes
+		}
+	}
+	PRC_award_the_generals_heroes_of_the_taiwan_war = {
+		icon = GFX_decision_generic_military
+		allowed = {
+			tag = CHI
+		}
+		visible = {
+			has_completed_focus = PRC_chinas_spot_in_the_sun
+		}
+		available = {
+			command_power > 35
+		}
+		ai_will_do = {
+			base = 100
+		}
+		cost = 100
+		fire_only_once = yes
+		complete_effect = {
+			add_command_power = -35
+			if = {
+				limit = {
+					NOT = {
+						has_country_flag = PRC_empire_medals_flag
+					}
+				}
+				random_unit_leader = {
+					limit = {
+						is_country_leader = no
+						NOT = {
+							has_trait = trait_PRC_august_1st_medal
+						}
+					}
+					add_unit_leader_trait = trait_PRC_august_1st_medal
+				}
+				random_unit_leader = {
+					limit = {
+						is_country_leader = no
+						NOT = {
+							has_trait = trait_PRC_august_1st_medal
+						}
+					}
+					add_unit_leader_trait = trait_PRC_august_1st_medal
+				}
+				random_unit_leader = {
+					limit = {
+						is_country_leader = no
+						NOT = {
+							has_trait = trait_PRC_august_1st_medal
+						}
+					}
+					add_unit_leader_trait = trait_PRC_august_1st_medal
+				}
+				random_unit_leader = {
+					limit = {
+						is_country_leader = no
+						NOT = {
+							has_trait = trait_PRC_red_flag_medal
+						}
+					}
+					add_unit_leader_trait = trait_PRC_red_flag_medal
+				}
+				random_unit_leader = {
+					limit = {
+						is_country_leader = no
+						NOT = {
+							has_trait = trait_PRC_red_flag_medal
+						}
+					}
+					add_unit_leader_trait = trait_PRC_red_flag_medal
+				}
+				random_unit_leader = {
+					limit = {
+						is_country_leader = no
+						NOT = {
+							has_trait = trait_PRC_red_flag_medal
+						}
+					}
+					add_unit_leader_trait = trait_PRC_red_flag_medal
+				}
+				random_unit_leader = {
+					limit = {
+						is_country_leader = no
+						NOT = {
+							has_trait = trait_PRC_red_flag_medal
+						}
+					}
+					add_unit_leader_trait = trait_PRC_red_flag_medal
+				}
+				random_unit_leader = {
+					limit = {
+						is_country_leader = no
+						NOT = {
+							has_trait = trait_PRC_red_star_medal
+						}
+					}
+					add_unit_leader_trait = trait_PRC_red_star_medal
+				}
+				random_unit_leader = {
+					limit = {
+						is_country_leader = no
+						NOT = {
+							has_trait = trait_PRC_red_star_medal
+						}
+					}
+					add_unit_leader_trait = trait_PRC_red_star_medal
+				}
+				random_unit_leader = {
+					limit = {
+						is_country_leader = no
+						NOT = {
+							has_trait = trait_PRC_red_star_medal
+						}
+					}
+					add_unit_leader_trait = trait_PRC_red_star_medal
+				}
+				random_unit_leader = {
+					limit = {
+						is_country_leader = no
+						NOT = {
+							has_trait = trait_PRC_red_star_medal
+						}
+					}
+					add_unit_leader_trait = trait_PRC_red_star_medal
+				}
+			}
+			else = {
+				random_unit_leader = {
+					limit = {
+						is_country_leader = no
+						NOT = {
+							has_trait = trait_PRC_tiger_tally
+						}
+					}
+					add_unit_leader_trait = trait_PRC_tiger_tally
+				}
+				random_unit_leader = {
+					limit = {
+						is_country_leader = no
+						NOT = {
+							has_trait = trait_PRC_tiger_tally
+						}
+					}
+					add_unit_leader_trait = trait_PRC_tiger_tally
+				}
+				random_unit_leader = {
+					limit = {
+						is_country_leader = no
+						NOT = {
+							has_trait = trait_PRC_tiger_tally
+						}
+					}
+					add_unit_leader_trait = trait_PRC_tiger_tally
+				}
+				random_unit_leader = {
+					limit = {
+						is_country_leader = no
+						NOT = {
+							has_trait = trait_PRC_goldfish_pouch
+						}
+					}
+					add_unit_leader_trait = trait_PRC_goldfish_pouch
+				}
+				random_unit_leader = {
+					limit = {
+						is_country_leader = no
+						NOT = {
+							has_trait = trait_PRC_goldfish_pouch
+						}
+					}
+					add_unit_leader_trait = trait_PRC_goldfish_pouch
+				}
+				random_unit_leader = {
+					limit = {
+						is_country_leader = no
+						NOT = {
+							has_trait = trait_PRC_goldfish_pouch
+						}
+					}
+					add_unit_leader_trait = trait_PRC_goldfish_pouch
+				}
+				random_unit_leader = {
+					limit = {
+						is_country_leader = no
+						NOT = {
+							has_trait = trait_PRC_goldfish_pouch
+						}
+					}
+					add_unit_leader_trait = trait_PRC_goldfish_pouch
+				}
+				random_unit_leader = {
+					limit = {
+						is_country_leader = no
+						NOT = {
+							has_trait = trait_PRC_iron_certificate
+						}
+					}
+					add_unit_leader_trait = trait_PRC_iron_certificate
+				}
+				random_unit_leader = {
+					limit = {
+						is_country_leader = no
+						NOT = {
+							has_trait = trait_PRC_iron_certificate
+						}
+					}
+					add_unit_leader_trait = trait_PRC_iron_certificate
+				}
+				random_unit_leader = {
+					limit = {
+						is_country_leader = no
+						NOT = {
+							has_trait = trait_PRC_iron_certificate
+						}
+					}
+					add_unit_leader_trait = trait_PRC_iron_certificate
+				}
+				random_unit_leader = {
+					limit = {
+						is_country_leader = no
+						NOT = {
+							has_trait = trait_PRC_iron_certificate
+						}
+					}
+					add_unit_leader_trait = trait_PRC_iron_certificate
+				}
+			}
+		}
+	}
+	PRC_accelerated_officer_training_programs = {
+		icon = GFX_PRC_soliders
+		allowed = {
+			tag = CHI
+		}
+		visible = {
+			has_completed_focus = PRC_improve_officer_training
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 100
+		}
+		cost = 50
+		fire_only_once = no
+		days_re_enable = 200
+		days_remove = 30
+		complete_effect = {
+		}
+		modifier = {
+			experience_gain_factor = 0.1
+		}
+		remove_effect = {
+			set_temp_variable = {
+				var = PRC_army_reform_progress_temp
+				value = 0.05
+			}
+			PRC_add_army_reform_progress = yes
+			army_experience = 15
+		}
+	}
+	PRC_accelerated_soldier_training_programs = {
+		icon = GFX_PRC_soliders
+		allowed = {
+			tag = CHI
+		}
+		visible = {
+			has_completed_focus = PRC_next_generation_army
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 100
+		}
+		cost = 50
+		fire_only_once = no
+		days_re_enable = 200
+		days_remove = 30
+		complete_effect = {
+		}
+		modifier = {
+			training_time_army_factor = -0.15
+		}
+		remove_effect = {
+			set_temp_variable = {
+				var = PRC_army_reform_progress_temp
+				value = 0.05
+			}
+			PRC_add_army_reform_progress = yes
+			army_experience = 10
+		}
+	}
+	PRC_commission_the_aircraft_carrier_fujian = {
+		icon = GFX_decision_generic_factory
+		allowed = {
+			tag = CHI
+		}
+		visible = {
+			has_completed_focus = PRC_increase_naval_production
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 100
+		}
+		cost = 50
+		fire_only_once = yes
+		days_remove = 35
+		complete_effect = {
+		}
+		modifier = {
+		}
+		remove_effect = {
+			set_country_flag = PRC_commission_the_aircraft_carrier_fujian_flag
+			create_ship = {
+    		    type = carrier_hull_5
+    		    creator = CHI
+    		    name = "Type 003 Aircraft Carrier Fujian"
+    		}
+		}
+	}
+	PRC_complete_guangdong_aircraft_carrier_construction = {
+		icon = GFX_decision_generic_factory
+		allowed = {
+			tag = CHI
+		}
+		visible = {
+			has_completed_focus = PRC_carrier_primacy
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 100
+		}
+		cost = 50
+		fire_only_once = yes
+		days_remove = 100
+		complete_effect = {
+			set_temp_variable = {
+				var = debt_var_temp
+				value = 10
+			}
+		}
+		modifier = {
+			industrial_capacity_dockyard = -0.125
+		}
+		remove_effect = {
+			create_ship = {
+    		    type = carrier_hull_7
+    		    creator = CHI
+    		    name = "Type 004 Aircraft Carrier Guangdong"
+    		}
+		}
+	}
+	PRC_strategic_bomber_fleet_expansion_program = {
+		icon = GFX_decision_generic_air
+		allowed = {
+			tag = CHI
+		}
+		visible = {
+			has_completed_focus = PRC_flying_fortresses
+		}
+		available = {
+			NOT = {
+				has_idea = PRC_mass_aircraft_production
+			}
+		}
+		ai_will_do = {
+			base = 100
+		}
+		cost = 25
+		fire_only_once = yes
+		complete_effect = {
+			add_timed_idea = {
+				idea = PRC_strategic_bomber_fleet_expansion_program_idea
+				days = 200
+			}
+		}
+	}
+	PRC_strengthen_the_air_defense_of_cities = {
+		icon = GFX_decision_generic_wreckers
+		allowed = {
+			tag = CHI
+		}
+		visible = {
+			has_completed_focus = PRC_modernize_the_missile_corps
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 100
+		}
+		cost = 40
+		fire_only_once = yes
+		days_remove = 120
+		complete_effect = {
+			set_temp_variable = {
+				var = debt_var_temp
+				value = 25
+			}
+			add_debt_with_inflation = yes
+		}
+		remove_effect = {
+			every_owned_state = {
+				limit = {
+					is_core_of = ROOT
+					OR = {
+						has_state_category = megalopolis
+						has_state_category = state_03
+					}
+					free_building_slots = {
+						building = anti_air_building
+						size > 1
+					}
+				}
+				random_select_amount = 5
+				add_building_construction = {
+					type = anti_air_building
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+	PRC_military_project_mission = {
+		#icon = GFX_decision_ger_military_buildup
+		allowed = {
+			tag = CHI
+		}
+		activation = {
+			always = no
+		}
+		available = {
+			always = no
+		}
+		is_good = yes
+		selectable_mission = no
+		days_mission_timeout = 125
+		fire_only_once = no
+		timeout_effect = {
+		}
+		complete_effect = {
+		}
+		priority = 999
+	}
+	PRC_project_ghost_dec = {
+		#icon = GFX_decision_ger_military_buildup
+		cost = 25
+		fire_only_once = yes
+		allowed = {
+			tag = CHI
+		}
+		visible = {
+			has_completed_focus = PRC_next_generation_army
+		}
+		available = {
+			NOT = {
+				has_country_flag = PRC_military_project_researching
+			}
+			hidden_trigger = {
+				NOT = {
+					has_country_flag = anti_debil
+				}
+			}
+		}
+		complete_effect = {
+			country_event = prc.259
+			set_country_flag = anti_debil
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+	PRC_project_nib_dec = {
+		#icon = GFX_decision_ger_military_buildup
+		cost = 25
+		fire_only_once = yes
+		allowed = {
+			tag = CHI
+		}
+		visible = {
+			has_completed_focus = PRC_next_generation_army
+		}
+		available = {
+			NOT = {
+				has_country_flag = PRC_military_project_researching
+			}
+			hidden_trigger = {
+				NOT = {
+					has_country_flag = anti_debil
+				}
+			}
+		}
+		complete_effect = {
+			country_event = prc.260
+			set_country_flag = anti_debil
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+	PRC_project_swimmer_dec = {
+		#icon = GFX_decision_ger_military_buildup
+		cost = 25
+		fire_only_once = yes
+		allowed = {
+			tag = CHI
+		}
+		visible = {
+			has_completed_focus = PRC_rain_fire_from_above
+		}
+		available = {
+			NOT = {
+				has_country_flag = PRC_military_project_researching
+			}
+			hidden_trigger = {
+				NOT = {
+					has_country_flag = anti_debil
+				}
+			}
+		}
+		complete_effect = {
+			country_event = prc.261
+			set_country_flag = anti_debil
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+	PRC_project_impulse_dec = {
+		#icon = GFX_decision_ger_military_buildup
+		cost = 25
+		fire_only_once = yes
+		allowed = {
+			tag = CHI
+		}
+		visible = {
+			has_completed_focus = PRC_increase_naval_production
+		}
+		available = {
+			NOT = {
+				has_country_flag = PRC_military_project_researching
+			}
+			hidden_trigger = {
+				NOT = {
+					has_country_flag = anti_debil
+				}
+			}
+		}
+		complete_effect = {
+			country_event = prc.262
+			set_country_flag = anti_debil
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+	PRC_project_dark_sword_dec = {
+		#icon = GFX_decision_ger_military_buildup
+		cost = 25
+		fire_only_once = yes
+		allowed = {
+			tag = CHI
+		}
+		visible = {
+			has_completed_focus = PRC_trust_in_the_pilot
+		}
+		available = {
+			has_tech = improved_medium_airframe
+			NOT = {
+				has_country_flag = PRC_military_project_researching
+			}
+			hidden_trigger = {
+				NOT = {
+					has_country_flag = anti_debil
+				}
+			}
+		}
+		complete_effect = {
+			country_event = prc.263
+			set_country_flag = anti_debil
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+	PRC_project_song_wencong_dec = {
+		#icon = GFX_decision_ger_military_buildup
+		cost = 25
+		fire_only_once = yes
+		allowed = {
+			tag = CHI
+		}
+		visible = {
+			has_completed_focus = PRC_next_generation_airforce
+		}
+		available = {
+			date > 2025.06.01
+			NOT = {
+				has_country_flag = PRC_military_project_researching
+			}
+			hidden_trigger = {
+				NOT = {
+					has_country_flag = anti_debil
+				}
+			}
+		}
+		complete_effect = {
+			country_event = prc.356
+			set_country_flag = anti_debil
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+	PRC_project_flash_dec = {
+		#icon = GFX_decision_ger_military_buildup
+		cost = 25
+		fire_only_once = yes
+		allowed = {
+			tag = CHI
+		}
+		visible = {
+			has_completed_focus = PRC_next_generation_army
+		}
+		available = {
+			NOT = {
+				has_country_flag = PRC_military_project_researching
+			}
+			hidden_trigger = {
+				NOT = {
+					has_country_flag = anti_debil
+				}
+			}
+		}
+		complete_effect = {
+			country_event = prc.264
+			set_country_flag = anti_debil
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+	PRC_project_nami_dec = {
+		#icon = GFX_decision_ger_military_buildup
+		cost = 25
+		fire_only_once = yes
+		allowed = {
+			tag = CHI
+		}
+		visible = {
+			has_country_flag = PRC_project_nami_dec_unlocked
+		}
+		available = {
+			NOT = {
+				has_country_flag = PRC_military_project_researching
+			}
+			hidden_trigger = {
+				NOT = {
+					has_country_flag = anti_debil
+				}
+			}
+		}
+		complete_effect = {
+			country_event = prc.265
+			set_country_flag = anti_debil
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+	PRC_thunder_god_program_jungle = {
+		icon = generic_propaganda_campaigns
+		fire_only_once = yes
+		days_remove = 150
+		visible = {
+			has_completed_focus = PRC_expand_the_thunder_gods
+			hidden_trigger = {
+				NOT = {
+					has_country_flag = PRC_thunder_gods_jungle_complete
+				}
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = PRC_thunder_god_program_in_progress
+			}
+		}
+		custom_cost_text = PRC_operation_crimson_sky_decision_cost
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 30
+			}
+		}
+		ai_will_do = {
+			base = 100
+		}
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -30
+			}
+			set_country_flag = PRC_thunder_gods_jungle_flag
+			set_country_flag = PRC_thunder_god_program_in_progress
+		}
+		remove_effect = {
+			clr_country_flag = PRC_thunder_gods_jungle_flag
+			clr_country_flag = PRC_thunder_god_program_in_progress
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_pla_dummy_idea
+					add_idea = PRC_thunder_gods_jungle_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = PRC_acclimatization_hot_climate_gain_factor_dynamic_var
+					value = 0.2
+				}
+				add_to_variable = {
+					var = PRC_pla_training_time_factor_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = PRC_terrain_penalty_reduction_dynamic_var
+					value = 0.05
+				}
+			}
+			set_temp_variable = {
+				var = PRC_army_reform_progress_temp
+				value = 0.02
+			}
+			PRC_add_army_reform_progress = yes
+		}
+		modifier = {
+			experience_gain_army = 0.1
+			military_development_monthly = 0.01
+		}
+	}
+	PRC_thunder_god_program_mountain = {
+		icon = generic_propaganda_campaigns
+		fire_only_once = yes
+		days_remove = 150
+		visible = {
+			has_completed_focus = PRC_expand_the_thunder_gods
+			hidden_trigger = {
+				NOT = {
+					has_country_flag = PRC_thunder_gods_mountain_complete
+				}
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = PRC_thunder_god_program_in_progress
+			}
+		}
+		custom_cost_text = PRC_operation_crimson_sky_decision_cost
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 30
+			}
+		}
+		ai_will_do = {
+			base = 100
+		}
+		complete_effect = {
+			set_country_flag = PRC_thunder_gods_mountain_flag
+			set_country_flag = PRC_thunder_god_program_in_progress
+			hidden_effect = {
+				add_command_power = -30
+			}
+		}
+		remove_effect = {
+			clr_country_flag = PRC_thunder_gods_mountain_flag
+			clr_country_flag = PRC_thunder_god_program_in_progress
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_pla_dummy_idea
+					add_idea = PRC_thunder_gods_mountains_idea
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = PRC_acclimatization_cold_climate_gain_factor_dynamic_var
+					value = 0.2
+				}
+				add_to_variable = {
+					var = PRC_pla_training_time_factor_dynamic_var
+					value = 0.1
+				}
+				add_to_variable = {
+					var = PRC_terrain_penalty_reduction_dynamic_var
+					value = 0.05
+				}
+			}
+			set_temp_variable = {
+				var = PRC_army_reform_progress_temp
+				value = 0.02
+			}
+			PRC_add_army_reform_progress = yes
+		}
+		modifier = {
+			experience_gain_army = 0.1
+			military_development_monthly = 0.01
+		}
+	}
+	PRC_intensify_marine_training = {
+		icon = generic_propaganda_campaigns
+		fire_only_once = no
+		days_remove = 35
+		days_re_enable = 75
+		cost = 35
+		visible = {
+			has_completed_focus = PRC_rain_fire_from_above
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 100
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = PRC_plan_dummy_1
+					add_idea = PRC_plan_dummy_3
+				}
+			}
+			hidden_effect = {
+				add_to_variable = {
+					var = PRC_plan_naval_invasion_penalty_dynamic_var
+					value = -0.05
+				}
+				add_to_variable = {
+					var = PRC_plan_naval_invasion_division_cap_dynamic_var
+					value = 2
+				}
+				add_to_variable = {
+					var = PRC_plan_extra_marine_supply_grace_dynamic_var
+					value = 36
+				}
+			}
+		}
+		modifier = {
+			experience_gain_navy = 0.1
+		}
+	}
+	PRC_naval_exercises_decision = {
+		icon = generic_propaganda_campaigns
+		fire_only_once = no
+		days_remove = 100
+		days_re_enable = 60
+		cost = 50
+		visible = {
+			has_completed_focus = PRC_south_asian_brothers
+		}
+		available = {
+		}
+		ai_will_do = {
+			base = 100
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			random_list = {
+				20 = {
+					random_navy_leader = {
+						add_maneuver = 1
+					}
+				}
+				20 = {
+					random_navy_leader = {
+						add_coordination = 1
+					}
+				}
+				20 = {
+					random_navy_leader = {
+						add_attack = 1
+					}
+				}
+				20 = {
+					random_navy_leader = {
+						add_skill_level = 1
+					}
+				}
+				20 = {
+					random_navy_leader = {
+						add_defense = 1
+					}
+				}
+			}
+			every_country = {
+				limit = {
+					is_in_faction_with = CHI
+				}
+				navy_experience = 50
+			}
+		}
+		modifier = {
+			experience_gain_navy = 0.1
+		}
+	}
+	PRC_proudly_serve_your_nation = {
+		icon = generic_propaganda_campaigns
+		days_remove = 175
+		days_re_enable = 175
+		cost = 25
+		visible = {
+			has_completed_focus = PRC_national_fanaticism
+		}
+		available = {
+			check_variable = {
+				var = campaign_slot_var
+				value = 1
+				compare = greater_than_or_equals
+			}
+		}
+		ai_will_do = {
+			base = 1
+		}
+		complete_effect = {
+			remove_campaign_slot = yes
+		}
+		modifier = {
+			conscription_factor = 0.1
+			offensive_war_stability_factor = 0.2
+			war_support_weekly = 0.02
+		}
+	}
+	PRC_conduct_army_exercises = {
+		allowed = {
+			tag = CHI
+		}
+		visible = {
+			has_completed_focus = PRC_chinas_spot_in_the_sun
+		}
+		fire_only_once = no
+		cost = 0
+		custom_cost_text = PRC_operation_crimson_sky_decision_cost
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 30
+			}
+		}
+		days_remove = 100
+		days_re_enable = 50
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -30
+			}
+		}
+		modifier = {
+			experience_gain_army_factor = 0.1
+			experience_gain_army_unit_factor = 0.25
+		}
+		remove_effect = {
+			army_experience = 15
+			set_temp_variable = {
+				var = PRC_army_reform_progress_temp
+				value = 0.005
+			}
+			PRC_add_army_reform_progress = yes
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+	PRC_conduct_air_exercises = {
+		allowed = {
+			tag = CHI
+		}
+		visible = {
+			has_completed_focus = PRC_chinas_spot_in_the_sun
+		}
+		fire_only_once = no
+		cost = 0
+		custom_cost_text = PRC_operation_crimson_sky_decision_cost
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 30
+			}
+		}
+		days_remove = 100
+		days_re_enable = 50
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -30
+			}
+		}
+		modifier = {
+			experience_gain_air_factor = 0.25
+			air_training_xp_gain_factor = 0.25
+		}
+		remove_effect = {
+			air_experience = 10
+			set_temp_variable = {
+				var = PRC_army_reform_progress_temp
+				value = 0.005
+			}
+			PRC_add_army_reform_progress = yes
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+	PRC_conduct_naval_exercises = {
+		allowed = {
+			tag = CHI
+		}
+		visible = {
+			has_completed_focus = PRC_chinas_spot_in_the_sun
+		}
+		fire_only_once = no
+		cost = 0
+		custom_cost_text = PRC_operation_crimson_sky_decision_cost
+		custom_cost_trigger = {
+			NOT = {
+				command_power < 30
+			}
+		}
+		days_remove = 100
+		days_re_enable = 50
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -30
+			}
+		}
+		modifier = {
+			experience_gain_navy_factor = 0.25
+			experience_gain_navy_unit_factor = 0.25
+		}
+		remove_effect = {
+			navy_experience = 10
+			set_temp_variable = {
+				var = PRC_army_reform_progress_temp
+				value = 0.005
+			}
+			PRC_add_army_reform_progress = yes
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+	#PRC_infrastructure_overhaul = {
+	#	icon = generic_industry
+	#	allowed = {
+	#		tag = CHI
+	#	}
+	#	visible = {
+	#		has_completed_focus = PRC_public_works_campaign
+	#	}
+	#	available = {
+	#		tag = CHI
+	#	}
+	#	fire_only_once = no
+	#	cost = 150
+	#	days_remove = 365
+	#	days_re_enable = 70
+	#	complete_effect = {
+	#	}
+	#	modifier = {
+	#		consumer_goods_factor = 0.15
+	#	}
+	#	remove_effect = {
+	#		set_temp_variable = {
+	#				var = PRC_approval_rating_var_temp
+	#				value = -0.15
+	#			}
+	#		PRC_add_party_approval = yes
+	#
+	#		every_owned_state = {
+	#			add_building_construction = {
+	#				type = infrastructure 
+	#				level = 1
+	#				instant_build = yes
+	#			}
+	#		}
+	#
+	#		set_temp_variable = {
+	#			var = poverty_development_var_temp
+	#			value = 0.10
+	#		}
+	#		add_poverty_development = yes
+	#	}
+	#	ai_will_do = {
+	#	base = 10
+	#	}
+	#}
+}
+
+PRC_great_asian_war = {
+	PRC_GAW_war_exhaustion = {
+		priority = 99
+		icon = GFX_SOV_decision_nato_war_deadline
+		available = {
+			OR = {
+				NOT = { country_exists = JAP }
+				JAP = {
+					OR = {
+						has_capitulated = yes
+						is_puppet_of = CHI
+					}
+				}
+			}
+			OR = {
+				NOT = { country_exists = AST }
+				AST = {
+					OR = {
+						has_capitulated = yes
+						is_puppet_of = CHI
+					}
+				}
+			}
+			OR = {
+				NOT = { country_exists = RAJ }
+				RAJ = {
+					NOT = { has_war_with = CHI }
+				}
+			}
+		}
+		days_mission_timeout = 200
+		activation = {
+			always = no
+		}
+		visible = {
+			NOT = {
+				OR = {
+					has_global_flag = PRC_chinese_gaw_victory_global
+					has_global_flag = PRC_japanese_gaw_victory_global
+				}
+			}
+		}
+		fire_only_once = no
+		cancel_if_not_visible = yes
+		is_good = no
+		cancel_trigger = {
+			CHI = {
+				surrender_progress > 0.6
+			}
+			NOT = {
+				has_country_flag = GAW_disabled
+			}
+		}
+		cancel_effect = {
+			hidden_effect = {
+				# cancel_if_not_visible 的取消与 cancel_trigger 共用本块：
+				# 中国胜结算已置 PRC_chinese_gaw_victory_global 时不得再打上日本胜旗标，否则胜负双结算
+				if = {
+					limit = {
+						NOT = {
+							OR = {
+								has_global_flag = PRC_chinese_gaw_victory_global
+								has_global_flag = PRC_japanese_gaw_victory_global
+							}
+						}
+					}
+					set_global_flag = PRC_japanese_gaw_victory_global
+					set_global_flag = PRC_china_collapse
+					if = {
+						limit = { country_exists = JAP }
+						JAP = {
+							country_event = prc.1002
+						}
+					}
+				}
+			}
+		}
+		timeout_effect = {
+			PRC_increase_war_exhaustion = yes
+			activate_mission = PRC_GAW_war_exhaustion
+		}
+		complete_effect = {
+			hidden_effect = {
+				set_global_flag = PRC_chinese_gaw_victory_global
+				country_event = prc.1001
+			}
+		}
+	}
+
+	# ZZZ_korea_postwar
 }

@@ -6,6 +6,11 @@ division_template = {
 		L_Inf_Bat = { x = 0 y = 1 }
 		L_Inf_Bat = { x = 0 y = 2 }
 	}
+	support = {
+		L_Recce_Comp = { x = 0 y = 0 }
+		L_Engi_Comp = { x = 0 y = 1 }
+		combat_service_support_company = { x = 0 y = 2 }
+	}
 }
 
 
@@ -63,7 +68,8 @@ units = {
 
 instant_effect = {
 	add_equipment_to_stockpile = {
-		type = infantry_weapons_2 #AKM
+		variant_name = "AKM"
+		type = infantry_weapons_1 #AKM
 		amount = 4000
 		producer = SOV
 	}
@@ -73,6 +79,7 @@ instant_effect = {
 		producer = SOV
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "RPG-7V"
 		type = Anti_tank_1
 		amount = 260
 		producer = SOV
@@ -83,28 +90,31 @@ instant_effect = {
 		producer = SOV
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "9K38 Igla"
 		type = Anti_Air_1
 		amount = 190
 		producer = SOV
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "Saxon"
 		type = medium_tank_amphibious_chassis_1 #Saxon
 		amount = 25
 		producer = ENG
 	}
 	add_equipment_to_stockpile = {
-		type = util_vehicle_4 #Mamba APC
+		type = heavy_util_vehicle_5 #Mamba APC
 		amount = 9
 		producer = SAF
 	}
 	add_equipment_to_stockpile = {
-		type = infantry_weapons_2 #AK-47（封存）
+		variant_name = "AKM"
+		type = infantry_weapons_1 #AK-47（封存）
 		amount = 30000
 		producer = SOV
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "T-55A"
 		type = medium_tank_chassis_0 #T-55（封存）
-		variant_name = "T-55"
 		amount = 50
 		producer = SOV
 	}

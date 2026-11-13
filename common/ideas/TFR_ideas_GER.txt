@@ -81,8 +81,8 @@ ideas = {
 			}
 			picture = GER_purged_extremist_soldiers
 			modifier = {
-				production_speed_energy_farm_factor = 0.2
-				production_speed_power_plant_factor = -0.35
+				production_speed_renewable_energy_infra_factor = 0.2
+				production_speed_fossil_powerplant_factor = -0.35
 				consumer_goods_factor = -0.025
 				stability_factor = 0.1
 				farming_development_monthly = 0.01
@@ -94,8 +94,8 @@ ideas = {
 			}
 			picture = GER_purged_extremist_soldiers
 			modifier = {
-				production_speed_energy_farm_factor = 0.2
-				production_speed_power_plant_factor = -0.35
+				production_speed_renewable_energy_infra_factor = 0.2
+				production_speed_fossil_powerplant_factor = -0.35
 				consumer_goods_factor = -0.025
 				stability_factor = 0.1
 				farming_development_monthly = 0.01
@@ -449,8 +449,6 @@ ideas = {
 				has_completed_focus = GER_war_for_the_proletariat
 			}
 			modifier = {
-				unit_modern_armor_design_cost_factor = -0.1
-				unit_mechanized_design_cost_factor = -0.1
 				army_org_factor = 0.05
 				land_reinforce_rate = 0.1
 				coordination_bonus = 0.1
@@ -593,9 +591,7 @@ ideas = {
 						limit = {
 							is_EU_member = yes
 						}
-						add_idea = {
-							idea = GER_rearm_europe_passive_idea
-						}
+						add_ideas = GER_rearm_europe_passive_idea
 					}
 				}
 				else_if = {
@@ -608,9 +604,7 @@ ideas = {
 						limit = {
 							is_EU_member = yes
 						}
-						add_idea = {
-							idea = GER_rearm_europe_halved_idea
-						}
+						add_ideas = GER_rearm_europe_halved_idea
 					}
 				}
 				else = {
@@ -646,42 +640,42 @@ ideas = {
 						add_tech_bonus = {
 							bonus = 0.25
 							uses = 2
-							category = infantry_weapons
+							category = CAT_infantry_weapons
 						}	
 						add_tech_bonus = {
 							bonus = 0.25
 							uses = 2
-							category = support_tech
+							category = CAT_support_weapons
 						}					
 						add_tech_bonus = {
 							bonus = 0.25
 							uses = 1
-							category = artillery
+							category = CAT_artillery
 						}	
 						add_tech_bonus = {
 							bonus = 0.25
 							uses = 1
-							category = armor
+							category = CAT_armor
 						}	
 						add_tech_bonus = {
 							bonus = 0.25
 							uses = 1
-							category = motorized_equipment
+							category = CAT_utility_vehicles
 						}	
 						add_tech_bonus = {
 							bonus = 0.25
 							uses = 1
-							category = train_tech
+							category = CAT_production_lines
 						}	
 						add_tech_bonus = {
 							bonus = 0.25
 							uses = 1
-							category = jet_technology
+							category = CAT_aircraft
 						}	
 						add_tech_bonus = {
 							bonus = 0.25
 							uses = 1
-							category = radar_tech
+							category = CAT_naval_radar
 						}	
 					}				
 				}
@@ -734,24 +728,20 @@ ideas = {
 					}
 					NOT = {
 						any_country = {
-							limit = {
-								is_EU_member = yes
-							}
+							is_EU_member = yes
 							exists = yes
 						}
 					}
 					NOT = {
 						any_country = {
-							limit = {
-								OR = {
-									tag = BRA
-									tag = URG
-									tag = ARG
-									tag = PAR
-									tag = BOL						
-								}
-							}
 							exists = yes
+							OR = {
+								tag = BRA
+								tag = URG
+								tag = ARG
+								tag = PAR
+								tag = BOL
+							}
 						}
 					}
 				}
@@ -1082,9 +1072,6 @@ ideas = {
 			allowed = {
 				tag = GER
 			}
-			modifier = {
-				
-			}
 		}
 		GER_exiting_the_vampire_castle_dummy_idea = {
 			#Just Made For Tooltip, Dynamic Modifier is used instead
@@ -1179,7 +1166,7 @@ ideas = {
 		}
 		GER_fund_the_military_industry_idea = {
 			#Just Made For Tooltip, Dynamic Modifier is used instead
-			name =  
+			name = GER_peoples_economy_dynamic
 			allowed = {
 				tag = GER
 			}
@@ -1245,8 +1232,6 @@ ideas = {
 			allowed = {
 				tag = GER
 			}
-			modifier = {
-			}
 		}
 		# Politics
 		GER_bundestag_idea = {
@@ -1264,8 +1249,6 @@ ideas = {
 			name = GER_bundestag_dynamic
 			allowed = {
 				original_tag = GER
-			}
-			modifier = {
 			}
 		}
 		GER_merkelreich_idea = {
@@ -1491,7 +1474,7 @@ ideas = {
 			}
 			removal_cost = -1
 			modifier = {
-				interest_rate_factor = 0.1
+				interest_rate_multiplier_modifier = 0.1
 				farming_development_monthly = 0.025
 				tax_gain_multiplier_modifier = 0.1
 			}
@@ -1563,8 +1546,6 @@ ideas = {
 			allowed = {
 				original_tag = GER
 			}
-			modifier = {
-			}
 		}
 		GER_bundeswehr_shortcomings_german_legacy_dummy_idea = {
 			#Just Made For Tooltip, Dynamic Modifier is used instead
@@ -1578,7 +1559,7 @@ ideas = {
 				conscription_factor = -0.8
 				mobilization_speed = -0.8
 				army_morale_factor = -0.15
-				cat_old_land_doctrine_cost_factor = 0.4
+				land_doctrine_cost_factor = 0.4
 				military_development_monthly = -0.02
 			}
 		}
@@ -1595,7 +1576,7 @@ ideas = {
 				conscription_factor = -0.6
 				mobilization_speed = -0.6
 				army_morale_factor = -0.1
-				cat_old_land_doctrine_cost_factor = 0.4
+				land_doctrine_cost_factor = 0.4
 			}
 		}
 		GER_bundeswehr_shortcomings_idea = {
@@ -1606,7 +1587,7 @@ ideas = {
 			modifier = {
 				army_org_Factor = -0.2
 				production_speed_offices_factor = 0.2
-				cat_old_land_doctrine_cost_factor = 0.4
+				land_doctrine_cost_factor = 0.4
 				mobilization_speed = -0.3
 				military_development_monthly = -0.02
 			}
@@ -1672,7 +1653,7 @@ ideas = {
 			modifier = {
 				army_org_Factor = 0.1
 				production_speed_offices_factor = -0.2
-				cat_old_land_doctrine_cost_factor = -0.4
+				land_doctrine_cost_factor = -0.4
 			}
 		}
 		GER_bulwark_of_democracy_idea = {
@@ -2254,8 +2235,6 @@ ideas = {
 			allowed = {
 				tag = GER
 			}
-			modifier = {
-			}
 		}
 		GER_fury_of_the_people_idea = {
 			#Just Made For Tooltip, Dynamic Modifier is used instead
@@ -2298,7 +2277,7 @@ ideas = {
 				air_attack_factor = 0.1
 				air_defence_factor = 0.1
 				ground_attack_factor = 0.1
-				cat_old_air_doctrine_cost_factor = -0.2
+				air_doctrine_cost_factor = -0.2
 			}
 		}
 		GER_kampfgruppen_der_arbeiterklasse_idea = {
@@ -2692,8 +2671,6 @@ ideas = {
 				tag = GER
 			}
 			picture = GER_russian_energy_dependence
-			modifier = {
-			}
 		}
 		idea_NATO_advisors = {
 			allowed = {
@@ -2788,11 +2765,11 @@ ideas = {
 			}
 			removal_cost = -1
 			equipment_bonus = {
-				modern_tank_chassis = {
+				MBT_1 = {
 					build_cost_ic = -0.15
 					instant = yes
 				}
-				light_tank_chassis = {
+				medium_tank_chassis = {
 					build_cost_ic = -0.15
 					instant = yes
 				}
@@ -2807,15 +2784,15 @@ ideas = {
 				naval_equipment_upgrade_xp_cost = -0.1
 			}
 			equipment_bonus = {
-				ship_hull_cruiser = {
+				cruiser = {
 					build_cost_ic = -0.1
 					instant = yes
 				}
-				ship_hull_light = {
+				destroyer = {
 					build_cost_ic = -0.1
 					instant = yes
 				}
-				ship_hull_submarine = {
+				attack_submarine = {
 					build_cost_ic = -0.1
 					instant = yes
 				}
@@ -3065,8 +3042,6 @@ ideas = {
 			allowed = {
 				tag = GER
 			}
-			modifier = {
-			}
 		}
 		GER_german_oil_idea = {
 			#Just Made For Tooltip, Dynamic Modifier is used instead
@@ -3191,7 +3166,7 @@ ideas = {
 				industrial_development_monthly = 0.005
 				industrial_capacity_factory = 0.1
 				industrial_capacity_dockyard = 0.1
-				production_speed_power_plant_factor = 0.2
+				production_speed_fossil_powerplant_factor = 0.2
 				production_speed_nuclear_reactor_factor = -0.2
 			}
 		}
@@ -3254,7 +3229,7 @@ ideas = {
 				tag = GER
 			}
 			modifier = {
-				production_speed_energy_farm_factor = 0.25
+				production_speed_renewable_energy_infra_factor = 0.25
 				consumer_goods_factor = -0.05
 			}
 		}
@@ -3323,7 +3298,7 @@ ideas = {
 			modifier = {
 				industrial_capacity_factory = 0.1
 				industrial_capacity_dockyard = 0.1
-				production_speed_energy_farm_factor = 0.2
+				production_speed_renewable_energy_infra_factor = 0.2
 			}
 		}
 		GER_reverse_nuclear_phase_out_idea = {
@@ -3938,8 +3913,8 @@ ideas = {
 			}
 			modifier = {
 				production_speed_rail_way_factor = 0.15
-				production_speed_energy_farm_factor = 0.15
-				production_speed_power_plant_factor = 0.15
+				production_speed_renewable_energy_infra_factor = 0.15
+				production_speed_fossil_powerplant_factor = 0.15
 				industrial_capacity_factory = 0.025
 			}
 		}
@@ -3969,7 +3944,7 @@ ideas = {
 				always = yes
 			}
 			modifier = {
-				production_speed_energy_farm_factor = 0.15
+				production_speed_renewable_energy_infra_factor = 0.15
 			}
 		}
 		GER_revive_nuclear_energy_idea = {
@@ -4195,7 +4170,7 @@ ideas = {
 				tag = GER
 			}
 			modifier = {
-				production_speed_energy_farm_factor = 0.2
+				production_speed_renewable_energy_infra_factor = 0.2
 			}
 		}
 		GER_economic_devastation_idea = {
@@ -4846,19 +4821,15 @@ ideas = {
 				industrial_capacity_factory = 0.15
 			}
 			equipment_bonus = {
-				infantry_equipment = {
+				infantry = {
 					build_cost_ic = -0.1
 					instant = yes
 				}
-				support_equipment = {
-					build_cost_ic = -0.1
-					instant = yes
-				}
-				modern_tank_chassis = {
+				MBT_1 = {
 					build_cost_ic = -0.15
 					instant = yes
 				}
-				light_tank_chassis = {
+				medium_tank_chassis = {
 					build_cost_ic = -0.15
 					instant = yes
 				}
@@ -5460,8 +5431,6 @@ ideas = {
 			allowed = {
 				tag = GER
 			}
-			modifier = {
-			}
 		}
 		GER_european_military = {
 			#dummy
@@ -5992,8 +5961,6 @@ ideas = {
 			available = {
 			}
 			removal_cost = -1
-			modifier = {
-			}
 		}
 		GER_catharsis_decrease_small_dummy_idea = {
 			name = GER_catharsis1
@@ -6123,7 +6090,7 @@ ideas = {
 				industrial_capacity_factory = 0.1
 				industrial_capacity_dockyard = 0.1
 				stability_factor = -0.15
-				production_speed_energy_farm_factor = 0.2
+				production_speed_renewable_energy_infra_factor = 0.2
 			}
 		}
 		GER_great_reset_empty_dummy = {
@@ -6139,8 +6106,6 @@ ideas = {
 			available = {
 			}
 			removal_cost = -1
-			modifier = {
-			}
 		}
 		GER_great_reset_dummy_2 = { #post-cap transition
 			picture = SOV_stakhanovite_movement
@@ -6160,7 +6125,7 @@ ideas = {
 				business_value_factor = 0.25
 				industrial_capacity_factory = 0.2
 				industrial_capacity_dockyard = 0.1
-				production_speed_power_plant_factor = -0.5
+				production_speed_fossil_powerplant_factor = -0.5
 				production_speed_nuclear_reactor_factor = -0.5
 				stability_factor = 0.1
 				research_speed_factor = -0.1
@@ -6202,7 +6167,7 @@ ideas = {
 			modifier = {
 				personal_value_factor = -0.25
 				personal_expense_factor = -0.15
-				interest_rate_factor = -0.5
+				interest_rate_multiplier_modifier = -0.5
 				business_value_factor = 0.25
 				consumer_goods_factor = -0.1
 			}
@@ -6880,7 +6845,7 @@ ideas = {
 				planning_speed = 0.05
 				society_development_monthly = -0.02
 				political_power_factor = 0.05
-				ship_upkeep_factor = -0.1
+				navy_personnel_cost_multiplier_modifier = -0.1
 				stability_factor = -0.05
 			}
 			targeted_modifier = {
@@ -7228,7 +7193,7 @@ ideas = {
 				production_speed_infrastructure_factor = 0.05
 				production_speed_arms_factory_factor = 0.05
 				production_speed_industrial_complex_factor = 0.05
-				interest_rate_factor = 0.075
+				interest_rate_multiplier_modifier = 0.075
 			}
 		}
 		GER_klassenzusammenarbeit_idea = {
@@ -7264,14 +7229,12 @@ ideas = {
 			available = {
 			}
 			removal_cost = -1
-			modifier = {
-			}
 			equipment_bonus = {
-				mechanized_equipment = {
+				mechanized = {
 					build_cost_ic = -0.2
 					instant = yes
 				}
-				light_mechanized_equipment = {
+				APC_1 = {
 					build_cost_ic = -0.2
 					instant = yes
 				}
@@ -7289,8 +7252,6 @@ ideas = {
 			available = {
 			}
 			removal_cost = -1
-			modifier = {
-			}
 		}
 		GER_eastern_general_economic_plan = {
 			picture = GER_Eastern_General_Economic_Plan_idea
@@ -7390,8 +7351,6 @@ ideas = {
 				conscription_factor = 0.05
 				political_power_gain = 0.05
 				improve_relations_maintain_cost_factor = 0.1
-				social_liberal_acceptance = -5
-				market_liberal_acceptance = -5
 			}
 		}
 		GER_german_nostalgia_2 = {
@@ -7412,8 +7371,6 @@ ideas = {
 				conscription_factor = 0.1
 				political_power_gain = 0.1
 				improve_relations_maintain_cost_factor = 0.15
-				social_liberal_acceptance = -15
-				market_liberal_acceptance = -15
 			}
 		}
 		GER_german_nostalgia_3 = {
@@ -7434,8 +7391,6 @@ ideas = {
 				conscription_factor = 0.2
 				political_power_gain = 0.15
 				improve_relations_maintain_cost_factor = 0.2
-				social_liberal_acceptance = -25
-				market_liberal_acceptance = -25
 			}
 		}
 		GER_raf_romanticism_1 = {
@@ -7559,8 +7514,6 @@ ideas = {
 				society_development_monthly = -0.02
 				opinion_gain_monthly_same_ideology_factor = -0.5
 				nationalist_acceptance = 25
-				fascist_acceptance = 25
-				national_socialist_acceptance = 25
 			}
 		}
 		GER_detox_from_nostalgia_idea = {
@@ -7870,8 +7823,6 @@ ideas = {
 			name = GER_fehlinger_initiative_dynamic
 			allowed = {
 				tag = GER
-			}
-			modifier = {
 			}
 		}
 		GER_focus_on_the_home_front_tooltip_idea = { #Tooltip Idea

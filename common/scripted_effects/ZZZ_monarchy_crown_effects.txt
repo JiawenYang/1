@@ -1,0 +1,754 @@
+# ============================================================================
+# ZZZ 君主制元首「加冕」效果（逐国一份）
+#
+# 作用：把该国君主的 character 补挂进国家，并按「每个意识形态大组一个块」把
+# 5 个 country_leader 角色逐个 promote，使君主同时担任全部 5 个意识形态大组
+# 各一个子意识形态的党首（同组只保留该国实际执政/最贴近的那一个）；
+# 只有 ZZZ_monarchy_abolished 旗标生效后才停手。
+#
+# 注意：引擎按「角色」限制 —— 同一角色在同一意识形态大组内只能有一条
+# country_leader，否则加载期告警
+# "Character already has ideology (...) and trying to add ideology (...) which
+# belongs to the same ideology group (...)"，且多余的块会被丢弃。
+# 因此本文件与角色定义一律「每大组 1 条」，不再写 24 条。
+#
+# 所有效果名 / 字段名均来自基座实证：
+#   promote_character = { character = X ideology = Y }
+#     -> E:\SteamLibrary\steamapps\common\Hearts of Iron IV\documentation\effects_documentation.md:5149
+#   recruit_character = X
+#     -> 同上 :5696
+#   5 个意识形态大组各取一个 token（democratic/communism/fascism/neutrality/nationalist）
+#     -> E:\SteamLibrary\steamapps\workshop\content\394360\2777392649\common\ideologies\00_ideologies.txt
+#
+# 调用点：
+#   history/countries/ZZ9 - 2017.txt（39 国 2017 块内直接 recruit + promote）
+#   ZZZ_monarch_guard     -> common/scripted_effects/ZZZ_monarchy_effects.txt（on_government_change 触发）
+#
+# 更替（2026-11-07 追加）：
+#   ENG/CAN/AST/NZL/ANT/BAH/BAR/BLZ/GRA/JAM/PAP/SOL/STK/STL/STV/TUL、JAP、DEN、
+#   LUX、MAY、KUW、OMA 这 22 国改为「按旗标 + 日期」选择在位君主：
+#     1) 事件先 retire 卸任者并 set_country_flag = ZZZ_monarch_<tag>_<name>
+#     2) 本效果优先按旗标选人；旗标缺失时按现实日期兜底（复辟国家也能拿到
+#        当时在位的现实君主，而不是 2017 年那位）
+#     3) 其余国家仍维持单一代君主逻辑，不受影响
+#   旗标/日期对照见 events/ZZZ_monarchy_succession.txt 与
+#   common/scripted_effects/ZZZ_monarchy_succession_effects.txt
+# ============================================================================
+
+# ---------------------------- 欧洲批次 ----------------------------
+
+# 英国 · 伊丽莎白二世
+ZZZ_crown_ENG = {
+	if = {
+		limit = {
+			OR = {
+				has_country_flag = ZZZ_monarch_eng_charles_iii
+				NOT = { date < 2022.9.8 }
+			}
+		}
+		promote_character = { character = ZZZ_monarch_ENG_charles_iii ideology = conservatism }
+		promote_character = { character = ZZZ_monarch_ENG_charles_iii ideology = communist_state }
+		promote_character = { character = ZZZ_monarch_ENG_charles_iii ideology = Kingdom }
+		promote_character = { character = ZZZ_monarch_ENG_charles_iii ideology = Neutral_Muslim_Brotherhood }
+		promote_character = { character = ZZZ_monarch_ENG_charles_iii ideology = Nat_Populism }
+	}
+	else = {
+		promote_character = { character = ZZZ_monarch_ENG_elizabeth_ii ideology = conservatism }
+		promote_character = { character = ZZZ_monarch_ENG_elizabeth_ii ideology = communist_state }
+		promote_character = { character = ZZZ_monarch_ENG_elizabeth_ii ideology = Kingdom }
+		promote_character = { character = ZZZ_monarch_ENG_elizabeth_ii ideology = Neutral_Muslim_Brotherhood }
+		promote_character = { character = ZZZ_monarch_ENG_elizabeth_ii ideology = Nat_Populism }
+	}
+}
+
+# 荷兰 · 威廉-亚历山大
+ZZZ_crown_HOL = {
+	promote_character = { character = ZZZ_monarch_HOL_willem_alexander ideology = liberalism }
+	promote_character = { character = ZZZ_monarch_HOL_willem_alexander ideology = communist_state }
+	promote_character = { character = ZZZ_monarch_HOL_willem_alexander ideology = Kingdom }
+	promote_character = { character = ZZZ_monarch_HOL_willem_alexander ideology = Neutral_Muslim_Brotherhood }
+	promote_character = { character = ZZZ_monarch_HOL_willem_alexander ideology = Nat_Populism }
+}
+
+# 比利时 · 菲利普
+ZZZ_crown_BEL = {
+	promote_character = { character = ZZZ_monarch_BEL_philippe ideology = liberalism }
+	promote_character = { character = ZZZ_monarch_BEL_philippe ideology = communist_state }
+	promote_character = { character = ZZZ_monarch_BEL_philippe ideology = Kingdom }
+	promote_character = { character = ZZZ_monarch_BEL_philippe ideology = Neutral_Muslim_Brotherhood }
+	promote_character = { character = ZZZ_monarch_BEL_philippe ideology = Nat_Populism }
+}
+
+# 瑞典 · 卡尔十六世·古斯塔夫
+ZZZ_crown_SWE = {
+	promote_character = { character = ZZZ_monarch_SWE_carl_xvi_gustaf ideology = socialism }
+	promote_character = { character = ZZZ_monarch_SWE_carl_xvi_gustaf ideology = communist_state }
+	promote_character = { character = ZZZ_monarch_SWE_carl_xvi_gustaf ideology = Kingdom }
+	promote_character = { character = ZZZ_monarch_SWE_carl_xvi_gustaf ideology = Neutral_Muslim_Brotherhood }
+	promote_character = { character = ZZZ_monarch_SWE_carl_xvi_gustaf ideology = Nat_Populism }
+}
+
+# 挪威 · 哈拉尔五世
+ZZZ_crown_NRY = {
+	promote_character = { character = ZZZ_monarch_NRY_harald_v ideology = conservatism }
+	promote_character = { character = ZZZ_monarch_NRY_harald_v ideology = communist_state }
+	promote_character = { character = ZZZ_monarch_NRY_harald_v ideology = Kingdom }
+	promote_character = { character = ZZZ_monarch_NRY_harald_v ideology = Neutral_Muslim_Brotherhood }
+	promote_character = { character = ZZZ_monarch_NRY_harald_v ideology = Nat_Populism }
+}
+
+# 丹麦 · 玛格丽特二世
+ZZZ_crown_DEN = {
+	if = {
+		limit = {
+			OR = {
+				has_country_flag = ZZZ_monarch_den_frederik_x
+				NOT = { date < 2024.1.14 }
+			}
+		}
+		promote_character = { character = ZZZ_monarch_DEN_frederik_x ideology = liberalism }
+		promote_character = { character = ZZZ_monarch_DEN_frederik_x ideology = communist_state }
+		promote_character = { character = ZZZ_monarch_DEN_frederik_x ideology = Kingdom }
+		promote_character = { character = ZZZ_monarch_DEN_frederik_x ideology = Neutral_Muslim_Brotherhood }
+		promote_character = { character = ZZZ_monarch_DEN_frederik_x ideology = Nat_Populism }
+	}
+	else = {
+		promote_character = { character = ZZZ_monarch_DEN_margrethe_ii ideology = liberalism }
+		promote_character = { character = ZZZ_monarch_DEN_margrethe_ii ideology = communist_state }
+		promote_character = { character = ZZZ_monarch_DEN_margrethe_ii ideology = Kingdom }
+		promote_character = { character = ZZZ_monarch_DEN_margrethe_ii ideology = Neutral_Muslim_Brotherhood }
+		promote_character = { character = ZZZ_monarch_DEN_margrethe_ii ideology = Nat_Populism }
+	}
+}
+
+# 西班牙 · 费利佩六世
+ZZZ_crown_SPR = {
+	promote_character = { character = ZZZ_monarch_SPR_felipe_vi ideology = conservatism }
+	promote_character = { character = ZZZ_monarch_SPR_felipe_vi ideology = communist_state }
+	promote_character = { character = ZZZ_monarch_SPR_felipe_vi ideology = Kingdom }
+	promote_character = { character = ZZZ_monarch_SPR_felipe_vi ideology = Neutral_Muslim_Brotherhood }
+	promote_character = { character = ZZZ_monarch_SPR_felipe_vi ideology = Nat_Populism }
+}
+
+# 卢森堡 · 大公亨利
+ZZZ_crown_LUX = {
+	if = {
+		limit = {
+			OR = {
+				has_country_flag = ZZZ_monarch_lux_guillaume
+				NOT = { date < 2025.10.3 }
+			}
+		}
+		promote_character = { character = ZZZ_monarch_LUX_guillaume ideology = liberalism }
+		promote_character = { character = ZZZ_monarch_LUX_guillaume ideology = communist_state }
+		promote_character = { character = ZZZ_monarch_LUX_guillaume ideology = Kingdom }
+		promote_character = { character = ZZZ_monarch_LUX_guillaume ideology = Neutral_Muslim_Brotherhood }
+		promote_character = { character = ZZZ_monarch_LUX_guillaume ideology = Nat_Populism }
+	}
+	else = {
+		promote_character = { character = ZZZ_monarch_LUX_henri ideology = liberalism }
+		promote_character = { character = ZZZ_monarch_LUX_henri ideology = communist_state }
+		promote_character = { character = ZZZ_monarch_LUX_henri ideology = Kingdom }
+		promote_character = { character = ZZZ_monarch_LUX_henri ideology = Neutral_Muslim_Brotherhood }
+		promote_character = { character = ZZZ_monarch_LUX_henri ideology = Nat_Populism }
+	}
+}
+
+# ---------------------- 亚洲 / 中东 / 非洲 / 大洋洲批次 ----------------------
+
+# 日本 · 明仁
+ZZZ_crown_JAP = {
+	if = {
+		limit = {
+			OR = {
+				has_country_flag = ZZZ_monarch_jap_naruhito
+				NOT = { date < 2019.4.30 }
+			}
+		}
+		promote_character = { character = ZZZ_monarch_JAP_naruhito ideology = conservatism }
+		promote_character = { character = ZZZ_monarch_JAP_naruhito ideology = communist_state }
+		promote_character = { character = ZZZ_monarch_JAP_naruhito ideology = Kingdom }
+		promote_character = { character = ZZZ_monarch_JAP_naruhito ideology = Neutral_Muslim_Brotherhood }
+		promote_character = { character = ZZZ_monarch_JAP_naruhito ideology = Nat_Populism }
+	}
+	else = {
+		promote_character = { character = ZZZ_monarch_JAP_akihito ideology = conservatism }
+		promote_character = { character = ZZZ_monarch_JAP_akihito ideology = communist_state }
+		promote_character = { character = ZZZ_monarch_JAP_akihito ideology = Kingdom }
+		promote_character = { character = ZZZ_monarch_JAP_akihito ideology = Neutral_Muslim_Brotherhood }
+		promote_character = { character = ZZZ_monarch_JAP_akihito ideology = Nat_Populism }
+	}
+}
+
+# 泰国 · 哇集拉隆功
+ZZZ_crown_SIA = {
+	promote_character = { character = ZZZ_monarch_SIA_vajiralongkorn ideology = Western_Autocracy }
+	promote_character = { character = ZZZ_monarch_SIA_vajiralongkorn ideology = communist_state }
+	promote_character = { character = ZZZ_monarch_SIA_vajiralongkorn ideology = Kingdom }
+	promote_character = { character = ZZZ_monarch_SIA_vajiralongkorn ideology = Neutral_Muslim_Brotherhood }
+	promote_character = { character = ZZZ_monarch_SIA_vajiralongkorn ideology = Nat_Autocracy }
+}
+
+# 柬埔寨 · 西哈莫尼
+ZZZ_crown_CBD = {
+	promote_character = { character = ZZZ_monarch_CBD_sihamoni ideology = Western_Autocracy }
+	promote_character = { character = ZZZ_monarch_CBD_sihamoni ideology = communist_state }
+	promote_character = { character = ZZZ_monarch_CBD_sihamoni ideology = Kingdom }
+	promote_character = { character = ZZZ_monarch_CBD_sihamoni ideology = Neutral_Muslim_Brotherhood }
+	promote_character = { character = ZZZ_monarch_CBD_sihamoni ideology = Nat_Populism }
+}
+
+# 马来西亚 · 穆罕默德五世
+ZZZ_crown_MAY = {
+	if = {
+		limit = {
+			OR = {
+				has_country_flag = ZZZ_monarch_may_ibrahim
+				NOT = { date < 2024.1.31 }
+			}
+		}
+		promote_character = { character = ZZZ_monarch_MAY_ibrahim ideology = Western_Autocracy }
+		promote_character = { character = ZZZ_monarch_MAY_ibrahim ideology = communist_state }
+		promote_character = { character = ZZZ_monarch_MAY_ibrahim ideology = Kingdom }
+		promote_character = { character = ZZZ_monarch_MAY_ibrahim ideology = Neutral_Muslim_Brotherhood }
+		promote_character = { character = ZZZ_monarch_MAY_ibrahim ideology = Nat_Populism }
+	}
+	else_if = {
+		limit = {
+			OR = {
+				has_country_flag = ZZZ_monarch_may_abdullah
+				NOT = { date < 2019.1.6 }
+			}
+		}
+		promote_character = { character = ZZZ_monarch_MAY_abdullah ideology = Western_Autocracy }
+		promote_character = { character = ZZZ_monarch_MAY_abdullah ideology = communist_state }
+		promote_character = { character = ZZZ_monarch_MAY_abdullah ideology = Kingdom }
+		promote_character = { character = ZZZ_monarch_MAY_abdullah ideology = Neutral_Muslim_Brotherhood }
+		promote_character = { character = ZZZ_monarch_MAY_abdullah ideology = Nat_Populism }
+	}
+	else = {
+		promote_character = { character = ZZZ_monarch_MAY_muhammad_v ideology = Western_Autocracy }
+		promote_character = { character = ZZZ_monarch_MAY_muhammad_v ideology = communist_state }
+		promote_character = { character = ZZZ_monarch_MAY_muhammad_v ideology = Kingdom }
+		promote_character = { character = ZZZ_monarch_MAY_muhammad_v ideology = Neutral_Muslim_Brotherhood }
+		promote_character = { character = ZZZ_monarch_MAY_muhammad_v ideology = Nat_Populism }
+	}
+}
+
+# 不丹 · 吉格梅·凯萨尔
+ZZZ_crown_BHU = {
+	promote_character = { character = ZZZ_monarch_BHU_jigme_khesar ideology = Western_Autocracy }
+	promote_character = { character = ZZZ_monarch_BHU_jigme_khesar ideology = communist_state }
+	promote_character = { character = ZZZ_monarch_BHU_jigme_khesar ideology = Kingdom }
+	promote_character = { character = ZZZ_monarch_BHU_jigme_khesar ideology = Neutral_Autocracy }
+	promote_character = { character = ZZZ_monarch_BHU_jigme_khesar ideology = Nat_Populism }
+}
+
+# 汤加 · 图普六世
+ZZZ_crown_TON = {
+	promote_character = { character = ZZZ_monarch_TON_tupou_vi ideology = socialism }
+	promote_character = { character = ZZZ_monarch_TON_tupou_vi ideology = communist_state }
+	promote_character = { character = ZZZ_monarch_TON_tupou_vi ideology = Kingdom }
+	promote_character = { character = ZZZ_monarch_TON_tupou_vi ideology = Neutral_Muslim_Brotherhood }
+	promote_character = { character = ZZZ_monarch_TON_tupou_vi ideology = Nat_Populism }
+}
+
+# 莱索托 · 莱齐耶三世
+ZZZ_crown_LES = {
+	promote_character = { character = ZZZ_monarch_LES_letsie_iii ideology = Western_Autocracy }
+	promote_character = { character = ZZZ_monarch_LES_letsie_iii ideology = communist_state }
+	promote_character = { character = ZZZ_monarch_LES_letsie_iii ideology = Kingdom }
+	promote_character = { character = ZZZ_monarch_LES_letsie_iii ideology = neutral_Social }
+	promote_character = { character = ZZZ_monarch_LES_letsie_iii ideology = Nat_Populism }
+}
+
+# 斯威士兰 · 姆斯瓦蒂三世
+ZZZ_crown_SWA = {
+	promote_character = { character = ZZZ_monarch_SWA_mswati_iii ideology = Western_Autocracy }
+	promote_character = { character = ZZZ_monarch_SWA_mswati_iii ideology = communist_state }
+	promote_character = { character = ZZZ_monarch_SWA_mswati_iii ideology = Kingdom }
+	promote_character = { character = ZZZ_monarch_SWA_mswati_iii ideology = Neutral_Muslim_Brotherhood }
+	promote_character = { character = ZZZ_monarch_SWA_mswati_iii ideology = Monarchist }
+}
+
+# 约旦 · 阿卜杜拉二世
+ZZZ_crown_JOR = {
+	promote_character = { character = ZZZ_monarch_JOR_abdullah_ii ideology = Western_Autocracy }
+	promote_character = { character = ZZZ_monarch_JOR_abdullah_ii ideology = communist_state }
+	promote_character = { character = ZZZ_monarch_JOR_abdullah_ii ideology = Kingdom }
+	promote_character = { character = ZZZ_monarch_JOR_abdullah_ii ideology = Neutral_Muslim_Brotherhood }
+	promote_character = { character = ZZZ_monarch_JOR_abdullah_ii ideology = Nat_Populism }
+}
+
+# 摩洛哥 · 穆罕默德六世
+ZZZ_crown_MOR = {
+	promote_character = { character = ZZZ_monarch_MOR_mohammed_vi ideology = conservatism }
+	promote_character = { character = ZZZ_monarch_MOR_mohammed_vi ideology = communist_state }
+	promote_character = { character = ZZZ_monarch_MOR_mohammed_vi ideology = Kingdom }
+	promote_character = { character = ZZZ_monarch_MOR_mohammed_vi ideology = Neutral_Muslim_Brotherhood }
+	promote_character = { character = ZZZ_monarch_MOR_mohammed_vi ideology = Nat_Populism }
+}
+
+# 沙特阿拉伯 · 萨勒曼
+ZZZ_crown_SAU = {
+	promote_character = { character = ZZZ_monarch_SAU_salman ideology = Western_Autocracy }
+	promote_character = { character = ZZZ_monarch_SAU_salman ideology = communist_state }
+	promote_character = { character = ZZZ_monarch_SAU_salman ideology = Kingdom }
+	promote_character = { character = ZZZ_monarch_SAU_salman ideology = Neutral_Muslim_Brotherhood }
+	promote_character = { character = ZZZ_monarch_SAU_salman ideology = Nat_Populism }
+}
+
+# 阿联酋 · 穆罕默德·本·扎耶德（王储）
+ZZZ_crown_UAE = {
+	promote_character = { character = ZZZ_monarch_UAE_mbz ideology = Western_Autocracy }
+	promote_character = { character = ZZZ_monarch_UAE_mbz ideology = communist_state }
+	promote_character = { character = ZZZ_monarch_UAE_mbz ideology = Kingdom }
+	promote_character = { character = ZZZ_monarch_UAE_mbz ideology = Neutral_Muslim_Brotherhood }
+	promote_character = { character = ZZZ_monarch_UAE_mbz ideology = Nat_Populism }
+}
+
+# 卡塔尔 · 塔米姆
+ZZZ_crown_QAT = {
+	promote_character = { character = ZZZ_monarch_QAT_tamim ideology = Western_Autocracy }
+	promote_character = { character = ZZZ_monarch_QAT_tamim ideology = communist_state }
+	promote_character = { character = ZZZ_monarch_QAT_tamim ideology = Kingdom }
+	promote_character = { character = ZZZ_monarch_QAT_tamim ideology = Neutral_Autocracy }
+	promote_character = { character = ZZZ_monarch_QAT_tamim ideology = Nat_Populism }
+}
+
+# 科威特 · 萨巴赫
+ZZZ_crown_KUW = {
+	if = {
+		limit = {
+			OR = {
+				has_country_flag = ZZZ_monarch_kuw_mishal
+				NOT = { date < 2023.12.16 }
+			}
+		}
+		promote_character = { character = ZZZ_monarch_KUW_mishal ideology = Western_Autocracy }
+		promote_character = { character = ZZZ_monarch_KUW_mishal ideology = communist_state }
+		promote_character = { character = ZZZ_monarch_KUW_mishal ideology = Kingdom }
+		promote_character = { character = ZZZ_monarch_KUW_mishal ideology = Neutral_Muslim_Brotherhood }
+		promote_character = { character = ZZZ_monarch_KUW_mishal ideology = Nat_Populism }
+	}
+	else_if = {
+		limit = {
+			OR = {
+				has_country_flag = ZZZ_monarch_kuw_nawaf
+				NOT = { date < 2020.9.29 }
+			}
+		}
+		promote_character = { character = ZZZ_monarch_KUW_nawaf ideology = Western_Autocracy }
+		promote_character = { character = ZZZ_monarch_KUW_nawaf ideology = communist_state }
+		promote_character = { character = ZZZ_monarch_KUW_nawaf ideology = Kingdom }
+		promote_character = { character = ZZZ_monarch_KUW_nawaf ideology = Neutral_Muslim_Brotherhood }
+		promote_character = { character = ZZZ_monarch_KUW_nawaf ideology = Nat_Populism }
+	}
+	else = {
+		promote_character = { character = ZZZ_monarch_KUW_sabah ideology = Western_Autocracy }
+		promote_character = { character = ZZZ_monarch_KUW_sabah ideology = communist_state }
+		promote_character = { character = ZZZ_monarch_KUW_sabah ideology = Kingdom }
+		promote_character = { character = ZZZ_monarch_KUW_sabah ideology = Neutral_Muslim_Brotherhood }
+		promote_character = { character = ZZZ_monarch_KUW_sabah ideology = Nat_Populism }
+	}
+}
+
+# 巴林 · 哈马德
+ZZZ_crown_BHR = {
+	promote_character = { character = ZZZ_monarch_BHR_hamad ideology = Western_Autocracy }
+	promote_character = { character = ZZZ_monarch_BHR_hamad ideology = communist_state }
+	promote_character = { character = ZZZ_monarch_BHR_hamad ideology = Kingdom }
+	promote_character = { character = ZZZ_monarch_BHR_hamad ideology = Neutral_Muslim_Brotherhood }
+	promote_character = { character = ZZZ_monarch_BHR_hamad ideology = Nat_Populism }
+}
+
+# 阿曼 · 卡布斯
+ZZZ_crown_OMA = {
+	if = {
+		limit = {
+			OR = {
+				has_country_flag = ZZZ_monarch_oma_haitham
+				NOT = { date < 2020.1.10 }
+			}
+		}
+		promote_character = { character = ZZZ_monarch_OMA_haitham ideology = Western_Autocracy }
+		promote_character = { character = ZZZ_monarch_OMA_haitham ideology = communist_state }
+		promote_character = { character = ZZZ_monarch_OMA_haitham ideology = Kingdom }
+		promote_character = { character = ZZZ_monarch_OMA_haitham ideology = Neutral_Autocracy }
+		promote_character = { character = ZZZ_monarch_OMA_haitham ideology = Nat_Populism }
+	}
+	else = {
+		promote_character = { character = ZZZ_monarch_OMA_qaboos ideology = Western_Autocracy }
+		promote_character = { character = ZZZ_monarch_OMA_qaboos ideology = communist_state }
+		promote_character = { character = ZZZ_monarch_OMA_qaboos ideology = Kingdom }
+		promote_character = { character = ZZZ_monarch_OMA_qaboos ideology = Neutral_Autocracy }
+		promote_character = { character = ZZZ_monarch_OMA_qaboos ideology = Nat_Populism }
+	}
+}
+
+# ============================================================================
+# 英联邦王国 15 国 · 共主伊丽莎白二世
+# 角色见 common/characters/ZZZ_monarchs_commonwealth.txt
+# 每国独立角色 ID，全员 24 个子意识形态各一块全覆盖
+# ============================================================================
+
+# 加拿大 · 伊丽莎白二世
+ZZZ_crown_CAN = {
+	if = {
+		limit = {
+			OR = {
+				has_country_flag = ZZZ_monarch_can_charles_iii
+				NOT = { date < 2022.9.8 }
+			}
+		}
+		promote_character = { character = ZZZ_monarch_CAN_charles_iii ideology = liberalism }
+		promote_character = { character = ZZZ_monarch_CAN_charles_iii ideology = communist_state }
+		promote_character = { character = ZZZ_monarch_CAN_charles_iii ideology = Kingdom }
+		promote_character = { character = ZZZ_monarch_CAN_charles_iii ideology = Neutral_Muslim_Brotherhood }
+		promote_character = { character = ZZZ_monarch_CAN_charles_iii ideology = Nat_Populism }
+	}
+	else = {
+		promote_character = { character = ZZZ_monarch_CAN_elizabeth_ii ideology = liberalism }
+		promote_character = { character = ZZZ_monarch_CAN_elizabeth_ii ideology = communist_state }
+		promote_character = { character = ZZZ_monarch_CAN_elizabeth_ii ideology = Kingdom }
+		promote_character = { character = ZZZ_monarch_CAN_elizabeth_ii ideology = Neutral_Muslim_Brotherhood }
+		promote_character = { character = ZZZ_monarch_CAN_elizabeth_ii ideology = Nat_Populism }
+	}
+}
+
+# 澳大利亚 · 伊丽莎白二世
+ZZZ_crown_AST = {
+	if = {
+		limit = {
+			OR = {
+				has_country_flag = ZZZ_monarch_ast_charles_iii
+				NOT = { date < 2022.9.8 }
+			}
+		}
+		promote_character = { character = ZZZ_monarch_AST_charles_iii ideology = conservatism }
+		promote_character = { character = ZZZ_monarch_AST_charles_iii ideology = communist_state }
+		promote_character = { character = ZZZ_monarch_AST_charles_iii ideology = Kingdom }
+		promote_character = { character = ZZZ_monarch_AST_charles_iii ideology = Neutral_Muslim_Brotherhood }
+		promote_character = { character = ZZZ_monarch_AST_charles_iii ideology = Nat_Populism }
+	}
+	else = {
+		promote_character = { character = ZZZ_monarch_AST_elizabeth_ii ideology = conservatism }
+		promote_character = { character = ZZZ_monarch_AST_elizabeth_ii ideology = communist_state }
+		promote_character = { character = ZZZ_monarch_AST_elizabeth_ii ideology = Kingdom }
+		promote_character = { character = ZZZ_monarch_AST_elizabeth_ii ideology = Neutral_Muslim_Brotherhood }
+		promote_character = { character = ZZZ_monarch_AST_elizabeth_ii ideology = Nat_Populism }
+	}
+}
+
+# 新西兰 · 伊丽莎白二世
+ZZZ_crown_NZL = {
+	if = {
+		limit = {
+			OR = {
+				has_country_flag = ZZZ_monarch_nzl_charles_iii
+				NOT = { date < 2022.9.8 }
+			}
+		}
+		promote_character = { character = ZZZ_monarch_NZL_charles_iii ideology = conservatism }
+		promote_character = { character = ZZZ_monarch_NZL_charles_iii ideology = communist_state }
+		promote_character = { character = ZZZ_monarch_NZL_charles_iii ideology = Kingdom }
+		promote_character = { character = ZZZ_monarch_NZL_charles_iii ideology = Neutral_Muslim_Brotherhood }
+		promote_character = { character = ZZZ_monarch_NZL_charles_iii ideology = Nat_Populism }
+	}
+	else = {
+		promote_character = { character = ZZZ_monarch_NZL_elizabeth_ii ideology = conservatism }
+		promote_character = { character = ZZZ_monarch_NZL_elizabeth_ii ideology = communist_state }
+		promote_character = { character = ZZZ_monarch_NZL_elizabeth_ii ideology = Kingdom }
+		promote_character = { character = ZZZ_monarch_NZL_elizabeth_ii ideology = Neutral_Muslim_Brotherhood }
+		promote_character = { character = ZZZ_monarch_NZL_elizabeth_ii ideology = Nat_Populism }
+	}
+}
+
+# 安提瓜和巴布达 · 伊丽莎白二世
+ZZZ_crown_ANT = {
+	if = {
+		limit = {
+			OR = {
+				has_country_flag = ZZZ_monarch_ant_charles_iii
+				NOT = { date < 2022.9.8 }
+			}
+		}
+		promote_character = { character = ZZZ_monarch_ANT_charles_iii ideology = Western_Autocracy }
+		promote_character = { character = ZZZ_monarch_ANT_charles_iii ideology = communist_state }
+		promote_character = { character = ZZZ_monarch_ANT_charles_iii ideology = Kingdom }
+		promote_character = { character = ZZZ_monarch_ANT_charles_iii ideology = neutral_Social }
+		promote_character = { character = ZZZ_monarch_ANT_charles_iii ideology = Nat_Populism }
+	}
+	else = {
+		promote_character = { character = ZZZ_monarch_ANT_elizabeth_ii ideology = Western_Autocracy }
+		promote_character = { character = ZZZ_monarch_ANT_elizabeth_ii ideology = communist_state }
+		promote_character = { character = ZZZ_monarch_ANT_elizabeth_ii ideology = Kingdom }
+		promote_character = { character = ZZZ_monarch_ANT_elizabeth_ii ideology = neutral_Social }
+		promote_character = { character = ZZZ_monarch_ANT_elizabeth_ii ideology = Nat_Populism }
+	}
+}
+
+# 巴哈马 · 伊丽莎白二世
+ZZZ_crown_BAH = {
+	if = {
+		limit = {
+			OR = {
+				has_country_flag = ZZZ_monarch_bah_charles_iii
+				NOT = { date < 2022.9.8 }
+			}
+		}
+		promote_character = { character = ZZZ_monarch_BAH_charles_iii ideology = liberalism }
+		promote_character = { character = ZZZ_monarch_BAH_charles_iii ideology = communist_state }
+		promote_character = { character = ZZZ_monarch_BAH_charles_iii ideology = Kingdom }
+		promote_character = { character = ZZZ_monarch_BAH_charles_iii ideology = Neutral_Muslim_Brotherhood }
+		promote_character = { character = ZZZ_monarch_BAH_charles_iii ideology = Nat_Populism }
+	}
+	else = {
+		promote_character = { character = ZZZ_monarch_BAH_elizabeth_ii ideology = liberalism }
+		promote_character = { character = ZZZ_monarch_BAH_elizabeth_ii ideology = communist_state }
+		promote_character = { character = ZZZ_monarch_BAH_elizabeth_ii ideology = Kingdom }
+		promote_character = { character = ZZZ_monarch_BAH_elizabeth_ii ideology = Neutral_Muslim_Brotherhood }
+		promote_character = { character = ZZZ_monarch_BAH_elizabeth_ii ideology = Nat_Populism }
+	}
+}
+
+# 巴巴多斯 · 伊丽莎白二世（2017 仍为英联邦王国）
+ZZZ_crown_BAR = {
+	if = {
+		limit = {
+			OR = {
+				has_country_flag = ZZZ_monarch_bar_charles_iii
+				NOT = { date < 2022.9.8 }
+			}
+		}
+		promote_character = { character = ZZZ_monarch_BAR_charles_iii ideology = liberalism }
+		promote_character = { character = ZZZ_monarch_BAR_charles_iii ideology = communist_state }
+		promote_character = { character = ZZZ_monarch_BAR_charles_iii ideology = Kingdom }
+		promote_character = { character = ZZZ_monarch_BAR_charles_iii ideology = Neutral_Muslim_Brotherhood }
+		promote_character = { character = ZZZ_monarch_BAR_charles_iii ideology = Nat_Populism }
+	}
+	else = {
+		promote_character = { character = ZZZ_monarch_BAR_elizabeth_ii ideology = liberalism }
+		promote_character = { character = ZZZ_monarch_BAR_elizabeth_ii ideology = communist_state }
+		promote_character = { character = ZZZ_monarch_BAR_elizabeth_ii ideology = Kingdom }
+		promote_character = { character = ZZZ_monarch_BAR_elizabeth_ii ideology = Neutral_Muslim_Brotherhood }
+		promote_character = { character = ZZZ_monarch_BAR_elizabeth_ii ideology = Nat_Populism }
+	}
+}
+
+# 伯利兹 · 伊丽莎白二世
+ZZZ_crown_BLZ = {
+	if = {
+		limit = {
+			OR = {
+				has_country_flag = ZZZ_monarch_blz_charles_iii
+				NOT = { date < 2022.9.8 }
+			}
+		}
+		promote_character = { character = ZZZ_monarch_BLZ_charles_iii ideology = conservatism }
+		promote_character = { character = ZZZ_monarch_BLZ_charles_iii ideology = communist_state }
+		promote_character = { character = ZZZ_monarch_BLZ_charles_iii ideology = Kingdom }
+		promote_character = { character = ZZZ_monarch_BLZ_charles_iii ideology = Neutral_Muslim_Brotherhood }
+		promote_character = { character = ZZZ_monarch_BLZ_charles_iii ideology = Nat_Populism }
+	}
+	else = {
+		promote_character = { character = ZZZ_monarch_BLZ_elizabeth_ii ideology = conservatism }
+		promote_character = { character = ZZZ_monarch_BLZ_elizabeth_ii ideology = communist_state }
+		promote_character = { character = ZZZ_monarch_BLZ_elizabeth_ii ideology = Kingdom }
+		promote_character = { character = ZZZ_monarch_BLZ_elizabeth_ii ideology = Neutral_Muslim_Brotherhood }
+		promote_character = { character = ZZZ_monarch_BLZ_elizabeth_ii ideology = Nat_Populism }
+	}
+}
+
+# 格林纳达 · 伊丽莎白二世
+ZZZ_crown_GRA = {
+	if = {
+		limit = {
+			OR = {
+				has_country_flag = ZZZ_monarch_gra_charles_iii
+				NOT = { date < 2022.9.8 }
+			}
+		}
+		promote_character = { character = ZZZ_monarch_GRA_charles_iii ideology = conservatism }
+		promote_character = { character = ZZZ_monarch_GRA_charles_iii ideology = communist_state }
+		promote_character = { character = ZZZ_monarch_GRA_charles_iii ideology = Kingdom }
+		promote_character = { character = ZZZ_monarch_GRA_charles_iii ideology = Neutral_Muslim_Brotherhood }
+		promote_character = { character = ZZZ_monarch_GRA_charles_iii ideology = Nat_Populism }
+	}
+	else = {
+		promote_character = { character = ZZZ_monarch_GRA_elizabeth_ii ideology = conservatism }
+		promote_character = { character = ZZZ_monarch_GRA_elizabeth_ii ideology = communist_state }
+		promote_character = { character = ZZZ_monarch_GRA_elizabeth_ii ideology = Kingdom }
+		promote_character = { character = ZZZ_monarch_GRA_elizabeth_ii ideology = Neutral_Muslim_Brotherhood }
+		promote_character = { character = ZZZ_monarch_GRA_elizabeth_ii ideology = Nat_Populism }
+	}
+}
+
+# 牙买加 · 伊丽莎白二世
+ZZZ_crown_JAM = {
+	if = {
+		limit = {
+			OR = {
+				has_country_flag = ZZZ_monarch_jam_charles_iii
+				NOT = { date < 2022.9.8 }
+			}
+		}
+		promote_character = { character = ZZZ_monarch_JAM_charles_iii ideology = conservatism }
+		promote_character = { character = ZZZ_monarch_JAM_charles_iii ideology = communist_state }
+		promote_character = { character = ZZZ_monarch_JAM_charles_iii ideology = Kingdom }
+		promote_character = { character = ZZZ_monarch_JAM_charles_iii ideology = Neutral_Muslim_Brotherhood }
+		promote_character = { character = ZZZ_monarch_JAM_charles_iii ideology = Nat_Populism }
+	}
+	else = {
+		promote_character = { character = ZZZ_monarch_JAM_elizabeth_ii ideology = conservatism }
+		promote_character = { character = ZZZ_monarch_JAM_elizabeth_ii ideology = communist_state }
+		promote_character = { character = ZZZ_monarch_JAM_elizabeth_ii ideology = Kingdom }
+		promote_character = { character = ZZZ_monarch_JAM_elizabeth_ii ideology = Neutral_Muslim_Brotherhood }
+		promote_character = { character = ZZZ_monarch_JAM_elizabeth_ii ideology = Nat_Populism }
+	}
+}
+
+# 巴布亚新几内亚 · 伊丽莎白二世
+ZZZ_crown_PAP = {
+	if = {
+		limit = {
+			OR = {
+				has_country_flag = ZZZ_monarch_pap_charles_iii
+				NOT = { date < 2022.9.8 }
+			}
+		}
+		promote_character = { character = ZZZ_monarch_PAP_charles_iii ideology = liberalism }
+		promote_character = { character = ZZZ_monarch_PAP_charles_iii ideology = communist_state }
+		promote_character = { character = ZZZ_monarch_PAP_charles_iii ideology = Kingdom }
+		promote_character = { character = ZZZ_monarch_PAP_charles_iii ideology = Neutral_Muslim_Brotherhood }
+		promote_character = { character = ZZZ_monarch_PAP_charles_iii ideology = Nat_Populism }
+	}
+	else = {
+		promote_character = { character = ZZZ_monarch_PAP_elizabeth_ii ideology = liberalism }
+		promote_character = { character = ZZZ_monarch_PAP_elizabeth_ii ideology = communist_state }
+		promote_character = { character = ZZZ_monarch_PAP_elizabeth_ii ideology = Kingdom }
+		promote_character = { character = ZZZ_monarch_PAP_elizabeth_ii ideology = Neutral_Muslim_Brotherhood }
+		promote_character = { character = ZZZ_monarch_PAP_elizabeth_ii ideology = Nat_Populism }
+	}
+}
+
+# 所罗门群岛 · 伊丽莎白二世
+ZZZ_crown_SOL = {
+	if = {
+		limit = {
+			OR = {
+				has_country_flag = ZZZ_monarch_sol_charles_iii
+				NOT = { date < 2022.9.8 }
+			}
+		}
+		promote_character = { character = ZZZ_monarch_SOL_charles_iii ideology = Western_Autocracy }
+		promote_character = { character = ZZZ_monarch_SOL_charles_iii ideology = communist_state }
+		promote_character = { character = ZZZ_monarch_SOL_charles_iii ideology = Kingdom }
+		promote_character = { character = ZZZ_monarch_SOL_charles_iii ideology = Neutral_conservatism }
+		promote_character = { character = ZZZ_monarch_SOL_charles_iii ideology = Nat_Populism }
+	}
+	else = {
+		promote_character = { character = ZZZ_monarch_SOL_elizabeth_ii ideology = Western_Autocracy }
+		promote_character = { character = ZZZ_monarch_SOL_elizabeth_ii ideology = communist_state }
+		promote_character = { character = ZZZ_monarch_SOL_elizabeth_ii ideology = Kingdom }
+		promote_character = { character = ZZZ_monarch_SOL_elizabeth_ii ideology = Neutral_conservatism }
+		promote_character = { character = ZZZ_monarch_SOL_elizabeth_ii ideology = Nat_Populism }
+	}
+}
+
+# 圣基茨和尼维斯 · 伊丽莎白二世
+ZZZ_crown_STK = {
+	if = {
+		limit = {
+			OR = {
+				has_country_flag = ZZZ_monarch_stk_charles_iii
+				NOT = { date < 2022.9.8 }
+			}
+		}
+		promote_character = { character = ZZZ_monarch_STK_charles_iii ideology = Western_Autocracy }
+		promote_character = { character = ZZZ_monarch_STK_charles_iii ideology = communist_state }
+		promote_character = { character = ZZZ_monarch_STK_charles_iii ideology = Kingdom }
+		promote_character = { character = ZZZ_monarch_STK_charles_iii ideology = neutral_Social }
+		promote_character = { character = ZZZ_monarch_STK_charles_iii ideology = Nat_Populism }
+	}
+	else = {
+		promote_character = { character = ZZZ_monarch_STK_elizabeth_ii ideology = Western_Autocracy }
+		promote_character = { character = ZZZ_monarch_STK_elizabeth_ii ideology = communist_state }
+		promote_character = { character = ZZZ_monarch_STK_elizabeth_ii ideology = Kingdom }
+		promote_character = { character = ZZZ_monarch_STK_elizabeth_ii ideology = neutral_Social }
+		promote_character = { character = ZZZ_monarch_STK_elizabeth_ii ideology = Nat_Populism }
+	}
+}
+
+# 圣卢西亚 · 伊丽莎白二世
+ZZZ_crown_STL = {
+	if = {
+		limit = {
+			OR = {
+				has_country_flag = ZZZ_monarch_stl_charles_iii
+				NOT = { date < 2022.9.8 }
+			}
+		}
+		promote_character = { character = ZZZ_monarch_STL_charles_iii ideology = conservatism }
+		promote_character = { character = ZZZ_monarch_STL_charles_iii ideology = communist_state }
+		promote_character = { character = ZZZ_monarch_STL_charles_iii ideology = Kingdom }
+		promote_character = { character = ZZZ_monarch_STL_charles_iii ideology = Neutral_Muslim_Brotherhood }
+		promote_character = { character = ZZZ_monarch_STL_charles_iii ideology = Nat_Populism }
+	}
+	else = {
+		promote_character = { character = ZZZ_monarch_STL_elizabeth_ii ideology = conservatism }
+		promote_character = { character = ZZZ_monarch_STL_elizabeth_ii ideology = communist_state }
+		promote_character = { character = ZZZ_monarch_STL_elizabeth_ii ideology = Kingdom }
+		promote_character = { character = ZZZ_monarch_STL_elizabeth_ii ideology = Neutral_Muslim_Brotherhood }
+		promote_character = { character = ZZZ_monarch_STL_elizabeth_ii ideology = Nat_Populism }
+	}
+}
+
+# 圣文森特和格林纳丁斯 · 伊丽莎白二世
+ZZZ_crown_STV = {
+	if = {
+		limit = {
+			OR = {
+				has_country_flag = ZZZ_monarch_stv_charles_iii
+				NOT = { date < 2022.9.8 }
+			}
+		}
+		promote_character = { character = ZZZ_monarch_STV_charles_iii ideology = Western_Autocracy }
+		promote_character = { character = ZZZ_monarch_STV_charles_iii ideology = communist_state }
+		promote_character = { character = ZZZ_monarch_STV_charles_iii ideology = Kingdom }
+		promote_character = { character = ZZZ_monarch_STV_charles_iii ideology = neutral_Social }
+		promote_character = { character = ZZZ_monarch_STV_charles_iii ideology = Nat_Populism }
+	}
+	else = {
+		promote_character = { character = ZZZ_monarch_STV_elizabeth_ii ideology = Western_Autocracy }
+		promote_character = { character = ZZZ_monarch_STV_elizabeth_ii ideology = communist_state }
+		promote_character = { character = ZZZ_monarch_STV_elizabeth_ii ideology = Kingdom }
+		promote_character = { character = ZZZ_monarch_STV_elizabeth_ii ideology = neutral_Social }
+		promote_character = { character = ZZZ_monarch_STV_elizabeth_ii ideology = Nat_Populism }
+	}
+}
+
+# 图瓦卢 · 伊丽莎白二世
+ZZZ_crown_TUL = {
+	if = {
+		limit = {
+			OR = {
+				has_country_flag = ZZZ_monarch_tul_charles_iii
+				NOT = { date < 2022.9.8 }
+			}
+		}
+		promote_character = { character = ZZZ_monarch_TUL_charles_iii ideology = socialism }
+		promote_character = { character = ZZZ_monarch_TUL_charles_iii ideology = communist_state }
+		promote_character = { character = ZZZ_monarch_TUL_charles_iii ideology = Kingdom }
+		promote_character = { character = ZZZ_monarch_TUL_charles_iii ideology = Neutral_Muslim_Brotherhood }
+		promote_character = { character = ZZZ_monarch_TUL_charles_iii ideology = Nat_Populism }
+	}
+	else = {
+		promote_character = { character = ZZZ_monarch_TUL_elizabeth_ii ideology = socialism }
+		promote_character = { character = ZZZ_monarch_TUL_elizabeth_ii ideology = communist_state }
+		promote_character = { character = ZZZ_monarch_TUL_elizabeth_ii ideology = Kingdom }
+		promote_character = { character = ZZZ_monarch_TUL_elizabeth_ii ideology = Neutral_Muslim_Brotherhood }
+		promote_character = { character = ZZZ_monarch_TUL_elizabeth_ii ideology = Nat_Populism }
+	}
+}
+

@@ -150,7 +150,7 @@ SOV_the_house_of_cards = {
 		NOT = {
 			OR = {
 				has_global_flag = SOV_cprf_won
-				has_global_flag = SOV_ldpr_won
+				always = no
 				has_global_flag = SOV_eurasia_won
 				has_global_flag = SOV_medvedev_won
 				has_global_flag = SOV_srzp_won
@@ -222,7 +222,7 @@ SOV_derzhavnik_politics_category = {
 }
 SOV_derzhavnik_economy_category = {
 	icon = GFX_decision_category_national_russia
-	pciture = GFX_decision_pragmatic_economy_category
+	picture = GFX_decision_pragmatic_economy_category
 	visible_when_empty = yes
 	allowed = {
 		SOV = {
@@ -241,7 +241,7 @@ SOV_derzhavnik_economy_category = {
 }
 SOV_socialist_politics_category = {
 	icon = SOV_decision_politburo
-	pciture = decision_cat_SOV_politburo
+	picture = decision_cat_SOV_politburo
 	visible_when_empty = yes
 	allowed = {
 		SOV = {
@@ -262,7 +262,7 @@ SOV_socialist_politics_category = {
 }
 SOV_democratic_politics_category = {
 	icon = SOV_russian_reformation
-	pciture = GFX_decision_cat_SOV_duma_decision_picture
+	picture = GFX_decision_cat_SOV_duma_decision_picture
 	visible_when_empty = yes
 	allowed = {
 		SOV = {
@@ -339,7 +339,7 @@ SOV_african_dawn_category = {
 		has_country_flag = SOV_african_dawn_cat_flag
 		NOT = {
 			OR = {
-				has_global_flag = SOV_ldpr_won
+				always = no
 				has_global_flag = SOV_cprf_won
 				has_global_flag = global_sahel_federation_formed_flag
 				has_global_flag = global_west_african_federation_flag
@@ -371,7 +371,7 @@ SOV_duma_category = {
 		NOT = {
 			OR = {
 				has_global_flag = SOV_cprf_won
-				has_country_flag = DSW_SOV_pending_focus_SOV_triumph_of_zhirinovsky
+				always = no
 				has_completed_focus = SOV_victory_of_national_russia
 				has_country_flag = SOV_grand_constitutional_reformation_flag
 				has_country_flag = SOV_duma_category_disabled
@@ -412,7 +412,7 @@ SOV_modernization_programme_category = {
 		NOT = {
 			OR = {
 				has_global_flag = SOV_cprf_won
-				has_country_flag = DSW_SOV_pending_focus_SOV_triumph_of_zhirinovsky
+				always = no
 				has_country_flag = SOV_grand_constitutional_reformation_flag
 				has_country_flag = SOV_duma_category_disabled
 			}
@@ -497,9 +497,7 @@ SOV_american_intervention_category = {
 			has_global_flag = SOV_first_nato_war_victory
 			has_global_flag = nato_nato_won_nato_war
 		}
-		NOT = {
-			has_global_flag = USA_american_civil_war_over_global
-		}
+		# 内战结束门控已移除
 	}
 }
 SOV_brics_category = {
@@ -737,18 +735,6 @@ SOV_communist_party_balance_category = {
 
 	}
 }
-SOV_LDPR_balance_category = {
-	icon = generic_propaganda
-	allowed = {
-		SOV = {
-			has_country_flag = DSW_SOV_tfr_active
-		}
-		tag = SOV
-	}
-	visible = {
-
-	}
-}
 SOV_soviet_navalny_balance_category = {
 	icon = generic_propaganda
 	allowed = {
@@ -784,19 +770,6 @@ SOV_western_states_terrorists_category = {
 	}
 	visible = {
 		has_country_flag = SOV_soviet_cto
-	}
-}
-SOV_western_states_terrorists_ldpr_category = {
-	icon = GFX_SOV_decision_western_states_terrorists_category
-	visible_when_empty = no
-	allowed = {
-		SOV = {
-			has_country_flag = DSW_SOV_tfr_active
-		}
-		tag = SOV
-	}
-	visible = {
-		has_country_flag = SOV_ldpr_cto
 	}
 }
 SOV_minsk_treaty_organization_category = {
@@ -844,23 +817,6 @@ SOV_csto_organization_category = {
 	}
 	visible = {
 		has_completed_focus = SOV_new_territories
-	}
-}
-SOV_ldpr_alliance_category = {
-	icon = GFX_SOV_decision_president_election_category
-	picture = GFX_decision_cat_SOV_election_decision_picture
-	visible_when_empty = yes
-	allowed = {
-		SOV = {
-			has_country_flag = DSW_SOV_tfr_active
-		}
-		tag = SOV
-	}
-	visible = {
-		OR = {
-			has_country_flag = DSW_SOV_pending_focus_SOV_reform_csto
-			has_country_flag = DSW_SOV_pending_focus_SOV_holy_union_reborn
-		}
 	}
 }
 SOV_novorussian_integration_category = {
@@ -944,9 +900,7 @@ SOV_keep_america_burning_category = {
 				has_global_flag = nato_nato_won_nato_war
 			}
 		}
-		NOT = {
-			has_global_flag = USA_american_civil_war_over_global
-		}
+		# 内战结束门控已移除
 	}
 }
 SOV_russian_inner_affairs_category = {

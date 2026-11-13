@@ -1,0 +1,234 @@
+# ============================================================================
+#  ZZZ_chainrun —— 事件链跑通器（直接施加效果版 · 台海 / 钓鱼岛）
+#
+#  链路本体：events/TFR_events_PRC.txt 的台海强制路径
+#    prc.2.a   宣战准备（PRC_taiwan_war_start + 加载 PRC_taiwan_war_tree）
+#    prc.124.a 一揽子方案：置 PRC_taiwan_war_forced_start、加载国策树、
+#              依次完成 10 个台海国策（夺金门、封锁、静默黎明、完成毛未竟之事等）
+#  本决议 = prc.124.a 的 option 原文（该 option 已包含 prc.2.a 的作用，故不重复执行）。
+#  这些国策的 completion_reward 内部会派发 prc.82 / prc.9 等事件，属权威实现的一部分，
+#  决议自身不额外调用任何 country_event / news_event。
+#
+#  互斥分支（未走）：钓鱼岛爆点 prc.546（JAP 对 CHI 宣战 + GAW_senkaku_chain_started +
+#  PRC_gaw_start），设计上只在台海线与半岛线都不起火时启用，与台海线互斥。
+#
+#  allowed 收窄到 CHI：load_focus_tree / complete_national_focus 作用于 CHI 国策树，
+#  且这些国策的 reward 依赖 CHI 身份。
+#
+#  该链需先有：无硬前置（PRC_ongoing_taiwan_war / PRC_taiwan_war_won / PRC_taiwan_war_lost
+#  三者均不存在才会走强制路径；这三个旗标不在本决议检查范围内）。
+# ============================================================================
+
+ZZZ_chainrun = {
+
+    ZZZ_cr_tw_01_forced_reunification = {
+        icon = generic_political_actions
+        cost = 0
+        fire_only_once = no
+
+        allowed = { tag = CHI }
+        visible = { always = yes }
+        available = { always = yes }
+
+        complete_effect = {
+            CHI = {
+                # prc.124.a 原文
+                set_country_flag = PRC_taiwan_war_forced_start
+                load_focus_tree = PRC_taiwan_war_tree
+                complete_national_focus = PRC_the_final_opportunity
+                complete_national_focus = PRC_prepare_landing_craft
+                complete_national_focus = PRC_modern_combined_arms
+                complete_national_focus = PRC_blockade_taiwan
+                complete_national_focus = PRC_conduct_final_training
+                complete_national_focus = PRC_expand_the_j20_program
+                complete_national_focus = PRC_operation_silent_dawn
+                complete_national_focus = PRC_sieze_kinmen
+                complete_national_focus = PRC_plan_on_high_alert
+                complete_national_focus = PRC_finish_what_mao_started
+            }
+        }
+
+        ai_will_do = { base = 0 }
+    }
+
+    # 节点：台海和平统一（taiwan_detente.11 的 immediate 原文）
+    ZZZ_cr_tw_02_peaceful_reunification = {
+        icon = generic_political_actions
+        cost = 0
+        fire_only_once = no
+
+        allowed = { tag = CHI }
+        visible = { always = yes }
+        available = { always = yes }
+
+        complete_effect = {
+            CHI = {
+                # 台湾成为特别行政区（傀儡 + 特别行政区自治等级）
+                clr_country_flag = CHI_TAI_rejected_peaceful_reunification
+                puppet = TAI
+                set_autonomy = {
+                    target = TAI
+                    autonomy_state = autonomy_special_administrative_region_TAI
+                }
+            }
+            TAI = {
+                set_politics = {
+                    ruling_party = democratic
+                    elections_allowed = yes
+                }
+                set_popularities = {
+                    democratic = 68.0
+                    communism = 0.0
+                    fascism = 0.0
+                    neutrality = 32.0
+                    nationalist = 0.0
+                }
+                set_variable = { party_pop_array^0 = 0 }
+                set_variable = { party_pop_array^1 = 0.390 }
+                set_variable = { party_pop_array^2 = 0.290 }
+                set_variable = { party_pop_array^3 = 0 }
+                set_variable = { party_pop_array^4 = 0 }
+                set_variable = { party_pop_array^5 = 0 }
+                set_variable = { party_pop_array^6 = 0 }
+                set_variable = { party_pop_array^7 = 0 }
+                set_variable = { party_pop_array^8 = 0 }
+                set_variable = { party_pop_array^9 = 0 }
+                set_variable = { party_pop_array^10 = 0 }
+                set_variable = { party_pop_array^11 = 0 }
+                set_variable = { party_pop_array^12 = 0 }
+                set_variable = { party_pop_array^13 = 0 }
+                set_variable = { party_pop_array^14 = 0.300 }
+                set_variable = { party_pop_array^15 = 0 }
+                set_variable = { party_pop_array^16 = 0 }
+                set_variable = { party_pop_array^17 = 0 }
+                set_variable = { party_pop_array^18 = 0.020 }
+                set_variable = { party_pop_array^19 = 0 }
+                set_variable = { party_pop_array^20 = 0 }
+                set_variable = { party_pop_array^21 = 0 }
+                set_variable = { party_pop_array^22 = 0 }
+                set_variable = { party_pop_array^23 = 0 }
+                clear_array = gov_coalition_array
+                set_variable = { ruling_party = 1 }
+                update_set_politics = yes
+                add_own_ideology_drift = yes
+                add_to_array = { gov_coalition_array = 14 }
+                update_government_coalition_strength = yes
+                update_party_name = yes
+                set_coalition_drift = yes
+                kill_country_leader = yes
+                create_country_leader = {
+                    name = TAI_eric_chu
+                    picture = "eric_chu.dds"
+                    ideology = conservatism
+                    traits = {
+                        western_conservatism
+                    }
+                }
+                set_cosmetic_tag = TAI_autonomy_special_administrative_region
+                clr_country_flag = dynamic_flag
+                remove_ideas = {
+                    lacks_international_recognition
+                    CHI_republic_of_china_armed_forces_idea
+                    CHI_taiwanese_independence_movement_idea
+                    TAI_legacy_of_1949
+                    Major_Non_NATO_Ally
+                }
+                remove_dynamic_modifier = {
+                    modifier = first_island_chain
+                }
+                add_ideas = {
+                    volunteer_army
+                    volunteer_women
+                    Non_State_Actor
+                    One_Country_Two_Systems
+                }
+            }
+            # 州核心/宣称清理（every_state 的 limit 是事件原文的州筛选，不是决议前置）
+            every_state = {
+                limit = {
+                    is_greater_china_state = yes
+                }
+                remove_core_of = TAI
+            }
+            every_state = {
+                limit = {
+                    is_greater_china_state = yes
+                }
+                remove_claim_by = TAI
+            }
+            496 = { remove_claim_by = TAI }
+            722 = { remove_claim_by = TAI }
+            1011 = { remove_claim_by = TAI }
+            every_state = {
+                limit = {
+                    is_taiwan_area_state = yes
+                }
+                add_core_of = TAI
+            }
+            CHI = {
+                remove_state_core = 598
+                remove_state_core = 599
+                remove_state_core = 600
+                remove_state_core = 1155
+                remove_state_core = 1156
+                remove_state_core = 1157
+                remove_state_core = 1158
+                transfer_state = 430
+                transfer_state = 491
+                transfer_state = 1015
+                transfer_state = 1109
+                add_state_core = 491
+                430 = { remove_core_of = TAI }
+                491 = { remove_core_of = TAI }
+                1015 = { remove_core_of = TAI }
+                1109 = { remove_core_of = TAI }
+            }
+            TAI = {
+                # 台湾不再持有大陆州
+                every_owned_state = {
+                    limit = {
+                        NOT = { is_taiwan_area_state = yes }
+                    }
+                    transfer_state_to = CHI
+                }
+            }
+            TAI = {
+                # 裁撤海空军，保留部分陆军作为地方守备
+                destroy_ships = {
+                    type = destroyer
+                    count = all
+                }
+                destroy_ships = {
+                    type = cruiser
+                    count = all
+                }
+                destroy_ships = {
+                    type = battleship_hull_0
+                    count = all
+                }
+                destroy_ships = {
+                    type = carrier
+                    count = all
+                }
+                destroy_ships = {
+                    type = attack_submarine
+                    count = all
+                }
+                transfer_units_fraction = {
+                    target = CHI
+                    size = 1
+                    stockpile_ratio = 0
+                    army_ratio = 0
+                    navy_ratio = 0
+                    air_ratio = 1
+                }
+                set_variable = { disband_fraction = 1 }
+                disband_units_fraction = yes
+                clear_variable = disband_fraction
+                load_oob = CHI_PRC_puppet
+            }
+        }
+
+        ai_will_do = { base = 0 }
+    }
+}

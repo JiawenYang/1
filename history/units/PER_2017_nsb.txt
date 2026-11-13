@@ -98,6 +98,11 @@ division_template = {
 		L_Air_assault_Bat = { x = 0 y = 3 }
 		Arty_Bat = { x = 1 y = 0 }
 	}
+	support = {
+		L_Recce_Comp = { x = 0 y = 0 }
+		L_Engi_Comp = { x = 0 y = 1 }
+		combat_service_support_company = { x = 0 y = 2 }
+	}
 	priority = 2
 }
 
@@ -167,6 +172,12 @@ division_template = {
 		Arty_Bat = { x = 1 y = 1 }
 	}
 
+	support = {
+		L_Recce_Comp = { x = 0 y = 0 }
+		L_Engi_Comp = { x = 0 y = 1 }
+		combat_service_support_company = { x = 0 y = 2 }
+	}
+
 	priority = 2
 }
 
@@ -185,6 +196,12 @@ division_template = {
 		Quds_Bat_PER = { x = 2 y = 1 }
 	}
 
+	support = {
+		L_Recce_Comp = { x = 0 y = 0 }
+		L_Engi_Comp = { x = 0 y = 1 }
+		combat_service_support_company = { x = 0 y = 2 }
+	}
+
 	priority = 2
 }
 
@@ -196,6 +213,11 @@ division_template = {
 		E_Mech_Inf_Bat = { x = 1 y = 0 }
 		E_L_Inf_Bat = { x = 1 y = 1 }
 		SP_Arty_Bat = { x = 1 y = 2 }
+	}
+	support = {
+		E_Recce_Comp = { x = 0 y = 0 }
+		E_Engi_Comp = { x = 0 y = 1 }
+		combat_service_support_company = { x = 0 y = 2 }
 	}
 }
 
@@ -1004,28 +1026,29 @@ units = {
 instant_effect = {  
 
 	add_equipment_to_stockpile = {
-		variant_name = "AH-1 Cobra"
+		variant_name = "AH-1S Cobra"
 		type = heavy_tank_chassis_0 #AH-1 Cobra
 		amount = 50
 		producer = USA
 	}
 	add_equipment_to_stockpile = {
 		variant_name = "Toofan"
-		type = heavy_tank_chassis_2 #Toofan
+		type = attack_helicopter_2 #Toofan
 		producer = PER
 		amount = 11
 	}
  
 	add_equipment_to_stockpile = {
-		variant_name = "Shabaviz 2-75"
+		variant_name = "Shabaviz 2-75/2061"
 		type = transport_helicopter_1 #Shabaviz 2-75/2061
 		producer = PER
 		amount = 100
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "UH-1H Huey"
 		type = transport_helicopter_1 #AB-214, AB-206, UH-1H etc
 		amount = 225
-		producer = PER
+		producer = USA
 	}
 	add_equipment_to_stockpile = {
 		variant_name = "Mi-171"
@@ -1045,19 +1068,19 @@ instant_effect = {
 	#Inf Eq
 
 	add_equipment_to_stockpile = {
-		variant_name = "G3"
+		variant_name = "Licence produced German G3 rifle"
 		type = infantry_weapons_2 #Licence produced German G3 rifle
 		producer = GER
 		amount = 45000
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "G3"
+		variant_name = "G3A3"
 		type = infantry_weapons_2 #G3（封存）
 		producer = GER
 		amount = 100000
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "M4"
+		variant_name = "M4 SOPMOD Block I"
 		type = infantry_weapons_4 #M4 copies
 		producer = USA
 		amount = 12000
@@ -1072,18 +1095,19 @@ instant_effect = {
 	#ATGM
 
 	add_equipment_to_stockpile = {
+		variant_name = "Saegheh"
 		type = Anti_tank_1 #Saeghe
 		producer = PER
 		amount = 1800
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "Metis-M"
+		variant_name = "9K115-2 Metis-M"
 		type = Anti_tank_2 #9K115-2 Metis-M
 		amount = 600
 		producer = SOV
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "Toophan"
+		variant_name = "Toophan 5/Towsan-1"
 		type = Heavy_Anti_tank_1 #Toophan 5/Towsan-1
 		producer = PER
 		amount = 700
@@ -1094,6 +1118,18 @@ instant_effect = {
 		producer = PER
 		amount = 400
 	}
+		
+		add_equipment_to_stockpile = {
+			type = Anti_tank_3 #Almas
+			producer = PER
+			amount = 1200
+		}
+		
+		add_equipment_to_stockpile = {
+			type = Heavy_Anti_tank_3 #Pirooz
+			producer = PER
+			amount = 400
+		}
 
 	#SP-AA
 
@@ -1104,20 +1140,20 @@ instant_effect = {
 		producer = ENG
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "MIM-23 Hawk"
+		variant_name = "MIB-23 Hawk"
 		type = medium_tank_aa_chassis_0 #MIB-23 Hawk
 		amount = 150
 		producer = USA
 	}
 	add_equipment_to_stockpile = {
 		variant_name = "rapier"
-		type = medium_tank_aa_chassis_1 #rapier
+		type = medium_tank_aa_chassis_0 #rapier
 		amount = 30
 		producer = ENG
 	}
 	add_equipment_to_stockpile = {
 		variant_name = "SA-15 Tor-M"
-		type = medium_tank_aa_chassis_1
+		type = SP_Anti_Air_1
 		#version_name = "SA-15 Tor-M"
 		amount = 29
 		producer = SOV
@@ -1130,7 +1166,7 @@ instant_effect = {
 	}
 	add_equipment_to_stockpile = {
 		variant_name = "SA-22 Pantsir"
-		type = medium_tank_aa_chassis_2
+		type = SP_Anti_Air_2
 		#version_name = "SA-22 Pantsir"
 		amount = 10
 		producer = SOV
@@ -1152,13 +1188,13 @@ instant_effect = {
 		producer = PER
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "FIM-92 Stinger"
+		variant_name = "FIM-92E Stinger RMP Block I"
 		type = Anti_Air_1 #Stinger
 		amount = 320
 		producer = USA
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "SA-7"
+		variant_name = "9K32 Strela-2"
 		type = Anti_Air_0 #SA-7
 		amount = 250
 		producer = SOV
@@ -1176,10 +1212,10 @@ instant_effect = {
 		producer = SOV
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "QW-1"
+		variant_name = "QW-1 Vanguard"
 		type = Anti_Air_1 #QW-1
 		amount = 100
-		producer = PER
+		producer = CHI
 	}
 	add_equipment_to_stockpile = {
 		variant_name = "Misagh-1"
@@ -1198,7 +1234,7 @@ instant_effect = {
 	#Towed
 
 	add_equipment_to_stockpile = {
-		variant_name = "FH77"
+		variant_name = "F77"
 		type = artillery_1 #F77
 		amount = 18
 		producer = SWE
@@ -1243,7 +1279,7 @@ instant_effect = {
 		amount = 60
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "M109"
+		variant_name = "M109A4"
 		type = medium_tank_artillery_chassis_1 #M109
 		amount = 150
 		producer = USA
@@ -1256,9 +1292,9 @@ instant_effect = {
 	}
 	add_equipment_to_stockpile = {
 		variant_name = "M-1978"
-		type = medium_tank_artillery_chassis_0 #M-1978
+		type = medium_tank_rocket_chassis_0 #M-1978
 		amount = 30
-		producer = PER
+		producer = NKO
 	}
 
 	#MLRS
@@ -1270,19 +1306,20 @@ instant_effect = {
 		producer = SOV
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "BM-11"
 		type = medium_tank_rocket_chassis_0 #var Iranian MLRS
-		producer = PER
+		producer = NKO
 		amount = 857
 	}
 	add_equipment_to_stockpile = {
 		variant_name = "Fajr-3"
-		type = medium_tank_rocket_chassis_1 #Fajr-3
+		type = medium_tank_rocket_chassis_0 #Fajr-3
 		producer = PER
 		amount = 20
 	}
 	add_equipment_to_stockpile = {
 		variant_name = "Fajr-5"
-		type = medium_tank_rocket_chassis_2 #Fajr-5
+		type = SP_R_arty_2
 		producer = PER
 		amount = 30
 	}
@@ -1290,13 +1327,11 @@ instant_effect = {
 	#C&C
 
 	add_equipment_to_stockpile = {
-		variant_name = "C3"
 		type = cnc_equipment_2 #C3
 		producer = PER
 		amount = 5400
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "C3STAR"
 		type = cnc_equipment_3 #C3STAR
 		producer = PER
 		amount = 2600
@@ -1305,39 +1340,46 @@ instant_effect = {
 	### Vehicles ###
 	#MBT
 	add_equipment_to_stockpile = {
+		variant_name = "T-72B"
 		type = medium_tank_chassis_1
-		producer = PER
+		producer = SOV
 		amount = 160
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "T-72B"
 		type = medium_tank_chassis_1
-		producer = PER
+		producer = SOV
 		amount = 150
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "Safir-74"
 		type = medium_tank_chassis_0
 		amount = 150
-		producer = USA
+		producer = PER
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "Safir-74"
 		type = medium_tank_chassis_0
 		amount = 168
-		producer = USA
+		producer = PER
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "Safir-74"
 		type = medium_tank_chassis_0
 		amount = 75
-		producer = SOV
+		producer = PER
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "T-72B"
 		type = medium_tank_chassis_1
 		amount = 480
 		producer = SOV
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "Safir-74"
 		type = medium_tank_chassis_0
 		amount = 150
-		producer = ENG
+		producer = PER
 	}
 	add_equipment_to_stockpile = {
 		variant_name = "Safir-74"
@@ -1346,26 +1388,30 @@ instant_effect = {
 		producer = PER
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "Safir-74"
 		type = medium_tank_chassis_0
 		amount = 100
-		producer = SOV
+		producer = PER
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "Safir-74"
 		type = medium_tank_chassis_0
 		amount = 400
-		producer = CHI
+		producer = PER
 	}
 
 	#Stored Reserves
 	add_equipment_to_stockpile = {
+		variant_name = "Safir-74"
 		type = medium_tank_chassis_0
 		amount = 200
-		producer = USA
+		producer = PER
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "Safir-74"
 		type = medium_tank_chassis_0
 		amount = 300
-		producer = ENG
+		producer = PER
 	}
 
 	#Light Tanks
@@ -1376,10 +1422,10 @@ instant_effect = {
 		producer = PER
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "Scorpion"
+		variant_name = "FV101 Scorpion"
 		type = medium_tank_destroyer_chassis_1 #Scorpion
 		amount = 80
-		producer = PER
+		producer = ENG
 	}
 	add_equipment_to_stockpile = {
 		variant_name = "Tosan"
@@ -1397,7 +1443,7 @@ instant_effect = {
 	}
 	add_equipment_to_stockpile = {
 		variant_name = "Boragh"
-		type = medium_tank_flame_chassis_1 #Boragh
+		type = medium_tank_amphibious_chassis_0 #Boragh
 		producer = PER
 		amount = 160
 	}
@@ -1422,8 +1468,8 @@ instant_effect = {
 		producer = SOV
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "Sarir"
-		type = medium_tank_amphibious_chassis_1 #Sarir
+		variant_name = "Sarir APC"
+		type = APC_3
 		producer = PER
 		amount = 100
 	}
@@ -1446,5 +1492,12 @@ instant_effect = {
 		type = util_vehicle_4 #Aras
 		producer = PER
 		amount = 400
+	}
+	# Orphan variant attachment (2017 real-world holdings)
+	add_equipment_to_stockpile = {
+		type = medium_tank_chassis_1
+		variant_name = "Zulfiqar-3"
+		amount = 10
+		producer = PER
 	}
 }

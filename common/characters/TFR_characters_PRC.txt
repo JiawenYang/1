@@ -1,13 +1,87 @@
 characters = {
+    PRC_xi_jinping = {
+        portraits = {
+            civilian = {
+                large = "gfx/leaders/PRC/PRC_xi_jinping1.png"
+            }
+            army = {
+                large = "gfx/leaders/CHI/generals/Xi Jinping.png"
+                small = "gfx/interface/ideas/CHI/advisors/army_xi_jinping.png"
+            }
+        }
+        country_leader = {
+            ideology = market_socialism
+            desc = PRC_XI_JINPING_DESC
+            traits = { hos_red_dragon_rider }
+            expire = "1.1.1.1"
+            id = -1
+        }
+        can_be_captured = no
+                field_marshal={
+                    traits = { old_guard politically_connected logistics_wizard }
+                    skill=1
+                    attack_skill= 1
+                    defense_skill= 2
+                    planning_skill= 1
+                    logistics_skill= 3
+                    legacy_id=-1
+                }
+    }
+    PRC_li_zuocheng = {
+        portraits = {
+            civilian = {
+                large = "gfx/leaders/PRC/generals/Li_Zuocheng_general.png"
+            }
+            army = {
+                large = "gfx/leaders/CHI/generals/Li Zuocheng.png"
+                small = "gfx/interface/ideas/CHI/advisors/army_li_zuocheng.png"
+            }
+        }
+        advisor = {
+            slot = army_chief
+            idea_token = PRC_li_zuocheng_army_chief
+            ledger = army
+            available = {
+                has_completed_focus = PRC_strengthen_the_chairman
+            }
+            traits = { army_chief_offensive_3 }
+            cost = 150
+            ai_will_do = { base = 10 }
+        }
+        country_leader = {
+            ideology = left_nationalism
+            desc = PRC_LI_ZUOCHENG_DESC
+            traits = { hos_desire_rise for_expansionist }
+            expire = "1.1.1.1"
+            id = -1
+        }
+        can_be_captured = no
+                field_marshal={
+                    traits = {
+                        war_hero
+                        offensive_doctrine
+                        harsh_leader
+                        thorough_planner
+                        ranger
+                        trait_reckless
+                        expert_delegator
+                    }
+                    skill=4
+                    attack_skill=4
+                    defense_skill=3
+                    planning_skill=3
+                    logistics_skill=2
+                    legacy_id=-1
+                }
+    }
     PRC_Zhang_Youxia = {
-        name = "Zhang Youxia"
         portraits = {
             army = {
-                large = "gfx/leaders/CHI/generals/Zhang Youxia.png"
+                large = "gfx/leaders/CHI/generals/Zhang_Youxia.png"
                 small = "gfx/interface/ideas/CHI/advisors/army_zhang_youxia.png"
             }
             civilian = {
-                large = "gfx/leaders/CHI/generals/Zhang Youxia.png"
+                large = "gfx/leaders/CHI/generals/Zhang_Youxia.png"
             }
         }
         can_be_captured = no
@@ -21,42 +95,1034 @@ characters = {
             legacy_id = -1
         }
     }
-    PRC_Li_Qiaoming = {
-        name = "Li Qiaoming"
+    PRC_Xu_Qiliang = {
         portraits = {
             army = {
-                large = "gfx/leaders/CHI/generals/Li Qiaoming.png"
-                small = "gfx/interface/ideas/CHI/advisors/Li Qiaoming.png"
+                large = "gfx/leaders/CHI/generals/Xu Qiliang.png"
+                small = "gfx/interface/ideas/CHI/advisors/army_xu_qiliang.png"
             }
         }
         can_be_captured = no
-        corps_commander = {
-            traits = { harsh_leader organizer panzer_leader trait_engineer }
-            skill = 3
-            attack_skill = 2
-            defense_skill = 3
-            planning_skill = 3
-            logistics_skill = 2
-            legacy_id = -1
-        }
+                field_marshal={
+                    traits={ politically_connected air_force_connections commando }
+                    skill=4
+                    attack_skill=2
+                    defense_skill=4
+                    planning_skill=3
+                    logistics_skill=2
+                    legacy_id=-1
+                }
     }
-    PRC_Li_Yujie = {
-        name = "Li Yujie"
+    PRC_He_Weidong = {
         portraits = {
             army = {
-                large = "gfx/leaders/CHI/admirals/Li Yujie.dds"
+                large = "gfx/leaders/CHI/generals/He Weidong.png"
+                small = "gfx/interface/ideas/CHI/advisors/army_he_weidong.png"
+            }
+        }
+        can_be_captured = no
+                corps_commander={
+                    traits={ engineer_officer trait_cautious inflexible_strategist organizer }
+                    skill=3
+                    attack_skill=3
+                    defense_skill=2
+                    planning_skill=2
+                    logistics_skill=3
+                    legacy_id=-1
+                }
+    }
+    PRC_wei_fenghe = {
+        portraits = {
+            army = {
+                large = "gfx/leaders/CHI/generals/Wei Fenghe.png"
+                small = "gfx/interface/ideas/CHI/advisors/army_wei_fenghe.png"
+            }
+        }
+        can_be_captured = no
+                field_marshal={
+                    traits = { politically_connected old_guard organizer }
+                    skill=4
+                    attack_skill=2
+                    defense_skill=3
+                    planning_skill=1
+                    logistics_skill=4
+                    legacy_id=-1
+                }
+    }
+    PRC_Han_Weiguo = {
+        portraits = {
+            army = {
+                large = "gfx/leaders/CHI/generals/Han weiguo.png"
+                small = "gfx/interface/ideas/CHI/advisors/army_han_weiguo.png"
+            }
+        }
+        can_be_captured = no
+                corps_commander={
+                    traits={ organizer infantry_officer career_officer combined_arms_expert }
+                    skill=3
+                    attack_skill=4
+                    defense_skill=1
+                    planning_skill=4
+                    logistics_skill=3
+                    legacy_id=-1
+                }
+    }
+    PRC_Wang_Xiubin = {
+        portraits = {
+            army = {
+                large = "gfx/leaders/CHI/generals/Wang Xiubin.png"
+                small = "gfx/interface/ideas/CHI/advisors/army_wang_xiubin.png"
+            }
+        }
+        can_be_captured = no
+                corps_commander={
+                    traits={ expert_improviser media_personality }
+                    skill=3
+                    attack_skill=2
+                    defense_skill=2
+                    planning_skill=3
+                    logistics_skill=3
+                    legacy_id=-1
+                }
+    }
+    PRC_Wu_Yanan = {
+        portraits = {
+            army = {
+                large = "gfx/leaders/CHI/generals/Wu Yanan.png"
+                small = "gfx/interface/ideas/CHI/advisors/army_wu_yanan.png"
+            }
+        }
+        can_be_captured = no
+                corps_commander={
+                    traits={ armor_officer panzer_leader organizer media_personality }
+                    skill=3
+                    attack_skill=3
+                    defense_skill=2
+                    planning_skill=3
+                    logistics_skill=2
+                    legacy_id=-1
+                }
+    }
+    PRC_Huang_Ming = {
+        portraits = {
+            army = {
+                large = "gfx/leaders/CHI/generals/Huang Ming.png"
+                small = "gfx/interface/ideas/CHI/advisors/army_huang_ming.png"
+            }
+        }
+        can_be_captured = no
+                corps_commander={
+                    traits={ combined_arms_expert trait_cautious armor_officer }
+                    skill=3
+                    attack_skill=4
+                    defense_skill=2
+                    planning_skill=3
+                    logistics_skill=1
+                    legacy_id=-1
+                }
+    }
+    PRC_Li_Qiaoming = {
+        portraits = {
+            army = {
+                large = "gfx/leaders/CHI/generals/Li Qiaoming.png"
+                small = "gfx/interface/ideas/CHI/advisors/army_li_qiaoming.png"
+            }
+        }
+        can_be_captured = no
+                corps_commander={
+                    traits={ harsh_leader  organizer panzer_leader trait_engineer }
+                    skill=3
+                    attack_skill=2
+                    defense_skill=3
+                    planning_skill=3
+                    logistics_skill=2
+                    legacy_id=-1
+                }
+    }
+    PRC_Ding_Laihang = {
+        portraits = {
+            army = {
+                large = "gfx/leaders/CHI/generals/Ding Laihang.png"
+                small = "gfx/interface/ideas/CHI/advisors/army_ding_laihang.png"
+            }
+        }
+        can_be_captured = no
+                corps_commander={
+                    traits = { air_force_connections }
+                    skill=2
+                    attack_skill=1
+                    defense_skill=2
+                    planning_skill=2
+                    logistics_skill=2
+                    legacy_id=-1
+                }
+    }
+    PRC_Wang_Qiang = {
+        portraits = {
+            army = {
+                large = "gfx/leaders/CHI/generals/Wang Qiang.png"
+                small = "gfx/interface/ideas/CHI/advisors/army_wang_qiang.png"
+            }
+        }
+        can_be_captured = no
+                corps_commander={
+                    traits = { air_force_connections commando career_officer }
+                    skill=2
+                    attack_skill=2
+                    defense_skill=1
+                    planning_skill=3
+                    logistics_skill=1
+                    legacy_id=-1
+                }
+    }
+    PRC_Chang_Dingqiu = {
+        portraits = {
+            army = {
+                large = "gfx/leaders/CHI/generals/Chang Dingqiu.png"
+                small = "gfx/interface/ideas/CHI/advisors/army_chang_dingqiu.png"
+            }
+        }
+        can_be_captured = no
+                corps_commander={
+                    traits = { air_force_connections commando career_officer }
+                    skill=2
+                    attack_skill=2
+                    defense_skill=2
+                    planning_skill=2
+                    logistics_skill=1
+                    legacy_id=-1
+                }
+    }
+    PRC_Yi_Xiaoguang = {
+        portraits = {
+            army = {
+                large = "gfx/leaders/CHI/generals/Yi Xiaoguang.png"
+                small = "gfx/interface/ideas/CHI/advisors/army_yi_xiaoguang.png"
+            }
+        }
+        can_be_captured = no
+                corps_commander={
+                    traits = { air_force_connections }
+                    skill=3
+                    attack_skill=2
+                    defense_skill=1
+                    planning_skill=3
+                    logistics_skill=4
+                    legacy_id=-1
+                }
+    }
+    PRC_Li_Shangfu = {
+        portraits = {
+            army = {
+                large = "gfx/leaders/CHI/generals/Li Shangfu.png"
+                small = "gfx/interface/ideas/CHI/advisors/army_li_shangfu.png"
+            }
+        }
+        can_be_captured = no
+                corps_commander={
+                    traits = { media_personality old_guard politically_connected }
+                    skill=2
+                    attack_skill=2
+                    defense_skill=2
+                    planning_skill=1
+                    logistics_skill=1
+                    legacy_id=-1
+                }
+    }
+    PRC_Lin_Xiangyang = {
+        portraits = {
+            army = {
+                large = "gfx/leaders/CHI/generals/Lin Xiangyang.png"
+                small = "gfx/interface/ideas/CHI/advisors/army_lin_xiangyang.png"
+            }
+        }
+        can_be_captured = no
+                corps_commander={
+                    traits = { brilliant_strategist career_officer urban_assault_specialist }
+                    skill=2
+                    attack_skill=2
+                    defense_skill=1
+                    planning_skill=1
+                    logistics_skill=3
+                    legacy_id=-1
+                }
+    }
+    PRC_Liu_Zhenli = {
+        portraits = {
+            army = {
+                large = "gfx/leaders/CHI/generals/Liu Zhengli.png"
+                small = "gfx/interface/ideas/CHI/advisors/army_liu_zhenli.png"
+            }
+        }
+        can_be_captured = no
+                corps_commander={
+                    traits={ brilliant_strategist war_hero skilled_staffer adaptable }
+                    skill=2
+                    attack_skill=2
+                    defense_skill=2
+                    planning_skill=2
+                    logistics_skill=2
+                    legacy_id=-1
+                }
+    }
+    PRC_Wang_Haijiang = {
+        portraits = {
+            army = {
+                large = "gfx/leaders/CHI/generals/Wang Haijiang.png"
+                small = "gfx/interface/ideas/CHI/advisors/army_wang_haijiang.png"
+            }
+        }
+        can_be_captured = no
+                corps_commander={
+                    traits={ adaptable trait_mountaineer trait_cautious }
+                    skill=3
+                    attack_skill=2
+                    defense_skill=1
+                    planning_skill=3
+                    logistics_skill=4
+                    legacy_id=-1
+                }
+    }
+    PRC_Wu_Shenzhou = {
+        portraits = {
+            army = {
+                large = "gfx/leaders/CHI/generals/Wu Shezhou.png"
+                small = "gfx/interface/ideas/CHI/advisors/army_wu_shenzhou.png"
+            }
+        }
+        can_be_captured = no
+                corps_commander={
+                    traits={ politically_connected }
+                    skill=2
+                    attack_skill=1
+                    defense_skill=2
+                    planning_skill=1
+                    logistics_skill=2
+                    legacy_id=-1
+                }
+    }
+    PRC_Li_Yuchao = {
+        portraits = {
+            army = {
+                large = "gfx/leaders/CHI/generals/Li Yuchao.png"
+                small = "gfx/interface/ideas/CHI/advisors/army_li_yuchao.png"
+            }
+        }
+        can_be_captured = no
+                corps_commander={
+                    traits={ politically_connected trait_engineer fortress_buster }
+                    skill=2
+                    attack_skill=2
+                    defense_skill=1
+                    planning_skill=1
+                    logistics_skill=2
+                    legacy_id=-1
+                }
+    }
+    PRC_Xu_Deqing = {
+        portraits = {
+            army = {
+                large = "gfx/leaders/CHI/generals/Xu Deqing.png"
+                small = "gfx/interface/ideas/CHI/advisors/army_xu_deqing.png"
+            }
+        }
+        can_be_captured = no
+                corps_commander={
+                    traits={ politically_connected }
+                    skill=1
+                    attack_skill=1
+                    defense_skill=1
+                    planning_skill=1
+                    logistics_skill=1
+                    legacy_id=-1
+                }
+    }
+    PRC_Xu_Qiling = {
+        portraits = {
+            army = {
+                large = "gfx/leaders/CHI/generals/Xu Qiling.png"
+                small = "gfx/interface/ideas/CHI/advisors/army_xu_qiling.png"
+            }
+        }
+        can_be_captured = no
+                corps_commander={
+                    traits={ career_officer }
+                    skill=1
+                    attack_skill=1
+                    defense_skill=1
+                    planning_skill=1
+                    logistics_skill=1
+                    legacy_id=-1
+                }
+    }
+    PRC_Zhang_Shengmin = {
+        portraits = {
+            army = {
+                large = "gfx/leaders/CHI/generals/Zhang Shengming.png"
+                small = "gfx/interface/ideas/CHI/advisors/army_zhang_shengmin.png"
+            }
+        }
+        can_be_captured = no
+                corps_commander={
+                    traits={ organizer trait_cautious }
+                    skill=2
+                    attack_skill=1
+                    defense_skill=2
+                    planning_skill=1
+                    logistics_skill=2
+                    legacy_id=-1
+                }
+    }
+    PRC_Zhao_Zongqi = {
+        portraits = {
+            army = {
+                large = "gfx/leaders/CHI/generals/Zhao Zongqi.png"
+                small = "gfx/interface/ideas/CHI/advisors/army_zhao_zongqi.png"
+            }
+        }
+        can_be_captured = no
+                corps_commander={
+                    traits={ war_hero trait_reckless trait_mountaineer skirmisher }
+                    skill=3
+                    attack_skill=3
+                    defense_skill=1
+                    planning_skill=4
+                    logistics_skill=2
+                    legacy_id=-1
+                }
+    }
+    PRC_Zhu_Shengling = {
+        portraits = {
+            army = {
+                large = "gfx/leaders/CHI/generals/Zhu Shengling.png"
+                small = "gfx/interface/ideas/CHI/advisors/army_zhu_shengling.png"
+            }
+        }
+        can_be_captured = no
+                corps_commander={
+                    traits = { politically_connected }
+                    skill=2
+                    attack_skill=2
+                    defense_skill=3
+                    planning_skill=2
+                    logistics_skill=1
+                    legacy_id=-1
+                }
+    }
+    PRC_li_xianyu = {
+        portraits = {
+            army = {
+                large = "gfx/leaders/CHI/generals/Li Xianyu.png"
+                small = "gfx/interface/ideas/CHI/advisors/army_li_xianyu.png"
+            }
+        }
+        can_be_captured = no
+                corps_commander={
+                    traits = { medical_specialist }
+                    skill=1
+                    attack_skill=1
+                    defense_skill=1
+                    planning_skill=1
+                    logistics_skill=1
+                    legacy_id=-1
+                }
+    }
+    PRC_wang_ning = {
+        portraits = {
+            army = {
+                large = "gfx/leaders/CHI/generals/Wang Ning.png"
+                small = "gfx/interface/ideas/CHI/advisors/army_wang_ning.png"
+            }
+        }
+        can_be_captured = no
+                corps_commander={
+                    traits = { infantry_leader infantry_expert }
+                    skill = 2
+                    attack_skill = 2
+                    defense_skill = 3
+                    planning_skill = 1
+                    logistics_skill = 1
+                    legacy_id=-1
+                }
+    }
+    PRC_li_fengbiao = {
+        portraits = {
+            army = {
+                large = "gfx/leaders/CHI/generals/Li Fengbiao.png"
+                small = "gfx/interface/ideas/CHI/advisors/army_li_fengbiao.png"
+            }
+        }
+        can_be_captured = no
+                corps_commander={
+                    traits = { }
+                    skill = 2
+                    attack_skill = 1
+                    defense_skill = 2
+                    planning_skill = 2
+                    logistics_skill = 2
+                    legacy_id=-1
+                }
+    }
+    PRC_yang_xuejun = {
+        portraits = {
+            army = {
+                large = "gfx/leaders/CHI/generals/Yang Xuejun.png"
+                small = "gfx/interface/ideas/CHI/advisors/army_yang_xuejun.png"
+            }
+        }
+        can_be_captured = no
+                corps_commander={
+                    traits = { medical_specialist }
+                    skill = 1
+                    attack_skill = 1
+                    defense_skill = 1
+                    planning_skill = 1
+                    logistics_skill = 1
+                    legacy_id=-1
+                }
+    }
+    PRC_wang_chunning = {
+        portraits = {
+            army = {
+                large = "gfx/leaders/CHI/generals/Wang Chunning.png"
+                small = "gfx/interface/ideas/CHI/advisors/army_wang_chunning.png"
+            }
+        }
+        can_be_captured = no
+                corps_commander={
+                    traits = { infantry_officer }
+                    skill = 2
+                    attack_skill = 2
+                    defense_skill = 1
+                    planning_skill = 1
+                    logistics_skill = 2
+                    legacy_id=-1
+                }
+    }
+    PRC_xiao_tianliang = {
+        portraits = {
+            army = {
+                large = "gfx/leaders/CHI/generals/Xiao Tianliang.png"
+                small = "gfx/interface/ideas/CHI/advisors/army_xiao_tianliang.png"
+            }
+        }
+        can_be_captured = no
+                corps_commander={
+                    traits = { }
+                    skill = 1
+                    attack_skill = 1
+                    defense_skill = 1
+                    planning_skill = 1
+                    logistics_skill = 1
+                    legacy_id=-1
+                }
+    }
+    PRC_zheng_he = {
+        portraits = {
+            army = {
+                large = "gfx/leaders/CHI/generals/Zheng He.png"
+                small = "gfx/interface/ideas/CHI/advisors/army_zheng_he.png"
+            }
+        }
+        can_be_captured = no
+                corps_commander={
+                    traits = { }
+                    skill = 1
+                    attack_skill = 1
+                    defense_skill = 1
+                    planning_skill = 1
+                    logistics_skill = 1
+                    legacy_id=-1
+                }
+    }
+    PRC_zheng_xuan = {
+        portraits = {
+            army = {
+                large = "gfx/leaders/CHI/generals/Zheng Xuan.png"
+                small = "gfx/interface/ideas/CHI/advisors/army_zheng_xuan.png"
+            }
+        }
+        can_be_captured = no
+                corps_commander={
+                    traits = {career_officer politically_connected }
+                    skill = 2
+                    attack_skill = 1
+                    defense_skill = 2
+                    planning_skill = 1
+                    logistics_skill = 3
+                    legacy_id=-1
+                }
+    }
+    PRC_jing_jianfeng = {
+        portraits = {
+            army = {
+                large = "gfx/leaders/CHI/generals/Jing Jianfeng.png"
+                small = "gfx/interface/ideas/CHI/advisors/army_jing_jianfeng.png"
+            }
+        }
+        can_be_captured = no
+                corps_commander={
+                    traits = {
+                        skilled_staffer
+                        air_force_connections
+                    }
+                    skill = 2
+                    attack_skill = 2
+                    defense_skill = 2
+                    planning_skill = 3
+                    logistics_skill = 3
+                    legacy_id=-1
+                }
+    }
+    PRC_kong_jun = {
+        portraits = {
+            army = {
+                large = "gfx/leaders/CHI/generals/Kong Jun.png"
+                small = "gfx/interface/ideas/CHI/advisors/army_kong_jun.png"
+            }
+        }
+        can_be_captured = no
+                corps_commander={
+                    traits = {
+                        career_officer
+                        naval_invader
+                        naval_liason
+                        adaptable
+                        skilled_staffer
+                    }
+                    skill = 3
+                    attack_skill = 3
+                    defense_skill = 2
+                    planning_skill = 2
+                    logistics_skill = 2
+                    legacy_id=-1
+                }
+    }
+    PRC_zhu_chuansheng = {
+        portraits = {
+            army = {
+                large = "gfx/leaders/CHI/generals/Zhu Chuansheng.png"
+                small = "gfx/interface/ideas/CHI/advisors/army_zhu_chuansheng.png"
+            }
+        }
+        can_be_captured = no
+                corps_commander={
+                    traits = { naval_invader commando trait_engineer harsh_leader }
+                    skill = 2
+                    attack_skill = 2
+                    defense_skill = 1
+                    planning_skill = 2
+                    logistics_skill = 2
+                    legacy_id=-1
+                }
+    }
+    PRC_wang_hongbin = {
+        portraits = {
+            army = {
+                large = "gfx/leaders/CHI/generals/Wang Hongbin.png"
+                small = "gfx/interface/ideas/CHI/advisors/army_wang_hongbin.png"
+            }
+        }
+        can_be_captured = no
+                corps_commander={
+                    traits = { naval_invader trait_eager_learner }
+                    skill = 2
+                    attack_skill = 2
+                    defense_skill = 1
+                    planning_skill = 2
+                    logistics_skill = 2
+                    legacy_id=-1
+                }
+    }
+    PRC_zhao_aijun = {
+        portraits = {
+            army = {
+                large = "gfx/leaders/CHI/admirals/PRC_zhao_aijun.png"
                 small = "gfx/interface/ideas/generic/advisors/generic_vacant.png"
             }
         }
         can_be_captured = no
+                navy_leader={
+                    traits = {
+                        navy_media_personality
+                        navy_career_officer
+                        chief_engineer
+                        seawolf
+                        loading_drill_master
+                    }
+                    skill= 3
+                    attack_skill= 4
+                    defense_skill= 2
+                    maneuvering_skill= 2
+                    coordination_skill= 3
+                    legacy_id=0
+                }
+    }
+    PRC_zhang_meiyu = {
+        portraits = {
+            army = {
+                large = "gfx/leaders/CHI/admirals/PRC_zhang_meiyu.png"
+                small = "gfx/interface/ideas/CHI/advisors/navy_zhang_meiyu.png"
+            }
+        }
+        can_be_captured = no
+                navy_leader={
+                    traits = {
+                        navy_media_personality
+                        navy_career_officer
+                        inshore_fighter
+                        ground_pounder
+                        hunter_killer
+                    }
+                    skill= 2
+                    attack_skill= 2
+                    defense_skill= 3
+                    maneuvering_skill= 1
+                    coordination_skill= 1
+                    legacy_id=0
+                }
+    }
+    PRC_zhang_zheng = {
+        portraits = {
+            army = {
+                large = "gfx/leaders/CHI/admirals/PRC_zhang_zheng.png"
+                small = "gfx/interface/ideas/generic/advisors/generic_vacant.png"
+            }
+        }
+        can_be_captured = no
+                navy_leader={
+                    traits = {
+                        navy_media_personality
+                        navy_career_officer
+                        flight_deck_manager
+                        blue_water_expert
+                    }
+                    skill= 3
+                    attack_skill= 4
+                    defense_skill= 1
+                    maneuvering_skill= 2
+                    coordination_skill= 2
+                    legacy_id=0
+                }
+    }
+    PRC_wang_zhongcai = {
+        portraits = {
+            army = {
+                large = "gfx/leaders/CHI/admirals/Wang_Zhongcai.png"
+                small = "gfx/interface/ideas/generic/advisors/generic_vacant.png"
+            }
+        }
+        can_be_captured = no
+                navy_leader={
+                    traits = {
+                        aviation_enthusiast
+                        navy_career_officer
+                        air_controller
+                        fly_swatter
+                    }
+                    skill=2
+                    attack_skill= 3
+                    defense_skill= 2
+                    maneuvering_skill= 2
+                    coordination_skill= 3
+                    legacy_id=0
+                }
+    }
+    PRC_sun_jianguo = {
+        portraits = {
+            army = {
+                large = "gfx/leaders/CHI/admirals/Sun_Jianguo.png"
+                small = "gfx/interface/ideas/CHI/advisors/navy_sun_jianguo.png"
+            }
+        }
+        can_be_captured = no
+                navy_leader={
+                    traits = {
+                        bold
+                        seawolf
+                        lancer
+                        silent_hunter
+                    }
+                    skill= 3
+                    attack_skill= 4
+                    defense_skill= 2
+                    maneuvering_skill= 4
+                    coordination_skill= 3
+                    legacy_id=0
+                }
+    }
+    PRC_yang_zhiliang = {
+        portraits = {
+            army = {
+                large = "gfx/leaders/CHI/admirals/Yang_Zhiliang.png"
+                small = "gfx/interface/ideas/generic/advisors/generic_vacant.png"
+            }
+        }
+        can_be_captured = no
+                navy_leader={
+                    traits = {
+                        bold
+                        chief_engineer
+                        destroyer_leader
+                        spotter
+                    }
+                    skill= 3
+                    attack_skill= 2
+                    defense_skill= 3
+                    maneuvering_skill= 3
+                    coordination_skill= 4
+                    legacy_id=0
+                }
+    }
+    PRC_feng_danyu = {
+        portraits = {
+            army = {
+                large = "gfx/leaders/CHI/admirals/Feng danyu.png"
+                small = "gfx/interface/ideas/generic/advisors/generic_vacant.png"
+            }
+        }
+        can_be_captured = no
+                navy_leader={
+                    traits = {
+                        navy_media_personality
+                        hunter_killer
+                    }
+                    skill=2
+                    attack_skill=1
+                    defense_skill=2
+                    maneuvering_skill=2
+                    coordination_skill=2
+                    legacy_id=0
+                }
+    }
+    PRC_mei_wen = {
+        portraits = {
+            army = {
+                large = "gfx/leaders/CHI/admirals/Mei wen.png"
+                small = "gfx/interface/ideas/generic/advisors/generic_vacant.png"
+            }
+        }
+        can_be_captured = no
+                navy_leader={
+                    traits = { politically_connected aviation_enthusiast }
+                    skill=2
+                    attack_skill=2
+                    defense_skill=1
+                    maneuvering_skill=1
+                    coordination_skill=3
+                    legacy_id=0
+                }
+    }
+    PRC_yuan_huazhi = {
+        portraits = {
+            army = {
+                large = "gfx/leaders/CHI/admirals/Yuan_Huazhi.png"
+                small = "gfx/interface/ideas/generic/advisors/generic_vacant.png"
+            }
+        }
+        can_be_captured = no
+                navy_leader={
+                    traits = {
+                        politically_connected
+                        safety_first
+                        navy_media_personality
+                    }
+                    skill = 1
+                    attack_skill= 1
+                    defense_skill= 2
+                    maneuvering_skill= 2
+                    coordination_skill= 1
+                    legacy_id=0
+                }
+    }
+    PRC_wang_houbin = {
+        portraits = {
+            army = {
+                large = "gfx/leaders/CHI/admirals/Wang_Houbin.png"
+                small = "gfx/interface/ideas/generic/advisors/generic_vacant.png"
+            }
+        }
+        can_be_captured = no
+                navy_leader={
+                    traits = { navy_career_officer bold }
+                    skill = 2
+                    attack_skill= 2
+                    defense_skill= 2
+                    maneuvering_skill= 3
+                    coordination_skill= 1
+                    legacy_id=0
+                }
+    }
+    PRC_Miao_Hua = {
+        portraits = {
+            army = {
+                large = "gfx/leaders/CHI/admirals/Miao Hua.png"
+                small = "gfx/interface/ideas/CHI/advisors/navy_miao_hua.png"
+            }
+        }
+        can_be_captured = no
+                navy_leader={
+                    traits = {
+                        politically_connected
+                        bold
+                        navy_media_personality
+                    }
+                    skill= 1
+                    attack_skill= 1
+                    defense_skill= 2
+                    maneuvering_skill= 2
+                    coordination_skill= 2
+                    legacy_id=0
+                }
+    }
+    PRC_Hu_Zhongming = {
+        portraits = {
+            army = {
+                large = "gfx/leaders/CHI/admirals/Hu Zhongming.png"
+                small = "gfx/interface/ideas/CHI/advisors/navy_hu_zhongming.png"
+            }
+        }
+        can_be_captured = no
+                navy_leader={
+                    traits = { seawolf navy_career_officer }
+                    skill=2
+                    attack_skill=3
+                    defense_skill=1
+                    maneuvering_skill=1
+                    coordination_skill=2
+                    legacy_id=0
+                }
+    }
+    PRC_Qin_Shengxiang = {
+        portraits = {
+            army = {
+                large = "gfx/leaders/CHI/admirals/Qin Shengxiang.png"
+                small = "gfx/interface/ideas/generic/advisors/generic_vacant.png"
+            }
+        }
+        can_be_captured = no
+                navy_leader={
+                    traits = { politically_connected }
+                    skill=2
+                    attack_skill=1
+                    defense_skill=1
+                    maneuvering_skill=1
+                    coordination_skill=2
+                    legacy_id=0
+                }
+    }
+    PRC_Li_Yujie = {
+        portraits = {
+            army = {
+                large = "gfx/leaders/CHI/admirals/Li Yujie.png"
+                small = "gfx/interface/ideas/generic/advisors/generic_vacant.png"
+            }
+        }
+        can_be_captured = no
+                navy_leader={
+                    traits = { navy_career_officer }
+                    skill=2
+                    attack_skill=1
+                    defense_skill=1
+                    maneuvering_skill=3
+                    coordination_skill=3
+                    legacy_id=0
+                }
+    }
+    PRC_Wang_Hai = {
+        portraits = {
+            army = {
+                large = "gfx/leaders/CHI/admirals/Wang Hai.png"
+                small = "gfx/interface/ideas/CHI/advisors/navy_wang_hai.png"
+            }
+        }
+        can_be_captured = no
+                navy_leader={
+                    traits = { aviation_enthusiast green_water_expert air_controller ironside }
+                    skill=2
+                    attack_skill=4
+                    defense_skill=1
+                    maneuvering_skill=1
+                    coordination_skill=2
+                    legacy_id=0
+                }
+    }
+    PRC_Shen_Jinlong = {
+        portraits = {
+            army = {
+                large = "gfx/leaders/CHI/admirals/Shen Jinlong.png"
+                small = "gfx/interface/ideas/CHI/advisors/navy_shen_jinlong.png"
+            }
+        }
+        can_be_captured = no
+                navy_leader={
+                    traits={ cuts_corners blockade_runner spotter ironside }
+                    skill=3
+                    attack_skill=2
+                    defense_skill=1
+                    maneuvering_skill=3
+                    coordination_skill=4
+                    legacy_id=0
+                }
+    }
+    PRC_Dong_Jun = {
+        portraits = {
+            army = {
+                large = "gfx/leaders/CHI/admirals/Dong Jun.png"
+                small = "gfx/interface/ideas/CHI/advisors/navy_dong_jun.png"
+            }
+        }
+        can_be_captured = no
+                navy_leader={
+                    traits={
+                        bold
+                        fleet_protector
+                        superior_tactician
+                        navy_media_personality
+                        blue_water_expert
+                    }
+                    skill=3
+                    attack_skill=3
+                    defense_skill=3
+                    maneuvering_skill=3
+                    coordination_skill=3
+                    legacy_id=0
+                }
+    }
+    PRC_yuan_yubai = {
+        portraits = {
+            army = {
+                large = "gfx/leaders/CHI/admirals/Yuan Yubai.png"
+                small = "gfx/interface/ideas/CHI/advisors/navy_yuan_yubai.png"
+            }
+        }
+        can_be_captured = no
+                navy_leader={
+                    traits={ navy_career_officer torpedo_expert }
+                    skill=3
+                    attack_skill=2
+                    defense_skill=3
+                    maneuvering_skill=1
+                    coordination_skill=4
+                    legacy_id=0
+                }
+    }
+    PRC_sun_jianguo = {
+        name = "Sun Jianguo"
+        can_be_captured = no
         navy_leader = {
-            traits = { navy_career_officer }
-            skill = 2
-            attack_skill = 1
-            defense_skill = 1
-            maneuvering_skill = 3
+            traits = {
+                bold
+                seawolf
+                lancer
+                silent_hunter
+            }
+            skill = 3
+            attack_skill = 4
+            defense_skill = 2
+            maneuvering_skill = 4
             coordination_skill = 3
-            legacy_id = 0
+            legacy_id = 1
         }
     }
 }

@@ -274,7 +274,6 @@ ideas = {
 				political_power_gain = 0.3
 				war_support_factor = 0.075
 				military_development_monthly = 0.02
-				theorist_minister_cost_factor = -0.25
 				high_command_cost_factor = -0.25
 				army_chief_cost_factor = -0.25
 			}
@@ -1746,7 +1745,7 @@ ideas = {
 			removal_cost = -1
 			
 			modifier = {
-				production_speed_rubber_refinery_factor = 0.2
+				production_speed_synthetic_refinery_factor = 0.2
 				fuel_gain_factor = 0.1
 			}
 		}
@@ -1997,7 +1996,7 @@ ideas = {
 				academic_development_monthly = 0.01
 				research_speed_factor = 0.04
 				production_factory_max_efficiency_factor = 0.05
-				inflation_multiplier_modifier = 0.1
+				inflation_cost_multiplier_modifier = 0.1
 			}
 		}
 
@@ -2108,7 +2107,7 @@ ideas = {
 				conscription_factor = 0.15
 				stability_factor = 0.10
 				society_development_monthly = 0.01
-				inflation_multiplier_modifier = 0.1
+				inflation_cost_multiplier_modifier = 0.1
 			}
 		}
 
@@ -2129,7 +2128,7 @@ ideas = {
 			modifier = {
 				industrial_capacity_factory = 0.10
 				production_speed_industrial_complex_factor = 0.05
-				inflation_multiplier_modifier = 0.1
+				inflation_cost_multiplier_modifier = 0.1
 			}
 		}
 
@@ -2215,7 +2214,7 @@ ideas = {
 			removal_cost = -1
 			
 			modifier = {
-				inflation_multiplier_modifier = -0.2
+				inflation_cost_multiplier_modifier = -0.2
 				poverty_development_monthly = 0.02
 			}
 		}
@@ -3252,7 +3251,7 @@ ideas = {
 				industrial_capacity_factory = 0.1
 				industrial_capacity_dockyard = 0.1
 				personal_expense_factor = -0.05
-				inflation_multiplier_modifier = -0.1
+				inflation_cost_multiplier_modifier = -0.1
 			}
 		}
 
@@ -3407,7 +3406,7 @@ ideas = {
 				dtg_threshold = 0.1
 				personal_expense_factor = -0.05
 				consumer_goods_factor = -0.05
-				inflation_multiplier_modifier = -0.1
+				inflation_cost_multiplier_modifier = -0.1
 			}
 		}
 
@@ -3552,7 +3551,7 @@ ideas = {
 			
 			modifier = {
 				production_factory_efficiency_gain_factor = -0.1
-				inflation_multiplier_modifier = 0.1
+				inflation_cost_multiplier_modifier = 0.1
 				production_factory_max_efficiency_factor = 0.10
 				industrial_development_monthly = 0.01
 			}
@@ -6974,7 +6973,7 @@ ideas = {
 				production_factory_max_efficiency_factor = -0.5
 				production_speed_buildings_factor = -0.5
 				stability_factor = 0.10
-				tax_business_rate = -0.25
+				corporate_tax_income_multiplier_modifier = -0.25
 			}
 		}
 		PRC_open_economy_idea = {
@@ -7181,13 +7180,13 @@ ideas = {
 			}
 			
 			equipment_bonus = {
-				ship_hull_light = {
+				destroyer = {
 					build_cost_ic = -0.15 instant = yes
 				}
-				ship_hull_submarine = {
+				attack_submarine = {
 					build_cost_ic = -0.15 instant = yes
 				}
-				ship_hull_cruiser = {
+				cruiser = {
 					build_cost_ic = -0.15 instant = yes
 				}
 			}
@@ -7211,7 +7210,7 @@ ideas = {
 			}
 			
 			equipment_bonus = {
-				ship_hull_nuclear_submarine = {
+				attack_submarine = {
 					build_cost_ic = -0.25 instant = yes
 				}
 			}
@@ -7236,7 +7235,7 @@ ideas = {
 			}
 			
 			equipment_bonus = {
-				ship_hull_heavy = {
+				battleship = {
 					build_cost_ic = -0.25 instant = yes
 				}
 			}
@@ -7420,6 +7419,26 @@ ideas = {
 			removal_cost = -1
 			
 			modifier = {
+			}
+		}
+		PRC_project_impulse_succeeded_idea = {
+			picture = USB_air_force_domination
+			name = PRC_plan_dummy_1
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				navy_capital_ship_attack_factor = 0.1
+				navy_screen_attack_factor = 0.1
+				naval_damage_factor = 0.05
 			}
 		}
 		
@@ -8268,10 +8287,10 @@ ideas = {
 				always = yes
 			}
 			equipment_bonus = {
-				ship_hull_super_heavy_1 = {
+				battleship_hull_1 = {
 					build_cost_ic = -0.2 instant = yes
 				}
-				ship_hull_super_heavy_2 = {
+				battleship_hull_2 = {
 					build_cost_ic = -0.2 instant = yes
 				}
 			}
@@ -9124,7 +9143,7 @@ ideas = {
 				always = no
 			}
 			modifier = {
-				tax_business_rate_factor = -0.03
+				corporate_tax_income_multiplier_modifier = -0.03
 				business_value_factor = 0.1
 				trade_opinion_factor = 0.15
 			}
@@ -9217,7 +9236,7 @@ ideas = {
 				always = no
 			}
 			modifier = {
-				tax_business_rate_factor = -0.03
+				corporate_tax_income_multiplier_modifier = -0.03
 				local_resources_factor = 0.1
 				production_factory_max_efficiency_factor = 0.1
 			}
@@ -9344,7 +9363,7 @@ ideas = {
 			}
 			modifier = {
 				production_factory_max_efficiency_factor = 0.03
-				tax_business_rate_factor = -0.025
+				corporate_tax_income_multiplier_modifier = -0.025
 				personal_value_factor = 0.05
 			}
 		}
@@ -11707,11 +11726,7 @@ ideas = {
 				production_speed_buildings_factor = -0.35
 			}
 			equipment_bonus = {
-				infantry_equipment = {
-					build_cost_ic = -0.75
-					instant = yes
-				}
-				support_equipment = {
+				infantry = {
 					build_cost_ic = -0.75
 					instant = yes
 				}
@@ -12084,6 +12099,37 @@ ideas = {
 				army_org_factor = 0.05
 				initiative_factor = 0.05
 				army_core_defence_factor = 0.05
+			}
+		}
+		PRC_aircraft_carrier_programme_idea = {
+			picture = PRC_hong_kong_protests
+			allowed = {
+				always = no
+			}
+
+			equipment_bonus = {
+				carrier = {
+					build_cost_ic = 2
+					instant = yes
+				}
+			}
+
+			modifier = {
+				production_cost_max_carrier = 1000
+			}
+		}
+		PRC_aircraft_carrier_programme_idea2 = {
+			name = PRC_aircraft_carrier_programme_idea
+			picture = PRC_hong_kong_protests
+			allowed = {
+				always = no
+			}
+
+			equipment_bonus = {
+				carrier = {
+					build_cost_ic = 0.5
+					instant = yes
+				}
 			}
 		}
 	}

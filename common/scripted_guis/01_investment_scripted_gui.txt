@@ -304,7 +304,7 @@ scripted_gui = {
 							}
 						}
 						set_temp_variable = { tag_index = THIS.id }
-						change_influence_percentage = yes
+						if = { limit = { NOT = { has_global_flag = cml_md_influence_disabled } } change_influence_percentage = yes }
 						set_country_flag = { flag = recently_canceled_a_project_in_this_state_@PREV value = 1 days = 3 }
 					}
 				}

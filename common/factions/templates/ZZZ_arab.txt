@@ -1,0 +1,82 @@
+# 阿拉伯联合共和国剧情链 —— 泛阿拉伯军事同盟阵营模板
+# 仅由 ZZZ_UAR_form_arab_alliance 决议通过 create_faction_from_template 创建，不在 UI 中自行出现。
+# 复用 MD 基座既有规则：joining_rule_has_no_war / faction_manifest_middle_east_dominance / GFX_faction_icon_arab_league
+
+faction_template_zzz_uar = {
+	name = ZZZ_UAR_faction_name
+	icon = GFX_faction_icon_arab_league
+	manifest = faction_manifest_middle_east_dominance
+	can_leader_join_other_factions = no
+	visible = {
+		always = no
+	}
+
+	default_rules = {
+		# Join Rules
+		joining_rule_has_no_war
+		# War Declaration
+		war_declaration_rule_faction_leader_only
+		war_declaration_generated_tension_25
+		war_declaration_threat_75
+		# Peace Conference
+		faction_peace_nato_doctrine
+		# Call To War
+		call_to_war_rule_defensive_only
+		# Expulsion Rule
+		dismissal_rule_impossible
+	}
+}
+
+# 第六次中东战争 —— 抵抗轴心（伊朗牵头，真主党/巴勒斯坦/哈马斯/伊拉克加入）
+# 由 mew.6 通过 create_faction_from_template 创建，不在 UI 中自行出现。
+faction_template_aor = {
+	name = MEW_aor_faction_name
+	icon = GFX_faction_icon_arab_league
+	manifest = faction_manifest_middle_east_dominance
+	can_leader_join_other_factions = no
+	visible = {
+		always = no
+	}
+
+	default_rules = {
+		# Join Rules
+		joining_rule_has_no_war
+		# War Declaration
+		war_declaration_rule_faction_leader_only
+		war_declaration_generated_tension_25
+		war_declaration_threat_75
+		# Peace Conference
+		faction_peace_nato_doctrine
+		# Call To War
+		call_to_war_rule_defensive_only
+		# Expulsion Rule
+		dismissal_rule_impossible
+	}
+}
+
+# 第六次中东战争 —— 耶路撒冷防卫条约（埃及牵头，叙利亚/阿尔及利亚/利比亚/黎巴嫩政府加入）
+# 由 mew.1 通过 create_faction_from_template 创建，不在 UI 中自行出现。
+faction_template_jerusalem_defence_pact = {
+	name = MEW_jerusalem_pact_faction_name
+	icon = GFX_faction_icon_jerusalem_defense
+	manifest = faction_manifest_middle_east_dominance
+	can_leader_join_other_factions = no
+	visible = {
+		always = no
+	}
+
+	default_rules = {
+		# Join Rules
+		joining_rule_has_no_war
+		# War Declaration
+		war_declaration_rule_faction_leader_only
+		war_declaration_generated_tension_25
+		war_declaration_threat_75
+		# Peace Conference
+		faction_peace_nato_doctrine
+		# Call To War
+		call_to_war_rule_defensive_only
+		# Expulsion Rule
+		dismissal_rule_impossible
+	}
+}

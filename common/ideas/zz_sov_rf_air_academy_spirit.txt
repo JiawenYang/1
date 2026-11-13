@@ -1,0 +1,22 @@
+ideas = {
+    air_force_academy_spirit = {
+
+        sov_rf_air_academy = {  # 精神名称：空天军院校体系
+            ledger = air
+            picture = SOV_rf_air_emblem
+            visible = {
+                original_tag = SOV
+                check_variable = { ruling_party = 6 }
+            }
+            allowed_to_remove = { always = no }
+            modifier = {
+                air_training_xp_gain_factor = 0.1           # 空军训练经验获取 +10%
+                air_ace_generation_chance_factor = 0.05     # 王牌飞行员生成概率 +5%
+                experience_gain_air = 0.05                  # 空军指挥经验获取 +5%
+            }
+            ai_will_do = {
+                factor = 1
+            }
+        }
+    }
+}

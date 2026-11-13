@@ -101,10 +101,16 @@ division_template = {
 		Marine_Bat_KOR = { x = 2 y = 0 }
 		Marine_Bat_KOR = { x = 2 y = 1 }
 		armor_Bat = { x = 3 y = 0 }
-		Mech_Marine_Bat = { x = 3 y = 1 }
+		Marine_Bat_KOR = { x = 3 y = 1 }
 		SP_Arty_Bat = { x = 3 y = 2 }
 		SP_Arty_Bat = { x = 3 y = 3 }
 		SP_Arty_Bat = { x = 3 y = 4 }
+	}
+	support = {
+		Mech_Recce_Comp = { x = 0 y = 0 }
+		H_Engi_Comp = { x = 0 y = 1 }
+		SP_AA_Battery = { x = 0 y = 2 }
+		combat_service_support_company = { x = 0 y = 3 }
 	}
 }
 division_template = {
@@ -125,6 +131,11 @@ division_template = {
 		Mech_Inf_Bat = { x = 3 y = 0 }
 		Mech_Inf_Bat = { x = 3 y = 1 }
 		SP_AA_Bat = { x = 3 y = 2 }
+	}
+	support = {
+		armor_Recce_Comp = { x = 0 y = 0 }
+		H_Engi_Comp = { x = 0 y = 1 }
+		combat_service_support_company = { x = 0 y = 2 }
 	}
 }
 division_template = {
@@ -150,6 +161,13 @@ division_template = {
 		Mech_Inf_Bat = { x = 3 y = 1 }
 		SP_AA_Bat = { x = 3 y = 2 }
 	}
+	support = {
+		SP_arty_battery = { x = 0 y = 0 }
+		SP_AA_Battery = { x = 0 y = 1 }
+		armor_Recce_Comp = { x = 0 y = 2 }
+		H_Engi_Comp = { x = 0 y = 3 }
+		combat_service_support_company = { x = 0 y = 4 }
+	}
 }
 division_template = {
 	name = "Capitol Infantry Division (mech)"
@@ -166,6 +184,11 @@ division_template = {
 		SP_Arty_Bat = { x = 1 y = 3 }
 		armor_Bat = { x = 1 y = 4 }
 
+	}
+	support = {
+		armor_Recce_Comp = { x = 0 y = 0 }
+		H_Engi_Comp = { x = 0 y = 1 }
+		combat_service_support_company = { x = 0 y = 2 }
 	}
 }
 division_template = {
@@ -218,6 +241,11 @@ division_template = {
 		L_Air_assault_Bat = { x = 0 y = 3 }
 
 	}
+	support = {
+		L_Recce_Comp = { x = 0 y = 0 }
+		L_Engi_Comp = { x = 0 y = 1 }
+		combat_service_support_company = { x = 0 y = 2 }
+	}
 }
 
 division_template = {
@@ -227,6 +255,11 @@ division_template = {
 		SOF_Bat_KOR = { x = 0 y = 0 }
 		SOF_Bat_KOR = { x = 0 y = 1 }
 
+	}
+	support = {
+		L_Recce_Comp = { x = 0 y = 0 }
+		L_Engi_Comp = { x = 0 y = 1 }
+		combat_service_support_company = { x = 0 y = 2 }
 	}
 	priority = 2
 }
@@ -662,25 +695,29 @@ instant_effect = {
 
 	#封存坦克
 	add_equipment_to_stockpile = {
+		variant_name = "M48A3E"
 		type = medium_tank_chassis_0 #M48A3（封存）
-		producer = USA
+		producer = KOR
 		amount = 250
 	}
 
 	add_equipment_to_stockpile = {
+		variant_name = "M48A5K"
 		type = medium_tank_chassis_0 #M48A5（封存）
-		producer = USA
+		producer = KOR
 		amount = 200
 	}
 
 	#封存装甲输送车
 	add_equipment_to_stockpile = {
+		variant_name = "M113"
 		type = medium_tank_amphibious_chassis_1 #M113（封存）
 		producer = USA
 		amount = 300
 	}
 
 	add_equipment_to_stockpile = {
+		variant_name = "K200 KIFV"
 		type = medium_tank_amphibious_chassis_1 #K200（封存）
 		producer = KOR
 		amount = 500
@@ -688,18 +725,21 @@ instant_effect = {
 
 	#封存牵引火炮
 	add_equipment_to_stockpile = {
+		variant_name = "M101"
 		type = artillery_1 #KH-178 105毫米榴弹炮（封存）
-		producer = KOR
+		producer = USA
 		amount = 600
 	}
 
 	add_equipment_to_stockpile = {
+		variant_name = "M114"
 		type = artillery_1 #KH-179 155毫米榴弹炮（封存）
-		producer = KOR
+		producer = USA
 		amount = 700
 	}
 
 	add_equipment_to_stockpile = {
+		variant_name = "各型迫击炮"
 		type = artillery_1 #各型迫击炮（封存）
 		producer = KOR
 		amount = 800
@@ -707,13 +747,15 @@ instant_effect = {
 
 	#封存自行火炮
 	add_equipment_to_stockpile = {
-		type = medium_tank_artillery_chassis_1 #K55自行榴弹炮（封存）
+		variant_name = "K55A1"
+		type = SP_arty_1
 		producer = KOR
 		amount = 600
 	}
 
 	#封存火箭炮
 	add_equipment_to_stockpile = {
+		variant_name = "K136 Kooryong火箭炮"
 		type = medium_tank_rocket_chassis_0 #K136 Kooryong火箭炮（封存）
 		producer = KOR
 		amount = 150
@@ -721,12 +763,14 @@ instant_effect = {
 
 	#封存自行防空车
 	add_equipment_to_stockpile = {
-		type = medium_tank_aa_chassis_0 #K260自行防空车（封存）
-		producer = KOR
+		variant_name = "M-163 VADS"
+		type = SP_Anti_Air_0
+		producer = USA
 		amount = 40
 	}
 
 	add_equipment_to_stockpile = {
+		variant_name = "KIFV Vulcan SPAAG"
 		type = medium_tank_aa_chassis_1 #K263自行防空车（封存）
 		producer = KOR
 		amount = 60
@@ -734,6 +778,7 @@ instant_effect = {
 
 	#封存老型防空
 	add_equipment_to_stockpile = {
+		variant_name = "老型高炮"
 		type = Anti_Air_0 #老型高炮（封存）
 		producer = KOR
 		amount = 400
@@ -741,6 +786,7 @@ instant_effect = {
 
 	#封存反坦克导弹
 	add_equipment_to_stockpile = {
+		variant_name = "M40"
 		type = Anti_tank_1 #TOW/BGM-71老型反坦克导弹（封存）
 		producer = USA
 		amount = 500
@@ -748,32 +794,38 @@ instant_effect = {
 
 	#封存卡车
 	add_equipment_to_stockpile = {
+		variant_name = "老型卡车"
 		type = util_vehicle_2 #老型卡车（封存）
 		producer = KOR
 		amount = 2000
 	}
 
 	add_equipment_to_stockpile = {
+		variant_name = "K2"
 		type = infantry_weapons_3 #K2
 		producer = KOR
 		amount = 600000
 	}
 	add_equipment_to_stockpile = {
-		type = infantry_weapons_5 #K2C1
+		variant_name = "K2C1"
+		type = infantry_weapons_6 #K2C1
 		producer = KOR
 		amount = 20000
 	}
 	add_equipment_to_stockpile = {
-		type = infantry_weapons_2 #K1（封存）
+		variant_name = "K1"
+		type = medium_tank_chassis_1 #K1（封存）
 		producer = KOR
 		amount = 3000
 	}
 	add_equipment_to_stockpile = {
-		type = infantry_weapons_5 #M4
+		variant_name = "M4 SOPMOD Block I"
+    type = infantry_weapons_4 #M4
 		producer = USA
 		amount = 2000
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "M16"
 		type = infantry_weapons_2 #M16
 		producer = USA
 		amount = 10000
@@ -789,21 +841,36 @@ instant_effect = {
 		amount = 2300
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "9K113 Konkurs"
 		type = Anti_tank_2
-		producer = KOR
+		producer = SOV
 		amount = 2400
 	}
+		
+		add_equipment_to_stockpile = {
+			type = Anti_tank_3 #AT-1K Raybolt
+			producer = KOR
+			amount = 800
+		}
 	add_equipment_to_stockpile = {
 		type = Heavy_Anti_tank_1
 		producer = KOR
 		amount = 800
 	}
+		
+		add_equipment_to_stockpile = {
+			type = Heavy_Anti_tank_3 #KLTV Raybolt
+			producer = KOR
+			amount = 300
+		}
 	add_equipment_to_stockpile = {
+		variant_name = "Mistral"
 		type = Anti_Air_1 #Mistral
 		producer = FRA
 		amount = 800
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "16"
 		type = Anti_Air_1 #16
 		producer = FRA
 		amount = 500
@@ -851,7 +918,7 @@ instant_effect = {
 	add_equipment_to_stockpile = {
 		type = medium_tank_chassis_0
 		variant_name = "M48A5K"
-		producer = USA
+		producer = KOR
 		amount = 597
 	}
 	add_equipment_to_stockpile = {
@@ -863,7 +930,7 @@ instant_effect = {
 	add_equipment_to_stockpile = {
 		type = medium_tank_flame_chassis_2
 		variant_name = "BMP-3"
-		producer = KOR
+		producer = SOV
 		amount = 40
 	}
 	add_equipment_to_stockpile = {
@@ -875,7 +942,7 @@ instant_effect = {
 	add_equipment_to_stockpile = {
 		type = util_vehicle_4
 		variant_name = "Bandvagn 206"
-		producer = KOR
+		producer = SWE
 		amount = 300
 	}
 	add_equipment_to_stockpile = {
@@ -891,6 +958,7 @@ instant_effect = {
 		amount = 420
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "M113"
 		type = medium_tank_amphibious_chassis_1 #M577 aka m113
 		producer = USA
 		amount = 140
@@ -898,10 +966,11 @@ instant_effect = {
 	add_equipment_to_stockpile = {
 		type = medium_tank_amphibious_chassis_1
 		variant_name = "BTR-80"
-		producer = KOR
+		producer = SOV
 		amount = 20
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "KM-90"
 		type = medium_tank_amphibious_chassis_1 #KM-90
 		producer = KOR
 		amount = 200
@@ -909,11 +978,11 @@ instant_effect = {
 	add_equipment_to_stockpile = {
 		variant_name = "KAAV7"
 		type = medium_tank_amphibious_chassis_1
-		producer = USA
+		producer = KOR
 		amount = 166
 	}
 	add_equipment_to_stockpile = {
-		type = util_vehicle_6 #MaxxPro MRAP
+		type = heavy_util_vehicle_6 #MaxxPro
 		producer = USA
 		amount = 10
 	}
@@ -924,16 +993,19 @@ instant_effect = {
 		amount = 300
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "M109A3"
 		type = medium_tank_artillery_chassis_1 #M109A2
 		producer = USA
 		amount = 1040
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "KH178"
 		type = artillery_1 #KH-178
 		producer = KOR
 		amount = 1700
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "KH-179"
 		type = artillery_1 #KH-179
 		producer = KOR
 		amount = 1800
@@ -952,8 +1024,9 @@ instant_effect = {
 		amount = 29
 	}
 	add_equipment_to_stockpile = {
-		type = heavy_tank_chassis_1
-		producer = KOR
+		type = heavy_tank_chassis_0
+		variant_name = "AH-1S Cobra"
+		producer = USA
 		amount = 60
 	}
 	add_equipment_to_stockpile = {
@@ -969,13 +1042,15 @@ instant_effect = {
 		amount = 20
 	}
 	add_equipment_to_stockpile = {
-		type = medium_tank_aa_chassis_0 #MIM-23 Hawk
+		variant_name = "M-163 VADS"
+		type = SP_Anti_Air_0
 		producer = USA
 		amount = 148
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "KUH-1 Surion"
 		type = transport_helicopter_2 #Boeing CH-47D Chinook
-		producer = USA
+		producer = KOR
 		amount = 43
 	}
 	add_equipment_to_stockpile = {
@@ -985,34 +1060,65 @@ instant_effect = {
 		amount = 79
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "KUH-1 Surion"
 		type = transport_helicopter_2 #S-92A Superhawk
-		producer = USA
+		producer = KOR
 		amount = 3
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "KUH-1 Surion"
 		type = transport_helicopter_2 #Sikorsky UH-60 Black Hawk
-		producer = USA
+		producer = KOR
 		amount = 116
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "MD 500 & 500D"
 		type = transport_helicopter_1 #MD 500 & 500D
 		producer = KOR
 		amount = 175
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "Aérospatiale SA-319 Alouette III"
 		type = transport_helicopter_1 #SA319B Alouette III
-		producer = KOR
+		producer = FRA
 		amount = 3
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "MD 500"
 		type = transport_helicopter_1 #MD 500
 		producer = KOR
 		amount = 107
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "Eurocopter AS330 Puma"
 		type = transport_helicopter_1 #Eurocopter AS332 Super Puma
 		producer = FRA
 		amount = 2
 		#version_name = "Eurocopter AS332 Super Puma"
+	}
+	# Generation upgrade (2017 stock)
+	add_equipment_to_stockpile = {
+		type = artillery_3
+		amount = 0
+		producer = KOR
+	}
+	# Orphan variant attachment (2017 real-world holdings)
+	add_equipment_to_stockpile = {
+		type = medium_tank_rocket_chassis_2
+		variant_name = "K239 Chunmoo"
+		amount = 50
+		producer = KOR
+	}
+	add_equipment_to_stockpile = {
+		type = heavy_tank_chassis_2
+		variant_name = "AH-64E Apache Guardian"
+		amount = 36
+		producer = KOR
+	}
+	add_equipment_to_stockpile = {
+		type = small_plane_strike_airframe_2
+		variant_name = "FA-50 Golden Eagle"
+		amount = 60
+		producer = KOR
 	}
 }

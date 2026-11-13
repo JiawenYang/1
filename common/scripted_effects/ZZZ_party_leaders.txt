@@ -1,0 +1,398 @@
+# ============================================================================
+# ZZZ 政党更迭 / GAW 协作政府配套领导人效果（本工程原创）
+# 写法依据：千禧 common/scripted_effects/<TAG>_political_leaders.txt
+#   create_country_leader = { name = "..." picture = "...dds" ideology = ... }
+# 说明：create_country_leader 的 name 使用本地化键（ZZZ_nm_<tag>_<slug>），词条见
+#       localisation/*/ZZZ_char_names_*.yml。
+# 肖像优先复用千禧既有 gfx/leaders/<TAG>/ 资产；缺失的按报告清单列出，不造占位图。
+# ============================================================================
+
+# 苏丹：2019.4 军方接管，阿卜杜勒·法塔赫·布尔汉（Nat_Autocracy / 22）
+# 肖像依据：千禧 gfx/leaders/SUD/Abdel_Fattah_al_Burhan.dds（已存在）
+ZZZ_party_leader_SUD_burhan = {
+	hidden_effect = { kill_country_leader = yes }
+	create_country_leader = {
+		name = ZZZ_nm_sud_burhan
+		picture = "Abdel_Fattah_al_Burhan.dds"
+		ideology = Nat_Autocracy
+	}
+}
+
+# 印尼：GAW 结算后亲日右翼领袖（Nat_Populism / nationalist 顶层组）
+# 复用千禧既有 IND 人物与肖像：gfx/leaders/IND/Tommy_Suharto.dds
+ZZZ_party_leader_IND_tommy_suharto = {
+	hidden_effect = { kill_country_leader = yes }
+	create_country_leader = {
+		name = ZZZ_nm_ind_tommy_suharto
+		picture = "Tommy_Suharto.dds"
+		ideology = Nat_Populism
+	}
+}
+
+# 日本：中国胜利后日共执政（communist_state / communism 顶层组）
+# 复用千禧既有日共人物与肖像：common/scripted_effects/JAP_political_leaders.txt:93-100
+#   name = "Kazuo Shii" / picture = "Kazuo_Shii.dds"（gfx/leaders/JAP/ 已存在）
+# 原生 ideology 为 Communist-State，与本工程目标党 communist_state 一致，无需改写
+ZZZ_party_leader_JAP_kazuo_shii = {
+    if = {
+        limit = { NOT = { ZZZ_active_monarchy = yes } }
+        hidden_effect = { kill_country_leader = yes }
+        create_country_leader = {
+            name = ZZZ_nm_jap_kazuo_shii
+            picture = "Kazuo_Shii.dds"
+            ideology = communist_state
+        }
+    }
+}
+
+# ----------------------------------------------------------------------------
+# GAW 协作政府具名领袖（每一国一位，随协作政府建立时安装）
+# ----------------------------------------------------------------------------
+
+# CBD 柬埔寨：中国侧协作政府（communist_state / 4）
+# 复用千禧既有肖像 gfx/leaders/CBD/CAB_Hun_Sen.dds（MD 无对应领袖条目，本工程新增条目）
+ZZZ_party_leader_CBD_hun_sen = {
+    if = {
+        limit = { NOT = { ZZZ_active_monarchy = yes } }
+        hidden_effect = { kill_country_leader = yes }
+        create_country_leader = {
+            name = ZZZ_nm_cbd_hun_sen
+            picture = "CAB_Hun_Sen.dds"
+            ideology = communist_state
+        }
+    }
+}
+
+# LAO 老挝：中国侧协作政府（communist_state / 4）
+# 复用千禧既有肖像 gfx/leaders/LAO/Khamtai_Siphandon.dds（MD 无对应领袖条目，本工程新增条目）
+ZZZ_party_leader_LAO_khamtai = {
+	hidden_effect = { kill_country_leader = yes }
+	create_country_leader = {
+		name = ZZZ_nm_lao_khamtai
+		picture = "Khamtai_Siphandon.dds"
+		ideology = communist_state
+	}
+}
+
+# BRM 缅甸：中国侧协作政府（communist_state / 4）
+# 复用千禧既有 U Than Tin（原 Neutral_Communism）与 gfx/leaders/BRM/u_than_tin.dds
+ZZZ_party_leader_BRM_u_than_tin = {
+	hidden_effect = { kill_country_leader = yes }
+	create_country_leader = {
+		name = ZZZ_nm_brm_u_than_tin
+		picture = "u_than_tin.dds"
+		ideology = communist_state
+	}
+}
+
+# KOR 韩国（条件性）：中国侧协作政府（communist_state / 4）
+# 复用千禧既有 Lee Jung-hee（原 anarchist_communism）与 gfx/leaders/KOR/Lee_Jung-hee.dds
+ZZZ_party_leader_KOR_lee_jung_hee = {
+	hidden_effect = { kill_country_leader = yes }
+	create_country_leader = {
+		name = ZZZ_nm_kor_lee_jung_hee
+		picture = "Lee_Jung-hee.dds"
+		ideology = communist_state
+	}
+}
+
+# NKO 朝鲜（条件性）：中国侧协作政府（communist_state / 4）
+# 复用千禧既有 Kim Jong-un（原 Neutral_Communism）与 gfx/leaders/NKO/Kim_Jong-un.dds
+ZZZ_party_leader_NKO_kim_jong_un = {
+	hidden_effect = { kill_country_leader = yes }
+	create_country_leader = {
+		name = ZZZ_nm_nko_kim_jong_un
+		picture = "Kim_Jong-un.dds"
+		ideology = communist_state
+	}
+}
+
+# TAI 台湾（条件性）：中国侧协作政府（communist_state / 4）
+# 复用千禧既有 Wu Rongyuan（原 communist_state）与 gfx/leaders/TAI/wu_rongyuan.dds
+ZZZ_party_leader_TAI_wu_rongyuan = {
+	hidden_effect = { kill_country_leader = yes }
+	create_country_leader = {
+		name = ZZZ_nm_tai_wu_rongyuan
+		picture = "wu_rongyuan.dds"
+		ideology = communist_state
+	}
+}
+
+# MAY 马来西亚：日本侧协作政府（liberalism / democratic 顶层组）
+# 复用千禧既有 Mahathir Mohamad 与 gfx/leaders/MAY/mahathir_mohamad.dds
+ZZZ_party_leader_MAY_mahathir = {
+    if = {
+        limit = { NOT = { ZZZ_active_monarchy = yes } }
+        hidden_effect = { kill_country_leader = yes }
+        create_country_leader = {
+            name = ZZZ_nm_may_mahathir
+            picture = "mahathir_mohamad.dds"
+            ideology = liberalism
+        }
+    }
+}
+
+# PHI 菲律宾：日本侧协作政府（liberalism / democratic 顶层组）
+# 复用千禧既有同人记录 common/scripted_effects/PHI_political_leaders.txt:40-42
+#   name = "Ferdinand Marcos Jr." / picture = "ferdinand_marcos.dds"（gfx/leaders/PHI/ 已存在）
+# 千禧把该人物挂在 conservatism；此处按 GAW 目标党（^2 liberalism）改挂，人物与肖像不变
+ZZZ_party_leader_PHI_marcos = {
+	hidden_effect = { kill_country_leader = yes }
+	create_country_leader = {
+		name = ZZZ_nm_phi_marcos
+		picture = "ferdinand_marcos.dds"
+		ideology = liberalism
+	}
+}
+
+# SIN 新加坡：日本侧协作政府（conservatism / democratic 顶层组）
+# 复用千禧既有 Lee Hsien Loong 与 gfx/leaders/SIN/Lee_Hsien_Loong.dds
+ZZZ_party_leader_SIN_lee_hsien_loong = {
+	hidden_effect = { kill_country_leader = yes }
+	create_country_leader = {
+		name = ZZZ_nm_sin_lee_hsien_loong
+		picture = "Lee_Hsien_Loong.dds"
+		ideology = conservatism
+	}
+}
+
+# SIA 泰国：日本侧协作政府（conservatism / democratic 顶层组）
+# 复用千禧既有 Abhisit Vejjajiva 与 gfx/leaders/SIA/abhisit_vejjajiva.dds
+ZZZ_party_leader_SIA_abhisit = {
+    if = {
+        limit = { NOT = { ZZZ_active_monarchy = yes } }
+        hidden_effect = { kill_country_leader = yes }
+        create_country_leader = {
+            name = ZZZ_nm_sia_abhisit
+            picture = "abhisit_vejjajiva.dds"
+            ideology = conservatism
+        }
+    }
+}
+
+# IND 印尼：中国侧协作政府（anarchist_communism / communism 顶层组）
+# 复用千禧既有左翼领袖：common/scripted_effects/IND_political_leaders.txt:179-186
+#   name = "Megawati Sukatnoputri" / picture = "Megawati_Soekarnoputri.dds" / ideology = anarchist_communism
+# 千禧把梅加瓦蒂挂在 anarchist_communism；此处沿用同一子意识形态，人物与肖像不变
+ZZZ_party_leader_IND_megawati = {
+	hidden_effect = { kill_country_leader = yes }
+	create_country_leader = {
+		name = ZZZ_nm_ind_megawati
+		picture = "Megawati_Soekarnoputri.dds"
+		ideology = anarchist_communism
+	}
+}
+
+# SIA 泰国：中国侧协作政府（communist_state / communism 顶层组）
+# 人物：乍兰·迪塔皮差（Jaran Ditapichai），前泰国共产党成员、后任参议员，真实人物，不虚构。
+# 肖像：千禧 gfx/leaders/SIA/ 无共产主义人物肖像（set_leader_SIA 亦无共产主义分支），
+#      按本工程缺肖像清单惯例显式指向原版通用半身像 gfx/leaders/leader_unknown.dds，
+#      不套用他人头像、不造占位图、不留空引用。
+ZZZ_party_leader_SIA_jaran_ditapichai = {
+    if = {
+        limit = { NOT = { ZZZ_active_monarchy = yes } }
+        hidden_effect = { kill_country_leader = yes }
+        create_country_leader = {
+            name = ZZZ_nm_sia_jaran_ditapichai
+            picture = "gfx/leaders/leader_unknown.dds"
+            ideology = communist_state
+        }
+    }
+}
+
+# IRE 爱尔兰：统一党/共和党保守派领袖（conservatism / 1）
+# 复用千禧既有肖像 gfx/leaders/IRE/micheal_martin.dds（MD 领袖条目误写为 michael_martin.dds，故本工程显式指定）
+ZZZ_party_leader_IRE_micheal_martin = {
+	hidden_effect = { kill_country_leader = yes }
+	create_country_leader = {
+		name = ZZZ_nm_ire_micheal_martin
+		picture = "micheal_martin.dds"
+		ideology = conservatism
+	}
+}
+
+# VIE 越南：该政权领袖（Nat_Autocracy / 22）
+# 人物：Nguyen Huu Chanh（1952 年生），境外居住（美国），公开身份：境外政治组织负责人。
+# 肖像：MD 无现成资产，列入缺肖像清单（Nguyen_Huu_Chanh.dds），不造占位、不套他人头像。
+ZZZ_party_leader_VIE_south_vietnam = {
+	hidden_effect = { kill_country_leader = yes }
+	create_country_leader = {
+		name = ZZZ_nm_vie_nguyen_huu_chanh
+		picture = "Nguyen_Huu_Chanh.dds"
+		ideology = Nat_Autocracy
+	}
+}
+
+# ----------------------------------------------------------------------------
+# GAW 结算补齐：澳大利亚 / 新西兰 / 印度（中国胜利后社会主义协作政府）
+# 依据千禧 set_leader_<TAG> 既有记录复用人物与肖像，不自造人物、不自造 character ID。
+# AST 取 set_Communist-State 分支：Peter Symon / gfx/leaders/AST/Peter_Symon.dds（已存在）
+# RAJ 取 set_Communist-State 分支：A.B. Bardhan / gfx/leaders/RAJ/a_b_bardhan.dds（已存在）
+# NZL 取 set_Communist-State 分支：Patrick Brown；千禧该条目写 picture = "generic.dds"，
+#     该图在 gfx/leaders/NZL/ 下不存在，列入缺肖像清单，不套用他人头像。
+# ----------------------------------------------------------------------------
+ZZZ_party_leader_AST_peter_symon = {
+    if = {
+        limit = { NOT = { ZZZ_active_monarchy = yes } }
+        hidden_effect = { kill_country_leader = yes }
+        create_country_leader = {
+            name = ZZZ_nm_ast_peter_symon
+            picture = "Peter_Symon.dds"
+            ideology = communist_state
+        }
+    }
+}
+
+ZZZ_party_leader_NZL_patrick_brown = {
+    if = {
+        limit = { NOT = { ZZZ_active_monarchy = yes } }
+        hidden_effect = { kill_country_leader = yes }
+        create_country_leader = {
+            name = ZZZ_nm_nzl_patrick_brown
+            picture = "generic.dds"
+            ideology = communist_state
+        }
+    }
+}
+
+ZZZ_party_leader_RAJ_a_b_bardhan = {
+	hidden_effect = { kill_country_leader = yes }
+	create_country_leader = {
+		name = ZZZ_nm_raj_a_b_bardhan
+		picture = "a_b_bardhan.dds"
+		ideology = communist_state
+	}
+}
+
+# ----------------------------------------------------------------------------
+# 韩国进步派（socialism / 索引 3）：2022 成局、2025 提前大选两次轮替
+# 千禧 set_socialism 分支既有记录：Moon Jae-in / gfx/leaders/KOR/Moon_Jae-in.dds（已存在）
+# 注：工程内无李在明的 character / 肖像记录，故按既有条目用文在寅，不自造人物。
+# ----------------------------------------------------------------------------
+ZZZ_party_leader_KOR_moon_jae_in = {
+	hidden_effect = { kill_country_leader = yes }
+	create_country_leader = {
+		name = ZZZ_nm_kor_moon_jae_in
+		picture = "Moon_Jae-in.dds"
+		ideology = socialism
+	}
+}
+
+# ----------------------------------------------------------------------------
+# 朝鲜社会民主党（KSDP，^5 = anarchist_communism）组阁元首：沈相奵
+# 定位：朝鲜人民共和国（NKO_korean_peoples_republic）由 KSDP 组阁，沈相奵出任该届
+#   联合政府的政府首脑（元首位）。人物侧与本槽位严格对齐：
+#     ideology = anarchist_communism（与 ^5 同一子意识形态）
+#     trait    = emerging_anarchist_communism（千禧 common/country_leader/00_traits.txt:94
+#                的既有领袖特质，set_correct_ideology_trait 对 ^5 走的正是这一条）
+#   故界面上的执政党、领袖所属意识形态与领袖特质三者一致，不出现「社会民主党
+#   组阁却挂着社会民主主义元首」的错位。
+# 叙事口径：她以 KSDP 推举的组阁人选身份执政，不表述为「以社会民主党（^3）身份执政」。
+# 人物来源：TFR 源 events/TFR_events_KOR.txt:216-220 的既有 create_country_leader 记录
+# 肖像：TFR 侧为 gfx/leaders/KOR/PRK_Sim_Sang_jung.png；本工程/MD 内暂无该图，
+#     按标准位置留 gfx/leaders/NKO/Sim_Sang_jung.dds，交由头像通道补图。
+# 说明：同人物换角色沿用「先 kill_country_leader 清旧领袖，再 create_country_leader
+#     指定新 ideology」写法，不使用 character ID，不产生重复角色。
+# ----------------------------------------------------------------------------
+ZZZ_party_leader_NKO_sim_sang_jung = {
+	hidden_effect = { kill_country_leader = yes }
+	create_country_leader = {
+		name = ZZZ_nm_nko_sim_sang_jung
+		picture = "Sim_Sang_jung.dds"
+		ideology = anarchist_communism
+		traits = {
+			emerging_anarchist_communism
+		}
+	}
+}
+
+# ----------------------------------------------------------------------------
+# 墨西哥 2018.12.1 洛佩斯·奥夫拉多尔就任（MORENA = ^5 anarchist_communism）
+# 依据：千禧 common/scripted_effects/MEX_political_leaders.txt 同一人物的既有记录
+#   （Andrés Manuel López Obrador；肖像 gfx/leaders/MEX/Andres_Manuel_Lopez_Obrador.dds 已存在）。
+# 说明：千禧原生把该人物挂在 ^18（MEX.neutral_Social 本地化实为 MC 公民运动党），
+#   本工程按真实党籍改挂 ^5（MEX.anarchist_communism 本地化即 "(MORENA) 国家复兴运动"），
+#   与 .171 的 set_variable = { ruling_party = 5 } 一致。不新建 character ID，不借用他人肖像。
+# ----------------------------------------------------------------------------
+ZZZ_party_leader_MEX_amlo = {
+	hidden_effect = { kill_country_leader = yes }
+	create_country_leader = {
+		name = MEX_andres_manuel_lopez_obrador
+		picture = "Andres_Manuel_Lopez_Obrador.dds"
+		ideology = anarchist_communism
+		traits = {
+			emerging_anarchist_communism
+		}
+	}
+}
+
+# ----------------------------------------------------------------------------
+# 墨西哥 2024.10.1 克劳迪娅·辛鲍姆就任（MORENA = ^5 anarchist_communism）
+# 肖像由头像任务统一出图：gfx/leaders/MEX/Claudia_Sheinbaum.dds
+# 本效果只用基座同款 kill_country_leader + create_country_leader 写法，不调 set_leader = yes。
+# ----------------------------------------------------------------------------
+ZZZ_party_leader_MEX_sheinbaum = {
+	hidden_effect = { kill_country_leader = yes }
+	create_country_leader = {
+		name = MEX_claudia_sheinbaum
+		picture = "Claudia_Sheinbaum.dds"
+		ideology = anarchist_communism
+		traits = {
+			emerging_anarchist_communism
+		}
+	}
+}
+
+# ----------------------------------------------------------------------------
+# 突尼斯 2019.10.23 凯斯·赛义德就任（Nat_Populism = ^20 nationalist 组）
+# 基座 set_leader_TUN 无 ^20 分支，按同结构补在这里。
+# 肖像：gfx/leaders/TUN/Kais_Saied.dds
+# ----------------------------------------------------------------------------
+ZZZ_party_leader_TUN_kais_saied = {
+	hidden_effect = { kill_country_leader = yes }
+	create_country_leader = {
+		name = ZZZ_nm_tun_kais_saied_leader
+		picture = "Kais_Saied.dds"
+		ideology = Nat_Populism
+		traits = {
+			nationalist_Nat_Populism
+		}
+	}
+}
+
+# ----------------------------------------------------------------------------
+# 智利 2021.12.19 加夫列尔·博里奇就任（socialism = ^3 democratic 组）
+# 基座 set_leader_CHL 无 ^3 分支，按同结构补在这里。
+# 肖像：gfx/leaders/CHL/Gabriel_Boric.dds
+# ----------------------------------------------------------------------------
+ZZZ_party_leader_CHL_boric = {
+	hidden_effect = { kill_country_leader = yes }
+	create_country_leader = {
+		name = CHL_gabriel_boric
+		picture = "Gabriel_Boric.dds"
+		ideology = socialism
+		traits = {
+			western_socialism
+		}
+	}
+}
+
+# ----------------------------------------------------------------------------
+# 马来西亚 2020.3.1 穆希丁·亚辛就任（Nat_Populism = ^20 nationalist 组）
+# 基座 set_leader_MAY 仅有 ^3（马哈蒂尔），无 ^20 分支，按同结构补在这里。
+# 肖像：gfx/leaders/MAY/Muhyiddin_Yassin.dds
+# ----------------------------------------------------------------------------
+ZZZ_party_leader_MAY_muhyiddin = {
+    if = {
+        limit = { NOT = { ZZZ_active_monarchy = yes } }
+        hidden_effect = { kill_country_leader = yes }
+        create_country_leader = {
+            name = ZZZ_nm_may_muhyiddin
+            picture = "Muhyiddin_Yassin.dds"
+            ideology = Nat_Populism
+            traits = {
+                nationalist_Nat_Populism
+            }
+        }
+    }
+}

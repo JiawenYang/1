@@ -1,0 +1,40 @@
+# Restored for the batch-A missions: taiwan.32 is fired by PRC_taiwan_war_countdown, CHI_taiwan_war_mission and PRC_taiwan_war_countdown timeout.
+
+country_event = {
+	#TAIWAN WINS IN THE TAIWAN WAR, MAINLAND CHINA LOSES, TAIWAN IS HAPPY
+	id = taiwan.32
+	title = taiwan.32.t
+	desc = taiwan.32.d
+	picture = GFX_CHI_event_taiwan_32
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = taiwan.32.a
+		clr_country_flag = CHI_protecting_the_island_flag
+		custom_effect_tooltip = CHI_taiwan_war_victory_demobilization_tooltip
+		delete_unit = {
+			id = 1949
+			disband = yes
+		}
+		custom_effect_tooltip = tooltip_white_line
+		add_ideas = CHI_lower_mainland_influence_idea
+		custom_effect_tooltip = tooltip_white_line
+		add_ideas = CHI_republic_of_china_armed_forces_idea
+		custom_effect_tooltip = tooltip_white_line
+		hidden_effect = {
+			remove_ideas = CHI_repairs_under_fire_idea
+		}
+		set_temp_variable = {
+			coalition_partner_var_temp = token:conservative
+		}
+		remove_from_coalition = yes
+		set_temp_variable = {
+			coalition_partner_var_temp = token:social_liberal
+		}
+		remove_from_coalition = yes
+		set_temp_variable = {
+			coalition_partner_var_temp = token:market_liberal
+		}
+		remove_from_coalition = yes
+	}
+}

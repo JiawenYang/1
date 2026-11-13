@@ -1,0 +1,450 @@
+# ============================================================
+# ZZZ 巴尔干：选举 -> 退约 -> 联邦 事件链
+# 起点：美国"脑死亡"全局旗标 USA_federal_paralysis_global
+#   （写入点 events/TFR_events_USA_civilwar.txt:337-359，usacw.21，2021.08.01）
+# 退约：事件 zzz_balkan.20 -> ZZZ_balkan_leave_nato_and_eu_effect
+# 联邦与对土开战：common/decisions/TFR_decisions_PRC.txt 内新增决议
+# ============================================================
+add_namespace = zzz_balkan
+
+# ---------- 第一批：保加利亚 / 罗马尼亚 / 希腊 / 土耳其 ----------
+
+# 保加利亚：2021 年提前大选，复兴党（Vazrazhdane）上台，替换 Borisov 政府
+country_event = {
+	id = zzz_balkan.1
+	title = zzz_balkan.1.t
+	desc = zzz_balkan.1.d
+	picture = GFX_2021_Russian_Election
+	fire_only_once = yes
+
+	trigger = {
+		tag = BUL
+		has_global_flag = USA_federal_paralysis_global
+		date > 2021.9.1
+		has_idea = NATO_member
+		NOT = { has_country_flag = BALKAN_anti_western_government }
+		is_subject = no
+		has_war = no
+	}
+
+	mean_time_to_happen = {
+		months = 2
+		modifier = {
+			factor = 0.6
+			has_stability < 0.40
+		}
+	}
+
+	option = {
+		name = zzz_balkan.1.a
+		log = "[GetDateText]: [This.GetName]: zzz_balkan.1.a executed"
+		hidden_effect = {
+			set_temp_variable = { rul_party_temp = 20 }
+			set_temp_variable = { col_one = 2 }
+			change_ruling_party_effect = yes
+			set_temp_variable = { party_index = 20 }
+			set_temp_variable = { funder_party_index = 6 }
+			set_temp_variable = { party_popularity_fraction = 0.5 }
+			boost_party_popularity = yes
+			set_country_flag = BALKAN_anti_western_government
+		}
+		add_political_power = 25
+		add_stability = -0.02
+		country_event = { id = zzz_balkan.20 days = 75 }
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+# 罗马尼亚：反北约民族主义政府上台（Călin Georgescu）
+country_event = {
+	id = zzz_balkan.2
+	title = zzz_balkan.2.t
+	desc = zzz_balkan.2.d
+	picture = GFX_2021_Russian_Election
+	fire_only_once = yes
+
+	trigger = {
+		tag = ROM
+		has_global_flag = USA_federal_paralysis_global
+		date > 2021.10.1
+		has_idea = NATO_member
+		NOT = { has_country_flag = BALKAN_anti_western_government }
+		is_subject = no
+		has_war = no
+	}
+
+	mean_time_to_happen = {
+		months = 3
+		modifier = {
+			factor = 0.6
+			has_stability < 0.40
+		}
+	}
+
+	option = {
+		name = zzz_balkan.2.a
+		log = "[GetDateText]: [This.GetName]: zzz_balkan.2.a executed"
+		hidden_effect = {
+			set_temp_variable = { rul_party_temp = 20 }
+			set_temp_variable = { col_one = 2 }
+			change_ruling_party_effect = yes
+			set_temp_variable = { party_index = 20 }
+			set_temp_variable = { funder_party_index = 6 }
+			set_temp_variable = { party_popularity_fraction = 0.5 }
+			boost_party_popularity = yes
+			create_country_leader = {
+				name = ZZZ_nm_rom_calin_georgescu
+				picture = "Calin_Georgescu.png"
+				ideology = Nat_Populism
+				traits = {
+					nationalist_Nat_Populism
+				}
+			}
+			set_country_flag = BALKAN_anti_western_government
+		}
+		add_political_power = 20
+		add_stability = -0.03
+		country_event = { id = zzz_balkan.20 days = 75 }
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+# 希腊：反紧缩左翼政府上台（Zoe Konstantopoulou），随后退出北约与欧盟
+country_event = {
+	id = zzz_balkan.3
+	title = zzz_balkan.3.t
+	desc = zzz_balkan.3.d
+	picture = GFX_2021_Russian_Election
+	fire_only_once = yes
+
+	trigger = {
+		tag = GRE
+		has_global_flag = USA_federal_paralysis_global
+		date > 2021.10.1
+		has_idea = NATO_member
+		NOT = { has_country_flag = BALKAN_anti_western_government }
+		is_subject = no
+		has_war = no
+	}
+
+	mean_time_to_happen = {
+		months = 3
+		modifier = {
+			factor = 0.5
+			has_idea = GRE_austerity_3
+		}
+		modifier = {
+			factor = 0.7
+			has_stability < 0.35
+		}
+	}
+
+	option = {
+		name = zzz_balkan.3.a
+		log = "[GetDateText]: [This.GetName]: zzz_balkan.3.a executed"
+		hidden_effect = {
+			set_temp_variable = { rul_party_temp = 18 }
+			set_temp_variable = { col_one = 2 }
+			change_ruling_party_effect = yes
+			set_temp_variable = { party_index = 18 }
+			set_temp_variable = { funder_party_index = 6 }
+			set_temp_variable = { party_popularity_fraction = 0.5 }
+			boost_party_popularity = yes
+			create_country_leader = {
+				name = GRE_zoe_konstantopoulou
+				picture = "Zoe_Konstantopoulou.png"
+				ideology = neutral_Social
+			}
+			set_country_flag = BALKAN_anti_western_government
+		}
+		add_political_power = 20
+		add_stability = -0.03
+		country_event = { id = zzz_balkan.20 days = 75 }
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+# 土耳其：民族主义左翼（Vatan Partisi）政府上台，只退出北约，不涉及欧盟
+country_event = {
+	id = zzz_balkan.4
+	title = zzz_balkan.4.t
+	desc = zzz_balkan.4.d
+	picture = GFX_2021_Russian_Election
+	fire_only_once = yes
+
+	trigger = {
+		tag = TUR
+		has_global_flag = USA_federal_paralysis_global
+		date > 2021.11.1
+		has_idea = NATO_member
+		NOT = { has_country_flag = BALKAN_anti_western_government }
+		is_subject = no
+		has_war = no
+	}
+
+	mean_time_to_happen = {
+		months = 3
+		modifier = {
+			factor = 0.7
+			has_stability < 0.40
+		}
+	}
+
+	option = {
+		name = zzz_balkan.4.a
+		log = "[GetDateText]: [This.GetName]: zzz_balkan.4.a executed"
+		hidden_effect = {
+			set_temp_variable = { rul_party_temp = 4 }
+			set_temp_variable = { col_one = 2 }
+			change_ruling_party_effect = yes
+			set_temp_variable = { party_index = 4 }
+			set_temp_variable = { funder_party_index = 6 }
+			set_temp_variable = { party_popularity_fraction = 0.5 }
+			boost_party_popularity = yes
+			set_country_flag = BALKAN_anti_western_government
+		}
+		add_political_power = 20
+		add_stability = -0.03
+		country_event = { id = zzz_balkan.20 days = 75 }
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+# ---------- 第二批：阿尔巴尼亚 / 克罗地亚 / 斯洛文尼亚 / 黑山 ----------
+
+# 阿尔巴尼亚（北约成员，非欧盟成员）
+country_event = {
+	id = zzz_balkan.5
+	title = zzz_balkan.5.t
+	desc = zzz_balkan.5.d
+	picture = GFX_2021_Russian_Election
+	fire_only_once = yes
+
+	trigger = {
+		tag = ALB
+		has_global_flag = USA_federal_paralysis_global
+		date > 2022.1.1
+		has_idea = NATO_member
+		NOT = { has_country_flag = BALKAN_anti_western_government }
+		is_subject = no
+		has_war = no
+	}
+
+	mean_time_to_happen = {
+		months = 4
+	}
+
+	option = {
+		name = zzz_balkan.5.a
+		log = "[GetDateText]: [This.GetName]: zzz_balkan.5.a executed"
+		hidden_effect = {
+			set_temp_variable = { rul_party_temp = 20 }
+			set_temp_variable = { col_one = 2 }
+			change_ruling_party_effect = yes
+			set_temp_variable = { party_index = 20 }
+			set_temp_variable = { funder_party_index = 6 }
+			set_temp_variable = { party_popularity_fraction = 0.5 }
+			boost_party_popularity = yes
+			set_country_flag = BALKAN_anti_western_government
+		}
+		add_political_power = 20
+		add_stability = -0.03
+		country_event = { id = zzz_balkan.20 days = 75 }
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+# 克罗地亚（北约与欧盟成员）
+country_event = {
+	id = zzz_balkan.6
+	title = zzz_balkan.6.t
+	desc = zzz_balkan.6.d
+	picture = GFX_2021_Russian_Election
+	fire_only_once = yes
+
+	trigger = {
+		tag = CRO
+		has_global_flag = USA_federal_paralysis_global
+		date > 2022.2.1
+		has_idea = NATO_member
+		NOT = { has_country_flag = BALKAN_anti_western_government }
+		is_subject = no
+		has_war = no
+	}
+
+	mean_time_to_happen = {
+		months = 4
+	}
+
+	option = {
+		name = zzz_balkan.6.a
+		log = "[GetDateText]: [This.GetName]: zzz_balkan.6.a executed"
+		hidden_effect = {
+			set_temp_variable = { rul_party_temp = 20 }
+			set_temp_variable = { col_one = 2 }
+			change_ruling_party_effect = yes
+			set_temp_variable = { party_index = 20 }
+			set_temp_variable = { funder_party_index = 6 }
+			set_temp_variable = { party_popularity_fraction = 0.5 }
+			boost_party_popularity = yes
+			set_country_flag = BALKAN_anti_western_government
+		}
+		add_political_power = 20
+		add_stability = -0.03
+		country_event = { id = zzz_balkan.20 days = 75 }
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+# 斯洛文尼亚（北约与欧盟成员）
+country_event = {
+	id = zzz_balkan.7
+	title = zzz_balkan.7.t
+	desc = zzz_balkan.7.d
+	picture = GFX_2021_Russian_Election
+	fire_only_once = yes
+
+	trigger = {
+		tag = SLV
+		has_global_flag = USA_federal_paralysis_global
+		date > 2022.3.1
+		has_idea = NATO_member
+		NOT = { has_country_flag = BALKAN_anti_western_government }
+		is_subject = no
+		has_war = no
+	}
+
+	mean_time_to_happen = {
+		months = 4
+	}
+
+	option = {
+		name = zzz_balkan.7.a
+		log = "[GetDateText]: [This.GetName]: zzz_balkan.7.a executed"
+		hidden_effect = {
+			set_temp_variable = { rul_party_temp = 20 }
+			set_temp_variable = { col_one = 2 }
+			change_ruling_party_effect = yes
+			set_temp_variable = { party_index = 20 }
+			set_temp_variable = { funder_party_index = 6 }
+			set_temp_variable = { party_popularity_fraction = 0.5 }
+			boost_party_popularity = yes
+			set_country_flag = BALKAN_anti_western_government
+		}
+		add_political_power = 20
+		add_stability = -0.03
+		country_event = { id = zzz_balkan.20 days = 75 }
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+# 黑山（北约成员，非欧盟成员；亲塞尔维亚/亲俄政府上台）
+country_event = {
+	id = zzz_balkan.8
+	title = zzz_balkan.8.t
+	desc = zzz_balkan.8.d
+	picture = GFX_2021_Russian_Election
+	fire_only_once = yes
+
+	trigger = {
+		tag = MNT
+		has_global_flag = USA_federal_paralysis_global
+		date > 2022.4.1
+		has_idea = NATO_member
+		NOT = { has_country_flag = BALKAN_anti_western_government }
+		is_subject = no
+		has_war = no
+	}
+
+	mean_time_to_happen = {
+		months = 4
+	}
+
+	option = {
+		name = zzz_balkan.8.a
+		log = "[GetDateText]: [This.GetName]: zzz_balkan.8.a executed"
+		hidden_effect = {
+			set_temp_variable = { rul_party_temp = 20 }
+			set_temp_variable = { col_one = 2 }
+			change_ruling_party_effect = yes
+			set_temp_variable = { party_index = 20 }
+			set_temp_variable = { funder_party_index = 6 }
+			set_temp_variable = { party_popularity_fraction = 0.5 }
+			boost_party_popularity = yes
+			create_country_leader = {
+				name = ZZZ_nm_mnt_andrija_mandic
+				picture = "Andrija_Mandic.dds"
+				ideology = Nat_Populism
+				traits = {
+					nationalist_Nat_Populism
+				}
+			}
+			set_country_flag = BALKAN_anti_western_government
+		}
+		add_political_power = 20
+		add_stability = -0.03
+		country_event = { id = zzz_balkan.20 days = 75 }
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+# ---------- 通用退约事件 ----------
+# 只有反西方政府已上台才执行退约；否则 60 天后重试，确保不会出现
+# "亲西方政府主动退约"的怪事
+country_event = {
+	id = zzz_balkan.20
+	title = zzz_balkan.20.t
+	desc = zzz_balkan.20.d
+	picture = GFX_2012_protests
+	is_triggered_only = yes
+
+	option = {
+		name = zzz_balkan.20.a
+		trigger = {
+			has_country_flag = BALKAN_anti_western_government
+		}
+		log = "[GetDateText]: [This.GetName]: zzz_balkan.20.a executed"
+		ZZZ_balkan_leave_nato_and_eu_effect = yes
+	}
+
+	option = {
+		name = zzz_balkan.20.b
+		trigger = {
+			NOT = { has_country_flag = BALKAN_anti_western_government }
+		}
+		hidden_effect = {
+			country_event = { id = zzz_balkan.20 days = 60 }
+		}
+	}
+}
+
+# ---------- 中国获得联邦支点后的提示 ----------
+country_event = {
+	id = zzz_balkan.30
+	title = zzz_balkan.30.t
+	desc = zzz_balkan.30.d
+	picture = GFX_2012_protests
+	is_triggered_only = yes
+
+	option = {
+		name = zzz_balkan.30.a
+		log = "[GetDateText]: [This.GetName]: zzz_balkan.30.a executed"
+		add_political_power = 30
+	}
+}

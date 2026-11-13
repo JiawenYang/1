@@ -1,0 +1,399 @@
+# 阿拉伯联合共和国剧情链 —— 脚本效果
+# 本文件全部效果均在 EGY 作用域内调用（由 CHI / SOV 的决议或 on_capitulation 钩子发起）。
+# 依赖的既有资产：
+#   is_arabic_nation（MD: common/scripted_triggers/MD_Country_Groups_Triggers.txt:772）
+#   declare_war_on / white_peace / dismantle_faction / annex_country / set_cosmetic_tag / set_capital（原版效果）
+#   UAR_nationalist 国号（MD: localisation/english/MD_countries_cosmetic_l_english.yml:3320，旗帜 gfx/flags/UAR_nationalist.tga）
+
+# 泛阿拉伯同盟成员：叙利亚、阿尔及利亚、利比亚、也门
+# 「不反对泛阿拉伯主义」在工程与 MD 基座内均无现成 idea/旗标，按用户确认采用固定四国名单
+# 判据：存在 + 阿拉伯民族 + 未加入其他阵营 + 未与埃及交战
+ZZZ_UAR_add_arab_members = {
+	if = {
+		limit = {
+			country_exists = SYR
+			SYR = { is_arabic_nation = yes }
+			SYR = { NOT = { is_in_faction = yes } }
+			SYR = { NOT = { has_war_with = PREV } }
+		}
+		add_to_faction = SYR
+	}
+	if = {
+		limit = {
+			country_exists = ALG
+			ALG = { is_arabic_nation = yes }
+			ALG = { NOT = { is_in_faction = yes } }
+			ALG = { NOT = { has_war_with = PREV } }
+		}
+		add_to_faction = ALG
+	}
+	if = {
+		limit = {
+			country_exists = LBA
+			LBA = { is_arabic_nation = yes }
+			LBA = { NOT = { is_in_faction = yes } }
+			LBA = { NOT = { has_war_with = PREV } }
+		}
+		add_to_faction = LBA
+	}
+	if = {
+		limit = {
+			country_exists = YEM
+			YEM = { is_arabic_nation = yes }
+			YEM = { NOT = { is_in_faction = yes } }
+			YEM = { NOT = { has_war_with = PREV } }
+		}
+		add_to_faction = YEM
+	}
+}
+
+# 埃及牵头组建“阿拉伯联合共和国”军事联盟（调用作用域：EGY）
+# 复用既有资产：faction_template_zzz_uar（名称键 ZZZ_UAR_faction_name）
+#   若埃及仍挂在旧阵营（如耶路撒冷防卫条约），先退出/解散，再成军，保证盟友能被拉入
+ZZZ_UAR_form_uae_military_alliance = {
+	if = {
+		limit = { NOT = { has_global_flag = ZZZ_UAR_arab_faction_formed } }
+		if = {
+			limit = { is_in_faction = yes }
+			if = {
+				limit = { is_faction_leader = yes }
+				dismantle_faction = yes
+			}
+			else = {
+				leave_faction = yes
+			}
+		}
+		create_faction_from_template = faction_template_zzz_uar
+		set_global_flag = ZZZ_UAR_arab_faction_formed
+		ZZZ_UAR_add_arab_members = yes
+	}
+}
+
+# 对阿拉伯君主制国家宣战：沙特、约旦、阿联酋、科威特、卡塔尔、阿曼、巴林
+ZZZ_UAR_declare_wars = {
+	if = {
+		limit = {
+			country_exists = SAU
+			NOT = { has_war_with = SAU }
+		}
+		declare_war_on = {
+			target = SAU
+			type = annex_everything
+		}
+	}
+	if = {
+		limit = {
+			country_exists = JOR
+			NOT = { has_war_with = JOR }
+		}
+		declare_war_on = {
+			target = JOR
+			type = annex_everything
+		}
+	}
+	if = {
+		limit = {
+			country_exists = UAE
+			NOT = { has_war_with = UAE }
+		}
+		declare_war_on = {
+			target = UAE
+			type = annex_everything
+		}
+	}
+	if = {
+		limit = {
+			country_exists = KUW
+			NOT = { has_war_with = KUW }
+		}
+		declare_war_on = {
+			target = KUW
+			type = annex_everything
+		}
+	}
+	if = {
+		limit = {
+			country_exists = QAT
+			NOT = { has_war_with = QAT }
+		}
+		declare_war_on = {
+			target = QAT
+			type = annex_everything
+		}
+	}
+	if = {
+		limit = {
+			country_exists = OMA
+			NOT = { has_war_with = OMA }
+		}
+		declare_war_on = {
+			target = OMA
+			type = annex_everything
+		}
+	}
+	if = {
+		limit = {
+			country_exists = BHR
+			NOT = { has_war_with = BHR }
+		}
+		declare_war_on = {
+			target = BHR
+			type = annex_everything
+		}
+	}
+}
+
+# 胜利判定：七个君主国全部消失（已被吞并）
+ZZZ_UAR_check_victory = {
+	if = {
+		limit = {
+			NOT = { country_exists = SAU }
+			NOT = { country_exists = JOR }
+			NOT = { country_exists = UAE }
+			NOT = { country_exists = KUW }
+			NOT = { country_exists = QAT }
+			NOT = { country_exists = OMA }
+			NOT = { country_exists = BHR }
+			NOT = { has_global_flag = ZZZ_UAR_war_over }
+		}
+		ZZZ_UAR_settle_victory = yes
+	}
+}
+
+# 胜利结算：改国号为阿拉伯联合共和国、迁都开罗（州号 215 已按 MD history/states/215-Cairo.txt 核实）
+ZZZ_UAR_settle_victory = {
+	set_cosmetic_tag = UAR_nationalist
+	set_capital = { state = 215 }
+	set_global_flag = ZZZ_UAR_war_over
+	set_global_flag = ZZZ_UAR_victory
+	clr_global_flag = ZZZ_UAR_war_on_monarchies
+	if = {
+		limit = {
+			has_global_flag = ZZZ_UAR_invited_by_china
+			country_exists = CHI
+		}
+		CHI = { country_event = { id = ZZZ_arab_uar.4 } }
+	}
+	else_if = {
+		limit = {
+			country_exists = SOV
+		}
+		SOV = { country_event = { id = ZZZ_arab_uar.4 } }
+	}
+}
+
+# 战败结算：白和、解散阵营、清战争旗标
+# 埃及的上合身份（CHI_sco_member / CHI_sco_observer）原样保留，此处不调用 CHI_sco_remove
+ZZZ_UAR_settle_defeat = {
+	if = {
+		limit = {
+			country_exists = SAU
+			has_war_with = SAU
+		}
+		white_peace = SAU
+	}
+	if = {
+		limit = {
+			country_exists = JOR
+			has_war_with = JOR
+		}
+		white_peace = JOR
+	}
+	if = {
+		limit = {
+			country_exists = UAE
+			has_war_with = UAE
+		}
+		white_peace = UAE
+	}
+	if = {
+		limit = {
+			country_exists = KUW
+			has_war_with = KUW
+		}
+		white_peace = KUW
+	}
+	if = {
+		limit = {
+			country_exists = QAT
+			has_war_with = QAT
+		}
+		white_peace = QAT
+	}
+	if = {
+		limit = {
+			country_exists = OMA
+			has_war_with = OMA
+		}
+		white_peace = OMA
+	}
+	if = {
+		limit = {
+			country_exists = BHR
+			has_war_with = BHR
+		}
+		white_peace = BHR
+	}
+	dismantle_faction = yes
+	clr_global_flag = ZZZ_UAR_war_on_monarchies
+	clr_global_flag = ZZZ_UAR_arab_faction_formed
+	set_global_flag = ZZZ_UAR_war_over
+	set_global_flag = ZZZ_UAR_defeat
+	if = {
+		limit = {
+			has_global_flag = ZZZ_UAR_invited_by_china
+			country_exists = CHI
+		}
+		CHI = { country_event = { id = ZZZ_arab_uar.5 } }
+	}
+	else_if = {
+		limit = {
+			country_exists = SOV
+		}
+		SOV = { country_event = { id = ZZZ_arab_uar.5 } }
+	}
+}
+
+# 白和兜底：任一个君主国仍存在即为战败，全部消失即为胜利
+ZZZ_UAR_resolve_war_outcome = {
+	if = {
+		limit = {
+			OR = {
+				country_exists = SAU
+				country_exists = JOR
+				country_exists = UAE
+				country_exists = KUW
+				country_exists = QAT
+				country_exists = OMA
+				country_exists = BHR
+			}
+		}
+		ZZZ_UAR_settle_defeat = yes
+	}
+	else = {
+		ZZZ_UAR_settle_victory = yes
+	}
+}
+
+# ============================================================================
+#  中俄胜利后的反海湾君主国扩战（本工程原创，不移植 TFR）
+#
+#  触发判定点全部复用工程内现成全局旗标，不自造条件：
+#    中国胜利：gaw_china_victory_settled
+#      —— common/scripted_effects/TFR_scripted_effects_PRC.txt 的
+#         ZZZ_gaw_settle_china_victory 末尾置位（GAW 中国胜利）
+#    俄罗斯胜利：DSW_SOV_russian_victory
+#      —— common/scripted_effects/DSW_SOV_campaign_effects.txt 的
+#         DSW_SOV_resolve_russian_victory 内置位（欧陆战争俄方胜利）
+#
+#  两个胜利结算效果各自在末尾调用本效果一次；中国、俄罗斯都胜利才开战。
+#  叙事：中俄双双取胜，华盛顿在中东的安全承诺失去信誉，海湾君主国失去保护伞，
+#  由埃及牵头的阿拉伯联合共和国（UAR）趁机发动统一战争。
+#  工程内没有“美国撤出中东 / 失去中东影响力”的现成旗标或状态，
+#  因此该叙事只落在事件文案（mew.33），不凭空增加判定。
+#
+#  复用现有 UAR 资产，不新建 UAE 牵头阵营：
+#    faction_template_zzz_uar（common/factions/templates/ZZZ_arab.txt）
+#    ZZZ_UAR_add_arab_members / ZZZ_UAR_declare_wars（本文件）
+#    ZZZ_UAR_check_victory（common/on_actions/ZZZ_arab_uar_on_actions.txt 的 on_capitulation 钩子）
+#  宣战对象与现有 ZZZ_UAR_declare_wars 完全一致：
+#    SAU / JOR / UAE / KUW / QAT / OMA / BHR
+#  540 天僵持兜底由 common/on_actions/on_actions_ZZZ_peace.txt 唯一的 on_monthly 收束，
+#  不新增第二个 on_monthly 声明。
+# ============================================================================
+#  闸门链（顺序固定）：
+#    ① MEW_palestine_victory（巴勒斯坦/阿拉伯方先赢下中东战争）
+#    ② gaw_china_victory_settled + DSW_SOV_russian_victory（中俄随后相继取胜）
+#    ③ 埃及成为上合正式成员（ZZZ_UAR_egypt_member 或 EGY is_sco = yes）
+#    ④ 本效果点火，UAR 对 GCC 君主国开战
+#  ②→③ 由 ZZZ_MEW_auto_invite_egypt_sco 自动走既有邀请入口（ZZZ_arab_uar.1），不逐日扫描。
+ZZZ_MEW_post_eurasia_uar_war = {
+	if = {
+		limit = {
+			has_global_flag = gaw_china_victory_settled
+			has_global_flag = DSW_SOV_russian_victory
+			# 闸门①：巴勒斯坦/阿拉伯方必须先赢下中东战争
+			has_global_flag = MEW_palestine_victory
+			# 闸门②：埃及必须已是上合正式成员（由中俄在胜利结算后自动走上合邀请入口）
+			OR = {
+				has_global_flag = ZZZ_UAR_egypt_member
+				EGY = { is_sco = yes }
+			}
+			# 防重复：本扩战只点火一次；手动决议链已开战或已结算则不再介入
+			NOT = { has_global_flag = ZZZ_MEW_uar_war_fired }
+			NOT = { has_global_flag = ZZZ_UAR_war_on_monarchies }
+			NOT = { has_global_flag = ZZZ_UAR_war_over }
+			country_exists = EGY
+			OR = {
+				country_exists = SAU
+				country_exists = JOR
+				country_exists = UAE
+				country_exists = KUW
+				country_exists = QAT
+				country_exists = OMA
+				country_exists = BHR
+			}
+		}
+		# 闸门③→④ 第一步：埃及牵头组建“阿拉伯联合共和国”军事联盟并拉入盟友
+		EGY = { ZZZ_UAR_form_uae_military_alliance = yes }
+		# 联盟成立之后才对 GCC 七国开战；未成军则不置点火旗标，由唯一 on_monthly 于下月重试
+		if = {
+			limit = {
+				has_global_flag = ZZZ_UAR_arab_faction_formed
+			}
+			set_global_flag = ZZZ_MEW_uar_war_fired
+			EGY = {
+				# 540 天僵持兜底：与反伊战争同一口径（主战争 700 天，收尾战不超过 18 个月）
+				set_country_flag = {
+					flag = ZZZ_MEW_uar_war_timeout
+					days = 540
+				}
+				# 逐目标防重复宣战由 ZZZ_UAR_declare_wars 内部的 NOT has_war_with 处理
+				ZZZ_UAR_declare_wars = yes
+			}
+			set_global_flag = ZZZ_UAR_war_on_monarchies
+			news_event = { id = mew.33 hours = 2 }
+		}
+	}
+}
+
+# ============================================================================
+#  上合闸门：三胜齐备后自动走既有邀请入口（不逐日扫描）
+#  复用 common/decisions/ZZZ_arab_uar.txt 决议①的完整效果，不新增旗标语义：
+#    ZZZ_UAR_egypt_invited / ZZZ_UAR_invited_by_china|soviet（既有）
+#    EGY = { CHI_sco_promote_to_observer }（MD 基座 05_CHI_scripted_effects.txt）
+#    EGY 收到 ZZZ_arab_uar.1（30 天后表决），邀请方收到 ZZZ_arab_uar.2
+#  埃及是否转正仍由 .1 表决决定；否决率 35% 保留，否决后 90 天自动重发，
+#  决议②（ai_will_do = 20）可提前手动/AI 重试，闸门不会永久卡死。
+# ============================================================================
+ZZZ_MEW_auto_invite_egypt_sco = {
+	if = {
+		limit = {
+			has_global_flag = MEW_palestine_victory
+			has_global_flag = gaw_china_victory_settled
+			has_global_flag = DSW_SOV_russian_victory
+			NOT = { has_global_flag = ZZZ_UAR_egypt_invited }
+			country_exists = EGY
+			EGY = { NOT = { is_sco = yes } }
+		}
+		set_global_flag = ZZZ_UAR_egypt_invited
+		# 邀请方优先记为 CHI（上合主理国），否则 SOV
+		if = {
+			limit = { country_exists = CHI }
+			set_global_flag = ZZZ_UAR_invited_by_china
+		}
+		else = {
+			set_global_flag = ZZZ_UAR_invited_by_soviet
+		}
+		EGY = { CHI_sco_promote_to_observer = yes }
+		EGY = { country_event = { id = ZZZ_arab_uar.1 days = 30 } }
+		if = {
+			limit = { country_exists = CHI }
+			CHI = { country_event = { id = ZZZ_arab_uar.2 } }
+		}
+		else_if = {
+			limit = { country_exists = SOV }
+			SOV = { country_event = { id = ZZZ_arab_uar.2 } }
+		}
+	}
+}

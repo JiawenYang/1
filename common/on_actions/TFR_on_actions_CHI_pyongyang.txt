@@ -1,0 +1,49 @@
+# 烈焰升腾原版平壤战役派发（原版 TFR_on_actions_ZZZ.txt 整段被注释，此处按原版口径落地）
+# 原版作用域：ROOT = 新控制者，FROM = 旧控制者，FROM.FROM = 易手的州
+# 千禧黎明：平壤 = 州 602，中国 = CHI，朝鲜 = NKO，韩国 = KOR
+on_actions = {
+	on_state_control_changed = {
+		effect = {
+			if = {
+				limit = {
+					FROM.FROM = {
+						state = 602
+					}
+					ROOT = {
+						tag = CHI
+					}
+					FROM = {
+						OR = {
+							tag = NKO
+							tag = KOR
+						}
+					}
+					has_global_flag = pan_asian_war_ongoing
+					NOT = {
+						has_global_flag = battle_of_pyongyang
+					}
+				}
+				set_global_flag = battle_of_pyongyang
+				news_event = {
+					id = prc.96
+				}
+				CHI = {
+					random_list = {
+						70 = {
+							country_event = {
+								id = prc.220
+								days = 5
+							}
+						}
+						30 = {
+							country_event = {
+								id = prc.221
+								days = 5
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

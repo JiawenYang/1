@@ -1,0 +1,210 @@
+division_template = {
+	name = "Brigada de Infanterie"
+
+	regiments = {
+		Mot_Inf_Bat = { x = 0 y = 0 }
+		Mot_Inf_Bat = { x = 0 y = 1 }
+		Arty_Bat = { x = 0 y = 2 }
+	}
+	support = {
+		L_Engi_Comp = { x = 0 y = 0 }
+	}
+}
+
+division_template = {
+	name = "Brigada de Mecanizata"
+
+	regiments = {
+		Mech_Inf_Bat = { x = 0 y = 0 }
+		Mech_Inf_Bat = { x = 0 y = 1 }
+		SP_Arty_Bat = { x = 0 y = 2 }
+	}
+	support = {
+		L_Engi_Comp = { x = 0 y = 0 }
+	}
+}
+
+division_template = {
+	name = "Batalion de Forte Speciale"
+
+	regiments = {
+		Special_Forces = { x = 0 y = 0 }
+	}
+
+	priority = 2
+}
+
+units = {
+	division = {
+		name = "1a Brigada de Infanterie 'Moldova'"
+		location = 11686
+		division_template = "Brigada de Mecanizata"
+		start_experience_factor = 0.4
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "2a Brigada de Infanterie 'Stefan Cel Mare'"
+		location = 6600
+		division_template = "Brigada de Mecanizata"
+		start_experience_factor = 0.4
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "3a Brigada de Infanterie 'Dacia'"
+		location = 3724
+		division_template = "Brigada de Infanterie"
+		start_experience_factor = 0.4
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "Batalion de Forte Speciale"
+		location = 11686
+		division_template = "Batalion de Forte Speciale"
+		start_experience_factor = 0.7
+		start_equipment_factor = 0.01
+	}
+}
+
+instant_effect = {
+	add_equipment_to_stockpile = {
+		variant_name = "AKM"
+		type = infantry_weapons_1		 #AKM
+		amount = 1000
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Pistol Mitralieră model 1963"
+		type = infantry_weapons_1		 #Pistol Mitralieră model 1963
+		amount = 1000
+		producer = ROM
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "MPi-AK-74N"
+		type = infantry_weapons_2		 #AK-74
+		amount = 500
+		producer = GER
+	}
+
+	add_equipment_to_stockpile = {
+		type = medium_tank_chassis_1
+		variant_name = "T-64"
+		amount = 3
+		producer = URA
+	}
+
+	add_equipment_to_stockpile = {
+		type = medium_tank_flame_chassis_0
+		amount = 44
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BTR-80"
+		type = medium_tank_amphibious_chassis_1		 #BTR-80
+		amount = 11
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BTR-70"
+		type = medium_tank_amphibious_chassis_1		 #BTR-70
+		amount = 5
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BTR-60PB"
+		type = medium_tank_amphibious_chassis_0		 #BTR-60
+		amount = 48
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "TAB-71"
+		type = medium_tank_amphibious_chassis_0		 #TAB-71
+		amount = 89
+		producer = ROM
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "MT-LB"
+		type = medium_tank_amphibious_chassis_0		 #MT-LB
+		amount = 64
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Humvee"
+		type = util_vehicle_3		 #Humvee
+		amount = 80
+		producer = USA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BM-21 Grad"
+		type = medium_tank_rocket_chassis_0		 #BM-21 Grad
+		amount = 14
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "BM-27 Uragan"
+		type = medium_tank_rocket_chassis_1		 #BM-27 Uragan
+		amount = 11
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "9K111 Fagot"
+		type = Anti_tank_2		 #Fagot
+		amount = 71
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Metis"
+		type = Anti_tank_3		 #Metis
+		amount = 20
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "9P148 Konkurs"
+		type = Heavy_Anti_tank_2		 #Konkurs
+		amount = 19
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "AT-6 Spiral"
+		type = Heavy_Anti_tank_2		 #Spiral
+		#version_name = "AT-6 Spiral"
+		amount = 27
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "M-30"
+		type = artillery_1		 #Old Soviet artillery
+		amount = 69
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		type = cnc_equipment_1
+		amount = 150
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Mil Mi-8T"
+		type = transport_helicopter_1 #Mil Mi-8
+		amount = 6
+		producer = SOV
+	}
+}

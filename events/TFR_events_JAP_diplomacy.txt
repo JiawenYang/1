@@ -1,0 +1,300 @@
+# Ported from Millennium Dawn / TFR (dangling-dispatch remediation, 2026-11-06)
+add_namespace = JAP_diplomacy
+country_event = {
+	id = JAP_diplomacy.100
+	is_triggered_only = yes
+	hidden = yes
+
+	immediate = {
+		log = "[GetDateText]: [This.GetName]: JAP_diplomacy.100 executed"
+		activate_decision = JAP_claiming_north_korea
+	}
+}
+
+country_event = {
+	id = JAP_diplomacy.108
+	is_triggered_only = yes
+	hidden = yes
+
+	immediate = {
+		log = "[GetDateText]: [This.GetName]: JAP_diplomacy.108 executed"
+		activate_decision = JAP_claiming_philippines
+	}
+}
+
+country_event = {
+	id = JAP_diplomacy.112
+	is_triggered_only = yes
+	hidden = yes
+
+	immediate = {
+		log = "[GetDateText]: [This.GetName]: JAP_diplomacy.112 executed"
+		activate_decision = JAP_claiming_malaysia
+	}
+}
+
+country_event = {
+	id = JAP_diplomacy.116
+	is_triggered_only = yes
+	hidden = yes
+
+	immediate = {
+		log = "[GetDateText]: [This.GetName]: JAP_diplomacy.116 executed"
+		activate_decision = JAP_claiming_indonesia
+	}
+}
+
+country_event = {
+	id = JAP_diplomacy.120
+	is_triggered_only = yes
+	hidden = yes
+
+	immediate = {
+		log = "[GetDateText]: [This.GetName]: JAP_diplomacy.120 executed"
+		activate_decision = JAP_claiming_vietnam
+	}
+}
+
+country_event = {
+	id = JAP_diplomacy.124
+	is_triggered_only = yes
+	hidden = yes
+
+	immediate = {
+		log = "[GetDateText]: [This.GetName]: JAP_diplomacy.124 executed"
+		activate_decision = JAP_claiming_cambodia
+	}
+}
+
+country_event = {
+	id = JAP_diplomacy.128
+	is_triggered_only = yes
+	hidden = yes
+
+	immediate = {
+		log = "[GetDateText]: [This.GetName]: JAP_diplomacy.128 executed"
+		activate_decision = JAP_claiming_laos
+	}
+}
+
+country_event = {
+	id = JAP_diplomacy.132
+	is_triggered_only = yes
+	hidden = yes
+
+	immediate = {
+		log = "[GetDateText]: [This.GetName]: JAP_diplomacy.132 executed"
+		activate_decision = JAP_claiming_australia
+	}
+}
+
+country_event = {
+	id = JAP_diplomacy.136
+	is_triggered_only = yes
+	hidden = yes
+
+	immediate = {
+		log = "[GetDateText]: [This.GetName]: JAP_diplomacy.136 executed"
+		activate_decision = JAP_claiming_new_zealand
+	}
+}
+
+country_event = {
+	id = JAP_diplomacy.140
+	is_triggered_only = yes
+	hidden = yes
+
+	immediate = {
+		log = "[GetDateText]: [This.GetName]: JAP_diplomacy.140 executed"
+		activate_decision = JAP_claiming_myanmar
+	}
+}
+
+country_event = {
+	id = JAP_diplomacy.32
+	title = JAP_diplomacy.32.t
+	desc = JAP_diplomacy.32.d
+	picture = GFX_computer
+	is_triggered_only = yes
+
+	option = {
+		name = JAP_diplomacy.32.a
+		log = "[GetDateText]: [This.GetName]: JAP_diplomacy.32.a executed"
+		add_timed_idea = {
+			idea = special_project_consumer_costs_medium
+			days = 180
+		}
+	}
+
+	option = {
+		name = JAP_diplomacy.32.b
+		log = "[GetDateText]: [This.GetName]: JAP_diplomacy.32.b executed"
+		add_days_mission_timeout = {
+			mission = JAP_mars_mission_program_mission
+			days = 100
+		}
+	}
+}
+
+country_event = {
+	id = JAP_diplomacy.77
+	title = JAP_diplomacy.77.t
+	desc = JAP_diplomacy.77.d
+	picture = GFX_treaty
+	is_triggered_only = yes
+
+	option = {
+		name = JAP_diplomacy.77.a
+		log = "[GetDateText]: [This.GetName]: JAP_diplomacy.77.a"
+		FROM = {
+			country_event = {
+				id = JAP_diplomacy.78
+				days = 1
+			}
+			effect_tooltip = {
+				JAP = {
+					transfer_state = 691
+					transfer_state = 1168
+					transfer_state = 690
+				}
+			}
+		}
+		ai_chance = {
+			base = 10
+			modifier = {
+				has_war_with = UKR
+				add = 10
+			}
+			modifier = {
+				any_of_scopes = {
+					array = SOV.enemies
+					exists = yes
+					is_major = yes
+					NOT = { original_tag = JAP }
+				}
+				add = 25
+			}
+			modifier = {
+				surrender_progress > 0.25
+				add = 50
+			}
+			modifier = {
+				has_idea = recession
+				add = 15
+			}
+		}
+	}
+
+	#no
+	option = {
+		name = JAP_diplomacy.77.b
+		log = "[GetDateText]: [This.GetName]: JAP_diplomacy.77.b"
+		FROM = {
+			country_event = {
+				id = JAP_diplomacy.79
+				days = 1
+			}
+		}
+		ai_chance = {
+			base = 10
+			modifier = {
+				has_completed_focus = SOV_defend_national_interests
+				add = 25
+			}
+			modifier = {
+				strength_ratio = {
+					tag = JAP
+					ratio > 1.2
+				}
+				add = 15
+			}
+			modifier = {
+				has_war_support > 0.60
+				add = 15
+			}
+		}
+	}
+}
+
+country_event = {
+	id = JAP_diplomacy.93
+	is_triggered_only = yes
+	hidden = yes
+
+	immediate = {
+		log = "[GetDateText]: [This.GetName]: JAP_diplomacy.93 executed"
+		activate_decision = JAP_claiming_south_korea
+	}
+}
+
+country_event = {
+	id = JAP_diplomacy.78
+	title = JAP_diplomacy.78.t
+	desc = JAP_diplomacy.78.d
+	picture = GFX_treaty
+	is_triggered_only = yes
+
+	#Peacey weacey
+	option = {
+		name = JAP_diplomacy.78.a
+		log = "[GetDateText]: [This.GetName]: JAP_diplomacy.78.a"
+		SOV = {
+			white_peace = { tag = JAP }
+			every_other_country = {
+				limit = { is_in_faction_with = PREV }
+				white_peace = { tag = JAP }
+			}
+		}
+		JAP = {
+			transfer_state = 691
+			transfer_state = 1168
+			transfer_state = 690
+			}
+		ai_chance = { base = 10 }
+	}
+}
+
+country_event = {
+	id = JAP_diplomacy.79
+	title = JAP_diplomacy.79.t
+	desc = JAP_diplomacy.79.d
+	picture = GFX_treaty_rejected
+	is_triggered_only = yes
+
+	#Damnit!
+	option = {
+		name = JAP_diplomacy.79.a
+		ai_chance = { base = 10 }
+	}
+}
+
+country_event = {
+	id = JAP_diplomacy.28
+	title = JAP_diplomacy.28.t
+	desc = JAP_diplomacy.28.d
+	picture = GFX_moonbase_construction
+	is_triggered_only = yes
+
+	option = {
+		name = JAP_diplomacy.28.a
+		log = "[GetDateText]: [This.GetName]: JAP_diplomacy.28.a executed"
+		set_country_flag = jap_kaguya_satellite_invest
+		set_temp_variable = { treasury_change = gdp_per_capita }
+		multiply_temp_variable = { treasury_change = -0.10 }
+		modify_treasury_effect = yes
+		country_event = { id = JAP_diplomacy.29 days = 180 }
+	}
+
+	option = {
+		name = JAP_diplomacy.28.b
+		log = "[GetDateText]: [This.GetName]: JAP_diplomacy.28.b executed"
+		set_temp_variable = { party_index = 2 }
+		set_party_index_to_ruling_party = yes
+		set_temp_variable = { party_popularity_increase = -0.05 }
+		set_temp_variable = { temp_outlook_increase = -0.05 }
+		change_relative_party_popularity = yes
+		country_event = { id = JAP_diplomacy.29 days = 365 }
+		ai_chance = { base = 10 }
+	}
+}
+# [syntax-fix] orphan event call -> 		country_event = { id = JAP_diplomacy.29 days = 180 }

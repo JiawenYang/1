@@ -800,7 +800,7 @@ focus_tree = {
 					is_core_of = ROOT
 				}
 				add_building_construction = {
-					type = office_park
+					type = offices
 					level = 1
 					instant_build = yes
 				}
@@ -979,7 +979,7 @@ focus_tree = {
 					is_core_of = ROOT
 				}
 				add_building_construction = {
-					type = office_park
+					type = offices
 					level = 1
 					instant_build = yes
 				}
@@ -1806,7 +1806,18 @@ focus_tree = {
 			factor = 5
 		}
 		available = {
+			date > 2022.6.1
 			has_war = no
+			country_exists = UKR
+			UKR = {
+				OR = {
+					has_idea = NATO_member
+					has_country_flag = UKR_NATO_ACCESSION_WEST
+				}
+			}
+			NOT = {
+				has_country_flag = DSW_SOV_smo_started
+			}
 		}
 		will_lead_to_war_with = UKR
 		will_lead_to_war_with = POL
@@ -1822,10 +1833,7 @@ focus_tree = {
 				threat = 20
 				name = SOV_european_war_threat
 			}
-			declare_war_on = {
-				target = UKR
-				type = topple_government
-			}
+			DSW_SOV_declare_war_on_ukraine = yes
 			UKR = {
 				add_ideas = UKR_to_the_last
 			}
@@ -1897,10 +1905,10 @@ focus_tree = {
 								is_ally_with = ENG
 								tag = SOV
 							}
-							add_ai_strategy = {
-								type = naval_invasion_focus
-								value = -100
-							}
+						}
+						add_ai_strategy = {
+							type = naval_invasion_focus
+							value = -100
 						}
 					}
 				}
@@ -2181,9 +2189,7 @@ focus_tree = {
 		}
 		completion_reward = {
 			set_country_flag = SOV_brics_member_flag
-			effect_tooltip = {
-				add_ideas = SOV_brics
-			}
+			add_ideas = SOV_brics
 			unlock_decision_category_tooltip = SOV_brics_category
 			every_country = {
 				limit = {
@@ -2196,15 +2202,11 @@ focus_tree = {
 					modifier = SOV_brics_dynamic
 				}
 				set_variable = {
-					var = SOV_brics_number_of_members
-					value = 1
-				}
-				set_variable = {
 					var = SOV_brics_political_power_factor_dynamic_var
 					value = 0.005
 				}
 				set_variable = {
-					var = SOV_brics_income_growth_factor_dynamic_var
+					var = SOV_brics_tax_gain_multiplier_modifier_dynamic_var
 					value = 0.005
 				}
 				set_variable = {
@@ -2232,15 +2234,11 @@ focus_tree = {
 							modifier = SOV_brics_dynamic
 						}
 						set_variable = {
-							var = SOV_brics_number_of_members
-							value = 1
-						}
-						set_variable = {
 							var = SOV_brics_political_power_factor_dynamic_var
 							value = 0.005
 						}
 						set_variable = {
-							var = SOV_brics_income_growth_factor_dynamic_var
+							var = SOV_brics_tax_gain_multiplier_modifier_dynamic_var
 							value = 0.005
 						}
 						set_variable = {
@@ -2698,7 +2696,6 @@ focus_tree = {
 				name = "TOS-1"
 				type = APC_4
 				upgrades = {
-					tank_art_upgrade = 5
 					tank_armor_upgrade = 2
 				}
 				icon = "gfx/interface/technologies/armor/SOV_sp_tos1.png"
@@ -2981,19 +2978,21 @@ focus_tree = {
 			}
 			add_industrial_development = yes
 			675 = {
-				limit = {
-					is_core_of = ROOT
-					free_building_slots = {
-						building = arms_factory
-						size > 0
-						include_locked = yes
+				if = {
+					limit = {
+						is_core_of = ROOT
+						free_building_slots = {
+							building = arms_factory
+							size > 0
+							include_locked = yes
+						}
 					}
-				}
-				add_extra_state_shared_building_slots = 3
-				add_building_construction = {
-					type = arms_factory
-					level = 3
-					instant_build = yes
+					add_extra_state_shared_building_slots = 3
+					add_building_construction = {
+						type = arms_factory
+						level = 3
+						instant_build = yes
+					}
 				}
 			}
 			set_temp_variable = {
@@ -3077,7 +3076,7 @@ focus_tree = {
 				name = SOV_business_bonus
 				bonus = 0.75
 				uses = 1
-				category = industry
+				category = CAT_industry
 			}
 		}
 	}
@@ -3111,7 +3110,7 @@ focus_tree = {
 				name = SOV_business_bonus
 				bonus = 0.50
 				uses = 2
-				category = industry
+				category = CAT_industry
 			}
 		}
 	}
@@ -3212,14 +3211,14 @@ focus_tree = {
 				limit = {
 					is_core_of = ROOT
 					free_building_slots = {
-						building = office_park
+						building = offices
 						size > 0
 						include_locked = yes
 					}
 				}
 				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
-					type = office_park
+					type = offices
 					level = 2
 					instant_build = yes
 				}
@@ -3253,7 +3252,7 @@ focus_tree = {
 				name = SOV_business_bonus
 				bonus = 0.25
 				uses = 3
-				category = industry
+				category = CAT_industry
 			}
 		}
 	}
@@ -3350,7 +3349,7 @@ focus_tree = {
 				name = SOV_business_bonus
 				bonus = 0.50
 				uses = 2
-				category = excavation_tech
+				category = CAT_excavation
 			}
 			set_temp_variable = {
 				var = industrial_development_var_temp
@@ -3547,7 +3546,7 @@ focus_tree = {
 				name = SOV_business_bonus
 				bonus = 1
 				uses = 1
-				category = industry
+				category = CAT_industry
 			}
 		}
 	}
@@ -4041,10 +4040,12 @@ focus_tree = {
 					206
 					207
 				}
-				free_building_slots = {
-					building = industrial_complex
-					size > 0
-					include_locked = yes
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
 				}
 				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
@@ -4190,10 +4191,12 @@ focus_tree = {
 								92
 								88
 							}
-							free_building_slots = {
-								building = industrial_complex
-								size > 0
-								include_locked = yes
+							limit = {
+								free_building_slots = {
+									building = industrial_complex
+									size > 0
+									include_locked = yes
+								}
 							}
 							add_extra_state_shared_building_slots = 1
 							add_building_construction = {
@@ -4851,16 +4854,13 @@ focus_tree = {
 						has_country_flag = DSW_SOV_pending_focus_SOV_constitutional_renewal
 						has_country_flag = DSW_SOV_pending_focus_SOV_reforms_for_the_people
 					}
-					country_event = {
-						id = dsw_tfr_russia.535
-						hours = 1
-					}
+				}
+				country_event = {
+					id = dsw_tfr_russia.535
+					hours = 1
 				}
 			}
 		}
-	}
-	allow_branch = {
-		has_global_flag = SOV_first_nato_war_victory
 	}
 	focus = {
 		id = SOV_medvedev_russian_elections
@@ -8842,7 +8842,7 @@ focus_tree = {
 				random_select_amount = 2
 				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
-					type = office_park
+					type = offices
 					level = 2
 					instant_build = yes
 				}
@@ -9849,7 +9849,6 @@ focus_tree = {
 			unlock_decision_tooltip = SOV_udaltsov_left_front
 			unlock_decision_tooltip = SOV_udaltsov_labour_russia
 			unlock_decision_tooltip = SOV_support_social_democratic_platform
-			unlock_decision_tooltip = SOV_support_liberal_democratic_platform
 			unlock_decision_tooltip = SOV_support_communist_platform
 			hidden_effect = {
 				set_party_name = {
@@ -10081,11 +10080,11 @@ focus_tree = {
 			}
 			add_society_development = yes
 			custom_effect_tooltip = tooltip_white_line
-			show_effect_tooltip = unlock_for_minister_tooltip
+			custom_effect_tooltip = unlock_for_minister_tooltip
 			show_ideas_tooltip = SOV_Kagarlitsky
-			show_effect_tooltip = unlock_sec_minister_tooltip
+			custom_effect_tooltip = unlock_sec_minister_tooltip
 			show_ideas_tooltip = SOV_Shetefanov
-			show_effect_tooltip = unlock_int_minister_tooltip
+			custom_effect_tooltip = unlock_int_minister_tooltip
 			show_ideas_tooltip = SOV_Razmayeva
 		}
 	}
@@ -10239,7 +10238,7 @@ focus_tree = {
 			add_ideas = SOV_stalinist_centralism_idea
 			if = {
 				limit = {
-					has_country_leader_ideology = anti_revisionist_communism
+					has_country_leader_ideology = communist_state
 				}
 				set_temp_variable = {
 					party_index = 4
@@ -10362,7 +10361,7 @@ focus_tree = {
 			add_political_power = 100
 			if = {
 				limit = {
-					has_country_leader_ideology = anti_revisionist_communism
+					has_country_leader_ideology = communist_state
 				}
 				set_temp_variable = {
 					party_index = 4
@@ -10654,25 +10653,25 @@ focus_tree = {
 				name = SOV_fund_military_advancement
 				bonus = 0.25
 				uses = 2
-				category = infantry_tech
+				category = CAT_infantry
 			}
 			add_tech_bonus = {
 				name = SOV_fund_military_advancement
 				bonus = 0.25
 				uses = 1
-				category = support_tech
+				category = CAT_support_weapons
 			}
 			add_tech_bonus = {
 				name = SOV_fund_military_advancement
 				bonus = 0.25
 				uses = 1
-				category = artillery
+				category = CAT_artillery
 			}
 			add_tech_bonus = {
 				name = SOV_fund_military_advancement
 				bonus = 0.25
 				uses = 1
-				category = armor
+				category = CAT_armor
 			}
 		}
 	}
@@ -11147,15 +11146,13 @@ focus_tree = {
 			focus = SOV_law_against_derzhavism
 		}
 		available = {
-			hidden_effect = {
-				NOT = {
-					OR = {
-						check_variable = {
-							ruling_party = 4
-						}
-						check_variable = {
-							ruling_party = 21
-						}
+			NOT = {
+				OR = {
+					check_variable = {
+						ruling_party = 4
+					}
+					check_variable = {
+						ruling_party = 21
 					}
 				}
 			}
@@ -11345,9 +11342,9 @@ focus_tree = {
 		completion_reward = {
 			add_ideas = SOV_neo_soviet_nationalism_idea
 			add_war_support = 0.05
+			custom_effect_tooltip = tooltip_white_line
+			unlock_decision_tooltip = SOV_malenkovich_our_great_past
 		}
-		custom_effect_tooltip = tooltip_white_line
-		unlock_decision_tooltip = SOV_malenkovich_our_great_past
 	}
 	focus = {
 		id = SOV_parliamentary_communism
@@ -11862,7 +11859,7 @@ focus_tree = {
 				random_select_amount = 2
 				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
-					type = office_park
+					type = offices
 					level = 1
 					instant_build = yes
 				}
@@ -11934,7 +11931,7 @@ focus_tree = {
 				random_select_amount = 1
 				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
-					type = office_park
+					type = offices
 					level = 1
 					instant_build = yes
 				}
@@ -11943,7 +11940,7 @@ focus_tree = {
 				random_select_amount = 1
 				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
-					type = office_park
+					type = offices
 					level = 1
 					instant_build = yes
 				}
@@ -12018,14 +12015,14 @@ focus_tree = {
 		completion_reward = {
 			random_owned_controlled_state = {
 				limit = {
-					has_state_category = village
+					has_state_category = state_01
 				}
 				DSW_SOV_dep_increase_state_category = yes
 				add_manpower = 10000
 			}
 			random_owned_controlled_state = {
 				limit = {
-					has_state_category = village
+					has_state_category = state_01
 				}
 				DSW_SOV_dep_increase_state_category = yes
 				add_manpower = 10000
@@ -13948,7 +13945,7 @@ focus_tree = {
 				random_select_amount = 2
 				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
-					type = office_park
+					type = offices
 					level = 2
 					instant_build = yes
 				}
@@ -13957,7 +13954,7 @@ focus_tree = {
 				random_select_amount = 1
 				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
-					type = office_park
+					type = offices
 					level = 2
 					instant_build = yes
 				}
@@ -17883,7 +17880,7 @@ focus_tree = {
 				}
 				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
-					type = office_park
+					type = offices
 					level = 2
 					instant_build = yes
 				}
@@ -18058,7 +18055,7 @@ focus_tree = {
 				random_select_amount = 2
 				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
-					type = office_park
+					type = offices
 					level = 1
 					instant_build = yes
 				}
@@ -18067,7 +18064,7 @@ focus_tree = {
 				random_select_amount = 1
 				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
-					type = office_park
+					type = offices
 					level = 1
 					instant_build = yes
 				}
@@ -18138,7 +18135,7 @@ focus_tree = {
 				random_select_amount = 1
 				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
-					type = office_park
+					type = offices
 					level = 2
 					instant_build = yes
 				}
@@ -18549,7 +18546,7 @@ focus_tree = {
 				random_select_amount = 2
 				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
-					type = office_park
+					type = offices
 					level = 1
 					instant_build = yes
 				}
@@ -18967,7 +18964,7 @@ focus_tree = {
 				random_select_amount = 2
 				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
-					type = office_park
+					type = offices
 					level = 1
 					instant_build = yes
 				}
@@ -19002,7 +18999,7 @@ focus_tree = {
 				random_select_amount = 2
 				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
-					type = office_park
+					type = offices
 					level = 1
 					instant_build = yes
 				}
@@ -20068,7 +20065,6 @@ focus_tree = {
 			focus = SOV_true_multipolarity
 		}
 		completion_reward = {
-			unlock_decision_tooltip = SOV_invite_mali_to_brics
 			unlock_decision_tooltip = SOV_send_advisors_to_mali
 		}
 	}
@@ -20083,18 +20079,16 @@ focus_tree = {
 			focus = SOV_a_free_africa
 		}
 		completion_reward = {
-			effect_tooltip = {
-				swap_ideas = {
-					remove_idea = SOV_brics
-					add_idea = SOV_brics_SOV_expand_brics_ties
-				}
+			swap_ideas = {
+				remove_idea = SOV_brics
+				add_idea = SOV_brics_SOV_expand_brics_ties
 			}
 			SOV = {
 				add_to_variable = {
 					SOV_brics_political_power_factor_dynamic_var = 0.05
 				}
 				add_to_variable = {
-					SOV_brics_income_growth_factor_dynamic_var = 0.1
+					SOV_brics_tax_gain_multiplier_modifier_dynamic_var = 0.1
 				}
 				add_to_variable = {
 					SOV_brics_trade_cost_for_target_factor_dynamic_var = -0.05
@@ -20241,7 +20235,7 @@ focus_tree = {
 						tag = CHI
 					}
 					NOT = {
-						tag = PRK
+						tag = NKO
 					}
 					NOT = {
 						tag = APA
@@ -20294,12 +20288,9 @@ focus_tree = {
 				limit = {
 					country_exists = FIA
 				}
-				unlock_decision_tooltip = SOV_invite_fia_to_brics
 			}
 			else = {
-				unlock_decision_tooltip = SOV_invite_iraq_to_brics
 			}
-			unlock_decision_tooltip = SOV_invite_hou_to_brics
 			custom_effect_tooltip = SOV_russian_brave_russian_world_tt
 			unlock_decision_tooltip = SOV_saudi_deals
 		}

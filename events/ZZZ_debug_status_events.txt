@@ -1,0 +1,119 @@
+# ============================================================================
+# ZZZ_debug 状态查看事件（本工程原创，仅由 ZZZ_debug 决议派发）
+# 用途：把主线旗标与关键变量以可读事件文本展示给调试者。
+# 不改变任何游戏状态（纯展示，无任何 effect）。
+# ============================================================================
+
+add_namespace = zzz_debug_status
+
+# ---- 台海 / 朝鲜半岛状态 ----
+country_event = {
+    id = zzz_debug_status.1
+    title = zzz_debug_status.1.t
+    is_triggered_only = yes
+
+    desc = {
+        text = zzz_debug_status.1.d.no_confed
+        trigger = {
+            NOT = { has_global_flag = korean_confederation_formed }
+        }
+    }
+    desc = {
+        text = zzz_debug_status.1.d.confed
+        trigger = {
+            has_global_flag = korean_confederation_formed
+            NOT = { has_global_flag = korean_postwar_settled }
+        }
+    }
+    desc = {
+        text = zzz_debug_status.1.d.settled
+        trigger = {
+            has_global_flag = korean_postwar_settled
+        }
+    }
+
+    option = {
+        name = zzz_debug_status.close
+    }
+}
+
+# ---- GAW 状态 ----
+country_event = {
+    id = zzz_debug_status.2
+    title = zzz_debug_status.2.t
+    is_triggered_only = yes
+
+    desc = {
+        text = zzz_debug_status.2.d.idle
+        trigger = {
+            NOT = { has_global_flag = pan_asian_war_ongoing }
+            NOT = { has_global_flag = gaw_china_victory_settled }
+            NOT = { has_global_flag = gaw_japan_victory_settled }
+        }
+    }
+    desc = {
+        text = zzz_debug_status.2.d.ongoing
+        trigger = {
+            has_global_flag = pan_asian_war_ongoing
+            NOT = { has_global_flag = gaw_china_victory_settled }
+            NOT = { has_global_flag = gaw_japan_victory_settled }
+        }
+    }
+    desc = {
+        text = zzz_debug_status.2.d.china
+        trigger = {
+            has_global_flag = gaw_china_victory_settled
+        }
+    }
+    desc = {
+        text = zzz_debug_status.2.d.japan
+        trigger = {
+            has_global_flag = gaw_japan_victory_settled
+        }
+    }
+
+    option = {
+        name = zzz_debug_status.close
+    }
+}
+
+# ---- MEW / 美国联邦状态 ----
+country_event = {
+    id = zzz_debug_status.3
+    title = zzz_debug_status.3.t
+    is_triggered_only = yes
+
+    desc = {
+        text = zzz_debug_status.3.d.idle
+        trigger = {
+            NOT = { has_global_flag = MEW_sixth_war_ongoing }
+            NOT = { has_global_flag = MEW_settlement_done }
+            NOT = { has_global_flag = USA_federal_paralysis_global }
+        }
+    }
+    desc = {
+        text = zzz_debug_status.3.d.war
+        trigger = {
+            has_global_flag = MEW_sixth_war_ongoing
+            NOT = { has_global_flag = MEW_settlement_done }
+        }
+    }
+    desc = {
+        text = zzz_debug_status.3.d.done
+        trigger = {
+            has_global_flag = MEW_settlement_done
+        }
+    }
+    desc = {
+        text = zzz_debug_status.3.d.usa
+        trigger = {
+            has_global_flag = USA_federal_paralysis_global
+            NOT = { has_global_flag = MEW_sixth_war_ongoing }
+            NOT = { has_global_flag = MEW_settlement_done }
+        }
+    }
+
+    option = {
+        name = zzz_debug_status.close
+    }
+}

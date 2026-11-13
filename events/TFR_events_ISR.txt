@@ -20,18 +20,30 @@ country_event = { #特朗普和平计划提案
 		name = isrwar.1.a
 		country_event = { id = isrwar.8 }
 		add_war_support = 0.10
-		add_popularity = {
-			ideology = nationalist
-			popularity = 0.01
+		set_temp_variable = { party_index = 20 }
+		if = {
+			limit = { has_government = nationalist }
+			set_temp_variable = { party_index = ruling_party }
 		}
-		add_popularity = {
-			ideology = fascism
-			popularity = 0.02
+		set_temp_variable = { party_popularity_increase = 0.01 }
+		set_temp_variable = { temp_outlook_increase = 0.01 }
+		change_relative_party_popularity = yes
+		set_temp_variable = { party_index = 10 }
+		if = {
+			limit = { has_government = fascism }
+			set_temp_variable = { party_index = ruling_party }
 		}
-		add_popularity = {
-			ideology = democratic
-			popularity = 0.01
+		set_temp_variable = { party_popularity_increase = 0.02 }
+		set_temp_variable = { temp_outlook_increase = 0.02 }
+		change_relative_party_popularity = yes
+		set_temp_variable = { party_index = 0 }
+		if = {
+			limit = { has_government = democratic }
+			set_temp_variable = { party_index = ruling_party }
 		}
+		set_temp_variable = { party_popularity_increase = 0.01 }
+		set_temp_variable = { temp_outlook_increase = 0.01 }
+		change_relative_party_popularity = yes
 		random_list = {
 			80 = { #行动受挫，华盛顿不满
 				add_political_power = -75
@@ -45,10 +57,14 @@ country_event = { #特朗普和平计划提案
 		name = isrwar.1.b
 		add_stability = 0.10
 		country_event = { id = isrwar.7 }
-		add_popularity = {
-			ideology = democratic
-			popularity = 0.04
+		set_temp_variable = { party_index = 0 }
+		if = {
+			limit = { has_government = democratic }
+			set_temp_variable = { party_index = ruling_party }
 		}
+		set_temp_variable = { party_popularity_increase = 0.04 }
+		set_temp_variable = { temp_outlook_increase = 0.04 }
+		change_relative_party_popularity = yes
 	}
 }
 
@@ -64,10 +80,14 @@ country_event = { #莱哈瓦游行
 	option = { #他们在阻碍和平！
 		name = isrwar.2.a
 		add_war_support = -0.08
-		add_popularity = {
-			ideology = fascism
-			popularity = 0.02
+		set_temp_variable = { party_index = 10 }
+		if = {
+			limit = { has_government = fascism }
+			set_temp_variable = { party_index = ruling_party }
 		}
+		set_temp_variable = { party_popularity_increase = 0.02 }
+		set_temp_variable = { temp_outlook_increase = 0.02 }
+		change_relative_party_popularity = yes
 		random_list = {
 			90 = {
 				country_event = { id = isrwar.7 }
@@ -80,10 +100,14 @@ country_event = { #莱哈瓦游行
 	option = { #一国方案！一国方案！
 		name = isrwar.2.b
 		add_stability = -0.08
-		add_popularity = {
-			ideology = fascism
-			popularity = 0.08
+		set_temp_variable = { party_index = 10 }
+		if = {
+			limit = { has_government = fascism }
+			set_temp_variable = { party_index = ruling_party }
 		}
+		set_temp_variable = { party_popularity_increase = 0.08 }
+		set_temp_variable = { temp_outlook_increase = 0.08 }
+		change_relative_party_popularity = yes
 		random_list = {
 			50 = {
 				country_event = { id = isrwar.7 }
@@ -106,18 +130,30 @@ country_event = { #内塔尼亚胡宣布国家紧急状态
 
 	option = {
 		name = isrwar.3.a
-		add_popularity = {
-			ideology = democratic
-			popularity = 0.05
+		set_temp_variable = { party_index = 0 }
+		if = {
+			limit = { has_government = democratic }
+			set_temp_variable = { party_index = ruling_party }
 		}
-		add_popularity = {
-			ideology = fascism
-			popularity = 0.01
+		set_temp_variable = { party_popularity_increase = 0.05 }
+		set_temp_variable = { temp_outlook_increase = 0.05 }
+		change_relative_party_popularity = yes
+		set_temp_variable = { party_index = 10 }
+		if = {
+			limit = { has_government = fascism }
+			set_temp_variable = { party_index = ruling_party }
 		}
-		add_popularity = {
-			ideology = nationalist
-			popularity = 0.02
+		set_temp_variable = { party_popularity_increase = 0.01 }
+		set_temp_variable = { temp_outlook_increase = 0.01 }
+		change_relative_party_popularity = yes
+		set_temp_variable = { party_index = 20 }
+		if = {
+			limit = { has_government = nationalist }
+			set_temp_variable = { party_index = ruling_party }
 		}
+		set_temp_variable = { party_popularity_increase = 0.02 }
+		set_temp_variable = { temp_outlook_increase = 0.02 }
+		change_relative_party_popularity = yes
 		clr_country_flag = head_of_gov_ui_enabled
 	}
 }
@@ -133,10 +169,14 @@ country_event = { #联合政府宣告成立
 
 	option = {
 		name = isrwar.4.a
-		add_popularity = {
-			ideology = democratic
-			popularity = 0.06
+		set_temp_variable = { party_index = 0 }
+		if = {
+			limit = { has_government = democratic }
+			set_temp_variable = { party_index = ruling_party }
 		}
+		set_temp_variable = { party_popularity_increase = 0.06 }
+		set_temp_variable = { temp_outlook_increase = 0.06 }
+		change_relative_party_popularity = yes
 		add_stability = 0.08
 	}
 }
@@ -152,10 +192,14 @@ country_event = { #联合政府崩溃
 
 	option = {
 		name = isrwar.5.a
-		add_popularity = {
-			ideology = democratic
-			popularity = -0.08
+		set_temp_variable = { party_index = 0 }
+		if = {
+			limit = { has_government = democratic }
+			set_temp_variable = { party_index = ruling_party }
 		}
+		set_temp_variable = { party_popularity_increase = -0.08 }
+		set_temp_variable = { temp_outlook_increase = -0.08 }
+		change_relative_party_popularity = yes
 		add_political_power = 25
 		add_stability = -0.12
 	}
@@ -248,18 +292,30 @@ country_event = { #以色列新总统就职
 
 	option = {
 		name = isrwar.10.a
-		add_popularity = {
-			ideology = democratic
-			popularity = 0.04
+		set_temp_variable = { party_index = 0 }
+		if = {
+			limit = { has_government = democratic }
+			set_temp_variable = { party_index = ruling_party }
 		}
-		add_popularity = {
-			ideology = nationalist
-			popularity = 0.02
+		set_temp_variable = { party_popularity_increase = 0.04 }
+		set_temp_variable = { temp_outlook_increase = 0.04 }
+		change_relative_party_popularity = yes
+		set_temp_variable = { party_index = 20 }
+		if = {
+			limit = { has_government = nationalist }
+			set_temp_variable = { party_index = ruling_party }
 		}
-		add_popularity = {
-			ideology = democratic
-			popularity = -0.02
+		set_temp_variable = { party_popularity_increase = 0.02 }
+		set_temp_variable = { temp_outlook_increase = 0.02 }
+		change_relative_party_popularity = yes
+		set_temp_variable = { party_index = 0 }
+		if = {
+			limit = { has_government = democratic }
+			set_temp_variable = { party_index = ruling_party }
 		}
+		set_temp_variable = { party_popularity_increase = -0.02 }
+		set_temp_variable = { temp_outlook_increase = -0.02 }
+		change_relative_party_popularity = yes
 	}
 }
 
@@ -278,10 +334,14 @@ country_event = { #哈马斯动员
 				ruling_party = nationalist
 				elections_allowed = no
 			}
-			add_popularity = {
-				ideology = nationalist
-				popularity = 0.25
+			set_temp_variable = { party_index = 20 }
+			if = {
+				limit = { has_government = nationalist }
+				set_temp_variable = { party_index = ruling_party }
 			}
+			set_temp_variable = { party_popularity_increase = 0.25 }
+			set_temp_variable = { temp_outlook_increase = 0.25 }
+			change_relative_party_popularity = yes
 			country_event = { id = isrwar.12 days = 35 }
 		}
 	}

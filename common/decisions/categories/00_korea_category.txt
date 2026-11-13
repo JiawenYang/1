@@ -36,3 +36,44 @@ KOR_38th_parallel = {
 
 	visible_when_empty = yes
 }
+
+ZZZ_korea_north_march = {
+	icon = GFX_decisions_category_nko_unite_korea
+	priority = 100
+
+	allowed = {
+		original_tag = NKO
+	}
+
+	visible = {
+		country_exists = KOR
+		has_war_with = KOR
+		NOT = { has_global_flag = korean_postwar_settled }
+		NOT = { has_global_flag = korean_confederation_formed }
+		NOT = { has_country_flag = korea_peninsula_reunited }
+	}
+
+	visible_when_empty = yes
+}
+
+ZZZ_korea_postwar = {
+	icon = GFX_decision_category_generic_propaganda
+	priority = 95
+
+	allowed = {
+		OR = {
+			original_tag = NKO
+			original_tag = JAP
+		}
+	}
+
+	visible = {
+		OR = {
+			has_global_flag = gaw_china_victory_settled
+			has_global_flag = gaw_japan_victory_settled
+		}
+		NOT = { has_global_flag = korean_postwar_settled }
+	}
+
+	visible_when_empty = yes
+}

@@ -1,0 +1,53 @@
+on_actions = {
+	## 开局把 30 国的默认 bureau_0X 法案替换成单条 MD_admin_spirit_<TAG>。
+	## 效果本体在 common/scripted_effects/ZZZ_admin_spirit_effects.txt（幂等）。
+	on_startup = {
+		effect = {
+			every_country = {
+				ZZZ_admin_spirit_apply = yes
+			}
+		}
+	}
+
+	## 老存档迁移：on_startup 不会在读档时重跑，用每国一次性旗标补挂。
+	on_weekly = {
+		effect = {
+			every_country = {
+				limit = { NOT = { has_country_flag = MD_admin_spirit_migrated } }
+				ZZZ_admin_spirit_apply = yes
+				set_country_flag = MD_admin_spirit_migrated
+			}
+			## 国体法案迁移：三条国家专属国体 idea 的定义已移除，老档国家在
+			## law_state_system 列表里已无任何合法项，补挂默认总统制（幂等）。
+			every_country = {
+				limit = { NOT = { has_country_flag = MD_state_system_migrated } }
+				if = {
+					limit = {
+						NOT = {
+							OR = {
+								has_idea = law_presidential_system
+								has_idea = law_parliamentary_system
+								has_idea = law_constitutional_monarchy
+								has_idea = law_absolute_monarchy
+								has_idea = law_peoples_democracy
+								has_idea = law_socialist_state
+								has_idea = law_military_dictatorship
+								has_idea = law_authoritarianism
+								has_idea = law_fascist_dictatorship
+								has_idea = law_nazi_dictatorship
+								has_idea = law_ultranationalist_dictatorship
+								has_idea = law_islamic_republic
+								has_idea = law_theocracy
+								has_idea = law_neo_soviet_republic
+								has_idea = law_socialist_republic
+								has_idea = law_american_peoples_dictatorship
+							}
+						}
+					}
+					add_ideas = law_presidential_system
+				}
+				set_country_flag = MD_state_system_migrated
+			}
+		}
+	}
+}

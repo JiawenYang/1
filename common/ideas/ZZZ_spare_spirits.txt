@@ -1,0 +1,316 @@
+## ============================================================================
+##  ZZZ_spare_spirits —— 备用国家精神（巨型国家 / 多国联邦 / 统一后新政体）
+##
+##  用途：这些政体在 2017 开局并不存在，只在对应链条走完后由
+##  ZZZ_spare_spirits_on_actions.txt 按全局旗标 / 外观标签自动挂载。
+##  开局不挂载，因此不会在 2017 年亮起。
+##
+##  旗标对应：
+##    korean_confederation_formed     朝韩邦联成立（KOR / NKO）
+##    zzz_korea_north_annexed         朝鲜吞并韩国、半岛统一（NKO）
+##    ZZZ_UAR_victory                 泛阿拉伯战争胜利（EGY）
+##    PRC_balkan_federation_supported 中国注资巴尔干联邦（SER）
+##    cosmetic_tag = SOV_eurasian     欧亚联盟国宣告（SOV）
+##    FRA_EU_federalized_global       欧盟联邦化（FRA）
+##    gaw_japan_victory_settled       大亚洲战争日本胜利（JAP / RAJ）
+##    gaw_china_victory_settled       大亚洲战争中国胜利（CHI）
+##    PRC_taiwan_war_won              台海武力统一（CHI）
+##
+##  数值口径：参考 99_civilization_spirits.txt 的 MD_civ_spirit_* 量级，
+##  单项不超过 0.06；不使用 stability_factor / conscription_factor /
+##  monthly_population（工程已永久禁用）。
+## ============================================================================
+
+ideas = {
+	country = {
+
+		# ------------------------------------------------------------------
+		#  朝鲜半岛邦联：两个主权政府仍在，只共享常设机构
+		# ------------------------------------------------------------------
+		ZZZ_spirit_korea_confederation = {
+			allowed_civil_war = { always = yes }
+
+			picture = ZZZ_spirit_korea_confederation
+
+			modifier = {
+				political_power_factor = 0.05
+				consumer_goods_factor = -0.03
+				production_speed_buildings_factor = 0.05
+				army_org_factor = 0.03
+			}
+		}
+
+		# ------------------------------------------------------------------
+		#  朝鲜半岛统一：吞并完成后由单一政府治理整个半岛
+		# ------------------------------------------------------------------
+		ZZZ_spirit_korea_unified = {
+			allowed_civil_war = { always = yes }
+
+			picture = ZZZ_spirit_korea_unified
+
+			modifier = {
+				political_power_factor = 0.05
+				consumer_goods_factor = -0.03
+				production_speed_buildings_factor = 0.05
+				army_org_factor = 0.03
+			}
+		}
+
+		# ------------------------------------------------------------------
+		#  阿拉伯联合共和国：开罗重新整合阿拉伯世界的资源与市场
+		# ------------------------------------------------------------------
+		ZZZ_spirit_uar_unity = {
+			allowed_civil_war = { always = yes }
+
+			picture = ZZZ_spirit_uar_unity
+
+			modifier = {
+				political_power_factor = 0.05
+				research_speed_factor = 0.03
+				trade_opinion_factor = 0.05
+				army_defence_factor = 0.05
+				consumer_goods_factor = -0.02
+			}
+		}
+
+		# ------------------------------------------------------------------
+		#  巴尔干联邦：经济互认与共同防务拉起的松散联邦式共同体
+		# ------------------------------------------------------------------
+		ZZZ_spirit_balkan_federation = {
+			allowed_civil_war = { always = yes }
+
+			picture = ZZZ_spirit_balkan_federation
+
+			modifier = {
+				political_power_factor = 0.03
+				production_speed_buildings_factor = 0.05
+				trade_opinion_factor = 0.05
+				consumer_goods_factor = -0.02
+			}
+		}
+
+		# ------------------------------------------------------------------
+		#  欧亚联盟国：关税同盟、统一能源网与联合防空
+		# ------------------------------------------------------------------
+		ZZZ_spirit_eurasian_state = {
+			allowed_civil_war = { always = yes }
+
+			picture = ZZZ_spirit_eurasian_state
+
+			modifier = {
+				political_power_factor = 0.05
+				production_speed_buildings_factor = 0.05
+				army_org_factor = 0.03
+				trade_opinion_factor = 0.05
+			}
+		}
+
+		# ------------------------------------------------------------------
+		#  欧洲联邦：成员国让渡财政与防务主权后的联邦政府
+		# ------------------------------------------------------------------
+		ZZZ_spirit_eu_federation = {
+			allowed_civil_war = { always = yes }
+
+			picture = ZZZ_spirit_eu_federation
+
+			modifier = {
+				research_speed_factor = 0.05
+				political_power_factor = 0.04
+				consumer_goods_factor = -0.03
+				trade_opinion_factor = 0.06
+			}
+		}
+
+		# ------------------------------------------------------------------
+		#  东亚共荣圈：以日本为中心的等级化经济与安全秩序
+		# ------------------------------------------------------------------
+		ZZZ_spirit_east_asia_sphere = {
+			allowed_civil_war = { always = yes }
+
+			picture = ZZZ_spirit_east_asia_sphere
+
+			modifier = {
+				political_power_factor = 0.05
+				production_speed_buildings_factor = 0.05
+				trade_opinion_factor = 0.05
+				navy_org_factor = 0.02
+			}
+		}
+
+		# ------------------------------------------------------------------
+		#  大印度斯坦：次大陆的关税、铁路与水源纳入单一行政空间
+		# ------------------------------------------------------------------
+		ZZZ_spirit_greater_india = {
+			allowed_civil_war = { always = yes }
+
+			picture = ZZZ_spirit_greater_india
+
+			modifier = {
+				political_power_factor = 0.04
+				consumer_goods_factor = -0.03
+				army_org_factor = 0.03
+				production_speed_buildings_factor = 0.05
+			}
+		}
+
+		# ------------------------------------------------------------------
+		#  统一的中国（台海统一）：只完成两岸整合，尚未主导亚洲秩序
+		# ------------------------------------------------------------------
+		ZZZ_spirit_china_reunification = {
+			allowed_civil_war = { always = yes }
+
+			picture = ZZZ_spirit_china_reunification
+
+			modifier = {
+				political_power_factor = 0.04
+				consumer_goods_factor = -0.02
+				research_speed_factor = 0.03
+				production_speed_buildings_factor = 0.04
+			}
+		}
+
+		# ------------------------------------------------------------------
+		#  大中华（大亚洲战争胜利）：战后亚洲秩序下的中央规划体系
+		# ------------------------------------------------------------------
+		ZZZ_spirit_greater_china = {
+			allowed_civil_war = { always = yes }
+
+			picture = ZZZ_spirit_greater_china
+
+			modifier = {
+				research_speed_factor = 0.05
+				political_power_factor = 0.04
+				production_speed_buildings_factor = 0.05
+				army_attack_factor = 0.03
+			}
+		}
+
+		# ------------------------------------------------------------------
+		#  印度支那联邦：中国胜利后越南整合老挝与柬埔寨
+		# ------------------------------------------------------------------
+		ZZZ_spirit_indochina_federation = {
+			allowed_civil_war = { always = yes }
+
+			picture = ZZZ_spirit_indochina_federation
+
+			modifier = {
+				political_power_factor = 0.03
+				production_speed_buildings_factor = 0.05
+				trade_opinion_factor = 0.04
+				army_defence_factor = 0.03
+			}
+		}
+
+		# ------------------------------------------------------------------
+		#  南斯拉夫复兴：塞尔维亚整合西巴尔干的联邦式国家
+		# ------------------------------------------------------------------
+		ZZZ_spirit_yugoslavia_revival = {
+			allowed_civil_war = { always = yes }
+
+			picture = ZZZ_spirit_yugoslavia_revival
+
+			modifier = {
+				political_power_factor = 0.04
+				army_org_factor = 0.03
+				production_speed_buildings_factor = 0.05
+				trade_opinion_factor = 0.04
+			}
+		}
+
+		# ------------------------------------------------------------------
+		#  奥斯曼复兴：新奥斯曼主义路线走到底后的帝国式政体
+		# ------------------------------------------------------------------
+		ZZZ_spirit_ottoman_restoration = {
+			allowed_civil_war = { always = yes }
+
+			picture = ZZZ_spirit_ottoman_restoration
+
+			modifier = {
+				political_power_factor = 0.04
+				army_org_factor = 0.03
+				trade_opinion_factor = 0.04
+				consumer_goods_factor = -0.02
+			}
+		}
+
+		# ------------------------------------------------------------------
+		#  CANZUK：英加澳新整合后的共同市场与防务协作
+		# ------------------------------------------------------------------
+		ZZZ_spirit_canzuk = {
+			allowed_civil_war = { always = yes }
+
+			picture = ZZZ_spirit_canzuk
+
+			modifier = {
+				political_power_factor = 0.04
+				trade_opinion_factor = 0.06
+				research_speed_factor = 0.03
+				navy_org_factor = 0.03
+			}
+		}
+
+		# ------------------------------------------------------------------
+		#  马菲林多：马来亚、菲律宾与印尼的联合构想
+		# ------------------------------------------------------------------
+		ZZZ_spirit_maphilindo = {
+			allowed_civil_war = { always = yes }
+
+			picture = ZZZ_spirit_maphilindo
+
+			modifier = {
+				political_power_factor = 0.03
+				trade_opinion_factor = 0.05
+				production_speed_buildings_factor = 0.04
+				navy_org_factor = 0.02
+			}
+		}
+
+		# ------------------------------------------------------------------
+		#  北欧联盟：北欧五国整合后的共同市场与防务共同体
+		# ------------------------------------------------------------------
+		ZZZ_spirit_nordic_union = {
+			allowed_civil_war = { always = yes }
+
+			picture = ZZZ_spirit_nordic_union
+
+			modifier = {
+				political_power_factor = 0.04
+				research_speed_factor = 0.04
+				consumer_goods_factor = -0.03
+				army_defence_factor = 0.03
+			}
+		}
+
+		# ------------------------------------------------------------------
+		#  中美洲联盟：尼加拉瓜主导的统一（CAM_union_formed）
+		# ------------------------------------------------------------------
+		ZZZ_spirit_cam_union = {
+			allowed_civil_war = { always = yes }
+
+			picture = ZZZ_spirit_cam_union
+
+			modifier = {
+				political_power_factor = 0.04
+				trade_opinion_factor = 0.04
+				production_speed_buildings_factor = 0.04
+				consumer_goods_factor = -0.02
+			}
+		}
+
+		# ------------------------------------------------------------------
+		#  中美洲共和国：萨尔瓦多主导的统一（CAM_republic_formed）
+		# ------------------------------------------------------------------
+		ZZZ_spirit_cam_republic = {
+			allowed_civil_war = { always = yes }
+
+			picture = ZZZ_spirit_cam_republic
+
+			modifier = {
+				political_power_factor = 0.03
+				army_org_factor = 0.03
+				research_speed_factor = 0.03
+				trade_opinion_factor = 0.04
+			}
+		}
+	}
+}

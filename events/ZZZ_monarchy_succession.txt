@@ -1,0 +1,184 @@
+# ============================================================================
+# ZZZ 君主更替事件（按现实日期）
+#
+# 排期见 common/on_actions/ZZZ_monarchy_succession_on_actions.txt
+# 效果见 common/scripted_effects/ZZZ_monarchy_succession_effects.txt
+# 继位者角色见 common/characters/ZZZ_monarchs_succession.txt
+#
+# 所有事件均为 is_triggered_only + fire_only_once，由开局排期触发；
+# 君主制已废除的国家在效果内直接跳过，不产生更替。
+# ============================================================================
+
+add_namespace = ZZZ_succession
+
+# ----------------------------------------------------------------------------
+# 伊丽莎白二世逝世 → 查尔斯三世
+# 同一位君主挂 15 国：ENG + CAN/AST/NZL/ANT/BAH/BLZ/GRA/JAM/PAP/SOL/STK/STL/STV/TUL
+# BAR 已于 2021.11.30 改制共和国，不触发本条。
+# ----------------------------------------------------------------------------
+country_event = {
+	id = ZZZ_succession.10
+	title = ZZZ_succession.10.t
+	desc = ZZZ_succession.10.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		ZZZ_succession_commonwealth_charles = yes
+	}
+	option = {
+		name = ZZZ_succession.10.a
+	}
+}
+
+# ----------------------------------------------------------------------------
+# 明仁退位 → 德仁（2019.4.30）
+# ----------------------------------------------------------------------------
+country_event = {
+	id = ZZZ_succession.11
+	title = ZZZ_succession.11.t
+	desc = ZZZ_succession.11.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		ZZZ_succession_japan_naruhito = yes
+	}
+	option = {
+		name = ZZZ_succession.11.a
+	}
+}
+
+# ----------------------------------------------------------------------------
+# 玛格丽特二世退位 → 腓特烈十世（2024.1.14）
+# ----------------------------------------------------------------------------
+country_event = {
+	id = ZZZ_succession.12
+	title = ZZZ_succession.12.t
+	desc = ZZZ_succession.12.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		ZZZ_succession_denmark_frederik_x = yes
+	}
+	option = {
+		name = ZZZ_succession.12.a
+	}
+}
+
+# ----------------------------------------------------------------------------
+# 卢森堡大公亨利退位 → 纪尧姆（2025.10.3）
+# ----------------------------------------------------------------------------
+country_event = {
+	id = ZZZ_succession.13
+	title = ZZZ_succession.13.t
+	desc = ZZZ_succession.13.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		ZZZ_succession_luxembourg_guillaume = yes
+	}
+	option = {
+		name = ZZZ_succession.13.a
+	}
+}
+
+# ----------------------------------------------------------------------------
+# 马来西亚：穆罕默德五世退位 → 阿卜杜拉（2019.1.6）
+# ----------------------------------------------------------------------------
+country_event = {
+	id = ZZZ_succession.14
+	title = ZZZ_succession.14.t
+	desc = ZZZ_succession.14.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		ZZZ_succession_malaysia_abdullah = yes
+	}
+	option = {
+		name = ZZZ_succession.14.a
+	}
+}
+
+# ----------------------------------------------------------------------------
+# 马来西亚：阿卜杜拉 → 易卜拉欣（2024.1.31）
+# ----------------------------------------------------------------------------
+country_event = {
+	id = ZZZ_succession.15
+	title = ZZZ_succession.15.t
+	desc = ZZZ_succession.15.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		ZZZ_succession_malaysia_ibrahim = yes
+	}
+	option = {
+		name = ZZZ_succession.15.a
+	}
+}
+
+# ----------------------------------------------------------------------------
+# 科威特：萨巴赫逝世 → 纳瓦夫（2020.9.29）
+# ----------------------------------------------------------------------------
+country_event = {
+	id = ZZZ_succession.16
+	title = ZZZ_succession.16.t
+	desc = ZZZ_succession.16.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		ZZZ_succession_kuwait_nawaf = yes
+	}
+	option = {
+		name = ZZZ_succession.16.a
+	}
+}
+
+# ----------------------------------------------------------------------------
+# 科威特：纳瓦夫逝世 → 米沙勒（2023.12.16）
+# ----------------------------------------------------------------------------
+country_event = {
+	id = ZZZ_succession.17
+	title = ZZZ_succession.17.t
+	desc = ZZZ_succession.17.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		ZZZ_succession_kuwait_mishal = yes
+	}
+	option = {
+		name = ZZZ_succession.17.a
+	}
+}
+
+# ----------------------------------------------------------------------------
+# 阿曼：卡布斯逝世 → 海赛姆（2020.1.10）
+# ----------------------------------------------------------------------------
+country_event = {
+	id = ZZZ_succession.18
+	title = ZZZ_succession.18.t
+	desc = ZZZ_succession.18.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		ZZZ_succession_oman_haitham = yes
+	}
+	option = {
+		name = ZZZ_succession.18.a
+	}
+}
+
+# ----------------------------------------------------------------------------
+# 巴巴多斯改制共和国（2021.11.30），君主制废除
+# ----------------------------------------------------------------------------
+country_event = {
+	id = ZZZ_succession.19
+	title = ZZZ_succession.19.t
+	desc = ZZZ_succession.19.d
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		ZZZ_succession_barbados_republic = yes
+	}
+	option = {
+		name = ZZZ_succession.19.a
+	}
+}

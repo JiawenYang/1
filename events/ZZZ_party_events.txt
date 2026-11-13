@@ -1,0 +1,128 @@
+# ============================================================================
+# ZZZ GAW 政党更迭事件（本工程原创，非 TFR 移植）
+# 命名空间 zzz_party；依赖 ZZZ_party_change_effects.txt 中的效果库。
+# 触发旗标由 ZZZ_gaw_settle_china_victory / ZZZ_gaw_settle_japan_victory 置位：
+#   gaw_china_victory_settled / gaw_japan_victory_settled
+# 说明：战时被吞并的国家（CBD / LAO / BRM / MAY / SIN / PHI / KOR）在该时点已不存在，
+#       不派发事件；存活国的政权更迭由本文件事件完成。
+# ============================================================================
+
+add_namespace = zzz_party
+
+# ---- 中国侧胜利：印度尼西亚（存活，吞并 MAY / SIN；缅甸 BRM 不并入印尼）----
+# 口径修正：GAW 结算后上台的是亲日的亲西方代理人（民族主义右翼），不是左翼/共产主义。
+# 人物复用：Tommy Suharto（MD 既有 Nat_Populism 领袖 + 既有肖像 Tommy_Suharto.dds）
+country_event = {
+	id = zzz_party.1
+	title = zzz_party.1.t
+	desc = zzz_party.1.d
+	is_triggered_only = no
+	trigger = {
+		has_global_flag = gaw_china_victory_settled
+		original_tag = IND
+		NOT = { has_country_flag = zzz_party_ind_done }
+	}
+	option = {
+		name = zzz_party.1.a
+		set_country_flag = zzz_party_ind_done
+		ZZZ_gaw_gov_IND = yes
+		ZZZ_party_leader_IND_tommy_suharto = yes
+		add_stability = 0.05
+	}
+}
+
+# ---- 中国侧胜利：越南（存活，吞并 LAO / CBD）----
+# 口径（最终版）：中国胜利时 VIE 完全不变——不换执政党、不换领导人、不改支持率、不加 cosmetic。
+# 故本批次不设 VIE 结算事件；越南唯一一次改动只发生在日本胜利分支（见 zzz_party.93 南越伪政权）。
+
+# ---- 中国侧胜利：台湾（仅在未按特别行政区条款并入时存活）----
+country_event = {
+	id = zzz_party.4
+	title = zzz_party.4.t
+	desc = zzz_party.4.d
+	is_triggered_only = no
+	trigger = {
+		has_global_flag = gaw_china_victory_settled
+		original_tag = TAI
+		NOT = { has_country_flag = zzz_party_tai_done }
+	}
+	option = {
+		name = zzz_party.4.a
+		set_country_flag = zzz_party_tai_done
+		ZZZ_gaw_gov_TAI = yes
+		set_leader = yes
+		add_stability = 0.03
+	}
+}
+
+# ---- 中国侧胜利：日本（战败后日共上台，本工程原创，非 TFR 移植）----
+country_event = {
+	id = zzz_party.5
+	title = zzz_party.5.t
+	desc = zzz_party.5.d
+	is_triggered_only = no
+	trigger = {
+		has_global_flag = gaw_china_victory_settled
+		original_tag = JAP
+		NOT = { has_country_flag = zzz_party_jap_done }
+	}
+	option = {
+		name = zzz_party.5.a
+		set_country_flag = zzz_party_jap_done
+		ZZZ_gaw_gov_JAP = yes
+		ZZZ_party_leader_JAP_kazuo_shii = yes
+		add_stability = 0.05
+	}
+}
+
+# ---- 通用：中国侧协作政府成立 ----
+country_event = {
+	id = zzz_party.90
+	title = zzz_party.90.t
+	desc = zzz_party.90.d
+	is_triggered_only = yes
+	option = {
+		name = zzz_party.90.a
+		# 政权与票型已由 ZZZ_gaw_gov_<TAG> 逐国显式设定，此处只作叙事，不再覆盖支持率
+	}
+}
+
+# ---- 通用：日本侧协作政府成立（亲西方）----
+country_event = {
+	id = zzz_party.91
+	title = zzz_party.91.t
+	desc = zzz_party.91.d
+	is_triggered_only = yes
+	option = {
+		name = zzz_party.91.a
+		# 政权与票型已由 ZZZ_gaw_gov_<TAG> 逐国显式设定，此处只作叙事，不再覆盖支持率
+	}
+}
+
+# ---- 通用：印尼协作政府成立（亲日民族主义右翼）----
+# 口径：中国胜利分支下印尼落地为亲日的亲西方代理人（nationalist 顶层组），不写成社会主义。
+country_event = {
+	id = zzz_party.92
+	title = zzz_party.92.t
+	desc = zzz_party.92.d
+	is_triggered_only = yes
+	option = {
+		name = zzz_party.92.a
+		# 政权与票型已由 ZZZ_gaw_gov_IND 显式设定，此处只作叙事，不再覆盖支持率
+	}
+}
+
+# ---- 日本胜利：越南共和国（南越伪政权）成立 ----
+# 不新建 tag：VIE 本体 + cosmetic VIE_nationalist（MD 既有黄底三红条旗）；首都西贡（千禧 state 519）。
+# 国号「越南共和国」由四语言本地化覆盖 VIE_nationalist 键。
+# 领袖：ZZZ_gaw_south_vietnam_government 内安装 Nguyen Huu Chanh（1952 年生，境外居住，肖像待补）。
+country_event = {
+	id = zzz_party.93
+	title = zzz_party.93.t
+	desc = zzz_party.93.d
+	is_triggered_only = yes
+	option = {
+		name = zzz_party.93.a
+		# 政权与票型已由 ZZZ_gaw_south_vietnam_government 显式设定，此处只作叙事
+	}
+}

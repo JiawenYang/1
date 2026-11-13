@@ -6,10 +6,10 @@
 #   子装备仅 year/archetype/priority + 数值块（不写 abbreviation/picture 等设计器字段）
 #
 # 关键机制：
-#   1. type = { armor mechanized amphibious }
+#   1. type = { armor amphibious }
 #      armor      → 归入装甲类，参与装甲率/硬度计算
-#      mechanized → 可作为步兵载具（transport）
 #      amphibious → 可渡河/两栖登陆，归入 amphibious_tanks 搜索过滤
+#      （原 mechanized 已移除：带 mechanized 会被归类为轻型坦克而非两栖坦克）
 #   2. parent 链 → 实现过时标记（子装备解锁时父装备标记为过时）
 #   3. additional_collateral_damage / visual_level → 对齐 MD 原版 APC_1~8 字段
 #
@@ -32,13 +32,13 @@ equipments = {
 
 		type = {
 			armor
-			mechanized
 			amphibious
 		}
 
 		group_by = archetype
 
 		interface_category = interface_category_armor
+		priority = 2000
 
 		#Misc Abilities
 		maximum_speed = 10.5
@@ -83,7 +83,6 @@ equipments = {
 		reliability = 0.93
 		fuel_consumption = 3.5
 		supply_consumption = 0.02
-		suppression = 0.75
 
 		#Offensive Abilities
 		soft_attack = 5
@@ -123,7 +122,6 @@ equipments = {
 		reliability = 1.0094
 		fuel_consumption = 3.5
 		supply_consumption = 0.02
-		suppression = 0.25
 
 		#Offensive Abilities
 		soft_attack = 5
@@ -150,11 +148,11 @@ equipments = {
 	}
 
 	# KAAV7：MD 原版变体（KOR - Korea.txt L537），armor升级1级
+	# 韩国仅解锁本型号，无 AAVP-7A1，不设 parent（跨国家 parent 会导致父装备未解锁时无法生产）
 	ZZ_amphibious_apc_chassis_kaav7 = {
 		year = 1998
 
 		archetype = ZZ_amphibious_mechanized_equipment
-		parent = ZZ_amphibious_apc_chassis_aavp7a1
 		priority = 5
 		visual_level = 0
 
@@ -163,7 +161,6 @@ equipments = {
 		reliability = 1.0094
 		fuel_consumption = 3.5
 		supply_consumption = 0.01
-		suppression = 0.75
 
 		#Offensive Abilities
 		soft_attack = 5
@@ -190,11 +187,11 @@ equipments = {
 	}
 
 	# ZBD-05 中国两栖战车：apc_hull_2 同级配置，armor升级1级
+	# 中国仅解锁本型号，无 KAAV7，不设 parent（跨国家 parent 会导致父装备未解锁时无法生产）
 	ZZ_amphibious_apc_chassis_zbd05 = {
 		year = 2005
 
 		archetype = ZZ_amphibious_mechanized_equipment
-		parent = ZZ_amphibious_apc_chassis_kaav7
 		priority = 5
 		visual_level = 0
 
@@ -203,7 +200,6 @@ equipments = {
 		reliability = 1.078
 		fuel_consumption = 4.1
 		supply_consumption = 0.02
-		suppression = 0.25
 
 		#Offensive Abilities
 		soft_attack = 9.75

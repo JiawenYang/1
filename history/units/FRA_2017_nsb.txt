@@ -26,9 +26,9 @@ division_template = {
 	regiments = {
 		L_arm_Bat = { x = 0 y = 0 }
 		L_arm_Bat = { x = 0 y = 1 }
-		Arm_Marine_Bat = { x = 0 y = 2 }
-		Arm_Marine_Bat = { x = 0 y = 3 }
-		Mech_Marine_Bat = { x = 0 y = 4 }
+		Marine_Bat_FRA = { x = 0 y = 2 }
+		Marine_Bat_FRA = { x = 0 y = 3 }
+		Marine_Bat_FRA = { x = 0 y = 4 }
 		SP_Arty_Bat = { x = 1 y = 0 }
 		L_Inf_Bat = { x = 2 y = 0 }
 	}
@@ -47,7 +47,7 @@ division_template = {
 		Mech_Inf_Bat = { x = 0 y = 1 }
 		Mech_Inf_Bat = { x = 0 y = 2 }
 		Mech_Inf_Bat = { x = 0 y = 3 }
-		Mech_Marine_Bat = { x = 0 y = 4 }
+		Marine_Bat_FRA = { x = 0 y = 4 }
 		SP_Arty_Bat = { x = 1 y = 0 }
 		L_Inf_Bat = { x = 2 y = 0 }
 	}
@@ -80,7 +80,7 @@ division_template = {
 		L_arm_Bat = { x = 0 y = 1 }
 		Mech_Inf_Bat = { x = 0 y = 2 }
 		Mech_Inf_Bat = { x = 0 y = 3 }
-		Mech_Marine_Bat = { x = 0 y = 4 }
+		Marine_Bat_FRA = { x = 0 y = 4 }
 		SP_Arty_Bat = { x = 1 y = 0 }
 		L_Inf_Bat = { x = 2 y = 0 }
 	}
@@ -119,7 +119,7 @@ division_template = {
 	name = "Special Forces"
 
 	regiments = {
-		Special_Forces = { x = 0 y = 0 }
+		CdoMarine_Bat_FRA = { x = 0 y = 0 }
 	}
 
 	support = {
@@ -316,10 +316,13 @@ units = {
 
 instant_effect = {
 	add_equipment_to_stockpile = {
+		variant_name = "HK416F"
 		type = infantry_weapons_6 #HK-416
 		amount = 1700
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "M4 SOPMOD Block I"
+		producer = USA
 		type = infantry_weapons_4 #Famas
 		amount = 5340
 	}
@@ -328,14 +331,17 @@ instant_effect = {
 		amount = 1200
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "AT-4"
 		type = Anti_tank_1 #AT-4
 		amount = 270
 	}
 		add_equipment_to_stockpile = {
-		type = Heavy_Anti_tank_1 #ERYX
+		variant_name = "ERYX"
+		type = Anti_tank_2 #ERYX
 		amount = 66
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "Mistral"
 		type = Anti_Air_1 #Mistral
 		amount = 585
 	}
@@ -343,32 +349,37 @@ instant_effect = {
 	#Vehicles
 	add_equipment_to_stockpile = {
 		type = medium_tank_chassis_2
-		variant_name = "AMX-56 Leclerc"
 		amount = 200
 		producer = FRA
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "Panhard ERC 90"
 		type = medium_tank_destroyer_chassis_1 #AMX-10 RC
 		amount = 248
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "BRM-1K"
+		producer = SOV
 		type = medium_tank_destroyer_chassis_0 #ERC-90F4 Sagaie
 		amount = 100
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "Aravis"
 		type = util_vehicle_5 #Aravis
 		amount = 14
 	}
 	add_equipment_to_stockpile = {
-		type = util_vehicle_5 # & buffalo
+		type = heavy_util_vehicle_5 # & buffalo
 		amount = 4
 		producer = USA
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "VBL M-ll"
 		type = util_vehicle_4 #VBL M-ll
 		amount = 1480
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "VBI - original 630"
 		type = medium_tank_flame_chassis_3 # VBI - original 630
 		amount = 230
 	}
@@ -377,38 +388,116 @@ instant_effect = {
 		amount = 200
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "VBI - had to remove from original to meet unit requirments"
 		type = medium_tank_flame_chassis_3 # VBI - had to remove from original to meet unit requirments
 		amount = 100
 	}
 
 	add_equipment_to_stockpile = {
+		variant_name = "BvS 10"
 		type = medium_tank_amphibious_chassis_3 #BvS 10
 		amount = 53
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "VAB Milan"
 		type = medium_tank_amphibious_chassis_1 #VAB
 		amount = 2586
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "AMX-30 AuF1"
 		type = medium_tank_artillery_chassis_1 #GCT 155mm
 		amount = 37
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "CAESAR"
 		type = medium_tank_artillery_chassis_2 #CEASER
 		amount = 77
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "PL-66"
+		producer = CHI
 		type = artillery_1 #TRF1
 		amount = 43
 	}
 	add_equipment_to_stockpile = {
-		type = medium_tank_rocket_chassis_0 #M270
+		variant_name = "M270"
+		type = medium_tank_rocket_chassis_1 #M270
 		amount = 13
 		producer = USA
 	}
 	#Aircraft
 	add_equipment_to_stockpile = {
+		variant_name = "Tigre HAP"
 		type = heavy_tank_chassis_2 #Eurocopter
 		amount = 51
 	} 
+
+	### Sealed Storage 封存 ###
+	add_equipment_to_stockpile = {
+		variant_name = "AMX-30B2"
+		type = medium_tank_chassis_0 #AMX-30B2（封存）
+		producer = FRA
+		amount = 100
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Mirage F1"
+		type = small_plane_airframe_1 #Mirage F1（封存）
+		producer = FRA
+		amount = 40
+	}
+	add_equipment_to_stockpile = {
+		variant_name = "Super Etendard"
+		type = cv_medium_plane_airframe_1 #Super Etendard（封存）
+		producer = FRA
+		amount = 12
+	}
+
+	#反地雷伏击车（MRAP，2015型）
+	add_equipment_to_stockpile = {
+		type = heavy_util_vehicle_6 #Arquus Bastion
+		producer = FRA
+		amount = 60
+	}
+	# Generation upgrade (2017 stock)
+	add_equipment_to_stockpile = {
+		type = artillery_2
+		amount = 0
+		producer = FRA
+	}
+	add_equipment_to_stockpile = {
+		type = Heavy_Anti_tank_2
+		amount = 0
+		producer = FRA
+	}
+	# Orphan variant attachment (2017 real-world holdings)
+	add_equipment_to_stockpile = {
+		type = medium_tank_chassis_2
+		variant_name = "Leclerc SXXI"
+		amount = 200
+		producer = FRA
+	}
+	add_equipment_to_stockpile = {
+		type = medium_tank_amphibious_chassis_2
+		variant_name = "VBCI"
+		amount = 600
+		producer = FRA
+	}
+	add_equipment_to_stockpile = {
+		type = transport_helicopter_2
+		variant_name = "NH90 TTH"
+		amount = 20
+		producer = FRA
+	}
+	add_equipment_to_stockpile = {
+		type = large_plane_air_transport_airframe_2
+		variant_name = "A400M Atlas"
+		amount = 8
+		producer = FRA
+	}
+	add_equipment_to_stockpile = {
+		type = large_plane_air_transport_airframe_1
+		variant_name = "Dassault Falcon 20"
+		amount = 10
+		producer = FRA
+	}
 }

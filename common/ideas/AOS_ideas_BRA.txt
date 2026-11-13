@@ -38,7 +38,7 @@ country = {
 		picture = BRA_disjointed_geography
 	
 		allowed = { 
-			is_brazilian_civil_war_tag = yes
+			always = no
 		}
 		
 		modifier = {
@@ -127,9 +127,9 @@ country = {
 		
 		modifier = {
 			resistance_activity = 0.1
-			battalion_upkeep_factor = 0.1
-			aircraft_upkeep_factor = 0.1
-			ship_upkeep_factor = 0.1
+			army_personnel_cost_multiplier_modifier = 0.1
+			airforce_personnel_cost_multiplier_modifier = 0.1
+			navy_personnel_cost_multiplier_modifier = 0.1
 			land_doctrine_cost_factor = 1
 			naval_doctrine_cost_factor = 1
 			air_doctrine_cost_factor = 1
@@ -178,8 +178,7 @@ country = {
 		modifier = {
 			war_support_factor = 0.05
 			political_power_factor = 0.1
-			conservative_drift = 0.01
-			authoritarian_democrat_drift = 0.01
+			democratic_drift = 0.01
 		}
 	}
 
@@ -194,7 +193,6 @@ country = {
 			war_support_factor = 0.05
 			resistance_growth_on_our_occupied_states = 0.1
 			resistance_damage_to_garrison_on_our_occupied_states = 0.15
-			modifier_army_sub_unit_militia_attack_factor = 0.1	
 		}
 	}
 
@@ -224,7 +222,7 @@ country = {
 			farming_development_monthly = 0.01
 			local_resources_factor = 0.075
 			business_value_factor = 0.1
-			tax_business_rate_factor = 0.05
+			corporate_tax_income_multiplier_modifier = 0.05
 		}
 	}
 
@@ -378,7 +376,7 @@ country = {
 		modifier = {
 			business_value_factor = 0.25
 			tax_personal_rate_factor = 0.1
-			tax_business_rate_factor = 0.05
+			corporate_tax_income_multiplier_modifier = 0.05
 			industrial_capacity_factory = 0.1
 			consumer_goods_factor = 0.15
 			local_resources_factor = 0.1
@@ -400,7 +398,7 @@ country = {
 		modifier = {
 			business_value_factor = 0.3
 			tax_personal_rate_factor = 0.15
-			tax_business_rate_factor = 0.05
+			corporate_tax_income_multiplier_modifier = 0.05
 			industrial_capacity_factory = 0.1
 			consumer_goods_factor = 0.15
 			local_resources_factor = 0.125
@@ -423,7 +421,7 @@ country = {
 		modifier = {
 			business_value_factor = 0.35
 			tax_personal_rate_factor = 0.15
-			tax_business_rate_factor = 0.15
+			corporate_tax_income_multiplier_modifier = 0.15
 			industrial_capacity_factory = 0.15
 			consumer_goods_factor = 0.2
 			local_resources_factor = 0.15
@@ -477,8 +475,8 @@ country = {
 			political_power_gain = 0.02
 			business_value_factor = 0.05
 			consumer_goods_factor = -0.075
-			inflation_monthly = -0.001
-			interest_rate_factor = 0.25
+			inflation_cost_multiplier_modifier = -0.001
+			interest_rate_multiplier_modifier = 0.25
 		}
 	}
 
@@ -495,8 +493,8 @@ country = {
 			political_power_gain = 0.02
 			business_value_factor = 0.05
 			consumer_goods_factor = -0.075
-			inflation_monthly = -0.001
-			interest_rate_factor = 0.25
+			inflation_cost_multiplier_modifier = -0.001
+			interest_rate_multiplier_modifier = 0.25
 			base_fuel_gain_factor = -0.15
 			production_speed_synthetic_refinery_factor = 0.1
 			production_speed_fuel_silo_factor = 0.1
@@ -517,11 +515,11 @@ country = {
 			political_power_gain = 0.02
 			business_value_factor = 0.05
 			consumer_goods_factor = -0.1
-			inflation_monthly = -0.001
-			interest_rate_factor = 0.25
+			inflation_cost_multiplier_modifier = -0.001
+			interest_rate_multiplier_modifier = 0.25
 			base_fuel_gain_factor = -0.15
-			production_speed_power_plant_factor = 0.1
-			production_speed_energy_farm_factor = 0.1
+			production_speed_fossil_powerplant_factor = 0.1
+			production_speed_renewable_energy_infra_factor = 0.1
 			production_speed_synthetic_refinery_factor = 0.1
 			production_speed_fuel_silo_factor = 0.1
 			misc_income = 1.15
@@ -541,8 +539,8 @@ country = {
 			political_power_gain = 0.02
 			business_value_factor = 0.05
 			consumer_goods_factor = -0.1
-			inflation_monthly = -0.001
-			interest_rate_factor = 0.25
+			inflation_cost_multiplier_modifier = -0.001
+			interest_rate_multiplier_modifier = 0.25
 			base_fuel_gain_factor = -0.15
 			production_speed_synthetic_refinery_factor = 0.1
 			production_speed_fuel_silo_factor = 0.1
@@ -564,11 +562,11 @@ country = {
 			political_power_gain = 0.02
 			business_value_factor = 0.05
 			consumer_goods_factor = -0.125
-			inflation_monthly = -0.001
-			interest_rate_factor = 0.25
+			inflation_cost_multiplier_modifier = -0.001
+			interest_rate_multiplier_modifier = 0.25
 			base_fuel_gain_factor = -0.15
-			production_speed_power_plant_factor = 0.1
-			production_speed_energy_farm_factor = 0.1
+			production_speed_fossil_powerplant_factor = 0.1
+			production_speed_renewable_energy_infra_factor = 0.1
 			production_speed_synthetic_refinery_factor = 0.1
 			production_speed_fuel_silo_factor = 0.1
 			personal_expense_factor = -0.15
@@ -589,12 +587,12 @@ country = {
 			political_power_gain = 0.02
 			business_value_factor = 0.075
 			consumer_goods_factor = -0.125
-			inflation_monthly = -0.001
-			interest_rate_factor = 0.25
+			inflation_cost_multiplier_modifier = -0.001
+			interest_rate_multiplier_modifier = 0.25
 			tax_personal_rate_factor = 0.075
 			base_fuel_gain_factor = -0.15
-			production_speed_power_plant_factor = 0.1
-			production_speed_energy_farm_factor = 0.1
+			production_speed_fossil_powerplant_factor = 0.1
+			production_speed_renewable_energy_infra_factor = 0.1
 			production_speed_synthetic_refinery_factor = 0.1
 			production_speed_fuel_silo_factor = 0.1
 			personal_expense_factor = -0.15
@@ -615,12 +613,12 @@ country = {
 			political_power_gain = 0.02
 			business_value_factor = 0.425
 			consumer_goods_factor = -0.125
-			inflation_monthly = -0.001
-			interest_rate_factor = 0.25
+			inflation_cost_multiplier_modifier = -0.001
+			interest_rate_multiplier_modifier = 0.25
 			tax_personal_rate_factor = 0.275
 			base_fuel_gain_factor = -0.15
-			production_speed_power_plant_factor = 0.1
-			production_speed_energy_farm_factor = 0.1
+			production_speed_fossil_powerplant_factor = 0.1
+			production_speed_renewable_energy_infra_factor = 0.1
 			production_speed_synthetic_refinery_factor = 0.1
 			production_speed_fuel_silo_factor = 0.1
 			personal_expense_factor = -0.15
@@ -642,8 +640,8 @@ country = {
 			tax_personal_rate_factor = 0.2
 			business_value_factor = 0.35
 			consumer_goods_factor = -0.075
-			inflation_monthly = -0.001
-			interest_rate_factor = 0.25
+			inflation_cost_multiplier_modifier = -0.001
+			interest_rate_multiplier_modifier = 0.25
 		}
 	}
 
@@ -859,7 +857,7 @@ country = {
 		modifier = {
 			business_value_factor = 0.15
 			tax_personal_rate_factor = 0.05
-			tax_business_rate_factor = 0.05
+			corporate_tax_income_multiplier_modifier = 0.05
 			industrial_capacity_factory = 0.1
 			consumer_goods_factor = 0.2
 			local_resources_factor = 0.1
@@ -881,7 +879,7 @@ country = {
 		modifier = {
 			business_value_factor = 0.2
 			tax_personal_rate_factor = 0.1
-			tax_business_rate_factor = 0.05
+			corporate_tax_income_multiplier_modifier = 0.05
 			industrial_capacity_factory = 0.1
 			consumer_goods_factor = 0.2
 			local_resources_factor = 0.125
@@ -904,7 +902,7 @@ country = {
 		modifier = {
 			business_value_factor = 0.25
 			tax_personal_rate_factor = 0.1
-			tax_business_rate_factor = 0.1
+			corporate_tax_income_multiplier_modifier = 0.1
 			industrial_capacity_factory = 0.15
 			consumer_goods_factor = 0.25
 			local_resources_factor = 0.15
@@ -927,7 +925,7 @@ country = {
 			stability_weekly = -0.005
 			surrender_limit = -0.25
 			drift_defence_factor = -0.3
-			authoritarian_democrat_drift = 0.02
+			democratic_drift = 0.02
 			nationalist_drift = 0.02
 		}
 	}
@@ -946,7 +944,7 @@ country = {
 			war_support_weekly = 0.005
 			surrender_limit = -0.25
 			drift_defence_factor = -0.3
-			authoritarian_democrat_drift = 0.05
+			democratic_drift = 0.05
 			nationalist_drift = 0.05
 		}
 	}
@@ -964,7 +962,7 @@ country = {
 			stability_weekly = -0.005
 			surrender_limit = -0.25
 			drift_defence_factor = -0.3
-			authoritarian_democrat_drift = 0.02
+			democratic_drift = 0.02
 			nationalist_drift = 0.02
 		}
 	}
@@ -1007,7 +1005,7 @@ country = {
 		}
 		modifier = {
 			political_power_gain = 0.05
-			low_stability_weekly = 0.002
+			stability_weekly = 0.002
 			society_development_monthly = 0.005
 		}
 	}
@@ -1181,9 +1179,9 @@ country = {
 		modifier = {
 			conscription_factor = 0.05
 			weekly_casualties_war_support = 0.005
-			battalion_upkeep_factor = 0.1
-			aircraft_upkeep_factor = 0.1
-			ship_upkeep_factor = 0.1
+			army_personnel_cost_multiplier_modifier = 0.1
+			airforce_personnel_cost_multiplier_modifier = 0.1
+			navy_personnel_cost_multiplier_modifier = 0.1
 			land_doctrine_cost_factor = 1
 			naval_doctrine_cost_factor = 1
 			air_doctrine_cost_factor = 1
@@ -1324,9 +1322,9 @@ country = {
 		}
 		
 		modifier = {
-			battalion_upkeep_factor = -0.1
-			aircraft_upkeep_factor = -0.1
-			ship_upkeep_factor = -0.1
+			army_personnel_cost_multiplier_modifier = -0.1
+			airforce_personnel_cost_multiplier_modifier = -0.1
+			navy_personnel_cost_multiplier_modifier = -0.1
 		}
 	}
 	# RELAX THE RULES OF ENGAGEMENT
@@ -1379,8 +1377,6 @@ country = {
 		}
 		
 		modifier = {
-			modifier_army_sub_unit_militia_attack_factor = 0.1
-			modifier_army_sub_unit_militia_defence_factor = 0.1
 			initiative_factor = 0.1
 		}
 	}
@@ -1406,8 +1402,6 @@ country = {
 		}
 		
 		modifier = {
-			modifier_army_sub_unit_militia_attack_factor = 0.15
-			modifier_army_sub_unit_militia_defence_factor = 0.15
 			military_development_monthly = -0.015
 		}
 	}
@@ -1436,7 +1430,7 @@ country = {
 			conscription_factor = 0.1
 			mobilization_speed = 0.15
 			non_core_manpower = 0.25
-			authoritarian_democrat_drift = 0.01
+			democratic_drift = 0.01
 		}
 	}
 	# START AIR OPERATIONS
@@ -1784,7 +1778,7 @@ country = {
 		modifier = {
 			production_speed_infrastructure_factor = 0.15
 			monthly_population = 0.2
-			tax_business_rate_factor = 0.1
+			corporate_tax_income_multiplier_modifier = 0.1
 			tax_personal_rate_factor = 0.1
 		}
 	}
@@ -1869,7 +1863,7 @@ country = {
 		
 		modifier = {
 			business_value_factor = 0.05
-			tax_business_rate_factor = 0.1
+			corporate_tax_income_multiplier_modifier = 0.1
 			military_industrial_organization_funds_gain = 0.25
 		}
 	}
@@ -1898,7 +1892,7 @@ country = {
 		}
 		
 		modifier = {
-			low_stability_weekly = 0.0025
+			stability_weekly = 0.0025
 			poverty_development_monthly = 0.01
 			personal_expense_factor = 0.1
 		}
@@ -1969,7 +1963,7 @@ country = {
 		
 		modifier = {
 			stability_factor = 0.05
-			authoritarian_democrat_drift = 0.01
+			democratic_drift = 0.01
 		}
 	}
 	# PROTECT CHRISTIAN VALUES
@@ -1981,7 +1975,7 @@ country = {
 		
 		modifier = {
 			poverty_development_monthly = 0.005
-			low_stability_weekly = 0.005
+			stability_weekly = 0.005
 		}
 	}
 	# WITH THE LORD AS OUR GUIDE
@@ -2043,7 +2037,7 @@ country = {
 		
 		modifier = {
 			political_power_factor = 0.15
-			conservative_drift = 0.01
+			democratic_drift = 0.01
 		}
 	}
 	# SAFEGUARD TRADITIONAL VALUES
@@ -2080,7 +2074,7 @@ country = {
 		
 		modifier = {
 			business_value_factor = 0.05
-			market_liberal_drift = 0.01
+			democratic_drift = 0.01
 		}
 	}
 	# KEEP THE ENTREPRENEURS COMING
@@ -2104,9 +2098,9 @@ country = {
 		
 		modifier = {
 			bra_libertarian_drift_weekly = 0.0025
-			interest_rate_factor = -0.15
+			interest_rate_multiplier_modifier = -0.15
 			society_development_monthly = 0.005
-			market_liberal_drift = 0.01
+			democratic_drift = 0.01
 		}
 	}
 }
@@ -2204,7 +2198,7 @@ foreign_minister = {
 			NOT = { has_global_flag = BCW_started_flag }
 		}
 		allowed_to_remove = {
-			AOS_locked_ministers = yes
+			always = no
 		}
 		traits = {
 			for_ideological_crusader
@@ -2219,7 +2213,7 @@ foreign_minister = {
 			NOT = { has_global_flag = BCW_started_flag }
 		}
 		allowed_to_remove = {
-			AOS_locked_ministers = yes
+			always = no
 		}
 		traits = {
 			for_free_trader
@@ -2334,7 +2328,7 @@ economic_minister = {
 			NOT = { has_global_flag = BCW_started_flag }
 		}
 		allowed_to_remove = {
-			AOS_locked_ministers = yes
+			always = no
 		}
 		traits = {
 			eco_laissez_faire_capitalist
@@ -2481,7 +2475,7 @@ interior_minister = {
 			NOT = { has_global_flag = BCW_started_flag }
 		}
 		allowed_to_remove = {
-			AOS_locked_ministers = yes
+			always = no
 		}
 		traits = {
 			sec_reformer
@@ -2664,7 +2658,7 @@ intelligence_minister = {
 			NOT = { has_country_flag = BRA_moro_quits_flag }			
 		}
 		allowed_to_remove = {
-			AOS_locked_ministers = yes
+			always = no
 		}
 		traits = {
 			BRA_former_car_wash_judge
@@ -2679,7 +2673,7 @@ intelligence_minister = {
 			NOT = { has_global_flag = BCW_started_flag }
 		}
 		allowed_to_remove = {
-			AOS_locked_ministers = yes
+			always = no
 		}
 		traits = {
 			int_psychological_mastermind
@@ -2694,7 +2688,7 @@ intelligence_minister = {
 			NOT = { has_global_flag = BCW_started_flag }
 		}
 		allowed_to_remove = {
-			AOS_locked_ministers = yes
+			always = no
 		}
 		traits = {
 			BRA_right_hand_justice
@@ -2772,7 +2766,7 @@ theorist_minister = {
 			NOT = { has_global_flag = BCW_started_flag }
 		}
 		allowed_to_remove = {
-			AOS_locked_ministers = yes
+			always = no
 		}
 		traits = {
 			army_chief_drill_1
@@ -2787,7 +2781,7 @@ theorist_minister = {
 			NOT = { has_global_flag = BCW_started_flag }
 		}
 		allowed_to_remove = {
-			AOS_locked_ministers = yes
+			always = no
 		}
 		traits = {
 			army_chief_unity_of_party_and_military
@@ -2802,7 +2796,7 @@ theorist_minister = {
 			NOT = { has_global_flag = BCW_started_flag }
 		}
 		allowed_to_remove = {
-			AOS_locked_ministers = yes
+			always = no
 		}
 		traits = {
 			army_chief_political_protege
@@ -2905,7 +2899,7 @@ theorist_minister = {
 }
 
 # Dummy Ideas
-hidden_idea = {
+hidden_ideas = {
 	BRA_bcw_olavist_idea = { }
 	BRA_bcw_military_idea = { }
 	BRA_bcw_bolsonarist_idea = { }

@@ -1,0 +1,50 @@
+# ============================================================================
+#  ZZZ_chainrun —— 事件链跑通器（直接施加效果版 · 印巴）
+#
+#  链路本体：events/TFR_events_PAK.txt 的事件 PAK.3
+#  该事件没有分支（唯一 option PAK.3.a 为空），全部效果写在 immediate.hidden_effect：
+#    news_event = { id = PAK.7 }            ← fire 事件，跳过
+#    RAJ 对 PAK declare_war_on annex_everything + add_ideas = RAJ_clash_of_the_millions
+#    PAK 加两个理念 + defence_07 + consumption_economy + add_manpower -143750 + load_oob
+#    CHI = { country_event = { id = prc.134 } }  ← fire 事件，跳过
+#
+#  allowed 恒真：效果只按显式 TAG 作用，不读 ROOT。
+#
+#  该链需先有：无硬前置（PAK.3 本身不检查旗标；正式流程由巴基斯坦侧事件派发）。
+#  注意 add_manpower = -143750 是原实现里的“战时人力扣除”，会在无战争准备时也照扣。
+# ============================================================================
+
+ZZZ_chainrun = {
+
+    ZZZ_cr_ip_01_kashmir_war = {
+        icon = generic_political_actions
+        cost = 0
+        fire_only_once = no
+
+        allowed = { always = yes }
+        visible = { always = yes }
+        available = { always = yes }
+
+        complete_effect = {
+            RAJ = {
+                # PAK.3 immediate 原文
+                declare_war_on = {
+                    target = PAK
+                    type = annex_everything
+                }
+                add_ideas = RAJ_clash_of_the_millions
+                # 与 PAK.3 同步：印巴战争开战 → 印度自动退出上合
+                ZZZ_sco_india_exit = yes
+            }
+            PAK = {
+                add_ideas = PAK_clash_of_the_millions
+                add_ideas = defence_07
+                add_ideas = consumption_economy
+                add_manpower = -143750
+                load_oob = "PAK_Pakistan_India_war"
+            }
+        }
+
+        ai_will_do = { base = 0 }
+    }
+}

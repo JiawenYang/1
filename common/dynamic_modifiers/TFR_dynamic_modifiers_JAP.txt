@@ -14,8 +14,8 @@ JAP_ldp_factions_dynamic = {
 	enable = {
 		tag = JAP
 		OR = {
-			has_government = authoritarian_democrat
-			has_government = conservative			
+			check_variable = { ruling_party = 6 }
+			check_variable = { ruling_party = 1 }
 		}
 	}
 	army_attack_factor = JAP_ldp_party_army_attack_factor
@@ -54,7 +54,7 @@ JAP_harmony_and_progress_dynamic = {
 	personal_value_factor = JAP_harmony_and_progress_personal_value_factor
 	monthly_population = JAP_harmony_and_progress_monthly_population_factor_dynamic
 	research_speed_factor = JAP_harmony_and_progress_research_speed_factor_dynamic
-	tax_business_rate = JAP_harmony_and_progress_tax_business_rate
+	corporate_tax_income_multiplier_modifier = JAP_harmony_and_progress_tax_business_rate
 	business_value_factor = JAP_harmony_and_progress_business_value_factor_dynamic
 	production_factory_max_efficiency_factor = JAP_harmony_and_progress_production_factory_max_efficiency_factor_dynamic_var
 	production_factory_efficiency_gain_factor = JAP_harmony_and_progress_production_factory_efficiency_gain_factor_dynamic_var
@@ -81,8 +81,8 @@ JAP_new_era_japan_dynamic = {
 	poverty_development_monthly = JAP_new_era_japan_poverty_development_monthly_dynamic_var
 	expense_growth_factor = JAP_new_era_japan_expense_growth_factor_dynamic_var
 	tax_gain_multiplier_modifier = JAP_new_era_japan_expense_tax_gain_multiplier_modifier_dynamic_var
-	tax_business_rate = JAP_new_era_japan_tax_business_rate_dynamic_var
-	interest_rate = JAP_new_era_japan_rate_factor_dynamic_var
+	corporate_tax_income_multiplier_modifier = JAP_new_era_japan_tax_business_rate_dynamic_var
+	interest_rate_multiplier_modifier = JAP_new_era_japan_rate_factor_dynamic_var
 	business_value_factor = JAP_new_era_japan_business_value_factor_dynamic
 	personal_expense_factor = JAP_new_era_japan_personal_expense_factor_dynamic
 	personal_value_factor = JAP_new_era_japan_personal_value_factor_dynamic
@@ -116,7 +116,7 @@ JAP_japan_economy_dynamic = {
 	production_speed_synthetic_refinery_factor = JAP_japan_economy_production_speed_synthetic_refinery_factor_dynamic
 	research_speed_factor = JAP_japan_economy_research_speed_factor_dynamic
 	expense_growth_factor = JAP_japan_economy_expense_growth_factor_dynamic
-	inflation_monthly = JAP_japan_economy_inflation_monthly_dynamic
+	inflation_cost_multiplier_modifier = JAP_japan_economy_inflation_monthly_dynamic
 	tax_gain_multiplier_modifier = JAP_japan_economy_tax_gain_multiplier_modifier_dynamic
 	business_value_factor = JAP_japan_economy_business_value_factor_dynamic
 	personal_expense_factor = JAP_japan_economy_personal_expense_factor_dynamic
@@ -124,7 +124,7 @@ JAP_japan_economy_dynamic = {
 	out_of_supply_factor = JAP_japan_economy_out_of_supply_factor_dynamic
 	production_factory_start_efficiency_factor = JAP_japan_economy_production_factory_start_efficiency_factor_dynamic
 	production_speed_infrastructure_factor = JAP_japan_economy_production_speed_infrastructure_factor_dynamic
-	military_factory_upkeep_factor = JAP_japan_economy_military_factory_upkeep_factor_dynamic
+	military_spending_cost_factor = JAP_japan_economy_military_factory_upkeep_factor_dynamic
 	academic_development_monthly = JAP_japan_economy_academic_development_monthly_dynamic
 	energy_use_multiplier = JAP_japan_economy_energy_use_multiplier_dynamic
 }	
@@ -149,7 +149,7 @@ JAP_national_suicide_dynamic = {
 	academic_development_monthly = JAP_academic_development_monthly_dynamic_var
 	society_development_monthly = JAP_society_development_monthly_dynamic_var
 	production_lack_of_resource_penalty_factor = JAP_production_lack_of_resource_penalty_factor_dynamic_var
-	battalion_upkeep_factor = JAP_battalion_upkeep_factor_dynamic_var
+	army_personnel_cost_multiplier_modifier = JAP_battalion_upkeep_factor_dynamic_var
 	mobilization_speed = JAP_mobilization_speed_dynamic_var 
 	pocket_penalty = JAP_pocket_penalty_dynamic_var
 	army_strength_factor = JAP_army_strength_factor_dynamic_var
@@ -177,7 +177,7 @@ JAP_jieitai_dynamic = {
 
 	enable = { 
 		NOT = {
-			is_puppet_of = PRC
+			is_puppet_of = CHI
 		}
 	}
 	army_core_attack_factor = JAP_jieitai_army_core_attack_factor_dynamic_var
@@ -191,7 +191,7 @@ JAP_jieitai_dynamic = {
 	command_power_gain = JAP_jieitai_command_power_gain_dynamic_var
 	army_org_factor = JAP_jieitai_army_org_factor_dynamic_var
 	army_org_regain = JAP_jieitai_army_org_regain_dynamic_var
-	battalion_upkeep_factor = JAP_jieitai_battalion_upkeep_factor_dynamic_var
+	army_personnel_cost_multiplier_modifier = JAP_jieitai_battalion_upkeep_factor_dynamic_var
 	land_reinforce_rate = JAP_jieitai_land_reinforce_rate_dynamic_var
 	breakthrough_factor = JAP_jieitai_breakthrough_factor_dynamic_var
 	mobilization_speed = JAP_jieitai_mobilization_speed_dynamic_var
@@ -233,7 +233,7 @@ JAP_kaijo_jieitai_dynamic = {
 
 	enable = { 
 		NOT = {
-			is_puppet_of = PRC
+			is_puppet_of = CHI
 		}
 	}
 	naval_invasion_prep_speed = JAP_kaijo_jieitai_naval_invasion_prep_speed_dynamic_var
@@ -283,7 +283,7 @@ JAP_koku_jieitai_dynamic = {
 
 	enable = { 
 		NOT = {
-			is_puppet_of = PRC
+			is_puppet_of = CHI
 		}
 	}
 	air_agility_factor = JAP_koku_jieitai_air_agility_factor_dynamic_var

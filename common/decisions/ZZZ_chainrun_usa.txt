@@ -1,0 +1,55 @@
+# ============================================================================
+#  ZZZ_chainrun —— 事件链跑通器（直接施加效果版 · 美国脑死亡链）
+#
+#  链路本体：events/TFR_events_USA_civilwar.txt 的 2024 剧情线（现行主链）
+#    usacw.5.a  2024.7.13 特朗普遇刺
+#    usacw.6.a  2024.11.5 共和党崩盘、民主党大胜
+#    usacw.7.a  2025.1.20 外交停摆（脑死亡节点：USA_federal_paralysis_global）
+#  三条 option 的可见效果与 hidden_effect 内效果按顺序内联，不 fire 事件。
+#
+#  跳过的部分：
+#    · usacw.7.a 里的 TAI = { country_event = { id = taiwan_detente.5 } }（跨链事件派发）
+#    · 另一条 2021 旧链 usacw.15 → .16 → .17 → .18 → .19 → .20 → .21（同样到脑死亡节点，
+#      属并行互斥路线，本决议只走 2024 主链）
+#
+#  本链效果全部读写 USA 自身与 CHI 变量，不依赖 ROOT，故 allowed 恒真。
+# ============================================================================
+
+ZZZ_chainrun = {
+
+    ZZZ_cr_usa_01_paralysis = {
+        icon = generic_political_actions
+        cost = 0
+        fire_only_once = no
+
+        allowed = { always = yes }
+        visible = { always = yes }
+        available = { always = yes }
+
+        complete_effect = {
+            USA = {
+                # usacw.5.a 遇刺
+                add_stability = -0.20
+                add_war_support = 0.10
+                add_political_power = -100
+                set_country_flag = USA_republican_collapse_flag
+
+                # usacw.6.a 民主党大胜
+                add_stability = 0.05
+                set_country_flag = USA_democratic_landslide_flag
+
+                # usacw.7.a 外交停摆（脑死亡节点）
+                add_political_power = -75
+                set_country_flag = USA_federal_paralysis_flag
+                set_global_flag = USA_federal_paralysis_global
+                set_country_flag = USA_government_shutdown_flag
+                CHI = {
+                    add_to_variable = { CHI_taiwan_us_support = -40 tooltip = CHI_taiwan_us_support_tt }
+                    clamp_variable = { var = CHI_taiwan_us_support min = 0 max = 100 }
+                }
+            }
+        }
+
+        ai_will_do = { base = 0 }
+    }
+}

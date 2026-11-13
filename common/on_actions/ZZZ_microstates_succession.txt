@@ -1,0 +1,352 @@
+on_actions = {
+
+    # LPR: Igor Plotnitsky -> Leonid Pasechnik (acting head after Plotnitsky's resignation, 2017-11-24)
+    on_daily_LPR = {
+        effect = {
+            if = {
+                limit = {
+                    NOT = { has_country_flag = lpr_pasechnik_succession }
+                    date > 2017.11.23
+                }
+                set_country_flag = lpr_pasechnik_succession
+                hidden_effect = {
+                    kill_country_leader = yes
+                }
+                create_country_leader = {
+                    name = LPR_leonid_pasechnik
+                    picture = "gfx/leaders/NOV/NOV_Pasechnik_Communist.png"
+                    ideology = Autocracy
+                    traits = {
+                        emerging_Autocracy
+                    }
+                }
+            }
+        }
+    }
+
+    # DPR: Alexander Zakharchenko assassinated 2018-08-31; Denis Pushilin became acting head 2018-09-07
+    on_daily_DPR = {
+        effect = {
+            if = {
+                limit = {
+                    NOT = { has_country_flag = dpr_pushilin_succession }
+                    date > 2018.9.6
+                }
+                set_country_flag = dpr_pushilin_succession
+                hidden_effect = {
+                    kill_country_leader = yes
+                }
+                create_country_leader = {
+                    name = DPR_denis_pushilin
+                    picture = "gfx/leaders/NOV/Denis Pushilin.png"
+                    ideology = Autocracy
+                    traits = {
+                        emerging_Autocracy
+                    }
+                }
+            }
+        }
+    }
+
+    # KAC: Lanyaw Zawng Hra -> N'Ban La (KIO chairman, 2018-01-02)
+    on_daily_KAC = {
+        effect = {
+            if = {
+                limit = {
+                    NOT = { has_country_flag = kac_nban_la_succession }
+                    date > 2018.1.1
+                }
+                set_country_flag = kac_nban_la_succession
+                hidden_effect = {
+                    kill_country_leader = yes
+                }
+                create_country_leader = {
+                    name = KAC_nban_la
+                    picture = "Nban_La.dds"
+                    ideology = Neutral_Autocracy
+                    traits = {
+                        neutrality_Neutral_Autocracy
+                    }
+                }
+            }
+        }
+    }
+
+    # KUR: Masoud Barzani -> Nechirvan Barzani (elected KRG president, sworn in 2019-06-11)
+    on_daily_KUR = {
+        effect = {
+            if = {
+                limit = {
+                    NOT = { has_country_flag = kur_nechirvan_succession }
+                    date > 2019.6.10
+                }
+                set_country_flag = kur_nechirvan_succession
+                hidden_effect = {
+                    kill_country_leader = yes
+                }
+                create_country_leader = {
+                    name = KUR_nechirvan_idris_barzani_char
+                    picture = "gfx/leaders/generic_politicians/middleeast_007.dds"
+                    ideology = conservatism
+                    traits = {
+                        western_conservatism
+                    }
+                }
+            }
+        }
+    }
+
+    # PUK: Jalal Talabani died 2017-10-03; Kosrat Rasul Ali became acting secretary-general
+    on_daily_PUK = {
+        effect = {
+            if = {
+                limit = {
+                    NOT = { has_country_flag = puk_kosrat_succession }
+                    date > 2017.10.3
+                }
+                set_country_flag = puk_kosrat_succession
+                hidden_effect = {
+                    kill_country_leader = yes
+                }
+                create_country_leader = {
+                    name = PUK_kosrat_rasul_ali
+                    picture = "gfx/leaders/generic_politicians/middleeast_002.dds"
+                    ideology = neutral_Social
+                    traits = {
+                        neutrality_neutral_Social
+                    }
+                }
+            }
+        }
+    }
+
+    # ROJ: Hediya Yousef -> Ilham Ehmed (2018-07)。罗贾瓦为双主席制，此系共同主席交接，非严格意义上的继任
+    on_daily_ROJ = {
+        effect = {
+            if = {
+                limit = {
+                    NOT = { has_country_flag = roj_ilham_succession }
+                    date > 2018.6.30
+                }
+                set_country_flag = roj_ilham_succession
+                hidden_effect = {
+                    kill_country_leader = yes
+                }
+                create_country_leader = {
+                    name = ROJ_ilham_ehmed_char
+                    picture = "gfx/leaders/generic_politicians/middleeast_003.dds"
+                    ideology = neutral_Social
+                    traits = {
+                        neutrality_neutral_Social
+                    }
+                }
+            }
+        }
+    }
+
+    # SML: Ahmed Mohamed Mohamoud Silanyo -> Muse Bihi Abdi (elected 2017-11-13, sworn in 2017-12-13)
+    on_daily_SML = {
+        effect = {
+            if = {
+                limit = {
+                    NOT = { has_country_flag = sml_bihi_succession }
+                    date > 2017.12.12
+                }
+                set_country_flag = sml_bihi_succession
+                hidden_effect = {
+                    kill_country_leader = yes
+                }
+                create_country_leader = {
+                    name = SML_muse_bihi_abdi
+                    picture = "muse_bihi_abdi.dds"
+                    ideology = Neutral_green
+                    traits = {
+                        neutrality_Neutral_green
+                    }
+                }
+            }
+        }
+    }
+
+    # PUN: Abdiweli Mohamed Ali Gaas -> Said Abdullahi Deni (elected 2019-01-08)
+    on_daily_PUN = {
+        effect = {
+            if = {
+                limit = {
+                    NOT = { has_country_flag = pun_deni_succession }
+                    date > 2019.1.7
+                }
+                set_country_flag = pun_deni_succession
+                hidden_effect = {
+                    kill_country_leader = yes
+                }
+                create_country_leader = {
+                    name = PUN_said_abdullahi_deni
+                    picture = "gfx/leaders/generic_politicians/black_004.dds"
+                    ideology = Neutral_Autocracy
+                    traits = {
+                        neutrality_Neutral_Autocracy
+                    }
+                }
+            }
+        }
+    }
+
+    # SWS: Sharif Hassan Sheikh Aden -> Abdiaziz Hassan Mohamed Laftagareen (elected 2018-12-19)
+    on_daily_SWS = {
+        effect = {
+            if = {
+                limit = {
+                    NOT = { has_country_flag = sws_laftagareen_succession }
+                    date > 2018.12.18
+                }
+                set_country_flag = sws_laftagareen_succession
+                hidden_effect = {
+                    kill_country_leader = yes
+                }
+                create_country_leader = {
+                    name = SWS_abdiaziz_hassan_mohamed_laftagareen
+                    picture = "gfx/leaders/generic_politicians/black_005.dds"
+                    ideology = Neutral_Autocracy
+                    traits = {
+                        neutrality_Neutral_Autocracy
+                    }
+                }
+            }
+        }
+    }
+
+    # GNA: Fayez al-Sarraj -> Abdul Hamid Dbeibah (head of the GNU, 2021-03-15)
+    on_daily_GNA = {
+        effect = {
+            if = {
+                limit = {
+                    NOT = { has_country_flag = gna_dbeibah_succession }
+                    date > 2021.3.14
+                }
+                set_country_flag = gna_dbeibah_succession
+                hidden_effect = {
+                    kill_country_leader = yes
+                }
+                create_country_leader = {
+                    name = GNA_abdul_hamid_dbeibah
+                    picture = "gfx/leaders/generic_politicians/middleeast_005.dds"
+                    ideology = Neutral_Autocracy
+                    traits = {
+                        neutrality_Neutral_Autocracy
+                    }
+                }
+            }
+        }
+    }
+
+    # HEZ: Hassan Nasrallah killed 2024-09-27; Naim Qassem became secretary-general 2024-10-29
+    on_daily_HEZ = {
+        effect = {
+            if = {
+                limit = {
+                    NOT = { has_country_flag = hez_qassem_succession }
+                    date > 2024.10.28
+                }
+                set_country_flag = hez_qassem_succession
+                hidden_effect = {
+                    kill_country_leader = yes
+                }
+                create_country_leader = {
+                    name = HEZ_naim_qassem
+                    picture = "gfx/leaders/generic_politicians/middleeast_006.dds"
+                    ideology = Vilayat_e_Faqih
+                    traits = {
+                        emerging_Vilayat_e_Faqih
+                    }
+                }
+            }
+        }
+    }
+
+    # ISI: leadership successions of the Islamic State
+    on_daily_ISI = {
+        effect = {
+            # 2019-10-31: Abu Bakr al-Baghdadi -> Abu Ibrahim al-Hashimi al-Qurashi
+            if = {
+                limit = {
+                    NOT = { has_country_flag = isi_abu_ibrahim_succession }
+                    date > 2019.10.30
+                }
+                set_country_flag = isi_abu_ibrahim_succession
+                hidden_effect = {
+                    kill_country_leader = yes
+                }
+                create_country_leader = {
+                    name = ISI_abu_ibrahim_al_hashimi
+                    picture = "gfx/leaders/generic_politicians/blackjihadi_001.dds"
+                    ideology = Caliphate
+                    traits = {
+                        salafist_Caliphate
+                    }
+                }
+            }
+            # 2022-03-10: Abu Ibrahim -> Abu al-Hasan al-Hashimi al-Qurashi
+            if = {
+                limit = {
+                    has_country_flag = isi_abu_ibrahim_succession
+                    NOT = { has_country_flag = isi_abu_al_hasan_succession }
+                    date > 2022.3.9
+                }
+                set_country_flag = isi_abu_al_hasan_succession
+                hidden_effect = {
+                    kill_country_leader = yes
+                }
+                create_country_leader = {
+                    name = ISI_abu_al_hasan_al_hashimi
+                    picture = "gfx/leaders/generic_politicians/blackjihadi_002.dds"
+                    ideology = Caliphate
+                    traits = {
+                        salafist_Caliphate
+                    }
+                }
+            }
+            # 2022-11-30: Abu al-Hasan -> Abu al-Hussein al-Husseini al-Qurashi
+            if = {
+                limit = {
+                    has_country_flag = isi_abu_al_hasan_succession
+                    NOT = { has_country_flag = isi_abu_al_hussein_succession }
+                    date > 2022.11.29
+                }
+                set_country_flag = isi_abu_al_hussein_succession
+                hidden_effect = {
+                    kill_country_leader = yes
+                }
+                create_country_leader = {
+                    name = ISI_abu_al_hussein_al_husseini
+                    picture = "gfx/leaders/generic_politicians/blackjihadi_003.dds"
+                    ideology = Caliphate
+                    traits = {
+                        salafist_Caliphate
+                    }
+                }
+            }
+            # 2023-08-03: Abu al-Hussein -> Abu Hafs al-Hashimi al-Qurashi
+            if = {
+                limit = {
+                    has_country_flag = isi_abu_al_hussein_succession
+                    NOT = { has_country_flag = isi_abu_hafs_succession }
+                    date > 2023.8.2
+                }
+                set_country_flag = isi_abu_hafs_succession
+                hidden_effect = {
+                    kill_country_leader = yes
+                }
+                create_country_leader = {
+                    name = ISI_abu_hafs_al_hashimi
+                    picture = "gfx/leaders/generic_politicians/blackjihadi_004.dds"
+                    ideology = Caliphate
+                    traits = {
+                        salafist_Caliphate
+                    }
+                }
+            }
+        }
+    }
+
+}

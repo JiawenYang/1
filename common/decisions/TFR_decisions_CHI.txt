@@ -101,10 +101,6 @@
 			fire_only_once = yes
 			days_remove = 120
 			modifier = {
-				set_temp_variable = {
-					treasury_change = -2
-				}
-				modify_treasury_effect = yes
 				civilian_factory_use = 1
 			}
 			complete_effect = {
@@ -178,10 +174,6 @@
 			fire_only_once = yes
 			days_remove = 120
 			modifier = {
-				set_temp_variable = {
-					treasury_change = -2
-				}
-				modify_treasury_effect = yes
 				civilian_factory_use = 1
 			}
 			complete_effect = {
@@ -267,10 +259,6 @@
 			fire_only_once = yes
 			days_remove = 120
 			modifier = {
-				set_temp_variable = {
-					treasury_change = -2
-				}
-				modify_treasury_effect = yes
 				civilian_factory_use = 1
 			}
 			complete_effect = {
@@ -344,10 +332,6 @@
 			fire_only_once = yes
 			days_remove = 120
 			modifier = {
-				set_temp_variable = {
-					treasury_change = -2.5
-				}
-				modify_treasury_effect = yes
 				civilian_factory_use = 2
 			}
 			complete_effect = {
@@ -418,10 +402,6 @@
 			fire_only_once = yes
 			days_remove = 120
 			modifier = {
-				set_temp_variable = {
-					treasury_change = -2.5
-				}
-				modify_treasury_effect = yes
 				civilian_factory_use = 2
 			}
 			complete_effect = {
@@ -492,10 +472,6 @@
 			fire_only_once = yes
 			days_remove = 120
 			modifier = {
-				set_temp_variable = {
-					treasury_change = -1.5
-				}
-				modify_treasury_effect = yes
 				civilian_factory_use = 1
 			}
 			complete_effect = {
@@ -573,10 +549,6 @@
 			fire_only_once = yes
 			days_remove = 120
 			modifier = {
-				set_temp_variable = {
-					treasury_change = -2.5
-				}
-				modify_treasury_effect = yes
 				civilian_factory_use = 2
 			}
 			complete_effect = {
@@ -650,10 +622,6 @@
 			cost = 100
 			days_remove = 180
 			modifier = {
-				set_temp_variable = {
-					treasury_change = -2
-				}
-				modify_treasury_effect = yes
 			}
 			complete_effect = {
 				if = {
@@ -675,12 +643,12 @@
 			remove_effect = {
 				KOR = {
 					send_equipment = {
-						equipment = infantry_weapons1
+						equipment = Inf_equipment
 						amount = 650
 						target = TAI
 					}
 					send_equipment = {
-						equipment = command_control_equipment1
+						equipment = cnc_equipment
 						amount = 100
 						target = TAI
 					}
@@ -729,13 +697,11 @@
 			}
 			cost = 110
 			days_remove = 180
-			modifier = {
+			complete_effect = {
 				set_temp_variable = {
 					treasury_change = -4
 				}
 				modify_treasury_effect = yes
-			}
-			complete_effect = {
 				if = {
 					limit = { 
 						NOT = {has_opinion_modifier = CHI_korean_valuable_partners}
@@ -804,13 +770,11 @@
 			}
 			cost = 120
 			days_remove = 180
-			modifier = {
+			complete_effect = {
 				set_temp_variable = {
 					treasury_change = -8
 				}
 				modify_treasury_effect = yes
-			}
-			complete_effect = {
 				if = {
 					limit = { 
 						NOT = {has_opinion_modifier = CHI_korean_valuable_partners}
@@ -874,13 +838,11 @@
 			}
 			cost = 130
 			days_remove = 180
-			modifier = {
+			complete_effect = {
 				set_temp_variable = {
 					treasury_change = -10
 				}
 				modify_treasury_effect = yes
-			}
-			complete_effect = {
 				if = {
 					limit = { 
 						NOT = {has_opinion_modifier = CHI_korean_valuable_partners}
@@ -906,7 +868,6 @@
 					}
 					send_equipment = {
 						type = small_plane_strike_airframe_2
-						variant_name = "F-16A Blk 20"
 						amount = 8
 						target = TAI
 					}

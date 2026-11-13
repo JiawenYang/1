@@ -217,7 +217,7 @@ focus_tree = {
 					}
 				}
 				set_variable = {
-					var = SOV_ldpr_influence_var
+					var = SOV_party_influence_var
 					value = 0.075
 				}
 				set_variable = {
@@ -233,7 +233,7 @@ focus_tree = {
 					value = 2
 				}
 				set_variable = {
-					var = SOV_ldpr_opinion_var
+					var = SOV_party_opinion_var
 					value = 1
 				}
 				set_variable = {
@@ -702,21 +702,9 @@ focus_tree = {
 					add_idea = SOV_reformed_union_2
 				}
 				effect_tooltip = {
-					every_owned_state = {
-						limit = {
-							OR = {
-								has_dynamic_modifier = {
-									modifier = SOV_republic_of_russia
-								}
-								has_dynamic_modifier = {
-									modifier = SOV_republic_of_crimea
-								}
-							}
-						}
-						swap_ideas = {
-							remove_idea = SOV_republic_of_russia_tooltip
-							add_idea = SOV_ass_republic_tooltip
-						}
+					swap_ideas = {
+						remove_idea = SOV_republic_of_russia_tooltip
+						add_idea = SOV_ass_republic_tooltip
 					}
 				}
 				if = {
@@ -865,7 +853,6 @@ focus_tree = {
 				}
 				remove_ideas = SOV_anti_soviet_resistanse_2
 				custom_effect_tooltip = tooltip_white_line
-				unlock_decision_tooltip = SOV_ban_ldpr
 				if = {
 					limit = {
 						is_in_array = {
@@ -2145,11 +2132,6 @@ focus_tree = {
 				}
 				SOV_add_labor_fatherland_influence = yes
 				set_temp_variable = {
-					var = SOV_ldpr_influence_var_temp
-					value = 0.05
-				}
-				SOV_add_ldpr_influence = yes
-				set_temp_variable = {
 					var = SOV_patriots_party_influence_var_temp
 					value = 0.05
 				}
@@ -2216,14 +2198,14 @@ focus_tree = {
 				add_tech_bonus = {
 					bonus = 0.5
 					uses = 2
-					category = synth_resources
+					category = CAT_fuel_refining
 				}
 				custom_effect_tooltip = tooltip_white_line
 				add_tech_bonus = {
 					bonus = 0.5
 					ahead_reduction = 0.5
 					uses = 1
-					category = nuclear
+					category = CAT_nuclear
 				}
 				SOV_update_party_legitimacy = yes
 				custom_effect_tooltip = tooltip_white_line
@@ -2247,11 +2229,7 @@ focus_tree = {
 			else = {
 				custom_effect_tooltip = SOV_effects_cprf_tooltip
 			}
-			modify_building_resources = {
-				building = energy_farm
-				resource = coal
-				amount = 1
-			}
+			
 		}
 	}
 	focus = {
@@ -2717,7 +2695,7 @@ focus_tree = {
 					bonus = 0.25
 					ahead_reduction = 0.5
 					uses = 2
-					category = energy
+					category = CAT_energy
 				}
 				hidden_effect = {
 					add_to_variable = {
@@ -2954,7 +2932,7 @@ focus_tree = {
 				add_tech_bonus = {
 					bonus = 1
 					uses = 2
-					category = electronics
+					category = CAT_electronics
 				}
 				unlock_decision_tooltip = SOV_accelerate_automation
 				set_temp_variable = {
@@ -3525,6 +3503,19 @@ focus_tree = {
 		ai_will_do = {
 			factor = 100
 		}
+		available = {
+			date > 2022.9.1
+			country_exists = UKR
+			UKR = {
+				OR = {
+					has_idea = NATO_member
+					has_country_flag = UKR_NATO_ACCESSION_WEST
+				}
+			}
+			NOT = {
+				has_country_flag = DSW_SOV_smo_started
+			}
+		}
 		prerequisite = {
 			focus = SOV_prepare_to_march_west
 		}
@@ -3548,10 +3539,7 @@ focus_tree = {
 				threat = 20
 				name = SOV_european_war_threat
 			}
-			declare_war_on = {
-				target = UKR
-				type = annex_everything
-			}
+			DSW_SOV_declare_war_on_ukraine = yes
 			UKR = {
 				add_ideas = UKR_to_the_last
 			}
@@ -3601,10 +3589,10 @@ focus_tree = {
 								is_ally_with = ENG
 								tag = SOV
 							}
-							add_ai_strategy = {
-								type = naval_invasion_focus
-								value = -100
-							}
+						}
+						add_ai_strategy = {
+							type = naval_invasion_focus
+							value = -100
 						}
 					}
 				}
@@ -4413,11 +4401,6 @@ focus_tree = {
 			}
 			SOV_add_peoples_front_influence = yes
 			set_temp_variable = {
-				var = SOV_ldpr_influence_var_temp
-				value = 0.015
-			}
-			SOV_add_ldpr_influence = yes
-			set_temp_variable = {
 				var = SOV_labor_fatherland_influence_var_temp
 				value = 0.015
 			}
@@ -4925,11 +4908,6 @@ focus_tree = {
 			}
 			SOV_add_peoples_front_influence = yes
 			set_temp_variable = {
-				var = SOV_ldpr_influence_var_temp
-				value = 0.015
-			}
-			SOV_add_ldpr_influence = yes
-			set_temp_variable = {
 				var = SOV_labor_fatherland_influence_var_temp
 				value = 0.015
 			}
@@ -5143,11 +5121,6 @@ focus_tree = {
 				value = -0.1
 			}
 			SOV_add_peoples_front_influence = yes
-			set_temp_variable = {
-				var = SOV_ldpr_influence_var_temp
-				value = -0.1
-			}
-			SOV_add_ldpr_influence = yes
 			set_temp_variable = {
 				var = SOV_labor_fatherland_influence_var_temp
 				value = -0.1
@@ -5989,7 +5962,6 @@ focus_tree = {
 			custom_effect_tooltip = tooltip_white_line
 			SOV_add_adl_progress_opinion = yes
 			SOV_add_peoples_front_opinion = yes
-			SOV_reduce_ldpr_opinion = yes
 			SOV_reduce_labor_fatherland_opinion = yes
 			SOV_reduce_patriots_party_opinion = yes
 			hidden_effect = {
@@ -6003,11 +5975,6 @@ focus_tree = {
 					value = 0.1
 				}
 				SOV_add_peoples_front_influence = yes
-				set_temp_variable = {
-					var = SOV_ldpr_influence_var_temp
-					value = -0.1
-				}
-				SOV_add_ldpr_influence = yes
 				set_temp_variable = {
 					var = SOV_labor_fatherland_influence_var_temp
 					value = -0.1
@@ -6041,7 +6008,6 @@ focus_tree = {
 				days = 75
 			}
 			custom_effect_tooltip = tooltip_white_line
-			SOV_add_ldpr_opinion = yes
 			SOV_add_labor_fatherland_opinion = yes
 			SOV_add_patriots_party_opinion = yes
 			SOV_reduce_adl_progress_opinion = yes
@@ -6057,11 +6023,6 @@ focus_tree = {
 					value = -0.1
 				}
 				SOV_add_peoples_front_influence = yes
-				set_temp_variable = {
-					var = SOV_ldpr_influence_var_temp
-					value = 0.1
-				}
-				SOV_add_ldpr_influence = yes
 				set_temp_variable = {
 					var = SOV_labor_fatherland_influence_var_temp
 					value = 0.1
@@ -7194,7 +7155,6 @@ focus_tree = {
 				add_faction_goal = faction_goal_placeholder_long_term
 				remove_faction_goal = faction_goal_a_military_base
 				add_faction_goal = faction_goal_placeholder_medium_term
-				add_faction_goal = faction_goal_placeholder_short_term
 			}
 			hidden_effect = {
 				every_subject_country = {
@@ -8245,19 +8205,6 @@ focus_tree = {
 					limit = {
 						is_in_array = {
 							array = SOV_other_parties
-							value = GER.id
-						}
-					}
-					set_temp_variable = {
-						var = SOV_ldpr_opinion_var_trigger_temp
-						value = 4
-					}
-					SOV_has_ldpr_opinion_greater_than_or_equals = yes
-				}
-				if = {
-					limit = {
-						is_in_array = {
-							array = SOV_other_parties
 							value = FRA.id
 						}
 					}
@@ -8601,7 +8548,7 @@ focus_tree = {
 					has_idea = SOV_ADS_member
 				}
 				add_building_construction = {
-					type = office_park
+					type = offices
 					level = 2
 					instant_build = yes
 				}
@@ -9053,7 +9000,7 @@ focus_tree = {
 			}
 			else_if = {
 				limit = {
-					has_global_flag = USA_american_civil_war_global
+					always = no
 				}
 				country_event = dsw_tfr_russia.595
 			}
@@ -9551,7 +9498,7 @@ focus_tree = {
 			add_tech_bonus = {
 				bonus = 1
 				uses = 2
-				category = artificial_intelligence
+				category = CAT_artificial_intelligence
 			}
 			set_temp_variable = {
 				var = academic_development_var_temp
@@ -9604,14 +9551,14 @@ focus_tree = {
 				limit = {
 					is_core_of = ROOT
 					free_building_slots = {
-						building = office_park
+						building = offices
 						size > 0
 						include_locked = yes
 					}
 				}
 				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
-					type = office_park
+					type = offices
 					level = 1
 					instant_build = yes
 				}
@@ -10049,6 +9996,13 @@ focus_tree = {
 			}
 			SOV_update_party_legitimacy = yes
 			force_update_dynamic_modifier = yes
+			set_cosmetic_tag = SOV_USSR_AUTH_S
+			set_politics = {
+				ruling_party = communism
+				elections_allowed = no
+			}
+			update_party_name = yes
+			clr_country_flag = dynamic_flag
 		}
 	}
 	focus = {
@@ -10331,7 +10285,7 @@ focus_tree = {
 				random_owned_controlled_state = {
 					add_extra_state_shared_building_slots = 2
 					add_building_construction = {
-						type = office_park
+						type = offices
 						level = 2
 						instant_build = yes
 					}
@@ -10380,7 +10334,7 @@ focus_tree = {
 			add_tech_bonus = {
 				bonus = 0.5
 				uses = 1
-				category = electronics
+				category = CAT_electronics
 			}
 			hidden_effect = {
 				add_to_variable = {
@@ -10645,7 +10599,7 @@ focus_tree = {
 			add_tech_bonus = {
 				bonus = 0.25
 				uses = 1
-				category = artificial_intelligence
+				category = CAT_artificial_intelligence
 			}
 			set_temp_variable = {
 				var = academic_development_var_temp
@@ -10729,12 +10683,12 @@ focus_tree = {
 			add_tech_bonus = {
 				bonus = 0.25
 				uses = 2
-				category = artificial_intelligence
+				category = CAT_artificial_intelligence
 			}
 			add_tech_bonus = {
 				bonus = 0.25
 				uses = 3
-				category = electronics
+				category = CAT_electronics
 			}
 			hidden_effect = {
 				add_to_variable = {
@@ -10939,7 +10893,7 @@ focus_tree = {
 					random_owned_controlled_state = {
 						add_extra_state_shared_building_slots = 2
 						add_building_construction = {
-							type = office_park
+							type = offices
 							level = 2
 							instant_build = yes
 						}
@@ -11545,7 +11499,7 @@ focus_tree = {
 				}
 				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
-					type = office_park
+					type = offices
 					level = 2
 					instant_build = yes
 				}
@@ -12000,7 +11954,7 @@ focus_tree = {
 				random_select_amount = 2
 				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
-					type = office_park
+					type = offices
 					level = 1
 					instant_build = yes
 				}
@@ -12009,7 +11963,7 @@ focus_tree = {
 				random_select_amount = 1
 				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
-					type = office_park
+					type = offices
 					level = 1
 					instant_build = yes
 				}
@@ -12218,7 +12172,7 @@ focus_tree = {
 				random_select_amount = 1
 				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
-					type = office_park
+					type = offices
 					level = 1
 					instant_build = yes
 				}
@@ -12291,7 +12245,7 @@ focus_tree = {
 				name = SOV_business_bonus
 				bonus = 0.25
 				uses = 2
-				category = excavation_tech
+				category = CAT_excavation
 			}
 			set_temp_variable = {
 				var = industrial_development_var_temp
@@ -12382,7 +12336,7 @@ focus_tree = {
 				name = SOV_business_bonus
 				bonus = 0.25
 				uses = 3
-				category = industry
+				category = CAT_industry
 			}
 			set_temp_variable = {
 				var = academic_development_var_temp
@@ -12433,7 +12387,7 @@ focus_tree = {
 				name = SOV_business_bonus
 				bonus = 0.25
 				uses = 2
-				category = energy
+				category = CAT_energy
 			}
 			set_temp_variable = {
 				var = industrial_development_var_temp
@@ -13127,7 +13081,6 @@ focus_tree = {
 		completion_reward = {
 			swap_ruler_traits = {
 				remove = hos_lenin_of_xxi_century
-				add = hos_the_great_revolutionary
 			}
 			SOV_update_party_legitimacy = yes
 		}
@@ -13551,7 +13504,7 @@ focus_tree = {
 			add_tech_bonus = {
 				bonus = 0.2
 				uses = 1
-				category = armor
+				category = CAT_armor
 			}
 		}
 	}
@@ -14582,7 +14535,7 @@ focus_tree = {
 				random_owned_controlled_state = {
 					add_extra_state_shared_building_slots = 1
 					add_building_construction = {
-						type = office_park
+						type = offices
 						level = 1
 						instant_build = yes
 					}
@@ -14590,7 +14543,7 @@ focus_tree = {
 				random_owned_controlled_state = {
 					add_extra_state_shared_building_slots = 1
 					add_building_construction = {
-						type = office_park
+						type = offices
 						level = 1
 						instant_build = yes
 					}
@@ -17391,7 +17344,7 @@ focus_tree = {
 								date < 2026.03.01
 							}
 							AND = {
-								date > 2026.90.15
+								date > 2026.09.15
 								date < 2027.03.01
 							}
 							AND = {

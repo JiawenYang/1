@@ -201,6 +201,7 @@
 	NDefines.NCountry.SPECIAL_FORCES_CAP_BASE = 0.075
 	NDefines.NCountry.SPECIAL_FORCES_CAP_MIN = 6
 	NDefines.NCountry.DAYS_OF_WAR_BEFORE_SURRENDER = 7
+	NDefines.NCountry.BASE_SURRENDER_LIMIT = 0.85 -- 0.8 vanilla; share of VP the enemy must occupy before surrender
 	NDefines.NCountry.BASE_MOBILIZATION_SPEED = 0.01 --0.01
 	NDefines.NCountry.SCORCHED_EARTH_STATE_COST = 25                        -- pp cost to scorch a state -- 5 in vanilla
 	NDefines.NCountry.BASE_MAX_COMMAND_POWER = 250.0                       -- base value for maximum command power -- 200 in vanilla
@@ -338,7 +339,8 @@
 	NDefines.NMilitary.RIVER_CROSSING_PENALTY_LARGE = -0.4 -- -0.6
 	NDefines.NMilitary.RIVER_CROSSING_SPEED_PENALTY = -0.25 -- -0.25
 	NDefines.NMilitary.RIVER_CROSSING_SPEED_PENALTY_LARGE = -0.45 -- -0.5
-	NDefines.NMilitary.BASE_FORT_PENALTY = -0.075 -- -0.15
+	NDefines.NMilitary.BASE_FORT_PENALTY = -0.10 -- -0.15 vanilla; was -0.075, forts strengthened
+	NDefines.NMilitary.DIG_IN_FACTOR = 0.025 -- 0.02 vanilla; bonus per dug-in level
 	NDefines.NMilitary.RECON_SKILL_IMPACT = 2.5 -- 5
 	NDefines.NMilitary.ENEMY_AIR_SUPERIORITY_IMPACT = -0.65 -- -0.35
 	NDefines.NMilitary.ENEMY_AIR_SUPERIORITY_SPEED_IMPACT = -0.4 -- -0.3

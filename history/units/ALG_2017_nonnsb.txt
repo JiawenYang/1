@@ -1,0 +1,406 @@
+division_template = {
+	name = "Armoured Division"
+
+	regiments = {
+		armor_Bat = { x = 0 y = 0 }
+		armor_Bat = { x = 0 y = 1 }
+		SP_AA_Bat = { x = 0 y = 2 }
+		armor_Bat = { x = 1 y = 0 }
+		Arm_Inf_Bat = { x = 1 y = 1 }
+	}
+
+	support = {
+		SP_arty_battery = { x = 0 y = 0 }
+	}
+}
+
+division_template = {
+	name = "Mechanised Infantry Division"
+
+	regiments = {
+		Arm_Inf_Bat = { x = 0 y = 0 }
+		Arm_Inf_Bat = { x = 0 y = 1 }
+		SP_AA_Bat = { x = 0 y = 2 }
+		Arm_Inf_Bat = { x = 1 y = 0 }
+		armor_Bat = { x = 1 y = 1 }
+	}
+
+	support = {
+		SP_arty_battery = { x = 0 y = 0 }
+	}
+}
+
+division_template = {
+	name = "Airborne Division"
+
+	regiments = {
+		Mot_Air_Inf_Bat = { x = 0 y = 0 }
+		Mot_Air_Inf_Bat = { x = 0 y = 1 }
+		Mot_Air_Inf_Bat = { x = 1 y = 0 }
+		Mot_Air_Inf_Bat = { x = 1 y = 1 }
+		Special_Forces = { x = 2 y = 0 }
+	}
+	support = {
+		L_Recce_Comp = { x = 0 y = 0 }
+		L_Engi_Comp = { x = 0 y = 1 }
+		combat_service_support_company = { x = 0 y = 2 }
+	}
+}
+
+division_template = {
+	name = "Republican Guard Brigade"
+
+	regiments = {
+		Mech_Inf_Bat = { x = 0 y = 0 }
+		Mech_Inf_Bat = { x = 0 y = 1 }
+		Mech_Inf_Bat = { x = 0 y = 2 }
+	}
+
+	support = {
+		armor_Recce_Comp = { x = 0 y = 0 }
+	}
+
+	priority = 2
+}
+
+division_template = {
+	name = "Armoured Brigade"
+
+	regiments = {
+		armor_Bat = { x = 0 y = 0 }
+		armor_Bat = { x = 0 y = 1 }
+		Arm_Inf_Bat = { x = 0 y = 2 }
+	}
+
+	support = {
+		SP_AA_Battery = { x = 0 y = 0 }
+	}
+}
+
+division_template = {
+	name = "Mechanized Infantry Brigade"
+
+	regiments = {
+		Mech_Inf_Bat = { x = 0 y = 0 }
+		Mech_Inf_Bat = { x = 0 y = 1 }
+		Mech_Inf_Bat = { x = 0 y = 2 }
+	}
+
+	support = {
+		SP_arty_battery = { x = 0 y = 0 }
+	}
+}
+
+division_template = {
+	name = "Independent Infantry Battalion"
+
+	regiments = {
+		Mot_Inf_Bat = { x = 0 y = 0 }
+		Mot_Inf_Bat = { x = 0 y = 1 }
+		Mot_Inf_Bat = { x = 0 y = 2 }
+		Mot_Inf_Bat = { x = 0 y = 3 }
+	}
+
+	support = {
+		SP_arty_battery = { x = 0 y = 0 }
+		SP_AA_Battery = { x = 0 y = 1 }
+		combat_service_support_company = { x = 0 y = 2 }
+		L_Engi_Comp = { x = 0 y = 3 }
+		Mot_Recce_Comp = { x = 0 y = 4 }
+	}
+}
+
+units = {
+	#Only 1st, 8th, 12th and 40th division have public names
+	division = {
+		name = "8th Armoured Division"
+		location = 7065		#Ras El Ma
+		division_template = "Armoured Division"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "1st Armoured Division"
+		location = 7132
+		division_template = "Armoured Division"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "40th Mechanised Infantry Division"
+		location = 10731	#Near Moroccan border
+		division_template = "Mechanised Infantry Division"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "12th Mechanised Infantry Division"
+		location = 5035
+		division_template = "Mechanised Infantry Division"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.01
+	}
+
+	#Disclosed location and name for these units
+	division = {
+		name = "17th Airborne Division"
+		location = 5095
+		division_template = "Airborne Division"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.01
+	}
+
+	##Republican Guard
+	division = {
+		name = "Republican Guard Brigade"
+		location = 1145
+		division_template = "Republican Guard Brigade"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.01
+	}
+
+	##Independent Armoured Brigade
+	division = {
+		name = "30th Armoured Brigade"
+		location = 4116
+		division_template = "Armoured Brigade"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.01
+	}
+
+	##Independent Mechanized Infantry Brigades
+	division = {
+		name = "29th Mechanized Infantry Brigade"
+		location = 1160
+		division_template = "Mechanized Infantry Brigade"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "91st Mechanized Infantry Brigade"
+		location = 8077
+		division_template = "Mechanized Infantry Brigade"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "56th Mechanized Infantry Brigade"
+		location = 7166
+		division_template = "Mechanized Infantry Brigade"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "78th Mechanized Infantry Brigade"
+		location = 9960
+		division_template = "Mechanized Infantry Brigade"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.01
+	}
+
+	##Independent Infantry Battalions (Oh God, why?!)
+	division = {
+		name = "11th Infantry Battalion"
+		location = 1160
+		division_template = "Independent Infantry Battalion"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "212th Infantry Battalion"
+		location = 11953
+		division_template = "Independent Infantry Battalion"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "22nd Infantry Battalion"
+		location = 1058
+		division_template = "Independent Infantry Battalion"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.01
+	}
+
+	division = {
+		name = "184th Infantry Battalion"
+		location = 12034
+		division_template = "Independent Infantry Battalion"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.01
+	}
+
+	#1xSan Giorgio Class Amphibious Transport Docks (Kalaat Béni Abbès)
+}
+
+instant_effect = {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	add_equipment_to_stockpile = {
+		variant_name = "Nimr"
+		type = util_vehicle_4	#Nimr
+		amount = 3000
+		producer = ALG
+	}
+
+
+
+
+
+
+	add_equipment_to_stockpile = {
+		variant_name = "D-30"
+		type = artillery_1	#D-30
+		amount = 160
+		producer = SOV
+	}
+
+
+
+
+
+
+
+
+	add_equipment_to_stockpile = {
+		variant_name = "MILANs"
+		type = Anti_tank_1			#MILANs
+		amount = 50
+		producer = FRA
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "AT-7 Metis"
+		type = Anti_tank_2			#Metis
+		amount = 50
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "9K11 Malyutka"
+		type = Anti_tank_1			#Malyutka
+		amount = 50
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "9K111 Fagot"
+    type = Anti_tank_2			#Fagot
+		amount = 50
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Kornets"
+		type = Heavy_Anti_tank_2			#Kornets
+		amount = 50
+		producer = ALG
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "9P148 Konkurs"
+		type = Heavy_Anti_tank_2			#Konkurs
+		amount = 50
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "9K32M Strela-2M"
+		type = Anti_Air_0			#Strela
+		amount = 50
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "AKM"
+		type = infantry_weapons_1			#AKM（现役）
+		amount = 10000
+		producer = SOV
+	}
+ 
+
+	add_equipment_to_stockpile = {
+		variant_name = "Mi-24P"
+    type = heavy_tank_chassis_0	#Mi-24
+		amount = 35
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Mi-28"
+		type = attack_helicopter_2	#Mi-28
+		amount = 42
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Mil Mi-17"
+		type = transport_helicopter_1		#Mi-17
+		amount = 101
+		producer = SOV
+	}
+
+	add_equipment_to_stockpile = {
+		variant_name = "Mil Mi-26"
+		type = transport_helicopter_2		#Mi-26
+		amount = 4
+		producer = SOV
+	}
+
+	#To fill up what's missing
+	add_equipment_to_stockpile = {
+		type = cnc_equipment_1
+		amount = 1200
+		producer = ALG
+	}
+
+	add_equipment_to_stockpile = {
+		type = Anti_Air_0
+		amount = 400
+		producer = ALG
+	}
+
+	add_equipment_to_stockpile = {
+		type = Anti_tank_1
+		amount = 150
+		producer = ALG
+	}
+
+	add_equipment_to_stockpile = {
+		type = Heavy_Anti_tank_1
+		amount = 200
+		producer = ALG
+	}
+
+	#### Sealed Storage（封存）####
+	add_equipment_to_stockpile = {
+		variant_name = "AKM"
+		type = infantry_weapons_1			#AK-47（封存）
+		amount = 200000
+		producer = SOV
+	}
+
+
+}

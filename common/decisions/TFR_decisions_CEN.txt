@@ -1,0 +1,85 @@
+# 中美洲统一决议（2026-11-07 移植）
+# 来源：TFR 工坊原件 3350890356\common\decisions\TFR_decisions_CEN.txt，逐字移植。
+# 3350890356 不在启用集内，故必须落到本工程才能生效。
+#
+# 与 TFR 原件的差异仅一处：在 available 中追加三条防重复守卫，
+# 避免玩家在 on_peaceconference_ended 已自动派发 NIC.4 之后再点决议重复结算。
+#   1) NOT = { has_global_flag = CAM_union_formed }    —— 统一已成不再显示
+#   2) NOT = { has_global_flag = CAM_republic_formed } —— 共和国已成不再显示
+#   3) NOT = { has_country_flag = CAM_unification_queued } —— 已排队派发 NIC.4 时不再显示
+CEN_unification = {
+
+	CEN_unification_with_panama = {
+		available = {
+			# 防重复守卫（本工程新增，TFR 原件无）
+			NOT = { has_global_flag = CAM_union_formed }
+			NOT = { has_global_flag = CAM_republic_formed }
+			NOT = { has_country_flag = CAM_unification_queued }
+			OR = {
+				AND = {
+					tag = NIC
+					has_country_flag = CEN_nic_els_war_started
+					BLZ = {
+						is_puppet_of = NIC
+					}
+					GUA = {
+						is_puppet_of = NIC
+					}
+					ELS = {
+						is_puppet_of = NIC
+					}
+				}
+				AND = {
+					tag = ELS
+					has_country_flag = CEN_nic_els_war_started
+					HON = {
+						is_puppet_of = ELS
+					}
+					NIC = {
+						is_puppet_of = ELS
+					}
+				}
+			}
+		}
+		modifier = {
+		}
+		ai_will_do = {
+			factor = 100
+		}
+		fire_only_once = yes
+		days_remove = 5
+		cost = 0
+		remove_effect = {
+			if = {
+				limit = {
+					tag = NIC
+				}
+				PAN = {
+					dismantle_faction = yes
+					set_cosmetic_tag = NIC_puppet
+				}
+				NIC = {
+					add_to_faction = PAN
+					add_to_faction = COS
+				}
+				COS = {
+					set_cosmetic_tag = NIC_puppet
+				}
+				country_event = { id = NIC.4 days = 60 }
+			}
+			if = {
+				limit = {
+					tag = ELS
+				}
+				PAN = {
+					dismantle_faction = yes
+				}
+				ELS = {
+					add_to_faction = PAN
+					add_to_faction = COS
+				}
+				country_event = { id = NIC.4 days = 60 }
+			}
+		}
+	}
+}

@@ -122,7 +122,6 @@ on_actions = {
 					for_each_scope_loop = {
 						array = global.EU_member
 						remove_mission = EU_parliament_focus_EUXXX_approve
-						remove_mission = EU_voting_mission_focus_EUXXX_QMV_result
 					}
 				}
 				if = { limit = { FROM = { has_idea = EUU_monitor } }
@@ -543,6 +542,7 @@ on_actions = {
 					un_check_if_valid_for_sanctions = yes
 					if = {
 						limit = {
+							NOT = { has_global_flag = cml_md_influence_disabled }
 							NOT = { check_variable = { influence_targets^0 = 0 } }
 							is_ai = yes
 							has_political_power > 200
@@ -560,9 +560,16 @@ on_actions = {
 					}
 
 					# Player only checks
-					if = { limit = { is_ai = no }
+					if = {
+						limit = {
+							is_ai = no
+						}
 						update_auto_influence_array = yes
-						if = { limit = { check_variable = { auto_influence_users > 0 } }
+						if = {
+							limit = {
+								NOT = { has_global_flag = cml_md_influence_disabled }
+								check_variable = { auto_influence_users > 0 }
+							}
 							set_temp_variable = { percent_change = global.percent_change_value }
 							set_temp_variable = { tag_index = THIS.id }
 							set_variable = { nations_influenced = 0 }
@@ -659,16 +666,9 @@ on_actions = {
 								set_country_flag = { flag = gdp_gain_industry_slot_flag value = 1 days = 240 }
 								activate_decision = gdp_gain_slot
 							}
-							if = {
-								limit = {
-									check_variable = { next_slot_from_gdp_c < 7 }
-									NOT = { has_decision = gdp_c_gain_slot }
-									NOT = { has_country_flag = gdp_gain_developmental_size_flag }
-									check_variable = { gdp_per_capita > GLOBAL.gdp_c_slot^next_slot_from_gdp_c }
-								}
-								set_country_flag = { flag = gdp_gain_developmental_size_flag value = 1 days = 240 }
-								activate_decision = gdp_c_gain_slot
-							}
+							# [decision-removal] gdp_c_gain_slot 决议在工程内不存在（同族的 gdp_gain_slot 存在），
+							# 依赖它的自动扩容段落已删除；上方人均 GDP 槽位判定保持不变。
+
 						}
 
 						if = { limit = { has_game_rule = { rule = rule_god_of_war option = yes } }

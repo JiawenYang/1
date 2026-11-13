@@ -1,0 +1,82 @@
+# ============================================================
+# ZZZ 英国选举事件链（独立实现，不依赖 ZZ9 参数 / 模板变量）
+# 触发：common/on_actions/00_on_actions.txt 的 on_new_term_election
+#   引擎按 history 里 ENG 的 last_election + election_frequency 到期触发
+# 结算：common/scripted_effects/ZZZ_elections_uk_effects.txt
+#   ZZZ_uk_election_result（调用基座 hold_elections / update_set_politics 等）
+# ============================================================
+add_namespace = zzz_elections_uk
+
+# 竞选阶段
+country_event = {
+	id = zzz_elections_uk.1
+	title = zzz_elections_uk.1.t
+	desc = zzz_elections_uk.1.d
+	picture = GFX_election_day
+
+	is_triggered_only = yes
+	trigger = {
+		original_tag = ENG
+	}
+
+	immediate = {
+		log = "[GetDateText]: [This.GetName]: UK general election campaign begins"
+	}
+
+	option = {
+		name = zzz_elections_uk.1.a
+		trigger = { has_variable = ruling_party }
+		log = "[GetDateText]: [This.GetName]: UK campaign funds the governing party"
+		add_political_power = -50
+		hidden_effect = {
+			add_to_variable = { party_pop_array^ruling_party = 0.03 }
+		}
+		country_event = { id = zzz_elections_uk.2 days = 7 }
+	}
+
+	option = {
+		name = zzz_elections_uk.1.b
+		trigger = { has_variable = max_index_1 }
+		log = "[GetDateText]: [This.GetName]: UK campaign funds the largest opposition"
+		add_political_power = -75
+		hidden_effect = {
+			if = {
+				limit = { check_variable = { ruling_party = max_index_1 } }
+				if = {
+					limit = { has_variable = max_index_2 }
+					add_to_variable = { party_pop_array^max_index_2 = 0.04 }
+				}
+			}
+			else = {
+				add_to_variable = { party_pop_array^max_index_1 = 0.04 }
+			}
+		}
+		country_event = { id = zzz_elections_uk.2 days = 7 }
+	}
+
+	option = {
+		name = zzz_elections_uk.1.c
+		log = "[GetDateText]: [This.GetName]: UK campaign stays neutral"
+		country_event = { id = zzz_elections_uk.2 days = 7 }
+	}
+}
+
+# 计票与结果
+country_event = {
+	id = zzz_elections_uk.2
+	title = zzz_elections_uk.2.t
+	desc = zzz_elections_uk.2.d
+	picture = GFX_election_rally
+
+	is_triggered_only = yes
+	trigger = {
+		original_tag = ENG
+	}
+
+	option = {
+		name = zzz_elections_uk.2.a
+		log = "[GetDateText]: [This.GetName]: UK election result applied"
+		add_political_power = 50
+		ZZZ_uk_election_result = yes
+	}
+}

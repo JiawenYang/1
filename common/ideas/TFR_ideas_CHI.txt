@@ -913,7 +913,6 @@
 				modifier = {
 					convoy_raiding_efficiency_factor = 0.25
 					naval_coordination = 0.15
-					ship_hull_submarine_design_cost_factor = -0.5
 					experience_gain_navy_unit = 0.1
 					mines_planting_by_fleets_factor = 0.25
 					naval_mines_damage_factor = 0.25
@@ -1018,6 +1017,28 @@
 					political_power_factor = 0.025
 					business_value_factor = 0.075
 
+				}
+			}
+			# 烈焰升腾原版 PRC_kim_jong_un：原为 interior_minister 内阁槽 + traits 体系
+			# 千禧黎明无 interior_minister 类别（error.log 报 unknown category）且 idea 无 traits 字段，
+			# 故等价改造为 country 国家精神，traits 的两个修饰合并为一个 modifier
+			PRC_kim_jong_un = {
+				picture = Kim_Jong_Un
+
+				allowed = {
+					original_tag = CHI
+				}
+
+				visible = {
+					has_country_flag = PRC_kim_survived
+				}
+
+				modifier = {
+					political_power_gain = -0.23
+					local_resources_factor = 0.16
+					stability_factor = 0.04
+					production_speed_arms_factory_factor = 0.08
+					production_speed_dockyard_factor = 0.08
 				}
 			}
 		}

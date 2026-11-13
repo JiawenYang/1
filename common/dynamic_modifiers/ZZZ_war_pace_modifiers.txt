@@ -1,0 +1,36 @@
+# 现代战争减速方案 - 新占州临时惩罚（州作用域动态修正）
+# 30/60/90 三层同时挂载，按 days 依次到期，形成 30 天 -> 60 天 -> 90 天的三段式衰减
+# 字段均取自 occupation_laws 与 resistance_compliance_modifiers 中已存在的 state_modifier 字段
+
+ZZZ_newly_occupied_penalty_30 = {
+	icon = GFX_decision_slums_egyptos
+	enable = { always = yes }
+
+	local_supplies_for_controller = -0.06
+	local_factories = -0.04
+	resistance_target = 0.03
+	army_speed_factor_for_controller = -0.04
+	attrition_for_controller = 0.02
+}
+
+ZZZ_newly_occupied_penalty_60 = {
+	icon = GFX_decision_slums_egyptos
+	enable = { always = yes }
+
+	local_supplies_for_controller = -0.05
+	local_factories = -0.03
+	resistance_target = 0.03
+	army_speed_factor_for_controller = -0.03
+	attrition_for_controller = 0.015
+}
+
+ZZZ_newly_occupied_penalty_90 = {
+	icon = GFX_decision_slums_egyptos
+	enable = { always = yes }
+
+	local_supplies_for_controller = -0.04
+	local_factories = -0.03
+	resistance_target = 0.02
+	army_speed_factor_for_controller = -0.03
+	attrition_for_controller = 0.015
+}

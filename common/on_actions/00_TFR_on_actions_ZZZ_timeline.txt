@@ -176,18 +176,17 @@ on_actions = {
 						days = 238
 					}
 				}
-				KOR = {
-					country_event = {
-						# 板门店峰会：朝韩邦联接触（2024.5.1）
-						id = korean_confederation.0
-						days = 1582
-					}
-				}
+				
 				USA = {
 					country_event = {
 						# 美国政治危机
 						id = usa.203
 						days = 313
+					}
+					country_event = {
+						# 2021.1.20 第46任总统就任（政府停摆前史链起点，不改既有事件日期）
+						id = usacw.15
+						days = 384
 					}
 					country_event = {
 						# 2024.7.13 特朗普遇刺
@@ -287,31 +286,6 @@ on_actions = {
 					}
 				}
 				TAL = {
-					country_event = {
-						# 美国与塔利班签署和平协议（2020.2.29），后续自动接控制区扩大
-						id = afghanistan.1
-						days = 59
-					}
-					country_event = {
-						# 塔利班发动春季攻势（2021.5.1）
-						id = afghanistan.2
-						days = 486
-					}
-					country_event = {
-						# 阿富汗伊斯兰酋长国宣告复辟（2021.8.15）
-						id = afghanistan.3
-						days = 592
-					}
-					country_event = {
-						# 东部省份易手（2021.8.20）
-						id = afghanistan.6
-						days = 597
-					}
-					country_event = {
-						# 中部哈扎拉地区归附（2021.9.1）
-						id = afghanistan.7
-						days = 609
-					}
 				}
 				MEX = {
 					country_event = {
@@ -373,29 +347,84 @@ on_actions = {
 					}
 				}
 			}
-			# 分支3：台湾与朝鲜半岛均已和平统一——2025年钓鱼岛/尖阁诸岛对峙引爆大亚洲战争
+			# 台海线入口：2025.11.7「台湾有事」→ 日本拉台湾入阵 → 触发 prc.2 开启台海国策线
 			if = {
 				limit = {
-					date > 2025.4.20
-					has_global_flag = korean_confederation_formed
+					date > 2025.11.7
 					NOT = { has_global_flag = pan_asian_war_ongoing }
+					NOT = { has_global_flag = GAW_soon }
 					NOT = { has_global_flag = PRC_ongoing_taiwan_war }
-					NOT = { has_global_flag = GAW_senkaku_chain_started }
+					NOT = { has_global_flag = PRC_taiwan_war_won }
+					NOT = { has_global_flag = PRC_taiwan_war_lost }
 					CHI = {
 						exists = yes
-						has_completed_focus = CHI_Establish_Taiwan_SAR
+						NOT = { has_country_flag = PRC_taiwan_war_start }
+						NOT = { has_country_flag = PRC_taiwan_war_forced_start }
 					}
 					JAP = {
 						exists = yes
-						has_country_flag = pdto_member
 					}
+					TAI = {
+						exists = yes
+					}
+					# taiwan_detente.11 谈成（台湾成为特别行政区）后，台海线永久关闭
+					# 判据与半岛线共用：common/scripted_triggers/ZZZ_geopolitics_triggers.txt
+					NOT = { ZZZ_taiwan_is_sar = yes }
+				}
+				JAP = {
+					country_event = {
+						# 台湾有事：首相国会答辩（单选项，GAW 开局入口）
+						id = jap.2000
+						days = 1
+					}
+				}
+			}
+			# 分支3：朝鲜半岛——2022.5.9 仅关闭谈判窗口，不宣战、不升温
+			# 之后的三分叉全部写在事件内部（events/ZZZ_korea_war.txt）：
+			#   ① 邦联/已统一              → 和平，半岛不打
+			#   ② 台湾已统一 + 朝韩未统一 → 2024.12 戒严成功 → 对北开战 → GAW
+			#   ③ 台湾未统一 + 朝韩未统一 → 2024.12 戒严失败 → 进步派上台，半岛不打
+			# 本文件只负责派发 ZZZ_KW_korea_war.1，不再做 GAW 桥接：
+			# 半岛侧仅在 ② 内经 ZZZ_KW_korea_war.6 → .7 调用 ZZZ_start_gaw_from_korea；
+			# 台海侧走台海国策线自身的入口。
+			if = {
+				limit = {
+					date > 2022.5.9
+					KOR = { exists = yes }
+					NOT = { has_global_flag = ZZZ_kw_2022_window_closed }
+				}
+				set_global_flag = ZZZ_kw_2022_window_closed
+				KOR = {
+					country_event = {
+						id = ZZZ_KW_korea_war.1
+						days = 1
+					}
+				}
+			}
+			# 分支4：钓鱼岛/尖阁诸岛——台海与半岛两条引信都不起火的局面
+			# 前置：台湾已设为特别行政区（共用判据 ZZZ_taiwan_is_sar）+ 朝韩已统一
+			# 该局面下台海线因台湾回归永久关闭、半岛因统一走和平，故由钓鱼岛点火
+			# 一次性守卫复用旧旗 GAW_senkaku_chain_started，避免与另两个入口重复起火
+			if = {
+				limit = {
+					ZZZ_taiwan_is_sar = yes
+					OR = {
+						has_global_flag = korean_confederation_formed
+						KOR = { has_country_flag = korea_peninsula_reunited }
+					}
+					CHI = { exists = yes }
+					JAP = {
+						exists = yes
+						NOT = { has_war_with = CHI }
+					}
+					NOT = { has_global_flag = pan_asian_war_ongoing }
+					NOT = { has_global_flag = GAW_senkaku_chain_started }
 				}
 				set_global_flag = GAW_senkaku_chain_started
 				CHI = {
 					country_event = {
-						# 钓鱼岛对峙
 						id = prc.546
-						days = 5
+						days = 1
 					}
 				}
 			}

@@ -1,0 +1,1353 @@
+### ============================================================
+### GAW（大亚洲战争）协作政府：快照 / 建立 / 恢复
+### 千禧黎明 24 党派体系（party_pop_array^0..23），不照搬 TFR 的 10 意识形态键
+### 调用约定：
+###   ROOT = 目标国（被推掉的一方）
+###   调用方先设置：set_variable = { var = gaw_collab_master value = <征服方 tag> }
+###   可选旗标：gaw_collab_to_west（亲西方民主）/ gaw_collab_to_nationalist / gaw_collab_to_fascism（默认共产主义）
+###   硬性例外：IND 与 SIA 按阵营分侧——日本侧（gaw_collab_to_west）走亲日民族主义 / 亲西方保守派，
+###   中国侧走亲华左翼政府（ZZZ_gaw_gov_IND_communist / ZZZ_gaw_gov_SIA_communist）；
+###   通用旗标分支不得覆盖这两国的国别设定。
+###   VIE 仅在 gaw_collab_to_west（日本侧）时变为南越伪政权；
+###   中国侧 VIE 已从 on_capitulation 名单移除，完全不变
+###   B 段要求：每国显式“换党 + 写支持率 + 安装具名领袖”，不只翻索引
+###   越南共和国 cosmetic 复用 MD 既有 VIE_nationalist（旗为黄底三红条，已按 TGA 像素核验），
+###   国号由本工程四语言本地化覆盖为“越南共和国”，不新建旗图文件。
+### ============================================================
+
+# 记录原执政党、选举状态、原附庸状态、24 党派支持率；只记录一次
+ZZZ_gaw_snapshot_government = {
+	if = {
+		limit = { NOT = { has_country_flag = gaw_collaboration_snapshot_taken } }
+		set_country_flag = gaw_collaboration_snapshot_taken
+		# 原执政党（顶层意识形态，千禧可用的 5 键）
+		if = { limit = { has_government = democratic } set_country_flag = gaw_orig_gov_democratic }
+		else_if = { limit = { has_government = communism } set_country_flag = gaw_orig_gov_communism }
+		else_if = { limit = { has_government = fascism } set_country_flag = gaw_orig_gov_fascism }
+		else_if = { limit = { has_government = nationalist } set_country_flag = gaw_orig_gov_nationalist }
+		else = { set_country_flag = gaw_orig_gov_neutrality }
+		# 是否原本有选举
+		if = { limit = { has_elections = yes } set_country_flag = gaw_orig_had_elections }
+		# 是否原本就是附庸
+		if = { limit = { is_subject = yes } set_country_flag = gaw_orig_was_subject }
+		# 原执政党索引（0..23，用于精确恢复）
+		set_variable = { gaw_orig_ruling_party_index = 0 }
+		add_to_variable = { gaw_orig_ruling_party_index = var:ruling_party }
+		# 原领袖快照：千禧领袖由 set_leader_<TAG> 按 ruling_party 确定性生成，
+		# 故快照其所属党派索引即可在恢复时精确重建原领袖（不只回滚党派与支持率）
+		set_variable = { gaw_orig_leader_party = 0 }
+		add_to_variable = { gaw_orig_leader_party = var:ruling_party }
+		set_country_flag = gaw_orig_leader_snapshot_taken
+		# 24 党派支持率快照
+		clear_array = gaw_orig_popularities
+		add_to_array = { gaw_orig_popularities = party_pop_array^0 }
+		add_to_array = { gaw_orig_popularities = party_pop_array^1 }
+		add_to_array = { gaw_orig_popularities = party_pop_array^2 }
+		add_to_array = { gaw_orig_popularities = party_pop_array^3 }
+		add_to_array = { gaw_orig_popularities = party_pop_array^4 }
+		add_to_array = { gaw_orig_popularities = party_pop_array^5 }
+		add_to_array = { gaw_orig_popularities = party_pop_array^6 }
+		add_to_array = { gaw_orig_popularities = party_pop_array^7 }
+		add_to_array = { gaw_orig_popularities = party_pop_array^8 }
+		add_to_array = { gaw_orig_popularities = party_pop_array^9 }
+		add_to_array = { gaw_orig_popularities = party_pop_array^10 }
+		add_to_array = { gaw_orig_popularities = party_pop_array^11 }
+		add_to_array = { gaw_orig_popularities = party_pop_array^12 }
+		add_to_array = { gaw_orig_popularities = party_pop_array^13 }
+		add_to_array = { gaw_orig_popularities = party_pop_array^14 }
+		add_to_array = { gaw_orig_popularities = party_pop_array^15 }
+		add_to_array = { gaw_orig_popularities = party_pop_array^16 }
+		add_to_array = { gaw_orig_popularities = party_pop_array^17 }
+		add_to_array = { gaw_orig_popularities = party_pop_array^18 }
+		add_to_array = { gaw_orig_popularities = party_pop_array^19 }
+		add_to_array = { gaw_orig_popularities = party_pop_array^20 }
+		add_to_array = { gaw_orig_popularities = party_pop_array^21 }
+		add_to_array = { gaw_orig_popularities = party_pop_array^22 }
+		add_to_array = { gaw_orig_popularities = party_pop_array^23 }
+	}
+}
+
+# 把目标国变成征服方的协作政府：快照 -> 挂傀儡 -> 换执政党 -> 换 cosmetic
+ZZZ_gaw_set_collaboration_government = {
+	ZZZ_gaw_snapshot_government = yes
+	# 挂到征服方阵营（先解除旧宗主，避免 puppet 失败）
+	if = {
+		limit = { has_variable = gaw_collab_master }
+		if = {
+			limit = {
+				is_subject = yes
+				NOT = { is_puppet_of = var:gaw_collab_master }
+			}
+			overlord = { end_puppet = ROOT }
+		}
+		if = {
+			limit = { NOT = { is_puppet_of = var:gaw_collab_master } }
+			var:gaw_collab_master = { puppet = ROOT }
+		}
+	}
+	# 换执政党 + 写支持率 + 安装具名领袖
+	# 每一国显式处理，不做“只翻索引不改支持率”的浅层换党。
+	if = {
+		limit = {
+			original_tag = IND
+			has_country_flag = gaw_collab_to_west
+		}
+		ZZZ_gaw_gov_IND = yes
+		ZZZ_party_leader_IND_tommy_suharto = yes
+	}
+	# 中国侧：印尼走亲华左翼政府，不再套用日本侧的亲日民族主义票型
+	else_if = {
+		limit = { original_tag = IND }
+		ZZZ_gaw_gov_IND_communist = yes
+	}
+	else_if = {
+		limit = { original_tag = VIE }
+		ZZZ_gaw_south_vietnam_government = yes
+	}
+	else_if = {
+		limit = { original_tag = CBD }
+		ZZZ_gaw_gov_CBD = yes
+		ZZZ_party_leader_CBD_hun_sen = yes
+	}
+	else_if = {
+		limit = { original_tag = LAO }
+		ZZZ_gaw_gov_LAO = yes
+		ZZZ_party_leader_LAO_khamtai = yes
+	}
+	else_if = {
+		limit = { original_tag = BRM }
+		ZZZ_gaw_gov_BRM = yes
+		ZZZ_party_leader_BRM_u_than_tin = yes
+	}
+	else_if = {
+		limit = { original_tag = KOR }
+		ZZZ_gaw_gov_KOR = yes
+		ZZZ_party_leader_KOR_lee_jung_hee = yes
+	}
+	else_if = {
+		limit = { original_tag = NKO }
+		ZZZ_gaw_gov_NKO = yes
+		ZZZ_party_leader_NKO_kim_jong_un = yes
+	}
+	else_if = {
+		limit = { original_tag = TAI }
+		ZZZ_gaw_gov_TAI = yes
+		ZZZ_party_leader_TAI_wu_rongyuan = yes
+	}
+	else_if = {
+		limit = { original_tag = MAY }
+		ZZZ_gaw_gov_MAY = yes
+		ZZZ_party_leader_MAY_mahathir = yes
+	}
+	else_if = {
+		limit = { original_tag = PHI }
+		ZZZ_gaw_gov_PHI = yes
+		ZZZ_party_leader_PHI_marcos = yes
+	}
+	else_if = {
+		limit = { original_tag = SIN }
+		ZZZ_gaw_gov_SIN = yes
+		ZZZ_party_leader_SIN_lee_hsien_loong = yes
+	}
+	else_if = {
+		limit = {
+			original_tag = SIA
+			has_country_flag = gaw_collab_to_west
+		}
+		ZZZ_gaw_gov_SIA = yes
+		ZZZ_party_leader_SIA_abhisit = yes
+	}
+	# 中国侧：泰国走共产党政府，不再套用日本侧的保守派票型
+	else_if = {
+		limit = { original_tag = SIA }
+		ZZZ_gaw_gov_SIA_communist = yes
+	}
+	# 兜底：非名单国家按旗标
+	else_if = {
+		limit = { has_country_flag = gaw_collab_to_west }
+		ZZZ_party_to_liberalism = yes
+	}
+	else_if = {
+		limit = { has_country_flag = gaw_collab_to_nationalist }
+		ZZZ_party_to_nat_autocracy = yes
+	}
+	else_if = {
+		limit = { has_country_flag = gaw_collab_to_fascism }
+		ZZZ_party_to_nat_fascism = yes
+	}
+	else = {
+		ZZZ_party_to_communist_state = yes
+	}
+	# 换 cosmetic（仅用已有资产的 tag；缺资产的见报告清单）
+	if = {
+		limit = {
+			original_tag = IND
+			has_country_flag = gaw_collab_to_west
+		}
+		set_cosmetic_tag = IND_nationalist
+	}
+	else_if = { limit = { original_tag = IND } set_cosmetic_tag = IND_communism }
+	else_if = { limit = { original_tag = VIE } set_cosmetic_tag = VIE_nationalist }
+	else_if = { limit = { original_tag = CBD } set_cosmetic_tag = CBD_communism }
+	else_if = { limit = { original_tag = LAO } set_cosmetic_tag = LAO_communism }
+	else_if = { limit = { original_tag = BRM } set_cosmetic_tag = BRM_communism }
+	else_if = { limit = { original_tag = KOR } set_cosmetic_tag = KOR_communism }
+	else_if = { limit = { original_tag = NKO } set_cosmetic_tag = NKO_communism }
+	else_if = { limit = { original_tag = TAI } set_cosmetic_tag = TAI_communism }
+	else_if = { limit = { original_tag = MAY } set_cosmetic_tag = MAY_democratic }
+	else_if = { limit = { original_tag = PHI } set_cosmetic_tag = PHI_democratic }
+	else_if = { limit = { original_tag = SIN } set_cosmetic_tag = SIN_democratic }
+	else_if = {
+		limit = {
+			original_tag = SIA
+			has_country_flag = gaw_collab_to_west
+		}
+		set_cosmetic_tag = SIA_democratic
+	}
+	else_if = { limit = { original_tag = SIA } set_cosmetic_tag = SIA_communism }
+	set_country_flag = gaw_collaboration_government
+	set_global_flag = gaw_collab_active
+	# 派发政权更迭叙事事件
+	#   zzz_party.92 = 印尼亲日民族主义政府（仅日本侧）
+	#   zzz_party.93 = 日本胜利：越南共和国（南越伪政权）
+	#   zzz_party.91 = 日本侧亲西方民主政府
+	#   zzz_party.90 = 中国侧协作政府（默认共产主义）
+	if = {
+		limit = {
+			original_tag = IND
+			has_country_flag = gaw_collab_to_west
+		}
+		country_event = { id = zzz_party.92 days = 1 }
+	}
+	else_if = {
+		limit = { original_tag = IND }
+		country_event = { id = zzz_party.90 days = 1 }
+	}
+	else_if = {
+		limit = { original_tag = VIE }
+		country_event = { id = zzz_party.93 days = 1 }
+	}
+	else_if = {
+		limit = {
+			original_tag = SIA
+			has_country_flag = gaw_collab_to_west
+		}
+		country_event = { id = zzz_party.91 days = 1 }
+	}
+	else_if = {
+		limit = {
+			has_country_flag = gaw_collab_to_west
+			# SIN / SIA 走保守派协作政府，不再被 .91 的 liberalism 覆盖
+			NOT = { original_tag = SIN }
+			NOT = { original_tag = SIA }
+		}
+		country_event = { id = zzz_party.91 days = 1 }
+	}
+	else = {
+		country_event = { id = zzz_party.90 days = 1 }
+	}
+}
+
+# 反推回来后恢复：解除傀儡、去掉 cosmetic、恢复原执政党与 24 党派支持率、清变量
+ZZZ_gaw_restore_original_government = {
+	if = {
+		limit = { has_country_flag = gaw_collaboration_government }
+		# 解除傀儡关系
+		if = {
+			limit = { has_variable = gaw_collab_master }
+			if = {
+				limit = { is_puppet_of = var:gaw_collab_master }
+				var:gaw_collab_master = { end_puppet = ROOT }
+			}
+		}
+		drop_cosmetic_tag = yes
+		# 恢复原执政党
+		if = {
+			limit = { has_country_flag = gaw_orig_gov_democratic }
+			if = {
+				limit = { has_country_flag = gaw_orig_had_elections }
+				set_politics = { ruling_party = democratic elections_allowed = yes }
+			}
+			else = { set_politics = { ruling_party = democratic elections_allowed = no } }
+		}
+		else_if = {
+			limit = { has_country_flag = gaw_orig_gov_communism }
+			if = {
+				limit = { has_country_flag = gaw_orig_had_elections }
+				set_politics = { ruling_party = communism elections_allowed = yes }
+			}
+			else = { set_politics = { ruling_party = communism elections_allowed = no } }
+		}
+		else_if = {
+			limit = { has_country_flag = gaw_orig_gov_fascism }
+			if = {
+				limit = { has_country_flag = gaw_orig_had_elections }
+				set_politics = { ruling_party = fascism elections_allowed = yes }
+			}
+			else = { set_politics = { ruling_party = fascism elections_allowed = no } }
+		}
+		else_if = {
+			limit = { has_country_flag = gaw_orig_gov_nationalist }
+			if = {
+				limit = { has_country_flag = gaw_orig_had_elections }
+				set_politics = { ruling_party = nationalist elections_allowed = yes }
+			}
+			else = { set_politics = { ruling_party = nationalist elections_allowed = no } }
+		}
+		else = {
+			if = {
+				limit = { has_country_flag = gaw_orig_had_elections }
+				set_politics = { ruling_party = neutrality elections_allowed = yes }
+			}
+			else = { set_politics = { ruling_party = neutrality elections_allowed = no } }
+		}
+		# 恢复 24 党派支持率
+		if = {
+			limit = { has_variable = gaw_orig_popularities }
+			set_variable = { party_pop_array^0 = gaw_orig_popularities^0 }
+			set_variable = { party_pop_array^1 = gaw_orig_popularities^1 }
+			set_variable = { party_pop_array^2 = gaw_orig_popularities^2 }
+			set_variable = { party_pop_array^3 = gaw_orig_popularities^3 }
+			set_variable = { party_pop_array^4 = gaw_orig_popularities^4 }
+			set_variable = { party_pop_array^5 = gaw_orig_popularities^5 }
+			set_variable = { party_pop_array^6 = gaw_orig_popularities^6 }
+			set_variable = { party_pop_array^7 = gaw_orig_popularities^7 }
+			set_variable = { party_pop_array^8 = gaw_orig_popularities^8 }
+			set_variable = { party_pop_array^9 = gaw_orig_popularities^9 }
+			set_variable = { party_pop_array^10 = gaw_orig_popularities^10 }
+			set_variable = { party_pop_array^11 = gaw_orig_popularities^11 }
+			set_variable = { party_pop_array^12 = gaw_orig_popularities^12 }
+			set_variable = { party_pop_array^13 = gaw_orig_popularities^13 }
+			set_variable = { party_pop_array^14 = gaw_orig_popularities^14 }
+			set_variable = { party_pop_array^15 = gaw_orig_popularities^15 }
+			set_variable = { party_pop_array^16 = gaw_orig_popularities^16 }
+			set_variable = { party_pop_array^17 = gaw_orig_popularities^17 }
+			set_variable = { party_pop_array^18 = gaw_orig_popularities^18 }
+			set_variable = { party_pop_array^19 = gaw_orig_popularities^19 }
+			set_variable = { party_pop_array^20 = gaw_orig_popularities^20 }
+			set_variable = { party_pop_array^21 = gaw_orig_popularities^21 }
+			set_variable = { party_pop_array^22 = gaw_orig_popularities^22 }
+			set_variable = { party_pop_array^23 = gaw_orig_popularities^23 }
+			clear_array = gaw_orig_popularities
+		}
+		# 精确恢复原执政党索引
+		if = {
+			limit = { has_variable = gaw_orig_ruling_party_index }
+			set_variable = { ruling_party = var:gaw_orig_ruling_party_index }
+			clear_variable = gaw_orig_ruling_party_index
+		}
+		# 精确恢复原领袖所属党派（优先用领袖快照字段，回落原执政党索引）
+		if = {
+			limit = { has_variable = gaw_orig_leader_party }
+			set_variable = { ruling_party = var:gaw_orig_leader_party }
+			clear_variable = gaw_orig_leader_party
+		}
+		# 恢复后只刷新联盟强度：不再调用 recalculate_party，
+		# 因其内部 add_up_party_totals / set_party_positions 会对刚还原的 24 党值二次归一化并重建位置。
+		update_government_coalition_strength = yes
+		# 领袖恢复：调用千禧原生 set_leader（内部 kill 当前领袖并按恢复后的党派重建原党领袖）
+		set_leader = yes
+		# 越南：把首都从西贡（519）还原为红河三角洲（522）
+		if = {
+			limit = { original_tag = VIE }
+			set_capital = { state = 522 }
+		}
+		# 清旗标与变量
+		clr_country_flag = gaw_collaboration_government
+		clr_country_flag = gaw_collaboration_snapshot_taken
+		clr_country_flag = gaw_orig_gov_democratic
+		clr_country_flag = gaw_orig_gov_communism
+		clr_country_flag = gaw_orig_gov_fascism
+		clr_country_flag = gaw_orig_gov_nationalist
+		clr_country_flag = gaw_orig_gov_neutrality
+		clr_country_flag = gaw_orig_had_elections
+		clr_country_flag = gaw_orig_was_subject
+		clr_country_flag = gaw_orig_leader_snapshot_taken
+		clr_country_flag = gaw_collab_to_west
+		clr_country_flag = gaw_collab_to_nationalist
+		clr_country_flag = gaw_collab_to_fascism
+		clr_country_flag = zzz_gaw_south_vietnam
+		clear_variable = gaw_collab_master
+		clear_variable = gaw_collab_old_master
+	}
+}
+
+# 越南共和国（南越伪政权）：VIE 本体 + cosmetic + 西贡首都 + 反共民族主义执政党
+# 仅在 gaw_collab_to_west（日本胜利侧）触发；中国胜利侧 VIE 完全不变。
+ZZZ_gaw_south_vietnam_government = {
+	ZZZ_gaw_gov_VIE = yes
+	ZZZ_party_leader_VIE_south_vietnam = yes
+	set_cosmetic_tag = VIE_nationalist
+	set_capital = { state = 519 }
+	set_country_flag = zzz_gaw_south_vietnam
+}
+
+# 中国胜利：把敌对国家直接改造成社会主义政权（不记录快照，属于永久改造）
+# 按 original_tag 分派到各国的显式票型效果（CBD / LAO / BRM / AST / NZL / RAJ）；
+# 名单外国家沿用最小改动（只改执政大组，不动支持率）。
+ZZZ_gaw_force_socialist_government = {
+	if = {
+		limit = { original_tag = CBD }
+		ZZZ_gaw_gov_CBD = yes
+	}
+	else_if = {
+		limit = { original_tag = LAO }
+		ZZZ_gaw_gov_LAO = yes
+	}
+	else_if = {
+		limit = { original_tag = BRM }
+		ZZZ_gaw_gov_BRM = yes
+	}
+	else_if = {
+		limit = { original_tag = AST }
+		ZZZ_gaw_gov_AST = yes
+	}
+	else_if = {
+		limit = { original_tag = NZL }
+		ZZZ_gaw_gov_NZL = yes
+	}
+	else_if = {
+		limit = { original_tag = RAJ }
+		ZZZ_gaw_gov_RAJ = yes
+	}
+	else = {
+		if = {
+			limit = { NOT = { has_government = communism } }
+			set_politics = {
+				ruling_party = communism
+				elections_allowed = no
+			}
+		}
+	}
+}
+
+# ============================================================================
+# GAW 结算票型（逐国显式）：五组支持率 + 24 槽位绝对值 + 重建执政/联盟数组
+# 数值口径：以 history/countries/ZZ9 - 2017.txt 的开局基线为底，再按结算后的
+#   政治现实重分配；执政党属于得票最多的大组，且为该组内最大党。
+# 写法依据：events/politicsthailand.txt 与 events/politicspakistan.txt 的范例结构
+#   set_politics（只写大组名）-> set_popularities（五组）->
+#   24 行 set_variable = { party_pop_array^N = 绝对值 }（合计 1.0000）->
+#   clear_array 后重建 ruling_party / gov_coalition_array（执政党不进联盟数组）->
+#   update_government_coalition_strength / update_party_name / set_coalition_drift。
+#   不调用 recalculate_party。
+# ============================================================================
+
+# 印尼（IND）：亲日民族主义右翼政府，执政 ^20 Nat_Populism
+# 基线：dem 21.9 / com 33.1 / fas 0.0 / neu 38.1 / nat 6.9；原执政 ^5 anarchist_communism
+ZZZ_gaw_gov_IND = {
+	set_politics = {
+		ruling_party = nationalist
+		elections_allowed = yes
+	}
+	set_popularities = {
+		democratic = 13.5
+		communism = 17.0
+		fascism = 0.0
+		neutrality = 20.0
+		nationalist = 49.5
+	}
+	set_variable = { party_pop_array^0 = 0.02 } #Western_Autocracy
+	set_variable = { party_pop_array^1 = 0.06 } #conservatism
+	set_variable = { party_pop_array^2 = 0.055 } #liberalism
+	set_variable = { party_pop_array^3 = 0 } #socialism
+	set_variable = { party_pop_array^4 = 0 } #communist_state
+	set_variable = { party_pop_array^5 = 0.11 } #anarchist_communism
+	set_variable = { party_pop_array^6 = 0.06 } #Conservative
+	set_variable = { party_pop_array^7 = 0 } #Autocracy
+	set_variable = { party_pop_array^8 = 0 } #Mod_Vilayat_e_Faqih
+	set_variable = { party_pop_array^9 = 0 } #Vilayat_e_Faqih
+	set_variable = { party_pop_array^10 = 0 } #Kingdom
+	set_variable = { party_pop_array^11 = 0 } #Caliphate
+	set_variable = { party_pop_array^12 = 0.04 } #Neutral_Muslim_Brotherhood
+	set_variable = { party_pop_array^13 = 0 } #Neutral_Autocracy
+	set_variable = { party_pop_array^14 = 0.06 } #Neutral_conservatism
+	set_variable = { party_pop_array^15 = 0 } #oligarchism
+	set_variable = { party_pop_array^16 = 0.03 } #Neutral_Libertarian
+	set_variable = { party_pop_array^17 = 0 } #Neutral_green
+	set_variable = { party_pop_array^18 = 0.07 } #neutral_Social
+	set_variable = { party_pop_array^19 = 0 } #Neutral_Communism
+	set_variable = { party_pop_array^20 = 0.34 } #Nat_Populism
+	set_variable = { party_pop_array^21 = 0.02 } #Nat_Fascism
+	set_variable = { party_pop_array^22 = 0.13 } #Nat_Autocracy
+	set_variable = { party_pop_array^23 = 0.005 } #Monarchist
+	clear_array = gov_coalition_array
+	set_variable = { ruling_party = 20 }
+	update_set_politics = yes
+	add_own_ideology_drift = yes
+	add_to_array = { gov_coalition_array = 22 }
+	update_government_coalition_strength = yes
+	update_party_name = yes
+	set_coalition_drift = yes
+	ZZZ_party_leader_IND_tommy_suharto = yes
+}
+
+# 印尼（IND）：中国胜利后亲华左翼政府，执政 ^5 anarchist_communism（communism 顶层组）
+# 基线：dem 21.9 / com 33.1 / fas 0.0 / neu 38.1 / nat 6.9；原执政 ^5 anarchist_communism（梅加瓦蒂）
+# 中国胜利不改写印尼原有的左翼执政结构，只把共产主义大组推高、把民族主义压缩
+ZZZ_gaw_gov_IND_communist = {
+	set_politics = {
+		ruling_party = communism
+		elections_allowed = no
+	}
+	set_popularities = {
+		democratic = 12.0
+		communism = 55.0
+		fascism = 0.0
+		neutrality = 23.0
+		nationalist = 10.0
+	}
+	set_variable = { party_pop_array^0 = 0.01 } #Western_Autocracy
+	set_variable = { party_pop_array^1 = 0.04 } #conservatism
+	set_variable = { party_pop_array^2 = 0.05 } #liberalism
+	set_variable = { party_pop_array^3 = 0.02 } #socialism
+	set_variable = { party_pop_array^4 = 0.10 } #communist_state
+	set_variable = { party_pop_array^5 = 0.42 } #anarchist_communism
+	set_variable = { party_pop_array^6 = 0.03 } #Conservative
+	set_variable = { party_pop_array^7 = 0 } #Autocracy
+	set_variable = { party_pop_array^8 = 0 } #Mod_Vilayat_e_Faqih
+	set_variable = { party_pop_array^9 = 0 } #Vilayat_e_Faqih
+	set_variable = { party_pop_array^10 = 0 } #Kingdom
+	set_variable = { party_pop_array^11 = 0 } #Caliphate
+	set_variable = { party_pop_array^12 = 0.03 } #Neutral_Muslim_Brotherhood
+	set_variable = { party_pop_array^13 = 0.02 } #Neutral_Autocracy
+	set_variable = { party_pop_array^14 = 0.04 } #Neutral_conservatism
+	set_variable = { party_pop_array^15 = 0 } #oligarchism
+	set_variable = { party_pop_array^16 = 0.02 } #Neutral_Libertarian
+	set_variable = { party_pop_array^17 = 0 } #Neutral_green
+	set_variable = { party_pop_array^18 = 0.11 } #neutral_Social
+	set_variable = { party_pop_array^19 = 0.01 } #Neutral_Communism
+	set_variable = { party_pop_array^20 = 0.05 } #Nat_Populism
+	set_variable = { party_pop_array^21 = 0.01 } #Nat_Fascism
+	set_variable = { party_pop_array^22 = 0.03 } #Nat_Autocracy
+	set_variable = { party_pop_array^23 = 0.01 } #Monarchist
+	clear_array = gov_coalition_array
+	set_variable = { ruling_party = 5 }
+	update_set_politics = yes
+	add_own_ideology_drift = yes
+	add_to_array = { gov_coalition_array = 4 }
+	update_government_coalition_strength = yes
+	update_party_name = yes
+	set_coalition_drift = yes
+	ZZZ_party_leader_IND_megawati = yes
+}
+
+# 越南（VIE）：南越反共政权，执政 ^22 Nat_Autocracy
+# 基线（按 24 数组折算）：dem 27.5 / com 67.5 / fas 0.0 / neu 0.0 / nat 5.0；原执政 ^4
+ZZZ_gaw_gov_VIE = {
+	set_politics = {
+		ruling_party = nationalist
+		elections_allowed = no
+	}
+	set_popularities = {
+		democratic = 15.0
+		communism = 4.0
+		fascism = 0.0
+		neutrality = 7.0
+		nationalist = 74.0
+	}
+	set_variable = { party_pop_array^0 = 0.005 } #Western_Autocracy
+	set_variable = { party_pop_array^1 = 0.04 } #conservatism
+	set_variable = { party_pop_array^2 = 0.075 } #liberalism
+	set_variable = { party_pop_array^3 = 0.03 } #socialism
+	set_variable = { party_pop_array^4 = 0.01 } #communist_state
+	set_variable = { party_pop_array^5 = 0.01 } #anarchist_communism
+	set_variable = { party_pop_array^6 = 0 } #Conservative
+	set_variable = { party_pop_array^7 = 0.02 } #Autocracy
+	set_variable = { party_pop_array^8 = 0 } #Mod_Vilayat_e_Faqih
+	set_variable = { party_pop_array^9 = 0 } #Vilayat_e_Faqih
+	set_variable = { party_pop_array^10 = 0 } #Kingdom
+	set_variable = { party_pop_array^11 = 0 } #Caliphate
+	set_variable = { party_pop_array^12 = 0.005 } #Neutral_Muslim_Brotherhood
+	set_variable = { party_pop_array^13 = 0.025 } #Neutral_Autocracy
+	set_variable = { party_pop_array^14 = 0.02 } #Neutral_conservatism
+	set_variable = { party_pop_array^15 = 0 } #oligarchism
+	set_variable = { party_pop_array^16 = 0.01 } #Neutral_Libertarian
+	set_variable = { party_pop_array^17 = 0 } #Neutral_green
+	set_variable = { party_pop_array^18 = 0.01 } #neutral_Social
+	set_variable = { party_pop_array^19 = 0 } #Neutral_Communism
+	set_variable = { party_pop_array^20 = 0.05 } #Nat_Populism
+	set_variable = { party_pop_array^21 = 0.06 } #Nat_Fascism
+	set_variable = { party_pop_array^22 = 0.61 } #Nat_Autocracy
+	set_variable = { party_pop_array^23 = 0.02 } #Monarchist
+	clear_array = gov_coalition_array
+	set_variable = { ruling_party = 22 }
+	update_set_politics = yes
+	add_own_ideology_drift = yes
+	add_to_array = { gov_coalition_array = 21 }
+	update_government_coalition_strength = yes
+	update_party_name = yes
+	set_coalition_drift = yes
+}
+
+# 柬埔寨（CBD）：社会主义化，执政 ^4 communist_state
+# 基线：dem 49.5 / com 48.8 / fas 0.0 / neu 1.0 / nat 0.7；原执政 ^7 Autocracy（洪森）
+ZZZ_gaw_gov_CBD = {
+	set_politics = {
+		ruling_party = communism
+		elections_allowed = no
+	}
+	set_popularities = {
+		democratic = 18.0
+		communism = 70.0
+		fascism = 0.0
+		neutrality = 7.0
+		nationalist = 5.0
+	}
+	set_variable = { party_pop_array^0 = 0 } #Western_Autocracy
+	set_variable = { party_pop_array^1 = 0.03 } #conservatism
+	set_variable = { party_pop_array^2 = 0 } #liberalism
+	set_variable = { party_pop_array^3 = 0.15 } #socialism
+	set_variable = { party_pop_array^4 = 0.40 } #communist_state
+	set_variable = { party_pop_array^5 = 0 } #anarchist_communism
+	set_variable = { party_pop_array^6 = 0.05 } #Conservative
+	set_variable = { party_pop_array^7 = 0.25 } #Autocracy
+	set_variable = { party_pop_array^8 = 0 } #Mod_Vilayat_e_Faqih
+	set_variable = { party_pop_array^9 = 0 } #Vilayat_e_Faqih
+	set_variable = { party_pop_array^10 = 0 } #Kingdom
+	set_variable = { party_pop_array^11 = 0 } #Caliphate
+	set_variable = { party_pop_array^12 = 0.01 } #Neutral_Muslim_Brotherhood
+	set_variable = { party_pop_array^13 = 0.02 } #Neutral_Autocracy
+	set_variable = { party_pop_array^14 = 0.02 } #Neutral_conservatism
+	set_variable = { party_pop_array^15 = 0 } #oligarchism
+	set_variable = { party_pop_array^16 = 0 } #Neutral_Libertarian
+	set_variable = { party_pop_array^17 = 0 } #Neutral_green
+	set_variable = { party_pop_array^18 = 0.02 } #neutral_Social
+	set_variable = { party_pop_array^19 = 0 } #Neutral_Communism
+	set_variable = { party_pop_array^20 = 0.03 } #Nat_Populism
+	set_variable = { party_pop_array^21 = 0.015 } #Nat_Fascism
+	set_variable = { party_pop_array^22 = 0.005 } #Nat_Autocracy
+	set_variable = { party_pop_array^23 = 0 } #Monarchist
+	clear_array = gov_coalition_array
+	set_variable = { ruling_party = 4 }
+	update_set_politics = yes
+	add_own_ideology_drift = yes
+	add_to_array = { gov_coalition_array = 7 }
+	update_government_coalition_strength = yes
+	update_party_name = yes
+	set_coalition_drift = yes
+	ZZZ_party_leader_CBD_hun_sen = yes
+}
+
+# 老挝（LAO）：人民革命党一党制，执政 ^4 communist_state
+# 基线：com 100.0；24 数组 ^4 = 1.0（结算后维持不变，仅按范例重建数组）
+ZZZ_gaw_gov_LAO = {
+	set_politics = {
+		ruling_party = communism
+		elections_allowed = no
+	}
+	set_popularities = {
+		democratic = 0.0
+		communism = 100.0
+		fascism = 0.0
+		neutrality = 0.0
+		nationalist = 0.0
+	}
+	set_variable = { party_pop_array^0 = 0 } #Western_Autocracy
+	set_variable = { party_pop_array^1 = 0 } #conservatism
+	set_variable = { party_pop_array^2 = 0 } #liberalism
+	set_variable = { party_pop_array^3 = 0 } #socialism
+	set_variable = { party_pop_array^4 = 1.0 } #communist_state
+	set_variable = { party_pop_array^5 = 0 } #anarchist_communism
+	set_variable = { party_pop_array^6 = 0 } #Conservative
+	set_variable = { party_pop_array^7 = 0 } #Autocracy
+	set_variable = { party_pop_array^8 = 0 } #Mod_Vilayat_e_Faqih
+	set_variable = { party_pop_array^9 = 0 } #Vilayat_e_Faqih
+	set_variable = { party_pop_array^10 = 0 } #Kingdom
+	set_variable = { party_pop_array^11 = 0 } #Caliphate
+	set_variable = { party_pop_array^12 = 0 } #Neutral_Muslim_Brotherhood
+	set_variable = { party_pop_array^13 = 0 } #Neutral_Autocracy
+	set_variable = { party_pop_array^14 = 0 } #Neutral_conservatism
+	set_variable = { party_pop_array^15 = 0 } #oligarchism
+	set_variable = { party_pop_array^16 = 0 } #Neutral_Libertarian
+	set_variable = { party_pop_array^17 = 0 } #Neutral_green
+	set_variable = { party_pop_array^18 = 0 } #neutral_Social
+	set_variable = { party_pop_array^19 = 0 } #Neutral_Communism
+	set_variable = { party_pop_array^20 = 0 } #Nat_Populism
+	set_variable = { party_pop_array^21 = 0 } #Nat_Fascism
+	set_variable = { party_pop_array^22 = 0 } #Nat_Autocracy
+	set_variable = { party_pop_array^23 = 0 } #Monarchist
+	clear_array = gov_coalition_array
+	set_variable = { ruling_party = 4 }
+	update_set_politics = yes
+	add_own_ideology_drift = yes
+	add_to_array = { gov_coalition_array = 5 }
+	update_government_coalition_strength = yes
+	update_party_name = yes
+	set_coalition_drift = yes
+	ZZZ_party_leader_LAO_khamtai = yes
+}
+
+# 缅甸（BRM）：社会主义化，执政 ^4 communist_state
+# 基线：dem 0.0 / com 0.0 / fas 0.0 / neu 63.6 / nat 36.4；原执政 ^16 Neutral_Libertarian（昂山素季）
+ZZZ_gaw_gov_BRM = {
+	set_politics = {
+		ruling_party = communism
+		elections_allowed = no
+	}
+	set_popularities = {
+		democratic = 8.0
+		communism = 57.0
+		fascism = 0.0
+		neutrality = 20.0
+		nationalist = 15.0
+	}
+	set_variable = { party_pop_array^0 = 0.01 } #Western_Autocracy
+	set_variable = { party_pop_array^1 = 0.03 } #conservatism
+	set_variable = { party_pop_array^2 = 0.02 } #liberalism
+	set_variable = { party_pop_array^3 = 0.02 } #socialism
+	set_variable = { party_pop_array^4 = 0.42 } #communist_state
+	set_variable = { party_pop_array^5 = 0.07 } #anarchist_communism
+	set_variable = { party_pop_array^6 = 0.05 } #Conservative
+	set_variable = { party_pop_array^7 = 0.03 } #Autocracy
+	set_variable = { party_pop_array^8 = 0 } #Mod_Vilayat_e_Faqih
+	set_variable = { party_pop_array^9 = 0 } #Vilayat_e_Faqih
+	set_variable = { party_pop_array^10 = 0 } #Kingdom
+	set_variable = { party_pop_array^11 = 0 } #Caliphate
+	set_variable = { party_pop_array^12 = 0.01 } #Neutral_Muslim_Brotherhood
+	set_variable = { party_pop_array^13 = 0.02 } #Neutral_Autocracy
+	set_variable = { party_pop_array^14 = 0.03 } #Neutral_conservatism
+	set_variable = { party_pop_array^15 = 0 } #oligarchism
+	set_variable = { party_pop_array^16 = 0.12 } #Neutral_Libertarian
+	set_variable = { party_pop_array^17 = 0 } #Neutral_green
+	set_variable = { party_pop_array^18 = 0 } #neutral_Social
+	set_variable = { party_pop_array^19 = 0.02 } #Neutral_Communism
+	set_variable = { party_pop_array^20 = 0.10 } #Nat_Populism
+	set_variable = { party_pop_array^21 = 0.03 } #Nat_Fascism
+	set_variable = { party_pop_array^22 = 0.015 } #Nat_Autocracy
+	set_variable = { party_pop_array^23 = 0.005 } #Monarchist
+	clear_array = gov_coalition_array
+	set_variable = { ruling_party = 4 }
+	update_set_politics = yes
+	add_own_ideology_drift = yes
+	add_to_array = { gov_coalition_array = 6 }
+	update_government_coalition_strength = yes
+	update_party_name = yes
+	set_coalition_drift = yes
+	ZZZ_party_leader_BRM_u_than_tin = yes
+}
+
+# 韩国（KOR）：亲华社会主义政权，执政 ^4 communist_state
+# 基线：dem 85.3 / com 0.6 / fas 0.0 / neu 11.5 / nat 2.6；原执政 ^1 conservatism
+ZZZ_gaw_gov_KOR = {
+	set_politics = {
+		ruling_party = communism
+		elections_allowed = no
+	}
+	set_popularities = {
+		democratic = 22.0
+		communism = 52.0
+		fascism = 0.0
+		neutrality = 20.0
+		nationalist = 6.0
+	}
+	set_variable = { party_pop_array^0 = 0.005 } #Western_Autocracy
+	set_variable = { party_pop_array^1 = 0.075 } #conservatism
+	set_variable = { party_pop_array^2 = 0.035 } #liberalism
+	set_variable = { party_pop_array^3 = 0.105 } #socialism
+	set_variable = { party_pop_array^4 = 0.38 } #communist_state
+	set_variable = { party_pop_array^5 = 0.06 } #anarchist_communism
+	set_variable = { party_pop_array^6 = 0.05 } #Conservative
+	set_variable = { party_pop_array^7 = 0.03 } #Autocracy
+	set_variable = { party_pop_array^8 = 0 } #Mod_Vilayat_e_Faqih
+	set_variable = { party_pop_array^9 = 0 } #Vilayat_e_Faqih
+	set_variable = { party_pop_array^10 = 0 } #Kingdom
+	set_variable = { party_pop_array^11 = 0 } #Caliphate
+	set_variable = { party_pop_array^12 = 0 } #Neutral_Muslim_Brotherhood
+	set_variable = { party_pop_array^13 = 0.02 } #Neutral_Autocracy
+	set_variable = { party_pop_array^14 = 0.06 } #Neutral_conservatism
+	set_variable = { party_pop_array^15 = 0 } #oligarchism
+	set_variable = { party_pop_array^16 = 0.02 } #Neutral_Libertarian
+	set_variable = { party_pop_array^17 = 0.01 } #Neutral_green
+	set_variable = { party_pop_array^18 = 0.09 } #neutral_Social
+	set_variable = { party_pop_array^19 = 0 } #Neutral_Communism
+	set_variable = { party_pop_array^20 = 0.04 } #Nat_Populism
+	set_variable = { party_pop_array^21 = 0.01 } #Nat_Fascism
+	set_variable = { party_pop_array^22 = 0.01 } #Nat_Autocracy
+	set_variable = { party_pop_array^23 = 0 } #Monarchist
+	clear_array = gov_coalition_array
+	set_variable = { ruling_party = 4 }
+	update_set_politics = yes
+	add_own_ideology_drift = yes
+	add_to_array = { gov_coalition_array = 6 }
+	update_government_coalition_strength = yes
+	update_party_name = yes
+	set_coalition_drift = yes
+	ZZZ_party_leader_KOR_lee_jung_hee = yes
+}
+
+# 朝鲜（NKO）：劳动党一党制，执政 ^4 communist_state
+# 基线：com 99.9 / nat 0.1；24 数组 ^4 = 0.95、^5 = 0.049、^22 = 0.001
+ZZZ_gaw_gov_NKO = {
+	set_politics = {
+		ruling_party = communism
+		elections_allowed = no
+	}
+	set_popularities = {
+		democratic = 0.0
+		communism = 99.9
+		fascism = 0.0
+		neutrality = 0.0
+		nationalist = 0.1
+	}
+	set_variable = { party_pop_array^0 = 0 } #Western_Autocracy
+	set_variable = { party_pop_array^1 = 0 } #conservatism
+	set_variable = { party_pop_array^2 = 0 } #liberalism
+	set_variable = { party_pop_array^3 = 0 } #socialism
+	set_variable = { party_pop_array^4 = 0.95 } #communist_state
+	set_variable = { party_pop_array^5 = 0.049 } #anarchist_communism
+	set_variable = { party_pop_array^6 = 0 } #Conservative
+	set_variable = { party_pop_array^7 = 0 } #Autocracy
+	set_variable = { party_pop_array^8 = 0 } #Mod_Vilayat_e_Faqih
+	set_variable = { party_pop_array^9 = 0 } #Vilayat_e_Faqih
+	set_variable = { party_pop_array^10 = 0 } #Kingdom
+	set_variable = { party_pop_array^11 = 0 } #Caliphate
+	set_variable = { party_pop_array^12 = 0 } #Neutral_Muslim_Brotherhood
+	set_variable = { party_pop_array^13 = 0 } #Neutral_Autocracy
+	set_variable = { party_pop_array^14 = 0 } #Neutral_conservatism
+	set_variable = { party_pop_array^15 = 0 } #oligarchism
+	set_variable = { party_pop_array^16 = 0 } #Neutral_Libertarian
+	set_variable = { party_pop_array^17 = 0 } #Neutral_green
+	set_variable = { party_pop_array^18 = 0 } #neutral_Social
+	set_variable = { party_pop_array^19 = 0 } #Neutral_Communism
+	set_variable = { party_pop_array^20 = 0 } #Nat_Populism
+	set_variable = { party_pop_array^21 = 0 } #Nat_Fascism
+	set_variable = { party_pop_array^22 = 0.001 } #Nat_Autocracy
+	set_variable = { party_pop_array^23 = 0 } #Monarchist
+	clear_array = gov_coalition_array
+	set_variable = { ruling_party = 4 }
+	update_set_politics = yes
+	add_own_ideology_drift = yes
+	add_to_array = { gov_coalition_array = 5 }
+	update_government_coalition_strength = yes
+	update_party_name = yes
+	set_coalition_drift = yes
+	ZZZ_party_leader_NKO_kim_jong_un = yes
+}
+
+# 台湾（TAI）：社会主义化，执政 ^4 communist_state
+# 基线：dem 87.1 / com 0.0 / fas 0.0 / neu 12.8 / nat 0.1；原执政 ^2 liberalism（蔡英文）
+ZZZ_gaw_gov_TAI = {
+	set_politics = {
+		ruling_party = communism
+		elections_allowed = no
+	}
+	set_popularities = {
+		democratic = 25.0
+		communism = 55.0
+		fascism = 0.0
+		neutrality = 14.0
+		nationalist = 6.0
+	}
+	set_variable = { party_pop_array^0 = 0.01 } #Western_Autocracy
+	set_variable = { party_pop_array^1 = 0.08 } #conservatism
+	set_variable = { party_pop_array^2 = 0.10 } #liberalism
+	set_variable = { party_pop_array^3 = 0.06 } #socialism
+	set_variable = { party_pop_array^4 = 0.40 } #communist_state
+	set_variable = { party_pop_array^5 = 0.02 } #anarchist_communism
+	set_variable = { party_pop_array^6 = 0.08 } #Conservative
+	set_variable = { party_pop_array^7 = 0.05 } #Autocracy
+	set_variable = { party_pop_array^8 = 0 } #Mod_Vilayat_e_Faqih
+	set_variable = { party_pop_array^9 = 0 } #Vilayat_e_Faqih
+	set_variable = { party_pop_array^10 = 0 } #Kingdom
+	set_variable = { party_pop_array^11 = 0 } #Caliphate
+	set_variable = { party_pop_array^12 = 0 } #Neutral_Muslim_Brotherhood
+	set_variable = { party_pop_array^13 = 0.02 } #Neutral_Autocracy
+	set_variable = { party_pop_array^14 = 0.08 } #Neutral_conservatism
+	set_variable = { party_pop_array^15 = 0 } #oligarchism
+	set_variable = { party_pop_array^16 = 0.02 } #Neutral_Libertarian
+	set_variable = { party_pop_array^17 = 0 } #Neutral_green
+	set_variable = { party_pop_array^18 = 0.02 } #neutral_Social
+	set_variable = { party_pop_array^19 = 0 } #Neutral_Communism
+	set_variable = { party_pop_array^20 = 0.04 } #Nat_Populism
+	set_variable = { party_pop_array^21 = 0 } #Nat_Fascism
+	set_variable = { party_pop_array^22 = 0.02 } #Nat_Autocracy
+	set_variable = { party_pop_array^23 = 0 } #Monarchist
+	clear_array = gov_coalition_array
+	set_variable = { ruling_party = 4 }
+	update_set_politics = yes
+	add_own_ideology_drift = yes
+	add_to_array = { gov_coalition_array = 6 }
+	update_government_coalition_strength = yes
+	update_party_name = yes
+	set_coalition_drift = yes
+	ZZZ_party_leader_TAI_wu_rongyuan = yes
+}
+
+# 马来西亚（MAY）：亲西方自由派协作政府，执政 ^2 liberalism
+# 基线：dem 52.2（^3 socialism 0.522）/ com 0.0 / fas 0.0 / neu 12.2 / nat 35.6；原执政 ^20
+ZZZ_gaw_gov_MAY = {
+	set_politics = {
+		ruling_party = democratic
+		elections_allowed = yes
+	}
+	set_popularities = {
+		democratic = 55.0
+		communism = 3.0
+		fascism = 0.0
+		neutrality = 22.0
+		nationalist = 20.0
+	}
+	set_variable = { party_pop_array^0 = 0.01 } #Western_Autocracy
+	set_variable = { party_pop_array^1 = 0.10 } #conservatism
+	set_variable = { party_pop_array^2 = 0.30 } #liberalism
+	set_variable = { party_pop_array^3 = 0.14 } #socialism
+	set_variable = { party_pop_array^4 = 0.01 } #communist_state
+	set_variable = { party_pop_array^5 = 0.02 } #anarchist_communism
+	set_variable = { party_pop_array^6 = 0 } #Conservative
+	set_variable = { party_pop_array^7 = 0 } #Autocracy
+	set_variable = { party_pop_array^8 = 0 } #Mod_Vilayat_e_Faqih
+	set_variable = { party_pop_array^9 = 0 } #Vilayat_e_Faqih
+	set_variable = { party_pop_array^10 = 0 } #Kingdom
+	set_variable = { party_pop_array^11 = 0 } #Caliphate
+	set_variable = { party_pop_array^12 = 0.05 } #Neutral_Muslim_Brotherhood
+	set_variable = { party_pop_array^13 = 0.02 } #Neutral_Autocracy
+	set_variable = { party_pop_array^14 = 0.05 } #Neutral_conservatism
+	set_variable = { party_pop_array^15 = 0 } #oligarchism
+	set_variable = { party_pop_array^16 = 0.03 } #Neutral_Libertarian
+	set_variable = { party_pop_array^17 = 0 } #Neutral_green
+	set_variable = { party_pop_array^18 = 0.07 } #neutral_Social
+	set_variable = { party_pop_array^19 = 0 } #Neutral_Communism
+	set_variable = { party_pop_array^20 = 0.15 } #Nat_Populism
+	set_variable = { party_pop_array^21 = 0.02 } #Nat_Fascism
+	set_variable = { party_pop_array^22 = 0.03 } #Nat_Autocracy
+	set_variable = { party_pop_array^23 = 0 } #Monarchist
+	clear_array = gov_coalition_array
+	set_variable = { ruling_party = 2 }
+	update_set_politics = yes
+	add_own_ideology_drift = yes
+	add_to_array = { gov_coalition_array = 20 }
+	update_government_coalition_strength = yes
+	update_party_name = yes
+	set_coalition_drift = yes
+	ZZZ_party_leader_MAY_mahathir = yes
+}
+
+# 菲律宾（PHI）：亲西方自由派协作政府，执政 ^2 liberalism
+# 基线：dem 27.8 / com 34.5 / fas 2.2 / neu 32.4 / nat 3.1；原执政 ^5（杜特尔特）
+ZZZ_gaw_gov_PHI = {
+	set_politics = {
+		ruling_party = democratic
+		elections_allowed = yes
+	}
+	set_popularities = {
+		democratic = 52.0
+		communism = 8.0
+		fascism = 2.0
+		neutrality = 28.0
+		nationalist = 10.0
+	}
+	set_variable = { party_pop_array^0 = 0.01 } #Western_Autocracy
+	set_variable = { party_pop_array^1 = 0.06 } #conservatism
+	set_variable = { party_pop_array^2 = 0.40 } #liberalism
+	set_variable = { party_pop_array^3 = 0.05 } #socialism
+	set_variable = { party_pop_array^4 = 0.01 } #communist_state
+	set_variable = { party_pop_array^5 = 0.07 } #anarchist_communism
+	set_variable = { party_pop_array^6 = 0 } #Conservative
+	set_variable = { party_pop_array^7 = 0 } #Autocracy
+	set_variable = { party_pop_array^8 = 0 } #Mod_Vilayat_e_Faqih
+	set_variable = { party_pop_array^9 = 0 } #Vilayat_e_Faqih
+	set_variable = { party_pop_array^10 = 0 } #Kingdom
+	set_variable = { party_pop_array^11 = 0.02 } #Caliphate
+	set_variable = { party_pop_array^12 = 0 } #Neutral_Muslim_Brotherhood
+	set_variable = { party_pop_array^13 = 0.03 } #Neutral_Autocracy
+	set_variable = { party_pop_array^14 = 0.10 } #Neutral_conservatism
+	set_variable = { party_pop_array^15 = 0 } #oligarchism
+	set_variable = { party_pop_array^16 = 0.10 } #Neutral_Libertarian
+	set_variable = { party_pop_array^17 = 0 } #Neutral_green
+	set_variable = { party_pop_array^18 = 0.05 } #neutral_Social
+	set_variable = { party_pop_array^19 = 0 } #Neutral_Communism
+	set_variable = { party_pop_array^20 = 0.07 } #Nat_Populism
+	set_variable = { party_pop_array^21 = 0.01 } #Nat_Fascism
+	set_variable = { party_pop_array^22 = 0.02 } #Nat_Autocracy
+	set_variable = { party_pop_array^23 = 0 } #Monarchist
+	clear_array = gov_coalition_array
+	set_variable = { ruling_party = 2 }
+	update_set_politics = yes
+	add_own_ideology_drift = yes
+	add_to_array = { gov_coalition_array = 20 }
+	update_government_coalition_strength = yes
+	update_party_name = yes
+	set_coalition_drift = yes
+	ZZZ_party_leader_PHI_marcos = yes
+}
+
+# 新加坡（SIN）：亲西方保守派协作政府，执政 ^1 conservatism
+# 基线：dem 72.4 / com 9.8 / fas 0.0 / neu 17.8 / nat 0.0；原执政 ^1（李显龙，不变）
+# 调整：亲华的 ^7 Autocracy（原 9%）压到 3%，让给执政保守党
+ZZZ_gaw_gov_SIN = {
+	set_politics = {
+		ruling_party = democratic
+		elections_allowed = yes
+	}
+	set_popularities = {
+		democratic = 78.4
+		communism = 3.8
+		fascism = 0.0
+		neutrality = 17.8
+		nationalist = 0.0
+	}
+	set_variable = { party_pop_array^0 = 0 } #Western_Autocracy
+	set_variable = { party_pop_array^1 = 0.71 } #conservatism
+	set_variable = { party_pop_array^2 = 0.054 } #liberalism
+	set_variable = { party_pop_array^3 = 0.02 } #socialism
+	set_variable = { party_pop_array^4 = 0.008 } #communist_state
+	set_variable = { party_pop_array^5 = 0 } #anarchist_communism
+	set_variable = { party_pop_array^6 = 0 } #Conservative
+	set_variable = { party_pop_array^7 = 0.03 } #Autocracy
+	set_variable = { party_pop_array^8 = 0 } #Mod_Vilayat_e_Faqih
+	set_variable = { party_pop_array^9 = 0 } #Vilayat_e_Faqih
+	set_variable = { party_pop_array^10 = 0 } #Kingdom
+	set_variable = { party_pop_array^11 = 0 } #Caliphate
+	set_variable = { party_pop_array^12 = 0 } #Neutral_Muslim_Brotherhood
+	set_variable = { party_pop_array^13 = 0.084 } #Neutral_Autocracy
+	set_variable = { party_pop_array^14 = 0.004 } #Neutral_conservatism
+	set_variable = { party_pop_array^15 = 0 } #oligarchism
+	set_variable = { party_pop_array^16 = 0.023 } #Neutral_Libertarian
+	set_variable = { party_pop_array^17 = 0 } #Neutral_green
+	set_variable = { party_pop_array^18 = 0.067 } #neutral_Social
+	set_variable = { party_pop_array^19 = 0 } #Neutral_Communism
+	set_variable = { party_pop_array^20 = 0 } #Nat_Populism
+	set_variable = { party_pop_array^21 = 0 } #Nat_Fascism
+	set_variable = { party_pop_array^22 = 0 } #Nat_Autocracy
+	set_variable = { party_pop_array^23 = 0 } #Monarchist
+	clear_array = gov_coalition_array
+	set_variable = { ruling_party = 1 }
+	update_set_politics = yes
+	add_own_ideology_drift = yes
+	add_to_array = { gov_coalition_array = 13 }
+	update_government_coalition_strength = yes
+	update_party_name = yes
+	set_coalition_drift = yes
+	ZZZ_party_leader_SIN_lee_hsien_loong = yes
+}
+
+# 泰国（SIA）：亲西方保守派协作政府，执政 ^1 conservatism
+# 基线（按 24 数组折算）：dem 21.3 / com 0.0 / fas 0.0 / neu 11.2 / nat 67.5；原执政 ^22（巴育军政府）
+ZZZ_gaw_gov_SIA = {
+	set_politics = {
+		ruling_party = democratic
+		elections_allowed = yes
+	}
+	set_popularities = {
+		democratic = 48.0
+		communism = 0.0
+		fascism = 0.0
+		neutrality = 16.0
+		nationalist = 36.0
+	}
+	set_variable = { party_pop_array^0 = 0 } #Western_Autocracy
+	set_variable = { party_pop_array^1 = 0.44 } #conservatism
+	set_variable = { party_pop_array^2 = 0.03 } #liberalism
+	set_variable = { party_pop_array^3 = 0.01 } #socialism
+	set_variable = { party_pop_array^4 = 0 } #communist_state
+	set_variable = { party_pop_array^5 = 0 } #anarchist_communism
+	set_variable = { party_pop_array^6 = 0 } #Conservative
+	set_variable = { party_pop_array^7 = 0 } #Autocracy
+	set_variable = { party_pop_array^8 = 0 } #Mod_Vilayat_e_Faqih
+	set_variable = { party_pop_array^9 = 0 } #Vilayat_e_Faqih
+	set_variable = { party_pop_array^10 = 0 } #Kingdom
+	set_variable = { party_pop_array^11 = 0 } #Caliphate
+	set_variable = { party_pop_array^12 = 0 } #Neutral_Muslim_Brotherhood
+	set_variable = { party_pop_array^13 = 0.02 } #Neutral_Autocracy
+	set_variable = { party_pop_array^14 = 0.10 } #Neutral_conservatism
+	set_variable = { party_pop_array^15 = 0 } #oligarchism
+	set_variable = { party_pop_array^16 = 0.02 } #Neutral_Libertarian
+	set_variable = { party_pop_array^17 = 0 } #Neutral_green
+	set_variable = { party_pop_array^18 = 0.02 } #neutral_Social
+	set_variable = { party_pop_array^19 = 0 } #Neutral_Communism
+	set_variable = { party_pop_array^20 = 0.06 } #Nat_Populism
+	set_variable = { party_pop_array^21 = 0.05 } #Nat_Fascism
+	set_variable = { party_pop_array^22 = 0.24 } #Nat_Autocracy
+	set_variable = { party_pop_array^23 = 0.01 } #Monarchist
+	clear_array = gov_coalition_array
+	set_variable = { ruling_party = 1 }
+	update_set_politics = yes
+	add_own_ideology_drift = yes
+	add_to_array = { gov_coalition_array = 14 }
+	update_government_coalition_strength = yes
+	update_party_name = yes
+	set_coalition_drift = yes
+	ZZZ_party_leader_SIA_abhisit = yes
+}
+
+# 泰国（SIA）：中国胜利后共产党政府，执政 ^4 communist_state
+# 基线（按 24 数组折算）：dem 21.3 / com 0.0 / fas 0.0 / neu 11.2 / nat 67.5；原执政 ^22（巴育军政府）
+# 中国胜利后由泰国共产党主导，共产主义大组过半，民族主义大组保留残余合法性
+ZZZ_gaw_gov_SIA_communist = {
+	set_politics = {
+		ruling_party = communism
+		elections_allowed = no
+	}
+	set_popularities = {
+		democratic = 20.0
+		communism = 48.0
+		fascism = 0.0
+		neutrality = 20.0
+		nationalist = 12.0
+	}
+	set_variable = { party_pop_array^0 = 0 } #Western_Autocracy
+	set_variable = { party_pop_array^1 = 0.06 } #conservatism
+	set_variable = { party_pop_array^2 = 0.10 } #liberalism
+	set_variable = { party_pop_array^3 = 0.04 } #socialism
+	set_variable = { party_pop_array^4 = 0.40 } #communist_state
+	set_variable = { party_pop_array^5 = 0.05 } #anarchist_communism
+	set_variable = { party_pop_array^6 = 0.03 } #Conservative
+	set_variable = { party_pop_array^7 = 0 } #Autocracy
+	set_variable = { party_pop_array^8 = 0 } #Mod_Vilayat_e_Faqih
+	set_variable = { party_pop_array^9 = 0 } #Vilayat_e_Faqih
+	set_variable = { party_pop_array^10 = 0 } #Kingdom
+	set_variable = { party_pop_array^11 = 0 } #Caliphate
+	set_variable = { party_pop_array^12 = 0 } #Neutral_Muslim_Brotherhood
+	set_variable = { party_pop_array^13 = 0.02 } #Neutral_Autocracy
+	set_variable = { party_pop_array^14 = 0.06 } #Neutral_conservatism
+	set_variable = { party_pop_array^15 = 0 } #oligarchism
+	set_variable = { party_pop_array^16 = 0.02 } #Neutral_Libertarian
+	set_variable = { party_pop_array^17 = 0 } #Neutral_green
+	set_variable = { party_pop_array^18 = 0.08 } #neutral_Social
+	set_variable = { party_pop_array^19 = 0.02 } #Neutral_Communism
+	set_variable = { party_pop_array^20 = 0.04 } #Nat_Populism
+	set_variable = { party_pop_array^21 = 0.03 } #Nat_Fascism
+	set_variable = { party_pop_array^22 = 0.04 } #Nat_Autocracy
+	set_variable = { party_pop_array^23 = 0.01 } #Monarchist
+	clear_array = gov_coalition_array
+	set_variable = { ruling_party = 4 }
+	update_set_politics = yes
+	add_own_ideology_drift = yes
+	add_to_array = { gov_coalition_array = 18 }
+	update_government_coalition_strength = yes
+	update_party_name = yes
+	set_coalition_drift = yes
+	ZZZ_party_leader_SIA_jaran_ditapichai = yes
+}
+
+# 日本（JAP）：战败后日共上台，执政 ^4 communist_state
+# 基线：dem 90.9（^1 0.698、^2 0.2、^3 0.011）/ com 9.1（^4 0.091）；原执政 ^1（自民党）
+ZZZ_gaw_gov_JAP = {
+	set_politics = {
+		ruling_party = communism
+		elections_allowed = no
+	}
+	set_popularities = {
+		democratic = 32.0
+		communism = 48.0
+		fascism = 0.0
+		neutrality = 15.0
+		nationalist = 5.0
+	}
+	set_variable = { party_pop_array^0 = 0.01 } #Western_Autocracy
+	set_variable = { party_pop_array^1 = 0.20 } #conservatism
+	set_variable = { party_pop_array^2 = 0.10 } #liberalism
+	set_variable = { party_pop_array^3 = 0.01 } #socialism
+	set_variable = { party_pop_array^4 = 0.40 } #communist_state
+	set_variable = { party_pop_array^5 = 0.05 } #anarchist_communism
+	set_variable = { party_pop_array^6 = 0.03 } #Conservative
+	set_variable = { party_pop_array^7 = 0 } #Autocracy
+	set_variable = { party_pop_array^8 = 0 } #Mod_Vilayat_e_Faqih
+	set_variable = { party_pop_array^9 = 0 } #Vilayat_e_Faqih
+	set_variable = { party_pop_array^10 = 0 } #Kingdom
+	set_variable = { party_pop_array^11 = 0 } #Caliphate
+	set_variable = { party_pop_array^12 = 0 } #Neutral_Muslim_Brotherhood
+	set_variable = { party_pop_array^13 = 0.02 } #Neutral_Autocracy
+	set_variable = { party_pop_array^14 = 0.10 } #Neutral_conservatism
+	set_variable = { party_pop_array^15 = 0 } #oligarchism
+	set_variable = { party_pop_array^16 = 0.02 } #Neutral_Libertarian
+	set_variable = { party_pop_array^17 = 0 } #Neutral_green
+	set_variable = { party_pop_array^18 = 0.01 } #neutral_Social
+	set_variable = { party_pop_array^19 = 0 } #Neutral_Communism
+	set_variable = { party_pop_array^20 = 0.03 } #Nat_Populism
+	set_variable = { party_pop_array^21 = 0.01 } #Nat_Fascism
+	set_variable = { party_pop_array^22 = 0.01 } #Nat_Autocracy
+	set_variable = { party_pop_array^23 = 0 } #Monarchist
+	clear_array = gov_coalition_array
+	set_variable = { ruling_party = 4 }
+	update_set_politics = yes
+	add_own_ideology_drift = yes
+	add_to_array = { gov_coalition_array = 2 }
+	update_government_coalition_strength = yes
+	update_party_name = yes
+	set_coalition_drift = yes
+	ZZZ_party_leader_JAP_kazuo_shii = yes
+}
+
+# 澳大利亚（AST）：社会主义化，执政 ^4 communist_state
+# 基线：dem 73.8 / com 7.5 / fas 0.0 / neu 18.7 / nat 0.0；原执政 ^1（特恩布尔）
+ZZZ_gaw_gov_AST = {
+	set_politics = {
+		ruling_party = communism
+		elections_allowed = no
+	}
+	set_popularities = {
+		democratic = 25.0
+		communism = 52.0
+		fascism = 0.0
+		neutrality = 17.0
+		nationalist = 6.0
+	}
+	set_variable = { party_pop_array^0 = 0 } #Western_Autocracy
+	set_variable = { party_pop_array^1 = 0.10 } #conservatism
+	set_variable = { party_pop_array^2 = 0.02 } #liberalism
+	set_variable = { party_pop_array^3 = 0.13 } #socialism
+	set_variable = { party_pop_array^4 = 0.38 } #communist_state
+	set_variable = { party_pop_array^5 = 0.09 } #anarchist_communism
+	set_variable = { party_pop_array^6 = 0.05 } #Conservative
+	set_variable = { party_pop_array^7 = 0 } #Autocracy
+	set_variable = { party_pop_array^8 = 0 } #Mod_Vilayat_e_Faqih
+	set_variable = { party_pop_array^9 = 0 } #Vilayat_e_Faqih
+	set_variable = { party_pop_array^10 = 0 } #Kingdom
+	set_variable = { party_pop_array^11 = 0 } #Caliphate
+	set_variable = { party_pop_array^12 = 0 } #Neutral_Muslim_Brotherhood
+	set_variable = { party_pop_array^13 = 0 } #Neutral_Autocracy
+	set_variable = { party_pop_array^14 = 0.04 } #Neutral_conservatism
+	set_variable = { party_pop_array^15 = 0 } #oligarchism
+	set_variable = { party_pop_array^16 = 0.03 } #Neutral_Libertarian
+	set_variable = { party_pop_array^17 = 0.10 } #Neutral_green
+	set_variable = { party_pop_array^18 = 0 } #neutral_Social
+	set_variable = { party_pop_array^19 = 0 } #Neutral_Communism
+	set_variable = { party_pop_array^20 = 0.03 } #Nat_Populism
+	set_variable = { party_pop_array^21 = 0.02 } #Nat_Fascism
+	set_variable = { party_pop_array^22 = 0.01 } #Nat_Autocracy
+	set_variable = { party_pop_array^23 = 0 } #Monarchist
+	clear_array = gov_coalition_array
+	set_variable = { ruling_party = 4 }
+	update_set_politics = yes
+	add_own_ideology_drift = yes
+	add_to_array = { gov_coalition_array = 5 }
+	update_government_coalition_strength = yes
+	update_party_name = yes
+	set_coalition_drift = yes
+	ZZZ_party_leader_AST_peter_symon = yes
+}
+
+# 新西兰（NZL）：社会主义化，执政 ^4 communist_state
+# 基线：dem 74.0 / com 8.0 / fas 0.0 / neu 14.0 / nat 4.0；原执政 ^1（英格利希）
+ZZZ_gaw_gov_NZL = {
+	set_politics = {
+		ruling_party = communism
+		elections_allowed = no
+	}
+	set_popularities = {
+		democratic = 24.0
+		communism = 54.0
+		fascism = 0.0
+		neutrality = 17.0
+		nationalist = 5.0
+	}
+	set_variable = { party_pop_array^0 = 0 } #Western_Autocracy
+	set_variable = { party_pop_array^1 = 0.10 } #conservatism
+	set_variable = { party_pop_array^2 = 0.03 } #liberalism
+	set_variable = { party_pop_array^3 = 0.11 } #socialism
+	set_variable = { party_pop_array^4 = 0.40 } #communist_state
+	set_variable = { party_pop_array^5 = 0.10 } #anarchist_communism
+	set_variable = { party_pop_array^6 = 0.04 } #Conservative
+	set_variable = { party_pop_array^7 = 0 } #Autocracy
+	set_variable = { party_pop_array^8 = 0 } #Mod_Vilayat_e_Faqih
+	set_variable = { party_pop_array^9 = 0 } #Vilayat_e_Faqih
+	set_variable = { party_pop_array^10 = 0 } #Kingdom
+	set_variable = { party_pop_array^11 = 0 } #Caliphate
+	set_variable = { party_pop_array^12 = 0 } #Neutral_Muslim_Brotherhood
+	set_variable = { party_pop_array^13 = 0 } #Neutral_Autocracy
+	set_variable = { party_pop_array^14 = 0.03 } #Neutral_conservatism
+	set_variable = { party_pop_array^15 = 0 } #oligarchism
+	set_variable = { party_pop_array^16 = 0.09 } #Neutral_Libertarian
+	set_variable = { party_pop_array^17 = 0.05 } #Neutral_green
+	set_variable = { party_pop_array^18 = 0 } #neutral_Social
+	set_variable = { party_pop_array^19 = 0 } #Neutral_Communism
+	set_variable = { party_pop_array^20 = 0.03 } #Nat_Populism
+	set_variable = { party_pop_array^21 = 0.01 } #Nat_Fascism
+	set_variable = { party_pop_array^22 = 0.01 } #Nat_Autocracy
+	set_variable = { party_pop_array^23 = 0 } #Monarchist
+	clear_array = gov_coalition_array
+	set_variable = { ruling_party = 4 }
+	update_set_politics = yes
+	add_own_ideology_drift = yes
+	add_to_array = { gov_coalition_array = 5 }
+	update_government_coalition_strength = yes
+	update_party_name = yes
+	set_coalition_drift = yes
+	ZZZ_party_leader_NZL_patrick_brown = yes
+}
+
+# 印度人民共和国（RAJ）：社会主义化，执政 ^4 communist_state
+# 基线：dem 18.0 / com 3.0 / fas 0.2 / neu 71.8 / nat 7.0；原执政 ^14（莫迪）
+# 注意：RAJ 在 ZZ9 里禁党 party5 / party12 / party20，故这三槽保持 0
+ZZZ_gaw_gov_RAJ = {
+	set_politics = {
+		ruling_party = communism
+		elections_allowed = no
+	}
+	set_popularities = {
+		democratic = 14.0
+		communism = 47.0
+		fascism = 0.0
+		neutrality = 34.0
+		nationalist = 5.0
+	}
+	set_variable = { party_pop_array^0 = 0.05 } #Western_Autocracy
+	set_variable = { party_pop_array^1 = 0.02 } #conservatism
+	set_variable = { party_pop_array^2 = 0 } #liberalism
+	set_variable = { party_pop_array^3 = 0.07 } #socialism
+	set_variable = { party_pop_array^4 = 0.40 } #communist_state
+	set_variable = { party_pop_array^5 = 0 } #anarchist_communism（RAJ 禁党）
+	set_variable = { party_pop_array^6 = 0.07 } #Conservative
+	set_variable = { party_pop_array^7 = 0 } #Autocracy
+	set_variable = { party_pop_array^8 = 0 } #Mod_Vilayat_e_Faqih
+	set_variable = { party_pop_array^9 = 0 } #Vilayat_e_Faqih
+	set_variable = { party_pop_array^10 = 0 } #Kingdom
+	set_variable = { party_pop_array^11 = 0 } #Caliphate
+	set_variable = { party_pop_array^12 = 0 } #Neutral_Muslim_Brotherhood（RAJ 禁党）
+	set_variable = { party_pop_array^13 = 0.05 } #Neutral_Autocracy
+	set_variable = { party_pop_array^14 = 0.21 } #Neutral_conservatism
+	set_variable = { party_pop_array^15 = 0 } #oligarchism
+	set_variable = { party_pop_array^16 = 0 } #Neutral_Libertarian
+	set_variable = { party_pop_array^17 = 0 } #Neutral_green
+	set_variable = { party_pop_array^18 = 0.05 } #neutral_Social
+	set_variable = { party_pop_array^19 = 0.03 } #Neutral_Communism
+	set_variable = { party_pop_array^20 = 0 } #Nat_Populism（RAJ 禁党）
+	set_variable = { party_pop_array^21 = 0 } #Nat_Fascism
+	set_variable = { party_pop_array^22 = 0.05 } #Nat_Autocracy
+	set_variable = { party_pop_array^23 = 0 } #Monarchist
+	clear_array = gov_coalition_array
+	set_variable = { ruling_party = 4 }
+	update_set_politics = yes
+	add_own_ideology_drift = yes
+	add_to_array = { gov_coalition_array = 14 }
+	update_government_coalition_strength = yes
+	update_party_name = yes
+	set_coalition_drift = yes
+	ZZZ_party_leader_RAJ_a_b_bardhan = yes
+}
+
+# 中俄联动：任一方明显劣势（丢首都 / 投降进度过半）时，另一方参战，保证"只会都赢或都输"
+ZZZ_gaw_sino_russian_linkage = {
+	if = {
+		limit = {
+			has_global_flag = pan_asian_war_ongoing
+			NOT = { has_global_flag = gaw_sino_russian_linkage_fired }
+			country_exists = CHI
+			country_exists = SOV
+			OR = {
+				CHI = { capital_scope = { NOT = { is_controlled_by = CHI } } }
+				CHI = { surrender_progress > 0.5 }
+				SOV = { capital_scope = { NOT = { is_controlled_by = SOV } } }
+				SOV = { surrender_progress > 0.5 }
+			}
+		}
+		set_global_flag = gaw_sino_russian_linkage_fired
+		if = {
+			limit = {
+				CHI = { has_war_with = JAP }
+				NOT = { SOV = { has_war_with = JAP } }
+			}
+			CHI = { add_to_faction = SOV }
+			SOV = { declare_war_on = { target = JAP type = annex_everything } }
+		}
+		else_if = {
+			limit = {
+				SOV = { has_war_with = JAP }
+				NOT = { CHI = { has_war_with = JAP } }
+			}
+			CHI = { declare_war_on = { target = JAP type = annex_everything } }
+		}
+	}
+}

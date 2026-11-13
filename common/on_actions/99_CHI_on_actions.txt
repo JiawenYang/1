@@ -104,14 +104,6 @@ on_actions = {
 				}
 				if = {
 					limit = {
-						has_country_flag = CHI_harris_us_support_floor
-						check_variable = { CHI_taiwan_us_support < 40 }
-						NOT = { USA = { has_country_flag = USA_withdrew_support_TAI } }
-					}
-					set_variable = { CHI_taiwan_us_support = 40 }
-				}
-				if = {
-					limit = {
 						check_variable = { CHI_taiwan_recognition_count < 5 }
 						NOT = { has_country_flag = CHI_taiwan_diplomatic_alone }
 					}

@@ -52,12 +52,16 @@ country_event = {
 		tag = SOV
 	}
 	immediate = {
-		remove_dynamic_modifier = {
-			modifier = DSW_SOV_preparation_bonus
-		}
-		load_focus_tree = {
-			tree = DSW_SOV_putin_preparation
-			keep_completed = no
+		hidden_effect = {
+			DSW_SOV_remove_preparation_bonuses = yes
+			remove_dynamic_modifier = {
+				modifier = DSW_SOV_preparation_bonus
+			}
+			load_focus_tree = {
+				tree = DSW_SOV_putin_preparation
+				keep_completed = no
+			}
+			DSW_SOV_begin_command_reforms = yes
 		}
 	}
 	option = {
@@ -114,7 +118,7 @@ country_event = {
 	}
 	option = {
 		name = dsw_sov.test_war
-		DSW_SOV_start_ukrainian_war = yes
+		DSW_SOV_declare_war_on_ukraine = yes
 	}
 	option = {
 		name = dsw_sov.test_stalemate
@@ -151,6 +155,8 @@ country_event = {
 	}
 	immediate = {
 		DSW_UKR_raise_emergency_infantry = yes
+		# 无论动员是否成功都置位，避免 on_daily_SOV 逐日重复派发本事件
+		set_country_flag = DSW_UKR_emergency_mobilized
 	}
 	option = {
 		name = dsw_sov.11.a

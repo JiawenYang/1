@@ -157,174 +157,6 @@ SOV_communist_party_balance = {
 		}
 	}
 }
-SOV_LDPR_balance = {
-	initial_value = 0.20
-	left_side = SOV_supreme_council
-	right_side = SOV_zhirinovskites
-	decision_category = SOV_LDPR_balance_category
-	range = {
-		id = SOV_ldpr_middle
-		min = -0.15
-		max = 0.15
-		modifier = {
-			war_support_factor = 0
-			political_power_factor = 0
-			stability_factor = 0
-		}
-		on_activate = {
-
-		}
-		on_deactivate = {
-
-		}
-	}
-	side = {
-		id = SOV_supreme_council
-		icon = GFX_bop_SOV_LDPR_council
-		range = {
-			id = SOV_supreme_council_total_dominance
-			min = -1
-			max = -0.9
-			modifier = {
-				war_support_factor = -0.15
-				political_power_factor = -0.15
-				stability_factor = 0.15
-				conservative_drift = 0.005
-				authoritarian_democrat_drift = 0.005
-			}
-			on_activate = {
-
-			}
-			on_deactivate = {
-
-			}
-		}
-		range = {
-			id = SOV_supreme_council_dominant_range
-			min = -0.9
-			max = -0.65
-			modifier = {
-				war_support_factor = -0.1
-				political_power_factor = -0.1
-				stability_factor = 0.1
-				authoritarian_democrat_drift = 0.002
-			}
-			on_activate = {
-
-			}
-			on_deactivate = {
-
-			}
-		}
-		range = {
-			id = SOV_supreme_council_power_range
-			min = -0.65
-			max = -0.35
-			modifier = {
-				war_support_factor = -0.075
-				political_power_factor = -0.05
-				stability_factor = 0.05
-				research_speed_factor = 0.02
-			}
-			on_activate = {
-
-			}
-			on_deactivate = {
-
-			}
-		}
-		range = {
-			id = SOV_supreme_council_influence_range
-			min = -0.35
-			max = -0.15
-			modifier = {
-				war_support_factor = -0.05
-				political_power_factor = -0.025
-				stability_factor = 0.025
-			}
-			on_activate = {
-
-			}
-			on_deactivate = {
-
-			}
-		}
-	}
-	side = {
-		id = SOV_zhirinovskites
-		icon = GFX_bop_SOV_Zhir
-		range = {
-			id = SOV_SOV_zhirinovskites_influence_range
-			min = 0.15
-			max = 0.35
-			modifier = {
-				war_support_factor = 0.05
-				political_power_factor = 0.025
-				stability_factor = -0.025
-			}
-			on_activate = {
-
-			}
-			on_deactivate = {
-
-			}
-		}
-		range = {
-			id = SOV_SOV_zhirinovskites_power_range
-			min = 0.35
-			max = 0.65
-			modifier = {
-				war_support_factor = 0.075
-				political_power_factor = 0.05
-				stability_factor = -0.025
-				personal_value_factor = -0.05
-			}
-			on_activate = {
-
-			}
-			on_deactivate = {
-
-			}
-		}
-		range = {
-			id = SOV_SOV_zhirinovskites_dominant_range
-			min = 0.65
-			max = 0.9
-			modifier = {
-				war_support_factor = 0.1
-				political_power_factor = 0.1
-				stability_factor = -0.1
-				personal_value_factor = -0.1
-				fascist_drift = 0.002
-			}
-			on_activate = {
-
-			}
-			on_deactivate = {
-
-			}
-		}
-		range = {
-			id = SOV_SOV_zhirinovskites_total_control
-			min = 0.9
-			max = 1
-			modifier = {
-				war_support_factor = 0.15
-				political_power_factor = 0.15
-				stability_factor = -0.15
-				personal_value_factor = -0.15
-				fascist_drift = 0.005
-				national_socialist_drift = 0.002
-			}
-			on_activate = {
-
-			}
-			on_deactivate = {
-
-			}
-		}
-	}
-}
 SOV_soviet_navalny_balance = {
 	initial_value = -0.9
 	left_side = SOV_communists
@@ -353,7 +185,7 @@ SOV_soviet_navalny_balance = {
 			max = -0.9
 			modifier = {
 				stability_factor = 0.15
-				libertarian_socialist_drift = 0.03
+				neutrality_drift = 0.03
 			}
 			on_activate = {
 
@@ -368,7 +200,7 @@ SOV_soviet_navalny_balance = {
 			max = -0.65
 			modifier = {
 				stability_factor = 0.1
-				libertarian_socialist_drift = 0.02
+				neutrality_drift = 0.02
 			}
 			on_activate = {
 
@@ -383,7 +215,7 @@ SOV_soviet_navalny_balance = {
 			max = -0.35
 			modifier = {
 				stability_factor = 0.05
-				libertarian_socialist_drift = 0.01
+				neutrality_drift = 0.01
 			}
 			on_activate = {
 				hidden_effect = {
@@ -450,7 +282,7 @@ SOV_soviet_navalny_balance = {
 			max = 0.65
 			modifier = {
 				stability_factor = -0.05
-				social_liberal_drift = 0.01
+				democratic_drift = 0.01
 			}
 			on_activate = {
 				country_event = {
@@ -467,7 +299,7 @@ SOV_soviet_navalny_balance = {
 			max = 0.9
 			modifier = {
 				stability_factor = -0.1
-				social_liberal_drift = 0.02
+				democratic_drift = 0.02
 			}
 			on_activate = {
 
@@ -482,7 +314,7 @@ SOV_soviet_navalny_balance = {
 			max = 1
 			modifier = {
 				stability_factor = -0.15
-				social_liberal_drift = 0.03
+				democratic_drift = 0.03
 			}
 			on_activate = {
 
@@ -521,7 +353,7 @@ SOV_soviet_solovyev_balance = {
 			max = -0.9
 			modifier = {
 				stability_factor = 0.15
-				libertarian_socialist_drift = 0.03
+				neutrality_drift = 0.03
 			}
 			on_activate = {
 
@@ -536,7 +368,7 @@ SOV_soviet_solovyev_balance = {
 			max = -0.65
 			modifier = {
 				stability_factor = 0.1
-				libertarian_socialist_drift = 0.02
+				neutrality_drift = 0.02
 			}
 			on_activate = {
 
@@ -551,7 +383,7 @@ SOV_soviet_solovyev_balance = {
 			max = -0.35
 			modifier = {
 				stability_factor = 0.05
-				libertarian_socialist_drift = 0.01
+				neutrality_drift = 0.01
 			}
 			on_activate = {
 				hidden_effect = {
@@ -601,7 +433,7 @@ SOV_soviet_solovyev_balance = {
 			min = 0.15
 			max = 0.35
 			modifier = {
-				authoritarian_democrat_drift = 0.02
+				democratic_drift = 0.02
 				war_support_factor = 0.01
 			}
 			on_activate = {
@@ -616,7 +448,7 @@ SOV_soviet_solovyev_balance = {
 			min = 0.35
 			max = 0.65
 			modifier = {
-				authoritarian_democrat_drift = 0.05
+				democratic_drift = 0.05
 				war_support_factor = 0.015
 			}
 			on_activate = {
@@ -631,7 +463,7 @@ SOV_soviet_solovyev_balance = {
 			min = 0.65
 			max = 0.9
 			modifier = {
-				authoritarian_democrat_drift = 0.05
+				democratic_drift = 0.05
 				war_support_factor = 0.02
 			}
 			on_activate = {
@@ -646,7 +478,7 @@ SOV_soviet_solovyev_balance = {
 			min = 0.9
 			max = 1
 			modifier = {
-				authoritarian_democrat_drift = 0.10
+				democratic_drift = 0.10
 				war_support_factor = 0.03
 			}
 			on_activate = {
@@ -672,8 +504,7 @@ SOV_medvedev_elections_balance = {
 		max = 0.15
 		modifier = {
 			hidden_modifier = {
-				social_liberal_drift = 0.03
-				market_liberal_drift = 0.03
+				democratic_drift = 0.03
 			}
 			political_power_gain = 0.25
 		}
@@ -694,8 +525,8 @@ SOV_medvedev_elections_balance = {
 			modifier = {
 				political_power_gain = 0.10
 				stability_factor = -0.075
-				social_democrat_drift = 0.01
-				libertarian_socialist_drift = 0.01
+				democratic_drift = 0.01
+				neutrality_drift = 0.01
 			}
 			on_activate = {
 
@@ -711,8 +542,8 @@ SOV_medvedev_elections_balance = {
 			modifier = {
 				political_power_gain = 0.05
 				stability_factor = -0.05
-				social_democrat_drift = 0.01
-				libertarian_socialist_drift = 0.01
+				democratic_drift = 0.01
+				neutrality_drift = 0.01
 			}
 			on_activate = {
 
@@ -732,8 +563,7 @@ SOV_medvedev_elections_balance = {
 			modifier = {
 				political_power_gain = -0.05
 				stability_factor = 0.05
-				conservative_drift = 0.01
-				authoritarian_democrat_drift = 0.01
+				democratic_drift = 0.01
 			}
 			on_activate = {
 
@@ -749,8 +579,7 @@ SOV_medvedev_elections_balance = {
 			modifier = {
 				political_power_gain = -0.10
 				stability_factor = 0.075
-				conservative_drift = 0.01
-				authoritarian_democrat_drift = 0.01
+				democratic_drift = 0.01
 			}
 			on_activate = {
 
@@ -771,7 +600,7 @@ SOV_nadezhdin_onf_balance = {
 		min = -0.25
 		max = 0.25
 		modifier = {
-			market_liberal_drift = 0.05
+			democratic_drift = 0.05
 			political_power_factor = 0.15
 			stability_factor = 0.05
 			society_development_monthly = 0.01
@@ -809,7 +638,7 @@ SOV_nadezhdin_onf_balance = {
 			min = -0.80
 			max = -0.25
 			modifier = {
-				social_democrat_drift = 0.03
+				democratic_drift = 0.03
 				poverty_development_monthly = 0.01
 			}
 			on_activate = {
@@ -842,7 +671,7 @@ SOV_nadezhdin_onf_balance = {
 			min = 0.25
 			max = 0.80
 			modifier = {
-				conservative_drift = 0.03
+				democratic_drift = 0.03
 				industrial_development_monthly = 0.01
 			}
 			on_activate = {
@@ -897,8 +726,8 @@ SOV_dugin_power_balance = {
 		max = 0.35
 		modifier = {
 			political_power_factor = 0.05
-			national_socialist_drift = 0.01
-			totalitarian_socialist_drift = 0.01
+			nationalist_drift = 0.01
+			communism_drift = 0.01
 		}
 		on_activate = {
 
@@ -917,7 +746,7 @@ SOV_dugin_power_balance = {
 			modifier = {
 				political_power_gain = -0.15
 				war_support_factor = 0.15
-				totalitarian_socialist_drift = 0.05
+				communism_drift = 0.05
 				stability_factor = -0.055
 				personal_value_factor = 0.1
 			}
@@ -935,9 +764,9 @@ SOV_dugin_power_balance = {
 			modifier = {
 				political_power_gain = -0.05
 				war_support_factor = 0.1
-				totalitarian_socialist_drift = 0.02
+				communism_drift = 0.02
 				stability_factor = -0.015
-				national_socialist_drift = 0.01
+				nationalist_drift = 0.01
 				personal_value_factor = 0.1
 			}
 			on_activate = {
@@ -953,8 +782,8 @@ SOV_dugin_power_balance = {
 			max = -0.35
 			modifier = {
 				war_support_factor = 0.05
-				totalitarian_socialist_drift = 0.02
-				national_socialist_drift = 0.02
+				communism_drift = 0.02
+				nationalist_drift = 0.02
 				personal_value_factor = 0.1
 			}
 			on_activate = {
@@ -974,8 +803,8 @@ SOV_dugin_power_balance = {
 			max = 0.65
 			modifier = {
 				stability_factor = 0.05
-				totalitarian_socialist_drift = 0.02
-				national_socialist_drift = 0.02
+				communism_drift = 0.02
+				nationalist_drift = 0.02
 				army_morale_factor = 0.015
 				local_non_core_manpower = 0.02
 			}
@@ -993,8 +822,8 @@ SOV_dugin_power_balance = {
 			modifier = {
 				political_power_factor = -0.05
 				stability_factor = 0.05
-				totalitarian_socialist_drift = 0.01
-				national_socialist_drift = 0.02
+				communism_drift = 0.01
+				nationalist_drift = 0.02
 				army_morale_factor = 0.02
 				local_non_core_manpower = 0.025
 			}
@@ -1012,7 +841,7 @@ SOV_dugin_power_balance = {
 			modifier = {
 				political_power_gain = -0.15
 				stability_factor = 0.1
-				national_socialist_drift = 0.02
+				nationalist_drift = 0.02
 				army_morale_factor = 0.05
 				local_non_core_manpower = 0.05
 				personal_value_factor = 0.05

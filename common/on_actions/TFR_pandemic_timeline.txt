@@ -45,7 +45,7 @@ on_actions = {
 					country_event = { id = russia.20 days = 691 }
 				}
 				GER = {
-					country_event = { id = germany.11 days = 50 }
+					country_event = { id = tfr_germany.11 days = 50 }
 				}
 				HUN = {
 					country_event = { id = Hungary.13 days = 63 }
@@ -61,7 +61,7 @@ on_actions = {
 					country_event = { id = syria.15 days = 517 }
 				}
 				SIA = {
-					country_event = { id = thailand.1 days = 12 }
+					country_event = { id = tfr_thailand.1 days = 12 }
 				}
 			}
 			# 2020 年切换为烈焰升腾的中国国策树（保留2017开局以来已完成的千禧黎明国策）
@@ -171,6 +171,15 @@ on_actions = {
 	# 日本：2020 年新冠疫情时间线
 	on_daily_JAP = {
 		effect = {
+			# 2020 年解锁移植的日本国策：allow_branch 只在国策树加载时判定，需刷新一次布局
+			if = {
+				limit = {
+					date > 2019.12.31
+					NOT = { has_country_flag = TFR_japan_2020_focus_unlocked }
+				}
+				set_country_flag = TFR_japan_2020_focus_unlocked
+				mark_focus_tree_layout_dirty = yes
+			}
 			if = {
 				limit = {
 					date > 2020.1.16
@@ -209,7 +218,7 @@ on_actions = {
 					date > 2020.2.20
 					NOT = { has_country_flag = GER_COVID_ongoing }
 				}
-				country_event = { id = germany.11 days = 1 }
+				country_event = { id = tfr_germany.11 days = 1 }
 			}
 		}
 	}
@@ -285,7 +294,7 @@ on_actions = {
 					NOT = { has_country_flag = TFR_pandemic_thailand_1 }
 				}
 				set_country_flag = TFR_pandemic_thailand_1
-				country_event = { id = thailand.1 days = 1 }
+				country_event = { id = tfr_thailand.1 days = 1 }
 			}
 		}
 	}

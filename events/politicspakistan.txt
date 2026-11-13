@@ -14,7 +14,7 @@ news_event = {
 	immediate = {
 		PAK = {
 			create_country_leader = {
-				name = "Shahid Khaqan Abbasi"
+				name = PAK_shahid_khaqan_abbasi
 				picture = "Shahid_Khaqan_Abbasi.dds"
 				ideology = Conservative
 				traits = {
@@ -51,14 +51,6 @@ news_event = {
 				neutrality = 0.0
 				nationalist = 42.1
 			}
-			create_country_leader = {
-				name = "Imran Khan"
-				picture = "PAK_Imran_Khan.dds"
-				ideology = Nat_Populism
-				traits = {
-					nationalist_Nat_Populism
-				}
-			}
 			set_variable = { party_pop_array^0 = 0 } #Western_Autocracy
 			set_variable = { party_pop_array^1 = 0 } #conservatism
 			set_variable = { party_pop_array^2 = 0.018 } #liberalism
@@ -83,14 +75,22 @@ news_event = {
 			set_variable = { party_pop_array^21 = 0.001 } #Nat_Fascism
 			set_variable = { party_pop_array^22 = 0.012 } #Nat_Autocracy
 			set_variable = { party_pop_array^23 = 0 } #Monarchist
-			clear_array = ruling_party
 			clear_array = gov_coalition_array
-			add_to_array = { ruling_party = 6 }
+			set_variable = { ruling_party = 20 }
+			update_set_politics = yes
+			add_own_ideology_drift = yes
 			add_to_array = { gov_coalition_array = 22 }
 			update_government_coalition_strength = yes
 			update_party_name = yes
 			set_coalition_drift = yes
-			recalculate_party = yes
+			create_country_leader = {
+				name = PAK_imran_khan
+				picture = "PAK_Imran_Khan.dds"
+				ideology = Nat_Populism
+				traits = {
+					nationalist_Nat_Populism
+				}
+			}
 		}
 	}
 }
@@ -112,23 +112,23 @@ news_event = {
 				ruling_party = communism
 				elections_allowed = yes
 			}
+			clear_array = gov_coalition_array
+			set_variable = { ruling_party = 6 }
+			update_set_politics = yes
+			add_own_ideology_drift = yes
+			add_to_array = { gov_coalition_array = 3 }
+			add_to_array = { gov_coalition_array = 5 }
+			update_government_coalition_strength = yes
+			update_party_name = yes
+			set_coalition_drift = yes
 			create_country_leader = {
-				name = "Shehbaz Sharif"
+				name = PAK_shehbaz_sharif
 				picture = "Shehbaz_Sharif.dds"
 				ideology = Conservative
 				traits = {
 					emerging_Conservative
 				}
 			}
-			clear_array = ruling_party
-			clear_array = gov_coalition_array
-			add_to_array = { ruling_party = 6 }
-			add_to_array = { gov_coalition_array = 3 }
-			add_to_array = { gov_coalition_array = 5 }
-			update_government_coalition_strength = yes
-			update_party_name = yes
-			set_coalition_drift = yes
-			recalculate_party = yes
 		}
 	}
 }
@@ -183,14 +183,14 @@ news_event = {
 			set_variable = { party_pop_array^21 = 0.044 } #Nat_Fascism
 			set_variable = { party_pop_array^22 = 0.007 } #Nat_Autocracy
 			set_variable = { party_pop_array^23 = 0 } #Monarchist
-			clear_array = ruling_party
 			clear_array = gov_coalition_array
-			add_to_array = { ruling_party = 6 }
+			set_variable = { ruling_party = 6 }
+			update_set_politics = yes
+			add_own_ideology_drift = yes
 			add_to_array = { gov_coalition_array = 3 }
 			update_government_coalition_strength = yes
 			update_party_name = yes
 			set_coalition_drift = yes
-			recalculate_party = yes
 		}
 	}
 }

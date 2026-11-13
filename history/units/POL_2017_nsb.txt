@@ -10,6 +10,13 @@ division_template = {
 		Mech_Inf_Bat = { x = 1 y = 0 }
 		Mech_Inf_Bat = { x = 1 y = 1 }
 	}
+	support = {
+		SP_arty_battery = { x = 0 y = 0 }
+		SP_AA_Battery = { x = 0 y = 1 }
+		armor_Recce_Comp = { x = 0 y = 2 }
+		H_Engi_Comp = { x = 0 y = 3 }
+		combat_service_support_company = { x = 0 y = 4 }
+	}
 }
 division_template = {
 	name = "Mechanized Brigade"
@@ -22,6 +29,13 @@ division_template = {
 		SP_AA_Bat = { x = 0 y = 4 }
 		Mech_Inf_Bat = { x = 1 y = 0 }
 		L_Inf_Bat = { x = 2 y = 0 }
+	}
+	support = {
+		SP_arty_battery = { x = 0 y = 0 }
+		SP_AA_Battery = { x = 0 y = 1 }
+		armor_Recce_Comp = { x = 0 y = 2 }
+		H_Engi_Comp = { x = 0 y = 3 }
+		combat_service_support_company = { x = 0 y = 4 }
 	}
 }
 division_template = {
@@ -36,6 +50,13 @@ division_template = {
 		Mech_Inf_Bat = { x = 1 y = 0 }
 		Mech_Inf_Bat = { x = 1 y = 1 }
 	}
+	support = {
+		SP_arty_battery = { x = 0 y = 0 }
+		SP_AA_Battery = { x = 0 y = 1 }
+		armor_Recce_Comp = { x = 0 y = 2 }
+		H_Engi_Comp = { x = 0 y = 3 }
+		combat_service_support_company = { x = 0 y = 4 }
+	}
 }
 division_template = {
 	name = "Coastal Brigade"
@@ -49,6 +70,13 @@ division_template = {
 		Mech_Inf_Bat = { x = 1 y = 0 }
 		Mech_Inf_Bat = { x = 1 y = 1 }
 	}
+	support = {
+		SP_arty_battery = { x = 0 y = 0 }
+		SP_AA_Battery = { x = 0 y = 1 }
+		Mech_Recce_Comp = { x = 0 y = 2 }
+		H_Engi_Comp = { x = 0 y = 3 }
+		combat_service_support_company = { x = 0 y = 4 }
+	}
 }
 division_template = {
 	name = "Airborne Brigade"
@@ -57,6 +85,11 @@ division_template = {
 		L_Air_Inf_Bat = { x = 0 y = 0 }
 		L_Air_Inf_Bat = { x = 0 y = 1 }
 		L_Air_Inf_Bat = { x = 0 y = 2 }
+	}
+	support = {
+		L_Recce_Comp = { x = 0 y = 0 }
+		L_Engi_Comp = { x = 0 y = 1 }
+		combat_service_support_company = { x = 0 y = 2 }
 	}
 }
 division_template = {
@@ -84,12 +117,25 @@ division_template = {
 		SP_AA_Bat = { x = 1 y = 0 }
 		L_Inf_Bat = { x = 2 y = 0 }
 	}
+	support = {
+		SP_arty_battery = { x = 0 y = 0 }
+		SP_AA_Battery = { x = 0 y = 1 }
+		Mot_Recce_Comp = { x = 0 y = 2 }
+		H_Engi_Comp = { x = 0 y = 3 }
+		combat_service_support_company = { x = 0 y = 4 }
+	}
 }
 division_template = {
 	name = "Komandosi"
 
 	regiments = {
 		GROM_Bat_POL = { x = 0 y = 0 }
+	}
+
+	support = {
+		L_Recce_Comp = { x = 0 y = 0 }
+		L_Engi_Comp = { x = 0 y = 1 }
+		combat_service_support_company = { x = 0 y = 2 }
 	}
 
 	priority = 2
@@ -266,16 +312,16 @@ instant_effect = {
 	### Sealed Storage（封存）###
 	#坦克——冷战遗产
 	add_equipment_to_stockpile = {
-		variant_name = "T-72"
+		variant_name = "T-72M1"
 		type = medium_tank_chassis_1 #T-72（封存）
 		amount = 300
-		producer = SOV
+		producer = POL
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "T-55"
+		variant_name = "T-55L"
 		type = medium_tank_chassis_0 #T-55（封存）
 		amount = 400
-		producer = SOV
+		producer = POL
 	}
 	#IFV/APC
 	add_equipment_to_stockpile = {
@@ -285,14 +331,14 @@ instant_effect = {
 		producer = SOV
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "BTR-60"
+		variant_name = "BTR-60PB"
 		type = medium_tank_amphibious_chassis_0 #BTR-60（封存）
 		amount = 40
 		producer = SOV
 	}
 	add_equipment_to_stockpile = {
 		variant_name = "MT-LB"
-		type = medium_tank_amphibious_chassis_1 #MT-LB（封存）
+		type = medium_tank_amphibious_chassis_0 #MT-LB（封存）
 		amount = 60
 		producer = SOV
 	}
@@ -313,7 +359,7 @@ instant_effect = {
 		variant_name = "2S1 Goździk"
 		type = medium_tank_artillery_chassis_0 #2S1 Goździk（封存）
 		amount = 100
-		producer = SOV
+		producer = POL
 	}
 	add_equipment_to_stockpile = {
 		variant_name = "BM-21 Grad"
@@ -323,9 +369,10 @@ instant_effect = {
 	}
 	#防空
 	add_equipment_to_stockpile = {
+		variant_name = "ZU-23-2"
 		type = Anti_Air_0 #ZU-23/S-60牵引高炮（封存）
 		amount = 200
-		producer = POL
+		producer = SOV
 	}
 	add_equipment_to_stockpile = {
 		variant_name = "9K33 Osa"
@@ -335,38 +382,39 @@ instant_effect = {
 	}
 	#反坦克
 	add_equipment_to_stockpile = {
-		variant_name = "RPG-7"
+		variant_name = "RPG-7V"
 		type = Anti_tank_1 #RPG-7/老型反坦克武器（封存）
 		amount = 150
 		producer = SOV
 	}
 	#老卡车
 	add_equipment_to_stockpile = {
-		type = util_vehicle_2 #Star/ZiL老卡车（封存）
+		variant_name = "ZIL-131"
+		type = util_vehicle_1 #Star/ZiL老卡车（封存）
 		amount = 800
 		producer = POL
 	}
 
 	add_equipment_to_stockpile = {
-		variant_name = "Beryl C"
+		variant_name = "Beryl C (wz.96)"
 		type = infantry_weapons_4 #Beryl C (wz.96)
 		producer = POL
 		amount = 80000
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "HK416"
+		variant_name = "HK416 for special forces"
 		type = infantry_weapons_6 #HK416 for special forces
 		amount = 550
 		producer = POL
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "Grot"
+		variant_name = "MSBS Grot"
 		type = infantry_weapons_6 #Grot
 		producer = POL
 		amount = 160
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "AKM"
+		variant_name = "AKM/PmK"
 		type = infantry_weapons_2 #AKM/PmK（封存）
 		producer = SOV
 		amount = 100000
@@ -374,7 +422,7 @@ instant_effect = {
 	add_equipment_to_stockpile = {
 		variant_name = "SPG-9"
 		type = Anti_tank_1 #SPG-9
-		producer = POL
+		producer = SOV
 		amount = 65
 	}
 	add_equipment_to_stockpile = {
@@ -396,38 +444,42 @@ instant_effect = {
 		producer = ISR
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "C4ISTAR"
 		type = cnc_equipment_3 #C4ISTAR
 		producer = POL
 		amount = 1030
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "Grom"
-		type = Anti_Air_2 #Grom
+		variant_name = "PZR Grom"
+		type = Anti_Air_1
 		producer = POL
 		amount = 330
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "PT-91"
 		type = medium_tank_chassis_1
 		amount = 142
-		producer = GER
+		producer = POL
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "Leopard 2A5"
 		type = medium_tank_chassis_1
 		amount = 91
 		producer = GER
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "T-72M1"
 		type = medium_tank_chassis_1
 		producer = POL
 		amount = 233
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "T-72A"
 		type = medium_tank_chassis_1
 		amount = 505
 		producer = SOV
 	}
 	add_equipment_to_stockpile = {
+		variant_name = "T-55AM Merida"
 		type = medium_tank_chassis_0
 		producer = POL
 		amount = 500
@@ -439,19 +491,19 @@ instant_effect = {
 		amount = 396 #Added 159 for balance
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "BMP-1"
+		variant_name = "BWR (BMP-1)"
 		type = medium_tank_amphibious_chassis_0 #BWR (BMP-1)
 		producer = SOV
 		amount = 37
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "BRDM-2"
+		variant_name = "WD R-5 (BDRM-2)"
 		type = medium_tank_amphibious_chassis_0 #WD R-5 (BDRM-2)
 		producer = SOV
 		amount = 92
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "Rosomak"
+		variant_name = "KTO Rosomak"
 		type = medium_tank_amphibious_chassis_2 #Rosomak
 		producer = POL
 		amount = 270
@@ -470,7 +522,7 @@ instant_effect = {
 	}
 	add_equipment_to_stockpile = {
 		variant_name = "KTO Rosomak"
-		type = medium_tank_flame_chassis_2 #KTO Rosomak
+		type = medium_tank_amphibious_chassis_2 #KTO Rosomak
 		producer = POL
 		amount = 470
 	}
@@ -487,14 +539,12 @@ instant_effect = {
 		producer = USA
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "M-ATV"
-		type = util_vehicle_5 #M-ATV
+		type = heavy_util_vehicle_6 #M-ATV
 		amount = 45
 		producer = POL
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "MaxxPro"
-		type = util_vehicle_6 #MaxxPro MRAP
+		type = heavy_util_vehicle_6 #MaxxPro MRAP
 		amount = 30
 		producer = USA
 	}
@@ -535,20 +585,20 @@ instant_effect = {
 		amount = 75
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "ZSU-23"
-		type = medium_tank_aa_chassis_0 #ZSU-23
+		variant_name = "ZSU23"
+		type = SP_Anti_Air_0
 		amount = 208 #added +180 for balance
 		producer = SOV
 	}
  
 	add_equipment_to_stockpile = {
-		variant_name = "Mi-24"
-		type = heavy_tank_chassis_0 #MI-24
+		variant_name = "Mi-24P"
+    type = heavy_tank_chassis_0 #MI-24
 		amount = 28
 		producer = SOV
 	}
 	add_equipment_to_stockpile = {
-		variant_name = "Mi-8"
+		variant_name = "Mil Mi-8T"
 		type = transport_helicopter_1 #Mil Mi-8
 		amount = 26
 		producer = SOV
@@ -564,5 +614,17 @@ instant_effect = {
 		type = transport_helicopter_2 #PZL SW-4
 		producer = POL
 		amount = 24
+	}
+	add_equipment_to_stockpile = {
+		type = Heavy_Anti_tank_1
+		producer = POL
+		amount = 372
+	}
+	# Orphan variant attachment (2017 real-world holdings)
+	add_equipment_to_stockpile = {
+		type = large_plane_air_transport_airframe_1
+		variant_name = "C-295M"
+		amount = 16
+		producer = POL
 	}
 }

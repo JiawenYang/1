@@ -155,6 +155,19 @@ DSW_SOV_european_victory_conditions = {
 			}
 		}
 	}
+	# 乌克兰：结算会将其转为傀儡并拉入阵营，胜利判定必须同步纳入
+	OR = {
+		NOT = {
+			country_exists = UKR
+		}
+		UKR = {
+			OR = {
+				has_capitulated = yes
+				is_subject_of = SOV
+				is_in_faction_with = SOV
+			}
+		}
+	}
 	DSW_SOV_caucasus_secured = yes
 }
 DSW_SOV_european_defeat_conditions = {

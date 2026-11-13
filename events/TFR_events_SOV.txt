@@ -145,45 +145,32 @@ country_event = {
 			value = 0.03
 		}
 		SOV_add_election_approval_rating_nav = yes
-	}
-	if = {
-		limit = {
-			has_game_rule = {
-				rule = SOV_ai_behavior
-				option = CPRF
+		if = {
+			limit = {
+				has_game_rule = {
+					rule = SOV_ai_behavior
+					option = CPRF
+				}
 			}
-		}
-		set_temp_variable = {
-			var = SOV_election_approval_rating_cprf_var_temp
-			value = 1
-		}
-		SOV_add_election_approval_rating_cprf = yes
-	}
-	if = {
-		limit = {
-			has_game_rule = {
-				rule = SOV_ai_behavior
-				option = LDPR
+			set_temp_variable = {
+				var = SOV_election_approval_rating_cprf_var_temp
+				value = 1
 			}
+			SOV_add_election_approval_rating_cprf = yes
 		}
-		set_temp_variable = {
-			var = SOV_election_approval_rating_ldpr_var_temp
-			value = 1
-		}
-		SOV_add_election_approval_rating_ldpr = yes
-	}
-	if = {
-		limit = {
-			has_game_rule = {
-				rule = SOV_ai_behavior
-				option = UNITED_RUSSIA
+		if = {
+			limit = {
+				has_game_rule = {
+					rule = SOV_ai_behavior
+					option = UNITED_RUSSIA
+				}
 			}
+			set_temp_variable = {
+				var = SOV_election_approval_rating_ur_var_temp
+				value = 1
+			}
+			SOV_add_election_approval_rating_ur = yes
 		}
-		set_temp_variable = {
-			var = SOV_election_approval_rating_ur_var_temp
-			value = 1
-		}
-		SOV_add_election_approval_rating_ur = yes
 	}
 }
 country_event = {
@@ -219,11 +206,6 @@ country_event = {
 	is_triggered_only = yes
 	option = {
 		name = dsw_tfr_russia.14.a
-		set_temp_variable = {
-			var = SOV_election_approval_rating_ldpr_var_temp
-			value = 0.02
-		}
-		SOV_add_election_approval_rating_ldpr = yes
 		if = {
 			limit = {
 				has_game_rule = {
@@ -236,19 +218,6 @@ country_event = {
 				value = 1
 			}
 			SOV_add_election_approval_rating_cprf = yes
-		}
-		if = {
-			limit = {
-				has_game_rule = {
-					rule = SOV_ai_behavior
-					option = LDPR
-				}
-			}
-			set_temp_variable = {
-				var = SOV_election_approval_rating_ldpr_var_temp
-				value = 1
-			}
-			SOV_add_election_approval_rating_ldpr = yes
 		}
 		if = {
 			limit = {
@@ -404,7 +373,7 @@ country_event = {
 			set_portraits = {
 				character = DSW_TFR_SOV_vladimir_putin
 				civilian = {
-					large = "GFX_portrait_SOV_vladimir_putin_1"
+					large = "gfx/leaders/SOV/portrait_SOV_vladimir_putin.dds"
 				}
 			}
 		}
@@ -517,7 +486,7 @@ country_event = {
 	}
 	option = {
 		name = dsw_tfr_russia.22.a
-		EU_membership_termination = yes
+		EU_leave_effect = yes
 		SOV = {
 			country_event = {
 				id = dsw_tfr_russia.23
@@ -1014,8 +983,8 @@ country_event = {
 		UKR = {
 			remove_ideas = UKR_minsk_protocol
 			hidden_effect = {
-				set_country_flag = DSW_SOV_pending_ukraine_4
-				custom_effect_tooltip = DSW_SOV_external_content_pending_tt
+				# 已补搬 ukraine.4，接真实派发
+				country_event = { id = ukraine.4 }
 			}
 		}
 	}
@@ -1129,17 +1098,8 @@ country_event = {
 		name = dsw_tfr_russia.45.b
 		ai_chance = {
 			factor = 5
-			modifier = {
-				factor = 10000
-				has_game_rule = {
-					rule = SOV_ai_behavior
-					option = LDPR
-				}
-			}
 		}
-		custom_effect_tooltip = SOV_side_ldpr
 		custom_effect_tooltip = SOV_elections_started
-		set_country_flag = SOV_sided_with_ldpr_flag
 		complete_national_focus = SOV_russian_destiny
 		hidden_effect = {
 			activate_mission = SOV_countdown_day_mission
@@ -1163,19 +1123,6 @@ country_event = {
 			country_event = {
 				id = dsw_tfr_russia.14
 				days = 70
-			}
-			if = {
-				limit = {
-					has_game_rule = {
-						rule = SOV_ai_behavior
-						option = LDPR
-					}
-				}
-				set_temp_variable = {
-					var = SOV_election_approval_rating_ldpr_var_temp
-					value = 1
-				}
-				SOV_add_election_approval_rating_ldpr = yes
 			}
 		}
 	}
@@ -1290,6 +1237,7 @@ country_event = {
 					}
 				}
 				set_global_flag = SOV_cprf_won
+				ZZZ_SOV_switch_to_soviet_line_intros = yes
 				if = {
 					limit = {
 						NOT = {
@@ -1922,7 +1870,7 @@ country_event = {
 					}
 				}
 				set_variable = {
-					var = SOV_ldpr_influence_var
+					var = SOV_party_influence_var
 					value = 0.075
 				}
 				set_variable = {
@@ -1938,7 +1886,7 @@ country_event = {
 					value = 2
 				}
 				set_variable = {
-					var = SOV_ldpr_opinion_var
+					var = SOV_party_opinion_var
 					value = 1
 				}
 				set_variable = {
@@ -2209,7 +2157,6 @@ country_event = {
 	id = dsw_tfr_russia.47
 	title = dsw_tfr_russia.47.t
 	desc = dsw_tfr_russia.47.d
-	picture = GFX_LDPR_Victory
 	is_triggered_only = yes
 	trigger = {
 		always = no
@@ -2217,7 +2164,7 @@ country_event = {
 		SOV = {
 			has_country_flag = DSW_SOV_tfr_active
 		}
-		has_global_flag = SOV_ldpr_won
+		always = no
 	}
 	immediate = {
 		hidden_effect = {
@@ -2296,7 +2243,6 @@ country_event = {
 			value = yes
 		}
 		hidden_effect = {
-			promote_character = DSW_TFR_SOV_provisional_LDPR
 			add_ideas = SOV_Koshelev
 			add_ideas = SOV_Slutsky
 			add_ideas = SOV_Abelstev
@@ -2306,7 +2252,6 @@ country_event = {
 			remove_ideas = SOV_Putinism_Faltering4
 			set_country_flag = DSW_SOV_external_tree_pending
 			custom_effect_tooltip = DSW_SOV_external_content_pending_tt
-			set_country_flag = DSW_SOV_pending_focus_SOV_triumph_of_zhirinovsky
 			remove_dynamic_modifier = {
 				modifier = SOV_oligarch_support_dynamic
 			}
@@ -2316,10 +2261,9 @@ country_event = {
 		if = {
 			limit = {
 				NOT = {
-					has_global_flag = SOV_ldpr_won
+					always = no
 				}
 			}
-			set_global_flag = SOV_ldpr_won
 		}
 		set_global_flag = SOV_csto_green_flag
 	}
@@ -2654,11 +2598,6 @@ country_event = {
 		}
 		SOV_add_election_approval_rating_cprf = yes
 		set_temp_variable = {
-			var = SOV_election_approval_rating_ldpr_var_temp
-			value = 0.03
-		}
-		SOV_add_election_approval_rating_ldpr = yes
-		set_temp_variable = {
 			var = SOV_election_approval_rating_nav_var_temp
 			value = 0.03
 		}
@@ -2677,11 +2616,6 @@ country_event = {
 			value = 0.02
 		}
 		SOV_add_election_approval_rating_nav = yes
-		set_temp_variable = {
-			var = SOV_election_approval_rating_ldpr_var_temp
-			value = -0.05
-		}
-		SOV_add_election_approval_rating_ldpr = yes
 	}
 	option = {
 		name = dsw_tfr_russia.51.c
@@ -2719,27 +2653,6 @@ country_event = {
 			has_country_flag = DSW_SOV_tfr_active
 		}
 	}
-	id = dsw_tfr_russia.53
-	title = dsw_tfr_russia.53.t
-	desc = dsw_tfr_russia.53.d
-	picture = GFX_Zhirinovsky_Money
-	is_triggered_only = yes
-	option = {
-		name = dsw_tfr_russia.53.a
-		add_political_power = 25
-		set_temp_variable = {
-			var = SOV_election_approval_rating_ldpr_var_temp
-			value = 0.01
-		}
-		SOV_add_election_approval_rating_ldpr = yes
-	}
-}
-country_event = {
-	trigger = {
-		SOV = {
-			has_country_flag = DSW_SOV_tfr_active
-		}
-	}
 	id = dsw_tfr_russia.54
 	title = dsw_tfr_russia.54.t
 	desc = dsw_tfr_russia.54.d
@@ -2748,11 +2661,6 @@ country_event = {
 	option = {
 		name = dsw_tfr_russia.54.a
 		add_political_power = 25
-		set_temp_variable = {
-			var = SOV_election_approval_rating_ldpr_var_temp
-			value = 0.02
-		}
-		SOV_add_election_approval_rating_ldpr = yes
 		set_temp_variable = {
 			var = SOV_election_approval_rating_cprf_var_temp
 			value = 0.02
@@ -3259,44 +3167,6 @@ country_event = {
 	}
 }
 country_event = {
-	id = dsw_tfr_russia.68
-	title = dsw_tfr_russia.68.t
-	desc = dsw_tfr_russia.68.d
-	picture = GFX_zhirinovsky_silent_on_furgal
-	is_triggered_only = yes
-	trigger = {
-		SOV = {
-			has_country_flag = DSW_SOV_tfr_active
-		}
-		SOV = {
-			has_completed_focus = SOV_fight_against_the_right
-		}
-	}
-	option = {
-		name = dsw_tfr_russia.68.a
-		set_temp_variable = {
-			var = SOV_election_approval_rating_ldpr_var_temp
-			value = -0.02
-		}
-		SOV_add_election_approval_rating_ldpr = yes
-	}
-}
-country_event = {
-	trigger = {
-		SOV = {
-			has_country_flag = DSW_SOV_tfr_active
-		}
-	}
-	id = dsw_tfr_russia.69
-	title = dsw_tfr_russia.69.t
-	desc = dsw_tfr_russia.69.d
-	picture = GFX_zhirinovsky_promises_to_release_furgal
-	is_triggered_only = yes
-	option = {
-		name = dsw_tfr_russia.69.a
-	}
-}
-country_event = {
 	trigger = {
 		SOV = {
 			has_country_flag = DSW_SOV_tfr_active
@@ -3393,22 +3263,10 @@ country_event = {
 						modifier = {
 							factor = 0
 							OR = {
-								has_game_rule = {
-									rule = The_Kazakhstan_Riots
-									option = The_Kazakhstan_Riots_2
-								}
-								has_game_rule = {
-									rule = The_Kazakhstan_Riots
-									option = The_Kazakhstan_Riots_3
-								}
-								has_game_rule = {
-									rule = The_Kazakhstan_Riots
-									option = The_Kazakhstan_Riots_4
-								}
-								has_game_rule = {
-									rule = The_Kazakhstan_Riots
-									option = The_Kazakhstan_Riots_5
-								}
+								always = no
+								always = no
+								always = no
+								always = no
 							}
 						}
 						SOV = {
@@ -3422,22 +3280,10 @@ country_event = {
 						modifier = {
 							factor = 0
 							OR = {
-								has_game_rule = {
-									rule = The_Kazakhstan_Riots
-									option = The_Kazakhstan_Riots_1
-								}
-								has_game_rule = {
-									rule = The_Kazakhstan_Riots
-									option = The_Kazakhstan_Riots_3
-								}
-								has_game_rule = {
-									rule = The_Kazakhstan_Riots
-									option = The_Kazakhstan_Riots_4
-								}
-								has_game_rule = {
-									rule = The_Kazakhstan_Riots
-									option = The_Kazakhstan_Riots_5
-								}
+								always = no
+								always = no
+								always = no
+								always = no
 							}
 						}
 						SOV = {
@@ -3451,22 +3297,10 @@ country_event = {
 						modifier = {
 							factor = 0
 							OR = {
-								has_game_rule = {
-									rule = The_Kazakhstan_Riots
-									option = The_Kazakhstan_Riots_1
-								}
-								has_game_rule = {
-									rule = The_Kazakhstan_Riots
-									option = The_Kazakhstan_Riots_2
-								}
-								has_game_rule = {
-									rule = The_Kazakhstan_Riots
-									option = The_Kazakhstan_Riots_4
-								}
-								has_game_rule = {
-									rule = The_Kazakhstan_Riots
-									option = The_Kazakhstan_Riots_5
-								}
+								always = no
+								always = no
+								always = no
+								always = no
 							}
 						}
 						SOV = {
@@ -3480,22 +3314,10 @@ country_event = {
 						modifier = {
 							factor = 0
 							OR = {
-								has_game_rule = {
-									rule = The_Kazakhstan_Riots
-									option = The_Kazakhstan_Riots_1
-								}
-								has_game_rule = {
-									rule = The_Kazakhstan_Riots
-									option = The_Kazakhstan_Riots_2
-								}
-								has_game_rule = {
-									rule = The_Kazakhstan_Riots
-									option = The_Kazakhstan_Riots_3
-								}
-								has_game_rule = {
-									rule = The_Kazakhstan_Riots
-									option = The_Kazakhstan_Riots_5
-								}
+								always = no
+								always = no
+								always = no
+								always = no
 							}
 						}
 						SOV = {
@@ -3509,22 +3331,10 @@ country_event = {
 						modifier = {
 							factor = 0
 							OR = {
-								has_game_rule = {
-									rule = The_Kazakhstan_Riots
-									option = The_Kazakhstan_Riots_1
-								}
-								has_game_rule = {
-									rule = The_Kazakhstan_Riots
-									option = The_Kazakhstan_Riots_2
-								}
-								has_game_rule = {
-									rule = The_Kazakhstan_Riots
-									option = The_Kazakhstan_Riots_3
-								}
-								has_game_rule = {
-									rule = The_Kazakhstan_Riots
-									option = The_Kazakhstan_Riots_4
-								}
+								always = no
+								always = no
+								always = no
+								always = no
 							}
 						}
 						SOV = {
@@ -3542,22 +3352,10 @@ country_event = {
 						modifier = {
 							add = 100
 							OR = {
-								has_game_rule = {
-									rule = The_Kazakhstan_Riots
-									option = The_Kazakhstan_Riots_2
-								}
-								has_game_rule = {
-									rule = The_Kazakhstan_Riots
-									option = The_Kazakhstan_Riots_3
-								}
-								has_game_rule = {
-									rule = The_Kazakhstan_Riots
-									option = The_Kazakhstan_Riots_4
-								}
-								has_game_rule = {
-									rule = The_Kazakhstan_Riots
-									option = The_Kazakhstan_Riots_5
-								}
+								always = no
+								always = no
+								always = no
+								always = no
 							}
 						}
 						SOV = {
@@ -3571,22 +3369,10 @@ country_event = {
 						modifier = {
 							factor = 0
 							OR = {
-								has_game_rule = {
-									rule = The_Kazakhstan_Riots
-									option = The_Kazakhstan_Riots_1
-								}
-								has_game_rule = {
-									rule = The_Kazakhstan_Riots
-									option = The_Kazakhstan_Riots_3
-								}
-								has_game_rule = {
-									rule = The_Kazakhstan_Riots
-									option = The_Kazakhstan_Riots_4
-								}
-								has_game_rule = {
-									rule = The_Kazakhstan_Riots
-									option = The_Kazakhstan_Riots_5
-								}
+								always = no
+								always = no
+								always = no
+								always = no
 							}
 						}
 						SOV = {
@@ -3600,22 +3386,10 @@ country_event = {
 						modifier = {
 							factor = 0
 							OR = {
-								has_game_rule = {
-									rule = The_Kazakhstan_Riots
-									option = The_Kazakhstan_Riots_1
-								}
-								has_game_rule = {
-									rule = The_Kazakhstan_Riots
-									option = The_Kazakhstan_Riots_2
-								}
-								has_game_rule = {
-									rule = The_Kazakhstan_Riots
-									option = The_Kazakhstan_Riots_4
-								}
-								has_game_rule = {
-									rule = The_Kazakhstan_Riots
-									option = The_Kazakhstan_Riots_5
-								}
+								always = no
+								always = no
+								always = no
+								always = no
 							}
 						}
 						SOV = {
@@ -3629,22 +3403,10 @@ country_event = {
 						modifier = {
 							factor = 0
 							OR = {
-								has_game_rule = {
-									rule = The_Kazakhstan_Riots
-									option = The_Kazakhstan_Riots_1
-								}
-								has_game_rule = {
-									rule = The_Kazakhstan_Riots
-									option = The_Kazakhstan_Riots_2
-								}
-								has_game_rule = {
-									rule = The_Kazakhstan_Riots
-									option = The_Kazakhstan_Riots_3
-								}
-								has_game_rule = {
-									rule = The_Kazakhstan_Riots
-									option = The_Kazakhstan_Riots_5
-								}
+								always = no
+								always = no
+								always = no
+								always = no
 							}
 						}
 						SOV = {
@@ -3658,22 +3420,10 @@ country_event = {
 						modifier = {
 							factor = 0
 							OR = {
-								has_game_rule = {
-									rule = The_Kazakhstan_Riots
-									option = The_Kazakhstan_Riots_1
-								}
-								has_game_rule = {
-									rule = The_Kazakhstan_Riots
-									option = The_Kazakhstan_Riots_2
-								}
-								has_game_rule = {
-									rule = The_Kazakhstan_Riots
-									option = The_Kazakhstan_Riots_3
-								}
-								has_game_rule = {
-									rule = The_Kazakhstan_Riots
-									option = The_Kazakhstan_Riots_4
-								}
+								always = no
+								always = no
+								always = no
+								always = no
 							}
 						}
 						SOV = {
@@ -4239,7 +3989,7 @@ country_event = {
 			name = SOV_business_bonus
 			bonus = 0.75
 			uses = 2
-			category = industry
+			category = CAT_industry
 		}
 		SOV_decrease_oligarchy = yes
 	}
@@ -4597,10 +4347,7 @@ country_event = {
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = {
-						rule = The_Dugin_or_Navalny
-						option = The_Dugin_or_Navalny_1
-					}
+					always = no
 				}
 			}
 		}
@@ -4619,10 +4366,7 @@ country_event = {
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = {
-						rule = The_Dugin_or_Navalny
-						option = The_Dugin_or_Navalny_2
-					}
+					always = no
 				}
 			}
 		}
@@ -4655,7 +4399,7 @@ country_event = {
 			set_cosmetic_tag = SOV_navalny
 			promote_character = {
 				character = DSW_TFR_SOV_alexei_navalny
-				ideology = conservatism
+				ideology = democratic
 			}
 			set_variable = {
 				ruling_party = 1
@@ -4975,7 +4719,7 @@ country_event = {
 			OR = {
 				has_country_flag = SOV_duma_category_disabled
 				has_completed_focus = SOV_election_victory
-				has_country_flag = DSW_SOV_pending_focus_SOV_triumph_of_zhirinovsky
+				always = no
 				has_completed_focus = SOV_russian_victory
 				has_country_leader = {
 					character = DSW_TFR_SOV_alexei_navalny
@@ -9859,11 +9603,9 @@ country_event = {
 	id = dsw_tfr_russia.146
 	title = dsw_tfr_russia.146.t
 	desc = dsw_tfr_russia.146.d
-	picture = GFX_Zhirinovsky_Youth
 	is_triggered_only = yes
 	immediate = {
 		hidden_effect = {
-			set_country_flag = DSW_SOV_pending_oob_SOV_LDPR_volunteers
 		}
 	}
 	option = {
@@ -9880,7 +9622,6 @@ country_event = {
 	id = dsw_tfr_russia.147
 	title = dsw_tfr_russia.147.t
 	desc = dsw_tfr_russia.147.d
-	picture = GFX_Zhirinovsky_Funeral
 	is_triggered_only = yes
 	immediate = {
 		hidden_effect = {
@@ -9898,7 +9639,6 @@ country_event = {
 		hidden_effect = {
 			set_country_flag = DSW_SOV_pending_focus_SOV_death_of_leader
 			mark_focus_tree_layout_dirty = yes
-			retire_character = DSW_TFR_SOV_vladimir_zhirinovsky
 			if = {
 				limit = {
 					has_country_flag = SOV_repented_for_tsar
@@ -9933,7 +9673,6 @@ country_event = {
 	id = dsw_tfr_russia.148
 	title = dsw_tfr_russia.148.t
 	desc = dsw_tfr_russia.148.d
-	picture = GFX_Zhirinovsky_Funeral
 	is_triggered_only = yes
 	immediate = {
 		hidden_effect = {
@@ -9947,7 +9686,6 @@ country_event = {
 			has_country_flag = DSW_SOV_pending_focus_SOV_populist_revolution
 		}
 		hidden_effect = {
-			retire_character = DSW_TFR_SOV_vladimir_zhirinovsky
 			if = {
 				limit = {
 					has_country_flag = DSW_SOV_pending_focus_SOV_implement_party_programm
@@ -9962,13 +9700,9 @@ country_event = {
 			}
 		}
 		add_ideas = SOV_mother_russia_bleeds_idea
-		custom_effect_tooltip = SOV_zhirinovsky_loss_tt_1
 		country_event = {
 			id = dsw_tfr_russia.801
 			days = 9
-		}
-		remove_power_balance = {
-			id = SOV_LDPR_balance
 		}
 		custom_effect_tooltip = tooltip_white_line
 		DSW_SOV_dep_change_government_type_provisional_government = yes
@@ -9979,10 +9713,8 @@ country_event = {
 		trigger = {
 			has_country_flag = DSW_SOV_pending_focus_SOV_implement_party_programm
 		}
-		custom_effect_tooltip = SOV_zhirinovsky_loss_tt_2
 		add_ideas = SOV_traitors_amongst_us_idea
 		hidden_effect = {
-			retire_character = DSW_TFR_SOV_vladimir_zhirinovsky
 			if = {
 				limit = {
 					has_country_flag = DSW_SOV_pending_focus_SOV_implement_party_programm
@@ -9999,9 +9731,6 @@ country_event = {
 		country_event = {
 			id = dsw_tfr_russia.804
 			days = 9
-		}
-		remove_power_balance = {
-			id = SOV_LDPR_balance
 		}
 		custom_effect_tooltip = tooltip_white_line
 		DSW_SOV_dep_change_government_type_provisional_government = yes
@@ -10426,66 +10155,6 @@ country_event = {
 			has_country_flag = DSW_SOV_tfr_active
 		}
 	}
-	id = dsw_tfr_russia.159
-	title = dsw_tfr_russia.159.t
-	desc = dsw_tfr_russia.159.d
-	picture = GFX_Zhirinovsky_Funeral
-	is_triggered_only = yes
-	immediate = {
-		hidden_effect = {
-			if = {
-				limit = {
-					NOT = {
-						has_country_flag = SOV_zhir_cprf_kill
-					}
-				}
-				country_event = {
-					id = dsw_tfr_russia.556
-					days = 48
-				}
-			}
-		}
-	}
-	option = {
-		name = dsw_tfr_russia.159.a
-		add_stability = -0.05
-		set_temp_variable = {
-			party_index = 21
-		}
-		set_temp_variable = {
-			party_popularity_increase = -0.1
-		}
-		change_relative_party_popularity = yes
-		recalculate_party = yes
-		add_country_leader_role = {
-			character = DSW_TFR_SOV_leonid_slutsky
-			promote_leader = yes
-			country_leader = {
-				ideology = Nat_Fascism
-				expire = "2100.1.1"
-				traits = {
-					for_iron_fisted_brute
-				}
-			}
-		}
-		hidden_effect = {
-			remove_ideas = SOV_duma_ldpr_slutsky
-			add_ideas = SOV_duma_ldpr_slutsky
-		}
-		if = {
-			limit = {
-				has_country_flag = SOV_zhir_cprf_kill
-			}
-			remove_ideas = SOV_anti_soviet_resistanse_2
-		}
-	}
-}
-country_event = {
-	trigger = {
-		SOV = {
-			has_country_flag = DSW_SOV_tfr_active
-		}
-	}
 	id = dsw_tfr_russia.160
 	title = dsw_tfr_russia.160.t
 	desc = dsw_tfr_russia.160.d
@@ -10733,79 +10402,6 @@ country_event = {
 		}
 		set_temp_variable = {
 			party_popularity_increase = 0.05
-		}
-		change_relative_party_popularity = yes
-		recalculate_party = yes
-	}
-}
-country_event = {
-	trigger = {
-		SOV = {
-			has_country_flag = DSW_SOV_tfr_active
-		}
-	}
-	id = dsw_tfr_russia.163
-	title = dsw_tfr_russia.163.t
-	desc = dsw_tfr_russia.163.d
-	picture = GFX_zhirinovsky_hospitilized
-	is_triggered_only = yes
-	immediate = {
-		hidden_effect = {
-			country_event = {
-				id = dsw_tfr_russia.159
-				days = 28
-			}
-		}
-	}
-	option = {
-		name = dsw_tfr_russia.163.a
-		set_temp_variable = {
-			party_index = 21
-		}
-		set_temp_variable = {
-			party_popularity_increase = -0.03
-		}
-		change_relative_party_popularity = yes
-		recalculate_party = yes
-	}
-}
-country_event = {
-	trigger = {
-		SOV = {
-			has_country_flag = DSW_SOV_tfr_active
-		}
-	}
-	id = dsw_tfr_russia.164
-	title = dsw_tfr_russia.164.t
-	desc = dsw_tfr_russia.164.d
-	picture = GFX_ldpr_mad
-	is_triggered_only = yes
-	option = {
-		name = dsw_tfr_russia.164.a
-		add_country_leader_role = {
-			character = DSW_TFR_SOV_vasily_vlasov
-			promote_leader = yes
-			country_leader = {
-				ideology = Nat_Fascism
-				expire = "2100.1.1"
-				traits = {
-					hog_political_protege
-				}
-			}
-		}
-		set_temp_variable = {
-			party_index = 21
-		}
-		set_temp_variable = {
-			party_popularity_increase = 0.05
-		}
-		change_relative_party_popularity = yes
-		recalculate_party = yes
-		set_temp_variable = {
-			party_index = 6
-		}
-		set_temp_variable = {
-			party_popularity_increase = -0.05
 		}
 		change_relative_party_popularity = yes
 		recalculate_party = yes
@@ -11251,10 +10847,7 @@ country_event = {
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = {
-						rule = The_Kyrgyzstan_Revolution
-						option = The_Kyrgyzstan_Revolution_2
-					}
+					always = no
 				}
 			}
 		}
@@ -11272,10 +10865,7 @@ country_event = {
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = {
-						rule = The_Kyrgyzstan_Revolution
-						option = The_Kyrgyzstan_Revolution_1
-					}
+					always = no
 				}
 			}
 		}
@@ -11283,10 +10873,7 @@ country_event = {
 	option = {
 		name = dsw_tfr_russia.180.a
 		trigger = {
-			has_game_rule = {
-				rule = The_Kyrgyzstan_Revolution
-				option = The_Kyrgyzstan_Revolution_1
-			}
+			always = no
 		}
 		ai_chance = {
 			factor = 100
@@ -11444,12 +11031,12 @@ country_event = {
 			}
 		}
 		hidden_effect = {
+			set_country_flag = SOV_putin_ill_more_flag
 			country_event = {
 				id = dsw_tfr_russia.185
 				days = 45
 				random_days = 30
 			}
-			set_country_flag = SOV_putin_ill_more_flag
 			country_event = {
 				id = dsw_tfr_russia.872
 				days = 10
@@ -11459,7 +11046,7 @@ country_event = {
 			set_portraits = {
 				character = DSW_TFR_SOV_vladimir_putin
 				civilian = {
-					large = "GFX_portrait_SOV_vladimir_putin_2"
+					large = "gfx/leaders/SOV/portrait_SOV_vladimir_putin.dds"
 				}
 			}
 		}
@@ -12287,60 +11874,6 @@ country_event = {
 			has_country_flag = DSW_SOV_tfr_active
 		}
 	}
-	id = dsw_tfr_russia.197
-	title = dsw_tfr_russia.197.t
-	desc = dsw_tfr_russia.197.d
-	picture = GFX_ldpr_ur
-	is_triggered_only = yes
-	option = {
-		name = dsw_tfr_russia.197.a
-		if = {
-			limit = {
-				has_dynamic_modifier = SOV_z_patriots_strength_dynamic
-			}
-			set_party_name = {
-				ideology = nationalist
-				long_name = SOV_medvedev_apf_ultrapatriots_long
-				name = SOV_medvedev_apf_ultrapatriots_short
-			}
-		}
-		else = {
-			set_party_name = {
-				ideology = nationalist
-				long_name = SOV_medvedev_apf_national_patriots_long
-				name = SOV_medvedev_apf_national_patriots_short
-			}
-		}
-		set_temp_variable = {
-			coalition_partner_var_temp = 21
-		}
-		DSW_SOV_dep_add_to_coalition = yes
-		hidden_effect = {
-			set_temp_variable = {
-				party_index = 21
-			}
-			set_temp_variable = {
-				party_popularity_increase = -1
-			}
-			change_relative_party_popularity = yes
-			recalculate_party = yes
-			set_temp_variable = {
-				party_index = 21
-			}
-			set_temp_variable = {
-				party_popularity_increase = 0.085
-			}
-			change_relative_party_popularity = yes
-			recalculate_party = yes
-		}
-	}
-}
-country_event = {
-	trigger = {
-		SOV = {
-			has_country_flag = DSW_SOV_tfr_active
-		}
-	}
 	id = dsw_tfr_russia.198
 	title = dsw_tfr_russia.198.t
 	desc = dsw_tfr_russia.198.d
@@ -12489,28 +12022,6 @@ country_event = {
 			has_country_flag = DSW_SOV_tfr_active
 		}
 	}
-	id = dsw_tfr_russia.201
-	title = dsw_tfr_russia.201.t
-	desc = dsw_tfr_russia.201.d
-	picture = GFX_Zhirinovsky_Youth
-	is_triggered_only = yes
-	immediate = {
-		hidden_effect = {
-			set_country_flag = DSW_SOV_pending_oob_SOV_Donbass_Exiles
-		}
-	}
-	option = {
-		name = dsw_tfr_russia.201.a
-		add_manpower = 1200
-		custom_effect_tooltip = SOV_donbas_exiles_tt
-	}
-}
-country_event = {
-	trigger = {
-		SOV = {
-			has_country_flag = DSW_SOV_tfr_active
-		}
-	}
 	id = dsw_tfr_russia.202
 	title = dsw_tfr_russia.202.t
 	desc = dsw_tfr_russia.202.d
@@ -12641,76 +12152,6 @@ country_event = {
 		set_province_name = {
 			id = 4333
 			name = astana_city
-		}
-	}
-}
-country_event = {
-	trigger = {
-		SOV = {
-			has_country_flag = DSW_SOV_tfr_active
-		}
-	}
-	id = dsw_tfr_russia.206
-	title = dsw_tfr_russia.206.t
-	desc = dsw_tfr_russia.206.d
-	picture = GFX_TFR_SOV_Zhirinovsky_Speech
-	is_triggered_only = yes
-	option = {
-		name = dsw_tfr_russia.206.a
-		add_political_power = -50
-		set_temp_variable = {
-			party_index = 21
-		}
-		set_temp_variable = {
-			party_popularity_increase = 0.02
-		}
-		change_relative_party_popularity = yes
-		recalculate_party = yes
-	}
-}
-country_event = {
-	trigger = {
-		SOV = {
-			has_country_flag = DSW_SOV_tfr_active
-		}
-	}
-	id = dsw_tfr_russia.207
-	title = dsw_tfr_russia.207.t
-	desc = dsw_tfr_russia.207.d
-	picture = GFX_TFR_SOV_Zhirinovsky_Speech
-	is_triggered_only = yes
-	option = {
-		name = dsw_tfr_russia.207.a
-		add_political_power = -25
-		LPR = {
-			add_ideas = war_mobilization
-			add_ideas = NOV_Breakneck_Mobilization_idea
-			set_variable = {
-				ruling_party = 22
-			}
-			set_variable = {
-				DSW_SOV_tfr_party = 22
-			}
-			set_variable = {
-				DSW_SOV_scripted_elections = 0
-			}
-			set_variable = {
-				disable_elections = 1
-			}
-			clear_array = gov_coalition_array
-			set_politics = {
-				ruling_party = nationalist
-				elections_allowed = no
-			}
-			promote_character = DSW_TFR_NOV_leonid_paschenik
-			set_temp_variable = {
-				party_index = 22
-			}
-			set_temp_variable = {
-				party_popularity_increase = 0.35
-			}
-			change_relative_party_popularity = yes
-			recalculate_party = yes
 		}
 	}
 }
@@ -13599,7 +13040,7 @@ country_event = {
 		recalculate_party = yes
 		add_political_power = 50
 		hidden_effect = {
-			retire_ideology_leader = authoritarian_democrat
+			retire_ideology_leader = Conservative
 			promote_character = DSW_TFR_SOV_Vladimir_Solovyov
 			if = {
 				limit = {
@@ -16120,7 +15561,7 @@ country_event = {
 				}
 			}
 			hidden_effect = {
-				retire_ideology_leader = libertarian_socialist
+				retire_ideology_leader = neutral_Social
 				promote_character = {
 					character = DSW_TFR_SOV_denis_parfenov
 					ideology = neutral_Social
@@ -16163,7 +15604,7 @@ country_event = {
 				}
 			}
 			hidden_effect = {
-				retire_ideology_leader = communist
+				retire_ideology_leader = communist_state
 				promote_character = {
 					character = DSW_TFR_SOV_denis_parfenov
 					ideology = communist_state
@@ -16204,7 +15645,7 @@ country_event = {
 				has_country_flag = DSW_SOV_pending_focus_SOV_class_unity
 			}
 			hidden_effect = {
-				retire_ideology_leader = communist
+				retire_ideology_leader = communist_state
 				promote_character = {
 					character = DSW_TFR_SOV_denis_parfenov
 					ideology = communist_state
@@ -16242,10 +15683,12 @@ country_event = {
 				check_variable = {
 					ruling_party = 4
 				}
-				has_country_leader_ideology = left_nationalism
+				# 依据: 本 if 在 dsw_tfr_russia.247 选项 a (丹尼斯·帕尔费诺夫当选), 该选项 trigger = always = no,
+				# 且全工程无 dsw_tfr_russia.247 的派发点 => 路径不可达, 待内容补齐后恢复原判断
+				always = no
 			}
 			hidden_effect = {
-				retire_ideology_leader = communist
+				retire_ideology_leader = communist_state
 				promote_character = {
 					character = DSW_TFR_SOV_denis_parfenov
 					ideology = communist_state
@@ -16298,39 +15741,18 @@ country_event = {
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = {
-						rule = The_First_Union_Presidential_Election
-						option = The_First_Union_Presidential_Election_1
-					}
-					has_game_rule = {
-						rule = The_First_Union_Presidential_Election
-						option = The_First_Union_Presidential_Election_Pasechnik
-					}
-					has_game_rule = {
-						rule = The_First_Union_Presidential_Election
-						option = The_First_Union_Presidential_Election_3
-					}
-					has_game_rule = {
-						rule = The_First_Union_Presidential_Election
-						option = The_First_Union_Presidential_Election_4
-					}
-					has_game_rule = {
-						rule = The_First_Union_Presidential_Election
-						option = The_First_Union_Presidential_Election_5
-					}
-					has_game_rule = {
-						rule = The_First_Union_Presidential_Election
-						option = The_First_Union_Presidential_Election_Grudinin
-					}
-					has_game_rule = {
-						rule = The_First_Union_Presidential_Election
-						option = The_First_Union_Presidential_Election_6
-					}
+					always = no
+					always = no
+					always = no
+					always = no
+					always = no
+					always = no
+					always = no
 				}
 			}
 		}
 		hidden_effect = {
-			retire_ideology_leader = communist
+			retire_ideology_leader = communist_state
 			promote_character = {
 				character = DSW_TFR_SOV_aleksandr_lukashenko
 				ideology = communist_state
@@ -16386,39 +15808,18 @@ country_event = {
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = {
-						rule = The_First_Union_Presidential_Election
-						option = The_First_Union_Presidential_Election_1
-					}
-					has_game_rule = {
-						rule = The_First_Union_Presidential_Election
-						option = The_First_Union_Presidential_Election_2
-					}
-					has_game_rule = {
-						rule = The_First_Union_Presidential_Election
-						option = The_First_Union_Presidential_Election_Pasechnik
-					}
-					has_game_rule = {
-						rule = The_First_Union_Presidential_Election
-						option = The_First_Union_Presidential_Election_4
-					}
-					has_game_rule = {
-						rule = The_First_Union_Presidential_Election
-						option = The_First_Union_Presidential_Election_5
-					}
-					has_game_rule = {
-						rule = The_First_Union_Presidential_Election
-						option = The_First_Union_Presidential_Election_Grudinin
-					}
-					has_game_rule = {
-						rule = The_First_Union_Presidential_Election
-						option = The_First_Union_Presidential_Election_6
-					}
+					always = no
+					always = no
+					always = no
+					always = no
+					always = no
+					always = no
+					always = no
 				}
 			}
 		}
 		hidden_effect = {
-			retire_ideology_leader = libertarian_socialist
+			retire_ideology_leader = neutral_Social
 			promote_character = DSW_TFR_SOV_sergey_levchenko
 		}
 		set_country_flag = SOV_levchenko_elected
@@ -16471,34 +15872,13 @@ country_event = {
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = {
-						rule = The_First_Union_Presidential_Election
-						option = The_First_Union_Presidential_Election_2
-					}
-					has_game_rule = {
-						rule = The_First_Union_Presidential_Election
-						option = The_First_Union_Presidential_Election_Pasechnik
-					}
-					has_game_rule = {
-						rule = The_First_Union_Presidential_Election
-						option = The_First_Union_Presidential_Election_3
-					}
-					has_game_rule = {
-						rule = The_First_Union_Presidential_Election
-						option = The_First_Union_Presidential_Election_4
-					}
-					has_game_rule = {
-						rule = The_First_Union_Presidential_Election
-						option = The_First_Union_Presidential_Election_5
-					}
-					has_game_rule = {
-						rule = The_First_Union_Presidential_Election
-						option = The_First_Union_Presidential_Election_Grudinin
-					}
-					has_game_rule = {
-						rule = The_First_Union_Presidential_Election
-						option = The_First_Union_Presidential_Election_6
-					}
+					always = no
+					always = no
+					always = no
+					always = no
+					always = no
+					always = no
+					always = no
 				}
 			}
 		}
@@ -16550,34 +15930,13 @@ country_event = {
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = {
-						rule = The_First_Union_Presidential_Election
-						option = The_First_Union_Presidential_Election_1
-					}
-					has_game_rule = {
-						rule = The_First_Union_Presidential_Election
-						option = The_First_Union_Presidential_Election_2
-					}
-					has_game_rule = {
-						rule = The_First_Union_Presidential_Election
-						option = The_First_Union_Presidential_Election_Pasechnik
-					}
-					has_game_rule = {
-						rule = The_First_Union_Presidential_Election
-						option = The_First_Union_Presidential_Election_3
-					}
-					has_game_rule = {
-						rule = The_First_Union_Presidential_Election
-						option = The_First_Union_Presidential_Election_5
-					}
-					has_game_rule = {
-						rule = The_First_Union_Presidential_Election
-						option = The_First_Union_Presidential_Election_Grudinin
-					}
-					has_game_rule = {
-						rule = The_First_Union_Presidential_Election
-						option = The_First_Union_Presidential_Election_6
-					}
+					always = no
+					always = no
+					always = no
+					always = no
+					always = no
+					always = no
+					always = no
 				}
 			}
 		}
@@ -16657,34 +16016,13 @@ country_event = {
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = {
-						rule = The_First_Union_Presidential_Election
-						option = The_First_Union_Presidential_Election_1
-					}
-					has_game_rule = {
-						rule = The_First_Union_Presidential_Election
-						option = The_First_Union_Presidential_Election_2
-					}
-					has_game_rule = {
-						rule = The_First_Union_Presidential_Election
-						option = The_First_Union_Presidential_Election_Pasechnik
-					}
-					has_game_rule = {
-						rule = The_First_Union_Presidential_Election
-						option = The_First_Union_Presidential_Election_3
-					}
-					has_game_rule = {
-						rule = The_First_Union_Presidential_Election
-						option = The_First_Union_Presidential_Election_4
-					}
-					has_game_rule = {
-						rule = The_First_Union_Presidential_Election
-						option = The_First_Union_Presidential_Election_Grudinin
-					}
-					has_game_rule = {
-						rule = The_First_Union_Presidential_Election
-						option = The_First_Union_Presidential_Election_6
-					}
+					always = no
+					always = no
+					always = no
+					always = no
+					always = no
+					always = no
+					always = no
 				}
 			}
 		}
@@ -16769,34 +16107,13 @@ country_event = {
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = {
-						rule = The_First_Union_Presidential_Election
-						option = The_First_Union_Presidential_Election_1
-					}
-					has_game_rule = {
-						rule = The_First_Union_Presidential_Election
-						option = The_First_Union_Presidential_Election_2
-					}
-					has_game_rule = {
-						rule = The_First_Union_Presidential_Election
-						option = The_First_Union_Presidential_Election_Pasechnik
-					}
-					has_game_rule = {
-						rule = The_First_Union_Presidential_Election
-						option = The_First_Union_Presidential_Election_3
-					}
-					has_game_rule = {
-						rule = The_First_Union_Presidential_Election
-						option = The_First_Union_Presidential_Election_4
-					}
-					has_game_rule = {
-						rule = The_First_Union_Presidential_Election
-						option = The_First_Union_Presidential_Election_5
-					}
-					has_game_rule = {
-						rule = The_First_Union_Presidential_Election
-						option = The_First_Union_Presidential_Election_6
-					}
+					always = no
+					always = no
+					always = no
+					always = no
+					always = no
+					always = no
+					always = no
 				}
 			}
 		}
@@ -16869,34 +16186,13 @@ country_event = {
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = {
-						rule = The_First_Union_Presidential_Election
-						option = The_First_Union_Presidential_Election_1
-					}
-					has_game_rule = {
-						rule = The_First_Union_Presidential_Election
-						option = The_First_Union_Presidential_Election_2
-					}
-					has_game_rule = {
-						rule = The_First_Union_Presidential_Election
-						option = The_First_Union_Presidential_Election_Pasechnik
-					}
-					has_game_rule = {
-						rule = The_First_Union_Presidential_Election
-						option = The_First_Union_Presidential_Election_3
-					}
-					has_game_rule = {
-						rule = The_First_Union_Presidential_Election
-						option = The_First_Union_Presidential_Election_4
-					}
-					has_game_rule = {
-						rule = The_First_Union_Presidential_Election
-						option = The_First_Union_Presidential_Election_5
-					}
-					has_game_rule = {
-						rule = The_First_Union_Presidential_Election
-						option = The_First_Union_Presidential_Election_Grudinin
-					}
+					always = no
+					always = no
+					always = no
+					always = no
+					always = no
+					always = no
+					always = no
 				}
 			}
 		}
@@ -16984,34 +16280,13 @@ country_event = {
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = {
-						rule = The_First_Union_Presidential_Election
-						option = The_First_Union_Presidential_Election_1
-					}
-					has_game_rule = {
-						rule = The_First_Union_Presidential_Election
-						option = The_First_Union_Presidential_Election_2
-					}
-					has_game_rule = {
-						rule = The_First_Union_Presidential_Election
-						option = The_First_Union_Presidential_Election_3
-					}
-					has_game_rule = {
-						rule = The_First_Union_Presidential_Election
-						option = The_First_Union_Presidential_Election_4
-					}
-					has_game_rule = {
-						rule = The_First_Union_Presidential_Election
-						option = The_First_Union_Presidential_Election_5
-					}
-					has_game_rule = {
-						rule = The_First_Union_Presidential_Election
-						option = The_First_Union_Presidential_Election_Grudinin
-					}
-					has_game_rule = {
-						rule = The_First_Union_Presidential_Election
-						option = The_First_Union_Presidential_Election_6
-					}
+					always = no
+					always = no
+					always = no
+					always = no
+					always = no
+					always = no
+					always = no
 				}
 			}
 		}
@@ -17322,152 +16597,6 @@ country_event = {
 			has_country_flag = DSW_SOV_tfr_active
 		}
 	}
-	id = dsw_tfr_russia.257
-	title = dsw_tfr_russia.257.t
-	desc = dsw_tfr_russia.257.d
-	picture = GFX_Lenin_tomb
-	is_triggered_only = yes
-	immediate = {
-
-	}
-	option = {
-		name = dsw_tfr_russia.257.a
-		set_temp_variable = {
-			party_index = 1
-		}
-		set_temp_variable = {
-			party_popularity_increase = 0.01
-		}
-		change_relative_party_popularity = yes
-		recalculate_party = yes
-		set_temp_variable = {
-			party_index = 22
-		}
-		set_temp_variable = {
-			party_popularity_increase = 0.02
-		}
-		change_relative_party_popularity = yes
-		recalculate_party = yes
-		set_temp_variable = {
-			party_index = 6
-		}
-		set_temp_variable = {
-			party_popularity_increase = 0.01
-		}
-		change_relative_party_popularity = yes
-		recalculate_party = yes
-		add_power_balance_value = {
-			id = SOV_LDPR_balance
-			value = -0.1
-		}
-		add_political_power = 15
-		hidden_effect = {
-			set_country_flag = DSW_SOV_pending_news_267
-			custom_effect_tooltip = DSW_SOV_external_content_pending_tt
-			set_country_flag = SOV_repented_for_tsar
-		}
-	}
-	option = {
-		name = dsw_tfr_russia.257.b
-		set_temp_variable = {
-			party_index = 21
-		}
-		set_temp_variable = {
-			party_popularity_increase = 0.05
-		}
-		change_relative_party_popularity = yes
-		recalculate_party = yes
-		add_power_balance_value = {
-			id = SOV_LDPR_balance
-			value = 0.1
-		}
-		add_political_power = -15
-		hidden_effect = {
-			set_country_flag = DSW_SOV_pending_news_267
-			custom_effect_tooltip = DSW_SOV_external_content_pending_tt
-			set_country_flag = SOV_zhir_cult
-		}
-	}
-}
-country_event = {
-	trigger = {
-		SOV = {
-			has_country_flag = DSW_SOV_tfr_active
-		}
-	}
-	id = dsw_tfr_russia.258
-	title = dsw_tfr_russia.258.t
-	desc = dsw_tfr_russia.258.d
-	picture = GFX_Yeltsin_Centr
-	is_triggered_only = yes
-	immediate = {
-
-	}
-	option = {
-		name = dsw_tfr_russia.258.a
-		set_temp_variable = {
-			var = debt_var_temp
-			value = 0.5
-		}
-		DSW_SOV_dep_add_debt = yes
-		set_temp_variable = {
-			party_index = 1
-		}
-		set_temp_variable = {
-			party_popularity_increase = 0.02
-		}
-		change_relative_party_popularity = yes
-		recalculate_party = yes
-		set_temp_variable = {
-			party_index = 21
-		}
-		set_temp_variable = {
-			party_popularity_increase = 0.02
-		}
-		change_relative_party_popularity = yes
-		recalculate_party = yes
-		add_power_balance_value = {
-			id = SOV_LDPR_balance
-			value = -0.05
-		}
-		add_stability = 0.05
-	}
-	option = {
-		name = dsw_tfr_russia.258.b
-		set_temp_variable = {
-			var = debt_var_temp
-			value = 0.2
-		}
-		DSW_SOV_dep_add_debt = yes
-		set_temp_variable = {
-			party_index = 22
-		}
-		set_temp_variable = {
-			party_popularity_increase = 0.02
-		}
-		change_relative_party_popularity = yes
-		recalculate_party = yes
-		set_temp_variable = {
-			party_index = 21
-		}
-		set_temp_variable = {
-			party_popularity_increase = 0.02
-		}
-		change_relative_party_popularity = yes
-		recalculate_party = yes
-		add_power_balance_value = {
-			id = SOV_LDPR_balance
-			value = 0.05
-		}
-		add_war_support = 0.05
-	}
-}
-country_event = {
-	trigger = {
-		SOV = {
-			has_country_flag = DSW_SOV_tfr_active
-		}
-	}
 	id = dsw_tfr_russia.259
 	title = dsw_tfr_russia.259.t
 	desc = dsw_tfr_russia.259.d
@@ -17621,11 +16750,6 @@ country_event = {
 	}
 	option = {
 		name = dsw_tfr_russia.261.a
-		set_party_name = {
-			ideology = nationalist
-			long_name = SOV_LDPR_Radical_Ally_Party_long
-			name = SOV_LDPR_Radical_Ally_Party
-		}
 		set_temp_variable = {
 			coalition_partner_var_temp = 20
 		}
@@ -17769,7 +16893,6 @@ country_event = {
 		}
 		change_relative_party_popularity = yes
 		recalculate_party = yes
-		set_country_flag = SOV_UR_outlawed_ldpr
 		set_party_name = {
 			ideology = communism
 			name = SOV_outlawed_party
@@ -17792,7 +16915,6 @@ country_event = {
 		set_country_flag = SOV_zhir_swayed_ur_members_flag
 		custom_effect_tooltip = unlock_eco_minister_tooltip
 		show_ideas_tooltip = SOV_Mishustin_eco
-		set_country_flag = SOV_UR_outlawed_ldpr
 		set_temp_variable = {
 			party_index = 21
 		}
@@ -17820,66 +16942,6 @@ country_event = {
 			has_country_flag = DSW_SOV_tfr_active
 		}
 	}
-	id = dsw_tfr_russia.266
-	title = dsw_tfr_russia.266.t
-	desc = dsw_tfr_russia.266.d
-	picture = GFX_Rodina_party
-	is_triggered_only = yes
-	immediate = {
-
-	}
-	option = {
-		name = dsw_tfr_russia.266.a
-		set_party_name = {
-			ideology = communism
-			long_name = SOV_rodina_party_long
-			name = SOV_rodina_party
-		}
-		set_temp_variable = {
-			party_index = 1
-		}
-		set_temp_variable = {
-			party_popularity_increase = 0.05
-		}
-		change_relative_party_popularity = yes
-		recalculate_party = yes
-		set_temp_variable = {
-			party_index = 6
-		}
-		set_temp_variable = {
-			party_popularity_increase = 0.10
-		}
-		change_relative_party_popularity = yes
-		recalculate_party = yes
-		add_power_balance_value = {
-			id = SOV_LDPR_balance
-			value = -0.05
-		}
-		set_country_flag = SOV_rodina_allowed
-	}
-	option = {
-		name = dsw_tfr_russia.266.b
-		add_stability = -0.10
-		set_temp_variable = {
-			party_index = 6
-		}
-		set_temp_variable = {
-			party_popularity_increase = -0.15
-		}
-		change_relative_party_popularity = yes
-		recalculate_party = yes
-		add_power_balance_value = {
-			id = SOV_LDPR_balance
-			value = 0.05
-		}
-	}
-}
-country_event = {
-	trigger = {
-		SOV = {
-			has_country_flag = DSW_SOV_tfr_active
-		}
-	}
 	id = dsw_tfr_russia.267
 	title = dsw_tfr_russia.267.t
 	desc = dsw_tfr_russia.267.d
@@ -17891,11 +16953,6 @@ country_event = {
 	option = {
 		name = dsw_tfr_russia.267.a
 		add_political_power = 15
-		set_party_name = {
-			ideology = nationalist
-			long_name = SOV_LDPR_renamed_2_Party
-			name = SOV_LDPR_renamed_2_Party_short
-		}
 	}
 	option = {
 		trigger = {
@@ -17903,11 +16960,6 @@ country_event = {
 		}
 		name = dsw_tfr_russia.267.f
 		add_political_power = 15
-		set_party_name = {
-			ideology = nationalist
-			long_name = SOV_LDPR_renamed_3_Party
-			name = SOV_LDPR_renamed_3_Party_short
-		}
 	}
 	option = {
 		trigger = {
@@ -17917,11 +16969,6 @@ country_event = {
 		}
 		name = dsw_tfr_russia.267.z
 		add_political_power = 15
-		set_party_name = {
-			ideology = nationalist
-			long_name = SOV_LDPR_renamed_Party
-			name = SOV_LDPR_renamed_Party_short
-		}
 	}
 	option = {
 		name = dsw_tfr_russia.267.b
@@ -17944,19 +16991,10 @@ country_event = {
 	}
 	option = {
 		name = dsw_tfr_russia.268.a
-		add_power_balance_value = {
-			id = SOV_LDPR_balance
-			value = -0.05
-		}
 		SOV_BLR_LDPB_Rule = yes
 	}
 	option = {
 		name = dsw_tfr_russia.268.b
-		add_power_balance_value = {
-			id = SOV_LDPR_balance
-			value = 0.05
-		}
-		SOV_BLR_LDPR_Rule = yes
 	}
 }
 country_event = {
@@ -17979,10 +17017,6 @@ country_event = {
 			OR = {
 				AND = {
 					has_idea = SOV_Slutsky_hog
-					power_balance_value = {
-						id = SOV_LDPR_balance
-						value < -0.50
-					}
 					has_country_flag = SOV_repented_for_tsar
 					has_country_flag = SOV_honor_the_romanovs_flag
 				}
@@ -17994,10 +17028,7 @@ country_event = {
 			modifier = {
 				factor = 0
 				NOT = {
-					has_game_rule = {
-						rule = The_LDPR_Path
-						option = The_LDPR_Path_1
-					}
+					always = no
 				}
 			}
 		}
@@ -18025,9 +17056,6 @@ country_event = {
 			recalculate_party = yes
 			clr_country_flag = SOV_SOV_faltering_party_popularity_enable_flag
 			set_cosmetic_tag = SOV_RussianEmpire
-			remove_power_balance = {
-				id = SOV_LDPR_balance
-			}
 			country_event = {
 				id = dsw_tfr_russia.831
 				days = 30
@@ -18040,10 +17068,6 @@ country_event = {
 		trigger = {
 			OR = {
 				AND = {
-					power_balance_value = {
-						id = SOV_LDPR_balance
-						value < -0.50
-					}
 					NOT = {
 						has_country_flag = SOV_revival_pan_slavism_flag
 					}
@@ -18059,17 +17083,13 @@ country_event = {
 			modifier = {
 				factor = 0
 				NOT = {
-					has_game_rule = {
-						rule = The_LDPR_Path
-						option = The_LDPR_Path_2
-					}
+					always = no
 				}
 			}
 		}
 		focus_unlock = yes
 		add_ideas = SOV_low_national_support_idea
 		promote_character = DSW_TFR_SOV_leonid_slutsky
-		set_country_flag = SOV_Council_control_LDPR
 		set_country_flag = SOV_auth_economics_flag
 		hidden_effect = {
 			DSW_SOV_dep_end_ruling_party_wings = yes
@@ -18083,14 +17103,6 @@ country_event = {
 			change_relative_party_popularity = yes
 			recalculate_party = yes
 			set_cosmetic_tag = SOV_RussianEmpire
-			remove_power_balance = {
-				id = SOV_LDPR_balance
-			}
-			set_party_name = {
-				ideology = communism
-				long_name = SOV_LDPR_authdeam_Party
-				name = SOV_LDPR_authdeam_Party_short
-			}
 			country_event = {
 				id = dsw_tfr_russia.831
 				days = 25
@@ -18150,10 +17162,6 @@ country_event = {
 		trigger = {
 			OR = {
 				AND = {
-					power_balance_value = {
-						id = SOV_LDPR_balance
-						value > 0.50
-					}
 					NOT = {
 						has_country_flag = SOV_revival_pan_slavism_flag
 					}
@@ -18169,10 +17177,7 @@ country_event = {
 			modifier = {
 				factor = 0
 				NOT = {
-					has_game_rule = {
-						rule = The_LDPR_Path
-						option = The_LDPR_Path_3
-					}
+					always = no
 				}
 			}
 		}
@@ -18212,9 +17217,6 @@ country_event = {
 				id = dsw_tfr_russia.798
 				days = 8
 			}
-			remove_power_balance = {
-				id = SOV_LDPR_balance
-			}
 		}
 	}
 	option = {
@@ -18223,10 +17225,6 @@ country_event = {
 			OR = {
 				AND = {
 					has_idea = SOV_Slutsky_hog
-					is_power_balance_in_range = {
-						id = SOV_LDPR_balance
-						range = SOV_ldpr_middle
-					}
 					NOT = {
 						has_country_flag = SOV_revival_pan_slavism_flag
 					}
@@ -18242,17 +17240,13 @@ country_event = {
 			modifier = {
 				factor = 0
 				NOT = {
-					has_game_rule = {
-						rule = The_LDPR_Path
-						option = The_LDPR_Path_2
-					}
+					always = no
 				}
 			}
 		}
 		focus_unlock = yes
 		add_ideas = SOV_low_national_support_idea
 		promote_character = DSW_TFR_SOV_leonid_slutsky
-		set_country_flag = SOV_Council_control_LDPR
 		set_country_flag = SOV_auth_economics_flag
 		hidden_effect = {
 			DSW_SOV_dep_end_ruling_party_wings = yes
@@ -18301,14 +17295,6 @@ country_event = {
 					}
 				}
 			}
-			remove_power_balance = {
-				id = SOV_LDPR_balance
-			}
-			set_party_name = {
-				ideology = communism
-				long_name = SOV_LDPR_authdeam_Party
-				name = SOV_LDPR_authdeam_Party_short
-			}
 			set_variable = {
 				ruling_party = 6
 			}
@@ -18334,10 +17320,6 @@ country_event = {
 			OR = {
 				AND = {
 					has_idea = SOV_Vlasov
-					is_power_balance_in_range = {
-						id = SOV_LDPR_balance
-						range = SOV_ldpr_middle
-					}
 					NOT = {
 						has_country_flag = SOV_revival_pan_slavism_flag
 					}
@@ -18353,10 +17335,7 @@ country_event = {
 			modifier = {
 				factor = 0
 				NOT = {
-					has_game_rule = {
-						rule = The_LDPR_Path
-						option = The_LDPR_Path_3
-					}
+					always = no
 				}
 			}
 		}
@@ -18396,9 +17375,6 @@ country_event = {
 				id = dsw_tfr_russia.798
 				days = 8
 			}
-			remove_power_balance = {
-				id = SOV_LDPR_balance
-			}
 		}
 	}
 	option = {
@@ -18406,14 +17382,6 @@ country_event = {
 		trigger = {
 			OR = {
 				AND = {
-					power_balance_value = {
-						id = SOV_LDPR_balance
-						value < 0.50
-					}
-					power_balance_value = {
-						id = SOV_LDPR_balance
-						value > -0.50
-					}
 				}
 				is_ai = yes
 			}
@@ -18423,10 +17391,7 @@ country_event = {
 			modifier = {
 				factor = 0
 				NOT = {
-					has_game_rule = {
-						rule = The_LDPR_Path
-						option = The_LDPR_Path_4
-					}
+					always = no
 				}
 			}
 		}
@@ -18452,9 +17417,6 @@ country_event = {
 			}
 			change_relative_party_popularity = yes
 			recalculate_party = yes
-			remove_power_balance = {
-				id = SOV_LDPR_balance
-			}
 		}
 	}
 	option = {
@@ -18462,10 +17424,6 @@ country_event = {
 			OR = {
 				AND = {
 					has_idea = DSW_TFR_SOV_Viktor_Bout
-					power_balance_value = {
-						id = SOV_LDPR_balance
-						value > 0.50
-					}
 				}
 				is_ai = yes
 			}
@@ -18475,10 +17433,7 @@ country_event = {
 			modifier = {
 				factor = 0
 				NOT = {
-					has_game_rule = {
-						rule = The_LDPR_Path
-						option = The_LDPR_Path_5
-					}
+					always = no
 				}
 			}
 		}
@@ -18519,9 +17474,6 @@ country_event = {
 				ruling_party = nationalist
 				elections_allowed = no
 			}
-			remove_power_balance = {
-				id = SOV_LDPR_balance
-			}
 		}
 	}
 	option = {
@@ -18529,10 +17481,6 @@ country_event = {
 			OR = {
 				AND = {
 					has_country_flag = DSW_SOV_pending_focus_SOV_transform_oligarchy
-					power_balance_value = {
-						id = SOV_LDPR_balance
-						value > 0.35
-					}
 				}
 				is_ai = yes
 			}
@@ -18542,10 +17490,7 @@ country_event = {
 			modifier = {
 				factor = 0
 				NOT = {
-					has_game_rule = {
-						rule = The_LDPR_Path
-						option = The_LDPR_Path_6
-					}
+					always = no
 				}
 			}
 		}
@@ -18586,9 +17531,6 @@ country_event = {
 				ruling_party = nationalist
 				elections_allowed = no
 			}
-			remove_power_balance = {
-				id = SOV_LDPR_balance
-			}
 		}
 	}
 	option = {
@@ -18604,10 +17546,7 @@ country_event = {
 			modifier = {
 				factor = 0
 				NOT = {
-					has_game_rule = {
-						rule = The_LDPR_Path
-						option = The_LDPR_Path_7
-					}
+					always = no
 				}
 			}
 		}
@@ -18639,9 +17578,6 @@ country_event = {
 				ruling_party = nationalist
 				elections_allowed = no
 			}
-			remove_power_balance = {
-				id = SOV_LDPR_balance
-			}
 		}
 	}
 	option = {
@@ -18652,10 +17588,6 @@ country_event = {
 						has_idea = SOV_Tihon
 						has_idea = SOV_Illarion
 					}
-					is_power_balance_in_range = {
-						id = SOV_LDPR_balance
-						range = SOV_ldpr_middle
-					}
 				}
 				is_ai = yes
 			}
@@ -18665,10 +17597,7 @@ country_event = {
 			modifier = {
 				factor = 0
 				NOT = {
-					has_game_rule = {
-						rule = The_LDPR_Path
-						option = The_LDPR_Path_8
-					}
+					always = no
 				}
 			}
 		}
@@ -18728,9 +17657,6 @@ country_event = {
 				ruling_party = nationalist
 				elections_allowed = no
 			}
-			remove_power_balance = {
-				id = SOV_LDPR_balance
-			}
 			set_temp_variable = {
 				coalition_partner_var_temp = 21
 			}
@@ -18746,10 +17672,6 @@ country_event = {
 					check_variable = {
 						party_pop_array^4 > 0.14
 					}
-					is_power_balance_in_range = {
-						id = SOV_LDPR_balance
-						range = SOV_ldpr_middle
-					}
 				}
 				is_ai = yes
 			}
@@ -18759,10 +17681,7 @@ country_event = {
 			modifier = {
 				factor = 0
 				NOT = {
-					has_game_rule = {
-						rule = The_LDPR_Path
-						option = The_LDPR_Path_9
-					}
+					always = no
 				}
 			}
 		}
@@ -18805,9 +17724,6 @@ country_event = {
 				ruling_party = communism
 				elections_allowed = no
 			}
-			remove_power_balance = {
-				id = SOV_LDPR_balance
-			}
 			add_ideas = SOV_Korovin
 			add_ideas = SOV_Podkopaeva
 			add_ideas = SOV_Beliy
@@ -18849,14 +17765,6 @@ country_event = {
 	option = {
 		trigger = {
 			AND = {
-				power_balance_value = {
-					id = SOV_LDPR_balance
-					value < 0.50
-				}
-				power_balance_value = {
-					id = SOV_LDPR_balance
-					value > -0.50
-				}
 			}
 		}
 		name = dsw_tfr_russia.269.l6
@@ -18899,16 +17807,12 @@ country_event = {
 						id = dsw_tfr_russia.798
 						days = 8
 					}
-					remove_power_balance = {
-						id = SOV_LDPR_balance
-					}
 				}
 			}
 			42 = {
 				focus_unlock = yes
 				add_ideas = SOV_low_national_support_idea
 				promote_character = DSW_TFR_SOV_leonid_slutsky
-				set_country_flag = SOV_Council_control_LDPR
 				hidden_effect = {
 					DSW_SOV_dep_end_ruling_party_wings = yes
 					clr_country_flag = SOV_SOV_faltering_party_popularity_enable_flag
@@ -18921,14 +17825,6 @@ country_event = {
 					change_relative_party_popularity = yes
 					recalculate_party = yes
 					set_cosmetic_tag = SOV_RussianEmpire
-					remove_power_balance = {
-						id = SOV_LDPR_balance
-					}
-					set_party_name = {
-						ideology = communism
-						long_name = SOV_LDPR_authdeam_Party
-						name = SOV_LDPR_authdeam_Party_short
-					}
 					country_event = {
 						id = dsw_tfr_russia.831
 						days = 20
@@ -19437,6 +18333,7 @@ country_event = {
 				last_election = "2026.12.17"
 				election_frequency = 48
 			}
+			ZZZ_TFR_SOV_275_BUL_liberal = yes
 			create_country_leader = {
 				name = BUL_Kiril_Petkov_char
 				picture = "gfx/Leaders/BUL/Kiril_Petkov.png"
@@ -19492,6 +18389,7 @@ country_event = {
 				last_election = "2026.12.17"
 				election_frequency = 48
 			}
+			ZZZ_TFR_SOV_276_BUL_conservative = yes
 			create_country_leader = {
 				name = BUL_Stefan_Yanev_char
 				picture = "gfx/Leaders/BUL/Stefan_Yanev.png"
@@ -19541,6 +18439,7 @@ country_event = {
 				last_election = "2026.12.17"
 				election_frequency = 48
 			}
+			ZZZ_TFR_SOV_277_BUL_communist = yes
 			create_country_leader = {
 				name = BUL_Kostadin_Kostadinov_char
 				picture = "gfx/Leaders/BUL/Kostadin_Kostadinov.png"
@@ -19643,6 +18542,7 @@ country_event = {
 				last_election = "2026.12.17"
 				election_frequency = 48
 			}
+			ZZZ_TFR_SOV_280_ROM_conservative = yes
 			create_country_leader = {
 				name = ROM_Adela_Mirza_char
 				picture = "gfx/Leaders/ROM/Adela_Mirza.png"
@@ -19692,6 +18592,7 @@ country_event = {
 				last_election = "2026.12.17"
 				election_frequency = 48
 			}
+			ZZZ_TFR_SOV_281_SLO_conservative = yes
 			create_country_leader = {
 				name = SLO_Boris_Kollar_char
 				picture = "gfx/Leaders/SLO/Boris_Kollar.png"
@@ -19943,20 +18844,12 @@ country_event = {
 	}
 	option = {
 		name = dsw_tfr_russia.284.a
-		add_power_balance_value = {
-			id = SOV_LDPR_balance
-			value = 0.05
-		}
 		send_equipment = {
 			equipment = infantry_weapons_type
 			amount = 3000
 			target = BUK
 		}
 		BUK = {
-			add_timed_idea = {
-				idea = SOV_Russian_Help_LDPR
-				days = 125
-			}
 		}
 		add_opinion_modifier = {
 			target = PER
@@ -19965,15 +18858,7 @@ country_event = {
 	}
 	option = {
 		name = dsw_tfr_russia.284.b
-		add_power_balance_value = {
-			id = SOV_LDPR_balance
-			value = -0.05
-		}
 		PER = {
-			add_timed_idea = {
-				idea = SOV_Russian_Help_LDPR
-				days = 200
-			}
 		}
 		add_opinion_modifier = {
 			target = PER
@@ -19992,11 +18877,11 @@ country_event = {
 			has_country_flag = DSW_SOV_tfr_active
 		}
 		original_tag = SOV
-		has_global_flag = USA_american_civil_war_global
+		always = no
 		OR = {
 			has_global_flag = SOV_medvedev_won
 			has_global_flag = SOV_cprf_won
-			has_global_flag = SOV_ldpr_won
+			always = no
 		}
 	}
 	mean_time_to_happen = {
@@ -20071,7 +18956,6 @@ country_event = {
 	id = dsw_tfr_russia.286
 	title = dsw_tfr_russia.286.t
 	desc = dsw_tfr_russia.286.d
-	picture = GFX_Victor_Bout_LDPR
 	fire_only_once = yes
 	is_triggered_only = yes
 	immediate = {
@@ -20081,7 +18965,6 @@ country_event = {
 		name = dsw_tfr_russia.286.a
 		custom_effect_tooltip = unlock_eco_minister_tooltip
 		show_ideas_tooltip = DSW_TFR_SOV_Viktor_Bout
-		set_country_flag = SOV_Bout_LDPR_minister
 	}
 }
 country_event = {
@@ -20627,7 +19510,7 @@ country_event = {
 		ROM = {
 			create_country_leader = {
 				name = ROM_George_Simion_char
-				picture = "gfx/Leaders/ROM/George_Simion.png"
+				picture = "gfx/Leaders/ROM/George_Simion_2017.dds"
 				ideology = Conservative
 			}
 			set_party_name = {
@@ -20972,7 +19855,6 @@ country_event = {
 	id = dsw_tfr_russia.303
 	title = dsw_tfr_russia.303.t
 	desc = dsw_tfr_russia.303.d
-	picture = GFX_SOV_LDPR_1
 	fire_only_once = yes
 	is_triggered_only = yes
 	immediate = {
@@ -20980,12 +19862,7 @@ country_event = {
 	}
 	option = {
 		name = dsw_tfr_russia.303.a
-		add_power_balance_value = {
-			id = SOV_LDPR_balance
-			value = 0.1
-		}
 		add_political_power = -15
-		set_country_flag = SOV_Zhirinovsky_Ministers
 		custom_effect_tooltip = appoint_head_minister_tooltip
 		show_ideas_tooltip = SOV_Furgal
 		custom_effect_tooltip = appoint_interior_minister_tooltip
@@ -21000,10 +19877,6 @@ country_event = {
 	option = {
 		name = dsw_tfr_russia.303.b
 		add_political_power = -15
-		add_power_balance_value = {
-			id = SOV_LDPR_balance
-			value = -0.1
-		}
 		set_country_flag = SOV_Council_Ministers
 		custom_effect_tooltip = appoint_head_minister_tooltip
 		show_ideas_tooltip = SOV_Paikin
@@ -21145,61 +20018,6 @@ country_event = {
 	}
 	option = {
 		name = dsw_tfr_russia.307.a
-	}
-}
-country_event = {
-	id = dsw_tfr_russia.308
-	title = dsw_tfr_russia.308.t
-	desc = dsw_tfr_russia.308.d
-	picture = GFX_Zhirinovsky_Youth
-	is_triggered_only = yes
-	trigger = {
-		SOV = {
-			has_country_flag = DSW_SOV_tfr_active
-		}
-		is_ai = yes
-	}
-	option = {
-		name = dsw_tfr_russia.308.a
-		trigger = {
-			OR = {
-				check_variable = {
-					ruling_party = 4
-				}
-				check_variable = {
-					ruling_party = 18
-				}
-			}
-		}
-		set_country_flag = DSW_SOV_pending_focus_SOV_operation_minerva
-		complete_national_focus = SOV_soviet_moldova
-		set_country_flag = DSW_SOV_pending_focus_SOV_operation_invictus
-	}
-	option = {
-		name = dsw_tfr_russia.308.b
-		trigger = {
-			OR = {
-				check_variable = {
-					ruling_party = 6
-				}
-				check_variable = {
-					ruling_party = 1
-				}
-			}
-		}
-		complete_national_focus = SOV_central_asian_military_operation
-		complete_national_focus = SOV_caucasus_military_operation
-	}
-	option = {
-		name = dsw_tfr_russia.308.c
-		trigger = {
-			check_variable = {
-				ruling_party = 21
-			}
-		}
-		set_country_flag = DSW_SOV_pending_focus_SOV_returning_to_almaty
-		set_country_flag = DSW_SOV_pending_focus_SOV_pridnestrovian_frontier
-		set_country_flag = DSW_SOV_pending_focus_SOV_second_caucasian_war
 	}
 }
 country_event = {
@@ -21526,7 +20344,7 @@ country_event = {
 		DSW_SOV_dep_add_debt = yes
 		676 = {
 			add_building_construction = {
-				type = office_park
+				type = offices
 				level = 1
 				instant_build = yes
 			}
@@ -23535,38 +22353,6 @@ unit_leader_event = {
 	}
 }
 country_event = {
-	id = dsw_tfr_russia.345
-	title = dsw_tfr_russia.345.t
-	desc = dsw_tfr_russia.345.d
-	picture = GFX_rus_court_1
-	fire_only_once = yes
-	is_triggered_only = yes
-	trigger = {
-		SOV = {
-			has_country_flag = DSW_SOV_tfr_active
-		}
-	}
-	immediate = {
-		hidden_effect = {
-
-		}
-	}
-	option = {
-		name = dsw_tfr_russia.345.a
-		add_power_balance_value = {
-			id = SOV_LDPR_balance
-			value = -0.05
-		}
-	}
-	option = {
-		name = dsw_tfr_russia.345.b
-		add_power_balance_value = {
-			id = SOV_LDPR_balance
-			value = 0.05
-		}
-	}
-}
-country_event = {
 	id = dsw_tfr_russia.346
 	title = dsw_tfr_russia.346.t
 	desc = dsw_tfr_russia.346.d
@@ -23739,7 +22525,6 @@ country_event = {
 				add_faction_goal = faction_goal_placeholder_long_term
 				remove_faction_goal = faction_goal_a_military_base
 				add_faction_goal = faction_goal_placeholder_medium_term
-				add_faction_goal = faction_goal_placeholder_short_term
 			}
 			add_to_faction = KIS
 			set_country_flag = DSW_SOV_pending_oob_KRA
@@ -24147,7 +22932,7 @@ country_event = {
 		hidden_effect = {
 			set_country_flag = DSW_SOV_pending_news_304
 			custom_effect_tooltip = DSW_SOV_external_content_pending_tt
-			retire_ideology_leader = authoritarian_democrat
+			retire_ideology_leader = Conservative
 		}
 	}
 	option = {
@@ -24317,36 +23102,6 @@ country_event = {
 	}
 }
 country_event = {
-	id = dsw_tfr_russia.362
-	title = dsw_tfr_russia.362.t
-	desc = dsw_tfr_russia.362.d
-	picture = GFX_gavril
-	is_triggered_only = yes
-	fire_only_once = yes
-	trigger = {
-		SOV = {
-			has_country_flag = DSW_SOV_tfr_active
-		}
-		tag = SOV
-	}
-	option = {
-		name = dsw_tfr_russia.362.a
-		set_country_flag = SOV_Gavril_joined_war
-		add_power_balance_value = {
-			id = SOV_LDPR_balance
-			value = 0.05
-		}
-		add_manpower = 1
-	}
-	option = {
-		name = dsw_tfr_russia.362.b
-		add_power_balance_value = {
-			id = SOV_LDPR_balance
-			value = -0.05
-		}
-	}
-}
-country_event = {
 	id = dsw_tfr_russia.363
 	title = dsw_tfr_russia.363.t
 	desc = dsw_tfr_russia.363.d
@@ -24489,7 +23244,6 @@ country_event = {
 			long_name = SOV_zolotov_zhir_party
 			name = SOV_zolotov_zhir_party_short
 		}
-		add_ideas = SOV_militaristic_zhirinovskism_idea
 		set_country_flag = SOV_zolotov_zhir_flag
 		set_country_flag = SOV_zolotov_second_stage
 		mark_focus_tree_layout_dirty = yes
@@ -24542,7 +23296,6 @@ country_event = {
 	option = {
 		name = dsw_tfr_russia.366.b
 		add_political_power = -100
-		add_ideas = SOV_orthodox_zhirinovskism_idea
 	}
 }
 country_event = {
@@ -24597,7 +23350,6 @@ country_event = {
 		}
 		change_relative_party_popularity = yes
 		recalculate_party = yes
-		set_country_flag = SOV_grudinin_ldpr_flag
 		country_event = {
 			id = dsw_tfr_russia.368
 			days = 5
@@ -24622,7 +23374,6 @@ country_event = {
 		trigger = {
 			has_country_flag = SOV_grudinin_npsr_flag
 		}
-		retire_character = DSW_TFR_SOV_igor_zhirinovsky
 		add_country_leader_role = {
 			character = DSW_TFR_SOV_pavel_grudinin
 			promote_leader = yes
@@ -24634,7 +23385,6 @@ country_event = {
 				}
 			}
 		}
-		add_ideas = SOV_left_wing_zhirinovskism_idea
 		set_party_name = {
 			ideology = nationalist
 			long_name = SOV_grudinin_npsr_party
@@ -24775,9 +23525,8 @@ country_event = {
 	option = {
 		name = dsw_tfr_russia.368.b
 		trigger = {
-			has_country_flag = SOV_grudinin_ldpr_flag
+			always = no
 		}
-		retire_character = DSW_TFR_SOV_igor_zhirinovsky
 		add_country_leader_role = {
 			character = DSW_TFR_SOV_pavel_grudinin
 			promote_leader = yes
@@ -24795,7 +23544,6 @@ country_event = {
 				large = "GFX_portrait_SOV_pavel_grudinin_nat"
 			}
 		}
-		add_ideas = SOV_orthodox_zhirinovskism_idea
 	}
 }
 country_event = {
@@ -24875,14 +23623,9 @@ country_event = {
 	option = {
 		name = dsw_tfr_russia.370.a
 		hidden_effect = {
-			retire_ideology_leader = conservative
+			retire_ideology_leader = conservatism
 		}
 		promote_character = DSW_TFR_SOV_sergei_furgal
-		set_party_name = {
-			ideology = democratic
-			long_name = SOV_LDPR_authdeam_Party
-			name = SOV_LDPR_authdeam_Party_short
-		}
 		set_variable = {
 			ruling_party = 1
 		}
@@ -24901,14 +23644,13 @@ country_event = {
 			elections_allowed = no
 			election_frequency = 48
 		}
-		set_country_flag = SOV_ldpr_furgal_won
 		mark_focus_tree_layout_dirty = yes
 		custom_effect_tooltip = focus_branch_unlock_tooltip
 	}
 	option = {
 		name = dsw_tfr_russia.370.b
 		hidden_effect = {
-			retire_ideology_leader = authoritarian_democrat
+			retire_ideology_leader = Conservative
 		}
 		promote_character = DSW_TFR_SOV_denis_pushilin
 		set_party_name = {
@@ -24941,7 +23683,7 @@ country_event = {
 	option = {
 		name = dsw_tfr_russia.370.c
 		hidden_effect = {
-			retire_ideology_leader = fascist
+			retire_ideology_leader = Nat_Fascism
 		}
 		promote_character = DSW_TFR_SOV_aleksandr_belov
 		set_party_name = {
@@ -24983,7 +23725,7 @@ country_event = {
 			}
 		}
 		hidden_effect = {
-			retire_ideology_leader = authoritarian_democrat
+			retire_ideology_leader = Conservative
 		}
 		promote_character = {
 			character = DSW_TFR_SOV_aleksei_zhuravlyov
@@ -25023,7 +23765,7 @@ country_event = {
 			has_country_flag = SOV_rodina_left_turn
 		}
 		hidden_effect = {
-			retire_ideology_leader = libertarian_socialist
+			retire_ideology_leader = neutral_Social
 		}
 		promote_character = {
 			character = DSW_TFR_SOV_aleksei_zhuravlyov
@@ -25063,8 +23805,8 @@ country_event = {
 			has_country_flag = SOV_rodina_collapses
 		}
 		hidden_effect = {
-			retire_ideology_leader = communist
-			retire_ideology_leader = libertarian_socialist
+			retire_ideology_leader = communist_state
+			retire_ideology_leader = neutral_Social
 			set_cosmetic_tag = SOV_suraykin_rfsr
 			set_temp_variable = {
 				party_index = 4
@@ -25370,44 +24112,6 @@ country_event = {
 	}
 }
 country_event = {
-	id = dsw_tfr_russia.379
-	title = dsw_tfr_russia.379.t
-	desc = dsw_tfr_russia.379.d
-	picture = GFX_SOV_zhirinovsky_memory
-	is_triggered_only = yes
-	fire_only_once = yes
-	trigger = {
-		SOV = {
-			has_country_flag = DSW_SOV_tfr_active
-		}
-		tag = SOV
-	}
-	option = {
-		name = dsw_tfr_russia.379.a
-		add_political_power = -50
-		add_country_leader_trait = hos_supreme_leader
-	}
-	option = {
-		trigger = {
-			OR = {
-				NOT = {
-					has_country_leader = {
-						character = DSW_TFR_SOV_viktor_zolotov
-						ruling_only = yes
-					}
-					has_country_leader = {
-						character = DSW_TFR_SOV_pavel_grudinin
-						ruling_only = yes
-					}
-				}
-			}
-		}
-		name = dsw_tfr_russia.379.b
-		add_political_power = -200
-		add_ideas = SOV_zhir_eternal_supreme_ruler_idea
-	}
-}
-country_event = {
 	trigger = {
 		SOV = {
 			has_country_flag = DSW_SOV_tfr_active
@@ -25432,7 +24136,7 @@ country_event = {
 		recalculate_party = yes
 		652 = {
 			add_building_construction = {
-				type = office_park
+				type = offices
 				level = 1
 				instant_build = yes
 			}
@@ -25440,7 +24144,7 @@ country_event = {
 		}
 		644 = {
 			add_building_construction = {
-				type = office_park
+				type = offices
 				level = 1
 				instant_build = yes
 			}
@@ -25674,10 +24378,6 @@ country_event = {
 	option = {
 		name = dsw_tfr_russia.387.a
 		add_political_power = -100
-		add_power_balance_value = {
-			id = SOV_LDPR_balance
-			value = -0.05
-		}
 		set_temp_variable = {
 			party_index = 6
 		}
@@ -25715,7 +24415,6 @@ country_event = {
 		else_if = {
 			remove_ideas = SOV_KNOA_3_idea
 		}
-		set_country_flag = SOV_ldpr_pardon_left_patriots
 		hidden_effect = {
 			country_event = {
 				id = dsw_tfr_russia.388
@@ -25727,10 +24426,6 @@ country_event = {
 	option = {
 		name = dsw_tfr_russia.387.b
 		add_war_support = 0.05
-		add_power_balance_value = {
-			id = SOV_LDPR_balance
-			value = 0.05
-		}
 		set_temp_variable = {
 			party_index = 21
 		}
@@ -25747,42 +24442,6 @@ country_event = {
 		}
 		change_relative_party_popularity = yes
 		recalculate_party = yes
-	}
-}
-country_event = {
-	trigger = {
-		SOV = {
-			has_country_flag = DSW_SOV_tfr_active
-		}
-	}
-	id = dsw_tfr_russia.388
-	title = dsw_tfr_russia.388.t
-	desc = dsw_tfr_russia.388.d
-	picture = GFX_state_communists_2
-	is_triggered_only = yes
-	fire_only_once = yes
-	option = {
-		name = dsw_tfr_russia.388.a
-		add_power_balance_value = {
-			id = SOV_LDPR_balance
-			value = 0.05
-		}
-		unlock_decision_tooltip = SOV_great_russian_socialists_add
-		set_country_flag = SOV_grudinin_left_patriots
-		set_party_name = {
-			ideology = communism
-			long_name = SOV_left_patriots_party
-			name = SOV_left_patriots_party_short
-		}
-		promote_character = {
-			character = DSW_TFR_SOV_sergei_kurginyan
-		}
-		hidden_effect = {
-			country_event = {
-				id = russiaflavor.43
-				days = 31
-			}
-		}
 	}
 }
 country_event = {
@@ -26032,7 +24691,7 @@ country_event = {
 		recalculate_party = yes
 		676 = {
 			add_building_construction = {
-				type = office_park
+				type = offices
 				level = 1
 				instant_build = yes
 			}
@@ -26108,7 +24767,7 @@ country_event = {
 		recalculate_party = yes
 		676 = {
 			add_building_construction = {
-				type = office_park
+				type = offices
 				level = 1
 				instant_build = yes
 			}
@@ -26219,63 +24878,12 @@ country_event = {
 			has_country_flag = DSW_SOV_tfr_active
 		}
 	}
-	id = dsw_tfr_russia.399
-	title = dsw_tfr_russia.399.t
-	desc = dsw_tfr_russia.399.d
-	picture = GFX_SOV_Zhirinovsky_pic_3
-	is_triggered_only = yes
-	fire_only_once = yes
-	option = {
-		name = dsw_tfr_russia.399.a
-		SOV_remove_special_regional_modifiers = yes
-		add_political_power = -50
-		add_stability = 0.05
-		set_cosmetic_tag = SOV_fed_state
-	}
-	option = {
-		name = dsw_tfr_russia.399.b
-		SOV_remove_special_regional_modifiers = yes
-		add_political_power = -100
-		add_war_support = 0.1
-		set_temp_variable = {
-			party_index = 21
-		}
-		set_temp_variable = {
-			party_popularity_increase = 0.025
-		}
-		change_relative_party_popularity = yes
-		recalculate_party = yes
-		set_cosmetic_tag = SOV_RussianEmpire
-		set_country_flag = SOV_empire_restored_tag
-	}
-	option = {
-		name = dsw_tfr_russia.399.c
-		SOV_remove_special_regional_modifiers = yes
-		add_political_power = -150
-		add_war_support = 0.15
-		set_temp_variable = {
-			party_index = 21
-		}
-		set_temp_variable = {
-			party_popularity_increase = 0.05
-		}
-		change_relative_party_popularity = yes
-		recalculate_party = yes
-		set_cosmetic_tag = SOV_GreatRussia
-	}
-}
-country_event = {
-	trigger = {
-		SOV = {
-			has_country_flag = DSW_SOV_tfr_active
-		}
-	}
 	id = dsw_tfr_russia.400
 	title = dsw_tfr_russia.400.t
 	desc = {
 		text = dsw_tfr_russia.400.d1
 		trigger = {
-			has_global_flag = SOV_ldpr_won
+			always = no
 		}
 	}
 	desc = {
@@ -26381,7 +24989,7 @@ country_event = {
 			SOV_join_brics = yes
 			254 = {
 				add_building_construction = {
-					type = office_park
+					type = offices
 					level = 1
 					instant_build = yes
 				}
@@ -26423,23 +25031,14 @@ country_event = {
 	id = dsw_tfr_russia.407
 	title = dsw_tfr_russia.407.t
 	desc = dsw_tfr_russia.407.d
-	picture = GFX_SOV_LDPR_1
 	is_triggered_only = yes
 	option = {
 		name = dsw_tfr_russia.407.a
 		add_ideas = SOV_ministry_of_information_control_idea
-		add_power_balance_value = {
-			id = SOV_LDPR_balance
-			value = 0.05
-		}
 	}
 	option = {
 		name = dsw_tfr_russia.407.b
 		add_ideas = SOV_ministry_of_media_management_idea
-		add_power_balance_value = {
-			id = SOV_LDPR_balance
-			value = -0.05
-		}
 	}
 }
 country_event = {
@@ -26910,23 +25509,6 @@ country_event = {
 			has_country_flag = DSW_SOV_tfr_active
 		}
 	}
-	id = dsw_tfr_russia.415
-	title = dsw_tfr_russia.415.t
-	desc = dsw_tfr_russia.415.d
-	picture = GFX_zhirinovsky_power
-	is_triggered_only = yes
-	option = {
-		name = dsw_tfr_russia.415.a
-		add_political_power = 50
-		add_stability = -0.025
-	}
-}
-country_event = {
-	trigger = {
-		SOV = {
-			has_country_flag = DSW_SOV_tfr_active
-		}
-	}
 	id = dsw_tfr_russia.416
 	title = dsw_tfr_russia.416.t
 	desc = dsw_tfr_russia.416.d
@@ -27242,78 +25824,9 @@ country_event = {
 			has_country_flag = DSW_SOV_tfr_active
 		}
 	}
-	id = dsw_tfr_russia.424
-	title = dsw_tfr_russia.424.t
-	desc = dsw_tfr_russia.424.d
-	picture = GFX_SOV_prigozhin
-	is_triggered_only = yes
-	option = {
-		name = dsw_tfr_russia.424.a
-		add_political_power = 100
-		add_ideas = SOV_prigozhin_assistance_idea
-		set_temp_variable = {
-			party_index = 21
-		}
-		set_temp_variable = {
-			party_popularity_increase = 0.05
-		}
-		change_relative_party_popularity = yes
-		recalculate_party = yes
-		add_power_balance_value = {
-			id = SOV_LDPR_balance
-			value = 0.07
-		}
-		unlock_decision_tooltip = SOV_permit_wagnerites_into_the_party
-		set_country_flag = SOV_prigozhin_cooperation_flag
-	}
-	option = {
-		name = dsw_tfr_russia.424.b
-		add_political_power = 50
-		set_temp_variable = {
-			var = income_var_temp
-			value = 100
-		}
-		add_income = yes
-		set_temp_variable = {
-			party_index = 21
-		}
-		set_temp_variable = {
-			party_popularity_increase = 0.01
-		}
-		change_relative_party_popularity = yes
-		recalculate_party = yes
-		add_power_balance_value = {
-			id = SOV_LDPR_balance
-			value = 0.02
-		}
-	}
-	option = {
-		name = dsw_tfr_russia.424.c
-		add_political_power = -25
-		set_temp_variable = {
-			party_index = 20
-		}
-		set_temp_variable = {
-			party_popularity_increase = -0.1
-		}
-		change_relative_party_popularity = yes
-		recalculate_party = yes
-		add_power_balance_value = {
-			id = SOV_LDPR_balance
-			value = -0.05
-		}
-	}
-}
-country_event = {
-	trigger = {
-		SOV = {
-			has_country_flag = DSW_SOV_tfr_active
-		}
-	}
 	id = dsw_tfr_russia.425
 	title = dsw_tfr_russia.425.t
 	desc = dsw_tfr_russia.425.d
-	picture = GFX_SOV_LDPR_2
 	is_triggered_only = yes
 	option = {
 		name = dsw_tfr_russia.425.a
@@ -27323,11 +25836,6 @@ country_event = {
 		}
 		DSW_SOV_dep_add_to_coalition = yes
 		hidden_effect = {
-			set_party_name = {
-				ideology = nationalist
-				name = SOV_LDPR_wagner_party
-				long_name = SOV_LDPR_wagner_party_long
-			}
 			set_temp_variable = {
 				party_index = 20
 			}
@@ -27558,11 +26066,6 @@ country_event = {
 			remove_idea = SOV_romanov_tradition
 			add_idea = SOV_imperial_regency
 		}
-		set_party_name = {
-			ideology = democratic
-			long_name = SOV_ldpr_rpp_party
-			name = SOV_ldpr_rpp_party_short
-		}
 		hidden_effect = {
 			set_variable = {
 				ruling_party = 1
@@ -27580,23 +26083,6 @@ country_event = {
 			set_politics = {
 				ruling_party = democratic
 				elections_allowed = no
-			}
-			add_country_leader_role = {
-				character = DSW_TFR_SOV_vladimir_zhirinovsky
-				promote_leader = yes
-				country_leader = {
-					ideology = conservatism
-					expire = "2100.1.1"
-					traits = {
-						hos_powerless_regent
-					}
-				}
-			}
-			set_portraits = {
-				character = DSW_TFR_SOV_vladimir_zhirinovsky
-				civilian = {
-					large = "GFX_portrait_SOV_Vladimir_Zhirinovsky_regent"
-				}
 			}
 			set_temp_variable = {
 				party_index = 1
@@ -27761,7 +26247,7 @@ country_event = {
 	immediate = {
 		hidden_effect = {
 			KAZ = {
-				retire_ideology_leader = authoritarian_democrat
+				retire_ideology_leader = Conservative
 				promote_character = {
 					character = DSW_TFR_KAZ_dariga_nazarbayeva
 					ideology = Conservative
@@ -28224,10 +26710,7 @@ country_event = {
 			factor = 10
 			modifier = {
 				factor = 0
-				has_game_rule = {
-					rule = The_Tokaev_HELP
-					option = The_Tokaev_HELP_2
-				}
+				always = no
 			}
 		}
 		hidden_effect = {
@@ -28358,17 +26841,7 @@ country_event = {
 			factor = 10
 			modifier = {
 				factor = 0
-				has_game_rule = {
-					rule = The_Tokaev_HELP
-					option = The_Tokaev_HELP_1
-				}
-			}
-		}
-		if = {
-			KAZ = {
-				limit = {
-					has_country_flag = KAZ_nazarbaeva_coup
-				}
+				always = no
 			}
 		}
 		if = {
@@ -28393,7 +26866,7 @@ country_event = {
 			modifier = {
 				factor = 10
 				check_variable = {
-					var = SOV_election_approval_rating_ldpr_var
+					var = SOV_election_approval_rating_party7_var
 					value = 0.35
 					compare = greater_than_or_equals
 				}
@@ -28422,11 +26895,6 @@ country_event = {
 			target = KAZ
 			type = annex_everything
 		}
-		set_temp_variable = {
-			var = SOV_election_approval_rating_ldpr_var_temp
-			value = 0.035
-		}
-		SOV_add_election_approval_rating_ldpr = yes
 		if = {
 			limit = {
 				has_idea = SOV_litte_russian_spring
@@ -28724,10 +27192,7 @@ country_event = {
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = {
-						rule = The_Dugin_or_Navalny
-						option = The_Dugin_or_Navalny_1
-					}
+					always = no
 				}
 			}
 		}
@@ -28746,10 +27211,7 @@ country_event = {
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = {
-						rule = The_Dugin_or_Navalny
-						option = The_Dugin_or_Navalny_2
-					}
+					always = no
 				}
 			}
 		}
@@ -28840,10 +27302,7 @@ country_event = {
 			recalculate_party = yes
 			if = {
 				limit = {
-					has_game_rule = {
-						rule = prigozhin_content
-						option = PRIGOZHIN_ENABLED
-					}
+					always = no
 				}
 				country_event = {
 					id = dsw_tfr_russia.449
@@ -31588,11 +30047,6 @@ country_event = {
 			value = 0.02
 		}
 		SOV_add_election_approval_rating_ur = yes
-		set_temp_variable = {
-			var = SOV_election_approval_rating_ldpr_var_temp
-			value = 0.02
-		}
-		SOV_add_election_approval_rating_ldpr = yes
 		add_timed_idea = {
 			idea = SOV_putin_constitution_idea
 			days = 350
@@ -31886,7 +30340,7 @@ country_event = {
 		set_country_flag = SOV_NOV_lugansk_capital_flag
 		1075 = {
 			add_building_construction = {
-				type = office_park
+				type = offices
 				level = 1
 				instant_build = yes
 			}
@@ -31897,7 +30351,7 @@ country_event = {
 		set_country_flag = SOV_NOV_donetsk_capital_flag
 		693 = {
 			add_building_construction = {
-				type = office_park
+				type = offices
 				level = 1
 				instant_build = yes
 			}
@@ -32063,11 +30517,6 @@ country_event = {
 				}
 				LPR = {
 					set_cosmetic_tag = NOV_zhir
-					set_party_name = {
-						ideology = nationalist
-						long_name = NOV_fascist_ldpr_party
-						name = NOV_fascist_ldpr_party_short
-					}
 					promote_character = {
 						character = DSW_TFR_NOV_denis_pushilin_nationalist
 						ideology = Nat_Fascism
@@ -32148,26 +30597,6 @@ country_event = {
 			has_country_flag = DSW_SOV_tfr_active
 		}
 	}
-	id = dsw_tfr_russia.475
-	title = dsw_tfr_russia.475.t
-	desc = dsw_tfr_russia.475.d
-	picture = GFX_SOV_Zhirinovsky_pic_1
-	is_triggered_only = yes
-	immediate = {
-
-	}
-	option = {
-		name = dsw_tfr_russia.475.a
-		add_political_power = -25
-		activate_mission = SOV_zhirinovsky_tour_mission
-	}
-}
-country_event = {
-	trigger = {
-		SOV = {
-			has_country_flag = DSW_SOV_tfr_active
-		}
-	}
 	id = dsw_tfr_russia.476
 	title = dsw_tfr_russia.476.t
 	desc = dsw_tfr_russia.476.d
@@ -32185,31 +30614,6 @@ country_event = {
 			value = 0.015
 		}
 		SOV_add_election_approval_rating_cprf = yes
-	}
-}
-country_event = {
-	trigger = {
-		SOV = {
-			has_country_flag = DSW_SOV_tfr_active
-		}
-	}
-	id = dsw_tfr_russia.477
-	title = dsw_tfr_russia.477.t
-	desc = dsw_tfr_russia.477.d
-	picture = GFX_SOV_LDPR_2
-	is_triggered_only = yes
-	immediate = {
-
-	}
-	option = {
-		name = dsw_tfr_russia.477.a
-		add_political_power = -25
-		add_war_support = -0.05
-		set_temp_variable = {
-			var = SOV_election_approval_rating_ldpr_var_temp
-			value = 0.015
-		}
-		SOV_add_election_approval_rating_ldpr = yes
 	}
 }
 country_event = {
@@ -32290,78 +30694,6 @@ country_event = {
 			has_country_flag = DSW_SOV_tfr_active
 		}
 	}
-	id = dsw_tfr_russia.480
-	title = dsw_tfr_russia.480.t
-	desc = dsw_tfr_russia.480.d
-	picture = GFX_SOV_ldpr_protest
-	is_triggered_only = yes
-	immediate = {
-
-	}
-	option = {
-		name = dsw_tfr_russia.480.a
-		add_stability = -0.01
-		set_temp_variable = {
-			var = SOV_election_approval_rating_ldpr_var_temp
-			value = 0.015
-		}
-		SOV_add_election_approval_rating_ldpr = yes
-		hidden_effect = {
-			set_temp_variable = {
-				party_index = 21
-			}
-			set_temp_variable = {
-				party_popularity_increase = 0.015
-			}
-			change_relative_party_popularity = yes
-			recalculate_party = yes
-		}
-	}
-	option = {
-		name = dsw_tfr_russia.480.b
-		add_political_power = -10
-	}
-}
-country_event = {
-	trigger = {
-		SOV = {
-			has_country_flag = DSW_SOV_tfr_active
-		}
-	}
-	id = dsw_tfr_russia.481
-	title = dsw_tfr_russia.481.t
-	desc = dsw_tfr_russia.481.d
-	picture = GFX_TFR_SOV_Zhirinovsky_Speech
-	is_triggered_only = yes
-	immediate = {
-
-	}
-	option = {
-		name = dsw_tfr_russia.481.a
-		add_political_power = -10
-		set_temp_variable = {
-			var = SOV_election_approval_rating_ldpr_var_temp
-			value = 0.015
-		}
-		SOV_add_election_approval_rating_ldpr = yes
-		hidden_effect = {
-			set_temp_variable = {
-				party_index = 21
-			}
-			set_temp_variable = {
-				party_popularity_increase = 0.015
-			}
-			change_relative_party_popularity = yes
-			recalculate_party = yes
-		}
-	}
-}
-country_event = {
-	trigger = {
-		SOV = {
-			has_country_flag = DSW_SOV_tfr_active
-		}
-	}
 	id = dsw_tfr_russia.482
 	title = dsw_tfr_russia.482.t
 	desc = dsw_tfr_russia.482.d
@@ -32384,46 +30716,6 @@ country_event = {
 			}
 			set_temp_variable = {
 				party_popularity_increase = 0.015
-			}
-			change_relative_party_popularity = yes
-			recalculate_party = yes
-		}
-	}
-}
-country_event = {
-	id = dsw_tfr_russia.483
-	title = dsw_tfr_russia.483.t
-	desc = dsw_tfr_russia.483.d
-	picture = GFX_SOV_Zhirinovsky_pic_2
-	is_triggered_only = yes
-	trigger = {
-		SOV = {
-			has_country_flag = DSW_SOV_tfr_active
-		}
-		SOV = {
-			NOT = {
-				has_completed_focus = SOV_fight_against_the_right
-			}
-		}
-	}
-	immediate = {
-
-	}
-	option = {
-		name = dsw_tfr_russia.483.a
-		add_political_power = -50
-		add_stability = -0.1
-		set_temp_variable = {
-			var = SOV_election_approval_rating_ldpr_var_temp
-			value = 0.03
-		}
-		SOV_add_election_approval_rating_ldpr = yes
-		hidden_effect = {
-			set_temp_variable = {
-				party_index = 21
-			}
-			set_temp_variable = {
-				party_popularity_increase = 0.03
 			}
 			change_relative_party_popularity = yes
 			recalculate_party = yes
@@ -32510,11 +30802,6 @@ country_event = {
 	option = {
 		name = dsw_tfr_russia.485.c
 		set_temp_variable = {
-			var = SOV_election_approval_rating_ldpr_var_temp
-			value = 0.02
-		}
-		SOV_add_election_approval_rating_ldpr = yes
-		set_temp_variable = {
 			var = SOV_election_approval_rating_nav_var_temp
 			value = -0.05
 		}
@@ -32580,7 +30867,7 @@ country_event = {
 			set_portraits = {
 				character = DSW_TFR_SOV_vladimir_putin
 				civilian = {
-					large = "GFX_portrait_SOV_vladimir_putin_post_assassination"
+					large = "gfx/leaders/SOV/portrait_SOV_vladimir_putin.dds"
 				}
 			}
 		}
@@ -32615,11 +30902,6 @@ country_event = {
 	option = {
 		name = dsw_tfr_russia.488.a
 		add_political_power = -25
-		set_temp_variable = {
-			var = SOV_election_approval_rating_ldpr_var_temp
-			value = 0.02
-		}
-		SOV_add_election_approval_rating_ldpr = yes
 		set_temp_variable = {
 			var = SOV_election_approval_rating_nav_var_temp
 			value = -0.05
@@ -32809,7 +31091,6 @@ country_event = {
 	id = dsw_tfr_russia.493
 	title = dsw_tfr_russia.493.t
 	desc = dsw_tfr_russia.493.d
-	picture = GFX_SOV_ldpr_protest
 	is_triggered_only = yes
 	trigger = {
 		SOV = {
@@ -32817,9 +31098,9 @@ country_event = {
 		}
 		NOT = {
 			OR = {
-				has_country_flag = SOV_LDPR_in_contact
-				has_country_flag = SOV_infiltrated_LDPR
-				has_country_flag = SOV_disable_LDPR_critisizes_Medvedev
+				always = no
+				always = no
+				always = no
 				has_country_leader = {
 					character = DSW_TFR_SOV_alexei_navalny
 					ruling_only = yes
@@ -32966,7 +31247,7 @@ country_event = {
 				character = DSW_TFR_SOV_dmitry_rogozin
 				promote_leader = yes
 				country_leader = {
-					ideology = Nat_Fascism
+					ideology = nationalist
 					expire = "2100.1.1"
 					traits = {
 
@@ -33924,7 +32205,6 @@ country_event = {
 			add_faction_goal = faction_goal_placeholder_long_term
 			remove_faction_goal = faction_goal_a_military_base
 			add_faction_goal = faction_goal_placeholder_medium_term
-			add_faction_goal = faction_goal_placeholder_short_term
 		}
 		NAU = {
 			add_to_faction = KIR
@@ -34007,8 +32287,9 @@ country_event = {
 		name = dsw_tfr_russia.515.c
 		create_country_leader = {
 			name = DSW_TFR_SOV_vladimir_putin
-			picture = "gfx/Leaders/Post_Russia/Putin_returned_form_taiga.png"
+			picture = "gfx/leaders/SOV/portrait_SOV_vladimir_putin.dds"
 			ideology = Nat_Fascism
+			desc = "SOV_VLADIMIR_PUTIN_DESC"
 			traits = {
 				hos_returned_from_taiga
 			}
@@ -34754,111 +33035,6 @@ country_event = {
 			has_country_flag = DSW_SOV_tfr_active
 		}
 	}
-	id = dsw_tfr_russia.526
-	title = dsw_tfr_russia.526.t
-	desc = dsw_tfr_russia.526.d
-	picture = GFX_SOV_Zhirinovsky_pic_1
-	is_triggered_only = yes
-	immediate = {
-
-	}
-	option = {
-		name = dsw_tfr_russia.526.a
-		if = {
-			limit = {
-				check_variable = {
-					ruling_party = 18
-				}
-			}
-			set_temp_variable = {
-				party_index = 18
-			}
-			set_temp_variable = {
-				party_popularity_increase = 0.03
-			}
-			change_relative_party_popularity = yes
-			recalculate_party = yes
-		}
-		else_if = {
-			limit = {
-				check_variable = {
-					ruling_party = 4
-				}
-			}
-			set_temp_variable = {
-				party_index = 4
-			}
-			set_temp_variable = {
-				party_popularity_increase = 0.03
-			}
-			change_relative_party_popularity = yes
-			recalculate_party = yes
-		}
-		remove_ideas = SOV_anti_soviet_resistanse_2
-	}
-}
-country_event = {
-	trigger = {
-		SOV = {
-			has_country_flag = DSW_SOV_tfr_active
-		}
-	}
-	id = dsw_tfr_russia.527
-	title = dsw_tfr_russia.527.t
-	desc = dsw_tfr_russia.527.d
-	picture = GFX_SOV_Zhirinovsky_2
-	is_triggered_only = yes
-	immediate = {
-
-	}
-	option = {
-		name = dsw_tfr_russia.527.a
-		if = {
-			limit = {
-				check_variable = {
-					ruling_party = 18
-				}
-			}
-			set_temp_variable = {
-				party_index = 18
-			}
-			set_temp_variable = {
-				party_popularity_increase = -0.03
-			}
-			change_relative_party_popularity = yes
-			recalculate_party = yes
-		}
-		else_if = {
-			limit = {
-				check_variable = {
-					ruling_party = 4
-				}
-			}
-			set_temp_variable = {
-				party_index = 4
-			}
-			set_temp_variable = {
-				party_popularity_increase = -0.03
-			}
-			change_relative_party_popularity = yes
-			recalculate_party = yes
-		}
-		add_political_power = -50
-		set_country_flag = SOV_zhir_cprf_kill
-		hidden_effect = {
-			country_event = {
-				id = dsw_tfr_russia.163
-				days = 40
-			}
-		}
-	}
-}
-country_event = {
-	trigger = {
-		SOV = {
-			has_country_flag = DSW_SOV_tfr_active
-		}
-	}
 	id = dsw_tfr_russia.528
 	title = dsw_tfr_russia.528.t
 	desc = dsw_tfr_russia.528.d
@@ -34889,10 +33065,7 @@ country_event = {
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = {
-						rule = The_First_Union_Presidential_Election
-						option = The_First_Union_Presidential_Election_6
-					}
+					always = no
 				}
 			}
 		}
@@ -35279,11 +33452,6 @@ country_event = {
 	}
 	option = {
 		name = dsw_tfr_russia.533.a
-		set_temp_variable = {
-			var = SOV_election_approval_rating_ldpr_var_temp
-			value = -0.05
-		}
-		SOV_add_election_approval_rating_ldpr = yes
 		set_temp_variable = {
 			var = SOV_election_approval_rating_ur_var_temp
 			value = -0.05
@@ -35674,14 +33842,8 @@ country_event = {
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = {
-						rule = The_Levchenko_Reform
-						option = The_Levchenko_Reform_2
-					}
-					has_game_rule = {
-						rule = The_Levchenko_Reform
-						option = The_Levchenko_Reform_3
-					}
+					always = no
+					always = no
 				}
 			}
 		}
@@ -35727,10 +33889,7 @@ country_event = {
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = {
-						rule = The_Levchenko_Reform
-						option = The_Levchenko_Reform_1
-					}
+					always = no
 				}
 			}
 		}
@@ -35767,14 +33926,8 @@ country_event = {
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = {
-						rule = The_Levchenko_Reform
-						option = The_Levchenko_Reform_2
-					}
-					has_game_rule = {
-						rule = The_Levchenko_Reform
-						option = The_Levchenko_Reform_3
-					}
+					always = no
+					always = no
 				}
 			}
 		}
@@ -35801,10 +33954,7 @@ country_event = {
 			modifier = {
 				factor = 0
 				OR = {
-					has_game_rule = {
-						rule = The_Levchenko_Reform
-						option = The_Levchenko_Reform_1
-					}
+					always = no
 				}
 			}
 		}
@@ -35842,7 +33992,7 @@ country_event = {
 	option = {
 		name = dsw_tfr_russia.544.a
 		hidden_effect = {
-			retire_ideology_leader = communist
+			retire_ideology_leader = communist_state
 			promote_character = {
 				character = DSW_TFR_SOV_denis_parfenov
 				ideology = communist_state
@@ -35890,7 +34040,7 @@ country_event = {
 	}
 	option = {
 		name = dsw_tfr_russia.544.b
-		retire_ideology_leader = libertarian_socialist
+		retire_ideology_leader = neutral_Social
 		hidden_effect = {
 			promote_character = {
 				character = DSW_TFR_SOV_nikolay_bondarenko
@@ -36207,7 +34357,7 @@ country_event = {
 		trigger = {
 			SOV = {
 				OR = {
-					has_government = social_democracy
+					check_variable = { ruling_party = 3 }
 					check_variable = {
 						ruling_party = 2
 					}
@@ -36540,7 +34690,6 @@ country_event = {
 	}
 	option = {
 		name = dsw_tfr_russia.556.b
-		custom_effect_tooltip = SOV_kill_Ldpr_tt
 		set_temp_variable = {
 			party_index = 21
 		}
@@ -36550,7 +34699,6 @@ country_event = {
 		change_relative_party_popularity = yes
 		recalculate_party = yes
 		hidden_effect = {
-			SOV_remove_ldpr_party = yes
 			country_event = {
 				id = dsw_tfr_russia.558
 				days = 40
@@ -37340,7 +35488,6 @@ country_event = {
 	id = dsw_tfr_russia.577
 	title = dsw_tfr_russia.577.t
 	desc = dsw_tfr_russia.577.d
-	picture = GFX_SOV_ldpr_divide
 	fire_only_once = yes
 	is_triggered_only = yes
 	trigger = {
@@ -37357,16 +35504,8 @@ country_event = {
 			limit = {
 				has_country_flag = DSW_SOV_pending_focus_SOV_guiding_hand
 			}
-			set_power_balance = {
-				id = SOV_LDPR_balance
-				set_value = 0.1
-			}
 		}
 		else = {
-			set_power_balance = {
-				id = SOV_LDPR_balance
-				set_value = 0.2
-			}
 		}
 		set_temp_variable = {
 			ruling_party_wing_var_temp = 6
@@ -37377,21 +35516,6 @@ country_event = {
 		}
 		DSW_SOV_dep_add_ruling_party_wing = yes
 		hidden_effect = {
-			set_party_name = {
-				ideology = communism
-				long_name = SOV_ldpr_reformists_long
-				name = SOV_ldpr_reformists_short
-			}
-			set_party_name = {
-				ideology = nationalist
-				long_name = SOV_ldpr_veterans
-				name = SOV_ldpr_veterans_short
-			}
-			set_party_name = {
-				ideology = nationalist
-				long_name = SOV_ldpr_hawks_long
-				name = SOV_ldpr_hawks_short
-			}
 			set_variable = {
 				party_pop_array^0 = 0
 			}
@@ -37524,257 +35648,6 @@ country_event = {
 		}
 		change_relative_party_popularity = yes
 		recalculate_party = yes
-	}
-}
-country_event = {
-	id = dsw_tfr_russia.579
-	title = dsw_tfr_russia.579.t
-	desc = dsw_tfr_russia.579.d
-	picture = GFX_SOV_zolotov_4
-	fire_only_once = yes
-	is_triggered_only = yes
-	trigger = {
-		SOV = {
-			has_country_flag = DSW_SOV_tfr_active
-		}
-	}
-	immediate = {
-
-	}
-	option = {
-		name = dsw_tfr_russia.579.a
-		trigger = {
-			power_balance_value = {
-				id = SOV_LDPR_balance
-				value > 0.25
-			}
-		}
-		set_country_flag = SOV_new_oprichnina_enabled_flag
-		clr_country_flag = SOV_rosgvardia_law_enabled_flag
-		add_political_power = -100
-		add_stability = -0.05
-		set_temp_variable = {
-			party_index = 21
-		}
-		set_temp_variable = {
-			party_popularity_increase = 0.03
-		}
-		change_relative_party_popularity = yes
-		recalculate_party = yes
-		custom_effect_tooltip = change_security_law_tooltip
-		show_ideas_tooltip = SOV_new_oprichnina_law
-		hidden_effect = {
-			add_ideas = SOV_new_oprichnina_law
-		}
-		add_corps_commander_role = {
-			Character = DSW_TFR_SOV_alexander_popov
-			traits = {
-				politically_connected
-				trickster
-			}
-			skill = 1
-			attack_skill = 1
-			defense_skill = 2
-			planning_skill = 2
-			logistics_skill = 2
-		}
-		add_corps_commander_role = {
-			Character = DSW_TFR_SOV_sergey_zakharov
-			traits = {
-				politically_connected
-				adaptable
-			}
-			skill = 1
-			attack_skill = 2
-			defense_skill = 1
-			planning_skill = 2
-			logistics_skill = 1
-		}
-		add_corps_commander_role = {
-			Character = DSW_TFR_SOV_yuri_yashin
-			traits = {
-				politically_connected
-				trait_engineer
-			}
-			skill = 2
-			attack_skill = 2
-			defense_skill = 2
-			planning_skill = 1
-			logistics_skill = 1
-		}
-		add_corps_commander_role = {
-			Character = DSW_TFR_SOV_roman_gavrilov
-			traits = {
-				politically_connected
-				commando
-			}
-			skill = 2
-			attack_skill = 3
-			defense_skill = 1
-			planning_skill = 1
-			logistics_skill = 2
-		}
-		add_trait = {
-			character = DSW_TFR_SOV_viktor_zolotov
-			slot = corps_commander
-			trait = trait_SOV_new_oprichnik
-		}
-		add_trait = {
-			character = DSW_TFR_SOV_yuri_yashin
-			slot = corps_commander
-			trait = trait_SOV_new_oprichnik
-		}
-		add_trait = {
-			character = DSW_TFR_SOV_alexander_popov
-			slot = corps_commander
-			trait = trait_SOV_new_oprichnik
-		}
-		add_trait = {
-			character = DSW_TFR_SOV_roman_gavrilov
-			slot = corps_commander
-			trait = trait_SOV_new_oprichnik
-		}
-		add_trait = {
-			character = DSW_TFR_SOV_sergey_zakharov
-			slot = corps_commander
-			trait = trait_SOV_new_oprichnik
-		}
-		hidden_effect = {
-			country_event = {
-				id = dsw_tfr_russia.587
-				days = 25
-			}
-		}
-	}
-	option = {
-		name = dsw_tfr_russia.579.b
-		set_temp_variable = {
-			party_index = 21
-		}
-		set_temp_variable = {
-			party_popularity_increase = 0.015
-		}
-		change_relative_party_popularity = yes
-		recalculate_party = yes
-		add_corps_commander_role = {
-			Character = DSW_TFR_SOV_alexander_popov
-			traits = {
-				politically_connected
-				trickster
-			}
-			skill = 1
-			attack_skill = 1
-			defense_skill = 2
-			planning_skill = 2
-			logistics_skill = 2
-		}
-		add_corps_commander_role = {
-			Character = DSW_TFR_SOV_sergey_zakharov
-			traits = {
-				politically_connected
-				adaptable
-			}
-			skill = 1
-			attack_skill = 2
-			defense_skill = 1
-			planning_skill = 2
-			logistics_skill = 1
-		}
-		add_corps_commander_role = {
-			Character = DSW_TFR_SOV_yuri_yashin
-			traits = {
-				politically_connected
-				trait_engineer
-			}
-			skill = 2
-			attack_skill = 2
-			defense_skill = 2
-			planning_skill = 1
-			logistics_skill = 1
-		}
-		add_corps_commander_role = {
-			Character = DSW_TFR_SOV_roman_gavrilov
-			traits = {
-				politically_connected
-				commando
-			}
-			skill = 2
-			attack_skill = 3
-			defense_skill = 1
-			planning_skill = 1
-			logistics_skill = 1
-		}
-	}
-}
-country_event = {
-	id = dsw_tfr_russia.580
-	title = dsw_tfr_russia.580.t
-	desc = dsw_tfr_russia.580.d
-	picture = GFX_SOV_sad_communists
-	fire_only_once = yes
-	is_triggered_only = yes
-	trigger = {
-		SOV = {
-			has_country_flag = DSW_SOV_tfr_active
-		}
-	}
-	immediate = {
-
-	}
-	option = {
-		name = dsw_tfr_russia.580.a
-		add_timed_idea = {
-			idea = SOV_cprf_assets_seized_idea
-			days = 50
-		}
-		add_power_balance_value = {
-			id = SOV_LDPR_balance
-			value = -0.1
-		}
-		set_temp_variable = {
-			party_index = 6
-		}
-		set_temp_variable = {
-			party_popularity_increase = 0.01
-		}
-		change_relative_party_popularity = yes
-		recalculate_party = yes
-		set_party_name = {
-			ideology = communism
-			name = SOV_outlawed_party
-			long_name = SOV_outlawed_party
-		}
-	}
-	option = {
-		name = dsw_tfr_russia.580.b
-		add_timed_idea = {
-			idea = SOV_cprf_assets_seized_idea
-			days = 100
-		}
-		add_power_balance_value = {
-			id = SOV_LDPR_balance
-			value = 0.05
-		}
-		add_stability = 0.05
-		set_temp_variable = {
-			party_index = 21
-		}
-		set_temp_variable = {
-			party_popularity_increase = 0.01
-		}
-		change_relative_party_popularity = yes
-		recalculate_party = yes
-		set_party_name = {
-			ideology = communism
-			name = SOV_outlawed_party
-			long_name = SOV_outlawed_party
-		}
-		hidden_effect = {
-			country_event = {
-				id = dsw_tfr_russia.581
-				days = 7
-			}
-		}
 	}
 }
 country_event = {
@@ -41838,29 +39711,29 @@ country_event = {
 		division_template = {
 			name = "Motostrelkovaya Brigada"
 			regiments = {
-				motorized = {
+				Mot_Inf_Bat = {
 					x = 0
 					y = 0
 				}
-				motorized = {
+				Mot_Inf_Bat = {
 					x = 0
 					y = 1
 				}
-				motorized = {
+				Mot_Inf_Bat = {
 					x = 0
 					y = 2
 				}
-				light_mechanized = {
+				Light_Mech_Inf_Bat = {
 					x = 0
 					y = 3
 				}
-				mechanized = {
+				Mech_Inf_Bat = {
 					x = 0
 					y = 4
 				}
 			}
 			support = {
-				signal_company = {
+				communications_company = {
 					x = 0
 					y = 0
 				}
@@ -43076,40 +40949,6 @@ country_event = {
 	}
 }
 country_event = {
-	id = dsw_tfr_russia.743
-	title = dsw_tfr_russia.743.t
-	desc = dsw_tfr_russia.743.d
-	picture = GFX_SOV_zhirinovsky_in_duma
-	is_triggered_only = yes
-	trigger = {
-		SOV = {
-			has_country_flag = DSW_SOV_tfr_active
-		}
-	}
-	immediate = {
-
-	}
-	option = {
-		name = dsw_tfr_russia.743.a
-		add_war_support = 0.015
-		set_temp_variable = {
-			var = SOV_election_approval_rating_ldpr_var_temp
-			value = 0.025
-		}
-		SOV_add_election_approval_rating_ldpr = yes
-		hidden_effect = {
-			set_temp_variable = {
-				party_index = 21
-			}
-			set_temp_variable = {
-				party_popularity_increase = 0.025
-			}
-			change_relative_party_popularity = yes
-			recalculate_party = yes
-		}
-	}
-}
-country_event = {
 	id = dsw_tfr_russia.744
 	title = dsw_tfr_russia.744.t
 	desc = dsw_tfr_russia.744.d
@@ -43665,7 +41504,7 @@ country_event = {
 	option = {
 		name = dsw_tfr_russia.756.a
 		CHI = {
-			remove_resource_rights = 565
+			remove_resource_rights = 685
 		}
 	}
 }
@@ -43698,7 +41537,7 @@ country_event = {
 			custom_effect_tooltip = SOV_after_days
 			effect_tooltip = {
 				CHI = {
-					remove_resource_rights = 565
+					remove_resource_rights = 685
 				}
 			}
 		}
@@ -44172,7 +42011,7 @@ country_event = {
 			has_country_flag = DSW_SOV_pending_focus_SOV_empower_the_senate
 		}
 		hidden_effect = {
-			retire_ideology_leader = authoritarian_democrat
+			retire_ideology_leader = Conservative
 		}
 		promote_character = DSW_TFR_SOV_denis_pushilin
 		set_party_name = {
@@ -44725,14 +42564,12 @@ country_event = {
 		}
 		add_industrial_development = yes
 		hidden_effect = {
-			set_country_flag = SOV_ldpr_cto
 			country_event = {
 				id = dsw_tfr_russia.778
 				days = 15
 				random_days = 10
 			}
 		}
-		unlock_decision_category_tooltip = SOV_western_states_terrorists_ldpr_category
 	}
 }
 country_event = {
@@ -44807,8 +42644,6 @@ country_event = {
 		hidden_effect = {
 			set_country_flag = SOV_muslim_rebellion
 		}
-		unlock_decision_tooltip = SOV_cto_in_the_caucasus_ldpr
-		unlock_decision_tooltip = SOV_cto_in_the_turkestan_ldpr
 	}
 }
 country_event = {
@@ -44869,7 +42704,6 @@ country_event = {
 				}
 			}
 		}
-		set_country_flag = SOV_ldpr_poland_annexed
 		add_political_power = -100
 		add_war_support = 0.05
 		annex_country = {
@@ -44884,7 +42718,6 @@ country_event = {
 			idea = SOV_integration_of_poland
 			days = 250
 		}
-		unlock_decision_tooltip = SOV_russify_poland_ldpr
 	}
 	option = {
 		name = dsw_tfr_russia.780.b
@@ -44925,25 +42758,6 @@ country_event = {
 			set_cosmetic_tag = MLD_zhir_free_poland
 			remove_ideas = SOV_MLD_polish_rebel_movement2
 		}
-	}
-}
-country_event = {
-	trigger = {
-		SOV = {
-			has_country_flag = DSW_SOV_tfr_active
-		}
-	}
-	id = dsw_tfr_russia.781
-	title = dsw_tfr_russia.781.t
-	desc = dsw_tfr_russia.781.d
-	picture = GFX_SOV_Zhirinovsky_stariy
-	is_triggered_only = yes
-	immediate = {
-
-	}
-	option = {
-		name = dsw_tfr_russia.781.a
-		add_political_power = 50
 	}
 }
 country_event = {
@@ -45307,70 +43121,6 @@ country_event = {
 		}
 		add_political_power = -100
 		add_ideas = SOV_organic_state_idea
-	}
-}
-country_event = {
-	trigger = {
-		SOV = {
-			has_country_flag = DSW_SOV_tfr_active
-		}
-	}
-	id = dsw_tfr_russia.798
-	title = dsw_tfr_russia.798.t
-	desc = dsw_tfr_russia.798.d
-	picture = GFX_SOV_LDPR_1
-	is_triggered_only = yes
-	immediate = {
-
-	}
-	option = {
-		name = dsw_tfr_russia.798.a
-		add_political_power = 25
-		set_temp_variable = {
-			party_index = 22
-		}
-		set_temp_variable = {
-			party_popularity_increase = -1
-		}
-		change_relative_party_popularity = yes
-		recalculate_party = yes
-		set_party_name = {
-			ideology = nationalist
-			long_name = SOV_outlawed_party
-			name = SOV_outlawed_party
-		}
-	}
-}
-country_event = {
-	trigger = {
-		SOV = {
-			has_country_flag = DSW_SOV_tfr_active
-		}
-	}
-	id = dsw_tfr_russia.799
-	title = dsw_tfr_russia.799.t
-	desc = dsw_tfr_russia.799.d
-	picture = GFX_SOV_LDPR_2
-	is_triggered_only = yes
-	immediate = {
-
-	}
-	option = {
-		name = dsw_tfr_russia.799.a
-		add_political_power = 25
-		set_temp_variable = {
-			party_index = 22
-		}
-		set_temp_variable = {
-			party_popularity_increase = -1
-		}
-		change_relative_party_popularity = yes
-		recalculate_party = yes
-		set_party_name = {
-			ideology = nationalist
-			long_name = SOV_outlawed_party
-			name = SOV_outlawed_party
-		}
 	}
 }
 country_event = {
@@ -46139,11 +43889,6 @@ country_event = {
 		name = dsw_tfr_russia.811.a
 		add_stability = -0.1
 		add_ideas = SOV_anti_kurginyan_resistance_idea
-		set_party_name = {
-			ideology = nationalist
-			long_name = SOV_zhirinovsky_guard_party
-			name = SOV_zhirinovsky_guard_party
-		}
 	}
 }
 country_event = {
@@ -46934,31 +44679,6 @@ country_event = {
 			has_country_flag = DSW_SOV_tfr_active
 		}
 	}
-	id = dsw_tfr_russia.827
-	title = dsw_tfr_russia.827.t
-	desc = dsw_tfr_russia.827.d
-	picture = GFX_SOV_call_of_ldpr
-	is_triggered_only = yes
-	immediate = {
-
-	}
-	option = {
-		name = dsw_tfr_russia.827.a
-		add_political_power = 25
-		add_war_support = 0.035
-		set_temp_variable = {
-			var = income_var_temp
-			value = 10
-		}
-		add_income = yes
-	}
-}
-country_event = {
-	trigger = {
-		SOV = {
-			has_country_flag = DSW_SOV_tfr_active
-		}
-	}
 	id = dsw_tfr_russia.828
 	title = dsw_tfr_russia.828.t
 	desc = dsw_tfr_russia.828.d
@@ -47358,7 +45078,7 @@ country_event = {
 				random_select_amount = 1
 				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
-					type = office_park
+					type = offices
 					level = 1
 					instant_build = yes
 				}
@@ -47449,19 +45169,19 @@ country_event = {
 					priority = 0
 					template_counter = 0
 					regiments = {
-						motorized = {
+						Mot_Inf_Bat = {
 							x = 0
 							y = 0
 						}
-						motorized = {
+						Mot_Inf_Bat = {
 							x = 0
 							y = 1
 						}
-						motorized = {
+						Mot_Inf_Bat = {
 							x = 0
 							y = 2
 						}
-						mechanized = {
+						Mech_Inf_Bat = {
 							x = 1
 							y = 0
 						}
@@ -47469,7 +45189,7 @@ country_event = {
 							x = 1
 							y = 1
 						}
-						artillery_brigade = {
+						Arty_Bat = {
 							x = 2
 							y = 0
 						}
@@ -49380,7 +47100,7 @@ country_event = {
 				has_completed_focus = SOV_a_new_republic
 				has_country_flag = SOV_disable_kremlin_towers
 				has_global_flag = SOV_cprf_won
-				has_global_flag = SOV_ldpr_won
+				always = no
 			}
 		}
 	}
@@ -51265,7 +48985,7 @@ country_event = {
 		}
 		if = {
 			limit = {
-				has_country_flag = SOV_united_with_LDPR
+				always = no
 			}
 			set_party_name = {
 				ideology = nationalist
@@ -51303,7 +49023,7 @@ country_event = {
 		text = dsw_tfr_russia.1000.t2
 		trigger = {
 			OR = {
-				has_global_flag = SOV_ldpr_won
+				always = no
 			}
 		}
 	}
@@ -51311,7 +49031,7 @@ country_event = {
 		text = dsw_tfr_russia.1000.d2
 		trigger = {
 			OR = {
-				has_global_flag = SOV_ldpr_won
+				always = no
 			}
 		}
 	}
@@ -51387,7 +49107,7 @@ country_event = {
 		}
 		if = {
 			limit = {
-				has_global_flag = SOV_ldpr_won
+				always = no
 			}
 			hidden_effect = {
 				scoped_play_song = whirlpools
@@ -51478,7 +49198,7 @@ country_event = {
 	option = {
 		name = dsw_tfr_russia.1000.g
 		trigger = {
-			has_country_flag = SOV_Council_control_LDPR
+			always = no
 		}
 		custom_effect_tooltip = SOV_tfr_russia_ending_tt_sov_zhir_slutsky
 	}
@@ -53026,11 +50746,6 @@ country_event = {
 		}
 		SOV_add_peoples_front_influence = yes
 		set_temp_variable = {
-			var = SOV_ldpr_influence_var_temp
-			value = 0.05
-		}
-		SOV_add_ldpr_influence = yes
-		set_temp_variable = {
 			var = SOV_patriots_party_influence_var_temp
 			value = 0.05
 		}
@@ -53095,11 +50810,6 @@ country_event = {
 			value = -0.05
 		}
 		SOV_add_peoples_front_influence = yes
-		set_temp_variable = {
-			var = SOV_ldpr_influence_var_temp
-			value = -0.05
-		}
-		SOV_add_ldpr_influence = yes
 		set_temp_variable = {
 			var = SOV_patriots_party_influence_var_temp
 			value = -0.05
@@ -53186,11 +50896,6 @@ country_event = {
 			value = 0.05
 		}
 		SOV_add_peoples_front_influence = yes
-		set_temp_variable = {
-			var = SOV_ldpr_influence_var_temp
-			value = 0.025
-		}
-		SOV_add_ldpr_influence = yes
 		set_temp_variable = {
 			var = SOV_patriots_party_influence_var_temp
 			value = 0.025
@@ -53477,14 +51182,12 @@ country_event = {
 	id = dsw_tfr_russia.1527
 	title = dsw_tfr_russia.1527.t
 	desc = dsw_tfr_russia.1527.d
-	picture = GFX_SOV_zhirinovsky_in_sauna
 	is_triggered_only = yes
 	immediate = {
 
 	}
 	option = {
 		name = dsw_tfr_russia.1527.a
-		SOV_add_ldpr_opinion = yes
 		custom_effect_tooltip = tooltip_white_line
 		set_temp_variable = {
 			party_index = 21
@@ -53495,36 +51198,31 @@ country_event = {
 		change_relative_party_popularity = yes
 		recalculate_party = yes
 		set_temp_variable = {
-			var = SOV_ldpr_influence_var_temp
-			value = 0.45
-		}
-		set_temp_variable = {
-			var = SOV_ldpr_influence_var_compare_temp
-			value = SOV_ldpr_influence_var
+			var = SOV_party_influence_var_compare_temp
+			value = SOV_party_influence_var
 		}
 		subtract_from_temp_variable = {
-			var = SOV_ldpr_influence_var_compare_temp
-			value = SOV_ldpr_influence_var_temp
+			var = SOV_party_influence_var_compare_temp
+			value = SOV_party_influence_var_temp
 		}
 		if = {
 			limit = {
 				check_variable = {
-					SOV_ldpr_influence_var_compare_temp < 0
+					SOV_party_influence_var_compare_temp < 0
 				}
 			}
 			add_to_temp_variable = {
-				var = SOV_ldpr_influence_var_temp
-				value = SOV_ldpr_influence_var_compare_temp
+				var = SOV_party_influence_var_temp
+				value = SOV_party_influence_var_compare_temp
 			}
 			multiply_temp_variable = {
-				SOV_ldpr_influence_var_compare_temp = 250
+				SOV_party_influence_var_compare_temp = 250
 			}
-			add_political_power = SOV_ldpr_influence_var_compare_temp
+			add_political_power = SOV_party_influence_var_compare_temp
 		}
 		multiply_temp_variable = {
-			SOV_ldpr_influence_var_temp = -1
+			SOV_party_influence_var_temp = -1
 		}
-		SOV_add_ldpr_influence = yes
 		set_temp_variable = {
 			var = SOV_party_unity_temp
 			value = -2.5
@@ -53592,7 +51290,6 @@ country_event = {
 		multiply_temp_variable = {
 			SOV_patriots_party_influence_var_temp = -1
 		}
-		SOV_add_ldpr_influence = yes
 		set_temp_variable = {
 			var = SOV_party_unity_temp
 			value = -2.5
@@ -54078,11 +51775,6 @@ country_event = {
 			value = -0.05
 		}
 		SOV_add_peoples_front_influence = yes
-		set_temp_variable = {
-			var = SOV_ldpr_influence_var_temp
-			value = -0.05
-		}
-		SOV_add_ldpr_influence = yes
 	}
 	option = {
 		name = dsw_tfr_russia.1535.b
@@ -54258,10 +51950,10 @@ country_event = {
 		if = {
 			limit = {
 				set_temp_variable = {
-					var = SOV_ldpr_opinion_var_trigger_temp
+					var = SOV_party_opinion_var_trigger_temp
 					value = 3
 				}
-				SOV_has_ldpr_opinion_less_than_or_equals = yes
+				always = no
 			}
 			add_to_temp_variable = {
 				var = SOV_pol_power_var_temp
@@ -54341,11 +52033,6 @@ country_event = {
 		}
 		SOV_add_peoples_front_influence = yes
 		set_temp_variable = {
-			var = SOV_ldpr_influence_var_temp
-			value = -0.2
-		}
-		SOV_add_ldpr_influence = yes
-		set_temp_variable = {
 			var = SOV_patriots_party_influence_var_temp
 			value = -0.2
 		}
@@ -54354,7 +52041,6 @@ country_event = {
 		SOV_reduce_adl_progress_opinion = yes
 		SOV_reduce_labor_fatherland_opinion = yes
 		SOV_reduce_peoples_front_opinion = yes
-		SOV_reduce_ldpr_opinion = yes
 		SOV_reduce_patriots_party_opinion = yes
 		custom_effect_tooltip = tooltip_white_line
 		add_stability = 0.075
@@ -54414,10 +52100,10 @@ country_event = {
 		if = {
 			limit = {
 				set_temp_variable = {
-					var = SOV_ldpr_opinion_var_trigger_temp
+					var = SOV_party_opinion_var_trigger_temp
 					value = 3
 				}
-				SOV_has_ldpr_opinion_less_than_or_equals = yes
+				always = no
 			}
 			add_to_temp_variable = {
 				var = SOV_pol_power_var_temp
@@ -54497,10 +52183,10 @@ country_event = {
 				OR = {
 					AND = {
 						set_temp_variable = {
-							var = SOV_ldpr_opinion_var_trigger_temp
+							var = SOV_party_opinion_var_trigger_temp
 							value = 3
 						}
-						SOV_has_ldpr_opinion_less_than_or_equals = yes
+						always = no
 					}
 					AND = {
 						set_temp_variable = {
@@ -56212,6 +53898,7 @@ country_event = {
 						election_frequency = 48
 						last_election = [DATA]
 					}
+					ZZZ_TFR_SOV_1554_neutral_social = yes
 				}
 				DATA = "[SOV_election_date_loc]"
 			}
@@ -56238,6 +53925,7 @@ country_event = {
 						election_frequency = 48
 						last_election = [DATA]
 					}
+					ZZZ_TFR_SOV_1554_communist = yes
 				}
 				DATA = "[SOV_election_date_loc]"
 			}
@@ -56377,7 +54065,7 @@ country_event = {
 		}
 	}
 	option = {
-		name = dsw_tfr_russia.2000.с
+		name = dsw_tfr_russia.2000.闁?
 		swap_ideas = {
 			remove_idea = SOV_wagnerization
 			add_idea = SOV_radical_patriotism_idea
@@ -56610,53 +54298,20 @@ country_event = {
 	}
 	option = {
 		name = dsw_tfr_russia.2005.a
-		effect = {
-			kill_country_leader = yes
-			add_country_leader_role = {
-				character = DSW_TFR_SOV_wagner_officer_council
-				promote_leader = yes
-				country_leader = {
-					ideology = Nat_Fascism
-					expire = "2100.1.1"
-					id = -1
-					traits = {
-						hos_collapsing_authority
-					}
+		kill_country_leader = yes
+		add_country_leader_role = {
+			character = DSW_TFR_SOV_wagner_officer_council
+			promote_leader = yes
+			country_leader = {
+				ideology = Nat_Fascism
+				expire = "2100.1.1"
+				id = -1
+				traits = {
+					hos_collapsing_authority
 				}
 			}
-			add_ideas = SOV_mother_russia_bleeds_idea
 		}
-	}
-}
-country_event = {
-	trigger = {
-		SOV = {
-			has_country_flag = DSW_SOV_tfr_active
-		}
-	}
-	id = dsw_tfr_russia.2006
-	title = dsw_tfr_russia.2006.t
-	desc = dsw_tfr_russia.2006.d
-	picture = GFX_SOV_zhirinovsky_in_duma
-	is_triggered_only = yes
-	immediate = {
-
-	}
-	option = {
-		name = dsw_tfr_russia.2006.a
-		add_political_power = -100
-		add_stability = -0.08
-		custom_effect_tooltip = change_immigration_law_tooltip
-		show_ideas_tooltip = lower_immigration
-		custom_effect_tooltip = change_race_law_tooltip
-		show_ideas_tooltip = low_race
-		custom_effect_tooltip = change_prison_law_tooltip
-		show_ideas_tooltip = medium_prison
-		hidden_effect = {
-			add_ideas = medium_prison
-			add_ideas = low_race
-			add_ideas = lower_immigration
-		}
+		add_ideas = SOV_mother_russia_bleeds_idea
 	}
 }
 country_event = {
@@ -57119,8 +54774,10 @@ country_event = {
 		name = dsw_tfr_russia.2014.a
 		add_political_power = 20
 		hidden_effect = {
-			id = dsw_tfr_russia.2015
-			days = 10
+			country_event = {
+				id = dsw_tfr_russia.2015
+				days = 10
+			}
 		}
 	}
 }
@@ -59403,10 +57060,9 @@ country_event = {
 		recalculate_party = yes
 		if = {
 			limit = {
-				has_country_leader_with_trait = hos_lion_of_russia
+				always = no
 			}
 			swap_ruler_traits = {
-				remove = hos_lion_of_russia
 				add = hos_wounded_lion
 			}
 		}
@@ -59693,10 +57349,9 @@ country_event = {
 		add_stability = 0.1
 		if = {
 			limit = {
-				has_country_leader_with_trait = hos_lion_of_russia
+				always = no
 			}
 			swap_ruler_traits = {
-				remove = hos_lion_of_russia
 				add = hos_wounded_lion
 			}
 		}
@@ -62500,42 +60155,6 @@ country_event = {
 			has_country_flag = DSW_SOV_tfr_active
 		}
 	}
-	id = russiaflavor.30
-	title = russiaflavor.30.t
-	desc = russiaflavor.30.d
-	picture = GFX_SOV_zhirinovsky_in_sauna
-	is_triggered_only = yes
-	immediate = {
-
-	}
-	option = {
-		name = russiaflavor.30.a
-	}
-}
-country_event = {
-	trigger = {
-		SOV = {
-			has_country_flag = DSW_SOV_tfr_active
-		}
-	}
-	id = russiaflavor.31
-	title = russiaflavor.31.t
-	desc = russiaflavor.31.d
-	picture = GFX_SOV_zhirinovsky_movie
-	is_triggered_only = yes
-	immediate = {
-
-	}
-	option = {
-		name = russiaflavor.31.a
-	}
-}
-country_event = {
-	trigger = {
-		SOV = {
-			has_country_flag = DSW_SOV_tfr_active
-		}
-	}
 	id = russiaflavor.32
 	title = russiaflavor.32.t
 	desc = russiaflavor.32.d
@@ -64315,7 +61934,7 @@ country_event = {
 		}
 		676 = {
 			add_building_construction = {
-				type = office_park
+				type = offices
 				level = 1
 				instant_build = yes
 			}
@@ -64412,52 +62031,20 @@ country_event = {
 		}
 	}
 }
-unit_leader_event = {
-	id = dsw_tfr_russia.235
-	title = dsw_tfr_russia.235.t
-	desc = dsw_tfr_russia.235.d
-	picture = GFX_report_event_generic_mussolini
+
+country_event = {
+	id = dsw_tfr_russia.1975
+	title = dsw_tfr_russia.1975.t
+	desc = dsw_tfr_russia.1975.d
 	is_triggered_only = yes
-	option = {
-		name = dsw_tfr_russia.235.a
-	}
-}
-unit_leader_event = {
-	id = dsw_tfr_russia.236
-	title = dsw_tfr_russia.236.t
-	desc = dsw_tfr_russia.236.d
-	picture = GFX_report_event_generic_mussolini
-	is_triggered_only = yes
-	option = {
-		name = dsw_tfr_russia.236.a
-	}
-}
-unit_leader_event = {
-	id = dsw_tfr_russia.344
-	title = dsw_tfr_russia.344.t
-	desc = dsw_tfr_russia.344.d
-	picture = GFX_onf
 	fire_only_once = yes
-	is_triggered_only = yes
 	trigger = {
-
-	}
-	immediate = {
-
+		tag = SOV
 	}
 	option = {
-		name = dsw_tfr_russia.344.a
-		add_manpower = -5
-		add_stability = 0.05
-		set_country_flag = SOV_KNOA_crushed_flag
-		clr_country_flag = SOV_knoa_flag
-		set_temp_variable = {
-			party_index = 18
-		}
-		set_temp_variable = {
-			party_popularity_increase = -0.15
-		}
-		change_relative_party_popularity = yes
-		recalculate_party = yes
+		name = dsw_tfr_russia.1975.a
+	}
+	option = {
+		name = dsw_tfr_russia.1975.b
 	}
 }

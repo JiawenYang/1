@@ -1,0 +1,15 @@
+# ============================================================================
+# ZZZ 君主制判定触发器
+# 用途：君主立宪/君主制国家在「君主制体系仍在」期间，元首恒为君主。
+# 判据说明：基座虽有 law_constitutional_monarchy / law_absolute_monarchy 两个
+# idea（2777392649/common/ideas/00_internal.txt:79 / :94），但其 on_add 引用了
+# 全库未定义的 set_state_doctrine / set_party_line，直接拿来做判据会引入报错，
+# 且会给国家套上不同的国家修正。故这里用专用旗标，避免副作用。
+#   ZZZ_monarchy_active    —— 2017 开局 history 国家块直接 set_country_flag 写入
+#   ZZZ_monarchy_abolished —— 君主制被废除时由剧情/决议调用 ZZZ_abolish_monarchy 挂上
+# ============================================================================
+
+ZZZ_active_monarchy = {
+	has_country_flag = ZZZ_monarchy_active
+	NOT = { has_country_flag = ZZZ_monarchy_abolished }
+}

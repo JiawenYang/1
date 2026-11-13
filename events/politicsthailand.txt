@@ -1,26 +1,61 @@
 add_namespace = politicsthailand
 
-country_event = { #巴育·占奥差
+# =====================================================================
+# 泰国（SIA）—— 君主立宪制选举事件
+#
+# 口径：
+#   1) 选举只改三样：24 槽支持率（party_pop_array^0..23）、执政党标量
+#      （set_variable = { ruling_party = N }）、联盟席位数组
+#      （gov_coalition_array，只放联盟党，不含执政党）。
+#   2) 结尾统一走 startup_politics，不写 recalculate_party。
+#   3) 国王由 ZZZ_monarch_SIA_* + ZZZ_monarch_guard 维持；
+#      本文件任何事件都不调用 set_leader / kill_country_leader /
+#      retire_character / promote_character，也不写 country_leader 角色。
+#      2017 历史里的巴育·占奥差（Nat_Autocracy）属于政府首脑岗位，
+#      由历史文件建立，本文件不重建、不替换。
+#
+# 政党槽位：
+#   ^1  conservatism        民主党（Prachathipat）
+#   ^3  socialism           前进党 / 未来前进党（Move Forward / Future Forward）
+#   ^14 Neutral_conservatism 泰自豪党（Bhumjaithai）
+#   ^18 neutral_Social      为泰党（Pheu Thai）
+#   ^22 Nat_Autocracy       人民国家力量党（Palang Pracharath，军系）
+#   ^23 Monarchist          王室派（非选举政党，选举事件中不占票）
+#
+# 归一规则：只取上述五个参选政党，按席位占比归一为 1.000，
+#   其余小党不单列，避免凭空造出不存在的党团。
+# =====================================================================
+
+# ---------------------------------------------------------------------
+# 2019.03.24 泰国众议院选举（军政府治下举行）
+# 现实：为泰党 136 席、人民国家力量党 116 席、未来前进党 81 席、
+#       民主党 53 席、泰自豪党 51 席（合计 437 席）。
+#       归一：^22 0.265 / ^18 0.312 / ^3 0.185 / ^1 0.121 / ^14 0.117。
+# 结果：巴育·占奥差（PPRP）经联盟继续出任总理 → 执政 ^22 nationalist。
+# 联盟：民主党 ^1、泰自豪党 ^14（不含执政党 ^22）。
+# ---------------------------------------------------------------------
+country_event = {
 	id = politicsthailand.71
 	title = politicsthailand.71.t
 	desc = politicsthailand.71.d
-	hidden = yes
+	picture = GFX_election_rally
 	fire_only_once = yes
 
 	trigger = {
-		tag = SIA
+		original_tag = SIA
 		date > 2019.03.24
-	}	
+		has_country_flag = ZZZ_monarchy_active
+	}
 
 	option = {
 		name = politicsthailand.71.a
 
 		set_popularities = {
-			democratic = 13.0
-			communism = 20.7
+			democratic = 30.6
+			communism = 0.0
 			fascism = 0.0
-			neutrality = 38.5
-			nationalist = 27.8
+			neutrality = 42.9
+			nationalist = 26.5
 		}
 		set_politics = {
 			ruling_party = nationalist
@@ -33,9 +68,9 @@ country_event = { #巴育·占奥差
 
 		### Party Popularities
 		set_variable = { party_pop_array^0 = 0 } #Western_Autocracy
-		set_variable = { party_pop_array^1 = 0.13 } #conservatism
+		set_variable = { party_pop_array^1 = 0.121 } #conservatism（民主党）
 		set_variable = { party_pop_array^2 = 0 } #liberalism
-		set_variable = { party_pop_array^3 = 0.207 } #socialism
+		set_variable = { party_pop_array^3 = 0.185 } #socialism（未来前进党）
 		set_variable = { party_pop_array^4 = 0 } #communist_state
 		set_variable = { party_pop_array^5 = 0 } #anarchist_communism
 		set_variable = { party_pop_array^6 = 0 } #Conservative
@@ -46,58 +81,58 @@ country_event = { #巴育·占奥差
 		set_variable = { party_pop_array^11 = 0 } #Caliphate
 		set_variable = { party_pop_array^12 = 0 } #Neutral_Muslim_Brotherhood
 		set_variable = { party_pop_array^13 = 0 } #Neutral_Autocracy
-		set_variable = { party_pop_array^14 = 0.123 } #Neutral_conservatism
+		set_variable = { party_pop_array^14 = 0.117 } #Neutral_conservatism（泰自豪党）
 		set_variable = { party_pop_array^15 = 0 } #oligarchism
 		set_variable = { party_pop_array^16 = 0 } #Neutral_Libertarian
 		set_variable = { party_pop_array^17 = 0 } #Neutral_green
-		set_variable = { party_pop_array^18 = 0.262 } #neutral_Social
+		set_variable = { party_pop_array^18 = 0.312 } #neutral_Social（为泰党）
 		set_variable = { party_pop_array^19 = 0 } #Neutral_Communism
 		set_variable = { party_pop_array^20 = 0 } #Nat_Populism
 		set_variable = { party_pop_array^21 = 0 } #Nat_Fascism
-		set_variable = { party_pop_array^22 = 0.278 } #Nat_Autocracy
+		set_variable = { party_pop_array^22 = 0.265 } #Nat_Autocracy（人民国家力量党）
 		set_variable = { party_pop_array^23 = 0 } #Monarchist
-		clear_array = ruling_party
-		clear_array = gov_coalition_array
-		add_to_array = { ruling_party = 22 }
-		update_government_coalition_strength = yes
-		update_party_name = yes
-		set_coalition_drift = yes
-		recalculate_party = yes
-		change_state_system_presidential_system = yes
-		log = "[GetDateText]: [This.GetName]: politicsthailand.7.a executed"
+
+		### Ruling Party
+		set_variable = { ruling_party = 22 }
+		add_to_array = { gov_coalition_array = 1 }
+		add_to_array = { gov_coalition_array = 14 }
+
+		startup_politics = yes
+		log = "[GetDateText]: [This.GetName]: politicsthailand.71.a executed (2019 general election, ruling=22)"
 	}
 }
 
-country_event = { #赛塔·他威信
-	id = politicsthailand.8
-	title = politicsthailand.8.t
-	desc = politicsthailand.8.d
-	hidden = yes
+# ---------------------------------------------------------------------
+# 2023.05.14 泰国众议院选举
+# 现实：前进党 151 席、为泰党 141 席、泰自豪党 71 席、人民国家力量党 40 席、
+#       民主党 25 席（合计 428 席）。
+#       归一：^3 0.353 / ^18 0.329 / ^14 0.166 / ^22 0.093 / ^1 0.059。
+# 结果：前进党虽席次第一，但被参议院否决组阁；为泰党（^18）主导联合政府，
+#       社他·他威信出任总理 → 执政 ^18 neutrality（不是席次第一的 ^3）。
+# 联盟：泰自豪党 ^14、人民国家力量党 ^22、民主党 ^1（不含执政党 ^18）。
+# ---------------------------------------------------------------------
+country_event = {
+	id = politicsthailand.72
+	title = politicsthailand.72.t
+	desc = politicsthailand.72.d
+	picture = GFX_election_rally
 	fire_only_once = yes
 
 	trigger = {
-		tag = SIA
-		date > 2023.08.21
-	}	
+		original_tag = SIA
+		date > 2023.05.14
+		has_country_flag = ZZZ_monarchy_active
+	}
 
 	option = {
-		name = politicsthailand.8.a
-		create_country_leader = {
-			name = "Srettha Thavisin"
-			picture = "Srettha_Thavisin.dds"
-			expire = "2050.1.1"
-			ideology = neutral_Social
-			traits = {
-				neutrality_neutral_Social
-				businessman
-			}
-		}
+		name = politicsthailand.72.a
+
 		set_popularities = {
-			democratic = 47.0
-			communism = 20.7
+			democratic = 41.2
+			communism = 0.0
 			fascism = 0.0
-			neutrality = 37.1
-			nationalist = 16.2
+			neutrality = 49.5
+			nationalist = 9.3
 		}
 		set_politics = {
 			ruling_party = neutrality
@@ -110,9 +145,9 @@ country_event = { #赛塔·他威信
 
 		### Party Popularities
 		set_variable = { party_pop_array^0 = 0 } #Western_Autocracy
-		set_variable = { party_pop_array^1 = 0.028 } #conservatism
+		set_variable = { party_pop_array^1 = 0.059 } #conservatism（民主党）
 		set_variable = { party_pop_array^2 = 0 } #liberalism
-		set_variable = { party_pop_array^3 = 0.442 } #socialism
+		set_variable = { party_pop_array^3 = 0.353 } #socialism（前进党）
 		set_variable = { party_pop_array^4 = 0 } #communist_state
 		set_variable = { party_pop_array^5 = 0 } #anarchist_communism
 		set_variable = { party_pop_array^6 = 0 } #Conservative
@@ -123,86 +158,60 @@ country_event = { #赛塔·他威信
 		set_variable = { party_pop_array^11 = 0 } #Caliphate
 		set_variable = { party_pop_array^12 = 0 } #Neutral_Muslim_Brotherhood
 		set_variable = { party_pop_array^13 = 0 } #Neutral_Autocracy
-		set_variable = { party_pop_array^14 = 0.035 } #Neutral_conservatism
+		set_variable = { party_pop_array^14 = 0.166 } #Neutral_conservatism（泰自豪党）
 		set_variable = { party_pop_array^15 = 0 } #oligarchism
 		set_variable = { party_pop_array^16 = 0 } #Neutral_Libertarian
 		set_variable = { party_pop_array^17 = 0 } #Neutral_green
-		set_variable = { party_pop_array^18 = 0.336 } #neutral_Social
+		set_variable = { party_pop_array^18 = 0.329 } #neutral_Social（为泰党）
 		set_variable = { party_pop_array^19 = 0 } #Neutral_Communism
 		set_variable = { party_pop_array^20 = 0 } #Nat_Populism
 		set_variable = { party_pop_array^21 = 0 } #Nat_Fascism
-		set_variable = { party_pop_array^22 = 0.162 } #Nat_Autocracy
+		set_variable = { party_pop_array^22 = 0.093 } #Nat_Autocracy（人民国家力量党）
 		set_variable = { party_pop_array^23 = 0 } #Monarchist
-		clear_array = ruling_party
-		clear_array = gov_coalition_array
-		add_to_array = { ruling_party = 18 }
-		update_government_coalition_strength = yes
-		update_party_name = yes
-		set_coalition_drift = yes
-		recalculate_party = yes
-		log = "[GetDateText]: [This.GetName]: politicsthailand.8.a executed"
+
+		### Ruling Party
+		set_variable = { ruling_party = 18 }
+		add_to_array = { gov_coalition_array = 14 }
+		add_to_array = { gov_coalition_array = 22 }
+		add_to_array = { gov_coalition_array = 1 }
+
+		startup_politics = yes
+		log = "[GetDateText]: [This.GetName]: politicsthailand.72.a executed (2023 general election, ruling=18)"
 	}
 }
 
-country_event = { #佩通坦·钦那瓦
-	id = politicsthailand.9
-	title = politicsthailand.9.t
-	desc = politicsthailand.9.d
+# ---------------------------------------------------------------------
+# 周期选举（2023.05.14 之后的每一届）
+# 由 common/on_actions/00_on_actions.txt 的 on_new_term_election 路由：
+#   original_tag = SIA + ZZZ_monarchy_active -> politicsthailand.73
+# 不做历史数值注入，按当前 24 槽支持率计票（hold_elections）后再走同一套
+# 三件套写入；国王不参与，也不碰任何元首角色。
+# ---------------------------------------------------------------------
+country_event = {
+	id = politicsthailand.73
 	hidden = yes
-	fire_only_once = yes
+	is_triggered_only = yes
 
-	trigger = {
-		tag = SIA
-		date > 2024.08.15
-	}	
+	immediate = {
+		hidden_effect = {
+			log = "[GetDateText]: [This.GetName]: politicsthailand.73 executed (cycle election, chain=SIA_special)"
+			hold_elections = yes
 
-	option = {
-		name = politicsthailand.9.a
-		create_country_leader = {
-			name = "Paetongtarn Shinawatra"
-			picture = "Paetongtarn_Shinawatra.dds"
-			expire = "2030.1.1"
-			ideology = neutral_Social
-			traits = {
-				neutrality_neutral_Social
-				businessman
-				Ancestral_origin_in_Guangdong
+			set_temp_variable = { rul_party_temp = max_index_1 }
+			set_variable = { ruling_party = rul_party_temp }
+
+			clear_array = gov_coalition_array
+			if = {
+				limit = {
+					NOT = { check_variable = { party_pop_array^ruling_party > majority_threshold } }
+					has_variable = max_index_2
+				}
+				set_temp_variable = { col_one = max_index_2 }
+				add_to_array = { gov_coalition_array = col_one }
 			}
+
+			update_set_politics = yes
+			startup_politics = yes
 		}
-		log = "[GetDateText]: [This.GetName]: politicsthailand.9.a executed"
-	}
-}
-
-country_event = { #佩通坦·钦那瓦
-	id = politicsthailand.10
-	title = politicsthailand.10.t
-	desc = politicsthailand.10.d
-	hidden = yes
-	fire_only_once = yes
-
-	trigger = {
-		tag = SIA
-		date > 2025.09.06
-	}	
-
-	option = {
-		name = politicsthailand.10.a
-		create_country_leader = {
-			name = "Anutin Charnvirakul"
-			picture = "Anutin_Charnvirakul.dds"
-			expire = "2050.1.1"
-			ideology = Neutral_conservatism
-			traits = {
-				neutrality_Neutral_conservatism
-			}
-		}
-		clear_array = ruling_party
-		clear_array = gov_coalition_array
-		add_to_array = { ruling_party = 14 }
-		update_government_coalition_strength = yes
-		update_party_name = yes
-		set_coalition_drift = yes
-		recalculate_party = yes
-		log = "[GetDateText]: [This.GetName]: politicsthailand.10.a executed"
 	}
 }

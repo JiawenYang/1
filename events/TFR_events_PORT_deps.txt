@@ -1,0 +1,437 @@
+# Dependency closure for ported events (2026-11-06)
+add_namespace = libya
+add_namespace = mali
+add_namespace = SRL
+add_namespace = usa_news
+add_namespace = israel
+add_namespace = serbia
+add_namespace = bla
+add_namespace = brown
+country_event = {
+	id = libya.15
+	title = libya.15.t
+	desc = libya.15.d
+	picture = report_event_equipment
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = HRL
+	}
+
+	option = {
+	name = libya.15.a
+		HRL_arab_world_increase = yes
+		declare_war_on = { 
+			target = ALG
+			type = annex_everything 
+		}	
+		hidden_effect = {
+			declare_war_on = { 
+				target = AG1
+				type = annex_everything 
+			}	
+			declare_war_on = { 
+				target = AG2
+				type = annex_everything 
+			}	
+			declare_war_on = { 
+				target = AG3
+				type = annex_everything 
+			}
+		}
+
+	}
+}
+
+country_event = { # War with the French Puppet! #what are you a child or smth -IAVL
+	id = mali.99
+	title = mali.99.t
+	desc = mali.99.d
+	picture = GFX_SouthAfricaANC2
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		SOV = { has_war_with = GER }
+		tag = MLI
+	}
+	immediate = {
+		hidden_effect = {
+			every_country = {
+				limit = {
+					OR = {
+						original_tag = MLI
+						is_in_faction_with = MLI
+					}
+				}
+				set_major = yes
+			}
+			every_country = {
+				limit = {
+					OR = {
+						original_tag = IVO
+						is_in_faction_with = IVO
+					}
+				}
+				set_major = yes
+			}
+		}
+	}
+	option = { #WAR WAR WAR
+		name = mali.99.a
+		set_global_flag = MLI_sahel_war_flag
+		declare_war_on = {
+			target = IVO
+			type = annex_everything
+		}
+		NGR = {
+			declare_war_on = {
+				target = IVO
+				type = annex_everything
+			}
+		}
+		VOL = {
+			declare_war_on = {
+				target = IVO
+				type = annex_everything
+			}
+		}
+		NGA = {
+			annex_country = {
+				target = AQI
+				transfer_troops = no
+			}
+		}
+		if = {
+			limit = {
+				FRA = {
+					has_country_flag = FRA_mauritania_pressured
+				}
+			}
+			MRT = {
+				country_event = { id = mali.13 days = 14 }
+			}
+		}
+		if = {
+			limit = {
+				SOV = {
+					has_country_flag = SOV_chad_pressured
+				}
+			}
+			CHA = {
+				country_event = { id = mali.17 days = 14 }
+			}
+		}
+	}
+}
+
+country_event = {
+	id = SRL.1
+	title = SRL.1.t
+	desc = SRL.1.d
+	picture = GFX_Generic_Riot1
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = SRL
+	}
+
+	option = {
+		name = SRL.1.a
+		add_stability = -0.1
+		add_ideas = {
+			SRL_economic_ruin_idea
+			lower_poverty
+			low_society
+		}
+		hidden_effect ={
+			country_event = {
+				id = SRL.2
+				days = 40
+			}
+		}
+		add_popularity = { 
+			ideology = democratic
+			popularity = -0.15
+		}
+	}
+}
+
+news_event = {
+	id = usa_news.3
+	title = usa_news.3.t
+	desc = usa_news.3.desc
+	picture = GFX_trump_2020_victory
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = usa_news.3.a
+		set_global_flag = USA_trump_won_flag
+	}
+}
+
+news_event = {
+	id = usa_news.4
+	title = usa_news.4.t
+	desc = usa_news.4.desc
+	picture = GFX_biden_2020_victory
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = usa_news.4.a
+		set_global_flag = USA_biden_won_flag
+	}
+}
+
+country_event = { #Netanyahu declares national emergency
+	id = israel.3
+	title = israel.3.t
+	desc = israel.3.d
+	picture = GFX_Palestinian_Riot
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = israel.3.a
+		promote_character = ISR_benjamin_netanyahu_char
+		add_popularity = {
+			ideology = democratic
+			popularity = 0.05
+		}
+		add_popularity = {
+			ideology = nationalist
+			popularity = 0.01
+		}	
+		add_popularity = {
+			ideology = nationalist
+			popularity = 0.02
+		}
+		news_event = { id = news.354 hours = 2 }
+		clr_country_flag = head_of_gov_ui_enabled
+	}
+}
+
+country_event = { #Mauritania goes to war with Mali
+	id = mali.13
+	title = mali.13.t
+	desc = mali.13.d
+	picture = GFX_SouthAfricaANC2
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+
+	option = {
+		name = mali.13.a
+		MRT = {
+			declare_war_on = {
+				target = MLI
+				type = annex_everything
+			}
+		}
+		IVO = {
+			add_to_faction = MRT
+		}
+	}
+}
+
+country_event = { #Chad Joins the Sahel Pact
+	id = mali.17
+	title = mali.17.t
+	desc = mali.17.d
+	picture = GFX_SouthAfricaANC2
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+
+	option = {
+		name = mali.17.a
+		CHA = {
+			declare_war_on = {
+				target = NGA
+				type = annex_everything
+			}
+		}
+		MLI = {
+			add_to_faction = CHA
+		}
+	}
+}
+
+country_event = {
+	id = serbia.11
+	title = serbia.11.t
+	desc = serbia.11.d
+	picture = GFX_Operation_Dusan
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tag = SER
+	}
+	option = {
+		name = serbia.11.a
+		declare_war_on = {
+			target = KOS
+			type = annex_everything
+		}
+		news_event = {
+			id = news.198
+			hours = 4
+		}
+		ALB = {
+			add_ideas = ALB_kosovo_intervention
+		}
+		KOS = {
+			load_oob = "KOS_millitia"
+		}
+	}
+}
+
+country_event = {
+	id = SRL.2
+	title = SRL.2.t
+	desc = SRL.2.d
+	picture = GFX_Generic_Riot1
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = SRL
+	}
+	option = {
+		name = SRL.2.a
+		remove_ideas = SRL_rajapaksa_family_idea
+		retire_character = SRL_gotabaya_rajapaksa_char
+		set_politics = {
+			ruling_party = democratic
+			last_election = "2019.12.21"
+			election_frequency = 60
+			elections_allowed = yes
+		}
+		add_stability = 0.15
+		add_popularity = {
+			ideology = democratic
+			popularity = 0.05
+		}
+		add_popularity = {
+			ideology = democratic
+			popularity = 0.2
+		}
+		add_popularity = {
+			ideology = communism
+			popularity = 0.05
+		}
+		hidden_effect ={
+			country_event = {
+				id = SRL.3
+				days = 800
+			}
+		}
+	}
+}
+
+	country_event = {
+		id = bla.7
+		title = bla.7.t
+		desc = bla.7.d
+		picture = report_event_equipment
+
+		fire_only_once = yes
+		is_triggered_only = yes
+
+		trigger = {
+			tag = BLA
+		}
+		
+		immediate = {
+			hidden_effect = {
+				add_popularity = {
+					ideology = nationalist
+					popularity = 0.05
+				}
+				country_event = { id = bla.8 days = 15 }
+			}
+		}
+
+		option = {
+			name = bla.7.a
+			effect_tooltip = {
+				add_popularity = {
+					ideology = nationalist
+					popularity = 0.05
+				}
+			}
+		}
+	}
+
+	country_event = {
+		id = brown.1
+		title = brown.1.t
+		desc = brown.1.d
+		picture = GFX_FNM_generic
+		
+		fire_only_once = yes
+		is_triggered_only = yes
+		
+		trigger = {
+
+		}
+
+		option = {
+			name = brown.1.a
+			add_popularity = { 
+				ideology = nationalist
+				popularity = 0.01
+			}	
+			set_country_flag = FRM_infiltration
+		}
+	}
+
+	country_event = {
+		id = brown.4
+		title = brown.4.t
+		desc = brown.4.d
+		picture = GFX_BRN_mexican_volunteers	
+		
+		fire_only_once = yes
+		is_triggered_only = yes
+		
+		trigger = {
+			tag = BRN
+		}
+
+		option = {
+			name = brown.4.a
+			random_owned_controlled_state = {
+				create_unit = {
+					division = "name = \"1.Brigada de Voluntarios\" division_template = \"Brigada de Motorizada\"  start_experience_factor = 0.0"
+					allow_spawning_on_enemy_provs = yes
+					owner = BRN
+				}
+				create_unit = {
+					division = "name = \"2. Brigada de Voluntarios\" division_template = \"Brigada de Motorizada\"  start_experience_factor = 0.0"
+					allow_spawning_on_enemy_provs = yes
+					owner = BRN
+				}
+				create_unit = {
+					division = "name = \"3. Brigada de Voluntarios\" division_template = \"Brigada de Motorizada\"  start_experience_factor = 0.0"
+					allow_spawning_on_enemy_provs = yes
+					owner = BRN
+				}
+			}
+		}
+	}
+
+# [syntax-fix] orphan event call -> 				country_event = { id = bla.8 days = 15 }
+
+# [syntax-fix] orphan event call -> 			country_event = {
+# [syntax-fix] orphan event call -> 				id = SRL.3
+# [syntax-fix] orphan event call -> 				days = 800
+# [syntax-fix] orphan event call -> 			}
+

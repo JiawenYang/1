@@ -53,6 +53,11 @@ division_template = {
 	   SP_Arty_Bat = { x = 1 y = 0 }
 	}
 		priority = 1
+	support = {
+		E_Recce_Comp = { x = 0 y = 0 }
+		E_Engi_Comp = { x = 0 y = 1 }
+		combat_service_support_company = { x = 0 y = 2 }
+	}
 }
 
 division_template = {
@@ -285,9 +290,10 @@ instant_effect = {
 
 
 	add_equipment_to_stockpile = {
+		variant_name = "M113"
 		type = medium_tank_amphibious_chassis_1
 		amount = 30
-		producer = YEM
+		producer = USA
 	}
 
 	add_equipment_to_stockpile = {
@@ -303,15 +309,16 @@ instant_effect = {
 	}
 
 	add_equipment_to_stockpile = {
-		type = SP_Anti_Air_0
+		type = medium_tank_aa_chassis_0
 		amount = 50
 		producer = YEM
 	}
 
 	add_equipment_to_stockpile = {
+		variant_name = "ZiS-2"
 		type = Anti_tank_1
 		amount = 150
-		producer = YEM
+		producer = SOV
 	}
 
 	add_equipment_to_stockpile = {
@@ -321,14 +328,14 @@ instant_effect = {
 	}
 
 	add_equipment_to_stockpile = {
-		type = SP_R_arty_0
+		type = medium_tank_rocket_chassis_0
 		amount = 50
 		producer = YEM
 	}
 
 	add_equipment_to_stockpile = {
 		variant_name = "AKM"
-		type = infantry_weapons_2		#AKM
+		type = infantry_weapons_1		#AKM
 		amount = 4000
 		producer = SOV
 	}
@@ -347,14 +354,14 @@ instant_effect = {
 	}
 
 	add_equipment_to_stockpile = {
-		variant_name = "AK-47"
-		type = infantry_weapons_2		#AK-47（封存）
+		variant_name = "AKM"
+		type = infantry_weapons_1		#AK-47（封存）
 		amount = 80000
 		producer = SOV
 	}
 
 	add_equipment_to_stockpile = {
-		variant_name = "T-55"
+		variant_name = "T-55A"
 		type = medium_tank_chassis_0		#T-55（封存，SOV变体）
 		amount = 100
 		producer = SOV
@@ -367,4 +374,9 @@ instant_effect = {
 		producer = SOV
 	}
 
+	add_equipment_to_stockpile = {
+		type = medium_tank_artillery_chassis_0
+		producer = YEM
+		amount = 185
+	}
 }

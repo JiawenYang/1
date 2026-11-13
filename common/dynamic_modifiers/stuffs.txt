@@ -127,9 +127,9 @@ RAJ_hoxaists_rebel1 = {
 	remove_trigger = {
 		OR = {
 			NOT = {
-				emerging_communist_state_are_not_in_power = yes
-				neutrality_neutral_communism_are_not_in_power = yes
-				emerging_anarchist_communism_are_not_in_power = yes
+				NOT = { check_variable = { ruling_party = 4 } }
+				NOT = { check_variable = { ruling_party = 19 } }
+				NOT = { check_variable = { ruling_party = 5 } }
 				has_country_flag = mao_civvar_staret
 			}
 		}
@@ -148,9 +148,9 @@ RAJ_hoxaists_rebel2 = {
 	remove_trigger = {
 		OR = {
 			NOT = {
-				emerging_communist_state_are_not_in_power = yes
-				neutrality_neutral_communism_are_not_in_power = yes
-				emerging_anarchist_communism_are_not_in_power = yes
+				NOT = { check_variable = { ruling_party = 4 } }
+				NOT = { check_variable = { ruling_party = 19 } }
+				NOT = { check_variable = { ruling_party = 5 } }
 				has_country_flag = mao_civvar_staret
 			}
 		}
@@ -169,9 +169,9 @@ RAJ_hoxaists_rebel3 = {
 	remove_trigger = {
 		OR = {
 			NOT = {
-				emerging_communist_state_are_not_in_power = yes
-				neutrality_neutral_communism_are_not_in_power = yes
-				emerging_anarchist_communism_are_not_in_power = yes
+				NOT = { check_variable = { ruling_party = 4 } }
+				NOT = { check_variable = { ruling_party = 19 } }
+				NOT = { check_variable = { ruling_party = 5 } }
 				has_country_flag = mao_civvar_staret
 			}
 		}
@@ -190,9 +190,9 @@ RAJ_hoxaists_rebel4 = {
 	remove_trigger = {
 		OR = {
 			NOT = {
-				emerging_communist_state_are_not_in_power = yes
-				neutrality_neutral_communism_are_not_in_power = yes
-				emerging_anarchist_communism_are_not_in_power = yes
+				NOT = { check_variable = { ruling_party = 4 } }
+				NOT = { check_variable = { ruling_party = 19 } }
+				NOT = { check_variable = { ruling_party = 5 } }
 				has_country_flag = mao_civvar_staret
 			}
 		}
@@ -406,13 +406,13 @@ EU_member_dynamic = {
 	production_speed_supply_node_factor = eu_production_speed_supply_node_factor_dynamic_var
 	production_speed_infrastructure_factor = eu_production_speed_infrastructure_factor_dynamic_var
 	production_speed_industrial_complex_factor = eu_production_speed_industrial_complex_factor_dynamic_var
-	production_speed_office_park_factor = eu_production_speed_office_park_factor_dynamic_var
+	production_speed_offices_factor = eu_production_speed_office_park_factor_dynamic_var
 	production_speed_rail_way_factor = eu_production_speed_rail_way_factor_dynamic_var
 	production_speed_arms_factory_factor = eu_production_speed_arms_factory_factor_dynamic_var
 	production_speed_dockyard_factor = eu_production_speed_dockyard_factor_dynamic_var
-	production_speed_power_plant_factor = eu_production_speed_power_plant_factor_dynamic_var
+	production_speed_fossil_powerplant_factor = eu_production_speed_power_plant_factor_dynamic_var
 	production_speed_nuclear_reactor_factor = eu_production_speed_nuclear_reactor_factor_dynamic_var
-	production_speed_energy_farm_factor = eu_production_speed_energy_farm_factor_dynamic_var
+	production_speed_renewable_energy_infra_factor = eu_production_speed_energy_farm_factor_dynamic_var
 	industrial_development_monthly = eu_industrial_development_monthly_dynamic_var
 	poverty_development_monthly = eu_poverty_development_monthly_dynamic_var
 	farming_development_monthly = eu_farming_development_monthly_dynamic_var
@@ -422,9 +422,9 @@ EU_member_dynamic = {
 	expense_growth_factor = eu_expense_growth_factor_dynamic_var
 	business_value_factor = eu_business_value_factor_dynamic_var #0.05
 	personal_value_factor = eu_personal_value_factor_dynamic_var
-	tax_business_rate = eu_tax_business_rate_dynamic_var
+	corporate_tax_income_multiplier_modifier = eu_tax_business_rate_dynamic_var
 	tax_personal_rate = eu_tax_personal_rate_dynamic_var
-	interest_rate = eu_interest_rate_dynamic_var
-	inflation_monthly = eu_inflation_monthly_dynamic_var
+	interest_rate_multiplier_modifier = eu_interest_rate_dynamic_var
+	inflation_cost_multiplier_modifier = eu_inflation_monthly_dynamic_var
 	custom_modifier_tooltip = EU_member_dynamic_modifier_tooltip
 }

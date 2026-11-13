@@ -1,0 +1,87 @@
+# ZZZ 原生党名修复（方案 B：只写名，不动政治结构）
+#
+# 根因：基座 00_MD_politicsview_scripted_effects.txt 的 update_party_name
+# 在 715 行使用 ideology = THIS。THIS 在国家 scope 下不是合法意识形态 id，
+# set_party_name 不落库，导致外交界面 party_name（原生党名）为空。
+#
+# 本 effect 仅按当前执政大组显式写入原生党名，名称取 [show_ruling_party]，
+# 不修改 ruling_party 标量，不改选举设置，不改变政府组。
+# 由 ZZZ_party_name_fix_on_actions.txt 的 on_startup 逐国调用一次。
+
+ZZZ_set_native_party_name = {
+	if = {
+		limit = { has_government = democratic }
+		hidden_effect = {
+			meta_effect = {
+				text = {
+					set_party_name = {
+						ideology = democratic
+						name = "[SUBIDEOLOGY_NAME]"
+						long_name = "[SUBIDEOLOGY_NAME]"
+					}
+				}
+				SUBIDEOLOGY_NAME = "[show_ruling_party]"
+			}
+		}
+	}
+	else_if = {
+		limit = { has_government = communism }
+		hidden_effect = {
+			meta_effect = {
+				text = {
+					set_party_name = {
+						ideology = communism
+						name = "[SUBIDEOLOGY_NAME]"
+						long_name = "[SUBIDEOLOGY_NAME]"
+					}
+				}
+				SUBIDEOLOGY_NAME = "[show_ruling_party]"
+			}
+		}
+	}
+	else_if = {
+		limit = { has_government = fascism }
+		hidden_effect = {
+			meta_effect = {
+				text = {
+					set_party_name = {
+						ideology = fascism
+						name = "[SUBIDEOLOGY_NAME]"
+						long_name = "[SUBIDEOLOGY_NAME]"
+					}
+				}
+				SUBIDEOLOGY_NAME = "[show_ruling_party]"
+			}
+		}
+	}
+	else_if = {
+		limit = { has_government = neutrality }
+		hidden_effect = {
+			meta_effect = {
+				text = {
+					set_party_name = {
+						ideology = neutrality
+						name = "[SUBIDEOLOGY_NAME]"
+						long_name = "[SUBIDEOLOGY_NAME]"
+					}
+				}
+				SUBIDEOLOGY_NAME = "[show_ruling_party]"
+			}
+		}
+	}
+	else_if = {
+		limit = { has_government = nationalist }
+		hidden_effect = {
+			meta_effect = {
+				text = {
+					set_party_name = {
+						ideology = nationalist
+						name = "[SUBIDEOLOGY_NAME]"
+						long_name = "[SUBIDEOLOGY_NAME]"
+					}
+				}
+				SUBIDEOLOGY_NAME = "[show_ruling_party]"
+			}
+		}
+	}
+}
