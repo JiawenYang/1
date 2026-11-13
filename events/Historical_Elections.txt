@@ -1,0 +1,69 @@
+add_namespace = historical_elections
+
+country_event = {
+	id = historical_elections.1
+	title = historical_elections.1.t
+	desc = historical_elections.1.d
+	picture = GFX_election_day
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	trigger = {
+		tag = ITA
+		has_country_flag = generic_election_killswitch
+		NOT = { has_country_flag = rework_ITA_2018_election }
+	}
+
+	immediate = {
+		set_country_flag = rework_ITA_2018_election
+		set_variable = { anarchist_communism_leader = 2 }
+		set_temp_variable = { rul_party_temp = 5 }
+		set_temp_variable = { col_one = 6 }
+		set_temp_variable = { disable_elections = 0 }
+		change_ruling_party_effect = yes
+		set_politics = {
+			ruling_party = democratic
+			last_election = "2018.3.4"
+			election_frequency = 60
+			elections_allowed = yes
+		}
+		clr_country_flag = generic_election_killswitch
+	}
+
+	option = {
+		name = historical_elections.1.a
+	}
+}
+
+country_event = {
+	id = historical_elections.2
+	title = historical_elections.2.t
+	desc = historical_elections.2.d
+	picture = GFX_election_day
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	trigger = {
+		tag = KOR
+		has_country_flag = generic_election_killswitch
+		NOT = { has_country_flag = rework_KOR_2017_election }
+	}
+
+	immediate = {
+		set_country_flag = rework_KOR_2017_election
+		set_variable = { socialism_leader = 2 }
+		set_temp_variable = { rul_party_temp = 3 }
+		set_temp_variable = { disable_elections = 0 }
+		change_ruling_party_effect = yes
+		set_politics = {
+			ruling_party = democratic
+			last_election = "2017.5.9"
+			election_frequency = 60
+			elections_allowed = yes
+		}
+	}
+
+	option = {
+		name = historical_elections.2.a
+	}
+}
