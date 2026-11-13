@@ -2317,7 +2317,7 @@ focus_tree = {
 			newline = yes
 			show_unit_leaders_tooltip = SOV_alexander_lapin
 			show_unit_leaders_tooltip = SOV_sergey_kisel
-			show_unit_leaders_tooltip = SOV_andrey_mordvichev
+			show_unit_leaders_tooltip = TFR_SOV_andrey_mordvichev
 			newline = yes
 			set_temp_variable = { treasury_change = -5 }
 			modify_treasury_effect = yes
@@ -2663,7 +2663,7 @@ focus_tree = {
 				change_relative_party_popularity = yes
 				newline = yes
 			}
-			show_unit_leaders_tooltip = SOV_sergey_shoygu
+			show_unit_leaders_tooltip = TFR_SOV_sergey_shoygu
 			army_experience = 15
 			air_experience = 15
 			newline = yes
@@ -3717,6 +3717,199 @@ focus_tree = {
 				factor = 0
 				has_active_mission = bankruptcy_incoming_collapse
 			}
+			modifier = { factor = 2 ai_is_threatened = yes }
+		}
+	}
+
+	focus = {
+		id = SOV_rosguard_start_org
+		icon = sov_rosgvardia
+
+		x = -5
+		y = 10
+		relative_position_id = SOV_finish_1998_reforms
+
+		cost = 3
+
+		prerequisite = { focus = SOV_increased_arms_exports_2 }
+		prerequisite = { focus = SOV_expand_kalashnikov_concern }
+
+		search_filters = { FOCUS_FILTER_RUSSIA_ARMY }
+
+		available = {
+			OR = {
+				has_completed_focus = SOV_rosgvardia
+				has_completed_focus = SOV_demilitarize_mia
+				has_completed_focus = SOV_jirik_fear
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_rosguard_start_org"
+			show_unit_leaders_tooltip = TFR_SOV_viktor_zolotov
+			newline = yes
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = SOV_intelligence_modifier }
+			add_to_variable = { SOV_intel_root_out_resistance_effectiveness_factor = 0.25 tooltip = root_out_resistance_effectiveness_factor_tt }
+			add_to_variable = { SOV_intel_foreign_subversive_activites = -0.25 tooltip = foreign_subversive_activites_tt }
+			add_to_variable = { SOV_intel_police_cost_multiplier_modifier = 0.04 tooltip = police_cost_multiplier_modifier_tt }
+		}
+
+		ai_will_do = {
+			base = 1
+			modifier = { factor = 2 ai_is_threatened = yes }
+		}
+	}
+
+	focus = {
+		id = SOV_rosguard_armor
+		icon = sov_rosgvardia_armor
+
+		x = 0
+		y = 1
+		relative_position_id = SOV_rosguard_start_org
+
+		cost = 3
+
+		prerequisite = { focus = SOV_rosguard_start_org }
+
+		search_filters = { FOCUS_FILTER_RUSSIA_ARMY FOCUS_FILTER_EXPENDITURE }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_rosguard_armor"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = SOV_intelligence_modifier }
+			add_to_variable = { SOV_intel_root_out_resistance_effectiveness_factor = 0.05 tooltip = root_out_resistance_effectiveness_factor_tt }
+			add_to_variable = { SOV_intel_foreign_subversive_activites = -0.05 tooltip = foreign_subversive_activites_tt }
+			add_to_variable = { SOV_intel_police_cost_multiplier_modifier = 0.01 tooltip = police_cost_multiplier_modifier_tt }
+			newline = yes
+			set_temp_variable = { treasury_change = -10 }
+			modify_treasury_effect = yes
+		}
+
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 0
+				has_active_mission = bankruptcy_incoming_collapse
+			}
+			modifier = { factor = 2 ai_is_threatened = yes }
+		}
+	}
+
+	focus = {
+		id = SOV_rosguard_military
+		icon = sov_rosgvardia_army
+
+		x = -2
+		y = 1
+		relative_position_id = SOV_rosguard_start_org
+
+		cost = 3
+
+		prerequisite = { focus = SOV_rosguard_start_org }
+
+		search_filters = { FOCUS_FILTER_RUSSIA_ARMY }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_rosguard_military"
+			unlock_decision_tooltip = SOV_rosguard_mobilize
+			newline = yes
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = SOV_intelligence_modifier }
+			add_to_variable = { SOV_intel_fascism_drift = -0.01 tooltip = fascism_drift_tt }
+			add_to_variable = { SOV_intel_war_support_factor = 0.01 tooltip = war_support_factor_tt }
+			newline = yes
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = SOV_landforce_modifier }
+			add_to_variable = { SOV_land_army_core_defence_factor = 0.03 tooltip = army_core_defence_factor_tt }
+		}
+
+		ai_will_do = {
+			base = 1
+			modifier = { factor = 2 ai_is_threatened = yes }
+		}
+	}
+
+	focus = {
+		id = SOV_rosguard_occup
+		icon = sov_rosgvardia_police
+
+		x = 2
+		y = 1
+		relative_position_id = SOV_rosguard_start_org
+
+		cost = 3
+
+		prerequisite = { focus = SOV_rosguard_start_org }
+
+		search_filters = { FOCUS_FILTER_RUSSIA_ARMY }
+
+		available = {
+			has_completed_focus = SOV_omon
+			has_completed_focus = SOV_sobr
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_rosguard_occup"
+			custom_effect_tooltip = { localization_key = modifies_dynamic_modifier_tt MODIFIER = SOV_intelligence_modifier }
+			add_to_variable = { SOV_intel_root_out_resistance_effectiveness_factor = 0.05 tooltip = root_out_resistance_effectiveness_factor_tt }
+			add_to_variable = { SOV_intel_foreign_subversive_activites = -0.05 tooltip = foreign_subversive_activites_tt }
+			add_to_variable = { SOV_intel_foreign_influence_defense_modifier = 0.05 tooltip = foreign_influence_defense_modifier_tt }
+			add_to_variable = { SOV_intel_corruption_cost_factor = -0.01 tooltip = corruption_cost_factor_tt }
+			add_to_variable = { SOV_intel_stability_factor = 0.01 tooltip = stability_factor_tt }
+		}
+
+		ai_will_do = {
+			base = 1
+			modifier = { factor = 2 ai_is_threatened = yes }
+		}
+	}
+
+	focus = {
+		id = SOV_rosguard_tank
+		icon = sov_rosgvardia_tank
+
+		x = 0
+		y = 2
+		relative_position_id = SOV_rosguard_start_org
+
+		cost = 3
+
+		prerequisite = { focus = SOV_rosguard_occup }
+		prerequisite = { focus = SOV_rosguard_armor }
+		prerequisite = { focus = SOV_rosguard_military }
+
+		search_filters = { FOCUS_FILTER_RUSSIA_ARMY }
+
+		available = {
+			OR = {
+				nationalist_monarchists_are_in_power = yes
+				nationalist_right_wing_populists_are_in_power = yes
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus SOV_rosguard_tank"
+			division_template = {
+				name = "Rosgvardia Tank Brigade"
+				is_locked = yes
+				regiments = {
+					armor_Bat = { x = 0 y = 0 }
+					armor_Bat = { x = 0 y = 1 }
+					Militia_Bat = { x = 1 y = 0 }
+					Militia_Bat = { x = 1 y = 1 }
+					Militia_Bat = { x = 1 y = 2 }
+					Militia_Bat = { x = 1 y = 3 }
+					Arty_Bat = { x = 2 y = 0 }
+					Arty_Bat = { x = 2 y = 1 }
+					Arty_Bat = { x = 2 y = 2 }
+				}
+				support = {
+					Mot_Recce_Comp = { x = 0 y = 0 }
+					L_Engi_Comp = { x = 0 y = 1 }
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 1
 			modifier = { factor = 2 ai_is_threatened = yes }
 		}
 	}

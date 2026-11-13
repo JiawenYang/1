@@ -124,14 +124,6 @@ on_actions = {
 				log = "[GetDateText]: [This.GetName]: election chain = ZZZ_template"
 				country_event = ZZZ_election.0
 			}
-			# 台湾保留专属链（旧权重视图里的 brazil.39 / spain.500 / singapore_elections.0
-			# 在本工程 events 下已不存在，属于死引用，改由 ZZZ 模板接管对应国家）
-			else_if = {
-				limit = { original_tag = TWN }
-				set_variable = { ZZZ_last_chain = 4 }
-				log = "[GetDateText]: [This.GetName]: election chain = TWN_special (taiwan.3)"
-				country_event = taiwan.3
-			}
 			# 君主立宪：日本、泰国只换党与支持率，元首（天皇/国王）不动。
 			# 本工程自建链：politicsjapan.14 / politicsthailand.73。
 			# 一旦君主制被废除（旗标消失），自动落回下面的基座通用链。

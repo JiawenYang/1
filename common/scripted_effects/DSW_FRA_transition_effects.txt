@@ -3,6 +3,16 @@ DSW_FRA_elect_macron_2017 = {
 	set_country_flag = DSW_FRA_macron_2017_elected
 	set_country_flag = FRA_historical_president_2017
 	set_country_flag = FRA_LREM_CREATED
+	kill_country_leader = yes
+	if = {
+		limit = {
+			NOT = {
+				has_character = DSW_TFR_FRA_emmanuel_macron_char
+			}
+		}
+		recruit_character = DSW_TFR_FRA_emmanuel_macron_char
+	}
+	promote_character = DSW_TFR_FRA_emmanuel_macron_char
 	set_variable = {
 		liberalism_leader = 1
 	}
